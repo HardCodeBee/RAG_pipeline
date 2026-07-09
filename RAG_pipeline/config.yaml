@@ -1,0 +1,47 @@
+project:
+  name: "naive_rag_v1"
+
+corpus:
+  path: "../paper"
+  file_type: "pdf"
+
+data:
+  processed_dir: "data/processed"
+  chunks_path: "data/processed/chunks.jsonl"
+  embeddings_path: "data/processed/embeddings.npy"
+  manifest_path: "data/processed/manifest.json"
+
+chunking:
+  method: "fixed_sentence"
+  chunk_size_tokens: 300
+  chunk_overlap_tokens: 50
+
+embedding:
+  backend: "auto"
+  model_name: "BAAI/bge-small-en-v1.5"
+  normalize: true
+  batch_size: 32
+  fallback_backend: "hashing"
+  fallback_dim: 384
+
+index:
+  backend: "auto"
+  type: "flat_ip"
+  save_path: "data/processed/faiss.index"
+
+retrieval:
+  top_k: 5
+
+generation:
+  provider: "auto"
+  model: "gpt-4o-mini"
+  temperature: 0.0
+  max_output_tokens: 512
+
+logging:
+  outputs_dir: "outputs/runs"
+  save_retrieved_chunks: true
+  save_prompt: true
+  save_latency: true
+  save_token_usage: true
+
