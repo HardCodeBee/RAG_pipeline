@@ -1,7 +1,7 @@
 """为构建、查询运行和评估生成可复现、可比较的身份信息
-    修改是否需要重建索引？
-    运行是否可以直接比较？
-    实验是否可以安全恢复？
+    Build identity      : 修改是否需要重建索引？ 
+    Run identity        : 运行是否可以直接比较？
+    Evaluation identity : 实验是否可以安全恢复？
 """
 
 from __future__ import annotations
@@ -82,7 +82,18 @@ def corpus_inventory(documents: list[Path], corpus_root: Path) -> dict[str, Any]
     ]
     return {"documents": rows, "aggregate_sha256": json_sha256(rows)}
 
-
+# 建立 Build identity
+# 对应：indexing 
+# 记录：
+#   loader
+#   chunking
+#   embedding
+#   index
+#   corpus 文件清单
+#   source_sha256
+# 用于判断：
+#   当前索引是否需要重建？
+#   已有 artifacts/build_xxx 能不能复用？
 def build_spec(config: dict[str, Any], corpus: dict[str, Any], source_sha256: str) -> dict[str, Any]:
     # 构建规格只包含会影响构建产物的字段。
     # query_prefix、local_files_only 等运行时或环境字段不会改变已构建索引内容。
@@ -109,7 +120,19 @@ def build_identity(config: dict[str, Any], corpus: dict[str, Any], source_sha256
     # build_id 是 build_spec 的短 hash，目录名稳定且可读。
     return f"build_{digest[:16]}", digest, spec
 
-
+# 建立 Run identity
+# 对应： retrieval + context + generation
+# 记录：
+#   build_id
+#   query embedding 配置
+#   retrieval 配置，如 top_k
+#   context 配置
+#   prompt 配置
+#   generation 配置
+#   source_sha256
+# 用于判断：
+# 两次 query/run 的条件是否相同？
+# 结果是否可以直接比较？
 def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[str, Any]:
     # run_spec 描述 query 阶段会影响答案的配置。
     # 它和 build_spec 分开，避免每次改 top_k 或 generation 参数都重建索引。
@@ -140,7 +163,16 @@ def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[
         "source_sha256": source_sha256,
     }
 
-
+# 建立 Evaluation identity
+# 对应： evaluation 阶段
+# 记录：
+#   questions_sha256
+#   source_sha256
+#   metrics_version
+# 用于判断：
+# 是不是同一套题？
+# 是不是同一版评估指标？
+# 能不能 resume 或 recompute metrics？
 def evaluation_spec(questions_sha256: str, source_sha256: str) -> dict[str, Any]:
     # 评估规格用来标识一次评估的题集版本、源码版本和指标版本。
     return {
