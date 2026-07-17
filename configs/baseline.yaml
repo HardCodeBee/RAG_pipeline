@@ -1,0 +1,116 @@
+# 正式朴素 RAG 基线：
+# 固定 BGE、FAISS 平铺内积索引、固定 top_k 和 OpenAI 生成器。
+strict_backends: true
+
+project:
+  name: naive_rag_baseline
+
+# YAML 内路径相对于本文件所在的 configs/ 目录解析。
+paths:
+  corpus: ../data/corpus
+  artifacts_root: ../artifacts
+  outputs_root: ../outputs
+
+# 语料加载组件：读取并清洗语料 -> PageRecord
+loader:
+  type: pypdf
+  recursive: false #是否递归读取
+  #空白页处理
+  #skip：跳过 error：报错
+  empty_page_policy: skip
+  # 清理方式
+  # minimal：去除空字符；处理断层换行；压缩多个空白字符
+  cleaner: minimal
+
+# 文本切块组件: 把整页文本 PageRecord 切块 -> ChunkRecord
+chunking:
+  # 切分方式
+  method: fixed_sentence
+  # 每个 chunk 最大 token 数
+  chunk_size_tokens: 300
+  # x相邻 chunk 之间最多保留多少 token 重叠
+  overlap_budget_tokens: 50
+  # 用正则按句子切分
+  sentence_splitter: regex
+  # 用什么方式计算 token 数
+  # huggingface/regex
+  tokenizer: huggingface
+  # 外部 tokenizer 模型名
+  tokenizer_model: BAAI/bge-small-en-v1.5
+  # 固定 tokenizer 版本
+  tokenizer_revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+  # 是否只从本地加载 tokenizer，不联网下载
+  local_files_only: false
+
+# 向量化组件：把文本 chunk 和用户 query 转成向量
+embedding:
+  # 选择 embedding 后端:
+  # auto：自动选择；hashing：本地哈希 embedder；sentence_transformers：真实模型
+  backend: sentence_transformers
+  # 模型名称
+  model_name: BAAI/bge-small-en-v1.5
+  # 模型版本
+  revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+  # 是否归一化
+  normalize: true
+  # 一批处理多少文本
+  batch_size: 32
+  # 哈希回退向量维度
+  fallback_dim: 384
+  # 给 query 编码前加的前缀
+  query_prefix: ""
+  # 给 document 编码前加的前缀
+  document_prefix: ""
+  # 模型最大输入长度
+  max_sequence_length: null
+  # 是否只从本地加载模型
+  local_files_only: false
+
+# 向量索引组件：负责存储所有文本块向量，并根据查询向量找最相似的文本块
+index:
+  # faiss：使用 FAISS 向量索引
+  # numpy：使用 NumPy 暴力精确搜索
+  backend: faiss
+  # flat_ip：精确搜索内积相似度
+  type: flat_ip
+
+# 检索组件，负责执行一次查询检索
+retrieval:
+ # dense:  密集向量检索
+  type: dense
+  top_k: 5
+
+# 上下文构建组件。它把检索到的 chunk 拼成一段给 LLM 的 context。
+context:
+  # context 词元限制数
+  max_tokens: null
+
+# 提示词模板组件：把：question + context拼成最终发给 generator 的 prompt
+prompt:
+  version: fixed_qa_v1
+
+# 答案生成组件
+generation:
+  provider: openai
+  # 可直接填入明文；项目策略会把解析后的 key 原样记录到 manifest/运行 metadata。
+  api_key: ""
+  model: gpt-4o-mini
+  # 高温回答发散；低温回答稳定
+  temperature: 0.0
+  # 答案最大长度
+  max_output_tokens: 512
+  # 超时
+  timeout_seconds: 60.0
+  # 重复请求最多次数
+  max_retries: 2
+
+# 控制一次 query / eval 运行时，结果文件里保存哪些信息
+logging:
+# 是否保存检索到的 chunk 原文
+  save_retrieved_chunks: true
+  # 是否保存最终发给模型的 prompt
+  save_prompt: true
+  # 是否保存各阶段耗时
+  save_latency: true
+  # 是否保存 token 使用量
+  save_token_usage: true

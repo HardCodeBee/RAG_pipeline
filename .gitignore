@@ -1,0 +1,29 @@
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and credentials
+.env
+.env.*
+.venv/
+venv/
+
+# Reproducible generated pipeline data
+artifacts/
+outputs/
+data/processed/
+
+# Local reports for supervisor updates
+report.md
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
