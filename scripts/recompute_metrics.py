@@ -18,7 +18,7 @@ from src.cli_utils import safe_run_id
 from src.evaluators.logger import write_metadata_json, write_results, write_summary_csv
 from src.evaluators.metrics import evaluate_result, summarize_results
 from src.io_utils import read_jsonl, sha256_file
-from src.provenance import PIPELINE_SCHEMA_VERSION, evaluation_spec, json_sha256, source_code_sha256
+from src.provenance import evaluation_spec, json_sha256, source_code_sha256
 
 
 def main() -> None:
@@ -37,11 +37,6 @@ def main() -> None:
     source_metadata_path = source_dir / "metadata.json"
     source_results_path = source_dir / "results.jsonl"
     source_metadata = json.loads(source_metadata_path.read_text(encoding="utf-8"))
-    if source_metadata.get("schema_version") != PIPELINE_SCHEMA_VERSION:
-        raise ValueError(
-            f"Reanalysis requires a schema-v{PIPELINE_SCHEMA_VERSION} source run; "
-            "use its matching code revision for older runs"
-        )
     questions = {row["question_id"]: row for row in read_jsonl(questions_path)}
     source_rows = list(read_jsonl(source_results_path))
     if sha256_file(questions_path) != source_metadata.get("questions_sha256"):

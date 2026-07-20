@@ -5,14 +5,10 @@ import re
 # 把 PageRecord.text 拆成句子
 # 简单正则分句器：在英文/中文句末标点后按空白拆分
 class RegexSentenceSplitter:
-
-    name = "regex"
-
     def __init__(self, pattern: str = r"(?<=[.!?。！？])\s+"):
         if not isinstance(pattern, str) or not pattern:
             raise ValueError("pattern must be a non-empty string")
         # 预编译正则，避免每次 split 都重新编译。
-        self.pattern = pattern
         self._compiled = re.compile(pattern)
 
     # 定义切分方法

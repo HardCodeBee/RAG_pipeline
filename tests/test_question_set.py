@@ -66,7 +66,7 @@ def test_heldout_set_is_small_unique_and_covers_each_paper() -> None:
     assert len({row["expected_sources"][0] for row in rows}) == 5
 
 
-def test_versioned_corpus_matches_public_manifest() -> None:
+def test_corpus_matches_public_manifest() -> None:
     manifest = json.loads(CORPUS_MANIFEST_PATH.read_text(encoding="utf-8"))
     documents = [
         {
@@ -78,6 +78,5 @@ def test_versioned_corpus_matches_public_manifest() -> None:
         for path in sorted(CORPUS_PATH.glob("*.pdf"))
     ]
 
-    assert manifest["schema_version"] == 1
     assert manifest["documents"] == documents
     assert manifest["aggregate_sha256"] == json_sha256(documents)

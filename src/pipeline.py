@@ -22,7 +22,6 @@ from src.provenance import (
     build_identity,
     corpus_inventory,
     json_sha256,
-    PIPELINE_SCHEMA_VERSION,
     resolved_roots,
     run_spec,
     source_code_sha256,
@@ -113,7 +112,6 @@ class NaiveRAGPipeline:
         run_spec_value = run_spec(self.config, build_id, source_sha)
         # runtime_metadata 记录 query 阶段实际使用的构建、模型、索引和生成配置。
         self.runtime_metadata = {
-            "schema_version": PIPELINE_SCHEMA_VERSION,
             "build_id": build_id,
             "build_dir": str(self.build_dir.resolve()),
             "build_spec_sha256": build_spec_sha,
@@ -262,7 +260,6 @@ class NaiveRAGPipeline:
 
         # result 是单次 query 的完整可序列化记录。
         result = {
-            "schema_version": PIPELINE_SCHEMA_VERSION,
             "status": generation_status,
             "question_id": question_id or _query_id(),
             "question": question,
@@ -284,7 +281,6 @@ class NaiveRAGPipeline:
                 "build_latency_ms": context_latency_ms,
             },
             "generation": generation_data,
-            "notes": "",
         }
         if logging["save_prompt"]:
             result["prompt"] = prompt.text

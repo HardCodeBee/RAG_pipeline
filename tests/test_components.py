@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 
 from src.chunkers.modular_chunker import FixedSentenceChunker
-from src.core.records import ChunkRecord, ContextPackage, PageRecord, SearchHit
+from src.core.records import ChunkRecord, ContextPackage, PageRecord
 from src.indexes.faiss_index import FlatIPIndex
 from src.prompts.fixed_prompt import build_prompt
 from src.retrievers.dense_retriever import DenseRetriever

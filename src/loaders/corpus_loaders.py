@@ -9,8 +9,6 @@ from src.text.cleaners import clean_text
 
 class _PDFCorpusLoader:
     # PDF 加载器的公共基类：负责文件发现和文档身份校验。
-    backend = ""
-
     def __init__(
         self,
         recursive: bool = False,
@@ -73,8 +71,6 @@ class _PDFCorpusLoader:
 # PypdfCorpusLoader 是真正执行 PDF 文本读取的类
 class PypdfCorpusLoader(_PDFCorpusLoader):
     # 使用 pypdf 抽取每页文本，并输出 PageRecord。
-    backend = "pypdf"
-
     def load(self, corpus_path: str | Path, file_type: str = "pdf") -> list[PageRecord]:
         # 运行时才导入 pypdf
         try:

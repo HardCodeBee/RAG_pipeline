@@ -19,7 +19,6 @@ from src.evaluators.metrics import summarize_results
 from src.io_utils import read_jsonl, sha256_file
 from src.pipeline import NaiveRAGPipeline
 from src.provenance import (
-    PIPELINE_SCHEMA_VERSION,
     evaluation_spec,
     json_sha256,
     recorded_config,
@@ -28,7 +27,6 @@ from src.provenance import (
 
 
 _RESUME_COMPATIBILITY_FIELDS = (
-    "schema_version",
     "questions_sha256",
     "build_id",
     "run_spec_sha256",
@@ -96,7 +94,6 @@ def main() -> None:
     metadata_path = run_dir / "metadata.json"
 
     metadata = {
-        "schema_version": PIPELINE_SCHEMA_VERSION,
         "run_id": run_id,
         "command": "run_eval",
         "status": "running",
@@ -161,7 +158,6 @@ def main() -> None:
             row["question_type"] = question.get("question_type")
         except Exception as exc:
             row = {
-                "schema_version": PIPELINE_SCHEMA_VERSION,
                 "question_id": question["question_id"],
                 "question": question["question"],
                 "identity": {

@@ -16,7 +16,7 @@ from src.cli_utils import configure_utf8_output, positive_int, safe_run_id
 from src.config import apply_cli_overrides, load_config, resolve_cli_path
 from src.evaluators.logger import write_metadata_json, write_results
 from src.pipeline import NaiveRAGPipeline
-from src.provenance import PIPELINE_SCHEMA_VERSION, recorded_config, resolved_roots
+from src.provenance import recorded_config, resolved_roots
 
 
 def main() -> None:
@@ -47,7 +47,6 @@ def main() -> None:
         run_dir = resolved_roots(config)["outputs_root"] / run_id
         run_dir.mkdir(parents=True, exist_ok=False)
         metadata = {
-            "schema_version": PIPELINE_SCHEMA_VERSION,
             "run_id": run_id,
             "command": "run_query",
             "status": "completed",

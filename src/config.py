@@ -23,7 +23,6 @@ _ROOT_KEYS = {
     "prompt",
     "generation",
     "logging",
-    "_config_path",
     "_base_dir",
 }
 
@@ -88,7 +87,7 @@ def _reject_inline_secrets(value: Any, location: str = "config") -> None:
     if isinstance(value, dict):
         for key, item in value.items():
             normalized = str(key).casefold()
-            # generation.api_key 是显式支持并会原样写入 manifest/运行元数据的字段。
+            # generation.api_key 是显式支持并会原样写入运行元数据的字段。
             allowed_api_key = normalized == "api_key" and location == "config.generation"
             if not allowed_api_key and (
                 normalized in secret_names
@@ -326,10 +325,9 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         if chunking["tokenizer"] == "huggingface" and chunking["tokenizer_revision"] is None:
             raise ValueError("strict_backends requires a fixed chunking.tokenizer_revision")
 
-    for key in ("_config_path", "_base_dir"):
-        # load_config() 会注入这两个内部字段，后续 resolve_path() 依赖 _base_dir。
-        if key in value:
-            value[key] = _text(value[key], key)
+    # load_config() 会注入 _base_dir，后续 resolve_path() 依赖它。
+    if "_base_dir" in value:
+        value["_base_dir"] = _text(value["_base_dir"], "_base_dir")
     return value
 
 
@@ -338,7 +336,6 @@ def load_config(config_path: str | Path) -> dict[str, Any]:
     path = Path(config_path).resolve()
     with path.open("r", encoding="utf-8") as handle:
         config = yaml.safe_load(handle) or {}
-    config["_config_path"] = str(path)
     config["_base_dir"] = str(path.parent)
     return validate_config(config)
 

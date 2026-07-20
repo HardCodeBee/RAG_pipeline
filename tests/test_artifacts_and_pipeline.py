@@ -88,13 +88,22 @@ def test_build_is_immutable_reusable_and_queryable(tmp_path, monkeypatch) -> Non
     first = build_index(config)
     second = build_index(config)
     assert first["build_id"] == second["build_id"]
-    assert first["source_sha256"] == first["build_spec"]["source_sha256"]
-    assert set(first["embedding"]) == {"space", "count"}
+    assert "schema_version" not in first
+    assert "schema_version" not in first["build_spec"]
+    assert first["build_spec"]["source_sha256"]
+    assert "source_sha256" not in first
+    assert "effective_config" not in first
+    assert set(first["corpus"]) == {"num_files", "num_pages", "num_documents"}
+    assert set(first["chunking"]) == {"num_chunks", "token_count", "realized_overlap_tokens"}
+    assert set(first["embedding"]) == {"space"}
     assert "query_prefix" not in first["embedding"]["space"]
     assert first["embedding"]["space"]["dimension"] == 32
+    assert set(first["index"]) == {"backend", "type", "count", "dimension"}
     assert "vector_id_sequence_sha256" in first
     assert "vector_ids_sha256" not in first["artifacts"]["chunks"]
     assert "vector_ids_sha256" not in first["artifacts"]["index"]
+    assert "rows" not in first["artifacts"]["embeddings"]
+    assert "rows" not in first["artifacts"]["index"]
     build_dir = tmp_path / "artifacts" / first["build_id"]
     assert "text_sha256" not in (build_dir / "chunks.jsonl").read_text(encoding="utf-8")
     validate_build_directory(build_dir, first["build_id"])
@@ -103,9 +112,12 @@ def test_build_is_immutable_reusable_and_queryable(tmp_path, monkeypatch) -> Non
     config["embedding"]["query_prefix"] = "query: "
     config["generation"]["api_key"] = "plaintext-test-key"
     pipeline = NaiveRAGPipeline(config)
+    assert "schema_version" not in pipeline.runtime_metadata
     assert pipeline.runtime_metadata["embedding"]["query_prefix"] == "query: "
     assert pipeline.runtime_metadata["generator"]["api_key"] == "plaintext-test-key"
     result = pipeline.query("What does dense retrieval find?", question_id="q")
+    assert "schema_version" not in result
+    assert "notes" not in result
     assert result["identity"]["build_id"] == first["build_id"]
     assert result["retrieval"]["results"]
     assert result["status"] == "success"

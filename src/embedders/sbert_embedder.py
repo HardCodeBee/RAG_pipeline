@@ -100,11 +100,9 @@ class TextEmbedder:
         self.resolved_revision = revision
         self.normalize = normalize
         self.batch_size = batch_size
-        self.fallback_dim = fallback_dim
         self.query_prefix = query_prefix
         self.document_prefix = document_prefix
         self.max_sequence_length = max_sequence_length
-        self.local_files_only = local_files_only
         self._model = None
         self._active_backend = ""
         self._dimension = fallback_dim

@@ -67,8 +67,6 @@ def _record_chunk(
 class FixedSentenceChunker:
     # chunking 策略：按句子为基本单位，在固定 token 预算内组装 chunk，
     # 相邻 chunk 之间保留一段尾部 overlap，降低边界切断语义的风险。
-    name = "fixed_sentence"
-
     def __init__(
         self,
         sentence_splitter,

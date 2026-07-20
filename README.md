@@ -89,8 +89,9 @@ python scripts/run_eval.py --config configs/baseline.yaml --questions data/quest
 ```
 
 The API key may be supplied through `generation.api_key` or `OPENAI_API_KEY`. By project policy,
-the configured/effective key is recorded in plaintext in manifests and run metadata. Credentials do
-not enter scientific identity hashes, so changing only a key does not force an index rebuild.
+the configured/effective key is recorded in plaintext in run metadata, but not in build manifests.
+Credentials do not enter scientific identity hashes, so changing only a key does not force an index
+rebuild.
 
 To recompute metrics from a completed run without repeating retrieval or generation:
 
@@ -110,14 +111,14 @@ authoritative generation observation.
 | Run identity | Build, query embedding, top-k, context, prompt, generator, or active Python source changes |
 | Evaluation identity | Questions, metrics version, or active Python source changes |
 
-Schema v6 uses one canonical embedding-space record in each build manifest; query-only settings such
-as `query_prefix` remain part of run identity instead of the built document space. The schema keeps
-the single source digest over `src/**/*.py` and `scripts/*.py`, zero-based vector IDs, and one sequence
-digest binding the chunk-to-index mapping. Build directories remain immutable and validate artifact
-size and SHA-256, vector order, dimensions, and embedding space before query execution.
-Resume is accepted only when schema, question, build, run, evaluation, source, and effective top-k
-identities match. Schema-v5 and older artifacts remain historical records and require their matching code
-revision; rebuild them before use with schema-v6 code.
+Build manifests use `build_spec` as the single source of build inputs and corpus inventory.
+Top-level `corpus` and `chunking` sections contain only realized build statistics, while query-only
+settings such as `query_prefix` remain part of run identity instead of the built document space. A
+single source digest covers `src/**/*.py` and `scripts/*.py`, while zero-based vector IDs and one
+sequence digest bind chunks to index entries. Build directories remain immutable and validate
+artifact size and SHA-256, vector order, dimensions, and embedding space before query execution.
+Resume is accepted only when question, build, run, evaluation, source, and effective top-k
+identities match.
 
 ## Tests
 

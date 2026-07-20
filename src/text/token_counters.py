@@ -32,8 +32,6 @@ class _TruncationMixin:
 
 class RegexTokenCounter(_TruncationMixin):
     # 使用统一 TOKEN_RE 做轻量 token 估算，适合无模型环境和快速测试。
-    name = "regex"
-
     def count(self, text: str) -> int:
         if not isinstance(text, str):
             raise TypeError("text must be a string")
@@ -88,7 +86,6 @@ class HuggingFaceTokenCounter(_TruncationMixin):
         self.model_name = model_name
         self.revision = revision
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, **kwargs)
-        self.name = f"huggingface:{model_name}"
 
     # 把文本编码成 Hugging Face tokenizer 的 token id
     def _encode(self, text: str) -> list[int]:

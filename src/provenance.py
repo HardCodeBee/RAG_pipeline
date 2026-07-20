@@ -19,9 +19,6 @@ from src.config import resolve_path
 from src.io_utils import sha256_file
 
 
-PIPELINE_SCHEMA_VERSION = 6
-
-
 def json_sha256(value: Any) -> str:
     # sort_keys + 紧凑 separators 保证同一个 JSON 值总是得到同一个 hash。
     encoded = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -29,16 +26,9 @@ def json_sha256(value: Any) -> str:
 
 
 def recorded_config(config: dict[str, Any]) -> dict[str, Any]:
-    """返回可写入 manifest/metadata 的完整配置"""
+    """返回可写入运行 metadata 的完整配置。"""
     value = json.loads(json.dumps(config, ensure_ascii=False))
     return {key: item for key, item in value.items() if not key.startswith("_")}
-
-
-def identity_config(config: dict[str, Any]) -> dict[str, Any]:
-    """返回用于科学身份计算的配置；凭据不影响实验身份。"""
-    value = recorded_config(config)
-    value.get("generation", {}).pop("api_key", None)
-    return value
 
 
 def _hash_files(root: Path, files: Iterable[Path]) -> str:
@@ -59,15 +49,17 @@ def _hash_files(root: Path, files: Iterable[Path]) -> str:
         digest.update(content)
     return digest.hexdigest()
 
-
+#  对所有有效 Python 源码求 hash，避免维护分阶段文件清单。
 def source_code_sha256(project_root: str | Path) -> str:
-    """对所有有效 Python 源码求 hash，避免维护分阶段文件清单。"""
+
     root = Path(project_root).resolve()
     # src 和 scripts 都会影响构建或查询行为，所以一起纳入 source_sha256。
     files = [*root.glob("src/**/*.py"), *root.glob("scripts/*.py")]
     return _hash_files(root, files)
 
-
+# 把每个语料文件转换成一条身份记录，
+# 再把所有记录组合成一个 corpus 级别的清单，
+# 并为整个清单生成总 hash
 def corpus_inventory(documents: list[Path], corpus_root: Path) -> dict[str, Any]:
     # 语料清单只记录文件级信息，不读取 PDF 文本内容。
     # 文本抽取差异由 source/config/backend 信息共同控制。
@@ -97,14 +89,13 @@ def corpus_inventory(documents: list[Path], corpus_root: Path) -> dict[str, Any]
 def build_spec(config: dict[str, Any], corpus: dict[str, Any], source_sha256: str) -> dict[str, Any]:
     # 构建规格只包含会影响构建产物的字段。
     # query_prefix、local_files_only 等运行时或环境字段不会改变已构建索引内容。
-    identity = identity_config(config)
+    identity = recorded_config(config)
     embedding = dict(identity["embedding"])
     embedding.pop("query_prefix", None)
     embedding.pop("local_files_only", None)
     chunking = dict(identity["chunking"])
     chunking.pop("local_files_only", None)
     return {
-        "schema_version": PIPELINE_SCHEMA_VERSION,
         "loader": identity["loader"],
         "chunking": chunking,
         "embedding": embedding,
@@ -136,10 +127,9 @@ def build_identity(config: dict[str, Any], corpus: dict[str, Any], source_sha256
 def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[str, Any]:
     # run_spec 描述 query 阶段会影响答案的配置。
     # 它和 build_spec 分开，避免每次改 top_k 或 generation 参数都重建索引。
-    value = identity_config(config)
+    value = recorded_config(config)
     embedding = value["embedding"]
     return {
-        "schema_version": PIPELINE_SCHEMA_VERSION,
         "strict_backends": value["strict_backends"],
         "build_id": build_id,
         "query_embedding": {
@@ -176,7 +166,6 @@ def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[
 def evaluation_spec(questions_sha256: str, source_sha256: str) -> dict[str, Any]:
     # 评估规格用来标识一次评估的题集版本、源码版本和指标版本。
     return {
-        "schema_version": 3,
         "questions_sha256": questions_sha256,
         "source_sha256": source_sha256,
         "metrics_version": "evidence_and_generation_v3",

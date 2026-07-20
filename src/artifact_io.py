@@ -1,4 +1,4 @@
-"""读取、写入并校验当前 schema 的不可变构建目录。"""
+"""读取、写入并校验不可变构建目录。"""
 
 from __future__ import annotations
 
@@ -8,7 +8,6 @@ from typing import Any
 
 from src.core.records import EmbeddingSpaceSpec
 from src.io_utils import sha256_file
-from src.provenance import PIPELINE_SCHEMA_VERSION
 
 
 def read_manifest(build_dir: str | Path) -> dict[str, Any]:
@@ -46,16 +45,14 @@ def artifact_descriptor(path: Path, *, rows: int | None = None) -> dict[str, Any
 def validate_build_directory(build_dir: str | Path, expected_build_id: str | None = None) -> dict[str, Any]:
     directory = Path(build_dir)
     manifest = read_manifest(directory)
-    # 先校验架构版本和状态，再检查具体产物文件。
-    if manifest.get("schema_version") != PIPELINE_SCHEMA_VERSION or manifest.get("status") != "complete":
-        raise ValueError(
-            f"Build manifest must have schema_version={PIPELINE_SCHEMA_VERSION} and status=complete"
-        )
+    # 只加载已经原子提交完成的构建，再检查其身份和具体产物文件。
+    if manifest.get("status") != "complete":
+        raise ValueError("Build manifest must have status=complete")
     if expected_build_id is not None and manifest.get("build_id") != expected_build_id:
         raise ValueError("Build directory identity does not match the expected build id")
     embedding = manifest.get("embedding")
-    if not isinstance(embedding, dict) or set(embedding) != {"space", "count"}:
-        raise ValueError("Build manifest must contain one canonical embedding space and count")
+    if not isinstance(embedding, dict) or set(embedding) != {"space"}:
+        raise ValueError("Build manifest must contain one canonical embedding space")
     if not isinstance(embedding["space"], dict) or "query_prefix" in embedding["space"]:
         raise ValueError("Build manifest embedding space is invalid")
     try:

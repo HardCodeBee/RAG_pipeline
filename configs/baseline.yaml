@@ -92,7 +92,7 @@ prompt:
 # 答案生成组件
 generation:
   provider: openai
-  # 可直接填入明文；项目策略会把解析后的 key 原样记录到 manifest/运行 metadata。
+  # 可直接填入明文；项目策略会把解析后的 key 原样记录到运行 metadata。
   api_key: ""
   model: gpt-4o-mini
   # 高温回答发散；低温回答稳定

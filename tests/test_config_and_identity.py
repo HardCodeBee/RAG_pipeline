@@ -8,7 +8,6 @@ import pytest
 from scripts.run_eval import validate_resume_compatibility
 from src.config import apply_cli_overrides, load_config, resolve_cli_path, validate_config
 from src.provenance import (
-    PIPELINE_SCHEMA_VERSION,
     build_identity,
     evaluation_spec,
     json_sha256,
@@ -21,8 +20,16 @@ from src.provenance import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_active_schema_versions_are_explicit() -> None:
-    assert PIPELINE_SCHEMA_VERSION == 6
+def test_identity_specs_do_not_depend_on_pipeline_schema_constants() -> None:
+    config = load_config(ROOT / "configs" / "smoke.yaml")
+    corpus = {"documents": [], "aggregate_sha256": "empty"}
+    build_id, build_spec_sha, build_spec_value = build_identity(config, corpus, "source")
+    run_spec_value = run_spec(config, build_id, "source")
+
+    assert "schema_version" not in build_spec_value
+    assert "schema_version" not in run_spec_value
+    assert "schema_version" not in evaluation_spec("questions", "source")
+    assert build_spec_sha == json_sha256(build_spec_value)
     assert evaluation_spec("questions", "source")["metrics_version"] == "evidence_and_generation_v3"
 
 
@@ -31,6 +38,7 @@ def test_active_configs_use_strictness_instead_of_schema_or_profile_flags() -> N
     baseline = load_config(ROOT / "configs" / "baseline.yaml")
 
     assert "schema_version" not in smoke and "schema_version" not in baseline
+    assert "_config_path" not in smoke and "_config_path" not in baseline
     assert "profile" not in smoke and "profile" not in baseline
     assert smoke["strict_backends"] is False
     assert baseline["strict_backends"] is True
@@ -95,7 +103,6 @@ def test_source_identity_covers_src_and_scripts_without_a_manual_file_list(tmp_p
 
 def test_resume_requires_exact_scientific_identity() -> None:
     current = {
-        "schema_version": PIPELINE_SCHEMA_VERSION,
         "questions_sha256": "q",
         "build_id": "b",
         "run_spec_sha256": "r",
@@ -104,8 +111,6 @@ def test_resume_requires_exact_scientific_identity() -> None:
         "effective_top_k": 5,
     }
     validate_resume_compatibility(current, dict(current))
-    with pytest.raises(ValueError, match="schema_version"):
-        validate_resume_compatibility(dict(current, schema_version=5), current)
     incompatible = dict(current, effective_top_k=10)
     with pytest.raises(ValueError, match="effective_top_k"):
         validate_resume_compatibility(current, incompatible)
