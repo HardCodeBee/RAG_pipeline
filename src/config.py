@@ -126,15 +126,29 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
 
     # loader 控制如何发现和读取 corpus 文件。
     loader = _mapping(value.setdefault("loader", {}), "loader")
-    _unknown(loader, {"type", "recursive", "empty_page_policy", "cleaner"}, "loader")
-    loader["type"] = _choice(loader.get("type", "pypdf"), {"pypdf"}, "loader.type")
-    loader["recursive"] = _boolean(loader.get("recursive", False), "loader.recursive")
-    loader["empty_page_policy"] = _choice(
-        loader.get("empty_page_policy", "skip"),
-        {"error", "skip"},
-        "loader.empty_page_policy",
-    )
-    loader["cleaner"] = _choice(loader.get("cleaner", "minimal"), {"minimal"}, "loader.cleaner")
+    loader["type"] = _choice(loader.get("type", "pypdf"), {"pypdf", "qasper"}, "loader.type")
+    if loader["type"] == "qasper":
+        _unknown(loader, {"type", "split", "max_documents"}, "loader")
+        loader["split"] = _choice(
+            loader.get("split", "validation"),
+            {"train", "validation", "test", "all"},
+            "loader.split",
+        )
+        max_documents = loader.get("max_documents")
+        loader["max_documents"] = (
+            _integer(max_documents, "loader.max_documents")
+            if max_documents is not None
+            else None
+        )
+    else:
+        _unknown(loader, {"type", "recursive", "empty_page_policy", "cleaner"}, "loader")
+        loader["recursive"] = _boolean(loader.get("recursive", False), "loader.recursive")
+        loader["empty_page_policy"] = _choice(
+            loader.get("empty_page_policy", "skip"),
+            {"error", "skip"},
+            "loader.empty_page_policy",
+        )
+        loader["cleaner"] = _choice(loader.get("cleaner", "minimal"), {"minimal"}, "loader.cleaner")
 
     # chunking 控制“页面文本 -> chunk”的策略和 token 预算。
     chunking = _mapping(value.get("chunking"), "chunking")

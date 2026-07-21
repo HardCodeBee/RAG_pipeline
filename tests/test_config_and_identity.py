@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 
 import pytest
 
 from scripts.run_eval import validate_resume_compatibility
 from src.config import apply_cli_overrides, load_config, resolve_cli_path, validate_config
+from src.evaluators.logger import write_metadata_json
 from src.provenance import (
     build_identity,
     evaluation_spec,
@@ -75,7 +77,7 @@ def test_cli_top_k_changes_run_identity_but_not_build_identity() -> None:
     assert overridden_run["retrieval"]["top_k"] == 9
 
 
-def test_api_key_is_recorded_but_does_not_enter_scientific_identity() -> None:
+def test_api_key_is_not_recorded_and_does_not_enter_scientific_identity() -> None:
     config = load_config(ROOT / "configs" / "smoke.yaml")
     other = deepcopy(config)
     other["paths"]["outputs_root"] = "somewhere-else"
@@ -85,7 +87,28 @@ def test_api_key_is_recorded_but_does_not_enter_scientific_identity() -> None:
 
     assert build_identity(other, corpus, "build-code")[0] == build_id
     assert run_spec(config, build_id, "runtime-code") == run_spec(other, build_id, "runtime-code")
-    assert recorded_config(other)["generation"]["api_key"] == "private-test-key"
+    assert "api_key" not in recorded_config(other)["generation"]
+
+
+def test_metadata_writer_removes_nested_credentials_and_redacts_key_shapes(tmp_path) -> None:
+    path = tmp_path / "metadata.json"
+    sentinel = "sk-abcdefghijklmnopqrstuvwxyz012345"
+
+    write_metadata_json(
+        path,
+        {
+            "effective_config": {"generation": {"api_key": sentinel, "model": "model"}},
+            "generator": {"api_key_present": True},
+            "error": f"request rejected for {sentinel}",
+        },
+    )
+    raw = path.read_text(encoding="utf-8")
+    value = json.loads(raw)
+
+    assert sentinel not in raw
+    assert "api_key" not in value["effective_config"]["generation"]
+    assert value["generator"]["api_key_present"] is True
+    assert "[REDACTED]" in value["error"]
 
 
 def test_cli_paths_are_resolved_from_project_root() -> None:

@@ -40,7 +40,7 @@ baseline.
 ## Repository layout
 
 ```text
-configs/                 two active runtime configurations
+configs/                 baseline, offline smoke, and QASPER smoke configurations
 data/corpus/             the five versioned PDF inputs
 data/questions_v1.jsonl  development/evaluation questions
 data/questions_heldout_v1.jsonl
@@ -70,6 +70,21 @@ python scripts/run_eval.py --config configs/smoke.yaml --questions data/question
 
 On Linux or macOS, activate the environment with `source .venv/bin/activate`; the Python commands
 are unchanged.
+
+## QASPER single-paper smoke
+
+Prepare the reusable local dataset once, then run the QASPER smoke directly from that saved copy:
+
+```powershell
+python -m pip install -r requirements/experiment.txt
+python scripts/prepare_qasper.py
+python scripts/run_qasper_smoke.py --max-questions 3
+```
+
+`qasper_smoke.yaml` indexes one validation paper with the same lightweight backends as
+`smoke.yaml`. It checks local loading, indexing, generation, and official Answer/Evidence F1
+without creating a second transformed dataset. It is not a full QASPER benchmark: the one-paper
+limit keeps retrieval within the paper associated with each question.
 
 ## Reproduce the formal baseline
 

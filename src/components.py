@@ -9,13 +9,19 @@ from src.embedders.sbert_embedder import TextEmbedder
 from src.generators.llm_generator import LLMGenerator
 from src.indexes.faiss_index import FlatIPIndex
 from src.loaders.corpus_loaders import PypdfCorpusLoader
+from src.loaders.qasper_loader import QasperCorpusLoader
 from src.text.splitters import RegexSentenceSplitter
 from src.text.token_counters import HuggingFaceTokenCounter, RegexTokenCounter
 
 
 def create_loader(config: dict[str, Any]):
-    # 组件工厂只接受 validate_config() 之后的配置，因此这里主要做后备保护。
     loader = config["loader"]
+    if loader["type"] == "qasper":
+        return QasperCorpusLoader(
+            split=loader["split"],
+            max_documents=loader["max_documents"],
+        )
+    # 组件工厂只接受 validate_config() 之后的配置，因此这里主要做后备保护。
     if loader["type"] != "pypdf":
         raise ValueError(f"Unsupported loader: {loader['type']}")
     # 当前基线只实现 pypdf 加载器；后续换加载器可以在这里扩展。

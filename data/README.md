@@ -68,4 +68,10 @@ The first run loads Hugging Face's Parquet conversion of QASPER and saves all th
 under `data/processed/qasper/hf_dataset/`. Later runs use `load_from_disk` and do not contact the
 network. Use `train` for training or examples, `validation` for development, and leave `test`
 untouched until the pipeline configuration is frozen. This stage does not transform QASPER into
-pipeline records or separate its labels; that belongs to the loader.
+pipeline records or separate its labels. The QASPER loader reads this directory directly and maps
+the selected paper to the existing `PageRecord` interface in memory, so no duplicate corpus or
+question export is required. A small validation check can be run with:
+
+```powershell
+python scripts/run_qasper_smoke.py --max-questions 3
+```

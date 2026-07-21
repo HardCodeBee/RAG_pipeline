@@ -51,9 +51,12 @@ def main() -> None:
     }
     dependencies = {
         "numpy": _check_import("numpy", "numpy"),
-        "pypdf": _check_import("pypdf", "pypdf"),
         "pyyaml": _check_import("yaml", "PyYAML"),
     }
+    if config["loader"]["type"] == "pypdf":
+        dependencies["pypdf"] = _check_import("pypdf", "pypdf")
+    if config["loader"]["type"] == "qasper":
+        dependencies["datasets"] = _check_import("datasets", "datasets")
     if config["embedding"]["backend"] == "sentence_transformers":
         dependencies["sentence_transformers"] = _check_import("sentence_transformers", "sentence-transformers")
     if config["chunking"]["tokenizer"] == "huggingface":

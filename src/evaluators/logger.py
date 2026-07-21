@@ -6,8 +6,34 @@ import csv
 import io
 import json
 import os
+import re
 import uuid
 from pathlib import Path
+from typing import Any
+
+
+_SECRET_VALUE_PATTERN = re.compile(r"\bsk-[A-Za-z0-9_-]{16,}\b")
+_SECRET_KEYS = {"api_key", "authorization", "password", "secret", "token"}
+
+
+def _safe_value(value: Any) -> Any:
+    """Remove credential fields and redact common key shapes before persistence."""
+
+    if isinstance(value, dict):
+        safe = {}
+        for key, item in value.items():
+            normalized = str(key).casefold()
+            if normalized in _SECRET_KEYS or normalized.endswith(("_api_key", "_password", "_secret")):
+                continue
+            safe[key] = _safe_value(item)
+        return safe
+    if isinstance(value, list):
+        return [_safe_value(item) for item in value]
+    if isinstance(value, tuple):
+        return [_safe_value(item) for item in value]
+    if isinstance(value, str):
+        return _SECRET_VALUE_PATTERN.sub("[REDACTED]", value)
+    return value
 
 
 def _atomic_write_text(path: Path, text: str, overwrite: bool = True) -> None:
@@ -39,7 +65,7 @@ def write_results(path: str | Path, rows: list[dict], overwrite: bool = True) ->
         if not isinstance(row, dict):
             raise TypeError("Every JSONL row must be a dictionary")
         # 紧凑 JSONL 便于追加和机器读取；allow_nan=False 保证输出是标准 JSON。
-        lines.append(json.dumps(row, ensure_ascii=False, allow_nan=False, separators=(",", ":")))
+        lines.append(json.dumps(_safe_value(row), ensure_ascii=False, allow_nan=False, separators=(",", ":")))
     text = "".join(f"{line}\n" for line in lines)
     _atomic_write_text(Path(path), text, overwrite=overwrite)
 
@@ -57,5 +83,5 @@ def write_summary_csv(path: str | Path, summary: dict) -> None:
 
 def write_metadata_json(path: str | Path, metadata: dict, overwrite: bool = True) -> None:
     # metadata 通常较小，使用缩进格式方便人工查看。
-    text = json.dumps(metadata, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+    text = json.dumps(_safe_value(metadata), indent=2, ensure_ascii=False, allow_nan=False) + "\n"
     _atomic_write_text(Path(path), text, overwrite=overwrite)

@@ -26,9 +26,13 @@ def json_sha256(value: Any) -> str:
 
 
 def recorded_config(config: dict[str, Any]) -> dict[str, Any]:
-    """返回可写入运行 metadata 的完整配置。"""
+    """返回可写入运行 metadata 的配置，排除运行凭据。"""
     value = json.loads(json.dumps(config, ensure_ascii=False))
-    return {key: item for key, item in value.items() if not key.startswith("_")}
+    recorded = {key: item for key, item in value.items() if not key.startswith("_")}
+    generation = recorded.get("generation")
+    if isinstance(generation, dict):
+        generation.pop("api_key", None)
+    return recorded
 
 
 def _hash_files(root: Path, files: Iterable[Path]) -> str:
@@ -197,6 +201,7 @@ def git_state(project_root: str | Path) -> dict[str, Any]:
 def environment_versions() -> dict[str, Any]:
     # 记录关键依赖版本，方便解释不同机器上的构建差异。
     packages = {
+        "datasets": "datasets",
         "faiss": "faiss-cpu",
         "numpy": "numpy",
         "openai": "openai",

@@ -99,12 +99,12 @@ def _overlap_stats(chunks: list[ChunkRecord], token_counter) -> dict[str, Any]:
 # 并统一成标准的 PageRecord 列表
 def _load_pages(loader: Any, corpus_path: Path) -> tuple[list[PageRecord], float]:
     load_started = time.perf_counter()
-    loaded = loader.load(corpus_path, "pdf")
+    loaded = loader.load(corpus_path)
     # loader 可以返回 PageRecord 或 dict，这里统一成 PageRecord。
     pages = [item if isinstance(item, PageRecord) else PageRecord.from_mapping(item) for item in loaded]
     load_ms = (time.perf_counter() - load_started) * 1000
     if not pages:
-        raise RuntimeError("The corpus produced no extractable PDF pages")
+        raise RuntimeError("The corpus produced no extractable text records")
     return pages, load_ms
 
 # 检查 chunker 产出的文本块是否合法
@@ -200,7 +200,7 @@ def _verify_saved_index(
 def _ensure_corpus_unchanged(
     loader: Any, corpus_path: Path, expected_corpus: dict[str, Any]
 ) -> None:
-    current_documents = loader.discover(corpus_path, "pdf")
+    current_documents = loader.discover(corpus_path)
     # 构建期间语料文件如果变化，当前构建身份就不再可信。
     if corpus_inventory(current_documents, corpus_path) != expected_corpus:
         raise RuntimeError("Corpus files changed while the index was being built")
@@ -312,9 +312,9 @@ def build_index(config: dict[str, Any]) -> dict[str, Any]:
     
     # 确认请求对应的索引 build 是否已经存在
     # 避免重复build
-    documents = loader.discover(roots["corpus"], "pdf")
+    documents = loader.discover(roots["corpus"])
     if not documents:
-        raise RuntimeError(f"No PDF files found in corpus path: {roots['corpus']}")
+        raise RuntimeError(f"No corpus files found in corpus path: {roots['corpus']}")
     corpus = corpus_inventory(documents, roots["corpus"])
     source_sha = source_code_sha256(PROJECT_ROOT)
     # 构建身份

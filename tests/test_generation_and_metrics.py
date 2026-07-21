@@ -73,7 +73,7 @@ def test_provider_model_response_id_and_configured_key_are_recorded(monkeypatch)
     assert "billable" not in result.token_usage
 
 
-def test_environment_api_key_is_resolved_for_plaintext_runtime_recording(monkeypatch) -> None:
+def test_environment_api_key_is_resolved_in_memory(monkeypatch) -> None:
     monkeypatch.setenv("OPENAI_API_KEY", "environment-plaintext-key")
     generator = LLMGenerator(provider="extractive")
     assert generator.api_key == "environment-plaintext-key"

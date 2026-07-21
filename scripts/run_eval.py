@@ -8,6 +8,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any, Sequence
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -46,13 +47,17 @@ def validate_resume_compatibility(previous: dict, current: dict) -> None:
 
 def _ordered_rows(questions: list[dict], rows_by_id: dict[str, dict]) -> list[dict]:
     ordered_ids = [question["question_id"] for question in questions]
-    known = set(ordered_ids)
-    rows = [rows_by_id[question_id] for question_id in ordered_ids if question_id in rows_by_id]
-    rows.extend(row for question_id, row in rows_by_id.items() if question_id not in known)
-    return rows
+    return [rows_by_id[question_id] for question_id in ordered_ids if question_id in rows_by_id]
 
 
-def main() -> None:
+def main(
+    argv: Sequence[str] | None = None,
+    *,
+    config_override: dict[str, Any] | None = None,
+    questions_override: Sequence[dict[str, Any]] | None = None,
+    questions_source: str | None = None,
+    command_name: str = "run_eval",
+) -> Path:
     process_started = time.perf_counter()
     parser = argparse.ArgumentParser(description="Evaluate the baseline RAG pipeline on JSONL questions.")
     parser.add_argument("--config", default="configs/smoke.yaml", help="Path to a YAML config")
@@ -60,16 +65,17 @@ def main() -> None:
     parser.add_argument("--run-id", type=safe_run_id, default=None)
     parser.add_argument("--top-k", type=positive_int, default=None)
     parser.add_argument("--resume", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     configure_utf8_output()
     if args.resume and args.run_id is None:
         parser.error("--resume requires an explicit --run-id")
 
     config_path = resolve_cli_path(PROJECT_ROOT, args.config)
-    questions_path = resolve_cli_path(PROJECT_ROOT, args.questions)
-    config = apply_cli_overrides(load_config(config_path), top_k=args.top_k)
+    config = apply_cli_overrides(config_override or load_config(config_path), top_k=args.top_k)
+    questions_path = None if questions_override is not None else resolve_cli_path(PROJECT_ROOT, args.questions)
+    question_items = questions_override if questions_override is not None else read_jsonl(questions_path)
     questions = []
-    for position, item in enumerate(read_jsonl(questions_path), start=1):
+    for position, item in enumerate(question_items, start=1):
         question = dict(item)
         question["question_id"] = question.get("question_id") or f"row_{position:06d}"
         if not isinstance(question.get("question"), str) or not question["question"].strip():
@@ -80,7 +86,7 @@ def main() -> None:
         raise ValueError("Question ids must be unique within an evaluation set")
 
     started_at = datetime.now(timezone.utc).isoformat()
-    questions_sha = sha256_file(questions_path)
+    questions_sha = json_sha256(questions) if questions_override is not None else sha256_file(questions_path)
     pipeline = NaiveRAGPipeline(config)
     evaluation_value = evaluation_spec(questions_sha, pipeline.runtime_metadata["source_sha256"])
     evaluation_sha = json_sha256(evaluation_value)
@@ -95,11 +101,12 @@ def main() -> None:
 
     metadata = {
         "run_id": run_id,
-        "command": "run_eval",
+        "command": command_name,
         "status": "running",
         "config_path": str(config_path),
         "effective_config": recorded_config(config),
-        "questions_path": str(questions_path),
+        "questions_path": str(questions_path) if questions_path is not None else None,
+        "questions_source": questions_source,
         "questions_sha256": questions_sha,
         "evaluation_spec": evaluation_value,
         "evaluation_spec_sha256": evaluation_sha,
@@ -128,11 +135,16 @@ def main() -> None:
         write_results(results_path, [], overwrite=False)
         write_metadata_json(metadata_path, metadata, overwrite=False)
 
+    questions_by_id = {question["question_id"]: question for question in questions}
     rows_by_id: dict[str, dict] = {}
     for row in existing_rows:
         question_id = row.get("question_id")
         if not question_id or question_id in rows_by_id:
             raise ValueError("Existing result rows must have unique, non-empty question_id values")
+        if question_id not in questions_by_id:
+            raise ValueError(f"Existing result row is not part of the current question set: {question_id}")
+        if row.get("question") != questions_by_id[question_id]["question"]:
+            raise ValueError(f"Existing result row has different question text: {question_id}")
         if row.get("identity", {}).get("run_spec_sha256") != metadata["run_spec_sha256"]:
             raise ValueError(f"Existing row has an incompatible run identity: {question_id}")
         rows_by_id[question_id] = row
@@ -200,6 +212,7 @@ def main() -> None:
 
     print(f"Saved run: {run_dir}")
     print(json.dumps(summary, indent=2, ensure_ascii=False))
+    return run_dir
 
 
 if __name__ == "__main__":

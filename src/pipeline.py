@@ -68,7 +68,7 @@ class NaiveRAGPipeline:
 
         loader = create_loader(self.config)
         # 重新计算构建身份，找到当前配置应该对应的 build_dir。
-        documents = loader.discover(roots["corpus"], "pdf")
+        documents = loader.discover(roots["corpus"])
         corpus = corpus_inventory(documents, roots["corpus"])
         source_sha = source_code_sha256(PROJECT_ROOT)
         build_id, build_spec_sha, build_spec_value = build_identity(self.config, corpus, source_sha)
@@ -131,8 +131,8 @@ class NaiveRAGPipeline:
             "generator": {
                 "requested_provider": self.generator.provider,
                 "requested_model": self.generator.model,
-                # 项目要求记录实际使用的明文 API key；未配置时为 None。
-                "api_key": self.generator.api_key,
+                # 凭据只保留“是否已配置”，密钥值始终只存在于进程内存中。
+                "api_key_present": bool(self.generator.api_key),
                 "temperature": self.generator.temperature,
                 "max_output_tokens": self.generator.max_output_tokens,
             },

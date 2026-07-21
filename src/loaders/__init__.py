@@ -2,5 +2,6 @@
 
 # 对外暴露当前 PDF 语料 loader。
 from src.loaders.corpus_loaders import PypdfCorpusLoader
+from src.loaders.qasper_loader import QasperCorpusLoader
 
-__all__ = ["PypdfCorpusLoader"]
+__all__ = ["PypdfCorpusLoader", "QasperCorpusLoader"]
