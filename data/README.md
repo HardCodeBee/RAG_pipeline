@@ -55,3 +55,17 @@ executed. Run it only after freezing the baseline configuration, and do not use 
 another tuning cycle.
 
 Further annotation details are documented in [`QUESTIONS_V1.md`](QUESTIONS_V1.md).
+
+## QASPER local cache
+
+Install `requirements/experiment.txt`, then cache the official Hugging Face DatasetDict once:
+
+```powershell
+python scripts/prepare_qasper.py
+```
+
+The first run loads Hugging Face's Parquet conversion of QASPER and saves all three logical splits
+under `data/processed/qasper/hf_dataset/`. Later runs use `load_from_disk` and do not contact the
+network. Use `train` for training or examples, `validation` for development, and leave `test`
+untouched until the pipeline configuration is frozen. This stage does not transform QASPER into
+pipeline records or separate its labels; that belongs to the loader.
