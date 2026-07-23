@@ -99,7 +99,9 @@ def _reject_inline_secrets(value: Any, location: str = "config") -> None:
         for position, item in enumerate(value):
             _reject_inline_secrets(item, f"{location}[{position}]")
 
-
+# 校验配置结构是否类型与范围合理 并对不同组件的配置进行区分
+# 进行默认值补充
+# 把外部传进来的配置变成 pipeline 可以安全使用的“标准配置对象”
 def validate_config(config: dict[str, Any]) -> dict[str, Any]:
 
     # 深拷贝后再补默认值，避免调用者传入的原始 dict 被就地修改。

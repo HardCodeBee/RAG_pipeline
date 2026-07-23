@@ -1,5 +1,6 @@
 """构建当前架构的不可变文本块、向量和索引产物目录。
     负责naive pipeline中的 index 阶段
+    决定索引如何从语料生成
 """
 
 from __future__ import annotations

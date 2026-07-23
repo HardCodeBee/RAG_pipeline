@@ -11,6 +11,8 @@ from src.core.records import PageRecord
 
 
 QASPER_SPLITS = ("train", "validation", "test")
+QASPER_EVALUATION_SLICE = "answerable_text_only_extractive_single_evidence_v1"
+QASPER_FLOAT_EVIDENCE_PREFIX = "FLOAT SELECTED:"
 _REFERENCE_FIELDS = (
     "unanswerable",
     "extractive_spans",
@@ -71,7 +73,7 @@ def qasper_unit_records(article: Mapping[str, Any]) -> list[QasperUnit]:
         text = _unit_text(caption)
         if text:
             # The annotation prefix is a label convention, not paper content.
-            units.append(QasperUnit(text=text, evidence=f"FLOAT SELECTED: {text}"))
+            units.append(QasperUnit(text=text, evidence=f"{QASPER_FLOAT_EVIDENCE_PREFIX} {text}"))
     return units
 
 
@@ -143,6 +145,85 @@ def qasper_questions(article: Mapping[str, Any]) -> list[dict[str, Any]]:
             }
         )
     return questions
+
+
+def is_qasper_evaluation_reference(reference: Mapping[str, Any]) -> bool:
+    """Return whether one annotation belongs to the retrieval-focused slice."""
+
+    extractive_spans = [
+        _unit_text(value)
+        for value in (reference.get("extractive_spans") or [])
+        if _unit_text(value)
+    ]
+    evidence = [
+        _unit_text(value)
+        for value in (reference.get("evidence") or [])
+        if _unit_text(value)
+    ]
+    return (
+        reference.get("unanswerable") is False
+        and bool(extractive_spans)
+        and reference.get("yes_no") is None
+        and not _unit_text(reference.get("free_form_answer"))
+        and len(evidence) == 1
+        and not evidence[0].startswith(QASPER_FLOAT_EVIDENCE_PREFIX)
+    )
+
+
+def qasper_evaluation_questions(article: Mapping[str, Any]) -> list[dict[str, Any]]:
+    """Select answerable, text-only, extractive questions with one evidence unit.
+
+    QASPER may provide multiple independent annotations for one question. A
+    question is selected when at least one annotation qualifies, and only its
+    qualifying annotations are retained as scoring references.
+    """
+
+    selected = []
+    for question in qasper_questions(article):
+        references = [
+            reference
+            for reference in question["references"]
+            if is_qasper_evaluation_reference(reference)
+        ]
+        if not references:
+            continue
+        selected.append(
+            {
+                **question,
+                "references": references,
+                "question_type": "extractive",
+                "question_slice": QASPER_EVALUATION_SLICE,
+                "source_reference_count": len(question["references"]),
+            }
+        )
+    return selected
+
+
+def qasper_evaluation_slice_stats(
+    articles: Sequence[Mapping[str, Any]],
+) -> dict[str, int | str]:
+    """Count the effect of the fixed evaluation slice before running models."""
+
+    candidate_questions = 0
+    selected_questions = 0
+    candidate_references = 0
+    selected_references = 0
+    for article in articles:
+        questions = qasper_questions(article)
+        selected = qasper_evaluation_questions(article)
+        candidate_questions += len(questions)
+        selected_questions += len(selected)
+        candidate_references += sum(len(question["references"]) for question in questions)
+        selected_references += sum(len(question["references"]) for question in selected)
+    return {
+        "name": QASPER_EVALUATION_SLICE,
+        "candidate_questions": candidate_questions,
+        "selected_questions": selected_questions,
+        "excluded_questions": candidate_questions - selected_questions,
+        "candidate_references": candidate_references,
+        "selected_references": selected_references,
+        "excluded_references": candidate_references - selected_references,
+    }
 
 
 def qasper_evidence_from_hits(

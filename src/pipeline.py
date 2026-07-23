@@ -1,4 +1,6 @@
-"""固定基线 RAG 流水线的查询时编排逻辑。"""
+"""当收到query进入查询器
+   实现查询期 RAG 的主链路
+"""
 
 from __future__ import annotations
 
@@ -32,15 +34,14 @@ from src.retrievers.dense_retriever import DenseRetriever
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-
+# 当没有传入question_id 自动生成唯一查询ID
 def _query_id() -> str:
     # query_id 带 UTC 时间和随机后缀，便于日志中区分每次查询。
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
     return f"query_{timestamp}_{uuid.uuid4().hex[:8]}"
 
-
+# 把不同组件返回的对象统一转换成 dict
 def _record_dict(value: Any) -> dict[str, Any]:
-    # 不同组件可能返回 dataclass、带 to_dict() 的对象或普通 dict，这里统一成 dict。
     if is_dataclass(value):
         return asdict(value)
     to_dict = getattr(value, "to_dict", None)
@@ -58,45 +59,59 @@ class NaiveRAGPipeline:
 
     def __init__(self, config: dict[str, Any]):
         # 初始化阶段只加载一个不可变构建，并校验它是否和当前配置匹配。
-        setup_started = time.perf_counter()
         self.config = validate_config(config)
+        # 要求 config 必须来自 load_config()
         if "_base_dir" not in self.config:
             raise ValueError("config must include _base_dir; use load_config()")
 
         roots = resolved_roots(self.config)
+        
         from src.components import create_loader
-
+        # 根据 config 创建 loader
         loader = create_loader(self.config)
         # 重新计算构建身份，找到当前配置应该对应的 build_dir。
         documents = loader.discover(roots["corpus"])
         corpus = corpus_inventory(documents, roots["corpus"])
         source_sha = source_code_sha256(PROJECT_ROOT)
-        build_id, build_spec_sha, build_spec_value = build_identity(self.config, corpus, source_sha)
+        # 重新算出当前配置“应该使用哪个 build”。
+        build_id, build_spec_sha, build_spec_value = build_identity(
+            self.config, 
+            corpus, 
+            source_sha)
         self.build_dir = roots["artifacts_root"] / build_id
         # query 阶段不重建索引，只接受已经完整校验过的 build 目录。
+        # 检查这个 build 目录是否存在、manifest 是否完整、chunk/embedding/index 文件 hash 是否匹配检查这个 build 目录是否存在、
+        # manifest 是否完整、chunk/embedding/index 文件 hash 是否匹配
+        # 然后返回完整字典
         self.manifest = validate_build_directory(self.build_dir, build_id)
         if self.manifest.get("build_spec_sha256") != build_spec_sha:
             raise ValueError("The active build specification does not match the immutable build directory")
         if self.manifest.get("build_spec") != build_spec_value:
             raise ValueError("The active build specification payload differs from the build manifest")
 
+        # 找到并拼出实际文件路径
         artifacts = self.manifest["artifacts"]
         chunks_path = self.build_dir / artifacts["chunks"]["file"]
         embeddings_path = self.build_dir / artifacts["embeddings"]["file"]
         index_path = self.build_dir / artifacts["index"]["file"]
-        # chunks.jsonl 是 vector_id -> 文本/来源的映射表。
+        
+        # chunks.jsonl 是 vector_id -> 文本/来源的映射表
+        # 将每一行 JSON 转成 ChunkRecord 对象
         self.chunks = [ChunkRecord.from_mapping(row) for row in read_jsonl(chunks_path)]
-        self._validate_chunks(embeddings_path)
+        self._validate_chunks(embeddings_path) # 完整性检查 检查 chunks.jsonl 和 embeddings.npy 是否匹配
 
+        # 创建 token 计数器
         self.token_counter = create_token_counter(self.config)
-        # 查询 embedder 必须按 manifest 中构建阶段的 embedding 空间加载。
+        # 根据配置加载查询用 embedder
         self.embedder = self._load_query_embedder()
+        # 加载index实际配置信息
         manifest_index = self.manifest["index"]
         self.index = create_index(
             self.config,
             backend=manifest_index["backend"],
             index_type=manifest_index["type"],
         )
+        # 从磁盘加载索引好的预料文件
         self.index.load(index_path, embeddings_path=embeddings_path)
         self._validate_loaded_index()
 
@@ -109,8 +124,9 @@ class NaiveRAGPipeline:
         )
         self.generator = create_generator(self.config)
 
+        # 记录本次run的运行规格
         run_spec_value = run_spec(self.config, build_id, source_sha)
-        # runtime_metadata 记录 query 阶段实际使用的构建、模型、索引和生成配置。
+        # runtime_metadata keeps the minimal run identity written to metadata.json.
         self.runtime_metadata = {
             "build_id": build_id,
             "build_dir": str(self.build_dir.resolve()),
@@ -118,27 +134,9 @@ class NaiveRAGPipeline:
             "source_sha256": source_sha,
             "run_spec": run_spec_value,
             "run_spec_sha256": json_sha256(run_spec_value),
-            "embedding": {
-                "space": self.embedding_space_spec.to_dict(),
-                "query_prefix": self.embedder.query_prefix,
-            },
-            "index": {
-                "backend": self.index.backend,
-                "type": self.index.index_type,
-                "count": self.index.count,
-                "dimension": self.index.dimension,
-            },
-            "generator": {
-                "requested_provider": self.generator.provider,
-                "requested_model": self.generator.model,
-                # 凭据只保留“是否已配置”，密钥值始终只存在于进程内存中。
-                "api_key_present": bool(self.generator.api_key),
-                "temperature": self.generator.temperature,
-                "max_output_tokens": self.generator.max_output_tokens,
-            },
         }
-        self.runtime_metadata["setup_latency_ms"] = (time.perf_counter() - setup_started) * 1000
 
+    # 确认 chunks.jsonl 和 embeddings.npy 以及 manifest.json 三者完全对得上
     def _validate_chunks(self, embeddings_path: Path) -> None:
         # 文本块产物的行数、vector_id 序列和 embeddings 行数必须完全一致。
         descriptor = self.manifest["artifacts"]["chunks"]
@@ -166,7 +164,9 @@ class NaiveRAGPipeline:
             raise ValueError("Embedding dtype does not match the build manifest")
         if not np.isfinite(embeddings).all():
             raise ValueError("Embedding artifact contains non-finite values")
-
+    
+    # 保证查询问题生成的 query embedding，和索引里已有的 document embedding 属于同一个向量空间
+    # 构建时记录一份向量空间规格，查询时重新生成一份规格，然后逐字段比较
     def _load_query_embedder(self):
         built = self.manifest["embedding"]
         expected_space = EmbeddingSpaceSpec.from_mapping(built["space"])
@@ -190,8 +190,12 @@ class NaiveRAGPipeline:
         self.embedding_space_spec = actual_space
         return embedder
 
+    # 索引文件已经 load 到内存之后
+    # 确认它和 manifest、chunks、query embedder 都完全匹配
     def _validate_loaded_index(self) -> None:
+        
         manifest_index = self.manifest["index"]
+        
         # 加载后的索引元数据必须和 manifest 完全一致。
         if self.index.backend != manifest_index["backend"] or self.index.index_type != manifest_index["type"]:
             raise ValueError("Loaded index backend/type does not match the build manifest")
@@ -201,9 +205,10 @@ class NaiveRAGPipeline:
             raise ValueError("Loaded index dimension does not match the build manifest")
         if self.index.dimension != self.embedding_space_spec.dimension:
             raise ValueError("Loaded index and embedding dimensions do not match")
+        
+         # 校验集合和 hash，确保 id 序列和 build 阶段一致。
         ids = [int(value) for value in self.index.ids.tolist()]
         expected_hash = self.manifest["vector_id_sequence_sha256"]
-        # 不只校验集合，也校验 hash，确保 id 序列和 build 阶段一致。
         if set(ids) != {item.vector_id for item in self.chunks} or json_sha256(ids) != expected_hash:
             raise ValueError("Loaded index vector ids do not match chunks or manifest")
 
@@ -217,13 +222,16 @@ class NaiveRAGPipeline:
         question_id: str | None = None,
         top_k: int | None = None,
     ) -> dict[str, Any]:
+        # 检查问题非空
         if not isinstance(question, str) or not question.strip():
             raise ValueError("question must be a non-empty string")
+        # 记录耗时
         started = time.perf_counter()
-        # 1. 检索相关 chunks。
+        
+        # 1. 检索相关 chunks
         retrieval = self.retrieve(question, top_k=top_k)
 
-        context_started = time.perf_counter()
+        context_started = time.perf_counter() # 开始记录 context 构造耗时
         # 2. 把检索结果按词元预算拼成提示词上下文。
         context = build_context(
             question,
@@ -231,16 +239,23 @@ class NaiveRAGPipeline:
             self.token_counter,
             self.config["context"]["max_tokens"],
         )
-        context_latency_ms = (time.perf_counter() - context_started) * 1000
-        prompt_started = time.perf_counter()
-        # 3. 使用固定模板构造最终 prompt。
+        context_latency_ms = (time.perf_counter() - context_started) * 1000 # context 构造耗时
+        
+        prompt_started = time.perf_counter() # 开始记录 prompt 构造耗时
+        # 3. 使用固定模板构造最终 prompt
         prompt = build_prompt(question, context, self.config["prompt"]["version"])
-        prompt_latency_ms = (time.perf_counter() - prompt_started) * 1000
-        # 4. 调用生成器，可能是 OpenAI，也可能是本地抽取式回退。
-        generation = self.generator.generate_from_prompt(prompt.text, question, context.result_dicts())
-
+        prompt_latency_ms = (time.perf_counter() - prompt_started) * 1000 # 记录 prompt 构造耗时
+        
+        # 4. 调用生成器 根据config选择
+        generation = self.generator.generate_from_prompt(
+            prompt.text, 
+            question, 
+            context.result_dicts()
+            )
+        
+        # 把生成器返回对象统一转成 dict
         generation_data = _record_dict(generation)
-        # 查询结果只保留一个权威 status，避免顶层与 generation 子结构发生漂移。
+        # 查询的 query 最终状态应该在顶层统一表示
         generation_status = generation_data.pop("status", "success")
         # 补充 pipeline 层才知道的 prompt 元数据。
         generation_data.update(
@@ -252,13 +267,14 @@ class NaiveRAGPipeline:
                 "prompt_template": prompt.template,
             }
         )
+        # 处理检索结果 把每个 SearchHit 转成普通 dict 方便写进 result
         retrieved_rows = [item.to_dict() for item in retrieval.results]
         logging = self.config["logging"]
         if not logging["save_retrieved_chunks"]:
             # 可关闭 chunk 正文保存，只保留来源和 id，减少输出体积。
             retrieved_rows = [{key: value for key, value in row.items() if key != "text"} for row in retrieved_rows]
 
-        # result 是单次 query 的完整可序列化记录。
+        # 把查询的完整过程整理成一个结构化 result
         result = {
             "status": generation_status,
             "question_id": question_id or _query_id(),
@@ -282,6 +298,7 @@ class NaiveRAGPipeline:
             },
             "generation": generation_data,
         }
+        # 按 logging 配置决定保留哪些字段
         if logging["save_prompt"]:
             result["prompt"] = prompt.text
         if logging["save_latency"]:

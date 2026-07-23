@@ -76,8 +76,6 @@ def score_qasper_question(
     predicted_answer: str,
     predicted_evidence: Sequence[str],
     references: Sequence[Mapping[str, Any]],
-    *,
-    text_evidence_only: bool = False,
 ) -> dict[str, Any]:
     if not references:
         raise ValueError("QASPER scoring requires at least one reference")
@@ -89,8 +87,6 @@ def score_qasper_question(
         answer_scores.append((qasper_token_f1(predicted_answer, answer), answer_type))
 
         gold_evidence = [] if reference.get("unanswerable", False) else list(reference.get("evidence") or [])
-        if text_evidence_only:
-            gold_evidence = [value for value in gold_evidence if "FLOAT SELECTED" not in value]
         evidence_scores.append(qasper_evidence_f1(predicted_evidence, gold_evidence))
 
     best_answer_position = max(range(len(answer_scores)), key=lambda position: answer_scores[position][0])
@@ -164,10 +160,12 @@ def score_qasper_open_corpus(
             evidence_f1_scores.append(2 * precision * recall / (precision + recall))
 
     best_answer_position = max(range(len(answer_scores)), key=lambda position: answer_scores[position][0])
+    evidence_hit = bool(evidence_recalls and max(evidence_recalls) > 0.0)
     return {
         "qasper_target_paper_hit_at_k": bool(target_rank),
         "qasper_target_paper_rr": 1.0 / target_rank if target_rank else 0.0,
         "qasper_answer_f1": answer_scores[best_answer_position][0],
+        "qasper_target_evidence_hit_at_k": evidence_hit,
         "qasper_target_evidence_recall_at_k": max(evidence_recalls) if evidence_recalls else None,
         "qasper_target_evidence_f1_at_k": max(evidence_f1_scores),
     }
@@ -186,16 +184,38 @@ def summarize_qasper_open_corpus(scores: Sequence[Mapping[str, Any]]) -> dict[st
     paper_hits = values("qasper_target_paper_hit_at_k")
     paper_rr = values("qasper_target_paper_rr")
     answer_f1 = values("qasper_answer_f1")
+    evidence_hits = values("qasper_target_evidence_hit_at_k")
     evidence_recall = values("qasper_target_evidence_recall_at_k")
     evidence_f1 = values("qasper_target_evidence_f1_at_k")
+    answer_by_evidence_hit = [
+        float(score["qasper_answer_f1"])
+        for score in scores
+        if score.get("qasper_target_evidence_hit_at_k") is True
+        and isinstance(score.get("qasper_answer_f1"), (int, float))
+    ]
+    answer_by_evidence_miss = [
+        float(score["qasper_answer_f1"])
+        for score in scores
+        if score.get("qasper_target_evidence_hit_at_k") is False
+        and isinstance(score.get("qasper_answer_f1"), (int, float))
+    ]
     return {
         "num_questions": len(scores),
         "qasper_target_paper_hit_rate_at_k": mean(paper_hits) if paper_hits else 0.0,
         "qasper_target_paper_mrr": mean(paper_rr) if paper_rr else 0.0,
         "qasper_answer_f1": mean(answer_f1) if answer_f1 else 0.0,
+        "qasper_target_evidence_hit_rate_at_k": mean(evidence_hits) if evidence_hits else 0.0,
         "qasper_target_evidence_recall_at_k": mean(evidence_recall) if evidence_recall else 0.0,
         "qasper_target_evidence_recall_valid_count": len(evidence_recall),
         "qasper_target_evidence_f1_at_k": mean(evidence_f1) if evidence_f1 else 0.0,
+        "qasper_answer_f1_when_evidence_hit": (
+            mean(answer_by_evidence_hit) if answer_by_evidence_hit else 0.0
+        ),
+        "qasper_answer_f1_when_evidence_miss": (
+            mean(answer_by_evidence_miss) if answer_by_evidence_miss else 0.0
+        ),
+        "qasper_evidence_hit_count": len(answer_by_evidence_hit),
+        "qasper_evidence_miss_count": len(answer_by_evidence_miss),
     }
 
 

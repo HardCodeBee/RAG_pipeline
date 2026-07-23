@@ -76,14 +76,6 @@ def test_qasper_summary_uses_macro_average_and_counts_missing_predictions() -> N
     assert summary["Missing predictions"] == 1
 
 
-def test_text_evidence_only_ignores_gold_float_evidence() -> None:
-    reference = _reference(answer="answer", evidence=["FLOAT SELECTED: Table 1"])
-
-    score = score_qasper_question("answer", [], [reference], text_evidence_only=True)
-
-    assert score["evidence_f1"] == 1.0
-
-
 def test_unanswerable_reference_uses_empty_official_evidence() -> None:
     reference = {"unanswerable": True, "evidence": ["ignored annotation text"]}
 
@@ -108,6 +100,7 @@ def test_open_corpus_metrics_penalize_units_from_wrong_papers() -> None:
     assert score["qasper_target_paper_hit_at_k"] is True
     assert score["qasper_target_paper_rr"] == 1.0
     assert score["qasper_answer_f1"] == 1.0
+    assert score["qasper_target_evidence_hit_at_k"] is True
     assert score["qasper_target_evidence_recall_at_k"] == 1.0
     assert score["qasper_target_evidence_f1_at_k"] == pytest.approx(2 / 3)
 
@@ -119,6 +112,7 @@ def test_open_corpus_summary_skips_only_undefined_evidence_recall() -> None:
                 "qasper_target_paper_hit_at_k": True,
                 "qasper_target_paper_rr": 0.5,
                 "qasper_answer_f1": 1.0,
+                "qasper_target_evidence_hit_at_k": True,
                 "qasper_target_evidence_recall_at_k": 0.5,
                 "qasper_target_evidence_f1_at_k": 0.5,
             },
@@ -126,6 +120,7 @@ def test_open_corpus_summary_skips_only_undefined_evidence_recall() -> None:
                 "qasper_target_paper_hit_at_k": False,
                 "qasper_target_paper_rr": 0.0,
                 "qasper_answer_f1": 0.0,
+                "qasper_target_evidence_hit_at_k": False,
                 "qasper_target_evidence_recall_at_k": None,
                 "qasper_target_evidence_f1_at_k": 0.0,
             },
@@ -134,4 +129,9 @@ def test_open_corpus_summary_skips_only_undefined_evidence_recall() -> None:
 
     assert summary["qasper_target_paper_hit_rate_at_k"] == 0.5
     assert summary["qasper_target_paper_mrr"] == 0.25
+    assert summary["qasper_target_evidence_hit_rate_at_k"] == 0.5
     assert summary["qasper_target_evidence_recall_valid_count"] == 1
+    assert summary["qasper_answer_f1_when_evidence_hit"] == 1.0
+    assert summary["qasper_answer_f1_when_evidence_miss"] == 0.0
+    assert summary["qasper_evidence_hit_count"] == 1
+    assert summary["qasper_evidence_miss_count"] == 1

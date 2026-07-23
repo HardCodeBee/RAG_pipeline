@@ -7,7 +7,11 @@ from pathlib import Path
 from scripts.run_qasper_eval import qasper_eval_inputs
 from src.config import load_config
 from src.loaders.qasper_loader import (
+    QASPER_EVALUATION_SLICE,
     QasperCorpusLoader,
+    is_qasper_evaluation_reference,
+    qasper_evaluation_questions,
+    qasper_evaluation_slice_stats,
     qasper_evidence_from_hits,
     qasper_questions,
 )
@@ -111,6 +115,52 @@ def test_qasper_questions_keep_references_but_drop_annotation_metadata() -> None
     assert "nlp_background" not in questions[0]
 
 
+def test_qasper_evaluation_questions_keep_only_eligible_references() -> None:
+    questions = qasper_evaluation_questions(_article())
+
+    assert len(questions) == 1
+    assert questions[0]["question_slice"] == QASPER_EVALUATION_SLICE
+    assert questions[0]["question_type"] == "extractive"
+    assert questions[0]["source_reference_count"] == 2
+    assert len(questions[0]["references"]) == 1
+    assert questions[0]["references"][0]["extractive_spans"] == ["a result"]
+
+
+def test_qasper_evaluation_reference_requires_all_slice_conditions() -> None:
+    eligible = {
+        "unanswerable": False,
+        "extractive_spans": ["answer"],
+        "yes_no": None,
+        "free_form_answer": "",
+        "evidence": ["Text paragraph."],
+    }
+    ineligible = [
+        {**eligible, "unanswerable": True},
+        {**eligible, "extractive_spans": [], "free_form_answer": "summary"},
+        {**eligible, "extractive_spans": [], "yes_no": True},
+        {**eligible, "evidence": []},
+        {**eligible, "evidence": ["First paragraph.", "Second paragraph."]},
+        {**eligible, "evidence": ["FLOAT SELECTED: Table 1"]},
+    ]
+
+    assert is_qasper_evaluation_reference(eligible) is True
+    assert all(is_qasper_evaluation_reference(reference) is False for reference in ineligible)
+
+
+def test_qasper_evaluation_slice_stats_count_questions_and_references() -> None:
+    stats = qasper_evaluation_slice_stats([_article(), _article("paper-2")])
+
+    assert stats == {
+        "name": QASPER_EVALUATION_SLICE,
+        "candidate_questions": 2,
+        "selected_questions": 2,
+        "excluded_questions": 0,
+        "candidate_references": 4,
+        "selected_references": 2,
+        "excluded_references": 2,
+    }
+
+
 def test_qasper_hit_ranges_map_back_to_deduplicated_evidence() -> None:
     evidence = qasper_evidence_from_hits(
         _article(),
@@ -174,4 +224,30 @@ def test_qasper_eval_inputs_keep_validation_questions_but_all_papers() -> None:
     assert len(questions) == 1
     assert questions[0]["paper_id"] == "validation-paper"
     assert questions[0]["expected_sources"] == ["validation-paper"]
+    assert questions[0]["question_slice"] == QASPER_EVALUATION_SLICE
+    assert len(questions[0]["references"]) == 1
+    assert is_qasper_evaluation_reference(questions[0]["references"][0])
+    assert set(papers) == {"train-paper", "validation-paper", "test-paper"}
+
+
+def test_qasper_eval_inputs_exclude_questions_without_an_eligible_reference() -> None:
+    validation = _article("validation-paper")
+    validation["qas"]["answers"][0]["answer"] = [
+        {
+            "unanswerable": False,
+            "extractive_spans": [],
+            "yes_no": True,
+            "free_form_answer": "",
+            "evidence": ["First paragraph."],
+        }
+    ]
+    dataset = {
+        "train": [_article("train-paper")],
+        "validation": [validation],
+        "test": [_article("test-paper")],
+    }
+
+    questions, papers = qasper_eval_inputs(dataset)
+
+    assert questions == []
     assert set(papers) == {"train-paper", "validation-paper", "test-paper"}

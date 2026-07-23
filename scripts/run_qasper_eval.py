@@ -31,15 +31,17 @@ from src.evaluators.qasper_metrics import score_qasper_open_corpus, summarize_qa
 from src.index_builder import build_index
 from src.io_utils import read_jsonl
 from src.loaders.qasper_loader import (
+    QASPER_EVALUATION_SLICE,
     QASPER_SPLITS,
     load_qasper_dataset,
-    qasper_questions,
+    qasper_evaluation_questions,
+    qasper_evaluation_slice_stats,
     qasper_unit_records,
 )
 from src.provenance import resolved_roots
 
 
-EVALUATION_PROTOCOL = "qasper_question_only_open_corpus_v1"
+EVALUATION_PROTOCOL = "qasper_open_corpus_text_extractive_single_evidence_v2"
 
 
 def qasper_eval_config(base_config_path: str | Path) -> tuple[dict[str, Any], Path]:
@@ -80,7 +82,7 @@ def qasper_eval_inputs(
     *,
     max_questions: int | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Mapping[str, Any]]]:
-    """Derive validation questions and the global paper map from the DatasetDict."""
+    """Derive the fixed validation slice and global paper map from the DatasetDict."""
 
     articles_by_id: dict[str, Mapping[str, Any]] = {}
     for split in QASPER_SPLITS:
@@ -94,7 +96,7 @@ def qasper_eval_inputs(
 
     questions: list[dict[str, Any]] = []
     for article in dataset["validation"]:
-        for question in qasper_questions(article):
+        for question in qasper_evaluation_questions(article):
             questions.append(
                 {
                     **question,
@@ -107,16 +109,12 @@ def qasper_eval_inputs(
 
 
 def _failed_score(question: Mapping[str, Any]) -> dict[str, Any]:
-    references = question["references"]
-    has_gold_evidence = any(
-        not reference.get("unanswerable", False) and bool(reference.get("evidence"))
-        for reference in references
-    )
     return {
         "qasper_target_paper_hit_at_k": False,
         "qasper_target_paper_rr": 0.0,
         "qasper_answer_f1": 0.0,
-        "qasper_target_evidence_recall_at_k": 0.0 if has_gold_evidence else None,
+        "qasper_target_evidence_hit_at_k": False,
+        "qasper_target_evidence_recall_at_k": 0.0,
         "qasper_target_evidence_f1_at_k": 0.0,
     }
 
@@ -135,6 +133,7 @@ def _finalize_qasper_run(
     articles_by_id: Mapping[str, Mapping[str, Any]],
     manifest: Mapping[str, Any],
     effective_top_k: int,
+    slice_stats: Mapping[str, Any],
 ) -> dict[str, Any]:
     rows = list(read_jsonl(run_dir / "results.jsonl"))
     rows_by_id = {row.get("question_id"): row for row in rows}
@@ -165,8 +164,10 @@ def _finalize_qasper_run(
         row.setdefault("metrics", {}).update(score)
         row["evaluation"] = {
             "protocol": EVALUATION_PROTOCOL,
+            "question_slice": QASPER_EVALUATION_SLICE,
             "target_paper_id": question["paper_id"],
             "reference_count": len(question["references"]),
+            "source_reference_count": question["source_reference_count"],
         }
         scores.append(score)
         ordered_rows.append(row)
@@ -175,7 +176,12 @@ def _finalize_qasper_run(
     generic = summarize_results(ordered_rows)
     summary = {
         "evaluation_protocol": EVALUATION_PROTOCOL,
+        "question_slice": QASPER_EVALUATION_SLICE,
         "question_split": "validation",
+        "num_candidate_questions_before_slice": slice_stats["candidate_questions"],
+        "num_eligible_questions": slice_stats["selected_questions"],
+        "num_candidate_references_before_slice": slice_stats["candidate_references"],
+        "num_eligible_references": slice_stats["selected_references"],
         "corpus_splits": "+".join(QASPER_SPLITS),
         "num_corpus_papers": manifest["corpus"]["num_documents"],
         "num_index_chunks": manifest["index"]["count"],
@@ -201,6 +207,8 @@ def _finalize_qasper_run(
         {
             "command": "run_qasper_eval",
             "evaluation_protocol": EVALUATION_PROTOCOL,
+            "question_slice": QASPER_EVALUATION_SLICE,
+            "question_selection": dict(slice_stats),
             "question_split": "validation",
             "corpus_splits": list(QASPER_SPLITS),
             "summary": summary,
@@ -211,7 +219,9 @@ def _finalize_qasper_run(
 
 
 def main(argv: Sequence[str] | None = None) -> Path:
-    parser = argparse.ArgumentParser(description="Evaluate the real baseline on global QASPER retrieval.")
+    parser = argparse.ArgumentParser(
+        description="Evaluate the retrieval-focused QASPER slice on the global paper corpus."
+    )
     parser.add_argument("--base-config", default="configs/baseline.yaml")
     parser.add_argument("--run-id", type=safe_run_id, default=None)
     parser.add_argument("--top-k", type=positive_int, default=None)
@@ -225,13 +235,16 @@ def main(argv: Sequence[str] | None = None) -> Path:
     config, config_path = qasper_eval_config(args.base_config)
     dataset_path = resolved_roots(config)["corpus"]
     dataset = load_qasper_dataset(dataset_path)
+    slice_stats = qasper_evaluation_slice_stats(dataset["validation"])
     questions, articles_by_id = qasper_eval_inputs(dataset, max_questions=args.max_questions)
+    if not questions:
+        raise RuntimeError(f"QASPER evaluation slice is empty: {QASPER_EVALUATION_SLICE}")
     manifest = build_index(config)
     if manifest["index"]["backend"] != "faiss":
         raise RuntimeError("QASPER index build did not use FAISS")
 
     run_id = args.run_id or (
-        "qasper_validation_"
+        "qasper_validation_text_extractive_single_evidence_"
         + ("full_" if args.max_questions is None else f"n{args.max_questions}_")
         + datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     )
@@ -244,7 +257,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
         eval_argv,
         config_override=config,
         questions_override=questions,
-        questions_source=f"{dataset_path}#validation/qas",
+        questions_source=f"{dataset_path}#validation/qas?slice={QASPER_EVALUATION_SLICE}",
         command_name="run_qasper_eval",
     )
     summary = _finalize_qasper_run(
@@ -253,6 +266,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
         articles_by_id,
         manifest,
         args.top_k or config["retrieval"]["top_k"],
+        slice_stats,
     )
     print("\nQASPER open-corpus summary:\n")
     print(json.dumps(summary, indent=2, ensure_ascii=False))

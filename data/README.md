@@ -75,3 +75,8 @@ question export is required. A small validation check can be run with:
 ```powershell
 python scripts/run_qasper_smoke.py --max-questions 3
 ```
+
+Both the smoke and formal QASPER evaluators select references at runtime using the versioned
+`answerable_text_only_extractive_single_evidence_v1` slice. A question is retained when at least
+one reference is answerable, extractive, backed by exactly one non-empty text evidence unit, and
+does not depend on a figure or table; ineligible references for that question are not scored.

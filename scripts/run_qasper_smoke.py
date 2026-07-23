@@ -16,7 +16,11 @@ from src.components import create_loader
 from src.config import load_config, resolve_cli_path
 from src.evaluators.qasper_metrics import score_qasper_question, summarize_qasper_scores
 from src.index_builder import build_index
-from src.loaders.qasper_loader import qasper_evidence_from_hits, qasper_questions
+from src.loaders.qasper_loader import (
+    QASPER_EVALUATION_SLICE,
+    qasper_evaluation_questions,
+    qasper_evidence_from_hits,
+)
 from src.pipeline import NaiveRAGPipeline
 from src.provenance import resolved_roots
 
@@ -24,8 +28,6 @@ from src.provenance import resolved_roots
 def run_qasper_smoke(
     config_path: str | Path,
     max_questions: int = 3,
-    *,
-    text_evidence_only: bool = False,
 ) -> dict:
     config = load_config(config_path)
     loader_config = config["loader"]
@@ -44,9 +46,11 @@ def run_qasper_smoke(
         raise RuntimeError("QASPER smoke expected exactly one indexed paper")
 
     article = articles[0]
-    questions = qasper_questions(article)[:max_questions]
+    questions = qasper_evaluation_questions(article)[:max_questions]
     if not questions:
-        raise RuntimeError("The selected QASPER paper contains no questions")
+        raise RuntimeError(
+            f"The selected QASPER paper contains no questions in slice {QASPER_EVALUATION_SLICE}"
+        )
 
     rows = []
     scores = []
@@ -57,7 +61,6 @@ def run_qasper_smoke(
             result["generation"]["answer"],
             predicted_evidence,
             question["references"],
-            text_evidence_only=text_evidence_only,
         )
         scores.append(score)
         rows.append(
@@ -74,8 +77,8 @@ def run_qasper_smoke(
         "mode": "single_paper_smoke",
         "split": loader_config["split"],
         "paper_id": article["id"],
+        "question_slice": QASPER_EVALUATION_SLICE,
         "questions_scored": len(rows),
-        "text_evidence_only": text_evidence_only,
         "metrics": summarize_qasper_scores(scores),
         "results": rows,
     }
@@ -85,14 +88,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run a single-paper QASPER smoke evaluation.")
     parser.add_argument("--config", default="configs/qasper_smoke.yaml")
     parser.add_argument("--max-questions", type=positive_int, default=3)
-    parser.add_argument("--text-evidence-only", action="store_true")
     args = parser.parse_args()
     configure_utf8_output()
     config_path = resolve_cli_path(PROJECT_ROOT, args.config)
     result = run_qasper_smoke(
         config_path,
         max_questions=args.max_questions,
-        text_evidence_only=args.text_evidence_only,
     )
     print(json.dumps(result, indent=2, ensure_ascii=False))
 

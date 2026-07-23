@@ -82,9 +82,22 @@ python scripts/run_qasper_smoke.py --max-questions 3
 ```
 
 `qasper_smoke.yaml` indexes one validation paper with the same lightweight backends as
-`smoke.yaml`. It checks local loading, indexing, generation, and official Answer/Evidence F1
-without creating a second transformed dataset. It is not a full QASPER benchmark: the one-paper
-limit keeps retrieval within the paper associated with each question.
+`smoke.yaml`. It checks local loading, indexing, generation, and Answer/Evidence F1 on the fixed
+`answerable_text_only_extractive_single_evidence_v1` question slice without creating a second
+transformed dataset. It is not a full QASPER benchmark: the one-paper limit keeps retrieval within
+the paper associated with each question.
+
+For the formal open-corpus evaluation, run:
+
+```powershell
+python scripts/run_qasper_eval.py --run-id qasper_text_extractive_v1
+```
+
+The formal evaluator uses validation questions only. A question enters the evaluation when at
+least one annotator supplied an answerable extractive answer with exactly one non-empty text
+evidence unit; only references satisfying all four conditions are scored. All train, validation,
+and test papers remain in the retrieval corpus as distractors. The summary records the slice name,
+selection counts, evidence hit rate, and Answer F1 conditional on evidence hit or miss.
 
 ## Reproduce the formal baseline
 

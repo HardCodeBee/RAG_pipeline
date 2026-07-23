@@ -112,9 +112,15 @@ def test_build_is_immutable_reusable_and_queryable(tmp_path, monkeypatch) -> Non
     config["embedding"]["query_prefix"] = "query: "
     config["generation"]["api_key"] = "plaintext-test-key"
     pipeline = NaiveRAGPipeline(config)
-    assert "schema_version" not in pipeline.runtime_metadata
-    assert pipeline.runtime_metadata["embedding"]["query_prefix"] == "query: "
-    assert pipeline.runtime_metadata["generator"]["api_key_present"] is True
+    assert set(pipeline.runtime_metadata) == {
+        "build_id",
+        "build_dir",
+        "build_spec_sha256",
+        "source_sha256",
+        "run_spec",
+        "run_spec_sha256",
+    }
+    assert pipeline.embedder.query_prefix == "query: "
     result = pipeline.query("What does dense retrieval find?", question_id="q")
     assert "schema_version" not in result
     assert "notes" not in result
