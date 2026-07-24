@@ -28,11 +28,7 @@ def json_sha256(value: Any) -> str:
 def recorded_config(config: dict[str, Any]) -> dict[str, Any]:
     """返回可写入运行 metadata 的配置，排除运行凭据。"""
     value = json.loads(json.dumps(config, ensure_ascii=False))
-    recorded = {key: item for key, item in value.items() if not key.startswith("_")}
-    generation = recorded.get("generation")
-    if isinstance(generation, dict):
-        generation.pop("api_key", None)
-    return recorded
+    return {key: item for key, item in value.items() if not key.startswith("_")}
 
 
 def _hash_files(root: Path, files: Iterable[Path]) -> str:
@@ -53,12 +49,65 @@ def _hash_files(root: Path, files: Iterable[Path]) -> str:
         digest.update(content)
     return digest.hexdigest()
 
-#  对所有有效 Python 源码求 hash，避免维护分阶段文件清单。
-def source_code_sha256(project_root: str | Path) -> str:
+_SOURCE_GROUP_PATTERNS = {
+    "build": (
+        "src/artifact_io.py",
+        "src/components.py",
+        "src/config.py",
+        "src/core/*.py",
+        "src/chunkers/*.py",
+        "src/embedders/*.py",
+        "src/index_builder.py",
+        "src/indexes/*.py",
+        "src/io_utils.py",
+        "src/loaders/*.py",
+        "src/provenance.py",
+        "src/text/*.py",
+    ),
+    "run": (
+        "src/artifact_io.py",
+        "src/components.py",
+        "src/config.py",
+        "src/core/*.py",
+        "src/embedders/*.py",
+        "src/generators/*.py",
+        "src/indexes/*.py",
+        "src/io_utils.py",
+        "src/pipeline.py",
+        "src/prompts/*.py",
+        "src/provenance.py",
+        "src/query/*.py",
+        "src/retrievers/*.py",
+    ),
+    "evaluation": (
+        "scripts/recompute_metrics.py",
+        "scripts/run_eval.py",
+        "scripts/run_qasper_eval.py",
+        "src/evaluators/*.py",
+        "src/loaders/qasper_loader.py",
+        "src/provenance.py",
+    ),
+}
+
+
+def source_snapshot_sha256(project_root: str | Path) -> str:
+    """Hash all executable project Python for audit, not stage invalidation."""
 
     root = Path(project_root).resolve()
-    # src 和 scripts 都会影响构建或查询行为，所以一起纳入 source_sha256。
-    files = [*root.glob("src/**/*.py"), *root.glob("scripts/*.py")]
+    return _hash_files(root, [*root.glob("src/**/*.py"), *root.glob("scripts/*.py")])
+
+
+def source_group_sha256(project_root: str | Path, group: str) -> str:
+    """Hash the explicit code boundary for build, run, or evaluation."""
+
+    if group not in _SOURCE_GROUP_PATTERNS:
+        raise ValueError(f"Unknown source group: {group}")
+    root = Path(project_root).resolve()
+    files = [
+        path
+        for pattern in _SOURCE_GROUP_PATTERNS[group]
+        for path in root.glob(pattern)
+    ]
     return _hash_files(root, files)
 
 # 把每个语料文件转换成一条身份记录，
@@ -90,7 +139,11 @@ def corpus_inventory(documents: list[Path], corpus_root: Path) -> dict[str, Any]
 # 用于判断：
 #   当前索引是否需要重建？
 #   已有 artifacts/build_xxx 能不能复用？
-def build_spec(config: dict[str, Any], corpus: dict[str, Any], source_sha256: str) -> dict[str, Any]:
+def build_spec(
+    config: dict[str, Any],
+    corpus: dict[str, Any],
+    build_source_sha256: str,
+) -> dict[str, Any]:
     # 构建规格只包含会影响构建产物的字段。
     # query_prefix、local_files_only 等运行时或环境字段不会改变已构建索引内容。
     identity = recorded_config(config)
@@ -105,12 +158,16 @@ def build_spec(config: dict[str, Any], corpus: dict[str, Any], source_sha256: st
         "embedding": embedding,
         "index": identity["index"],
         "corpus": corpus,
-        "source_sha256": source_sha256,
+        "build_source_sha256": build_source_sha256,
     }
 
 
-def build_identity(config: dict[str, Any], corpus: dict[str, Any], source_sha256: str) -> tuple[str, str, dict[str, Any]]:
-    spec = build_spec(config, corpus, source_sha256)
+def build_identity(
+    config: dict[str, Any],
+    corpus: dict[str, Any],
+    build_source_sha256: str,
+) -> tuple[str, str, dict[str, Any]]:
+    spec = build_spec(config, corpus, build_source_sha256)
     digest = json_sha256(spec)
     # build_id 是 build_spec 的短 hash，目录名稳定且可读。
     return f"build_{digest[:16]}", digest, spec
@@ -128,13 +185,16 @@ def build_identity(config: dict[str, Any], corpus: dict[str, Any], source_sha256
 # 用于判断：
 # 两次 query/run 的条件是否相同？
 # 结果是否可以直接比较？
-def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[str, Any]:
+def run_spec(
+    config: dict[str, Any],
+    build_id: str,
+    run_source_sha256: str,
+) -> dict[str, Any]:
     # run_spec 描述 query 阶段会影响答案的配置。
     # 它和 build_spec 分开，避免每次改 top_k 或 generation 参数都重建索引。
     value = recorded_config(config)
     embedding = value["embedding"]
     return {
-        "strict_backends": value["strict_backends"],
         "build_id": build_id,
         "query_embedding": {
             key: embedding.get(key)
@@ -143,18 +203,8 @@ def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[
         "retrieval": value["retrieval"],
         "context": value["context"],
         "prompt": value["prompt"],
-        "generation": {
-            key: value["generation"][key]
-            for key in (
-                "provider",
-                "model",
-                "temperature",
-                "max_output_tokens",
-                "timeout_seconds",
-                "max_retries",
-            )
-        },
-        "source_sha256": source_sha256,
+        "generation": value["generation"],
+        "run_source_sha256": run_source_sha256,
     }
 
 # 建立 Evaluation identity
@@ -167,11 +217,14 @@ def run_spec(config: dict[str, Any], build_id: str, source_sha256: str) -> dict[
 # 是不是同一套题？
 # 是不是同一版评估指标？
 # 能不能 resume 或 recompute metrics？
-def evaluation_spec(questions_sha256: str, source_sha256: str) -> dict[str, Any]:
+def evaluation_spec(
+    questions_sha256: str,
+    evaluation_source_sha256: str,
+) -> dict[str, Any]:
     # 评估规格用来标识一次评估的题集版本、源码版本和指标版本。
     return {
         "questions_sha256": questions_sha256,
-        "source_sha256": source_sha256,
+        "evaluation_source_sha256": evaluation_source_sha256,
         "metrics_version": "evidence_and_generation_v3",
     }
 

@@ -28,7 +28,7 @@ def l2_normalize(matrix: np.ndarray) -> np.ndarray:
 class HashingEmbedder:
 
     def __init__(self, dimension: int = 384, normalize: bool = True):
-        # 哈希回退实现的维度和归一化方式仍要固定。
+        # The deterministic hashing backend still fixes dimension and normalization.
         if isinstance(dimension, bool) or not isinstance(dimension, int) or dimension <= 0:
             raise ValueError("dimension must be a positive integer")
         if not isinstance(normalize, bool):
@@ -39,7 +39,7 @@ class HashingEmbedder:
         self.model_name = f"hashing-{dimension}"
 
     # 用哈希方法把文本变成固定维度向量
-    def encode(self, texts: Sequence[str], batch_size: int = 32) -> np.ndarray:
+    def encode(self, texts: Sequence[str]) -> np.ndarray:
         vectors = np.zeros((len(texts), self.dimension), dtype=np.float32)
         for row, text in enumerate(texts):
             for token in TOKEN_RE.findall(text.lower()):
@@ -55,34 +55,29 @@ class HashingEmbedder:
         return vectors.astype(np.float32)
 
 class TextEmbedder:
-    """embedding 门面：可使用 SentenceTransformer 也可退回本地 fallback。"""
+    """Explicit hashing or SentenceTransformer embedding backend."""
 
     def __init__(
         self,
-        backend: str = "auto",
-        model_name: str = "BAAI/bge-small-en-v1.5",
+        backend: str,
+        model_name: str | None = None,
         revision: str | None = None,
         normalize: bool = True,
         batch_size: int = 32,
-        fallback_dim: int = 384,
+        dimension: int = 384,
         query_prefix: str = "",
         document_prefix: str = "",
         max_sequence_length: int | None = None,
         local_files_only: bool = False,
     ):
-        # 这里集中校验 embedding 后端的所有参数，避免构建和查询阶段各自重复。
-        if backend not in {"auto", "hashing", "sentence_transformers"}:
-            raise ValueError("backend must be one of: auto, hashing, sentence_transformers")
-        if not isinstance(model_name, str) or not model_name.strip():
-            raise ValueError("model_name must be a non-empty string")
-        if revision is not None and (not isinstance(revision, str) or not revision.strip()):
-            raise ValueError("revision must be a non-empty string or None")
+        if backend not in {"hashing", "sentence_transformers"}:
+            raise ValueError("backend must be one of: hashing, sentence_transformers")
         if not isinstance(normalize, bool):
             raise TypeError("normalize must be a boolean")
         if isinstance(batch_size, bool) or not isinstance(batch_size, int) or batch_size <= 0:
             raise ValueError("batch_size must be a positive integer")
-        if isinstance(fallback_dim, bool) or not isinstance(fallback_dim, int) or fallback_dim <= 0:
-            raise ValueError("fallback_dim must be a positive integer")
+        if isinstance(dimension, bool) or not isinstance(dimension, int) or dimension <= 0:
+            raise ValueError("dimension must be a positive integer")
         if not isinstance(query_prefix, str) or not isinstance(document_prefix, str):
             raise TypeError("query_prefix and document_prefix must be strings")
         if max_sequence_length is not None and (
@@ -104,58 +99,50 @@ class TextEmbedder:
         self.document_prefix = document_prefix
         self.max_sequence_length = max_sequence_length
         self._model = None
-        self._active_backend = ""
-        self._dimension = fallback_dim
+        self._active_backend = backend
 
-        # 按配置选择并加载一个已有模型
-        # 读取这个模型自己的属性
-        if backend in {"auto", "sentence_transformers"}:
-            try:
-                # 延迟导入可选依赖，让没有安装该依赖的环境也能运行 pipeline。
-                from sentence_transformers import SentenceTransformer
+        if backend == "hashing":
+            if model_name not in {None, f"hashing-{dimension}"}:
+                raise ValueError("hashing model_name must match the configured dimension")
+            if revision is not None:
+                raise ValueError("hashing backend does not use a revision")
+            if max_sequence_length is not None:
+                raise ValueError("hashing backend does not use max_sequence_length")
+            self._model = HashingEmbedder(dimension=dimension, normalize=normalize)
+            self.model_name = self._model.model_name
+            self.resolved_revision = None
+            self._dimension = dimension
+            return
 
-                # 准备模型加载参数
-                model_kwargs = {"local_files_only": local_files_only}
-                if revision is not None:
-                    model_kwargs["revision"] = revision
-                self._model = SentenceTransformer(model_name, **model_kwargs)
+        if not isinstance(model_name, str) or not model_name.strip():
+            raise ValueError("model_name must be a non-empty string")
+        if not isinstance(revision, str) or not revision.strip():
+            raise ValueError("revision must be a non-empty string")
 
-                # 处理最大输入长度
-                if max_sequence_length is not None:
-                    self._model.max_seq_length = max_sequence_length
-                else:
-                    # 未显式配置时，记录模型自己的 max_seq_length，写进 manifest。
-                    self.max_sequence_length = int(self._model.max_seq_length)
+        from sentence_transformers import SentenceTransformer
 
-                # 标记当前真实使用的后端
-                self._active_backend = "sentence_transformers"
-
-                try:
-                    # 尽量记录实际模型提交 hash，增强复现能力。
-                    self.resolved_revision = self._model[0].auto_model.config._commit_hash or revision
-                except (AttributeError, IndexError, TypeError):
-                    self.resolved_revision = revision
-
-                # 读取 embedding 维度
-                dimension_getter = getattr(self._model, "get_embedding_dimension", None)
-                dimension = (
-                    dimension_getter()
-                    if callable(dimension_getter)
-                    else self._model.get_sentence_embedding_dimension()
-                )
-                self._dimension = int(dimension or fallback_dim)
-
-                return
-            except Exception:
-                if backend == "sentence_transformers":
-                    # 显式请求该后端时应直接失败，而不是静默降级。
-                    raise
-
-        # 当 sentence-transformers 不可用时，auto 会在这里退回本地实现。
-        # 回退实现让smoke测试可以在没有模型权重的环境里运行。
-        self._model = HashingEmbedder(dimension=fallback_dim, normalize=normalize)
-        self._active_backend = "hashing"
-        self._dimension = fallback_dim
+        self._model = SentenceTransformer(
+            model_name,
+            local_files_only=local_files_only,
+            revision=revision,
+        )
+        if max_sequence_length is not None:
+            self._model.max_seq_length = max_sequence_length
+        else:
+            self.max_sequence_length = int(self._model.max_seq_length)
+        try:
+            self.resolved_revision = self._model[0].auto_model.config._commit_hash or revision
+        except (AttributeError, IndexError, TypeError):
+            self.resolved_revision = revision
+        dimension_getter = getattr(self._model, "get_embedding_dimension", None)
+        model_dimension = (
+            dimension_getter()
+            if callable(dimension_getter)
+            else self._model.get_sentence_embedding_dimension()
+        )
+        if not model_dimension:
+            raise RuntimeError("SentenceTransformer did not report an embedding dimension")
+        self._dimension = int(model_dimension)
 
     @property
     def dimension(self) -> int:
@@ -187,9 +174,9 @@ class TextEmbedder:
             )
             # 统一转成 NumPy float32
             embeddings = np.asarray(embeddings, dtype=np.float32)
-        # 否则回退到HashingEmbedder
+        # The explicitly selected hashing backend uses the local implementation.
         else:
-            embeddings = self._model.encode(texts, batch_size=self.batch_size)
+            embeddings = self._model.encode(texts)
 
         # 后端返回值必须严格匹配预期形状，防止静默不匹配污染索引。
         # 要求必须是二维矩阵，且形状必须严格等于(文本数量, embedding 维度)

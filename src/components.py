@@ -48,8 +48,6 @@ def create_token_counter(config: dict[str, Any]):
 
 def create_chunker(config: dict[str, Any], token_counter):
     chunking = config["chunking"]
-    if chunking["method"] != "fixed_sentence":
-        raise ValueError(f"Unsupported chunker: {chunking['method']}")
     # 分句器和词元计数器解耦，便于替换分句策略或 tokenizer。
     return FixedSentenceChunker(
         sentence_splitter=RegexSentenceSplitter(),
@@ -65,15 +63,15 @@ def create_embedder(config: dict[str, Any], *, override: dict[str, Any] | None =
     embedding.update(override or {})
     return TextEmbedder(
         backend=embedding["backend"],
-        model_name=embedding["model_name"],
+        model_name=embedding.get("model_name"),
         revision=embedding.get("revision"),
         normalize=embedding["normalize"],
-        batch_size=embedding["batch_size"],
-        fallback_dim=embedding["fallback_dim"],
+        batch_size=embedding.get("batch_size", 32),
+        dimension=embedding.get("dimension", 384),
         query_prefix=embedding["query_prefix"],
         document_prefix=embedding["document_prefix"],
-        max_sequence_length=embedding["max_sequence_length"],
-        local_files_only=embedding["local_files_only"],
+        max_sequence_length=embedding.get("max_sequence_length"),
+        local_files_only=embedding.get("local_files_only", False),
     )
 
 
@@ -81,25 +79,17 @@ def create_index(
     config: dict[str, Any],
     *,
     backend: str | None = None,
-    index_type: str | None = None,
 ):
-    selected_type = index_type or config["index"]["type"]
-    if selected_type != "flat_ip":
-        raise ValueError(f"Unsupported baseline index: {selected_type}")
-    # FlatIPIndex 内部会根据 backend 决定使用 FAISS 还是 NumPy 回退实现。
-    return FlatIPIndex(backend=backend or config["index"]["backend"], index_type="flat_ip")
+    return FlatIPIndex(backend=backend or config["index"]["backend"])
 
 
 def create_generator(config: dict[str, Any]):
     generation = config["generation"]
-    # strict_backends=False 时允许 OpenAI 不可用后回退到抽取式实现。
     return LLMGenerator(
         provider=generation["provider"],
-        model=generation["model"],
-        temperature=generation["temperature"],
+        model=generation.get("model"),
+        temperature=generation.get("temperature", 0.0),
         max_output_tokens=generation["max_output_tokens"],
-        allow_fallback=not config["strict_backends"],
-        timeout_seconds=generation["timeout_seconds"],
-        max_retries=generation["max_retries"],
-        api_key=generation.get("api_key"),
+        timeout_seconds=generation.get("timeout_seconds", 60.0),
+        max_retries=generation.get("max_retries", 0),
     )

@@ -104,18 +104,15 @@ def test_fixed_sentence_chunker_preserves_document_page_and_overlap_order() -> N
     ]
 
 
-def test_flat_ip_round_trip_preserves_explicit_vector_ids(tmp_path) -> None:
+def test_numpy_flat_ip_loads_canonical_embedding_rows_as_vector_ids(tmp_path) -> None:
     embeddings = np.asarray([[1.0, 0.0], [0.5, 0.5], [-1.0, 0.0]], dtype=np.float32)
-    ids = np.asarray([101, 9001, 42], dtype=np.int64)
-    index = FlatIPIndex(backend="numpy")
-    index.build(embeddings, ids=ids)
-    path = tmp_path / "index.npz"
-    index.save(path)
+    path = tmp_path / "embeddings.npy"
+    np.save(path, embeddings)
 
     loaded = FlatIPIndex(backend="numpy")
     loaded.load(path)
     hits = loaded.search_hits(np.asarray([[1.0, 0.0]], dtype=np.float32), 3)
-    assert [hit.vector_id for hit in hits] == [101, 9001, 42]
+    assert [hit.vector_id for hit in hits] == [0, 1, 2]
 
 
 def test_dense_retriever_respects_default_and_override_top_k() -> None:

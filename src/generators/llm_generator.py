@@ -19,54 +19,41 @@ class GenerationResult:
     requested_model: str
     model: str
     response_id: str | None
-    input_tokens: int
-    output_tokens: int
     latency_ms: float # 生成阶段耗时
-    status: str = "success"
-    error: dict[str, str] | None = None
-    fallback_reason: str | None = None
     token_usage: dict[str, Any] = field(default_factory=dict)
 
 class LLMGenerator:
-    """生成门面：已配置时使用 OpenAI，否则使用抽取式 fallback。"""
+    """Explicit OpenAI or deterministic extractive generator."""
 
     def __init__(
         self,
-        provider: str = "auto",
-        model: str = "gpt-4o-mini",
+        provider: str,
+        model: str | None = None,
         temperature: float = 0.0,
         max_output_tokens: int = 512,
-        allow_fallback: bool = True,
         timeout_seconds: float = 60.0,
         max_retries: int = 2,
-        api_key: str | None = None,
     ):
         # generator 是 query 阶段最后一步；这里集中校验生成参数。
-        if not isinstance(provider, str) or provider.lower() not in {"auto", "openai", "extractive"}:
-            raise ValueError("generator.provider must be one of: auto, openai, extractive")
-        if not isinstance(allow_fallback, bool):
-            raise TypeError("generator.allow_fallback must be a boolean")
+        if not isinstance(provider, str) or provider.lower() not in {"openai", "extractive"}:
+            raise ValueError("generator.provider must be one of: openai, extractive")
+        if provider.lower() == "openai" and (not isinstance(model, str) or not model.strip()):
+            raise ValueError("generator.model must be a non-empty string for OpenAI")
         if int(max_output_tokens) <= 0:
             raise ValueError("generator.max_output_tokens must be a positive integer")
         if float(timeout_seconds) <= 0:
             raise ValueError("generator.timeout_seconds must be positive")
         if isinstance(max_retries, bool) or not isinstance(max_retries, int) or max_retries < 0:
             raise ValueError("generator.max_retries must be a non-negative integer")
-        if api_key is not None and not isinstance(api_key, str):
-            raise TypeError("generator.api_key must be a string")
         # 保存配置
         self.provider = provider.lower()
-        self.model = model
+        self.model = model.strip() if isinstance(model, str) and model.strip() else "extractive"
         self.temperature = temperature
         self.max_output_tokens = int(max_output_tokens)
-        self.allow_fallback = allow_fallback
         self.timeout_seconds = float(timeout_seconds)
         self.max_retries = max_retries
-        # API key 解析
-        # 显式传入 api_key 时优先使用，否则在初始化时解析环境变量，便于准确记录实际凭据。
-        configured_key = api_key.strip() if api_key and api_key.strip() else None
         environment_key = os.environ.get("OPENAI_API_KEY")
-        self.api_key = configured_key or (environment_key.strip() if environment_key else None)
+        self.api_key = environment_key.strip() if environment_key and environment_key.strip() else None
         # OpenAI 客户端懒加载，只有真正调用 OpenAI 时才创建。
         self._client = None
 
@@ -83,77 +70,32 @@ class LLMGenerator:
             raise ValueError("question must be a non-empty string")
         started = time.perf_counter()
 
-        if self._should_use_openai():
-            try:
-                # 使用配置的 OpenAI 后端，并保留 provider 元数据。
-                # 成功时记录真实模型名、响应 id 和服务端返回的词元用量。
-                answer, input_tokens, output_tokens, total_tokens, actual_model, response_id = (
-                    self._openai_generate(prompt)
-                )
-                latency_ms = (time.perf_counter() - started) * 1000
-                return self._build_result(
-                    answer=answer,
-                    provider="openai",
-                    model=actual_model,
-                    response_id=response_id,
-                    latency_ms=latency_ms,
-                    prompt=prompt,
-                    provider_input_tokens=input_tokens,
-                    provider_output_tokens=output_tokens,
-                    provider_total_tokens=total_tokens,
-                )
-            except Exception as exc:
-                if not self.allow_fallback:
-                    raise
-                # 非 strict 运行可以退回确定性的本地抽取逻辑。
-                # fallback 结果仍然带 error 和 fallback_reason，方便评估时区分。
-                answer = self._extractive_answer(question, retrieved_chunks)
-                latency_ms = (time.perf_counter() - started) * 1000
-                return self._build_result(
-                    answer=answer,
-                    provider="extractive",
-                    model="extractive-fallback",
-                    latency_ms=latency_ms,
-                    prompt=prompt,
-                    status="fallback",
-                    error={"type": exc.__class__.__name__, "message": str(exc)[:500]},
-                    fallback_reason="openai_request_failed",
-                )
-        else:
-            # 配置为抽取式或自动模式但没有接口密钥时，走本地抽取式回退。
-            answer = self._extractive_answer(question, retrieved_chunks)
-
-        latency_ms = (time.perf_counter() - started) * 1000
-        if self.provider == "auto":
-            # auto 没有凭据时不是硬错误，而是标记为回退。
+        if self.provider == "openai":
+            answer, input_tokens, output_tokens, total_tokens, actual_model, response_id = (
+                self._openai_generate(prompt)
+            )
+            latency_ms = (time.perf_counter() - started) * 1000
             return self._build_result(
                 answer=answer,
-                provider="extractive",
-                model="extractive-fallback",
+                provider="openai",
+                model=actual_model,
+                response_id=response_id,
                 latency_ms=latency_ms,
                 prompt=prompt,
-                status="fallback",
-                error={"type": "MissingCredentialError", "message": "OpenAI API key is not configured."},
-                fallback_reason="openai_credentials_unavailable",
+                provider_input_tokens=input_tokens,
+                provider_output_tokens=output_tokens,
+                provider_total_tokens=total_tokens,
             )
+
+        answer = self._extractive_answer(question, retrieved_chunks)
+        latency_ms = (time.perf_counter() - started) * 1000
         return self._build_result(
             answer=answer,
             provider="extractive",
-            model="extractive-fallback",
+            model="extractive",
             latency_ms=latency_ms,
             prompt=prompt,
         )
-
-    #判断当前请求应调用 OpenAI 还是本地抽取逻辑
-    def _should_use_openai(self) -> bool:
-        # extractive 显式要求本地抽取，不访问外部服务。
-        if self.provider == "extractive":
-            return False
-        # openai 显式要求调用 OpenAI；如果失败由 allow_fallback 决定是否退回。
-        if self.provider == "openai":
-            return True
-        # 自动模式只有在配置或环境里存在接口密钥时才调用 OpenAI。
-        return bool(self.api_key)
 
 
     # 真正调用 OpenAI SDK 进行 generate
@@ -238,15 +180,10 @@ class LLMGenerator:
         provider_output_tokens: int | None = None,
         provider_total_tokens: int | None = None,
         response_id: str | None = None,
-        status: str = "success",
-        error: dict[str, str] | None = None,
-        fallback_reason: str | None = None,
     ) -> GenerationResult:
         # 没有服务端用量时，使用正则词元估算值补齐日志字段。
         estimated_input_tokens = approx_token_count(prompt)
         estimated_output_tokens = approx_token_count(answer)
-        input_tokens = provider_input_tokens if provider_input_tokens is not None else estimated_input_tokens
-        output_tokens = provider_output_tokens if provider_output_tokens is not None else estimated_output_tokens
         input_source = "provider_reported" if provider_input_tokens is not None else "estimated"
         output_source = "provider_reported" if provider_output_tokens is not None else "estimated"
         if provider_total_tokens is None and provider_input_tokens is not None and provider_output_tokens is not None:
@@ -273,16 +210,11 @@ class LLMGenerator:
             requested_model=self.model,
             model=model,
             response_id=response_id,
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
             latency_ms=latency_ms,
-            status=status,
-            error=error,
-            fallback_reason=fallback_reason,
             token_usage=token_usage,
         )
     # 离线路径
-    # 本地抽取式答案生成逻辑： 从检索 chunk 中选择相关句子，作为离线 fallback 答案
+    # Local extractive generation selects sentences from retrieved chunks.
     def _extractive_answer(self, question: str, retrieved_chunks: list[dict]) -> str:
 
         # 只取长度大于 3 的查询词，减少停用词造成的噪声匹配。
@@ -315,15 +247,15 @@ class LLMGenerator:
             return self._truncate_to_token_limit("I don't know based on the provided context.")
 
         scored_sentences.sort(key=lambda row: (-row[0], -row[1]))
-        # 回退答案保持简短；它服务于冒烟测试，不追求最终答案质量。
+        # Extractive answers stay short; this backend serves offline smoke tests.
         selected = scored_sentences[:3]
-        lines = ["Extractive fallback answer based on retrieved context:"]
+        lines = ["Extractive answer based on retrieved context:"]
         for _, _, sentence, citation in selected:
             lines.append(f"- {sentence} ({citation})")
         return self._truncate_to_token_limit("\n".join(lines))
     # 离线路径
     def _truncate_to_token_limit(self, text: str) -> str:
-        # 回退答案也遵守 max_output_tokens，避免本地答案过长。
+        # The extractive backend also obeys max_output_tokens.
         matches = list(re.finditer(r"\w+|[^\w\s]", text, re.UNICODE))
         if len(matches) <= self.max_output_tokens:
             return text

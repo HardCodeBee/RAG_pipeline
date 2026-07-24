@@ -28,7 +28,8 @@ from src.provenance import (
     git_state,
     json_sha256,
     resolved_roots,
-    source_code_sha256,
+    source_group_sha256,
+    source_snapshot_sha256,
 )
 
 
@@ -158,8 +159,12 @@ def _create_embeddings(
 # 把 embedding 矩阵构建成可搜索的向量索引
 # 并保存到 staging 目录
 def _build_index_artifact(
-    config: dict[str, Any], chunks: list[ChunkRecord], embeddings: np.ndarray, staging: Path
-) -> tuple[Any, np.ndarray, Path, float]:
+    config: dict[str, Any],
+    chunks: list[ChunkRecord],
+    embeddings: np.ndarray,
+    embeddings_path: Path,
+    staging: Path,
+) -> tuple[Any, np.ndarray, Path | None, float]:
     # 创建索引对象
     index_started = time.perf_counter()
     index = create_index(config)
@@ -167,11 +172,9 @@ def _build_index_artifact(
     vector_ids = np.asarray([item.vector_id for item in chunks], dtype=np.int64)
     # 把 ChunkRecord.vector_id 显式写入索引，避免依赖行号隐式约定。
     index.build(embeddings, ids=vector_ids)
-    if config["strict_backends"] and index.backend != config["index"]["backend"]:
-        raise RuntimeError("Strict build resolved to an unexpected index backend")
-    # auto 后端要等实际解析完成后再决定扩展名，避免 FAISS 内容被命名为 .npz。
-    index_path = staging / ("index.faiss" if index.backend == "faiss" else "index.npz")
-    index.save(index_path)
+    index_path = staging / "index.faiss" if index.backend == "faiss" else None
+    if index_path is not None:
+        index.save(index_path)
     index_ms = (time.perf_counter() - index_started) * 1000
     return index, vector_ids, index_path, index_ms
 
@@ -179,14 +182,14 @@ def _build_index_artifact(
 def _verify_saved_index(
     config: dict[str, Any],
     index: Any,
-    index_path: Path,
+    index_path: Path | None,
     embeddings_path: Path,
     embeddings: np.ndarray,
     vector_ids: np.ndarray,
     chunk_count: int,
 ) -> None:
-    verified = create_index(config, backend=index.backend, index_type=index.index_type)
-    verified.load(index_path, embeddings_path=embeddings_path)
+    verified = create_index(config, backend=index.backend)
+    verified.load(index_path if index_path is not None else embeddings_path)
 
     # 保存后立刻重新加载并查询，提前发现 artifact 写入或 backend 兼容问题。
     # chunk 数量 和 chunk 维度 必须一致
@@ -211,19 +214,21 @@ def _ensure_corpus_unchanged(
 def _manifest_artifacts(
     chunks_path: Path,
     embeddings_path: Path,
-    index_path: Path,
+    index_path: Path | None,
     chunks: list[ChunkRecord],
     embeddings: np.ndarray,
 ) -> dict[str, Any]:
-    return {
+    artifacts = {
         "chunks": artifact_descriptor(chunks_path, rows=len(chunks)),
         "embeddings": {
             **artifact_descriptor(embeddings_path),
             "shape": list(embeddings.shape),
             "dtype": str(embeddings.dtype),
         },
-        "index": artifact_descriptor(index_path),
     }
+    if index_path is not None:
+        artifacts["index"] = artifact_descriptor(index_path)
+    return artifacts
 
 # 把本次索引构建过程的所有关键信息整理成一个 manifest 字典
 def _create_manifest(
@@ -241,9 +246,10 @@ def _create_manifest(
     vector_ids: np.ndarray,
     chunks_path: Path,
     embeddings_path: Path,
-    index_path: Path,
+    index_path: Path | None,
     timings: dict[str, float],
     started: float,
+    source_snapshot_sha: str,
 ) -> dict[str, Any]:
     token_counts = [item.token_count for item in chunks]
     embedding_space = embedder.embedding_space("inner_product") # 获取本次文档向量所属的 embedding 空间信息
@@ -255,6 +261,7 @@ def _create_manifest(
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "build_spec_sha256": build_spec_sha,
         "build_spec": spec,
+        "source_snapshot_sha256": source_snapshot_sha,
         "corpus": {
             "num_files": len(documents),
             "num_pages": len(pages),
@@ -317,9 +324,10 @@ def build_index(config: dict[str, Any]) -> dict[str, Any]:
     if not documents:
         raise RuntimeError(f"No corpus files found in corpus path: {roots['corpus']}")
     corpus = corpus_inventory(documents, roots["corpus"])
-    source_sha = source_code_sha256(PROJECT_ROOT)
+    build_source_sha = source_group_sha256(PROJECT_ROOT, "build")
+    source_snapshot_sha = source_snapshot_sha256(PROJECT_ROOT)
     # 构建身份
-    build_id, build_spec_sha, spec = build_identity(config, corpus, source_sha)
+    build_id, build_spec_sha, spec = build_identity(config, corpus, build_source_sha)
     artifacts_root = roots["artifacts_root"]
     build_dir = artifacts_root / build_id
     if build_dir.exists():
@@ -351,7 +359,13 @@ def build_index(config: dict[str, Any]) -> dict[str, Any]:
         # 对每个 chunk 的文本生成 embedding，并保存 embeddings.npy
         embedder, embeddings, embedding_ms = _create_embeddings(config, chunks, embeddings_path)
         # 用 embeddings 构建向量索引，并保存索引文件
-        index, vector_ids, index_path, index_ms = _build_index_artifact(config, chunks, embeddings, staging)
+        index, vector_ids, index_path, index_ms = _build_index_artifact(
+            config,
+            chunks,
+            embeddings,
+            embeddings_path,
+            staging,
+        )
         # 验证磁盘上的索引 artifact
         _verify_saved_index(
             config, index, index_path, embeddings_path, embeddings, vector_ids, len(chunks)
@@ -384,6 +398,7 @@ def build_index(config: dict[str, Any]) -> dict[str, Any]:
             index_path=index_path,
             timings=timings,
             started=started,
+            source_snapshot_sha=source_snapshot_sha,
         )
         # 把 manifest 写入 staging 中
         write_manifest(staging / "manifest.json", manifest)

@@ -15,14 +15,10 @@ from src.core.records import ContextPackage, SearchHit
 # 能完整放入的 chunk，依次放入
 # 第一个放不下的 chunk 截断后放入 然后停止
 def build_context(
-    query: str,
     results: Sequence[SearchHit],
     token_counter,
     max_tokens: int | None,
 ) -> ContextPackage:
-    # 检查 query 必须是非空字符串
-    if not isinstance(query, str) or not query.strip():
-        raise ValueError("query must be a non-empty string")
     # 要求 max_tokens 只能是 0 或 None
     if max_tokens is not None and (
         isinstance(max_tokens, bool) or not isinstance(max_tokens, int) or max_tokens <= 0

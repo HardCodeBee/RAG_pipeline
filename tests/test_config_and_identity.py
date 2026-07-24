@@ -6,16 +6,16 @@ from pathlib import Path
 
 import pytest
 
-from scripts.run_eval import validate_resume_compatibility
 from src.config import apply_cli_overrides, load_config, resolve_cli_path, validate_config
 from src.evaluators.logger import write_metadata_json
+from src.evaluators.runner import validate_resume_compatibility
 from src.provenance import (
     build_identity,
     evaluation_spec,
     json_sha256,
-    recorded_config,
     run_spec,
-    source_code_sha256,
+    source_group_sha256,
+    source_snapshot_sha256,
 )
 
 
@@ -31,19 +31,21 @@ def test_identity_specs_do_not_depend_on_pipeline_schema_constants() -> None:
     assert "schema_version" not in build_spec_value
     assert "schema_version" not in run_spec_value
     assert "schema_version" not in evaluation_spec("questions", "source")
+    assert build_spec_value["build_source_sha256"] == "source"
+    assert run_spec_value["run_source_sha256"] == "source"
+    assert evaluation_spec("questions", "source")["evaluation_source_sha256"] == "source"
     assert build_spec_sha == json_sha256(build_spec_value)
     assert evaluation_spec("questions", "source")["metrics_version"] == "evidence_and_generation_v3"
 
 
-def test_active_configs_use_strictness_instead_of_schema_or_profile_flags() -> None:
+def test_active_configs_use_explicit_pinned_backends() -> None:
     smoke = load_config(ROOT / "configs" / "smoke.yaml")
     baseline = load_config(ROOT / "configs" / "baseline.yaml")
 
     assert "schema_version" not in smoke and "schema_version" not in baseline
     assert "_config_path" not in smoke and "_config_path" not in baseline
     assert "profile" not in smoke and "profile" not in baseline
-    assert smoke["strict_backends"] is False
-    assert baseline["strict_backends"] is True
+    assert "strict_backends" not in smoke and "strict_backends" not in baseline
     assert baseline["embedding"]["revision"]
     assert baseline["chunking"]["tokenizer_revision"]
     assert baseline["embedding"]["backend"] == "sentence_transformers"
@@ -51,7 +53,7 @@ def test_active_configs_use_strictness_instead_of_schema_or_profile_flags() -> N
     assert baseline["generation"]["provider"] == "openai"
 
 
-def test_unknown_config_and_unpinned_strict_backend_are_rejected() -> None:
+def test_unknown_config_and_unpinned_model_backend_are_rejected() -> None:
     config = load_config(ROOT / "configs" / "smoke.yaml")
     config["unused_plugin_section"] = {}
     with pytest.raises(ValueError, match="Unknown root"):
@@ -59,7 +61,24 @@ def test_unknown_config_and_unpinned_strict_backend_are_rejected() -> None:
 
     config = load_config(ROOT / "configs" / "baseline.yaml")
     config["embedding"]["revision"] = None
-    with pytest.raises(ValueError, match="fixed embedding.revision"):
+    with pytest.raises(ValueError, match="embedding.revision"):
+        validate_config(config)
+
+
+def test_backend_specific_config_rejects_irrelevant_fields() -> None:
+    config = load_config(ROOT / "configs" / "smoke.yaml")
+    config["chunking"]["local_files_only"] = True
+    with pytest.raises(ValueError, match="Unknown chunking"):
+        validate_config(config)
+
+    config = load_config(ROOT / "configs" / "smoke.yaml")
+    config["embedding"]["model_name"] = "unused"
+    with pytest.raises(ValueError, match="Unknown embedding"):
+        validate_config(config)
+
+    config = load_config(ROOT / "configs" / "smoke.yaml")
+    config["generation"]["timeout_seconds"] = 60.0
+    with pytest.raises(ValueError, match="Unknown generation"):
         validate_config(config)
 
 
@@ -77,17 +96,18 @@ def test_cli_top_k_changes_run_identity_but_not_build_identity() -> None:
     assert overridden_run["retrieval"]["top_k"] == 9
 
 
-def test_api_key_is_not_recorded_and_does_not_enter_scientific_identity() -> None:
+def test_inline_api_key_is_rejected_and_output_path_does_not_enter_identity() -> None:
     config = load_config(ROOT / "configs" / "smoke.yaml")
     other = deepcopy(config)
     other["paths"]["outputs_root"] = "somewhere-else"
-    other["generation"]["api_key"] = "private-test-key"
     corpus = {"documents": [], "aggregate_sha256": "empty"}
     build_id, _, _ = build_identity(config, corpus, "build-code")
 
     assert build_identity(other, corpus, "build-code")[0] == build_id
     assert run_spec(config, build_id, "runtime-code") == run_spec(other, build_id, "runtime-code")
-    assert "api_key" not in recorded_config(other)["generation"]
+    other["generation"]["api_key"] = "private-test-key"
+    with pytest.raises(ValueError, match="must not contain an inline secret"):
+        validate_config(other)
 
 
 def test_metadata_writer_removes_nested_credentials_and_redacts_key_shapes(tmp_path) -> None:
@@ -115,13 +135,34 @@ def test_cli_paths_are_resolved_from_project_root() -> None:
     assert resolve_cli_path(ROOT, "data/questions_v1.jsonl") == (ROOT / "data/questions_v1.jsonl").resolve()
 
 
-def test_source_identity_covers_src_and_scripts_without_a_manual_file_list(tmp_path) -> None:
-    (tmp_path / "src").mkdir()
+def test_source_groups_invalidate_only_their_pipeline_stage(tmp_path) -> None:
+    (tmp_path / "src" / "evaluators").mkdir(parents=True)
     (tmp_path / "scripts").mkdir()
-    (tmp_path / "src" / "pipeline.py").write_text("VERSION = 1\n", encoding="utf-8")
-    first = source_code_sha256(tmp_path)
-    (tmp_path / "scripts" / "run.py").write_text("print('run')\n", encoding="utf-8")
-    assert source_code_sha256(tmp_path) != first
+    build_file = tmp_path / "src" / "index_builder.py"
+    run_file = tmp_path / "src" / "pipeline.py"
+    evaluation_file = tmp_path / "src" / "evaluators" / "metrics.py"
+    build_file.write_text("VERSION = 1\n", encoding="utf-8")
+    run_file.write_text("VERSION = 1\n", encoding="utf-8")
+    evaluation_file.write_text("VERSION = 1\n", encoding="utf-8")
+
+    initial = {
+        group: source_group_sha256(tmp_path, group)
+        for group in ("build", "run", "evaluation")
+    }
+    initial_snapshot = source_snapshot_sha256(tmp_path)
+
+    evaluation_file.write_text("VERSION = 2\n", encoding="utf-8")
+    assert source_group_sha256(tmp_path, "evaluation") != initial["evaluation"]
+    assert source_group_sha256(tmp_path, "build") == initial["build"]
+    assert source_group_sha256(tmp_path, "run") == initial["run"]
+    assert source_snapshot_sha256(tmp_path) != initial_snapshot
+
+    build_file.write_text("VERSION = 2\n", encoding="utf-8")
+    assert source_group_sha256(tmp_path, "build") != initial["build"]
+    assert source_group_sha256(tmp_path, "run") == initial["run"]
+
+    run_file.write_text("VERSION = 2\n", encoding="utf-8")
+    assert source_group_sha256(tmp_path, "run") != initial["run"]
 
 
 def test_resume_requires_exact_scientific_identity() -> None:
@@ -130,7 +171,6 @@ def test_resume_requires_exact_scientific_identity() -> None:
         "build_id": "b",
         "run_spec_sha256": "r",
         "evaluation_spec_sha256": "e",
-        "source_sha256": "c",
         "effective_top_k": 5,
     }
     validate_resume_compatibility(current, dict(current))

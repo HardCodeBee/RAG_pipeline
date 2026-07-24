@@ -7,8 +7,9 @@ from src.io_utils import slugify
 from src.text.cleaners import clean_text
 
 
-class _PDFCorpusLoader:
-    # PDF 加载器的公共基类：负责文件发现和文档身份校验。
+class PypdfCorpusLoader:
+    """Read PDF pages into deterministic PageRecord values."""
+
     def __init__(
         self,
         recursive: bool = False,
@@ -22,11 +23,7 @@ class _PDFCorpusLoader:
         self.empty_page_policy = empty_page_policy
 
     # 按照文件的后缀 简单筛选pdf文件
-    def discover(self, corpus_path: str | Path, file_type: str = "pdf") -> list[Path]:
-
-        if str(file_type).casefold() != "pdf":
-            raise ValueError("PDF loaders only support file_type=pdf")
-
+    def discover(self, corpus_path: str | Path) -> list[Path]:
         root = Path(corpus_path)
         if not root.exists():
             raise FileNotFoundError(f"Corpus path does not exist: {root}")
@@ -68,17 +65,14 @@ class _PDFCorpusLoader:
             result[path] = doc_id
         return result
 
-# PypdfCorpusLoader 是真正执行 PDF 文本读取的类
-class PypdfCorpusLoader(_PDFCorpusLoader):
-    # 使用 pypdf 抽取每页文本，并输出 PageRecord。
-    def load(self, corpus_path: str | Path, file_type: str = "pdf") -> list[PageRecord]:
+    def load(self, corpus_path: str | Path) -> list[PageRecord]:
         # 运行时才导入 pypdf
         try:
             from pypdf import PdfReader
         except ImportError as exc:
             raise RuntimeError("PDF loading requires pypdf; install requirements/base.txt") from exc
 
-        documents = self.discover(corpus_path, file_type) #找出所有 PDF 文件
+        documents = self.discover(corpus_path) #找出所有 PDF 文件
         identities = self._validate_identities(documents)  #给每个 PDF 生成 doc_id，并检查重复
         records = [] # 准备存放每一页的文本记录
 

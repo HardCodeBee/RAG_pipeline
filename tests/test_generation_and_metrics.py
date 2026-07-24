@@ -30,23 +30,21 @@ RETRIEVED = [
 ]
 
 
-def test_strict_openai_failure_is_not_hidden(monkeypatch) -> None:
-    generator = LLMGenerator(provider="openai", model="test", allow_fallback=False)
+def test_openai_failure_is_not_hidden(monkeypatch) -> None:
+    generator = LLMGenerator(provider="openai", model="test")
     monkeypatch.setattr(generator, "_openai_generate", lambda prompt: (_ for _ in ()).throw(ConnectionError("offline")))
     with pytest.raises(ConnectionError, match="offline"):
         generator.generate_from_prompt("Prompt", "Question?", RETRIEVED)
 
 
-def test_nonstrict_openai_failure_has_structured_fallback(monkeypatch) -> None:
-    generator = LLMGenerator(provider="openai", model="test", allow_fallback=True)
-    monkeypatch.setattr(generator, "_openai_generate", lambda prompt: (_ for _ in ()).throw(ConnectionError("offline")))
+def test_extractive_backend_is_explicit() -> None:
+    generator = LLMGenerator(provider="extractive")
     result = generator.generate_from_prompt("Prompt", "Question?", RETRIEVED)
-    assert result.status == "fallback"
-    assert result.fallback_reason == "openai_request_failed"
-    assert result.error["type"] == "ConnectionError"
+    assert result.provider == "extractive"
+    assert result.model == "extractive"
 
 
-def test_provider_model_response_id_and_configured_key_are_recorded(monkeypatch) -> None:
+def test_provider_model_response_id_and_environment_key_are_recorded(monkeypatch) -> None:
     captured = {}
 
     class FakeResponses:
@@ -64,7 +62,8 @@ def test_provider_model_response_id_and_configured_key_are_recorded(monkeypatch)
             self.responses = FakeResponses()
 
     monkeypatch.setitem(sys.modules, "openai", SimpleNamespace(OpenAI=FakeOpenAI))
-    generator = LLMGenerator(provider="openai", model="requested-alias", api_key="private-key")
+    monkeypatch.setenv("OPENAI_API_KEY", "private-key")
+    generator = LLMGenerator(provider="openai", model="requested-alias")
     result = generator.generate_from_prompt("Prompt", "Question?", RETRIEVED)
     assert captured["api_key"] == "private-key"
     assert result.requested_model == "requested-alias"
@@ -111,12 +110,10 @@ def test_status_counts_are_disjoint() -> None:
     summary = summarize_results(
         [
             {"status": "success", "metrics": {}},
-            {"status": "fallback", "metrics": {}},
             {"status": "error", "metrics": {}},
         ]
     )
     assert summary["num_successful_questions"] == 1
-    assert summary["num_fallback_questions"] == 1
     assert summary["num_failed_questions"] == 1
 
 

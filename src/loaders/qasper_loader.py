@@ -77,12 +77,6 @@ def qasper_unit_records(article: Mapping[str, Any]) -> list[QasperUnit]:
     return units
 
 
-def qasper_units(article: Mapping[str, Any]) -> list[str]:
-    """Return the ordered clean texts used by the existing chunker."""
-
-    return [unit.text for unit in qasper_unit_records(article)]
-
-
 def qasper_pages(article: Mapping[str, Any]) -> list[PageRecord]:
     paper_id = _unit_text(article.get("id"))
     if not paper_id:
@@ -263,15 +257,6 @@ def load_qasper_dataset(dataset_path: str | Path):
     if not root.is_dir():
         raise FileNotFoundError(f"QASPER dataset directory does not exist: {root}")
     return load_from_disk(str(root))
-
-
-def load_qasper_split(dataset_path: str | Path, split: str):
-    """Load one named split from the local DatasetDict."""
-
-    dataset = load_qasper_dataset(dataset_path)
-    if split not in dataset:
-        raise ValueError(f"QASPER split is not available: {split}")
-    return dataset[split]
 
 
 def selected_qasper_articles(dataset_path: str | Path, split: str, max_documents: int | None = None) -> list[dict]:

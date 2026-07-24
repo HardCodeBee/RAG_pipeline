@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import time
 import uuid
-from dataclasses import asdict, is_dataclass
+from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -17,7 +17,6 @@ from src.artifact_io import validate_build_directory
 from src.components import create_embedder, create_generator, create_index, create_token_counter
 from src.config import validate_config
 from src.core.records import ChunkRecord, EmbeddingSpaceSpec
-from src.evaluators.metrics import evaluate_result
 from src.io_utils import read_jsonl
 from src.prompts.fixed_prompt import build_prompt
 from src.provenance import (
@@ -26,7 +25,8 @@ from src.provenance import (
     json_sha256,
     resolved_roots,
     run_spec,
-    source_code_sha256,
+    source_group_sha256,
+    source_snapshot_sha256,
 )
 from src.query.context_builders import build_context
 from src.retrievers.dense_retriever import DenseRetriever
@@ -39,20 +39,6 @@ def _query_id() -> str:
     # query_id 带 UTC 时间和随机后缀，便于日志中区分每次查询。
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
     return f"query_{timestamp}_{uuid.uuid4().hex[:8]}"
-
-# 把不同组件返回的对象统一转换成 dict
-def _record_dict(value: Any) -> dict[str, Any]:
-    if is_dataclass(value):
-        return asdict(value)
-    to_dict = getattr(value, "to_dict", None)
-    if callable(to_dict):
-        result = to_dict()
-        if isinstance(result, dict):
-            return result
-    if isinstance(value, dict):
-        return dict(value)
-    raise TypeError("Expected dataclass or mapping metadata")
-
 
 class NaiveRAGPipeline:
     """加载一个不可变 build，并用显式基线链路回答问题。"""
@@ -72,12 +58,12 @@ class NaiveRAGPipeline:
         # 重新计算构建身份，找到当前配置应该对应的 build_dir。
         documents = loader.discover(roots["corpus"])
         corpus = corpus_inventory(documents, roots["corpus"])
-        source_sha = source_code_sha256(PROJECT_ROOT)
+        build_source_sha = source_group_sha256(PROJECT_ROOT, "build")
         # 重新算出当前配置“应该使用哪个 build”。
         build_id, build_spec_sha, build_spec_value = build_identity(
             self.config, 
             corpus, 
-            source_sha)
+            build_source_sha)
         self.build_dir = roots["artifacts_root"] / build_id
         # query 阶段不重建索引，只接受已经完整校验过的 build 目录。
         # 检查这个 build 目录是否存在、manifest 是否完整、chunk/embedding/index 文件 hash 是否匹配检查这个 build 目录是否存在、
@@ -93,7 +79,11 @@ class NaiveRAGPipeline:
         artifacts = self.manifest["artifacts"]
         chunks_path = self.build_dir / artifacts["chunks"]["file"]
         embeddings_path = self.build_dir / artifacts["embeddings"]["file"]
-        index_path = self.build_dir / artifacts["index"]["file"]
+        index_path = (
+            self.build_dir / artifacts["index"]["file"]
+            if self.manifest["index"]["backend"] == "faiss"
+            else embeddings_path
+        )
         
         # chunks.jsonl 是 vector_id -> 文本/来源的映射表
         # 将每一行 JSON 转成 ChunkRecord 对象
@@ -109,10 +99,9 @@ class NaiveRAGPipeline:
         self.index = create_index(
             self.config,
             backend=manifest_index["backend"],
-            index_type=manifest_index["type"],
         )
         # 从磁盘加载索引好的预料文件
-        self.index.load(index_path, embeddings_path=embeddings_path)
+        self.index.load(index_path)
         self._validate_loaded_index()
 
         # retriever 组合 chunks、embedder、index，负责查询向量检索。
@@ -125,13 +114,17 @@ class NaiveRAGPipeline:
         self.generator = create_generator(self.config)
 
         # 记录本次run的运行规格
-        run_spec_value = run_spec(self.config, build_id, source_sha)
+        run_source_sha = source_group_sha256(PROJECT_ROOT, "run")
+        source_snapshot_sha = source_snapshot_sha256(PROJECT_ROOT)
+        run_spec_value = run_spec(self.config, build_id, run_source_sha)
         # runtime_metadata keeps the minimal run identity written to metadata.json.
         self.runtime_metadata = {
             "build_id": build_id,
             "build_dir": str(self.build_dir.resolve()),
             "build_spec_sha256": build_spec_sha,
-            "source_sha256": source_sha,
+            "source_snapshot_sha256": source_snapshot_sha,
+            "build_source_sha256": build_source_sha,
+            "run_source_sha256": run_source_sha,
             "run_spec": run_spec_value,
             "run_spec_sha256": json_sha256(run_spec_value),
         }
@@ -176,7 +169,7 @@ class NaiveRAGPipeline:
             "model_name": expected_space.model_name,
             "revision": expected_space.revision,
             "normalize": expected_space.normalized,
-            "fallback_dim": expected_space.dimension,
+            "dimension": expected_space.dimension,
             "document_prefix": expected_space.document_prefix,
             "max_sequence_length": expected_space.max_sequence_length,
         }
@@ -234,7 +227,6 @@ class NaiveRAGPipeline:
         context_started = time.perf_counter() # 开始记录 context 构造耗时
         # 2. 把检索结果按词元预算拼成提示词上下文。
         context = build_context(
-            question,
             retrieval.results,
             self.token_counter,
             self.config["context"]["max_tokens"],
@@ -254,35 +246,30 @@ class NaiveRAGPipeline:
             )
         
         # 把生成器返回对象统一转成 dict
-        generation_data = _record_dict(generation)
+        generation_data = asdict(generation)
         # 查询的 query 最终状态应该在顶层统一表示
-        generation_status = generation_data.pop("status", "success")
-        # 补充 pipeline 层才知道的 prompt 元数据。
+        # Add only generator configuration to generation metadata.
         generation_data.update(
             {
                 "temperature": self.generator.temperature,
                 "max_output_tokens": self.generator.max_output_tokens,
-                "prompt_build_latency_ms": prompt_latency_ms,
-                "prompt_sha256": prompt.sha256,
-                "prompt_template": prompt.template,
             }
         )
         # 处理检索结果 把每个 SearchHit 转成普通 dict 方便写进 result
         retrieved_rows = [item.to_dict() for item in retrieval.results]
         logging = self.config["logging"]
-        if not logging["save_retrieved_chunks"]:
+        if not logging["save_retrieved_text"]:
             # 可关闭 chunk 正文保存，只保留来源和 id，减少输出体积。
             retrieved_rows = [{key: value for key, value in row.items() if key != "text"} for row in retrieved_rows]
 
         # 把查询的完整过程整理成一个结构化 result
         result = {
-            "status": generation_status,
+            "status": "success",
             "question_id": question_id or _query_id(),
             "question": question,
             "identity": {
                 "build_id": self.runtime_metadata["build_id"],
                 "run_spec_sha256": self.runtime_metadata["run_spec_sha256"],
-                "source_sha256": self.runtime_metadata["source_sha256"],
             },
             "retrieval": {
                 "top_k": retrieval.top_k,
@@ -297,47 +284,16 @@ class NaiveRAGPipeline:
                 "build_latency_ms": context_latency_ms,
             },
             "generation": generation_data,
+            "prompt": {
+                "template": prompt.template,
+                "sha256": prompt.sha256,
+                "build_latency_ms": prompt_latency_ms,
+            },
         }
         # 按 logging 配置决定保留哪些字段
         if logging["save_prompt"]:
-            result["prompt"] = prompt.text
-        if logging["save_latency"]:
-            # latency 字段较多，可通过 logging 配置关闭。
-            result["retrieval"]["latency_ms"] = retrieval.latency_ms
-            result["retrieval"]["timings_ms"] = dict(retrieval.timings_ms)
-            result["total_latency_ms"] = (time.perf_counter() - started) * 1000
-        else:
-            result["context"].pop("build_latency_ms", None)
-            generation_data.pop("latency_ms", None)
-            generation_data.pop("prompt_build_latency_ms", None)
-        if not logging["save_token_usage"]:
-            # 词元用量可能较冗长，可按需从输出里移除。
-            for key in ("input_tokens", "output_tokens", "token_usage"):
-                generation_data.pop(key, None)
-        return result
-
-    def answer_question(
-        self,
-        question: str,
-        question_id: str | None = None,
-        gold_answer: str | None = None,
-        expected_sources: list[str] | None = None,
-        expected_evidence: list[dict | str] | None = None,
-        top_k: int | None = None,
-        answerable: bool | None = None,
-    ) -> dict[str, Any]:
-        # answer_question 在 query() 结果基础上附加人工标签，并计算评估指标。
-        result = self.query(question, question_id=question_id, top_k=top_k)
-        labels = {
-            "gold_answer": gold_answer,
-            "expected_sources": expected_sources or [],
-            "expected_evidence": expected_evidence or [],
-            "answerable": answerable,
-        }
-        result.update(labels)
-        result["metrics"] = evaluate_result(
-            result["generation"]["answer"],
-            result["retrieval"]["results"],
-            **labels,
-        )
+            result["prompt"]["text"] = prompt.text
+        result["retrieval"]["latency_ms"] = retrieval.latency_ms
+        result["retrieval"]["timings_ms"] = dict(retrieval.timings_ms)
+        result["total_latency_ms"] = (time.perf_counter() - started) * 1000
         return result

@@ -20,6 +20,8 @@ PDF corpus
 
 The offline smoke configuration follows the same chain but uses deterministic hashing embeddings,
 a NumPy index, and an extractive generator. It requires no API key or model download.
+Backends are always explicit: a failed OpenAI, SentenceTransformer, or FAISS request is reported as
+an error and is never silently replaced by another backend.
 
 ## Baseline specification
 
@@ -116,10 +118,8 @@ python scripts/build_index.py --config configs/baseline.yaml
 python scripts/run_eval.py --config configs/baseline.yaml --questions data/questions_v1.jsonl --run-id baseline_v1_reproduction
 ```
 
-The API key may be supplied through `generation.api_key` or `OPENAI_API_KEY`. By project policy,
-the configured/effective key is recorded in plaintext in run metadata, but not in build manifests.
-Credentials do not enter scientific identity hashes, so changing only a key does not force an index
-rebuild.
+The OpenAI API key is read only from `OPENAI_API_KEY`. Inline credential fields are rejected by
+configuration validation and credentials are never written to manifests or run metadata.
 
 To recompute metrics from a completed run without repeating retrieval or generation:
 
@@ -135,18 +135,19 @@ authoritative generation observation.
 
 | Identity | Changes when |
 | --- | --- |
-| Build identity | Corpus, loader, chunking, document embedding, index, or active Python source changes |
-| Run identity | Build, query embedding, top-k, context, prompt, generator, or active Python source changes |
-| Evaluation identity | Questions, metrics version, or active Python source changes |
+| Build identity | Corpus, loader, chunking, document embedding, index, or build-stage source changes |
+| Run identity | Build, query embedding, top-k, context, prompt, generator, or query-stage source changes |
+| Evaluation identity | Questions, metrics version, or evaluator-stage source changes |
 
 Build manifests use `build_spec` as the single source of build inputs and corpus inventory.
 Top-level `corpus` and `chunking` sections contain only realized build statistics, while query-only
-settings such as `query_prefix` remain part of run identity instead of the built document space. A
-single source digest covers `src/**/*.py` and `scripts/*.py`, while zero-based vector IDs and one
-sequence digest bind chunks to index entries. Build directories remain immutable and validate
-artifact size and SHA-256, vector order, dimensions, and embedding space before query execution.
-Resume is accepted only when question, build, run, evaluation, source, and effective top-k
-identities match.
+settings such as `query_prefix` remain part of run identity instead of the built document space.
+Build, run, and evaluation use separate explicit source groups, while a full source snapshot digest
+is retained for audit. Zero-based vector IDs and one sequence digest bind chunks to vector rows.
+`embeddings.npy` is the canonical vector artifact: NumPy searches it directly, while FAISS builds
+add only `index.faiss`. Build directories remain immutable and validate artifact size and SHA-256,
+vector order, dimensions, and embedding space before query execution. Resume is accepted only when
+question, build, run, evaluation, and effective top-k identities match.
 
 ## Tests
 

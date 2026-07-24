@@ -183,7 +183,8 @@ def test_qasper_smoke_config_is_single_paper_and_offline() -> None:
         "max_documents": 1,
     }
     assert config["embedding"]["backend"] == "hashing"
-    assert config["embedding"]["local_files_only"] is True
+    assert "local_files_only" not in config["embedding"]
+    assert "local_files_only" not in config["chunking"]
     assert config["index"]["backend"] == "numpy"
     assert config["generation"]["provider"] == "extractive"
 

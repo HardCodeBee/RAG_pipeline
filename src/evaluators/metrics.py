@@ -305,7 +305,6 @@ def summarize_results(rows: list[dict]) -> dict:
     answerable_response_values = metric_values("answerability_decision_accuracy", answerable=True)
     unanswerable_refusal_values = metric_values("answerability_decision_accuracy", answerable=False)
     success_count = sum(row.get("status") == "success" for row in rows)
-    fallback_count = sum(row.get("status") == "fallback" for row in rows)
     failed_count = sum(row.get("status") == "error" for row in rows)
     retrieval_latencies = numeric_values(("retrieval", "latency_ms"))
     generation_latencies = numeric_values(("generation", "latency_ms"))
@@ -322,14 +321,11 @@ def summarize_results(rows: list[dict]) -> dict:
         "p95_generation_latency_ms": percentile(generation_latencies, 0.95),
         "p50_total_latency_ms": percentile(total_latencies, 0.50),
         "p95_total_latency_ms": percentile(total_latencies, 0.95),
-        "avg_input_tokens": avg(("generation", "input_tokens")),
-        "avg_output_tokens": avg(("generation", "output_tokens")),
         "avg_estimated_input_tokens": avg(("generation", "token_usage", "estimated", "input_tokens")),
         "avg_estimated_output_tokens": avg(("generation", "token_usage", "estimated", "output_tokens")),
         "avg_provider_input_tokens": avg(("generation", "token_usage", "provider_reported", "input_tokens")),
         "avg_provider_output_tokens": avg(("generation", "token_usage", "provider_reported", "output_tokens")),
         "num_successful_questions": success_count,
-        "num_fallback_questions": fallback_count,
         "num_failed_questions": failed_count,
         "num_answerable_questions": sum(row.get("answerable") is True for row in rows),
         "num_unanswerable_questions": sum(row.get("answerable") is False for row in rows),

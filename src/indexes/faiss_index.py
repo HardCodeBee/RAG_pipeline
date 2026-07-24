@@ -16,11 +16,11 @@ from src.core.records import VectorHit
 # 有 FAISS 时优先使用 FAISS；
 # 没有 FAISS 时退回精确 NumPy 搜索，
 class FlatIPIndex:
-    def __init__(self, backend: str = "auto", index_type: str = "flat_ip"):
+    def __init__(self, backend: str, index_type: str = "flat_ip"):
 
         # 校验 backend 是否合法
-        if backend not in {"auto", "faiss", "numpy"}:
-            raise ValueError("backend must be one of: auto, faiss, numpy")
+        if backend not in {"faiss", "numpy"}:
+            raise ValueError("backend must be one of: faiss, numpy")
         # 校验索引类型：目前只有flat_ip 基于内积的精确向量索引
         if index_type != "flat_ip":
             raise ValueError("index_type must be flat_ip")
@@ -79,33 +79,23 @@ class FlatIPIndex:
 
         # 选择后端并建立索引
 
-        if self.requested_backend in {"auto", "faiss"}:
-            try:
-                # 延迟导入 FAISS，因为它是可选依赖，不一定已安装。
-                import faiss
+        if self.requested_backend == "faiss":
+            import faiss
 
-                # 创建一个支持 384 维向量的索引
-                base_index = faiss.IndexFlatIP(self.dimension)
-                # IndexIDMap2 让 FAISS 返回我们的 vector_id，而不是内部行号
-                self.index = faiss.IndexIDMap2(base_index)
-                # 把向量和对应 id 加进 FAISS 索引
-                # 正式建立 embedding 和 id 之间的关系
-                self.index.add_with_ids(embeddings, ids)
-                self.backend = "faiss"
-                self.embeddings = None # 正式进入faiss后就不再保留NumPy embedding 矩阵
-                self.ids = ids
-                return
-            except Exception:
-                if self.requested_backend == "faiss":
-                    # 显式请求 FAISS 时，应直接暴露依赖或索引错误。
-                    raise
-
-        # FAISS 构建失败 回退
-        # NumPy 实现直接保存 embeddings，并执行精确点积检索。
-        self.backend = "numpy"
-        self.embeddings = embeddings
-        self.ids = ids
-        self.index = None
+            base_index = faiss.IndexFlatIP(self.dimension)
+            self.index = faiss.IndexIDMap2(base_index)
+            self.index.add_with_ids(embeddings, ids)
+            self.backend = "faiss"
+            self.embeddings = None
+            self.ids = ids
+        else:
+            expected_ids = np.arange(embeddings.shape[0], dtype=np.int64)
+            if not np.array_equal(ids, expected_ids):
+                raise ValueError("NumPy backend requires zero-based row-aligned vector ids")
+            self.backend = "numpy"
+            self.embeddings = embeddings
+            self.ids = ids
+            self.index = None
 
     # 拿一个 query embedding 去索引里找最相似的 top-k 个向量
     # 该 query 的 top-k 内积分数和向量 id。
@@ -163,7 +153,7 @@ class FlatIPIndex:
             raise RuntimeError("NumPy index has not been built or loaded")
         if self.ids is None:
             raise RuntimeError("NumPy index has no vector ids")
-        # 如果当前后端 FAISS 不可用 则fallback 到 NumPy 检索
+        # NumPy exact search uses the selected canonical embedding matrix.
         # NumPy 检索：手动计算每个文档向量和 query 向量的内积分数
         # 对每个向量打分，然后按分数降序排序。
         scores = self.embeddings @ query_embedding[0]
@@ -180,31 +170,14 @@ class FlatIPIndex:
             for score, vector_id in zip(scores, ids)
         ]
 
-    # 从磁盘读取 NumPy 格式的向量数据，并返回 embeddings 和 ids。
-    # NumPy 后端支持两种文件：.npz 索引加 id，或单独的 .npy 向量文件。
+    # NumPy search directly uses the canonical embeddings.npy artifact.
     def _read_numpy_embeddings(self, source: Path) -> tuple[np.ndarray, np.ndarray]:
-        loaded = np.load(source, allow_pickle=False)
-        ids = None
-        if isinstance(loaded, np.lib.npyio.NpzFile):
-            try:
-                if "embeddings" not in loaded.files:
-                    raise ValueError(f"NumPy index is missing the embeddings array: {source}")
-                embeddings = loaded["embeddings"].astype(np.float32)
-                if "ids" in loaded.files:
-                    ids = loaded["ids"].astype(np.int64)
-            finally:
-                loaded.close()
-        else:
-            embeddings = loaded.astype(np.float32)
+        embeddings = np.load(source, allow_pickle=False).astype(np.float32)
         if embeddings.ndim != 2 or embeddings.shape[0] <= 0 or embeddings.shape[1] <= 0:
             raise ValueError(f"NumPy index must be a non-empty 2D array: {source}")
         if not np.isfinite(embeddings).all():
             raise ValueError(f"NumPy index contains non-finite values: {source}")
-        if ids is None:
-            # 老的 embeddings.npy 没有 ids 时，默认用行号作为 vector_id。
-            ids = np.arange(embeddings.shape[0], dtype=np.int64)
-        if ids.ndim != 1 or ids.shape[0] != embeddings.shape[0] or len(np.unique(ids)) != len(ids):
-            raise ValueError(f"NumPy index ids are invalid: {source}")
+        ids = np.arange(embeddings.shape[0], dtype=np.int64)
         return np.ascontiguousarray(embeddings), np.ascontiguousarray(ids)
 
     # 构建阶段写入磁盘
@@ -221,21 +194,17 @@ class FlatIPIndex:
             faiss.write_index(self.index, str(path))
             return
 
-        if self.embeddings is None:
-            raise RuntimeError("NumPy index has no embeddings to save")
-        # NumPy 回退实现保存 embeddings 和 ids，便于无 FAISS 环境重新加载。
-        with path.open("wb") as handle:
-            np.savez_compressed(handle, embeddings=self.embeddings, ids=self.ids)
+        raise RuntimeError("NumPy search uses embeddings.npy directly and has no separate index artifact")
 
     # 查询阶段从磁盘加载回内存
     # 优先加载 FAISS index.faiss
-    # 如果 FAISS 不可用且允许 auto，就尝试加载 NumPy embeddings
+    # The selected backend determines whether this path is FAISS or embeddings.npy.
     # 加载成功后，FlatIPIndex 就可以继续 search()
-    def load(self, path: str | Path, embeddings_path: str | Path | None = None) -> None:
+    def load(self, path: str | Path) -> None:
         path = Path(path)
         if not path.is_file():
             raise FileNotFoundError(f"Index file does not exist: {path}")
-        if self.requested_backend in {"auto", "faiss"}:
+        if self.requested_backend == "faiss":
             try:
                 import faiss
 
@@ -262,34 +231,9 @@ class FlatIPIndex:
                 )
                 return
             except Exception as exc:
-                if self.requested_backend == "faiss":
-                    raise RuntimeError(f"Failed to load FAISS flat_ip index: {path}") from exc
+                raise RuntimeError(f"Failed to load FAISS flat_ip index: {path}") from exc
 
-        failures: list[str] = []
-        self.embeddings = None
-        self.ids = None
-        try:
-            # 先尝试从索引路径读取 NumPy 回退文件。
-            self.embeddings, self.ids = self._read_numpy_embeddings(path)
-        except Exception as exc:
-            failures.append(f"{path}: {exc.__class__.__name__}: {exc}")
-
-        # NumPy 回退实现优先使用单独的 embeddings 文件。
-        candidates: list[Path] = []
-        if embeddings_path is not None:
-            candidates.append(Path(embeddings_path))
-        for source in candidates if self.embeddings is None else []:
-            if not source.is_file():
-                failures.append(f"{source}: missing")
-                continue
-            try:
-                # 如果 index 文件是 FAISS 但当前没有 FAISS，可用 embeddings.npy 做精确 NumPy 搜索。
-                self.embeddings, self.ids = self._read_numpy_embeddings(source)
-                break
-            except Exception as exc:
-                failures.append(f"{source}: {exc.__class__.__name__}: {exc}")
-        if self.embeddings is None:
-            raise RuntimeError("Failed to load NumPy flat_ip index; " + "; ".join(failures))
+        self.embeddings, self.ids = self._read_numpy_embeddings(path)
 
         self.backend = "numpy"
         self.index = None

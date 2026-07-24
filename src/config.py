@@ -11,8 +11,6 @@ import yaml
 
 
 _ROOT_KEYS = {
-    "strict_backends",
-    "project",
     "paths",
     "loader",
     "chunking",
@@ -82,14 +80,12 @@ def _choice(value: Any, choices: set[str], location: str) -> str:
 
 
 def _reject_inline_secrets(value: Any, location: str = "config") -> None:
-    # generation.api_key 按项目要求允许明文记录；其他未知凭据字段仍拒绝，避免误拼写。
+    # Credentials belong in the process environment, never in experiment config.
     secret_names = {"api_key", "authorization", "password", "secret", "token"}
     if isinstance(value, dict):
         for key, item in value.items():
             normalized = str(key).casefold()
-            # generation.api_key 是显式支持并会原样写入运行元数据的字段。
-            allowed_api_key = normalized == "api_key" and location == "config.generation"
-            if not allowed_api_key and (
+            if (
                 normalized in secret_names
                 or normalized.endswith(("_api_key", "_password", "_secret"))
             ):
@@ -108,17 +104,6 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     value = copy.deepcopy(_mapping(config, "config"))
     _reject_inline_secrets(value)
     _unknown(value, _ROOT_KEYS, "root")
-
-    # strict_backends=True 时，不允许自动选择或回退，适合可复现实验。
-    value["strict_backends"] = _boolean(
-        value.get("strict_backends", False),
-        "strict_backends",
-    )
-
-    # project 目前只记录实验名称，不直接影响构建产物内容。
-    project = _mapping(value.setdefault("project", {}), "project")
-    _unknown(project, {"name"}, "project")
-    project["name"] = _text(project.get("name", "naive_rag_v1"), "project.name")
 
     # paths 是构建和查询都要用的三个根目录，保持为字符串，使用时再解析。
     paths = _mapping(value.get("paths"), "paths")
@@ -143,46 +128,33 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             else None
         )
     else:
-        _unknown(loader, {"type", "recursive", "empty_page_policy", "cleaner"}, "loader")
+        _unknown(loader, {"type", "recursive", "empty_page_policy"}, "loader")
         loader["recursive"] = _boolean(loader.get("recursive", False), "loader.recursive")
         loader["empty_page_policy"] = _choice(
             loader.get("empty_page_policy", "skip"),
             {"error", "skip"},
             "loader.empty_page_policy",
         )
-        loader["cleaner"] = _choice(loader.get("cleaner", "minimal"), {"minimal"}, "loader.cleaner")
-
     # chunking 控制“页面文本 -> chunk”的策略和 token 预算。
     chunking = _mapping(value.get("chunking"), "chunking")
-    _unknown(
-        chunking,
-        {
-            "method",
-            "chunk_size_tokens",
-            "overlap_budget_tokens",
-            "sentence_splitter",
-            "tokenizer",
-            "tokenizer_model",
-            "tokenizer_revision",
-            "local_files_only",
-        },
-        "chunking",
-    )
-    chunking["method"] = _choice(
-        chunking.get("method", "fixed_sentence"),
-        {"fixed_sentence"},
-        "chunking.method",
-    )
-    chunking["sentence_splitter"] = _choice(
-        chunking.get("sentence_splitter", "regex"),
-        {"regex"},
-        "chunking.sentence_splitter",
-    )
     chunking["tokenizer"] = _choice(
         chunking.get("tokenizer", "regex"),
         {"huggingface", "regex"},
         "chunking.tokenizer",
     )
+    common_chunking_keys = {
+        "chunk_size_tokens",
+        "overlap_budget_tokens",
+        "tokenizer",
+    }
+    if chunking["tokenizer"] == "huggingface":
+        _unknown(
+            chunking,
+            common_chunking_keys | {"tokenizer_model", "tokenizer_revision", "local_files_only"},
+            "chunking",
+        )
+    else:
+        _unknown(chunking, common_chunking_keys, "chunking")
     chunking["chunk_size_tokens"] = _integer(
         chunking.get("chunk_size_tokens", 300),
         "chunking.chunk_size_tokens",
@@ -195,80 +167,80 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     if chunking["overlap_budget_tokens"] >= chunking["chunk_size_tokens"]:
         raise ValueError("chunking.overlap_budget_tokens must be smaller than chunk_size_tokens")
     if chunking["tokenizer"] == "huggingface":
-        # 使用真实 tokenizer 时必须指定模型；revision 可选，但严格模式会要求固定。
+        # Model-backed tokenization must pin the exact tokenizer revision.
         chunking["tokenizer_model"] = _text(
             chunking.get("tokenizer_model"),
             "chunking.tokenizer_model",
         )
-        revision = chunking.get("tokenizer_revision")
-        chunking["tokenizer_revision"] = _text(revision, "chunking.tokenizer_revision") if revision else None
-    else:
-        chunking.setdefault("tokenizer_model", None)
-        chunking.setdefault("tokenizer_revision", None)
-    chunking["local_files_only"] = _boolean(
-        chunking.get("local_files_only", False),
-        "chunking.local_files_only",
-    )
+        chunking["tokenizer_revision"] = _text(
+            chunking.get("tokenizer_revision"),
+            "chunking.tokenizer_revision",
+        )
+        chunking["local_files_only"] = _boolean(
+            chunking.get("local_files_only", False),
+            "chunking.local_files_only",
+        )
 
     # embedding 控制“chunk/query 文本 -> 向量”的 backend 和模型参数。
     embedding = _mapping(value.get("embedding"), "embedding")
-    _unknown(
-        embedding,
-        {
-            "backend",
-            "model_name",
-            "revision",
-            "normalize",
-            "batch_size",
-            "fallback_dim",
-            "query_prefix",
-            "document_prefix",
-            "max_sequence_length",
-            "local_files_only",
-        },
-        "embedding",
-    )
     embedding["backend"] = _choice(
-        embedding.get("backend", "hashing"),
-        {"auto", "hashing", "sentence_transformers"},
+        embedding.get("backend"),
+        {"hashing", "sentence_transformers"},
         "embedding.backend",
     )
-    embedding["model_name"] = _text(
-        embedding.get("model_name", "hashing-384"),
-        "embedding.model_name",
-    )
-    revision = embedding.get("revision")
-    embedding["revision"] = _text(revision, "embedding.revision") if revision else None
+    common_embedding_keys = {
+        "backend",
+        "normalize",
+        "query_prefix",
+        "document_prefix",
+    }
+    if embedding["backend"] == "hashing":
+        _unknown(embedding, common_embedding_keys | {"dimension"}, "embedding")
+        embedding["dimension"] = _integer(
+            embedding.get("dimension", 384),
+            "embedding.dimension",
+        )
+    else:
+        _unknown(
+            embedding,
+            common_embedding_keys
+            | {
+                "model_name",
+                "revision",
+                "batch_size",
+                "max_sequence_length",
+                "local_files_only",
+            },
+            "embedding",
+        )
+        embedding["model_name"] = _text(embedding.get("model_name"), "embedding.model_name")
+        embedding["revision"] = _text(embedding.get("revision"), "embedding.revision")
+        embedding["batch_size"] = _integer(embedding.get("batch_size", 32), "embedding.batch_size")
+        max_sequence_length = embedding.get("max_sequence_length")
+        embedding["max_sequence_length"] = (
+            _integer(max_sequence_length, "embedding.max_sequence_length")
+            if max_sequence_length is not None
+            else None
+        )
+        embedding["local_files_only"] = _boolean(
+            embedding.get("local_files_only", False),
+            "embedding.local_files_only",
+        )
     embedding["normalize"] = _boolean(embedding.get("normalize", True), "embedding.normalize")
-    embedding["batch_size"] = _integer(embedding.get("batch_size", 32), "embedding.batch_size")
-    embedding["fallback_dim"] = _integer(embedding.get("fallback_dim", 384), "embedding.fallback_dim")
     for key in ("query_prefix", "document_prefix"):
         item = embedding.get(key, "")
         if not isinstance(item, str):
             raise TypeError(f"embedding.{key} must be a string")
         # prefix 允许保留空字符串；不同 embedding 模型可能需要 query/document 前缀。
         embedding[key] = item
-    max_sequence_length = embedding.get("max_sequence_length")
-    embedding["max_sequence_length"] = (
-        _integer(max_sequence_length, "embedding.max_sequence_length")
-        if max_sequence_length is not None
-        else None
-    )
-    embedding["local_files_only"] = _boolean(
-        embedding.get("local_files_only", False),
-        "embedding.local_files_only",
-    )
-
     # index 控制向量索引后端；当前只支持平铺内积索引。
     index = _mapping(value.get("index"), "index")
-    _unknown(index, {"backend", "type"}, "index")
-    index["backend"] = _choice(index.get("backend", "numpy"), {"auto", "faiss", "numpy"}, "index.backend")
-    index["type"] = _choice(index.get("type", "flat_ip"), {"flat_ip"}, "index.type")
+    _unknown(index, {"backend"}, "index")
+    index["backend"] = _choice(index.get("backend"), {"faiss", "numpy"}, "index.backend")
 
     # retrieval 控制查询时召回策略和默认 top_k。
     retrieval = _mapping(value.setdefault("retrieval", {}), "retrieval")
-    _unknown(retrieval, {"type", "top_k"}, "retrieval")
-    retrieval["type"] = _choice(retrieval.get("type", "dense"), {"dense"}, "retrieval.type")
+    _unknown(retrieval, {"top_k"}, "retrieval")
     retrieval["top_k"] = _integer(retrieval.get("top_k", 5), "retrieval.top_k")
 
     # context 控制把召回 chunk 拼进 prompt 时的 token 上限。
@@ -285,61 +257,49 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     _unknown(prompt, {"version"}, "prompt")
     prompt["version"] = _choice(prompt.get("version", "fixed_qa_v1"), {"fixed_qa_v1"}, "prompt.version")
 
-    # generation 控制答案生成后端；抽取式实现是不依赖外部服务的回退方案。
+    # generation explicitly selects either remote OpenAI or local extractive generation.
     generation = _mapping(value.get("generation"), "generation")
-    _unknown(
-        generation,
-        {"provider", "api_key", "model", "temperature", "max_output_tokens", "timeout_seconds", "max_retries"},
-        "generation",
-    )
     generation["provider"] = _choice(
-        generation.get("provider", "extractive"),
-        {"auto", "extractive", "openai"},
+        generation.get("provider"),
+        {"extractive", "openai"},
         "generation.provider",
     )
-    if "api_key" in generation and not isinstance(generation["api_key"], str):
-        raise TypeError("generation.api_key must be a string")
-    generation["model"] = _text(generation.get("model", "extractive-fallback"), "generation.model")
-    generation["temperature"] = _number(
-        generation.get("temperature", 0.0),
-        "generation.temperature",
-        0.0,
-        2.0,
-    )
+    if generation["provider"] == "extractive":
+        _unknown(generation, {"provider", "max_output_tokens"}, "generation")
+    else:
+        _unknown(
+            generation,
+            {"provider", "model", "temperature", "max_output_tokens", "timeout_seconds", "max_retries"},
+            "generation",
+        )
+        generation["model"] = _text(generation.get("model"), "generation.model")
+        generation["temperature"] = _number(
+            generation.get("temperature", 0.0),
+            "generation.temperature",
+            0.0,
+            2.0,
+        )
+        generation["timeout_seconds"] = _number(
+            generation.get("timeout_seconds", 60.0),
+            "generation.timeout_seconds",
+            0.001,
+            3600.0,
+        )
+        generation["max_retries"] = _integer(
+            generation.get("max_retries", 2),
+            "generation.max_retries",
+            minimum=0,
+        )
     generation["max_output_tokens"] = _integer(
         generation.get("max_output_tokens", 512),
         "generation.max_output_tokens",
     )
-    generation["timeout_seconds"] = _number(
-        generation.get("timeout_seconds", 60.0),
-        "generation.timeout_seconds",
-        0.001,
-        3600.0,
-    )
-    generation["max_retries"] = _integer(
-        generation.get("max_retries", 2),
-        "generation.max_retries",
-        minimum=0,
-    )
 
     # logging 控制结果文件里保留哪些字段。
     logging = _mapping(value.setdefault("logging", {}), "logging")
-    _unknown(logging, {"save_retrieved_chunks", "save_prompt", "save_latency", "save_token_usage"}, "logging")
-    for key in ("save_retrieved_chunks", "save_prompt", "save_latency", "save_token_usage"):
+    _unknown(logging, {"save_retrieved_text", "save_prompt"}, "logging")
+    for key in ("save_retrieved_text", "save_prompt"):
         logging[key] = _boolean(logging.get(key, True), f"logging.{key}")
-
-    if value["strict_backends"]:
-        # 严格模式要求所有会影响结果的后端都显式固定，避免隐式回退。
-        if embedding["backend"] == "auto":
-            raise ValueError("strict_backends requires an explicit embedding.backend")
-        if index["backend"] == "auto":
-            raise ValueError("strict_backends requires an explicit index.backend")
-        if generation["provider"] == "auto":
-            raise ValueError("strict_backends requires an explicit generation.provider")
-        if embedding["backend"] == "sentence_transformers" and embedding["revision"] is None:
-            raise ValueError("strict_backends requires a fixed embedding.revision")
-        if chunking["tokenizer"] == "huggingface" and chunking["tokenizer_revision"] is None:
-            raise ValueError("strict_backends requires a fixed chunking.tokenizer_revision")
 
     # load_config() 会注入 _base_dir，后续 resolve_path() 依赖它。
     if "_base_dir" in value:

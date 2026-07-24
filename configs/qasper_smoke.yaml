@@ -1,9 +1,4 @@
 # Single-paper offline smoke test for the locally saved QASPER validation split.
-strict_backends: false
-
-project:
-  name: qasper_smoke
-
 paths:
   corpus: ../data/processed/qasper/hf_dataset
   artifacts_root: ../artifacts
@@ -15,31 +10,21 @@ loader:
   max_documents: 1
 
 chunking:
-  method: fixed_sentence
   chunk_size_tokens: 300
   overlap_budget_tokens: 50
-  sentence_splitter: regex
   tokenizer: regex
-  local_files_only: true
 
 embedding:
   backend: hashing
-  model_name: hashing-384
-  revision: null
+  dimension: 384
   normalize: true
-  batch_size: 32
-  fallback_dim: 384
   query_prefix: ""
   document_prefix: ""
-  max_sequence_length: null
-  local_files_only: true
 
 index:
   backend: numpy
-  type: flat_ip
 
 retrieval:
-  type: dense
   top_k: 5
 
 context:
@@ -50,14 +35,8 @@ prompt:
 
 generation:
   provider: extractive
-  model: extractive-fallback
-  temperature: 0.0
   max_output_tokens: 512
-  timeout_seconds: 60.0
-  max_retries: 0
 
 logging:
-  save_retrieved_chunks: true
+  save_retrieved_text: true
   save_prompt: false
-  save_latency: true
-  save_token_usage: true

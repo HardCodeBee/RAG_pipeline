@@ -18,7 +18,12 @@ from src.cli_utils import safe_run_id
 from src.evaluators.logger import write_metadata_json, write_results, write_summary_csv
 from src.evaluators.metrics import evaluate_result, summarize_results
 from src.io_utils import read_jsonl, sha256_file
-from src.provenance import evaluation_spec, json_sha256, source_code_sha256
+from src.provenance import (
+    evaluation_spec,
+    json_sha256,
+    source_group_sha256,
+    source_snapshot_sha256,
+)
 
 
 def main() -> None:
@@ -66,7 +71,7 @@ def main() -> None:
         rows.append(row)
 
     questions_sha = sha256_file(questions_path)
-    reanalysis_source_sha = source_code_sha256(PROJECT_ROOT)
+    reanalysis_source_sha = source_group_sha256(PROJECT_ROOT, "evaluation")
     evaluation_value = evaluation_spec(questions_sha, reanalysis_source_sha)
     metadata = copy.deepcopy(source_metadata)
     metadata.update(
@@ -78,6 +83,8 @@ def main() -> None:
             "questions_sha256": questions_sha,
             "evaluation_spec": evaluation_value,
             "evaluation_spec_sha256": json_sha256(evaluation_value),
+            "evaluation_source_sha256": reanalysis_source_sha,
+            "source_snapshot_sha256": source_snapshot_sha256(PROJECT_ROOT),
             "started_at": datetime.now(timezone.utc).isoformat(),
             "completed_at": datetime.now(timezone.utc).isoformat(),
             "num_rows_written": len(rows),
@@ -87,7 +94,7 @@ def main() -> None:
                 "source_run_id": source_metadata["run_id"],
                 "source_metadata_sha256": sha256_file(source_metadata_path),
                 "source_results_sha256": sha256_file(source_results_path),
-                "source_sha256": reanalysis_source_sha,
+                "evaluation_source_sha256": reanalysis_source_sha,
                 "retrieval_or_generation_repeated": False,
             },
         }

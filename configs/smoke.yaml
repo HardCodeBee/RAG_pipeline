@@ -1,9 +1,4 @@
 # 离线 smoke 配置：用于快速检查完整链路，不用于正式检索或生成质量结论。
-strict_backends: false
-
-project:
-  name: naive_rag_smoke
-
 # YAML 内路径相对于本文件所在的 configs/ 目录解析。
 paths:
   corpus: ../data/corpus
@@ -14,35 +9,23 @@ loader:
   type: pypdf
   recursive: false
   empty_page_policy: skip
-  cleaner: minimal
-
 chunking:
-  method: fixed_sentence
   chunk_size_tokens: 300
   # 这是“最多保留多少重叠词元”的预算；为保留完整句子，实际重叠可能更小或为 0。
   overlap_budget_tokens: 50
-  sentence_splitter: regex
   tokenizer: regex
-  local_files_only: true
 
 embedding:
   backend: hashing
-  model_name: hashing-384
-  revision: null
+  dimension: 384
   normalize: true
-  batch_size: 32
-  fallback_dim: 384
   query_prefix: ""
   document_prefix: ""
-  max_sequence_length: null
-  local_files_only: true
 
 index:
   backend: numpy
-  type: flat_ip
 
 retrieval:
-  type: dense
   top_k: 5
 
 context:
@@ -53,14 +36,8 @@ prompt:
 
 generation:
   provider: extractive
-  model: extractive-fallback
-  temperature: 0.0
   max_output_tokens: 512
-  timeout_seconds: 60.0
-  max_retries: 0
 
 logging:
-  save_retrieved_chunks: true
+  save_retrieved_text: true
   save_prompt: true
-  save_latency: true
-  save_token_usage: true

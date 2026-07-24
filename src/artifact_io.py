@@ -59,7 +59,15 @@ def validate_build_directory(build_dir: str | Path, expected_build_id: str | Non
         EmbeddingSpaceSpec.from_mapping(embedding["space"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ValueError("Build manifest embedding space is invalid") from exc
-    for name in ("chunks", "embeddings", "index"):
+    required_artifacts = ["chunks", "embeddings"]
+    index = manifest.get("index")
+    if not isinstance(index, dict) or index.get("backend") not in {"faiss", "numpy"}:
+        raise ValueError("Build manifest index metadata is invalid")
+    if index["backend"] == "faiss":
+        required_artifacts.append("index")
+    elif "index" in manifest.get("artifacts", {}):
+        raise ValueError("NumPy builds must not contain a separate index artifact")
+    for name in required_artifacts:
         descriptor = manifest.get("artifacts", {}).get(name)
         if not isinstance(descriptor, dict) or not descriptor.get("file"):
             raise ValueError(f"Manifest is missing the {name} artifact descriptor")

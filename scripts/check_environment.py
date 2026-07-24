@@ -41,11 +41,11 @@ def main() -> None:
 
     selected = {
         "loader": config["loader"]["type"],
-        "chunker": config["chunking"]["method"],
+        "chunker": "fixed_sentence",
         "tokenizer": config["chunking"]["tokenizer"],
         "embedder": config["embedding"]["backend"],
-        "index": f"{config['index']['backend']}:{config['index']['type']}",
-        "retriever": config["retrieval"]["type"],
+        "index": f"{config['index']['backend']}:flat_ip",
+        "retriever": "dense",
         "prompt": config["prompt"]["version"],
         "generator": config["generation"]["provider"],
     }
@@ -66,12 +66,10 @@ def main() -> None:
     if config["generation"]["provider"] == "openai":
         dependencies["openai"] = _check_import("openai", "openai")
 
-    inline_key = config["generation"].get("api_key")
-    config_key_present = isinstance(inline_key, str) and bool(inline_key.strip())
     environment_key_present = bool(os.environ.get("OPENAI_API_KEY"))
     credentials = {
-        "openai_api_key_present": config_key_present or environment_key_present,
-        "openai_api_key_source": "config" if config_key_present else "environment" if environment_key_present else None,
+        "openai_api_key_present": environment_key_present,
+        "openai_api_key_source": "environment" if environment_key_present else None,
     }
     dependency_failures = [name for name, value in dependencies.items() if value["status"] != "available"]
     credential_failure = (
