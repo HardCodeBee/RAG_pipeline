@@ -4,7 +4,9 @@ import sys
 import types
 from pathlib import Path
 
-from scripts.run_qasper_eval import qasper_eval_inputs
+import pytest
+
+from scripts.run_qasper_eval import load_qasper_eval_config, qasper_eval_inputs
 from src.config import load_config
 from src.loaders.qasper_loader import (
     QASPER_EVALUATION_SLICE,
@@ -187,6 +189,36 @@ def test_qasper_smoke_config_is_single_paper_and_offline() -> None:
     assert "local_files_only" not in config["chunking"]
     assert config["index"]["backend"] == "numpy"
     assert config["generation"]["provider"] == "extractive"
+
+
+def test_qasper_baseline_config_is_explicit_global_and_formal(monkeypatch) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+
+    config, config_path = load_qasper_eval_config("configs/qasper_baseline.yaml")
+    baseline = load_config(ROOT / "configs" / "baseline.yaml")
+
+    assert config_path == (ROOT / "configs" / "qasper_baseline.yaml").resolve()
+    assert config["loader"] == {
+        "type": "qasper",
+        "split": "all",
+        "max_documents": None,
+    }
+    assert config["embedding"]["backend"] == baseline["embedding"]["backend"] == "sentence_transformers"
+    assert config["embedding"]["model_name"] == baseline["embedding"]["model_name"]
+    assert config["embedding"]["revision"] == baseline["embedding"]["revision"]
+    assert config["index"]["backend"] == baseline["index"]["backend"] == "faiss"
+    assert config["generation"]["provider"] == baseline["generation"]["provider"] == "openai"
+    assert config["generation"]["model"] == baseline["generation"]["model"]
+    assert config["chunking"]["local_files_only"] is True
+    assert config["embedding"]["local_files_only"] is True
+    assert config["logging"]["save_prompt"] is False
+
+
+def test_qasper_eval_rejects_non_qasper_config(monkeypatch) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+
+    with pytest.raises(ValueError, match="QASPER all-split loader"):
+        load_qasper_eval_config("configs/baseline.yaml")
 
 
 def test_qasper_all_split_loader_uses_fixed_order_and_global_limit(tmp_path, monkeypatch) -> None:

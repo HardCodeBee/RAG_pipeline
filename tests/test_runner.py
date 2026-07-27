@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 
+from scripts.run_eval import _concise_terminal_summary
 from src.evaluators.runner import run_evaluation
 from src.io_utils import read_jsonl
 
@@ -20,6 +21,39 @@ def _metadata(run_id: str) -> dict:
         "completed_at": None,
         "num_rows_written": 0,
     }
+
+
+def test_concise_terminal_summary_groups_only_demo_metrics() -> None:
+    summary = {
+        "num_questions": 24,
+        "num_successful_questions": 24,
+        "num_failed_questions": 0,
+        "avg_total_latency_ms": 2541.7,
+        "p95_total_latency_ms": 4632.1,
+        "retrieval_expected_source_hit_rate": 0.9545,
+        "retrieval_evidence_recall_at_k": 0.7273,
+        "retrieval_evidence_mrr": 0.5076,
+        "answer_token_f1": 0.2615,
+        "answerability_decision_accuracy": 0.875,
+        "answer_exact_match_rate": 0.0,
+    }
+
+    concise = _concise_terminal_summary(summary)
+
+    assert concise == {
+        "questions": {"total": 24, "successful": 24, "failed": 0},
+        "latency_ms": {"avg_total": 2541.7, "p95_total": 4632.1},
+        "retrieval": {
+            "expected_source_hit_rate": 0.9545,
+            "evidence_recall_at_k": 0.7273,
+            "evidence_mrr": 0.5076,
+        },
+        "answer": {
+            "token_f1": 0.2615,
+            "answerability_decision_accuracy": 0.875,
+        },
+    }
+    assert "answer_exact_match_rate" not in concise
 
 
 def test_runner_checkpoints_errors_and_retries_only_failed_rows(tmp_path) -> None:

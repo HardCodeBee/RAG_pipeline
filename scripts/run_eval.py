@@ -65,6 +65,30 @@ def _generic_error_fields(question: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def _concise_terminal_summary(summary: Mapping[str, Any]) -> dict[str, Any]:
+    """Select and group the metrics useful during an interactive demonstration."""
+    return {
+        "questions": {
+            "total": summary["num_questions"],
+            "successful": summary["num_successful_questions"],
+            "failed": summary["num_failed_questions"],
+        },
+        "latency_ms": {
+            "avg_total": summary["avg_total_latency_ms"],
+            "p95_total": summary["p95_total_latency_ms"],
+        },
+        "retrieval": {
+            "expected_source_hit_rate": summary["retrieval_expected_source_hit_rate"],
+            "evidence_recall_at_k": summary["retrieval_evidence_recall_at_k"],
+            "evidence_mrr": summary["retrieval_evidence_mrr"],
+        },
+        "answer": {
+            "token_f1": summary["answer_token_f1"],
+            "answerability_decision_accuracy": summary["answerability_decision_accuracy"],
+        },
+    }
+
+
 def main(argv: Sequence[str] | None = None) -> Path:
     process_started = time.perf_counter()
     parser = argparse.ArgumentParser(description="Evaluate the baseline RAG pipeline on JSONL questions.")
@@ -123,7 +147,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
         process_started=process_started,
     )
     print(f"Saved run: {run_dir}")
-    print(json.dumps(summary, indent=2, ensure_ascii=False))
+    print(json.dumps(_concise_terminal_summary(summary), indent=2, ensure_ascii=False))
     return run_dir
 
 

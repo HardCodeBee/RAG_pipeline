@@ -1,0 +1,55 @@
+# 正式 QASPER 开放语料评估配置。
+# 所有 train/validation/test 论文进入检索库，评估问题由 run_qasper_eval.py
+# 从 validation 的固定严格切片中选择。
+paths:
+  corpus: ../data/processed/qasper/hf_dataset
+  artifacts_root: ../artifacts
+  outputs_root: ../outputs
+
+loader:
+  type: qasper
+  split: all
+  max_documents: null
+
+chunking:
+  chunk_size_tokens: 300
+  overlap_budget_tokens: 50
+  tokenizer: huggingface
+  tokenizer_model: BAAI/bge-small-en-v1.5
+  tokenizer_revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+  local_files_only: true
+
+embedding:
+  backend: sentence_transformers
+  model_name: BAAI/bge-small-en-v1.5
+  revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+  normalize: true
+  batch_size: 32
+  query_prefix: ""
+  document_prefix: ""
+  max_sequence_length: null
+  local_files_only: true
+
+index:
+  backend: faiss
+
+retrieval:
+  top_k: 5
+
+context:
+  max_tokens: null
+
+prompt:
+  version: fixed_qa_v1
+
+generation:
+  provider: openai
+  model: gpt-4o-mini
+  temperature: 0.0
+  max_output_tokens: 512
+  timeout_seconds: 60.0
+  max_retries: 2
+
+logging:
+  save_retrieved_text: true
+  save_prompt: false

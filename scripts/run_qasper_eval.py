@@ -8,7 +8,6 @@ import os
 import sys
 import time
 from collections.abc import Mapping, Sequence
-from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -22,7 +21,7 @@ os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
 from src.cli_utils import configure_utf8_output, positive_int, safe_run_id
-from src.config import apply_cli_overrides, load_config, resolve_cli_path, validate_config
+from src.config import apply_cli_overrides, load_config, resolve_cli_path
 from src.evaluators.metrics import summarize_results
 from src.evaluators.qasper_metrics import score_qasper_open_corpus, summarize_qasper_open_corpus
 from src.evaluators.runner import run_evaluation, validate_questions
@@ -48,22 +47,15 @@ from src.provenance import (
 EVALUATION_PROTOCOL = "qasper_open_corpus_text_extractive_single_evidence_v2"
 
 
-def qasper_eval_config(base_config_path: str | Path) -> tuple[dict[str, Any], Path]:
-    """Reuse the pinned baseline backends with the QASPER corpus adapter."""
+def load_qasper_eval_config(config_value: str | Path) -> tuple[dict[str, Any], Path]:
+    """Load and validate one explicit formal QASPER configuration."""
 
-    config_path = resolve_cli_path(PROJECT_ROOT, base_config_path)
-    config = deepcopy(load_config(config_path))
-    config["paths"]["corpus"] = str(
-        (PROJECT_ROOT / "data" / "processed" / "qasper" / "hf_dataset").resolve()
-    )
-    config["loader"] = {"type": "qasper", "split": "all", "max_documents": None}
-    config["chunking"]["local_files_only"] = True
-    config["embedding"]["local_files_only"] = True
-    config["logging"]["save_retrieved_text"] = True
-    config["logging"]["save_prompt"] = False
-    config = validate_config(config)
+    config_path = resolve_cli_path(PROJECT_ROOT, config_value)
+    config = load_config(config_path)
 
     required = {
+        "QASPER all-split loader": config["loader"]
+        == {"type": "qasper", "split": "all", "max_documents": None},
         "sentence_transformers": config["embedding"]["backend"] == "sentence_transformers",
         "faiss": config["index"]["backend"] == "faiss",
         "openai": config["generation"]["provider"] == "openai",
@@ -174,7 +166,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
     parser = argparse.ArgumentParser(
         description="Evaluate the retrieval-focused QASPER slice on the global paper corpus."
     )
-    parser.add_argument("--base-config", default="configs/baseline.yaml")
+    parser.add_argument("--config", default="configs/qasper_baseline.yaml")
     parser.add_argument("--run-id", type=safe_run_id, default=None)
     parser.add_argument("--top-k", type=positive_int, default=None)
     parser.add_argument("--max-questions", type=positive_int, default=None)
@@ -184,7 +176,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
     if args.resume and args.run_id is None:
         parser.error("--resume requires an explicit --run-id")
 
-    config, config_path = qasper_eval_config(args.base_config)
+    config, config_path = load_qasper_eval_config(args.config)
     config = apply_cli_overrides(config, top_k=args.top_k)
     dataset_path = resolved_roots(config)["corpus"]
     dataset = load_qasper_dataset(dataset_path)

@@ -82,7 +82,9 @@ class FlatIPIndex:
         if self.requested_backend == "faiss":
             import faiss
 
+            # 创建一个只接受 self.dimension 维向量，并使用内积进行精确搜索的 FAISS 索引
             base_index = faiss.IndexFlatIP(self.dimension)
+            # 为 embedding 矩阵行 配置id
             self.index = faiss.IndexIDMap2(base_index)
             self.index.add_with_ids(embeddings, ids)
             self.backend = "faiss"
