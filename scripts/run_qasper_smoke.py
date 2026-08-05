@@ -11,8 +11,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.cli_utils import configure_utf8_output, positive_int
-from src.components import create_loader
+from scripts.cli_support import configure_utf8_output, positive_int
 from src.config import load_config, resolve_cli_path
 from src.evaluators.qasper_metrics import score_qasper_question, summarize_qasper_scores
 from src.index_builder import build_index
@@ -23,6 +22,7 @@ from src.loaders.qasper_loader import (
 )
 from src.pipeline import NaiveRAGPipeline
 from src.provenance import resolved_roots
+from src.encoded_corpus_factory import create_loader
 
 
 def run_qasper_smoke(
@@ -38,8 +38,8 @@ def run_qasper_smoke(
     if loader_config["split"] == "test":
         raise ValueError("QASPER smoke must use train or validation, not the held-out test split")
 
-    build_index(config)
-    pipeline = NaiveRAGPipeline(config)
+    verified_build = build_index(config)
+    pipeline = NaiveRAGPipeline(config, verified_build=verified_build)
     loader = create_loader(config)
     articles = loader.articles(resolved_roots(config)["corpus"])
     if len(articles) != 1:
@@ -72,7 +72,7 @@ def run_qasper_smoke(
             }
         )
 
-    return {
+    result = {
         "status": "complete",
         "mode": "single_paper_smoke",
         "split": loader_config["split"],
@@ -82,6 +82,8 @@ def run_qasper_smoke(
         "metrics": summarize_qasper_scores(scores),
         "results": rows,
     }
+    pipeline.close()
+    return result
 
 
 def main() -> None:

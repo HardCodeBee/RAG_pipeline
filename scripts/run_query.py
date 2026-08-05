@@ -12,9 +12,14 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.cli_utils import configure_utf8_output, positive_int, safe_run_id
+from scripts.cli_support import (
+    configure_utf8_output,
+    non_negative_int,
+    safe_run_id,
+    temporary_openai_api_key,
+)
 from src.config import apply_cli_overrides, load_config, resolve_cli_path
-from src.evaluators.logger import write_metadata_json, write_results
+from src.persistence.run_output_writer import write_metadata_json, write_results
 from src.pipeline import NaiveRAGPipeline
 from src.provenance import recorded_config, resolved_roots
 
@@ -22,11 +27,16 @@ from src.provenance import recorded_config, resolved_roots
 def main() -> None:
     process_started = time.perf_counter()
     parser = argparse.ArgumentParser(description="Run one query through the baseline RAG pipeline.")
-    parser.add_argument("--config", default="configs/smoke.yaml", help="Path to a YAML config")
+    parser.add_argument("--config", required=True, help="Path to a YAML config")
     parser.add_argument("--query", required=True, help="Question to answer")
     parser.add_argument("--question-id", default="manual_query")
     parser.add_argument("--run-id", type=safe_run_id, default=None)
-    parser.add_argument("--top-k", type=positive_int, default=None)
+    parser.add_argument("--top-k", type=non_negative_int, default=None)
+    parser.add_argument(
+        "--api-key-file",
+        default=None,
+        help="Local key file inside the project; never written to run metadata",
+    )
     parser.add_argument("--no-log", action="store_true")
     args = parser.parse_args()
     configure_utf8_output()
@@ -34,12 +44,14 @@ def main() -> None:
     config_path = resolve_cli_path(PROJECT_ROOT, args.config)
     config = apply_cli_overrides(load_config(config_path), top_k=args.top_k)
     started_at = datetime.now(timezone.utc).isoformat()
-    pipeline = NaiveRAGPipeline(config)
+    with temporary_openai_api_key(args.api_key_file, allowed_root=PROJECT_ROOT):
+        pipeline = NaiveRAGPipeline(config)
     run_id = args.run_id or (
         datetime.now(timezone.utc).strftime("query_%Y%m%d_%H%M%S_")
         + pipeline.runtime_metadata["run_spec_sha256"][:8]
     )
     result = pipeline.query(args.query, question_id=args.question_id)
+    pipeline.close()
     result["run_id"] = run_id
     process_latency_ms = (time.perf_counter() - process_started) * 1000
 

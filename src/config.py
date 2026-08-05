@@ -1,6 +1,8 @@
-"""加载、校验并解析紧凑实验配置。"""
+"""配置加载、校验与路径解析的实现。"""
 
 from __future__ import annotations
+
+# Root-level configuration contract shared by all pipeline stages.
 
 import copy
 import math
@@ -17,6 +19,7 @@ _ROOT_KEYS = {
     "embedding",
     "index",
     "retrieval",
+    "bm25",
     "context",
     "prompt",
     "generation",
@@ -112,8 +115,12 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         paths[key] = _text(paths.get(key), f"paths.{key}")
 
     # loader 控制如何发现和读取 corpus 文件。
-    loader = _mapping(value.setdefault("loader", {}), "loader")
-    loader["type"] = _choice(loader.get("type", "pypdf"), {"pypdf", "qasper"}, "loader.type")
+    loader = _mapping(value.get("loader"), "loader")
+    loader["type"] = _choice(
+        loader.get("type"),
+        {"dpr_wikipedia", "qasper"},
+        "loader.type",
+    )
     if loader["type"] == "qasper":
         _unknown(loader, {"type", "split", "max_documents"}, "loader")
         loader["split"] = _choice(
@@ -127,22 +134,47 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             if max_documents is not None
             else None
         )
-    else:
-        _unknown(loader, {"type", "recursive", "empty_page_policy"}, "loader")
-        loader["recursive"] = _boolean(loader.get("recursive", False), "loader.recursive")
-        loader["empty_page_policy"] = _choice(
-            loader.get("empty_page_policy", "skip"),
-            {"error", "skip"},
-            "loader.empty_page_policy",
+    elif loader["type"] == "dpr_wikipedia":
+        _unknown(
+            loader,
+            {
+                "type",
+                "expected_protocol",
+                "text_format",
+                "require_canonical_counts",
+            },
+            "loader",
+        )
+        loader["expected_protocol"] = _text(
+            loader.get("expected_protocol"),
+            "loader.expected_protocol",
+        )
+        loader["text_format"] = _choice(
+            loader.get("text_format", "title_newline_text_v1"),
+            {"title_newline_text_v1"},
+            "loader.text_format",
+        )
+        loader["require_canonical_counts"] = _boolean(
+            loader.get("require_canonical_counts", True),
+            "loader.require_canonical_counts",
         )
     # chunking 控制“页面文本 -> chunk”的策略和 token 预算。
     chunking = _mapping(value.get("chunking"), "chunking")
+    chunking["strategy"] = _choice(
+        chunking.get(
+            "strategy",
+            "presegmented" if loader["type"] == "dpr_wikipedia" else "fixed_sentence",
+        ),
+        {"fixed_sentence", "presegmented"},
+        "chunking.strategy",
+    )
     chunking["tokenizer"] = _choice(
         chunking.get("tokenizer", "regex"),
         {"huggingface", "regex"},
         "chunking.tokenizer",
     )
     common_chunking_keys = {
+        "strategy",
         "chunk_size_tokens",
         "overlap_budget_tokens",
         "tokenizer",
@@ -166,6 +198,10 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     )
     if chunking["overlap_budget_tokens"] >= chunking["chunk_size_tokens"]:
         raise ValueError("chunking.overlap_budget_tokens must be smaller than chunk_size_tokens")
+    if chunking["strategy"] == "presegmented" and chunking["overlap_budget_tokens"] != 0:
+        raise ValueError("presegmented chunking requires overlap_budget_tokens=0")
+    if loader["type"] == "dpr_wikipedia" and chunking["strategy"] != "presegmented":
+        raise ValueError("dpr_wikipedia loader requires presegmented chunking")
     if chunking["tokenizer"] == "huggingface":
         # Model-backed tokenization must pin the exact tokenizer revision.
         chunking["tokenizer_model"] = _text(
@@ -193,6 +229,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         "normalize",
         "query_prefix",
         "document_prefix",
+        "device",
     }
     if embedding["backend"] == "hashing":
         _unknown(embedding, common_embedding_keys | {"dimension"}, "embedding")
@@ -227,6 +264,13 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             "embedding.local_files_only",
         )
     embedding["normalize"] = _boolean(embedding.get("normalize", True), "embedding.normalize")
+    embedding["device"] = _choice(
+        embedding.get("device", "auto"),
+        {"auto", "cpu", "cuda"},
+        "embedding.device",
+    )
+    if embedding["backend"] == "hashing" and embedding["device"] == "cuda":
+        raise ValueError("hashing embedding does not support device=cuda")
     for key in ("query_prefix", "document_prefix"):
         item = embedding.get(key, "")
         if not isinstance(item, str):
@@ -235,13 +279,223 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         embedding[key] = item
     # index 控制向量索引后端；当前只支持平铺内积索引。
     index = _mapping(value.get("index"), "index")
-    _unknown(index, {"backend"}, "index")
     index["backend"] = _choice(index.get("backend"), {"faiss", "numpy"}, "index.backend")
+    index["type"] = _choice(
+        index.get("type", "flat_ip"),
+        {"flat_ip", "hnsw_flat", "ivf_flat", "ivf_pq"},
+        "index.type",
+    )
+    allowed_index_keys = {"backend", "type", "build_batch_size", "faiss_threads"}
+    if index["type"] == "hnsw_flat":
+        allowed_index_keys.update({"hnsw_m", "ef_construction"})
+    if index["type"] in {"ivf_flat", "ivf_pq"}:
+        allowed_index_keys.update({"nlist", "train_size", "train_seed"})
+    if index["type"] == "ivf_pq":
+        allowed_index_keys.update({"pq_m", "pq_nbits"})
+    _unknown(index, allowed_index_keys, "index")
+    if index["backend"] == "numpy" and index["type"] != "flat_ip":
+        raise ValueError("index.backend=numpy only supports index.type=flat_ip")
+    index["build_batch_size"] = _integer(
+        index.get("build_batch_size", 65536),
+        "index.build_batch_size",
+    )
+    index["faiss_threads"] = _integer(
+        index.get("faiss_threads", 0),
+        "index.faiss_threads",
+        minimum=0,
+    )
+    if index["type"] == "hnsw_flat":
+        index["hnsw_m"] = _integer(index.get("hnsw_m", 32), "index.hnsw_m")
+        index["ef_construction"] = _integer(
+            index.get("ef_construction", 200),
+            "index.ef_construction",
+        )
+    if index["type"] in {"ivf_flat", "ivf_pq"}:
+        index["nlist"] = _integer(index.get("nlist", 1024), "index.nlist")
+        index["train_size"] = _integer(
+            index.get("train_size", 100000),
+            "index.train_size",
+        )
+        index["train_seed"] = _integer(
+            index.get("train_seed", 20260731),
+            "index.train_seed",
+            minimum=0,
+        )
+    if index["type"] == "ivf_pq":
+        index["pq_m"] = _integer(index.get("pq_m", 48), "index.pq_m")
+        index["pq_nbits"] = _integer(index.get("pq_nbits", 8), "index.pq_nbits")
+        if index["pq_nbits"] > 16:
+            raise ValueError("index.pq_nbits must be <= 16")
 
     # retrieval 控制查询时召回策略和默认 top_k。
     retrieval = _mapping(value.setdefault("retrieval", {}), "retrieval")
-    _unknown(retrieval, {"top_k"}, "retrieval")
-    retrieval["top_k"] = _integer(retrieval.get("top_k", 5), "retrieval.top_k")
+    _unknown(
+        retrieval,
+        {
+            "method",
+            "policy",
+            "top_k",
+            "candidate_k",
+            "final_k",
+            "nprobe",
+            "ef_search",
+            "max_codes",
+            "search_threads",
+            "reranker",
+        },
+        "retrieval",
+    )
+    retrieval["method"] = _choice(
+        retrieval.get("method", "dense"),
+        {"dense", "bm25"},
+        "retrieval.method",
+    )
+    retrieval["policy"] = _choice(
+        retrieval.get("policy", "fixed"),
+        {"fixed"},
+        "retrieval.policy",
+    )
+    supplied_top_k = retrieval.get("top_k")
+    supplied_final_k = retrieval.get("final_k")
+    if (
+        supplied_top_k is not None
+        and supplied_final_k is not None
+        and supplied_top_k != supplied_final_k
+    ):
+        raise ValueError("retrieval.top_k and retrieval.final_k must match when both are set")
+    final_k = supplied_final_k if supplied_final_k is not None else supplied_top_k
+    retrieval["final_k"] = _integer(
+        5 if final_k is None else final_k,
+        "retrieval.final_k",
+        minimum=0,
+    )
+    retrieval["top_k"] = retrieval["final_k"]
+    retrieval["candidate_k"] = _integer(
+        retrieval.get("candidate_k", retrieval["final_k"]),
+        "retrieval.candidate_k",
+        minimum=0,
+    )
+    if retrieval["final_k"] == 0 and retrieval["candidate_k"] != 0:
+        raise ValueError("retrieval.candidate_k must be 0 when final_k=0")
+    if retrieval["candidate_k"] < retrieval["final_k"]:
+        raise ValueError("retrieval.candidate_k must be >= retrieval.final_k")
+    retrieval["search_threads"] = _integer(
+        retrieval.get("search_threads", 0),
+        "retrieval.search_threads",
+        minimum=0,
+    )
+    ann_parameter_names = ("nprobe", "ef_search", "max_codes")
+    if retrieval["method"] == "bm25":
+        if any(key in retrieval for key in ann_parameter_names):
+            raise ValueError("retrieval.method=bm25 does not accept ANN search parameters")
+    else:
+        if index["type"] == "flat_ip" and any(
+            key in retrieval for key in ann_parameter_names
+        ):
+            raise ValueError("flat_ip does not accept ANN search parameters")
+        if index["type"] == "hnsw_flat":
+            if any(key in retrieval for key in ("nprobe", "max_codes")):
+                raise ValueError("hnsw_flat only accepts retrieval.ef_search")
+            retrieval["ef_search"] = _integer(
+                retrieval.get("ef_search", 64),
+                "retrieval.ef_search",
+            )
+        if index["type"] in {"ivf_flat", "ivf_pq"}:
+            if "ef_search" in retrieval:
+                raise ValueError("IVF indexes do not accept retrieval.ef_search")
+            retrieval["nprobe"] = _integer(
+                retrieval.get("nprobe", min(16, index["nlist"])),
+                "retrieval.nprobe",
+            )
+            retrieval["max_codes"] = _integer(
+                retrieval.get("max_codes", 0),
+                "retrieval.max_codes",
+                minimum=0,
+            )
+
+    reranker = _mapping(retrieval.get("reranker", {"provider": "none"}), "retrieval.reranker")
+    reranker["provider"] = _choice(
+        reranker.get("provider", "none"),
+        {"none", "cross_encoder"},
+        "retrieval.reranker.provider",
+    )
+    if reranker["provider"] == "none":
+        _unknown(reranker, {"provider"}, "retrieval.reranker")
+    else:
+        _unknown(
+            reranker,
+            {
+                "provider",
+                "model_name",
+                "revision",
+                "batch_size",
+                "device",
+                "local_files_only",
+            },
+            "retrieval.reranker",
+        )
+        reranker["model_name"] = _text(
+            reranker.get("model_name"),
+            "retrieval.reranker.model_name",
+        )
+        reranker["revision"] = _text(
+            reranker.get("revision"),
+            "retrieval.reranker.revision",
+        )
+        reranker["batch_size"] = _integer(
+            reranker.get("batch_size", 32),
+            "retrieval.reranker.batch_size",
+        )
+        reranker["device"] = _choice(
+            reranker.get("device", "auto"),
+            {"auto", "cpu", "cuda"},
+            "retrieval.reranker.device",
+        )
+        reranker["local_files_only"] = _boolean(
+            reranker.get("local_files_only", False),
+            "retrieval.reranker.local_files_only",
+        )
+    retrieval["reranker"] = reranker
+
+    bm25_value = value.get("bm25")
+    if retrieval["method"] == "bm25":
+        bm25 = _mapping({} if bm25_value is None else bm25_value, "bm25")
+        _unknown(
+            bm25,
+            {"backend", "method", "k1", "b", "analyzer", "mmap"},
+            "bm25",
+        )
+        bm25["backend"] = _choice(
+            bm25.get("backend", "bm25s"),
+            {"bm25s"},
+            "bm25.backend",
+        )
+        bm25["method"] = _choice(
+            bm25.get("method", "lucene"),
+            {"lucene"},
+            "bm25.method",
+        )
+        bm25["k1"] = _number(
+            bm25.get("k1", 1.5),
+            "bm25.k1",
+            minimum=0.000001,
+            maximum=100.0,
+        )
+        bm25["b"] = _number(
+            bm25.get("b", 0.75),
+            "bm25.b",
+            minimum=0.0,
+            maximum=1.0,
+        )
+        bm25["analyzer"] = _choice(
+            bm25.get("analyzer", "english_default_v1"),
+            {"english_default_v1"},
+            "bm25.analyzer",
+        )
+        bm25["mmap"] = _boolean(bm25.get("mmap", True), "bm25.mmap")
+        value["bm25"] = bm25
+    elif bm25_value is not None:
+        raise ValueError("bm25 config requires retrieval.method=bm25")
 
     # context 控制把召回 chunk 拼进 prompt 时的 token 上限。
     context = _mapping(value.setdefault("context", {}), "context")
@@ -255,7 +509,11 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     # prompt 使用固定版本号，确保实验能追溯到具体 prompt 模板。
     prompt = _mapping(value.setdefault("prompt", {}), "prompt")
     _unknown(prompt, {"version"}, "prompt")
-    prompt["version"] = _choice(prompt.get("version", "fixed_qa_v1"), {"fixed_qa_v1"}, "prompt.version")
+    prompt["version"] = _choice(
+        prompt.get("version", "fixed_qa_v1"),
+        {"fixed_qa_v1", "nq_short_qa_v1"},
+        "prompt.version",
+    )
 
     # generation explicitly selects either remote OpenAI or local extractive generation.
     generation = _mapping(value.get("generation"), "generation")
@@ -337,6 +595,11 @@ def apply_cli_overrides(config: dict[str, Any], *, top_k: int | None = None) -> 
     # 命令行覆盖项不修改原配置，而是返回一个重新校验过的副本。
     effective = copy.deepcopy(config)
     if top_k is not None:
-        _integer(top_k, "retrieval.top_k")
+        _integer(top_k, "retrieval.top_k", minimum=0)
         effective["retrieval"]["top_k"] = top_k
+        effective["retrieval"]["final_k"] = top_k
+        if top_k == 0:
+            effective["retrieval"]["candidate_k"] = 0
+        elif effective["retrieval"].get("candidate_k", 0) < top_k:
+            effective["retrieval"]["candidate_k"] = top_k
     return validate_config(effective)

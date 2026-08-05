@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from src.core.records import PageRecord
+from src.records import PageRecord
 
 
 QASPER_SPLITS = ("train", "validation", "test")
@@ -24,7 +24,7 @@ _REFERENCE_FIELDS = (
 
 @dataclass(frozen=True, slots=True)
 class QasperUnit:
-    """One indexable paper unit and its deterministic evidence representation."""
+    """One indexable paper unit and its deterministic evidence text."""
 
     text: str
     evidence: str

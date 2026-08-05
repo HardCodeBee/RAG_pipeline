@@ -1,258 +1,171 @@
-# Reproducible Naive RAG Pipeline
+# Query-Adaptive RAG Pipeline
 
-This project provides a compact RAG pipeline for demonstration and reproducible experiments:
+This repository now supports two research corpora:
 
-```text
-PDF/QASPER corpus → chunking → embeddings → exact dense retrieval → prompt → generation → evaluation
-```
-
-Use `configs/smoke.yaml` for an offline demonstration, `configs/baseline.yaml` for the formal
-five-paper baseline, and `configs/qasper_baseline.yaml` for formal QASPER evaluation. Python 3.11
-is the verified environment.
-
-## Configuration profiles
-
-| Configuration | Corpus | Embedding | Index | Generator | Intended use |
-| --- | --- | --- | --- | --- | --- |
-| `configs/smoke.yaml` | Five local PDFs | Deterministic hashing | NumPy exact search | Extractive | Offline end-to-end demonstration |
-| `configs/baseline.yaml` | Five local PDFs | Pinned BGE small | FAISS FlatIP | OpenAI | Formal five-paper experiment |
-| `configs/qasper_smoke.yaml` | One QASPER validation paper | Deterministic hashing | NumPy exact search | Extractive | Offline QASPER adapter check |
-| `configs/qasper_baseline.yaml` | All QASPER papers | Pinned BGE small | FAISS FlatIP | OpenAI | Formal QASPER open-corpus evaluation |
-
-Backends are explicit. A requested SentenceTransformer, FAISS, or OpenAI backend must be available;
-the pipeline does not silently replace it with a lightweight fallback. FAISS FlatIP performs exact
-inner-product search in this project, not approximate nearest-neighbor search.
+- QASPER for evidence-aware open-corpus retrieval and answer evaluation;
+- Natural Questions Open with a frozen one-million-passage DPR Wikipedia subset.
 
 ## Install
 
-Create an environment and install the offline demo dependencies:
+For tests:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements/dev.txt -c requirements/constraints/verified.txt
+python -m pip install -r requirements/dev.txt
 ```
 
-On Linux or macOS, activate with `source .venv/bin/activate`.
-
-For the formal baseline or QASPER, also install the experiment dependencies:
+For QASPER/NQ experiments:
 
 ```powershell
-python -m pip install -r requirements/experiment.txt -r requirements/dev.txt -c requirements/constraints/verified.txt
+python -m pip install -r requirements/experiment.txt -c requirements/constraints/verified.txt
 ```
 
-## Repository and data layout
-
-```text
-configs/                         four explicit experiment configurations
-data/corpus/                     five versioned PDF inputs
-data/corpus_manifest.json        frozen PDF file sizes and SHA-256 values
-data/questions_v1.jsonl          24 development questions
-data/questions_heldout_v1.jsonl  5 held-out questions
-data/processed/qasper/           local QASPER cache, generated and Git-ignored
-scripts/                         build, query, evaluation, and maintenance entry points
-src/                             pipeline implementation
-tests/                           offline regression and optional backend tests
-artifacts/<build_id>/            generated chunks, embeddings, index, and manifest
-outputs/<run_id>/                generated answers, metadata, and metrics
-```
-
-`data/` contains experiment inputs, not generated vectors. The PDF corpus and question files are
-versioned; `data/processed/`, `artifacts/`, and `outputs/` are local generated data excluded from
-Git. Questions and gold labels are used only during evaluation and are never inserted into the
-retrieval index.
-
-## Offline demo
-
-The smoke configuration uses hashing embeddings, NumPy exact search, and an extractive generator.
-It requires no API key or model download.
-
-```powershell
-# Build the index
-python scripts/build_index.py --config configs/smoke.yaml
-
-# Ask one question
-python scripts/run_query.py --config configs/smoke.yaml --query "What are the stages of Naive RAG?" --no-log
-
-# Evaluate the development questions
-$runId = "smoke_$(Get-Date -Format yyyyMMdd_HHmmss)"
-python scripts/run_eval.py --config configs/smoke.yaml --questions data/questions_v1.jsonl --run-id $runId
-```
-
-Build artifacts are written to `artifacts/`; query and evaluation results are written to `outputs/`.
-`run_eval.py` prints a concise demonstration summary, while the complete metrics remain in
-`outputs/<run_id>/summary.csv` and `metadata.json`. Use a new `--run-id` for each new evaluation.
-
-## Formal five-paper baseline
-
-The formal configuration uses the pinned `BAAI/bge-small-en-v1.5` model, FAISS FlatIP exact
-retrieval, top-5 context, and `gpt-4o-mini`.
+API credentials belong in the process environment:
 
 ```powershell
 $env:OPENAI_API_KEY = "your-key"
-
-# Check dependencies and credentials
-python scripts/check_environment.py --config configs/baseline.yaml --strict-credentials
-
-# Build the formal index
-python scripts/build_index.py --config configs/baseline.yaml
-
-# Ask one question
-python scripts/run_query.py --config configs/baseline.yaml --query "What is retrieval-augmented generation?" --no-log
-
-# Evaluate the development set
-$runId = "baseline_$(Get-Date -Format yyyyMMdd_HHmmss)"
-python scripts/run_eval.py --config configs/baseline.yaml --questions data/questions_v1.jsonl --run-id $runId
 ```
 
-The API key is read only from `OPENAI_API_KEY`; inline credentials in YAML are rejected. Persisted
-JSON/JSONL metadata removes credential fields and redacts key-shaped values. The environment check
-verifies credential presence but does not make an OpenAI request.
+Inline credentials in YAML are rejected. Persisted JSON/JSONL removes credential fields and
+redacts key-shaped values.
 
 ## QASPER
 
-Prepare the official Hugging Face QASPER DatasetDict once; the first run requires network access:
+Prepare the local Hugging Face dataset once:
 
 ```powershell
 python scripts/prepare_qasper.py
 ```
 
-The saved copy contains `train`, `validation`, and `test` under
-`data/processed/qasper/hf_dataset/`. Later runs use this local copy. Run the single-paper offline
-smoke with:
+Run the single-paper offline smoke workflow:
 
 ```powershell
-python scripts/run_qasper_smoke.py --max-questions 3
+python scripts/run_qasper_smoke.py --config configs/qasper_smoke.yaml --max-questions 3
 ```
 
-The formal QASPER configuration is offline for Hugging Face model loading, so the pinned BGE
-snapshot must already exist in the local Hugging Face cache. If necessary, cache it once:
+Build and run the formal open-corpus evaluation:
 
 ```powershell
-python -c "from huggingface_hub import snapshot_download; snapshot_download(repo_id='BAAI/bge-small-en-v1.5', revision='5c38ec7c405ec4b44b94cc5a9bb96e735b38267a')"
-```
-
-Run the formal open-corpus evaluation:
-
-```powershell
-$env:OPENAI_API_KEY = "your-key"
 python scripts/check_environment.py --config configs/qasper_baseline.yaml --strict-credentials
-$runId = "qasper_$(Get-Date -Format yyyyMMdd_HHmmss)"
+python scripts/build_index.py --config configs/qasper_baseline.yaml
+$runId = "qasper_" + (Get-Date -Format "yyyyMMdd_HHmmss")
 python scripts/run_qasper_eval.py --config configs/qasper_baseline.yaml --run-id $runId
 ```
 
-The standalone `configs/qasper_baseline.yaml` explicitly selects the all-split QASPER corpus,
-FAISS, OpenAI, and the pinned BGE tokenizer/model revision already in the local Hugging Face cache.
-`run_qasper_eval.py` builds or validates and reuses the matching index automatically.
+The reported protocol is `qasper_open_corpus_text_extractive_single_evidence_v2`. It evaluates the
+fixed `answerable + text-only + extractive + single-evidence` validation slice against the global
+train/validation/test paper corpus. It is not a full-QASPER score.
 
-All train, validation, and test papers enter the retrieval corpus; papers other than the target
-paper act as distractors. Evaluation questions come only from validation and use protocol
-`qasper_open_corpus_text_extractive_single_evidence_v2` and question slice
-`answerable_text_only_extractive_single_evidence_v1`. An eligible reference must be answerable,
-extractive, text-only, and backed by exactly one non-empty evidence unit. This slice excludes
-multi-evidence, table/figure, abstractive, yes/no, and unanswerable cases, so its scores must not be
-reported as full-QASPER performance. Here, "extractive" describes the selected reference type; the
-formal generator is still OpenAI.
+## Natural Questions + DPR Wikipedia
 
-For a small paid backend check, add `--max-questions 5`. To ask a free-form question against the
-full QASPER index, build it once and use the same explicit configuration:
+Prepare the frozen database and question splits from local DPR source archives:
 
 ```powershell
-python scripts/build_index.py --config configs/qasper_baseline.yaml
-python scripts/run_query.py --config configs/qasper_baseline.yaml --query "Your question" --no-log
+python scripts/prepare_nq_dpr_wiki.py `
+  --wikipedia data/raw/dpr/psgs_w100.tsv.gz `
+  --questions data/raw/dpr/biencoder-nq-dev.json.gz `
+  --output-dir data/nq_open_dpr_wiki_1m
 ```
 
-## Common CLI operations
-
-Override retrieval depth without rebuilding the index:
+Build the exact FlatIP reference and run the fixed evaluation split:
 
 ```powershell
-python scripts/run_query.py --config configs/baseline.yaml --query "Your question" --top-k 10 --no-log
-python scripts/run_eval.py --config configs/baseline.yaml --questions data/questions_v1.jsonl --run-id baseline_top10 --top-k 10
-python scripts/run_qasper_eval.py --config configs/qasper_baseline.yaml --run-id qasper_top10 --top-k 10
+python scripts/check_environment.py --config configs/nq_dpr_wiki.yaml --strict-credentials
+python scripts/build_index.py --config configs/nq_dpr_wiki.yaml
+$runId = "nq_flat_" + (Get-Date -Format "yyyyMMdd_HHmmss")
+python scripts/run_nq_eval.py --config configs/nq_dpr_wiki.yaml --run-id $runId
 ```
 
-Resume an interrupted evaluation with the original run ID and exactly the same question, build,
-run, evaluation, and effective top-k identities:
+Available controlled variants:
+
+| Config | Retrieval condition |
+|---|---|
+| `configs/nq_dpr_wiki.yaml` | exact FAISS FlatIP reference |
+| `configs/nq_dpr_wiki_hnsw.yaml` | HNSW |
+| `configs/nq_dpr_wiki_ivf_flat.yaml` | IVF-Flat |
+| `configs/nq_dpr_wiki_ivf_pq.yaml` | IVF-PQ |
+| `configs/nq_dpr_wiki_rerank.yaml` | FlatIP candidates plus cross-encoder reranking |
+| `configs/nq_dpr_wiki_bm25.yaml` | memory-mapped BM25S lexical retrieval |
+
+Build and evaluate the BM25 baseline:
 
 ```powershell
-python scripts/run_eval.py --config configs/baseline.yaml --questions data/questions_v1.jsonl --run-id baseline_run --resume
-python scripts/run_qasper_eval.py --config configs/qasper_baseline.yaml --run-id qasper_run --resume
+python scripts/check_environment.py --config configs/nq_dpr_wiki_bm25.yaml --strict-credentials
+python scripts/build_bm25_index.py --config configs/nq_dpr_wiki_bm25.yaml
+$runId = "nq_bm25_" + (Get-Date -Format "yyyyMMdd_HHmmss")
+python scripts/run_nq_eval.py --config configs/nq_dpr_wiki_bm25.yaml --run-id $runId
 ```
 
-If the original run used `--top-k` or `--max-questions`, repeat the same overrides when resuming.
-`run_query.py` creates an immutable output directory unless `--no-log` is supplied. Use
-`python scripts/<name>.py --help` to inspect all supported arguments.
+The first BM25 stage intentionally reuses the active immutable build's `chunks.jsonl` and
+zero-based vector IDs. Its sparse arrays live under `artifacts/_sparse_indexes/`, have their own
+manifest, and are bound to the chunk SHA-256, row count, BM25 parameters, BM25S version, and source
+fingerprint. Query startup validates that manifest and loads the sparse arrays with mmap; it does
+not load the query embedding model or FAISS index.
 
-## Recompute generic metrics
+The frozen corpus is gold-conditioned and is intended for controlled comparisons inside this
+pipeline. Do not report it as a standard full-Wikipedia NQ benchmark.
 
-Recompute metrics from saved generic evaluation results without running retrieval or generation:
+## Query an existing build
 
 ```powershell
-python scripts/recompute_metrics.py --source-run-dir outputs/<source_run_id> --questions data/questions_v1.jsonl --run-id <reanalyzed_run_id>
+python scripts/run_query.py `
+  --config configs/nq_dpr_wiki.yaml `
+  --query "Who wrote Hamlet?" `
+  --no-log
 ```
 
-The question file must match the original run. This command does not recompute QASPER open-corpus
-metrics.
+`--top-k 0` explicitly gates retrieval. Candidate depth, final depth, ANN search parameters, and
+reranking remain separate query-time controls.
 
-## Artifacts and reproducibility
-
-Each `artifacts/<build_id>/` directory is immutable and contains:
+## Project layout
 
 ```text
-manifest.json
-chunks.jsonl
-embeddings.npy
-index.faiss       # FAISS builds only
+configs/                     QASPER and NQ experiment configurations
+data/                        dataset documentation and local ignored datasets
+scripts/                     entry points plus shared CLI boundary support
+src/*.py                     contracts, stage factories, and pipeline orchestration only
+src/chunkers/                chunking component implementations
+src/context_builders/        retrieved-hit to prompt-context implementations
+src/embedders/               document and query embedding implementations
+src/generators/              answer-generation implementations
+src/indexes/                 NumPy and FAISS vector-index implementations
+src/loaders/                 QASPER and DPR Wikipedia corpus adapters
+src/model_backends/          shared pinned-model resource resolution
+src/persistence/             artifact validation, storage, and run-output writers
+src/preparers/               deterministic dataset preparation components
+src/prompts/                 prompt implementations
+src/rerankers/               reranking implementations and contract
+src/retrievers/              dense/BM25 retrieval, sparse-index build, and lazy chunk access
+src/text/                    sentence splitting and token counting
+src/evaluators/              QASPER/NQ protocol validation and metrics
+artifacts/                   local immutable encoded corpora and builds (ignored)
+outputs/                     local query/evaluation runs (ignored)
+tests/                       unit, contract, and integration coverage
 ```
 
-Each completed evaluation under `outputs/<run_id>/` contains:
+Root-level `src` modules define shared contracts or connect components; implementation directories
+do not contain pipeline orchestration. Persisted-artifact I/O lives in
+`src/persistence/artifact_io.py`, while every disk trust-boundary check remains together in
+`src/persistence/artifact_validation.py`. An in-memory verified handle is passed onward so the same
+artifact is not checked again within one process.
 
-```text
-metadata.json     experiment identity and effective configuration
-results.jsonl     one retrieval/generation record per question
-summary.csv       complete aggregate metrics
-```
+Builds, runs, and evaluations remain separate reproducibility boundaries. Completed manifests,
+artifact size/SHA-256 checks, embedding-space validation, vector-ID consistency, staging, atomic
+commit, and reload verification protect persisted artifacts. Evaluation rows are checkpointed
+individually and merged once at completion. Historical build directories are not migrated in place.
 
-| Identity | Changes when |
-| --- | --- |
-| Build identity | Corpus, loader, chunking, document embedding, index, or build-stage source changes |
-| Run identity | Build, query settings, top-k, context, prompt, generator, or run-stage source changes |
-| Evaluation identity | Question set, metric implementation, protocol, or evaluation-stage source changes |
-
-Existing build directories are validated before use, including completion status, expected build
-ID, artifact size and SHA-256, vector ordering, embedding dimensions, and index consistency.
-Changing only `top_k`, prompt, or generation settings does not rebuild document embeddings, but it
-does create a different run identity. Source or protocol changes can make an old partial run
-incompatible with `--resume`; use a new run ID instead of modifying historical outputs.
+After source refactoring, existing QASPER/NQ outputs remain valid historical records, but a new
+build is required before running the changed source tree.
 
 ## Tests
 
 ```powershell
-# Offline test suite
-python -m pytest -q
-
-# Optional pinned BGE and FAISS backend test
-$env:RUN_FULL_BACKEND_TESTS = "1"
-python -m pytest -q tests/test_full_backend.py
-Remove-Item Env:RUN_FULL_BACKEND_TESTS
+C:\Users\12442\anaconda3\python.exe -m pytest -q
 ```
 
-The regular suite is offline. The optional backend test loads the pinned BGE model and FAISS but
-does not call OpenAI.
+Focused backend tests use the markers declared in `pytest.ini`. QASPER and NQ keep independent
+selection and metric contracts even though they share the same build/query/evaluation runner.
 
-## Scope and limitations
+Further details:
 
-- `smoke.yaml` and `qasper_smoke.yaml` verify behavior; they are not quality baselines.
-- `questions_v1.jsonl` is a development set used during diagnostics, not unseen test performance.
-- `questions_heldout_v1.jsonl` contains five questions and should be run only after freezing the
-  configuration; do not tune on its result.
-- Automatic exact match and token F1 are limited for long-form answers. Interpret them together
-  with source/evidence retrieval, refusal behavior, and saved provider metadata.
-- The active baseline has no reranker, BM25/hybrid retrieval, query rewriting, HyDE, agentic loop,
-  HNSW, or dynamic top-k.
-
-Additional data documentation:
-
-- [Corpus and data layout](data/README.md)
-- [Question-set semantics](data/QUESTIONS_V1.md)
+- [Dataset contracts](data/README.md)
+- [NQ/DPR architecture and experiment plan](docs/nq_dpr_pipeline_plan.md)

@@ -8,16 +8,24 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 
+# Local-only test files
+/tests/
+test_*.py
+*_test.py
+
 # Local environments and credentials
 .env
 .env.*
+api_code.txt
 .venv/
 venv/
 
 # Reproducible generated pipeline data
-artifacts/
-outputs/
+/artifacts/
+/outputs/
 data/processed/
+data/raw/
+data/nq_open_dpr_wiki_1m/
 
 # Local reports for supervisor updates
 report.md

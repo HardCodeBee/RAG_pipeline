@@ -1,82 +1,83 @@
-# Data and corpus
+# Dataset contracts
 
-This directory contains the versioned PDF corpus and the question sets used by the baseline.
-Generated chunks, embeddings, and indexes do not belong here; the current pipeline writes them to
-the ignored `artifacts/<build_id>/` directory.
+`data/` contains dataset inputs and prepared corpora. Embeddings, vector indexes, and evaluation
+results do not belong here; they are written to `artifacts/` and `outputs/`.
 
-## Corpus
+Large downloaded and prepared datasets are Git-ignored. Their manifests, file hashes, row counts,
+and protocol checks are the reproducibility boundary.
 
-`corpus/` contains the exact five PDFs used by the reported experiment:
+## QASPER
 
-1. AquaPipe: *A Quality-Aware Pipeline for Knowledge Retrieval*
-2. SAGE: *A Framework of Precise Retrieval for RAG*
-3. Gao et al.: RAG survey
-4. Lewis et al. (2020): Retrieval-Augmented Generation
-5. Karpukhin et al. (2020): Dense Passage Retrieval
-
-The machine-readable file names, byte sizes, and SHA-256 values are frozen in
-[`corpus_manifest.json`](corpus_manifest.json). Build manifests independently recompute the same
-per-file hashes and an aggregate corpus identity before indexing.
-
-Evidence annotations use 1-based physical PDF pages produced by `pypdf`, not the page numbers
-printed inside a paper.
-
-## Development questions
-
-`questions_v1.jsonl` contains 24 questions:
-
-- 22 answerable questions;
-- 2 deliberately unanswerable questions;
-- single-paper, multi-evidence, and cross-paper cases;
-- page-level evidence spanning all five PDFs.
-
-Each line is one UTF-8 JSON object. Important fields are:
-
-- `question_id`: stable unique identifier;
-- `question`: query text;
-- `gold_answer`: manually written reference answer;
-- `answerable`: whether the corpus contains enough evidence;
-- `question_type`: evidence structure or unanswerable type;
-- `expected_sources`: expected document-level coverage;
-- `evidence`: required page-level claims;
-- `scope_sources` and `unanswerable_reason`: audit information for unanswerable cases.
-
-Evidence claims are combined with AND semantics. Within one claim, `alternatives` represents
-multiple equally valid page ranges and is evaluated with OR semantics. This prevents a valid
-supporting passage from being scored as a miss merely because another page states the same claim.
-
-This set was used for both baseline evaluation and initial top-k/chunk-size diagnostics. Its
-reported numbers are therefore development results, not held-out performance.
-
-## Held-out questions
-
-`questions_heldout_v1.jsonl` contains five additional questions, one per paper. It has not been
-executed. Run it only after freezing the baseline configuration, and do not use its result for
-another tuning cycle.
-
-Further annotation details are documented in [`QUESTIONS_V1.md`](QUESTIONS_V1.md).
-
-## QASPER local cache
-
-Install `requirements/experiment.txt`, then cache the official Hugging Face DatasetDict once:
+Prepare once:
 
 ```powershell
 python scripts/prepare_qasper.py
 ```
 
-The first run loads Hugging Face's Parquet conversion of QASPER and saves all three logical splits
-under `data/processed/qasper/hf_dataset/`. Later runs use `load_from_disk` and do not contact the
-network. Use `train` for training or examples, `validation` for development, and leave `test`
-untouched until the pipeline configuration is frozen. This stage does not transform QASPER into
-pipeline records or separate its labels. The QASPER loader reads this directory directly and maps
-the selected paper to the existing `PageRecord` interface in memory, so no duplicate corpus or
-question export is required. A small validation check can be run with:
+The local dataset is stored under:
 
-```powershell
-python scripts/run_qasper_smoke.py --max-questions 3
+```text
+data/processed/qasper/hf_dataset/
 ```
 
-Both the smoke and formal QASPER evaluators select references at runtime using the versioned
-`answerable_text_only_extractive_single_evidence_v1` slice. A question is retained when at least
-one reference is answerable, extractive, backed by exactly one non-empty text evidence unit, and
-does not depend on a figure or table; ineligible references for that question are not scored.
+Later runs use `load_from_disk` and do not contact the network. The QASPER loader maps article
+units to `PageRecord` values; answer references and evidence labels remain outside retrieval
+chunks.
+
+The formal evaluation uses all train/validation/test papers as the retrieval corpus and the fixed
+validation slice:
+
+```text
+answerable + text-only + extractive + single-evidence
+```
+
+Protocol: `qasper_open_corpus_text_extractive_single_evidence_v2`.
+
+## Natural Questions Open + DPR Wikipedia
+
+Expected local DPR source archives:
+
+```text
+data/raw/dpr/
+  psgs_w100.tsv.gz
+  biencoder-nq-dev.json.gz
+```
+
+Prepare the canonical local dataset:
+
+```powershell
+python scripts/prepare_nq_dpr_wiki.py `
+  --wikipedia data/raw/dpr/psgs_w100.tsv.gz `
+  --questions data/raw/dpr/biencoder-nq-dev.json.gz `
+  --output-dir data/nq_open_dpr_wiki_1m
+```
+
+Generated layout:
+
+```text
+data/nq_open_dpr_wiki_1m/
+  manifest.json
+  corpus/
+    manifest.json
+    passages.jsonl
+    passage_ids.txt
+  questions/
+    manifest.json
+    calibration.jsonl
+    evaluation.jsonl
+```
+
+Canonical counts:
+
+- 1,000,000 passages;
+- 500 calibration questions;
+- 1,500 evaluation questions;
+- up to 50 official hard negatives per selected question;
+- complete positive-passage coverage for the selected questions.
+
+Questions, answer aliases, positive passage IDs, and hard negatives stay in the question files.
+The corpus loader sees only `corpus/`; answer labels are never copied into passage rows.
+
+The protocol is `nq_open_dpr_wiki_1m_gold_preserving_v1`. The corpus is deliberately
+gold-conditioned and is suitable for controlled component and ANN comparisons inside this
+pipeline, not absolute comparison with standard NQ full-Wikipedia results.

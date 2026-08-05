@@ -1,8 +1,26 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
-from src.io_utils import TOKEN_RE, regex_token_sequence
+from src.model_backends.huggingface_snapshot import resolve_hf_snapshot
+
+
+TOKEN_RE = re.compile(r"\w+|[^\w\s]", re.UNICODE)
+
+
+def regex_token_sequence(text: str) -> list[str]:
+    """Return the lightweight regex token sequence used by offline components."""
+
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    return TOKEN_RE.findall(text)
+
+
+def approx_token_count(text: str) -> int:
+    """Estimate token count without loading a model tokenizer."""
+
+    return len(regex_token_sequence(text))
 
 # 专门检查“token 窗口大小”和“重叠 token 数”是否合法
 def validate_token_window(
@@ -79,13 +97,15 @@ class HuggingFaceTokenCounter(_TruncationMixin):
             ) from exc
         # 组织加载参数
         kwargs = dict(tokenizer_kwargs or {})
-        kwargs["local_files_only"] = bool(local_files_only)
-        # 处理版本固定：revision 固定，tokenizer 行为更容易复现。
-        if revision is not None:
-            kwargs["revision"] = revision
+        snapshot = resolve_hf_snapshot(
+            model_name,
+            revision=revision,
+            local_files_only=local_files_only,
+        )
+        kwargs["local_files_only"] = True
         self.model_name = model_name
         self.revision = revision
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, **kwargs)
+        self.tokenizer = AutoTokenizer.from_pretrained(str(snapshot), **kwargs)
 
     # 把文本编码成 Hugging Face tokenizer 的 token id
     def _encode(self, text: str) -> list[int]:

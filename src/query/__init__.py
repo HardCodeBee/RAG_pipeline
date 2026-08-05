@@ -1,1 +1,0 @@
-"""Query-time context components."""

@@ -97,14 +97,13 @@ def score_qasper_question(
     }
 
 
-def score_qasper_open_corpus(
-    predicted_answer: str,
+def score_qasper_open_corpus_retrieval(
     hits: Sequence[Mapping[str, Any]],
     references: Sequence[Mapping[str, Any]],
     target_paper_id: str,
     evidence_units_by_paper: Mapping[str, Sequence[str]],
 ) -> dict[str, Any]:
-    """Score question-only retrieval over a global QASPER paper collection.
+    """Score retrieval over the global QASPER paper collection.
 
     This is intentionally named as an open-corpus metric rather than the
     official paper-scoped QASPER evidence metric. Evidence units retrieved from
@@ -134,13 +133,9 @@ def score_qasper_open_corpus(
             if evidence:
                 predicted_evidence.add((paper_id, evidence))
 
-    answer_scores: list[tuple[float, str]] = []
     evidence_recalls: list[float] = []
     evidence_f1_scores: list[float] = []
     for reference in references:
-        answer, answer_type = qasper_reference_answer(reference)
-        answer_scores.append((qasper_token_f1(predicted_answer, answer), answer_type))
-
         raw_gold = [] if reference.get("unanswerable", False) else list(reference.get("evidence") or [])
         gold_evidence = {
             (target_paper_id, normalized)
@@ -159,20 +154,42 @@ def score_qasper_open_corpus(
             recall = overlap / len(gold_evidence)
             evidence_f1_scores.append(2 * precision * recall / (precision + recall))
 
-    best_answer_position = max(range(len(answer_scores)), key=lambda position: answer_scores[position][0])
     evidence_hit = bool(evidence_recalls and max(evidence_recalls) > 0.0)
     return {
         "qasper_target_paper_hit_at_k": bool(target_rank),
         "qasper_target_paper_rr": 1.0 / target_rank if target_rank else 0.0,
-        "qasper_answer_f1": answer_scores[best_answer_position][0],
         "qasper_target_evidence_hit_at_k": evidence_hit,
         "qasper_target_evidence_recall_at_k": max(evidence_recalls) if evidence_recalls else None,
         "qasper_target_evidence_f1_at_k": max(evidence_f1_scores),
     }
 
 
-def summarize_qasper_open_corpus(scores: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
-    """Aggregate the minimal question-only open-corpus evaluation metrics."""
+def score_qasper_open_corpus(
+    predicted_answer: str,
+    hits: Sequence[Mapping[str, Any]],
+    references: Sequence[Mapping[str, Any]],
+    target_paper_id: str,
+    evidence_units_by_paper: Mapping[str, Sequence[str]],
+) -> dict[str, Any]:
+    """Score retrieval plus generated answer over the global paper corpus."""
+
+    retrieval = score_qasper_open_corpus_retrieval(
+        hits,
+        references,
+        target_paper_id,
+        evidence_units_by_paper,
+    )
+    answer_scores = [
+        qasper_token_f1(predicted_answer, qasper_reference_answer(reference)[0])
+        for reference in references
+    ]
+    return {**retrieval, "qasper_answer_f1": max(answer_scores)}
+
+
+def summarize_qasper_open_corpus_retrieval(
+    scores: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Aggregate retrieval-only open-corpus metrics."""
 
     def values(name: str) -> list[float]:
         return [
@@ -183,10 +200,35 @@ def summarize_qasper_open_corpus(scores: Sequence[Mapping[str, Any]]) -> dict[st
 
     paper_hits = values("qasper_target_paper_hit_at_k")
     paper_rr = values("qasper_target_paper_rr")
-    answer_f1 = values("qasper_answer_f1")
     evidence_hits = values("qasper_target_evidence_hit_at_k")
     evidence_recall = values("qasper_target_evidence_recall_at_k")
     evidence_f1 = values("qasper_target_evidence_f1_at_k")
+    return {
+        "num_questions": len(scores),
+        "qasper_target_paper_hit_rate_at_k": mean(paper_hits) if paper_hits else 0.0,
+        "qasper_target_paper_mrr": mean(paper_rr) if paper_rr else 0.0,
+        "qasper_target_evidence_hit_rate_at_k": mean(evidence_hits) if evidence_hits else 0.0,
+        "qasper_target_evidence_recall_at_k": mean(evidence_recall) if evidence_recall else 0.0,
+        "qasper_target_evidence_recall_valid_count": len(evidence_recall),
+        "qasper_target_evidence_f1_at_k": mean(evidence_f1) if evidence_f1 else 0.0,
+        "qasper_evidence_hit_count": sum(
+            score.get("qasper_target_evidence_hit_at_k") is True for score in scores
+        ),
+        "qasper_evidence_miss_count": sum(
+            score.get("qasper_target_evidence_hit_at_k") is False for score in scores
+        ),
+    }
+
+
+def summarize_qasper_open_corpus(scores: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    """Aggregate retrieval and answer metrics for an end-to-end run."""
+
+    retrieval = summarize_qasper_open_corpus_retrieval(scores)
+    answer_f1 = [
+        float(score["qasper_answer_f1"])
+        for score in scores
+        if isinstance(score.get("qasper_answer_f1"), (bool, int, float))
+    ]
     answer_by_evidence_hit = [
         float(score["qasper_answer_f1"])
         for score in scores
@@ -200,22 +242,14 @@ def summarize_qasper_open_corpus(scores: Sequence[Mapping[str, Any]]) -> dict[st
         and isinstance(score.get("qasper_answer_f1"), (int, float))
     ]
     return {
-        "num_questions": len(scores),
-        "qasper_target_paper_hit_rate_at_k": mean(paper_hits) if paper_hits else 0.0,
-        "qasper_target_paper_mrr": mean(paper_rr) if paper_rr else 0.0,
+        **retrieval,
         "qasper_answer_f1": mean(answer_f1) if answer_f1 else 0.0,
-        "qasper_target_evidence_hit_rate_at_k": mean(evidence_hits) if evidence_hits else 0.0,
-        "qasper_target_evidence_recall_at_k": mean(evidence_recall) if evidence_recall else 0.0,
-        "qasper_target_evidence_recall_valid_count": len(evidence_recall),
-        "qasper_target_evidence_f1_at_k": mean(evidence_f1) if evidence_f1 else 0.0,
         "qasper_answer_f1_when_evidence_hit": (
             mean(answer_by_evidence_hit) if answer_by_evidence_hit else 0.0
         ),
         "qasper_answer_f1_when_evidence_miss": (
             mean(answer_by_evidence_miss) if answer_by_evidence_miss else 0.0
         ),
-        "qasper_evidence_hit_count": len(answer_by_evidence_hit),
-        "qasper_evidence_miss_count": len(answer_by_evidence_miss),
     }
 
 
