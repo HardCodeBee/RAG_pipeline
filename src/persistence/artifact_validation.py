@@ -11,7 +11,7 @@ from typing import Any
 
 import numpy as np
 
-from src.persistence.artifact_io import close_numpy_memmap, iter_jsonl, read_json_object
+from src.persistence.artifact_io import close_numpy_memmap, read_json_object
 from src.provenance import json_sha256, sha256_file, zero_based_sequence_sha256
 from src.records import EmbeddingSpaceSpec
 
@@ -52,26 +52,6 @@ class VerifiedSparseIndex:
     directory: Path
     manifest: dict[str, Any]
     files: Mapping[str, Path]
-
-
-@dataclass(frozen=True, slots=True)
-class VerifiedDprCorpus:
-    """A DPR corpus manifest and its verified data files."""
-
-    directory: Path
-    manifest: dict[str, Any]
-    files: Mapping[str, Path]
-
-
-@dataclass(frozen=True, slots=True)
-class VerifiedNQSplit:
-    """A canonical NQ question split and its already-verified manifest chain."""
-
-    questions_path: Path
-    rows: list[dict[str, Any]]
-    questions_manifest: dict[str, Any]
-    questions_file_sha256: str
-    questions_manifest_sha256: str
 
 
 def _positive_integer(value: Any, *, label: str) -> int:
@@ -127,6 +107,96 @@ def verify_artifact_descriptor(
     return VerifiedFile(path=path, descriptor=descriptor)
 
 
+def _validate_sharded_embedding_descriptor(
+    root: Path,
+    descriptor: Mapping[str, Any],
+    *,
+    rows: int,
+    dimension: int,
+    label: str,
+) -> Path:
+    """Validate one manifest plus every immutable ``part-*.npy`` artifact."""
+
+    if descriptor.get("storage") != "sharded_npy":
+        raise ValueError(f"{label} storage must be sharded_npy")
+    if descriptor.get("schema_version") != 1:
+        raise ValueError(f"{label} schema_version must be 1")
+    if descriptor.get("dtype") != "float32" or descriptor.get("shape") != [
+        rows,
+        dimension,
+    ]:
+        raise ValueError(f"{label} shape or dtype is invalid")
+
+    manifest_file = verify_artifact_descriptor(
+        root,
+        descriptor,
+        label=f"{label} manifest",
+    ).path
+    manifest = read_json_object(manifest_file, label=f"{label} manifest payload")
+    manifest_rows = manifest.get("total_rows", manifest.get("rows"))
+    if (
+        manifest.get("schema_version") != 1
+        or manifest.get("dtype") != "float32"
+        or manifest.get("dimension") != dimension
+        or manifest_rows != rows
+    ):
+        raise ValueError(f"{label} manifest metadata is inconsistent")
+    descriptor_parts = descriptor.get("parts")
+    manifest_parts = manifest.get("parts")
+    if (
+        not isinstance(descriptor_parts, list)
+        or not descriptor_parts
+        or manifest_parts != descriptor_parts
+    ):
+        raise ValueError(f"{label} part list differs from its manifest")
+
+    expected_start = 0
+    listed: set[str] = set()
+    for position, part in enumerate(descriptor_parts):
+        if not isinstance(part, Mapping):
+            raise ValueError(f"{label} part {position} must be a mapping")
+        file_name = part.get("file")
+        if (
+            not isinstance(file_name, str)
+            or not re.fullmatch(r"part-\d{5,}\.npy", file_name)
+            or Path(file_name).name != file_name
+            or file_name in listed
+        ):
+            raise ValueError(f"{label} part {position} has an invalid file name")
+        if file_name != f"part-{position:05d}.npy":
+            raise ValueError(f"{label} parts must be numbered contiguously from zero")
+        part_rows = _positive_integer(part.get("rows"), label=f"{label} part rows")
+        if (
+            part.get("start_row") != expected_start
+            or part.get("shape") != [part_rows, dimension]
+        ):
+            raise ValueError(f"{label} part row range or shape is invalid")
+        verified = verify_artifact_descriptor(
+            manifest_file.parent,
+            part,
+            label=f"{label} {file_name}",
+            expected_rows=part_rows,
+        )
+        values = np.load(verified.path, mmap_mode="r", allow_pickle=False)
+        try:
+            if values.shape != (part_rows, dimension) or values.dtype != np.dtype(
+                "float32"
+            ):
+                raise ValueError(f"{label} {file_name} array metadata is invalid")
+        finally:
+            close_numpy_memmap(values)
+        listed.add(file_name)
+        expected_start += part_rows
+    if expected_start != rows:
+        raise ValueError(f"{label} part ranges do not cover all embedding rows")
+    discovered = {
+        path.name for path in manifest_file.parent.glob("part-*.npy") if path.is_file()
+    }
+    if discovered != listed:
+        raise ValueError(f"{label} directory contains untracked embedding parts")
+    return manifest_file
+
+
 def validate_build_directory(
     build_dir: str | Path,
     expected_build_id: str | None = None,
@@ -159,10 +229,12 @@ def validate_build_directory(
     required = ["chunks", "embeddings"]
     if "chunk_offsets" in artifacts:
         required.append("chunk_offsets")
-    if index["backend"] == "faiss":
+    if index["backend"] == "faiss" and index.get("type") != "streaming_flat_ip":
         required.append("index")
-    elif "index" in artifacts:
+    elif index["backend"] == "numpy" and "index" in artifacts:
         raise ValueError("NumPy builds must not contain a separate index artifact")
+    elif index.get("type") == "streaming_flat_ip" and "index" in artifacts:
+        raise ValueError("Streaming exact builds must not contain a persisted index artifact")
 
     files: dict[str, Path] = {}
     for name in required:
@@ -187,6 +259,21 @@ def validate_build_directory(
         offsets = artifacts["chunk_offsets"]
         if offsets.get("rows") != rows or offsets.get("dtype") != "uint64":
             raise ValueError("Chunk offset descriptor does not match chunks")
+    embedding_storage = artifacts["embeddings"].get("storage")
+    if embedding_storage is not None:
+        if embedding_storage != "sharded_npy":
+            raise ValueError("Build embedding storage is unsupported")
+        if index.get("type") != "streaming_flat_ip":
+            raise ValueError("Sharded embeddings require a streaming exact index")
+        files["embeddings"] = _validate_sharded_embedding_descriptor(
+            directory,
+            artifacts["embeddings"],
+            rows=rows,
+            dimension=_positive_integer(
+                index.get("dimension"), label="Build embedding dimension"
+            ),
+            label="Build embeddings",
+        )
     return VerifiedBuild(directory=directory, manifest=manifest, files=files)
 
 
@@ -355,235 +442,34 @@ def validate_encoded_corpus_directory(
         raise ValueError("Encoded-corpus row counts are inconsistent")
 
     offsets = np.load(files["chunk_offsets"], mmap_mode="r", allow_pickle=False)
-    embeddings = np.load(files["embeddings"], mmap_mode="r", allow_pickle=False)
+    embeddings = None
     try:
         if offsets.shape != (rows,) or offsets.dtype != np.dtype("uint64"):
             raise ValueError("Encoded-corpus chunk offsets are invalid")
-        if (
-            embeddings.shape != (rows, dimension)
-            or embeddings.dtype != np.dtype("float32")
-            or list(embeddings.shape) != artifacts["embeddings"].get("shape")
-        ):
-            raise ValueError("Encoded-corpus embeddings are invalid")
+        storage = artifacts["embeddings"].get("storage")
+        if storage is None:
+            embeddings = np.load(
+                files["embeddings"], mmap_mode="r", allow_pickle=False
+            )
+            if (
+                embeddings.shape != (rows, dimension)
+                or embeddings.dtype != np.dtype("float32")
+                or list(embeddings.shape) != artifacts["embeddings"].get("shape")
+            ):
+                raise ValueError("Encoded-corpus embeddings are invalid")
+        elif storage == "sharded_npy":
+            files["embeddings"] = _validate_sharded_embedding_descriptor(
+                root,
+                artifacts["embeddings"],
+                rows=rows,
+                dimension=dimension,
+                label="Encoded-corpus embeddings",
+            )
+        else:
+            raise ValueError("Encoded-corpus embedding storage is unsupported")
     finally:
         close_numpy_memmap(embeddings)
         close_numpy_memmap(offsets)
     if files["chunks"].stat().st_size <= 0:
         raise ValueError("Encoded-corpus chunks artifact is empty")
     return VerifiedEncodedCorpus(directory=root, manifest=manifest, files=files)
-
-
-def validate_dpr_corpus_directory(
-    directory: str | Path,
-    *,
-    expected_protocol: str,
-    text_format: str,
-    require_canonical_counts: bool,
-    canonical_passage_count: int,
-    canonical_question_count: int,
-) -> VerifiedDprCorpus:
-    """Validate the persisted DPR corpus contract without parsing its rows."""
-
-    root = Path(directory).resolve()
-    if not root.is_dir():
-        raise FileNotFoundError(f"DPR Wikipedia corpus directory does not exist: {root}")
-    manifest = read_json_object(
-        root / "manifest.json",
-        label="DPR Wikipedia corpus manifest",
-    )
-    if manifest.get("status") != "complete":
-        raise ValueError("DPR Wikipedia corpus manifest must have status=complete")
-    if manifest.get("protocol") != expected_protocol:
-        raise ValueError("DPR Wikipedia corpus protocol does not match the loader")
-    if manifest.get("format") != "dpr_psgs_w100_jsonl_v1":
-        raise ValueError("DPR Wikipedia corpus format is unsupported")
-    if manifest.get("text_format") != text_format:
-        raise ValueError("DPR Wikipedia text format does not match the loader")
-    artifacts = manifest.get("artifacts")
-    if not isinstance(artifacts, Mapping):
-        raise ValueError("DPR Wikipedia corpus manifest has no artifacts")
-    files = {
-        name: verify_artifact_descriptor(
-            root,
-            artifacts.get(name, {}),
-            label=f"DPR Wikipedia {name}",
-        ).path
-        for name in ("passages", "passage_ids")
-    }
-    expected_count = _positive_integer(
-        manifest.get("counts", {}).get("final_passages"),
-        label="DPR Wikipedia passage count",
-    )
-    if any(artifacts[name].get("rows") != expected_count for name in files):
-        raise ValueError("DPR Wikipedia corpus row counts are inconsistent")
-    if require_canonical_counts and (
-        manifest.get("canonical_counts") is not True
-        or expected_count != canonical_passage_count
-        or manifest.get("counts", {}).get("selected_questions")
-        != canonical_question_count
-    ):
-        raise ValueError(
-            "DPR Wikipedia corpus is not the canonical passage/question dataset"
-        )
-    return VerifiedDprCorpus(directory=root, manifest=manifest, files=files)
-
-
-def validate_nq_dataset_split(
-    corpus_dir: str | Path,
-    *,
-    split: str,
-    requested_path: str | Path | None,
-    expected_protocol: str,
-    canonical_split_counts: Mapping[str, int],
-    canonical_passage_count: int,
-    canonical_hard_negatives_per_question: int,
-    canonical_seed: str,
-) -> VerifiedNQSplit:
-    """Validate the complete NQ root/corpus/questions/split manifest chain."""
-
-    if split not in canonical_split_counts:
-        raise ValueError(f"Unknown canonical NQ split: {split}")
-    corpus_path = Path(corpus_dir).resolve()
-    dataset_root = corpus_path.parent
-    root_manifest = read_json_object(
-        dataset_root / "manifest.json",
-        label="NQ dataset manifest",
-    )
-    request = root_manifest.get("request")
-    if (
-        root_manifest.get("status") != "complete"
-        or root_manifest.get("protocol") != expected_protocol
-        or root_manifest.get("canonical_counts") is not True
-        or not isinstance(request, Mapping)
-        or request.get("target_passages") != canonical_passage_count
-        or request.get("calibration_questions")
-        != canonical_split_counts.get("calibration")
-        or request.get("evaluation_questions")
-        != canonical_split_counts.get("evaluation")
-        or request.get("hard_negatives_per_question")
-        != canonical_hard_negatives_per_question
-        or request.get("seed") != canonical_seed
-    ):
-        raise ValueError("NQ evaluation requires the canonical complete dataset manifest")
-
-    manifests = root_manifest.get("manifests")
-    if not isinstance(manifests, Mapping):
-        raise ValueError("NQ dataset manifest has no child manifests")
-    corpus_descriptor = manifests.get("corpus")
-    questions_descriptor = manifests.get("questions")
-    corpus_verified = verify_artifact_descriptor(
-        dataset_root,
-        corpus_descriptor if isinstance(corpus_descriptor, Mapping) else {},
-        label="NQ corpus manifest",
-    )
-    if corpus_verified.path != (corpus_path / "manifest.json").resolve():
-        raise ValueError("Dataset corpus descriptor does not match paths.corpus")
-    corpus_manifest = read_json_object(
-        corpus_verified.path,
-        label="NQ corpus manifest",
-    )
-    corpus_sources = corpus_manifest.get("sources")
-    corpus_counts = corpus_manifest.get("counts")
-    if (
-        corpus_manifest.get("status") != "complete"
-        or corpus_manifest.get("protocol") != expected_protocol
-        or corpus_manifest.get("canonical_counts") is not True
-        or not isinstance(corpus_counts, Mapping)
-        or corpus_counts.get("final_passages") != canonical_passage_count
-        or not isinstance(corpus_sources, Mapping)
-        or not isinstance(corpus_sources.get("wikipedia"), Mapping)
-        or not isinstance(corpus_sources.get("questions"), Mapping)
-        or corpus_sources["wikipedia"].get("sha256")
-        != request.get("wikipedia_sha256")
-        or corpus_sources["questions"].get("sha256")
-        != request.get("questions_sha256")
-    ):
-        raise ValueError("Corpus manifest is not linked to the canonical root manifest")
-
-    questions_verified = verify_artifact_descriptor(
-        dataset_root,
-        questions_descriptor if isinstance(questions_descriptor, Mapping) else {},
-        label="NQ questions manifest",
-    )
-    if questions_verified.path != (dataset_root / "questions" / "manifest.json").resolve():
-        raise ValueError("Dataset questions descriptor does not use the canonical path")
-    questions_manifest = read_json_object(
-        questions_verified.path,
-        label="NQ questions manifest",
-    )
-    question_source = questions_manifest.get("source")
-    if (
-        questions_manifest.get("status") != "complete"
-        or questions_manifest.get("protocol") != expected_protocol
-        or questions_manifest.get("canonical_counts") is not True
-        or questions_manifest.get("counts")
-        != {
-            "calibration": canonical_split_counts["calibration"],
-            "evaluation": canonical_split_counts["evaluation"],
-            "selected": sum(canonical_split_counts.values()),
-        }
-        or not isinstance(question_source, Mapping)
-        or question_source.get("sha256") != request.get("questions_sha256")
-    ):
-        raise ValueError("Questions manifest is not the canonical selected split")
-
-    artifacts = questions_manifest.get("artifacts")
-    split_descriptor = artifacts.get(split) if isinstance(artifacts, Mapping) else None
-    split_verified = verify_artifact_descriptor(
-        questions_verified.path.parent,
-        split_descriptor if isinstance(split_descriptor, Mapping) else {},
-        label=f"NQ {split} questions",
-        expected_rows=canonical_split_counts[split],
-    )
-    if requested_path is not None and Path(requested_path).resolve() != split_verified.path:
-        raise ValueError(
-            "--questions must resolve to the canonical file recorded for the selected split"
-        )
-    rows = list(iter_jsonl(split_verified.path))
-    if len(rows) != canonical_split_counts[split]:
-        raise ValueError(f"{split} question rows do not match their manifest")
-    return VerifiedNQSplit(
-        questions_path=split_verified.path,
-        rows=rows,
-        questions_manifest=questions_manifest,
-        questions_file_sha256=str(split_verified.descriptor["sha256"]),
-        questions_manifest_sha256=str(questions_verified.descriptor["sha256"]),
-    )
-
-
-def validate_prepared_dataset(
-    output_dir: str | Path,
-    *,
-    expected_protocol: str,
-    expected_request: Mapping[str, Any],
-) -> dict[str, Any]:
-    """Validate a prepared dataset root, child manifests, and every descriptor."""
-
-    output = Path(output_dir).resolve()
-    root = read_json_object(output / "manifest.json", label="Dataset manifest")
-    if root.get("status") != "complete" or root.get("protocol") != expected_protocol:
-        raise ValueError("Existing dataset manifest is incomplete or incompatible")
-    if root.get("request") != expected_request:
-        raise ValueError("Existing dataset directory was prepared with a different request")
-    manifests = root.get("manifests")
-    if not isinstance(manifests, Mapping):
-        raise ValueError("Existing dataset has no child manifest descriptors")
-    for name in ("corpus", "questions"):
-        child_path = verify_artifact_descriptor(
-            output,
-            manifests.get(name, {}),
-            label=f"Dataset {name} manifest",
-        ).path
-        child = read_json_object(child_path, label=f"Dataset {name} manifest")
-        if child.get("status") != "complete" or child.get("protocol") != expected_protocol:
-            raise ValueError("Existing child manifest is incomplete or incompatible")
-        artifacts = child.get("artifacts")
-        if not isinstance(artifacts, Mapping):
-            raise ValueError(f"Existing {name} manifest has no artifacts")
-        for artifact_name, descriptor in artifacts.items():
-            verify_artifact_descriptor(
-                child_path.parent,
-                descriptor if isinstance(descriptor, Mapping) else {},
-                label=f"Dataset {name} {artifact_name}",
-            )
-    return root

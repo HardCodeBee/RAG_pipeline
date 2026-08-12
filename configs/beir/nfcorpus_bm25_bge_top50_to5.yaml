@@ -1,26 +1,23 @@
 paths:
-  corpus: ../data/nq_open_dpr_wiki_1m/corpus
-  artifacts_root: ../artifacts
-  outputs_root: ../outputs
+  corpus: ../../data/beir/nfcorpus
+  artifacts_root: ../../artifacts
+  outputs_root: ../../outputs
 loader:
-  type: dpr_wikipedia
-  expected_protocol: nq_open_dpr_wiki_1m_gold_preserving_v1
-  text_format: title_newline_text_v1
-  require_canonical_counts: true
+  type: beir
+  expected_dataset: nfcorpus
 chunking:
   strategy: presegmented
   chunk_size_tokens: 512
   overlap_budget_tokens: 0
-  tokenizer: huggingface
-  tokenizer_model: BAAI/bge-small-en-v1.5
-  tokenizer_revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
-  local_files_only: true
+  tokenizer: regex
 embedding:
   backend: sentence_transformers
   model_name: BAAI/bge-small-en-v1.5
   revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
   normalize: true
-  batch_size: 64
+  batch_size: 128
+  encode_call_rows: 2048
+  shard_rows: 25000
   query_prefix: ""
   document_prefix: ""
   max_sequence_length: 512
@@ -28,10 +25,10 @@ embedding:
   device: cuda
 index:
   backend: faiss
-  type: flat_ip
-  build_batch_size: 65536
+  type: streaming_flat_ip
   faiss_threads: 8
 retrieval:
+  method: bm25
   policy: fixed
   final_k: 5
   candidate_k: 50
@@ -43,17 +40,20 @@ retrieval:
     batch_size: 16
     device: cuda
     local_files_only: true
+bm25:
+  backend: sqlite
+  method: lucene
+  k1: 1.5
+  b: 0.75
+  analyzer: english_regex_casefold_v1
+  transaction_documents: 1000
 context:
   max_tokens: 1800
 prompt:
-  version: nq_short_qa_v1
+  version: fixed_qa_v1
 generation:
-  provider: openai
-  model: gpt-4o-mini
-  temperature: 0.0
-  max_output_tokens: 128
-  timeout_seconds: 60.0
-  max_retries: 2
+  provider: extractive
+  max_output_tokens: 1
 logging:
-  save_retrieved_text: true
+  save_retrieved_text: false
   save_prompt: false

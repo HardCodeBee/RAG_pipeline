@@ -105,7 +105,17 @@ def expected_bm25_index_directory(
         raise ValueError("BM25 index resolution requires retrieval.method=bm25")
     if not isinstance(verified_build, VerifiedBuild):
         raise TypeError("verified_build must be a VerifiedBuild")
-    sparse_id, spec_sha, spec = bm25_index_identity(config, verified_build)
+    if config["bm25"]["backend"] == "sqlite":
+        from src.retrievers.sqlite_bm25 import sqlite_bm25_identity
+
+        sparse_id, spec_sha, spec = sqlite_bm25_identity(
+            verified_build,
+            k1=config["bm25"]["k1"],
+            b=config["bm25"]["b"],
+            analyzer=config["bm25"]["analyzer"],
+        )
+    else:
+        sparse_id, spec_sha, spec = bm25_index_identity(config, verified_build)
     root = resolved_roots(config)["artifacts_root"] / "_sparse_indexes"
     return (root / sparse_id).resolve(), sparse_id, spec_sha, spec
 
@@ -126,11 +136,14 @@ def resolve_bm25_index(
             "scripts/build_bm25_index.py first: "
             f"{directory}"
         )
-    return validate_bm25_index_directory(
-        directory,
-        sparse_id,
-        expected_spec=spec,
-    )
+    if config["bm25"]["backend"] == "sqlite":
+        from src.retrievers.sqlite_bm25 import validate_sqlite_bm25_index
+
+        return validate_sqlite_bm25_index(
+            directory,
+            expected_identity_sha256=json_sha256(spec),
+        )
+    return validate_bm25_index_directory(directory, sparse_id, expected_spec=spec)
 
 
 def _chunk_texts(path: Path, expected_rows: int) -> Iterator[str]:
@@ -199,10 +212,38 @@ def build_bm25_index(
         verified_build,
     )
     if directory.exists():
-        return validate_bm25_index_directory(
+        if config["bm25"]["backend"] == "sqlite":
+            from src.retrievers.sqlite_bm25 import (
+                build_sqlite_bm25_index,
+                validate_sqlite_bm25_index,
+            )
+
+            if (directory / "manifest.json").is_file():
+                return validate_sqlite_bm25_index(
+                    directory,
+                    expected_identity_sha256=spec_sha,
+                )
+            return build_sqlite_bm25_index(
+                verified_build,
+                directory,
+                k1=config["bm25"]["k1"],
+                b=config["bm25"]["b"],
+                analyzer=config["bm25"]["analyzer"],
+                transaction_documents=config["bm25"]["transaction_documents"],
+            )
+
+        return validate_bm25_index_directory(directory, sparse_id, expected_spec=spec)
+
+    if config["bm25"]["backend"] == "sqlite":
+        from src.retrievers.sqlite_bm25 import build_sqlite_bm25_index
+
+        return build_sqlite_bm25_index(
+            verified_build,
             directory,
-            sparse_id,
-            expected_spec=spec,
+            k1=config["bm25"]["k1"],
+            b=config["bm25"]["b"],
+            analyzer=config["bm25"]["analyzer"],
+            transaction_documents=config["bm25"]["transaction_documents"],
         )
 
     try:

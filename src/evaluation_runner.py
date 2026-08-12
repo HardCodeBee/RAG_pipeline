@@ -18,6 +18,7 @@ from src.persistence.run_output_writer import (
     write_results,
     write_summary_csv,
 )
+from src.provenance import sha256_file
 
 
 _RESUME_COMPATIBILITY_FIELDS = (
@@ -29,7 +30,82 @@ _RESUME_COMPATIBILITY_FIELDS = (
     "evaluation_protocol",
     "question_split",
     "effective_top_k",
+    "shared_first_stage_cache_ref_sha256",
+    "shared_bge_score_cache_ref_sha256",
 )
+_OUTPUT_ARTIFACT_FIELDS = ("results_artifact", "summary_artifact")
+
+
+def _output_artifact_descriptor(path: Path, *, expected_name: str) -> dict[str, Any]:
+    if path.name != expected_name or not path.is_file():
+        raise FileNotFoundError(f"Completed evaluation output is missing: {path}")
+    return {
+        "file": expected_name,
+        "size_bytes": path.stat().st_size,
+        "sha256": sha256_file(path),
+    }
+
+
+def _validate_output_artifact(
+    run_dir: Path,
+    value: Any,
+    *,
+    field: str,
+    expected_name: str,
+) -> dict[str, Any]:
+    if not isinstance(value, Mapping):
+        raise ValueError(f"Previous metadata {field} must be an artifact descriptor")
+    if set(value) != {"file", "size_bytes", "sha256"}:
+        raise ValueError(f"Previous metadata {field} has unexpected fields")
+    size_bytes = value.get("size_bytes")
+    digest = value.get("sha256")
+    if (
+        value.get("file") != expected_name
+        or isinstance(size_bytes, bool)
+        or not isinstance(size_bytes, int)
+        or size_bytes < 0
+        or not isinstance(digest, str)
+        or len(digest) != 64
+        or any(character not in "0123456789abcdef" for character in digest)
+    ):
+        raise ValueError(f"Previous metadata {field} is invalid")
+    current = _output_artifact_descriptor(
+        run_dir / expected_name,
+        expected_name=expected_name,
+    )
+    if current != dict(value):
+        raise ValueError(f"Authoritative evaluation output is corrupted: {expected_name}")
+    return current
+
+
+def _validated_previous_outputs(
+    run_dir: Path,
+    previous_metadata: Mapping[str, Any],
+) -> dict[str, dict[str, Any]]:
+    present = [field in previous_metadata for field in _OUTPUT_ARTIFACT_FIELDS]
+    if not any(present):
+        # Backward compatibility for runs completed before output descriptors
+        # became part of the metadata contract.
+        return {}
+    if not all(present):
+        raise ValueError(
+            "Previous metadata must contain both results_artifact and "
+            "summary_artifact"
+        )
+    return {
+        "results_artifact": _validate_output_artifact(
+            run_dir,
+            previous_metadata["results_artifact"],
+            field="results_artifact",
+            expected_name="results.jsonl",
+        ),
+        "summary_artifact": _validate_output_artifact(
+            run_dir,
+            previous_metadata["summary_artifact"],
+            field="summary_artifact",
+            expected_name="summary.csv",
+        ),
+    }
 
 
 def validate_resume_compatibility(previous: Mapping[str, Any], current: Mapping[str, Any]) -> None:
@@ -157,6 +233,26 @@ def _load_resumable_rows(
     return rows_by_id
 
 
+def _remove_merged_checkpoints(checkpoints_dir: Path) -> None:
+    """Best-effort cleanup once the atomic merged result is authoritative."""
+
+    if not checkpoints_dir.is_dir():
+        return
+    for pattern in ("*.json", ".*.json.*.tmp"):
+        for path in checkpoints_dir.glob(pattern):
+            try:
+                path.unlink()
+            except OSError:
+                # A locked/stale checkpoint is only a space concern after the
+                # merged results.jsonl has committed. It must never turn a
+                # successfully evaluated suite into a failed one.
+                pass
+    try:
+        checkpoints_dir.rmdir()
+    except OSError:
+        pass
+
+
 def run_evaluation(
     *,
     questions: Sequence[Mapping[str, Any]],
@@ -167,9 +263,16 @@ def run_evaluation(
     summarize_rows: Callable[[list[dict[str, Any]]], dict[str, Any]],
     error_fields: Callable[[Mapping[str, Any]], Mapping[str, Any]] | None = None,
     process_started: float | None = None,
+    metadata_flush_interval: int = 1,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Run questions in order, checkpoint atomically, and support exact resume."""
 
+    if (
+        isinstance(metadata_flush_interval, bool)
+        or not isinstance(metadata_flush_interval, int)
+        or metadata_flush_interval <= 0
+    ):
+        raise ValueError("metadata_flush_interval must be a positive integer")
     process_started = process_started if process_started is not None else time.perf_counter()
     results_path = run_dir / "results.jsonl"
     summary_path = run_dir / "summary.csv"
@@ -181,6 +284,9 @@ def run_evaluation(
             raise FileNotFoundError(f"Cannot resume an incomplete or missing run directory: {run_dir}")
         previous_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         validate_resume_compatibility(previous_metadata, metadata)
+        _validated_previous_outputs(run_dir, previous_metadata)
+        for field in _OUTPUT_ARTIFACT_FIELDS:
+            metadata.pop(field, None)
         metadata["started_at"] = previous_metadata.get("started_at", metadata["started_at"])
         metadata["resumed_at"] = datetime.now(timezone.utc).isoformat()
     else:
@@ -203,6 +309,7 @@ def run_evaluation(
     metadata["num_failed_rows"] = num_failed_rows
     write_metadata_json(metadata_path, metadata)
 
+    metadata_updates_since_flush = 0
     for position, question in enumerate(questions, start=1):
         question_id = question["question_id"]
         existing = rows_by_id.get(question_id)
@@ -243,19 +350,34 @@ def run_evaluation(
         write_result_checkpoint(_checkpoint_path(checkpoints_dir, position), row)
         metadata["num_rows_written"] = num_rows_written
         metadata["num_failed_rows"] = num_failed_rows
-        write_metadata_json(metadata_path, metadata)
+        metadata_updates_since_flush += 1
+        if metadata_updates_since_flush >= metadata_flush_interval:
+            write_metadata_json(metadata_path, metadata)
+            metadata_updates_since_flush = 0
 
     rows = _ordered_rows(questions, rows_by_id)
     summary = summarize_rows(rows)
     write_results(results_path, rows)
     write_summary_csv(summary_path, summary)
-    metadata["status"] = "completed_with_errors" if any(
-        row.get("status") == "error" for row in rows
-    ) else "completed"
+    has_errors = any(row.get("status") == "error" for row in rows)
+    metadata["status"] = "completed_with_errors" if has_errors else "completed"
     metadata["completed_at"] = datetime.now(timezone.utc).isoformat()
     metadata["num_rows_written"] = len(rows)
     metadata["num_failed_rows"] = sum(row.get("status") == "error" for row in rows)
     metadata["process_end_to_end_latency_ms"] = (time.perf_counter() - process_started) * 1000
     metadata["summary"] = summary
+    metadata["results_artifact"] = _output_artifact_descriptor(
+        results_path,
+        expected_name="results.jsonl",
+    )
+    metadata["summary_artifact"] = _output_artifact_descriptor(
+        summary_path,
+        expected_name="summary.csv",
+    )
     write_metadata_json(metadata_path, metadata)
+    if not has_errors:
+        # The completed metadata now pins both atomic merged outputs. Keeping
+        # one checkpoint per question after success only multiplies file count
+        # (especially for BEIR) without adding a recovery boundary.
+        _remove_merged_checkpoints(checkpoints_dir)
     return rows, summary

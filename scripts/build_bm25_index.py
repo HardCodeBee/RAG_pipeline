@@ -1,4 +1,4 @@
-"""Build one immutable BM25S index over a config's verified chunk artifact."""
+"""Build one immutable BM25 index over a config's verified chunk artifact."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from src.retrievers.bm25_index import build_bm25_index
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build a BM25S index over the active immutable chunk artifact."
+        description="Build the configured BM25 backend over the active immutable chunk artifact."
     )
     parser.add_argument("--config", required=True, help="Path to a BM25 YAML config")
     parser.add_argument("--no-progress", action="store_true")

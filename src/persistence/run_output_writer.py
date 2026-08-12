@@ -41,6 +41,35 @@ def _safe_value(value: Any) -> Any:
     return value
 
 
+def replace_with_retry(
+    source: str | Path,
+    destination: str | Path,
+    *,
+    attempts: int = _WINDOWS_REPLACE_ATTEMPTS,
+    initial_delay_seconds: float = _WINDOWS_REPLACE_INITIAL_DELAY_SECONDS,
+) -> None:
+    """Replace atomically, retrying transient Windows file-lock failures."""
+
+    if isinstance(attempts, bool) or not isinstance(attempts, int) or attempts <= 0:
+        raise ValueError("attempts must be a positive integer")
+    if (
+        isinstance(initial_delay_seconds, bool)
+        or not isinstance(initial_delay_seconds, (int, float))
+        or initial_delay_seconds < 0
+    ):
+        raise ValueError("initial_delay_seconds must be non-negative")
+    delay = float(initial_delay_seconds)
+    for attempt in range(attempts):
+        try:
+            os.replace(source, destination)
+            return
+        except PermissionError:
+            if attempt + 1 == attempts:
+                raise
+            time.sleep(delay)
+            delay *= 2
+
+
 def _atomic_write_text(path: Path, text: str, overwrite: bool = True) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     # 先写临时文件，再原子替换目标文件，避免中途失败留下半截结果。
@@ -52,16 +81,7 @@ def _atomic_write_text(path: Path, text: str, overwrite: bool = True) -> None:
             # fsync 尽量确保内容落盘，再执行 replace/link。
             os.fsync(handle.fileno())
         if overwrite:
-            delay = _WINDOWS_REPLACE_INITIAL_DELAY_SECONDS
-            for attempt in range(_WINDOWS_REPLACE_ATTEMPTS):
-                try:
-                    os.replace(temporary_path, path)
-                    break
-                except PermissionError:
-                    if attempt + 1 == _WINDOWS_REPLACE_ATTEMPTS:
-                        raise
-                    time.sleep(delay)
-                    delay *= 2
+            replace_with_retry(temporary_path, path)
         else:
             # overwrite=False 时用硬链接创建目标；如果目标已存在，os.link 会失败。
             os.link(temporary_path, path)

@@ -48,13 +48,28 @@ def _materialize_encoded_corpus(
     staging: Path,
 ) -> tuple[Path, Path, Path]:
     output: list[Path] = []
-    for name in ("chunks", "chunk_offsets", "embeddings"):
+    for name in ("chunks", "chunk_offsets"):
         descriptor = encoded_corpus_manifest["artifacts"][name]
         source = encoded_corpus_dir / descriptor["file"]
         destination = staging / descriptor["file"]
+        destination.parent.mkdir(parents=True, exist_ok=True)
         _link_or_copy(source, destination)
         output.append(destination)
-    return output[0], output[1], output[2]
+
+    descriptor = encoded_corpus_manifest["artifacts"]["embeddings"]
+    source = encoded_corpus_dir / descriptor["file"]
+    destination = staging / descriptor["file"]
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    _link_or_copy(source, destination)
+    if descriptor.get("storage") == "sharded_npy":
+        for part in descriptor["parts"]:
+            part_source = source.parent / part["file"]
+            part_destination = destination.parent / part["file"]
+            _link_or_copy(part_source, part_destination)
+        embeddings_source = destination.parent
+    else:
+        embeddings_source = destination
+    return output[0], output[1], embeddings_source
 
 
 def _training_sample(
@@ -78,6 +93,11 @@ def _build_index_artifact(
     staging: Path,
 ) -> tuple[Path | None, float]:
     started = time.perf_counter()
+    if config["index"]["type"] == "streaming_flat_ip":
+        # The exact streaming backend consumes the immutable embedding artifact
+        # directly.  Persisting a second corpus-sized Flat index would defeat
+        # its memory and disk contract.
+        return None, (time.perf_counter() - started) * 1000
     embeddings = np.load(embeddings_path, mmap_mode="r", allow_pickle=False)
     try:
         if (
@@ -139,6 +159,7 @@ def _verify_saved_index(
     config: dict[str, Any],
     index_path: Path | None,
     embeddings_path: Path,
+    embedding_descriptor: dict[str, Any],
 ) -> Any:
     verified = create_index(
         config,
@@ -151,6 +172,19 @@ def _verify_saved_index(
         raise RuntimeError(
             "Reloaded index build parameters do not match the requested build specification"
         )
+    if config["index"]["type"] == "streaming_flat_ip":
+        shape = embedding_descriptor.get("shape")
+        if (
+            not isinstance(shape, list)
+            or len(shape) != 2
+            or verified.count != shape[0]
+            or verified.dimension != shape[1]
+            or verified.ids is not None
+        ):
+            raise RuntimeError(
+                "Reloaded streaming index metadata does not match the encoded corpus"
+            )
+        return verified
     embeddings = np.load(embeddings_path, mmap_mode="r", allow_pickle=False)
     try:
         rows, dimension = map(int, embeddings.shape)
@@ -319,7 +353,12 @@ def build_index(config: dict[str, Any]) -> VerifiedBuild:
             embeddings_path,
             staging,
         )
-        index = _verify_saved_index(config, index_path, embeddings_path)
+        index = _verify_saved_index(
+            config,
+            index_path,
+            embeddings_path,
+            dict(encoded_corpus_manifest["artifacts"]["embeddings"]),
+        )
         _ensure_corpus_unchanged(loader, roots["corpus"], corpus)
         manifest = _create_manifest(
             build_id=build_id,

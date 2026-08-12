@@ -7,6 +7,7 @@ from __future__ import annotations
 from typing import Any
 
 from src.indexes.vector_index import FaissIndex
+from src.indexes.streaming_flat_index import StreamingFlatIPIndex
 
 
 def create_index(
@@ -25,6 +26,13 @@ def create_index(
             import faiss
 
             faiss.omp_set_num_threads(thread_count)
+
+    if effective_type == "streaming_flat_ip":
+        if effective_backend != "faiss":
+            raise ValueError("streaming_flat_ip requires the FAISS backend")
+        return StreamingFlatIPIndex(
+            corpus_chunk_size=config["retrieval"].get("corpus_chunk_size", 25_000)
+        )
 
     build_params: dict[str, int] = {}
     if effective_type == "hnsw_flat":

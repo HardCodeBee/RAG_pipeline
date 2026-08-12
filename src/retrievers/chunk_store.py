@@ -33,7 +33,7 @@ def _validated_vector_id(vector_id: int, count: int) -> int:
 
 
 class InMemoryChunkStore:
-    """In-memory store used by small-corpus builds such as QASPER smoke tests."""
+    """In-memory store used by small-corpus and synthetic test builds."""
 
     def __init__(self, chunks: Iterable[ChunkRecord | dict]):
         records = [

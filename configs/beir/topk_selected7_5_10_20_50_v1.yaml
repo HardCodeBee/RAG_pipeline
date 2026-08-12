@@ -1,0 +1,32 @@
+schema_version: 1
+run_id: beir_selected7_topk_5_10_20_50_v1
+output_dir: outputs/beir_selected7_topk_5_10_20_50_v1
+cutoffs: [5, 10, 20, 50]
+bootstrap:
+  resamples: 1000
+  seed: 20260808
+suites:
+  5:
+    - outputs/beir_nfcorpus_fiqa_arguana_four_condition_full_v2
+    - outputs/beir_hotpotqa_four_condition_full_v2
+    - outputs/beir_nq_four_condition_full_v2
+    - outputs/beir_webis_touche2020_four_condition_full_v2
+    - outputs/beir_cqadupstack_four_condition_full_v2
+  10:
+    - outputs/beir_nfcorpus_fiqa_arguana_four_condition_full_v2_top10_offline_v1
+    - outputs/beir_hotpotqa_four_condition_full_v2_top10_offline_v1
+    - outputs/beir_nq_four_condition_full_v2_top10_offline_v1
+    - outputs/beir_webis_touche2020_four_condition_full_v2_top10_offline_v1
+    - outputs/beir_cqadupstack_four_condition_full_v2_top10_offline_v2
+  20:
+    - outputs/beir_nfcorpus_fiqa_arguana_four_condition_full_v2_top20_offline_v1
+    - outputs/beir_hotpotqa_four_condition_full_v2_top20_offline_v1
+    - outputs/beir_nq_four_condition_full_v2_top20_offline_v1
+    - outputs/beir_webis_touche2020_four_condition_full_v2_top20_offline_v1
+    - outputs/beir_cqadupstack_four_condition_full_v2_top20_offline_v1
+  50:
+    - outputs/beir_nfcorpus_fiqa_arguana_four_condition_full_v2_top50_offline_v1
+    - outputs/beir_hotpotqa_four_condition_full_v2_top50_offline_v1
+    - outputs/beir_nq_four_condition_full_v2_top50_offline_v1
+    - outputs/beir_webis_touche2020_four_condition_full_v2_top50_offline_v1
+    - outputs/beir_cqadupstack_four_condition_full_v2_top50_offline_v1

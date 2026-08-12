@@ -72,6 +72,15 @@ def create_retriever(
     if verified_build is None:
         raise ValueError("BM25 retrieval requires a verified source build")
     verified_sparse_index = resolve_bm25_index(config, verified_build)
+    if config["bm25"]["backend"] == "sqlite":
+        from src.retrievers.sqlite_bm25 import SQLiteBM25Retriever
+
+        return SQLiteBM25Retriever.load(
+            chunks,
+            verified_sparse_index.directory,
+            top_k=config["retrieval"]["candidate_k"],
+            sparse_index_id=verified_sparse_index.manifest["sparse_index_id"],
+        )
     return BM25Retriever.load(
         chunks,
         verified_sparse_index.directory,

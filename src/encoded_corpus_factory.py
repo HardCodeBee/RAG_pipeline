@@ -8,25 +8,15 @@ from pathlib import Path
 from typing import Any
 
 from src.embedders.text_embedder import TextEmbedder
-from src.loaders.dpr_wikipedia_loader import DprWikipediaCorpusLoader
-from src.loaders.qasper_loader import QasperCorpusLoader
+from src.loaders.beir_loader import BeirCorpusLoader
 from src.provenance import corpus_inventory
 from src.text.token_counters import HuggingFaceTokenCounter, RegexTokenCounter
 
 
 def create_loader(config: dict[str, Any]):
     loader = config["loader"]
-    if loader["type"] == "dpr_wikipedia":
-        return DprWikipediaCorpusLoader(
-            expected_protocol=loader["expected_protocol"],
-            text_format=loader["text_format"],
-            require_canonical_counts=loader["require_canonical_counts"],
-        )
-    if loader["type"] == "qasper":
-        return QasperCorpusLoader(
-            split=loader["split"],
-            max_documents=loader["max_documents"],
-        )
+    if loader["type"] == "beir":
+        return BeirCorpusLoader(expected_dataset=loader["expected_dataset"])
     raise ValueError(f"Unsupported loader: {loader['type']}")
 
 
@@ -57,7 +47,12 @@ def create_token_counter(config: dict[str, Any]):
     raise ValueError(f"Unsupported tokenizer: {chunking['tokenizer']}")
 
 
-def create_chunker(config: dict[str, Any], token_counter):
+def create_chunker(
+    config: dict[str, Any],
+    token_counter,
+    *,
+    prevalidated_unique_ids: bool = False,
+):
     # Chunking implementations are build-only dependencies. Import them here
     # so query-time factory imports do not load the chunking subsystem.
     from src.chunkers.fixed_sentence_chunker import FixedSentenceChunker
@@ -70,6 +65,7 @@ def create_chunker(config: dict[str, Any], token_counter):
             token_counter=token_counter,
             chunk_size_tokens=chunking["chunk_size_tokens"],
             chunk_overlap_tokens=chunking["overlap_budget_tokens"],
+            verify_unique_ids=not prevalidated_unique_ids,
         )
     return FixedSentenceChunker(
         sentence_splitter=RegexSentenceSplitter(),

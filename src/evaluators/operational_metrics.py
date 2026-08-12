@@ -102,6 +102,8 @@ def summarize_execution(rows: Sequence[Mapping[str, Any]]) -> dict[str, int | fl
         "total_provider_total_tokens": sum(provider_total_tokens),
     }
     for stage in (
+        "query_tokenization_ms",
+        "sparse_search_ms",
         "query_embedding_ms",
         "index_search_ms",
         "chunk_mapping_ms",

@@ -10,6 +10,7 @@ import os
 import platform
 import sys
 from pathlib import Path
+from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -30,6 +31,39 @@ def _check_import(module_name: str, distribution_name: str) -> dict:
             "version": None,
             "error": {"type": exc.__class__.__name__, "message": str(exc)[:500]},
         }
+
+
+def _check_sqlite() -> dict[str, Any]:
+    try:
+        sqlite3 = importlib.import_module("sqlite3")
+        connection = sqlite3.connect(":memory:")
+        try:
+            row = connection.execute("SELECT sqlite_version()").fetchone()
+        finally:
+            connection.close()
+        version = row[0] if row else getattr(sqlite3, "sqlite_version", None)
+        if not isinstance(version, str) or not version:
+            raise RuntimeError("SQLite did not report a runtime version")
+        return {"status": "available", "version": version, "error": None}
+    except Exception as exc:
+        return {
+            "status": "unavailable",
+            "version": None,
+            "error": {"type": exc.__class__.__name__, "message": str(exc)[:500]},
+        }
+
+
+def _selected_bm25_dependencies(
+    config: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    if config["retrieval"]["method"] != "bm25":
+        return {}
+    backend = config["bm25"]["backend"]
+    if backend == "bm25s":
+        return {"bm25s": _check_import("bm25s", "bm25s")}
+    if backend == "sqlite":
+        return {"sqlite3": _check_sqlite()}
+    raise ValueError(f"Unsupported BM25 backend: {backend}")
 
 
 def main() -> None:
@@ -60,8 +94,6 @@ def main() -> None:
         "numpy": _check_import("numpy", "numpy"),
         "pyyaml": _check_import("yaml", "PyYAML"),
     }
-    if config["loader"]["type"] == "qasper":
-        dependencies["datasets"] = _check_import("datasets", "datasets")
     reranker = config["retrieval"]["reranker"]
     if (
         config["embedding"]["backend"] == "sentence_transformers"
@@ -72,8 +104,7 @@ def main() -> None:
         dependencies["transformers"] = _check_import("transformers", "transformers")
     if config["index"]["backend"] == "faiss":
         dependencies["faiss"] = _check_import("faiss", "faiss-cpu")
-    if config["retrieval"]["method"] == "bm25":
-        dependencies["bm25s"] = _check_import("bm25s", "bm25s")
+    dependencies.update(_selected_bm25_dependencies(config))
     if config["generation"]["provider"] == "openai":
         dependencies["openai"] = _check_import("openai", "openai")
 

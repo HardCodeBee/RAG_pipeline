@@ -118,53 +118,18 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     loader = _mapping(value.get("loader"), "loader")
     loader["type"] = _choice(
         loader.get("type"),
-        {"dpr_wikipedia", "qasper"},
+        {"beir"},
         "loader.type",
     )
-    if loader["type"] == "qasper":
-        _unknown(loader, {"type", "split", "max_documents"}, "loader")
-        loader["split"] = _choice(
-            loader.get("split", "validation"),
-            {"train", "validation", "test", "all"},
-            "loader.split",
-        )
-        max_documents = loader.get("max_documents")
-        loader["max_documents"] = (
-            _integer(max_documents, "loader.max_documents")
-            if max_documents is not None
-            else None
-        )
-    elif loader["type"] == "dpr_wikipedia":
-        _unknown(
-            loader,
-            {
-                "type",
-                "expected_protocol",
-                "text_format",
-                "require_canonical_counts",
-            },
-            "loader",
-        )
-        loader["expected_protocol"] = _text(
-            loader.get("expected_protocol"),
-            "loader.expected_protocol",
-        )
-        loader["text_format"] = _choice(
-            loader.get("text_format", "title_newline_text_v1"),
-            {"title_newline_text_v1"},
-            "loader.text_format",
-        )
-        loader["require_canonical_counts"] = _boolean(
-            loader.get("require_canonical_counts", True),
-            "loader.require_canonical_counts",
-        )
+    _unknown(loader, {"type", "expected_dataset"}, "loader")
+    loader["expected_dataset"] = _text(
+        loader.get("expected_dataset"),
+        "loader.expected_dataset",
+    )
     # chunking 控制“页面文本 -> chunk”的策略和 token 预算。
     chunking = _mapping(value.get("chunking"), "chunking")
     chunking["strategy"] = _choice(
-        chunking.get(
-            "strategy",
-            "presegmented" if loader["type"] == "dpr_wikipedia" else "fixed_sentence",
-        ),
+        chunking.get("strategy", "presegmented"),
         {"fixed_sentence", "presegmented"},
         "chunking.strategy",
     )
@@ -200,8 +165,8 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("chunking.overlap_budget_tokens must be smaller than chunk_size_tokens")
     if chunking["strategy"] == "presegmented" and chunking["overlap_budget_tokens"] != 0:
         raise ValueError("presegmented chunking requires overlap_budget_tokens=0")
-    if loader["type"] == "dpr_wikipedia" and chunking["strategy"] != "presegmented":
-        raise ValueError("dpr_wikipedia loader requires presegmented chunking")
+    if loader["type"] == "beir" and chunking["strategy"] != "presegmented":
+        raise ValueError("beir loader requires presegmented chunking")
     if chunking["tokenizer"] == "huggingface":
         # Model-backed tokenization must pin the exact tokenizer revision.
         chunking["tokenizer_model"] = _text(
@@ -245,6 +210,8 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
                 "model_name",
                 "revision",
                 "batch_size",
+                "encode_call_rows",
+                "shard_rows",
                 "max_sequence_length",
                 "local_files_only",
             },
@@ -253,6 +220,16 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         embedding["model_name"] = _text(embedding.get("model_name"), "embedding.model_name")
         embedding["revision"] = _text(embedding.get("revision"), "embedding.revision")
         embedding["batch_size"] = _integer(embedding.get("batch_size", 32), "embedding.batch_size")
+        embedding["encode_call_rows"] = _integer(
+            embedding.get("encode_call_rows", embedding["batch_size"]),
+            "embedding.encode_call_rows",
+        )
+        shard_rows = embedding.get("shard_rows")
+        embedding["shard_rows"] = (
+            _integer(shard_rows, "embedding.shard_rows")
+            if shard_rows is not None
+            else None
+        )
         max_sequence_length = embedding.get("max_sequence_length")
         embedding["max_sequence_length"] = (
             _integer(max_sequence_length, "embedding.max_sequence_length")
@@ -282,7 +259,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     index["backend"] = _choice(index.get("backend"), {"faiss", "numpy"}, "index.backend")
     index["type"] = _choice(
         index.get("type", "flat_ip"),
-        {"flat_ip", "hnsw_flat", "ivf_flat", "ivf_pq"},
+        {"flat_ip", "hnsw_flat", "ivf_flat", "ivf_pq", "streaming_flat_ip"},
         "index.type",
     )
     allowed_index_keys = {"backend", "type", "build_batch_size", "faiss_threads"}
@@ -295,6 +272,10 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     _unknown(index, allowed_index_keys, "index")
     if index["backend"] == "numpy" and index["type"] != "flat_ip":
         raise ValueError("index.backend=numpy only supports index.type=flat_ip")
+    if index["type"] == "streaming_flat_ip" and index["backend"] != "faiss":
+        raise ValueError("streaming_flat_ip requires index.backend=faiss")
+    if embedding.get("shard_rows") is not None and index["type"] != "streaming_flat_ip":
+        raise ValueError("embedding.shard_rows requires index.type=streaming_flat_ip")
     index["build_batch_size"] = _integer(
         index.get("build_batch_size", 65536),
         "index.build_batch_size",
@@ -341,6 +322,8 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             "ef_search",
             "max_codes",
             "search_threads",
+            "corpus_chunk_size",
+            "query_batch_size",
             "reranker",
         },
         "retrieval",
@@ -384,6 +367,20 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         "retrieval.search_threads",
         minimum=0,
     )
+    streaming_keys = ("corpus_chunk_size", "query_batch_size")
+    if index["type"] == "streaming_flat_ip" and retrieval["method"] == "dense":
+        retrieval["corpus_chunk_size"] = _integer(
+            retrieval.get("corpus_chunk_size", 25_000),
+            "retrieval.corpus_chunk_size",
+        )
+        retrieval["query_batch_size"] = _integer(
+            retrieval.get("query_batch_size", 64),
+            "retrieval.query_batch_size",
+        )
+    elif any(key in retrieval for key in streaming_keys):
+        raise ValueError(
+            "corpus_chunk_size/query_batch_size require dense streaming_flat_ip retrieval"
+        )
     ann_parameter_names = ("nprobe", "ef_search", "max_codes")
     if retrieval["method"] == "bm25":
         if any(key in retrieval for key in ann_parameter_names):
@@ -393,6 +390,10 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             key in retrieval for key in ann_parameter_names
         ):
             raise ValueError("flat_ip does not accept ANN search parameters")
+        if index["type"] == "streaming_flat_ip" and any(
+            key in retrieval for key in ann_parameter_names
+        ):
+            raise ValueError("streaming_flat_ip does not accept ANN search parameters")
         if index["type"] == "hnsw_flat":
             if any(key in retrieval for key in ("nprobe", "max_codes")):
                 raise ValueError("hnsw_flat only accepts retrieval.ef_search")
@@ -462,12 +463,20 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         bm25 = _mapping({} if bm25_value is None else bm25_value, "bm25")
         _unknown(
             bm25,
-            {"backend", "method", "k1", "b", "analyzer", "mmap"},
+            {
+                "backend",
+                "method",
+                "k1",
+                "b",
+                "analyzer",
+                "mmap",
+                "transaction_documents",
+            },
             "bm25",
         )
         bm25["backend"] = _choice(
             bm25.get("backend", "bm25s"),
-            {"bm25s"},
+            {"bm25s", "sqlite"},
             "bm25.backend",
         )
         bm25["method"] = _choice(
@@ -488,11 +497,32 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             maximum=1.0,
         )
         bm25["analyzer"] = _choice(
-            bm25.get("analyzer", "english_default_v1"),
-            {"english_default_v1"},
+            bm25.get(
+                "analyzer",
+                (
+                    "english_default_v1"
+                    if bm25["backend"] == "bm25s"
+                    else "english_regex_casefold_v1"
+                ),
+            ),
+            (
+                {"english_default_v1"}
+                if bm25["backend"] == "bm25s"
+                else {"english_regex_casefold_v1"}
+            ),
             "bm25.analyzer",
         )
-        bm25["mmap"] = _boolean(bm25.get("mmap", True), "bm25.mmap")
+        if bm25["backend"] == "bm25s":
+            if "transaction_documents" in bm25:
+                raise ValueError("bm25.transaction_documents requires backend=sqlite")
+            bm25["mmap"] = _boolean(bm25.get("mmap", True), "bm25.mmap")
+        else:
+            if "mmap" in bm25:
+                raise ValueError("bm25.mmap applies only to backend=bm25s")
+            bm25["transaction_documents"] = _integer(
+                bm25.get("transaction_documents", 1000),
+                "bm25.transaction_documents",
+            )
         value["bm25"] = bm25
     elif bm25_value is not None:
         raise ValueError("bm25 config requires retrieval.method=bm25")
@@ -511,7 +541,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     _unknown(prompt, {"version"}, "prompt")
     prompt["version"] = _choice(
         prompt.get("version", "fixed_qa_v1"),
-        {"fixed_qa_v1", "nq_short_qa_v1"},
+        {"fixed_qa_v1"},
         "prompt.version",
     )
 

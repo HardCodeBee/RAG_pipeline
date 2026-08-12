@@ -14,6 +14,7 @@ from typing import Any
 import numpy as np
 
 from src.persistence.artifact_io import close_numpy_memmap, iter_jsonl
+from src.persistence.beir_artifact_registry import resolve_pinned_beir_build
 from src.persistence.artifact_validation import VerifiedBuild, validate_build_directory
 from src.config import validate_config
 from src.records import ChunkRecord, EmbeddingSpaceSpec, RetrievalTrace
@@ -84,12 +85,24 @@ class NaiveRAGPipeline:
             corpus, 
             build_source_sha)
         expected_build_dir = (roots["artifacts_root"] / build_id).resolve()
+        pinned_resolution = None
+        if verified_build is None and not expected_build_dir.is_dir():
+            pinned_resolution = resolve_pinned_beir_build(
+                config=self.config,
+                corpus=corpus,
+                current_build_spec=build_spec_value,
+                current_build_source_sha256=build_source_sha,
+                artifacts_root=roots["artifacts_root"],
+                project_root=PROJECT_ROOT,
+            )
+            if pinned_resolution is not None:
+                verified_build = pinned_resolution.verified_build
         self.build_dir = (
             expected_build_dir
             if verified_build is None
             else verified_build.directory.resolve()
         )
-        if self.build_dir != expected_build_dir:
+        if pinned_resolution is None and self.build_dir != expected_build_dir:
             raise ValueError("Verified build directory does not match the active config")
         # query 阶段不重建索引，只接受已经完整校验过的 build 目录。
         # 检查这个 build 目录是否存在、manifest 是否完整、chunk/embedding/index 文件 hash 是否匹配检查这个 build 目录是否存在、
@@ -101,19 +114,32 @@ class NaiveRAGPipeline:
             else verified_build
         )
         self.manifest = self.verified_build.manifest
-        if self.manifest.get("build_spec_sha256") != build_spec_sha:
-            raise ValueError("The active build specification does not match the immutable build directory")
-        if self.manifest.get("build_spec") != build_spec_value:
-            raise ValueError("The active build specification payload differs from the build manifest")
+        if pinned_resolution is None:
+            if self.manifest.get("build_spec_sha256") != build_spec_sha:
+                raise ValueError("The active build specification does not match the immutable build directory")
+            if self.manifest.get("build_spec") != build_spec_value:
+                raise ValueError("The active build specification payload differs from the build manifest")
+            artifact_build_source_sha = build_source_sha
+        else:
+            build_id = str(self.manifest["build_id"])
+            build_spec_sha = str(self.manifest["build_spec_sha256"])
+            build_spec_value = dict(self.manifest["build_spec"])
+            artifact_build_source_sha = pinned_resolution.producer_build_source_sha256
 
         # 找到并拼出实际文件路径
         artifacts = self.manifest["artifacts"]
         chunks_path = self.build_dir / artifacts["chunks"]["file"]
         embeddings_path = self.build_dir / artifacts["embeddings"]["file"]
-        index_path = (
-            self.build_dir / artifacts["index"]["file"]
-            if self.manifest["index"]["backend"] == "faiss"
+        embeddings_source = (
+            embeddings_path.parent
+            if artifacts["embeddings"].get("storage") == "sharded_npy"
             else embeddings_path
+        )
+        index_descriptor = artifacts.get("index")
+        index_path = (
+            self.build_dir / index_descriptor["file"]
+            if isinstance(index_descriptor, dict)
+            else embeddings_source
         )
         
         offsets_descriptor = artifacts.get("chunk_offsets")
@@ -170,16 +196,30 @@ class NaiveRAGPipeline:
             "build_dir": str(self.build_dir.resolve()),
             "build_spec_sha256": build_spec_sha,
             "source_snapshot_sha256": source_snapshot_sha,
-            "build_source_sha256": build_source_sha,
+            "build_source_sha256": artifact_build_source_sha,
             "run_source_sha256": run_source_sha,
             "run_spec": run_spec_value,
             "run_spec_sha256": json_sha256(run_spec_value),
         }
+        if pinned_resolution is not None:
+            self.runtime_metadata["current_build_source_sha256"] = build_source_sha
+            self.runtime_metadata["artifact_resolution"] = {
+                "mode": "pinned_beir_legacy_v1",
+                "registry": str(pinned_resolution.registry_path),
+                "dataset": pinned_resolution.dataset,
+                "unit": pinned_resolution.unit,
+                "producer_build_source_sha256": (
+                    pinned_resolution.producer_build_source_sha256
+                ),
+                "consumer_build_source_sha256": (
+                    pinned_resolution.consumer_build_source_sha256
+                ),
+            }
         sparse_index_id = getattr(self.retriever, "sparse_index_id", None)
         if sparse_index_id is not None:
             self.runtime_metadata["sparse_index_id"] = sparse_index_id
 
-    # 确认 chunks.jsonl 和 embeddings.npy 以及 manifest.json 三者完全对得上
+    # 确认 chunks.jsonl、单文件或分片 embeddings 与 manifest 完全对齐。
     def _validate_chunks(self, embeddings_path: Path) -> None:
         descriptor = self.manifest["artifacts"]["chunks"]
         count = len(self.chunk_store)
@@ -196,9 +236,20 @@ class NaiveRAGPipeline:
         if self.manifest.get("vector_id_sequence_sha256") != zero_based_sequence_sha256(count):
             raise ValueError("Chunk vector ids do not match the build manifest")
 
+        embedding_descriptor = self.manifest["artifacts"]["embeddings"]
+        if embedding_descriptor.get("storage") == "sharded_npy":
+            shape = embedding_descriptor.get("shape")
+            if (
+                shape != [count, self.manifest["index"]["dimension"]]
+                or embedding_descriptor.get("dtype") != "float32"
+            ):
+                raise ValueError("Sharded embedding descriptor does not match chunks")
+            # Every part was size/hash/header validated at the build trust
+            # boundary; no corpus-sized concatenation is needed here.
+            return
+
         embeddings = np.load(embeddings_path, mmap_mode="r", allow_pickle=False)
         try:
-            embedding_descriptor = self.manifest["artifacts"]["embeddings"]
             if list(embeddings.shape) != embedding_descriptor.get("shape"):
                 raise ValueError("Embedding shape does not match the build manifest")
             if embeddings.ndim != 2 or embeddings.shape[0] != count:
@@ -268,10 +319,14 @@ class NaiveRAGPipeline:
             raise ValueError("Loaded index build parameters do not match the build manifest")
         
          # 校验集合和 hash，确保 id 序列和 build 阶段一致。
-        if self.index.ids is None:
-            raise ValueError("Loaded index does not expose vector ids")
-        ids = np.asarray(self.index.ids, dtype=np.int64)
         expected_hash = self.manifest["vector_id_sequence_sha256"]
+        if self.index.ids is None:
+            if self.index.index_type != "streaming_flat_ip":
+                raise ValueError("Loaded index does not expose vector ids")
+            if zero_based_sequence_sha256(len(self.chunk_store)) != expected_hash:
+                raise ValueError("Implicit streaming vector ids do not match the manifest")
+            return
+        ids = np.asarray(self.index.ids, dtype=np.int64)
         if (
             ids.shape != (len(self.chunk_store),)
             or not np.array_equal(ids, np.arange(len(self.chunk_store), dtype=np.int64))

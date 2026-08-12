@@ -9,9 +9,6 @@ from src.records import ChunkRecord, PageRecord
 from src.text.token_counters import validate_token_window
 
 
-DPR_PASSAGE_PREFIX = "dpr_wiki_passage:"
-
-
 class PresegmentedChunker:
     """Convert each PageRecord to one ChunkRecord without text re-segmentation."""
 
@@ -20,6 +17,8 @@ class PresegmentedChunker:
         token_counter,
         chunk_size_tokens: int = 512,
         chunk_overlap_tokens: int = 0,
+        *,
+        verify_unique_ids: bool = True,
     ):
         validate_token_window(
             chunk_size_tokens,
@@ -29,27 +28,25 @@ class PresegmentedChunker:
         )
         if chunk_overlap_tokens != 0:
             raise ValueError("PresegmentedChunker requires chunk_overlap_tokens=0")
+        if not isinstance(verify_unique_ids, bool):
+            raise TypeError("verify_unique_ids must be a boolean")
         self.token_counter = token_counter
         self.chunk_size_tokens = chunk_size_tokens
         self.chunk_overlap_tokens = chunk_overlap_tokens
+        self.verify_unique_ids = verify_unique_ids
 
     def iter_chunks(
         self,
         records: Iterable[PageRecord | Mapping[str, Any]],
     ) -> Iterator[ChunkRecord]:
-        seen_chunk_ids: set[str] = set()
-        previous_dpr_passage_id = 0
+        # Multi-million-row prepared corpora validate uniqueness at their disk
+        # trust boundary.  Repeating that check with a Python set would retain
+        # one string per document and defeat streaming construction.
+        seen_chunk_ids: set[str] | None = set() if self.verify_unique_ids else None
         for vector_id, value in enumerate(records):
             record = value if isinstance(value, PageRecord) else PageRecord.from_mapping(value)
             chunk_id = record.doc_id
-            if chunk_id.startswith(DPR_PASSAGE_PREFIX):
-                suffix = chunk_id.removeprefix(DPR_PASSAGE_PREFIX)
-                if not suffix.isdecimal() or int(suffix) <= previous_dpr_passage_id:
-                    raise ValueError(
-                        "DPR pre-segmented chunk ids must be positive and strictly increasing"
-                    )
-                previous_dpr_passage_id = int(suffix)
-            else:
+            if seen_chunk_ids is not None:
                 if chunk_id in seen_chunk_ids:
                     raise ValueError(f"Pre-segmented chunk id is duplicated: {chunk_id}")
                 seen_chunk_ids.add(chunk_id)

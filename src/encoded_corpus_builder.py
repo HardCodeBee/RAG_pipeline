@@ -6,7 +6,6 @@ from __future__ import annotations
 
 import os
 import shutil
-import tempfile
 import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -33,15 +32,15 @@ from src.persistence.encoded_corpus_writer import write_encoded_corpus
 class _PageStats:
     num_pages: int = 0
     document_ids: set[str] = field(default_factory=set)
-    dpr_documents: bool = False
+    one_page_per_document: bool = False
 
     @property
     def num_documents(self) -> int:
-        return self.num_pages if self.dpr_documents else len(self.document_ids)
+        return self.num_pages if self.one_page_per_document else len(self.document_ids)
 
     def observe(self, page: PageRecord) -> None:
         self.num_pages += 1
-        if not self.dpr_documents:
+        if not self.one_page_per_document:
             self.document_ids.add(page.doc_id)
 
 
@@ -154,8 +153,17 @@ def _encoded_corpus_inputs(
     corpus_path: Path,
 ) -> tuple[Any, Any, _PageStats, _ChunkStats, Iterator[ChunkRecord]]:
     token_counter = create_token_counter(config)
-    chunker = create_chunker(config, token_counter)
-    page_stats = _PageStats(dpr_documents=config["loader"]["type"] == "dpr_wikipedia")
+    prevalidated_unique_ids = bool(
+        getattr(loader, "prevalidated_unique_doc_ids", False)
+    )
+    chunker = create_chunker(
+        config,
+        token_counter,
+        prevalidated_unique_ids=prevalidated_unique_ids,
+    )
+    page_stats = _PageStats(
+        one_page_per_document=bool(getattr(loader, "one_page_per_document", False))
+    )
     chunk_stats = _ChunkStats()
 
     if config["chunking"]["strategy"] == "presegmented":
@@ -224,12 +232,42 @@ def build_or_reuse_encoded_corpus(
         )
 
     cache_root.mkdir(parents=True, exist_ok=True)
-    staging = Path(
-        tempfile.mkdtemp(
-            prefix=f".{encoded_corpus_id}-",
-            dir=cache_root,
+    # A stable partial directory lets individually committed embedding shards
+    # survive a process restart. Its identity already includes corpus, model,
+    # chunking, storage layout, environment, and source fingerprints.
+    staging = cache_root / f".{encoded_corpus_id}.partial"
+    if staging.exists() and not staging.is_dir():
+        raise FileExistsError(f"Encoded-corpus recovery path is not a directory: {staging}")
+    staging.mkdir(exist_ok=True)
+    cleanup_staging = False
+
+    # Recover the narrow crash window after the complete manifest was written
+    # but before the partial directory was atomically renamed.
+    if (staging / "manifest.json").is_file():
+        recovered = validate_encoded_corpus_directory(
+            staging,
+            encoded_corpus_id,
+            spec_sha,
+        ).manifest
+        try:
+            os.replace(staging, encoded_corpus_dir)
+        except OSError:
+            if not encoded_corpus_dir.exists():
+                raise
+            recovered = validate_encoded_corpus_directory(
+                encoded_corpus_dir,
+                encoded_corpus_id,
+                spec_sha,
+            ).manifest
+            cleanup_staging = True
+        if cleanup_staging and staging.exists():
+            shutil.rmtree(staging, ignore_errors=True)
+        return (
+            encoded_corpus_dir,
+            recovered,
+            False,
+            (time.perf_counter() - started) * 1000,
         )
-    )
     try:
         token_counter, _, page_stats, chunk_stats, chunks = _encoded_corpus_inputs(
             config,
@@ -247,6 +285,11 @@ def build_or_reuse_encoded_corpus(
             embedder,
             staging,
             batch_size=config["embedding"].get("batch_size", 128),
+            encode_call_rows=config["embedding"].get(
+                "encode_call_rows",
+                config["embedding"].get("batch_size", 128),
+            ),
+            embedding_shard_rows=config["embedding"].get("shard_rows"),
         )
         if page_stats.num_pages <= 0:
             raise RuntimeError("The corpus produced no extractable text records")
@@ -285,6 +328,7 @@ def build_or_reuse_encoded_corpus(
                 encoded_corpus_id,
                 spec_sha,
             ).manifest
+            cleanup_staging = True
         else:
             validated = manifest
         return (
@@ -294,5 +338,7 @@ def build_or_reuse_encoded_corpus(
             (time.perf_counter() - started) * 1000,
         )
     finally:
-        if staging.exists():
+        # Preserve valid part checkpoints after failure. Only a concurrent
+        # winner makes this process's partial directory redundant.
+        if cleanup_staging and staging.exists():
             shutil.rmtree(staging, ignore_errors=True)

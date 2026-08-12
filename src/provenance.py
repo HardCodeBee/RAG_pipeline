@@ -133,13 +133,13 @@ _SOURCE_GROUP_PATTERNS = {
     ),
     "evaluation": (
         "scripts/cli_support.py",
-        "scripts/run_nq_eval.py",
-        "scripts/run_qasper_eval.py",
+        "scripts/run_beir_eval.py",
+        "scripts/run_beir_suite.py",
         "src/persistence/artifact_io.py",
         "src/persistence/artifact_validation.py",
         "src/evaluation_runner.py",
         "src/evaluators/*.py",
-        "src/loaders/qasper_loader.py",
+        "src/loaders/beir_loader.py",
         "src/provenance.py",
         "src/persistence/run_output_writer.py",
     ),
@@ -205,9 +205,6 @@ def _artifact_packages(
     include_index: bool,
 ) -> tuple[str, ...]:
     packages = {"numpy", "pyyaml"}
-    loader_type = identity["loader"]["type"]
-    if loader_type == "qasper":
-        packages.add("datasets")
     if identity["chunking"]["tokenizer"] == "huggingface":
         packages.add("transformers")
     if identity["embedding"]["backend"] == "sentence_transformers":
@@ -399,7 +396,6 @@ def environment_versions() -> dict[str, Any]:
     # 记录关键依赖版本，方便解释不同机器上的构建差异。
     packages = {
         "bm25s": "bm25s",
-        "datasets": "datasets",
         "faiss": "faiss-cpu",
         "numpy": "numpy",
         "openai": "openai",
