@@ -36,28 +36,20 @@ from src.provenance import (
     json_sha256,
     recorded_config,
     resolved_roots,
-    sha256_file,
+    source_files_sha256,
 )
 from src.records import SearchHit
 
 
 def _evaluation_source_sha256() -> str:
-    paths = (
-        Path(__file__).resolve(),
-        PROJECT_ROOT / "src" / "evaluators" / "beir_evaluation.py",
-        PROJECT_ROOT / "src" / "evaluators" / "beir_metrics.py",
-        PROJECT_ROOT / "src" / "evaluation_runner.py",
-        PROJECT_ROOT / "src" / "loaders" / "beir_loader.py",
-        PROJECT_ROOT / "src" / "persistence" / "run_output_writer.py",
-    )
-    descriptors = [
-        {
-            "file": path.relative_to(PROJECT_ROOT).as_posix(),
-            "sha256": sha256_file(path),
-        }
-        for path in paths
-    ]
-    return json_sha256(descriptors)
+    return source_files_sha256(PROJECT_ROOT, (
+        "scripts/run_beir_eval.py",
+        "src/evaluators/beir_evaluation.py",
+        "src/evaluators/beir_metrics.py",
+        "src/evaluation_runner.py",
+        "src/loaders/beir_loader.py",
+        "src/persistence/run_output_writer.py",
+    ))
 
 
 def _compact_hit(hit: SearchHit) -> dict[str, Any]:
@@ -68,13 +60,6 @@ def _compact_hit(hit: SearchHit) -> dict[str, Any]:
         "vector_id": hit.chunk.vector_id,
         "score": float(hit.score),
     }
-
-
-def _result_hit(hit: SearchHit, *, save_text: bool) -> dict[str, Any]:
-    value = hit.to_dict()
-    if not save_text:
-        value.pop("text", None)
-    return value
 
 
 def _metrics_for_rankings(
@@ -138,7 +123,7 @@ def _streaming_question_row(
         "method": "dense",
         "candidate_k": candidate_k,
         "top_k": final_k,
-        "results": [_result_hit(hit, save_text=save_text) for hit in final_hits],
+        "results": [hit.to_dict(include_text=save_text) for hit in final_hits],
         "first_stage_results": [_compact_hit(hit) for hit in candidate_hits],
         "timings_ms": {
             "batch_query_embedding_ms": float(
@@ -172,7 +157,6 @@ def _streaming_question_row(
             "dataset": dataset,
             "unit": unit,
             "split": split,
-            "raw_beir_ids": True,
         },
     }
 
@@ -214,9 +198,8 @@ def _pipeline_question_row(
         "method": pipeline.config["retrieval"]["method"],
         "candidate_k": candidate_k,
         "top_k": final_k,
-        "results": [_result_hit(hit, save_text=save_text) for hit in final_hits],
+        "results": [hit.to_dict(include_text=save_text) for hit in final_hits],
         "first_stage_results": [_compact_hit(hit) for hit in candidate_hits],
-        "latency_ms": retrieval_trace.latency_ms,
         "timings_ms": dict(retrieval_trace.timings_ms),
     }
     if rerank_trace is not None:
@@ -240,7 +223,6 @@ def _pipeline_question_row(
             "dataset": dataset,
             "unit": unit,
             "split": split,
-            "raw_beir_ids": True,
         },
     }
 
@@ -279,8 +261,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
     # deterministic even when a shared config normally uses a remote model.
     config["generation"] = {"provider": "extractive", "max_output_tokens": 1}
     config = validate_config(config)
-    if config["loader"]["type"] != "beir":
-        raise ValueError("BEIR evaluation requires loader.type=beir")
     candidate_k = config["retrieval"]["candidate_k"]
     final_k = config["retrieval"]["final_k"]
     if candidate_k <= 0 or final_k <= 0:
@@ -347,7 +327,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
         "effective_config": recorded_config(config),
         "dataset": verified_questions.dataset,
         "unit": verified_questions.unit,
-        "raw_beir_ids": True,
         "dataset_manifest_path": str(verified_questions.dataset_manifest_path),
         "dataset_manifest_sha256": verified_questions.dataset_manifest_sha256,
         "questions_path": str(verified_questions.queries_path),
@@ -374,10 +353,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
             "batch_streaming_flat_ip" if streaming_dense else f"per_query_{method}"
         ),
         "first_stage_identity": cache_identity,
-        "first_stage_identity_sha256": (
-            json_sha256(cache_identity) if cache_identity is not None else None
-        ),
-        "first_stage_batch_search_total_latency_ms": None,
         "resume": args.resume,
         "started_at": datetime.now(timezone.utc).isoformat(),
         "completed_at": None,
@@ -411,9 +386,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                 )
                 if args.resume:
                     batch = candidate_store.write(batch)
-            metadata["first_stage_batch_search_total_latency_ms"] = float(
-                batch.timings_ms["total_ms"]
-            )
             metadata["first_stage_batch_timings_ms"] = dict(batch.timings_ms)
             metadata["first_stage_candidates_reused"] = batch.reused_cache
 
@@ -466,7 +438,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                     "dataset": verified_questions.dataset,
                     "unit": verified_questions.unit,
                     "split": args.split,
-                    "raw_beir_ids": True,
                 },
             }
 

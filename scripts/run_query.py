@@ -65,7 +65,7 @@ def main() -> None:
             "config_path": str(config_path),
             "effective_config": recorded_config(config),
             **pipeline.runtime_metadata,
-            "effective_top_k": config["retrieval"]["top_k"],
+            "effective_top_k": config["retrieval"]["final_k"],
             "started_at": started_at,
             "completed_at": datetime.now(timezone.utc).isoformat(),
             "process_end_to_end_latency_ms": process_latency_ms,

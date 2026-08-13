@@ -10,6 +10,7 @@ import numpy as np
 
 from src.retrievers.chunk_store import ChunkStore, as_chunk_store
 from src.records import ChunkRecord, RetrievalTrace, SearchHit
+from src.query_plan import validate_k
 
 
 class DenseRetriever:
@@ -20,8 +21,7 @@ class DenseRetriever:
         index,
         top_k: int = 5,
     ):
-        if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k < 0:
-            raise ValueError("top_k must be a non-negative integer")
+        top_k = validate_k(top_k)
         if index.count <= 0 or index.dimension <= 0:
             raise ValueError("index must be built or loaded before creating a retriever")
 
@@ -54,12 +54,7 @@ class DenseRetriever:
         if not isinstance(query, str) or not query.strip():
             raise ValueError("query must be a non-empty string")
         effective_top_k = self.top_k if top_k is None else top_k
-        if (
-            isinstance(effective_top_k, bool)
-            or not isinstance(effective_top_k, int)
-            or effective_top_k < 0
-        ):
-            raise ValueError("top_k must be a non-negative integer")
+        effective_top_k = validate_k(effective_top_k)
 
         if effective_top_k == 0:
             return RetrievalTrace(

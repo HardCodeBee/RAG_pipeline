@@ -7,7 +7,6 @@ from __future__ import annotations
 import math
 from collections.abc import Sequence
 from dataclasses import dataclass, replace
-from typing import Protocol
 
 from src.records import SearchHit
 
@@ -116,21 +115,6 @@ class RerankResult:
             if self.results != self.trace.selected_results():
                 raise ValueError("RerankResult.results do not match the attached trace")
 
-    @property
-    def latency_ms(self) -> float:
-        return float(self.timing_ms)
-
-
-class Reranker(Protocol):
-    def rerank(
-        self,
-        query: str,
-        hits: Sequence[SearchHit],
-        *,
-        final_k: int | None = None,
-    ) -> RerankResult: ...
-
-
 def validate_rerank_inputs(
     query: str,
     hits: Sequence[SearchHit],
@@ -164,3 +148,21 @@ def reranked_hits(
         replace(hit, rank=rank, score=float(score))
         for rank, (hit, score) in enumerate(ordered[:final_k], start=1)
     )
+
+
+class NoOpReranker:
+    """Preserve candidate order and score while applying ``final_k``."""
+
+    def rerank(
+        self,
+        query: str,
+        hits: Sequence[SearchHit],
+        *,
+        final_k: int | None = None,
+    ) -> RerankResult:
+        values, effective_final_k = validate_rerank_inputs(query, hits, final_k)
+        ordered = [(hit, hit.score) for hit in values]
+        return RerankResult(
+            results=reranked_hits(ordered, effective_final_k),
+            timing_ms=0.0,
+        )

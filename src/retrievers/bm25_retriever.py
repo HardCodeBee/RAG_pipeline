@@ -11,6 +11,7 @@ from typing import Any
 from src.persistence.artifact_io import close_numpy_memmap
 from src.records import ChunkRecord, RetrievalTrace, SearchHit
 from src.retrievers.chunk_store import ChunkStore, as_chunk_store
+from src.query_plan import validate_k
 
 
 class BM25Retriever:
@@ -26,8 +27,7 @@ class BM25Retriever:
         search_threads: int = 0,
         sparse_index_id: str | None = None,
     ):
-        if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k < 0:
-            raise ValueError("top_k must be a non-negative integer")
+        top_k = validate_k(top_k)
         if (
             isinstance(search_threads, bool)
             or not isinstance(search_threads, int)
@@ -101,12 +101,7 @@ class BM25Retriever:
         if not isinstance(query, str) or not query.strip():
             raise ValueError("query must be a non-empty string")
         effective_top_k = self.top_k if top_k is None else top_k
-        if (
-            isinstance(effective_top_k, bool)
-            or not isinstance(effective_top_k, int)
-            or effective_top_k < 0
-        ):
-            raise ValueError("top_k must be a non-negative integer")
+        effective_top_k = validate_k(effective_top_k)
         if search_params:
             raise ValueError("BM25 retrieval does not accept ANN search parameters")
 

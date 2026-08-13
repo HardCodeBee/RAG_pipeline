@@ -16,6 +16,7 @@ from typing import Any, Protocol
 import numpy as np
 
 from src.persistence.artifact_io import (
+    atomic_write_json_object,
     close_numpy_memmap,
     decode_chunk_record_line,
     describe_artifact,
@@ -150,20 +151,6 @@ def _write_json_object(path: Path, value: Mapping[str, Any]) -> None:
         )
         handle.write("\n")
         _flush_file(handle)
-
-
-def _atomic_write_json_object(path: Path, value: Mapping[str, Any]) -> None:
-    temporary = _temporary_path(
-        path.parent,
-        prefix=f".{path.name}-",
-        suffix=".tmp",
-    )
-    try:
-        _write_json_object(temporary, value)
-        os.replace(temporary, path)
-    finally:
-        if temporary.is_file():
-            temporary.unlink()
 
 
 def _write_chunks_and_raw_offsets(
@@ -619,7 +606,7 @@ def _load_or_initialize_checkpoint(
             dimension=dimension,
             shard_rows=shard_rows,
         )
-        _atomic_write_json_object(checkpoint_path, state)
+        atomic_write_json_object(checkpoint_path, state)
         tracked_parts = []
 
     for path in tuple(embeddings_directory.iterdir()):
@@ -682,7 +669,7 @@ def _load_or_initialize_checkpoint(
         )
         tracked_parts.append(actual)
         state["parts"] = [dict(part) for part in tracked_parts]
-        _atomic_write_json_object(checkpoint_path, state)
+        atomic_write_json_object(checkpoint_path, state)
 
     state["parts"] = [dict(part) for part in tracked_parts]
     return checkpoint_path, state
@@ -744,7 +731,7 @@ def _write_sharded_embeddings(
             os.replace(temporary, part_path)
             parts.append(descriptor)
             state["parts"] = [dict(part) for part in parts]
-            _atomic_write_json_object(checkpoint_path, state)
+            atomic_write_json_object(checkpoint_path, state)
         finally:
             if temporary.is_file():
                 temporary.unlink()

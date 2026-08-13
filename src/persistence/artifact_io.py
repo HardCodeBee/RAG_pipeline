@@ -3,12 +3,19 @@
 from __future__ import annotations
 
 import json
-from collections.abc import Iterable, Iterator, Mapping
+import os
+import time
+import uuid
+from collections.abc import Iterator, Mapping
 from pathlib import Path
 from typing import Any
 
 from src.provenance import canonical_json_bytes, sha256_file
 from src.records import ChunkRecord
+
+
+_WINDOWS_REPLACE_ATTEMPTS = 8
+_WINDOWS_REPLACE_INITIAL_DELAY_SECONDS = 0.025
 
 
 def read_json_object(path: str | Path, *, label: str = "JSON") -> dict[str, Any]:
@@ -41,6 +48,70 @@ def write_manifest(path: str | Path, manifest: Mapping[str, Any]) -> None:
         handle.write("\n")
 
 
+def replace_with_retry(
+    source: str | Path,
+    destination: str | Path,
+    *,
+    attempts: int = _WINDOWS_REPLACE_ATTEMPTS,
+    initial_delay_seconds: float = _WINDOWS_REPLACE_INITIAL_DELAY_SECONDS,
+) -> None:
+    """Replace atomically, retrying transient Windows file-lock failures."""
+
+    if isinstance(attempts, bool) or not isinstance(attempts, int) or attempts <= 0:
+        raise ValueError("attempts must be a positive integer")
+    if (
+        isinstance(initial_delay_seconds, bool)
+        or not isinstance(initial_delay_seconds, (int, float))
+        or initial_delay_seconds < 0
+    ):
+        raise ValueError("initial_delay_seconds must be non-negative")
+    delay = float(initial_delay_seconds)
+    for attempt in range(attempts):
+        try:
+            os.replace(source, destination)
+            return
+        except PermissionError:
+            if attempt + 1 == attempts:
+                raise
+            time.sleep(delay)
+            delay *= 2
+
+
+def atomic_write_json_object(path: str | Path, value: Mapping[str, Any]) -> None:
+    """Durably replace one deterministic JSON object."""
+
+    destination = Path(path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_name(f".{destination.name}.{uuid.uuid4().hex}.tmp")
+    try:
+        write_manifest(temporary, value)
+        with temporary.open("rb+") as handle:
+            os.fsync(handle.fileno())
+        replace_with_retry(temporary, destination)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+
+
+def atomic_write_npz(path: str | Path, **arrays: Any) -> None:
+    """Durably replace one compressed NumPy archive."""
+
+    import numpy as np
+
+    destination = Path(path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_name(f".{destination.name}.{uuid.uuid4().hex}.tmp")
+    try:
+        with temporary.open("x+b") as handle:
+            np.savez_compressed(handle, **arrays)
+            handle.flush()
+            os.fsync(handle.fileno())
+        replace_with_retry(temporary, destination)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+
+
 def encode_jsonl_row(value: Mapping[str, Any], *, canonical: bool = True) -> bytes:
     """Encode one JSONL object without its trailing newline."""
 
@@ -67,25 +138,6 @@ def iter_jsonl(path: str | Path) -> Iterator[dict[str, Any]]:
             if not isinstance(value, dict):
                 raise ValueError(f"JSONL row {line_number} must be an object")
             yield value
-
-
-def write_jsonl(
-    path: str | Path,
-    rows: Iterable[Mapping[str, Any]],
-    *,
-    canonical: bool = True,
-) -> int:
-    """Stream JSONL rows to disk and return the number written."""
-
-    destination = Path(path)
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    count = 0
-    with destination.open("w", encoding="utf-8", newline="\n") as handle:
-        for row in rows:
-            handle.write(encode_jsonl_row(row, canonical=canonical).decode("utf-8"))
-            handle.write("\n")
-            count += 1
-    return count
 
 
 def describe_artifact(

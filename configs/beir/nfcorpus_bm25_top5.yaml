@@ -3,13 +3,7 @@ paths:
   artifacts_root: ../../artifacts
   outputs_root: ../../outputs
 loader:
-  type: beir
   expected_dataset: nfcorpus
-chunking:
-  strategy: presegmented
-  chunk_size_tokens: 512
-  overlap_budget_tokens: 0
-  tokenizer: regex
 embedding:
   backend: sentence_transformers
   model_name: BAAI/bge-small-en-v1.5
@@ -29,7 +23,6 @@ index:
   faiss_threads: 8
 retrieval:
   method: bm25
-  policy: fixed
   final_k: 5
   candidate_k: 5
   search_threads: 8

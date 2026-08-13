@@ -45,7 +45,7 @@ from src.persistence.artifact_io import iter_jsonl, read_json_object
 from src.persistence.artifact_validation import verify_artifact_descriptor
 from src.persistence.run_output_writer import write_metadata_json
 from src.provenance import evaluation_spec, json_sha256, sha256_file
-from src.rerankers.noop import NoOpReranker
+from src.rerankers.reranker_contract import NoOpReranker
 from src.retrievers.chunk_store import JsonlOffsetChunkStore
 
 
@@ -98,14 +98,7 @@ def _validate_artifact(
         raise ValueError(f"{label} descriptor is missing")
     if descriptor.get("file") != expected_file:
         raise ValueError(f"{label} descriptor names the wrong file")
-    path = directory / expected_file
-    if (
-        not path.is_file()
-        or path.stat().st_size != descriptor.get("size_bytes")
-        or sha256_file(path) != descriptor.get("sha256")
-    ):
-        raise ValueError(f"{label} artifact is missing or corrupted")
-    return path
+    return verify_artifact_descriptor(directory, descriptor, label=label).path
 
 
 def _load_source_rows(
@@ -279,7 +272,6 @@ def _derived_config(
     retrieval = config["retrieval"]
     retrieval["candidate_k"] = physical_candidate_k if rerank else top_k
     retrieval["final_k"] = top_k
-    retrieval["top_k"] = top_k
     if not rerank:
         retrieval["reranker"] = {"provider": "none"}
     return config
@@ -450,7 +442,6 @@ def _run_condition(
         "effective_config": config,
         "dataset": verified_questions.dataset,
         "unit": verified_questions.unit,
-        "raw_beir_ids": True,
         "dataset_manifest_path": str(verified_questions.dataset_manifest_path),
         "dataset_manifest_sha256": verified_questions.dataset_manifest_sha256,
         "questions_path": str(verified_questions.queries_path),
@@ -471,8 +462,6 @@ def _run_condition(
         "build_id": source_run["build_id"],
         "build_dir": source_run["build_dir"],
         "build_spec_sha256": source_run.get("build_spec_sha256"),
-        "build_source_sha256": source_run.get("build_source_sha256"),
-        "run_source_sha256": source_run.get("run_source_sha256"),
         "run_spec": run_spec,
         "run_spec_sha256": run_spec_sha256,
         "retrieval_method": method,
@@ -483,10 +472,7 @@ def _run_condition(
         "effective_top_k": top_k,
         "shared_first_stage_candidate_k": physical_candidate_k,
         "shared_first_stage_requested_k": FIRST_STAGE_SEARCH_K,
-        "ignore_identical_ids": True,
-        "identical_id_policy": "leakage_safe_pre_candidate_filtering",
         "shared_first_stage_identity": dict(candidate_identity),
-        "shared_first_stage_identity_sha256": json_sha256(candidate_identity),
         "shared_first_stage_cache": dict(candidate_descriptor),
         "shared_first_stage_cache_ref_sha256": candidate_cache_ref,
         "shared_first_stage_cache_source_unit_dir": str(source_unit_dir),
@@ -495,9 +481,6 @@ def _run_condition(
         "shared_bge_scores_reused": rerank_score_batch is not None,
         "shared_bge_score_identity": (
             dict(rerank_identity) if rerank_identity is not None else None
-        ),
-        "shared_bge_score_identity_sha256": (
-            json_sha256(rerank_identity) if rerank_identity is not None else None
         ),
         "shared_bge_score_cache": (
             dict(rerank_descriptor) if rerank_descriptor is not None else None
@@ -521,7 +504,6 @@ def _run_condition(
         "completed_at": None,
         "num_question_records": len(questions),
         "num_rows_written": 0,
-        "metadata_flush_interval": METADATA_FLUSH_INTERVAL,
     }
     source_rows_by_id = {str(row["question_id"]): row for row in source_rows}
     position_by_id = {
@@ -578,9 +560,7 @@ def _run_condition(
                 "dataset": verified_questions.dataset,
                 "unit": verified_questions.unit,
                 "split": verified_questions.split,
-                "raw_beir_ids": True,
                 "shared_first_stage_candidates": True,
-                "identical_id_policy": "leakage_safe_pre_candidate_filtering",
             },
         }
 
@@ -735,7 +715,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
             "completed_at": None,
             "completed_conditions": [],
             "last_error": None,
-            "metadata_flush_interval": METADATA_FLUSH_INTERVAL,
         }
         write_metadata_json(metadata_path, suite_metadata, overwrite=False)
 
@@ -910,8 +889,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                 "metrics_version": METRICS_VERSION,
                 "physical_candidate_k": physical_candidate_k,
                 "first_stage_search_k": FIRST_STAGE_SEARCH_K,
-                "ignore_identical_ids": True,
-                "identical_id_policy": "leakage_safe_pre_candidate_filtering",
                 "final_k": args.top_k,
                 "retrieval_or_reranking_repeated": False,
                 "source_prefix_replay_validation": "exact_per_question",

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 # Query-only generator and reranker assembly.
 
+from pathlib import Path
 from typing import Any
 
 from src.generators.answer_generator import LLMGenerator
 from src.persistence.artifact_validation import VerifiedBuild
 from src.rerankers.cross_encoder import CrossEncoderReranker
-from src.rerankers.noop import NoOpReranker
+from src.rerankers.reranker_contract import NoOpReranker
 from src.retrievers.bm25_index import resolve_bm25_index
 from src.retrievers.bm25_retriever import BM25Retriever
 from src.retrievers.dense_retriever import DenseRetriever
@@ -54,6 +55,7 @@ def create_retriever(
     embedder=None,
     index=None,
     verified_build: VerifiedBuild | None = None,
+    pinned_sqlite_bm25: tuple[Path, str] | None = None,
 ):
     """Create exactly the retriever selected by the validated run config."""
 
@@ -71,16 +73,29 @@ def create_retriever(
         raise ValueError(f"Unsupported retriever: {method}")
     if verified_build is None:
         raise ValueError("BM25 retrieval requires a verified source build")
-    verified_sparse_index = resolve_bm25_index(config, verified_build)
     if config["bm25"]["backend"] == "sqlite":
-        from src.retrievers.sqlite_bm25 import SQLiteBM25Retriever
+        from src.retrievers.sqlite_bm25 import (
+            SQLiteBM25Retriever,
+            validate_sqlite_bm25_index,
+        )
+
+        if pinned_sqlite_bm25 is None:
+            verified_sparse_index = resolve_bm25_index(config, verified_build)
+        else:
+            directory, sparse_index_id = pinned_sqlite_bm25
+            verified_sparse_index = validate_sqlite_bm25_index(directory)
+            if verified_sparse_index.manifest.get("sparse_index_id") != sparse_index_id:
+                raise ValueError("Pinned SQLite BM25 sparse index id does not match")
 
         return SQLiteBM25Retriever.load(
             chunks,
-            verified_sparse_index.directory,
+            verified_sparse_index,
             top_k=config["retrieval"]["candidate_k"],
             sparse_index_id=verified_sparse_index.manifest["sparse_index_id"],
         )
+    if pinned_sqlite_bm25 is not None:
+        raise ValueError("Pinned SQLite BM25 cannot satisfy the selected BM25 backend")
+    verified_sparse_index = resolve_bm25_index(config, verified_build)
     return BM25Retriever.load(
         chunks,
         verified_sparse_index.directory,

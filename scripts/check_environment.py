@@ -80,9 +80,6 @@ def main() -> None:
     config = load_config(config_path)
 
     selected = {
-        "loader": config["loader"]["type"],
-        "chunker": config["chunking"]["strategy"],
-        "tokenizer": config["chunking"]["tokenizer"],
         "embedder": config["embedding"]["backend"],
         "index": f"{config['index']['backend']}:{config['index']['type']}",
         "retriever": config["retrieval"]["method"],
@@ -100,8 +97,6 @@ def main() -> None:
         or reranker["provider"] == "cross_encoder"
     ):
         dependencies["sentence_transformers"] = _check_import("sentence_transformers", "sentence-transformers")
-    if config["chunking"]["tokenizer"] == "huggingface":
-        dependencies["transformers"] = _check_import("transformers", "transformers")
     if config["index"]["backend"] == "faiss":
         dependencies["faiss"] = _check_import("faiss", "faiss-cpu")
     dependencies.update(_selected_bm25_dependencies(config))
@@ -180,7 +175,6 @@ def main() -> None:
         "selected_components": selected,
         "pinned_revisions": {
             "embedding": config["embedding"].get("revision"),
-            "tokenizer": config["chunking"].get("tokenizer_revision"),
             "reranker": reranker.get("revision"),
         },
         "reranker_model": {

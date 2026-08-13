@@ -197,9 +197,9 @@ class SearchHit:
         if not isinstance(self.chunk, ChunkRecord):
             raise TypeError("SearchHit.chunk must be a ChunkRecord")
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self, *, include_text: bool = True) -> dict[str, Any]:
         # 展平成一层 dict，方便日志、评估指标和 JSONL 结果直接消费。
-        return {
+        value = {
             "rank": self.rank,
             "chunk_id": self.chunk.chunk_id,
             "vector_id": self.chunk.vector_id,
@@ -211,6 +211,9 @@ class SearchHit:
             "text": self.chunk.text,
             "token_count": self.chunk.token_count,
         }
+        if not include_text:
+            value.pop("text")
+        return value
 
 
 # RetrievalTrace保存一次完整检索过程。
@@ -236,46 +239,18 @@ class RetrievalTrace:
         if not all(isinstance(result, SearchHit) for result in self.results):
             raise TypeError("RetrievalTrace.results must contain SearchHit values")
 
-    @property
-    def latency_ms(self) -> float:
-        # 只读属性，用来快速取得总检索耗时。
-        return float(self.timings_ms.get("total_ms", 0.0))
-
-
-# ContextPackage 是检索结果进入 prompt 之前的上下文包
-# 产生：查询 context 构造器。
-# 使用：prompt 构造器、pipeline 和生成器。
-# ContextPackage 后续会被 prompt构造器 直接拼进最终 prompt
-# 其他信息写入日志
 @dataclass(frozen=True, slots=True)
 class ContextPackage:
-    '''
-    text        :   已经拼好的上下文字符串 后面直接塞进 prompt 的 Context
-    results     :   实际进入 context 的 SearchHit
-    token_count :  这个 context 已经使用了多少 token。
-    truncated   :   是否因为 context_window_tokens 限制发生过截断。
-    builder     :   上下文构造策略名称。
-    '''
+    """Retrieved context selected for prompt construction."""
     text: str
     results: tuple[SearchHit, ...]
     token_count: int
     truncated: bool
-    builder: str
-
-    def result_dicts(self) -> list[dict[str, Any]]:
-        return [result.to_dict() for result in self.results]
 
 
-# 由 ContextPackage 进一步生成
-# prompt 包保存最终 prompt 文本及其版本和 hash。
-# hash 用于日志记录和实验复现：同一个输入应生成同一个 prompt_sha256。
 @dataclass(frozen=True, slots=True)
 class PromptPackage:
-    '''
-    text    :最终发送给 generator 的完整 prompt。
-    template:prompt 模板
-    sha256  :对完整 prompt 文本做 SHA256 后得到的 hash。
-    '''
+    """Rendered prompt and the minimal metadata used for logging."""
     
     text: str
     template: str

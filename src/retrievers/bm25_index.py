@@ -18,15 +18,14 @@ from src.persistence.artifact_validation import (
     VerifiedSparseIndex,
     validate_bm25_index_directory,
 )
+from src.persistence.beir_artifact_registry import resolve_pinned_beir_build
 from src.provenance import (
-    environment_versions,
-    git_state,
+    build_identity,
     json_sha256,
     producer_environment,
     resolved_roots,
     sha256_file,
     source_group_sha256,
-    source_snapshot_sha256,
 )
 from src.records import ChunkRecord
 
@@ -73,9 +72,6 @@ def bm25_index_spec(
             key: chunks[key]
             for key in ("file", "size_bytes", "sha256", "rows")
         },
-        "vector_id_sequence_sha256": verified_build.manifest[
-            "vector_id_sequence_sha256"
-        ],
         "producer_environment": producer_environment("bm25s", "numpy"),
         "sparse_index_source_sha256": sparse_index_source_sha256,
     }
@@ -207,6 +203,28 @@ def build_bm25_index(
     """Build or reuse a BM25S artifact over a verified build's chunk rows."""
 
     config = validate_config(config)
+    if config["bm25"]["backend"] == "sqlite":
+        corpus = verified_build.manifest.get("build_spec", {}).get("corpus")
+        if isinstance(corpus, dict):
+            _, _, current_build_spec = build_identity(
+                config,
+                dict(corpus),
+                source_group_sha256(PROJECT_ROOT, "build"),
+            )
+            pinned = resolve_pinned_beir_build(
+                config=config,
+                corpus=corpus,
+                current_build_spec=current_build_spec,
+                artifacts_root=resolved_roots(config)["artifacts_root"],
+            )
+            if (
+                pinned is not None
+                and pinned.verified_build.directory.resolve()
+                == verified_build.directory.resolve()
+            ):
+                from src.retrievers.sqlite_bm25 import validate_sqlite_bm25_index
+
+                return validate_sqlite_bm25_index(pinned.sqlite_bm25_directory)
     directory, sparse_id, spec_sha, spec = expected_bm25_index_directory(
         config,
         verified_build,
@@ -303,13 +321,9 @@ def build_bm25_index(
             "created_at_utc": datetime.now(timezone.utc).isoformat(),
             "sparse_index_spec_sha256": spec_sha,
             "sparse_index_spec": spec,
-            "source_snapshot_sha256": source_snapshot_sha256(PROJECT_ROOT),
             "source_build_id": verified_build.manifest["build_id"],
             "document_count": rows,
-            "vector_id_sequence_sha256": spec["vector_id_sequence_sha256"],
             "artifacts": artifacts,
-            "git": git_state(PROJECT_ROOT),
-            "environment": environment_versions(),
             "timings_ms": {
                 "tokenization": tokenization_ms,
                 "index_build": index_ms,

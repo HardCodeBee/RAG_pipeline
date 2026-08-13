@@ -16,19 +16,16 @@ import numpy as np
 
 from src.persistence.artifact_io import close_numpy_memmap, describe_artifact, write_manifest
 from src.persistence.artifact_validation import VerifiedBuild, validate_build_directory
+from src.persistence.beir_artifact_registry import resolve_pinned_beir_build
 from src.config import validate_config
+from src.loaders.beir_loader import BeirCorpusLoader
 from src.vector_index_factory import create_index
 from src.provenance import (
     build_identity,
     corpus_inventory,
-    environment_versions,
-    git_state,
     resolved_roots,
     source_group_sha256,
-    source_snapshot_sha256,
-    zero_based_sequence_sha256,
 )
-from src.encoded_corpus_factory import create_loader, discover_corpus
 from src.encoded_corpus_builder import build_or_reuse_encoded_corpus
 
 
@@ -224,18 +221,12 @@ def _create_manifest(
     build_id: str,
     build_spec_sha: str,
     spec: dict[str, Any],
-    source_snapshot_sha: str,
-    documents: list[Path],
     encoded_corpus_manifest: dict[str, Any],
     index: Any,
-    chunks_path: Path,
-    offsets_path: Path,
-    embeddings_path: Path,
     index_path: Path | None,
     timings: dict[str, float],
     started: float,
 ) -> dict[str, Any]:
-    rows = int(encoded_corpus_manifest["artifacts"]["chunks"]["rows"])
     artifacts = {
         name: dict(encoded_corpus_manifest["artifacts"][name])
         for name in ("chunks", "chunk_offsets", "embeddings")
@@ -248,24 +239,14 @@ def _create_manifest(
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "build_spec_sha256": build_spec_sha,
         "build_spec": spec,
-        "source_snapshot_sha256": source_snapshot_sha,
-        "corpus": {
-            "num_files": len(documents),
-            **encoded_corpus_manifest["corpus"],
-        },
         "chunking": encoded_corpus_manifest["chunking"],
         "embedding": encoded_corpus_manifest["embedding"],
         "index": {
             "backend": index.backend,
             "type": index.index_type,
-            "count": index.count,
-            "dimension": index.dimension,
             "build_params": index.build_params,
         },
-        "vector_id_sequence_sha256": zero_based_sequence_sha256(rows),
         "artifacts": artifacts,
-        "git": git_state(PROJECT_ROOT),
-        "environment": environment_versions(),
         "timings_ms": {
             **timings,
             "total_before_commit": (time.perf_counter() - started) * 1000,
@@ -312,12 +293,12 @@ def build_index(config: dict[str, Any]) -> VerifiedBuild:
     if "_base_dir" not in config:
         raise ValueError("config must include _base_dir; use load_config()")
     roots = resolved_roots(config)
-    loader = create_loader(config)
-    documents, corpus = discover_corpus(loader, roots["corpus"])
+    loader = BeirCorpusLoader(expected_dataset=config["loader"]["expected_dataset"])
+    documents = loader.discover(roots["corpus"])
+    corpus = corpus_inventory(documents, roots["corpus"])
     if not documents:
         raise RuntimeError(f"No corpus files found in corpus path: {roots['corpus']}")
     build_source_sha = source_group_sha256(PROJECT_ROOT, "build")
-    source_snapshot_sha = source_snapshot_sha256(PROJECT_ROOT)
     build_id, build_spec_sha, spec = build_identity(config, corpus, build_source_sha)
     artifacts_root = roots["artifacts_root"]
     build_dir = artifacts_root / build_id
@@ -328,6 +309,15 @@ def build_index(config: dict[str, Any]) -> VerifiedBuild:
         ) != spec:
             raise ValueError("Existing build directory does not match the requested build spec")
         return verified
+
+    compatible = resolve_pinned_beir_build(
+        config=config,
+        corpus=corpus,
+        current_build_spec=spec,
+        artifacts_root=artifacts_root,
+    )
+    if compatible is not None:
+        return compatible.verified_build
 
     artifacts_root.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
@@ -364,13 +354,8 @@ def build_index(config: dict[str, Any]) -> VerifiedBuild:
             build_id=build_id,
             build_spec_sha=build_spec_sha,
             spec=spec,
-            source_snapshot_sha=source_snapshot_sha,
-            documents=documents,
             encoded_corpus_manifest=encoded_corpus_manifest,
             index=index,
-            chunks_path=chunks_path,
-            offsets_path=offsets_path,
-            embeddings_path=embeddings_path,
             index_path=index_path,
             timings={
                 "encoded_corpus_build_or_validation": encoded_corpus_ms,

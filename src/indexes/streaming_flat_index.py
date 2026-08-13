@@ -13,8 +13,6 @@ authoritative part list and is validated strictly.
 
 from __future__ import annotations
 
-import hashlib
-import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -22,6 +20,8 @@ from typing import Any, Mapping
 
 import numpy as np
 
+from src.persistence.artifact_io import close_numpy_memmap, read_json_object
+from src.provenance import sha256_file
 from src.records import VectorHit
 
 
@@ -29,7 +29,6 @@ _PART_NAME = re.compile(r"^part-(\d+)\.npy$")
 _MANIFEST_NAME = "manifest.json"
 _MANIFEST_SCHEMA_VERSION = 1
 _FLOAT32 = np.dtype(np.float32)
-_HASH_CHUNK_BYTES = 1024 * 1024
 _FINITE_VALIDATION_ROWS = 8192
 
 
@@ -63,30 +62,6 @@ def _non_negative_integer(name: str, value: Any) -> int:
     if result < 0:
         raise ValueError(f"{name} must be a non-negative integer")
     return result
-
-
-def _load_json_mapping(path: Path) -> Mapping[str, Any]:
-    try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValueError(f"Invalid embedding manifest: {path}") from exc
-    if not isinstance(value, Mapping):
-        raise ValueError("Embedding manifest must contain a JSON object")
-    return value
-
-
-def _sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while block := handle.read(_HASH_CHUNK_BYTES):
-            digest.update(block)
-    return digest.hexdigest()
-
-
-def _close_memmap(values: np.ndarray) -> None:
-    mmap = getattr(values, "_mmap", None)
-    if mmap is not None:
-        mmap.close()
 
 
 def _open_npy_memmap(path: Path) -> np.ndarray:
@@ -152,7 +127,7 @@ def _validated_file_shape(
         _validate_finite(values, path=path)
         return shape
     finally:
-        _close_memmap(values)
+        close_numpy_memmap(values)
 
 
 def _part_number(filename: str) -> int:
@@ -163,7 +138,7 @@ def _part_number(filename: str) -> int:
 
 
 def _manifest_parts(directory: Path, manifest_path: Path) -> tuple[EmbeddingShard, ...]:
-    manifest = _load_json_mapping(manifest_path)
+    manifest = read_json_object(manifest_path, label="Embedding manifest")
     schema_version = manifest.get("schema_version")
     if (
         isinstance(schema_version, bool)
@@ -239,7 +214,7 @@ def _manifest_parts(directory: Path, manifest_path: Path) -> tuple[EmbeddingShar
                 or not re.fullmatch(r"[0-9a-fA-F]{64}", expected_hash)
             ):
                 raise ValueError(f"{label}.sha256 must be a 64-character hex digest")
-            if _sha256(path) != expected_hash.lower():
+            if sha256_file(path) != expected_hash.lower():
                 raise ValueError(f"Embedding SHA-256 mismatch: {path}")
 
         _validated_file_shape(
@@ -424,19 +399,6 @@ class StreamingFlatIPIndex:
         self.dimension = dimension
         self.count = count
 
-    def metadata(self) -> dict[str, Any]:
-        return {
-            "backend": self.backend,
-            "type": self.index_type,
-            "count": self.count,
-            "dimension": self.dimension,
-            "trained": self.trained,
-            "build_params": dict(self.build_params),
-            "search_params": dict(self.search_params),
-            "corpus_chunk_size": self.corpus_chunk_size,
-            "shards": len(self.shards),
-        }
-
     def _validate_queries(self, query_embeddings: np.ndarray) -> np.ndarray:
         queries = np.asarray(query_embeddings, dtype=np.float32)
         if queries.ndim != 2:
@@ -573,7 +535,7 @@ class StreamingFlatIPIndex:
                         del index
                     del block
             finally:
-                _close_memmap(values)
+                close_numpy_memmap(values)
 
         if np.any(best_ids < 0) or not np.isfinite(best_scores).all():
             raise RuntimeError("Streaming exact search did not produce a complete top-k")

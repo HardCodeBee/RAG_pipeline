@@ -9,16 +9,15 @@ import io
 import json
 import os
 import re
-import time
 import uuid
 from pathlib import Path
 from typing import Any
 
+from src.persistence.artifact_io import replace_with_retry
+
 
 _SECRET_VALUE_PATTERN = re.compile(r"\bsk-[A-Za-z0-9_-]{16,}\b")
 _SECRET_KEYS = {"api_key", "authorization", "password", "secret", "token"}
-_WINDOWS_REPLACE_ATTEMPTS = 8
-_WINDOWS_REPLACE_INITIAL_DELAY_SECONDS = 0.025
 
 
 def _safe_value(value: Any) -> Any:
@@ -39,35 +38,6 @@ def _safe_value(value: Any) -> Any:
     if isinstance(value, str):
         return _SECRET_VALUE_PATTERN.sub("[REDACTED]", value)
     return value
-
-
-def replace_with_retry(
-    source: str | Path,
-    destination: str | Path,
-    *,
-    attempts: int = _WINDOWS_REPLACE_ATTEMPTS,
-    initial_delay_seconds: float = _WINDOWS_REPLACE_INITIAL_DELAY_SECONDS,
-) -> None:
-    """Replace atomically, retrying transient Windows file-lock failures."""
-
-    if isinstance(attempts, bool) or not isinstance(attempts, int) or attempts <= 0:
-        raise ValueError("attempts must be a positive integer")
-    if (
-        isinstance(initial_delay_seconds, bool)
-        or not isinstance(initial_delay_seconds, (int, float))
-        or initial_delay_seconds < 0
-    ):
-        raise ValueError("initial_delay_seconds must be non-negative")
-    delay = float(initial_delay_seconds)
-    for attempt in range(attempts):
-        try:
-            os.replace(source, destination)
-            return
-        except PermissionError:
-            if attempt + 1 == attempts:
-                raise
-            time.sleep(delay)
-            delay *= 2
 
 
 def _atomic_write_text(path: Path, text: str, overwrite: bool = True) -> None:

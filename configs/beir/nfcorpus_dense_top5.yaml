@@ -4,15 +4,7 @@ paths:
   outputs_root: ../../outputs
 
 loader:
-  type: beir
   expected_dataset: nfcorpus
-
-# BEIR already defines retrieval units. No sentence rechunking is applied.
-chunking:
-  strategy: presegmented
-  chunk_size_tokens: 512
-  overlap_budget_tokens: 0
-  tokenizer: regex
 
 embedding:
   backend: sentence_transformers
@@ -35,7 +27,6 @@ index:
 
 retrieval:
   method: dense
-  policy: fixed
   final_k: 5
   candidate_k: 5
   corpus_chunk_size: 25000

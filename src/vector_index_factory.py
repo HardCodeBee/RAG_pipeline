@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from src.indexes.vector_index import FaissIndex
+from src.indexes.vector_index import VectorIndex
 from src.indexes.streaming_flat_index import StreamingFlatIPIndex
 
 
@@ -55,7 +55,7 @@ def create_index(
         for key in ("nprobe", "ef_search", "max_codes")
         if key in retrieval
     }
-    return FaissIndex(
+    return VectorIndex(
         backend=effective_backend,
         index_type=effective_type,
         build_params=build_params,

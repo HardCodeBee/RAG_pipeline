@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-import os
 import time
-import uuid
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,7 +17,7 @@ from src.evaluators.beir_metrics import (
     summarize_beir_rows,
 )
 from src.loaders.beir_loader import BeirCorpusLoader
-from src.persistence.artifact_io import read_json_object
+from src.persistence.artifact_io import atomic_write_npz, read_json_object
 from src.persistence.run_output_writer import write_metadata_json
 from src.provenance import json_sha256, sha256_file
 
@@ -75,9 +73,6 @@ def load_beir_question_split(
     root = Path(corpus_path).resolve()
     active_loader = loader or BeirCorpusLoader(expected_dataset=expected_dataset)
     manifest = active_loader.manifest(root)
-    if split not in active_loader.qrel_splits(root):
-        available = ", ".join(active_loader.qrel_splits(root))
-        raise ValueError(f"Unknown BEIR qrels split {split!r}; available: {available}")
 
     qrels_by_query: dict[str, dict[str, float]] = {}
     for qrel in active_loader.iter_qrels(root, split=split):
@@ -298,24 +293,6 @@ class FirstStageCandidateStore:
         if self.corpus_count <= 0:
             raise ValueError("corpus_count must be positive")
 
-    def _write_npz(self, batch: FirstStageCandidateBatch) -> None:
-        self.run_dir.mkdir(parents=True, exist_ok=True)
-        temporary = self.run_dir / f".{CANDIDATE_CACHE_FILE}.{uuid.uuid4().hex}.tmp"
-        try:
-            with temporary.open("xb") as handle:
-                np.savez_compressed(
-                    handle,
-                    scores=batch.scores,
-                    vector_ids=batch.vector_ids,
-                    question_ids=np.asarray(batch.question_ids, dtype=np.str_),
-                )
-                handle.flush()
-                os.fsync(handle.fileno())
-            os.replace(temporary, self.data_path)
-        finally:
-            if temporary.exists():
-                temporary.unlink()
-
     def write(self, batch: FirstStageCandidateBatch) -> FirstStageCandidateBatch:
         scores, vector_ids, question_ids = _validate_candidate_arrays(
             batch.scores,
@@ -334,24 +311,21 @@ class FirstStageCandidateStore:
             timings_ms=dict(batch.timings_ms),
             reused_cache=False,
         )
-        self._write_npz(committed)
+        atomic_write_npz(
+            self.data_path,
+            scores=committed.scores,
+            vector_ids=committed.vector_ids,
+            question_ids=np.asarray(committed.question_ids, dtype=np.str_),
+        )
         manifest = {
             "status": "complete",
             "schema_version": CANDIDATE_CACHE_SCHEMA_VERSION,
             "identity": self.identity,
-            "identity_sha256": json_sha256(self.identity),
             "artifact": {
                 "file": CANDIDATE_CACHE_FILE,
                 "size_bytes": self.data_path.stat().st_size,
                 "sha256": sha256_file(self.data_path),
-                "scores_shape": list(scores.shape),
-                "scores_dtype": str(scores.dtype),
-                "vector_ids_shape": list(vector_ids.shape),
-                "vector_ids_dtype": str(vector_ids.dtype),
             },
-            "corpus_count": self.corpus_count,
-            "num_questions": len(question_ids),
-            "result_k": int(scores.shape[1]),
             "timings_ms": dict(batch.timings_ms),
         }
         # The manifest is committed last and is the cache completion marker.
@@ -374,9 +348,6 @@ class FirstStageCandidateStore:
             manifest.get("status") != "complete"
             or manifest.get("schema_version") != CANDIDATE_CACHE_SCHEMA_VERSION
             or manifest.get("identity") != self.identity
-            or manifest.get("identity_sha256") != json_sha256(self.identity)
-            or manifest.get("corpus_count") != self.corpus_count
-            or manifest.get("num_questions") != len(self.question_ids)
             or not isinstance(artifact, Mapping)
             or artifact.get("file") != CANDIDATE_CACHE_FILE
         ):

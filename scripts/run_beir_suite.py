@@ -10,7 +10,6 @@ import json
 import os
 import re
 import sys
-import time
 import uuid
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
@@ -43,8 +42,8 @@ from src.evaluators.beir_suite import (
     compute_bm25_first_stage,
     shared_batch_from_dense,
 )
-from src.persistence.artifact_io import read_json_object
-from src.persistence.run_output_writer import replace_with_retry, write_metadata_json
+from src.persistence.artifact_io import read_json_object, replace_with_retry
+from src.persistence.run_output_writer import write_metadata_json
 from src.preparers.beir_dataset import (
     BEIR_DATASETS,
     CQADUPSTACK_FORUMS,
@@ -59,10 +58,11 @@ from src.provenance import (
     resolved_roots,
     run_spec,
     sha256_file,
+    source_files_sha256,
 )
 from src.pipeline import NaiveRAGPipeline
 from src.query_runtime_factory import create_reranker
-from src.rerankers.noop import NoOpReranker
+from src.rerankers.reranker_contract import NoOpReranker
 
 
 PHYSICAL_CANDIDATE_K = 50
@@ -87,7 +87,6 @@ CONDITIONS = (
 def _summarize_suite_condition(*args: Any, **kwargs: Any) -> dict[str, Any]:
     summary = summarize_beir_evaluation(*args, **kwargs)
     summary["evaluation_protocol"] = SUITE_EVALUATION_PROTOCOL
-    summary["identical_id_policy"] = "leakage_safe_pre_candidate_filtering"
     return summary
 
 
@@ -260,8 +259,6 @@ def _load_suite_template(path: Path, *, method: str) -> dict[str, Any]:
     if method == "dense":
         config["retrieval"]["query_batch_size"] = DENSE_QUERY_BATCH_SIZE
     config = validate_config(config)
-    if config["loader"]["type"] != "beir":
-        raise ValueError("BEIR suite templates require loader.type=beir")
     if config["retrieval"]["method"] != method:
         raise ValueError(f"Expected a {method} suite template")
     if config["retrieval"]["candidate_k"] != PHYSICAL_CANDIDATE_K:
@@ -307,24 +304,15 @@ def _physical_config(template: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _evaluation_source_sha256() -> str:
-    paths = (
-        Path(__file__).resolve(),
-        PROJECT_ROOT / "src" / "evaluators" / "beir_suite.py",
-        PROJECT_ROOT / "src" / "evaluators" / "beir_evaluation.py",
-        PROJECT_ROOT / "src" / "evaluators" / "beir_metrics.py",
-        PROJECT_ROOT / "src" / "evaluation_runner.py",
-        PROJECT_ROOT / "src" / "loaders" / "beir_loader.py",
-        PROJECT_ROOT / "src" / "persistence" / "run_output_writer.py",
-    )
-    return json_sha256(
-        [
-            {
-                "file": path.relative_to(PROJECT_ROOT).as_posix(),
-                "sha256": sha256_file(path),
-            }
-            for path in paths
-        ]
-    )
+    return source_files_sha256(PROJECT_ROOT, (
+        "scripts/run_beir_suite.py",
+        "src/evaluators/beir_suite.py",
+        "src/evaluators/beir_evaluation.py",
+        "src/evaluators/beir_metrics.py",
+        "src/evaluation_runner.py",
+        "src/loaders/beir_loader.py",
+        "src/persistence/run_output_writer.py",
+    ))
 
 
 def _first_stage_identity(
@@ -347,11 +335,9 @@ def _first_stage_identity(
         "dataset_manifest_sha256": dataset_manifest_sha256,
         "question_split": split,
         "build_id": pipeline.runtime_metadata["build_id"],
-        "run_source_sha256": pipeline.runtime_metadata["run_source_sha256"],
+        "run_source_sha256": pipeline.runtime_metadata["run_spec"]["run_source_sha256"],
         "retrieval_method": method,
         "retrieval": retrieval,
-        "ignore_identical_ids": True,
-        "identical_id_policy": "leakage_safe_pre_candidate_filtering",
         "requested_candidate_k": FIRST_STAGE_SEARCH_K,
         "retained_candidate_k": PHYSICAL_CANDIDATE_K,
     }
@@ -392,7 +378,7 @@ def _condition_runtime_metadata(
     spec = run_spec(
         dict(config),
         pipeline.runtime_metadata["build_id"],
-        pipeline.runtime_metadata["run_source_sha256"],
+        pipeline.runtime_metadata["run_spec"]["run_source_sha256"],
     )
     value["run_spec"] = spec
     value["run_spec_sha256"] = json_sha256(spec)
@@ -424,19 +410,11 @@ def _run_condition(
     condition = _condition_name(method, rerank=rerank)
     candidate_cache_descriptor = dict(candidate_cache_descriptor)
     candidate_cache_ref_sha256 = json_sha256(candidate_cache_descriptor)
-    if candidate_cache_descriptor.get("identity_sha256") != json_sha256(
-        cache_identity
-    ):
-        raise ValueError("Candidate cache descriptor differs from its identity")
     if rerank:
         if rerank_score_identity is None or rerank_score_cache_descriptor is None:
             raise ValueError("Reranked conditions require a pinned BGE score cache")
         rerank_score_cache_descriptor = dict(rerank_score_cache_descriptor)
         rerank_cache_ref_sha256 = json_sha256(rerank_score_cache_descriptor)
-        if rerank_score_cache_descriptor.get("identity_sha256") != json_sha256(
-            rerank_score_identity
-        ):
-            raise ValueError("BGE cache descriptor differs from its identity")
     else:
         if rerank_score_identity is not None or rerank_score_cache_descriptor is not None:
             raise ValueError("Baseline conditions cannot reference a BGE score cache")
@@ -463,7 +441,6 @@ def _run_condition(
         "effective_config": recorded_config(config),
         "dataset": verified_questions.dataset,
         "unit": verified_questions.unit,
-        "raw_beir_ids": True,
         "dataset_manifest_path": str(verified_questions.dataset_manifest_path),
         "dataset_manifest_sha256": verified_questions.dataset_manifest_sha256,
         "questions_path": str(verified_questions.queries_path),
@@ -487,10 +464,7 @@ def _run_condition(
         "effective_top_k": FINAL_K,
         "shared_first_stage_candidate_k": PHYSICAL_CANDIDATE_K,
         "shared_first_stage_requested_k": FIRST_STAGE_SEARCH_K,
-        "ignore_identical_ids": True,
-        "identical_id_policy": "leakage_safe_pre_candidate_filtering",
         "shared_first_stage_identity": dict(cache_identity),
-        "shared_first_stage_identity_sha256": json_sha256(cache_identity),
         "shared_first_stage_cache": candidate_cache_descriptor,
         "shared_first_stage_cache_ref_sha256": candidate_cache_ref_sha256,
         "shared_first_stage_candidates_reused": batch.reused_cache,
@@ -501,11 +475,6 @@ def _run_condition(
         "shared_bge_score_identity": (
             dict(rerank_score_identity) if rerank_score_identity is not None else None
         ),
-        "shared_bge_score_identity_sha256": (
-            json_sha256(rerank_score_identity)
-            if rerank_score_identity is not None
-            else None
-        ),
         "shared_bge_score_cache": rerank_score_cache_descriptor,
         "shared_bge_score_cache_ref_sha256": rerank_cache_ref_sha256,
         "resume": resume,
@@ -513,7 +482,6 @@ def _run_condition(
         "completed_at": None,
         "num_question_records": len(questions),
         "num_rows_written": 0,
-        "metadata_flush_interval": METADATA_FLUSH_INTERVAL,
     }
     position_by_id = {
         question["question_id"]: position
@@ -559,9 +527,7 @@ def _run_condition(
                 "dataset": verified_questions.dataset,
                 "unit": verified_questions.unit,
                 "split": split,
-                "raw_beir_ids": True,
                 "shared_first_stage_candidates": True,
-                "identical_id_policy": "leakage_safe_pre_candidate_filtering",
             },
         }
 
@@ -742,11 +708,8 @@ def main(argv: Sequence[str] | None = None) -> Path:
         "dense_query_batch_size": DENSE_QUERY_BATCH_SIZE,
         "physical_candidate_k": PHYSICAL_CANDIDATE_K,
         "first_stage_search_k": FIRST_STAGE_SEARCH_K,
-        "ignore_identical_ids": True,
-        "identical_id_policy": "leakage_safe_pre_candidate_filtering",
         "rerank_query_group_size": args.rerank_query_group_size,
         "bm25_checkpoint_query_group_size": BM25_CHECKPOINT_QUERY_GROUP_SIZE,
-        "metadata_flush_interval": METADATA_FLUSH_INTERVAL,
         "final_k": FINAL_K,
         "split": args.split,
         "max_questions": args.max_questions,
@@ -767,7 +730,9 @@ def main(argv: Sequence[str] | None = None) -> Path:
         if not metadata_path.is_file():
             raise FileNotFoundError(f"Cannot resume a missing BEIR suite: {suite_dir}")
         previous = read_json_object(metadata_path, label="BEIR suite metadata")
-        if previous.get("suite_identity") != suite_identity:
+        previous_identity = dict(previous.get("suite_identity", {}))
+        previous_identity.pop("metadata_flush_interval", None)
+        if previous_identity != suite_identity:
             raise ValueError("Cannot resume an incompatible BEIR suite")
         suite_metadata = dict(previous)
         suite_metadata.update(
@@ -793,8 +758,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
             "completed_at": None,
             "completed_conditions": [],
             "last_error": None,
-            "metadata_flush_interval": METADATA_FLUSH_INTERVAL,
-            "bm25_checkpoint_query_group_size": BM25_CHECKPOINT_QUERY_GROUP_SIZE,
         }
         write_metadata_json(metadata_path, suite_metadata, overwrite=False)
 
@@ -872,7 +835,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                             candidate_k=FIRST_STAGE_SEARCH_K,
                             retained_k=PHYSICAL_CANDIDATE_K,
                             corpus_count=len(pipeline.chunk_store),
-                            ignore_identical_ids=True,
                             query_group_size=BM25_CHECKPOINT_QUERY_GROUP_SIZE,
                         )
                         if method == "bm25"
@@ -896,7 +858,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                                 questions=questions,
                                 chunk_store=pipeline.chunk_store,
                                 retained_k=PHYSICAL_CANDIDATE_K,
-                                ignore_identical_ids=True,
                             )
                         else:
                             batch = compute_bm25_first_stage(
@@ -904,7 +865,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                                 questions,
                                 candidate_k=FIRST_STAGE_SEARCH_K,
                                 retained_k=PHYSICAL_CANDIDATE_K,
-                                ignore_identical_ids=True,
                                 checkpoint_store=bm25_checkpoint_store,
                             )
                         batch = store.write(batch)
@@ -941,7 +901,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
                                 "reranker": dict(
                                     condition_config["retrieval"]["reranker"]
                                 ),
-                                "run_source_sha256": pipeline.runtime_metadata[
+                                "run_source_sha256": pipeline.runtime_metadata["run_spec"][
                                     "run_source_sha256"
                                 ],
                                 "final_k": FINAL_K,
@@ -1023,8 +983,6 @@ def main(argv: Sequence[str] | None = None) -> Path:
                 "metrics_version": METRICS_VERSION,
                 "physical_candidate_k": PHYSICAL_CANDIDATE_K,
                 "first_stage_search_k": FIRST_STAGE_SEARCH_K,
-                "ignore_identical_ids": True,
-                "identical_id_policy": "leakage_safe_pre_candidate_filtering",
                 "final_k": FINAL_K,
             }
         )

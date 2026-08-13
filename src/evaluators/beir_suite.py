@@ -4,9 +4,7 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import time
-import uuid
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
@@ -17,8 +15,8 @@ from typing import Any
 import numpy as np
 
 from src.evaluators.beir_evaluation import FirstStageCandidateBatch, score_beir_query
-from src.persistence.artifact_io import read_json_object
-from src.persistence.run_output_writer import replace_with_retry, write_metadata_json
+from src.persistence.artifact_io import atomic_write_npz, read_json_object
+from src.persistence.run_output_writer import write_metadata_json
 from src.provenance import json_sha256, sha256_file
 from src.records import SearchHit
 from src.rerankers.reranker_contract import RerankResult, RerankTrace, reranked_hits
@@ -40,12 +38,12 @@ def _cache_snapshot(
     kind: str,
     manifest_path: Path,
     data_path: Path,
-    expected_identity_sha256: str,
+    expected_identity: Mapping[str, Any],
 ) -> dict[str, Any]:
     manifest = read_json_object(manifest_path, label=f"{kind} cache manifest")
     artifact = manifest.get("artifact")
     if (
-        manifest.get("identity_sha256") != expected_identity_sha256
+        manifest.get("identity") != dict(expected_identity)
         or not isinstance(artifact, Mapping)
         or artifact.get("file") != data_path.name
         or not data_path.is_file()
@@ -61,7 +59,6 @@ def _cache_snapshot(
     return {
         "schema_version": SHARED_CACHE_REFERENCE_SCHEMA_VERSION,
         "kind": kind,
-        "identity_sha256": expected_identity_sha256,
         "manifest_sha256": sha256_file(manifest_path),
         "artifact_sha256": artifact_sha256,
         "artifact_size_bytes": size_bytes,
@@ -83,7 +80,7 @@ def _cache_descriptor(
     kind: str,
     manifest_path: Path,
     data_path: Path,
-    expected_identity_sha256: str,
+    expected_identity: Mapping[str, Any],
     unit_directory: str | Path,
 ) -> dict[str, Any]:
     if snapshot is None:
@@ -92,7 +89,7 @@ def _cache_descriptor(
         kind=kind,
         manifest_path=manifest_path,
         data_path=data_path,
-        expected_identity_sha256=expected_identity_sha256,
+        expected_identity=expected_identity,
     )
     if current != dict(snapshot):
         raise ValueError(f"{kind} cache changed after it was loaded or written")
@@ -252,25 +249,14 @@ def shared_batch_from_dense(
     questions: Sequence[Mapping[str, Any]] | None = None,
     chunk_store: Any | None = None,
     retained_k: int | None = None,
-    ignore_identical_ids: bool = False,
 ) -> SharedCandidateBatch:
-    """Convert dense results, optionally applying BEIR's self-match filter."""
+    """Convert dense results and apply BEIR's self-match filter."""
 
     if not isinstance(batch, FirstStageCandidateBatch):
         raise TypeError("batch must be a FirstStageCandidateBatch")
     if batch.scores.ndim != 2 or batch.vector_ids.shape != batch.scores.shape:
         raise ValueError("Dense candidate arrays must be aligned matrices")
     num_questions, width = batch.scores.shape
-    if not ignore_identical_ids:
-        return SharedCandidateBatch(
-            scores=np.asarray(batch.scores, dtype=np.float64).reshape(-1),
-            vector_ids=np.asarray(batch.vector_ids, dtype=np.int64).reshape(-1),
-            indptr=np.arange(0, (num_questions + 1) * width, width, dtype=np.int64),
-            question_ids=tuple(batch.question_ids),
-            timings_ms=dict(batch.timings_ms),
-            per_question_timings_ms=tuple({} for _ in range(num_questions)),
-            reused_cache=batch.reused_cache,
-        )
     if questions is None or chunk_store is None:
         raise ValueError("Self-match filtering requires questions and chunk_store")
     if len(questions) != num_questions:
@@ -322,7 +308,6 @@ def _compute_bm25_group(
     *,
     candidate_k: int,
     retained_k: int,
-    ignore_identical_ids: bool = False,
 ) -> SharedCandidateBatch:
     started = time.perf_counter()
     scores: list[float] = []
@@ -341,7 +326,7 @@ def _compute_bm25_group(
         retained = []
         query_id = str(question["question_id"])
         for hit in trace.results:
-            if ignore_identical_ids and hit.chunk.doc_id == query_id:
+            if hit.chunk.doc_id == query_id:
                 removed += 1
                 continue
             retained.append(hit)
@@ -405,7 +390,6 @@ def compute_bm25_first_stage(
     *,
     candidate_k: int,
     retained_k: int | None = None,
-    ignore_identical_ids: bool = False,
     checkpoint_store: BM25FirstStageCheckpointStore | None = None,
 ) -> SharedCandidateBatch:
     """Issue one BM25 retrieval per query, optionally resuming verified groups."""
@@ -428,14 +412,12 @@ def compute_bm25_first_stage(
             questions,
             candidate_k=candidate_k,
             retained_k=retained_k,
-            ignore_identical_ids=ignore_identical_ids,
         )
 
     checkpoint_store.validate_compute_request(
         question_ids=[str(question["question_id"]) for question in questions],
         candidate_k=candidate_k,
         retained_k=retained_k,
-        ignore_identical_ids=ignore_identical_ids,
         corpus_count=len(pipeline.chunk_store),
     )
     groups: list[SharedCandidateBatch] = []
@@ -448,7 +430,6 @@ def compute_bm25_first_stage(
                 questions[start:stop],
                 candidate_k=candidate_k,
                 retained_k=retained_k,
-                ignore_identical_ids=ignore_identical_ids,
             )
             checkpoint_store.write(group, start=start, stop=stop)
         groups.append(group)
@@ -494,7 +475,7 @@ class SharedCandidateStore:
         committed = self._validated(batch)
         if self.manifest_path.exists():
             raise FileExistsError(f"Shared candidate manifest already exists: {self.manifest_path}")
-        _atomic_npz(
+        atomic_write_npz(
             self.data_path,
             scores=committed.scores,
             vector_ids=committed.vector_ids,
@@ -506,24 +487,12 @@ class SharedCandidateStore:
             "file": SHARED_CANDIDATE_FILE,
             "size_bytes": self.data_path.stat().st_size,
             "sha256": sha256_file(self.data_path),
-            "scores_shape": list(committed.scores.shape),
-            "scores_dtype": str(committed.scores.dtype),
-            "vector_ids_shape": list(committed.vector_ids.shape),
-            "vector_ids_dtype": str(committed.vector_ids.dtype),
-            "indptr_shape": list(committed.indptr.shape),
-            "indptr_dtype": str(committed.indptr.dtype),
         }
         manifest = {
             "status": "complete",
             "schema_version": SHARED_CANDIDATE_SCHEMA_VERSION,
             "identity": self.identity,
-            "identity_sha256": json_sha256(self.identity),
             "artifact": artifact,
-            "candidate_k": self.candidate_k,
-            "corpus_count": self.corpus_count,
-            "num_questions": len(self.question_ids),
-            "num_candidates": len(committed.scores),
-            "require_full_width": self.require_full_width,
             "timings_ms": dict(committed.timings_ms),
             "per_question_timings_ms": [
                 dict(value) for value in committed.per_question_timings_ms
@@ -534,7 +503,7 @@ class SharedCandidateStore:
             kind="shared_first_stage_candidates",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=json_sha256(self.identity),
+            expected_identity=self.identity,
         )
         return committed
 
@@ -555,11 +524,6 @@ class SharedCandidateStore:
             manifest.get("status") != "complete"
             or manifest.get("schema_version") != SHARED_CANDIDATE_SCHEMA_VERSION
             or manifest.get("identity") != self.identity
-            or manifest.get("identity_sha256") != json_sha256(self.identity)
-            or manifest.get("candidate_k") != self.candidate_k
-            or manifest.get("corpus_count") != self.corpus_count
-            or manifest.get("num_questions") != len(self.question_ids)
-            or manifest.get("require_full_width") != self.require_full_width
             or not isinstance(artifact, Mapping)
             or artifact.get("file") != SHARED_CANDIDATE_FILE
         ):
@@ -592,13 +556,11 @@ class SharedCandidateStore:
         except (OSError, ValueError) as exc:
             raise ValueError("Cannot load shared first-stage candidate cache NPZ") from exc
         validated = self._validated(batch)
-        if manifest.get("num_candidates") != len(validated.scores):
-            raise ValueError("Shared candidate count differs from its manifest")
         self._validated_cache_snapshot = _cache_snapshot(
             kind="shared_first_stage_candidates",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=json_sha256(self.identity),
+            expected_identity=self.identity,
         )
         return SharedCandidateBatch(
             scores=validated.scores,
@@ -618,7 +580,7 @@ class SharedCandidateStore:
             kind="shared_first_stage_candidates",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=json_sha256(self.identity),
+            expected_identity=self.identity,
             unit_directory=unit_directory,
         )
 
@@ -651,20 +613,6 @@ def _validate_rerank_score_batch(
     )
 
 
-def _atomic_npz(path: Path, **arrays: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.parent / f".{path.name}.{uuid.uuid4().hex}.tmp"
-    try:
-        with temporary.open("xb") as handle:
-            np.savez_compressed(handle, **arrays)
-            handle.flush()
-            os.fsync(handle.fileno())
-        replace_with_retry(temporary, path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
-
-
 class BM25FirstStageCheckpointStore:
     """Identity-bound, resumable NPZ groups for BM25 first-stage retrieval."""
 
@@ -677,7 +625,6 @@ class BM25FirstStageCheckpointStore:
         candidate_k: int,
         retained_k: int,
         corpus_count: int,
-        ignore_identical_ids: bool,
         query_group_size: int,
     ) -> None:
         if isinstance(candidate_k, bool) or not isinstance(candidate_k, int) or candidate_k <= 0:
@@ -694,8 +641,6 @@ class BM25FirstStageCheckpointStore:
             or query_group_size <= 0
         ):
             raise ValueError("query_group_size must be a positive integer")
-        if not isinstance(ignore_identical_ids, bool):
-            raise TypeError("ignore_identical_ids must be a boolean")
         normalized_ids = tuple(question_ids)
         if (
             not normalized_ids
@@ -709,7 +654,6 @@ class BM25FirstStageCheckpointStore:
         self.candidate_k = candidate_k
         self.retained_k = retained_k
         self.corpus_count = corpus_count
-        self.ignore_identical_ids = ignore_identical_ids
         self.query_group_size = query_group_size
         self.identity = {
             "schema_version": BM25_CHECKPOINT_SCHEMA_VERSION,
@@ -718,10 +662,8 @@ class BM25FirstStageCheckpointStore:
             "candidate_k": candidate_k,
             "retained_k": retained_k,
             "corpus_count": corpus_count,
-            "ignore_identical_ids": ignore_identical_ids,
             "query_group_size": query_group_size,
         }
-        self.identity_sha256 = json_sha256(self.identity)
 
     def _data_path(self, start: int, stop: int) -> Path:
         return self.directory / f"{start:08d}_{stop:08d}.npz"
@@ -760,14 +702,12 @@ class BM25FirstStageCheckpointStore:
         candidate_k: int,
         retained_k: int,
         corpus_count: int,
-        ignore_identical_ids: bool,
     ) -> None:
         if (
             tuple(question_ids) != self.question_ids
             or candidate_k != self.candidate_k
             or retained_k != self.retained_k
             or corpus_count != self.corpus_count
-            or ignore_identical_ids != self.ignore_identical_ids
         ):
             raise ValueError("BM25 checkpoint store is incompatible with this computation")
         self._validate_layout()
@@ -790,10 +730,8 @@ class BM25FirstStageCheckpointStore:
             manifest.get("status") != "complete"
             or manifest.get("schema_version") != BM25_CHECKPOINT_SCHEMA_VERSION
             or manifest.get("identity") != self.identity
-            or manifest.get("identity_sha256") != self.identity_sha256
             or manifest.get("group_start") != start
             or manifest.get("group_stop") != stop
-            or manifest.get("question_ids") != list(expected_ids)
             or not isinstance(artifact, Mapping)
             or artifact.get("file") != data_path.name
         ):
@@ -805,21 +743,31 @@ class BM25FirstStageCheckpointStore:
             raise ValueError(f"BM25 checkpoint artifact is corrupted: {data_path}")
         try:
             with np.load(data_path, allow_pickle=False) as arrays:
-                if set(arrays.files) != {
+                expected_arrays = {
                     "scores",
                     "vector_ids",
                     "indptr",
                     "question_ids",
                     "timings_json",
                     "per_question_timings_json",
-                    "identity_sha256",
-                    "group_start",
-                    "group_stop",
+                }
+                legacy_arrays = {"identity_sha256", "group_start", "group_stop"}
+                array_names = set(arrays.files)
+                extras = frozenset(array_names - expected_arrays)
+                if not expected_arrays <= array_names or extras not in {
+                    frozenset(),
+                    frozenset(legacy_arrays),
                 }:
                     raise ValueError("BM25 checkpoint has unexpected arrays")
-                identity_sha256 = str(np.asarray(arrays["identity_sha256"]).item())
-                stored_start = int(np.asarray(arrays["group_start"]).item())
-                stored_stop = int(np.asarray(arrays["group_stop"]).item())
+                if "identity_sha256" in arrays.files and str(
+                    np.asarray(arrays["identity_sha256"]).item()
+                ) != json_sha256(self.identity):
+                    raise ValueError(f"BM25 checkpoint identity is incompatible: {data_path}")
+                if "group_start" in arrays.files and (
+                    int(np.asarray(arrays["group_start"]).item()) != start
+                    or int(np.asarray(arrays["group_stop"]).item()) != stop
+                ):
+                    raise ValueError(f"BM25 checkpoint identity is incompatible: {data_path}")
                 timings = json.loads(str(np.asarray(arrays["timings_json"]).item()))
                 per_question_timings = tuple(
                     json.loads(str(value))
@@ -836,12 +784,6 @@ class BM25FirstStageCheckpointStore:
                 )
         except (OSError, UnicodeError, TypeError, ValueError) as exc:
             raise ValueError(f"Cannot load BM25 checkpoint NPZ: {data_path}") from exc
-        if (
-            identity_sha256 != self.identity_sha256
-            or stored_start != start
-            or stored_stop != stop
-        ):
-            raise ValueError(f"BM25 checkpoint identity is incompatible: {data_path}")
         return validate_shared_candidate_batch(
             batch,
             expected_question_ids=expected_ids,
@@ -869,7 +811,7 @@ class BM25FirstStageCheckpointStore:
         manifest_path = self._manifest_path(start, stop)
         if manifest_path.exists():
             raise FileExistsError(f"BM25 checkpoint manifest already exists: {manifest_path}")
-        _atomic_npz(
+        atomic_write_npz(
             data_path,
             scores=committed.scores,
             vector_ids=committed.vector_ids,
@@ -896,18 +838,13 @@ class BM25FirstStageCheckpointStore:
                 ],
                 dtype=np.str_,
             ),
-            identity_sha256=np.asarray(self.identity_sha256, dtype=np.str_),
-            group_start=np.asarray(start, dtype=np.int64),
-            group_stop=np.asarray(stop, dtype=np.int64),
         )
         manifest = {
             "status": "complete",
             "schema_version": BM25_CHECKPOINT_SCHEMA_VERSION,
             "identity": self.identity,
-            "identity_sha256": self.identity_sha256,
             "group_start": start,
             "group_stop": stop,
-            "question_ids": list(expected_ids),
             "artifact": {
                 "file": data_path.name,
                 "size_bytes": data_path.stat().st_size,
@@ -964,9 +901,6 @@ class SharedRerankScoreStore:
             manifest.get("status") != "complete"
             or manifest.get("schema_version") != SHARED_RERANK_SCHEMA_VERSION
             or manifest.get("identity") != self.identity
-            or manifest.get("identity_sha256") != self.identity_sha256
-            or manifest.get("num_questions") != len(self.candidates.question_ids)
-            or manifest.get("num_candidates") != len(self.candidates.scores)
             or not isinstance(artifact, Mapping)
             or artifact.get("file") != SHARED_RERANK_FILE
         ):
@@ -993,7 +927,7 @@ class SharedRerankScoreStore:
             kind="shared_bge_scores",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=self.identity_sha256,
+            expected_identity=self.identity,
         )
         return SharedRerankScoreBatch(
             scores=validated.scores,
@@ -1006,7 +940,7 @@ class SharedRerankScoreStore:
         committed = _validate_rerank_score_batch(batch, self.candidates)
         if self.manifest_path.exists():
             raise FileExistsError(f"BGE score manifest already exists: {self.manifest_path}")
-        _atomic_npz(
+        atomic_write_npz(
             self.data_path,
             scores=committed.scores,
             timing_ms=committed.timing_ms,
@@ -1016,17 +950,10 @@ class SharedRerankScoreStore:
             "status": "complete",
             "schema_version": SHARED_RERANK_SCHEMA_VERSION,
             "identity": self.identity,
-            "identity_sha256": self.identity_sha256,
-            "num_questions": len(committed.question_ids),
-            "num_candidates": len(committed.scores),
             "artifact": {
                 "file": SHARED_RERANK_FILE,
                 "size_bytes": self.data_path.stat().st_size,
                 "sha256": sha256_file(self.data_path),
-                "scores_shape": list(committed.scores.shape),
-                "scores_dtype": str(committed.scores.dtype),
-                "timing_shape": list(committed.timing_ms.shape),
-                "timing_dtype": str(committed.timing_ms.dtype),
             },
         }
         write_metadata_json(self.manifest_path, manifest, overwrite=False)
@@ -1034,7 +961,7 @@ class SharedRerankScoreStore:
             kind="shared_bge_scores",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=self.identity_sha256,
+            expected_identity=self.identity,
         )
         for checkpoint in self.checkpoints_dir.glob("*.npz") if self.checkpoints_dir.exists() else ():
             try:
@@ -1056,7 +983,7 @@ class SharedRerankScoreStore:
             kind="shared_bge_scores",
             manifest_path=self.manifest_path,
             data_path=self.data_path,
-            expected_identity_sha256=self.identity_sha256,
+            expected_identity=self.identity,
             unit_directory=unit_directory,
         )
 
@@ -1181,7 +1108,7 @@ class SharedRerankScoreStore:
                     else np.empty(0, dtype=np.float64)
                 )
                 group_timings = np.asarray(timing_values, dtype=np.float64)
-                _atomic_npz(
+                atomic_write_npz(
                     checkpoint_path,
                     scores=group_scores,
                     timing_ms=group_timings,
@@ -1235,13 +1162,6 @@ def rerank_result_from_scores(
         timing_ms=float(timing_ms),
         trace=trace,
     )
-
-
-def _result_hit(hit: SearchHit, *, save_text: bool) -> dict[str, Any]:
-    value = hit.to_dict()
-    if not save_text:
-        value.pop("text", None)
-    return value
 
 
 def _cache_ref_sha256(value: Any, *, label: str) -> str:
@@ -1350,7 +1270,7 @@ def beir_row_from_shared_candidates(
         "method": method,
         "candidate_k": condition_candidate_k,
         "top_k": final_k,
-        "results": [_result_hit(hit, save_text=save_text) for hit in final_hits],
+        "results": [hit.to_dict(include_text=save_text) for hit in final_hits],
         "shared_first_stage": {
             "physical_candidate_k": physical_candidate_k,
             "reused_cache": batch.reused_cache,
@@ -1367,7 +1287,6 @@ def beir_row_from_shared_candidates(
             "chunk_mapping_from_cache_ms": mapping_ms,
             "rerank_ms": float(reranked.timing_ms),
             "post_cache_total_ms": post_cache_ms,
-            "accounted_total_ms": accounted_total_ms,
         },
         "latency_accounting": latency_accounting,
     }
@@ -1402,15 +1321,12 @@ def beir_row_from_shared_candidates(
         "first_stage_metrics": first_stage_metrics,
         "candidate_pool_metrics": candidate_pool_metrics,
         "total_latency_ms": accounted_total_ms,
-        "measured_post_cache_total_latency_ms": post_cache_ms,
         "evaluation": {
             "protocol": SUITE_EVALUATION_PROTOCOL,
             "dataset": dataset,
             "unit": unit,
             "split": split,
-            "raw_beir_ids": True,
             "shared_first_stage_candidates": True,
-            "identical_id_policy": "leakage_safe_pre_candidate_filtering",
         },
     }
 
@@ -1427,7 +1343,7 @@ _METRIC_PREFIXES = (
 )
 
 
-def _macro_metric_values(summaries: Sequence[Mapping[str, Any]]) -> dict[str, float]:
+def macro_metric_values(summaries: Sequence[Mapping[str, Any]]) -> dict[str, float]:
     if not summaries:
         return {}
     names = set.intersection(
@@ -1491,7 +1407,7 @@ def aggregate_suite_summaries(
                 "dataset": dataset,
                 "condition": condition,
                 "num_units": len(summaries),
-                "metrics": _macro_metric_values(summaries),
+                "metrics": macro_metric_values(summaries),
             }
         )
 
@@ -1502,7 +1418,7 @@ def aggregate_suite_summaries(
     for condition, summaries in sorted(by_condition.items()):
         unit_macro[condition] = {
             "num_units": len(summaries),
-            "metrics": _macro_metric_values(summaries),
+            "metrics": macro_metric_values(summaries),
         }
 
     family_macro: dict[str, dict[str, Any]] = {}
@@ -1512,7 +1428,7 @@ def aggregate_suite_summaries(
     for condition, summaries in sorted(family_by_condition.items()):
         family_macro[condition] = {
             "num_families": len(summaries),
-            "metrics": _macro_metric_values(summaries),
+            "metrics": macro_metric_values(summaries),
         }
 
     return {

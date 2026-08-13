@@ -1,8 +1,6 @@
 """Exact and approximate inner-product vector indexes.
 
-The historical public name ``FlatIPIndex`` is retained for compatibility, but
-the implementation now supports a small FAISS index family selected by
-``index_type``:
+The implementation supports a small FAISS index family selected by ``index_type``:
 
 * ``flat_ip``: exact inner-product search;
 * ``hnsw_flat``: HNSW over uncompressed float vectors;
@@ -155,8 +153,8 @@ def _coerce_ids(ids: np.ndarray, *, expected_rows: int) -> np.ndarray:
     return np.ascontiguousarray(values)
 
 
-class FlatIPIndex:
-    """A backward-compatible wrapper over exact and ANN index implementations."""
+class VectorIndex:
+    """Exact or approximate vector index backed by FAISS or NumPy."""
 
     def __init__(
         self,
@@ -199,44 +197,6 @@ class FlatIPIndex:
     @property
     def search_params(self) -> dict[str, int]:
         return dict(self._search_params)
-
-    def metadata(self) -> dict[str, Any]:
-        """Return canonical index metadata suitable for a build/run manifest."""
-
-        trained = False
-        if self.backend == "faiss" and self.index is not None:
-            trained = bool(self.index.is_trained)
-        elif self.backend == "numpy" and self.embeddings is not None:
-            trained = True
-        return {
-            "backend": self.backend or self.requested_backend,
-            "type": self.index_type,
-            "count": self.count,
-            "dimension": self.dimension,
-            "trained": trained,
-            "build_params": self.build_params,
-            "search_params": self.search_params,
-        }
-
-    def set_search_params(
-        self,
-        params: Mapping[str, Any] | None = None,
-        **kwargs: Any,
-    ) -> None:
-        """Replace the default query-time parameters after strict validation."""
-
-        values = _mapping_copy(params, label="search_params")
-        duplicated = set(values).intersection(kwargs)
-        if duplicated:
-            names = ", ".join(sorted(duplicated))
-            raise ValueError(f"Duplicate search parameter(s): {names}")
-        values.update(kwargs)
-        self._search_params = _normalize_search_params(
-            self.index_type,
-            values,
-            self._build_params,
-        )
-        self._search_params_explicit = True
 
     def _reset_runtime_state(self) -> None:
         self.backend = ""
@@ -669,7 +629,3 @@ class FlatIPIndex:
         self.index = None
         self.dimension = self.embeddings.shape[1]
         self.count = self.embeddings.shape[0]
-
-
-# A clearer name for new call sites while preserving all existing imports.
-FaissIndex = FlatIPIndex

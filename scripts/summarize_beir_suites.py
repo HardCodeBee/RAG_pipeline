@@ -21,7 +21,6 @@ from collections import defaultdict
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from statistics import mean
 from typing import Any
 
 
@@ -29,7 +28,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.cli_support import configure_utf8_output
-from src.provenance import json_sha256, sha256_file
+from src.evaluators.beir_suite import macro_metric_values
+from src.persistence.artifact_io import describe_artifact, read_json_object
+from src.provenance import json_sha256
 
 
 AGGREGATE_SCHEMA_VERSION = 2
@@ -50,18 +51,6 @@ _CONDITION_POSITION = {
     condition: position for position, condition in enumerate(EXPECTED_CONDITIONS)
 }
 _DISCOVERY_PATTERN = "beir_*_four_condition_full_*"
-_METRIC_PREFIXES = (
-    "ndcg_at_",
-    "map_at_",
-    "recall_at_",
-    "precision_at_",
-    "mrr_at_",
-    "hit_at_",
-    "first_stage_",
-    "candidate_pool_",
-)
-
-
 @dataclass(frozen=True, slots=True)
 class ValidatedSuite:
     directory: Path
@@ -72,26 +61,10 @@ class ValidatedSuite:
     summary_artifact: dict[str, Any]
 
 
-def _read_json(path: Path, *, label: str) -> dict[str, Any]:
-    if not path.is_file():
-        raise FileNotFoundError(f"{label} is missing: {path}")
-    try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValueError(f"Cannot read {label}: {path}") from exc
-    if not isinstance(value, dict):
-        raise ValueError(f"{label} must contain one JSON object: {path}")
-    return value
-
-
 def _artifact_descriptor(path: Path) -> dict[str, Any]:
     if not path.is_file():
         raise FileNotFoundError(f"Aggregate source artifact is missing: {path}")
-    return {
-        "file": path.name,
-        "size_bytes": path.stat().st_size,
-        "sha256": sha256_file(path),
-    }
+    return describe_artifact(path)
 
 
 def _strict_positive_integer(value: Any, *, label: str) -> int:
@@ -208,29 +181,10 @@ def _numeric_metrics(value: Any, *, label: str) -> dict[str, float]:
 def _macro_metric_values(summaries: Sequence[Mapping[str, Any]]) -> dict[str, float]:
     if not summaries:
         raise ValueError("Cannot compute a macro over no summaries")
-    names = set.intersection(
-        *(
-            {
-                key
-                for key, value in summary.items()
-                if (
-                    key.startswith(_METRIC_PREFIXES)
-                    or key == "rerank_delta_ndcg"
-                )
-                and not key.endswith("_valid_count")
-                and isinstance(value, (int, float))
-                and not isinstance(value, bool)
-                and math.isfinite(float(value))
-            }
-            for summary in summaries
-        )
-    )
-    if not names:
+    metrics = macro_metric_values(summaries)
+    if not metrics:
         raise ValueError("Suite summaries share no aggregate retrieval metrics")
-    return {
-        name: mean(float(summary[name]) for summary in summaries)
-        for name in sorted(names)
-    }
+    return metrics
 
 
 def _validate_unit_results(
@@ -402,8 +356,8 @@ def validate_suite_directory(path: str | Path) -> ValidatedSuite:
         raise FileNotFoundError(f"BEIR suite directory does not exist: {directory}")
     metadata_path = directory / "metadata.json"
     summary_path = directory / "suite_summary.json"
-    metadata = _read_json(metadata_path, label="BEIR suite metadata")
-    summary = _read_json(
+    metadata = read_json_object(metadata_path, label="BEIR suite metadata")
+    summary = read_json_object(
         summary_path,
         label="BEIR suite summary",
     )
@@ -459,7 +413,10 @@ def discover_completed_suites(
         if not metadata_path.is_file():
             incomplete.append(directory.resolve())
             continue
-        metadata = _read_json(metadata_path, label="discovered BEIR suite metadata")
+        metadata = read_json_object(
+            metadata_path,
+            label="discovered BEIR suite metadata",
+        )
         if metadata.get("status") == "completed":
             completed.append(directory.resolve())
         else:

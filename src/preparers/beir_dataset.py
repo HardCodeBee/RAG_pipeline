@@ -30,6 +30,7 @@ from src.persistence.artifact_io import (
     read_json_object,
     write_manifest,
 )
+from src.persistence.artifact_validation import verify_artifact_descriptor
 from src.provenance import sha256_file
 
 
@@ -627,7 +628,6 @@ def _validate_and_describe_unit(
         "official_md5": spec.official_md5,
         "archive": dict(archive),
         "source_corpus": dict(corpus_stats["source_file"]),
-        "validation": {"official_md5_verified": True},
     }
     source_manifest_path = destination / "source_manifest.json"
     write_manifest(source_manifest_path, source_manifest)
@@ -648,9 +648,7 @@ def _validate_and_describe_unit(
         "dataset": dataset,
         "unit": unit,
         "text_format": TEXT_FORMAT,
-        "one_page_per_document": True,
         "counts": {
-            "corpus": corpus_stats["retrievable_corpus_rows"],
             "source_corpus_rows": corpus_stats["source_corpus_rows"],
             "retrievable_corpus_rows": corpus_stats["retrievable_corpus_rows"],
             "excluded_empty_rows": corpus_stats["excluded_empty_rows"],
@@ -681,21 +679,9 @@ def _validate_and_describe_unit(
             ),
             "qrels": qrel_descriptors,
         },
-        "validation": {
-            "unique_corpus_ids": True,
-            "unique_query_ids": True,
-            "unique_qrel_pairs_per_split": True,
-            "qrels_query_ids_exist": True,
-            "qrels_checked_against_source_corpus_ids": True,
-            "qrels_with_absent_or_excluded_corpus_ids_preserved": True,
-            "raw_beir_ids_preserved": True,
-            "retained_corpus_rows_preserved": True,
-            "empty_corpus_rows_excluded_without_placeholders": True,
-        },
     }
     if dataset == "cqadupstack":
         manifest["query_format"] = CQA_QUERY_FORMAT
-        manifest["validation"]["global_query_metadata_removed"] = True
     write_manifest(destination / "manifest.json", manifest)
     return manifest
 
@@ -718,23 +704,6 @@ def _artifact_descriptors(manifest: Mapping[str, Any]) -> Iterator[Mapping[str, 
         yield descriptor
 
 
-def _validate_descriptor(root: Path, descriptor: Mapping[str, Any]) -> None:
-    relative = descriptor.get("file")
-    if not isinstance(relative, str) or not relative:
-        raise ValueError("BEIR artifact descriptor has an invalid file path")
-    path = (root / relative).resolve()
-    try:
-        path.relative_to(root.resolve())
-    except ValueError as exc:
-        raise ValueError(f"BEIR artifact escapes dataset directory: {relative}") from exc
-    if not path.is_file():
-        raise FileNotFoundError(f"BEIR artifact is missing: {path}")
-    if path.stat().st_size != descriptor.get("size_bytes"):
-        raise ValueError(f"BEIR artifact size mismatch: {path}")
-    if sha256_file(path) != descriptor.get("sha256"):
-        raise ValueError(f"BEIR artifact SHA-256 mismatch: {path}")
-
-
 def validate_beir_unit_directory(path: str | Path) -> dict[str, Any]:
     """Validate immutable files for one regular dataset or CQA forum."""
 
@@ -745,11 +714,10 @@ def validate_beir_unit_directory(path: str | Path) -> dict[str, Any]:
         or manifest.get("protocol") != PROTOCOL
         or manifest.get("schema_version") != MANIFEST_SCHEMA_VERSION
         or manifest.get("kind") != "dataset_unit"
-        or manifest.get("one_page_per_document") is not True
     ):
         raise ValueError(f"Invalid BEIR unit manifest: {root}")
     for descriptor in _artifact_descriptors(manifest):
-        _validate_descriptor(root, descriptor)
+        verify_artifact_descriptor(root, descriptor, label="BEIR")
     counts = manifest.get("counts")
     artifacts = manifest.get("artifacts")
     corpus_descriptor = (
@@ -760,8 +728,7 @@ def validate_beir_unit_directory(path: str | Path) -> dict[str, Any]:
         not isinstance(counts, Mapping)
         or not isinstance(corpus_descriptor, Mapping)
         or not isinstance(source_corpus, Mapping)
-        or counts.get("corpus") != counts.get("retrievable_corpus_rows")
-        or counts.get("corpus") != corpus_descriptor.get("rows")
+        or counts.get("retrievable_corpus_rows") != corpus_descriptor.get("rows")
         or not isinstance(counts.get("source_corpus_rows"), int)
         or not isinstance(counts.get("retrievable_corpus_rows"), int)
         or not isinstance(counts.get("excluded_empty_rows"), int)
@@ -813,14 +780,11 @@ def validate_beir_unit_directory(path: str | Path) -> dict[str, Any]:
     }:
         raise ValueError(f"Unsupported CQADupStack query format: {query_format!r}")
     if dataset == "cqadupstack" and query_format == CQA_QUERY_FORMAT:
-        validation = manifest.get("validation")
         queries_descriptor = (
             artifacts.get("queries") if isinstance(artifacts, Mapping) else None
         )
         if (
-            not isinstance(validation, Mapping)
-            or validation.get("global_query_metadata_removed") is not True
-            or not isinstance(queries_descriptor, Mapping)
+            not isinstance(queries_descriptor, Mapping)
             or not isinstance(queries_descriptor.get("rows"), int)
         ):
             raise ValueError(f"Invalid compact CQADupStack query metadata: {root}")
@@ -840,7 +804,6 @@ def validate_beir_unit_directory(path: str | Path) -> dict[str, Any]:
         or source.get("unit") != manifest.get("unit")
         or source.get("official_url") != spec.url
         or source.get("official_md5") != spec.official_md5
-        or source.get("validation", {}).get("official_md5_verified") is not True
         or not isinstance(archive, Mapping)
         or archive.get("md5") != spec.official_md5
         or not isinstance(archive.get("sha256"), str)
@@ -869,7 +832,7 @@ def validate_beir_dataset_directory(path: str | Path) -> dict[str, Any]:
     source_descriptor = manifest.get("source_manifest")
     if not isinstance(source_descriptor, Mapping):
         raise ValueError("CQADupStack collection source manifest is missing")
-    _validate_descriptor(root, source_descriptor)
+    verify_artifact_descriptor(root, source_descriptor, label="BEIR collection source")
     units = manifest.get("units")
     if not isinstance(units, Mapping) or tuple(sorted(units)) != tuple(
         sorted(CQADUPSTACK_FORUMS)
@@ -967,7 +930,6 @@ def prepare_beir_dataset(
                 "official_url": spec.url,
                 "official_md5": spec.official_md5,
                 "archive": archive_descriptor,
-                "validation": {"official_md5_verified": True},
             }
             write_manifest(staging / "source_manifest.json", source_manifest)
             collection_manifest = {

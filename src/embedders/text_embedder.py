@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import hashlib
 import re
-from typing import Sequence
+from typing import Any, Sequence
 
 import numpy as np
 
@@ -259,3 +259,24 @@ class TextEmbedder:
             document_prefix=self.document_prefix,
             max_sequence_length=self.max_sequence_length,
         )
+
+
+def create_embedder(
+    config: dict[str, Any],
+    *,
+    override: dict[str, Any] | None = None,
+) -> TextEmbedder:
+    embedding = {**config["embedding"], **(override or {})}
+    return TextEmbedder(
+        backend=embedding["backend"],
+        model_name=embedding.get("model_name"),
+        revision=embedding.get("revision"),
+        normalize=embedding["normalize"],
+        batch_size=embedding.get("batch_size", 32),
+        dimension=embedding.get("dimension", 384),
+        query_prefix=embedding["query_prefix"],
+        document_prefix=embedding["document_prefix"],
+        max_sequence_length=embedding.get("max_sequence_length"),
+        local_files_only=embedding.get("local_files_only", False),
+        device=embedding.get("device", "auto"),
+    )

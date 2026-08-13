@@ -5,7 +5,7 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, ClassVar, Iterator, Mapping
+from typing import Any, Iterator, Mapping
 
 from src.persistence.artifact_io import iter_jsonl
 from src.preparers.beir_dataset import (
@@ -13,7 +13,6 @@ from src.preparers.beir_dataset import (
     canonical_dataset_name,
     validate_beir_unit_directory,
 )
-from src.provenance import json_sha256, sha256_file
 from src.records import PageRecord
 
 
@@ -25,7 +24,6 @@ class BeirQuery:
 
 @dataclass(frozen=True, slots=True)
 class BeirQrel:
-    split: str
     query_id: str
     corpus_id: str
     score: float
@@ -33,9 +31,6 @@ class BeirQrel:
 
 class BeirCorpusLoader:
     """Load one BEIR corpus row as one page without materializing the corpus."""
-
-    one_page_per_document: ClassVar[bool] = True
-    prevalidated_unique_doc_ids: ClassVar[bool] = True
 
     def __init__(self, *, expected_dataset: str | None = None):
         if expected_dataset is not None and (
@@ -77,19 +72,6 @@ class BeirCorpusLoader:
             root / manifest["artifacts"]["source_manifest"]["file"],
             root / manifest["artifacts"]["corpus"]["file"],
         ]
-
-    def corpus_inventory(self, corpus_path: str | Path) -> dict[str, Any]:
-        root = Path(corpus_path).resolve()
-        rows = [
-            {
-                "source": path.name,
-                "relative_path": path.relative_to(root).as_posix(),
-                "size_bytes": path.stat().st_size,
-                "sha256": sha256_file(path),
-            }
-            for path in self.discover(root)
-        ]
-        return {"documents": rows, "aggregate_sha256": json_sha256(rows)}
 
     def iter_pages(self, corpus_path: str | Path) -> Iterator[PageRecord]:
         root = Path(corpus_path).resolve()
@@ -143,10 +125,6 @@ class BeirCorpusLoader:
         if count != expected_rows:
             raise ValueError("BEIR query row count differs from its manifest")
 
-    def qrel_splits(self, corpus_path: str | Path) -> tuple[str, ...]:
-        manifest = self.manifest(corpus_path)
-        return tuple(sorted(manifest["artifacts"]["qrels"]))
-
     def iter_qrels(
         self,
         corpus_path: str | Path,
@@ -157,7 +135,7 @@ class BeirCorpusLoader:
         manifest = self.manifest(root)
         descriptor = manifest["artifacts"]["qrels"].get(split)
         if not isinstance(descriptor, Mapping):
-            available = ", ".join(self.qrel_splits(root))
+            available = ", ".join(sorted(manifest["artifacts"]["qrels"]))
             raise ValueError(f"Unknown BEIR qrels split {split!r}; available: {available}")
         count = 0
         with (root / descriptor["file"]).open(
@@ -169,7 +147,6 @@ class BeirCorpusLoader:
             for row in reader:
                 count += 1
                 yield BeirQrel(
-                    split=split,
                     query_id=row["query-id"],
                     corpus_id=row["corpus-id"],
                     score=float(row["score"]),

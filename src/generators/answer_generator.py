@@ -117,42 +117,16 @@ class LLMGenerator:
             if self.api_key:
                 client_kwargs["api_key"] = self.api_key
             self._client = OpenAI(**client_kwargs)
-        client = self._client
-        if hasattr(client, "responses"):
-            # 较新的 SDK 暴露响应接口。
-            # 响应接口返回 output_text 和输入/输出词元字段。
-            response = client.responses.create(
-                model=self.model,
-                input=prompt,
-                temperature=self.temperature,
-                max_output_tokens=self.max_output_tokens,
-            )
-            answer = getattr(response, "output_text", "") or str(response)
-            usage = getattr(response, "usage", None)
-            input_tokens = self._optional_usage_value(usage, "input_tokens")
-            output_tokens = self._optional_usage_value(usage, "output_tokens")
-            total_tokens = self._optional_usage_value(usage, "total_tokens")
-            return (
-                answer,
-                input_tokens,
-                output_tokens,
-                total_tokens,
-                str(getattr(response, "model", None) or self.model),
-                str(response.id) if getattr(response, "id", None) else None,
-            )
-
-        # 兼容只暴露聊天补全接口的旧版 SDK。
-        # 旧版 SDK 使用 chat.completions，usage 字段名也不同。
-        response = client.chat.completions.create(
+        response = self._client.responses.create(
             model=self.model,
-            messages=[{"role": "user", "content": prompt}],
+            input=prompt,
             temperature=self.temperature,
-            max_tokens=self.max_output_tokens,
+            max_output_tokens=self.max_output_tokens,
         )
-        answer = response.choices[0].message.content or ""
+        answer = getattr(response, "output_text", "") or str(response)
         usage = getattr(response, "usage", None)
-        input_tokens = self._optional_usage_value(usage, "prompt_tokens")
-        output_tokens = self._optional_usage_value(usage, "completion_tokens")
+        input_tokens = self._optional_usage_value(usage, "input_tokens")
+        output_tokens = self._optional_usage_value(usage, "output_tokens")
         total_tokens = self._optional_usage_value(usage, "total_tokens")
         return (
             answer,
@@ -187,24 +161,9 @@ class LLMGenerator:
         provider_total_tokens: int | None = None,
         response_id: str | None = None,
     ) -> GenerationResult:
-        provider_values = {
-            "input_tokens": provider_input_tokens,
-            "output_tokens": provider_output_tokens,
-            "total_tokens": provider_total_tokens,
-        }
-        for field_name, value in provider_values.items():
-            if (
-                value is not None
-                and (isinstance(value, bool) or not isinstance(value, int) or value < 0)
-            ):
-                raise RuntimeError(
-                    f"Provider usage {field_name} must be a non-negative integer when present"
-                )
         # 没有服务端用量时，使用正则词元估算值补齐日志字段。
         estimated_input_tokens = approx_token_count(prompt)
         estimated_output_tokens = approx_token_count(answer)
-        input_source = "provider_reported" if provider_input_tokens is not None else "estimated"
-        output_source = "provider_reported" if provider_output_tokens is not None else "estimated"
         if provider_total_tokens is None and provider_input_tokens is not None and provider_output_tokens is not None:
             # 有些 API 不返回 total，但返回 input/output 时可以安全相加。
             provider_total_tokens = provider_input_tokens + provider_output_tokens
@@ -220,15 +179,12 @@ class LLMGenerator:
             "estimated": {
                 "input_tokens": estimated_input_tokens,
                 "output_tokens": estimated_output_tokens,
-                "total_tokens": estimated_input_tokens + estimated_output_tokens,
             },
             "provider_reported": {
                 "input_tokens": provider_input_tokens,
                 "output_tokens": provider_output_tokens,
                 "total_tokens": provider_total_tokens,
             },
-            "input_source": input_source,
-            "output_source": output_source,
         }
         return GenerationResult(
             answer=answer,

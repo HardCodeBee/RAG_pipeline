@@ -15,7 +15,6 @@ import yaml
 _ROOT_KEYS = {
     "paths",
     "loader",
-    "chunking",
     "embedding",
     "index",
     "retrieval",
@@ -64,6 +63,10 @@ def _integer(value: Any, location: str, minimum: int = 1) -> int:
     return value
 
 
+def _optional_integer(value: Any, location: str) -> int | None:
+    return None if value is None else _integer(value, location)
+
+
 def _number(value: Any, location: str, minimum: float, maximum: float) -> float:
     # 非数字值或无穷值会破坏 JSON 清单和指标统计，所以必须拒绝。
     if isinstance(value, bool) or not isinstance(value, (int, float)):
@@ -82,22 +85,6 @@ def _choice(value: Any, choices: set[str], location: str) -> str:
     return result
 
 
-def _reject_inline_secrets(value: Any, location: str = "config") -> None:
-    # Credentials belong in the process environment, never in experiment config.
-    secret_names = {"api_key", "authorization", "password", "secret", "token"}
-    if isinstance(value, dict):
-        for key, item in value.items():
-            normalized = str(key).casefold()
-            if (
-                normalized in secret_names
-                or normalized.endswith(("_api_key", "_password", "_secret"))
-            ):
-                raise ValueError(f"{location}.{key} must not contain an inline secret")
-            _reject_inline_secrets(item, f"{location}.{key}")
-    elif isinstance(value, list):
-        for position, item in enumerate(value):
-            _reject_inline_secrets(item, f"{location}[{position}]")
-
 # 校验配置结构是否类型与范围合理 并对不同组件的配置进行区分
 # 进行默认值补充
 # 把外部传进来的配置变成 pipeline 可以安全使用的“标准配置对象”
@@ -105,7 +92,6 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
 
     # 深拷贝后再补默认值，避免调用者传入的原始 dict 被就地修改。
     value = copy.deepcopy(_mapping(config, "config"))
-    _reject_inline_secrets(value)
     _unknown(value, _ROOT_KEYS, "root")
 
     # paths 是构建和查询都要用的三个根目录，保持为字符串，使用时再解析。
@@ -116,72 +102,11 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
 
     # loader 控制如何发现和读取 corpus 文件。
     loader = _mapping(value.get("loader"), "loader")
-    loader["type"] = _choice(
-        loader.get("type"),
-        {"beir"},
-        "loader.type",
-    )
-    _unknown(loader, {"type", "expected_dataset"}, "loader")
+    _unknown(loader, {"expected_dataset"}, "loader")
     loader["expected_dataset"] = _text(
         loader.get("expected_dataset"),
         "loader.expected_dataset",
     )
-    # chunking 控制“页面文本 -> chunk”的策略和 token 预算。
-    chunking = _mapping(value.get("chunking"), "chunking")
-    chunking["strategy"] = _choice(
-        chunking.get("strategy", "presegmented"),
-        {"fixed_sentence", "presegmented"},
-        "chunking.strategy",
-    )
-    chunking["tokenizer"] = _choice(
-        chunking.get("tokenizer", "regex"),
-        {"huggingface", "regex"},
-        "chunking.tokenizer",
-    )
-    common_chunking_keys = {
-        "strategy",
-        "chunk_size_tokens",
-        "overlap_budget_tokens",
-        "tokenizer",
-    }
-    if chunking["tokenizer"] == "huggingface":
-        _unknown(
-            chunking,
-            common_chunking_keys | {"tokenizer_model", "tokenizer_revision", "local_files_only"},
-            "chunking",
-        )
-    else:
-        _unknown(chunking, common_chunking_keys, "chunking")
-    chunking["chunk_size_tokens"] = _integer(
-        chunking.get("chunk_size_tokens", 300),
-        "chunking.chunk_size_tokens",
-    )
-    chunking["overlap_budget_tokens"] = _integer(
-        chunking.get("overlap_budget_tokens", 50),
-        "chunking.overlap_budget_tokens",
-        minimum=0,
-    )
-    if chunking["overlap_budget_tokens"] >= chunking["chunk_size_tokens"]:
-        raise ValueError("chunking.overlap_budget_tokens must be smaller than chunk_size_tokens")
-    if chunking["strategy"] == "presegmented" and chunking["overlap_budget_tokens"] != 0:
-        raise ValueError("presegmented chunking requires overlap_budget_tokens=0")
-    if loader["type"] == "beir" and chunking["strategy"] != "presegmented":
-        raise ValueError("beir loader requires presegmented chunking")
-    if chunking["tokenizer"] == "huggingface":
-        # Model-backed tokenization must pin the exact tokenizer revision.
-        chunking["tokenizer_model"] = _text(
-            chunking.get("tokenizer_model"),
-            "chunking.tokenizer_model",
-        )
-        chunking["tokenizer_revision"] = _text(
-            chunking.get("tokenizer_revision"),
-            "chunking.tokenizer_revision",
-        )
-        chunking["local_files_only"] = _boolean(
-            chunking.get("local_files_only", False),
-            "chunking.local_files_only",
-        )
-
     # embedding 控制“chunk/query 文本 -> 向量”的 backend 和模型参数。
     embedding = _mapping(value.get("embedding"), "embedding")
     embedding["backend"] = _choice(
@@ -224,17 +149,11 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             embedding.get("encode_call_rows", embedding["batch_size"]),
             "embedding.encode_call_rows",
         )
-        shard_rows = embedding.get("shard_rows")
-        embedding["shard_rows"] = (
-            _integer(shard_rows, "embedding.shard_rows")
-            if shard_rows is not None
-            else None
+        embedding["shard_rows"] = _optional_integer(
+            embedding.get("shard_rows"), "embedding.shard_rows"
         )
-        max_sequence_length = embedding.get("max_sequence_length")
-        embedding["max_sequence_length"] = (
-            _integer(max_sequence_length, "embedding.max_sequence_length")
-            if max_sequence_length is not None
-            else None
+        embedding["max_sequence_length"] = _optional_integer(
+            embedding.get("max_sequence_length"), "embedding.max_sequence_length"
         )
         embedding["local_files_only"] = _boolean(
             embedding.get("local_files_only", False),
@@ -314,8 +233,6 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         retrieval,
         {
             "method",
-            "policy",
-            "top_k",
             "candidate_k",
             "final_k",
             "nprobe",
@@ -333,26 +250,11 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
         {"dense", "bm25"},
         "retrieval.method",
     )
-    retrieval["policy"] = _choice(
-        retrieval.get("policy", "fixed"),
-        {"fixed"},
-        "retrieval.policy",
-    )
-    supplied_top_k = retrieval.get("top_k")
-    supplied_final_k = retrieval.get("final_k")
-    if (
-        supplied_top_k is not None
-        and supplied_final_k is not None
-        and supplied_top_k != supplied_final_k
-    ):
-        raise ValueError("retrieval.top_k and retrieval.final_k must match when both are set")
-    final_k = supplied_final_k if supplied_final_k is not None else supplied_top_k
     retrieval["final_k"] = _integer(
-        5 if final_k is None else final_k,
+        retrieval.get("final_k", 5),
         "retrieval.final_k",
         minimum=0,
     )
-    retrieval["top_k"] = retrieval["final_k"]
     retrieval["candidate_k"] = _integer(
         retrieval.get("candidate_k", retrieval["final_k"]),
         "retrieval.candidate_k",
@@ -530,10 +432,8 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     # context 控制把召回 chunk 拼进 prompt 时的 token 上限。
     context = _mapping(value.setdefault("context", {}), "context")
     _unknown(context, {"max_tokens"}, "context")
-    context["max_tokens"] = (
-        _integer(context["max_tokens"], "context.max_tokens")
-        if context.get("max_tokens") is not None
-        else None
+    context["max_tokens"] = _optional_integer(
+        context.get("max_tokens"), "context.max_tokens"
     )
 
     # prompt 使用固定版本号，确保实验能追溯到具体 prompt 模板。
@@ -626,7 +526,6 @@ def apply_cli_overrides(config: dict[str, Any], *, top_k: int | None = None) -> 
     effective = copy.deepcopy(config)
     if top_k is not None:
         _integer(top_k, "retrieval.top_k", minimum=0)
-        effective["retrieval"]["top_k"] = top_k
         effective["retrieval"]["final_k"] = top_k
         if top_k == 0:
             effective["retrieval"]["candidate_k"] = 0

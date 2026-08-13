@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from itertools import zip_longest
 from pathlib import Path
 from statistics import mean
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Mapping, Sequence
 
 import matplotlib
 import numpy as np
@@ -37,6 +37,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.cli_support import configure_utf8_output
+from src.persistence.artifact_io import read_json_object
 from src.provenance import json_sha256, sha256_file
 
 
@@ -90,13 +91,6 @@ class RunInfo:
     @property
     def semantic(self) -> str:
         return f"{self.method}_bge" if self.rerank else self.method
-
-
-def _read_json(path: Path) -> dict[str, Any]:
-    value = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(value, dict):
-        raise ValueError(f"Expected a JSON object: {path}")
-    return value
 
 
 def _write_json(path: Path, value: Any) -> None:
@@ -288,8 +282,8 @@ def main(argv: Sequence[str] | None = None) -> Path:
             suite_dir = suite_dir.resolve()
             metadata_path = suite_dir / "metadata.json"
             summary_path = suite_dir / "suite_summary.json"
-            metadata = _read_json(metadata_path)
-            summary = _read_json(summary_path)
+            metadata = read_json_object(metadata_path)
+            summary = read_json_object(summary_path)
             if metadata.get("status") != "completed":
                 raise ValueError(f"Suite is not completed: {suite_dir}")
             identity = metadata.get("suite_identity")
@@ -379,7 +373,7 @@ def main(argv: Sequence[str] | None = None) -> Path:
                 )
 
             for run_metadata_path in sorted(suite_dir.glob("units/*/runs/*/metadata.json")):
-                run_metadata = _read_json(run_metadata_path)
+                run_metadata = read_json_object(run_metadata_path)
                 if (
                     run_metadata.get("status") != "completed"
                     or int(run_metadata.get("num_failed_rows", 0)) != 0

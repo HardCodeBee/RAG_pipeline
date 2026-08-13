@@ -12,7 +12,7 @@ from typing import Any
 import numpy as np
 
 from src.persistence.artifact_io import close_numpy_memmap, read_json_object
-from src.provenance import json_sha256, sha256_file, zero_based_sequence_sha256
+from src.provenance import json_sha256, sha256_file
 from src.records import EmbeddingSpaceSpec
 
 
@@ -216,7 +216,7 @@ def validate_build_directory(
     if not isinstance(embedding["space"], dict) or "query_prefix" in embedding["space"]:
         raise ValueError("Build manifest embedding space is invalid")
     try:
-        EmbeddingSpaceSpec.from_mapping(embedding["space"])
+        embedding_space = EmbeddingSpaceSpec.from_mapping(embedding["space"])
     except (KeyError, TypeError, ValueError) as exc:
         raise ValueError("Build manifest embedding space is invalid") from exc
 
@@ -247,12 +247,17 @@ def validate_build_directory(
         files[name] = verified.path
 
     rows = _positive_integer(artifacts["chunks"].get("rows"), label="Chunk rows")
+    if index.get("count") not in {None, rows} or index.get("dimension") not in {
+        None,
+        embedding_space.dimension,
+    }:
+        raise ValueError("Legacy index dimensions do not match build artifacts")
     shape = artifacts["embeddings"].get("shape")
     if shape is not None and (
         not isinstance(shape, list)
         or len(shape) != 2
         or shape[0] != rows
-        or shape[1] != index.get("dimension")
+        or shape[1] != embedding_space.dimension
     ):
         raise ValueError("Embedding artifact shape does not match chunks or index")
     if "chunk_offsets" in artifacts:
@@ -269,9 +274,7 @@ def validate_build_directory(
             directory,
             artifacts["embeddings"],
             rows=rows,
-            dimension=_positive_integer(
-                index.get("dimension"), label="Build embedding dimension"
-            ),
+            dimension=embedding_space.dimension,
             label="Build embeddings",
         )
     return VerifiedBuild(directory=directory, manifest=manifest, files=files)
@@ -339,13 +342,6 @@ def validate_bm25_index_directory(
         raise ValueError("BM25 source chunk descriptor is invalid")
     if manifest.get("document_count") != rows:
         raise ValueError("BM25 document count does not match its source chunks")
-    expected_vector_hash = zero_based_sequence_sha256(rows)
-    if (
-        spec.get("vector_id_sequence_sha256") != expected_vector_hash
-        or manifest.get("vector_id_sequence_sha256") != expected_vector_hash
-    ):
-        raise ValueError("BM25 document ids do not match the zero-based chunk sequence")
-
     artifacts = manifest.get("artifacts")
     if not isinstance(artifacts, Mapping) or set(artifacts) != set(_BM25S_ARTIFACT_FILES):
         raise ValueError("BM25 index manifest has an invalid artifact set")
@@ -435,10 +431,11 @@ def validate_encoded_corpus_directory(
         manifest.get("embedding", {}).get("space", {}).get("dimension"),
         label="Encoded-corpus embedding dimension",
     )
-    if (
-        artifacts["chunk_offsets"].get("rows") != rows
-        or manifest.get("chunking", {}).get("num_chunks") != rows
-    ):
+    legacy_num_chunks = manifest.get("chunking", {}).get("num_chunks")
+    if artifacts["chunk_offsets"].get("rows") != rows or legacy_num_chunks not in {
+        None,
+        rows,
+    }:
         raise ValueError("Encoded-corpus row counts are inconsistent")
 
     offsets = np.load(files["chunk_offsets"], mmap_mode="r", allow_pickle=False)

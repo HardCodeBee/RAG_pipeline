@@ -4,23 +4,20 @@ from __future__ import annotations
 
 # Shared evaluation orchestration stays separate from protocol metrics.
 
-import json
 import time
 from collections.abc import Callable, Mapping, Sequence
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from src.persistence.artifact_io import iter_jsonl
+from src.persistence.artifact_io import describe_artifact, iter_jsonl, read_json_object
+from src.persistence.artifact_validation import verify_artifact_descriptor
 from src.persistence.run_output_writer import (
     write_metadata_json,
     write_result_checkpoint,
     write_results,
     write_summary_csv,
 )
-from src.provenance import sha256_file
-
-
 _RESUME_COMPATIBILITY_FIELDS = (
     "questions_sha256",
     "questions_file_sha256",
@@ -39,11 +36,7 @@ _OUTPUT_ARTIFACT_FIELDS = ("results_artifact", "summary_artifact")
 def _output_artifact_descriptor(path: Path, *, expected_name: str) -> dict[str, Any]:
     if path.name != expected_name or not path.is_file():
         raise FileNotFoundError(f"Completed evaluation output is missing: {path}")
-    return {
-        "file": expected_name,
-        "size_bytes": path.stat().st_size,
-        "sha256": sha256_file(path),
-    }
+    return describe_artifact(path)
 
 
 def _validate_output_artifact(
@@ -55,27 +48,19 @@ def _validate_output_artifact(
 ) -> dict[str, Any]:
     if not isinstance(value, Mapping):
         raise ValueError(f"Previous metadata {field} must be an artifact descriptor")
-    if set(value) != {"file", "size_bytes", "sha256"}:
-        raise ValueError(f"Previous metadata {field} has unexpected fields")
-    size_bytes = value.get("size_bytes")
-    digest = value.get("sha256")
-    if (
-        value.get("file") != expected_name
-        or isinstance(size_bytes, bool)
-        or not isinstance(size_bytes, int)
-        or size_bytes < 0
-        or not isinstance(digest, str)
-        or len(digest) != 64
-        or any(character not in "0123456789abcdef" for character in digest)
-    ):
+    if value.get("file") != expected_name:
         raise ValueError(f"Previous metadata {field} is invalid")
-    current = _output_artifact_descriptor(
-        run_dir / expected_name,
-        expected_name=expected_name,
-    )
-    if current != dict(value):
-        raise ValueError(f"Authoritative evaluation output is corrupted: {expected_name}")
-    return current
+    try:
+        verified = verify_artifact_descriptor(
+            run_dir,
+            value,
+            label=f"Previous metadata {field}",
+        )
+    except ValueError as exc:
+        raise ValueError(
+            f"Authoritative evaluation output is corrupted: {expected_name}"
+        ) from exc
+    return dict(verified.descriptor)
 
 
 def _validated_previous_outputs(
@@ -169,12 +154,9 @@ def _validate_result_row(
 
 def _load_checkpoint(path: Path) -> dict[str, Any]:
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        return read_json_object(path, label="Result checkpoint")
+    except (OSError, UnicodeError, ValueError) as exc:
         raise ValueError(f"Cannot read result checkpoint: {path}") from exc
-    if not isinstance(value, dict):
-        raise ValueError(f"Result checkpoint must contain a JSON object: {path}")
-    return value
 
 
 def _load_resumable_rows(
@@ -282,7 +264,7 @@ def run_evaluation(
     if resume:
         if not run_dir.is_dir() or not metadata_path.is_file():
             raise FileNotFoundError(f"Cannot resume an incomplete or missing run directory: {run_dir}")
-        previous_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        previous_metadata = read_json_object(metadata_path, label="Previous metadata")
         validate_resume_compatibility(previous_metadata, metadata)
         _validated_previous_outputs(run_dir, previous_metadata)
         for field in _OUTPUT_ARTIFACT_FIELDS:

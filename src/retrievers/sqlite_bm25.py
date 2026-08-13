@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import re
 import sqlite3
 import time
@@ -22,10 +21,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from src.persistence.artifact_io import decode_chunk_record_line
+from src.persistence.artifact_io import (
+    atomic_write_json_object,
+    decode_chunk_record_line,
+    read_json_object,
+)
 from src.persistence.artifact_validation import VerifiedBuild
-from src.provenance import json_sha256, sha256_file, zero_based_sequence_sha256
+from src.provenance import json_sha256, sha256_file
 from src.records import ChunkRecord, RetrievalTrace, SearchHit
+from src.query_plan import validate_k
 from src.retrievers.chunk_store import ChunkStore, as_chunk_store
 
 
@@ -174,8 +178,6 @@ _ANALYZER_SPEC = {
     "name": ANALYZER,
     "casefold": True,
     "token_pattern": _TOKEN_PATTERN_TEXT,
-    "stopwords_count": len(_ENGLISH_STOPWORDS),
-    "stopwords_sha256": json_sha256(sorted(_ENGLISH_STOPWORDS)),
 }
 
 _SCHEMA_STATEMENTS = (
@@ -263,35 +265,6 @@ def _validated_parameters(k1: Any, b: Any) -> tuple[float, float]:
     return k1_value, b_value
 
 
-def _read_json(path: Path, *, label: str) -> dict[str, Any]:
-    if not path.is_file():
-        raise FileNotFoundError(f"{label} is missing: {path}")
-    try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
-        raise ValueError(f"Invalid {label}: {path}") from exc
-    if not isinstance(value, dict):
-        raise ValueError(f"{label} must contain a JSON object")
-    return value
-
-
-def _atomic_write_json(path: Path, value: Mapping[str, Any]) -> None:
-    temporary = path.with_name(f".{path.name}.tmp")
-    payload = json.dumps(
-        dict(value),
-        ensure_ascii=False,
-        sort_keys=True,
-        indent=2,
-        allow_nan=False,
-    )
-    with temporary.open("w", encoding="utf-8", newline="\n") as handle:
-        handle.write(payload)
-        handle.write("\n")
-        handle.flush()
-        os.fsync(handle.fileno())
-    os.replace(temporary, path)
-
-
 def _analyze(text: str) -> Iterator[str]:
     folded = text.casefold()
     for match in _TOKEN_PATTERN.finditer(folded):
@@ -325,9 +298,6 @@ def _source_identity(verified_build: VerifiedBuild) -> tuple[Path, dict[str, Any
         raise FileNotFoundError(f"Chunk artifact is missing: {chunks_path}")
     if chunks_path.stat().st_size != size_bytes or sha256_file(chunks_path) != sha256:
         raise ValueError("Chunk artifact no longer matches its verified descriptor")
-    expected_vector_hash = zero_based_sequence_sha256(rows)
-    if verified_build.manifest.get("vector_id_sequence_sha256") != expected_vector_hash:
-        raise ValueError("Verified build vector ids are not the zero-based chunk sequence")
     source_build_id = verified_build.manifest.get("build_id")
     if not isinstance(source_build_id, str) or not source_build_id:
         raise ValueError("Verified build has no build identity")
@@ -358,7 +328,6 @@ def sqlite_bm25_identity(
         "implementation_sha256": sha256_file(Path(__file__)),
         "source_build_id": verified_build.manifest["build_id"],
         "source_chunks": chunks,
-        "vector_id_sequence_sha256": zero_based_sequence_sha256(chunks["rows"]),
         "analyzer": dict(_ANALYZER_SPEC),
         "bm25": {
             "method": "lucene",
@@ -444,7 +413,7 @@ def _validate_empty_database_checkpoint(
 ) -> None:
     if not checkpoint_path.exists():
         return
-    checkpoint = _read_json(checkpoint_path, label="SQLite BM25 checkpoint")
+    checkpoint = read_json_object(checkpoint_path, label="SQLite BM25 checkpoint")
     if (
         checkpoint.get("schema_version") != SCHEMA_VERSION
         or checkpoint.get("status") != "building"
@@ -523,7 +492,10 @@ def _resume_database(
         raise ValueError("SQLite BM25 partial database has invalid postings")
 
     if checkpoint_path.exists():
-        checkpoint = _read_json(checkpoint_path, label="SQLite BM25 checkpoint")
+        checkpoint = read_json_object(
+            checkpoint_path,
+            label="SQLite BM25 checkpoint",
+        )
         if (
             checkpoint.get("schema_version") != SCHEMA_VERSION
             or checkpoint.get("backend") != BACKEND
@@ -582,7 +554,7 @@ def _commit_progress(
         total_length=total_length,
     )
     connection.commit()
-    _atomic_write_json(
+    atomic_write_json_object(
         checkpoint_path,
         _checkpoint_value(
             identity,
@@ -778,7 +750,7 @@ def build_sqlite_bm25_index(
                 identity_sha256,
                 checkpoint_path,
             )
-        _atomic_write_json(
+        atomic_write_json_object(
             checkpoint_path,
             _checkpoint_value(
                 identity,
@@ -830,7 +802,7 @@ def build_sqlite_bm25_index(
                 "total_before_manifest": (time.perf_counter() - started) * 1000
             },
         }
-        _atomic_write_json(manifest_path, manifest)
+        atomic_write_json_object(manifest_path, manifest)
         checkpoint_path.unlink(missing_ok=True)
         return validate_sqlite_bm25_index(
             directory,
@@ -876,7 +848,10 @@ def validate_sqlite_bm25_index(
     """Validate the complete manifest, immutable database, and global stats."""
 
     directory = Path(index_dir).resolve()
-    manifest = _read_json(directory / MANIFEST_FILE, label="SQLite BM25 manifest")
+    manifest = read_json_object(
+        directory / MANIFEST_FILE,
+        label="SQLite BM25 manifest",
+    )
     manifest_schema = manifest.get("schema_version")
     if (
         isinstance(manifest_schema, bool)
@@ -899,10 +874,14 @@ def validate_sqlite_bm25_index(
         raise ValueError("SQLite BM25 identity does not match the requested build")
     if manifest.get("sparse_index_id") != f"sqlite_bm25_{identity_sha256[:16]}":
         raise ValueError("SQLite BM25 sparse index id is not derived from its identity")
+    analyzer = identity.get("analyzer")
     if (
         identity.get("schema_version") != SCHEMA_VERSION
         or identity.get("backend") != BACKEND
-        or identity.get("analyzer") != _ANALYZER_SPEC
+        or not isinstance(analyzer, Mapping)
+        or any(analyzer.get(key) != value for key, value in _ANALYZER_SPEC.items())
+        or not set(analyzer)
+        <= set(_ANALYZER_SPEC) | {"stopwords_count", "stopwords_sha256"}
     ):
         raise ValueError("SQLite BM25 identity backend or analyzer is invalid")
     bm25 = identity.get("bm25")
@@ -926,8 +905,6 @@ def validate_sqlite_bm25_index(
         or _SHA256_PATTERN.fullmatch(source_sha) is None
     ):
         raise ValueError("SQLite BM25 source chunk identity is invalid")
-    if identity.get("vector_id_sequence_sha256") != zero_based_sequence_sha256(rows):
-        raise ValueError("SQLite BM25 identity has an invalid vector id sequence")
     if manifest.get("document_count") != rows:
         raise ValueError("SQLite BM25 document count does not match its source")
 
@@ -1032,14 +1009,17 @@ class SQLiteBM25Retriever:
     def __init__(
         self,
         chunks: ChunkStore | Iterable[ChunkRecord | dict],
-        index_dir: str | Path,
+        index: str | Path | SQLiteBM25Artifact,
         *,
         top_k: int = 5,
         sparse_index_id: str | None = None,
     ) -> None:
-        if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k < 0:
-            raise ValueError("top_k must be a non-negative integer")
-        artifact = validate_sqlite_bm25_index(index_dir)
+        top_k = validate_k(top_k)
+        artifact = (
+            index
+            if isinstance(index, SQLiteBM25Artifact)
+            else validate_sqlite_bm25_index(index)
+        )
         if (
             sparse_index_id is not None
             and artifact.manifest.get("sparse_index_id") != sparse_index_id
@@ -1072,14 +1052,14 @@ class SQLiteBM25Retriever:
     def load(
         cls,
         chunks: ChunkStore | Iterable[ChunkRecord | dict],
-        index_dir: str | Path,
+        index: str | Path | SQLiteBM25Artifact,
         *,
         top_k: int = 5,
         sparse_index_id: str | None = None,
     ) -> "SQLiteBM25Retriever":
         return cls(
             chunks,
-            index_dir,
+            index,
             top_k=top_k,
             sparse_index_id=sparse_index_id,
         )
@@ -1094,12 +1074,7 @@ class SQLiteBM25Retriever:
         if not isinstance(query, str) or not query.strip():
             raise ValueError("query must be a non-empty string")
         effective_top_k = self.top_k if top_k is None else top_k
-        if (
-            isinstance(effective_top_k, bool)
-            or not isinstance(effective_top_k, int)
-            or effective_top_k < 0
-        ):
-            raise ValueError("top_k must be a non-negative integer")
+        effective_top_k = validate_k(effective_top_k)
         if search_params:
             raise ValueError("SQLite BM25 retrieval does not accept ANN search parameters")
         if effective_top_k == 0:

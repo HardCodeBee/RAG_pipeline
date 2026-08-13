@@ -103,7 +103,7 @@ def unit_profile(unit_root: Path) -> dict[str, float]:
         raise RuntimeError(f"query/qrels mismatch in {unit_root}: {len(lengths)} != {len(query_ids)}")
     relevant_counts = [positive[qid] for qid in query_ids]
     return {
-        "corpus_docs": float(manifest["counts"]["corpus"]),
+        "corpus_docs": float(manifest["counts"]["retrievable_corpus_rows"]),
         "test_queries": float(len(query_ids)),
         "avg_query_terms": statistics.fmean(lengths),
         "median_query_terms": statistics.median(lengths),

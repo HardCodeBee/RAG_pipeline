@@ -13,7 +13,7 @@ from typing import Any, Mapping, TypeAlias
 SearchParamValue: TypeAlias = bool | int | float | str
 
 
-def _validated_k(value: Any, name: str) -> int:
+def validate_k(value: Any, name: str = "top_k") -> int:
     if isinstance(value, bool) or not isinstance(value, int):
         raise TypeError(f"{name} must be an integer")
     if value < 0:
@@ -51,40 +51,31 @@ class QueryPlan:
     processing such as reranking. A disabled plan uses zero for both values.
     """
 
-    retrieval_enabled: bool
     candidate_k: int
     final_k: int
     search_params: Mapping[str, SearchParamValue] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        if not isinstance(self.retrieval_enabled, bool):
-            raise TypeError("retrieval_enabled must be a boolean")
-
-        candidate_k = _validated_k(self.candidate_k, "candidate_k")
-        final_k = _validated_k(self.final_k, "final_k")
+        candidate_k = validate_k(self.candidate_k, "candidate_k")
+        final_k = validate_k(self.final_k, "final_k")
         search_params = _validated_search_params(self.search_params)
 
-        if not self.retrieval_enabled:
-            if candidate_k != 0 or final_k != 0:
-                raise ValueError("A disabled retrieval plan must use candidate_k=0 and final_k=0")
+        if final_k == 0:
+            if candidate_k != 0:
+                raise ValueError("A disabled retrieval plan must use candidate_k=0")
             if search_params:
                 raise ValueError("A disabled retrieval plan must not define search_params")
         else:
-            if candidate_k == 0 or final_k == 0:
-                raise ValueError("An enabled retrieval plan must use positive candidate_k and final_k")
+            if candidate_k == 0:
+                raise ValueError("An enabled retrieval plan must use positive candidate_k")
             if candidate_k < final_k:
                 raise ValueError("candidate_k must be greater than or equal to final_k")
 
         object.__setattr__(self, "search_params", search_params)
 
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "retrieval_enabled": self.retrieval_enabled,
-            "candidate_k": self.candidate_k,
-            "final_k": self.final_k,
-            "search_params": dict(self.search_params),
-        }
-
+    @property
+    def retrieval_enabled(self) -> bool:
+        return self.final_k > 0
 
 def fixed_query_plan(
     top_k: int,
@@ -94,12 +85,11 @@ def fixed_query_plan(
 ) -> QueryPlan:
     """Construct a fixed plan, using ``top_k=0`` as retrieval gating."""
 
-    validated_top_k = _validated_k(top_k, "top_k")
+    validated_top_k = validate_k(top_k)
     if validated_top_k == 0:
         if candidate_k not in {None, 0}:
             raise ValueError("candidate_k must be zero or None when top_k=0")
         return QueryPlan(
-            retrieval_enabled=False,
             candidate_k=0,
             final_k=0,
             search_params={} if search_params is None else search_params,
@@ -107,7 +97,6 @@ def fixed_query_plan(
 
     effective_candidate_k = validated_top_k if candidate_k is None else candidate_k
     return QueryPlan(
-        retrieval_enabled=True,
         candidate_k=effective_candidate_k,
         final_k=validated_top_k,
         search_params={} if search_params is None else search_params,

@@ -83,5 +83,4 @@ def build_context(
         results=tuple(selected),
         token_count=used,
         truncated=truncated,
-        builder="ranked_concat_v1",
     )

@@ -8,7 +8,6 @@ import hashlib
 import importlib.metadata
 import json
 import platform
-import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Iterable
@@ -42,7 +41,6 @@ def sha256_file(path: str | Path, block_size: int = 1024 * 1024) -> str:
 
 def json_sha256(value: Any) -> str:
     # sort_keys + 紧凑 separators 保证同一个 JSON 值总是得到同一个 hash。
-    encoded = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
@@ -75,10 +73,8 @@ _ENCODED_CORPUS_SOURCE_PATTERNS = (
     "src/persistence/artifact_validation.py",
     "src/config.py",
     "src/records.py",
-    "src/chunkers/*.py",
     "src/embedders/*.py",
     "src/encoded_corpus_builder.py",
-    "src/encoded_corpus_factory.py",
     "src/persistence/encoded_corpus_writer.py",
     "src/loaders/*.py",
     "src/model_backends/*.py",
@@ -114,7 +110,6 @@ _SOURCE_GROUP_PATTERNS = {
         "src/persistence/artifact_validation.py",
         "src/config.py",
         "src/records.py",
-        "src/encoded_corpus_factory.py",
         "src/embedders/*.py",
         "src/generators/*.py",
         "src/vector_index_factory.py",
@@ -146,13 +141,6 @@ _SOURCE_GROUP_PATTERNS = {
 }
 
 
-def source_snapshot_sha256(project_root: str | Path) -> str:
-    """Hash all executable project Python for audit, not stage invalidation."""
-
-    root = Path(project_root).resolve()
-    return _hash_files(root, [*root.glob("src/**/*.py"), *root.glob("scripts/*.py")])
-
-
 def source_group_sha256(project_root: str | Path, group: str) -> str:
     """Hash the explicit code boundary for build, run, or evaluation."""
 
@@ -165,6 +153,11 @@ def source_group_sha256(project_root: str | Path, group: str) -> str:
         for path in root.glob(pattern)
     ]
     return _hash_files(root, files)
+
+
+def source_files_sha256(project_root: str | Path, relative_paths: Iterable[str]) -> str:
+    root = Path(project_root).resolve()
+    return _hash_files(root, [root / path for path in relative_paths])
 
 # 把每个语料文件转换成一条身份记录，
 # 再把所有记录组合成一个 corpus 级别的清单，
@@ -181,22 +174,7 @@ def corpus_inventory(documents: list[Path], corpus_root: Path) -> dict[str, Any]
         }
         for path in documents
     ]
-    return {"documents": rows, "aggregate_sha256": json_sha256(rows)}
-
-
-def zero_based_sequence_sha256(count: int) -> str:
-    """Hash ``[0, ..., count-1]`` without allocating a Python integer list."""
-
-    if isinstance(count, bool) or not isinstance(count, int) or count < 0:
-        raise ValueError("count must be a non-negative integer")
-    digest = hashlib.sha256()
-    digest.update(b"[")
-    for value in range(count):
-        if value:
-            digest.update(b",")
-        digest.update(str(value).encode("ascii"))
-    digest.update(b"]")
-    return digest.hexdigest()
+    return {"aggregate_sha256": json_sha256(rows)}
 
 
 def _artifact_packages(
@@ -204,9 +182,7 @@ def _artifact_packages(
     *,
     include_index: bool,
 ) -> tuple[str, ...]:
-    packages = {"numpy", "pyyaml"}
-    if identity["chunking"]["tokenizer"] == "huggingface":
-        packages.add("transformers")
+    packages = {"numpy"}
     if identity["embedding"]["backend"] == "sentence_transformers":
         packages.update({"sentence_transformers", "torch", "transformers"})
     if include_index and identity["index"]["backend"] == "faiss":
@@ -225,11 +201,7 @@ def encoded_corpus_spec(
     embedding = dict(identity["embedding"])
     embedding.pop("query_prefix", None)
     embedding.pop("local_files_only", None)
-    chunking = dict(identity["chunking"])
-    chunking.pop("local_files_only", None)
     return {
-        "loader": identity["loader"],
-        "chunking": chunking,
         "embedding": embedding,
         "corpus": corpus,
         "producer_environment": producer_environment(
@@ -271,11 +243,7 @@ def build_spec(
     embedding = dict(identity["embedding"])
     embedding.pop("query_prefix", None)
     embedding.pop("local_files_only", None)
-    chunking = dict(identity["chunking"])
-    chunking.pop("local_files_only", None)
     return {
-        "loader": identity["loader"],
-        "chunking": chunking,
         "embedding": embedding,
         "index": identity["index"],
         "corpus": corpus,
@@ -370,63 +338,20 @@ def evaluation_spec(
     }
 
 
-def git_state(project_root: str | Path) -> dict[str, Any]:
-    root = Path(project_root).resolve()
-
-    def run(*args: str) -> str:
-        # 通过 subprocess 调 git，失败时整体退化为 unknown，不阻塞 pipeline。
-        return subprocess.run(
-            ["git", "-c", f"safe.directory={root.as_posix()}", *args],
-            cwd=root,
-            check=True,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-        ).stdout.strip()
-
-    try:
-        return {"commit": run("rev-parse", "HEAD"), "dirty": bool(run("status", "--porcelain"))}
-    except (OSError, subprocess.SubprocessError):
-        # zip 包、无 git 环境或 CI 限制下可能没有 git 信息。
-        return {"commit": None, "dirty": None}
-
-
-def environment_versions() -> dict[str, Any]:
-    # 记录关键依赖版本，方便解释不同机器上的构建差异。
-    packages = {
-        "bm25s": "bm25s",
-        "faiss": "faiss-cpu",
-        "numpy": "numpy",
-        "openai": "openai",
-        "pyyaml": "PyYAML",
-        "sentence_transformers": "sentence-transformers",
-        "torch": "torch",
-        "transformers": "transformers",
-    }
-    versions = {}
-    for key, distribution in packages.items():
-        try:
-            versions[key] = importlib.metadata.version(distribution)
-        except importlib.metadata.PackageNotFoundError:
-            # 可选依赖未安装是合法状态，例如使用哈希或 NumPy 回退实现。
-            versions[key] = None
-    return {
-        "python": sys.version,
-        "implementation": platform.python_implementation(),
-        "platform": platform.platform(),
-        "packages": versions,
-    }
-
-
 def producer_environment(*package_names: str) -> dict[str, Any]:
     """Return the environment subset that can change persisted numerical artifacts."""
 
-    environment = environment_versions()
-    selected = {
-        name: environment["packages"].get(name)
-        for name in package_names
+    distributions = {
+        "faiss": "faiss-cpu",
+        "pyyaml": "PyYAML",
+        "sentence_transformers": "sentence-transformers",
     }
+    selected = {}
+    for name in package_names:
+        try:
+            selected[name] = importlib.metadata.version(distributions.get(name, name))
+        except importlib.metadata.PackageNotFoundError:
+            selected[name] = None
     torch_runtime: dict[str, Any] | None = None
     if "torch" in package_names and selected.get("torch") is not None:
         try:
@@ -448,9 +373,9 @@ def producer_environment(*package_names: str) -> dict[str, Any]:
         except (ImportError, RuntimeError):
             torch_runtime = {"unavailable": True}
     return {
-        "python": environment["python"],
-        "implementation": environment["implementation"],
-        "platform": environment["platform"],
+        "python": sys.version,
+        "implementation": platform.python_implementation(),
+        "platform": platform.platform(),
         "packages": selected,
         "torch_runtime": torch_runtime,
     }
