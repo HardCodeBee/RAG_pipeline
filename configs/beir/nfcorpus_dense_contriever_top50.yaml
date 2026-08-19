@@ -1,0 +1,45 @@
+paths:
+  corpus: ../../data/beir/nfcorpus
+  artifacts_root: ../../artifacts
+  outputs_root: ../../outputs
+loader:
+  expected_dataset: nfcorpus
+embedding:
+  backend: hf_dense
+  family: contriever
+  model_name: facebook/contriever
+  revision: 2bd46a25019aeea091fd42d1f0fd4801675cf699
+  pooling: masked_mean
+  document_input_format: title_space_text
+  normalize: false
+  max_sequence_length: 512
+  batch_size: 16
+  encode_call_rows: 2048
+  shard_rows: 25000
+  query_prefix: ""
+  document_prefix: ""
+  local_files_only: true
+  device: auto
+index:
+  backend: faiss
+  type: streaming_flat_ip
+  faiss_threads: 8
+retrieval:
+  method: dense
+  final_k: 50
+  candidate_k: 50
+  corpus_chunk_size: 25000
+  query_batch_size: 1024
+  search_threads: 8
+  reranker:
+    provider: none
+context:
+  max_tokens: 1800
+prompt:
+  version: fixed_qa_v1
+generation:
+  provider: extractive
+  max_output_tokens: 1
+logging:
+  save_retrieved_text: false
+  save_prompt: false

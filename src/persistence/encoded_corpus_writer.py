@@ -22,7 +22,7 @@ from src.persistence.artifact_io import (
     describe_artifact,
     encode_jsonl_row,
 )
-from src.records import ChunkRecord
+from src.records import ChunkRecord, DocumentEmbeddingInput
 from src.provenance import sha256_file
 
 
@@ -32,7 +32,10 @@ class DocumentEmbedder(Protocol):
     @property
     def dimension(self) -> int: ...
 
-    def encode_documents(self, texts: Sequence[str]) -> np.ndarray: ...
+    def encode_documents(
+        self,
+        values: Sequence[str | DocumentEmbeddingInput],
+    ) -> np.ndarray: ...
 
 
 @dataclass(frozen=True, slots=True)
@@ -222,15 +225,15 @@ def _write_offset_array(
 
 def _encode_batch(
     embedder: DocumentEmbedder,
-    texts: list[str],
+    values: list[str | DocumentEmbeddingInput],
     *,
     dimension: int,
 ) -> np.ndarray:
     embeddings = np.asarray(
-        embedder.encode_documents(texts),
+        embedder.encode_documents(values),
         dtype=np.float32,
     )
-    expected_shape = (len(texts), dimension)
+    expected_shape = (len(values), dimension)
     if embeddings.ndim != 2 or embeddings.shape != expected_shape:
         raise ValueError(
             f"Embedding batch has shape {embeddings.shape}; "
@@ -239,6 +242,44 @@ def _encode_batch(
     if not np.isfinite(embeddings).all():
         raise ValueError("Embedding batch contains non-finite values")
     return np.ascontiguousarray(embeddings)
+
+
+def _document_embedding_input(
+    record: ChunkRecord,
+    *,
+    document_input_format: str,
+) -> str | DocumentEmbeddingInput:
+    if document_input_format == "text":
+        return record.text
+    if document_input_format not in {"title_space_text", "title_text_pair"}:
+        raise ValueError(
+            f"Unsupported document embedding input format: {document_input_format}"
+        )
+
+    # The prepared BEIR loader preserves title + "\n" + body in text and uses
+    # beir:<unit> only when the source row has no title. Decode that verified
+    # boundary here; persisted ChunkRecord text remains unchanged for BGE reuse.
+    if record.text == record.source:
+        return DocumentEmbeddingInput(text="", title=record.source)
+    prefix = f"{record.source}\n"
+    if record.text.startswith(prefix):
+        return DocumentEmbeddingInput(
+            title=record.source,
+            text=record.text[len(prefix) :],
+        )
+    if record.source.startswith("beir:"):
+        return DocumentEmbeddingInput(text=record.text)
+    raise ValueError(
+        "Structured document embedding requires the verified BEIR "
+        "title\\ntext representation"
+    )
+
+
+def _document_input_format(embedder: DocumentEmbedder) -> str:
+    value = getattr(embedder, "document_input_format", "text")
+    if value not in {"text", "title_space_text", "title_text_pair"}:
+        raise ValueError(f"Unsupported document embedding input format: {value}")
+    return value
 
 
 def _write_embedding_array(
@@ -252,7 +293,8 @@ def _write_embedding_array(
 ) -> None:
     destination: np.memmap | None = None
     written = 0
-    texts: list[str] = []
+    values: list[str | DocumentEmbeddingInput] = []
+    document_input_format = _document_input_format(embedder)
     try:
         destination = np.lib.format.open_memmap(
             embeddings_temp,
@@ -263,27 +305,32 @@ def _write_embedding_array(
         with chunks_temp.open("rb") as handle:
             for expected_vector_id, raw in enumerate(handle):
                 record = decode_chunk_record_line(raw, expected_vector_id)
-                texts.append(record.text)
-                if len(texts) < encode_call_rows:
+                values.append(
+                    _document_embedding_input(
+                        record,
+                        document_input_format=document_input_format,
+                    )
+                )
+                if len(values) < encode_call_rows:
                     continue
                 embeddings = _encode_batch(
                     embedder,
-                    texts,
+                    values,
                     dimension=dimension,
                 )
-                destination[written : written + len(texts)] = embeddings
-                written += len(texts)
-                texts.clear()
+                destination[written : written + len(values)] = embeddings
+                written += len(values)
+                values.clear()
 
-        if texts:
+        if values:
             embeddings = _encode_batch(
                 embedder,
-                texts,
+                values,
                 dimension=dimension,
             )
-            destination[written : written + len(texts)] = embeddings
-            written += len(texts)
-            texts.clear()
+            destination[written : written + len(values)] = embeddings
+            written += len(values)
+            values.clear()
 
         if written != rows:
             raise RuntimeError(
@@ -414,7 +461,8 @@ def _write_embedding_part(
 ) -> None:
     offsets: np.memmap | None = None
     destination: np.memmap | None = None
-    texts: list[str] = []
+    values: list[str | DocumentEmbeddingInput] = []
+    document_input_format = _document_input_format(embedder)
     written = 0
     try:
         offsets = np.load(offsets_path, mmap_mode="r", allow_pickle=False)
@@ -434,27 +482,32 @@ def _write_embedding_part(
                     handle.readline(),
                     expected_vector_id,
                 )
-                texts.append(record.text)
-                if len(texts) < encode_call_rows:
+                values.append(
+                    _document_embedding_input(
+                        record,
+                        document_input_format=document_input_format,
+                    )
+                )
+                if len(values) < encode_call_rows:
                     continue
                 embeddings = _encode_batch(
                     embedder,
-                    texts,
+                    values,
                     dimension=dimension,
                 )
-                destination[written : written + len(texts)] = embeddings
-                written += len(texts)
-                texts.clear()
+                destination[written : written + len(values)] = embeddings
+                written += len(values)
+                values.clear()
 
-        if texts:
+        if values:
             embeddings = _encode_batch(
                 embedder,
-                texts,
+                values,
                 dimension=dimension,
             )
-            destination[written : written + len(texts)] = embeddings
-            written += len(texts)
-            texts.clear()
+            destination[written : written + len(values)] = embeddings
+            written += len(values)
+            values.clear()
 
         if written != part_rows:
             raise RuntimeError(

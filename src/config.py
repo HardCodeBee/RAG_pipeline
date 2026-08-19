@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import copy
 import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +26,21 @@ _ROOT_KEYS = {
     "logging",
     "_base_dir",
 }
+
+_HF_DENSE_FAMILIES = {
+    "dpr": {
+        "pooling": "pooler_output",
+        "document_input_format": "title_text_pair",
+        "max_sequence_length": 256,
+    },
+    "contriever": {
+        "pooling": "masked_mean",
+        "document_input_format": "title_space_text",
+        "max_sequence_length": 512,
+    },
+}
+
+_HF_COMMIT_REVISION = re.compile(r"[0-9a-fA-F]{40}")
 
 
 def _mapping(value: Any, location: str) -> dict[str, Any]:
@@ -111,7 +127,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     embedding = _mapping(value.get("embedding"), "embedding")
     embedding["backend"] = _choice(
         embedding.get("backend"),
-        {"hashing", "sentence_transformers"},
+        {"hashing", "hf_dense", "sentence_transformers"},
         "embedding.backend",
     )
     common_embedding_keys = {
@@ -127,7 +143,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             embedding.get("dimension", 384),
             "embedding.dimension",
         )
-    else:
+    elif embedding["backend"] == "sentence_transformers":
         _unknown(
             embedding,
             common_embedding_keys
@@ -159,7 +175,92 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             embedding.get("local_files_only", False),
             "embedding.local_files_only",
         )
-    embedding["normalize"] = _boolean(embedding.get("normalize", True), "embedding.normalize")
+    else:
+        _unknown(
+            embedding,
+            common_embedding_keys
+            | {
+                "family",
+                "model_name",
+                "revision",
+                "query_model_name",
+                "query_revision",
+                "pooling",
+                "document_input_format",
+                "batch_size",
+                "encode_call_rows",
+                "shard_rows",
+                "max_sequence_length",
+                "local_files_only",
+            },
+            "embedding",
+        )
+        embedding["family"] = _choice(
+            embedding.get("family"),
+            set(_HF_DENSE_FAMILIES),
+            "embedding.family",
+        )
+        family = _HF_DENSE_FAMILIES[embedding["family"]]
+        for key in ("model_name", "revision"):
+            embedding[key] = _text(embedding.get(key), f"embedding.{key}")
+        if _HF_COMMIT_REVISION.fullmatch(embedding["revision"]) is None:
+            raise ValueError("embedding.revision must be a full 40-character commit SHA")
+        if embedding["family"] == "dpr":
+            for key in ("query_model_name", "query_revision"):
+                embedding[key] = _text(embedding.get(key), f"embedding.{key}")
+            if _HF_COMMIT_REVISION.fullmatch(embedding["query_revision"]) is None:
+                raise ValueError(
+                    "embedding.query_revision must be a full 40-character commit SHA"
+                )
+        elif "query_model_name" in embedding or "query_revision" in embedding:
+            raise ValueError("contriever uses one shared encoder and does not accept query model overrides")
+        embedding["pooling"] = _choice(
+            embedding.get("pooling", family["pooling"]),
+            {"masked_mean", "pooler_output"},
+            "embedding.pooling",
+        )
+        if embedding["pooling"] != family["pooling"]:
+            raise ValueError(
+                f"embedding.pooling must be {family['pooling']!r} for {embedding['family']}"
+            )
+        embedding["document_input_format"] = _choice(
+            embedding.get("document_input_format", family["document_input_format"]),
+            {"title_space_text", "title_text_pair"},
+            "embedding.document_input_format",
+        )
+        if embedding["document_input_format"] != family["document_input_format"]:
+            raise ValueError(
+                "embedding.document_input_format must be "
+                f"{family['document_input_format']!r} for {embedding['family']}"
+            )
+        embedding["batch_size"] = _integer(
+            embedding.get("batch_size", 32),
+            "embedding.batch_size",
+        )
+        embedding["encode_call_rows"] = _integer(
+            embedding.get("encode_call_rows", embedding["batch_size"]),
+            "embedding.encode_call_rows",
+        )
+        embedding["shard_rows"] = _optional_integer(
+            embedding.get("shard_rows"), "embedding.shard_rows"
+        )
+        embedding["max_sequence_length"] = _integer(
+            embedding.get("max_sequence_length", family["max_sequence_length"]),
+            "embedding.max_sequence_length",
+        )
+        if embedding["max_sequence_length"] != family["max_sequence_length"]:
+            raise ValueError(
+                "embedding.max_sequence_length must be "
+                f"{family['max_sequence_length']} for {embedding['family']}"
+            )
+        embedding["local_files_only"] = _boolean(
+            embedding.get("local_files_only", False),
+            "embedding.local_files_only",
+        )
+    embedding["normalize"] = _boolean(
+        embedding.get("normalize", embedding["backend"] != "hf_dense"),
+        "embedding.normalize",
+    )
     embedding["device"] = _choice(
         embedding.get("device", "auto"),
         {"auto", "cpu", "cuda"},
@@ -173,6 +274,11 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             raise TypeError(f"embedding.{key} must be a string")
         # prefix 允许保留空字符串；不同 embedding 模型可能需要 query/document 前缀。
         embedding[key] = item
+    if embedding["backend"] == "hf_dense":
+        if embedding["normalize"]:
+            raise ValueError("hf_dense DPR/Contriever baselines require normalize=false")
+        if embedding["query_prefix"] or embedding["document_prefix"]:
+            raise ValueError("hf_dense DPR/Contriever baselines do not accept text prefixes")
     # index 控制向量索引后端；当前只支持平铺内积索引。
     index = _mapping(value.get("index"), "index")
     index["backend"] = _choice(index.get("backend"), {"faiss", "numpy"}, "index.backend")

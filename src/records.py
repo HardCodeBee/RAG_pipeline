@@ -98,6 +98,22 @@ class ChunkRecord(_AsDictRecord):
         )
 
 
+@dataclass(frozen=True, slots=True)
+class DocumentEmbeddingInput:
+    """Structured text available only at the document-embedding boundary."""
+
+    text: str
+    title: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.text, str):
+            raise TypeError("DocumentEmbeddingInput.text must be a string")
+        if self.title is not None and not isinstance(self.title, str):
+            raise TypeError("DocumentEmbeddingInput.title must be a string or None")
+        if not self.text.strip() and not (self.title is not None and self.title.strip()):
+            raise ValueError("DocumentEmbeddingInput must contain text or a title")
+
+
 # EmbeddingSpaceSpec 主要用于 记录保存生成向量所需的身份和规格
 # 由 embedder 在编码 ChunkRecord 时同步生成
 # EmbeddingSpaceSpec 将被写入 manifest.json 用于后续对比
@@ -122,6 +138,9 @@ class EmbeddingSpaceSpec(_AsDictRecord):
     similarity: str
     document_prefix: str = ""
     max_sequence_length: int | None = None
+    encoder_family: str | None = None
+    pooling: str | None = None
+    document_input_format: str = "text"
 
     def __post_init__(self) -> None:
         names = (self.backend, self.model_name, self.similarity)
@@ -131,6 +150,19 @@ class EmbeddingSpaceSpec(_AsDictRecord):
             raise ValueError("EmbeddingSpaceSpec.revision must be non-empty or None")
         if not isinstance(self.document_prefix, str):
             raise TypeError("EmbeddingSpaceSpec.document_prefix must be a string")
+        if self.encoder_family is not None and (
+            not isinstance(self.encoder_family, str) or not self.encoder_family.strip()
+        ):
+            raise ValueError("EmbeddingSpaceSpec.encoder_family must be non-empty or None")
+        if self.pooling is not None and (
+            not isinstance(self.pooling, str) or not self.pooling.strip()
+        ):
+            raise ValueError("EmbeddingSpaceSpec.pooling must be non-empty or None")
+        if (
+            not isinstance(self.document_input_format, str)
+            or not self.document_input_format.strip()
+        ):
+            raise ValueError("EmbeddingSpaceSpec.document_input_format must be non-empty")
         if isinstance(self.dimension, bool) or not isinstance(self.dimension, int) or self.dimension <= 0:
             raise ValueError("EmbeddingSpaceSpec.dimension must be a positive integer")
         if not isinstance(self.normalized, bool):
@@ -153,7 +185,21 @@ class EmbeddingSpaceSpec(_AsDictRecord):
             similarity=value["similarity"],
             document_prefix=value.get("document_prefix", ""),
             max_sequence_length=value.get("max_sequence_length"),
+            encoder_family=value.get("encoder_family"),
+            pooling=value.get("pooling"),
+            document_input_format=value.get("document_input_format", "text"),
         )
+
+    def to_dict(self) -> dict[str, Any]:
+        value = asdict(self)
+        # Preserve the historical hashing/SentenceTransformer manifest payload.
+        if self.encoder_family is None:
+            value.pop("encoder_family")
+        if self.pooling is None:
+            value.pop("pooling")
+        if self.document_input_format == "text":
+            value.pop("document_input_format")
+        return value
 
 
 # VectorHit 表示对于输入的 query 向量索引返回的原始命中结果

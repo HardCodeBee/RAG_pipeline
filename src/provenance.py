@@ -185,9 +185,23 @@ def _artifact_packages(
     packages = {"numpy"}
     if identity["embedding"]["backend"] == "sentence_transformers":
         packages.update({"sentence_transformers", "torch", "transformers"})
+    elif identity["embedding"]["backend"] == "hf_dense":
+        packages.update({"torch", "transformers"})
     if include_index and identity["index"]["backend"] == "faiss":
         packages.add("faiss")
     return tuple(sorted(packages))
+
+
+def _document_embedding_config(config: dict[str, Any]) -> dict[str, Any]:
+    embedding = dict(recorded_config(config)["embedding"])
+    for key in (
+        "query_prefix",
+        "query_model_name",
+        "query_revision",
+        "local_files_only",
+    ):
+        embedding.pop(key, None)
+    return embedding
 
 
 def encoded_corpus_spec(
@@ -198,9 +212,7 @@ def encoded_corpus_spec(
     """Describe reusable chunks and document embeddings, excluding index choices."""
 
     identity = recorded_config(config)
-    embedding = dict(identity["embedding"])
-    embedding.pop("query_prefix", None)
-    embedding.pop("local_files_only", None)
+    embedding = _document_embedding_config(config)
     return {
         "embedding": embedding,
         "corpus": corpus,
@@ -240,9 +252,7 @@ def build_spec(
     # 构建规格只包含会影响构建产物的字段。
     # query_prefix、local_files_only 等运行时或环境字段不会改变已构建索引内容。
     identity = recorded_config(config)
-    embedding = dict(identity["embedding"])
-    embedding.pop("query_prefix", None)
-    embedding.pop("local_files_only", None)
+    embedding = _document_embedding_config(config)
     return {
         "embedding": embedding,
         "index": identity["index"],
@@ -287,20 +297,33 @@ def run_spec(
     value = recorded_config(config)
     retrieval = value["retrieval"]
     embedding = value["embedding"]
+    if embedding["backend"] == "hf_dense":
+        query_embedding = {
+            "backend": embedding["backend"],
+            "family": embedding["family"],
+            "model_name": embedding.get("query_model_name", embedding["model_name"]),
+            "revision": embedding.get("query_revision", embedding["revision"]),
+            "pooling": embedding["pooling"],
+            "normalize": embedding["normalize"],
+            "query_prefix": embedding["query_prefix"],
+            "max_sequence_length": embedding["max_sequence_length"],
+        }
+    else:
+        query_embedding = {
+            key: embedding.get(key)
+            for key in (
+                "backend",
+                "model_name",
+                "revision",
+                "normalize",
+                "query_prefix",
+                "max_sequence_length",
+            )
+        }
     result = {
         "build_id": build_id,
         "query_embedding": (
-            {
-                key: embedding.get(key)
-                for key in (
-                    "backend",
-                    "model_name",
-                    "revision",
-                    "normalize",
-                    "query_prefix",
-                    "max_sequence_length",
-                )
-            }
+            query_embedding
             if retrieval["method"] == "dense"
             else None
         ),

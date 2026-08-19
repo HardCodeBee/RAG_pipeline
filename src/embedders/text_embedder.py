@@ -12,7 +12,7 @@ import numpy as np
 
 # 使用EmbeddingSpaceSpec描述当前向量空间的规格
 # 用于后续manifest 建索引和查询阶段一致性校验
-from src.records import EmbeddingSpaceSpec
+from src.records import DocumentEmbeddingInput, EmbeddingSpaceSpec
 from src.model_backends.huggingface_snapshot import resolve_hf_snapshot
 
 
@@ -103,6 +103,8 @@ class TextEmbedder:
         self.batch_size = batch_size
         self.query_prefix = query_prefix
         self.document_prefix = document_prefix
+        self.document_input_format = "text"
+        self.encoder_family = None
         self.max_sequence_length = max_sequence_length
         self.requested_device = device
         self.device = "cpu"
@@ -261,12 +263,297 @@ class TextEmbedder:
         )
 
 
+class HFDenseEmbedder:
+    """One role-specific Hugging Face encoder for the fixed dense baselines."""
+
+    def __init__(
+        self,
+        *,
+        family: str,
+        role: str,
+        model_name: str,
+        revision: str,
+        normalize: bool,
+        batch_size: int,
+        max_sequence_length: int,
+        pooling: str,
+        document_input_format: str,
+        local_files_only: bool,
+        device: str,
+    ) -> None:
+        if family not in {"dpr", "contriever"}:
+            raise ValueError("family must be one of: dpr, contriever")
+        if role not in {"document", "query"}:
+            raise ValueError("role must be one of: document, query")
+        if not isinstance(model_name, str) or not model_name.strip():
+            raise ValueError("model_name must be a non-empty string")
+        if not isinstance(revision, str) or not revision.strip():
+            raise ValueError("revision must be a non-empty string")
+        if not isinstance(normalize, bool):
+            raise TypeError("normalize must be a boolean")
+        if isinstance(batch_size, bool) or not isinstance(batch_size, int) or batch_size <= 0:
+            raise ValueError("batch_size must be a positive integer")
+        if (
+            isinstance(max_sequence_length, bool)
+            or not isinstance(max_sequence_length, int)
+            or max_sequence_length <= 0
+        ):
+            raise ValueError("max_sequence_length must be a positive integer")
+        expected_format = "title_text_pair" if family == "dpr" else "title_space_text"
+        expected_pooling = "pooler_output" if family == "dpr" else "masked_mean"
+        if pooling != expected_pooling:
+            raise ValueError(f"{family} pooling must be {expected_pooling}")
+        if document_input_format != expected_format:
+            raise ValueError(
+                f"{family} document_input_format must be {expected_format}"
+            )
+        if device not in {"auto", "cpu", "cuda"}:
+            raise ValueError("device must be one of: auto, cpu, cuda")
+
+        import torch
+        from transformers import (
+            AutoConfig,
+            AutoModel,
+            AutoTokenizer,
+            DPRContextEncoder,
+            DPRQuestionEncoder,
+        )
+
+        if device == "cuda" and not torch.cuda.is_available():
+            raise RuntimeError(
+                "embedding.device=cuda was requested, but CUDA is not available "
+                "in the active PyTorch environment"
+            )
+        resolved_device = "cuda" if device == "auto" and torch.cuda.is_available() else device
+        if resolved_device == "auto":
+            resolved_device = "cpu"
+        snapshot = resolve_hf_snapshot(
+            model_name,
+            revision=revision,
+            local_files_only=local_files_only,
+        )
+        if family == "dpr":
+            expected_architecture = (
+                "DPRContextEncoder" if role == "document" else "DPRQuestionEncoder"
+            )
+            snapshot_config = AutoConfig.from_pretrained(
+                str(snapshot),
+                local_files_only=True,
+            )
+            if expected_architecture not in (
+                getattr(snapshot_config, "architectures", None) or ()
+            ):
+                raise ValueError(
+                    f"DPR {role} checkpoint must declare {expected_architecture}"
+                )
+            model_class = (
+                DPRContextEncoder if role == "document" else DPRQuestionEncoder
+            )
+        else:
+            model_class = AutoModel
+
+        self._torch = torch
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            str(snapshot),
+            local_files_only=True,
+            use_fast=True,
+        )
+        self._model = model_class.from_pretrained(
+            str(snapshot),
+            local_files_only=True,
+        )
+        self._model.to(resolved_device)
+        self._model.eval()
+
+        config = self._model.config
+        projection_dimension = int(getattr(config, "projection_dim", 0) or 0)
+        hidden_dimension = int(getattr(config, "hidden_size", 0) or 0)
+        dimension = projection_dimension or hidden_dimension
+        if dimension <= 0:
+            raise RuntimeError("Hugging Face encoder did not report an embedding dimension")
+
+        self.backend = "hf_dense"
+        self.encoder_family = family
+        self.role = role
+        self.model_name = model_name.strip()
+        self.revision = revision.strip()
+        self.resolved_revision = getattr(config, "_commit_hash", None) or self.revision
+        self.normalize = normalize
+        self.batch_size = batch_size
+        self.max_sequence_length = max_sequence_length
+        self.pooling = pooling
+        self.document_input_format = document_input_format
+        self.query_prefix = ""
+        self.document_prefix = ""
+        self.requested_device = device
+        self.device = resolved_device
+        self._dimension = dimension
+
+    @property
+    def dimension(self) -> int:
+        return self._dimension
+
+    @staticmethod
+    def _strings(texts: Sequence[str]) -> list[str]:
+        if isinstance(texts, (str, bytes)):
+            raise TypeError("texts must be a sequence of strings")
+        values = list(texts)
+        if not all(isinstance(text, str) for text in values):
+            raise TypeError("Every item in texts must be a string")
+        if any(not text.strip() for text in values):
+            raise ValueError("Embedding texts must be non-empty")
+        return values
+
+    @staticmethod
+    def _documents(
+        values: Sequence[DocumentEmbeddingInput],
+    ) -> list[DocumentEmbeddingInput]:
+        if isinstance(values, (str, bytes)):
+            raise TypeError("documents must be a sequence of DocumentEmbeddingInput")
+        result = list(values)
+        if not all(isinstance(value, DocumentEmbeddingInput) for value in result):
+            raise TypeError(
+                "Structured HF document encoding requires DocumentEmbeddingInput values"
+            )
+        return result
+
+    def _model_inputs(self, **tokenizer_inputs: Any) -> dict[str, Any]:
+        values = self._tokenizer(
+            **tokenizer_inputs,
+            padding=True,
+            truncation=True,
+            max_length=self.max_sequence_length,
+            return_tensors="pt",
+        )
+        return {key: value.to(self.device) for key, value in values.items()}
+
+    def _checked(self, embeddings: Any, expected_rows: int) -> np.ndarray:
+        values = embeddings.detach().to(dtype=self._torch.float32).cpu().numpy()
+        values = np.asarray(values, dtype=np.float32)
+        if values.shape != (expected_rows, self._dimension):
+            raise RuntimeError(
+                f"Embedding backend returned shape {values.shape}; "
+                f"expected {(expected_rows, self._dimension)}"
+            )
+        if not np.isfinite(values).all():
+            raise RuntimeError("Embedding backend returned non-finite values")
+        if self.normalize:
+            values = l2_normalize(values).astype(np.float32)
+        return values
+
+    def _dpr_documents(self, values: Sequence[DocumentEmbeddingInput]) -> np.ndarray:
+        result = np.empty((len(values), self._dimension), dtype=np.float32)
+        titled = [index for index, value in enumerate(values) if value.title]
+        untitled = [index for index, value in enumerate(values) if not value.title]
+        for positions in (titled, untitled):
+            if not positions:
+                continue
+            selected = [values[index] for index in positions]
+            if selected[0].title:
+                inputs = self._model_inputs(
+                    text=[value.title for value in selected],
+                    text_pair=[value.text for value in selected],
+                )
+            else:
+                inputs = self._model_inputs(text=[value.text for value in selected])
+            with self._torch.inference_mode():
+                outputs = self._model(**inputs)
+            result[positions] = self._checked(outputs.pooler_output, len(selected))
+        return result
+
+    def _dpr_queries(self, values: Sequence[str]) -> np.ndarray:
+        inputs = self._model_inputs(text=list(values))
+        with self._torch.inference_mode():
+            outputs = self._model(**inputs)
+        return self._checked(outputs.pooler_output, len(values))
+
+    def _contriever(self, values: Sequence[str]) -> np.ndarray:
+        inputs = self._model_inputs(text=list(values))
+        with self._torch.inference_mode():
+            outputs = self._model(**inputs)
+        hidden = outputs.last_hidden_state
+        mask = inputs["attention_mask"].unsqueeze(-1).to(dtype=hidden.dtype)
+        pooled = (hidden * mask).sum(dim=1) / mask.sum(dim=1).clamp_min(1.0)
+        return self._checked(pooled, len(values))
+
+    def encode_documents(
+        self,
+        values: Sequence[DocumentEmbeddingInput],
+    ) -> np.ndarray:
+        if self.role != "document":
+            raise RuntimeError("A query-role HF encoder cannot encode documents")
+        documents = self._documents(values)
+        if not documents:
+            return np.empty((0, self._dimension), dtype=np.float32)
+        batches: list[np.ndarray] = []
+        for start in range(0, len(documents), self.batch_size):
+            batch = documents[start : start + self.batch_size]
+            if self.encoder_family == "dpr":
+                batches.append(self._dpr_documents(batch))
+            else:
+                texts = [f"{value.title or ''} {value.text}".strip() for value in batch]
+                batches.append(self._contriever(texts))
+        return np.ascontiguousarray(np.concatenate(batches, axis=0), dtype=np.float32)
+
+    def encode_queries(self, texts: Sequence[str]) -> np.ndarray:
+        if self.role != "query":
+            raise RuntimeError("A document-role HF encoder cannot encode queries")
+        values = self._strings(texts)
+        if not values:
+            return np.empty((0, self._dimension), dtype=np.float32)
+        batches: list[np.ndarray] = []
+        for start in range(0, len(values), self.batch_size):
+            batch = values[start : start + self.batch_size]
+            if self.encoder_family == "dpr":
+                batches.append(self._dpr_queries(batch))
+            else:
+                batches.append(self._contriever(batch))
+        return np.ascontiguousarray(np.concatenate(batches, axis=0), dtype=np.float32)
+
+    def embedding_space(self, similarity: str = "inner_product") -> EmbeddingSpaceSpec:
+        return EmbeddingSpaceSpec(
+            backend=self.backend,
+            model_name=self.model_name,
+            revision=self.resolved_revision,
+            dimension=self._dimension,
+            normalized=self.normalize,
+            similarity=similarity,
+            document_prefix="",
+            max_sequence_length=self.max_sequence_length,
+            encoder_family=self.encoder_family,
+            pooling=self.pooling,
+            document_input_format=self.document_input_format,
+        )
+
+
 def create_embedder(
     config: dict[str, Any],
     *,
+    role: str = "document",
     override: dict[str, Any] | None = None,
-) -> TextEmbedder:
+) -> TextEmbedder | HFDenseEmbedder:
+    if role not in {"document", "query"}:
+        raise ValueError("role must be one of: document, query")
     embedding = {**config["embedding"], **(override or {})}
+    if embedding["backend"] == "hf_dense":
+        model_name = embedding["model_name"]
+        revision = embedding["revision"]
+        if role == "query":
+            model_name = embedding.get("query_model_name", model_name)
+            revision = embedding.get("query_revision", revision)
+        return HFDenseEmbedder(
+            family=embedding["family"],
+            role=role,
+            model_name=model_name,
+            revision=revision,
+            normalize=embedding["normalize"],
+            batch_size=embedding.get("batch_size", 32),
+            max_sequence_length=embedding["max_sequence_length"],
+            pooling=embedding["pooling"],
+            document_input_format=embedding["document_input_format"],
+            local_files_only=embedding.get("local_files_only", False),
+            device=embedding.get("device", "auto"),
+        )
     return TextEmbedder(
         backend=embedding["backend"],
         model_name=embedding.get("model_name"),

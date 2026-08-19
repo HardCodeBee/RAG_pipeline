@@ -109,7 +109,7 @@ def _validate_entry(
     corpus: Mapping[str, Any],
     current_build_spec: Mapping[str, Any],
     entry: Mapping[str, Any],
-) -> PinnedBeirBuild:
+) -> PinnedBeirBuild | None:
     build_record = _mapping(entry["build"], label="BEIR build")
     build_id = str(build_record["artifact_id"])
     build_dir = _directory(artifacts_root, Path(build_id), label="BEIR build")
@@ -118,11 +118,27 @@ def _validate_entry(
         str(build_record["manifest_sha256"]),
         label="BEIR build",
     )
-    verified_build = validate_build_directory(build_dir, build_id)
     legacy_build_spec = _mapping(
         build_manifest.get("build_spec"),
         label="BEIR build spec",
     )
+    legacy_embedding = _mapping(
+        legacy_build_spec.get("embedding"),
+        label="Legacy BEIR document embedding",
+    )
+    current_embedding = _mapping(
+        current_build_spec.get("embedding"),
+        label="Current BEIR document embedding",
+    )
+    # Registry entries are keyed by dataset/corpus so several dense baselines
+    # can legitimately target the same prepared unit. A different document
+    # embedding identifies another artifact, not a damaged legacy entry.
+    if legacy_embedding != current_embedding:
+        return None
+
+    # Once the document embedding matches, keep the historical trust boundary
+    # strict before accepting or semantically comparing the pinned build.
+    verified_build = validate_build_directory(build_dir, build_id)
     if _semantic_spec(
         legacy_build_spec,
         "build_source_sha256",

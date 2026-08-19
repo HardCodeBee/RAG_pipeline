@@ -1,0 +1,47 @@
+paths:
+  corpus: ../../data/beir/nfcorpus
+  artifacts_root: ../../artifacts
+  outputs_root: ../../outputs
+loader:
+  expected_dataset: nfcorpus
+embedding:
+  backend: hf_dense
+  family: dpr
+  model_name: facebook/dpr-ctx_encoder-multiset-base
+  revision: fdb3d46584386d2f20aa00724ae31cebc348d16b
+  query_model_name: facebook/dpr-question_encoder-multiset-base
+  query_revision: 5325e4ee906435291d63046f535476cb3fc60d43
+  pooling: pooler_output
+  document_input_format: title_text_pair
+  normalize: false
+  max_sequence_length: 256
+  batch_size: 32
+  encode_call_rows: 2048
+  shard_rows: 25000
+  query_prefix: ""
+  document_prefix: ""
+  local_files_only: true
+  device: auto
+index:
+  backend: faiss
+  type: streaming_flat_ip
+  faiss_threads: 8
+retrieval:
+  method: dense
+  final_k: 50
+  candidate_k: 50
+  corpus_chunk_size: 25000
+  query_batch_size: 1024
+  search_threads: 8
+  reranker:
+    provider: none
+context:
+  max_tokens: 1800
+prompt:
+  version: fixed_qa_v1
+generation:
+  provider: extractive
+  max_output_tokens: 1
+logging:
+  save_retrieved_text: false
+  save_prompt: false

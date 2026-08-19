@@ -213,6 +213,35 @@ class NaiveRAGPipeline:
     def _load_query_embedder(self):
         built = self.manifest["embedding"]
         expected_space = EmbeddingSpaceSpec.from_mapping(built["space"])
+        if expected_space.backend == "hf_dense":
+            embedding = self.config["embedding"]
+            if (
+                embedding["backend"] != "hf_dense"
+                or embedding["family"] != expected_space.encoder_family
+                or embedding["model_name"] != expected_space.model_name
+                or embedding["revision"] != expected_space.revision
+                or embedding["pooling"] != expected_space.pooling
+                or embedding["document_input_format"]
+                != expected_space.document_input_format
+            ):
+                raise ValueError(
+                    "HF dense document encoder config does not match the build manifest"
+                )
+            embedder = create_embedder(self.config, role="query")
+            if (
+                embedder.backend != expected_space.backend
+                or embedder.encoder_family != expected_space.encoder_family
+                or embedder.pooling != expected_space.pooling
+                or embedder.dimension != expected_space.dimension
+                or embedder.normalize != expected_space.normalized
+                or embedder.max_sequence_length != expected_space.max_sequence_length
+                or expected_space.similarity != "inner_product"
+            ):
+                raise ValueError(
+                    "HF dense query encoder is incompatible with the document vector space"
+                )
+            self.embedding_space_spec = expected_space
+            return embedder
         # 用构建 manifest 覆盖配置中可能变化的 embedding 字段，确保查询与索引同空间。
         override = {
             "backend": expected_space.backend,
@@ -223,7 +252,7 @@ class NaiveRAGPipeline:
             "document_prefix": expected_space.document_prefix,
             "max_sequence_length": expected_space.max_sequence_length,
         }
-        embedder = create_embedder(self.config, override=override)
+        embedder = create_embedder(self.config, role="query", override=override)
         actual_space = embedder.embedding_space(expected_space.similarity)
         if actual_space != expected_space:
             raise ValueError(

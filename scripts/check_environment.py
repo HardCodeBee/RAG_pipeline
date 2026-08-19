@@ -66,6 +66,38 @@ def _selected_bm25_dependencies(
     raise ValueError(f"Unsupported BM25 backend: {backend}")
 
 
+def _selected_embedding_dependencies(
+    config: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    backend = config["embedding"]["backend"]
+    if backend == "hf_dense":
+        return {
+            "torch": _check_import("torch", "torch"),
+            "transformers": _check_import("transformers", "transformers"),
+            "huggingface_hub": _check_import("huggingface_hub", "huggingface-hub"),
+        }
+    if backend == "sentence_transformers":
+        return {
+            "sentence_transformers": _check_import(
+                "sentence_transformers", "sentence-transformers"
+            )
+        }
+    return {}
+
+
+def _pinned_revisions(config: dict[str, Any], reranker: dict[str, Any]) -> dict[str, Any]:
+    embedding = config["embedding"]
+    result = {
+        "embedding": embedding.get("revision"),
+        "reranker": reranker.get("revision"),
+    }
+    if embedding["backend"] == "hf_dense":
+        result["query_embedding"] = embedding.get(
+            "query_revision", embedding.get("revision")
+        )
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Check dependencies selected by one RAG config.")
     parser.add_argument("--config", required=True)
@@ -92,10 +124,8 @@ def main() -> None:
         "pyyaml": _check_import("yaml", "PyYAML"),
     }
     reranker = config["retrieval"]["reranker"]
-    if (
-        config["embedding"]["backend"] == "sentence_transformers"
-        or reranker["provider"] == "cross_encoder"
-    ):
+    dependencies.update(_selected_embedding_dependencies(config))
+    if reranker["provider"] == "cross_encoder" and "sentence_transformers" not in dependencies:
         dependencies["sentence_transformers"] = _check_import("sentence_transformers", "sentence-transformers")
     if config["index"]["backend"] == "faiss":
         dependencies["faiss"] = _check_import("faiss", "faiss-cpu")
@@ -173,10 +203,7 @@ def main() -> None:
         "python": sys.version,
         "platform": platform.platform(),
         "selected_components": selected,
-        "pinned_revisions": {
-            "embedding": config["embedding"].get("revision"),
-            "reranker": reranker.get("revision"),
-        },
+        "pinned_revisions": _pinned_revisions(config, reranker),
         "reranker_model": {
             "model_name": reranker.get("model_name"),
             "device": reranker.get("device"),
