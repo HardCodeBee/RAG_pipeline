@@ -22,6 +22,12 @@ python -m pip install -r requirements/experiment.txt -c requirements/constraints
 API credentials belong in the process environment. Inline credentials in YAML
 are rejected, and persisted metadata redacts credential-shaped values.
 
+The current HotpotQA No-retrieval/BM25/Dense routing protocol, aggregate
+metrics, and negative Phase 3 learning curve are available in
+[`analysis/hotpotqa_router/`](analysis/hotpotqa_router/README.md). The package
+contains no raw questions, reference answers, generated answers, contexts, or
+provider checkpoints.
+
 ## Prepare BEIR
 
 Prepare every selected official archive, downloading a missing archive into

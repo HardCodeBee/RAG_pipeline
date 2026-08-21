@@ -1,0 +1,34 @@
+{
+  "lexical_compatibility": [
+    "corpus_vocabulary_coverage",
+    "corpus_oov_ratio",
+    "idf_mean",
+    "idf_std",
+    "idf_min",
+    "idf_max",
+    "idf_p90",
+    "idf_max_share",
+    "log_document_frequency_mean",
+    "log_document_frequency_std",
+    "df_at_most_10_ratio",
+    "df_at_most_100_ratio",
+    "df_at_most_1000_ratio",
+    "numeric_anchor_max_idf",
+    "year_anchor_max_idf",
+    "capitalized_anchor_max_idf",
+    "quoted_anchor_max_idf"
+  ],
+  "dense_corpus_summary": [
+    "prototype_similarity_top_1_to_8",
+    "prototype_similarity_margin",
+    "prototype_similarity_mean",
+    "prototype_similarity_std",
+    "prototype_similarity_entropy",
+    "prototype_local_density"
+  ],
+  "query_embedding_dimensions": 384,
+  "frozen_corpus_prototypes": 64,
+  "generic_surface_block": "excluded",
+  "online_information": "query_and_corpus_static_only"
+}
+

@@ -1,0 +1,24 @@
+{
+  "queries": 100,
+  "primary_metric": "answer_correctness",
+  "actions": {
+    "no_context": {"answer_correctness": 0.47, "normalized_token_f1": 0.424520},
+    "gold_page_context": {"answer_correctness": 0.94, "normalized_token_f1": 0.814556},
+    "bm25": {"answer_correctness": 0.645, "normalized_token_f1": 0.544056},
+    "dense": {"answer_correctness": 0.685, "normalized_token_f1": 0.602762}
+  },
+  "gold_minus_no_context": {
+    "answer_correctness": 0.47,
+    "answer_correctness_ci95": [0.373737, 0.564373],
+    "normalized_token_f1": 0.390036
+  },
+  "manual_calibration": {
+    "reviewed": 50,
+    "exact_agreement": 0.86,
+    "linear_weighted_kappa": 0.754558,
+    "two_step_disagreements": 0
+  },
+  "failures": 0,
+  "decision": "GO"
+}
+

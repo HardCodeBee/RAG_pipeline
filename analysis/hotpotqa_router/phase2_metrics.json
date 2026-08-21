@@ -1,0 +1,30 @@
+{
+  "sample": {"train_queries": 300, "dev_queries": 300},
+  "primary_metric": "answer_correctness",
+  "repeats_per_query_action": 3,
+  "dev_actions": {
+    "no_context": {"answer_correctness": 0.499444, "normalized_token_f1": 0.470028},
+    "bm25": {"answer_correctness": 0.685556, "normalized_token_f1": 0.632704},
+    "dense": {"answer_correctness": 0.758333, "normalized_token_f1": 0.695528}
+  },
+  "dev_oracle": {
+    "best_fixed": "dense",
+    "fixed_answer_correctness": 0.758333,
+    "oracle_answer_correctness": 0.833333,
+    "answer_correctness_headroom": 0.075,
+    "answer_correctness_headroom_ci95": [0.048875, 0.105],
+    "reference_f1_delta_for_ac_oracle": 0.061459
+  },
+  "dev_winners": {
+    "unique": {"no_context": 10, "bm25": 15, "dense": 32},
+    "pairwise_bm25_vs_dense": {"bm25": 20, "dense": 47, "tie": 233}
+  },
+  "repeat_diagnostics": {
+    "complete_query_action_cells": 1800,
+    "f1_pair_agreement": 0.959630,
+    "answer_correctness_pair_agreement": 0.966296
+  },
+  "failures": 0,
+  "decision": "GO"
+}
+

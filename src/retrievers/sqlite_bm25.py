@@ -273,6 +273,45 @@ def _analyze(text: str) -> Iterator[str]:
             yield token
 
 
+def analyze_sqlite_bm25_text(text: str) -> tuple[str, ...]:
+    """Tokenize text with the exact analyzer used by ``sqlite_bm25_v1``."""
+
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    return tuple(_analyze(text))
+
+
+def read_sqlite_bm25_term_stats(
+    database_path: str | Path,
+    terms: Iterable[str],
+) -> dict[str, tuple[int, float]]:
+    """Read static ``(document frequency, inverse document frequency)`` values."""
+
+    path = Path(database_path).resolve()
+    if not path.is_file():
+        raise FileNotFoundError(f"SQLite BM25 database does not exist: {path}")
+    unique_terms = sorted({str(term) for term in terms if str(term)})
+    if not unique_terms:
+        return {}
+    connection = sqlite3.connect(f"file:{path.as_posix()}?mode=ro", uri=True)
+    try:
+        result: dict[str, tuple[int, float]] = {}
+        batch_size = 900
+        for start in range(0, len(unique_terms), batch_size):
+            batch = unique_terms[start : start + batch_size]
+            placeholders = ",".join("?" for _ in batch)
+            rows = connection.execute(
+                f"SELECT term, df, idf FROM term_stats WHERE term IN ({placeholders})",
+                batch,
+            )
+            result.update(
+                {str(term): (int(df), float(idf)) for term, df, idf in rows}
+            )
+        return result
+    finally:
+        connection.close()
+
+
 def _source_identity(verified_build: VerifiedBuild) -> tuple[Path, dict[str, Any]]:
     if not isinstance(verified_build, VerifiedBuild):
         raise TypeError("verified_build must be a VerifiedBuild")

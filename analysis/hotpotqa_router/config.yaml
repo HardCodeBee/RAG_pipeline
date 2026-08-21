@@ -1,0 +1,83 @@
+dataset:
+  name: hotpotqa
+  eligible_split: train
+  group_split: normalized_answer_plus_supporting_page_titles
+  pilot_queries: 100
+  train_queries: 67920
+  dev_queries: 8490
+  final_holdout_queries: 8490
+
+actions:
+  - no_context
+  - bm25
+  - dense
+
+retrieval:
+  candidate_k: 50
+  final_k: 5
+  reranker: none
+  bm25_backend: sqlite_bm25_v1
+  dense_model: BAAI/bge-small-en-v1.5
+  dense_index: streaming_flat_ip
+
+context:
+  max_tokens: 1800
+  ordering: retrieval_rank
+  deduplicate_by: document_id
+
+generation:
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0.0
+  max_output_tokens: 64
+  repeats_per_query_action: 3
+
+evaluation:
+  final_primary_metric: answer_correctness
+  phase3_screening_metric: normalized_token_f1
+  answer_correctness_calls_in_phase3: 0
+  practical_f1_gain: 0.01
+  formal_gate_requires_fresh_dev: true
+
+features:
+  tier_a:
+    lexical_compatibility_dimensions: 17
+    generic_surface_block: excluded
+  full:
+    lexical_compatibility_dimensions: 17
+    query_embedding_dimensions: 384
+    corpus_prototype_summary_dimensions: 13
+    frozen_corpus_prototypes: 64
+  forbidden_online_inputs:
+    - current_retrieval_outcomes
+    - qrels
+    - gold_evidence
+    - generated_answers
+    - answer_correctness
+
+training:
+  pairs:
+    - [no_context, bm25]
+    - [no_context, dense]
+    - [bm25, dense]
+  objective: binary_logistic
+  sample_weight: absolute_mean_f1_difference
+  tie_handling: skip_exact_tie
+  primary_model: shallow_xgboost_binary_classifier
+  capacity_control: regularized_logistic_regression
+  action_aggregation: borda_sum_pairwise_probabilities
+  folds: 5
+  seeds: 5
+
+execution:
+  status: early_stopped_after_completed_4800
+  completed_learning_curve:
+    - 1200
+    - 2400
+    - 4800
+  canceled_learning_curve:
+    - 9600
+  model_frozen: false
+  fresh_dev_opened: false
+  answer_correctness_evaluated: false
+  final_holdout_outcomes: 0
+

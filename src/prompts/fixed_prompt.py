@@ -8,21 +8,28 @@ from src.records import ContextPackage, PromptPackage
 
 
 PROMPT_VERSION = "fixed_qa_v1"
+HOTPOT_SHORT_ANSWER_VERSION = "hotpot_short_answer_v1"
 
 
 def build_prompt(question: str, context: ContextPackage, version: str = PROMPT_VERSION) -> PromptPackage:
     # prompt 版本固定后，实验结果可以追溯到具体模板文本。
     if not isinstance(question, str) or not question.strip():
         raise ValueError("question must be a non-empty string")
-    if version != PROMPT_VERSION:
+    if version not in {PROMPT_VERSION, HOTPOT_SHORT_ANSWER_VERSION}:
         raise ValueError(f"Unsupported prompt version: {version}")
-    instructions = [
-        "You are a question answering assistant.",
-        "",
-        "Answer the question using only the provided context.",
-        "Cite supporting chunks with [Chunk N] after each factual claim.",
-        'If the context does not contain enough information, say: "I don\'t know based on the provided context."',
-    ]
+    if version == HOTPOT_SHORT_ANSWER_VERSION:
+        instructions = [
+            "Answer the question using only the provided context.",
+            "Return only the short answer. Do not add citations or explanation.",
+        ]
+    else:
+        instructions = [
+            "You are a question answering assistant.",
+            "",
+            "Answer the question using only the provided context.",
+            "Cite supporting chunks with [Chunk N] after each factual claim.",
+            'If the context does not contain enough information, say: "I don\'t know based on the provided context."',
+        ]
     text = "\n".join(
         [
             *instructions,

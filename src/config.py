@@ -547,7 +547,7 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     _unknown(prompt, {"version"}, "prompt")
     prompt["version"] = _choice(
         prompt.get("version", "fixed_qa_v1"),
-        {"fixed_qa_v1"},
+        {"fixed_qa_v1", "hotpot_short_answer_v1"},
         "prompt.version",
     )
 
