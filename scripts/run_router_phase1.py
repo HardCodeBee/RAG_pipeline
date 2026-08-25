@@ -215,14 +215,14 @@ def _core_config(router: Mapping[str, Any], *, method: str) -> dict[str, Any]:
             "model_name": dense["model"],
             "revision": dense["revision"],
             "normalize": dense["normalize"],
-            "batch_size": 128,
-            "encode_call_rows": 2048,
-            "shard_rows": 25000,
+            "batch_size": int(dense.get("batch_size", 128)),
+            "encode_call_rows": int(dense.get("encode_call_rows", 2048)),
+            "shard_rows": int(dense.get("shard_rows", 25000)),
             "query_prefix": dense["query_prefix"],
             "document_prefix": dense["document_prefix"],
             "max_sequence_length": dense["max_sequence_length"],
             "local_files_only": True,
-            "device": "cuda",
+            "device": dense.get("device", "cuda"),
         },
         "index": {
             "backend": "faiss",
@@ -250,6 +250,17 @@ def _core_config(router: Mapping[str, Any], *, method: str) -> dict[str, Any]:
         "logging": {"save_retrieved_text": False, "save_prompt": False},
         "_base_dir": str(PROJECT_ROOT),
     }
+    if dense["backend"] == "hf_dense":
+        value["embedding"].update(
+            {
+                "family": dense["family"],
+                "pooling": dense["pooling"],
+                "document_input_format": dense["document_input_format"],
+            }
+        )
+        for key in ("query_model_name", "query_revision"):
+            if key in dense:
+                value["embedding"][key] = dense[key]
     if method == "dense":
         value["retrieval"].update(
             {"corpus_chunk_size": 25000, "query_batch_size": 100}

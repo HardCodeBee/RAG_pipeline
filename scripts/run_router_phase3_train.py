@@ -166,6 +166,7 @@ def _corpus_prototypes(
     *,
     clusters: int = 64,
     sample_rows: int = 100_000,
+    normalize_centers: bool = True,
 ) -> np.ndarray:
     path = _centroid_path(run_dir)
     if path.is_file():
@@ -202,9 +203,10 @@ def _corpus_prototypes(
     )
     model.fit(matrix)
     centers = np.asarray(model.cluster_centers_, dtype=np.float32)
-    norms = np.linalg.norm(centers, axis=1, keepdims=True)
-    norms[norms == 0] = 1.0
-    centers = centers / norms
+    if normalize_centers:
+        norms = np.linalg.norm(centers, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        centers = centers / norms
     path.parent.mkdir(parents=True, exist_ok=True)
     np.save(path, centers, allow_pickle=False)
     return centers
