@@ -1,0 +1,295 @@
+dataset:
+  dataset_id: hotpotqa
+  root: data/beir/hotpotqa
+  eligible_source_split: train
+  eligible_query_count: 85000
+  official_dev: excluded
+  official_test: historical_retrieval_evidence_only
+
+split:
+  path: outputs/router/hotpotqa_bd_router_v1/split.json
+  grouping: normalized_answer_plus_supporting_page_titles
+  seed: 20260820
+  pilot_query_count: 100
+  remaining_ratios:
+    train: 0.80
+    dev: 0.10
+    final_holdout: 0.10
+
+artifacts:
+  build: artifacts/build_65e9037e4c1eed7b
+  encoded_corpus: artifacts/_encoded_corpora/encoded_corpus_df8e4c53d3e183b4
+  bm25_index: artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b
+
+retrieval:
+  candidate_k: 50
+  final_k: 5
+  reranker: none
+  ignore_identical_ids: true
+  bm25:
+    backend: sqlite_bm25_v1
+    method: lucene
+    k1: 1.5
+    b: 0.75
+    analyzer: english_regex_casefold_v1
+  dense:
+    backend: sentence_transformers
+    model: BAAI/bge-small-en-v1.5
+    revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
+    query_encoder: same_as_document_encoder
+    pooling: model_default
+    normalize: true
+    similarity: inner_product
+    query_prefix: ""
+    document_prefix: ""
+    query_input: raw_question
+    document_input: title_newline_text_v1
+    max_sequence_length: 512
+    index: streaming_flat_ip
+
+context:
+  builder: fixed_top_k_pages_v1
+  max_tokens: 1800
+  ordering: retrieval_rank
+  deduplicate_by: document_id
+  gold_condition: gold_page_context
+
+prompt:
+  version: hotpot_short_answer_v1
+  template: |
+    Answer the question using only the provided context.
+    Return only the short answer. Do not add citations or explanation.
+
+generation:
+  provider: openai
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0.0
+  max_output_tokens: 64
+  repeats_per_condition: 1
+  repeat_check_queries: 10
+  phase1_main_call_limit: 400
+  phase1_total_call_limit: 440
+  hard_budget_usd: 2.0
+  stop_on_call_or_budget_limit: true
+
+evaluation:
+  primary: answer_correctness
+  secondary:
+    - normalized_token_f1
+    - normalized_exact_match
+    - evidence_page_recall
+    - retrieval_hit
+    - retrieval_latency_ms
+    - generation_latency_ms
+    - input_tokens
+    - output_tokens
+  answer_normalization: hotpotqa_official
+  alias_aggregation: max
+  missing_policy: retain_failure_row_no_imputation
+  confidence_level: 0.95
+  bootstrap_unit: group
+  bootstrap_resamples: 2000
+  practical_effect:
+    phase1_gold_minus_no_context_f1: 0.05
+    phase1_gold_minus_no_context_ac: 0.05
+    phase2_oracle_headroom_over_best_fixed_f1: 0.01
+    phase3_router_gain_over_best_fixed_f1: 0.01
+    phase2_oracle_headroom_over_best_fixed_ac: 0.01
+    phase3_router_gain_over_best_fixed_ac: 0.01
+    ac_noninferiority_margin: 0.01
+
+answer_correctness:
+  role: primary_utility
+  provider: openai
+  model: gpt-5.4-mini-2026-03-17
+  reasoning_effort: none
+  max_output_tokens: 32
+  input_fields:
+    - question
+    - reference_answers
+    - predicted_answer
+  blinded_fields:
+    - action
+    - retriever
+    - retrieved_context
+    - retrieval_metrics
+  labels:
+    incorrect: 0.0
+    partially_correct: 0.5
+    correct: 1.0
+  rubric:
+    incorrect: The prediction is wrong, contradictory, unsupported, or does not answer the question.
+    partially_correct: The prediction contains a correct core fact but is materially incomplete or over-broad.
+    correct: The prediction is semantically equivalent to a reference answer and adds no contradiction.
+  repeat_check_predictions: 20
+  calibration_review_predictions: 50
+  phase1_call_limit: 460
+  hard_budget_usd: 1.0
+  stop_on_call_or_budget_limit: true
+  gate:
+    primary_ac_must_pass: true
+    f1_is_reference_only: true
+
+phase2:
+  sample_seed: 20260821
+  sample_without_replacement:
+    train: 300
+    dev: 300
+  power_target: 0.95
+  one_sided_alpha: 0.05
+  pilot_f1_headroom: 0.046
+  practical_f1_headroom: 0.01
+  high_margin_f1_gap: 0.5
+  minimum_high_margin_queries_per_action: 10
+  best_fixed_tie_break: dense
+  sensitivity_repeat_queries_per_partition: 20
+  minimum_repeat_metric_agreement: 0.95
+  generation_call_limit: 1280
+  generation_hard_budget_usd: 0.75
+  answer_correctness_call_limit: 1320
+  answer_correctness_hard_budget_usd: 0.75
+  provider_workers: 8
+  bootstrap_requires_lower_bound_above_practical_effect: true
+  final_holdout_outcomes: forbidden
+
+phase2_revision:
+  source_run: phase2_bd_headroom_v1
+  reason: nondeterministic_generation_detected
+  repeats_per_query_action: 3
+  aggregation: mean_within_query_action
+  uncertainty: group_plus_repeat_bootstrap
+  bootstrap_seed: 20260822
+  bootstrap_resamples: 2000
+  sensitivity: leave_one_repeat_out_all_must_pass
+  exact_repeat_agreement_role: diagnostic_after_nondeterminism_trigger
+  generation_call_limit: 3600
+  generation_hard_budget_usd: 1.0
+  answer_correctness_call_limit: 3640
+  answer_correctness_hard_budget_usd: 0.9
+  provider_workers: 4
+  final_holdout_outcomes: forbidden
+
+phase2_ac_primary:
+  source_run: phase2_bd_headroom_repeated_v1
+  reason: ac_primary_and_no_retrieval_action
+  actions:
+    - no_context
+    - bm25
+    - dense
+  repeats_per_query_action: 3
+  aggregation: mean_within_query_action
+  uncertainty: group_plus_repeat_bootstrap
+  bootstrap_seed: 20260829
+  bootstrap_resamples: 2000
+  practical_ac_headroom: 0.01
+  best_fixed_tie_break: dense
+  generation_call_limit: 5400
+  generation_hard_budget_usd: 2.0
+  answer_correctness_call_limit: 5440
+  answer_correctness_hard_budget_usd: 1.5
+  provider_workers: 4
+  final_holdout_outcomes: forbidden
+
+phase3:
+  execution_status: early_stopped_after_completed_4800
+  stop_scope:
+    completed_learning_curve:
+      - 1200
+      - 2400
+      - 4800
+    canceled_learning_curve:
+      - 9600
+    partial_9600_action_repeat_cells:
+      success: 65500
+      pending: 20900
+      usable_for_training: false
+    model_frozen: false
+    fresh_dev_opened: false
+    fresh_dev_evaluated: false
+    answer_correctness_evaluated: false
+  source_run: phase2_nbd_ac_primary_v1
+  source_partitions:
+    reused_train: 300
+    train_total: 9600
+    learning_curve:
+      - 1200
+      - 2400
+      - 4800
+      - 9600
+    old_dev: historical_analysis_only
+    fresh_dev: 4000
+  sample_seed: 20260830
+  repeats_per_query_action: 3
+  routing_target: normalized_token_f1
+  deferred_primary_metric: answer_correctness
+  reference_metrics:
+    - normalized_exact_match
+  actions:
+    - no_context
+    - bm25
+    - dense
+  pairwise_training:
+    unordered_pairs:
+      - [no_context, bm25]
+      - [no_context, dense]
+      - [bm25, dense]
+    label: mean_f1_left_greater_than_mean_f1_right
+    sample_weight: absolute_mean_f1_difference
+    tie_handling: skip_exact_tie_and_report
+    split_unit: query_group
+    pair_rows_from_same_query_must_share_fold: true
+  features:
+    full_model: joint_query_action_compatibility
+    tier_a: 17d_query_corpus_lexical_compatibility_without_generic_surface_or_dense_encoding
+    tier_b: tier_a_plus_384d_query_embedding_plus_13d_frozen_corpus_prototype_summary
+    frozen_corpus_prototypes: 64
+    planned_ablation: remove_one_compatibility_block_from_same_model
+    executed_ablation: tier_a_vs_full_only_due_early_stop
+    forbidden:
+      - current_retrieval_outcomes
+      - qrels
+      - gold_evidence
+      - generated_answers
+      - answer_correctness
+  models:
+    primary: shallow_xgboost_classifier
+    capacity_control: regularized_logistic_regression
+    aggregation: borda_sum_pairwise_probabilities
+    action_tie_break: dense
+  model_selection: train_group_cv_only
+  cv_folds: 5
+  cv_seed: 20260823
+  training_seeds:
+    - 20260823
+    - 20260824
+    - 20260825
+    - 20260826
+    - 20260827
+  bootstrap_seed: 20260828
+  bootstrap_resamples: 2000
+  practical_f1_gain: 0.01
+  f1_ci_lower_bound: 0.0
+  ac_evaluation: not_run_after_f1_early_stop
+  automatic_ac_evaluation: forbidden
+  answer_correctness_calls_in_screen: 0
+  generation_call_limit: 122400
+  generation_hard_budget_usd: 30.0
+  provider_workers: 4
+  dense_query_batch_size: 100
+  seed_stability:
+    every_seed_positive: true
+    median_seed_gain_at_least_practical: true
+  learning_curve_required: true
+  fresh_dev_required_for_formal_gate: true
+  fresh_dev_executed: false
+  fresh_dev_open_after_model_freeze: true
+  posthoc_candidate_switching: forbidden
+  final_holdout_outcomes: forbidden
+
+feature_cost:
+  primary: tier_a_query_corpus_lexical_statistics_without_generic_surface
+  secondary: tier_b_with_query_embedding_and_full_encoder_cost
+
+holdout:
+  final_outcomes_sealed_until_phase: 5
+  method_selection_uses_final_holdout: false

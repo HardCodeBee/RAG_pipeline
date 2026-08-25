@@ -1,0 +1,21 @@
+{
+  "source_rows": 3600,
+  "queries": 600,
+  "partition_queries": {
+    "train": 300,
+    "dev": 300
+  },
+  "actions": [
+    "bm25",
+    "dense"
+  ],
+  "repeat_ids": [
+    0,
+    1,
+    2
+  ],
+  "all_rows_success": true,
+  "metrics_finite_and_bounded": true,
+  "group_partition_isolation": true,
+  "final_holdout_rows": 0
+}

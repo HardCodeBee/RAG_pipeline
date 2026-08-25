@@ -1,0 +1,350 @@
+{
+  "train_queries": 1200,
+  "split_unit": "phase0_group",
+  "f1_is_screening_metric": true,
+  "answer_correctness_calls": 0,
+  "candidates": {
+    "full_xgboost": {
+      "feature_tier": "full",
+      "model": "xgboost",
+      "seeds": [
+        {
+          "router_f1": 0.6441500782966614,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.011781692504882812,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.12576453888435382,
+          "action_counts": {
+            "dense": 1107,
+            "bm25": 77,
+            "no_context": 16
+          },
+          "pairwise_accuracy": 0.6811894882434302,
+          "pairwise_weighted_accuracy": 0.731769671518373,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6473957896232605,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.008535981178283691,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.09111795579178965,
+          "action_counts": {
+            "dense": 1091,
+            "bm25": 93,
+            "no_context": 16
+          },
+          "pairwise_accuracy": 0.6922544951590595,
+          "pairwise_weighted_accuracy": 0.739725129915742,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6489672064781189,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.006964564323425293,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.07434375157075242,
+          "action_counts": {
+            "dense": 1111,
+            "bm25": 70,
+            "no_context": 19
+          },
+          "pairwise_accuracy": 0.6811894882434302,
+          "pairwise_weighted_accuracy": 0.7325362420101812,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6492325067520142,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.006699264049530029,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.07151178438110606,
+          "action_counts": {
+            "dense": 1104,
+            "bm25": 82,
+            "no_context": 14
+          },
+          "pairwise_accuracy": 0.6839557399723375,
+          "pairwise_weighted_accuracy": 0.7332931148906793,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6539248824119568,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.0020068883895874023,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.02142267698840554,
+          "action_counts": {
+            "dense": 1084,
+            "bm25": 97,
+            "no_context": 19
+          },
+          "pairwise_accuracy": 0.6970954356846473,
+          "pairwise_weighted_accuracy": 0.7486215494439264,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        }
+      ],
+      "median_gain_over_fixed_dense": -0.006964564323425293,
+      "min_gain_over_fixed_dense": -0.011781692504882812,
+      "max_gain_over_fixed_dense": -0.0020068883895874023
+    },
+    "full_logistic": {
+      "feature_tier": "full",
+      "model": "logistic",
+      "seeds": [
+        {
+          "router_f1": 0.6349724531173706,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.020959317684173584,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.22373177052349083,
+          "action_counts": {
+            "bm25": 338,
+            "dense": 716,
+            "no_context": 146
+          },
+          "pairwise_accuracy": 0.6431535269709544,
+          "pairwise_weighted_accuracy": 0.6742311030912884,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6241917014122009,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.03174006938934326,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.33881169358763985,
+          "action_counts": {
+            "dense": 688,
+            "bm25": 348,
+            "no_context": 164
+          },
+          "pairwise_accuracy": 0.6396957123098201,
+          "pairwise_weighted_accuracy": 0.6615425375945805,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6291631460189819,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.026768624782562256,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.28574364429830396,
+          "action_counts": {
+            "dense": 704,
+            "no_context": 138,
+            "bm25": 358
+          },
+          "pairwise_accuracy": 0.6542185338865837,
+          "pairwise_weighted_accuracy": 0.6779134087365629,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6308197975158691,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.02511197328567505,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.2680595966530487,
+          "action_counts": {
+            "dense": 717,
+            "bm25": 325,
+            "no_context": 158
+          },
+          "pairwise_accuracy": 0.6493775933609959,
+          "pairwise_weighted_accuracy": 0.6785567902613112,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6321776509284973,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.023754119873046875,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.25356509102569896,
+          "action_counts": {
+            "dense": 693,
+            "bm25": 360,
+            "no_context": 147
+          },
+          "pairwise_accuracy": 0.6562932226832642,
+          "pairwise_weighted_accuracy": 0.6759083587794209,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        }
+      ],
+      "median_gain_over_fixed_dense": -0.02511197328567505,
+      "min_gain_over_fixed_dense": -0.03174006938934326,
+      "max_gain_over_fixed_dense": -0.020959317684173584
+    },
+    "tier_a_xgboost": {
+      "feature_tier": "tier_a",
+      "model": "xgboost",
+      "seeds": [
+        {
+          "router_f1": 0.6448811888694763,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.011050581932067871,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.11796024556864895,
+          "action_counts": {
+            "dense": 985,
+            "bm25": 180,
+            "no_context": 35
+          },
+          "pairwise_accuracy": 0.6721991701244814,
+          "pairwise_weighted_accuracy": 0.7263600314571982,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.648923397064209,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.007008373737335205,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.07481139836571761,
+          "action_counts": {
+            "dense": 997,
+            "no_context": 32,
+            "bm25": 171
+          },
+          "pairwise_accuracy": 0.6728907330567082,
+          "pairwise_weighted_accuracy": 0.7344433951186828,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6514207124710083,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.004511058330535889,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.04815362229027314,
+          "action_counts": {
+            "dense": 986,
+            "bm25": 180,
+            "no_context": 34
+          },
+          "pairwise_accuracy": 0.677731673582296,
+          "pairwise_weighted_accuracy": 0.7278479723483813,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.647933840751648,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.00799793004989624,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.0853744896446457,
+          "action_counts": {
+            "dense": 1016,
+            "bm25": 158,
+            "no_context": 26
+          },
+          "pairwise_accuracy": 0.6721991701244814,
+          "pairwise_weighted_accuracy": 0.7266591908417627,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        },
+        {
+          "router_f1": 0.6443999409675598,
+          "fixed": {
+            "no_context": 0.4688730835914612,
+            "bm25": 0.611435055732727,
+            "dense": 0.6559317708015442
+          },
+          "oracle_f1": 0.7496123313903809,
+          "gain_over_fixed_dense": -0.011531829833984375,
+          "oracle_headroom_over_fixed_dense": 0.09368056058883667,
+          "oracle_recovery": -0.12309736151769518,
+          "action_counts": {
+            "dense": 992,
+            "bm25": 176,
+            "no_context": 32
+          },
+          "pairwise_accuracy": 0.6701244813278008,
+          "pairwise_weighted_accuracy": 0.720516231961443,
+          "non_tie_pairs": 1446,
+          "tie_pairs": 2154
+        }
+      ],
+      "median_gain_over_fixed_dense": -0.00799793004989624,
+      "min_gain_over_fixed_dense": -0.011531829833984375,
+      "max_gain_over_fixed_dense": -0.004511058330535889
+    }
+  }
+}

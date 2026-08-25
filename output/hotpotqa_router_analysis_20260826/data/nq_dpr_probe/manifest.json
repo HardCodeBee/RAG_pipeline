@@ -1,0 +1,90 @@
+{
+  "analysis": {
+    "balance_repeats": 20,
+    "bootstrap_repeats": 2000,
+    "nested_grouped_inner_folds": 4,
+    "nested_grouped_outer_folds": 5,
+    "permutation_repeats": 1000
+  },
+  "artifacts": {
+    "balanced_geometry.csv": {
+      "sha256": "d3cb87fe0068e237e45de90b22573441794728e2ba25c442ed97d18ca678b263",
+      "size_bytes": 2391
+    },
+    "dataset_selection.csv": {
+      "sha256": "fb4208a82f16ecbd07984ff3c9c6f0857dd66b14dbf0879878c3a13227cf0547",
+      "size_bytes": 616
+    },
+    "dpr_embeddings.npz": {
+      "sha256": "6553466a70fbabd32f1559e04fa1e7db839b8c67f46042d56420ad90b6d5430e",
+      "size_bytes": 7466578
+    },
+    "figures/neighborhood_purity.png": {
+      "sha256": "880a891d21207e77efae5b6148b25aa6c8f20a1e1f11f83322eea3500330aea8",
+      "size_bytes": 71718
+    },
+    "figures/pca_tsne.png": {
+      "sha256": "1c0fdd9d9a7dff4e604dc5634e57d01aeb296a086b5de0abe139ebe3573e7363",
+      "size_bytes": 301145
+    },
+    "figures/probe_probabilities.png": {
+      "sha256": "f56794ea21c833ac1bb2c2df85e532602b276e1b55bf95a21c167710712579f2",
+      "size_bytes": 46965
+    },
+    "labeled_queries.jsonl": {
+      "sha256": "a89b19fa3cee61efb9bbbb0b996f6867e36e4151510e246c9490dae6f6b0d3cf",
+      "size_bytes": 314129
+    },
+    "probe_predictions.csv": {
+      "sha256": "bcc7ca839f38c68e0920e8da73b82042212a2935b87597ef6e31273c39a67ea9",
+      "size_bytes": 105194
+    },
+    "report.md": {
+      "sha256": "c0e64ce9a25bb7e7eca5106a51d0b709790ae066678c54d18137dbad8ddcd58d",
+      "size_bytes": 1527
+    },
+    "summary.json": {
+      "sha256": "ecefe3c4c9a6697db9fa41c1f7de9c8202b80d78ece948c41a587464ed9d44ce",
+      "size_bytes": 16597
+    },
+    "surface_features.csv": {
+      "sha256": "87f6184867a7fc9649f792ad2a64142c461446f9d390f59011b566803e630d2f",
+      "size_bytes": 187345
+    }
+  },
+  "experiment_id": "nq_bm25_bge_dpr_v1",
+  "inputs": {
+    "artifacts/_sparse_indexes/sqlite_bm25_d40af1ec191073d0/manifest.json": {
+      "sha256": "039c8bc1a63957a7cb0adb9c649ae6daf799955ed8f457ac0b2f294919a290d9",
+      "size_bytes": 1582
+    },
+    "configs/beir/nfcorpus_dense_dpr_top50.yaml": {
+      "sha256": "56ad4b7026ae65ab24ddbaa5e0f2da0ff7460cac6ee92c09d80693de083ab499",
+      "size_bytes": 1079
+    },
+    "data/beir/nq/queries/queries.jsonl": {
+      "sha256": "72f08f0cd333a47e393dac61cf1e56d4fb41eabf1d6ad5ca99f40250b0b491c8",
+      "size_bytes": 330995
+    },
+    "docs/assets/history_aware_retriever_policy/analysis/query_policy_oracle.csv": {
+      "sha256": "8ea8093101d8f1c001790331ce12ba1f055e10e720430dc417b1cf62df01eb02",
+      "size_bytes": 6511960
+    },
+    "outputs/beir_nq_four_condition_full_v2/units/nq/runs/bm25_top5/metadata.json": {
+      "sha256": "d6b4f31312882298041062314dae08b33534b8d9246721fc34445c3f33d81cde",
+      "size_bytes": 10457
+    }
+  },
+  "label_rule": {
+    "bge_only": "bge_ndcg_at_10 > 0 and bm25_ndcg_at_10 == 0",
+    "bm25_only": "bm25_ndcg_at_10 > 0 and bge_ndcg_at_10 == 0",
+    "both_success_and_both_failure": "excluded"
+  },
+  "schema_version": 1,
+  "seed": 20260821,
+  "sparse_database": {
+    "manifest_bound_sha256": "e1455f0c3f546ad683bd08795aba2ea991c58a3700f1167e2f5da15ddcb567d3",
+    "path": "artifacts/_sparse_indexes/sqlite_bm25_d40af1ec191073d0/index.sqlite3",
+    "size_bytes": 2100891648
+  }
+}

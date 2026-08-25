@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "BM25/Dense first-stage plus deterministic offline weighted RRF",
+  "retrieval_or_model_inference_executed": false,
+  "family_count": 7,
+  "unit_count": 18,
+  "query_count": 26428,
+  "source_file_count": 36,
+  "rrf_alpha_count": 21,
+  "max_relevant_fraction_sum_error": 2.220446049250313e-16,
+  "evidence_boundaries": {
+    "equal50": "single Top-50 versus hybrid BM25 Top-25 plus Dense Top-25; two retriever calls remain a cost difference",
+    "full100": "up to 100 scored input candidates and therefore not equal upstream candidate budget",
+    "fixed_best_alpha": "selected on test qrels; descriptive oracle, not a deployable tuned baseline",
+    "query_oracle": "uses current-query qrels; upper bound, not policy performance",
+    "beir_order": "no session or temporal semantics"
+  }
+}

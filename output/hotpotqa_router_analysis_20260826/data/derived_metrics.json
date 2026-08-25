@@ -1,0 +1,78 @@
+{
+  "phase2_repeated": {
+    "outcome_rows": 3600,
+    "query_rows": 600,
+    "aggregate": {
+      "queries": 600,
+      "actions": [
+        "bm25",
+        "dense"
+      ],
+      "fixed_mean_f1": {
+        "bm25": 0.6353466032921679,
+        "dense": 0.6913379875463971
+      },
+      "query_oracle_mean_f1": 0.7424687136534849,
+      "f1_winner_counts": {
+        "bm25": 60,
+        "dense": 106,
+        "tie": 434
+      },
+      "fixed_mean_ac": {
+        "bm25": 0.6891666666666667,
+        "dense": 0.7508333333333334
+      },
+      "query_oracle_mean_ac": 0.8025,
+      "ac_winner_counts": {
+        "bm25": 46,
+        "dense": 86,
+        "tie": 468
+      }
+    }
+  },
+  "phase26_bd": {
+    "outcome_rows": 28800,
+    "query_rows": 4800,
+    "aggregate": {
+      "queries": 4800,
+      "actions": [
+        "bm25",
+        "dense"
+      ],
+      "fixed_mean_f1": {
+        "bm25": 0.6189355491355225,
+        "dense": 0.6471342475085967
+      },
+      "query_oracle_mean_f1": 0.7178411103105912,
+      "f1_winner_counts": {
+        "bm25": 596,
+        "dense": 797,
+        "tie": 3407
+      }
+    }
+  },
+  "phase3_contriever": {
+    "outcome_rows": 10800,
+    "query_rows": 1200,
+    "aggregate": {
+      "queries": 1200,
+      "actions": [
+        "bm25",
+        "bge",
+        "contriever"
+      ],
+      "fixed_mean_f1": {
+        "bm25": 0.6114350292481276,
+        "bge": 0.6559317355763897,
+        "contriever": 0.5778664520130988
+      },
+      "query_oracle_mean_f1": 0.7386824833828186,
+      "f1_winner_counts": {
+        "bm25": 87,
+        "bge": 120,
+        "contriever": 67,
+        "tie": 926
+      }
+    }
+  }
+}

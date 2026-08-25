@@ -1,0 +1,41 @@
+{
+  "scope": "BM25 and Dense first-stage only; reranked paths excluded",
+  "source_map_input": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\tmp\\beir_retriever_dataset_interactions_v3\\candidate_source_result_files.csv",
+  "replay_source_manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\docs\\assets\\history_aware_retriever_policy\\analysis\\source_files.csv",
+  "replay_source_manifest_sha256": "bbd8d8c307d129c5b1e5549f16ffa7d391bb844b17971381d3a8d716e4e54860",
+  "source_file_count": 36,
+  "unit_count": 18,
+  "query_count": 26428,
+  "rrf_k": 60,
+  "alpha_semantics": "alpha_bm25; 0 is Dense-only and 1 is BM25-only",
+  "alphas": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    1.0
+  ],
+  "protocols": {
+    "equal50": "single uses one Top-50; hybrid uses BM25 Top-25 + Dense Top-25; output <=50",
+    "full100": "BM25 Top-50 + Dense Top-50 union; fused output Top-50; upstream scored-candidate depth up to100"
+  },
+  "tie_break": "fused score desc, best source rank asc, source-rank sum asc, doc_id asc",
+  "retrieval_or_model_inference_executed": false,
+  "warning": "best alpha and query oracle use test qrels and are descriptive upper bounds, not deployable results"
+}

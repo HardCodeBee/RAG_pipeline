@@ -1,0 +1,80 @@
+base_config: outputs/router/hotpotqa_bd_router_v1/config.yaml
+source_run: outputs/router/hotpotqa_bd_router_v1/runs/phase3_f1_pairwise_v1
+run_dir: outputs/router/hotpotqa_bc_router_v1/runs/phase3_contriever_f1_v1
+
+sample:
+  partition: train
+  query_prefix_size: 1200
+  repeats_per_action: 3
+
+actions:
+  routed:
+    - bm25
+    - contriever
+  default: bm25
+  external_reference: bge
+
+contriever:
+  encoded_corpus: artifacts/build_0ae2963a3d8dbbd8
+  backend: hf_dense
+  family: contriever
+  model: facebook/contriever
+  revision: 2bd46a25019aeea091fd42d1f0fd4801675cf699
+  pooling: masked_mean
+  document_input_format: title_space_text
+  normalize: false
+  query_prefix: ""
+  document_prefix: ""
+  max_sequence_length: 512
+  batch_size: 16
+  encode_call_rows: 2048
+  shard_rows: 25000
+  device: auto
+  index: streaming_flat_ip
+  query_batch_size: 100
+
+generation:
+  provider_workers: 4
+  call_limit: 3600
+  hard_budget_usd: 3.0
+
+features:
+  lexical_compatibility_dimensions: 17
+  corpus_prototypes: 64
+  corpus_prototype_sample_rows: 100000
+  normalize_corpus_prototypes: false
+  full: lexical_plus_contriever_query_embedding_plus_corpus_summary
+  forbidden:
+    - current_retrieval_outcomes
+    - qrels
+    - gold_evidence
+    - generated_answers
+
+training:
+  outer_group_folds: 5
+  inner_group_folds: 4
+  fold_seed: 20260903
+  model_seeds:
+    - 11
+    - 23
+    - 37
+    - 53
+    - 71
+  candidates:
+    - full_pairwise_xgboost
+    - full_gain_xgboost
+    - tier_a_pairwise_xgboost
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260904
+
+gate:
+  routing_metric: normalized_token_f1
+  minimum_pair_oracle_headroom: 0.01
+  minimum_gain_over_best_pair_fixed: 0.01
+  minimum_gain_over_fixed_bge: 0.01
+  confidence_interval_lower_above_zero: true
+  all_model_seeds_positive: true
+  seed_median_at_least_practical: true
+  answer_correctness_calls: 0
+  fresh_dev_opened: false
+  final_holdout_opened: false

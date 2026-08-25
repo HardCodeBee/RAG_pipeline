@@ -1,0 +1,103 @@
+{
+  "phase": 2,
+  "run_id": "phase2_bd_headroom_v1",
+  "status": "complete",
+  "sample": {
+    "train": 300,
+    "dev": 300,
+    "final_holdout_outcomes": 0
+  },
+  "actions": {
+    "train": {
+      "bm25": {
+        "queries": 300,
+        "normalized_token_f1": 0.6430200450684321,
+        "normalized_exact_match": 0.5616666666666666,
+        "answer_correctness": 0.6983333333333334
+      },
+      "dense": {
+        "queries": 300,
+        "normalized_token_f1": 0.6877564384890472,
+        "normalized_exact_match": 0.6016666666666667,
+        "answer_correctness": 0.7416666666666667
+      }
+    },
+    "dev": {
+      "bm25": {
+        "queries": 300,
+        "normalized_token_f1": 0.6272039442039443,
+        "normalized_exact_match": 0.5416666666666666,
+        "answer_correctness": 0.68375
+      },
+      "dense": {
+        "queries": 300,
+        "normalized_token_f1": 0.6936395160395161,
+        "normalized_exact_match": 0.5916666666666667,
+        "answer_correctness": 0.76
+      }
+    }
+  },
+  "dev_headroom": {
+    "best_fixed": "dense",
+    "fixed_f1": 0.6936395160395161,
+    "oracle_f1": 0.7477695526695527,
+    "f1_headroom": 0.05413003663003662,
+    "ac_delta_for_f1_oracle": 0.04666666666666667,
+    "em_delta_for_f1_oracle": 0.06,
+    "independent_ac_headroom": 0.04833333333333333,
+    "f1_ci95": [
+      0.032729441391941394,
+      0.07827753357753357
+    ],
+    "ac_ci95": [
+      0.025,
+      0.07166666666666667
+    ],
+    "em_ci95": [
+      0.03666666666666667,
+      0.09
+    ],
+    "best_fixed_selection_fraction": {
+      "bm25": 0.0005,
+      "dense": 0.9995
+    }
+  },
+  "high_margin_support": {
+    "threshold": 0.5,
+    "bm25": 16,
+    "dense": 37,
+    "ties_or_low_margin": 247
+  },
+  "headroom_concentration": {
+    "positive_gain_queries": 25,
+    "top1_share": 0.06158010488918965,
+    "top5_share": 0.30790052444594823
+  },
+  "stability": {
+    "generation_repeat_pairs": 80,
+    "normalized_answer_agreement": 0.8625,
+    "f1_agreement": 0.9,
+    "em_agreement": 0.95,
+    "ac_score_agreement": 0.9625,
+    "judge_repeat_pairs": 40,
+    "judge_label_agreement": 0.975
+  },
+  "failures": {
+    "generation": 0,
+    "answer_correctness": 0,
+    "pending": 0
+  },
+  "estimated_cost_usd": {
+    "generation": 0.3016056000000002,
+    "answer_correctness": 0.2639107500000008,
+    "total": 0.565516350000001
+  },
+  "gate": {
+    "f1_headroom_passed": true,
+    "ac_confirmatory_passed": true,
+    "two_action_high_margin_support_passed": true,
+    "repeat_stability_passed": false,
+    "complete_without_failures": true,
+    "decision": "REVISE"
+  }
+}

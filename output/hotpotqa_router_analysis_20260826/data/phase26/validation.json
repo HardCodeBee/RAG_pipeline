@@ -1,0 +1,32 @@
+{
+  "train_queries_read": 4800,
+  "bd_repeat_rows_read": 28800,
+  "actions": [
+    "bm25",
+    "dense"
+  ],
+  "repeat_ids": [
+    0,
+    1,
+    2
+  ],
+  "all_selected_rows_success": true,
+  "f1_finite_and_bounded": true,
+  "sample_partition_counts": {
+    "fresh_dev": 4000,
+    "train": 9600
+  },
+  "outcome_partition_counts": {
+    "train": 86400
+  },
+  "fresh_dev_outcome_rows_read": 0,
+  "final_holdout_outcome_rows_read": 0,
+  "partial_9600_rows_read": 0,
+  "feature_rows_available": 9600,
+  "feature_rows_read": 4800,
+  "query_order_matches": true,
+  "group_order_matches": true,
+  "features_finite": true,
+  "tier_a_dimensions": 17,
+  "full_dimensions": 414
+}

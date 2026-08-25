@@ -1,0 +1,1113 @@
+{
+  "phase": "2.6",
+  "status": "complete",
+  "protocol": {
+    "train_queries": 4800,
+    "routing_target": "normalized_token_f1",
+    "actions": [
+      "bm25",
+      "dense"
+    ],
+    "default_action": "dense",
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "fold_seed": 20260901,
+    "model_seeds": [
+      11,
+      23,
+      37,
+      53,
+      71
+    ],
+    "bootstrap_resamples": 10000,
+    "practical_gain": 0.01,
+    "external_calls": 0
+  },
+  "candidates": {
+    "full_pairwise_xgboost": {
+      "feature_tier": "full",
+      "model_kind": "pairwise",
+      "ensemble_rule": "majority_vote_dense_on_tie",
+      "ensemble": {
+        "router_f1": 0.6464193208584813,
+        "fixed_bm25_f1": 0.6189355491355225,
+        "fixed_dense_f1": 0.6471342475085967,
+        "bd_oracle_f1": 0.7178411103105912,
+        "bd_oracle_headroom": 0.07070686280199445,
+        "gain_over_fixed_dense": -0.0007149266501154185,
+        "switch_queries": 471,
+        "switch_coverage": 0.098125,
+        "switch_precision": 0.11677282377919321,
+        "conditional_f1_gain": -0.007285876689074331,
+        "gain_ci95": [
+          -0.003755641764543324,
+          0.0022931865702652907
+        ]
+      },
+      "seed_gain_median": -0.0004309464418990386,
+      "seed_gain_min": -0.004083950767705944,
+      "seed_gain_max": 0.0009761891990241659,
+      "positive_model_seeds": 2,
+      "model_seeds": [
+        {
+          "model_seed": 11,
+          "router_f1": 0.6430502967408908,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.004083950767705944,
+          "switch_queries": 555,
+          "switch_coverage": 0.115625,
+          "switch_precision": 0.11351351351351352,
+          "conditional_f1_gain": -0.03532065528826763,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.7728227376937866,
+              "inner_gain": 0.00014084349218428888,
+              "inner_switch_coverage": 0.011195001301744337,
+              "inner_switch_count": 43,
+              "outer_queries": 959,
+              "outer_gain": 0.0001183441746528296,
+              "outer_switch_coverage": 0.014598540145985401
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6716500520706177,
+              "inner_gain": 0.0016526937154044432,
+              "inner_switch_coverage": 0.0752212389380531,
+              "inner_switch_count": 289,
+              "outer_queries": 958,
+              "outer_gain": -0.0002534058379569863,
+              "outer_switch_coverage": 0.06680584551148225
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.43078601360321045,
+              "inner_gain": 0.005844251259058476,
+              "inner_switch_coverage": 0.4766987763603228,
+              "inner_switch_count": 1831,
+              "outer_queries": 959,
+              "outer_gain": -0.019709470855134577,
+              "outer_switch_coverage": 0.46611053180396245
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.84706711769104,
+              "inner_gain": 0.0004344803614876607,
+              "inner_switch_coverage": 0.0015641293013555788,
+              "inner_switch_count": 6,
+              "outer_queries": 964,
+              "outer_gain": 0.0,
+              "outer_switch_coverage": 0.001037344398340249
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.7249345779418945,
+              "inner_gain": 0.0007925618431133137,
+              "inner_switch_coverage": 0.03359375,
+              "inner_switch_count": 129,
+              "outer_queries": 960,
+              "outer_gain": -0.0005961566725455616,
+              "outer_switch_coverage": 0.030208333333333334
+            }
+          ]
+        },
+        {
+          "model_seed": 23,
+          "router_f1": 0.6467033010666977,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.0004309464418990386,
+          "switch_queries": 341,
+          "switch_coverage": 0.07104166666666667,
+          "switch_precision": 0.10850439882697947,
+          "conditional_f1_gain": -0.00606610827306565,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.8452646732330322,
+              "inner_gain": 0.0002603488674824265,
+              "inner_switch_coverage": 0.0015620932048945586,
+              "inner_switch_count": 6,
+              "outer_queries": 959,
+              "outer_gain": 0.0,
+              "outer_switch_coverage": 0.0020855057351407717
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6300019025802612,
+              "inner_gain": 0.0026029257645131345,
+              "inner_switch_coverage": 0.1290994273815721,
+              "inner_switch_count": 496,
+              "outer_queries": 958,
+              "outer_gain": 0.0016544683880392332,
+              "outer_switch_coverage": 0.10334029227557412
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.6256271600723267,
+              "inner_gain": 0.0037267764078082063,
+              "inner_switch_coverage": 0.13512106222337933,
+              "inner_switch_count": 519,
+              "outer_queries": 959,
+              "outer_gain": -0.006132050084083452,
+              "outer_switch_coverage": 0.132429614181439
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.7063129544258118,
+              "inner_gain": 0.0017100177336534653,
+              "inner_switch_coverage": 0.028154327424400417,
+              "inner_switch_count": 108,
+              "outer_queries": 964,
+              "outer_gain": 0.00041493775933609963,
+              "outer_switch_coverage": 0.028008298755186723
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.631874144077301,
+              "inner_gain": 0.002217839744945978,
+              "inner_switch_coverage": 0.1046875,
+              "inner_switch_count": 402,
+              "outer_queries": 960,
+              "outer_gain": 0.001903242076853188,
+              "outer_switch_coverage": 0.08958333333333333
+            }
+          ]
+        },
+        {
+          "model_seed": 37,
+          "router_f1": 0.6473626992299132,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.00022845172131646547,
+          "switch_queries": 538,
+          "switch_coverage": 0.11208333333333333,
+          "switch_precision": 0.13382899628252787,
+          "conditional_f1_gain": 0.002038230970853224,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.5110630989074707,
+              "inner_gain": 0.0015519298179484736,
+              "inner_switch_coverage": 0.25566258786774276,
+              "inner_switch_count": 982,
+              "outer_queries": 959,
+              "outer_gain": 0.0055673110049605165,
+              "outer_switch_coverage": 0.23357664233576642
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.5913744568824768,
+              "inner_gain": 0.0032488722791820797,
+              "inner_switch_coverage": 0.16762103071317022,
+              "inner_switch_count": 644,
+              "outer_queries": 958,
+              "outer_gain": 0.0003926450299101655,
+              "outer_switch_coverage": 0.1524008350730689
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.6170029640197754,
+              "inner_gain": 0.005591759306467091,
+              "inner_switch_coverage": 0.13538141109086174,
+              "inner_switch_count": 520,
+              "outer_queries": 959,
+              "outer_gain": -0.004120928324739699,
+              "outer_switch_coverage": 0.15849843587069865
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.8641778230667114,
+              "inner_gain": 0.0005213764337851929,
+              "inner_switch_coverage": 0.0005213764337851929,
+              "inner_switch_count": 2,
+              "outer_queries": 964,
+              "outer_gain": 0.0,
+              "outer_switch_coverage": 0.0
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.7520415782928467,
+              "inner_gain": 0.0022159376571141277,
+              "inner_switch_coverage": 0.021614583333333333,
+              "inner_switch_count": 83,
+              "outer_queries": 960,
+              "outer_gain": -0.0006944444444444445,
+              "outer_switch_coverage": 0.016666666666666666
+            }
+          ]
+        },
+        {
+          "model_seed": 53,
+          "router_f1": 0.6451403251103356,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.0019939223982610842,
+          "switch_queries": 724,
+          "switch_coverage": 0.15083333333333335,
+          "switch_precision": 0.12569060773480664,
+          "conditional_f1_gain": -0.013219375016095587,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.7743291854858398,
+              "inner_gain": 0.0009093754895629407,
+              "inner_switch_coverage": 0.012757094506638896,
+              "inner_switch_count": 49,
+              "outer_queries": 959,
+              "outer_gain": 0.0016910675930488237,
+              "outer_switch_coverage": 0.01564129301355579
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6517901420593262,
+              "inner_gain": 0.0014576630859906138,
+              "inner_switch_coverage": 0.0903175429463821,
+              "inner_switch_count": 347,
+              "outer_queries": 958,
+              "outer_gain": -0.0011414994191612147,
+              "outer_switch_coverage": 0.07411273486430063
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.4318466782569885,
+              "inner_gain": 0.004900209369362353,
+              "inner_switch_coverage": 0.4701900546732622,
+              "inner_switch_count": 1806,
+              "outer_queries": 959,
+              "outer_gain": -0.013216446301231838,
+              "outer_switch_coverage": 0.4786235662148071
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.7287083268165588,
+              "inner_gain": 0.0015217501444473986,
+              "inner_switch_coverage": 0.020072992700729927,
+              "inner_switch_count": 77,
+              "outer_queries": 964,
+              "outer_gain": 0.0011677534084173092,
+              "outer_switch_coverage": 0.01867219917012448
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.5680357813835144,
+              "inner_gain": 0.001443435207520282,
+              "inner_switch_coverage": 0.17994791666666668,
+              "inner_switch_count": 691,
+              "outer_queries": 960,
+              "outer_gain": 0.0015102633618088181,
+              "outer_switch_coverage": 0.16770833333333332
+            }
+          ]
+        },
+        {
+          "model_seed": 71,
+          "router_f1": 0.6481104367076209,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.0009761891990241659,
+          "switch_queries": 795,
+          "switch_coverage": 0.165625,
+          "switch_precision": 0.13081761006289308,
+          "conditional_f1_gain": 0.005893972522410063,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.5991696119308472,
+              "inner_gain": 0.0005914576991732142,
+              "inner_switch_coverage": 0.12678989846394167,
+              "inner_switch_count": 487,
+              "outer_queries": 959,
+              "outer_gain": 0.004030202022902753,
+              "outer_switch_coverage": 0.1251303441084463
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.606109619140625,
+              "inner_gain": 0.0025860304546174114,
+              "inner_switch_coverage": 0.15122332118688184,
+              "inner_switch_count": 581,
+              "outer_queries": 958,
+              "outer_gain": 0.0004842930208274675,
+              "outer_switch_coverage": 0.12734864300626306
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.5312296748161316,
+              "inner_gain": 0.0065046013904543915,
+              "inner_switch_coverage": 0.2921114293152825,
+              "inner_switch_count": 1122,
+              "outer_queries": 959,
+              "outer_gain": -0.004140978642604111,
+              "outer_switch_coverage": 0.2711157455683003
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.6602308750152588,
+              "inner_gain": 0.0007690391402289364,
+              "inner_switch_coverage": 0.058394160583941604,
+              "inner_switch_count": 224,
+              "outer_queries": 964,
+              "outer_gain": 0.005067270212498428,
+              "outer_switch_coverage": 0.06327800829875518
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.5252118110656738,
+              "inner_gain": 0.0019562777227981934,
+              "inner_switch_coverage": 0.2453125,
+              "inner_switch_count": 942,
+              "outer_queries": 960,
+              "outer_gain": -0.000580060692907916,
+              "outer_switch_coverage": 0.24166666666666667
+            }
+          ]
+        }
+      ],
+      "gate": {
+        "ensemble_gain_at_least_practical": false,
+        "ensemble_ci_lower_above_zero": false,
+        "all_model_seeds_positive": false,
+        "seed_median_at_least_practical": false,
+        "nondegenerate_switching": true,
+        "passed": false
+      }
+    },
+    "full_gain_xgboost": {
+      "feature_tier": "full",
+      "model_kind": "gain",
+      "ensemble_rule": "majority_vote_dense_on_tie",
+      "ensemble": {
+        "router_f1": 0.6492834980727846,
+        "fixed_bm25_f1": 0.6189355491355225,
+        "fixed_dense_f1": 0.6471342475085967,
+        "bd_oracle_f1": 0.7178411103105912,
+        "bd_oracle_headroom": 0.07070686280199445,
+        "gain_over_fixed_dense": 0.0021492505641879235,
+        "switch_queries": 332,
+        "switch_coverage": 0.06916666666666667,
+        "switch_precision": 0.1536144578313253,
+        "conditional_f1_gain": 0.031073502132837445,
+        "gain_ci95": [
+          -0.0005846122080919281,
+          0.004876084829343242
+        ]
+      },
+      "seed_gain_median": 0.0005107308541221606,
+      "seed_gain_min": -0.0006047424668724566,
+      "seed_gain_max": 0.0027675588375852054,
+      "positive_model_seeds": 4,
+      "model_seeds": [
+        {
+          "model_seed": 11,
+          "router_f1": 0.6496372676011866,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.002503020092589805,
+          "switch_queries": 309,
+          "switch_coverage": 0.064375,
+          "switch_precision": 0.18446601941747573,
+          "conditional_f1_gain": 0.03888186551595813,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.08246971666812897,
+              "inner_gain": 0.0022787174034551404,
+              "inner_switch_coverage": 0.08253059099192918,
+              "inner_switch_count": 317,
+              "outer_queries": 959,
+              "outer_gain": 0.0025401239165577017,
+              "outer_switch_coverage": 0.06047966631908238
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.13270404934883118,
+              "inner_gain": 0.0011489019597341805,
+              "inner_switch_coverage": 0.021343050494534097,
+              "inner_switch_count": 82,
+              "outer_queries": 958,
+              "outer_gain": 0.0010438413361169101,
+              "outer_switch_coverage": 0.008350730688935281
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.07380855083465576,
+              "inner_gain": 0.005284801794408282,
+              "inner_switch_coverage": 0.10413954699297058,
+              "inner_switch_count": 400,
+              "outer_queries": 959,
+              "outer_gain": 0.0009520531878380122,
+              "outer_switch_coverage": 0.11261730969760167
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.14182694256305695,
+              "inner_gain": 0.0008857464192883032,
+              "inner_switch_coverage": 0.014077163712200209,
+              "inner_switch_count": 54,
+              "outer_queries": 964,
+              "outer_gain": 0.001037344398340249,
+              "outer_switch_coverage": 0.006224066390041493
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.056442540138959885,
+              "inner_gain": 0.004665892301462154,
+              "inner_switch_coverage": 0.14401041666666667,
+              "inner_switch_count": 553,
+              "outer_queries": 960,
+              "outer_gain": 0.006943227709703722,
+              "outer_switch_coverage": 0.134375
+            }
+          ]
+        },
+        {
+          "model_seed": 23,
+          "router_f1": 0.6476449783627188,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.0005107308541221606,
+          "switch_queries": 560,
+          "switch_coverage": 0.11666666666666667,
+          "switch_precision": 0.11964285714285715,
+          "conditional_f1_gain": 0.004377693035332804,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.1255689561367035,
+              "inner_gain": 0.0004894220593257303,
+              "inner_switch_coverage": 0.02941942202551419,
+              "inner_switch_count": 113,
+              "outer_queries": 959,
+              "outer_gain": 0.0010493735206978168,
+              "outer_switch_coverage": 0.021897810218978103
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.08235201984643936,
+              "inner_gain": 0.0017228927270904384,
+              "inner_switch_coverage": 0.07652264445601249,
+              "inner_switch_count": 294,
+              "outer_queries": 958,
+              "outer_gain": 0.0016217223749363076,
+              "outer_switch_coverage": 0.060542797494780795
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.037926819175481796,
+              "inner_gain": 0.006029575242456668,
+              "inner_switch_coverage": 0.2212965373600625,
+              "inner_switch_count": 850,
+              "outer_queries": 959,
+              "outer_gain": -0.010555177441640057,
+              "outer_switch_coverage": 0.21793534932221065
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.07240410894155502,
+              "inner_gain": 0.0012889210041148616,
+              "inner_switch_coverage": 0.08211678832116788,
+              "inner_switch_count": 315,
+              "outer_queries": 964,
+              "outer_gain": 0.0032349777163055175,
+              "outer_switch_coverage": 0.07261410788381743
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.030961934477090836,
+              "inner_gain": 0.0034256667737101957,
+              "inner_switch_coverage": 0.22630208333333332,
+              "inner_switch_count": 869,
+              "outer_queries": 960,
+              "outer_gain": 0.00718275573569008,
+              "outer_switch_coverage": 0.21041666666666667
+            }
+          ]
+        },
+        {
+          "model_seed": 37,
+          "router_f1": 0.6475113325217756,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.0003770850131789245,
+          "switch_queries": 369,
+          "switch_coverage": 0.076875,
+          "switch_precision": 0.11924119241192412,
+          "conditional_f1_gain": 0.004905170903140475,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.15317340195178986,
+              "inner_gain": 0.0013986707556090528,
+              "inner_switch_coverage": 0.01249674563915647,
+              "inner_switch_count": 48,
+              "outer_queries": 959,
+              "outer_gain": 0.0005627555158316368,
+              "outer_switch_coverage": 0.008342022940563087
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.04499379172921181,
+              "inner_gain": 0.002747905541986201,
+              "inner_switch_coverage": 0.17829255596043728,
+              "inner_switch_count": 685,
+              "outer_queries": 958,
+              "outer_gain": 0.005712056442745378,
+              "outer_switch_coverage": 0.13569937369519833
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.046569906175136566,
+              "inner_gain": 0.008269922216590878,
+              "inner_switch_coverage": 0.192918510804478,
+              "inner_switch_count": 741,
+              "outer_queries": 959,
+              "outer_gain": -0.005418800566609978,
+              "outer_switch_coverage": 0.18769551616266944
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.13002534210681915,
+              "inner_gain": 0.0006637778665932993,
+              "inner_switch_coverage": 0.019551616266944735,
+              "inner_switch_count": 75,
+              "outer_queries": 964,
+              "outer_gain": -0.00020746887966804987,
+              "outer_switch_coverage": 0.011410788381742738
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.09838828444480896,
+              "inner_gain": 0.0014057457781416114,
+              "inner_switch_coverage": 0.05572916666666667,
+              "inner_switch_count": 214,
+              "outer_queries": 960,
+              "outer_gain": 0.0012445887445887446,
+              "outer_switch_coverage": 0.041666666666666664
+            }
+          ]
+        },
+        {
+          "model_seed": 53,
+          "router_f1": 0.6465295050417242,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.0006047424668724566,
+          "switch_queries": 495,
+          "switch_coverage": 0.103125,
+          "switch_precision": 0.13737373737373737,
+          "conditional_f1_gain": -0.0058641693757329125,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.06178626790642738,
+              "inner_gain": 0.004235728304981104,
+              "inner_switch_coverage": 0.13512106222337933,
+              "inner_switch_count": 519,
+              "outer_queries": 959,
+              "outer_gain": -0.001006572695832341,
+              "outer_switch_coverage": 0.10948905109489052
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.12294663488864899,
+              "inner_gain": 0.001428870260208105,
+              "inner_switch_coverage": 0.02732951587714732,
+              "inner_switch_count": 105,
+              "outer_queries": 958,
+              "outer_gain": -0.00014686079404242227,
+              "outer_switch_coverage": 0.014613778705636743
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.07350284606218338,
+              "inner_gain": 0.003678827652728689,
+              "inner_switch_coverage": 0.1072637334027597,
+              "inner_switch_count": 412,
+              "outer_queries": 959,
+              "outer_gain": -0.002770709971838599,
+              "outer_switch_coverage": 0.11366006256517205
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.14361540973186493,
+              "inner_gain": 0.0017501658925016587,
+              "inner_switch_coverage": 0.010166840458811261,
+              "inner_switch_count": 39,
+              "outer_queries": 964,
+              "outer_gain": 0.0,
+              "outer_switch_coverage": 0.006224066390041493
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.018317323178052902,
+              "inner_gain": 0.0015013753459319642,
+              "inner_switch_coverage": 0.2760416666666667,
+              "inner_switch_count": 1060,
+              "outer_queries": 960,
+              "outer_gain": 0.0008961904979180007,
+              "outer_switch_coverage": 0.271875
+            }
+          ]
+        },
+        {
+          "model_seed": 71,
+          "router_f1": 0.6499018063461819,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": 0.0027675588375852054,
+          "switch_queries": 430,
+          "switch_coverage": 0.08958333333333333,
+          "switch_precision": 0.15348837209302327,
+          "conditional_f1_gain": 0.03089368004746276,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.09935156255960464,
+              "inner_gain": 0.0022257574066998696,
+              "inner_switch_coverage": 0.05154907576152044,
+              "inner_switch_count": 198,
+              "outer_queries": 959,
+              "outer_gain": 0.002499614856236337,
+              "outer_switch_coverage": 0.04483837330552659
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.08691082149744034,
+              "inner_gain": 0.0016712154063743205,
+              "inner_switch_coverage": 0.07886517438833941,
+              "inner_switch_count": 303,
+              "outer_queries": 958,
+              "outer_gain": 0.005739244517950154,
+              "outer_switch_coverage": 0.049060542797494784
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.05322334170341492,
+              "inner_gain": 0.007382934843399446,
+              "inner_switch_coverage": 0.16714397292371777,
+              "inner_switch_count": 642,
+              "outer_queries": 959,
+              "outer_gain": -0.005038188246477326,
+              "outer_switch_coverage": 0.16371220020855057
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.165002703666687,
+              "inner_gain": 0.0007574163556391421,
+              "inner_switch_coverage": 0.006517205422314911,
+              "inner_switch_count": 25,
+              "outer_queries": 964,
+              "outer_gain": -0.001037344398340249,
+              "outer_switch_coverage": 0.004149377593360996
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.038553591817617416,
+              "inner_gain": 0.0017896928933055923,
+              "inner_switch_coverage": 0.19296875,
+              "inner_switch_count": 741,
+              "outer_queries": 960,
+              "outer_gain": 0.011688102139014422,
+              "outer_switch_coverage": 0.18645833333333334
+            }
+          ]
+        }
+      ],
+      "gate": {
+        "ensemble_gain_at_least_practical": false,
+        "ensemble_ci_lower_above_zero": false,
+        "all_model_seeds_positive": false,
+        "seed_median_at_least_practical": false,
+        "nondegenerate_switching": true,
+        "passed": false
+      }
+    },
+    "tier_a_pairwise_xgboost": {
+      "feature_tier": "tier_a",
+      "model_kind": "pairwise",
+      "ensemble_rule": "majority_vote_dense_on_tie",
+      "ensemble": {
+        "router_f1": 0.6453168581758809,
+        "fixed_bm25_f1": 0.6189355491355225,
+        "fixed_dense_f1": 0.6471342475085967,
+        "bd_oracle_f1": 0.7178411103105912,
+        "bd_oracle_headroom": 0.07070686280199445,
+        "gain_over_fixed_dense": -0.0018173893327157909,
+        "switch_queries": 863,
+        "switch_coverage": 0.17979166666666666,
+        "switch_precision": 0.1332560834298957,
+        "conditional_f1_gain": -0.010108306833181688,
+        "gain_ci95": [
+          -0.006098982047048504,
+          0.002582935641190146
+        ]
+      },
+      "seed_gain_median": -0.002499834344656417,
+      "seed_gain_min": -0.004220322332845587,
+      "seed_gain_max": -0.0019212006448604364,
+      "positive_model_seeds": 0,
+      "model_seeds": [
+        {
+          "model_seed": 11,
+          "router_f1": 0.6444243259395986,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.0027099215689980276,
+          "switch_queries": 1004,
+          "switch_coverage": 0.20916666666666667,
+          "switch_precision": 0.1294820717131474,
+          "conditional_f1_gain": -0.012955800329871045,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.604720413684845,
+              "inner_gain": 0.003653900826479087,
+              "inner_switch_coverage": 0.16480083311637594,
+              "inner_switch_count": 633,
+              "outer_queries": 959,
+              "outer_gain": -0.00021156190233886585,
+              "outer_switch_coverage": 0.13138686131386862
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.5767616033554077,
+              "inner_gain": 0.0025953408350633837,
+              "inner_switch_coverage": 0.21160853722019782,
+              "inner_switch_count": 813,
+              "outer_queries": 958,
+              "outer_gain": -0.003503618919507283,
+              "outer_switch_coverage": 0.18162839248434237
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.45270082354545593,
+              "inner_gain": 0.0040906137777715805,
+              "inner_switch_coverage": 0.4800833116375944,
+              "inner_switch_count": 1844,
+              "outer_queries": 959,
+              "outer_gain": -0.021857310138373547,
+              "outer_switch_coverage": 0.4608967674661105
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.5745689272880554,
+              "inner_gain": 0.002962818176690497,
+              "inner_switch_coverage": 0.17205422314911367,
+              "inner_switch_count": 660,
+              "outer_queries": 964,
+              "outer_gain": 0.007639476070854671,
+              "outer_switch_coverage": 0.1545643153526971
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.6429051160812378,
+              "inner_gain": 0.0023347130043708344,
+              "inner_switch_coverage": 0.10729166666666666,
+              "inner_switch_count": 412,
+              "outer_queries": 960,
+              "outer_gain": 0.004321288279621614,
+              "outer_switch_coverage": 0.11770833333333333
+            }
+          ]
+        },
+        {
+          "model_seed": 23,
+          "router_f1": 0.6446344131639403,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.002499834344656417,
+          "switch_queries": 734,
+          "switch_coverage": 0.15291666666666667,
+          "switch_precision": 0.13215258855585832,
+          "conditional_f1_gain": -0.01634769053726267,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.6308841705322266,
+              "inner_gain": 0.005560578234960626,
+              "inner_switch_coverage": 0.12913303827128353,
+              "inner_switch_count": 496,
+              "outer_queries": 959,
+              "outer_gain": -0.0028598231533112748,
+              "outer_switch_coverage": 0.10427528675703858
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6896860003471375,
+              "inner_gain": 0.002073843349833184,
+              "inner_switch_coverage": 0.06819364914107236,
+              "inner_switch_count": 262,
+              "outer_queries": 958,
+              "outer_gain": -9.064937918909998e-05,
+              "outer_switch_coverage": 0.0511482254697286
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.48296964168548584,
+              "inner_gain": 0.0046759995593902825,
+              "inner_switch_coverage": 0.43165842228586304,
+              "inner_switch_count": 1658,
+              "outer_queries": 959,
+              "outer_gain": -0.019912972408403857,
+              "outer_switch_coverage": 0.41397288842544316
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.6199029088020325,
+              "inner_gain": 0.00351157166597479,
+              "inner_switch_coverage": 0.11392075078206465,
+              "inner_switch_count": 437,
+              "outer_queries": 964,
+              "outer_gain": 0.005838522298946543,
+              "outer_switch_coverage": 0.11203319502074689
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.6880038380622864,
+              "inner_gain": 0.0017985232560100337,
+              "inner_switch_coverage": 0.06510416666666667,
+              "inner_switch_count": 250,
+              "outer_queries": 960,
+              "outer_gain": 0.0044775132275132285,
+              "outer_switch_coverage": 0.08333333333333333
+            }
+          ]
+        },
+        {
+          "model_seed": 37,
+          "router_f1": 0.6429139251757511,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.004220322332845587,
+          "switch_queries": 1122,
+          "switch_coverage": 0.23375,
+          "switch_precision": 0.13101604278074866,
+          "conditional_f1_gain": -0.018054854899874174,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.6379029750823975,
+              "inner_gain": 0.005038791017000537,
+              "inner_switch_coverage": 0.12054152564436345,
+              "inner_switch_count": 463,
+              "outer_queries": 959,
+              "outer_gain": -0.0021547235952398707,
+              "outer_switch_coverage": 0.09593326381647549
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6868875026702881,
+              "inner_gain": 0.0025875780775189787,
+              "inner_switch_coverage": 0.07938573659552317,
+              "inner_switch_count": 305,
+              "outer_queries": 958,
+              "outer_gain": 0.0015794967585979567,
+              "outer_switch_coverage": 0.06367432150313153
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.34965720772743225,
+              "inner_gain": 0.0044102944552013796,
+              "inner_switch_coverage": 0.6714397292371779,
+              "inner_switch_count": 2579,
+              "outer_queries": 959,
+              "outer_gain": -0.035438047823954426,
+              "outer_switch_coverage": 0.6798748696558915
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.6202404499053955,
+              "inner_gain": 0.0021025379633901804,
+              "inner_switch_coverage": 0.11991657977059438,
+              "inner_switch_count": 460,
+              "outer_queries": 964,
+              "outer_gain": 0.005481888384221341,
+              "outer_switch_coverage": 0.1078838174273859
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.5597119331359863,
+              "inner_gain": 0.00180878219427598,
+              "inner_switch_coverage": 0.22161458333333334,
+              "inner_switch_count": 851,
+              "outer_queries": 960,
+              "outer_gain": 0.009371064891898227,
+              "outer_switch_coverage": 0.221875
+            }
+          ]
+        },
+        {
+          "model_seed": 53,
+          "router_f1": 0.6451212956365684,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.00201295187202833,
+          "switch_queries": 837,
+          "switch_coverage": 0.174375,
+          "switch_precision": 0.13142174432497014,
+          "conditional_f1_gain": -0.01154381001880046,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.6115988492965698,
+              "inner_gain": 0.004455160661844623,
+              "inner_switch_coverage": 0.16011455350169226,
+              "inner_switch_count": 615,
+              "outer_queries": 959,
+              "outer_gain": 0.0010397415387455968,
+              "outer_switch_coverage": 0.12721584984358708
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.6791713833808899,
+              "inner_gain": 0.0026082353079627785,
+              "inner_switch_coverage": 0.08302967204580948,
+              "inner_switch_count": 319,
+              "outer_queries": 958,
+              "outer_gain": 0.0015794967585979567,
+              "outer_switch_coverage": 0.060542797494780795
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.46302929520606995,
+              "inner_gain": 0.005789458617889343,
+              "inner_switch_coverage": 0.46498307732361366,
+              "inner_switch_count": 1786,
+              "outer_queries": 959,
+              "outer_gain": -0.019538426380490834,
+              "outer_switch_coverage": 0.46506777893639206
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.6371241211891174,
+              "inner_gain": 0.00272895505525438,
+              "inner_switch_coverage": 0.09880083420229406,
+              "inner_switch_count": 379,
+              "outer_queries": 964,
+              "outer_gain": 0.0018960896739413033,
+              "outer_switch_coverage": 0.08298755186721991
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.6188647747039795,
+              "inner_gain": 0.0025962954308381297,
+              "inner_switch_coverage": 0.13776041666666666,
+              "inner_switch_count": 529,
+              "outer_queries": 960,
+              "outer_gain": 0.0049344598302931645,
+              "outer_switch_coverage": 0.13645833333333332
+            }
+          ]
+        },
+        {
+          "model_seed": 71,
+          "router_f1": 0.6452130468637363,
+          "fixed_bm25_f1": 0.6189355491355225,
+          "fixed_dense_f1": 0.6471342475085967,
+          "bd_oracle_f1": 0.7178411103105912,
+          "bd_oracle_headroom": 0.07070686280199445,
+          "gain_over_fixed_dense": -0.0019212006448604364,
+          "switch_queries": 1142,
+          "switch_coverage": 0.23791666666666667,
+          "switch_precision": 0.12171628721541156,
+          "conditional_f1_gain": -0.00807509903268835,
+          "folds": [
+            {
+              "outer_fold": 0,
+              "threshold": 0.4958092272281647,
+              "inner_gain": 0.0036028101153032428,
+              "inner_switch_coverage": 0.32491538661806824,
+              "inner_switch_count": 1248,
+              "outer_queries": 959,
+              "outer_gain": 0.0006034786937236277,
+              "outer_switch_coverage": 0.28258602711157454
+            },
+            {
+              "outer_fold": 1,
+              "threshold": 0.5671024918556213,
+              "inner_gain": 0.002346511290704318,
+              "inner_switch_coverage": 0.22852680895366997,
+              "inner_switch_count": 878,
+              "outer_queries": 958,
+              "outer_gain": -0.0008823420289193274,
+              "outer_switch_coverage": 0.1941544885177453
+            },
+            {
+              "outer_fold": 2,
+              "threshold": 0.4457741379737854,
+              "inner_gain": 0.004101855151939277,
+              "inner_switch_coverage": 0.4977870346263994,
+              "inner_switch_count": 1912,
+              "outer_queries": 959,
+              "outer_gain": -0.02089874489409402,
+              "outer_switch_coverage": 0.48279457768508866
+            },
+            {
+              "outer_fold": 3,
+              "threshold": 0.5957823395729065,
+              "inner_gain": 0.00290033624507405,
+              "inner_switch_coverage": 0.1478102189781022,
+              "inner_switch_count": 567,
+              "outer_queries": 964,
+              "outer_gain": 0.00749318391211438,
+              "outer_switch_coverage": 0.13692946058091288
+            },
+            {
+              "outer_fold": 4,
+              "threshold": 0.6719587445259094,
+              "inner_gain": 0.0012523395449295363,
+              "inner_switch_coverage": 0.07786458333333333,
+              "inner_switch_count": 299,
+              "outer_queries": 960,
+              "outer_gain": 0.004024220378387046,
+              "outer_switch_coverage": 0.09375
+            }
+          ]
+        }
+      ],
+      "gate": {
+        "ensemble_gain_at_least_practical": false,
+        "ensemble_ci_lower_above_zero": false,
+        "all_model_seeds_positive": false,
+        "seed_median_at_least_practical": false,
+        "nondegenerate_switching": true,
+        "passed": false
+      }
+    }
+  },
+  "gate": {
+    "passing_candidates": [],
+    "strongest_candidate": "full_gain_xgboost",
+    "decision": "STOP_BEFORE_AC_LABELS"
+  }
+}

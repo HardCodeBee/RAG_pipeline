@@ -1,0 +1,345 @@
+{
+  "phase": "2.5",
+  "status": "complete",
+  "protocol": {
+    "actions": [
+      "bm25",
+      "dense"
+    ],
+    "repeats_per_query_action": 3,
+    "primary_gate_partition": "train",
+    "historical_corroboration_partition": "dev",
+    "pooled_role": "descriptive_only",
+    "policy_tie_break": "dense",
+    "bootstrap_unit": "information_need_group",
+    "bootstrap_resamples": 10000,
+    "cross_repeat_aggregation": "mean_three_rotations_within_query",
+    "external_calls": 0
+  },
+  "partitions": {
+    "train": {
+      "queries": 300,
+      "groups": 300,
+      "mean_f1_gap_bm25_minus_dense": -0.04915847412329474,
+      "mean_ac_gap_bm25_minus_dense": -0.050555555555555555,
+      "preference_counts": {
+        "f1": {
+          "bm25": 29,
+          "tie": 222,
+          "dense": 49
+        },
+        "ac": {
+          "bm25": 26,
+          "tie": 235,
+          "dense": 39
+        }
+      },
+      "ac_non_tie_queries": 65,
+      "f1_ac_sign_agreement_on_ac_non_ties": 0.9076923076923077,
+      "ac_gap_weighted_sign_agreement": 0.9457627118644066,
+      "f1_mean_selector_evaluated_in_ac": {
+        "ac_gain_over_dense": 0.05055555555555556,
+        "ac_gain_ci95": [
+          0.029444444444444447,
+          0.07388888888888889
+        ],
+        "switch_queries": 29,
+        "switch_coverage": 0.09666666666666666,
+        "switch_precision": 0.7586206896551724,
+        "conditional_ac_gain": 0.5229885057471264
+      },
+      "ac_mean_oracle": {
+        "ac_gain_over_dense": 0.056666666666666664,
+        "ac_gain_ci95": [
+          0.035,
+          0.08055555555555556
+        ],
+        "switch_queries": 26,
+        "switch_coverage": 0.08666666666666667,
+        "switch_precision": 1.0,
+        "conditional_ac_gain": 0.6538461538461539
+      },
+      "cross_repeat_f1_selector": {
+        "selector_metric": "f1",
+        "rotation_results": [
+          {
+            "held_out_repeat": 0,
+            "ac_gain_over_dense": 0.051666666666666666,
+            "switch_queries": 29,
+            "switch_coverage": 0.09666666666666666
+          },
+          {
+            "held_out_repeat": 1,
+            "ac_gain_over_dense": 0.035,
+            "switch_queries": 27,
+            "switch_coverage": 0.09
+          },
+          {
+            "held_out_repeat": 2,
+            "ac_gain_over_dense": 0.05333333333333334,
+            "switch_queries": 27,
+            "switch_coverage": 0.09
+          }
+        ],
+        "mean_ac_gain_over_dense": 0.04666666666666667,
+        "mean_ac_gain_ci95": [
+          0.025555555555555554,
+          0.06944444444444443
+        ],
+        "mean_switch_coverage": 0.09222222222222222
+      },
+      "cross_repeat_ac_selector": {
+        "selector_metric": "ac",
+        "rotation_results": [
+          {
+            "held_out_repeat": 0,
+            "ac_gain_over_dense": 0.056666666666666664,
+            "switch_queries": 24,
+            "switch_coverage": 0.08
+          },
+          {
+            "held_out_repeat": 1,
+            "ac_gain_over_dense": 0.03833333333333333,
+            "switch_queries": 25,
+            "switch_coverage": 0.08333333333333333
+          },
+          {
+            "held_out_repeat": 2,
+            "ac_gain_over_dense": 0.051666666666666666,
+            "switch_queries": 21,
+            "switch_coverage": 0.07
+          }
+        ],
+        "mean_ac_gain_over_dense": 0.048888888888888885,
+        "mean_ac_gain_ci95": [
+          0.02666666666666667,
+          0.07277777777777777
+        ],
+        "mean_switch_coverage": 0.07777777777777777
+      },
+      "leave_one_repeat_out_stable_preference": {
+        "bm25": 19,
+        "dense": 34,
+        "unstable_or_tie": 247
+      }
+    },
+    "dev": {
+      "queries": 300,
+      "groups": 300,
+      "mean_f1_gap_bm25_minus_dense": -0.06282429438516396,
+      "mean_ac_gap_bm25_minus_dense": -0.07277777777777779,
+      "preference_counts": {
+        "f1": {
+          "bm25": 31,
+          "tie": 212,
+          "dense": 57
+        },
+        "ac": {
+          "bm25": 20,
+          "tie": 233,
+          "dense": 47
+        }
+      },
+      "ac_non_tie_queries": 67,
+      "f1_ac_sign_agreement_on_ac_non_ties": 0.9402985074626866,
+      "ac_gap_weighted_sign_agreement": 0.9732441471571908,
+      "f1_mean_selector_evaluated_in_ac": {
+        "ac_gain_over_dense": 0.04277777777777778,
+        "ac_gain_ci95": [
+          0.02277777777777778,
+          0.06555555555555556
+        ],
+        "switch_queries": 31,
+        "switch_coverage": 0.10333333333333333,
+        "switch_precision": 0.6129032258064516,
+        "conditional_ac_gain": 0.41397849462365593
+      },
+      "ac_mean_oracle": {
+        "ac_gain_over_dense": 0.046666666666666676,
+        "ac_gain_ci95": [
+          0.026111111111111113,
+          0.06888888888888889
+        ],
+        "switch_queries": 20,
+        "switch_coverage": 0.06666666666666667,
+        "switch_precision": 1.0,
+        "conditional_ac_gain": 0.7
+      },
+      "cross_repeat_f1_selector": {
+        "selector_metric": "f1",
+        "rotation_results": [
+          {
+            "held_out_repeat": 0,
+            "ac_gain_over_dense": 0.03666666666666667,
+            "switch_queries": 30,
+            "switch_coverage": 0.1
+          },
+          {
+            "held_out_repeat": 1,
+            "ac_gain_over_dense": 0.023333333333333334,
+            "switch_queries": 29,
+            "switch_coverage": 0.09666666666666666
+          },
+          {
+            "held_out_repeat": 2,
+            "ac_gain_over_dense": 0.041666666666666664,
+            "switch_queries": 25,
+            "switch_coverage": 0.08333333333333333
+          }
+        ],
+        "mean_ac_gain_over_dense": 0.033888888888888885,
+        "mean_ac_gain_ci95": [
+          0.013333333333333334,
+          0.057222222222222216
+        ],
+        "mean_switch_coverage": 0.09333333333333332
+      },
+      "cross_repeat_ac_selector": {
+        "selector_metric": "ac",
+        "rotation_results": [
+          {
+            "held_out_repeat": 0,
+            "ac_gain_over_dense": 0.04,
+            "switch_queries": 17,
+            "switch_coverage": 0.056666666666666664
+          },
+          {
+            "held_out_repeat": 1,
+            "ac_gain_over_dense": 0.03333333333333333,
+            "switch_queries": 19,
+            "switch_coverage": 0.06333333333333334
+          },
+          {
+            "held_out_repeat": 2,
+            "ac_gain_over_dense": 0.043333333333333335,
+            "switch_queries": 18,
+            "switch_coverage": 0.06
+          }
+        ],
+        "mean_ac_gain_over_dense": 0.03888888888888889,
+        "mean_ac_gain_ci95": [
+          0.018888888888888886,
+          0.06166666666666667
+        ],
+        "mean_switch_coverage": 0.06
+      },
+      "leave_one_repeat_out_stable_preference": {
+        "bm25": 14,
+        "dense": 38,
+        "unstable_or_tie": 248
+      }
+    }
+  },
+  "pooled_descriptive": {
+    "queries": 600,
+    "groups": 600,
+    "mean_f1_gap_bm25_minus_dense": -0.055991384254229344,
+    "mean_ac_gap_bm25_minus_dense": -0.06166666666666667,
+    "preference_counts": {
+      "f1": {
+        "bm25": 60,
+        "tie": 434,
+        "dense": 106
+      },
+      "ac": {
+        "bm25": 46,
+        "tie": 468,
+        "dense": 86
+      }
+    },
+    "ac_non_tie_queries": 132,
+    "f1_ac_sign_agreement_on_ac_non_ties": 0.9242424242424242,
+    "ac_gap_weighted_sign_agreement": 0.9595959595959596,
+    "f1_mean_selector_evaluated_in_ac": {
+      "ac_gain_over_dense": 0.04666666666666667,
+      "ac_gain_ci95": [
+        0.03194444444444444,
+        0.06277777777777778
+      ],
+      "switch_queries": 60,
+      "switch_coverage": 0.1,
+      "switch_precision": 0.6833333333333333,
+      "conditional_ac_gain": 0.4666666666666667
+    },
+    "ac_mean_oracle": {
+      "ac_gain_over_dense": 0.051666666666666666,
+      "ac_gain_ci95": [
+        0.036388888888888894,
+        0.06805555555555556
+      ],
+      "switch_queries": 46,
+      "switch_coverage": 0.07666666666666666,
+      "switch_precision": 1.0,
+      "conditional_ac_gain": 0.6739130434782609
+    },
+    "cross_repeat_f1_selector": {
+      "selector_metric": "f1",
+      "rotation_results": [
+        {
+          "held_out_repeat": 0,
+          "ac_gain_over_dense": 0.04416666666666667,
+          "switch_queries": 59,
+          "switch_coverage": 0.09833333333333333
+        },
+        {
+          "held_out_repeat": 1,
+          "ac_gain_over_dense": 0.029166666666666667,
+          "switch_queries": 56,
+          "switch_coverage": 0.09333333333333334
+        },
+        {
+          "held_out_repeat": 2,
+          "ac_gain_over_dense": 0.0475,
+          "switch_queries": 52,
+          "switch_coverage": 0.08666666666666667
+        }
+      ],
+      "mean_ac_gain_over_dense": 0.04027777777777777,
+      "mean_ac_gain_ci95": [
+        0.025277777777777777,
+        0.056388888888888884
+      ],
+      "mean_switch_coverage": 0.09277777777777778
+    },
+    "cross_repeat_ac_selector": {
+      "selector_metric": "ac",
+      "rotation_results": [
+        {
+          "held_out_repeat": 0,
+          "ac_gain_over_dense": 0.04833333333333333,
+          "switch_queries": 41,
+          "switch_coverage": 0.06833333333333333
+        },
+        {
+          "held_out_repeat": 1,
+          "ac_gain_over_dense": 0.035833333333333335,
+          "switch_queries": 44,
+          "switch_coverage": 0.07333333333333333
+        },
+        {
+          "held_out_repeat": 2,
+          "ac_gain_over_dense": 0.0475,
+          "switch_queries": 39,
+          "switch_coverage": 0.065
+        }
+      ],
+      "mean_ac_gain_over_dense": 0.04388888888888888,
+      "mean_ac_gain_ci95": [
+        0.028888888888888888,
+        0.06
+      ],
+      "mean_switch_coverage": 0.06888888888888887
+    },
+    "leave_one_repeat_out_stable_preference": {
+      "bm25": 33,
+      "dense": 72,
+      "unstable_or_tie": 495
+    }
+  },
+  "gate": {
+    "ac_preference_stable_for_training": true,
+    "f1_retained_as_auxiliary": true,
+    "f1_role": "auxiliary_or_diagnostic",
+    "decision": "GO_AC_LABEL_EXPANSION"
+  }
+}
