@@ -89,6 +89,10 @@ features.
   headroom, repeat diagnostics, and winner counts;
 - [`phase3_learning_curve.csv`](phase3_learning_curve.csv): fixed actions,
   oracle, cross-seed gain range, and tie counts.
+- [`phase27_execution_plan.md`](phase27_execution_plan.md): frozen zero-call
+  model-audit sequence, gates, authorization boundaries, and readiness state;
+- [`phase27_config.yaml`](phase27_config.yaml): machine-readable Phase 2.7
+  inputs, hashes, seeds, candidate matrix, metrics, and output contract.
 
 Implementation entry points are:
 
@@ -113,4 +117,3 @@ counterfactual tests, OOD tests, and final-holdout confirmation were not run.
 This package intentionally excludes raw questions, query/group identifiers,
 reference answers, predictions, contexts, provider request/response payloads,
 state databases, checkpoints, and artifact hash inventories.
-

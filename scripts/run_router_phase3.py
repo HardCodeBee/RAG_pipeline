@@ -696,7 +696,11 @@ def generate_partition(
                     created.append(generator)
             row = json.loads(payload)
             try:
-                result = generator.generate_from_prompt(_prompt_for_row(row), row["question"], [])
+                result = generator.generate_from_prompt(
+                    _prompt_for_row(row, str(router["prompt"]["version"])),
+                    row["question"],
+                    [],
+                )
                 prediction = result.answer.strip()
                 metrics = answer_metrics(prediction, row["reference_answers"])
                 metrics.pop("answer_correctness", None)

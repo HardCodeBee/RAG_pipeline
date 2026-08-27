@@ -1,0 +1,567 @@
+protocol:
+  id: hotpotqa_bd_router_phase27_model_audit_v1
+  version: 1
+  status: zero_call_execution_active
+  frozen_date: 2026-08-26
+  evidence_code_head: a422e39398f456316f8166e13dcbd7d496be9ca5
+  external_calls_allowed: 0
+
+scope:
+  dataset: hotpotqa
+  partition: train
+  query_count: 4800
+  actions: [bm25, dense]
+  default_action: dense
+  target_metric: normalized_token_f1
+  research_question: >-
+    Can deployment-available query-only and corpus-static signals predict the
+    BM25-minus-Dense answer-utility gap well enough to improve over fixed Dense?
+  excluded_from_v1:
+    - no_context_action
+    - answer_correctness_training
+    - fresh_dev_read
+    - final_holdout_read
+    - new_retrieval
+    - new_generation
+    - new_feature_extraction
+    - encoder_finetuning
+    - mlp_router
+    - pls_projection
+
+generation_provenance:
+  retriever_candidate_k: 50
+  generation_context_k: 5
+  context_max_tokens: 1800
+  prompt_id: hotpot_short_answer_v1
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0.0
+  max_output_tokens: 64
+  repeats_per_query_action: 3
+
+frozen_inputs:
+  outcomes:
+    path: output/hotpotqa_router_analysis_20260826/data/phase26/phase26_bd_4800_outcomes.jsonl.gz
+    sha256: 60112202b24131f435553c61e6863866117b0a9d69608f75bc55cab3369daec9
+    expected_rows: 28800
+  query_summary:
+    path: output/hotpotqa_router_analysis_20260826/data/phase26/phase26_bd_4800_query_summary.csv.gz
+    sha256: 3c3878bfd971e91c2313df883a3590b12dff75cd98dec283911d7a500cbe7d2a
+    expected_rows: 4800
+  features:
+    path: output/hotpotqa_router_analysis_20260826/features/phase26/phase26_features_4800.npz
+    sha256: 362094526c030176ddac3f95a22e2bb968313d64dac898038bf6a440568248a0
+    expected_rows: 4800
+  feature_schema:
+    path: output/hotpotqa_router_analysis_20260826/features/phase26/feature_schema.json
+    sha256: 0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa
+  phase26_summary:
+    path: output/hotpotqa_router_analysis_20260826/data/phase26/summary.json
+    sha256: 38f6ed0b0ae25efff2c4bb00f11dcb5dd0c6cf56b7549f89ad72fb6245b08a81
+  phase26_validation:
+    path: output/hotpotqa_router_analysis_20260826/data/phase26/validation.json
+    sha256: bd8e6c071b24dcb59c2a52fc7ef88e4e32e1cb050bf03fc71c8101d1aa6cf72f
+
+information_boundary:
+  allowed:
+    - query_text_transformations
+    - frozen_query_embedding
+    - corpus_static_lexical_statistics
+    - frozen_corpus_prototype_summaries
+  forbidden:
+    - current_query_retrieved_documents
+    - current_query_retrieval_scores_or_ranks
+    - qrels
+    - gold_supporting_facts
+    - generated_answers_at_inference
+    - f1_or_answer_correctness_at_inference
+
+features:
+  structured:
+    dimensions: 30
+    blocks:
+      lexical_compatibility: 17
+      corpus_prototype_summary: 13
+  embedding:
+    dimensions: 384
+    model: BAAI/bge-small-en-v1.5
+  raw_full:
+    dimensions: 414
+  pca_dimensions: [16, 32, 64]
+  pca_whiten: false
+
+targets:
+  primary:
+    name: mean_f1_gap
+    definition: mean_f1_bm25_minus_mean_f1_dense
+    loss_families:
+      - squared_error
+      - huber_or_pseudo_huber
+    exact_ties: retain
+  diagnostics:
+    - weighted_gap_sign
+    - repeat_standard_error
+    - cross_repeat_soft_preference
+  diagnostics_may_select_model: false
+
+cross_validation:
+  outer_folds: 5
+  inner_folds: 4
+  split_kind: repeated_stratified_group_kfold
+  split_seeds: [20260901, 20260917, 20261003]
+  model_seeds: [11, 23, 37, 53, 71]
+  strata: [bm25_winner, exact_tie, dense_winner]
+  group_field: group_id
+  fold_internal_only:
+    - structured_scaler
+    - embedding_centering
+    - pca
+    - hyperparameter_selection
+    - early_stopping
+    - late_fusion
+    - score_calibration
+  inner_seed_rule: outer_split_seed_plus_100_plus_outer_fold_id
+
+preprocessing:
+  structured: standard_scaler
+  raw_embedding: mean_center_only
+  pca_embedding: mean_center_then_pca
+  fit_scope: training_fold_only
+
+search_spaces:
+  ridge_alpha: [0.1, 1.0, 10.0, 100.0]
+  elastic_net:
+    alpha: [0.0001, 0.001, 0.01]
+    l1_ratio: [0.1, 0.5]
+    max_iter: 20000
+  huber_regressor:
+    epsilon: [1.2, 1.35, 1.5]
+    alpha: [0.0001, 0.001, 0.01]
+    max_iter: 2000
+  xgboost:
+    objective_by_loss:
+      mse: reg:squarederror
+      robust: reg:pseudohubererror
+    eval_metric: rmse
+    max_estimators: 2000
+    early_stopping_rounds: 75
+    tree_method: hist
+    n_jobs: 8
+    presets:
+      legacy:
+        max_depth: 3
+        learning_rate: 0.05
+        min_child_weight: 5.0
+        subsample: 0.8
+        colsample_bytree: 0.8
+        reg_lambda: 5.0
+      regularized:
+        max_depth: 2
+        learning_rate: 0.03
+        min_child_weight: 15.0
+        subsample: 0.8
+        colsample_bytree: 0.5
+        reg_lambda: 20.0
+      balanced:
+        max_depth: 2
+        learning_rate: 0.03
+        min_child_weight: 5.0
+        subsample: 0.8
+        colsample_bytree: 0.8
+        reg_lambda: 10.0
+  selection_score: inner_oof_policy_gain_lower_one_standard_error
+
+candidates:
+  - id: M0_structured_xgb
+    input: structured_30
+    model: xgboost
+    losses: [mse, robust]
+  - id: M1a_embedding_ridge
+    input: raw_embedding_384
+    model: ridge
+    loss: squared_error
+  - id: M1b_embedding_elastic_net
+    input: raw_embedding_384
+    model: elastic_net
+    loss: squared_error
+  - id: M2_raw_full_xgb
+    input: raw_full_414
+    model: xgboost
+    losses: [mse, robust]
+    phase26_recipe_control_loss: mse
+    purpose: phase26_recipe_control_under_new_cv_and_calibration
+  - id: M3_pca_structured
+    input: pca_embedding_plus_structured
+    pca_dimensions: [16, 32, 64]
+    models: [ridge, huber_regressor, xgboost_robust]
+  - id: M4_oof_late_fusion
+    inputs: [M0_structured_xgb, M1a_embedding_ridge]
+    meta_model: ridge
+    meta_training: inner_oof_only
+  - id: M5_dual_utility_huber
+    input: pca32_embedding_plus_structured
+    model: separate_huber_heads
+    outputs: [mean_f1_bm25, mean_f1_dense]
+    decision_score: predicted_bm25_minus_predicted_dense
+    loss: bm25_huber_plus_dense_huber_plus_lambda_gap_huber
+    gap_loss_lambda: [0.0, 0.5, 1.0]
+
+screen:
+  split_seeds: [20260901]
+  xgboost_model_seeds: [11]
+  hyperparameter_mode: fixed_reference_or_small_grid
+  publishes_research_claim: false
+  formal_baseline: M2_raw_full_xgb
+  formal_new_candidate_count_minimum: 2
+  formal_new_candidate_count_maximum: 3
+  formal_selection_rule: >-
+    Select the two or three strongest new candidates by inner-OOF policy-gain
+    lower-one-standard-error score, then freeze the list before formal validation.
+
+rotation_diagnostic:
+  enabled: true
+  rotation_seeds: [20261011, 20261023, 20261037]
+  candidates:
+    - D4_raw_embedding_xgboost
+    - M1a_embedding_ridge
+    - M3_pca_structured
+  preserves: [cosine, inner_product, euclidean_distance]
+  participates_in_model_selection: false
+
+ensemble_and_calibration:
+  stochastic_prediction: average_continuous_scores_across_model_seeds
+  calibrator: nonnegative_affine_regression
+  calibrator_training: inner_oof_predictions_only
+  primary_policy: switch_to_bm25_if_calibrated_gap_gt_zero
+  score_equal_to_zero: keep_dense
+  learned_threshold_scan: forbidden_for_primary_gate
+  conservative_threshold: report_only
+
+evaluation:
+  bootstrap:
+    unit: group_id
+    seed: 20260902
+    resamples: 10000
+    confidence: 0.95
+  high_margin_gap: 0.1
+  report:
+    - fixed_dense_mean_f1
+    - bm25_mean_f1
+    - oracle_mean_f1
+    - oracle_headroom
+    - router_mean_f1
+    - gain_over_fixed_dense
+    - gain_confidence_interval
+    - beneficial_neutral_harmful_switch_counts
+    - beneficial_neutral_harmful_conditional_gain
+    - beneficial_and_harmful_gain_mass
+    - missed_bm25_beneficial_switches
+    - harmful_to_beneficial_mass_ratio
+    - switch_coverage
+    - high_margin_bm25_winner_recall
+    - policy_regret
+    - oracle_recovery
+    - gap_mae_rmse_spearman
+    - non_tie_auc
+    - calibration_intercept_slope_and_deciles
+    - per_outer_fold_and_per_split_seed_metrics
+
+formal_gate:
+  practical_gain_minimum: 0.01
+  grouped_bootstrap_ci_lower_must_exceed: 0.0
+  require_all_split_seed_gains_positive: true
+  harmful_to_beneficial_mass_ratio_maximum: 0.5
+  switch_coverage_minimum: 0.01
+  switch_coverage_maximum: 0.5
+  calibration_slope_minimum: 0.5
+  calibration_slope_maximum: 1.5
+  top_predicted_gap_decile_realized_gap_must_be_positive: true
+  passing_candidate_required: true
+
+learning_curve:
+  query_counts: [1200, 2400, 4800]
+  subset_rule: query_rank_less_than_count
+  run_on: formal_candidates_only
+  may_trigger_9600_authorization_request_if:
+    - mean_gain_at_4800_positive
+    - at_least_two_of_three_split_seed_gains_positive
+    - fitted_gain_slope_positive
+
+model_freeze:
+  eligible_pool: formal_gate_passing_candidates
+  primary_rank: highest_grouped_bootstrap_ci_lower_bound
+  tie_rule: one_standard_error_then_lower_complexity
+  lower_complexity_order:
+    - M1a_embedding_ridge
+    - M0_structured_xgb
+    - M3_pca_structured_linear
+    - M2_raw_full_xgb
+    - M3_pca_structured_xgboost
+    - M4_oof_late_fusion
+    - M5_dual_utility_huber
+
+authorization_gates:
+  phase27_zero_call_model_audit: authorized_by_this_plan
+  complete_9600_generation: requires_separate_user_authorization
+  open_fresh_dev: requires_formal_gate_pass_and_separate_user_authorization
+  answer_correctness_labels: requires_fresh_dev_f1_pass_and_separate_user_authorization
+  final_holdout: requires_frozen_model_and_separate_user_authorization
+
+execution_strategy:
+  stage_number_semantics: research_logic_not_independent_compute_batches
+  state_model:
+    specification: spec_status_in_this_frozen_config
+    results: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_v1/execution_state.json
+  shared_compute_rule: >-
+    One stage-7.1 screen compute pass may generate reusable OOF evidence for
+    stages 2, 3, 5, and 6, but none of those stages is complete until its
+    independent artifact is produced and accepted.
+  dependency_order:
+    - execution_preparation
+    - stage_0_protocol_preflight
+    - stage_1_split_manifest
+    - freeze_stage_2_to_6_specifications
+    - shared_stage_7_1_screen_compute
+    - stage_2_feature_report
+    - stage_3_target_report
+    - stage_4_rotation_report
+    - stage_5_calibration_report
+    - stage_6_router_evaluation_report
+    - freeze_formal_candidates
+    - stage_7_2_formal_confirmation
+    - stage_8_learning_curve
+    - stage_9_decision
+    - gated_stages_10_to_12
+  formal_resume_requires:
+    - feature_block_report.json
+    - target_diagnostics.json
+    - stage4_report.json
+    - calibration.json
+    - router_evaluation.json
+    - candidate_freeze.json
+  reuse_policy:
+    completed_shared_screen: reusable
+    completed_rotation_compute: reusable_as_diagnostic_only
+    completed_formal_M2_split_20260901: >-
+      Reusable only if candidate_freeze retains the identical M2 specification.
+    incomplete_formal_split_20260917: discard
+
+execution_stages:
+  - stage: 0
+    name: freeze_experiment_protocol
+    goal: >-
+      Keep the meanings of BM25 utility, Dense utility, and Router labels fixed
+      throughout the model audit.
+    tasks:
+      - freeze_retrievers_top5_prompt_generator_repeats_metric_and_dense_default
+      - keep_fresh_dev_sealed
+      - validate_4800_queries_and_28800_complete_bd_repeat_rows
+      - reject_v2_prompt_or_other_protocol_outcomes
+    output: preflight.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 1
+    name: strict_training_validation_split
+    goal: >-
+      Control related-query leakage, winner imbalance, and split instability so
+      every query receives a genuinely out-of-fold prediction.
+    tasks:
+      - repeated_5_fold_stratified_group_kfold_with_3_split_seeds
+      - group_by_existing_group_id
+      - stratify_bm25_winner_exact_tie_dense_winner
+      - fit_all_preprocessing_selection_early_stopping_calibration_in_outer_train
+      - use_outer_validation_for_one_final_prediction_and_evaluation_only
+    output: split_manifest.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 2
+    name: validate_feature_blocks_separately
+    goal: >-
+      Separate structured-feature signal, embedding signal, model-feature fit,
+      and early-concatenation interference.
+    tasks:
+      - M0_structured_xgboost
+      - M1_embedding_ridge_and_elastic_net
+      - M2_raw_414d_current_xgboost_reproduction
+      - M3_fold_internal_pca16_32_64_plus_structured
+      - M4_inner_oof_late_fusion
+      - M5_dual_action_utility_heads
+    output: candidate_oof_predictions_and_feature_fit_evidence
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 3
+    name: compare_training_targets
+    goal: >-
+      Determine whether supervision and loss choice, rather than only features
+      or model family, explains the current failure.
+    tasks:
+      - compare_continuous_gap_mse_and_huber_or_pseudo_huber
+      - run_weighted_sign_classification_as_direction_diagnostic_only
+      - retain_repeat_variance_and_cross_repeat_soft_preference_as_diagnostics
+      - prohibit_repeat_aware_diagnostics_from_selecting_the_model
+    output: target_diagnostics.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 4
+    name: random_rotation_diagnostic
+    goal: >-
+      Test whether tree performance depends on arbitrary embedding coordinates
+      rather than stable semantic geometry.
+    tasks:
+      - apply_three_fixed_random_orthogonal_rotations
+      - retrain_diagnostic_raw_embedding_xgboost
+      - retrain_embedding_ridge
+      - retrain_pca_models
+      - compare_oof_gain_auc_spearman_and_variance_to_unrotated_results
+      - exclude_rotation_results_from_champion_selection
+    output: rotation_diagnostic.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 5
+    name: correct_ensemble_calibration_and_threshold
+    goal: >-
+      Preserve continuous confidence across model seeds and make score scales
+      transferable across folds before routing.
+    tasks:
+      - average_continuous_predicted_gaps_across_model_seeds
+      - fit_linear_calibration_on_inner_oof_predictions_only
+      - use_delta_zero_for_the_primary_f1_policy
+      - report_one_standard_error_conservative_threshold_as_secondary_only
+      - defer_isotonic_until_separate_nested_cv_support
+    output: calibration.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 6
+    name: evaluate_router_failure_mechanisms
+    goal: >-
+      Evaluate answer utility while separating beneficial, neutral, harmful,
+      missed-switch, regret, oracle-recovery, and calibration behavior.
+    tasks:
+      - report_policy_gain_over_fixed_dense
+      - report_beneficial_neutral_harmful_switches_and_conditional_gain
+      - report_missed_bm25_beneficial_switches
+      - report_routing_regret_and_oracle_recovery
+      - report_predicted_gap_calibration_auc_spearman_coverage_and_split_variance
+      - keep_retrieval_metrics_separate_from_answer_utility
+    output: router_evaluation.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 7
+    name: screen_then_formally_confirm
+    goal: >-
+      Control compute and candidate-selection bias without treating a one-split
+      screen as publishable evidence.
+    tasks:
+      - shared_quick_screen_M0_through_M5_on_one_fixed_group_stratified_split
+      - avoid_large_hyperparameter_search_in_screen
+      - accept_stage_2_to_6_reports_before_freezing_candidates
+      - freeze_M2_baseline_plus_the_strongest_2_to_3_new_candidates
+      - formally_run_3_split_seeds_5_outer_folds_inner_cv_and_group_bootstrap
+      - prohibit_adding_candidates_after_formal_validation
+    outputs: [screen.json, candidate_freeze.json, formal_metrics.json, predictions_oof.csv.gz]
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 8
+    name: training_scale_learning_curve
+    goal: >-
+      Distinguish continued data benefit, a flat information ceiling, and
+      training-only overfitting before considering 9600 outcomes.
+    tasks:
+      - run_identical_formal_candidates_at_1200_2400_and_4800_queries
+      - keep_order_group_splits_features_targets_and_metrics_consistent
+      - compare_gain_auc_spearman_harmful_switch_calibration_and_split_variance
+      - request_9600_only_if_gain_and_learning_trend_are_positive
+    output: learning_curve.csv
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 9
+    name: apply_formal_advancement_gate
+    goal: >-
+      Advance only a practically useful, statistically stable, safely
+      selective, and basically calibrated internal candidate.
+    tasks:
+      - require_mean_gain_at_least_0_01
+      - require_group_bootstrap_ci_lower_above_zero
+      - require_all_three_split_seed_gains_positive
+      - require_controlled_harmful_loss_and_nondegenerate_switching
+      - require_basic_predicted_gap_calibration
+      - emit_one_frozen_internal_decision_without_starting_paid_work
+    output: decision.json
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 10
+    name: freeze_model_and_open_fresh_dev_once
+    goal: >-
+      Test whether the completely frozen policy generalizes to data that did
+      not participate in development.
+    tasks:
+      - freeze_prompt_schema_transforms_model_ensemble_calibrator_threshold_and_evaluator
+      - write_model_freeze_record_before_reading_fresh_dev
+      - prohibit_retuning_or_model_selection_after_fresh_dev_is_opened
+    outputs: [model_freeze.json, fresh_dev_metrics.json]
+    entry_condition: formal_gate_pass_and_separate_user_authorization
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 11
+    name: validate_answer_correctness_alignment
+    goal: >-
+      Test whether token-F1 policy gain transfers to semantic answer
+      correctness.
+    tasks:
+      - acquire_ac_only_after_internal_and_fresh_dev_f1_passes
+      - evaluate_the_frozen_policy_without_reselection
+      - separate_any_future_ac_training_subset_from_unbiased_ac_evaluation
+      - prohibit_active_learning_samples_from_estimating_population_ac_gain
+    output: answer_correctness_validation.json
+    entry_condition: fresh_dev_f1_pass_and_separate_user_authorization
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+  - stage: 12
+    name: privileged_teacher_diagnostic
+    goal: >-
+      Distinguish an insufficient query-only information boundary from utility
+      that remains unpredictable even after observing retrieval outcomes.
+    tasks:
+      - run_only_if_all_strict_query_only_candidates_fail
+      - allow_retrieval_scores_margins_overlap_qrels_and_evidence_coverage_offline
+      - compare_privileged_teacher_to_query_only_student
+      - recommend_probe_cascade_if_teacher_succeeds_and_student_fails
+      - recommend_context_reranking_or_generation_robustness_if_teacher_fails
+      - never_report_the_teacher_as_a_deployable_pre_retrieval_router
+    output: privileged_teacher_diagnostic.json
+    entry_condition: stop_query_only_v1_and_separate_diagnostic_approval
+    spec_status: frozen
+    result_status_source: execution_state.json
+
+planned_implementation:
+  runner: scripts/run_router_phase27_model_audit.py
+  local_tests: tests/test_router_phase27_model_audit.py
+  output_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_v1
+  required_outputs:
+    - preflight.json
+    - split_manifest.json
+    - screen.json
+    - feature_block_report.json
+    - rotation_diagnostic.json
+    - stage4_report.json
+    - target_diagnostics.json
+    - calibration.json
+    - router_evaluation.json
+    - candidate_freeze.json
+    - formal_metrics.json
+    - learning_curve.csv
+    - predictions_oof.csv.gz
+    - decision.json
+    - execution_state.json
+    - report.md

@@ -613,7 +613,9 @@ def generate(
             row = json.loads(payload)
             try:
                 result = generator.generate_from_prompt(
-                    _prompt_for_row(row), row["question"], []
+                    _prompt_for_row(row, str(router["prompt"]["version"])),
+                    row["question"],
+                    [],
                 )
                 prediction = result.answer.strip()
                 metrics = answer_metrics(prediction, row["reference_answers"])

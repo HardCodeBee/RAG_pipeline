@@ -604,7 +604,9 @@ def generate_parallel(
         row = rows[position]
         try:
             result = generator.generate_from_prompt(
-                _prompt_for_row(row), row["question"], []
+                _prompt_for_row(row, str(router["prompt"]["version"])),
+                row["question"],
+                [],
             )
             prediction = result.answer.strip()
             return position, {

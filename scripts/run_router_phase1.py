@@ -42,7 +42,7 @@ from src.persistence.run_output_writer import (
     write_results,
 )
 from src.pipeline import NaiveRAGPipeline
-from src.prompts.fixed_prompt import build_prompt
+from src.prompts.fixed_prompt import HOTPOT_SHORT_ANSWER_VERSION, build_prompt
 from src.records import ContextPackage, SearchHit
 from src.text.token_counters import RegexTokenCounter
 
@@ -359,7 +359,10 @@ def _base_row(
     }
 
 
-def _prompt_for_row(row: Mapping[str, Any]) -> str:
+def _prompt_for_row(
+    row: Mapping[str, Any],
+    version: str = HOTPOT_SHORT_ANSWER_VERSION,
+) -> str:
     context_value = row["context"]
     context = ContextPackage(
         text=str(context_value["text"]),
@@ -367,9 +370,7 @@ def _prompt_for_row(row: Mapping[str, Any]) -> str:
         token_count=int(context_value["token_count"]),
         truncated=bool(context_value["truncated"]),
     )
-    return build_prompt(
-        str(row["question"]), context, "hotpot_short_answer_v1"
-    ).text
+    return build_prompt(str(row["question"]), context, version).text
 
 
 def _checkpoint_path(checkpoints: Path, position: int) -> Path:
@@ -586,7 +587,7 @@ def generate(
             new_calls += 1
             try:
                 result = generator.generate_from_prompt(
-                    _prompt_for_row(row),
+                    _prompt_for_row(row, str(config["prompt"]["version"])),
                     row["question"],
                     [],
                 )
