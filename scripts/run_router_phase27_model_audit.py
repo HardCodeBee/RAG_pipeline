@@ -30,7 +30,9 @@ from xgboost import XGBClassifier, XGBRegressor
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CONFIG = PROJECT_ROOT / "analysis/hotpotqa_router/phase27_config.yaml"
+DEFAULT_CONFIG = PROJECT_ROOT / (
+    "analysis/hotpotqa_router/phases/phase27/config_screen_4800.yaml"
+)
 TIE_ATOL = 1e-12
 
 
@@ -887,7 +889,20 @@ def _fit_predict_candidate(
     return result, metadata
 
 
-def _base_specs_for_late_fusion() -> tuple[CandidateSpec, CandidateSpec]:
+def _base_specs_for_late_fusion(
+    *, use_pca_base: bool = False
+) -> tuple[CandidateSpec, CandidateSpec]:
+    embedding_base = (
+        CandidateSpec(
+            "M3_pca32_structured_ridge",
+            "M3",
+            "pca_structured",
+            "ridge",
+            pca_dim=32,
+        )
+        if use_pca_base
+        else CandidateSpec("M1a_embedding_ridge", "M1", "embedding", "ridge")
+    )
     return (
         CandidateSpec(
             "M0_structured_xgb_robust",
@@ -897,7 +912,7 @@ def _base_specs_for_late_fusion() -> tuple[CandidateSpec, CandidateSpec]:
             loss="robust",
             xgb_preset="regularized",
         ),
-        CandidateSpec("M1a_embedding_ridge", "M1", "embedding", "ridge"),
+        embedding_base,
     )
 
 
@@ -910,8 +925,9 @@ def _fit_predict_late_fusion(
     split_seed: int,
     outer_fold_id: int,
     model_seed: int,
+    use_pca_base: bool = False,
 ) -> tuple[np.ndarray, np.ndarray, dict[str, Any]]:
-    bases = _base_specs_for_late_fusion()
+    bases = _base_specs_for_late_fusion(use_pca_base=use_pca_base)
     inner_folds = make_group_stratified_folds(
         data,
         n_splits=int(config["cross_validation"]["inner_folds"]),
@@ -973,7 +989,11 @@ def _fit_predict_late_fusion(
     return (
         np.asarray(meta.predict(base_validation), dtype=np.float64),
         meta_oof,
-        {"meta_coefficients": meta.coef_.tolist(), "meta_intercept": float(meta.intercept_)},
+        {
+            "base_candidate_ids": [base.candidate_id for base in bases],
+            "meta_coefficients": meta.coef_.tolist(),
+            "meta_intercept": float(meta.intercept_),
+        },
     )
 
 
@@ -1198,6 +1218,13 @@ def _candidate_by_id(candidate_id: str) -> CandidateSpec:
             loss="mse",
             xgb_preset="legacy",
         )
+    if candidate_id == "M4_pca32_oof_late_fusion":
+        return CandidateSpec(
+            candidate_id,
+            "M4PCA",
+            "late_fusion_pca",
+            "late_fusion_pca",
+        )
     raise KeyError(candidate_id)
 
 
@@ -1220,7 +1247,7 @@ def run_candidate_split(
     fold_ids = np.full(len(data.query_ids), -1, dtype=np.int64)
     fold_results: list[dict[str, Any]] = []
     for outer_fold_id, (outer_train, outer_validation) in enumerate(outer_folds):
-        if spec.model_kind == "late_fusion":
+        if spec.model_kind in {"late_fusion", "late_fusion_pca"}:
             final_raw, inner_raw, fusion_metadata = _fit_predict_late_fusion(
                 config,
                 data,
@@ -1229,6 +1256,7 @@ def run_candidate_split(
                 split_seed=split_seed,
                 outer_fold_id=outer_fold_id,
                 model_seed=int(model_seeds[0]),
+                use_pca_base=spec.model_kind == "late_fusion_pca",
             )
             calibration = _fit_affine_calibration(inner_raw, data.gap[outer_train])
             final_calibrated = calibration.predict(final_raw)

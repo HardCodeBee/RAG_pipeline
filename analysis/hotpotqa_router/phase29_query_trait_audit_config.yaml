@@ -1,0 +1,198 @@
+protocol:
+  id: hotpotqa_bd_router_phase29_single_trait_audit_v1
+  version: 1
+  status: frozen_before_outcome_analysis
+  frozen_date: '2026-08-30'
+  base_git_head: 522f0cd4fc289488c4b0d3c31f6f2090600a41ef
+  implementation_freeze: preflight_sha256_of_config_runner_extractor_and_catalog
+  purpose: Test whether any single original-query trait has stable, reproducible signal for BM25-versus-BGE answer utility.
+
+scope:
+  dataset: hotpotqa
+  source_partition: train
+  actions: [bm25, dense]
+  default_action: dense
+  primary_target: mean_f1_gap_bm25_minus_dense
+  discovery_classes: [bm25_winner, dense_winner]
+  query_rewriting: forbidden
+  feature_combinations: forbidden_until_single_feature_gate_passes
+  interaction_search: forbidden_until_single_feature_gate_passes
+  model_training: forbidden_until_single_feature_gate_passes
+  official_final_holdout_rows_allowed: 0
+
+inputs:
+  router_config:
+    path: outputs/router/hotpotqa_bd_router_v1/config.yaml
+    sha256: ce65f080de24d071056c871608d3209c6ccc12c494a90153dfe7ff6a89535354
+  discovery_summary:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/query_summary.csv.gz
+    sha256: 4f487d70412bc51ede9e4a286f5fed9433f75ef8904ce296e39c250f2ef2c811
+    expected_rows: 12000
+    expected_non_tie: 6000
+    expected_class_counts:
+      bm25: 3000
+      dense: 3000
+    expected_origin_class_counts:
+      old:
+        bm25: 1196
+        dense: 1564
+      new:
+        bm25: 1804
+        dense: 1436
+  discovery_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/features.npz
+    sha256: 1ab63ff08457aa5a3235dc97d4678d890c94ceacd836a6a0a5c4d03eedd7718c
+  discovery_feature_schema:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/feature_schema.json
+    sha256: 0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa
+  old_cohort_summary:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/phase27_bd_9600_query_summary.csv.gz
+    sha256: 31dbebe281c8d87039c723c7a78deddca00c56fe17d43274742c16750fc804b4
+  natural_membership:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/confirmation_sample.json
+    sha256: 149fac3a34b056df24dfafce325bbd0b2bdee6080502c05f43f404f03482e1a8
+    expected_rows: 2000
+  natural_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_features.npz
+    sha256: f058fec509c1268721931e517f4563e347b557e78089e7e76fb7ec301a285152
+  natural_metrics:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_query_metrics.jsonl.gz
+    sha256: 1dbbbaa11b715ae006fc22b6dab73e8b270a87006cd2bd67ea99047a53c8f5a9
+    expected_rows: 2000
+    expected_class_counts:
+      bm25: 267
+      dense: 337
+      tie: 1396
+  query_source:
+    path: data/beir/hotpotqa/queries/queries.jsonl
+    sha256: 26bd91dd9ad69592c02e07180e62096f572b6814f5f413695151485b4ab40a2c
+  bm25_index:
+    path: artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b/index.sqlite3
+    sha256: 9e7f7bb487269b7bfc6e721883b538ce1bf5e363bfa7e8f04cf29cd3501b17bf
+    expected_documents: 5233329
+    expected_average_document_length: 30.99642598430177
+  corpus_chunks:
+    path: artifacts/build_65e9037e4c1eed7b/chunks.jsonl
+    sha256: c1b3c7a721f8e9b31615ae1ab8e5a5ce1a0a2d12d6c7c6f0923fa879b85b7dd6
+  corpus_offsets:
+    path: artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy
+    sha256: b977ba56d60c2a7bba0c92ba726de4cd5d9a0adfbb3e0c4f5474203a94712f5a
+
+feature_contract:
+  historical_30d:
+    include_exact_legacy_17d: true
+    include_exact_dense_prototype_13d: true
+  bm25_aligned_17d:
+    include_unique_analyzed_term_recalculation: true
+    reason: Runtime BM25 deduplicates analyzed query terms while the legacy extractor did not.
+  stage_c:
+    mandatory: true
+    layers:
+      - corpus_static_exact
+      - frozen_corpus_sample_aggregate
+    corpus_sample:
+      rows: 500000
+      seed: 2026083001
+      cache_version: 2
+      selection: uniform_without_replacement_before_outcome_analysis
+      stores_ranked_results: false
+      uses_qrels: false
+      runtime_role: query_conditioned_unranked_aggregate_over_frozen_sample_index
+  linguistic_families:
+    - morphology_and_tokenizer
+    - relation_lexicalization
+    - entity_and_anchor
+    - lexical_economy
+    - answer_type_and_constraints
+    - ambiguity
+    - hotpot_multihop
+    - general_style_controls
+  direction_rule: discover_two_sided_then_freeze_sign_before_natural_confirmation
+  excluded:
+    - query_embedding_coordinates
+    - feature_products
+    - interactions
+    - learned_composite_scores
+    - current_main_retriever_topk_documents
+    - current_main_retriever_scores_or_ranks
+    - qrels_or_gold_supporting_facts
+    - generated_answers_or_answer_metrics_as_features
+    - acquisition_stratum
+
+statistics:
+  analysis_unit: query
+  dependence_unit: group_id
+  discovery:
+    rows: 6000
+    bm25_winners: 3000
+    dense_winners: 3000
+    include_ties: false
+    continuous_gate:
+      directional_auc_minimum: 0.56
+      auc_ci95_lower_must_exceed: 0.50
+      directional_spearman_minimum: 0.10
+      spearman_ci95_must_exclude_zero: true
+      directional_q4_minus_q1_gap_minimum: 0.020
+      q4_minus_q1_ci95_lower_must_exceed: 0.0
+    binary_gate:
+      directional_odds_ratio_minimum: 1.30
+      odds_ratio_ci95_lower_must_exceed: 1.0
+      directional_gap_difference_minimum: 0.020
+      gap_difference_ci95_lower_must_exceed: 0.0
+    old_new_stability:
+      continuous_auc_minimum: 0.53
+      continuous_spearman_minimum: 0.05
+      preserve_full_effect_fraction: 0.50
+      subgroup_gap_effect_must_be_positive: true
+      binary_or_must_exceed: 1.0
+      minimum_binary_rows_per_level: 50
+  natural_confirmation:
+    rows: 2000
+    expected_non_tie: 604
+    continuous_gate:
+      directional_auc_minimum: 0.55
+      auc_ci95_lower_must_exceed: 0.50
+      directional_spearman_minimum: 0.08
+      spearman_ci95_must_exclude_zero: true
+      directional_q4_minus_q1_gap_minimum: 0.015
+      q4_minus_q1_ci95_lower_must_exceed: 0.0
+    binary_gate:
+      directional_odds_ratio_minimum: 1.25
+      odds_ratio_ci95_lower_must_exceed: 1.0
+      directional_gap_difference_minimum: 0.015
+      gap_difference_ci95_lower_must_exceed: 0.0
+    minimum_winner_rows_per_class: 100
+  quality:
+    maximum_missing_fraction: 0.0
+    continuous_minimum_unique_values: 20
+    continuous_maximum_single_value_fraction: 0.90
+    continuous_iqr_must_exceed: 0.0
+    binary_discovery_minimum_per_level: 300
+    binary_natural_minimum_per_level: 50
+  inference:
+    permutation_resamples: 10000
+    bootstrap_resamples: 10000
+    seed: 2026083002
+    confidence: 0.95
+    p_value_adjustment: holm
+    adjust_winner_and_gap_families_separately_over_all_frozen_features: true
+
+decision:
+  supported_single_feature_requires:
+    - discovery_winner_gate_pass
+    - discovery_gap_gate_pass
+    - old_new_stability_pass
+    - natural_winner_gate_pass
+    - natural_gap_gate_pass
+    - quality_gate_pass
+  zero_discovery_candidates:
+    decision: stop_after_discovery
+    forbid: [combination_analysis, interaction_analysis, model_training, threshold_retuning]
+  zero_natural_confirmed_features:
+    decision: stop_after_natural_confirmation
+    forbid: [combination_analysis, interaction_analysis, model_training, threshold_retuning]
+  any_supported_single_feature:
+    decision: permit_but_do_not_automatically_claim_value_from_combination_or_model_training
+
+outputs:
+  run_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1

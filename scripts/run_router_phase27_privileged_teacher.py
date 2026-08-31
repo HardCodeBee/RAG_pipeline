@@ -29,7 +29,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts import run_router_phase27_model_audit as audit
 
 
-CONFIG_PATH = PROJECT_ROOT / "analysis/hotpotqa_router/phase27_9600_config.yaml"
+CONFIG_PATH = PROJECT_ROOT / "analysis/hotpotqa_router/phases/phase27/config.yaml"
 RUN_DIR = (
     PROJECT_ROOT
     / "outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1"

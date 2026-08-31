@@ -1,0 +1,42 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase28_t0_tiecap_snapshot_v1",
+  "status": "complete",
+  "view_id": "T0_tiecap",
+  "query_count": 8760,
+  "outcome_rows": 52560,
+  "class_counts": {
+    "bm25_winner": 1196,
+    "dense_winner": 1564,
+    "exact_tie": 6000
+  },
+  "sample_weight": "none",
+  "tie_source": "phase27_existing_9600_only",
+  "selection_rule": "all_old_winners_then_new_winners_by_frozen_acquisition_rank; old_ties_seeded_without_replacement",
+  "nested_view_query_ids": true,
+  "fresh_dev_rows_read": 0,
+  "final_holdout_rows_read": 0,
+  "external_provider_calls": 0,
+  "artifacts": {
+    "outcomes.jsonl.gz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/snapshot/outcomes.jsonl.gz",
+      "bytes": 4162255,
+      "sha256": "06850575a93ba38326d75e38555863448dd917fa975fb89083ed9173f6e988c3"
+    },
+    "query_summary.csv.gz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/snapshot/query_summary.csv.gz",
+      "bytes": 630013,
+      "sha256": "4646590364b17550c66187445823eb573b931879a396a2e4c9ec48bfa351f43d"
+    },
+    "features.npz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/snapshot/features.npz",
+      "bytes": 13354458,
+      "sha256": "d6f83d8d86540eff15cf3ce25d50f22eba35640919d017a8cf28b566be0cd8af"
+    },
+    "feature_schema.json": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/snapshot/feature_schema.json",
+      "bytes": 11860,
+      "sha256": "0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa"
+    }
+  },
+  "completed_at_unix": 1787951370.8856885
+}

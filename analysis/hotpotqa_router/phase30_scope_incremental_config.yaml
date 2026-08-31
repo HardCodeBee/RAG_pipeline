@@ -1,0 +1,437 @@
+protocol:
+  id: hotpotqa_bd_router_phase30_scope_incremental_v1
+  version: 1
+  status: frozen_plan_before_implementation_and_execution
+  frozen_date: '2026-08-30'
+  base_git_head: 522f0cd4fc289488c4b0d3c31f6f2090600a41ef
+  purpose: Test whether the single Phase 2.9 scope feature provides standalone or incremental policy utility beyond the historical M3 router.
+  evidence_role: post_selection_incremental_diagnostic_not_confirmatory_validation
+  formal_experiment_started: false
+
+scope:
+  dataset: hotpotqa
+  source_partition: train
+  actions: [bm25, dense]
+  default_action: dense
+  training_view: T2_winner3000
+  training_queries: 12000
+  training_groups: 11964
+  strata_counts:
+    bm25_winner: 3000
+    dense_winner: 3000
+    exact_tie: 6000
+  candidates_exactly:
+    - S0_scope_only_ridge
+    - M3_pca32_structured_ridge
+    - M3S_pca32_structured_scope_ridge
+  candidate_addition: forbidden
+  alternate_training_views: forbidden
+  query_rewriting: forbidden
+  feature_interactions: forbidden
+  threshold_search: forbidden
+  sample_weight: none
+  official_final_holdout_rows_allowed: 0
+
+primary_question:
+  comparison: M3S_pca32_structured_scope_ridge_minus_M3_pca32_structured_ridge
+  estimand: paired_mean_query_answer_f1_policy_utility_difference
+  scope_only_role: standalone_mechanism_control_not_an_alternative_selected_on_diagnostic_results
+  historical_m3_role: frozen_baseline
+  m3_plus_scope_role: sole_incremental_candidate
+
+feature_contract:
+  supported_feature:
+    name: c_scope_log_at_least_2_docs
+    phase29_direction: 1
+    definition: log1p of frozen-sample documents containing at least two unique effective BM25-analyzed query terms
+    runtime_boundary: query_conditioned_unranked_aggregate_over_frozen_corpus_sample_before_main_retrieval
+    dimensions: 1
+    source_cache_version: 2
+  historical_structured:
+    dimensions: 30
+    blocks:
+      lexical_compatibility: 17
+      corpus_prototype_summary: 13
+  embedding:
+    dimensions: 384
+    model: BAAI/bge-small-en-v1.5
+    projection_dimensions: 32
+    pca_whiten: false
+  allowed:
+    - original_query_text
+    - frozen_query_embedding
+    - corpus_static_lexical_statistics
+    - frozen_unranked_corpus_sample_aggregates
+  forbidden:
+    - current_query_main_retriever_documents
+    - current_query_main_retriever_scores_or_ranks
+    - qrels
+    - gold_supporting_facts
+    - acquisition_stratum
+    - generated_answers_at_inference
+    - answer_f1_or_answer_correctness_at_inference
+    - retrieval_evidence_recall_as_model_input
+
+targets:
+  primary:
+    name: mean_f1_gap
+    definition: mean_f1_bm25_minus_mean_f1_dense
+    regression_loss: squared_error
+    repeats_per_query_action: 3
+    exact_ties: retain_as_zero
+    sample_weight: none
+  retrieval_metrics_role: mechanism_only_not_training_or_gate_target
+
+candidates:
+  S0_scope_only_ridge:
+    inputs: [c_scope_log_at_least_2_docs]
+    preprocessing: fold_internal_standard_scaler
+    regressor: ridge
+    ridge_alpha: 10.0
+    participates_in_primary_incremental_gate: false
+  M3_pca32_structured_ridge:
+    inputs: [historical_structured_30d, query_embedding_384d]
+    structured_preprocessing: fold_internal_standard_scaler
+    embedding_preprocessing: fold_internal_mean_center_then_pca32
+    regressor: ridge
+    ridge_alpha: 10.0
+    participates_in_primary_incremental_gate: baseline
+  M3S_pca32_structured_scope_ridge:
+    inputs: [historical_structured_30d, c_scope_log_at_least_2_docs, query_embedding_384d]
+    structured_and_scope_preprocessing: fold_internal_standard_scaler_per_column
+    embedding_preprocessing: fold_internal_mean_center_then_pca32
+    regressor: ridge
+    ridge_alpha: 10.0
+    participates_in_primary_incremental_gate: candidate
+  forbidden_variations:
+    - alternate_ridge_alpha
+    - alternate_pca_dimensions
+    - xgboost
+    - late_fusion
+    - nonlinear_feature_products
+    - additional_phase29_features
+    - learned_policy_threshold
+
+cross_validation:
+  split_kind: repeated_stratified_group_kfold
+  group_field: group_id
+  strata: [bm25_winner, exact_tie, dense_winner]
+  outer_folds: 5
+  inner_folds: 4
+  split_seeds: [20260901, 20260917, 20261003]
+  model_seeds: [11]
+  same_outer_and_inner_folds_for_all_candidates: true
+  reuse_historical_outer_split_manifest: true
+  inner_seed_rule: outer_split_seed_plus_100_plus_outer_fold_id
+  fold_internal_only:
+    - scope_scaler
+    - historical_structured_scaler
+    - embedding_mean
+    - pca32
+    - ridge_fit
+    - score_calibration
+  paired_transform_rule: M3 and M3S must use identical embedding centering and PCA projection within each shared fold
+  calibration:
+    method: nonnegative_affine_regression
+    training_predictions: inner_group_oof_predictions_within_outer_training_fold_only
+  leakage_guards:
+    - no preprocessing object may be fit outside the current training fold
+    - outer validation labels may not fit preprocessing, regression, or calibration
+    - natural features may not fit preprocessing, PCA, regression, calibration, or threshold
+    - global Phase 2.9 feature selection is acknowledged and is not repaired by GroupKFold
+
+policy:
+  score: calibrated_predicted_mean_f1_gap
+  switch_rule: switch_to_bm25_if_score_gt_zero
+  score_equal_to_zero: keep_dense
+  fixed_threshold: 0.0
+  threshold_tuning: forbidden
+  consensus_oof_prediction: mean_calibrated_gap_across_three_split_seeds_per_query
+
+integrity_gates:
+  scope_all_t2_extraction:
+    rows: 12000
+    missing_fraction_must_equal: 0.0
+    query_and_group_order_must_match_t2_snapshot: true
+    phase29_discovery_non_tie_rows: 6000
+    phase29_discovery_values_must_match: exact
+    phase29_natural_rows: 2000
+    phase29_natural_values_must_match: exact
+    imputation: forbidden
+  historical_m3_replication:
+    required_before_inference: true
+    fold_ids_must_match: exact
+    predictions_relative_tolerance: 1.0e-10
+    predictions_absolute_tolerance: 1.0e-12
+    mismatch_action: stop_without_interpretation
+
+evaluation:
+  bootstrap:
+    unit: group_id
+    resamples: 10000
+    confidence: 0.95
+    seed: 20260930
+    common_resamples_across_candidates: true
+  report:
+    - fixed_bm25_mean_f1
+    - fixed_dense_mean_f1
+    - best_fixed_action_and_mean_f1
+    - oracle_mean_f1
+    - router_mean_f1
+    - gain_over_fixed_dense
+    - gain_over_best_fixed
+    - grouped_bootstrap_gain_confidence_interval
+    - beneficial_neutral_harmful_switch_counts
+    - beneficial_gain_mass
+    - harmful_loss_mass
+    - harmful_to_beneficial_mass_ratio
+    - switch_coverage
+    - high_margin_bm25_winner_recall
+    - oracle_recovery
+    - policy_regret
+    - non_tie_auc
+    - gap_spearman
+    - gap_mae_rmse
+    - calibration_intercept_slope_and_deciles
+    - per_outer_fold_metrics
+    - per_split_seed_metrics
+    - paired_M3S_minus_M3_policy_utility
+    - paired_grouped_bootstrap_M3S_minus_M3_confidence_interval
+    - standardized_scope_coefficients_as_non_gating_diagnostic
+
+internal_gate:
+  evaluated_candidate: M3S_pca32_structured_scope_ridge
+  baseline: M3_pca32_structured_ridge
+  requirements:
+    gain_over_best_fixed_minimum: 0.01
+    grouped_bootstrap_ci_lower_over_best_fixed_must_exceed: 0.0
+    all_split_seed_gains_over_best_fixed_must_be_positive: true
+    paired_M3S_minus_M3_point_estimate_must_exceed: 0.0
+    paired_M3S_minus_M3_grouped_bootstrap_ci_lower_must_exceed: 0.0
+    all_split_seed_paired_M3S_minus_M3_deltas_must_be_positive: true
+    harmful_to_beneficial_mass_ratio_maximum: 0.5
+    switch_coverage_minimum: 0.01
+    switch_coverage_maximum: 0.5
+    calibration_slope_minimum: 0.5
+    calibration_slope_maximum: 1.5
+    top_predicted_gap_decile_realized_gap_must_be_positive: true
+  scope_only_gate_role: reported_with_same_metrics_but_cannot_rescue_failed_primary_incremental_gate
+  fail_decision: STOP_NO_INCREMENTAL_SCOPE_POLICY_SIGNAL
+  on_fail:
+    natural_phase30_predictions: forbidden
+    natural_outcomes_read_by_phase30: forbidden
+    further_feature_combinations: forbidden
+    further_model_training: forbidden
+    threshold_retuning: forbidden
+
+natural_diagnostic:
+  role: consumed_post_selection_diagnostic_not_holdout_not_final_test
+  historical_consumption:
+    used_in_phase28_candidate_and_training_view_selection: true
+    used_in_phase29_single_feature_confirmation: true
+  rows: 2000
+  groups: 2000
+  expected_classes:
+    bm25_winner: 267
+    dense_winner: 337
+    exact_tie: 1396
+  access_rule: only_after_internal_gate_pass_and_all_phase30_natural_predictions_are_frozen_and_hashed
+  phase30_outcome_reads_if_internal_gate_fails: 0
+  fit_scope: T2_training_view_only
+  replicas: [20260901, 20260917, 20261003]
+  inner_folds_for_calibration: 4
+  prediction: mean_calibrated_gap_across_replicas
+  threshold: 0.0
+  forbidden:
+    - natural_label_based_threshold_tuning
+    - natural_label_based_candidate_addition
+    - natural_label_based_training_view_change
+    - natural_label_based_hyperparameter_change
+    - candidate_replacement_by_scope_only
+  continuation_screen:
+    evaluated_candidate: M3S_pca32_structured_scope_ridge
+    baseline: M3_pca32_structured_ridge
+    gain_over_best_fixed_minimum: 0.01
+    grouped_bootstrap_ci_lower_over_best_fixed_must_exceed: 0.0
+    paired_M3S_minus_M3_point_estimate_must_exceed: 0.0
+    paired_M3S_minus_M3_grouped_bootstrap_ci_lower_must_exceed: 0.0
+    harmful_to_beneficial_mass_ratio_maximum: 0.5
+    switch_coverage_minimum: 0.01
+    switch_coverage_maximum: 0.5
+    calibration_slope_minimum: 0.5
+    calibration_slope_maximum: 1.5
+    top_predicted_gap_decile_realized_gap_must_be_positive: true
+    non_tie_auc_minimum: 0.55
+  fail_decision: STOP_NO_POST_SELECTION_NATURAL_STABILITY
+  pass_decision: ELIGIBLE_FOR_SEPARATELY_FROZEN_OFFICIAL_FINAL_PROTOCOL
+  pass_does_not_mean:
+    - confirmatory_generalization
+    - deployable_router
+    - permission_to_open_official_final_in_phase30
+
+decision_order:
+  - verify_frozen_inputs_and_implementation
+  - extract_and_validate_scope_for_all_T2_queries_without_natural_outcomes
+  - reproduce_historical_M3
+  - run_shared_fold_internal_oof_for_exactly_three_candidates
+  - evaluate_internal_primary_incremental_gate
+  - stop_without_reading_natural_outcomes_if_internal_gate_fails
+  - if_internal_passes_fit_and_freeze_natural_predictions_without_outcomes
+  - then_read_consumed_natural_outcomes_once_for_post_selection_diagnostic
+  - stop_or_mark_candidate_eligible_for_a_separate_future_final_protocol
+
+frozen_inputs:
+  phase28_protocol:
+    path: analysis/hotpotqa_router/phases/phase28/config.yaml
+    bytes: 3571
+    sha256: ac081b0dce455305a5f5ba37351bbf3d7f697d89bb0870ea20be43f8c3e02ad5
+  phase28b_protocol:
+    path: analysis/hotpotqa_router/phases/phase28b/config.yaml
+    bytes: 5204
+    sha256: 2394ca0408426d6b3d8cfd5cbeef998171d1c7252e237a3f76c398ad1870bfcc
+  phase29_protocol:
+    path: analysis/hotpotqa_router/phase29_query_trait_audit_config.yaml
+    bytes: 7722
+    sha256: 65ed305b5ebaa635ac83f5f7824bd541596709087d86418b1eb20286ee212f49
+  historical_model_runner:
+    path: scripts/run_router_phase27_model_audit.py
+    bytes: 101117
+    sha256: 914743b16d087a84ed2e4ac7588f2e9815e69271b016cd6af0dd315c1fcf2580
+  historical_holdout_runner:
+    path: scripts/run_router_phase28b_holdout.py
+    bytes: 38816
+    sha256: 82b1fcb55ac7a5ff2a23f41b6b7a313ad33b80aaadff07f1a4b818fe1b82724c
+  scope_feature_implementation:
+    path: scripts/router_phase29_trait_features.py
+    bytes: 62801
+    sha256: 950040e478429c8bb757c353d8afd63e3182479a5f3981909713c926b8755ed8
+  T2_config:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/config.yaml
+    bytes: 18471
+    sha256: 9fdab56caff8eff5f937da9f5556f5919899a4ea86c545713f2c6b94ca4f31ae
+  T2_outcomes:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/outcomes.jsonl.gz
+    bytes: 5786377
+    sha256: 7bcf31c2aaaf9119602acdbccc913cea40ef87f95167a5ac3f405cd4f6bb6f1a
+  T2_query_summary:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/query_summary.csv.gz
+    bytes: 864236
+    sha256: 4f487d70412bc51ede9e4a286f5fed9433f75ef8904ce296e39c250f2ef2c811
+  T2_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/features.npz
+    bytes: 18292118
+    sha256: 1ab63ff08457aa5a3235dc97d4678d890c94ceacd836a6a0a5c4d03eedd7718c
+  T2_feature_schema:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/feature_schema.json
+    bytes: 11860
+    sha256: 0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa
+  T2_snapshot_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/snapshot_manifest.json
+    bytes: 1831
+    sha256: 61d929a797bf5ea80398488347907af73b9a2bb01179c1331e41792eb195e0fc
+  T2_split_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/audit/split_manifest.json
+    bytes: 693537
+    sha256: 26aa1418dc5b0043dc0a20fd5d33d8872b4b17bf83f6ee1f1ceec5db7a9d1eb2
+  T2_historical_predictions:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/audit/formal_predictions.npz
+    bytes: 894030
+    sha256: b6c9c20128cfbf2ac2f9224e06aa4a6abddf5a8a97c2485eeee081475d0f47f7
+  T2_historical_metrics:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/audit/formal_metrics.json
+    bytes: 313659
+    sha256: 3fb5ea838eb00a411028db0c5b8fbb7d07dc2a776ecb991f4a1eefee5e9e759b
+  phase29_cache_v2:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/corpus_static_cache_v2.npz
+    bytes: 28813932
+    sha256: ee9077eee60184fa4d760f0f457fe693c47913162e3e3eda4e486dbd66bdfebd
+  phase29_cache_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/corpus_static_cache_manifest.json
+    bytes: 1137
+    sha256: 0a9e26f31c425757072b624e226444216b62fda55d7db0cb976239823df0d52d
+  phase29_feature_catalog:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/feature_catalog.json
+    bytes: 56158
+    sha256: c068bac560b1af63c6de6727d6d622cd898261dd12cc687df42c601ba38fa0f0
+  phase29_discovery_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/discovery_features.npz
+    bytes: 4518000
+    sha256: ad3517430a8d54438461b60442801764ead282371f827b5513187cc336b1aec2
+  phase29_discovery_features_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/discovery_features_manifest.json
+    bytes: 1059
+    sha256: 597c1f6389ec0a875777f8f3b96c22e58b5eb851fdebeabba22dd558691aa6d9
+  phase29_discovery_results:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/discovery_single_feature_results.json
+    bytes: 320959
+    sha256: 74c89d0e90aa39dd19a572100e24a2fd1ab834ed4d91d040e6daaa907871e631
+  phase29_natural_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/natural_features.npz
+    bytes: 1506100
+    sha256: 983ebf61986a9c6841a389ca0964cb02c668adef7e105a5784beca32fde270f9
+  phase29_natural_features_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/natural_features_manifest.json
+    bytes: 1049
+    sha256: 4a9634d9cd66592c51d2707b5f800e0338fac3530a8f594d1b15b19fc27ebdb0
+  phase29_natural_results:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/natural_single_feature_results.json
+    bytes: 38907
+    sha256: a53923ee51faa1f5aacaa6036b86713942547a28915163d614472c63f817c6c0
+  phase29_decision:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/decision.json
+    bytes: 635
+    sha256: 80eb1ebb113c43ec12e7783370f2907006e250714fe05f5517a583a9980914c2
+  natural_membership:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/confirmation_sample.json
+    bytes: 240135
+    sha256: 149fac3a34b056df24dfafce325bbd0b2bdee6080502c05f43f404f03482e1a8
+  natural_historical_features:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_features.npz
+    bytes: 3050141
+    sha256: f058fec509c1268721931e517f4563e347b557e78089e7e76fb7ec301a285152
+  natural_historical_features_manifest:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_features_manifest.json
+    bytes: 446
+    sha256: a03bb38f6f5205e692c29c8f6c57a28dd035331597f1a45dc0a9921bdacfdee8
+  natural_historical_predictions:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_predictions.npz
+    bytes: 177542
+    sha256: 1601abf8e94af95a8710cb4a27e30d2e7672347c3433bafdfbdf629a819f914e
+  natural_prediction_freeze:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/prediction_freeze.json
+    bytes: 56922
+    sha256: 43288b1999b6770a0cdeea6ec36b0f5675be786c34dccc2f804e405693075eed
+  natural_outcomes:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_query_metrics.jsonl.gz
+    bytes: 258707
+    sha256: 1dbbbaa11b715ae006fc22b6dab73e8b270a87006cd2bd67ea99047a53c8f5a9
+  natural_historical_results:
+    path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_selection_results.json
+    bytes: 51075
+    sha256: 02c180357c39313bb2ad046081f965a3ab42b4acb2922fdba2f36779090db063
+
+implementation_freeze:
+  planned_runner: scripts/run_router_phase30_scope_incremental.py
+  runner_exists_at_protocol_freeze: false
+  requirement: Before any outcome-associated Phase 2.10 analysis, preflight must freeze SHA256 of this config, the plan, the new runner, reused model code, scope extractor, feature schema, and generated split manifest.
+  code_change_after_preflight: restart_from_preflight_and_invalidate_all_phase30_outputs
+
+outputs:
+  run_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase30_scope_incremental_v1
+  required_before_internal_analysis:
+    - preflight.json
+    - implementation_freeze.json
+    - scope_features_T2.npz
+    - scope_features_T2_manifest.json
+    - split_manifest.json
+  internal_outputs:
+    - internal_oof_predictions.npz
+    - internal_metrics.json
+    - internal_comparison.csv
+    - internal_decision.json
+  conditional_natural_outputs:
+    - natural_prediction_freeze.json
+    - natural_predictions.npz
+    - natural_diagnostic.json
+    - decision.json
+  external_provider_calls_allowed: 0

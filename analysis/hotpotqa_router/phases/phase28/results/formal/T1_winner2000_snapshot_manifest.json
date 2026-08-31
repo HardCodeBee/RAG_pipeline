@@ -1,0 +1,42 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase28_t1_winner2000_snapshot_v1",
+  "status": "complete",
+  "view_id": "T1_winner2000",
+  "query_count": 10000,
+  "outcome_rows": 60000,
+  "class_counts": {
+    "bm25_winner": 2000,
+    "dense_winner": 2000,
+    "exact_tie": 6000
+  },
+  "sample_weight": "none",
+  "tie_source": "phase27_existing_9600_only",
+  "selection_rule": "all_old_winners_then_new_winners_by_frozen_acquisition_rank; old_ties_seeded_without_replacement",
+  "nested_view_query_ids": true,
+  "fresh_dev_rows_read": 0,
+  "final_holdout_rows_read": 0,
+  "external_provider_calls": 0,
+  "artifacts": {
+    "outcomes.jsonl.gz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/snapshot/outcomes.jsonl.gz",
+      "bytes": 4781948,
+      "sha256": "c6f7ef098aab72bc645809dc8df9372f81b89d2276b39910b7883ff731693055"
+    },
+    "query_summary.csv.gz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/snapshot/query_summary.csv.gz",
+      "bytes": 718740,
+      "sha256": "e799e1ab063ec0be7c6e7a3a3df3eca8e2da75648a443767d8dbc6487a4b6d54"
+    },
+    "features.npz": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/snapshot/features.npz",
+      "bytes": 15244583,
+      "sha256": "4bda993455650ca14e42bea5a3059e09a3c97826d540513885d9e5e36a3752ff"
+    },
+    "feature_schema.json": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/snapshot/feature_schema.json",
+      "bytes": 11860,
+      "sha256": "0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa"
+    }
+  },
+  "completed_at_unix": 1787951376.0585566
+}

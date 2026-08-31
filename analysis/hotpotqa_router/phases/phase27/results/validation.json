@@ -1,0 +1,48 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase27_model_audit_9600_v1",
+  "status": "passed",
+  "decision": "STOP_QUERY_ONLY_V1",
+  "selected_candidate": null,
+  "best_diagnostic_candidate": "M3_pca32_structured_ridge",
+  "queries": 9600,
+  "outcome_rows": 57600,
+  "formal_tasks": 12,
+  "formal_prediction_arrays": 24,
+  "learning_curve_rows": 48,
+  "database_integrity": "ok",
+  "fresh_dev_rows_read": 0,
+  "final_holdout_rows_read": 0,
+  "model_audit_external_calls": 0,
+  "stage12_status": "complete",
+  "stage12_conclusion": "GOLD_EVIDENCE_SIGNAL_SUFFICIENT",
+  "artifacts": {
+    "formal_metrics.json": {
+      "bytes": 649847,
+      "sha256": "37da65cfaa86158d0e40b8998003c40d496772e158c833912554c3d31f0032e2"
+    },
+    "formal_predictions.npz": {
+      "bytes": 951489,
+      "sha256": "757a2393d14e87ce32fdbefc593ecd20316d6f19513b3380e7a0af2753fdf8d2"
+    },
+    "learning_curve.csv": {
+      "bytes": 13071,
+      "sha256": "b2c808ce507f01f9e935904092a5112b405f4c58fba5c5840cedc1819cf02e58"
+    },
+    "decision.json": {
+      "bytes": 18770,
+      "sha256": "3a51e0b2cdcefbbc2aa8bcc4120ab907dc5d6f3573481e731a8cc071b76f3eee"
+    },
+    "comparison_4800_9600.csv": {
+      "bytes": 1804,
+      "sha256": "668999fb058e82265860cc6160d571bb176d306e91349129ef48204a294e425c"
+    },
+    "report.md": {
+      "bytes": 7781,
+      "sha256": "2ac01b4aee7e0a8dcae6f6a84f1a651db83ba1905591fa1f08f46499906c59b0"
+    },
+    "privileged_teacher_diagnostic.json": {
+      "bytes": 32372,
+      "sha256": "7e08973412ad917d341a6aed068a6cc726436dd856f55e48872afffae1717f98"
+    }
+  }
+}

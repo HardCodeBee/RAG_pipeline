@@ -1,0 +1,146 @@
+protocol:
+  id: hotpotqa_bd_router_phase28b_holdout_selection_v1
+  version: 1
+  status: frozen_before_confirmation_open
+  frozen_date: '2026-08-29'
+  purpose: Select router candidates for later final validation on a previously sealed natural-distribution confirmation sample.
+  interpretation: This confirmation set is consumed for model and training-view selection and is not the final test set.
+
+scope:
+  dataset: hotpotqa
+  source_partition: train
+  actions: [bm25, dense]
+  default_action: dense
+  target_metric: normalized_token_f1
+  official_final_holdout_opened: false
+  official_final_holdout_rows_allowed: 0
+
+sealed_confirmation:
+  path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/confirmation_sample.json
+  sha256: 149fac3a34b056df24dfafce325bbd0b2bdee6080502c05f43f404f03482e1a8
+  expected_queries: 2000
+  selection: sealed_uniform_one_query_per_new_group_before_any_retrieval
+  group_disjoint_from_phase27_and_phase28_acquisition: true
+  consume_once_for_candidate_selection: true
+
+generation:
+  retriever_candidate_k: 50
+  generation_context_k: 5
+  context_max_tokens: 1800
+  prompt_id: hotpot_short_answer_v1
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0.0
+  max_output_tokens: 64
+  repeats_per_query_action: 3
+  provider_workers: 4
+  hard_budget_usd: 5.0
+
+retrieval_execution:
+  dense_query_batch_size: 100
+  dense_checkpoint_queries: 500
+
+training_views:
+  - id: T0_tiecap
+    config: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/config.yaml
+    config_sha256: d1e117def41a2727c1604786dfde5f729785051c9fdc05f22e1a970b548da23a
+    queries: 8760
+  - id: T1_winner2000
+    config: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/config.yaml
+    config_sha256: 0250751e9d610c8cc5ecfd5091fd41008760051d22bf9e4c5748e9d348c2c4de
+    queries: 10000
+  - id: T2_winner3000
+    config: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/config.yaml
+    config_sha256: 9fdab56caff8eff5f937da9f5556f5919899a4ea86c545713f2c6b94ca4f31ae
+    queries: 12000
+
+candidates:
+  - M3_pca32_structured_ridge
+  - M4_oof_late_fusion
+  - M4_pca32_oof_late_fusion
+
+full_fit:
+  target: mean_f1_gap_bm25_minus_dense
+  sample_weight: none
+  replicas: [20260901, 20260917, 20261003]
+  prediction: average_calibrated_continuous_gap_across_replicas
+  folds: 4
+  group_field: group_id
+  stratification: [bm25_winner, exact_tie, dense_winner]
+  fold_seed_rule: replica_seed_plus_100
+  model_seed: 11
+  preprocessing_fit_scope: training_view_only
+  calibration:
+    method: nonnegative_affine_regression
+    training_predictions: group_stratified_oof_within_training_view_only
+  M3:
+    structured: standard_scaler_30d
+    embedding: mean_center_then_pca32
+    regressor: ridge_alpha_10
+  M4:
+    base_1: structured_xgboost_robust_regularized
+    base_2: raw_embedding_ridge_alpha_10
+    meta: ridge_alpha_1_on_base_oof_predictions
+  M4_PCA:
+    base_1: structured_xgboost_robust_regularized
+    base_2: pca32_plus_structured_ridge_alpha_10
+    meta: ridge_alpha_1_on_base_oof_predictions
+  forbidden:
+    - confirmation_labels_during_fit
+    - confirmation_retrieval_scores_as_router_features
+    - confirmation_based_threshold_tuning
+    - confirmation_based_candidate_addition
+
+evaluation:
+  bootstrap_unit: group_id
+  bootstrap_seed: 20260929
+  bootstrap_resamples: 10000
+  fixed_threshold: 0.0
+  switch_rule: switch_to_bm25_if_calibrated_gap_gt_zero
+  report:
+    - fixed_bm25_mean_f1
+    - fixed_dense_mean_f1
+    - best_fixed_mean_f1
+    - oracle_mean_f1
+    - router_mean_f1
+    - gain_over_fixed_dense
+    - gain_over_best_fixed
+    - grouped_bootstrap_confidence_intervals
+    - beneficial_neutral_harmful_switch_counts
+    - harmful_to_beneficial_mass_ratio
+    - switch_coverage
+    - oracle_recovery
+    - non_tie_auc
+    - gap_spearman
+    - calibration_slope_and_deciles
+
+selection:
+  deployable_gate:
+    practical_gain_over_best_fixed_minimum: 0.01
+    grouped_bootstrap_ci_lower_over_best_fixed_must_exceed: 0.0
+    harmful_to_beneficial_mass_ratio_maximum: 0.5
+    switch_coverage_minimum: 0.01
+    switch_coverage_maximum: 0.5
+    calibration_slope_minimum: 0.5
+    calibration_slope_maximum: 1.5
+    top_predicted_gap_decile_realized_gap_must_be_positive: true
+  research_shortlist_if_no_deployable_candidate:
+    gain_over_best_fixed_minimum: 0.01
+    grouped_bootstrap_ci_lower_over_best_fixed_must_exceed: 0.0
+    harmful_to_beneficial_mass_ratio_maximum: 0.75
+    switch_coverage_maximum: 0.6
+    non_tie_auc_minimum: 0.55
+  ranking:
+    - deployable_gate_passed
+    - grouped_bootstrap_ci_lower_over_best_fixed
+    - lower_harmful_to_beneficial_mass_ratio
+    - lower_complexity
+  lower_complexity_order:
+    - M3_pca32_structured_ridge
+    - M4_pca32_oof_late_fusion
+    - M4_oof_late_fusion
+  paired_candidate_comparison: group_bootstrap_router_f1_difference
+  holdout_reuse_for_retuning: forbidden
+
+outputs:
+  run_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1
+  experiment_record: C:/Users/12442/Desktop/RAG_pipeine/work/experiment_records/2026-08-29/phase28b-independent-holdout-selection

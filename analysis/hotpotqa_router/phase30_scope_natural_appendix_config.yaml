@@ -1,0 +1,97 @@
+protocol:
+  id: hotpotqa_bd_router_phase30_scope_natural_appendix_v1
+  parent_protocol: hotpotqa_bd_router_phase30_scope_incremental_v1
+  role: user_authorized_consumed_post_selection_natural_evaluation
+  requested_at: 2026-08-30
+
+interpretation:
+  natural_set_role: consumed_post_selection_diagnostic_not_holdout_not_final_test
+  reason: natural-2000 was already used in Phase 2.8 selection and Phase 2.9 feature confirmation
+  formal_phase30_internal_decision_remains: STOP_NO_INCREMENTAL_SCOPE_POLICY_SIGNAL
+  appendix_does_not_retroactively_change_formal_decision: true
+  official_final_holdout_rows_allowed: 0
+
+training:
+  view: T2_winner3000
+  queries: 12000
+  groups: 11964
+  class_counts:
+    bm25_winner: 3000
+    dense_winner: 3000
+    exact_tie: 6000
+  target: three_repeat_mean_answer_f1_bm25_minus_dense
+  weights: none
+  resampling: none
+  fit_scope: T2_only
+  replica_seeds: [20260901, 20260917, 20261003]
+  model_seed: 11
+  inner_group_folds_for_calibration: 4
+
+candidates:
+  - id: S0_scope_only_ridge
+    features: scope_1d
+    preprocessing: fold_internal_standard_scaler
+    model: ridge_alpha_10
+  - id: M3_pca32_structured_ridge
+    features: historical_structured_30d_plus_bge_query_embedding_384d
+    preprocessing: fold_internal_structured_scaler_embedding_center_pca32
+    model: ridge_alpha_10
+  - id: M3S_pca32_structured_scope_ridge
+    features: historical_structured_30d_plus_scope_1d_plus_bge_query_embedding_384d
+    preprocessing: fold_internal_structured_scaler_embedding_center_pca32
+    model: ridge_alpha_10
+
+policy:
+  prediction: mean_calibrated_gap_across_three_replicas
+  fixed_threshold: 0.0
+  switch_rule: bm25_if_score_strictly_greater_than_zero_else_dense
+  threshold_tuning: forbidden
+
+evaluation:
+  rows: 2000
+  groups: 2000
+  expected_classes:
+    bm25_winner: 267
+    dense_winner: 337
+    exact_tie: 1396
+  bootstrap:
+    unit: group_id
+    seed: 20260930
+    resamples: 10000
+    confidence: 0.95
+    common_resamples_across_candidates: true
+  primary_comparison: M3S_pca32_structured_scope_ridge_minus_M3_pca32_structured_ridge
+  continuation_screen:
+    gain_over_best_fixed_minimum: 0.01
+    grouped_bootstrap_ci_lower_over_best_fixed_must_exceed: 0.0
+    paired_M3S_minus_M3_point_estimate_must_exceed: 0.0
+    paired_M3S_minus_M3_grouped_bootstrap_ci_lower_must_exceed: 0.0
+    harmful_to_beneficial_mass_ratio_maximum: 0.5
+    switch_coverage_minimum: 0.01
+    switch_coverage_maximum: 0.5
+    calibration_slope_minimum: 0.5
+    calibration_slope_maximum: 1.5
+    top_predicted_gap_decile_realized_gap_must_be_positive: true
+    non_tie_auc_minimum: 0.55
+  fail_decision: STOP_NO_POST_SELECTION_NATURAL_STABILITY
+  pass_decision: ELIGIBLE_FOR_SEPARATELY_FROZEN_OFFICIAL_FINAL_PROTOCOL
+
+information_boundary:
+  prediction_stage_may_read:
+    - T2 features and outcomes
+    - natural query and corpus-static features
+    - natural scope feature
+  prediction_stage_forbidden:
+    - natural outcomes
+    - natural retrieval scores or ranks as model features
+    - qrels or gold evidence as model features
+    - threshold or candidate changes
+  evaluation_stage_may_read_after_prediction_freeze:
+    - previously generated natural BM25 and Dense answer F1 outcomes
+  all_stages_forbidden:
+    - official final holdout
+    - external provider calls
+
+outputs:
+  run_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase30_scope_natural_appendix_v1
+  experiment_record: C:/Users/12442/Desktop/RAG_pipeine/work/experiment_records/2026-08-30/phase30-scope-natural-appendix

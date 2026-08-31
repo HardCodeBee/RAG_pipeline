@@ -1,0 +1,215 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase27_privileged_teacher_v1",
+  "status": "frozen_before_feature_outcome_analysis",
+  "role": "offline_privileged_diagnostic_not_a_deployable_pre_retrieval_router",
+  "entry_condition": "STOP_QUERY_ONLY_V1",
+  "query_count": 9600,
+  "partition": "train_only",
+  "target": "three_repeat_mean_bm25_minus_dense_normalized_token_f1",
+  "forbidden_teacher_features": [
+    "generated_answer",
+    "normalized_token_f1",
+    "answer_correctness",
+    "current_query_action_utility"
+  ],
+  "feature_blocks": {
+    "probe": {
+      "scope": "post_both_retrievers_without_qrels_or_generation",
+      "feature_names": [
+        "probe__bm25_top1",
+        "probe__bm25_top2",
+        "probe__bm25_top3",
+        "probe__bm25_top5",
+        "probe__bm25_mean",
+        "probe__bm25_std",
+        "probe__bm25_range",
+        "probe__bm25_margin_1_2",
+        "probe__bm25_margin_1_5",
+        "probe__bm25_relative_margin_1_2",
+        "probe__bm25_relative_margin_1_5",
+        "probe__bm25_coefficient_of_variation",
+        "probe__bm25_relative_rank_slope",
+        "probe__bm25_normalized_softmax_entropy",
+        "probe__dense_top1",
+        "probe__dense_top2",
+        "probe__dense_top3",
+        "probe__dense_top5",
+        "probe__dense_mean",
+        "probe__dense_std",
+        "probe__dense_range",
+        "probe__dense_margin_1_2",
+        "probe__dense_margin_1_5",
+        "probe__dense_relative_margin_1_2",
+        "probe__dense_relative_margin_1_5",
+        "probe__dense_coefficient_of_variation",
+        "probe__dense_relative_rank_slope",
+        "probe__dense_normalized_softmax_entropy",
+        "probe__bm25_context_token_count",
+        "probe__bm25_context_truncated",
+        "probe__bm25_query_context_jaccard",
+        "probe__dense_context_token_count",
+        "probe__dense_context_truncated",
+        "probe__dense_query_context_jaccard",
+        "probe__same_top1_doc",
+        "probe__doc_overlap_count_at_1",
+        "probe__doc_overlap_count_at_3",
+        "probe__doc_overlap_count_at_5",
+        "probe__doc_overlap_jaccard_at_3",
+        "probe__doc_overlap_jaccard_at_5",
+        "probe__reciprocal_rank_overlap",
+        "probe__bm25_top1_rank_in_dense",
+        "probe__dense_top1_rank_in_bm25",
+        "probe__bm25_minus_dense_relative_margin_1_2",
+        "probe__bm25_minus_dense_relative_margin_1_5",
+        "probe__bm25_minus_dense_coefficient_of_variation",
+        "probe__bm25_minus_dense_relative_rank_slope",
+        "probe__bm25_minus_dense_normalized_softmax_entropy",
+        "probe__bm25_minus_dense_context_token_count_scaled",
+        "probe__bm25_minus_dense_query_context_jaccard"
+      ]
+    },
+    "gold": {
+      "scope": "qrels_and_supporting_evidence_privileged_only",
+      "feature_names": [
+        "gold__bm25_coverage_at_1",
+        "gold__bm25_coverage_at_2",
+        "gold__bm25_coverage_at_3",
+        "gold__bm25_coverage_at_5",
+        "gold__bm25_complete_at_1",
+        "gold__bm25_complete_at_2",
+        "gold__bm25_complete_at_3",
+        "gold__bm25_complete_at_5",
+        "gold__bm25_hit_at_5",
+        "gold__bm25_first_gold_rank_scaled",
+        "gold__bm25_mean_reciprocal_gold_rank",
+        "gold__dense_coverage_at_1",
+        "gold__dense_coverage_at_2",
+        "gold__dense_coverage_at_3",
+        "gold__dense_coverage_at_5",
+        "gold__dense_complete_at_1",
+        "gold__dense_complete_at_2",
+        "gold__dense_complete_at_3",
+        "gold__dense_complete_at_5",
+        "gold__dense_hit_at_5",
+        "gold__dense_first_gold_rank_scaled",
+        "gold__dense_mean_reciprocal_gold_rank",
+        "gold__gold_document_count",
+        "gold__bm25_minus_dense_coverage_at_1",
+        "gold__bm25_minus_dense_coverage_at_2",
+        "gold__bm25_minus_dense_coverage_at_3",
+        "gold__bm25_minus_dense_coverage_at_5",
+        "gold__bm25_minus_dense_complete_at_1",
+        "gold__bm25_minus_dense_complete_at_2",
+        "gold__bm25_minus_dense_complete_at_3",
+        "gold__bm25_minus_dense_complete_at_5",
+        "gold__bm25_minus_dense_hit_at_5",
+        "gold__bm25_minus_dense_first_gold_rank_scaled",
+        "gold__bm25_minus_dense_mean_reciprocal_gold_rank"
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "P0_probe_ridge",
+      "block": "probe",
+      "model": "ridge"
+    },
+    {
+      "candidate_id": "P1_probe_xgb",
+      "block": "probe",
+      "model": "xgboost"
+    },
+    {
+      "candidate_id": "G0_gold_ridge",
+      "block": "gold",
+      "model": "ridge"
+    },
+    {
+      "candidate_id": "G1_gold_xgb",
+      "block": "gold",
+      "model": "xgboost"
+    },
+    {
+      "candidate_id": "G2_probe_gold_xgb",
+      "block": "probe_gold",
+      "model": "xgboost"
+    }
+  ],
+  "primary_gold_rule": "switch_to_bm25_only_if_gold_coverage_at_5_is_higher",
+  "cross_validation": {
+    "split_seeds": [
+      20260901,
+      20260917,
+      20261003
+    ],
+    "outer_folds": 5,
+    "inner_folds": 4,
+    "group_field": "group_id",
+    "strata": [
+      "bm25_winner",
+      "exact_tie",
+      "dense_winner"
+    ],
+    "all_preprocessing_and_calibration_fold_local": true
+  },
+  "models": {
+    "ridge": {
+      "alpha": 10.0,
+      "standardize": true
+    },
+    "xgboost": {
+      "n_estimators": 250,
+      "max_depth": 2,
+      "learning_rate": 0.03,
+      "min_child_weight": 10,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 10.0,
+      "reg_alpha": 0.1,
+      "objective": "reg:squarederror",
+      "tree_method": "hist",
+      "n_jobs_per_worker": 4
+    }
+  },
+  "gate": {
+    "practical_gain_minimum": 0.01,
+    "grouped_bootstrap_ci_lower_must_exceed": 0.0,
+    "all_three_split_gains_positive": true,
+    "harmful_to_beneficial_mass_ratio_maximum": 0.5,
+    "switch_coverage": [
+      0.01,
+      0.5
+    ],
+    "calibration_slope": [
+      0.5,
+      1.5
+    ],
+    "top_decile_realized_gap_positive": true
+  },
+  "decision_rule": [
+    "probe_candidate_passes_gate=>PROBE_SIGNAL_SUFFICIENT",
+    "else_gold_candidate_or_primary_gold_rule_passes=>GOLD_EVIDENCE_SIGNAL_SUFFICIENT",
+    "else=>RETRIEVAL_SIGNAL_INSUFFICIENT"
+  ],
+  "fresh_dev_rows_allowed": 0,
+  "external_calls_allowed": 0,
+  "inputs": {
+    "config": {
+      "path": "analysis\\hotpotqa_router\\phase27_9600_config.yaml",
+      "sha256": "42ff86f54f96c7c58b7f324827c0d2ba5baf34fed9f1ae6d70d311d2d6571ff9"
+    },
+    "database": {
+      "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase3_f1_pairwise_v1\\state.sqlite3",
+      "sha256": "f683e6a36c493b0dd4c4ef493eb1373b577d097655169306f7541599c29562bd"
+    },
+    "snapshot": {
+      "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase27_model_audit_9600_v1\\snapshot\\snapshot_manifest.json",
+      "sha256": "e1f984e58b063896f252ef98b6dbdac4a50a8ef724d69d48a1a4ebc508c467b5"
+    },
+    "query_only_decision": {
+      "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase27_model_audit_9600_v1\\decision.json",
+      "sha256": "3a51e0b2cdcefbbc2aa8bcc4120ab907dc5d6f3573481e731a8cc071b76f3eee"
+    }
+  },
+  "frozen_at_unix": 1787760232.1806774
+}

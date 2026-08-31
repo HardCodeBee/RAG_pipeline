@@ -1,0 +1,84 @@
+{
+  "labels": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\expanded_query_labels.jsonl.gz",
+  "label_rows": 7885,
+  "labels_sha256": "b2313cc537261bfebb8aa2163d0f7c37b629859a517146853ffcf903c92ad885",
+  "outcomes": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\expanded_outcomes.jsonl.gz",
+  "outcome_rows": 47310,
+  "outcomes_sha256": "f4765e878e27714f1f9c5f5d5eddf29c383815effee1b939ce1d48bf23c7d029",
+  "status": {
+    "protocol_id": "hotpotqa_bd_router_phase28_query_expansion_v1",
+    "frozen": true,
+    "retrieval_progress": {
+      "acquisition_total": 54935,
+      "bm25_retrieved": 48866,
+      "dense_retrieved": 48866,
+      "paired_retrieved": 48866,
+      "dense_only_in_progress": 0,
+      "bm25_only_in_progress": 0
+    },
+    "acquisition_counts": {
+      "unretrieved": 6069,
+      "bm25_plus": 4185,
+      "dense_plus": 15992,
+      "equal_low_overlap": 20508,
+      "equal_other": 6103,
+      "equal_zero_overlap": 2078
+    },
+    "selected_counts": {
+      "unselected": 47050,
+      "bm25_plus": 4185,
+      "dense_plus": 3700
+    },
+    "selected_outcome_counts": {
+      "bm25:success": 23655,
+      "dense:success": 23655
+    },
+    "completed_selected_queries": 7885,
+    "new_label_counts": {
+      "bm25_winner": 2020,
+      "dense_winner": 1502,
+      "exact_tie": 4363,
+      "high_margin_bm25_winner": 1921,
+      "high_margin_dense_winner": 1407
+    },
+    "combined_label_counts": {
+      "bm25_winner": 3216,
+      "dense_winner": 3066,
+      "exact_tie": 11203,
+      "high_margin_dense_winner": 2840,
+      "high_margin_bm25_winner": 2986
+    },
+    "quota": {
+      "bm25_winner": 3000,
+      "dense_winner": 3000,
+      "high_margin_bm25_winner": 2500,
+      "high_margin_dense_winner": 2500
+    },
+    "quota_checks": {
+      "bm25_winner": true,
+      "dense_winner": true,
+      "high_margin_bm25_winner": true,
+      "high_margin_dense_winner": true
+    },
+    "all_quotas_met": true,
+    "lane_label_counts": {
+      "bm25_plus": {
+        "bm25_winner": 1806,
+        "dense_winner": 219,
+        "exact_tie": 2160,
+        "high_margin_bm25_winner": 1751,
+        "high_margin_dense_winner": 172
+      },
+      "dense_plus": {
+        "bm25_winner": 214,
+        "dense_winner": 1283,
+        "exact_tie": 2203,
+        "high_margin_bm25_winner": 170,
+        "high_margin_dense_winner": 1235
+      }
+    },
+    "estimated_generation_cost_usd": 11.322684399999906,
+    "fresh_dev_rows_read": 0,
+    "final_holdout_rows_read": 0
+  }
+}

@@ -25,7 +25,7 @@ REPEATS = (0, 1, 2)
 SOURCE_RUN = PROJECT_ROOT / (
     "outputs/router/hotpotqa_bd_router_v1/runs/phase3_f1_pairwise_v1"
 )
-PRIOR_ROOT = PROJECT_ROOT / "output/hotpotqa_router_analysis_20260826"
+PRIOR_ROOT = PROJECT_ROOT / "analysis/hotpotqa_router/phases/phase00_26/results"
 OUTPUT_ROOT = PROJECT_ROOT / (
     "outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot"
 )
@@ -171,13 +171,13 @@ def _summary(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def _prior_outcomes() -> list[dict[str, Any]]:
-    path = PRIOR_ROOT / "data/phase26/phase26_bd_4800_outcomes.jsonl.gz"
+    path = PRIOR_ROOT / "phase26/phase26_bd_4800_outcomes.jsonl.gz"
     with gzip.open(path, "rt", encoding="utf-8") as handle:
         return [json.loads(line) for line in handle if line.strip()]
 
 
 def _prior_summary() -> list[dict[str, str]]:
-    path = PRIOR_ROOT / "data/phase26/phase26_bd_4800_query_summary.csv.gz"
+    path = PRIOR_ROOT / "phase26/phase26_bd_4800_query_summary.csv.gz"
     with gzip.open(path, "rt", encoding="utf-8", newline="") as handle:
         return list(csv.DictReader(handle))
 
@@ -231,7 +231,7 @@ def main() -> int:
         raise ValueError("The 9,600 summary prefix differs from the frozen 4,800 snapshot")
 
     source_features = SOURCE_RUN / "features/train.npz"
-    prior_features = PRIOR_ROOT / "features/phase26/phase26_features_4800.npz"
+    prior_features = PRIOR_ROOT / "phase26/features/phase26_features_4800.npz"
     with np.load(source_features, allow_pickle=False) as source, np.load(
         prior_features, allow_pickle=False
     ) as prior:

@@ -2,7 +2,7 @@
 
 日期：2026-08-26
 
-代码版本：[`64642100638c0a39f43d26cd9e43c8c78e281f40`](https://github.com/HardCodeBee/RAG_pipeline/commit/64642100638c0a39f43d26cd9e43c8c78e281f40)
+历史代码快照：`64642100638c0a39f43d26cd9e43c8c78e281f40`（本地 Git）
 
 分支：`codex/hotpotqa-router-analysis`
 
@@ -66,10 +66,10 @@ Contriever 修订也没有解决该问题：BM25/Contriever pair 本身有 `+0.0
 
 完整配置见：
 
-- [`configs/hotpotqa_bd_router_config.yaml`](configs/hotpotqa_bd_router_config.yaml)
-- [`configs/hotpotqa_contriever_router_config.yaml`](configs/hotpotqa_contriever_router_config.yaml)
-- [`configs/requirements_experiment.txt`](configs/requirements_experiment.txt)
-- [`configs/verified_constraints.txt`](configs/verified_constraints.txt)
+- [`results/source_configs/hotpotqa_bd_router_config.yaml`](results/source_configs/hotpotqa_bd_router_config.yaml)
+- [`results/source_configs/hotpotqa_contriever_router_config.yaml`](results/source_configs/hotpotqa_contriever_router_config.yaml)
+- [`results/source_configs/requirements_experiment.txt`](results/source_configs/requirements_experiment.txt)
+- [`results/source_configs/verified_constraints.txt`](results/source_configs/verified_constraints.txt)
 
 ## 4. 实验结果
 
@@ -104,9 +104,9 @@ Dev 的 oracle 结果：
 
 数据：
 
-- [`data/phase2/phase2_bd_headroom_repeated_summary.json`](data/phase2/phase2_bd_headroom_repeated_summary.json)
-- [`data/phase2/phase2_bd_600_outcomes.jsonl.gz`](data/phase2/phase2_bd_600_outcomes.jsonl.gz)：3,600 rows
-- [`data/phase2/phase2_bd_600_query_summary.csv.gz`](data/phase2/phase2_bd_600_query_summary.csv.gz)：600 rows
+- [`results/phase2/phase2_bd_headroom_repeated_summary.json`](results/phase2/phase2_bd_headroom_repeated_summary.json)
+- [`results/phase2/phase2_bd_600_outcomes.jsonl.gz`](results/phase2/phase2_bd_600_outcomes.jsonl.gz)：3,600 rows
+- [`results/phase2/phase2_bd_600_query_summary.csv.gz`](results/phase2/phase2_bd_600_query_summary.csv.gz)：600 rows
 
 ### 4.2 Phase 2.5：F1 label 与 AC utility 的一致性
 
@@ -130,7 +130,7 @@ Cross-repeat F1 selector 的 mean AC gain 为：
 
 结论为 `GO_AC_LABEL_EXPANSION`，但其含义是“F1 可保留为辅助/screening label”，不是“已经有可部署 Router”。后续 Phase 2.6 的预检索预测 gate 仍必须独立通过。
 
-数据：[`data/phase25/`](data/phase25/summary.json)。
+数据：[`results/phase25/`](results/phase25/summary.json)。
 
 ### 4.3 Phase 2.6：4,800-query B/D 严格预检索 Router
 
@@ -161,12 +161,12 @@ Cross-repeat F1 selector 的 mean AC gain 为：
 
 数据与特征：
 
-- [`data/phase26/summary.json`](data/phase26/summary.json)
-- [`data/phase26/validation.json`](data/phase26/validation.json)
-- [`data/phase26/phase26_bd_4800_outcomes.jsonl.gz`](data/phase26/phase26_bd_4800_outcomes.jsonl.gz)：28,800 rows
-- [`data/phase26/phase26_bd_4800_query_summary.csv.gz`](data/phase26/phase26_bd_4800_query_summary.csv.gz)：4,800 rows
-- [`features/phase26/phase26_features_4800.npz`](features/phase26/phase26_features_4800.npz)
-- [`features/phase26/feature_schema.json`](features/phase26/feature_schema.json)
+- [`results/phase26/summary.json`](results/phase26/summary.json)
+- [`results/phase26/validation.json`](results/phase26/validation.json)
+- [`results/phase26/phase26_bd_4800_outcomes.jsonl.gz`](results/phase26/phase26_bd_4800_outcomes.jsonl.gz)：28,800 rows
+- [`results/phase26/phase26_bd_4800_query_summary.csv.gz`](results/phase26/phase26_bd_4800_query_summary.csv.gz)：4,800 rows
+- [`results/phase26/features/phase26_features_4800.npz`](results/phase26/features/phase26_features_4800.npz)
+- [`results/phase26/features/feature_schema.json`](results/phase26/features/feature_schema.json)
 
 ### 4.4 Contriever 修订：检验 retriever pair 是否是主要问题
 
@@ -192,10 +192,10 @@ BM25/Contriever pair oracle 为 `0.681258`，比最佳 pair-fixed BM25 高 `+0.0
 
 数据与特征：
 
-- [`data/contriever/summary.json`](data/contriever/summary.json)
-- [`data/contriever/phase3_contriever_1200_outcomes.jsonl.gz`](data/contriever/phase3_contriever_1200_outcomes.jsonl.gz)：10,800 rows
-- [`data/contriever/phase3_contriever_1200_query_summary.csv.gz`](data/contriever/phase3_contriever_1200_query_summary.csv.gz)：1,200 rows
-- [`features/contriever/contriever_features_1200.npz`](features/contriever/contriever_features_1200.npz)
+- [`../../auxiliary/contriever/data/summary.json`](../../auxiliary/contriever/data/summary.json)
+- [`../../auxiliary/contriever/data/phase3_contriever_1200_outcomes.jsonl.gz`](../../auxiliary/contriever/data/phase3_contriever_1200_outcomes.jsonl.gz)：10,800 rows
+- [`../../auxiliary/contriever/data/phase3_contriever_1200_query_summary.csv.gz`](../../auxiliary/contriever/data/phase3_contriever_1200_query_summary.csv.gz)：1,200 rows
+- [`../../auxiliary/contriever/features/contriever_features_1200.npz`](../../auxiliary/contriever/features/contriever_features_1200.npz)
 
 ### 4.5 NQ DPR 表征诊断
 
@@ -209,7 +209,7 @@ BM25/Contriever pair oracle 为 `0.681258`，比最佳 pair-fixed BM25 高 `+0.0
 - kNN same-label purity @10/@20/@50：`0.5330/0.5280/0.5176`；
 - cosine silhouette：`0.0037`。
 
-结论：存在方向性可解码信号，但没有形成稳定的局部聚类或自然 decision boundary，未达到预注册的 practical geometry threshold。完整数据位于 [`data/nq_dpr_probe/`](data/nq_dpr_probe/summary.json)。
+结论：存在方向性可解码信号，但没有形成稳定的局部聚类或自然 decision boundary，未达到预注册的 practical geometry threshold。完整数据位于 [`../../auxiliary/nq_dpr_probe/`](../../auxiliary/nq_dpr_probe/summary.json)。
 
 ## 5. 综合判断
 
@@ -258,21 +258,21 @@ hotpotqa_router_analysis_20260826/
 └── code/                    # 本包数据导出脚本
 ```
 
-字段定义见 [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md)，整体导出统计见 [`data/derived_metrics.json`](data/derived_metrics.json)。
+字段定义见 [`results/data_dictionary.md`](results/data_dictionary.md)，整体导出统计见 [`results/derived_metrics.json`](results/derived_metrics.json)。
 
 ## 8. 代码与复现入口
 
 实验代码已经推送到 GitHub，本包不重复复制仓库源代码。应从冻结 commit 读取：
 
-- [`audit_router_phase25.py`](https://github.com/HardCodeBee/RAG_pipeline/blob/64642100638c0a39f43d26cd9e43c8c78e281f40/scripts/audit_router_phase25.py)
-- [`run_router_phase26_bd_f1_gate.py`](https://github.com/HardCodeBee/RAG_pipeline/blob/64642100638c0a39f43d26cd9e43c8c78e281f40/scripts/run_router_phase26_bd_f1_gate.py)
-- [`run_router_phase3_contriever.py`](https://github.com/HardCodeBee/RAG_pipeline/blob/64642100638c0a39f43d26cd9e43c8c78e281f40/scripts/run_router_phase3_contriever.py)
-- [`run_router_phase3_train.py`](https://github.com/HardCodeBee/RAG_pipeline/blob/64642100638c0a39f43d26cd9e43c8c78e281f40/scripts/run_router_phase3_train.py)
-- [`analyze_dpr_retriever_preference_space.py`](https://github.com/HardCodeBee/RAG_pipeline/blob/64642100638c0a39f43d26cd9e43c8c78e281f40/scripts/analyze_dpr_retriever_preference_space.py)
+- [`audit_router_phase25.py`](../../../../scripts/audit_router_phase25.py)
+- [`run_router_phase26_bd_f1_gate.py`](../../../../scripts/run_router_phase26_bd_f1_gate.py)
+- [`run_router_phase3_contriever.py`](../../../../scripts/run_router_phase3_contriever.py)
+- [`run_router_phase3_train.py`](../../../../scripts/run_router_phase3_train.py)
+- [`analyze_dpr_retriever_preference_space.py`](../../../../scripts/analyze_dpr_retriever_preference_space.py)
 
 本包自身新增一份辅助代码：
 
-- [`code/export_compact_data.py`](code/export_compact_data.py)：从原始 JSONL/SQLite 导出冻结、去上下文的分析数据。
+- [`export_compact_data_legacy.py`](../../auxiliary/export_compact_data_legacy.py)：历史紧凑导出脚本，仅用于解释旧包来源。
 
 ## 9. 未包含内容
 

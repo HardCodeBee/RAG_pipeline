@@ -21,7 +21,7 @@ from scripts import run_router_phase27_model_audit as audit
 def arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--config", default="analysis/hotpotqa_router/phase27_9600_config.yaml"
+        "--config", default="analysis/hotpotqa_router/phases/phase27/config.yaml"
     )
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--max-workers", type=int, default=3)

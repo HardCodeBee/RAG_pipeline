@@ -14,8 +14,10 @@ import yaml
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-BASE_CONFIG = PROJECT_ROOT / "analysis/hotpotqa_router/phase27_config.yaml"
-EXPANDED_CONFIG = PROJECT_ROOT / "analysis/hotpotqa_router/phase27_9600_config.yaml"
+BASE_CONFIG = PROJECT_ROOT / (
+    "analysis/hotpotqa_router/phases/phase27/config_screen_4800.yaml"
+)
+EXPANDED_CONFIG = PROJECT_ROOT / "analysis/hotpotqa_router/phases/phase27/config.yaml"
 BASE_OUTPUT = (
     PROJECT_ROOT
     / "outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_v1"

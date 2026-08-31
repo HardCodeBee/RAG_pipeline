@@ -1,0 +1,134 @@
+protocol:
+  id: hotpotqa_bd_router_phase28_query_expansion_v1
+  version: 1
+  status: frozen_for_execution
+  frozen_date: '2026-08-27'
+
+scope:
+  dataset: hotpotqa
+  source_partition: train
+  actions: [bm25, dense]
+  existing_query_count: 9600
+  exclude_existing_group_ids: true
+  fresh_dev_reads_allowed: 0
+  final_holdout_reads_allowed: 0
+
+acquisition:
+  pool_seed: 2026082701
+  confirmation_seed: 2026082702
+  stratum_seed: 2026082703
+  confirmation_queries: 2000
+  retrieval_block_size: 1000
+  dense_query_batch_size: 100
+  strata:
+    bm25_plus: bm25_evidence_page_recall_gt_dense
+    dense_plus: dense_evidence_page_recall_gt_bm25
+    equal_zero_overlap: equal_evidence_and_top5_jaccard_zero
+    equal_low_overlap: equal_evidence_and_top5_jaccard_lte_0_25
+    equal_other: all_remaining_equal_evidence
+  pilot_per_primary_stratum: 500
+  pilot_min_desired_winner_rate: 0.25
+  generation_batch_cap_per_stratum: 2000
+  maximum_directed_generation_queries: 15000
+
+generation:
+  retriever_candidate_k: 50
+  generation_context_k: 5
+  context_max_tokens: 1800
+  prompt_id: hotpot_short_answer_v1
+  model: gpt-4.1-mini-2025-04-14
+  temperature: 0.0
+  max_output_tokens: 64
+  repeats_per_query_action: 3
+  provider_workers: 4
+  hard_budget_usd: 20.0
+
+labels:
+  target: mean_f1_gap_bm25_minus_dense
+  tie_tolerance: 1.0e-12
+  high_margin_gap: 0.10
+  quota:
+    bm25_winner: 3000
+    dense_winner: 3000
+    high_margin_bm25_winner: 2500
+    high_margin_dense_winner: 2500
+  existing:
+    bm25_winner: 1196
+    dense_winner: 1564
+    exact_tie: 6840
+    high_margin_bm25_winner: 1065
+    high_margin_dense_winner: 1433
+
+training_views:
+  sample_weight: none
+  tie_source: existing_9600_only
+  tie_seed: 2026082704
+  tie_count: 6000
+  checkpoints:
+    - id: T0_tiecap
+      bm25_winner: 1196
+      dense_winner: 1564
+      exact_tie: 6000
+    - id: T1_winner2000
+      bm25_winner: 2000
+      dense_winner: 2000
+      exact_tie: 6000
+    - id: T2_winner3000
+      bm25_winner: 3000
+      dense_winner: 3000
+      exact_tie: 6000
+
+features:
+  structured_dimensions: 30
+  embedding_dimensions: 384
+  embedding_model: BAAI/bge-small-en-v1.5
+  pca_dimensions: 32
+  information_boundary:
+    allowed:
+      - query_text_transformations
+      - frozen_query_embedding
+      - corpus_static_lexical_statistics
+      - frozen_corpus_prototype_summaries
+    forbidden:
+      - current_query_retrieved_documents
+      - current_query_retrieval_scores_or_ranks
+      - qrels
+      - gold_supporting_facts
+      - acquisition_stratum
+      - generated_answers_at_inference
+      - f1_or_answer_correctness_at_inference
+
+training:
+  target: mean_f1_gap
+  exact_ties: retain_as_zero
+  sample_weight: none
+  outer_folds: 5
+  inner_folds: 4
+  split_kind: repeated_stratified_group_kfold
+  split_seeds: [20260901, 20260917, 20261003]
+  group_field: group_id
+  fold_internal_only:
+    - structured_scaler
+    - embedding_centering
+    - pca
+    - hyperparameter_selection
+    - early_stopping
+    - late_fusion
+    - score_calibration
+  candidates:
+    - M3_pca32_structured_ridge
+    - M4_oof_late_fusion
+    - M4_pca32_oof_late_fusion
+
+evaluation:
+  default_action: dense
+  practical_gain: 0.01
+  grouped_bootstrap_resamples: 10000
+  grouped_bootstrap_seed: 20260902
+  require_ci_lower_above_zero: true
+  require_all_split_seed_gains_positive: true
+  confirmation_open_rule: internal_formal_gate_pass_only
+
+outputs:
+  run_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1
+  existing_snapshot: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot

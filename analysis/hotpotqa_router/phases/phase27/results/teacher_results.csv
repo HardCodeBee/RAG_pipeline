@@ -1,0 +1,11 @@
+record_type,id,information_or_comparison,gain_or_increment,ci95_lower,ci95_upper,switch_coverage,harmful_to_beneficial_mass_ratio,non_tie_auc,notes
+trained_candidate,P0_probe_ridge,probe,0.013439,0.009464,0.017491,0.351,0.580,0.656,post_retrieval_qrels_free
+trained_candidate,P1_probe_xgb,probe,0.014834,0.010703,0.018926,0.346,0.572,0.667,oracle_recovery_0.214_fails_only_harmful_ratio
+trained_candidate,G0_gold_ridge,gold,0.038390,0.033399,0.043573,0.656,0.372,0.805,privileged_not_deployable
+trained_candidate,G1_gold_xgb,gold,0.039265,0.034225,0.044398,0.626,0.358,0.801,oracle_recovery_0.566_privileged_not_deployable
+trained_candidate,G2_probe_gold_xgb,probe_gold,0.038447,0.033538,0.043442,0.582,0.347,0.809,privileged_not_deployable
+gold_rule,gold_coverage_at_1_rule,gold_coverage_at_1,0.010335,0.007829,0.012911,0.077,0.291,,privileged_rule
+gold_rule,gold_coverage_at_3_rule,gold_coverage_at_3,0.022458,0.019396,0.025637,0.094,0.095,,privileged_rule
+gold_rule,gold_coverage_at_5_rule,gold_coverage_at_5,0.026574,0.023418,0.029841,0.089,0.053,,predeclared_primary_gold_rule_passed
+paired_increment,probe_xgb_minus_query_only_m3,P1_minus_M3,0.012380,0.008471,0.016380,,,,grouped_paired_bootstrap
+paired_increment,gold_xgb_minus_probe_xgb,G1_minus_P1,0.024431,0.020462,0.028516,,,,grouped_paired_bootstrap

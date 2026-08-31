@@ -1,0 +1,100 @@
+layout_version: 1
+storage: local_only
+remote_artifacts: false
+shared_cache:
+  bm25_document_lengths: outputs/router/hotpotqa_bd_router_v1/cache/bm25_doc_lengths.npy
+
+phases:
+  phase00_26:
+    label: Phase 0-2.6
+    spec_status: frozen
+    result_status: complete
+    deployable: false
+    decision: STOP_BEFORE_AC_LABELS
+    config: analysis/hotpotqa_router/phases/phase00_26/config.yaml
+    conclusion: analysis/hotpotqa_router/phases/phase00_26/conclusion.md
+    results: analysis/hotpotqa_router/phases/phase00_26/results
+    required_paths:
+      - analysis/hotpotqa_router/phases/phase00_26/results/phase1_metrics.json
+      - analysis/hotpotqa_router/phases/phase00_26/results/phase2_metrics.json
+      - analysis/hotpotqa_router/phases/phase00_26/results/phase26/summary.json
+      - analysis/hotpotqa_router/phases/phase00_26/results/phase26/validation.json
+
+  phase27:
+    label: Phase 2.7
+    spec_status: frozen
+    result_status: complete
+    deployable: false
+    decision: STOP_QUERY_ONLY_V1
+    config: analysis/hotpotqa_router/phases/phase27/config.yaml
+    config_sha256: 42ff86f54f96c7c58b7f324827c0d2ba5baf34fed9f1ae6d70d311d2d6571ff9
+    conclusion: analysis/hotpotqa_router/phases/phase27/conclusion.md
+    results: analysis/hotpotqa_router/phases/phase27/results
+    entrypoint: scripts/run_router_phase27_model_audit.py
+    decision_check:
+      path: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/decision.json
+      field: decision
+      equals: STOP_QUERY_ONLY_V1
+    required_paths:
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/phase27_features_9600.npz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/phase27_bd_9600_outcomes.jsonl.gz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/phase27_bd_9600_query_summary.csv.gz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/feature_schema.json
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/snapshot_manifest.json
+
+  phase28:
+    label: Phase 2.8
+    spec_status: frozen
+    result_status: complete
+    deployable: false
+    decision: DO_NOT_OPEN_CONFIRMATION_POOL
+    config: analysis/hotpotqa_router/phases/phase28/config.yaml
+    config_sha256: ac081b0dce455305a5f5ba37351bbf3d7f697d89bb0870ea20be43f8c3e02ad5
+    conclusion: analysis/hotpotqa_router/phases/phase28/conclusion.md
+    results: analysis/hotpotqa_router/phases/phase28/results
+    entrypoint: scripts/run_router_phase28_query_expansion.py
+    depends_on: [phase27]
+    confirmation_opened_in_phase: false
+    decision_check:
+      path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_decision.json
+      field: decision
+      equals: DO_NOT_OPEN_CONFIRMATION_POOL
+    required_paths:
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/expanded_query_labels.jsonl.gz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/expanded_outcomes.jsonl.gz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/new_features_t2.npz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/manifest.json
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/snapshot/snapshot_manifest.json
+
+  phase28b:
+    label: Phase 2.8b
+    spec_status: frozen
+    result_status: complete
+    data_role: consumed_candidate_selection
+    consumed: true
+    final_holdout_opened: false
+    reuse_for_retuning: forbidden
+    deployable: false
+    decision: NO_QUALIFIED_CANDIDATE_DIAGNOSTIC_TOP2_ONLY
+    config: analysis/hotpotqa_router/phases/phase28b/config.yaml
+    config_sha256: 2394ca0408426d6b3d8cfd5cbeef998171d1c7252e237a3f76c398ad1870bfcc
+    conclusion: analysis/hotpotqa_router/phases/phase28b/conclusion.md
+    results: analysis/hotpotqa_router/phases/phase28b/results
+    entrypoint: scripts/run_router_phase28b_holdout.py
+    depends_on: [phase27, phase28]
+    decision_check:
+      path: outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_selection_results.json
+      field: recommendation
+      equals: NO_QUALIFIED_CANDIDATE_DIAGNOSTIC_TOP2_ONLY
+    required_paths:
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_features.npz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_predictions.npz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_query_metrics.jsonl.gz
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/prediction_freeze.json
+      - outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_open_manifest.json
+    next_gate: NEW_NATURAL_DISTRIBUTION_PROTOCOL_REQUIRED
+
+auxiliary:
+  contriever: analysis/hotpotqa_router/auxiliary/contriever
+  nq_dpr_probe: analysis/hotpotqa_router/auxiliary/nq_dpr_probe
+  retrieval_context: analysis/hotpotqa_router/auxiliary/retrieval_context

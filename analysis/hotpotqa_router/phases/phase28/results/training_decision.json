@@ -1,0 +1,1340 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase28_query_expansion_v1",
+  "status": "complete",
+  "decision": "DO_NOT_OPEN_CONFIRMATION_POOL",
+  "reason": "No view/candidate passed every frozen internal gate.",
+  "passing_candidates": [],
+  "best_diagnostic_by_ci_lower": {
+    "view": "T2_winner3000",
+    "candidate_id": "M4_pca32_oof_late_fusion",
+    "consensus_gain_over_fixed_dense": 0.042737838476723224,
+    "gain_ci95": [
+      0.03589554036287149,
+      0.04943172068976968
+    ],
+    "failed_checks": [
+      "harmful_to_beneficial_mass_ratio",
+      "switch_coverage"
+    ]
+  },
+  "comparison_csv": {
+    "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_scale_comparison.csv",
+    "sha256": "9d3aa279d310b2b5b242ea6f78325cf6982bd6faeaca662960f2ef5dc9a6bcb5"
+  },
+  "views": {
+    "T0_tiecap": {
+      "query_count": 8760,
+      "validation": {
+        "status": "passed",
+        "protocol_id": "hotpotqa_bd_router_phase28_t0_tiecap_retrain_v1",
+        "external_calls": 0,
+        "frozen_inputs": {
+          "outcomes": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T0_tiecap\\snapshot\\outcomes.jsonl.gz",
+            "bytes": 4162255,
+            "sha256": "06850575a93ba38326d75e38555863448dd917fa975fb89083ed9173f6e988c3"
+          },
+          "query_summary": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T0_tiecap\\snapshot\\query_summary.csv.gz",
+            "bytes": 630013,
+            "sha256": "4646590364b17550c66187445823eb573b931879a396a2e4c9ec48bfa351f43d"
+          },
+          "features": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T0_tiecap\\snapshot\\features.npz",
+            "bytes": 13354458,
+            "sha256": "d6f83d8d86540eff15cf3ce25d50f22eba35640919d017a8cf28b566be0cd8af"
+          },
+          "feature_schema": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T0_tiecap\\snapshot\\feature_schema.json",
+            "bytes": 11860,
+            "sha256": "0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa"
+          },
+          "snapshot_manifest": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T0_tiecap\\snapshot\\snapshot_manifest.json",
+            "bytes": 1806,
+            "sha256": "f53d8aa6acce7b59fd0f982f8b859a86b6666b1d52ec061e7ab3904411eea1c2"
+          }
+        },
+        "queries_read": 8760,
+        "outcome_rows_read": 52560,
+        "actions": [
+          "bm25",
+          "dense"
+        ],
+        "repeat_ids": [
+          0,
+          1,
+          2
+        ],
+        "partition": "train_only",
+        "fresh_dev_rows_read": 0,
+        "final_holdout_rows_read": 0,
+        "partial_9600_rows_read": 0,
+        "complete_9600_queries_read": 0,
+        "feature_dimensions": {
+          "lexical": 17,
+          "corpus_static": 13,
+          "embedding": 384,
+          "structured": 30,
+          "raw_full": 414
+        },
+        "strata_counts": {
+          "bm25_winner": 1196,
+          "dense_winner": 1564,
+          "exact_tie": 6000
+        },
+        "fixed_bm25_mean_f1": 0.6120036340205268,
+        "fixed_dense_mean_f1": 0.6427262610414745,
+        "bd_oracle_mean_f1": 0.7187327229517143,
+        "model_input_arrays": [
+          "lexical",
+          "corpus_static",
+          "query_embedding"
+        ],
+        "forbidden_online_fields_loaded_as_model_features": []
+      },
+      "config": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/config.yaml",
+        "sha256": "d1e117def41a2727c1604786dfde5f729785051c9fdc05f22e1a970b548da23a"
+      },
+      "formal_metrics": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/audit/formal_metrics.json",
+        "sha256": "c8de0a5fe6d928738d4a00d9f5a691dabd861077aaabe3b02c6cf0aa4d548ac0"
+      },
+      "formal_predictions": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T0_tiecap/audit/formal_predictions.npz",
+        "sha256": "e3dd2b55fa44331cb222d3aea92d770f374dd51e565f3a0014a9acc07f4d1f82"
+      },
+      "candidates": {
+        "M3_pca32_structured_ridge": {
+          "passed": false,
+          "checks": {
+            "practical_gain": false,
+            "grouped_bootstrap_ci_lower": false,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.003021337754816821,
+          "split_seed_gains": [
+            0.0035777108643430373,
+            0.0037297819945444244,
+            0.001756520405563001
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6453494326511765,
+            "fixed_bm25_mean_f1": 0.6120036340205268,
+            "fixed_dense_mean_f1": 0.6427262610414745,
+            "oracle_mean_f1": 0.7187327229517143,
+            "oracle_headroom": 0.07600646191023985,
+            "gain_over_fixed_dense": 0.0026231716097020893,
+            "policy_regret": 0.0733832903005378,
+            "oracle_recovery": 0.03451248148874414,
+            "switch_queries": 1504,
+            "switch_coverage": 0.17168949771689498,
+            "beneficial_switches": 205,
+            "neutral_switches": 1120,
+            "harmful_switches": 179,
+            "missed_bm25_beneficial_switches": 991,
+            "beneficial_gain_mass": 0.013287450826973376,
+            "harmful_loss_mass": 0.010664279217271286,
+            "harmful_to_beneficial_mass_ratio": 0.8025827795067297,
+            "conditional_gain_all_switches": 0.015278579322466958,
+            "conditional_gain_beneficial": 0.5677954597282282,
+            "conditional_loss_harmful": -0.5218943348787513,
+            "high_margin_bm25_winner_recall": 0.17370892018779344,
+            "gap_mae": 0.20445006500125762,
+            "gap_rmse": 0.37907278917331316,
+            "gap_spearman": 0.09613687831501701,
+            "non_tie_auc": 0.5853163571666852,
+            "calibration": {
+              "intercept": 0.0048175399555202315,
+              "slope": 1.1552776866080707,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.09044743676924719,
+                  "realized_gap_mean": -0.11650928079240731
+                },
+                {
+                  "decile": 2,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.0648907867708588,
+                  "realized_gap_mean": -0.07036994448477249
+                },
+                {
+                  "decile": 3,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.05255811425698678,
+                  "realized_gap_mean": -0.07279434280556049
+                },
+                {
+                  "decile": 4,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.04320928611952843,
+                  "realized_gap_mean": -0.026302611546003003
+                },
+                {
+                  "decile": 5,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.03463533724518469,
+                  "realized_gap_mean": -0.01947605873565197
+                },
+                {
+                  "decile": 6,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.026280569869492017,
+                  "realized_gap_mean": -0.01751459352627851
+                },
+                {
+                  "decile": 7,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.017931572434469252,
+                  "realized_gap_mean": -0.009087529238240664
+                },
+                {
+                  "decile": 8,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.008695038341016748,
+                  "realized_gap_mean": -0.016509485831388192
+                },
+                {
+                  "decile": 9,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.003200159387964217,
+                  "realized_gap_mean": 0.020437971574075238
+                },
+                {
+                  "decile": 10,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.02781487058390843,
+                  "realized_gap_mean": 0.020899605176751507
+                }
+              ],
+              "top_decile_realized_gap": 0.020899605176751507
+            },
+            "gain_ci95": [
+              -0.00018881733924455465,
+              0.00542670667537479
+            ]
+          }
+        },
+        "M4_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": false,
+            "grouped_bootstrap_ci_lower": false,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.0017988957117480396,
+          "split_seed_gains": [
+            0.003960905883598311,
+            0.0011082768186177925,
+            0.00032750443302801595
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6452886099828102,
+            "fixed_bm25_mean_f1": 0.6120036340205268,
+            "fixed_dense_mean_f1": 0.6427262610414745,
+            "oracle_mean_f1": 0.7187327229517143,
+            "oracle_headroom": 0.07600646191023985,
+            "gain_over_fixed_dense": 0.0025623489413357436,
+            "policy_regret": 0.07344411296890407,
+            "oracle_recovery": 0.03371225126044888,
+            "switch_queries": 1337,
+            "switch_coverage": 0.15262557077625571,
+            "beneficial_switches": 185,
+            "neutral_switches": 976,
+            "harmful_switches": 176,
+            "missed_bm25_beneficial_switches": 1011,
+            "beneficial_gain_mass": 0.01339682112771366,
+            "harmful_loss_mass": 0.010834472186377918,
+            "harmful_to_beneficial_mass_ratio": 0.8087345559884295,
+            "conditional_gain_all_switches": 0.01678846426783928,
+            "conditional_gain_beneficial": 0.6343575842095767,
+            "conditional_loss_harmful": -0.5392612292765372,
+            "high_margin_bm25_winner_recall": 0.16338028169014085,
+            "gap_mae": 0.20324595579604007,
+            "gap_rmse": 0.37942741518744055,
+            "gap_spearman": 0.07801623011097505,
+            "non_tie_auc": 0.567309830723041,
+            "calibration": {
+              "intercept": 0.004176157549863228,
+              "slope": 1.1377485826676177,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.08997376432765415,
+                  "realized_gap_mean": -0.09787999145918115
+                },
+                {
+                  "decile": 2,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.06253001211672003,
+                  "realized_gap_mean": -0.0704106294411763
+                },
+                {
+                  "decile": 3,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.0497292331688703,
+                  "realized_gap_mean": -0.057910206726199426
+                },
+                {
+                  "decile": 4,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.040155641531368524,
+                  "realized_gap_mean": -0.03747482288020958
+                },
+                {
+                  "decile": 5,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.03185851043024462,
+                  "realized_gap_mean": -0.02802464847729771
+                },
+                {
+                  "decile": 6,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.02435683304841745,
+                  "realized_gap_mean": -0.03765640938203679
+                },
+                {
+                  "decile": 7,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.017203696255455557,
+                  "realized_gap_mean": 0.0027585234662080857
+                },
+                {
+                  "decile": 8,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.009411395600631058,
+                  "realized_gap_mean": -0.007675874366768497
+                },
+                {
+                  "decile": 9,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.00044417177107425776,
+                  "realized_gap_mean": 0.005630511955611024
+                },
+                {
+                  "decile": 10,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.018039445181394893,
+                  "realized_gap_mean": 0.02141727710157449
+                }
+              ],
+              "top_decile_realized_gap": 0.02141727710157449
+            },
+            "gain_ci95": [
+              -0.0003394554907440684,
+              0.005480856895272309
+            ]
+          }
+        },
+        "M4_pca32_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": false,
+            "grouped_bootstrap_ci_lower": false,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.0022049247208480068,
+          "split_seed_gains": [
+            0.0029346255123535755,
+            0.0032760970961802794,
+            0.00040405155401016527
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6457280709217673,
+            "fixed_bm25_mean_f1": 0.6120036340205268,
+            "fixed_dense_mean_f1": 0.6427262610414745,
+            "oracle_mean_f1": 0.7187327229517143,
+            "oracle_headroom": 0.07600646191023985,
+            "gain_over_fixed_dense": 0.0030018098802928527,
+            "policy_regret": 0.07300465202994699,
+            "oracle_recovery": 0.03949414043029463,
+            "switch_queries": 1537,
+            "switch_coverage": 0.17545662100456622,
+            "beneficial_switches": 202,
+            "neutral_switches": 1156,
+            "harmful_switches": 179,
+            "missed_bm25_beneficial_switches": 994,
+            "beneficial_gain_mass": 0.014020976895374312,
+            "harmful_loss_mass": 0.011019167015081459,
+            "harmful_to_beneficial_mass_ratio": 0.7859057965295424,
+            "conditional_gain_all_switches": 0.017108558589047095,
+            "conditional_gain_beneficial": 0.6080384039776185,
+            "conditional_loss_harmful": -0.5392620282240982,
+            "high_margin_bm25_winner_recall": 0.17464788732394365,
+            "gap_mae": 0.20425514277434825,
+            "gap_rmse": 0.37911445574012886,
+            "gap_spearman": 0.09444724626034372,
+            "non_tie_auc": 0.583787924796209,
+            "calibration": {
+              "intercept": 0.003912960450293681,
+              "slope": 1.125376719133468,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.09331893424111455,
+                  "realized_gap_mean": -0.11907058288701587
+                },
+                {
+                  "decile": 2,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.0657032181117887,
+                  "realized_gap_mean": -0.08449269096563272
+                },
+                {
+                  "decile": 3,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.052869753509604225,
+                  "realized_gap_mean": -0.045642643564683845
+                },
+                {
+                  "decile": 4,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.04214117141099734,
+                  "realized_gap_mean": -0.03996147977342567
+                },
+                {
+                  "decile": 5,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.03337283274677891,
+                  "realized_gap_mean": -0.01649937323668145
+                },
+                {
+                  "decile": 6,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.02524341797371978,
+                  "realized_gap_mean": -0.014224244830161324
+                },
+                {
+                  "decile": 7,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.017013478400568653,
+                  "realized_gap_mean": -0.008375056681740597
+                },
+                {
+                  "decile": 8,
+                  "queries": 876,
+                  "predicted_gap_mean": -0.00795859915395742,
+                  "realized_gap_mean": -0.009846297285765287
+                },
+                {
+                  "decile": 9,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.0034830893301849267,
+                  "realized_gap_mean": 0.019646717644281803
+                },
+                {
+                  "decile": 10,
+                  "queries": 876,
+                  "predicted_gap_mean": 0.026369487501944552,
+                  "realized_gap_mean": 0.01123938137134908
+                }
+              ],
+              "top_decile_realized_gap": 0.01123938137134908
+            },
+            "gain_ci95": [
+              -7.991749541116669e-06,
+              0.005986764310835604
+            ]
+          }
+        }
+      }
+    },
+    "T1_winner2000": {
+      "query_count": 10000,
+      "validation": {
+        "status": "passed",
+        "protocol_id": "hotpotqa_bd_router_phase28_t1_winner2000_retrain_v1",
+        "external_calls": 0,
+        "frozen_inputs": {
+          "outcomes": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T1_winner2000\\snapshot\\outcomes.jsonl.gz",
+            "bytes": 4781948,
+            "sha256": "c6f7ef098aab72bc645809dc8df9372f81b89d2276b39910b7883ff731693055"
+          },
+          "query_summary": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T1_winner2000\\snapshot\\query_summary.csv.gz",
+            "bytes": 718740,
+            "sha256": "e799e1ab063ec0be7c6e7a3a3df3eca8e2da75648a443767d8dbc6487a4b6d54"
+          },
+          "features": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T1_winner2000\\snapshot\\features.npz",
+            "bytes": 15244583,
+            "sha256": "4bda993455650ca14e42bea5a3059e09a3c97826d540513885d9e5e36a3752ff"
+          },
+          "feature_schema": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T1_winner2000\\snapshot\\feature_schema.json",
+            "bytes": 11860,
+            "sha256": "0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa"
+          },
+          "snapshot_manifest": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T1_winner2000\\snapshot\\snapshot_manifest.json",
+            "bytes": 1831,
+            "sha256": "42a63555b3a42032d595033074180d794b6d3c627ff7b2f17e649429e57841a7"
+          }
+        },
+        "queries_read": 10000,
+        "outcome_rows_read": 60000,
+        "actions": [
+          "bm25",
+          "dense"
+        ],
+        "repeat_ids": [
+          0,
+          1,
+          2
+        ],
+        "partition": "train_only",
+        "fresh_dev_rows_read": 0,
+        "final_holdout_rows_read": 0,
+        "partial_9600_rows_read": 0,
+        "complete_9600_queries_read": 0,
+        "feature_dimensions": {
+          "lexical": 17,
+          "corpus_static": 13,
+          "embedding": 384,
+          "structured": 30,
+          "raw_full": 414
+        },
+        "strata_counts": {
+          "bm25_winner": 2000,
+          "dense_winner": 2000,
+          "exact_tie": 6000
+        },
+        "fixed_bm25_mean_f1": 0.6084894367963855,
+        "fixed_dense_mean_f1": 0.6140276526693413,
+        "bd_oracle_mean_f1": 0.7317672314082436,
+        "model_input_arrays": [
+          "lexical",
+          "corpus_static",
+          "query_embedding"
+        ],
+        "forbidden_online_fields_loaded_as_model_features": []
+      },
+      "config": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/config.yaml",
+        "sha256": "0250751e9d610c8cc5ecfd5091fd41008760051d22bf9e4c5748e9d348c2c4de"
+      },
+      "formal_metrics": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/audit/formal_metrics.json",
+        "sha256": "5104d51b62a5a2544bab2f5316d8727966b1d4eb57ec95d099d46e551699318a"
+      },
+      "formal_predictions": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T1_winner2000/audit/formal_predictions.npz",
+        "sha256": "16f308eee7a400bd9d83ae6fbd5b5881e9af1ce1826cd06bf87ee962309ecfbd"
+      },
+      "candidates": {
+        "M3_pca32_structured_ridge": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.0187927615080674,
+          "split_seed_gains": [
+            0.018917198935746588,
+            0.018389703974224514,
+            0.01907138161423109
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.633614181750161,
+            "fixed_bm25_mean_f1": 0.6084894367963855,
+            "fixed_dense_mean_f1": 0.6140276526693413,
+            "oracle_mean_f1": 0.7317672314082436,
+            "oracle_headroom": 0.11773957873890228,
+            "gain_over_fixed_dense": 0.01958652908081965,
+            "policy_regret": 0.09815304965808258,
+            "oracle_recovery": 0.16635467266495388,
+            "switch_queries": 4480,
+            "switch_coverage": 0.448,
+            "beneficial_switches": 939,
+            "neutral_switches": 2881,
+            "harmful_switches": 660,
+            "missed_bm25_beneficial_switches": 1061,
+            "beneficial_gain_mass": 0.058350533068890126,
+            "harmful_loss_mass": 0.03876400398807047,
+            "harmful_to_beneficial_mass_ratio": 0.6643299032470654,
+            "conditional_gain_all_switches": 0.043719930983972435,
+            "conditional_gain_beneficial": 0.6214114277837074,
+            "conditional_loss_harmful": -0.5873333937586434,
+            "high_margin_bm25_winner_recall": 0.47703375760929717,
+            "gap_mae": 0.2601752789888076,
+            "gap_rmse": 0.43918461969462474,
+            "gap_spearman": 0.10780091788924065,
+            "non_tie_auc": 0.59424125,
+            "calibration": {
+              "intercept": 0.0005650210748970892,
+              "slope": 1.082451830159578,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.08698021720044816,
+                  "realized_gap_mean": -0.11653096580545323
+                },
+                {
+                  "decile": 2,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.052287642300449626,
+                  "realized_gap_mean": -0.054061779593580425
+                },
+                {
+                  "decile": 3,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.03571811806512771,
+                  "realized_gap_mean": -0.03041305959218049
+                },
+                {
+                  "decile": 4,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.022873828163013914,
+                  "realized_gap_mean": -0.03236062261759038
+                },
+                {
+                  "decile": 5,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.011275572569188456,
+                  "realized_gap_mean": -0.032776526797928016
+                },
+                {
+                  "decile": 6,
+                  "queries": 1000,
+                  "predicted_gap_mean": -4.1312567768150955e-05,
+                  "realized_gap_mean": 0.04406393086349337
+                },
+                {
+                  "decile": 7,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.011418390672725341,
+                  "realized_gap_mean": 0.018058798881501522
+                },
+                {
+                  "decile": 8,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.02443833822243715,
+                  "realized_gap_mean": 0.047545136242040036
+                },
+                {
+                  "decile": 9,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.0411399737831827,
+                  "realized_gap_mean": 0.0485137880413587
+                },
+                {
+                  "decile": 10,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.07579653741595982,
+                  "realized_gap_mean": 0.05257914164878045
+                }
+              ],
+              "top_decile_realized_gap": 0.05257914164878045
+            },
+            "gain_ci95": [
+              0.01397830040161143,
+              0.02493482355519082
+            ]
+          }
+        },
+        "M4_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.019908654417696344,
+          "split_seed_gains": [
+            0.0209549574512123,
+            0.019736580375158862,
+            0.01903442542671787
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6355302277756377,
+            "fixed_bm25_mean_f1": 0.6084894367963855,
+            "fixed_dense_mean_f1": 0.6140276526693413,
+            "oracle_mean_f1": 0.7317672314082436,
+            "oracle_headroom": 0.11773957873890228,
+            "gain_over_fixed_dense": 0.021502575106296377,
+            "policy_regret": 0.0962370036326059,
+            "oracle_recovery": 0.18262826601393062,
+            "switch_queries": 4960,
+            "switch_coverage": 0.496,
+            "beneficial_switches": 1067,
+            "neutral_switches": 3106,
+            "harmful_switches": 787,
+            "missed_bm25_beneficial_switches": 933,
+            "beneficial_gain_mass": 0.06742494791276298,
+            "harmful_loss_mass": 0.045922372806466605,
+            "harmful_to_beneficial_mass_ratio": 0.6810887398219834,
+            "conditional_gain_all_switches": 0.04335196594011365,
+            "conditional_gain_beneficial": 0.6319114143651638,
+            "conditional_loss_harmful": -0.5835117256221932,
+            "high_margin_bm25_winner_recall": 0.54344216934145,
+            "gap_mae": 0.2622658785283656,
+            "gap_rmse": 0.43859281697815805,
+            "gap_spearman": 0.11613090936445349,
+            "non_tie_auc": 0.5988260000000001,
+            "calibration": {
+              "intercept": 0.0004538434261170425,
+              "slope": 1.0404943165144027,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.10767786062907973,
+                  "realized_gap_mean": -0.10482904868569358
+                },
+                {
+                  "decile": 2,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.06156953650129904,
+                  "realized_gap_mean": -0.07778233936936405
+                },
+                {
+                  "decile": 3,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.03872839919853852,
+                  "realized_gap_mean": -0.04907660586210175
+                },
+                {
+                  "decile": 4,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.021427666143475035,
+                  "realized_gap_mean": -0.036293974928600564
+                },
+                {
+                  "decile": 5,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.007058876104695801,
+                  "realized_gap_mean": -0.002584060604881949
+                },
+                {
+                  "decile": 6,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.005622671301312965,
+                  "realized_gap_mean": 0.002712571881961601
+                },
+                {
+                  "decile": 7,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.018159274498562666,
+                  "realized_gap_mean": 0.03399449720332534
+                },
+                {
+                  "decile": 8,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.031619679191721595,
+                  "realized_gap_mean": 0.05841848009436941
+                },
+                {
+                  "decile": 9,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.04731307923573998,
+                  "realized_gap_mean": 0.05794990739921008
+                },
+                {
+                  "decile": 10,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.07615905165430718,
+                  "realized_gap_mean": 0.062108414142217
+                }
+              ],
+              "top_decile_realized_gap": 0.062108414142217
+            },
+            "gain_ci95": [
+              0.015540667234282695,
+              0.027400565624869457
+            ]
+          }
+        },
+        "M4_pca32_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": true,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.020842044900280587,
+          "split_seed_gains": [
+            0.0232306591894039,
+            0.020355714223735985,
+            0.01893976128770187
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6369260724148061,
+            "fixed_bm25_mean_f1": 0.6084894367963855,
+            "fixed_dense_mean_f1": 0.6140276526693413,
+            "oracle_mean_f1": 0.7317672314082436,
+            "oracle_headroom": 0.11773957873890228,
+            "gain_over_fixed_dense": 0.022898419745464763,
+            "policy_regret": 0.09484115899343748,
+            "oracle_recovery": 0.19448362216620455,
+            "switch_queries": 4795,
+            "switch_coverage": 0.4795,
+            "beneficial_switches": 1033,
+            "neutral_switches": 3044,
+            "harmful_switches": 718,
+            "missed_bm25_beneficial_switches": 967,
+            "beneficial_gain_mass": 0.06478801317289085,
+            "harmful_loss_mass": 0.04188959342742607,
+            "harmful_to_beneficial_mass_ratio": 0.6465639456428627,
+            "conditional_gain_all_switches": 0.047754785704827454,
+            "conditional_gain_beneficial": 0.6271830897666102,
+            "conditional_loss_harmful": -0.5834205212733435,
+            "high_margin_bm25_winner_recall": 0.5268400664084117,
+            "gap_mae": 0.26184863834514543,
+            "gap_rmse": 0.43870866855034346,
+            "gap_spearman": 0.11332455607891635,
+            "non_tie_auc": 0.59841925,
+            "calibration": {
+              "intercept": 0.00050636588655943,
+              "slope": 1.0567108629298083,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.10188989896663403,
+                  "realized_gap_mean": -0.12489668069760235
+                },
+                {
+                  "decile": 2,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.058961546791062636,
+                  "realized_gap_mean": -0.060202383568110744
+                },
+                {
+                  "decile": 3,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.037802720734509854,
+                  "realized_gap_mean": -0.034127467869528916
+                },
+                {
+                  "decile": 4,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.022354673577943764,
+                  "realized_gap_mean": -0.04130456810329264
+                },
+                {
+                  "decile": 5,
+                  "queries": 1000,
+                  "predicted_gap_mean": -0.008786260297209839,
+                  "realized_gap_mean": -0.022907185520797655
+                },
+                {
+                  "decile": 6,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.0037557754426308597,
+                  "realized_gap_mean": 0.04204417496773418
+                },
+                {
+                  "decile": 7,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.01618987904515272,
+                  "realized_gap_mean": 0.051113871651934074
+                },
+                {
+                  "decile": 8,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.029426351899692945,
+                  "realized_gap_mean": 0.030407207430383144
+                },
+                {
+                  "decile": 9,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.04603898786622422,
+                  "realized_gap_mean": 0.046842291632154434
+                },
+                {
+                  "decile": 10,
+                  "queries": 1000,
+                  "predicted_gap_mean": 0.07718225486405425,
+                  "realized_gap_mean": 0.05764858134756798
+                }
+              ],
+              "top_decile_realized_gap": 0.05764858134756798
+            },
+            "gain_ci95": [
+              0.016954731526256445,
+              0.028596515090408156
+            ]
+          }
+        }
+      }
+    },
+    "T2_winner3000": {
+      "query_count": 12000,
+      "validation": {
+        "status": "passed",
+        "protocol_id": "hotpotqa_bd_router_phase28_t2_winner3000_retrain_v1",
+        "external_calls": 0,
+        "frozen_inputs": {
+          "outcomes": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T2_winner3000\\snapshot\\outcomes.jsonl.gz",
+            "bytes": 5786377,
+            "sha256": "7bcf31c2aaaf9119602acdbccc913cea40ef87f95167a5ac3f405cd4f6bb6f1a"
+          },
+          "query_summary": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T2_winner3000\\snapshot\\query_summary.csv.gz",
+            "bytes": 864236,
+            "sha256": "4f487d70412bc51ede9e4a286f5fed9433f75ef8904ce296e39c250f2ef2c811"
+          },
+          "features": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T2_winner3000\\snapshot\\features.npz",
+            "bytes": 18292118,
+            "sha256": "1ab63ff08457aa5a3235dc97d4678d890c94ceacd836a6a0a5c4d03eedd7718c"
+          },
+          "feature_schema": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T2_winner3000\\snapshot\\feature_schema.json",
+            "bytes": 11860,
+            "sha256": "0007551aeb82e903d90672109ae88ba59c527742ca028a8059ff8084c4fd1ffa"
+          },
+          "snapshot_manifest": {
+            "path": "outputs\\router\\hotpotqa_bd_router_v1\\runs\\phase28_query_expansion_v1\\training_views\\T2_winner3000\\snapshot\\snapshot_manifest.json",
+            "bytes": 1831,
+            "sha256": "61d929a797bf5ea80398488347907af73b9a2bb01179c1331e41792eb195e0fc"
+          }
+        },
+        "queries_read": 12000,
+        "outcome_rows_read": 72000,
+        "actions": [
+          "bm25",
+          "dense"
+        ],
+        "repeat_ids": [
+          0,
+          1,
+          2
+        ],
+        "partition": "train_only",
+        "fresh_dev_rows_read": 0,
+        "final_holdout_rows_read": 0,
+        "partial_9600_rows_read": 0,
+        "complete_9600_queries_read": 0,
+        "feature_dimensions": {
+          "lexical": 17,
+          "corpus_static": 13,
+          "embedding": 384,
+          "structured": 30,
+          "raw_full": 414
+        },
+        "strata_counts": {
+          "bm25_winner": 3000,
+          "dense_winner": 3000,
+          "exact_tie": 6000
+        },
+        "fixed_bm25_mean_f1": 0.5937583639731046,
+        "fixed_dense_mean_f1": 0.5905602592855955,
+        "bd_oracle_mean_f1": 0.7506345429188752,
+        "model_input_arrays": [
+          "lexical",
+          "corpus_static",
+          "query_embedding"
+        ],
+        "forbidden_online_fields_loaded_as_model_features": []
+      },
+      "config": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/config.yaml",
+        "sha256": "9fdab56caff8eff5f937da9f5556f5919899a4ea86c545713f2c6b94ca4f31ae"
+      },
+      "formal_metrics": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/audit/formal_metrics.json",
+        "sha256": "3fb5ea838eb00a411028db0c5b8fbb7d07dc2a776ecb991f4a1eefee5e9e759b"
+      },
+      "formal_predictions": {
+        "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_query_expansion_v1/training_views/T2_winner3000/audit/formal_predictions.npz",
+        "sha256": "b6c9c20128cfbf2ac2f9224e06aa4a6abddf5a8a97c2485eeee081475d0f47f7"
+      },
+      "candidates": {
+        "M3_pca32_structured_ridge": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": false,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.0402576183892333,
+          "split_seed_gains": [
+            0.04122540271483159,
+            0.040801819892895747,
+            0.03874563255997257
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6308008105849772,
+            "fixed_bm25_mean_f1": 0.5937583639731046,
+            "fixed_dense_mean_f1": 0.5905602592855955,
+            "oracle_mean_f1": 0.7506345429188752,
+            "oracle_headroom": 0.1600742836332797,
+            "gain_over_fixed_dense": 0.04024055129938162,
+            "policy_regret": 0.11983373233389805,
+            "oracle_recovery": 0.2513867336215619,
+            "switch_queries": 6300,
+            "switch_coverage": 0.525,
+            "beneficial_switches": 1827,
+            "neutral_switches": 3269,
+            "harmful_switches": 1204,
+            "missed_bm25_beneficial_switches": 1173,
+            "beneficial_gain_mass": 0.1025457053191127,
+            "harmful_loss_mass": 0.06230515401973108,
+            "harmful_to_beneficial_mass_ratio": 0.6075842359837814,
+            "conditional_gain_all_switches": 0.07664866914167928,
+            "conditional_gain_beneficial": 0.6735350103061589,
+            "conditional_loss_harmful": -0.6209816015255588,
+            "high_margin_bm25_winner_recall": 0.6195104391648668,
+            "gap_mae": 0.34178706155090266,
+            "gap_rmse": 0.5042700503912673,
+            "gap_spearman": 0.17601595500232084,
+            "non_tie_auc": 0.6376123333333333,
+            "calibration": {
+              "intercept": -0.00024333476998046177,
+              "slope": 1.054449171499599,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.14813947508475778,
+                  "realized_gap_mean": -0.1814440653917768
+                },
+                {
+                  "decile": 2,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.08352610725079862,
+                  "realized_gap_mean": -0.10064405203498057
+                },
+                {
+                  "decile": 3,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.050901829095840914,
+                  "realized_gap_mean": -0.08068342383910845
+                },
+                {
+                  "decile": 4,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.02644435758068822,
+                  "realized_gap_mean": -0.021111349090060218
+                },
+                {
+                  "decile": 5,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.005082751780494631,
+                  "realized_gap_mean": 0.0118899237508724
+                },
+                {
+                  "decile": 6,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.014833911348180306,
+                  "realized_gap_mean": 0.037560659796624755
+                },
+                {
+                  "decile": 7,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.03609495415664765,
+                  "realized_gap_mean": 0.06703890671645443
+                },
+                {
+                  "decile": 8,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.05889228800010417,
+                  "realized_gap_mean": 0.08883712642088315
+                },
+                {
+                  "decile": 9,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.08852127178547028,
+                  "realized_gap_mean": 0.09926583473749723
+                },
+                {
+                  "decile": 10,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.14838941506681114,
+                  "realized_gap_mean": 0.11127148580868482
+                }
+              ],
+              "top_decile_realized_gap": 0.11127148580868482
+            },
+            "gain_ci95": [
+              0.033561172474513165,
+              0.046721934888681996
+            ]
+          }
+        },
+        "M4_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": false,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.04202403732933188,
+          "split_seed_gains": [
+            0.04193197367155786,
+            0.041378746074423274,
+            0.042761392242014494
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6328385013979321,
+            "fixed_bm25_mean_f1": 0.5937583639731046,
+            "fixed_dense_mean_f1": 0.5905602592855955,
+            "oracle_mean_f1": 0.7506345429188752,
+            "oracle_headroom": 0.1600742836332797,
+            "gain_over_fixed_dense": 0.042278242112336606,
+            "policy_regret": 0.11779604152094314,
+            "oracle_recovery": 0.2641163911699486,
+            "switch_queries": 6704,
+            "switch_coverage": 0.5586666666666666,
+            "beneficial_switches": 1954,
+            "neutral_switches": 3405,
+            "harmful_switches": 1345,
+            "missed_bm25_beneficial_switches": 1046,
+            "beneficial_gain_mass": 0.11064623518493177,
+            "harmful_loss_mass": 0.06836799307259515,
+            "harmful_to_beneficial_mass_ratio": 0.6178971472307787,
+            "conditional_gain_all_switches": 0.07567704435382447,
+            "conditional_gain_beneficial": 0.6795060502657018,
+            "conditional_loss_harmful": -0.6099746593837486,
+            "high_margin_bm25_winner_recall": 0.6609071274298056,
+            "gap_mae": 0.3440216909809142,
+            "gap_rmse": 0.5021626765021296,
+            "gap_spearman": 0.1851265655182845,
+            "non_tie_auc": 0.6394563333333333,
+            "calibration": {
+              "intercept": 6.046024546705296e-05,
+              "slope": 1.023244424111706,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.187522355637587,
+                  "realized_gap_mean": -0.18287058323843977
+                },
+                {
+                  "decile": 2,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.10296486936098313,
+                  "realized_gap_mean": -0.11019636251546504
+                },
+                {
+                  "decile": 3,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.05800362153184246,
+                  "realized_gap_mean": -0.07253382022529883
+                },
+                {
+                  "decile": 4,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.02456797199552805,
+                  "realized_gap_mean": -0.031881974147731945
+                },
+                {
+                  "decile": 5,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.002600061824181293,
+                  "realized_gap_mean": 0.012127685756655114
+                },
+                {
+                  "decile": 6,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.02650263560918744,
+                  "realized_gap_mean": 0.023773357791993736
+                },
+                {
+                  "decile": 7,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.048928791267362756,
+                  "realized_gap_mean": 0.06680435791503206
+                },
+                {
+                  "decile": 8,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.07293291930591335,
+                  "realized_gap_mean": 0.0733002501370774
+                },
+                {
+                  "decile": 9,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.1001790256454343,
+                  "realized_gap_mean": 0.10576560690179337
+                },
+                {
+                  "decile": 10,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.15257906960164158,
+                  "realized_gap_mean": 0.1476925284994746
+                }
+              ],
+              "top_decile_realized_gap": 0.1476925284994746
+            },
+            "gain_ci95": [
+              0.03542121101654293,
+              0.04899853884719899
+            ]
+          }
+        },
+        "M4_pca32_oof_late_fusion": {
+          "passed": false,
+          "checks": {
+            "practical_gain": true,
+            "grouped_bootstrap_ci_lower": true,
+            "all_split_seed_gains_positive": true,
+            "harmful_to_beneficial_mass_ratio": false,
+            "switch_coverage": false,
+            "calibration_slope": true,
+            "top_decile_realized_gap": true
+          },
+          "mean_gain_over_split_seeds": 0.04155843048302058,
+          "split_seed_gains": [
+            0.04102747298746745,
+            0.04269069038545272,
+            0.040957128076141575
+          ],
+          "consensus_metrics": {
+            "router_mean_f1": 0.6332980977623187,
+            "fixed_bm25_mean_f1": 0.5937583639731046,
+            "fixed_dense_mean_f1": 0.5905602592855955,
+            "oracle_mean_f1": 0.7506345429188752,
+            "oracle_headroom": 0.1600742836332797,
+            "gain_over_fixed_dense": 0.042737838476723224,
+            "policy_regret": 0.1173364451565565,
+            "oracle_recovery": 0.26698753545343346,
+            "switch_queries": 6674,
+            "switch_coverage": 0.5561666666666667,
+            "beneficial_switches": 1935,
+            "neutral_switches": 3432,
+            "harmful_switches": 1307,
+            "missed_bm25_beneficial_switches": 1065,
+            "beneficial_gain_mass": 0.10969215716157743,
+            "harmful_loss_mass": 0.0669543186848542,
+            "harmful_to_beneficial_mass_ratio": 0.6103838270427114,
+            "conditional_gain_all_switches": 0.0768435813186513,
+            "conditional_gain_beneficial": 0.6802614397617205,
+            "conditional_loss_harmful": -0.6147297813452566,
+            "high_margin_bm25_winner_recall": 0.6580273578113751,
+            "gap_mae": 0.34355298535065876,
+            "gap_rmse": 0.5032082668738548,
+            "gap_spearman": 0.1784475524007697,
+            "non_tie_auc": 0.6374190000000001,
+            "calibration": {
+              "intercept": -0.0001095958079834437,
+              "slope": 1.0279450911823245,
+              "deciles": [
+                {
+                  "decile": 1,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.1737778192097981,
+                  "realized_gap_mean": -0.19363455198685367
+                },
+                {
+                  "decile": 2,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.0963847642934568,
+                  "realized_gap_mean": -0.11370065166184652
+                },
+                {
+                  "decile": 3,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.05447292398546388,
+                  "realized_gap_mean": -0.06218892504918147
+                },
+                {
+                  "decile": 4,
+                  "queries": 1200,
+                  "predicted_gap_mean": -0.024251813875341435,
+                  "realized_gap_mean": -0.025668727281854604
+                },
+                {
+                  "decile": 5,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.0013369648223180593,
+                  "realized_gap_mean": 0.02937262753942075
+                },
+                {
+                  "decile": 6,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.024008084088213272,
+                  "realized_gap_mean": 0.037543620221373815
+                },
+                {
+                  "decile": 7,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.0453020050845469,
+                  "realized_gap_mean": 0.07380345892279845
+                },
+                {
+                  "decile": 8,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.06823152579494905,
+                  "realized_gap_mean": 0.051780942938997994
+                },
+                {
+                  "decile": 9,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.09492212304455251,
+                  "realized_gap_mean": 0.1179456104335729
+                },
+                {
+                  "decile": 10,
+                  "queries": 1200,
+                  "predicted_gap_mean": 0.14726441210878585,
+                  "realized_gap_mean": 0.11672764279866309
+                }
+              ],
+              "top_decile_realized_gap": 0.11672764279866309
+            },
+            "gain_ci95": [
+              0.03589554036287149,
+              0.04943172068976968
+            ]
+          }
+        }
+      }
+    }
+  },
+  "confirmation": {
+    "planned_queries": 2000,
+    "opened": false,
+    "rows_read": 0
+  },
+  "fresh_dev_rows_read": 0,
+  "final_holdout_rows_read": 0,
+  "external_provider_calls": 0,
+  "excluded_artifacts": {
+    "T0_partial_legacy_screen": "The Phase 2.7 screen entrypoint attempted the old 17-candidate screen; it was interrupted after one irrelevant baseline and is not used here."
+  },
+  "completed_at_unix": 1787953043.466039
+}

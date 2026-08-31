@@ -1,119 +1,107 @@
-# HotpotQA No-retrieval/BM25/Dense Router Analysis
+# HotpotQA BM25/Dense Router experiments
 
-This package contains the lightweight, shareable boundary of the HotpotQA
-mechanism-aware router study. It is intended for reviewing the protocol,
-aggregate outcomes, feature design, and Phase 3 learning curve without
-publishing raw model calls or large generated artifacts.
+This directory is the local, versioned index for the HotpotQA Router study.
+Large reusable arrays remain under `outputs/router/hotpotqa_bd_router_v1/runs/`;
+execution databases and checkpoints are not research records.
 
-## Research question
+No remote artifact store, DVC, Git LFS, or cloud synchronization is required.
 
-For a fixed HotpotQA corpus, SQLite BM25 retriever, BGE Dense retriever,
-generator, prompt, and context protocol, can deployment-available pre-retrieval
-signals choose among:
+## Current conclusion
 
-- `no_context`: run the same generator with an empty context;
-- `bm25`: retrieve with SQLite BM25;
-- `dense`: retrieve with BGE-small-en-v1.5.
+| Phase | Result status | Decision | Deployable result |
+|---|---|---|---|
+| 0–2.6 | complete | `STOP_BEFORE_AC_LABELS` | no |
+| 2.7 | complete | `STOP_QUERY_ONLY_V1` | no |
+| 2.8 | complete | `DO_NOT_OPEN_CONFIRMATION_POOL` | no |
+| 2.8b | complete; natural-2000 consumed for candidate selection | `NO_QUALIFIED_CANDIDATE_DIAGNOSTIC_TOP2_ONLY` | no |
 
-The final research utility is blinded three-level Answer Correctness (AC). The
-revised Phase 3 used normalized token F1 only as a user-approved, low-cost
-screen before any additional AC judging.
+The current runtime still selects one configured BM25 or Dense retriever. These
+offline experiments do not add an adaptive Router to runtime.
 
-## Staged protocol and current result
+Phase 2.8b is not a final test. Its 2,000-query natural-distribution sample was
+consumed once for candidate selection and must not be reused for threshold,
+feature, or model tuning. The official final holdout remains unopened.
 
-| Phase | Question | Result |
-|---|---|---|
-| 0 | Are the data, artifacts, action contracts, and group split frozen without test leakage? | `GO` |
-| 1 | Does correct evidence improve answers, and is the AC judge sufficiently calibrated? | `GO` |
-| 2 | Is there stable N/B/D answer-utility oracle headroom over the best fixed action? | `GO` |
-| 3 | Can pre-retrieval query/corpus signals recover that headroom? | `EARLY STOP` after the completed 4,800-query point |
-
-Phase 1 observed AC `0.4700` with no context and `0.9400` with gold-page
-context. Phase 2 selected Dense as the best fixed dev action at AC `0.7583`;
-the N/B/D AC oracle was `0.8333`, giving headroom `+0.0750` with 95% CI
-`[0.0489, 0.1050]`.
-
-The revised Phase 3 completed nested 1,200, 2,400, and 4,800-query group-OOF
-experiments. Full XGBoost median F1 gain over fixed Dense was respectively
-`-0.00696`, `-0.00312`, and `-0.00281`. At 4,800 queries only one of five
-training seeds was positive, with a best gain of `+0.00183`, below the
-preregistered practical threshold `+0.01`.
-
-The 4,800-query experiment itself is complete. The planned 9,600-query point,
-model freeze, fresh-dev evaluation, AC confirmation, and final holdout were not
-completed. Partial 9,600-generation state is excluded from every published
-metric.
-
-## Phase 3 supervision and model
-
-For each query, three repeated F1 outcomes define utilities for `N`, `B`, and
-`D`. Training uses the fixed pairs `(N,B)`, `(N,D)`, and `(B,D)`:
+## Local layout
 
 ```text
-label  = 1[mean_f1(left) > mean_f1(right)]
-weight = abs(mean_f1(left) - mean_f1(right))
+analysis/hotpotqa_router/
+├── README.md
+├── registry.yaml
+├── phases/
+│   ├── phase00_26/
+│   ├── phase27/
+│   ├── phase28/
+│   └── phase28b/
+└── auxiliary/
+    ├── contriever/
+    ├── nq_dpr_probe/
+    └── retrieval_context/
 ```
 
-Exact ties are skipped. All pair rows from one query and all queries in the
-same Phase 0 information-need group remain in the same cross-validation fold.
+Each phase directory contains:
 
-The input design combines shared query/corpus features, a pair indicator, and
-pair-specific feature interactions. The primary model is a shallow XGBoost
-binary preference classifier; regularized logistic regression is the capacity
-control. Three pair probabilities are aggregated with a frozen Borda-style
-probability sum. This is LTRR-style pairwise supervision, not XGBoost's
-`rank:pairwise` objective.
+- `config.yaml`: effective frozen protocol;
+- `conclusion.md`: human-readable research record;
+- `results/`: compact metrics, decisions, comparisons, and validation data.
 
-## Online information boundary
+`registry.yaml` is the only global phase and artifact index. It distinguishes
+`spec_status`, `result_status`, consumed data, deployability, dependencies, and
+the next logical gate.
 
-Allowed inputs are query text transformations and corpus-static statistics:
+Historical frozen manifests keep their original path strings for evidentiary
+fidelity; use `registry.yaml` for the current local location.
 
-- 17 lexical compatibility values based on vocabulary coverage, OOV, IDF/DF,
-  rare terms, and numeric/year/capitalized/quoted anchors;
-- a 384-dimensional frozen BGE query embedding;
-- 13 similarities and density summaries against 64 frozen corpus prototypes.
+## Canonical local data
 
-The generic surface block, including query length and question-word counts,
-was excluded. Current-query retrieved documents, retrieval scores/ranks,
-qrels, gold evidence, generated answers, F1, and AC are forbidden online
-features.
+The paths are intentionally left in their original frozen run directories so
+that stored hashes and Phase 2.9/2.10 dependencies remain valid.
 
-## Included artifacts
+- Phase 2.7 base: `phase27_model_audit_9600_v1/snapshot/`;
+- Phase 2.8 sources: exported labels/outcomes, new features, and training views;
+- Phase 2.8b natural-2000: frozen features, predictions, query metrics, and
+  prediction/open manifests.
 
-- [`config.yaml`](config.yaml): compact frozen protocol and execution boundary;
-- [`feature_schema.json`](feature_schema.json): deployed feature blocks without
-  raw feature matrices;
-- [`phase1_metrics.json`](phase1_metrics.json): evaluator/generator sanity and
-  human calibration aggregates;
-- [`phase2_metrics.json`](phase2_metrics.json): action means, AC oracle
-  headroom, repeat diagnostics, and winner counts;
-- [`phase3_learning_curve.csv`](phase3_learning_curve.csv): fixed actions,
-  oracle, cross-seed gain range, and tie counts.
-- [`phase27_execution_plan.md`](phase27_execution_plan.md): frozen zero-call
-  model-audit sequence, gates, authorization boundaries, and readiness state;
-- [`phase27_config.yaml`](phase27_config.yaml): machine-readable Phase 2.7
-  inputs, hashes, seeds, candidate matrix, metrics, and output contract.
+SQLite state, WAL/SHM files, Python caches, and candidate-by-seed task shards
+are execution material rather than canonical experiment records.
 
-Implementation entry points are:
+## Local commands
 
-- `scripts/run_router_phase1.py`
-- `scripts/run_router_phase2.py`
-- `scripts/run_router_phase3.py`
-- `scripts/run_router_phase3_train.py`
-- `src/evaluators/hotpot_answer.py`
+```powershell
+C:\Users\12442\anaconda3\python.exe -X utf8 scripts\router_workspace.py status
+C:\Users\12442\anaconda3\python.exe -X utf8 scripts\router_workspace.py verify
+C:\Users\12442\anaconda3\python.exe -X utf8 scripts\router_workspace.py verify phase28b
+```
 
-The full research rationale and evidence boundaries are in
-`topic.md` and `RAG_pipeline_mechanism_aware_router_codex_plan.md`.
+To deterministically rebuild the Phase 2.8 T0/T1/T2 views from the retained
+Phase 2.7 snapshot and Phase 2.8 expansion sources:
 
-## Interpretation boundary
+```powershell
+C:\Users\12442\anaconda3\python.exe -X utf8 scripts\router_workspace.py rebuild phase28_views
+```
 
-The completed evidence supports stable answer-level action headroom but does
-not establish that the tested pre-retrieval features can exploit it. It does
-not prove that query-only routing is impossible, that an AC-trained router
-would necessarily fail, or that any lexical, embedding, or prototype block is
-individually responsible. Fresh-dev, complete remove-one-block ablations,
-counterfactual tests, OOD tests, and final-holdout confirmation were not run.
+The rebuild command makes no provider calls. It is not run implicitly by
+`status` or `verify`.
 
-This package intentionally excludes raw questions, query/group identifiers,
-reference answers, predictions, contexts, provider request/response payloads,
-state databases, checkpoints, and artifact hash inventories.
+## Main execution entry points
+
+- `scripts/run_router_phase27_model_audit.py`
+- `scripts/run_router_phase27_privileged_teacher.py`
+- `scripts/run_router_phase28_query_expansion.py`
+- `scripts/build_router_phase28_training_views.py`
+- `scripts/summarize_router_phase28_training.py`
+- `scripts/run_router_phase28b_holdout.py`
+
+Shared cross-stage imports are exposed through `src/router_experiments/` so
+new stages do not need to import private helpers from older stage scripts.
+
+## Evidence boundaries
+
+- Oracle headroom proves action heterogeneity, not a deployable Router.
+- Phase 2.8 T1/T2 gains are winner-balanced OOF diagnostics, not natural-
+  distribution gains.
+- Phase 2.8b natural-2000 is consumed candidate-selection evidence.
+- Post-retrieval probe and gold/qrels features are diagnostics and are not
+  pre-retrieval deployment features.
+- Answer F1, Answer Correctness, retrieval metrics, and evidence diagnostics
+  remain separate estimands.

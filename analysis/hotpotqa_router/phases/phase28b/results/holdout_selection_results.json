@@ -1,0 +1,1361 @@
+{
+  "protocol_id": "hotpotqa_bd_router_phase28b_holdout_selection_v1",
+  "status": "complete",
+  "holdout_role": "candidate_selection_not_final_test",
+  "query_count": 2000,
+  "label_counts": {
+    "bm25_winner": 267,
+    "dense_winner": 337,
+    "exact_tie": 1396
+  },
+  "best_fixed_action": "dense",
+  "fixed_bm25_mean_f1": 0.6048476595004397,
+  "fixed_dense_mean_f1": 0.6363399166274557,
+  "best_fixed_mean_f1": 0.6363399166274557,
+  "oracle_mean_f1": 0.7076240758792018,
+  "recommendation": "NO_QUALIFIED_CANDIDATE_DIAGNOSTIC_TOP2_ONLY",
+  "selected_strategies": [
+    "T0_tiecap__M4_oof_late_fusion",
+    "T0_tiecap__M4_pca32_oof_late_fusion"
+  ],
+  "candidate_results": [
+    {
+      "strategy": "T0_tiecap__M4_oof_late_fusion",
+      "view": "T0_tiecap",
+      "candidate_id": "M4_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6399269978612786,
+      "gain_over_fixed_dense": 0.0035870812338229087,
+      "gain_over_best_fixed": 0.0035870812338229087,
+      "gain_over_best_fixed_ci95_lower": -0.0010529459234757314,
+      "gain_over_best_fixed_ci95_upper": 0.00840124631674592,
+      "switch_coverage": 0.117,
+      "beneficial_switches": 37,
+      "neutral_switches": 176,
+      "harmful_switches": 21,
+      "harmful_to_beneficial_mass_ratio": 0.6214673632302529,
+      "oracle_recovery": 0.05032087453195349,
+      "non_tie_auc": 0.5680769957434513,
+      "gap_spearman": 0.07710364386497132,
+      "calibration_slope": 1.310100498731573,
+      "top_decile_realized_gap": 0.02774539146280821,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6399269978612786,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": 0.0035870812338229087,
+        "policy_regret": 0.06769707801792324,
+        "oracle_recovery": 0.05032087453195349,
+        "switch_queries": 234,
+        "switch_coverage": 0.117,
+        "beneficial_switches": 37,
+        "neutral_switches": 176,
+        "harmful_switches": 21,
+        "missed_bm25_beneficial_switches": 230,
+        "beneficial_gain_mass": 0.009476279943609854,
+        "harmful_loss_mass": 0.005889198709786945,
+        "harmful_to_beneficial_mass_ratio": 0.6214673632302529,
+        "conditional_gain_all_switches": 0.030658813964298367,
+        "conditional_gain_beneficial": 0.5122313483032354,
+        "conditional_loss_harmful": -0.5608760675987567,
+        "high_margin_bm25_winner_recall": 0.12605042016806722,
+        "gap_mae": 0.19458676477435838,
+        "gap_rmse": 0.36954248670587686,
+        "gap_spearman": 0.07710364386497132,
+        "non_tie_auc": 0.5680769957434513,
+        "calibration": {
+          "intercept": 0.009755409595968004,
+          "slope": 1.310100498731573,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.08159466006120411,
+              "realized_gap_mean": -0.12690662414927123
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.06054690776566003,
+              "realized_gap_mean": -0.05026937877124645
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.04931692375847732,
+              "realized_gap_mean": -0.046697019211725095
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.04085995149848193,
+              "realized_gap_mean": -0.0304311393127686
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.03281024365484311,
+              "realized_gap_mean": 0.014526135901135901
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": -0.02570972665063357,
+              "realized_gap_mean": -0.04175308641975309
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": -0.01927754451173859,
+              "realized_gap_mean": -0.02951488048988049
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": -0.012294610028143743,
+              "realized_gap_mean": -0.02762506759305117
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": -0.0032676295606169125,
+              "realized_gap_mean": -0.003996902686407935
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.010834666303301845,
+              "realized_gap_mean": 0.02774539146280821
+            }
+          ],
+          "top_decile_realized_gap": 0.02774539146280821
+        },
+        "gain_ci95": [
+          -0.001163135052583582,
+          0.008389769263026217
+        ]
+      },
+      "complexity_rank": 2
+    },
+    {
+      "strategy": "T0_tiecap__M4_pca32_oof_late_fusion",
+      "view": "T0_tiecap",
+      "candidate_id": "M4_pca32_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.640081665381511,
+      "gain_over_fixed_dense": 0.0037417487540552553,
+      "gain_over_best_fixed": 0.0037417487540552553,
+      "gain_over_best_fixed_ci95_lower": -0.0014427556394700362,
+      "gain_over_best_fixed_ci95_upper": 0.009283868848228363,
+      "switch_coverage": 0.1625,
+      "beneficial_switches": 38,
+      "neutral_switches": 255,
+      "harmful_switches": 32,
+      "harmful_to_beneficial_mass_ratio": 0.675297911982025,
+      "oracle_recovery": 0.05249060651527007,
+      "non_tie_auc": 0.5809022105157869,
+      "gap_spearman": 0.08764607667958275,
+      "calibration_slope": 1.1243709887181135,
+      "top_decile_realized_gap": 0.02963221963221963,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.640081665381511,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": 0.0037417487540552553,
+        "policy_regret": 0.06754241049769083,
+        "oracle_recovery": 0.05249060651527007,
+        "switch_queries": 325,
+        "switch_coverage": 0.1625,
+        "beneficial_switches": 38,
+        "neutral_switches": 255,
+        "harmful_switches": 32,
+        "missed_bm25_beneficial_switches": 229,
+        "beneficial_gain_mass": 0.011523636256530991,
+        "harmful_loss_mass": 0.007781887502475738,
+        "harmful_to_beneficial_mass_ratio": 0.675297911982025,
+        "conditional_gain_all_switches": 0.02302614617880157,
+        "conditional_gain_beneficial": 0.6065071713963681,
+        "conditional_loss_harmful": -0.4863679689047336,
+        "high_margin_bm25_winner_recall": 0.14285714285714285,
+        "gap_mae": 0.19672148805195017,
+        "gap_rmse": 0.3693280413091021,
+        "gap_spearman": 0.08764607667958275,
+        "non_tie_auc": 0.5809022105157869,
+        "calibration": {
+          "intercept": 0.004296203981711724,
+          "slope": 1.1243709887181135,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.0904260253926477,
+              "realized_gap_mean": -0.11135369320695407
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.06671189640277786,
+              "realized_gap_mean": -0.08467339054993854
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.053772241475348856,
+              "realized_gap_mean": -0.0250035410395821
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.04354409433342636,
+              "realized_gap_mean": -0.06519393517347481
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.03451119679826254,
+              "realized_gap_mean": 0.010358900358900356
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": -0.0262197202979086,
+              "realized_gap_mean": -0.010414674831341501
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": -0.01861046016599402,
+              "realized_gap_mean": -0.027561305393201944
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": -0.009552797023711928,
+              "realized_gap_mean": -0.030760083236784138
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.0018641391828297018,
+              "realized_gap_mean": 4.6932169997186965e-05
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.023186671478779286,
+              "realized_gap_mean": 0.02963221963221963
+            }
+          ],
+          "top_decile_realized_gap": 0.02963221963221963
+        },
+        "gain_ci95": [
+          -0.001639963461604329,
+          0.009101483560728913
+        ]
+      },
+      "complexity_rank": 1
+    },
+    {
+      "strategy": "T0_tiecap__M3_pca32_structured_ridge",
+      "view": "T0_tiecap",
+      "candidate_id": "M3_pca32_structured_ridge",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6404600656304994,
+      "gain_over_fixed_dense": 0.00412014900304374,
+      "gain_over_best_fixed": 0.00412014900304374,
+      "gain_over_best_fixed_ci95_lower": -0.0020313001886028206,
+      "gain_over_best_fixed_ci95_upper": 0.010757946407880616,
+      "switch_coverage": 0.178,
+      "beneficial_switches": 48,
+      "neutral_switches": 270,
+      "harmful_switches": 38,
+      "harmful_to_beneficial_mass_ratio": 0.7283387204579564,
+      "oracle_recovery": 0.05779894223754648,
+      "non_tie_auc": 0.5804020938218918,
+      "gap_spearman": 0.08671975091637185,
+      "calibration_slope": 1.0595138534595803,
+      "top_decile_realized_gap": 0.02673322973322973,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6404600656304994,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": 0.00412014900304374,
+        "policy_regret": 0.06716401024870244,
+        "oracle_recovery": 0.05779894223754648,
+        "switch_queries": 356,
+        "switch_coverage": 0.178,
+        "beneficial_switches": 48,
+        "neutral_switches": 270,
+        "harmful_switches": 38,
+        "missed_bm25_beneficial_switches": 219,
+        "beneficial_gain_mass": 0.015166493399388133,
+        "harmful_loss_mass": 0.011046344396344394,
+        "harmful_to_beneficial_mass_ratio": 0.7283387204579564,
+        "conditional_gain_all_switches": 0.023146904511481686,
+        "conditional_gain_beneficial": 0.6319372249745056,
+        "conditional_loss_harmful": -0.5813865471760209,
+        "high_margin_bm25_winner_recall": 0.18067226890756302,
+        "gap_mae": 0.19752615193181824,
+        "gap_rmse": 0.3693482523020978,
+        "gap_spearman": 0.08671975091637185,
+        "non_tie_auc": 0.5804020938218918,
+        "calibration": {
+          "intercept": 0.0020522648482424882,
+          "slope": 1.0595138534595803,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.09118359874602283,
+              "realized_gap_mean": -0.10136895572221659
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.06754480436127594,
+              "realized_gap_mean": -0.08574164860194272
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.05494970105786578,
+              "realized_gap_mean": -0.05833206433448713
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.04492417119039531,
+              "realized_gap_mean": -0.024058656213067978
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.03544028991335188,
+              "realized_gap_mean": -0.002000635167301834
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": -0.027058543015108905,
+              "realized_gap_mean": -0.03871852684352684
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": -0.01876230851319372,
+              "realized_gap_mean": -0.031498719632317075
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": -0.008631248725688413,
+              "realized_gap_mean": -0.017898389573389576
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.0035004539438148376,
+              "realized_gap_mean": 0.017961795084860097
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.028391253857231367,
+              "realized_gap_mean": 0.02673322973322973
+            }
+          ],
+          "top_decile_realized_gap": 0.02673322973322973
+        },
+        "gain_ci95": [
+          -0.002327812634490266,
+          0.010587533879375983
+        ]
+      },
+      "complexity_rank": 0
+    },
+    {
+      "strategy": "T2_winner3000__M3_pca32_structured_ridge",
+      "view": "T2_winner3000",
+      "candidate_id": "M3_pca32_structured_ridge",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6347765635381218,
+      "gain_over_fixed_dense": -0.0015633530893338703,
+      "gain_over_best_fixed": -0.0015633530893338703,
+      "gain_over_best_fixed_ci95_lower": -0.012615362938076517,
+      "gain_over_best_fixed_ci95_upper": 0.009853025614743913,
+      "switch_coverage": 0.5305,
+      "beneficial_switches": 144,
+      "neutral_switches": 772,
+      "harmful_switches": 145,
+      "harmful_to_beneficial_mass_ratio": 1.0385773006537142,
+      "oracle_recovery": -0.02193128327168389,
+      "non_tie_auc": 0.5754342679958657,
+      "gap_spearman": 0.08237289750444234,
+      "calibration_slope": 0.40494771186622974,
+      "top_decile_realized_gap": 0.014424073003020373,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio",
+        "switch_coverage",
+        "calibration_slope"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6347765635381218,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.0015633530893338703,
+        "policy_regret": 0.07284751234108,
+        "oracle_recovery": -0.02193128327168389,
+        "switch_queries": 1061,
+        "switch_coverage": 0.5305,
+        "beneficial_switches": 144,
+        "neutral_switches": 772,
+        "harmful_switches": 145,
+        "missed_bm25_beneficial_switches": 123,
+        "beneficial_gain_mass": 0.040525206866264846,
+        "harmful_loss_mass": 0.04208855995559871,
+        "harmful_to_beneficial_mass_ratio": 1.0385773006537142,
+        "conditional_gain_all_switches": -0.0029469426754644063,
+        "conditional_gain_beneficial": 0.5628500953647895,
+        "conditional_loss_harmful": -0.580531861456534,
+        "high_margin_bm25_winner_recall": 0.5462184873949579,
+        "gap_mae": 0.21970164330224476,
+        "gap_rmse": 0.3745672130884777,
+        "gap_spearman": 0.08237289750444234,
+        "non_tie_auc": 0.5754342679958657,
+        "calibration": {
+          "intercept": -0.03270219207237771,
+          "slope": 0.40494771186622974,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.1511435310182071,
+              "realized_gap_mean": -0.1150290518660084
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.08604631315652769,
+              "realized_gap_mean": -0.05193203746144923
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.0526536433313971,
+              "realized_gap_mean": -0.0366681202784144
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.027192219828091516,
+              "realized_gap_mean": -0.07699035312335106
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.0046819233258186595,
+              "realized_gap_mean": -0.002764217199234262
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.015857990077145067,
+              "realized_gap_mean": -0.04796250508750509
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.03628625267756513,
+              "realized_gap_mean": -0.00822699214365882
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.05944951025565785,
+              "realized_gap_mean": -0.004049164464356403
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.08998284497726267,
+              "realized_gap_mean": 0.014275797350797348
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.15001982714159484,
+              "realized_gap_mean": 0.014424073003020373
+            }
+          ],
+          "top_decile_realized_gap": 0.014424073003020373
+        },
+        "gain_ci95": [
+          -0.012600526655567596,
+          0.009693284900412711
+        ]
+      },
+      "complexity_rank": 0
+    },
+    {
+      "strategy": "T1_winner2000__M3_pca32_structured_ridge",
+      "view": "T1_winner2000",
+      "candidate_id": "M3_pca32_structured_ridge",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6336502056367639,
+      "gain_over_fixed_dense": -0.00268971099069177,
+      "gain_over_best_fixed": -0.00268971099069177,
+      "gain_over_best_fixed_ci95_lower": -0.01288283726254923,
+      "gain_over_best_fixed_ci95_upper": 0.007573677023268683,
+      "switch_coverage": 0.462,
+      "beneficial_switches": 121,
+      "neutral_switches": 682,
+      "harmful_switches": 121,
+      "harmful_to_beneficial_mass_ratio": 1.0813554921567041,
+      "oracle_recovery": -0.03773223979808508,
+      "non_tie_auc": 0.5698551884328565,
+      "gap_spearman": 0.0784323217975629,
+      "calibration_slope": 0.7047061870724285,
+      "top_decile_realized_gap": 0.02779523809523809,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6336502056367639,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.00268971099069177,
+        "policy_regret": 0.07397387024243796,
+        "oracle_recovery": -0.03773223979808508,
+        "switch_queries": 924,
+        "switch_coverage": 0.462,
+        "beneficial_switches": 121,
+        "neutral_switches": 682,
+        "harmful_switches": 121,
+        "missed_bm25_beneficial_switches": 146,
+        "beneficial_gain_mass": 0.033061209752267735,
+        "harmful_loss_mass": 0.035750920742959505,
+        "harmful_to_beneficial_mass_ratio": 1.0813554921567041,
+        "conditional_gain_all_switches": -0.0058218852612376,
+        "conditional_gain_beneficial": 0.5464662768969873,
+        "conditional_loss_harmful": -0.5909243098009835,
+        "high_margin_bm25_winner_recall": 0.4495798319327731,
+        "gap_mae": 0.19893869960271668,
+        "gap_rmse": 0.3707943055279376,
+        "gap_spearman": 0.0784323217975629,
+        "non_tie_auc": 0.5698551884328565,
+        "calibration": {
+          "intercept": -0.027788934744167174,
+          "slope": 0.7047061870724285,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.08894763814962842,
+              "realized_gap_mean": -0.10249652420848074
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.05519576164947842,
+              "realized_gap_mean": -0.06790491882558446
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.0369896378511891,
+              "realized_gap_mean": -0.0402703513806455
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.02271059172909816,
+              "realized_gap_mean": -0.040269972864837446
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.01034688179702779,
+              "realized_gap_mean": -0.01458644133644134
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.001004399197440908,
+              "realized_gap_mean": -0.04493232929683454
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.012520269957364051,
+              "realized_gap_mean": -0.03210194569531326
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.026083371027319925,
+              "realized_gap_mean": -0.01048444148444149
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.04338817467491814,
+              "realized_gap_mean": 0.010329115727180743
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.07864299975373373,
+              "realized_gap_mean": 0.02779523809523809
+            }
+          ],
+          "top_decile_realized_gap": 0.02779523809523809
+        },
+        "gain_ci95": [
+          -0.012736275314034063,
+          0.007585209718555057
+        ]
+      },
+      "complexity_rank": 0
+    },
+    {
+      "strategy": "T1_winner2000__M4_pca32_oof_late_fusion",
+      "view": "T1_winner2000",
+      "candidate_id": "M4_pca32_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6332363980391328,
+      "gain_over_fixed_dense": -0.0031035185883228956,
+      "gain_over_best_fixed": -0.0031035185883228956,
+      "gain_over_best_fixed_ci95_lower": -0.01375288430454292,
+      "gain_over_best_fixed_ci95_upper": 0.007649468991607807,
+      "switch_coverage": 0.485,
+      "beneficial_switches": 134,
+      "neutral_switches": 703,
+      "harmful_switches": 133,
+      "harmful_to_beneficial_mass_ratio": 1.0863336185678645,
+      "oracle_recovery": -0.043537282629125956,
+      "non_tie_auc": 0.5779126240567243,
+      "gap_spearman": 0.08393370193721769,
+      "calibration_slope": 0.6988331866417035,
+      "top_decile_realized_gap": 0.019345382395382395,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6332363980391328,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.0031035185883228956,
+        "policy_regret": 0.07438767784006906,
+        "oracle_recovery": -0.043537282629125956,
+        "switch_queries": 970,
+        "switch_coverage": 0.485,
+        "beneficial_switches": 134,
+        "neutral_switches": 703,
+        "harmful_switches": 133,
+        "missed_bm25_beneficial_switches": 133,
+        "beneficial_gain_mass": 0.03594797298903097,
+        "harmful_loss_mass": 0.03905149157735387,
+        "harmful_to_beneficial_mass_ratio": 1.0863336185678645,
+        "conditional_gain_all_switches": -0.006399007398603911,
+        "conditional_gain_beneficial": 0.5365369102840443,
+        "conditional_loss_harmful": -0.5872404748474267,
+        "high_margin_bm25_winner_recall": 0.5042016806722689,
+        "gap_mae": 0.20062000023502832,
+        "gap_rmse": 0.370585583712027,
+        "gap_spearman": 0.08393370193721769,
+        "non_tie_auc": 0.5779126240567243,
+        "calibration": {
+          "intercept": -0.027158504451784395,
+          "slope": 0.6988331866417035,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.10082131190805807,
+              "realized_gap_mean": -0.10132348397789574
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.06141256762616869,
+              "realized_gap_mean": -0.06696694808646284
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.040521442074579604,
+              "realized_gap_mean": -0.05020900657433151
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.023394906156038103,
+              "realized_gap_mean": -0.04735096521125934
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.008817959594717761,
+              "realized_gap_mean": -0.00419042069042069
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.004125839943731956,
+              "realized_gap_mean": -0.059219690657925955
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.016553449327693606,
+              "realized_gap_mean": -0.006258893165065069
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.029787081835236564,
+              "realized_gap_mean": -0.00341533909203999
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.046315787425482445,
+              "realized_gap_mean": 0.004666793789858801
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.0761719064578465,
+              "realized_gap_mean": 0.019345382395382395
+            }
+          ],
+          "top_decile_realized_gap": 0.019345382395382395
+        },
+        "gain_ci95": [
+          -0.013587011062149712,
+          0.007502237033238273
+        ]
+      },
+      "complexity_rank": 1
+    },
+    {
+      "strategy": "T2_winner3000__M4_oof_late_fusion",
+      "view": "T2_winner3000",
+      "candidate_id": "M4_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6334114268096467,
+      "gain_over_fixed_dense": -0.0029284898178090764,
+      "gain_over_best_fixed": -0.0029284898178090764,
+      "gain_over_best_fixed_ci95_lower": -0.014107804551087616,
+      "gain_over_best_fixed_ci95_upper": 0.00838434859968416,
+      "switch_coverage": 0.536,
+      "beneficial_switches": 150,
+      "neutral_switches": 770,
+      "harmful_switches": 152,
+      "harmful_to_beneficial_mass_ratio": 1.072673724418933,
+      "oracle_recovery": -0.041081915653474466,
+      "non_tie_auc": 0.5619088898520765,
+      "gap_spearman": 0.0700744168009015,
+      "calibration_slope": 0.34557544394263406,
+      "top_decile_realized_gap": 0.012543497243497242,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio",
+        "switch_coverage",
+        "calibration_slope"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6334114268096467,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.0029284898178090764,
+        "policy_regret": 0.07421264906955516,
+        "oracle_recovery": -0.041081915653474466,
+        "switch_queries": 1072,
+        "switch_coverage": 0.536,
+        "beneficial_switches": 150,
+        "neutral_switches": 770,
+        "harmful_switches": 152,
+        "missed_bm25_beneficial_switches": 117,
+        "beneficial_gain_mass": 0.04029640480412945,
+        "harmful_loss_mass": 0.04322489462193852,
+        "harmful_to_beneficial_mass_ratio": 1.072673724418933,
+        "conditional_gain_all_switches": -0.0054636004063602205,
+        "conditional_gain_beneficial": 0.5372853973883926,
+        "conditional_loss_harmful": -0.5687486134465596,
+        "high_margin_bm25_winner_recall": 0.5672268907563025,
+        "gap_mae": 0.22737528918361455,
+        "gap_rmse": 0.376430633969088,
+        "gap_spearman": 0.0700744168009015,
+        "non_tie_auc": 0.5619088898520765,
+        "calibration": {
+          "intercept": -0.031145473235725554,
+          "slope": 0.34557544394263406,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.19070910924372592,
+              "realized_gap_mean": -0.1306366626293097
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.11170313947644256,
+              "realized_gap_mean": -0.054147009375595544
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.06763740497219105,
+              "realized_gap_mean": -0.02307707543001661
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.03209238185307746,
+              "realized_gap_mean": -0.020795650759205742
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.0032205026033878975,
+              "realized_gap_mean": -0.06570521460557692
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.023657470377318742,
+              "realized_gap_mean": 0.007612424546068732
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.048235218594015326,
+              "realized_gap_mean": -0.021281551781551777
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.07263329482127762,
+              "realized_gap_mean": -0.020278546485443038
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.1002394102740385,
+              "realized_gap_mean": 0.0008432180069734291
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.1505621749497035,
+              "realized_gap_mean": 0.012543497243497242
+            }
+          ],
+          "top_decile_realized_gap": 0.012543497243497242
+        },
+        "gain_ci95": [
+          -0.014098593286309458,
+          0.008361193288670047
+        ]
+      },
+      "complexity_rank": 2
+    },
+    {
+      "strategy": "T2_winner3000__M4_pca32_oof_late_fusion",
+      "view": "T2_winner3000",
+      "candidate_id": "M4_pca32_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6325290069734084,
+      "gain_over_fixed_dense": -0.0038109096540472967,
+      "gain_over_best_fixed": -0.0038109096540472967,
+      "gain_over_best_fixed_ci95_lower": -0.01536256152476926,
+      "gain_over_best_fixed_ci95_upper": 0.007803001339439456,
+      "switch_coverage": 0.551,
+      "beneficial_switches": 153,
+      "neutral_switches": 794,
+      "harmful_switches": 155,
+      "harmful_to_beneficial_mass_ratio": 1.0903757590336312,
+      "oracle_recovery": -0.053460820665482515,
+      "non_tie_auc": 0.5784127407506197,
+      "gap_spearman": 0.08488816763184537,
+      "calibration_slope": 0.38292602033093703,
+      "top_decile_realized_gap": 0.005408032708032706,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio",
+        "switch_coverage",
+        "calibration_slope"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6325290069734084,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.0038109096540472967,
+        "policy_regret": 0.07509506890579343,
+        "oracle_recovery": -0.053460820665482515,
+        "switch_queries": 1102,
+        "switch_coverage": 0.551,
+        "beneficial_switches": 153,
+        "neutral_switches": 794,
+        "harmful_switches": 155,
+        "missed_bm25_beneficial_switches": 114,
+        "beneficial_gain_mass": 0.04216738752511218,
+        "harmful_loss_mass": 0.04597829717915946,
+        "harmful_to_beneficial_mass_ratio": 1.0903757590336312,
+        "conditional_gain_all_switches": -0.0069163514592509925,
+        "conditional_gain_beneficial": 0.5512076800668257,
+        "conditional_loss_harmful": -0.5932683506988319,
+        "high_margin_bm25_winner_recall": 0.5798319327731093,
+        "gap_mae": 0.22434558030806023,
+        "gap_rmse": 0.3752176636627024,
+        "gap_spearman": 0.08488816763184537,
+        "non_tie_auc": 0.5784127407506197,
+        "calibration": {
+          "intercept": -0.031534016795152504,
+          "slope": 0.38292602033093703,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.17771596111758123,
+              "realized_gap_mean": -0.11154449662537899
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.1058147522313227,
+              "realized_gap_mean": -0.0566927711349123
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.06272138696728463,
+              "realized_gap_mean": -0.054906596919704335
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.028704331247718616,
+              "realized_gap_mean": -0.04991303637645102
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.0006497396533951494,
+              "realized_gap_mean": -0.012552269807171768
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.020550130465403375,
+              "realized_gap_mean": -0.036847296222296225
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.045725338498090996,
+              "realized_gap_mean": -0.013433784765681321
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.06911407768398478,
+              "realized_gap_mean": -0.009974183706792398
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.09623997148002554,
+              "realized_gap_mean": 0.0255338315801957
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.145067194497781,
+              "realized_gap_mean": 0.005408032708032706
+            }
+          ],
+          "top_decile_realized_gap": 0.005408032708032706
+        },
+        "gain_ci95": [
+          -0.015390693598246807,
+          0.007674553201402674
+        ]
+      },
+      "complexity_rank": 1
+    },
+    {
+      "strategy": "T1_winner2000__M4_oof_late_fusion",
+      "view": "T1_winner2000",
+      "candidate_id": "M4_oof_late_fusion",
+      "queries": 2000,
+      "fixed_bm25_mean_f1": 0.6048476595004397,
+      "fixed_dense_mean_f1": 0.6363399166274557,
+      "best_fixed_action": "dense",
+      "best_fixed_mean_f1": 0.6363399166274557,
+      "oracle_mean_f1": 0.7076240758792018,
+      "router_mean_f1": 0.6311488807657459,
+      "gain_over_fixed_dense": -0.005191035861709734,
+      "gain_over_best_fixed": -0.005191035861709734,
+      "gain_over_best_fixed_ci95_lower": -0.015884591130285317,
+      "gain_over_best_fixed_ci95_upper": 0.005621819684974352,
+      "switch_coverage": 0.4845,
+      "beneficial_switches": 131,
+      "neutral_switches": 697,
+      "harmful_switches": 141,
+      "harmful_to_beneficial_mass_ratio": 1.1462689542524955,
+      "oracle_recovery": -0.07282173088942727,
+      "non_tie_auc": 0.5612865224107848,
+      "gap_spearman": 0.07059268262339023,
+      "calibration_slope": 0.6443033176721366,
+      "top_decile_realized_gap": 0.017006879491687544,
+      "deployable_gate_passed": false,
+      "deployable_failed_checks": [
+        "practical_gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "research_gate_passed": false,
+      "research_failed_checks": [
+        "gain_over_best_fixed",
+        "ci_lower_over_best_fixed",
+        "harmful_to_beneficial_mass_ratio"
+      ],
+      "metrics": {
+        "router_mean_f1": 0.6311488807657459,
+        "fixed_bm25_mean_f1": 0.6048476595004397,
+        "fixed_dense_mean_f1": 0.6363399166274557,
+        "oracle_mean_f1": 0.7076240758792018,
+        "oracle_headroom": 0.07128415925174614,
+        "gain_over_fixed_dense": -0.005191035861709734,
+        "policy_regret": 0.07647519511345591,
+        "oracle_recovery": -0.07282173088942727,
+        "switch_queries": 969,
+        "switch_coverage": 0.4845,
+        "beneficial_switches": 131,
+        "neutral_switches": 697,
+        "harmful_switches": 141,
+        "missed_bm25_beneficial_switches": 136,
+        "beneficial_gain_mass": 0.035489662780720764,
+        "harmful_loss_mass": 0.0406806986424305,
+        "harmful_to_beneficial_mass_ratio": 1.1462689542524955,
+        "conditional_gain_all_switches": -0.010714212304870456,
+        "conditional_gain_beneficial": 0.5418269126827597,
+        "conditional_loss_harmful": -0.5770311864174539,
+        "high_margin_bm25_winner_recall": 0.4957983193277311,
+        "gap_mae": 0.20232339878447858,
+        "gap_rmse": 0.3708620090414439,
+        "gap_spearman": 0.07059268262339023,
+        "non_tie_auc": 0.5612865224107848,
+        "calibration": {
+          "intercept": -0.02756473321294764,
+          "slope": 0.6443033176721366,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 200,
+              "predicted_gap_mean": -0.10632927409745146,
+              "realized_gap_mean": -0.12289570968247439
+            },
+            {
+              "decile": 2,
+              "queries": 200,
+              "predicted_gap_mean": -0.0643597411390779,
+              "realized_gap_mean": -0.09368044694670083
+            },
+            {
+              "decile": 3,
+              "queries": 200,
+              "predicted_gap_mean": -0.042214344882218896,
+              "realized_gap_mean": -0.008292259666676372
+            },
+            {
+              "decile": 4,
+              "queries": 200,
+              "predicted_gap_mean": -0.024910956728403093,
+              "realized_gap_mean": -0.011050107300107304
+            },
+            {
+              "decile": 5,
+              "queries": 200,
+              "predicted_gap_mean": -0.009923471681517632,
+              "realized_gap_mean": -0.016357157070571702
+            },
+            {
+              "decile": 6,
+              "queries": 200,
+              "predicted_gap_mean": 0.005286300996698075,
+              "realized_gap_mean": -0.01942036081202748
+            },
+            {
+              "decile": 7,
+              "queries": 200,
+              "predicted_gap_mean": 0.019560739292340753,
+              "realized_gap_mean": -0.04839798273621802
+            },
+            {
+              "decile": 8,
+              "queries": 200,
+              "predicted_gap_mean": 0.03300034836680054,
+              "realized_gap_mean": -0.008463213816162996
+            },
+            {
+              "decile": 9,
+              "queries": 200,
+              "predicted_gap_mean": 0.0503688003755124,
+              "realized_gap_mean": -0.0033722127309083784
+            },
+            {
+              "decile": 10,
+              "queries": 200,
+              "predicted_gap_mean": 0.07856391378713852,
+              "realized_gap_mean": 0.017006879491687544
+            }
+          ],
+          "top_decile_realized_gap": 0.017006879491687544
+        },
+        "gain_ci95": [
+          -0.015862902211365958,
+          0.005446877405838538
+        ]
+      },
+      "complexity_rank": 2
+    }
+  ],
+  "paired_comparisons_to_top_selected": [
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "mean_router_f1_difference": 0.0,
+      "difference_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T0_tiecap__M4_pca32_oof_late_fusion",
+      "mean_router_f1_difference": -0.00015466752023234685,
+      "difference_ci95": [
+        -0.005156259801358486,
+        0.004623933537935464
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T0_tiecap__M3_pca32_structured_ridge",
+      "mean_router_f1_difference": -0.0005330677692208313,
+      "difference_ci95": [
+        -0.006188760417432639,
+        0.005185951501335379
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T2_winner3000__M3_pca32_structured_ridge",
+      "mean_router_f1_difference": 0.005150434323156778,
+      "difference_ci95": [
+        -0.0047879617041413575,
+        0.015474398636765608
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T1_winner2000__M3_pca32_structured_ridge",
+      "mean_router_f1_difference": 0.0062767922245146775,
+      "difference_ci95": [
+        -0.0027598287769353765,
+        0.015476561628091863
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T1_winner2000__M4_pca32_oof_late_fusion",
+      "mean_router_f1_difference": 0.0066905998221458065,
+      "difference_ci95": [
+        -0.0028859718112303158,
+        0.01627448619577017
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T2_winner3000__M4_oof_late_fusion",
+      "mean_router_f1_difference": 0.006515571051631986,
+      "difference_ci95": [
+        -0.003559535038768862,
+        0.016769134563921467
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T2_winner3000__M4_pca32_oof_late_fusion",
+      "mean_router_f1_difference": 0.007397990887870204,
+      "difference_ci95": [
+        -0.0030730954415571546,
+        0.01803806440491483
+      ]
+    },
+    {
+      "reference_strategy": "T0_tiecap__M4_oof_late_fusion",
+      "comparison_strategy": "T1_winner2000__M4_oof_late_fusion",
+      "mean_router_f1_difference": 0.008778117095532645,
+      "difference_ci95": [
+        -0.0007457658422618139,
+        0.018691869252074597
+      ]
+    }
+  ],
+  "artifacts": {
+    "comparison_csv": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_candidate_comparison.csv",
+      "sha256": "0de14cccaae85e66e20b70ad1c0523488a44877bf1d75aeb50f7d741a200a220"
+    },
+    "query_metrics": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/holdout_query_metrics.jsonl.gz",
+      "sha256": "1dbbbaa11b715ae006fc22b6dab73e8b270a87006cd2bd67ea99047a53c8f5a9"
+    },
+    "prediction_freeze": {
+      "path": "outputs/router/hotpotqa_bd_router_v1/runs/phase28_holdout_selection_v1/prediction_freeze.json",
+      "sha256": "43288b1999b6770a0cdeea6ec36b0f5675be786c34dccc2f804e405693075eed"
+    }
+  },
+  "estimated_generation_cost_usd": 2.8421660000000064,
+  "confirmation_rows_read": 2000,
+  "official_final_holdout_rows_read": 0,
+  "holdout_reuse_for_retuning": "forbidden",
+  "completed_at_unix": 1787983755.4224243
+}
