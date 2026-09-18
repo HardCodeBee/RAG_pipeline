@@ -1,0 +1,204 @@
+{
+  "status": "passed_independent_objective_readout_checks",
+  "created_at_utc": "2026-09-15T04:52:46.149763+00:00",
+  "checker_sha256": "da8d244c35b649d5106ec61a3c99ae845f4014351a37bb6273317a6dec3b12cf",
+  "protocol_sha256": "5353925ebd08af354ac7e7452b2b2e16432bb5862692aba2b6b8f49dd2358ca4",
+  "results_sha256": "af2fa1635fd76fcd74c26e6e8b39bd3b3a1d17ebdf4f3a98b3b246355087aac7",
+  "artifact_sha256": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\protocol.json": "5353925ebd08af354ac7e7452b2b2e16432bb5862692aba2b6b8f49dd2358ca4",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\results.json": "af2fa1635fd76fcd74c26e6e8b39bd3b3a1d17ebdf4f3a98b3b246355087aac7",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\predictions.npz": "37a41edabca0f6c4aa36aba559bb109d0007f481c7fe4a01c29cc33676c0734f",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fit_completion.json": "d015c0650c97f6a768f31f65ba091dde3f2997d8f6e520bf2a57ef2af70ae3cb",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\predictions_frozen.json": "3f9be45ef56fe5ea8336f0091c8aa4db6e12bfbcaf8c75696e261193eb25e6c1",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold0.json": "0f441654d5325a18ad36346e5e38dc13925a88f331dc12ed775e72f8a4961492",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold0.npz": "caa0d891471a0a26fd330ce04ef570e9473ec0427f21797b5c2ece66915bfb5c",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold1.json": "7bfea5410c05123930be725ed0137e3a6b9bda00c9ec92d1b338344d954ebaeb",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold1.npz": "ec18e9f17a596307df55b237daca996786b1502cbcb826b79cb0a59c23ec3988",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold2.json": "0ca9cb7977f686aebb4017e1849533d8c046f9da4fdeffcbda67a5042575f693",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold2.npz": "45bf9d77b0f9b8384bf775e71703b95278293ed7983922e76c339a91703de745",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold3.json": "a6b8815be800a38b5013769f046eeb7d25161fbec7981f1127ca6d36f6f5bd7b",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold3.npz": "bc086265c8b86dcd000f98e0fecf19844187776b2fc92678968d7e56a0fadb29",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold4.json": "a56d72a7708c5fd048d09788341b5f2aa8887d93fc6d206db1bd329b33f3e160",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_v1\\fold4.npz": "13914e278fcbe306e4cac04de364e89288d2f1be5707e5d69beb904c2f2813cb"
+  },
+  "source_bindings_checked": 4,
+  "input_bindings_checked": 16,
+  "queries": 9600,
+  "groups": 9559,
+  "ridge_solutions_checked": 80,
+  "threshold_selections_checked": 10,
+  "selected_regularizations": [
+    0.01,
+    0.01,
+    0.01,
+    0.01,
+    0.001
+  ],
+  "thresholds": [
+    {
+      "fold": 0,
+      "model": "L",
+      "mode": "threshold",
+      "threshold": -0.1904296875,
+      "selected_count": 636,
+      "cal_gain": 0.005789189745751055,
+      "best_gain": 0.005789189745751055,
+      "candidate_count": 811
+    },
+    {
+      "fold": 0,
+      "model": "R",
+      "mode": "threshold",
+      "threshold": -0.02392578125,
+      "selected_count": 739,
+      "cal_gain": 0.005922177899572542,
+      "best_gain": 0.005922177899572542,
+      "candidate_count": 686
+    },
+    {
+      "fold": 1,
+      "model": "L",
+      "mode": "threshold",
+      "threshold": 0.314453125,
+      "selected_count": 91,
+      "cal_gain": 0.0044227174750430505,
+      "best_gain": 0.0044227174750430505,
+      "candidate_count": 833
+    },
+    {
+      "fold": 1,
+      "model": "R",
+      "mode": "threshold",
+      "threshold": -0.00457763671875,
+      "selected_count": 327,
+      "cal_gain": 0.002851920865123472,
+      "best_gain": 0.002851920865123472,
+      "candidate_count": 737
+    },
+    {
+      "fold": 2,
+      "model": "L",
+      "mode": "threshold",
+      "threshold": -0.103515625,
+      "selected_count": 536,
+      "cal_gain": 0.003628435007501162,
+      "best_gain": 0.003628435007501162,
+      "candidate_count": 819
+    },
+    {
+      "fold": 2,
+      "model": "R",
+      "mode": "threshold",
+      "threshold": -0.01611328125,
+      "selected_count": 571,
+      "cal_gain": 0.0045804994749806165,
+      "best_gain": 0.0045804994749806165,
+      "candidate_count": 747
+    },
+    {
+      "fold": 3,
+      "model": "L",
+      "mode": "threshold",
+      "threshold": -0.173828125,
+      "selected_count": 627,
+      "cal_gain": 0.003541088494311537,
+      "best_gain": 0.003541088494311537,
+      "candidate_count": 827
+    },
+    {
+      "fold": 3,
+      "model": "R",
+      "mode": "threshold",
+      "threshold": -0.0106201171875,
+      "selected_count": 484,
+      "cal_gain": 0.005416779216947721,
+      "best_gain": 0.005416779216947721,
+      "candidate_count": 733
+    },
+    {
+      "fold": 4,
+      "model": "L",
+      "mode": "threshold",
+      "threshold": 0.0400390625,
+      "selected_count": 302,
+      "cal_gain": 0.0048339925593244865,
+      "best_gain": 0.0048339925593244865,
+      "candidate_count": 810
+    },
+    {
+      "fold": 4,
+      "model": "R",
+      "mode": "threshold",
+      "threshold": -0.026611328125,
+      "selected_count": 789,
+      "cal_gain": 0.003942781156974829,
+      "best_gain": 0.003942781156974829,
+      "candidate_count": 852
+    }
+  ],
+  "primary": {
+    "R0_minus_L0": {
+      "mean": -0.0018595720254797714,
+      "interval": [
+        -0.004884904642223077,
+        0.0010147717864384224
+      ]
+    },
+    "Rt_minus_Lt": {
+      "mean": -0.003023958564444437,
+      "interval": [
+        -0.006458850000915231,
+        0.0003897638412721667
+      ]
+    },
+    "calibration_interaction": {
+      "mean": -0.0011643865389646655,
+      "interval": [
+        -0.005508570749404951,
+        0.003321281090473556
+      ]
+    },
+    "Rt_minus_Dense": {
+      "mean": 0.0024724688912888377,
+      "interval": [
+        -0.0031525827370935105,
+        0.008120855930132353
+      ]
+    },
+    "Rt_minus_BM25": {
+      "mean": 0.03050686604790351,
+      "interval": [
+        0.022886264302624377,
+        0.03840048512323438
+      ]
+    }
+  },
+  "maximum_absolute_errors": {
+    "cv_mse": 2.7755575615628914e-17,
+    "ridge_intercept": 0.0,
+    "ridge_data_loss": 2.7755575615628914e-17,
+    "ridge_penalty": 4.336808689942018e-19,
+    "ridge_loss": 2.7755575615628914e-17,
+    "ridge_grad_inf": 5.249041264546705e-18,
+    "threshold_cal_gain": 0.0,
+    "threshold_best_gain": 0.0,
+    "fit_mse": 1.3877787807814457e-17,
+    "cal_mse": 2.7755575615628914e-17,
+    "policy_F1": 1.1102230246251565e-16,
+    "policy_beneficial_mass": 0.0,
+    "policy_harmful_mass": 3.469446951953614e-18,
+    "calibration_gain": 3.7947076036992655e-19,
+    "primary_mean": 4.336808689942018e-19,
+    "primary_interval": 1.734723475976807e-17,
+    "test_mse": 2.7755575615628914e-17,
+    "fold_primary_mean": 6.938893903907228e-18
+  },
+  "mechanism_support": false,
+  "candidate_gate": false,
+  "independent_native_GPU_replay": false,
+  "native_score_scope": "Saved native arrays checked for identity, shape, dtype, selection and policy arithmetic; GPU replay is separate.",
+  "new_model_fits": 0,
+  "new_paid_calls": 0,
+  "scope": "Independent numerical implementation on the same consumed old pool; no new-sample or independent-team confirmation.",
+  "elapsed_seconds": 9.585159099999146
+}

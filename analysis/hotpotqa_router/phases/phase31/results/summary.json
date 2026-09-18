@@ -1,0 +1,939 @@
+{
+  "protocol_id": "hotpotqa_router_phase31_old30_vs_new35_v1",
+  "status": "complete",
+  "data_role": "post_selection_internal_diagnostic",
+  "deployable": false,
+  "decision": "NO_CLEAR_INTERNAL_DIFFERENCE",
+  "queries": 9600,
+  "groups": 9559,
+  "dimensions": {
+    "old30": 62,
+    "new35": 67
+  },
+  "baseline_reproduction": [
+    {
+      "split_seed": 20260901,
+      "scores_exact": true,
+      "max_abs_score_difference": 0.0,
+      "scores_within_1e_12": true,
+      "folds_exact": true,
+      "decisions_exact": true
+    },
+    {
+      "split_seed": 20260917,
+      "scores_exact": true,
+      "max_abs_score_difference": 0.0,
+      "scores_within_1e_12": true,
+      "folds_exact": true,
+      "decisions_exact": true
+    },
+    {
+      "split_seed": 20261003,
+      "scores_exact": true,
+      "max_abs_score_difference": 0.0,
+      "scores_within_1e_12": true,
+      "folds_exact": true,
+      "decisions_exact": true
+    }
+  ],
+  "bootstrap": {
+    "seed": 20260902,
+    "resamples": 10000,
+    "unit": "group_id",
+    "confidence": 0.95,
+    "paired_common_resamples": true
+  },
+  "consensus": {
+    "old30": {
+      "router_mean_f1": 0.6506641878889214,
+      "fixed_bm25_mean_f1": 0.6201749448973864,
+      "fixed_dense_mean_f1": 0.6482093420540012,
+      "oracle_mean_f1": 0.7175652385470949,
+      "oracle_headroom": 0.0693558964930937,
+      "gain_over_fixed_dense": 0.002454845834920262,
+      "policy_regret": 0.06690105065817342,
+      "oracle_recovery": 0.035394911738538475,
+      "switch_queries": 1558,
+      "switch_coverage": 0.16229166666666667,
+      "beneficial_switches": 186,
+      "neutral_switches": 1210,
+      "harmful_switches": 162,
+      "missed_bm25_beneficial_switches": 1010,
+      "beneficial_gain_mass": 0.011644824005709837,
+      "harmful_loss_mass": 0.009189978170789575,
+      "harmful_to_beneficial_mass_ratio": 0.7891899582409686,
+      "conditional_gain_all_switches": 0.015126136081665286,
+      "conditional_gain_beneficial": 0.6010231744882496,
+      "conditional_loss_harmful": -0.5445912990097526,
+      "high_margin_bm25_winner_recall": 0.1596244131455399,
+      "gap_mae": 0.18735958503252076,
+      "gap_rmse": 0.36253118222633546,
+      "gap_spearman": 0.08636669497755325,
+      "non_tie_auc": 0.5801317691537863,
+      "calibration": {
+        "intercept": 0.004348303608819132,
+        "slope": 1.1562440702856513,
+        "deciles": [
+          {
+            "decile": 1,
+            "queries": 960,
+            "predicted_gap_mean": -0.07974870965521645,
+            "realized_gap_mean": -0.10157011920022943
+          },
+          {
+            "decile": 2,
+            "queries": 960,
+            "predicted_gap_mean": -0.05760543673416798,
+            "realized_gap_mean": -0.06319566235511127
+          },
+          {
+            "decile": 3,
+            "queries": 960,
+            "predicted_gap_mean": -0.047107804186945164,
+            "realized_gap_mean": -0.06537464341987703
+          },
+          {
+            "decile": 4,
+            "queries": 960,
+            "predicted_gap_mean": -0.03875375229210006,
+            "realized_gap_mean": -0.029701738618996297
+          },
+          {
+            "decile": 5,
+            "queries": 960,
+            "predicted_gap_mean": -0.031399679868942244,
+            "realized_gap_mean": -0.020427377650684683
+          },
+          {
+            "decile": 6,
+            "queries": 960,
+            "predicted_gap_mean": -0.02412464961436841,
+            "realized_gap_mean": -0.007913718786010373
+          },
+          {
+            "decile": 7,
+            "queries": 960,
+            "predicted_gap_mean": -0.016901912407473987,
+            "realized_gap_mean": -0.011116100365409195
+          },
+          {
+            "decile": 8,
+            "queries": 960,
+            "predicted_gap_mean": -0.008847038996369794,
+            "realized_gap_mean": -0.00836183811236107
+          },
+          {
+            "decile": 9,
+            "queries": 960,
+            "predicted_gap_mean": 0.0015894425484429939,
+            "realized_gap_mean": 0.013722738880810293
+          },
+          {
+            "decile": 10,
+            "queries": 960,
+            "predicted_gap_mean": 0.02283150369120707,
+            "realized_gap_mean": 0.013594488061722325
+          }
+        ],
+        "top_decile_realized_gap": 0.013594488061722325
+      },
+      "gain_ci95": [
+        -8.271054213365032e-05,
+        0.005069172111440197
+      ]
+    },
+    "new35": {
+      "router_mean_f1": 0.651543394348071,
+      "fixed_bm25_mean_f1": 0.6201749448973864,
+      "fixed_dense_mean_f1": 0.6482093420540012,
+      "oracle_mean_f1": 0.7175652385470949,
+      "oracle_headroom": 0.0693558964930937,
+      "gain_over_fixed_dense": 0.00333405229406983,
+      "policy_regret": 0.0660218441990239,
+      "oracle_recovery": 0.048071648737203286,
+      "switch_queries": 1693,
+      "switch_coverage": 0.17635416666666667,
+      "beneficial_switches": 210,
+      "neutral_switches": 1287,
+      "harmful_switches": 196,
+      "missed_bm25_beneficial_switches": 986,
+      "beneficial_gain_mass": 0.013447401392179122,
+      "harmful_loss_mass": 0.010113349098109292,
+      "harmful_to_beneficial_mass_ratio": 0.752067169199777,
+      "conditional_gain_all_switches": 0.018905435335540677,
+      "conditional_gain_beneficial": 0.6147383493567599,
+      "conditional_loss_harmful": -0.49534771092780205,
+      "high_margin_bm25_winner_recall": 0.17464788732394365,
+      "gap_mae": 0.18780142107735873,
+      "gap_rmse": 0.36243876001345726,
+      "gap_spearman": 0.07691510315591768,
+      "non_tie_auc": 0.5715583274170509,
+      "calibration": {
+        "intercept": 0.003224686910110325,
+        "slope": 1.1222389594958455,
+        "deciles": [
+          {
+            "decile": 1,
+            "queries": 960,
+            "predicted_gap_mean": -0.08449109207346606,
+            "realized_gap_mean": -0.11581967749555643
+          },
+          {
+            "decile": 2,
+            "queries": 960,
+            "predicted_gap_mean": -0.05907397742688916,
+            "realized_gap_mean": -0.045662722034866224
+          },
+          {
+            "decile": 3,
+            "queries": 960,
+            "predicted_gap_mean": -0.047427274076501734,
+            "realized_gap_mean": -0.04785007431607695
+          },
+          {
+            "decile": 4,
+            "queries": 960,
+            "predicted_gap_mean": -0.03840032332974193,
+            "realized_gap_mean": -0.01570777250194539
+          },
+          {
+            "decile": 5,
+            "queries": 960,
+            "predicted_gap_mean": -0.030496721226535944,
+            "realized_gap_mean": -0.027469225373403617
+          },
+          {
+            "decile": 6,
+            "queries": 960,
+            "predicted_gap_mean": -0.02337512031816693,
+            "realized_gap_mean": -0.03932930736270758
+          },
+          {
+            "decile": 7,
+            "queries": 960,
+            "predicted_gap_mean": -0.015681783554349564,
+            "realized_gap_mean": -0.026676003063791573
+          },
+          {
+            "decile": 8,
+            "queries": 960,
+            "predicted_gap_mean": -0.0070229352437906605,
+            "realized_gap_mean": -0.0005561115439160658
+          },
+          {
+            "decile": 9,
+            "queries": 960,
+            "predicted_gap_mean": 0.0033707957981941425,
+            "realized_gap_mean": 0.024289254064723594
+          },
+          {
+            "decile": 10,
+            "queries": 960,
+            "predicted_gap_mean": 0.02405629207686875,
+            "realized_gap_mean": 0.014437668061393499
+          }
+        ],
+        "top_decile_realized_gap": 0.014437668061393499
+      },
+      "gain_ci95": [
+        0.0006172861004571762,
+        0.0060703424217463785
+      ]
+    }
+  },
+  "paired_contrasts": {
+    "old_minus_dense": {
+      "mean": 0.002454845834920262,
+      "ci95": [
+        -8.271054213365032e-05,
+        0.005069172111440197
+      ]
+    },
+    "new_minus_dense": {
+      "mean": 0.00333405229406983,
+      "ci95": [
+        0.0006172861004571762,
+        0.0060703424217463785
+      ]
+    },
+    "new_minus_old": {
+      "mean": 0.0008792064591495678,
+      "ci95": [
+        -0.0013800402317249013,
+        0.003178370598366935
+      ]
+    }
+  },
+  "split_metrics": {
+    "old30": {
+      "20260901": {
+        "router_mean_f1": 0.651001083384677,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.0027917413306758833,
+        "policy_regret": 0.06656415516241787,
+        "oracle_recovery": 0.04025240061533742,
+        "switch_queries": 1586,
+        "switch_coverage": 0.16520833333333335,
+        "beneficial_switches": 193,
+        "neutral_switches": 1232,
+        "harmful_switches": 161,
+        "missed_bm25_beneficial_switches": 1003,
+        "beneficial_gain_mass": 0.011864432339834901,
+        "harmful_loss_mass": 0.009072691009159018,
+        "harmful_to_beneficial_mass_ratio": 0.7646965947706916,
+        "conditional_gain_all_switches": 0.016898308180635865,
+        "conditional_gain_beneficial": 0.5901479298570728,
+        "conditional_loss_harmful": -0.5409803334653824,
+        "high_margin_bm25_winner_recall": 0.1643192488262911,
+        "gap_mae": 0.18757602990573183,
+        "gap_rmse": 0.3624928250322084,
+        "gap_spearman": 0.08790333530909002,
+        "non_tie_auc": 0.581500354976948,
+        "calibration": {
+          "intercept": 0.0039288755929552666,
+          "slope": 1.1427920153894073,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.08063609850078528,
+              "realized_gap_mean": -0.09457349647127623
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.05817217984841275,
+              "realized_gap_mean": -0.0753584161630245
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.04758502583269815,
+              "realized_gap_mean": -0.051363927136795544
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.03903784982121678,
+              "realized_gap_mean": -0.04417689161012669
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.03128809896594491,
+              "realized_gap_mean": -0.018651008746856487
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.02413278356319051,
+              "realized_gap_mean": -0.009834824888239089
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.01686987856696305,
+              "realized_gap_mean": -7.44354571687487e-05
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.008503368855553351,
+              "realized_gap_mean": -0.010840319816178268
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.002262802270724906,
+              "realized_gap_mean": 0.006223789235038787
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.024267906300798076,
+              "realized_gap_mean": 0.018305559488480026
+            }
+          ],
+          "top_decile_realized_gap": 0.018305559488480026
+        },
+        "gain_ci95": [
+          0.00023406991268347976,
+          0.005384585567968994
+        ],
+        "screen_selection_score": 0.0007831398060020021
+      },
+      "20260917": {
+        "router_mean_f1": 0.6504020990378647,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.0021927569838635797,
+        "policy_regret": 0.06716313950923014,
+        "oracle_recovery": 0.03161601384652175,
+        "switch_queries": 1660,
+        "switch_coverage": 0.17291666666666666,
+        "beneficial_switches": 193,
+        "neutral_switches": 1286,
+        "harmful_switches": 181,
+        "missed_bm25_beneficial_switches": 1003,
+        "beneficial_gain_mass": 0.012112802847043939,
+        "harmful_loss_mass": 0.00992004586318036,
+        "harmful_to_beneficial_mass_ratio": 0.8189719578901006,
+        "conditional_gain_all_switches": 0.012681004244030342,
+        "conditional_gain_beneficial": 0.602502110526538,
+        "conditional_loss_harmful": -0.5261460789311131,
+        "high_margin_bm25_winner_recall": 0.1643192488262911,
+        "gap_mae": 0.18804505569874266,
+        "gap_rmse": 0.36264779226890004,
+        "gap_spearman": 0.08031961994883602,
+        "non_tie_auc": 0.5741917859189626,
+        "calibration": {
+          "intercept": 0.0011032802463681324,
+          "slope": 1.0368963496335946,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.0834271326963203,
+              "realized_gap_mean": -0.10248828086112019
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.0591373786039674,
+              "realized_gap_mean": -0.05963669746446268
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.04821618879978097,
+              "realized_gap_mean": -0.04924727725891941
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.03937767796394908,
+              "realized_gap_mean": -0.04066940347124888
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.03163373007188415,
+              "realized_gap_mean": -0.022341934632032646
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.0240000999647634,
+              "realized_gap_mean": -0.0027397122425253883
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.016382622090772042,
+              "realized_gap_mean": -0.009427294095590712
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.007884893166147973,
+              "realized_gap_mean": -0.012995639073486791
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.003134593394950763,
+              "realized_gap_mean": 0.014720571783275436
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.025916546864824294,
+              "realized_gap_mean": 0.004481695749964529
+            }
+          ],
+          "top_decile_realized_gap": 0.004481695749964529
+        },
+        "gain_ci95": [
+          -0.0004251300267852642,
+          0.004805882776922761
+        ],
+        "screen_selection_score": 0.00023296839607664507
+      },
+      "20261003": {
+        "router_mean_f1": 0.6504571930319266,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.002247850977925405,
+        "policy_regret": 0.06710804551516825,
+        "oracle_recovery": 0.032410380250066276,
+        "switch_queries": 1543,
+        "switch_coverage": 0.16072916666666667,
+        "beneficial_switches": 180,
+        "neutral_switches": 1205,
+        "harmful_switches": 158,
+        "missed_bm25_beneficial_switches": 1016,
+        "beneficial_gain_mass": 0.01136437567317817,
+        "harmful_loss_mass": 0.009116524695252766,
+        "harmful_to_beneficial_mass_ratio": 0.8022019825311909,
+        "conditional_gain_all_switches": 0.013985333368816518,
+        "conditional_gain_beneficial": 0.6061000359028357,
+        "conditional_loss_harmful": -0.553915424521687,
+        "high_margin_bm25_winner_recall": 0.1539906103286385,
+        "gap_mae": 0.18738217497394527,
+        "gap_rmse": 0.3626552364774359,
+        "gap_spearman": 0.08415513082205003,
+        "non_tie_auc": 0.5779543277249827,
+        "calibration": {
+          "intercept": 0.002841661032289163,
+          "slope": 1.104685252041396,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.07961845370981044,
+              "realized_gap_mean": -0.08897183827385381
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.05764496514588665,
+              "realized_gap_mean": -0.06723391498552217
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.04692216914657797,
+              "realized_gap_mean": -0.05760753551162271
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.03874885543031512,
+              "realized_gap_mean": -0.02734469348309736
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.03111363930270895,
+              "realized_gap_mean": -0.03497205580543787
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.02401316644727701,
+              "realized_gap_mean": -0.01957743860924667
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.0170228680482832,
+              "realized_gap_mean": 0.001277638589471359
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.008800567948355646,
+              "realized_gap_mean": -0.01816718991456552
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.0015743344034812358,
+              "realized_gap_mean": 0.022645861532123706
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.022809396708983697,
+              "realized_gap_mean": 0.009607194895604342
+            }
+          ],
+          "top_decile_realized_gap": 0.009607194895604342
+        },
+        "gain_ci95": [
+          -0.00029887801043295965,
+          0.004826001217670649
+        ],
+        "screen_selection_score": 0.001127357017401475
+      }
+    },
+    "new35": {
+      "20260901": {
+        "router_mean_f1": 0.6516872471673967,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.003477905113395464,
+        "policy_regret": 0.06587799137969819,
+        "oracle_recovery": 0.050145774032951694,
+        "switch_queries": 1710,
+        "switch_coverage": 0.178125,
+        "beneficial_switches": 215,
+        "neutral_switches": 1298,
+        "harmful_switches": 197,
+        "missed_bm25_beneficial_switches": 981,
+        "beneficial_gain_mass": 0.014101693881661465,
+        "harmful_loss_mass": 0.010623788768266,
+        "harmful_to_beneficial_mass_ratio": 0.7533696914298853,
+        "conditional_gain_all_switches": 0.0195250813383605,
+        "conditional_gain_beneficial": 0.6296570291346514,
+        "conditional_loss_harmful": -0.517707472971338,
+        "high_margin_bm25_winner_recall": 0.18215962441314554,
+        "gap_mae": 0.18800172724668945,
+        "gap_rmse": 0.36235376554122584,
+        "gap_spearman": 0.08086257683198136,
+        "non_tie_auc": 0.5758164469801299,
+        "calibration": {
+          "intercept": 0.0036406166376029073,
+          "slope": 1.1320193027202268,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.08559527446831601,
+              "realized_gap_mean": -0.10480208420786766
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.059584679852968,
+              "realized_gap_mean": -0.06711905775301415
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.047640413085777565,
+              "realized_gap_mean": -0.04826373817520965
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.038642803840382024,
+              "realized_gap_mean": -0.03125663028977886
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.031021685859320296,
+              "realized_gap_mean": -0.016077877306302227
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.023449145480883133,
+              "realized_gap_mean": -0.007616760649669002
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.015411624711858415,
+              "realized_gap_mean": -0.03373852653163261
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.007050514408879325,
+              "realized_gap_mean": -0.0029839851251397933
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.0037680724181270676,
+              "realized_gap_mean": 0.008335374052139955
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.024818231082526114,
+              "realized_gap_mean": 0.02317931442032726
+            }
+          ],
+          "top_decile_realized_gap": 0.02317931442032726
+        },
+        "gain_ci95": [
+          0.0006503545237350875,
+          0.006292226576046448
+        ],
+        "screen_selection_score": 0.0021156327274206724
+      },
+      "20260917": {
+        "router_mean_f1": 0.6504189233216392,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.0022095812676380185,
+        "policy_regret": 0.06714631522545567,
+        "oracle_recovery": 0.031858592843047505,
+        "switch_queries": 1856,
+        "switch_coverage": 0.19333333333333333,
+        "beneficial_switches": 227,
+        "neutral_switches": 1405,
+        "harmful_switches": 224,
+        "missed_bm25_beneficial_switches": 969,
+        "beneficial_gain_mass": 0.014223232609799557,
+        "harmful_loss_mass": 0.012013651342161537,
+        "harmful_to_beneficial_mass_ratio": 0.8446498536404686,
+        "conditional_gain_all_switches": 0.01142886862571389,
+        "conditional_gain_beneficial": 0.6015111588285276,
+        "conditional_loss_harmful": -0.514870771806923,
+        "high_margin_bm25_winner_recall": 0.19061032863849764,
+        "gap_mae": 0.18858174938138664,
+        "gap_rmse": 0.36257483228023235,
+        "gap_spearman": 0.07032094365467201,
+        "non_tie_auc": 0.5650762558913343,
+        "calibration": {
+          "intercept": 5.067910800911346e-05,
+          "slope": 1.0072615830019718,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.08791518097543437,
+              "realized_gap_mean": -0.10258274647708517
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.06104229758674482,
+              "realized_gap_mean": -0.06547140980738592
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.04855010675497911,
+              "realized_gap_mean": -0.030206501398893994
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.039012690908348434,
+              "realized_gap_mean": -0.028251060241637115
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.03079456482986835,
+              "realized_gap_mean": -0.019266054969978606
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.022964849831931203,
+              "realized_gap_mean": -0.022672615599591668
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.015051898036139145,
+              "realized_gap_mean": -0.037107653736401805
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.006127017556186719,
+              "realized_gap_mean": 0.0025003390213435895
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.005414636510997952,
+              "realized_gap_mean": 0.010531285212312074
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.02721792578534466,
+              "realized_gap_mean": 0.012182446431171863
+            }
+          ],
+          "top_decile_realized_gap": 0.012182446431171863
+        },
+        "gain_ci95": [
+          -0.0006392845094992525,
+          0.005086713422793257
+        ],
+        "screen_selection_score": 9.115909598806163e-05
+      },
+      "20261003": {
+        "router_mean_f1": 0.6516829907273279,
+        "fixed_bm25_mean_f1": 0.6201749448973864,
+        "fixed_dense_mean_f1": 0.6482093420540012,
+        "oracle_mean_f1": 0.7175652385470949,
+        "oracle_headroom": 0.0693558964930937,
+        "gain_over_fixed_dense": 0.003473648673326801,
+        "policy_regret": 0.06588224781976693,
+        "oracle_recovery": 0.050084403042395954,
+        "switch_queries": 1737,
+        "switch_coverage": 0.1809375,
+        "beneficial_switches": 223,
+        "neutral_switches": 1308,
+        "harmful_switches": 206,
+        "missed_bm25_beneficial_switches": 973,
+        "beneficial_gain_mass": 0.01423406675183841,
+        "harmful_loss_mass": 0.010760418078511606,
+        "harmful_to_beneficial_mass_ratio": 0.7559623167512431,
+        "conditional_gain_all_switches": 0.01919805829817921,
+        "conditional_gain_beneficial": 0.6127669991822813,
+        "conditional_loss_harmful": -0.5014563764743273,
+        "high_margin_bm25_winner_recall": 0.18685446009389672,
+        "gap_mae": 0.18796801052203216,
+        "gap_rmse": 0.36262296105048814,
+        "gap_spearman": 0.07416590097306291,
+        "non_tie_auc": 0.5684832861456346,
+        "calibration": {
+          "intercept": 0.0007965312728366279,
+          "slope": 1.0408633043453277,
+          "deciles": [
+            {
+              "decile": 1,
+              "queries": 960,
+              "predicted_gap_mean": -0.08453377567323457,
+              "realized_gap_mean": -0.09658910104639927
+            },
+            {
+              "decile": 2,
+              "queries": 960,
+              "predicted_gap_mean": -0.05910442019893048,
+              "realized_gap_mean": -0.05368810993053484
+            },
+            {
+              "decile": 3,
+              "queries": 960,
+              "predicted_gap_mean": -0.0475927277996437,
+              "realized_gap_mean": -0.042269811527022826
+            },
+            {
+              "decile": 4,
+              "queries": 960,
+              "predicted_gap_mean": -0.03840811642849557,
+              "realized_gap_mean": -0.04033201900639337
+            },
+            {
+              "decile": 5,
+              "queries": 960,
+              "predicted_gap_mean": -0.03039518001609774,
+              "realized_gap_mean": -0.02749968957291045
+            },
+            {
+              "decile": 6,
+              "queries": 960,
+              "predicted_gap_mean": -0.02311610049757036,
+              "realized_gap_mean": -0.02025052052550439
+            },
+            {
+              "decile": 7,
+              "queries": 960,
+              "predicted_gap_mean": -0.01566510825328218,
+              "realized_gap_mean": -0.025392756918256546
+            },
+            {
+              "decile": 8,
+              "queries": 960,
+              "predicted_gap_mean": -0.00717358444868445,
+              "realized_gap_mean": -0.00823601406444393
+            },
+            {
+              "decile": 9,
+              "queries": 960,
+              "predicted_gap_mean": 0.003693468998433319,
+              "realized_gap_mean": 0.016574050736381567
+            },
+            {
+              "decile": 10,
+              "queries": 960,
+              "predicted_gap_mean": 0.025305008585389543,
+              "realized_gap_mean": 0.017340000288937327
+            }
+          ],
+          "top_decile_realized_gap": 0.017340000288937327
+        },
+        "gain_ci95": [
+          0.0007011745669426558,
+          0.00627947216125754
+        ],
+        "screen_selection_score": 0.002103613593994663
+      }
+    }
+  },
+  "split_new_minus_old": {
+    "20260901": 0.0006861637827195806,
+    "20260917": 1.6824283774438762e-05,
+    "20261003": 0.001225797695401396
+  },
+  "decision_changes": {
+    "transition_counts": [
+      {
+        "old_action": "dense",
+        "new_action": "dense",
+        "queries": 7413,
+        "new_minus_old_mean_f1_contribution": 0.0
+      },
+      {
+        "old_action": "dense",
+        "new_action": "bm25",
+        "queries": 629,
+        "new_minus_old_mean_f1_contribution": 0.002014208220899265
+      },
+      {
+        "old_action": "bm25",
+        "new_action": "dense",
+        "queries": 494,
+        "new_minus_old_mean_f1_contribution": -0.001135001761749698
+      },
+      {
+        "old_action": "bm25",
+        "new_action": "bm25",
+        "queries": 1064,
+        "new_minus_old_mean_f1_contribution": 0.0
+      }
+    ],
+    "changed_queries": 1123,
+    "improved_queries": 133,
+    "worsened_queries": 143,
+    "neutral_changed_queries": 847,
+    "positive_gain_mass": 0.008454933707240209,
+    "negative_loss_mass": 0.00757572724809064
+  },
+  "historical_gate_context": {
+    "old30": {
+      "checks": {
+        "practical_gain": false,
+        "grouped_bootstrap_ci_lower": false,
+        "all_split_seed_gains_positive": true,
+        "harmful_to_beneficial_mass_ratio": false,
+        "switch_coverage": true,
+        "calibration_slope": true,
+        "top_decile_realized_gap": true
+      },
+      "passed": false,
+      "role": "historical_context_only"
+    },
+    "new35": {
+      "checks": {
+        "practical_gain": false,
+        "grouped_bootstrap_ci_lower": true,
+        "all_split_seed_gains_positive": true,
+        "harmful_to_beneficial_mass_ratio": false,
+        "switch_coverage": true,
+        "calibration_slope": true,
+        "top_decile_realized_gap": true
+      },
+      "passed": false,
+      "role": "historical_context_only"
+    }
+  },
+  "external_calls": 0,
+  "natural_2000_outcome_rows": 0,
+  "fresh_natural_rows": 0,
+  "final_holdout_rows": 0,
+  "elapsed_seconds": 1231.356115579605
+}

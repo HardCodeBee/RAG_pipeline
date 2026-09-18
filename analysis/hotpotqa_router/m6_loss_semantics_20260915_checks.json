@@ -1,0 +1,100 @@
+{
+  "status": "passed_original_loss_stationary_point_and_interpretation_counterexamples",
+  "source_sha256": "c970187882678059fe27834b822077d1dbc5563eb4233c5b952c784eb6268459",
+  "tie_threshold": 1e-12,
+  "cases": [
+    {
+      "name": "many_small_wins",
+      "synthetic_gaps": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        -0.8
+      ],
+      "win_frequency": 0.8,
+      "mean_gap": -0.08,
+      "thresholded_mean_gap": -0.08,
+      "mean_absolute_thresholded_gap": 0.24,
+      "weighted_BCE_probability": 0.33333333333333337,
+      "closed_form_logit": -0.6931471805599453,
+      "original_objective_gradient_max_abs": 2.7755575615628914e-17,
+      "original_objective_value": 0.6365141682948127
+    },
+    {
+      "name": "rare_large_win",
+      "synthetic_gaps": [
+        0.8,
+        -0.1,
+        -0.1,
+        -0.1,
+        -0.1
+      ],
+      "win_frequency": 0.2,
+      "mean_gap": 0.08000000000000003,
+      "thresholded_mean_gap": 0.08000000000000003,
+      "mean_absolute_thresholded_gap": 0.24,
+      "weighted_BCE_probability": 0.6666666666666667,
+      "closed_form_logit": 0.6931471805599453,
+      "original_objective_gradient_max_abs": 2.7755575615628914e-17,
+      "original_objective_value": 0.6365141682948127
+    },
+    {
+      "name": "small_scale_high_score",
+      "synthetic_gaps": [
+        0.02,
+        0.02,
+        0.02,
+        -0.02
+      ],
+      "win_frequency": 0.75,
+      "mean_gap": 0.009999999999999998,
+      "thresholded_mean_gap": 0.009999999999999998,
+      "mean_absolute_thresholded_gap": 0.02,
+      "weighted_BCE_probability": 0.75,
+      "closed_form_logit": 1.0986122886681098,
+      "original_objective_gradient_max_abs": 0.0,
+      "original_objective_value": 0.5623351446188083
+    },
+    {
+      "name": "large_scale_lower_score",
+      "synthetic_gaps": [
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        0.8,
+        -0.8,
+        -0.8,
+        -0.8
+      ],
+      "win_frequency": 0.625,
+      "mean_gap": 0.2,
+      "thresholded_mean_gap": 0.2,
+      "mean_absolute_thresholded_gap": 0.8,
+      "weighted_BCE_probability": 0.625,
+      "closed_form_logit": 0.5108256237659906,
+      "original_objective_gradient_max_abs": 0.0,
+      "original_objective_value": 0.6615632381579821
+    },
+    {
+      "name": "tiny_gap_ignored",
+      "synthetic_gaps": [
+        0.5,
+        -0.3,
+        5e-13
+      ],
+      "win_frequency": 0.6666666666666666,
+      "mean_gap": 0.06666666666683334,
+      "thresholded_mean_gap": 0.06666666666666667,
+      "mean_absolute_thresholded_gap": 0.26666666666666666,
+      "weighted_BCE_probability": 0.625,
+      "closed_form_logit": 0.5108256237659907,
+      "original_objective_gradient_max_abs": 2.7755575615628914e-17,
+      "original_objective_value": 0.6615632381579821
+    }
+  ],
+  "actual_BEIR_outcome_reads": 0,
+  "new_candidate_fits": 0,
+  "network_calls": 0
+}

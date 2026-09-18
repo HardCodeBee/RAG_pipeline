@@ -1,0 +1,36 @@
+{
+  "model_generation_calls": 0,
+  "endpoint": "standard_official",
+  "observed_at_unix": 1789438480.359323,
+  "proxy_schemes": [
+    "ftp",
+    "http",
+    "https"
+  ],
+  "attempts": [
+    {
+      "number": 1,
+      "status": "failure",
+      "http_status": null,
+      "error_chain": [
+        "APIConnectionError",
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "seconds": 5.198517084121704
+    },
+    {
+      "number": 2,
+      "status": "failure",
+      "http_status": null,
+      "error_chain": [
+        "APIConnectionError",
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "seconds": 1.6833946704864502
+    }
+  ]
+}

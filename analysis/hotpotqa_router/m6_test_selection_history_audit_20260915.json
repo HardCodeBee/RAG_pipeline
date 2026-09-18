@@ -1,0 +1,382 @@
+{
+  "status": "historical_retrieval_policy_selection_evidence_confirmed_fresh_qualification_not_certified",
+  "created_at_utc": "2026-09-15T09:36:52.912112+00:00",
+  "audit_kind": "bounded_readonly_local_selection_use_history",
+  "target": {
+    "source": "BEIR HotpotQA official test",
+    "queries": 7405,
+    "groups": 7392,
+    "all_rows_retained": true
+  },
+  "qualification": {
+    "untouched_fresh_source": false,
+    "independent_answer_utility_confirmation_approved": false,
+    "historical_retrieval_metric_exposure_confirmed": true,
+    "historical_retrieval_policy_grid_and_oracles_confirmed": true,
+    "history_informed_research_recommendations_confirmed": true,
+    "specific_current_M6_layer_or_Student_selection_from_test_proven": false,
+    "answer_utility_or_trained_Router_effect_on_test7405_found_in_this_scope": false,
+    "absence_is_not_proof_of_no_prior_use": true,
+    "canonical_disjoint_remainder_queries": 7169,
+    "canonical_disjoint_remainder_groups": 7158,
+    "interpretation": "Canonical group isolation does not erase prior test-based policy exploration or certify the remainder as an untouched independent confirmation source. A prospective answer-utility test would require explicit disclosure and a separately justified, narrower estimand and protocol."
+  },
+  "evidence": [
+    {
+      "id": "E01",
+      "path": "docs/beir_experiment_results.md",
+      "sha256": "4b533ffcaa9116c527632a44cdd96f002d908eef35fee4a0a907e9bd79270d27",
+      "line_ranges": [
+        [
+          5,
+          28
+        ],
+        [
+          35,
+          46
+        ],
+        [
+          66,
+          76
+        ],
+        [
+          139,
+          142
+        ]
+      ],
+      "claim": "Full-test retrieval-only results including 7405 HotpotQA queries were reported by 2026-08-08; BGE was already the encoder; Top-5 and Top-10 and reranker conditions were compared. The Top-10 section expressly avoids additional method-selection recommendations."
+    },
+    {
+      "id": "E02",
+      "path": "configs/beir/topk_selected7_5_10_20_50_v1.yaml",
+      "sha256": "585ab493af309fbdfffcc35bea17c65d79f9c3cdb65b3a4fa6b90c126d11b63c",
+      "line_ranges": [
+        [
+          1,
+          4
+        ],
+        [
+          7,
+          29
+        ]
+      ],
+      "claim": "The saved replay configuration explicitly covers cutoffs 5,10,20,50 and the original HotpotQA full-test suite."
+    },
+    {
+      "id": "E03",
+      "path": "docs/assets/history_aware_retriever_policy/analysis/source_files.csv",
+      "sha256": "bbd8d8c307d129c5b1e5549f16ffa7d391bb844b17971381d3a8d716e4e54860",
+      "line_ranges": [
+        [
+          1,
+          1
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "claim": "The historical policy replay manifest binds the HotpotQA Top-50 BM25 and Dense result paths and their historical payload hashes; payloads were not opened or rehashed in this audit."
+    },
+    {
+      "id": "E04",
+      "path": "docs/assets/history_aware_retriever_policy/analysis/metadata.json",
+      "sha256": "7e1340d6c49370695dbb2899941687d463ac0d764905f972c68cbeee3df91e04",
+      "line_ranges": [
+        [
+          2,
+          12
+        ],
+        [
+          30,
+          40
+        ]
+      ],
+      "claim": "The manifest-bound replay uses 21 alpha values, two candidate-budget protocols, and test-qrels best-alpha/query oracles; it reports no new retrieval or model inference."
+    },
+    {
+      "id": "E05",
+      "path": "docs/assets/history_aware_retriever_policy/analysis/deterministic_replay_validation.json",
+      "sha256": "0769d29b3821febfff1244919bd5f47450829e305d2019a07de49c9322768633",
+      "line_ranges": [
+        [
+          2,
+          11
+        ]
+      ],
+      "claim": "A saved 2026-08-09 passed replay check binds the same manifest, 21 alphas and two protocols."
+    },
+    {
+      "id": "E06",
+      "path": "docs/history_aware_retriever_policy_report.md",
+      "sha256": "537d759d5c22e5e220257d137009c6c3ed26d5b918e707b25188955a5f7b855b",
+      "line_ranges": [
+        [
+          3,
+          24
+        ],
+        [
+          187,
+          205
+        ],
+        [
+          219,
+          247
+        ],
+        [
+          481,
+          501
+        ]
+      ],
+      "claim": "Historical test-qrels policy exploration explicitly informed Dense-default, sparse/hybrid-exception and HotpotQA multi-evidence-gating research recommendations. Query/family oracle results are descriptive, not a trained policy; answer-level work is proposed later."
+    },
+    {
+      "id": "E07",
+      "path": "../work/experiment_records/2026-08-08/2/conclusion.md",
+      "sha256": "1083eac6c5123c44290a6834bc03794c114bceaeb050b278043abb3a95466416",
+      "line_ranges": [
+        [
+          13,
+          17
+        ],
+        [
+          501,
+          519
+        ]
+      ],
+      "claim": "The historical four-path synthesis recommends Dense plus BGE reranking for HotpotQA. Recommendation does not establish that the later no-reranker Router adopted that recommendation."
+    },
+    {
+      "id": "E08",
+      "path": "../work/experiment_records/2026-08-19/data/source_runs.md",
+      "sha256": "98a3484b7c82e423cdd3524417ac3e33d6caadd9111b4ae12e951641dc0f72df",
+      "line_ranges": [
+        [
+          13,
+          40
+        ],
+        [
+          55,
+          76
+        ]
+      ],
+      "claim": "The archive documents original BM25/BGE results joined to the BGE/DPR/Contriever dense matrix, identity-level consistency checks, and retrieval-only exclusions. This audit reads the provenance text rather than per-query payloads."
+    },
+    {
+      "id": "E09",
+      "path": "../work/experiment_records/2026-08-19/conclusion.md",
+      "sha256": "4b540d6d107631b1a9ee79edb1924bf2a619fba131d06b31d7f2b7237e2821ed",
+      "line_ranges": [
+        [
+          3,
+          15
+        ],
+        [
+          23,
+          27
+        ],
+        [
+          172,
+          191
+        ]
+      ],
+      "claim": "The dense-family and BM25 comparisons include HotpotQA 7405 and explicitly justify BM25-versus-BGE as a routing research task; they recommend moving labels to answer utility in future."
+    },
+    {
+      "id": "E10",
+      "path": "analysis/hotpotqa_router/phases/phase00_26/results/source_configs/hotpotqa_bd_router_config.yaml",
+      "sha256": "ce65f080de24d071056c871608d3209c6ccc12c494a90153dfe7ff6a89535354",
+      "line_ranges": [
+        [
+          1,
+          7
+        ],
+        [
+          24,
+          27
+        ],
+        [
+          35,
+          48
+        ]
+      ],
+      "claim": "The archived Router configuration uses train85000, explicitly marks official_test historical_retrieval_evidence_only, and uses candidate50/final5/no-reranker with BGE-small."
+    },
+    {
+      "id": "E11",
+      "path": "analysis/hotpotqa_router/complete_research_report_20260901.md",
+      "sha256": "c08dea17108e8afbe487095c260d162faab665b15234e76c804951869015760a",
+      "line_ranges": [
+        [
+          650,
+          661
+        ]
+      ],
+      "claim": "The known later Contriever answer experiment uses a frozen train1200 pool and was motivated by Phase2.6 Router failure; it is not evidence of answer-utility exposure on test7405."
+    },
+    {
+      "id": "E12",
+      "path": "analysis/hotpotqa_router/m6_confirmation_inventory_20260915.md",
+      "sha256": "b3755fd2ad40a8d4ef95d024c1923c1c0ff66caa4bb36e8da8340c85d6966087",
+      "line_ranges": [
+        [
+          5,
+          23
+        ],
+        [
+          41,
+          49
+        ]
+      ],
+      "claim": "The prior bounded inventory found full-test retrieval identity artifacts but no answer/router-effect cache in its stated scope. That absence does not prove no historical use."
+    },
+    {
+      "id": "E13",
+      "path": "analysis/hotpotqa_router/m6_test_group_identity_results_20260915.md",
+      "sha256": "061367245a1f8bc9f7719862ceee9d95baa1bcb84063482f266d76be1ad22c24",
+      "line_ranges": [
+        [
+          9,
+          27
+        ],
+        [
+          35,
+          46
+        ]
+      ],
+      "claim": "Complete group audit: test7405/7392groups, 236queries/234groups shared with consumed Router sources, remainder7169/7158 only canonical-disjoint; selection-history qualification was explicitly left open."
+    },
+    {
+      "id": "E14",
+      "path": "outputs/beir_selected7_dense_baselines_v2/metadata.json",
+      "sha256": "23d46a1c7fb5c7592e06ef5bac4b67e003000f557e29b68ef9202dcb5182d126",
+      "line_ranges": [
+        [
+          2,
+          4
+        ],
+        [
+          376,
+          377
+        ]
+      ],
+      "claim": "Whitelisted run identity/status/timestamps show the dense-family matrix completed on 2026-08-16, after the initial BGE four-condition report. This chronology cannot support the matrix causing the earlier BGE choice."
+    }
+  ],
+  "bindings": {
+    "inventory_json_path": "analysis/hotpotqa_router/m6_confirmation_inventory_20260915.json",
+    "inventory_json_sha256": "7b095088e7003463ceeedc32d314f8d98ce38f71a89104b7f52bdf3dc10396a2",
+    "history_policy_source_manifest_current_hash_matches_historical_metadata": true,
+    "source_manifest_rows": 36,
+    "hotpot_manifest_rows": [
+      {
+        "line_number": 8,
+        "suite_id": "beir_hotpotqa_four_condition_full_v2_top50_offline_v1",
+        "suite_identity_sha256": "c21f71ce4f6e3c1df7a88db45fdf5d18e46150b81f4d16f1cb4d66d7e464e752",
+        "family": "hotpotqa",
+        "unit": "hotpotqa",
+        "semantic": "bm25",
+        "source_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\beir_hotpotqa_four_condition_full_v2_top50_offline_v1\\units\\hotpotqa\\runs\\bm25_top50\\results.jsonl",
+        "size_bytes": "81334251",
+        "sha256": "640f342d01dc84f235363b119660fe6b55909ea0011b52cbf00c47e94ef90088"
+      },
+      {
+        "line_number": 9,
+        "suite_id": "beir_hotpotqa_four_condition_full_v2_top50_offline_v1",
+        "suite_identity_sha256": "c21f71ce4f6e3c1df7a88db45fdf5d18e46150b81f4d16f1cb4d66d7e464e752",
+        "family": "hotpotqa",
+        "unit": "hotpotqa",
+        "semantic": "dense",
+        "source_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\beir_hotpotqa_four_condition_full_v2_top50_offline_v1\\units\\hotpotqa\\runs\\dense_top50\\results.jsonl",
+        "size_bytes": "78004809",
+        "sha256": "33334ada4c61b2a1e522a1cc4a97688c28fdb0e464a9b3cdd7608196a0ea35b5"
+      }
+    ],
+    "payload_hash_scope": "Hashes inside source_files.csv are historical recorded hashes only; corresponding per-query payloads were not opened or currently rehashed."
+  },
+  "git_history": {
+    "commands_or_searches": [
+      "git log --all -Sbeir_selected7_dense_baselines_v2 -- docs configs scripts README.md",
+      "git log --all -Sbeir_hotpotqa_four_condition_full_v2 -- docs configs scripts README.md",
+      "git log --all -- scripts/run_beir_dense_matrix.py scripts/analyze_beir_retriever_policy.py",
+      "git log --all -Shistorical_retrieval_evidence_only -- configs scripts analysis",
+      "git show c9aa553:analysis/hotpotqa_router/phases/phase00_26/results/source_configs/hotpotqa_bd_router_config.yaml",
+      "git check-ignore -v docs/beir_experiment_results.md docs/history_aware_retriever_policy_report.md"
+    ],
+    "positive_records": [
+      {
+        "commit": "f649046a497757059ab2ed412487790d8acb8dbb",
+        "committed_at": "2026-08-12T20:41:06+10:00",
+        "subject": "fix BEIR the only dataset",
+        "evidence": "Top-k configuration and policy/suite/replay analysis tooling are present in repository history."
+      },
+      {
+        "commit": "5cdfbd904aa522c8a64bb75376b8b11e8b299e18",
+        "committed_at": "2026-08-20T02:10:00+10:00",
+        "subject": "update",
+        "evidence": "Dense-family matrix runner is present in repository history."
+      },
+      {
+        "commit": "c9aa55382ac4421a13301c62be35b4b254055c61",
+        "committed_at": "2026-09-01T02:39:45+10:00",
+        "subject": "new phase",
+        "evidence": "Archived Router source configuration already marks official_test historical_retrieval_evidence_only."
+      }
+    ],
+    "history_limit": "docs/ is ignored by .gitignore line32; sibling work archives are outside this repository. Their historical stated dates are not independently certified by repository commits. Negative -S searches are not proof of no prior use."
+  },
+  "search_scope": {
+    "text_roots": [
+      "docs",
+      "configs",
+      "scripts",
+      "analysis/hotpotqa_router",
+      "README.md",
+      "../work/experiment_records",
+      "../work/router_research"
+    ],
+    "terms": [
+      "beir_hotpotqa_four_condition_full_v2",
+      "beir_selected7_dense_baselines_v2",
+      "BGE",
+      "DPR",
+      "Contriever",
+      "official_test",
+      "historical_retrieval_evidence_only",
+      "test qrels",
+      "alpha",
+      "routing"
+    ],
+    "method": "Targeted rg searches and direct line reads of historical reports/configuration/provenance metadata, followed by named-path/-S git searches; bounded, not an exhaustive audit of all stored files.",
+    "prior_inventory_reused": true,
+    "memory_used_for_navigation_only": [
+      "MEMORY.md:554-576",
+      "rollout_summaries/2026-08-19T04-07-44-nuvQ-beir_results_and_router_plan_audit.md"
+    ],
+    "excluded": [
+      "raw conversation session logs",
+      "test7405 query/gold/answer payloads",
+      "new reference metadata",
+      "new per-query policy-effect computations",
+      "remote/deleted/unrecorded human decision history"
+    ]
+  },
+  "remaining_uncertainties": [
+    "Which exact historical results were consulted when finalizing encoder, retriever, no-reranker and final_k5; no complete dated decision trail establishes those causal links.",
+    "The dense matrix cannot explain the earlier initial BGE choice; no direct evidence found that test7405 selected current M6 layer6 or the latest Student recipe.",
+    "Historical answer-generation/F1/EM or trained-Router evaluations outside the bounded local inventory, including deleted outputs, remote runs or manual inspection, remain unexcluded.",
+    "If a narrower prospective answer-utility claim is desired, a written exposure/dependency history and a new frozen protocol must state precisely what independence is claimed; the current audit does not grant that qualification.",
+    "Canonical group disjointness does not test semantic near-duplication."
+  ],
+  "boundary": {
+    "new_query_text_reads": 0,
+    "new_reference_metadata_reads": 0,
+    "new_answer_payload_reads": 0,
+    "new_policy_effect_computations": 0,
+    "new_model_fits": 0,
+    "new_network_calls": 0,
+    "new_paid_calls": 0,
+    "test_subset_selected": false,
+    "old_frozen_artifacts_modified": false
+  }
+}

@@ -1,0 +1,93 @@
+protocol:
+  id: hotpotqa_router_phase31_old30_vs_new35_v1
+  frozen_date: '2026-09-10'
+  purpose: Compare old 30D and predefined new 35D with the same M3 PCA32 Ridge recipe.
+  data_role: post_selection_internal_diagnostic
+  deployable: false
+base_config: analysis/hotpotqa_router/phases/phase27/config.yaml
+historical_predictions: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/formal_predictions.npz
+output_dir: outputs/router/hotpotqa_bd_router_v1/runs/phase31_feature_comparison_v1
+results_dir: analysis/hotpotqa_router/phases/phase31/results
+comparison:
+  old_structured_dimensions: 30
+  new_structured_dimensions: 35
+  embedding_dimensions: 384
+  pca_dimensions: 32
+  old_total_dimensions: 62
+  new_total_dimensions: 67
+  model: M3_pca32_structured_ridge
+  ridge_alpha: 10.0
+  model_seed: 11
+  outer_folds: 5
+  inner_folds: 4
+  split_seeds: [20260901, 20260917, 20261003]
+  preprocessing: fold_local_standard_scaler_and_centered_unwhitened_randomized_pca
+  calibration: nonnegative_affine_fit_on_inner_oof
+  policy: calibrated_gap_gt_zero_selects_bm25_otherwise_dense
+  consensus: mean_of_three_calibrated_oof_scores
+  primary_metric: consensus_mean_f1_new_minus_old
+  secondary_metric: consensus_mean_f1_minus_fixed_dense
+  interpretation: CI_above_zero_supports_internal_improvement_only
+  threshold_search: false
+  feature_reselection: false
+bootstrap:
+  seed: 20260902
+  resamples: 10000
+  unit: group_id
+  confidence: 0.95
+  paired_common_resamples: true
+inputs:
+  query_source: data/beir/hotpotqa/queries/queries.jsonl
+  feature_schema: outputs/router/hotpotqa_bd_router_v1/runs/phase27_model_audit_9600_v1/snapshot/feature_schema.json
+  old_cache: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/corpus_static_cache_v2.npz
+  discovery_features: outputs/router/hotpotqa_bd_router_v1/runs/phase29_single_trait_audit_v1/discovery_features.npz
+  bm25_index: artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b/index.sqlite3
+  corpus_chunks: artifacts/build_65e9037e4c1eed7b/chunks.jsonl
+  corpus_offsets: artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy
+corpus_sample:
+  rows: 500000
+  seed: 2026083001
+  cache_rule: rebuild_for_target_terms_if_missing_preserving_original_sample
+information_boundary:
+  model_inputs: [query_text_statistics, frozen_corpus_statistics, frozen_sample_unranked_aggregates, frozen_prototype_summaries, frozen_query_embedding]
+  fresh_natural_rows: 0
+  natural_2000_outcome_rows: 0
+  official_final_holdout_rows: 0
+  provider_calls: 0
+  runtime_changes: false
+features:
+  - q_raw_word_count
+  - q_unique_analyzed_term_count
+  - q_stopword_removal_ratio
+  - q_max_token_frequency_share
+  - q_punctuation_per_word
+  - q_inflection_suffix_ratio
+  - unique_lexical__idf_mean
+  - unique_lexical__idf_std
+  - unique_lexical__idf_max
+  - unique_lexical__idf_max_share
+  - c_exact_scq_mean
+  - c_exact_cf_df_ratio_mean
+  - c_scope_log_at_least_2_docs
+  - c_pair_npmi_mean
+  - c_pair_zero_cooccurrence_ratio
+  - c_suffix_alt_df_advantage_mean
+  - c_union_doc_length_log_ratio
+  - q_capitalized_token_ratio
+  - q_relation_hint_ratio
+  - q_relation_idf_mean
+  - q_passive_marker
+  - q_wh_who
+  - q_wh_which
+  - q_wh_what
+  - q_person_answer_cue
+  - q_location_answer_cue
+  - q_temporal_constraint
+  - q_comparison_constraint
+  - q_pronoun_ratio
+  - q_bridge_style_marker
+  - q_comparison_style_marker
+  - legacy_dense__prototype_similarity_top_1
+  - legacy_dense__prototype_similarity_margin
+  - legacy_dense__prototype_similarity_mean
+  - legacy_dense__prototype_similarity_entropy

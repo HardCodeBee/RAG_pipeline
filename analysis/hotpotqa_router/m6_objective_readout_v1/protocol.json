@@ -1,0 +1,91 @@
+{
+  "status": "frozen_before_new_Ridge_fits_and_cal_thresholds",
+  "created_at_utc": "2026-09-15T04:50:19.456926+00:00",
+  "config": {
+    "queries": 9600,
+    "groups": 9559,
+    "folds": 5,
+    "fit_queries": 6144,
+    "cal_queries": 1536,
+    "test_queries": 1920,
+    "regularizations": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    "inner_folds": 3,
+    "tie_atol": 1e-12,
+    "ridge_gradient_atol": 1e-10,
+    "batch_size": 8,
+    "formal_ridge_solves": 80,
+    "cal_thresholds": 10,
+    "bootstrap_draws": 20000,
+    "bootstrap_seed": 2026091501,
+    "interval_quantiles": [
+      0.005,
+      0.995
+    ],
+    "minimum_recipe_increment": 0.002,
+    "minimum_gain_over_both_fixed": 0.01,
+    "new_encoder_forwards": 0,
+    "new_external_calls": 0,
+    "cpu_threads": 2
+  },
+  "primary": [
+    "R0_minus_L0",
+    "Rt_minus_Lt",
+    "calibration_interaction",
+    "Rt_minus_Dense",
+    "Rt_minus_BM25"
+  ],
+  "policies": [
+    "L0",
+    "Lt",
+    "R0",
+    "Rt",
+    "Dense",
+    "BM25"
+  ],
+  "versions": {
+    "numpy": "1.26.4",
+    "torch": "2.10.0+cu126",
+    "threadpoolctl": "3.5.0"
+  },
+  "source_sha256": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\scripts\\run_m6_objective_readout.py": "a19b1ea144911ce3912096b27a026b389dd4e83090b04de9f4fe82ef807683e1",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\scripts\\m6_objective_math.py": "0cc7468aa56509c49ce813e4e70744e41870a6b36fdfbde2d4db75f8499d32fc",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\scripts\\check_m6_objective_readout.py": "da8d244c35b649d5106ec61a3c99ae845f4014351a37bb6273317a6dec3b12cf",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\analysis\\hotpotqa_router\\m6_objective_readout_plan_20260915.md": "00d3119f8e65654c826ebbf9367a3e113c04e5e2342526e824302079f600d3f6"
+  },
+  "input_sha256": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\features.npz": "095654dd3b720ab73592a8ccab5e2f482444c0e8a04eb30b05276791bc51be29",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\predictions.npz": "ddc4e2b596b65768771aadc9ac3cfb4276fcf8f7d956aac3c300ff2fc6159cce",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\e02_results\\fold_indices.npz": "ad2e94f76332f288f798d8bc1b1ff085be9aba64730b84d4906566d37ea76bc6",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\m6_pooled_offset_v1\\cal_logits.npz": "351c379d5af7faea9d19dba05c9afedbbf4c3b768ba1298316500842ae23e2de",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\completion_record.json": "872572ff9a8c67fc9aa67e62f7bdeff6b5bd49da3f9b8e7ee48c583d53eacb49",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\m6_pooled_offset_v1\\completion_record.json": "7e402248662dd0f71966a9103537c847ed70c57e106630d9489de340959f89ff",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold0_M6_head.pt": "d3dc6ac07098c598753fb457d2359f2ba8b372e10afad1e6d2853665c935ef4e",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold0_M6_fit.npz": "5f8231a126dd7eef713c98ecc80b053b3ab7f9ef1c8155d732b94a3d39a27f67",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold1_M6_head.pt": "fe948a54f202a19ffa065e1863dfeff1b25cf88231fb2cf605ea7738561e03a4",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold1_M6_fit.npz": "db317f7072c7af483a97a275d2e67715a21b17c72084d9295dde43b1877880b4",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold2_M6_head.pt": "8c53c8a7e426f5f5386f4c1b9174024aa408c7bba4898fc8c371b6585c3bc61e",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold2_M6_fit.npz": "b519336868f266dac5c10c611f3a7f4888b4df272ce6218e10e10d0d54f2ae8c",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold3_M6_head.pt": "5039a2875a3607b019ce42bb5fb261b849f1bfbeb729d7e2323357354ad74220",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold3_M6_fit.npz": "2d3c63192d3281a4caea5d89eb299145972de8844e2c6e4303ac5b10a2c5bcf6",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold4_M6_head.pt": "1442b9811048d1044b355f58e91323d064b3f998d54bf12e17409581e14f4b8c",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\layer_pooling_v1\\fold4_M6_fit.npz": "7f1cbe1811d749e8155c5304b79bcae43208f8f0371ee35d4bc7716f9e9d2f60"
+  },
+  "scope": "Consumed old9600 development; no independent source confirmation or deployment",
+  "new_BEIR_policy_effects": false,
+  "new_external_calls": 0,
+  "identity": {
+    "queries": 9600,
+    "groups": 9559,
+    "feature_shape": [
+      9600,
+      384
+    ]
+  }
+}

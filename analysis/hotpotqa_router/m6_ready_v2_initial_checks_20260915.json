@@ -1,0 +1,75 @@
+{
+  "status": "passed_independent_completed_steps_transport_checks",
+  "checked_at_unix": 1789442027.6124175,
+  "scope": "Completed answer attempts26090-26223 only; concurrent later batch untouched",
+  "snapshot_mode": "SQLite mode=ro BEGIN transaction with WAL visibility",
+  "amendment_sha256": "963fef5f1dd893302d02a75311ee68bb11b5bfacbc630c7053014fab61bc0a62",
+  "steps": [
+    {
+      "step": 1,
+      "attempt_id_first": 26090,
+      "attempt_id_last": 26095,
+      "attempts": 6,
+      "successes": 6,
+      "failures": 0,
+      "readiness_sha256": "f746de754531fedf9eae0629f165a1f6ed038ee2e7f6177affe8cc2e872bbdf4",
+      "all_used_prepared_client": true,
+      "distinct_prepared_clients_used": 4,
+      "first_use_age_min_seconds": 0.7350000000005821,
+      "first_use_age_max_seconds": 11.375,
+      "metadata_calls_inside_answer_attempts": 0,
+      "charged_micro_usd": 1328,
+      "receipt_matches": true
+    },
+    {
+      "step": 2,
+      "attempt_id_first": 26096,
+      "attempt_id_last": 26223,
+      "attempts": 128,
+      "successes": 128,
+      "failures": 0,
+      "readiness_sha256": "c33422b7e049f6557204b350d220206068327d2754e2dc0580ae22e4f241ef18",
+      "all_used_prepared_client": true,
+      "distinct_prepared_clients_used": 4,
+      "first_use_age_min_seconds": 0.9069999999992433,
+      "first_use_age_max_seconds": 6.156000000000859,
+      "metadata_calls_inside_answer_attempts": 0,
+      "charged_micro_usd": 28537,
+      "receipt_matches": true
+    }
+  ],
+  "checked_attempts": 134,
+  "successes": 134,
+  "charged_micro_usd": 29865,
+  "all_correct_fixed_model": true,
+  "all_amendment_and_readiness_bindings_match": true,
+  "all_original_source_hashes_match_plan": true,
+  "all_wrapper_source_hashes_match_plan": true,
+  "dependencies_match_plan": true,
+  "source_hashes": {
+    "run_m6_ready_collection_v2.py": "03ee4f421b3b49f59b8f95951293ba4af78d0aed32b1cab9c633233033be23d0",
+    "m6_ready_clients_v2.py": "84fd8a98a2268b3ea6407d086ee893b56b692792b39d9fa8e49b3f87997e7b54",
+    "m6_preconnect_transport.py": "fa33a419c56c9381cc46d3e6bfff545fc800b6a39a781a757d5ababf3d6a7840",
+    "continue_m6_beir_collection.py": "f06cfcb8ac198d9787d4df3283e1a9ea2ea1e160b743e6055443f41bc0756634"
+  },
+  "frozen_collector_identity": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\m6_beir_answer_collection.py": "f122d9ac4b9c045ae8fd07566019c160aef7cf17296bf3a8381ce0aa53f3049a",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\test_m6_beir_answer_collection.py": "73e6e644931d718adbf5e08645f204762407665e26cba01c388106854ca95dd7",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\pool_answer_collection.py": "b38e8aceb5875a2bed8e272caee083953014af96d2977c4675e68d0b1e3b2c1a",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\collect_validation_answers.py": "1a9f061dc93430a33a2ee3c8ca3e5ae0ff5f63601447cfde0ef03d9483dc7951",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\audit_m6_beir_contexts.py": "886cf238c58fc11f92217e49ea90b28f03a7f091a5fd43a0be8f27cd48ce0f5e"
+  },
+  "frozen_analysis_hashes": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\finish_m6_beir_validation.py": "fc2eed32c2c0509c74f2e6edfed0992f392f4899820173c8920d2fffba927865",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\audit_pool_answer_ledger.py": "3e88c234557075adbbc26ffa7b7c318edadedecafda6aa53ef918109e7b82809",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\check_pool_evaluation.py": "1734c26ca3f1ffb1b26e27fb0c6c0fbaba2f583519255101be1bf8fa5e94a352",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\run_m6_beir_validation.py": "51ddb1fc44739080022671f298a717014614dea28eec2af6ae8eb9e542b57e9a",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\work\\router_research\\pool_validation_evaluation.py": "f5c700b35b0099bd4b00e53a99d0354c5c761610deb28f11e8aa7521bb56198a"
+  },
+  "budget_sha256": "04d99dcbfae74bd88ed104d84525a268d6551e38cb2311a17f037f6f7638e9f0",
+  "answer_text_or_F1_fields_read": false,
+  "partial_policy_effects_computed": false,
+  "new_network_calls": 0,
+  "live_batch_modified": false,
+  "full_live_ledger_audit_performed": false
+}

@@ -1,0 +1,59 @@
+{
+  "model_generation_calls": 0,
+  "max_sdk_retries": 0,
+  "certificate_verification": "enabled",
+  "results": [
+    {
+      "label": "sdk_raw_noauth_0",
+      "seconds": 1.524766206741333,
+      "http_status": 401,
+      "status": "success",
+      "response_content_type": "application/json",
+      "server": "cloudflare"
+    },
+    {
+      "label": "same_client_sdk_metadata_0",
+      "seconds": 3.868042469024658,
+      "http_status": 200,
+      "status": "success",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "label": "plain_noauth_0",
+      "seconds": 5.015830755233765,
+      "http_status": null,
+      "error_chain": [
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "status": "failure"
+    },
+    {
+      "label": "sdk_raw_noauth_1",
+      "seconds": 2.2258408069610596,
+      "http_status": 401,
+      "status": "success",
+      "response_content_type": "application/json",
+      "server": "cloudflare"
+    },
+    {
+      "label": "same_client_sdk_metadata_1",
+      "seconds": 1.1119790077209473,
+      "http_status": 200,
+      "status": "success",
+      "model": "gpt-4.1-mini-2025-04-14"
+    },
+    {
+      "label": "plain_noauth_1",
+      "seconds": 5.0191473960876465,
+      "http_status": null,
+      "error_chain": [
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "status": "failure"
+    }
+  ]
+}

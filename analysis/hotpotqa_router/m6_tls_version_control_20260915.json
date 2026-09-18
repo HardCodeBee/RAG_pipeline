@@ -1,0 +1,405 @@
+{
+  "started_at_utc": "2026-09-15T02:29:25.839011+00:00",
+  "endpoint": "https://api.openai.com/v1/models",
+  "fixed_request_count": 6,
+  "order": [
+    "default_tls",
+    "tls12_only",
+    "default_tls",
+    "tls12_only",
+    "default_tls",
+    "tls12_only"
+  ],
+  "model_generation_calls": 0,
+  "authorization_headers_sent": false,
+  "response_bodies_saved": false,
+  "new_client_per_request": true,
+  "timeout_seconds": 12,
+  "system_proxy_selection": "httpx trust_env=True; unchanged",
+  "versions": {
+    "httpx": "0.28.1",
+    "httpcore": "1.0.9"
+  },
+  "source_sha256": "6e0d3141d2ad2e8a271d1eb460c81da84132150a2d9d320abe81ef233d13b077",
+  "results": [
+    {
+      "condition": "default_tls",
+      "pair_number": 1,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "MAXIMUM_SUPPORTED",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "http11.response_closed.started"
+        },
+        {
+          "event": "http11.response_closed.complete"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "http_status": 401,
+      "negotiated_http_version": "HTTP/1.1",
+      "negotiated_tls_version": "TLSv1.3",
+      "elapsed_seconds": 5.688000000000102,
+      "proxy_tls_failed": false
+    },
+    {
+      "condition": "tls12_only",
+      "pair_number": 1,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "TLSv1_2",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "http11.response_closed.started"
+        },
+        {
+          "event": "http11.response_closed.complete"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "http_status": 401,
+      "negotiated_http_version": "HTTP/1.1",
+      "negotiated_tls_version": "TLSv1.2",
+      "elapsed_seconds": 7.514999999999418,
+      "proxy_tls_failed": false
+    },
+    {
+      "condition": "default_tls",
+      "pair_number": 2,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "MAXIMUM_SUPPORTED",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "http11.response_closed.started"
+        },
+        {
+          "event": "http11.response_closed.complete"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "http_status": 401,
+      "negotiated_http_version": "HTTP/1.1",
+      "negotiated_tls_version": "TLSv1.3",
+      "elapsed_seconds": 8.828999999999724,
+      "proxy_tls_failed": false
+    },
+    {
+      "condition": "tls12_only",
+      "pair_number": 2,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "TLSv1_2",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "http11.response_closed.started"
+        },
+        {
+          "event": "http11.response_closed.complete"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "http_status": 401,
+      "negotiated_http_version": "HTTP/1.1",
+      "negotiated_tls_version": "TLSv1.2",
+      "elapsed_seconds": 8.875,
+      "proxy_tls_failed": false
+    },
+    {
+      "condition": "default_tls",
+      "pair_number": 3,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "MAXIMUM_SUPPORTED",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.failed",
+          "exception_class": "ConnectError"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "error_chain": [
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "elapsed_seconds": 5.015999999999622,
+      "proxy_tls_failed": true
+    },
+    {
+      "condition": "tls12_only",
+      "pair_number": 3,
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "tls_minimum": "TLSv1_2",
+      "tls_maximum": "TLSv1_2",
+      "events": [
+        {
+          "event": "connection.connect_tcp.started"
+        },
+        {
+          "event": "connection.connect_tcp.complete"
+        },
+        {
+          "event": "http11.send_request_headers.started"
+        },
+        {
+          "event": "http11.send_request_headers.complete"
+        },
+        {
+          "event": "http11.send_request_body.started"
+        },
+        {
+          "event": "http11.send_request_body.complete"
+        },
+        {
+          "event": "http11.receive_response_headers.started"
+        },
+        {
+          "event": "http11.receive_response_headers.complete"
+        },
+        {
+          "event": "proxy.start_tls.started"
+        },
+        {
+          "event": "proxy.start_tls.failed",
+          "exception_class": "ConnectError"
+        }
+      ],
+      "effective_pool_class": "HTTPProxy",
+      "error_chain": [
+        "ConnectError",
+        "ConnectError",
+        "SSLEOFError"
+      ],
+      "elapsed_seconds": 5.015999999999622,
+      "proxy_tls_failed": true
+    }
+  ],
+  "completed_at_utc": "2026-09-15T02:30:06.943068+00:00"
+}

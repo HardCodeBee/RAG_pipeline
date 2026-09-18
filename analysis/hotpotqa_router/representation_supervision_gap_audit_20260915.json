@@ -1,0 +1,600 @@
+{
+  "status": "bounded_coverage_audit_complete_checkpoint_readout_crossing_proposed_not_executed",
+  "created_at_utc": "2026-09-15T10:15:17.175459+00:00",
+  "report": "analysis/hotpotqa_router/representation_supervision_gap_audit_20260915.md",
+  "evidence": [
+    {
+      "id": "E01",
+      "path": "../work/router_research/encoder_capacity_coverage_audit.md",
+      "sha256": "81b9ab2db64d831915a6fdad25e022f3b21722a65162e8aadcb6c1ac988ddf89",
+      "line_ranges": [
+        [
+          5,
+          25
+        ],
+        [
+          44,
+          54
+        ]
+      ],
+      "claim": "historical coverage superseded by later F/H runs"
+    },
+    {
+      "id": "E02",
+      "path": "../work/router_research/encoder_scope_results.md",
+      "sha256": "b7e3fcf80bda0aaf7f0721f9bbcdcee9b8d02632e2eea48e4e41215571cdfea1",
+      "line_ranges": [
+        [
+          15,
+          27
+        ],
+        [
+          31,
+          39
+        ],
+        [
+          55,
+          60
+        ],
+        [
+          76,
+          88
+        ]
+      ],
+      "claim": "full-scope F completed; no confirmed policy gain"
+    },
+    {
+      "id": "E03",
+      "path": "../work/router_research/lp_ft_v2_results.md",
+      "sha256": "ab8342ac6b9ae6a2b6e590a2b1402bcaa4087ed2fe68800d5d7d624130c579c9",
+      "line_ranges": [
+        [
+          15,
+          38
+        ],
+        [
+          53,
+          61
+        ],
+        [
+          75,
+          89
+        ]
+      ],
+      "claim": "LP-initialized H completed; no confirmed policy gain"
+    },
+    {
+      "id": "E04",
+      "path": "../work/router_research/layer_pooling_results.md",
+      "sha256": "fe9ffb61a28dee80b13a1142eb60c6a2a891bfa360feec5782091090003f8bd6",
+      "line_ranges": [
+        [
+          7,
+          26
+        ],
+        [
+          39,
+          49
+        ],
+        [
+          53,
+          67
+        ]
+      ],
+      "claim": "base-only four-view experiment; M6 passed consumed-pool gate"
+    },
+    {
+      "id": "E05",
+      "path": "../work/router_research/e10_report.md",
+      "sha256": "ef934920a59ceef1a7c89dec3cea1b2f459f264cd78e5cbee105a9353f623754",
+      "line_ranges": [
+        [
+          9,
+          35
+        ],
+        [
+          41,
+          44
+        ]
+      ],
+      "claim": "weighted BCE and gap-MSE history and semantics"
+    },
+    {
+      "id": "E06",
+      "path": "../work/router_research/e09_report.md",
+      "sha256": "ff7ede5b955bd8052efe350a9e81404e1bdf390f9d0015d4bf0fc7099615428b",
+      "line_ranges": [
+        [
+          9,
+          33
+        ],
+        [
+          39,
+          49
+        ]
+      ],
+      "claim": "coverage and probe8 auxiliary supervision completed"
+    },
+    {
+      "id": "E07",
+      "path": "../work/router_research/e14_report.md",
+      "sha256": "a678488bc97a0444c38bada2cbdaf47601a1b8bf3d0ba53d0fb7fc7900e29367",
+      "line_ranges": [
+        [
+          9,
+          24
+        ],
+        [
+          38,
+          46
+        ]
+      ],
+      "claim": "common-utility supervision completed"
+    },
+    {
+      "id": "E08",
+      "path": "../work/router_research/e16_report.md",
+      "sha256": "e6566d040947a4256d8ca220b869359a2d97b2a99e97b539941759f89cc91617",
+      "line_ranges": [
+        [
+          9,
+          38
+        ]
+      ],
+      "claim": "uniform/IDF/permuted token pooling completed"
+    },
+    {
+      "id": "E09",
+      "path": "../work/router_research/e18_report.md",
+      "sha256": "760770c0078bc344f60147daa690c3b76b00fbc1b7fdb22bd1f005edd487a00e",
+      "line_ranges": [
+        [
+          9,
+          31
+        ]
+      ],
+      "claim": "alternate-grouped-split retraining completed"
+    },
+    {
+      "id": "E10",
+      "path": "../work/router_research/support_encoder_results.md",
+      "sha256": "c8806fbd67a00731109d7f72a8f8ad7d78611cd4f6f6363280f89a5e80d85722",
+      "line_ranges": [
+        [
+          7,
+          24
+        ]
+      ],
+      "claim": "support G trained, incomplete policy gate"
+    },
+    {
+      "id": "E11",
+      "path": "../work/router_research/support_transfer_results.md",
+      "sha256": "091fcbf5b34607b13b6c324e53d22f09fb167a1f9fa1ea7b5e5dad3b4c1eee4b",
+      "line_ranges": [
+        [
+          5,
+          20
+        ]
+      ],
+      "claim": "held-out support-matching transfer, separate from routing"
+    },
+    {
+      "id": "E12",
+      "path": "../work/router_research/query_rank_results.md",
+      "sha256": "3d2677fa90a7379bb6f0f21e2aadc65a4e187b7bbda93de56668e6876494baff",
+      "line_ranges": [
+        [
+          9,
+          39
+        ]
+      ],
+      "claim": "cross-query relationship supervision completed"
+    },
+    {
+      "id": "E13",
+      "path": "../work/router_research/query_rank_allocation_results.md",
+      "sha256": "aed3ca8ce16bdea874b077f996f840363b36394d1fce0c72d608263a5254a1ca",
+      "line_ranges": [
+        [
+          9,
+          39
+        ]
+      ],
+      "claim": "NZ/Z anchor allocation correction completed"
+    },
+    {
+      "id": "E14",
+      "path": "../work/router_research/support_full_readout_results.md",
+      "sha256": "621613f284c3cfc516b2e88af2001770a8f2f048fdaa55ed45b0fa49b9b92032",
+      "line_ranges": [
+        [
+          15,
+          29
+        ]
+      ],
+      "claim": "full384/PCA32 support readout completed"
+    },
+    {
+      "id": "E15",
+      "path": "../work/router_research/support_readout_interaction_results.md",
+      "sha256": "6cd5a5821b73e37cba156f94ff2a2078e8db6fa850df0715379c40238f330aaa",
+      "line_ranges": [
+        [
+          15,
+          29
+        ]
+      ],
+      "claim": "tree/Ridge readout comparison completed"
+    },
+    {
+      "id": "E16",
+      "path": "../work/router_research/supervised_subspace_results.md",
+      "sha256": "7c760ce96c760bd6a7ae435df3eb1b9d75eb1b520362a62015afc84f8cdaafc1",
+      "line_ranges": [
+        [
+          15,
+          29
+        ]
+      ],
+      "claim": "PLS/PCA comparison completed"
+    },
+    {
+      "id": "E17",
+      "path": "../work/router_research/new35_support_results.md",
+      "sha256": "56412ceb07414a83110d5bd046a9f355c2280d392dac571aadbdd25ad6b26fe9",
+      "line_ranges": [
+        [
+          15,
+          29
+        ]
+      ],
+      "claim": "new35 replacement completed"
+    },
+    {
+      "id": "E18",
+      "path": "../work/router_research/feature_union_results.md",
+      "sha256": "4e05abf1eb4205fa8f68f841a9c1a2f04c945d8cc6c6aa7f004e91472acf4092",
+      "line_ranges": [
+        [
+          15,
+          29
+        ]
+      ],
+      "claim": "old/new feature union completed"
+    },
+    {
+      "id": "E19",
+      "path": "../work/router_research/encoder_layer_pooling.py",
+      "sha256": "20c3a5390d9290420b8582d9061a906d66b2702ecb201ffad541024843e2cf71",
+      "line_ranges": [
+        [
+          5,
+          23
+        ]
+      ],
+      "claim": "ordinary-token mask and FP32 mean/L2 implementation"
+    },
+    {
+      "id": "E20",
+      "path": "../work/router_research/run_layer_pooling.py",
+      "sha256": "ac71899380ec58ab1c7d0a3d4b7fb4083585e5652c653675b0277485c9e8df73",
+      "line_ranges": [
+        [
+          62,
+          113
+        ],
+        [
+          156,
+          173
+        ],
+        [
+          195,
+          212
+        ],
+        [
+          243,
+          265
+        ]
+      ],
+      "claim": "original frozen model extraction, token cache and head fitting"
+    },
+    {
+      "id": "E21",
+      "path": "../work/router_research/run_e11c.py",
+      "sha256": "5c2be66ece5df84d21cabaf5550590f3d467a03cba4cf54044b8bc8a85cfceb1",
+      "line_ranges": [
+        [
+          115,
+          139
+        ],
+        [
+          155,
+          164
+        ],
+        [
+          217,
+          227
+        ]
+      ],
+      "claim": "own-fit labels, last-CLS training, saved checkpoint schema"
+    },
+    {
+      "id": "E22",
+      "path": "../work/router_research/encoder_scope_training.py",
+      "sha256": "300f92d4a97db9ad00fb5a08bb0594389b2c8bc4d08871a83780eb628f1fb241",
+      "line_ranges": [
+        [
+          54,
+          81
+        ],
+        [
+          84,
+          109
+        ]
+      ],
+      "claim": "full-scope adapter and exact restoration"
+    },
+    {
+      "id": "E23",
+      "path": "../work/router_research/lp_ft_training.py",
+      "sha256": "8c13708f2b244f19ef6a2c8aeb1162b4ffca26dbd2c0ca5b85e2ca8659f116e1",
+      "line_ranges": [
+        [
+          12,
+          27
+        ],
+        [
+          51,
+          108
+        ]
+      ],
+      "claim": "head warmstart, precision-preserving extraction and batch8 native head"
+    },
+    {
+      "id": "E24",
+      "path": "../work/router_research/run_lp_ft_v2.py",
+      "sha256": "4d560c551ad890b79ed9e971996e73129db908dbe8fe392747a3795f94ba0b81",
+      "line_ranges": [
+        [
+          198,
+          218
+        ],
+        [
+          246,
+          284
+        ]
+      ],
+      "claim": "H own-fit-only training and post-freeze held-out inference"
+    },
+    {
+      "id": "E25",
+      "path": "../work/router_research/run_e10.py",
+      "sha256": "826eaa1399efee98165fb1c8fe83abf609e448311f463edfadbe210e1881bb7e",
+      "line_ranges": [
+        [
+          81,
+          90
+        ],
+        [
+          106,
+          139
+        ],
+        [
+          147,
+          173
+        ]
+      ],
+      "claim": "native eval and last-two-layer weighted BCE training"
+    },
+    {
+      "id": "E26",
+      "path": "../work/router_research/weighted_linear_probe.py",
+      "sha256": "c970187882678059fe27834b822077d1dbc5563eb4233c5b952c784eb6268459",
+      "line_ranges": [
+        [
+          28,
+          62
+        ]
+      ],
+      "claim": "positive-weight normalization and convex weighted BCE objective"
+    },
+    {
+      "id": "E27",
+      "path": "../work/router_research/run_support_encoder.py",
+      "sha256": "8236bdfa2981dbc9f23e38961a25d4be2735be63c6967f905db09723cb12c23f",
+      "line_ranges": [
+        [
+          65,
+          91
+        ]
+      ],
+      "claim": "support training scope and last-CLS input"
+    },
+    {
+      "id": "E28",
+      "path": "../work/router_research/run_query_rank.py",
+      "sha256": "ff377906cb3ee836e0e5f7412f5857ecea79a10c739bbd2d1f6d864b0d9cee6a",
+      "line_ranges": [
+        [
+          60,
+          70
+        ],
+        [
+          99,
+          109
+        ]
+      ],
+      "claim": "last-two-layer relationship training and last-CLS input"
+    }
+  ],
+  "completed_artifact_bindings": [
+    {
+      "directory": "../work/router_research/encoder_scope_v1",
+      "check_status": "passed_independent_encoder_scope_training_OOF_bootstrap_and_200query_replay",
+      "completion_status": "complete_independently_checked_reported_fixed_scope_branch_closed",
+      "protocol_sha256": "0bc10867ff84fde7c10e885cfa852915b781688b2a36806d9efd38870aea6e7c",
+      "results_sha256": "2a7c325366c743bc1078c3accd3857b1523875df455fdc73a962c30a9896b4bf",
+      "check_sha256": "895ffc201d7337cabb9dc9134bae7b8e42db0116cf0e87a30b008469dcbb6122",
+      "completion_sha256": "844f7e5a965f0b327a2951d946ca5464a6d9eb4b01cc87ba28f3d709160bb051"
+    },
+    {
+      "directory": "../work/router_research/lp_ft_v2",
+      "check_status": "passed_independent_LP_H_F_OOF_training_and_four_comparison_checks",
+      "completion_status": "complete_independently_checked_with_documented_diagnostic_precision_amendment_reported_fixed_method_closed",
+      "protocol_sha256": "3728ad7a4cf73481b2fe00c1fd71b9f0cbbe4b407db4c3315127bcf5906fa77b",
+      "results_sha256": "37254a02b28f3498f76b3741553306223abb95a360d910f57d691c153add9f8d",
+      "check_sha256": "5f8ceeeea20f38d7cfda3c56310835805996aa6892d0942044aea514dcf8c0c7",
+      "completion_sha256": "b0834e02703979ff34ef019f05100912a2f6343aa63c201b81cfc7162777069a"
+    },
+    {
+      "directory": "../work/router_research/layer_pooling_v1",
+      "check_status": "passed_independent_four_policies_and_six_comparisons",
+      "completion_status": "complete_independently_checked_M6_passes_consumed_pool_candidate_gate",
+      "protocol_sha256": "ad0bd0ff9453f8bf15b5d94d2eaba4fa65d3b964e948bd92319b6bf11a3c900c",
+      "results_sha256": "8ba3d83b3cbe5b25ea741d98ec89f51547a0861f372befe467e9ab2b0c38163e",
+      "check_sha256": "2856ff4d5997611493cb50c4255664231cbb1b75414ab37c55dfca745eb77e5a",
+      "completion_sha256": "872572ff9a8c67fc9aa67e62f7bdeff6b5bd49da3f9b8e7ee48c583d53eacb49"
+    }
+  ],
+  "checkpoint_metadata": {
+    "files": [
+      {
+        "path": "../work/router_research/encoder_scope_v1/fold0.pt",
+        "fold": 0,
+        "size_bytes": 132902551
+      },
+      {
+        "path": "../work/router_research/encoder_scope_v1/fold1.pt",
+        "fold": 1,
+        "size_bytes": 132902551
+      },
+      {
+        "path": "../work/router_research/encoder_scope_v1/fold2.pt",
+        "fold": 2,
+        "size_bytes": 132902551
+      },
+      {
+        "path": "../work/router_research/encoder_scope_v1/fold3.pt",
+        "fold": 3,
+        "size_bytes": 132902551
+      },
+      {
+        "path": "../work/router_research/encoder_scope_v1/fold4.pt",
+        "fold": 4,
+        "size_bytes": 132902551
+      },
+      {
+        "path": "../work/router_research/lp_ft_v2/fold0.pt",
+        "fold": 0,
+        "size_bytes": 132902615
+      },
+      {
+        "path": "../work/router_research/lp_ft_v2/fold1.pt",
+        "fold": 1,
+        "size_bytes": 132902615
+      },
+      {
+        "path": "../work/router_research/lp_ft_v2/fold2.pt",
+        "fold": 2,
+        "size_bytes": 132902615
+      },
+      {
+        "path": "../work/router_research/lp_ft_v2/fold3.pt",
+        "fold": 3,
+        "size_bytes": 132902615
+      },
+      {
+        "path": "../work/router_research/lp_ft_v2/fold4.pt",
+        "fold": 4,
+        "size_bytes": 132902615
+      }
+    ],
+    "schema_from_source": [
+      "trained_parameters",
+      "protocol_id",
+      "protocol_sha256",
+      "runner_sha256",
+      "fold"
+    ],
+    "full_trainable_tensors": 199,
+    "full_trainable_parameters": 33212545,
+    "restoration": "Initialize bound original BGE then copy full-scope trained_parameters; original pooler remains frozen. Schema from saved source, not a tensor load in this audit."
+  },
+  "coverage_conclusion": "Full scope F, LP-initialized full FT H, weighted BCE, auxiliary coverage/probe/common-utility supervision, support supervision and readout repairs, query relationship supervision and NZ/Z repair, and frozen base C6/M6/C12/M12 have already executed. Early not-yet-done notes are historical snapshots.",
+  "uncovered_question": {
+    "bounded_absence": "No completed supervised-full-checkpoint x M6/C12 readout crossing found in current inspected reports and top-level training/extraction scripts; not a universal absence claim.",
+    "hypothesis": "H may retain utility-relevant changes in its layer6 mean view that its original final-CLS/native head did not exploit.",
+    "important_negative_control": "G/query-rank update only blocks10/11, so their upstream M6 cannot contain newly learned support/relationship changes under matched evaluation conditions."
+  },
+  "recommended_minimal_design": {
+    "status": "proposed_only",
+    "encoders": [
+      "original_base",
+      "same_outer_fold_H_lp_ft_v2"
+    ],
+    "views": [
+      "M6_mean_layer6",
+      "C12_CLS_layer12"
+    ],
+    "fixed_lambda": 0.001,
+    "reuse_base_M6_heads": 5,
+    "new_convex_heads": 15,
+    "new_encoder_fits": 0,
+    "include_F_for_selection": false,
+    "source_role": "Consumed old9600/9559groups, original fit6144/cal1536/test1920; history-dependent mechanism diagnosis, not fresh confirmation.",
+    "objective": "Original absolute three-repeat-mean F1 gap weighted BCE, tolerance1e-12 for zero weights, unpenalized intercept.",
+    "inner_CV": "None. H learned all outer-fit labels, so head-only inner splitting would not supply nested encoder isolation.",
+    "cal_usage": "None",
+    "actions": "Native logit>0 selects BM25, otherwise Dense.",
+    "key_comparisons": [
+      "H_M6_minus_base_M6",
+      "(H_M6-base_M6)-(H_C12-base_C12)"
+    ],
+    "comparison_boundary": "A checkpoint x view interaction; depth and pooling differ together. Any effect thresholds, multiplicity and candidate gate require a separate frozen protocol.",
+    "stop_boundary": "A negative result closes only gain recovery by rereading these fixed H endpoints, not all future M6-output training.",
+    "inputs": {
+      "H_checkpoints": "../work/router_research/lp_ft_v2/fold{0..4}.pt",
+      "base_M6_heads": "../work/router_research/layer_pooling_v1/fold{0..4}_M6_head.pt",
+      "base_features": "../work/router_research/layer_pooling_v1/features.npz",
+      "tokens": "../work/router_research/layer_pooling_v1/tokens.npz",
+      "fold_indices": "../work/router_research/e02_results/fold_indices.npz"
+    },
+    "precision": "eval; batch8/max128; CUDA BF16 autocast; preserve actual FP32 normalized representations; FP32 masked mean/L2; no added BF16 quantization.",
+    "preflight": "Bind same-fold checkpoints and source tokens/groups/splits, replay old H answer-head fit/test samples and base M6, verify hidden-state output transparency before new fixed heads."
+  },
+  "search_scope": {
+    "roots": [
+      "../work/router_research top-level reports and training/extraction scripts",
+      "selected existing result/check/completion metadata",
+      "current completed workspace M6 context"
+    ],
+    "terms": [
+      "M6",
+      "output_hidden_states",
+      "hidden_states[",
+      "last_hidden_state[:,0]",
+      "last_hidden_state[:, 0]",
+      "layer[-2:]",
+      "weighted_BCE",
+      "support",
+      "query_rank",
+      "encoder_scope",
+      "lp_ft"
+    ],
+    "limits": "No session-log, deleted-output, remote-history or all-workspace exhaustive audit.",
+    "memory_lookup": "Targeted registry search returned no encoder_scope/layer_pooling/lp_ft/capacity hits; current evidence is local."
+  },
+  "boundary": {
+    "new_query_text_reads": 0,
+    "new_gold_or_answer_payload_reads": 0,
+    "checkpoint_tensor_loads": 0,
+    "new_encoder_forwards": 0,
+    "new_fits": 0,
+    "new_policy_effect_computations": 0,
+    "new_hypothesis_tests": 0,
+    "new_external_calls": 0,
+    "historical_files_modified": false,
+    "fresh_qualification_granted": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "passed_finite_joint_distribution_objective_identity",
+  "scope": "synthetic probability calculation only; no real-data training or Student result",
+  "seed": 2026091509,
+  "states": 60,
+  "alpha_values": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "student_score_functions_per_alpha": 100,
+  "maximum_weighted_BCE_objective_difference": 4.440892098500626e-16,
+  "counterexample": {
+    "weighted_optimal_probability": 0.16605504587155967,
+    "unweighted_mean_Teacher_probability": 0.8200000000000001,
+    "true_BM25_minus_Dense_gap": -0.07280000000000002
+  },
+  "new_real_fits": 0,
+  "new_external_calls": 0
+}

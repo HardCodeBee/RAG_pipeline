@@ -1,0 +1,51 @@
+{
+  "observed_at_unix": 1789438219.4004612,
+  "model_generation_calls": 0,
+  "authorization_headers_sent": false,
+  "proxy_environment_keys_present": [],
+  "effective_proxies": {
+    "http": {
+      "scheme": "http",
+      "host": "127.0.0.1",
+      "port": 7897
+    },
+    "https": {
+      "scheme": "http",
+      "host": "127.0.0.1",
+      "port": 7897
+    },
+    "ftp": {
+      "scheme": "http",
+      "host": "127.0.0.1",
+      "port": 7897
+    }
+  },
+  "windows_proxy_enabled": 1,
+  "windows_proxy_server": {
+    "scheme": "http",
+    "host": "127.0.0.1",
+    "port": 7897
+  },
+  "api_dns_address_count": 1,
+  "https_checks": [
+    {
+      "label": "api_current_settings",
+      "http_status": 401,
+      "seconds": 3.454768657684326
+    },
+    {
+      "label": "api_direct",
+      "error_chain": [
+        "ConnectTimeout",
+        "ConnectTimeout",
+        "TimeoutError"
+      ],
+      "seconds": 12.239994764328003
+    },
+    {
+      "label": "control_current_settings",
+      "http_status": 200,
+      "seconds": 3.3673417568206787
+    }
+  ]
+}
