@@ -1,0 +1,119 @@
+{
+  "status": "scope_and_delegated_details_frozen_execution_paused",
+  "review": "REUSE_AUDIT.json",
+  "quality_reuse": {
+    "hotpotqa": {
+      "baseline_v2_reusable": 4467,
+      "p02_candidates": 283,
+      "combined_if_approved": 4750,
+      "remaining": 250
+    },
+    "2wiki": {
+      "baseline_v2_reusable": 4496,
+      "p02_candidates": 498,
+      "combined_if_approved": 4994,
+      "remaining": 6
+    },
+    "musique": {
+      "baseline_v2_reusable": 1570,
+      "p02_candidates": 0,
+      "combined_if_approved": 1570,
+      "remaining": 3430
+    }
+  },
+  "baseline_algorithm_failures_preserved": 341,
+  "extra_original_baseline_upper_candidates": 946,
+  "proposal_C1": "Retain existing v2 results; migrate P02 only after same-case/stage/message stop+usage verification; preserve original max_tokens and provenance; exclude incomplete/unknown; recompute only changed downstream; no paid request as part of cache approval",
+  "proposal_T1": {
+    "recommended": "Selected50 per dataset;150 unique queries and1500 complete measurement flows",
+    "estimated_CNY": 11.563140978887338,
+    "alternatives": {
+      "incremental_only": "No extra paid timing; some/all historical query TTFT remain missing; cannot claim complete timing comparison",
+      "paired50_estimated_CNY": 11.563140978887338,
+      "all500_estimated_CNY": 115.63140978887337
+    },
+    "status": "approved",
+    "selected_option": "T2_paired50",
+    "approved_scope": {
+      "decision_id": "T1",
+      "selected_option": "T2_paired50",
+      "approved": true,
+      "queries_per_dataset": 50,
+      "datasets": [
+        "hotpotqa",
+        "2wiki",
+        "musique"
+      ],
+      "unique_queries": 150,
+      "methods": [
+        "p02_multigrain_timing_cachefix_v1",
+        "b00_rag_top10_v1",
+        "b01_rag_top10_cot3",
+        "b02_selfask_dense",
+        "b03_react_dense",
+        "b04_ircot_bge",
+        "b05_iter_retgen_bge",
+        "b06_decomp_bge",
+        "b07_hybrid_rerank",
+        "b08_qd_rerank"
+      ],
+      "planned_complete_measurement_flows": 1500,
+      "s02_rerun": false,
+      "cohort": "fixed stratified subset of frozen formal500, shared across all10 methods; no outcome/time based selection",
+      "ids_seed_hardware": "cohort and remote target profile frozen under delegated authority; actual remote allocation still pending",
+      "warmup": "model and index resident, first load excluded",
+      "response_cache": "disabled_for_measurement",
+      "retrieval_result_cache": "disabled_for_measurement",
+      "original_query_concurrency": 1,
+      "p02_decomposition": "separately warm-time the same cohort, label hardware; frozen quality decomposition remains unchanged",
+      "metrics": "local component input-to-complete-output seconds and client first-nonempty-content TTFT separately",
+      "timing_summary_scope": "fixed50 subset per dataset, never a complete500 mean",
+      "quality_results_replaced": false,
+      "estimated_incremental_cny": 11.563140978887338,
+      "execution": "not_started",
+      "paid_execution_approved": false,
+      "seed": 20261021,
+      "cohort_manifest": "execution_details/TIMING_COHORT.frozen.json",
+      "hardware_manifest": "execution_details/TIMING_HARDWARE.frozen.json",
+      "hardware_preference": "remote_gpu_first_no_fixed_local_RTX4060_assignment",
+      "selection_used_outcomes": false
+    },
+    "original_recommended20": "Not selected; user chose50 per dataset",
+    "execution": "not_started"
+  },
+  "proposal_B1": {
+    "recommended": "No fixed cumulative or per-stage cap, subject to reasonable spending without anomalies; previous300/320 proposals superseded",
+    "future_optional_cap320": "Superseded by latest no-fixed-cap user instruction; not adopted",
+    "known_cost_cny": 219.4958576,
+    "unknown_reserves_cny": 54.4043504,
+    "dispatch_headroom_cny": 25.999791999999985,
+    "cost_scenarios": {
+      "baseline_full_flow_equivalent": 20.783173340168705,
+      "P02_full_flow_equivalent": 4.80653692261058,
+      "quality_total": 25.589710262779285,
+      "timing_20_per_dataset": 4.6252563915549345,
+      "timing_50_per_dataset": 11.563140978887338,
+      "timing_full500_per_dataset": 115.63140978887337,
+      "limitation": "Scenario estimate from observed logical usage. Extra eligible prefixes may lower incremental expense; unknowns, retries and unobserved MuSiQue cells can raise it. Not a spending authorization or cost guarantee."
+    },
+    "status": "approved_no_fixed_cap",
+    "previous_recommendation_superseded": "Keep global cap300; quality first; initially P02 new spend<=6, baselines new spend<=17, exceptional recovery<=2, unallocated dispatch balance0.999792; paid timing budget0 until reviewed savings leave headroom",
+    "dispatch_headroom_cny_note": "Historical under previous299.9 protection, not a current limit",
+    "cumulative_cap_cny": null,
+    "per_stage_caps": null,
+    "selected_quality_plus_timing_reference_cny": 37.152851241666625,
+    "ledger_or_runner_limits_changed": false,
+    "requires_separate_resume": true
+  },
+  "sequence": "Approved/delegated scope, fixed50 IDs/seed and remote target hardware are recorded. Verify actual remote resources and complete guarded runner offline before a separate explicit resume. All holds remain active.",
+  "C1_status": "approved_by_user",
+  "C1_execution": "not_started",
+  "updated_utc": "2026-10-21T05:48:37.693798+00:00",
+  "plan_revision": 6,
+  "execution_details_manifest": "execution_details/DETAILS_MANIFEST.frozen.json",
+  "recovery_policy": "execution_details/EXECUTION_CONTROLS.frozen.json",
+  "cost_reference": "execution_details/COST_REFERENCE.frozen.json",
+  "hardware_preference": "remote_gpu_first_A6000_target_no_fixed_local_RTX4060_assignment",
+  "current_config_policy": "Primary unmatched-budget, paper configs preferred; separate equal-budget extension; old reuse/cost counts need config-specific re-audit.",
+  "current_decision_update": "reviews/20261021_official_config_selection/DECISION_UPDATE.txt"
+}

@@ -1,0 +1,263 @@
+{
+  "utc": "2026-10-21T04:34:26.800084+00:00",
+  "method": "p02_multigrain_timing_cachefix_v1",
+  "cohort": "All original formal1500,500 per dataset; no exclusions",
+  "reference_sha256": "08bbd3ba2fa20c44fd11be89894b13f3ce8192719159e05c9191a9e9926abf33",
+  "overall": {
+    "planned": 1500,
+    "scorable": 781,
+    "missing": 719,
+    "successful_answers": 781,
+    "algorithm_failures": 0,
+    "F1": 0.7669084043221246,
+    "EM": 0.6581306017925737,
+    "F1_all_planned_bounds": [
+      0.3993036425170529,
+      0.878636975850386
+    ],
+    "statuses": {
+      "not_completed": 679,
+      "success": 781,
+      "incomplete": 40
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 500,
+      "scorable": 283,
+      "missing": 217,
+      "successful_answers": 283,
+      "algorithm_failures": 0,
+      "F1": 0.6813394553348749,
+      "EM": 0.5371024734982333,
+      "F1_all_planned_bounds": [
+        0.3856381317195392,
+        0.8196381317195391
+      ],
+      "statuses": {
+        "not_completed": 179,
+        "success": 283,
+        "incomplete": 38
+      }
+    },
+    "2wiki": {
+      "planned": 500,
+      "scorable": 498,
+      "missing": 2,
+      "successful_answers": 498,
+      "algorithm_failures": 0,
+      "F1": 0.8155349355739151,
+      "EM": 0.7269076305220884,
+      "F1_all_planned_bounds": [
+        0.8122727958316194,
+        0.8162727958316195
+      ],
+      "statuses": {
+        "success": 498,
+        "incomplete": 2
+      }
+    },
+    "musique": {
+      "planned": 500,
+      "scorable": 0,
+      "missing": 500,
+      "successful_answers": 0,
+      "algorithm_failures": 0,
+      "F1": null,
+      "EM": null,
+      "F1_all_planned_bounds": [
+        0.0,
+        1.0
+      ],
+      "statuses": {
+        "not_completed": 500
+      }
+    }
+  },
+  "by_type": {
+    "hotpotqa": {
+      "bridge": {
+        "planned": 407,
+        "scorable": 227,
+        "missing": 180,
+        "successful_answers": 227,
+        "algorithm_failures": 0,
+        "F1": 0.6553248828169695,
+        "EM": 0.4933920704845815,
+        "F1_all_planned_bounds": [
+          0.3655006103180641,
+          0.8077610525785064
+        ],
+        "statuses": {
+          "not_completed": 153,
+          "success": 227,
+          "incomplete": 27
+        }
+      },
+      "comparison": {
+        "planned": 93,
+        "scorable": 56,
+        "missing": 37,
+        "successful_answers": 56,
+        "algorithm_failures": 0,
+        "F1": 0.7867913832199546,
+        "EM": 0.7142857142857143,
+        "F1_all_planned_bounds": [
+          0.47376685441201566,
+          0.8716163167776071
+        ],
+        "statuses": {
+          "not_completed": 26,
+          "success": 56,
+          "incomplete": 11
+        }
+      }
+    },
+    "2wiki": {
+      "bridge_comparison": {
+        "planned": 112,
+        "scorable": 111,
+        "missing": 1,
+        "successful_answers": 111,
+        "algorithm_failures": 0,
+        "F1": 0.954954954954955,
+        "EM": 0.954954954954955,
+        "F1_all_planned_bounds": [
+          0.9464285714285714,
+          0.9553571428571429
+        ],
+        "statuses": {
+          "success": 111,
+          "incomplete": 1
+        }
+      },
+      "comparison": {
+        "planned": 113,
+        "scorable": 112,
+        "missing": 1,
+        "successful_answers": 112,
+        "algorithm_failures": 0,
+        "F1": 0.8928571428571429,
+        "EM": 0.8928571428571429,
+        "F1_all_planned_bounds": [
+          0.8849557522123894,
+          0.8938053097345132
+        ],
+        "statuses": {
+          "success": 112,
+          "incomplete": 1
+        }
+      },
+      "compositional": {
+        "planned": 212,
+        "scorable": 212,
+        "missing": 0,
+        "successful_answers": 212,
+        "algorithm_failures": 0,
+        "F1": 0.6977836890572742,
+        "EM": 0.5377358490566038,
+        "F1_all_planned_bounds": [
+          0.6977836890572742,
+          0.6977836890572741
+        ],
+        "statuses": {
+          "success": 212
+        }
+      },
+      "inference": {
+        "planned": 63,
+        "scorable": 63,
+        "missing": 0,
+        "successful_answers": 63,
+        "algorithm_failures": 0,
+        "F1": 0.8286707275502792,
+        "EM": 0.6666666666666666,
+        "F1_all_planned_bounds": [
+          0.8286707275502792,
+          0.828670727550279
+        ],
+        "statuses": {
+          "success": 63
+        }
+      }
+    },
+    "musique": {
+      "2-hop": {
+        "planned": 259,
+        "scorable": 0,
+        "missing": 259,
+        "successful_answers": 0,
+        "algorithm_failures": 0,
+        "F1": null,
+        "EM": null,
+        "F1_all_planned_bounds": [
+          0.0,
+          1.0
+        ],
+        "statuses": {
+          "not_completed": 259
+        }
+      },
+      "3-hop": {
+        "planned": 157,
+        "scorable": 0,
+        "missing": 157,
+        "successful_answers": 0,
+        "algorithm_failures": 0,
+        "F1": null,
+        "EM": null,
+        "F1_all_planned_bounds": [
+          0.0,
+          1.0
+        ],
+        "statuses": {
+          "not_completed": 157
+        }
+      },
+      "4-hop": {
+        "planned": 84,
+        "scorable": 0,
+        "missing": 84,
+        "successful_answers": 0,
+        "algorithm_failures": 0,
+        "F1": null,
+        "EM": null,
+        "F1_all_planned_bounds": [
+          0.0,
+          1.0
+        ],
+        "statuses": {
+          "not_completed": 84
+        }
+      }
+    }
+  },
+  "logical_calls_selected_attempts": 4392,
+  "exact_cache_reuses_selected_attempts": 63,
+  "logical_tokens_selected_attempts": {
+    "prompt": 7244396,
+    "completion": 71037
+  },
+  "logical_cold_cost_CNY_selected_attempts": 5.9375908,
+  "costs": {
+    "global": {
+      "known_CNY": 219.4958576,
+      "unreconciled_reserved_CNY": 54.4043504,
+      "occupied_CNY": 273.900208,
+      "submissions": 120094,
+      "actual_bill_verified": false
+    },
+    "experiment": {
+      "known_CNY": 5.9375908,
+      "unreconciled_reserved_CNY": 0.39931279999999997,
+      "occupied_CNY": 6.336903599999999,
+      "submissions": 4422,
+      "actual_bill_verified": false
+    }
+  },
+  "metric": "Native final Answer F1/EM;2Wiki aliases/demonyms;MuSiQue aliases",
+  "prediction_cleanup": false,
+  "API_missing_excluded_from_available_F1_only": true,
+  "algorithm_failures_included_as_zero": true,
+  "hallucination_judge_run": false
+}

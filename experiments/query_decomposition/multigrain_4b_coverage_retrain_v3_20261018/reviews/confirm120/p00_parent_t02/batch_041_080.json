@@ -1,0 +1,65 @@
+{
+  "reviewed_indices": [
+    41,
+    80
+  ],
+  "method": "Current Codex literal query/output review, F/S/C/U, no candidate outputs read and no answers/passages consulted. Uncertainty is nonpass.",
+  "exceptions": {
+    "41": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Birth country of Eric Losfeld becomes country he is from, a related property not guaranteed equivalent."
+    },
+    "45": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "A team sent to the1920 Olympics becomes a team sent to a conflict; modifier attachment and event relation change."
+    },
+    "51": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested."
+    },
+    "60": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Second item asks the original role target for the coaches merely to finish the list, not a further nested prerequisite."
+    },
+    "62": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Omits identifying the unnamed ocean along eastern Russia before the continent reached by sailing west across that ocean."
+    },
+    "65": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Invents a containing country that contains the two countries; original asks one institution term used in two countries, not spatial containment."
+    },
+    "69": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Country question omits the in relation connecting nation to Peterson being an authority; cannot confidently certify that the nation is location rather than subject."
+    },
+    "76": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The guillotined person who ruled the country becomes any guillotined person in that country; the ruler condition is lost."
+    }
+  }
+}

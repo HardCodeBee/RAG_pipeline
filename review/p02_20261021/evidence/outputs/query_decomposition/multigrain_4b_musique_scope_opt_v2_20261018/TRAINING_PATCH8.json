@@ -1,0 +1,130 @@
+{
+  "applied_to_original": false,
+  "candidate_only": true,
+  "patches": [
+    {
+      "id": "musique:2hop__281701_112624",
+      "query": "What was the date of death of Anne Fitzalan-Howard, formerly Duchess of the county where Mark Thompson was born?",
+      "before": [
+        "What county was Mark Thompson born in?",
+        "What was Anne Fitzalan-Howard's title as duchess of the county Mark Thompson was born in?"
+      ],
+      "after": [
+        "What county was Mark Thompson born in?"
+      ],
+      "reason": "Anne is already named and described as duchess of the county. Reasking her title adds no new prerequisite beyond the county identity."
+    },
+    {
+      "id": "musique:4hop3__666203_823491_51280_242202",
+      "query": "What was the function of the Crawford House located in the birth city of the author of The Oregon Trail within the state where Wellesley College was located in Mona Lisa Smile?",
+      "before": [
+        "Who wrote The Oregon Trail?",
+        "What city was the author of The Oregon Trail born in?",
+        "What state is Wellesley College located in in Mona Lisa Smile?"
+      ],
+      "after": [
+        "Who wrote The Oregon Trail?",
+        "What state is Wellesley College located in in Mona Lisa Smile?",
+        "What city in the state where Wellesley College was located in Mona Lisa Smile was the author of The Oregon Trail born in?"
+      ],
+      "reason": "Targeted all8 Crawford-family inspection: restore explicit state restriction within the dependent birthplace/city question;3990 also avoids invented city type."
+    },
+    {
+      "id": "musique:4hop3__778278_796114_51280_242202",
+      "query": "What type of business was Crawford House, located in the Jyothi performer's birthplace in the same state as Wellesley College from Mona Lisa Smile?",
+      "before": [
+        "Who performs Jyothi?",
+        "Where was the performer of Jyothi born?",
+        "What state is Wellesley College in in Mona Lisa Smile?"
+      ],
+      "after": [
+        "Who performs Jyothi?",
+        "What state is Wellesley College in in Mona Lisa Smile?",
+        "Where in the same state as Wellesley College from Mona Lisa Smile was the performer of Jyothi born?"
+      ],
+      "reason": "Targeted all8 Crawford-family inspection: restore explicit state restriction within the dependent birthplace/city question;3990 also avoids invented city type."
+    },
+    {
+      "id": "musique:4hop3__681751_823491_51280_242202",
+      "query": "Crawford House in birthplace of the author of The Jesuits in North America in the Seventeenth Century in the state of the Charles River Peninsula is an instance of what?",
+      "before": [
+        "Who wrote The Jesuits in North America in the Seventeenth Century?",
+        "Where was the author of The Jesuits in North America in the Seventeenth Century born?",
+        "What state contains the Charles River Peninsula?"
+      ],
+      "after": [
+        "Who wrote The Jesuits in North America in the Seventeenth Century?",
+        "What state contains the Charles River Peninsula?",
+        "Where in the state containing the Charles River Peninsula was the author of The Jesuits in North America in the Seventeenth Century born?"
+      ],
+      "reason": "The author-birthplace question loses the Charles River Peninsula state condition; asking the state separately does not bind it to that birthplace question."
+    },
+    {
+      "id": "musique:4hop3__778278_796114_13235_242202",
+      "query": "What type of building is the Crawford House is in the birthplace of Jyothi's performer in the state that was placed under martial law when it was a colony?",
+      "before": [
+        "Who performs Jyothi?",
+        "What city was the performer of Jyothi born in?",
+        "What state was placed under martial law when it was a colony?"
+      ],
+      "after": [
+        "Who performs Jyothi?",
+        "What state was placed under martial law when it was a colony?",
+        "Where in the state that was placed under martial law when it was a colony was the performer of Jyothi born?"
+      ],
+      "reason": "Targeted all8 Crawford-family inspection: restore explicit state restriction within the dependent birthplace/city question;3990 also avoids invented city type."
+    },
+    {
+      "id": "musique:4hop2__33840_53235_57802_311656",
+      "query": "Where did the man who became leader of the largest European country after the collapse of one of the main targets of intelligence gathering die?",
+      "before": [
+        "What nation was one of the main targets of intelligence gathering?",
+        "What is the largest European country?",
+        "Who became leader of the largest European country after the collapse of a nation that was one of the main targets of intelligence gathering?"
+      ],
+      "after": [
+        "What was one of the main targets of intelligence gathering?",
+        "What is the largest European country?",
+        "Who became leader of the largest European country after the collapse of one of the main targets of intelligence gathering?"
+      ],
+      "reason": "Changes an unspecified intelligence-gathering target into a nation; that entity type is not supplied in the original wording."
+    },
+    {
+      "id": "musique:4hop3__778278_796114_30802_242202",
+      "query": "Crawford House in the city where Jyothi's performer was born in the state where Kerry was a Lt. Gov. is an instance of what?",
+      "before": [
+        "Who performs Jyothi?",
+        "What city was the performer of Jyothi born in?",
+        "What state was Kerry a lieutenant governor of?"
+      ],
+      "after": [
+        "Who performs Jyothi?",
+        "What state was Kerry a lieutenant governor of?",
+        "What city in the state where Kerry was a lieutenant governor was the performer of Jyothi born in?"
+      ],
+      "reason": "Targeted all8 Crawford-family inspection: restore explicit state restriction within the dependent birthplace/city question;3990 also avoids invented city type."
+    },
+    {
+      "id": "musique:4hop3__778278_796114_57545_242202",
+      "query": "Crawford House in the city where Jyothi's performer was born in the state of the New England Patriots is an instance of what?",
+      "before": [
+        "Who performs Jyothi?",
+        "What city was the performer of Jyothi born in?",
+        "What state are the New England Patriots in?"
+      ],
+      "after": [
+        "Who performs Jyothi?",
+        "What state are the New England Patriots in?",
+        "What city in the state of the New England Patriots was the performer of Jyothi born in?"
+      ],
+      "reason": "The birthplace question loses the New England Patriots state condition, although a separate state question is present; the city is no longer jointly restricted."
+    }
+  ],
+  "targeted_crawford8": {
+    "pass": 1,
+    "fail": 6,
+    "uncertain": 1,
+    "ambiguous_excluded_train_index": 4021
+  },
+  "review_sampling_caution": "Targeted family inspection, not a random estimate of all training labels."
+}

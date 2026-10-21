@@ -1,0 +1,43 @@
+{
+  "corpus": {
+    "dataset": "2wiki",
+    "documents": 430225,
+    "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+    "manifest_sha256": "edb00254897d87e5d966281207d9a20291660ec4d35f561f5fa92436ddeeecbc",
+    "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunks.jsonl",
+    "chunks_sha256": "a1d7e50b8a46405735e4076c06ff0109b38ada19f879752be866026c3f1fdfb1",
+    "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunk_offsets.npy"
+  },
+  "dense": {
+    "bge": {
+      "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+      "build_id": "build_65e9037e4c1eed7b",
+      "manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+      "embeddings_manifest_sha256": "127376a5563ff08513ca7f55f8dc870c451c6d1c2a184791f4b78133ddaa3ec8",
+      "query_model": "BAAI/bge-small-en-v1.5",
+      "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "query_prefix": "",
+      "space": {
+        "backend": "sentence_transformers",
+        "dimension": 384,
+        "document_prefix": "",
+        "max_sequence_length": 512,
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "normalized": true,
+        "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+        "similarity": "inner_product"
+      },
+      "manifest_name": "DENSE_FROZEN.json"
+    }
+  },
+  "bm25": {
+    "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\bm25",
+    "manifest_sha256": "57303882724c3f34ae721c4b8f6c1755f9668cf2a217824eecac4a6b30feb9ad",
+    "sparse_index_id": "sqlite_bm25_b8da8dcd3002b1a2",
+    "backend": "sqlite_bm25_v1",
+    "analyzer": "english_regex_casefold_v1",
+    "k1": 1.5,
+    "b": 0.75
+  }
+}

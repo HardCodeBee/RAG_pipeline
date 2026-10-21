@@ -1,0 +1,26 @@
+{
+  "reviewed_indices": [1, 16],
+  "exceptions": {
+    "6": {
+      "verdict": "fail",
+      "dimensions": ["C"],
+      "reason": "Still omits the other learned languages and their popularity properties needed for the comparison. Country and one language alone do not provide them."
+    },
+    "9": {
+      "verdict": "fail",
+      "dimensions": ["F"],
+      "reason": "Attraction helper now retains Harriet Elam-Thomas's city restriction, but the separate city helper still narrows the unspecified possessive to her city of origin. Partial repair, not a complete pass."
+    },
+    "12": {
+      "verdict": "fail",
+      "dimensions": ["C", "U"],
+      "reason": "Returns the entire original goal as the sole helper. The original is already executed separately, and the needed time when Britain encouraged workers immigration remains unexposed."
+    },
+    "13": {
+      "verdict": "fail",
+      "dimensions": ["C"],
+      "reason": "Like the baseline, only identifies the work and city; it still omits the unnamed world based on that work before its opening-date target. Minor paraphrase is not an improvement. This exception was omitted in the first batch file and restored during final metric consistency verification; rubric and baseline judgment unchanged."
+    }
+  },
+  "reviewer": "Every changed question array inspected under locked F/S/C/U, after baseline review lock. Unchanged outputs inherit baseline judgments. Rows8 and10 expose the timing operand and useful per-territory country candidates without changing the original condition. Rows15 and16 are faithful paraphrases. No facts, answers or native labels consulted."
+}

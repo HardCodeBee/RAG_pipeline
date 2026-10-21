@@ -1,0 +1,121 @@
+{
+  "utc": "2026-10-20T13:20:47.390903+00:00",
+  "status": "cache_fix_completed_and_verified",
+  "adopted_method": "timing_only",
+  "adopted_algorithm": "experiments.query_decomposition.p02_simplification_review_20261020.selected_pipeline.execute",
+  "cache_provider": "experiments.query_decomposition.p02_merge_cachefix_v1_20261021.cache.catalog",
+  "execution_runner": "experiments.query_decomposition.p02_merge_cachefix_v1_20261021.run",
+  "selected_runner_arguments": {
+    "sample": "300",
+    "arms": [
+      "timing_only"
+    ]
+  },
+  "cache_priority": "Canonical frozen p02 first, deterministic historical exact successes next, current exact successes last",
+  "initial_successful_payloads": 3265,
+  "canonical_logical_calls": 1774,
+  "historical_index_sha256": "99125dfaae6aa2d8dd51f43ebe8335ac15eb7d60963e8ed5b0fc6d44cc68ac43",
+  "protocol_sha256": "04e95b9b924c1553e5337ab72ce73594e15e8eac719f3069f82b37511e4a76ed",
+  "completed_method_cases": 600,
+  "same_successful_input_paid_again": 0,
+  "new_api_requests": 16,
+  "new_API_cost_estimate_cny": 0.035498,
+  "new_unknown_reserved_cny": 0,
+  "comparison": {
+    "n": 300,
+    "dataset_counts": {
+      "musique": 100,
+      "2wiki": 100,
+      "hotpotqa": 100
+    },
+    "candidate_F1": 0.7036005386730249,
+    "comparison_F1": 0.7072417314845074,
+    "delta": -0.0036411928114826655,
+    "up": 14,
+    "tie": 277,
+    "down": 9,
+    "paired_bootstrap95": [
+      -0.022851459339774553,
+      0.014428675863186732
+    ],
+    "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+    "numeric_noninferiority_margin": null,
+    "not_a_noninferiority_claim": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "dataset_counts": {
+          "hotpotqa": 100
+        },
+        "candidate_F1": 0.7842417027417027,
+        "comparison_F1": 0.7899083694083693,
+        "delta": -0.005666666666666666,
+        "up": 2,
+        "tie": 97,
+        "down": 1,
+        "paired_bootstrap95": [
+          -0.03,
+          0.01
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "2wiki": {
+        "n": 100,
+        "dataset_counts": {
+          "2wiki": 100
+        },
+        "candidate_F1": 0.9228548085901026,
+        "comparison_F1": 0.9334738562091504,
+        "delta": -0.010619047619047622,
+        "up": 2,
+        "tie": 95,
+        "down": 3,
+        "paired_bootstrap95": [
+          -0.047285714285714285,
+          0.021666666666666664
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "musique": {
+        "n": 100,
+        "dataset_counts": {
+          "musique": 100
+        },
+        "candidate_F1": 0.4037051046872692,
+        "comparison_F1": 0.3983429688360029,
+        "delta": 0.00536213585126629,
+        "up": 10,
+        "tie": 85,
+        "down": 5,
+        "paired_bootstrap95": [
+          -0.03521906996988518,
+          0.04369439948135598
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      }
+    }
+  },
+  "point_F1_decline_still_present": true,
+  "stable_population_inferiority_established": false,
+  "union20_adopted": false,
+  "decision": "Keep user-selected timing_only; adopt strict successful full-input cache fix; preserve union20 as experiment only",
+  "historical_frozen_artifacts_changed": false,
+  "report_sha256": "d7952a4d461cdda1237b0856e8e1259772be7f915e7c29f878e944fdec6abbfc",
+  "verification_sha256": "a1987106fab79e590f154d99ad1edc38583045efe2b7b17655ea1553fda18d34",
+  "current_budget_snapshot": {
+    "global_known_cny": 191.6500592,
+    "global_reserved_cny": 42.9268424,
+    "global_occupied_cny": 234.57690159999999,
+    "experiment_known_cny": 0.035497999999999995,
+    "experiment_reserved_cny": 0,
+    "experiment_submissions": 16,
+    "global_cap_cny": 300,
+    "actual_bill_verified": false
+  }
+}

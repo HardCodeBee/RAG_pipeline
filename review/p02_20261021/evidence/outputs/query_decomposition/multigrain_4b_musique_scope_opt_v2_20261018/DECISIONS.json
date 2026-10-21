@@ -1,0 +1,74 @@
+{
+  "decisions": [
+    {
+      "id": "B00",
+      "change": "Freeze same baseline weights, training3500, original prompts/reviews."
+    },
+    {
+      "id": "D01",
+      "change": "Explain development/test denominators; Mu contributes80% of6.67pp gap, not more four-hop share."
+    },
+    {
+      "id": "D02",
+      "change": "Audit60 stratified random +20 targeted training labels; quarantine4 fail4 uncertain from example bank only; no original label changes."
+    },
+    {
+      "id": "M01",
+      "change": "Replace two generic examples with two real reviewed Mu examples; rules unchanged."
+    },
+    {
+      "id": "M02",
+      "change": "Replace only same two slots with query-selected reviewed Mu examples; no new rules, model, training or answer evidence."
+    },
+    {
+      "id": "E01",
+      "change": "Freeze new screen90 and confirmation120 before inference, full ID/text/primitive exclusion. New native-test Mu source explicitly recorded."
+    },
+    {
+      "id": "S01_RESULT",
+      "change": "All three prompt variants reviewed on new90. b00=70,m01=65,m02=65,m03=70; Mu33/30/32/34. No candidate passes macro+Mu+control gate. No prompt adopted."
+    },
+    {
+      "id": "T00_LABELS",
+      "change": "After targeted8-family label inspection, create separate3500 candidate with8 explicit revisions. Original3500 remains read-only. Four additional labels beyond initial80 audit repaired."
+    },
+    {
+      "id": "T01_CONDITIONAL_LAUNCH",
+      "change": "Execute the prewritten20-update exposure control only after all prompt candidates fail. Job154215; each starts from same165, same8-label candidate, fresh AdamW,lr3e-5,warmup2,640 unique sample exposures. ControlMu91 versus Mu50%320; no new training queries."
+    },
+    {
+      "id": "T02_VALIDATION",
+      "change": "End-only90 screening under originalv12; one eligible model gets untouched balanced120 paired confirmation. Do not claim new unique-data effect or generalization from screening."
+    },
+    {
+      "id": "T03_RESULT",
+      "change": "Control20 raw69/90, Mu50320-exposure raw74/90 vs baseline70. Mu32/37 vs33. Mu F/S10/7 vs8. t02 passes prespecified screen gate; not yet adopted."
+    },
+    {
+      "id": "P04_EXACT_DEDUP",
+      "change": "Freeze literal-only duplicate adapter before t02 review, based on control-goal duplication. Changes baseline0,control1,t020 cases; t02 uses no adapter on tie, so no processing complexity is added to the nominee."
+    },
+    {
+      "id": "E02_CONFIRM",
+      "change": "Freeze t02 checkpoint281f9641... for one-time120 paired confirmation and separate16 targeted rare diagnostic. Job154227. Old baselines and original300 scores unchanged."
+    },
+    {
+      "id": "D03_PREFIX",
+      "change": "Discover no4hop2 in old dev150; only20 in training. New diagnostic desired8 additional4hop2 cannot be filled under candidate+primitive exclusion; preserve16 actual, main120 still includes1 reserved4hop2. Do not hide the coverage deficit."
+    },
+    {
+      "id": "E03_CONFIRM_RESULT",
+      "change": "Complete baseline96/120 vs t02 100/120; Hot28->31,Wiki39->39,Mu29->30; MuFS9->8. Fixes57,88,90,92,117; regression19. All prespecified gates pass; original baseline unchanged, separately freeze candidate."
+    },
+    {
+      "id": "E04_RARE_RESULT",
+      "change": "Targeted rare raw12/16 vs12/16; indices3/5 duplicate text detected after generation. Retain raw records; unique11/15 vs11/15, no replacement. Partial location repair9 still fails. No rare improvement."
+    },
+    {
+      "id": "STOP_BOUNDED_V2",
+      "change": "Completed3 prompt candidates+2 equal-budget training candidates and untouched paired confirmation. No edits from confirmation outputs.90% target not reached. Do not keep tuning/retesting this holdout.180/60 future query candidates have0 accepted labels and0 new-data training uses; they are not a completed expansion."
+    }
+  ],
+  "api_calls": 0,
+  "last_updated_utc": "2026-10-18T01:13:15.981950+00:00"
+}

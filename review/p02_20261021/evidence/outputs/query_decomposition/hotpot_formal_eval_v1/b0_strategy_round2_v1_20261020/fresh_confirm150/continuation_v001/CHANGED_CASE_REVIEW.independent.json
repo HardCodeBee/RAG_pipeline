@@ -1,0 +1,38 @@
+{
+  "scope": "Post-execution, non-blind interpretation of the fixed confirmation result only; no tuning or reselection.",
+  "changed_cases": [
+    {
+      "id": "musique:3hop1__131783_131926_13165",
+      "query": "What treaty ceded territory to the US extending west to the body of water by the location of the Minikahda Club?",
+      "reference_answer": "Treaty of Paris",
+      "parent_prediction": "Cannot be determined",
+      "candidate_prediction": "Adams–Onís Treaty",
+      "parent_f1": 0.0,
+      "candidate_f1": 0.4,
+      "new_EM": 0,
+      "classification": "incorrect_candidate_lexical_credit_without_factual_repair",
+      "unchanged_ordinary_answer": "Lake Calhoun is near the location of the Minikahda Club.",
+      "unchanged_goal_answer": "The Adams–Onís Treaty of 1819 ceded territory to the US extending west to the Pacific Ocean, but no retrieved passage links it—or any treaty—to Lake Calhoun or establishes that any treaty’s western boundary reached Lake Calhoun.",
+      "evidence": [
+        {
+          "stage": "Original-query Top10 raw passage visible to both final readers",
+          "rank": 6,
+          "source": "Republic of Cuba (1902–1959)",
+          "doc_id": "ce457c794b261e1237fd5ff46a959471c67bf9228f894580383923b4b04852b6",
+          "observation": "Mentions the Treaty of Paris of1898 and Spanish cessions involving Puerto Rico, the Philippines and Guam. This is not evidence completing the Lake Calhoun boundary relation in the original query."
+        },
+        {
+          "stage": "Original-query Top10 raw passage visible to both final readers",
+          "rank": 10,
+          "source": "Adams–Onís Treaty",
+          "doc_id": "14c9376ea58505cec693a40b76e80840fd32c512cd4219432f37664a8c216a54",
+          "observation": "Supports the1819 treaty's boundary reaching the Pacific Ocean. It does not connect that boundary to Lake Calhoun."
+        }
+      ],
+      "interpretation": "The candidate selects the Adams–Onís name already present in the unchanged goal while omitting that goal's explicit unresolved bridge. Its nonzero native F1 comes from lexical overlap on Treaty with Treaty of Paris; the requested treaty was not recovered. This is not a factual repair, and neither answer newly achieves EM. The observation is consistent with accepting a partial goal candidate, but a single output is not a guarantee of a deterministic causal mechanism.",
+      "factual_repair_demonstrated": false,
+      "runtime_algorithm_modified": false
+    }
+  ],
+  "overall_interpretation": "Mean native F1 is slightly positive on149 pairs, but its only gain is lexical credit for an incorrect treaty candidate. There are zero newly exact answers. The interval includes zero, and the full150 missing-answer bounds permit either sign; stable superiority or factual improvement has not been established."
+}

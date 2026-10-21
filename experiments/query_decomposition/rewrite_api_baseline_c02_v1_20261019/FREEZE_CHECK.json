@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "verified_at_utc": "2026-10-19T06:42:42.150197+00:00",
+  "checks": {
+    "expanded_instructions_equal_original": true,
+    "six_examples_equal_original": true,
+    "same93_rendered_prompts_byte_equal_original": true,
+    "same93_prompts_without_short_answer": true,
+    "empty_history_render_equal_original": true
+  },
+  "checked_states": 93,
+  "baseline_sha256": "604b37ac93383064c75ddedf2b7d0da531f4e07d40f455124f7c6dce8315ab6f",
+  "snapshot_sha256": {
+    "experiments/query_decomposition/rewrite_api_baseline_c02_v1_20261019/prompts.py": "1d2aebad2a3bc56c2b36c3d2cf14fda6ce8163f883d2d8af908dc3078f0b8752",
+    "experiments/query_decomposition/rewrite_api_baseline_c02_v1_20261019/PROMPT_TEMPLATE.txt": "526552d2fc033b031fd94bba7fb6a87906ff7729780fc4648f7a63d0a4f22666"
+  },
+  "api_requests_submitted": 0,
+  "verification_scope": "Local renderer and frozen historical evidence only; not fresh model inference."
+}

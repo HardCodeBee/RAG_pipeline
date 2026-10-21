@@ -1,0 +1,15 @@
+{
+ "reviewed_master_lines":[3376,3500],
+ "reviewer":"Current Codex inspected all 125 literal query/target pairs; the truncated 3425-3450 span was fetched separately in full. Same reviewer, not independent gold.",
+ "revisions":{
+ "3408":{"target":["What country won the 2002 World Cup in Japan?","On which continent is the country that won the 2002 World Cup in Japan the largest country?","What country provided the most legal immigrants in 2013 from the continent whose largest country won the 2002 World Cup in Japan?"],"reason":"Keep largest-within-continent scope in both deeper questions; do not select the largest among World Cup winners."},
+ "3426":{"target":["What city is Andre Agassi from?","Who owns Golden Spike in the city Andre Agassi is from?","What is the university of the owner of Golden Spike in the city Andre Agassi is from?"],"reason":"University of an owner is ambiguous in the input; do not infer attendance instead of possible employment or another relation."},
+ "3441":{"target":["What country won the 2002 World Cup in Japan?","On which continent is the country that won the 2002 World Cup in Japan the largest country?","What country provided the most legal immigrants in 2013 from the continent whose largest country won the 2002 World Cup in Japan?"],"reason":"Correct the same continent-versus-winner superlative attachment error as row 3408."},
+ "3492":{"target":["What Connecticut city has the most Zagat-rated restaurants?","Who wrote America-Lite: How Imperial Academia Dismantled Our Culture?","What is the university of the author of America-Lite: How Imperial Academia Dismantled Our Culture?"],"reason":"The source does not say the author attended the university. Preserve its unspecified university relation rather than turn it into an alma mater fact."}
+ },
+ "quarantine":{
+ "3437":"The source's On the Avenue performer / Cookin' it / record label / Montreux attachment cannot be faithfully resolved query-only. The existing label supplies an album-release relation not clearly established by the source.",
+ "3451":"The input refers to this period without specifying a period; its along with phrase also makes the band/city attachment uncertain. The label invents a contemporaneous-with relation. Quarantine rather than resolve from external context.",
+ "3480":"Same ambiguous album/performer/label/Montreux construction as row 3437, with Simply Beautiful. Quarantine the unresolvable query instead of training a guessed album-release relation."
+ }
+}

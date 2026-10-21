@@ -1,0 +1,133 @@
+{
+  "overall": {
+    "planned": 15,
+    "pairs": 15,
+    "our_f1": 0.5777777777777778,
+    "react_f1": 0.7897546897546897,
+    "mean_difference": -0.21197691197691199,
+    "gains": 0,
+    "ties": 10,
+    "losses": 5,
+    "loss_qids": [
+      "5a8eb63455429917b4a5bdb7",
+      "bc7073a80baf11ebab90acde48001122",
+      "2hop__805610_392181",
+      "3hop1__136083_87694_64412",
+      "4hop3__152056_698586_57596_54362"
+    ],
+    "our_mean_calls": 5.933333333333334,
+    "react_mean_calls": 3.066666666666667,
+    "our_mean_standalone_cny": 0.009001066666666665,
+    "react_mean_standalone_cny": 0.0077570933333333345
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 5,
+      "pairs": 5,
+      "our_f1": 0.8,
+      "react_f1": 1.0,
+      "mean_difference": -0.2,
+      "gains": 0,
+      "ties": 4,
+      "losses": 1,
+      "loss_qids": [
+        "5a8eb63455429917b4a5bdb7"
+      ],
+      "our_mean_calls": 5.6,
+      "react_mean_calls": 2.8,
+      "our_mean_standalone_cny": 0.008107999999999999,
+      "react_mean_standalone_cny": 0.005295920000000001
+    },
+    "2wiki": {
+      "planned": 6,
+      "pairs": 6,
+      "our_f1": 0.611111111111111,
+      "react_f1": 0.7777777777777777,
+      "mean_difference": -0.16666666666666666,
+      "gains": 0,
+      "ties": 5,
+      "losses": 1,
+      "loss_qids": [
+        "bc7073a80baf11ebab90acde48001122"
+      ],
+      "our_mean_calls": 6.166666666666667,
+      "react_mean_calls": 3.1666666666666665,
+      "our_mean_standalone_cny": 0.009795400000000001,
+      "react_mean_standalone_cny": 0.008816266666666668
+    },
+    "musique": {
+      "planned": 4,
+      "pairs": 4,
+      "our_f1": 0.25,
+      "react_f1": 0.5449134199134199,
+      "mean_difference": -0.29491341991341996,
+      "gains": 0,
+      "ties": 1,
+      "losses": 3,
+      "loss_qids": [
+        "2hop__805610_392181",
+        "3hop1__136083_87694_64412",
+        "4hop3__152056_698586_57596_54362"
+      ],
+      "our_mean_calls": 6.0,
+      "react_mean_calls": 3.25,
+      "our_mean_standalone_cny": 0.008925899999999999,
+      "react_mean_standalone_cny": 0.009244800000000001
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "pairs": 12,
+      "our_f1": 0.6666666666666666,
+      "react_f1": 0.7649711399711401,
+      "mean_difference": -0.09830447330447332,
+      "gains": 0,
+      "ties": 9,
+      "losses": 3,
+      "loss_qids": [
+        "2hop__805610_392181",
+        "3hop1__136083_87694_64412",
+        "4hop3__152056_698586_57596_54362"
+      ],
+      "our_mean_calls": 5.833333333333333,
+      "react_mean_calls": 3.1666666666666665,
+      "our_mean_standalone_cny": 0.008612766666666665,
+      "react_mean_standalone_cny": 0.008314866666666669
+    },
+    "regression": {
+      "planned": 1,
+      "pairs": 1,
+      "our_f1": 0.6666666666666666,
+      "react_f1": 0.6666666666666666,
+      "mean_difference": 0.0,
+      "gains": 0,
+      "ties": 1,
+      "losses": 0,
+      "loss_qids": [],
+      "our_mean_calls": 4.0,
+      "react_mean_calls": 2.0,
+      "our_mean_standalone_cny": 0.0072423999999999995,
+      "react_mean_standalone_cny": 0.0036787999999999994
+    },
+    "competitor_gap": {
+      "planned": 2,
+      "pairs": 2,
+      "our_f1": 0.0,
+      "react_f1": 1.0,
+      "mean_difference": -1.0,
+      "gains": 0,
+      "ties": 0,
+      "losses": 2,
+      "loss_qids": [
+        "5a8eb63455429917b4a5bdb7",
+        "bc7073a80baf11ebab90acde48001122"
+      ],
+      "our_mean_calls": 7.5,
+      "react_mean_calls": 3.0,
+      "our_mean_standalone_cny": 0.0122102,
+      "react_mean_standalone_cny": 0.0064496
+    }
+  },
+  "limit": "manual query-only reference plans versus frozen adapted ReAct k10 s5; shared corpora/BGE/model, different prompts/search budgets; diagnostic, not official SOTA or automatic-method dominance"
+}

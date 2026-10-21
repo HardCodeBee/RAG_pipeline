@@ -1,0 +1,17 @@
+{
+  "revision": "cache_v002",
+  "method_changes": 0,
+  "generation_payload_changes": 0,
+  "frozen_v001_protocol_sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+  "source_pins": {
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\runner_v002.py": "d175cb0232b9fcb27d8537ec0cc9d74f5d465bb2297dc0fd55d362c9964a53ad",
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\cache_catalog_v002.py": "7e3a7cf81a4e13cb6c12cb1fd6bf1ae35b2976ad76a589e7533b2d04e89264f2",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\B0_SOURCES.frozen.jsonl": "dc4b5ec3b788506f945b37451145a48df755ad3555470e9971b5e297a3cd1481"
+  },
+  "cache_priority": "Preserve every existing selected entry; fill only absent full payload hashes from first-success frozen B0 call order.",
+  "old_completed_cases_replaced": false,
+  "reason": "v001 did not index ordinary/rewrite receipts absent from the complete B0 case JSON; the authoritative receipts live in B0_SOURCES.",
+  "cost_policy": "All v001 submissions and unknown reserves remain charged; no refund or relabeling as cache.",
+  "global_cap_cny": 300,
+  "local_subcap_cny": 25
+}

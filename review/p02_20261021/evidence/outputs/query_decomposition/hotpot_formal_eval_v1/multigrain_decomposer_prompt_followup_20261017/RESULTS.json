@@ -1,0 +1,306 @@
+{
+  "utc": "2026-10-17T06:45:23.068416+00:00",
+  "scope": "same36 exposed-set prompt development diagnostic",
+  "reviewer": "one shared nonblind Codex context; not independent human gold",
+  "unchanged_rubric": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\PILOT_REVIEW_RULES.txt",
+  "statistics": {
+    "v2": {
+      "planned": 36,
+      "complete": 36,
+      "verdicts": {
+        "fail": 10,
+        "pass": 24,
+        "uncertain": 2
+      },
+      "pass_rate_full_denominator": 0.6666666666666666,
+      "failed_checks": {
+        "faithfulness_and_unknowns": 1,
+        "self_containment": 6,
+        "supporting_information_coverage": 1,
+        "distinct_usefulness": 4
+      },
+      "mean_input_tokens_returned": 644.9722222222222,
+      "mean_output_tokens_returned": 35.30555555555556,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 3,
+          "uncertain": 1,
+          "pass": 8
+        },
+        "2wiki": {
+          "pass": 10,
+          "fail": 2
+        },
+        "musique": {
+          "pass": 6,
+          "fail": 5,
+          "uncertain": 1
+        }
+      }
+    },
+    "v3": {
+      "planned": 36,
+      "complete": 34,
+      "verdicts": {
+        "fail": 7,
+        "pass": 26,
+        "uncertain": 1,
+        "unavailable": 2
+      },
+      "pass_rate_full_denominator": 0.7222222222222222,
+      "failed_checks": {
+        "faithfulness_and_unknowns": 1,
+        "self_containment": 2,
+        "supporting_information_coverage": 1,
+        "distinct_usefulness": 6
+      },
+      "mean_input_tokens_returned": 832.1764705882352,
+      "mean_output_tokens_returned": 38.6764705882353,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 2,
+          "uncertain": 1,
+          "pass": 9
+        },
+        "2wiki": {
+          "pass": 9,
+          "unavailable": 1,
+          "fail": 2
+        },
+        "musique": {
+          "pass": 8,
+          "unavailable": 1,
+          "fail": 3
+        }
+      }
+    },
+    "v4": {
+      "planned": 36,
+      "complete": 36,
+      "verdicts": {
+        "fail": 6,
+        "pass": 28,
+        "uncertain": 2
+      },
+      "pass_rate_full_denominator": 0.7777777777777778,
+      "failed_checks": {
+        "faithfulness_and_unknowns": 0,
+        "self_containment": 3,
+        "supporting_information_coverage": 1,
+        "distinct_usefulness": 4
+      },
+      "mean_input_tokens_returned": 989.9722222222222,
+      "mean_output_tokens_returned": 37.888888888888886,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 3,
+          "uncertain": 1,
+          "pass": 8
+        },
+        "2wiki": {
+          "pass": 10,
+          "fail": 2
+        },
+        "musique": {
+          "pass": 10,
+          "uncertain": 1,
+          "fail": 1
+        }
+      }
+    },
+    "v5": {
+      "planned": 36,
+      "complete": 33,
+      "verdicts": {
+        "fail": 5,
+        "pass": 27,
+        "uncertain": 1,
+        "unavailable": 3
+      },
+      "pass_rate_full_denominator": 0.75,
+      "failed_checks": {
+        "faithfulness_and_unknowns": 1,
+        "self_containment": 0,
+        "supporting_information_coverage": 0,
+        "distinct_usefulness": 4
+      },
+      "mean_input_tokens_returned": 991.4242424242424,
+      "mean_output_tokens_returned": 38.303030303030305,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 1,
+          "uncertain": 1,
+          "pass": 10
+        },
+        "2wiki": {
+          "pass": 9,
+          "fail": 2,
+          "unavailable": 1
+        },
+        "musique": {
+          "pass": 8,
+          "unavailable": 2,
+          "fail": 2
+        }
+      }
+    }
+  },
+  "all_arm_common": {
+    "n": 31,
+    "passes": {
+      "v2": 20,
+      "v3": 24,
+      "v4": 24,
+      "v5": 25
+    },
+    "self_containment_failures": {
+      "v2": 5,
+      "v3": 1,
+      "v4": 2,
+      "v5": 0
+    }
+  },
+  "comparisons": [
+    {
+      "before": "v2",
+      "after": "v3",
+      "n": 34,
+      "before_pass": 22,
+      "after_pass": 26,
+      "gained_pass": [
+        "5abf0bf95542997719eab63a",
+        "3hop1__540585_568433_51423",
+        "3hop1__483634_720378_15538",
+        "4hop2__71753_648517_70784_79935"
+      ],
+      "lost_pass": [],
+      "fixed_self_containment": [
+        "5abf0bf95542997719eab63a",
+        "3hop1__540585_568433_51423",
+        "3hop1__483634_720378_15538",
+        "4hop2__71753_648517_70784_79935",
+        "4hop1__151650_5274_458768_33637"
+      ],
+      "new_self_containment_failure": [
+        "5a8333115542993344745feb"
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v4",
+      "n": 34,
+      "before_pass": 26,
+      "after_pass": 26,
+      "gained_pass": [
+        "4hop1__151650_5274_458768_33637"
+      ],
+      "lost_pass": [
+        "5abf0bf95542997719eab63a"
+      ],
+      "fixed_self_containment": [],
+      "new_self_containment_failure": [
+        "5abf0bf95542997719eab63a"
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v5",
+      "n": 31,
+      "before_pass": 24,
+      "after_pass": 25,
+      "gained_pass": [
+        "5a8333115542993344745feb"
+      ],
+      "lost_pass": [],
+      "fixed_self_containment": [
+        "5a8333115542993344745feb"
+      ],
+      "new_self_containment_failure": []
+    },
+    {
+      "before": "v2",
+      "after": "v5",
+      "n": 33,
+      "before_pass": 22,
+      "after_pass": 27,
+      "gained_pass": [
+        "5abf0bf95542997719eab63a",
+        "3hop1__540585_568433_51423",
+        "5a8333115542993344745feb",
+        "3hop1__483634_720378_15538",
+        "4hop2__71753_648517_70784_79935"
+      ],
+      "lost_pass": [],
+      "fixed_self_containment": [
+        "5abf0bf95542997719eab63a",
+        "3hop1__540585_568433_51423",
+        "3hop1__483634_720378_15538",
+        "4hop2__71753_648517_70784_79935",
+        "4hop1__151650_5274_458768_33637"
+      ],
+      "new_self_containment_failure": []
+    }
+  ],
+  "candidate_by_common_passes_then_self_containment_then_length": "v5",
+  "selection_limit": "Within-set candidate only; not a confirmed 90-percent decomposer or downstream RAG gain.",
+  "expenses": {
+    "v2": {
+      "usage_list_price_cny": 0.0211172,
+      "scope": "reused control; not new spending"
+    },
+    "v3": {
+      "usage_list_price_cny": 0.025265199999999998,
+      "unknown_reserved_cny": 0.011412
+    },
+    "v4": {
+      "usage_list_price_cny": 0.031239199999999998,
+      "unknown_reserved_cny": 0
+    },
+    "v5": {
+      "usage_list_price_cny": 0.0287016,
+      "unknown_reserved_cny": 0.0193328
+    }
+  },
+  "new_usage_list_price_cny": 0.085206,
+  "new_unknown_reserved_cny": 0.030744800000000003,
+  "audit": {
+    "v2": {
+      "stored_requests": 36,
+      "statuses": {
+        "success": 36
+      },
+      "same_model_decoding_roles_original_questions": true,
+      "prompt_file": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_PROMPT_v2.txt",
+      "prompt_sha256": "fb406934ef2b66c687fdcf534a1af107a6cbcf65a0d62f96593e3d92c5e2fcde"
+    },
+    "v3": {
+      "stored_requests": 36,
+      "statuses": {
+        "success": 34,
+        "unknown": 2
+      },
+      "same_model_decoding_roles_original_questions": true,
+      "prompt_file": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_PROMPT_v3.txt",
+      "prompt_sha256": "847d2f4cceacfb4105960a4200fd617cc2fab23638f3752058c13c7e07d63b48"
+    },
+    "v4": {
+      "stored_requests": 36,
+      "statuses": {
+        "success": 36
+      },
+      "same_model_decoding_roles_original_questions": true,
+      "prompt_file": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_PROMPT_v4.txt",
+      "prompt_sha256": "b17a916bf2a81973b5e588cc03346226c9c26aa1ed9ff25c2db62fbb0e3cae1c"
+    },
+    "v5": {
+      "stored_requests": 36,
+      "statuses": {
+        "success": 33,
+        "unknown": 3
+      },
+      "same_model_decoding_roles_original_questions": true,
+      "prompt_file": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_PROMPT_v5.txt",
+      "prompt_sha256": "e7f8206d8d8c3baae382589b5fc5652a0f5fbaca71bf82fcd68458def49d4c7d"
+    }
+  }
+}

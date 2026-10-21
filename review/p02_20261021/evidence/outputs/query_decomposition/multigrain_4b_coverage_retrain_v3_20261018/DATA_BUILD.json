@@ -1,0 +1,68 @@
+{
+  "base": 3496,
+  "new_native": 96,
+  "new_synthetic": 40,
+  "total": 3632,
+  "base_quarantine": 4,
+  "native_candidate_quarantine": 24,
+  "new_native_prefix": {
+    "2hop": 18,
+    "4hop3": 25,
+    "3hop1": 13,
+    "4hop1": 23,
+    "3hop2": 17
+  },
+  "new_native_max_primitive_reuse": 3,
+  "synthetic_skills": {
+    "joint_spatial_scope": 4,
+    "territorial_attachment": 4,
+    "shared_attribute_distinct_owners": 4,
+    "temporal_versus_causal": 4,
+    "river_direction": 4,
+    "of_versus_in": 4,
+    "time_consistent_calculation": 4,
+    "unknown_type_preservation": 4,
+    "maker_giver_ownership": 4,
+    "comparison_scope": 4
+  },
+  "by_dataset": {
+    "break-high/drop": 864,
+    "break-high/hotpot": 1029,
+    "break-high/cwq": 374,
+    "musique": 601,
+    "hotpotqa": 14,
+    "2wiki": 710,
+    "synthetic_coverage": 40
+  },
+  "validation_note": "Custom Mu native-train held-outs with primitive isolation; not official native-test benchmark.",
+  "review_status": "Complete query-only self-review, not independent gold.",
+  "training_status": "not submitted yet",
+  "sampling": {
+    "r01_old_data": {
+      "exposures": 1280,
+      "unique_examples": 1046,
+      "by_cohort": {
+        "old2368": 580,
+        "new_train_pool": 687,
+        "user_designated_hard": 13
+      },
+      "old_mu_exposures": 640,
+      "native_new_exposures": 0,
+      "synthetic_exposures": 0
+    },
+    "r02_expanded": {
+      "exposures": 1280,
+      "unique_examples": 1096,
+      "by_cohort": {
+        "old2368": 540,
+        "new_train_pool": 409,
+        "user_designated_hard": 11,
+        "new_native_coverage": 240,
+        "new_synthetic_coverage": 80
+      },
+      "old_mu_exposures": 320,
+      "native_new_exposures": 240,
+      "synthetic_exposures": 80
+    }
+  }
+}

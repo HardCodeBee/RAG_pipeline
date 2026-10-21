@@ -1,0 +1,278 @@
+最近简化实验保留索引
+2026-10-20T13:38:35.866834+00:00
+当前仅采用timing_only与严格成功缓存基础设施；其余全部保留供未来消融，不覆盖旧结果。
+所有分数来自同一开发300，HotpotQA/2Wiki/MuSiQue各100；F1下表以百分比显示。
+版本	直接父版本	总体F1%	HotpotQA%	2Wiki%	MuSiQue%	逻辑生成	冷成本元	本轮已知/未知预留元
+timing_only	p02_role_headers	70.724173	78.990837	93.347386	39.834297	1774	2.3262524	0.0000000/0.0000000
+union20_legacy	timing_only	70.312435	78.281313	92.285481	40.370510	1774	2.7058968	1.4284244/0.2430328
+discount20	union20_legacy	70.025077	79.408586	91.118814	39.547832	1774	2.7039856	0.7153828/0.1664216
+single_final	discount20	67.676142	74.478571	89.517172	39.032684	1474	2.2407188	0.8308136/0.2348152
+union20_cachefix	timing_only	70.360054	78.424170	92.285481	40.370510	1774	2.7053104	0.0354980/0.0000000
+terminal_goal	union20_legacy	67.787094	72.819841	92.704335	37.837107	1474	2.0886624	0.6784244/0.0691616
+
+各版本的实际改动、受控范围与限制：
+
+timing_only <- p02_role_headers
+将原query Top10获取推迟到附加goal阶段，去掉开始时重复get；其余prompt、问答、改写、goal预答、最终回答及10篇合并均不变。
+干净单因素等价简化：300题887节点、1774完整模型payload/原文/输出全部精确回放一致；不等于证明少了一次物理全索引搜索。
+本项是精确离线复现，未新增模型推理；完整流程冷成本仍计1774次生成。
+
+union20_legacy <- timing_only
+普通节点和goal reader将原始路/改写路各Top10按名次原始优先交替、ID去重，保留全部并集<=20；保留goal预答及最终回答；最终reader仍为原query Top10+辅助问答。
+设计上只改reader保留集合；旧执行未完整优先复用全部canonical ordinary/rewrite回执，相同输入发生重新生成，和原p02比较有响应波动混杂。
+旧结果保留，不能用它取代修复后的union20受控对照。
+缓存修复后14题节点/提示变化、11题最终prompt变化、2题最终预测变化；native F1由70.3124348%变为70.3600539%。
+
+discount20 <- union20_legacy
+相对旧union20保留相同完整并集<=20，仅以两路sum(1/log2(rank+1))排序；tie按最佳rank、原始rank、doc_id；不是只取前10。
+相对旧union20的设计单因素为文档排序；本次离线检查1481个共享完整payload的原始回答无差异。仍属于旧执行缓存世代，未在cachefix执行器重评。
+只能相对其直接父旧union20解释排序改动；不能换用cachefix union20作为该旧实验的直接父。
+两路并集/次序变化会自然影响后继答案、改写和检索轨迹，不能用固定旧答案回放冒充新下游F1。
+
+single_final <- discount20
+保留原query goal的改写/双路检索，但取消附加goal事实回答；普通子问答继续作为辅助。
+最终reader从原query单路Top10改为goal双路完整discount并集<=20；辅助材料去掉goal结论段并改为仅中间问答。
+代码另含仅本方案启用的原query完全相同support去重；300题实际0次触发。
+联合改动：删goal预答、改变最终原文集合、改变辅助段职责同时发生，不能称为只删一次goal调用的纯消融。共享1173个完整payload原始回答无差异，但不消除该结构bundle。
+与terminal_goal不同：single_final删除goal预答并保留原最终4-shot/P1 reader；terminal_goal保留goal但替换输出契约并删除最终reader。
+
+union20_cachefix <- timing_only
+与旧union20算法完全相同：原始优先交替、ID去重、全部并集<=20。
+基础设施修复：canonical p02/B0的完整payload成功回执全局最高优先级；固定3265历史成功输入索引；已有成功输入不得重新付费；改前缀后完整串行重算。
+干净的受控方法对照：同一新namespace实际重算timing_only与union20，唯一算法差异为reader Top10截断/完整<=20；同输入保持同响应，不读取旧整case当新结果。
+这是canonical缓存耦合的开发300受控对照，不是全新独立推理或未曝光测试。
+不能把历史discount20/single_final/terminal_goal的父输入静默改成此版本；需另行重新串行评估。
+总体差值-0.3641193个百分点，95%配对区间[-2.2851459,+1.4428676]；区间跨零不证明等价或非劣。
+
+terminal_goal <- union20_legacy
+完整复用旧union20普通节点与回执、goal改写及goal reader并集。
+goal一次生成两行Conclusion（完整事实句）和Final answer（原query短答），程序严格解析短答；删除legacy/final和终点goal formatter。
+改变goal输出要求并要求stop且严格两行，max128不变；原最终4-shot/P1 reader不再执行。goal renderer实际0-shot。
+上游精确固定，但终点为联合改动：新多输出契约/严格解析/删除最终reader同时发生；不是原goal回答不变而单独删final的纯消融。
+297成功+3算法length失败仍计300分母；3个截断不得静默提取其部分Final answer。
+3算法失败的模型请求均已返回，用量与成本计入1474逻辑生成；8次未知请求预留不等于8题缺失。
+直接父是UNION_SOURCES.frozen.json固定的旧union20 70.3124348%，不能更换为cachefix union20 70.3600539%。
+
+费用口径：
+把完整逻辑流程所有生成按相同冻结费率计价，含成功缓存回放；不含检索/分解硬件成本。
+对应实验报告生成时的本namespace全部物理请求已返回用量估计+未知预留，包含重试；不重复收取历史种子费用。
+官方账单未核实，未知预留不是已确认消费；全局账本有其他授权任务持续写入，不能将不同时间全局快照相加。
+
+最小关键证据（路径 + SHA256；大case/SQLite留在原处）：
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\PROTOCOL.frozen.json
+SHA256 722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960
+用途：旧三组方法定义、模型/原文资源及source-pins闭包
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\pipeline.py
+SHA256 8ffd74da8b0db0029c17c09ca56bb58fb650bab480955dc36d701531647f95e2
+用途：timing/union/discount/single核心实际算法与prompt输入组合
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\INFRA_CACHE_V002.frozen.json
+SHA256 a744fb978d235175b2037019ea46687f690f19b370ce73e863938ed899fecd60
+用途：旧执行缓存基础设施修订记录
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\INFRA_RECOVERY_V003.frozen.json
+SHA256 73cbbe66946a79d701678f54534ae56ce9b89bd68cf39db690322c2e896c1d4b
+用途：旧缺失恢复轮次冻结规则
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\DECISIONS.jsonl
+SHA256 9acd59dd5dac5dd2f2f8d13845ffc07f546b2be05b8e17ccb00072a8986806ce
+用途：旧变动与执行选择记录
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\runtime300.frozen.jsonl
+SHA256 4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f
+用途：共享300个query/R02分解；每数据集100
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\references300.local.frozen.jsonl
+SHA256 54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc
+用途：共享native F1离线评分参考；禁止进入执行
+experiments\query_decomposition\p02_flow_simplify_v1_20261020\BASELINE_SOURCES.frozen.json
+SHA256 9ce0071c2e4c37bb64854bd490c75d85f6c558b92d348e1985f34caa55f2e303
+用途：原p02源case路径与SHA绑定
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\OFFLINE_AUDIT.json
+SHA256 16c2734d2d19b394cce8679a4983b11cfd68ac689093bb1a6b1197e9d324d55e
+用途：原300精确回放审计结论
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\OFFLINE_AUDIT.details.jsonl
+SHA256 900a2959f2737a56b5711b5e5ea5d4c667d5a47aa2970549260524d06a1eb59e
+用途：1774 canonical stage/payload/source/rid回执绑定
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\reports\adoption300\REPORT.json
+SHA256 1ef4eb4445305b3321a5754292fe12d34d3803d8ceba77519532bdf46c72c0e4
+用途：旧完整300/分DS F1、逻辑tokens与实际费用快照
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\reports\adoption300\PAIRED_DETAILS.jsonl
+SHA256 77fd10a015280678a626046ff3a8e8d090aa75032f6e2dddbb1cd2dc798dfbd6
+用途：旧逐题配对F1及usage
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\reports\adoption300\INDEPENDENT_VERIFICATION.json
+SHA256 1a1d0e2af54ed4a5869b599cb88d8d680b85eb0eda6ec71f9ffa31002267c316
+用途：旧三组独立最终核验
+experiments\query_decomposition\terminal_goal_v1_20261020\PROTOCOL.frozen.json
+SHA256 819b59baed70ce1d05939eb495de1aa4d31e031870e1abed78dfd7652bb329f0
+用途：terminal_goal输出/解析/失败/预算协议
+experiments\query_decomposition\terminal_goal_v1_20261020\candidate.py
+SHA256 6dcc496b47ea7de42cd603e1e04ad5bcb8d325f56dee2a5bf9c207dc8b1e38c6
+用途：精确两行prompt变换及机械parse
+experiments\query_decomposition\terminal_goal_v1_20261020\run.py
+SHA256 1b68159eb2a0411f4be87a03acc0380418c0304a8c77aa00657d9665779b845c
+用途：旧prefix复用与新终点执行实现
+experiments\query_decomposition\terminal_goal_v1_20261020\UNION_SOURCES.frozen.json
+SHA256 45933fd4993c577d4ffee27fcc386f45bb4de4399e83f100ec2d527fc4780138
+用途：300旧union父case固定路径与SHA
+experiments\query_decomposition\terminal_goal_v1_20261020\DECISIONS.jsonl
+SHA256 c29f64dca2346244f2ea269a34460e2aa4d0de7cd3d1b8352262c3890ac462da
+用途：terminal执行与重试记录
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\reports\REPORT.json
+SHA256 75eb6e5dadaf6599521384f3ad3c4cf58eb8884bed722bf790ec0c11976f030f
+用途：terminal完整300/分DS/F1与冷热成本
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\reports\PAIRED_DETAILS.jsonl
+SHA256 4e62c36294bfd3b1b9457888cb658fdf1686fc41c3f19981f0ce787772a062b6
+用途：terminal逐题结果及prefix/cost核对
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\reports\FINAL_VERIFICATION.json
+SHA256 d55e5364e61094e6c3b5e702d23eb7b56289d89d854be65f5029fe3905b08767
+用途：terminal独立评分/解析/回执最终核验
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\PROTOCOL.frozen.json
+SHA256 04e95b9b924c1553e5337ab72ce73594e15e8eac719f3069f82b37511e4a76ed
+用途：canonical缓存修复受控比较冻结协议与source闭包
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\cache.py
+SHA256 f50768cf3ceae6feba8314c866109074f50200af64987664eca6fe0cda857082
+用途：canonical-first exact全payload选择，不按答案质量选回执
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\run.py
+SHA256 666c3189536abbcb2d7b5c3ae096521df5c2738c5fa25e9fd7c28b283b16c325
+用途：已有成功输入不得重新提交、缺失only重算及预算控制
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\adapter.py
+SHA256 cc86c35437e866532f66ee53e1d9e6100170056435bd877f2be4d9809d0caa6b
+用途：原始路packet及冻结全索引检索资源校验
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\HISTORICAL_SUCCESS_INDEX.frozen.json
+SHA256 99125dfaae6aa2d8dd51f43ebe8335ac15eb7d60963e8ed5b0fc6d44cc68ac43
+用途：3265初始成功输入/rid/result绑定
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\DECISIONS.jsonl
+SHA256 fb06fd123b65275d30a402eee9062810361b2b86aa2a7d433246a8bf090606db
+用途：cachefix执行过程与选择记录
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\PREFLIGHT.json
+SHA256 7efc5fc5ce4f1512f32ebc689851cdf011ab959377727f67dc815d8f825da700
+用途：600条精确缓存物化与10题真实新输入边界
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\OFFLINE_AUDIT.json
+SHA256 379d52007be3a44434fbda92c74416bc04c95998bef6929b36c710e07b479fd1
+用途：新baseline300/1774完整payload精确复现审计
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\reports\REPORT.json
+SHA256 d7952a4d461cdda1237b0856e8e1259772be7f915e7c29f878e944fdec6abbfc
+用途：修复后两组完整300受控F1与成本
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\reports\PAIRED_DETAILS.jsonl
+SHA256 aac8fe3134e40740462c1b476d90b3cc384bb97caf2ba80d37570710170ad3b1
+用途：修复后逐题结果及tokens/cost
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\reports\FINAL_VERIFICATION.json
+SHA256 a1987106fab79e590f154d99ad1edc38583045efe2b7b17655ea1553fda18d34
+用途：完整600逐轨迹/SQL/缓存/预算独立最终核验
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_merge_cachefix_v1_20261021\reports\CACHE_REPAIR_CASES.json
+SHA256 0b54943bdba86f071a762b7817bbd02ec19e7e3f978a504a1a7f44c38442bfdd
+用途：旧union与修复union的14轨迹/2预测差异
+experiments\query_decomposition\p02_merge_cachefix_v1_20261021\CACHE_EXECUTOR_SELECTED.user_20261021.frozen.json
+SHA256 96f8b42af8ae924e1dabebcebc1afa0bd85a52f19abb1acc26a7f43696ac72ad
+用途：当前采用timing_only与严格缓存基础设施；union仍未采用
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_simplification_review_20261020\union_audit.json
+SHA256 8343966acb6d3cebc07b209a12c4952b463df77df15eea045735a7534ed3ff13
+用途：旧union失败/缓存混杂具体审阅
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_simplification_review_20261020\single_final_audit.json
+SHA256 58716e9978d7d43fe492b7bdb6787c3f67c9e3a145d4aaff98f23fc01da189cd
+用途：single_final失败事实与输入差异审阅
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_simplification_review_20261020\terminal_audit.json
+SHA256 cf34b458de4a0ca11fcf54bba3c8d02fc4c2bd26a4c9df70fb2038b26398395e
+用途：terminal 30下降题人工原因与因果限制审阅
+
+原始数据保留根：
+[
+  {
+    "experiment_root": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020",
+    "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds/r*/cases/*/*/*.json",
+    "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+    "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\retrieval/*/checkpoint.sqlite3",
+    "retain_additional_roots": [
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\phases",
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds"
+    ],
+    "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+  },
+  {
+    "experiment_root": "experiments\\query_decomposition\\terminal_goal_v1_20261020",
+    "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds/r*/cases/*/*/*.json",
+    "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+    "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\retrieval/*/checkpoint.sqlite3",
+    "retain_additional_roots": [
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\phases",
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds"
+    ],
+    "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+  },
+  {
+    "experiment_root": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021",
+    "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds/r*/cases/*/*/*.json",
+    "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+    "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\retrieval/*/checkpoint.sqlite3",
+    "retain_additional_roots": [
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\phases",
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds"
+    ],
+    "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+  }
+]
+外部成功回执SQLite：
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\methods\2wiki\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\methods\hotpotqa\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\methods\musique\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\methods\2wiki\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\methods\hotpotqa\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\methods\musique\p02_role_headers\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\methods\2wiki\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\methods\hotpotqa\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\methods\musique\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\methods\2wiki\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\methods\hotpotqa\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\methods\musique\g01_goal_consistency\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\retry_rounds\r001\methods\2wiki\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\retry_rounds\r001\methods\hotpotqa\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\retry_rounds\r001\methods\musique\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\retry_rounds\r001\methods\musique\s02_child4\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\run_v001\methods\2wiki\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\run_v001\methods\hotpotqa\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\complete_pipeline_comparison_v1_20261020\run_v001\methods\musique\B0_legacy_multigrain_R02\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\decomposition_corrected_same60_v1_20261019\run_v001\api\hotpotqa\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\decomposition_corrected_same60_v1_20261019\run_v001\api\musique\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\decomposition_error_expand60_v1_20261019\run_v001\api\2wiki\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\decomposition_error_expand60_v1_20261019\run_v001\api\hotpotqa\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\decomposition_error_expand60_v1_20261019\run_v001\api\musique\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\2wiki\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\2wiki\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\2wiki\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\hotpotqa\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\hotpotqa\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\hotpotqa\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\musique\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\musique\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\methods\musique\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\2wiki\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\2wiki\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\hotpotqa\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\hotpotqa\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\hotpotqa\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\musique\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\musique\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\methods\musique\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\hotpotqa\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\hotpotqa\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\hotpotqa\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\musique\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\musique\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r002\methods\musique\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r003\methods\hotpotqa\discount20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r003\methods\hotpotqa\single_final\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r003\methods\musique\union20\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\methods\2wiki\terminal_goal\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\methods\hotpotqa\terminal_goal\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\methods\musique\terminal_goal\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r001\methods\2wiki\terminal_goal\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r001\methods\hotpotqa\terminal_goal\checkpoint.sqlite3
+outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r001\methods\musique\terminal_goal\checkpoint.sqlite3
+共享预算账本：outputs\query_decomposition\hotpot_formal_eval_v1\budget.sqlite3
+
+协议source_pins引用的共享renderers/examples、原p02 cases及其source_prefix/B0 packets均需保留；不复制原始大库，也不删除任何现有文件。SQLite用冻结payload/result绑定复核，不以持续写入的全局DB二进制SHA当不可变证据。
+
+未来消融注意：
+只把相同输入的成功回执用于缓存；改变prompt或历史后必须重新串行执行后续环节，不能拼接旧下游答案。
+重新测试排序应以新cachefix timing/union父版本为对照，并明确这是新实验；旧discount指标不能静默换父。
+如欲隔离goal预答的效果，需要固定最终reader材料及prompt角色，只删相应调用；现有single_final并未隔离全部这些因素。
+如欲隔离最终reader的作用，需要保留旧goal输出或单独对照新两行契约；现有terminal_goal同时改变输出与解析，3例截断来自max128下双输出。
+不将单题已选错误分析或当前开发300结果直接写成外部泛化/正式SOTA证据。
+
+本次只建索引，API调用0，真实检索0。

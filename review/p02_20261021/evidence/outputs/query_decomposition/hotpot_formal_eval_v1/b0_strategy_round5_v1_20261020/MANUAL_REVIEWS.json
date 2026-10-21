@@ -1,0 +1,255 @@
+{
+  "musique:4hop3__373866_5189_38229_86687": {
+    "classification": "unsupported_precision_from_unchanged_goal",
+    "parent_prediction": "1990",
+    "candidate_prediction": "12 September 1990",
+    "reason": "父答案1990被MuSiQue原生aliases接受为满分（标准答案May 1990，alias 1990）。候选加入12 September，精确复用了未改goal回答中的条约签署日期，F1降至0.5。原query Top-10与goal reader Top-10均未给出1990年同意德国加入NATO的日期；不能把这一变化说成原文支持的事实修复。其机制与对既有goal候选中未经原文支持的精确日期更强依赖相符，但单次输出不能证明标题变动的确定因果，也不能仅凭F1宣称父答案拥有充分证据。",
+    "semantic_change": "从可接受的年份泛答变成带具体日月的另一事件日期；不是仅增加连接词。",
+    "goal_overlap": "12 September 1990在未改goal回答中逐字出现。",
+    "evidence_refs": [
+      "original_query_top10全部10篇：涉及Warsaw Pact、德国战后分区与Eisenhower，但未含May 1990或12 September 1990同意日期",
+      "goal_reader_top10全部10篇：同样未含该同意日期；第10篇是1939年Molotov–Ribbentrop Pact"
+    ],
+    "factual_repair_demonstrated": false,
+    "review_scope": "仅核对本题实际输入原文与原生评分aliases；不改运行时算法，不读取确认150。"
+  },
+  "2wiki:16a91a500bb011ebab90acde48001122": {
+    "classification": "lexical_only_extra_conjunction",
+    "parent_prediction": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski",
+    "candidate_prediction": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski",
+    "reason": "父与候选列出相同的5个人名，候选仅在末项前增加and；原生F1从0.3529411765降至0.3333333333来自额外连接词的词面惩罚，没有观察到新增实体或事实变化。原Top-1 Stefan Zamoyski列其儿子Władysław Zdzisław Zamoyski，Top-6列该儿子的5名子女，支持这5人均属孙辈；数据集只接受Stefan Adam Zamoyski，故两版已有的长列表均被罚分。不能将本次细小F1退步称为事实错误加重。",
+    "semantic_change": "无；相同人名列表增加and。",
+    "goal_overlap": "两版完整列表均与未改goal回答一致；候选的and也在goal原句中出现。",
+    "evidence_refs": [
+      "original_query_top10 rank1 Stefan Zamoyski：其子女包括Władysław Zdzisław Zamoyski",
+      "original_query_top10 rank6 Władysław Zdzisław Zamoyski：5名子女包括Elżbieta、Stefan Adam、Andrzej Zygmunt、Zdzisław Franciszek与Wladyslaw Ignacy",
+      "goal_reader_top10与上述相关两篇一致"
+    ],
+    "factual_repair_demonstrated": false,
+    "review_scope": "仅核对本题实际输入原文与原生F1；不改运行时算法，不读取确认150。"
+  },
+  "hotpotqa:5a77c09555429967ab105262": {
+    "classification": "lexical_common_name_vs_binomial_f1_loss",
+    "reason": "父答案包含pronghorn及Antilocapra americana，候选只保留pronghorn。原Top3 Pronghorn与goal reader Top2明确两者为同一物种，冻结goal也保留学名；参考仅有学名且无别名，因此F1从0.8到0主要是科学名被删，不是换成另一动物。Antelope Kansas原文仅称antelope；识别为pronghorn的桥接推断在两版已相同，不能从本次格式差异证明或否定这条桥接。",
+    "parent_prediction": "pronghorn (*Antilocapra americana*)",
+    "candidate_prediction": "pronghorn",
+    "semantic_change": "Same species identity; scientific identifying name omitted.",
+    "goal_overlap": "Candidate pronghorn is a shortened substring of unchanged goal answer and same as its common name; ordinary QA already used common name.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\hotpotqa\\e05_example_role_headers\\5a77c09555429967ab105262.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a77c09555429967ab105262.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5a77c09555429967ab105262].actual_evidence.original_query_top10",
+          "rank": 1,
+          "source": "Antelope, Kansas",
+          "doc_id": "27970526",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5a77c09555429967ab105262].actual_evidence.original_query_top10",
+          "rank": 3,
+          "source": "Pronghorn",
+          "doc_id": "18952649",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5a77c09555429967ab105262].actual_evidence.goal_reader_top10",
+          "rank": 2,
+          "source": "Pronghorn",
+          "doc_id": "18952649",
+          "full_passage_supplied_to_final_reader": true
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "musique:3hop1__109422_720914_27537": {
+    "classification": "lexical_compression_of_already_correct_reason_f1_gain",
+    "reason": "候选删去papabile candidate及subsequently elected pope等额外背景，仍回答赴罗马参加教宗选举会议。原Top1 Pope John XXIII明确left Venice for the conclave in Rome，普通QA仍没确定Titian死亡地，goal与父答案已有同一原因。参考主答案for the conclave in Rome及别名Rome/Roma不因这次改动获得新事实；F1上升来自减少非必要词。仍不是极简答案，也未补齐未解桥接地点。",
+    "parent_prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+    "candidate_prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII.",
+    "semantic_change": "Requested reason is unchanged; removes ancillary candidacy/election background.",
+    "goal_overlap": "Candidate retains the beginning of unchanged goal answer and deletes its final explanatory clause.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\musique\\e05_example_role_headers\\3hop1__109422_720914_27537.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__109422_720914_27537.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[musique:3hop1__109422_720914_27537].actual_evidence.original_query_top10",
+          "rank": 1,
+          "source": "Pope John XXIII",
+          "doc_id": "da86bc73e96d2254b9ffc0885a065e1b5481c56491c74b598e6bc14c287eeab2",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[musique:3hop1__109422_720914_27537].actual_evidence.original_query_top10",
+          "rank": 2,
+          "source": "The Punishment of Tythus",
+          "doc_id": "05ccf8e57c6c7bc588c43f3c0c1d532fe697dff0eb3c3e4479db588984e33681",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[musique:3hop1__109422_720914_27537].actual_evidence.goal_reader_top10",
+          "rank": 1,
+          "source": "Pope John XXIII",
+          "doc_id": "da86bc73e96d2254b9ffc0885a065e1b5481c56491c74b598e6bc14c287eeab2",
+          "full_passage_supplied_to_final_reader": true
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "musique:3hop1__857_846_7770": {
+    "classification": "lexical_subject_omission_f1_gain_without_new_location_fact",
+    "reason": "候选省略The Yangtze River flows等复述主语，保留南京西侧再北侧的相同空间关系，F1提高0.138158。goal reader Top2 Nanjing确实支持该方位，但该原文不在最终原Top10，最终仍靠未改goal完整句提供这项信息；本臂没有把新文送入最终。参考main为past the west side and then north side，别名West/west/W，不能称为新城市或新方向的事实修复。",
+    "parent_prediction": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "candidate_prediction": "past the west side and then the north side of Nanjing",
+    "semantic_change": "Same river, city and west-then-north relation; shorter requested-location phrase.",
+    "goal_overlap": "Candidate is the same unchanged goal direction after dropping repeated subject/verb.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\musique\\e05_example_role_headers\\3hop1__857_846_7770.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__857_846_7770.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[musique:3hop1__857_846_7770].actual_evidence.goal_reader_top10",
+          "rank": 2,
+          "source": "Nanjing",
+          "doc_id": "f0a72bc21d138357eb88db8fae9c0b58c0d18729cae54383fd1a681b39ee905f",
+          "full_passage_supplied_to_final_reader": false
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "hotpotqa:5abee4ff5542993fe9a41d7d": {
+    "classification": "lexical_state_qualifier_removal_f1_gain",
+    "reason": "Orlando Florida变Orlando指同一城市。冻结goal已给SeaWorld公司总部在Orlando Florida；goal reader Top9 SeaWorld Parks & Entertainment支持总部关系，但不是新增的最终原文，本臂final_context和父完全一致。原Top1仅确定Jim Atchison公司，其他Orlando主题公园地点不能单独验证SeaWorld总部。参考无别名，仅Orlando，F1从2/3到1是删除州名，不是新解出公司或总部。",
+    "parent_prediction": "Orlando, Florida",
+    "candidate_prediction": "Orlando",
+    "semantic_change": "Same headquarters city; drops state qualifier.",
+    "goal_overlap": "Both outputs extract the same city from the unchanged goal answer; candidate removes Florida.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\hotpotqa\\e05_example_role_headers\\5abee4ff5542993fe9a41d7d.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abee4ff5542993fe9a41d7d.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5abee4ff5542993fe9a41d7d].actual_evidence.original_query_top10",
+          "rank": 1,
+          "source": "Jim Atchison",
+          "doc_id": "43182441",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5abee4ff5542993fe9a41d7d].actual_evidence.goal_reader_top10",
+          "rank": 9,
+          "source": "SeaWorld Parks &amp; Entertainment",
+          "doc_id": "25278833",
+          "full_passage_supplied_to_final_reader": false
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "hotpotqa:5a72a9ac5542991f9a20c55f": {
+    "classification": "lexical_network_qualifier_removal_f1_gain",
+    "reason": "候选仍是TODAY Show第四小时，只去掉NBC所属及引号表达。原Top1 Hoda Kotb与Top3 Brian Balthazar已提供共同节目，两条普通QA与goal也未改变。因此0.909091到1是同一完整目标名称的计分表达变化，未发生交集、对象或事实修复。参考无别名，为the fourth hour of the TODAY Show。",
+    "parent_prediction": "The fourth hour of NBC's \"Today Show\"",
+    "candidate_prediction": "The fourth hour of the TODAY Show",
+    "semantic_change": "Same show and fourth-hour qualifier; removes network qualifier only.",
+    "goal_overlap": "Candidate selects the same show named in both ordinary QA and unchanged goal, omitting NBC.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\hotpotqa\\e05_example_role_headers\\5a72a9ac5542991f9a20c55f.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a72a9ac5542991f9a20c55f.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5a72a9ac5542991f9a20c55f].actual_evidence.original_query_top10",
+          "rank": 1,
+          "source": "Hoda Kotb",
+          "doc_id": "1807079",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5a72a9ac5542991f9a20c55f].actual_evidence.original_query_top10",
+          "rank": 3,
+          "source": "Brian Balthazar",
+          "doc_id": "33264027",
+          "full_passage_supplied_to_final_reader": true
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "musique:3hop1__68802_89752_49923": {
+    "classification": "lexical_digit_vs_number_word_f1_loss",
+    "reason": "Sixteen改16，数量与Maine对象均未变。原Top10没有Maine县数段落；goal reader Top2 List of counties in Maine明确sixteen并支持冻结goal Maine has sixteen counties。本臂最终只保留相同goal与原Top10，没有把goal原文新增进去。参考只有sixteen且无别名，原生词级F1未归一化数字，故1到0不代表县数算错、前置传播改变或事实退化。",
+    "parent_prediction": "Sixteen",
+    "candidate_prediction": "16",
+    "semantic_change": "Same number 16; written as digits rather than an English number word.",
+    "goal_overlap": "Unchanged goal says sixteen; candidate gives its equivalent numeral.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\musique\\e05_example_role_headers\\3hop1__68802_89752_49923.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__68802_89752_49923.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[musique:3hop1__68802_89752_49923].actual_evidence.goal_reader_top10",
+          "rank": 2,
+          "source": "List of counties in Maine",
+          "doc_id": "af59bf06331c0c7c48360dd48cc083c172912a8e5197742b3b6f04d0ea3cf918",
+          "full_passage_supplied_to_final_reader": false
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  },
+  "hotpotqa:5ac298805542990b17b15429": {
+    "classification": "answer_type_regression_with_query_false_premise_boundary",
+    "reason": "父输出参考要求的公司名称，候选输出Yes；它未提供实体名，因而相对于本数据集回答目标发生类型退化，F1从1到0。原题语法类似确认句，这一歧义必须保留，不能仅凭分数认定模型不懂公司。原Top1及Top2明确Austral是Aerolineas Argentinas的姐妹公司而非LAPA；普通QA/goal却把它误说成LAPA姐妹公司，Yes也未纠正该事实。父名称命中不能等同整个原题关系正确，候选不构成事实修复。参考公司名无别名。",
+    "parent_prediction": "Austral Líneas Aéreas",
+    "candidate_prediction": "Yes",
+    "semantic_change": "Named-entity output changes to boolean confirmation; benchmark target is no longer supplied, and existing sister-company relation error remains uncorrected.",
+    "goal_overlap": "Parent extracts entity from unchanged goal; candidate appears to affirm its proposition rather than output its entity. No new evidence or QA changed.",
+    "evidence_refs": {
+      "candidate_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round5_v1_20261020\\rounds\\full300_e05_example_role_headers_r001\\cases\\hotpotqa\\e05_example_role_headers\\5ac298805542990b17b15429.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ac298805542990b17b15429.json",
+      "passages": [
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5ac298805542990b17b15429].actual_evidence.original_query_top10",
+          "rank": 1,
+          "source": "Austral Líneas Aéreas",
+          "doc_id": "205642",
+          "full_passage_supplied_to_final_reader": true
+        },
+        {
+          "analysis_source": "ANALYSIS.complete.json.changed_queries[hotpotqa:5ac298805542990b17b15429].actual_evidence.original_query_top10",
+          "rank": 2,
+          "source": "Líneas Aéreas Privadas Argentinas",
+          "doc_id": "382989",
+          "full_passage_supplied_to_final_reader": true
+        }
+      ],
+      "original_top10_and_goal_reader_distinguished": true,
+      "nodes_and_final_context_unchanged_confirmed": true
+    },
+    "factual_repair_demonstrated": false,
+    "review_scope": "Non-blind old300 development-case review after e05 was frozen. Only actual recorded original Top10, goal reader, unchanged QA, candidate/parent payloads and offline reference aliases were read. No fresh90/confirmation150 answers or scores, API calls, retrieval, or runtime gold rules."
+  }
+}

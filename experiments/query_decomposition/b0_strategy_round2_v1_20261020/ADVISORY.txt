@@ -1,0 +1,64 @@
+B0 第二轮最小候选建议（只读审阅后的设计，尚未调用 API）
+日期：2026-10-20（Australia/Sydney）
+
+范围与依据
+保留 B0、P1、g01、f01 的冻结配置和结果。本文件没有修改任何冻结源文件，也没有进行 API/SSH 调用。
+已核对 b0_targeted_optimization_v2_20261020 的 experiment.py、ANALYSIS.g01_full300.v001.json、ANALYSIS.f01_full300.v001.json，以及 B0 的旧 child/final 渲染器。
+两个候选均以 B0 + P1 + g01 为冻结父版，独立比较，不先叠加。检索、分解、普通子回答、改写、模型、生成长度、问答内容和预算均不改变。
+
+候选 A：最终辅助块只区分角色
+
+唯一改动：最终辅助块根据已记录的 node.role 改变两个小标题；不新增模型判断、不新增字段、不删除或重写任何问答。
+现有最终渲染器仅取 step_id/request/answer，丢弃了已经存在的 ordinary/goal 角色；goal 与原问题等价，其完整句回答和普通局部事实目前处于同一个无区别列表中。
+
+精确渲染模板：
+
+Auxiliary question-answer pairs
+
+Intermediate candidate results
+#1 Question: <普通节点的原 request，逐字保留>
+Answer: <普通节点的原 answer，逐字保留>
+
+#2 Question: <普通节点的原 request，逐字保留>
+Answer: <普通节点的原 answer，逐字保留>
+
+Candidate conclusion for the Original question
+#N Question: <goal 原 request，逐字保留>
+Answer: <goal 原 answer，逐字保留>
+
+实施约束：
+1. 使用已有 role，验证唯一 goal 为末节点；不根据问句内容再次推断职责。
+2. 普通节点为零时，省略空的 Intermediate candidate results 小节，保留 goal。
+3. 每个编号、request、answer 各出现且仅出现一次；节点顺序和辅助块相对原 Top-10 的位置保持不变。
+4. FINAL_INSTRUCTIONS、P1 readout、示例和最终原文逐字不改；不得顺手添加“优先相信普通子答案”等额外规则。
+
+用途：给最终 reader 一个已有但之前丢失的区别——局部候选事实与对原问题的候选结论。仍保留用户希望使用的生成子答案，避免把所有条目渲染成同等职责。
+为什么两组均写 candidate：普通子答案也未经完备核查，不能让标题暗示普通子答案已经验证。不得把 goal 改名为 Final answer 或 Verified conclusion。
+真实机制依据：Friedrich Gogarten/Giangiacomo Feltrinelli 题中，前置生卒日期支持 80 岁与 45 岁，但 goal 写成 Feltrinelli 更长寿；f01 最终纠正，g01 没有纠正。Kodos 题中，原 Top-10 支持仅 Kodos，错误 goal 却列 Kang 和 Kodos，f01 还复制了这条错误结论。这些案例仅证明有必要区分输入角色，不证明本版式一定有效。
+主要风险：把结论另列一节也可能增加其显著性，反而加重复制；没有证据证明仅改标题会降低错误依赖。只要最终 F1 或真实对象关系退步就不采用。原始检索没有覆盖某个子事实，不等于子答案错误，不增加“必须在原 Top-10 二次找到才允许使用”的限制。
+解释边界：若有收益，只能归于角色版式这一因素，不能声称新增事实核查能力，也不能把标题当作支持状态。
+
+候选 B：以短规则替换 g01 的 GOAL_RULE
+
+唯一改动：仅在 goal prompt 的 Answer: 前，将原 GOAL_RULE 整段替换成下列英文。不是保留旧段再追加新段。
+
+Base the requested conclusion on the supporting facts, not on agreement with earlier conclusions. If a required premise remains unsupported, state that gap instead of assigning it a factual value.
+
+原规则47词，新规则30词（按空白切词）；其余 child prompt、生成长度128、goal检索包、最终 P1 prompt 均保留。
+
+用途：把 goal 的判断依据从“与所采用的前置结果保持一致”改为“由支持事实推出所求结论”，减少模型将前置结论合理化或把未解决需求补成一个数值的压力。不是新增分类路由或审查调用。
+与已有 CHILD_INSTRUCTIONS 的关系：现有 instructions 已要求原文可纠正前置答案，并明确缺证不等于 no/none/empty/zero；新段只是 goal 端的简短落点，复用这些基础要求，不再重复列出多个计数和比较例外。
+真实机制依据：Lynn Hung 题中新 goal 把没有400年依据的 never 改写为 zero years，F1 因 years 重合由0变0.4；这不能算事实改善。Mississippi River Delta 题中，完整所求入海地点退回 River。Mavrolithari/Ampelakia 题中，原文纠正前置国家属性后，新 goal 的 Yes 是有效修复。这些共同说明需要事实导向的结论，而非维护之前字面结论。
+主要风险：
+1. 删除旧规则的“不完整名单不能算真实总数”“相等或未知不能选赢家”显式提示，可能丢失旧规则在比较题上的收益。基础 CHILD_INSTRUCTIONS 仍约束缺证但并不等价覆盖所有计数情形，必须实测。
+2. supporting facts 仍需 LLM 理解，不是程序验证；新规则不能保证消除零值幻觉或目标丢失。
+3. unsupported 不能解释为“原 query Top-10 中没有”，因为当前 goal 还接收子检索资料和前置完整回答；此前子检索取得的信息可继续使用。
+4. 不按标准答案选择数词/数字、别名、地点长度或答案名单，这些词面差异只在报告中单独观察。
+
+验证建议（不新增方案复杂度）
+先在相同已暴露300题上各自相对 g01 做配对诊断，分别记录最终 F1、增/平/降和各数据集结果；变化不是新的独立确认。
+新候选不以单题专用规则补救。所有观察只作为通用机制依据，提示词中不嵌入上述题目的实体或答案。
+如选出候选，冻结其精确文本，再在未参与选择的新题上与父版 g01 及原 B0 成对比较；不能边看新题结果边改同一版本。新题中的原始缺证、真实零值、否定、数值比较、嵌套关系与问句/短答范围应正常保留，不能仅选预计获益的问题。
+不可将两个单独有效的改动默认视为可叠加；如需要组合，另立版本并另测。
+
+本建议阶段：0 次 API 调用，0 元新增 API 费用，未变更任何冻结代码和正式成绩。

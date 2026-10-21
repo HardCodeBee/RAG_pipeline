@@ -1,0 +1,834 @@
+{
+  "utc": "2026-10-19T23:24:46.109871+00:00",
+  "sample_role": "Exposed diagnostic300, full300 for both arms; no outcome-based pilot gate.",
+  "factorial_cells": {
+    "scope_off/evidence_off": "p02",
+    "scope_off/evidence_on": "e03",
+    "scope_on/evidence_off": "r04_scope_contract",
+    "scope_on/evidence_on": "s04_scope_plus_evidence"
+  },
+  "scope_replacement": {
+    "old": "Do not transfer a fact about another entity or a different comparison to the Original question.",
+    "new": "Auxiliary results may resolve references in the Original question; they must not change its requested answer target, relation or conditions."
+  },
+  "cells": {
+    "p02": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7072417314845074,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": 0.0,
+      "F1_all_planned_bounds": [
+        0.7072417314845074,
+        0.7072417314845074
+      ],
+      "up": 0,
+      "tie": 300,
+      "down": 0,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7899083694083693,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.7899083694083693,
+            0.7899083694083693
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3983429688360029,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.3983429688360029,
+            0.3983429688360029
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        }
+      },
+      "by_extra_document": {
+        "novel_document_214": {
+          "planned": 214,
+          "scorable": 214,
+          "missing": 0,
+          "F1": 0.6939068298573956,
+          "same_parent_F1": 0.6939068298573956,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.6939068298573956,
+            0.6939068298573956
+          ],
+          "up": 0,
+          "tie": 214,
+          "down": 0,
+          "states": {}
+        },
+        "no_novel_document_86": {
+          "planned": 86,
+          "scorable": 86,
+          "missing": 0,
+          "F1": 0.7404239285566233,
+          "same_parent_F1": 0.7404239285566233,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.7404239285566233,
+            0.7404239285566233
+          ],
+          "up": 0,
+          "tie": 86,
+          "down": 0,
+          "states": {}
+        }
+      }
+    },
+    "e03": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.6955408143055202,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.011700917178987353,
+      "F1_all_planned_bounds": [
+        0.6955408143055202,
+        0.6955408143055202
+      ],
+      "up": 6,
+      "tie": 287,
+      "down": 7,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7630194805194803,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": -0.026888888888888893,
+          "F1_all_planned_bounds": [
+            0.7630194805194803,
+            0.7630194805194803
+          ],
+          "up": 1,
+          "tie": 95,
+          "down": 4,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.39012910618792973,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.008213862648073174,
+          "F1_all_planned_bounds": [
+            0.39012910618792973,
+            0.39012910618792973
+          ],
+          "up": 5,
+          "tie": 92,
+          "down": 3,
+          "states": {}
+        }
+      },
+      "by_extra_document": {
+        "novel_document_214": {
+          "planned": 214,
+          "scorable": 214,
+          "missing": 0,
+          "F1": 0.6775036749335815,
+          "same_parent_F1": 0.6939068298573956,
+          "delta_parent": -0.016403154923814046,
+          "F1_all_planned_bounds": [
+            0.6775036749335815,
+            0.6775036749335815
+          ],
+          "up": 6,
+          "tie": 201,
+          "down": 7,
+          "states": {}
+        },
+        "no_novel_document_86": {
+          "planned": 86,
+          "scorable": 86,
+          "missing": 0,
+          "F1": 0.7404239285566233,
+          "same_parent_F1": 0.7404239285566233,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.7404239285566233,
+            0.7404239285566233
+          ],
+          "up": 0,
+          "tie": 86,
+          "down": 0,
+          "states": {}
+        }
+      }
+    },
+    "r04_scope_contract": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7043386214366607,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.002903110047846889,
+      "F1_all_planned_bounds": [
+        0.7043386214366607,
+        0.7043386214366607
+      ],
+      "up": 3,
+      "tie": 295,
+      "down": 2,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7908174603174603,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": 0.0009090909090909094,
+          "F1_all_planned_bounds": [
+            0.7908174603174603,
+            0.7908174603174603
+          ],
+          "up": 1,
+          "tie": 99,
+          "down": 0,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3887245477833713,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.009618421052631576,
+          "F1_all_planned_bounds": [
+            0.3887245477833713,
+            0.3887245477833713
+          ],
+          "up": 2,
+          "tie": 96,
+          "down": 2,
+          "states": {}
+        }
+      },
+      "by_extra_document": {
+        "novel_document_214": {
+          "planned": 214,
+          "scorable": 214,
+          "missing": 0,
+          "F1": 0.689412240580465,
+          "same_parent_F1": 0.6939068298573956,
+          "delta_parent": -0.004494589276930644,
+          "F1_all_planned_bounds": [
+            0.689412240580465,
+            0.689412240580465
+          ],
+          "up": 2,
+          "tie": 210,
+          "down": 2,
+          "states": {}
+        },
+        "no_novel_document_86": {
+          "planned": 86,
+          "scorable": 86,
+          "missing": 0,
+          "F1": 0.7414810110090546,
+          "same_parent_F1": 0.7404239285566233,
+          "delta_parent": 0.00105708245243129,
+          "F1_all_planned_bounds": [
+            0.7414810110090546,
+            0.7414810110090546
+          ],
+          "up": 1,
+          "tie": 85,
+          "down": 0,
+          "states": {}
+        }
+      }
+    },
+    "s04_scope_plus_evidence": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7019635652063412,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.005278166278166278,
+      "F1_all_planned_bounds": [
+        0.7019635652063412,
+        0.7019635652063412
+      ],
+      "up": 5,
+      "tie": 292,
+      "down": 3,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7761507936507935,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": -0.013757575757575757,
+          "F1_all_planned_bounds": [
+            0.7761507936507935,
+            0.7761507936507935
+          ],
+          "up": 2,
+          "tie": 96,
+          "down": 2,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3962660457590798,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.0020769230769230773,
+          "F1_all_planned_bounds": [
+            0.3962660457590798,
+            0.3962660457590798
+          ],
+          "up": 3,
+          "tie": 96,
+          "down": 1,
+          "states": {}
+        }
+      },
+      "by_extra_document": {
+        "novel_document_214": {
+          "planned": 214,
+          "scorable": 214,
+          "missing": 0,
+          "F1": 0.686082722500578,
+          "same_parent_F1": 0.6939068298573956,
+          "delta_parent": -0.007824107356817638,
+          "F1_all_planned_bounds": [
+            0.686082722500578,
+            0.686082722500578
+          ],
+          "up": 4,
+          "tie": 207,
+          "down": 3,
+          "states": {}
+        },
+        "no_novel_document_86": {
+          "planned": 86,
+          "scorable": 86,
+          "missing": 0,
+          "F1": 0.7414810110090546,
+          "same_parent_F1": 0.7404239285566233,
+          "delta_parent": 0.00105708245243129,
+          "F1_all_planned_bounds": [
+            0.7414810110090546,
+            0.7414810110090546
+          ],
+          "up": 1,
+          "tie": 85,
+          "down": 0,
+          "states": {}
+        }
+      }
+    }
+  },
+  "paired_contrasts": {
+    "evidence_without_scope": {
+      "left": "e03",
+      "right": "p02",
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.6955408143055202,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.011700917178987353,
+      "F1_all_planned_bounds": [
+        0.6955408143055202,
+        0.6955408143055202
+      ],
+      "up": 6,
+      "tie": 287,
+      "down": 7,
+      "states": {},
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7630194805194803,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": -0.026888888888888893,
+          "F1_all_planned_bounds": [
+            0.7630194805194803,
+            0.7630194805194803
+          ],
+          "up": 1,
+          "tie": 95,
+          "down": 4,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.39012910618792973,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.008213862648073174,
+          "F1_all_planned_bounds": [
+            0.39012910618792973,
+            0.39012910618792973
+          ],
+          "up": 5,
+          "tie": 92,
+          "down": 3,
+          "states": {}
+        }
+      }
+    },
+    "scope_without_evidence": {
+      "left": "r04_scope_contract",
+      "right": "p02",
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7043386214366607,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.002903110047846889,
+      "F1_all_planned_bounds": [
+        0.7043386214366607,
+        0.7043386214366607
+      ],
+      "up": 3,
+      "tie": 295,
+      "down": 2,
+      "states": {},
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7908174603174603,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": 0.0009090909090909094,
+          "F1_all_planned_bounds": [
+            0.7908174603174603,
+            0.7908174603174603
+          ],
+          "up": 1,
+          "tie": 99,
+          "down": 0,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3887245477833713,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.009618421052631576,
+          "F1_all_planned_bounds": [
+            0.3887245477833713,
+            0.3887245477833713
+          ],
+          "up": 2,
+          "tie": 96,
+          "down": 2,
+          "states": {}
+        }
+      }
+    },
+    "scope_with_evidence": {
+      "left": "s04_scope_plus_evidence",
+      "right": "e03",
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7019635652063412,
+      "same_parent_F1": 0.6955408143055202,
+      "delta_parent": 0.006422750900821077,
+      "F1_all_planned_bounds": [
+        0.7019635652063412,
+        0.7019635652063412
+      ],
+      "up": 5,
+      "tie": 293,
+      "down": 2,
+      "states": {},
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7761507936507935,
+          "same_parent_F1": 0.7630194805194803,
+          "delta_parent": 0.013131313131313131,
+          "F1_all_planned_bounds": [
+            0.7761507936507935,
+            0.7761507936507935
+          ],
+          "up": 3,
+          "tie": 97,
+          "down": 0,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3962660457590798,
+          "same_parent_F1": 0.39012910618792973,
+          "delta_parent": 0.006136939571150096,
+          "F1_all_planned_bounds": [
+            0.3962660457590798,
+            0.3962660457590798
+          ],
+          "up": 2,
+          "tie": 96,
+          "down": 2,
+          "states": {}
+        }
+      }
+    },
+    "evidence_with_scope": {
+      "left": "s04_scope_plus_evidence",
+      "right": "r04_scope_contract",
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.7019635652063412,
+      "same_parent_F1": 0.7043386214366607,
+      "delta_parent": -0.002375056230319389,
+      "F1_all_planned_bounds": [
+        0.7019635652063412,
+        0.7019635652063412
+      ],
+      "up": 5,
+      "tie": 291,
+      "down": 4,
+      "states": {},
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7761507936507935,
+          "same_parent_F1": 0.7908174603174603,
+          "delta_parent": -0.014666666666666668,
+          "F1_all_planned_bounds": [
+            0.7761507936507935,
+            0.7761507936507935
+          ],
+          "up": 1,
+          "tie": 97,
+          "down": 2,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.3962660457590798,
+          "same_parent_F1": 0.3887245477833713,
+          "delta_parent": 0.0075414979757084995,
+          "F1_all_planned_bounds": [
+            0.3962660457590798,
+            0.3962660457590798
+          ],
+          "up": 4,
+          "tie": 94,
+          "down": 2,
+          "states": {}
+        }
+      }
+    }
+  },
+  "paired_interaction": {
+    "planned": 300,
+    "same_case_n": 300,
+    "definition": "(s04-r04)-(e03-p02)",
+    "mean": 0.009325860948667965,
+    "positive": 5,
+    "zero": 292,
+    "negative": 3,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "mean": 0.012222222222222223
+      },
+      "2wiki": {
+        "n": 100,
+        "mean": 0.0
+      },
+      "musique": {
+        "n": 100,
+        "mean": 0.01575536062378167
+      }
+    }
+  },
+  "simple_actual_case_checks": {
+    "r04_scope_contract/nodes_equal_p02": 300,
+    "r04_scope_contract/context_equal_factor_control": 300,
+    "r04_scope_contract/only_scope_sentence_replaced": 300,
+    "s04_scope_plus_evidence/nodes_equal_p02": 300,
+    "s04_scope_plus_evidence/context_equal_factor_control": 300,
+    "s04_scope_plus_evidence/only_scope_sentence_replaced": 300,
+    "no_extra_both_scorable": 86,
+    "no_extra_s04_prompt_equals_r04": 86,
+    "no_extra_s04_prediction_equals_r04": 86,
+    "no_extra_s04_reused_receipt": 86,
+    "no_extra_same_physical_request": 86
+  },
+  "expected_no_extra_cases": 86,
+  "expected_new_submissions_without_infrastructure_retries": 514,
+  "observed_new_submissions": 515,
+  "extra_submissions_over_ideal_if_complete": 1,
+  "actual_attempt_status_counts": {
+    "success": 600,
+    "incomplete": 1
+  },
+  "non_success_attempts_preserved": [
+    {
+      "arm": "r04_scope_contract",
+      "id": "musique:3hop1__458916_651917_47686",
+      "status": "incomplete",
+      "error_type": "RecordedFailure",
+      "retryable_infrastructure": true,
+      "failed_request_id": null,
+      "request_status": "unknown",
+      "http_status": null
+    }
+  ],
+  "costs": {
+    "old_round3": {
+      "known_cny": 1.1469288,
+      "unreconciled_reserved_cny": 0,
+      "occupied_cny": 1.1469288,
+      "provider_submissions": 514
+    },
+    "new_round4": {
+      "known_cny": 1.149394,
+      "unreconciled_reserved_cny": 0.0090064,
+      "occupied_cny": 1.1584004,
+      "provider_submissions": 515
+    },
+    "round2_fresh90": {
+      "known_cny": 0.8919284,
+      "unreconciled_reserved_cny": 0.009032799999999999,
+      "occupied_cny": 0.9009611999999999,
+      "provider_submissions": 606
+    },
+    "round2_confirmation": {
+      "known_cny": 0.3476184,
+      "unreconciled_reserved_cny": 0.0118088,
+      "occupied_cny": 0.3594272,
+      "provider_submissions": 260
+    },
+    "global": {
+      "known_cny": 185.1038884,
+      "unreconciled_reserved_cny": 35.4426848,
+      "occupied_cny": 220.54657319999998,
+      "provider_submissions": 106118
+    },
+    "cap_cny": 300,
+    "new_round4_by_arm": {
+      "r04_scope_contract": {
+        "known_cny": 0.6505219999999999,
+        "unreconciled_reserved_cny": 0.0090064,
+        "occupied_cny": 0.6595283999999999,
+        "provider_submissions": 301
+      },
+      "s04_scope_plus_evidence": {
+        "known_cny": 0.498872,
+        "unreconciled_reserved_cny": 0,
+        "occupied_cny": 0.498872,
+        "provider_submissions": 214
+      }
+    },
+    "interpretation": "Incremental charges only; unknown liabilities retained; actual bill not reconciled."
+  },
+  "independent_status_only": {
+    "case_file_counts_only": {
+      "fresh_dev90": {
+        "2wiki/p02_role_headers": 30,
+        "2wiki/parent_g01": 30,
+        "hotpotqa/p02_role_headers": 30,
+        "hotpotqa/parent_g01": 30,
+        "musique/p02_role_headers": 31,
+        "musique/parent_g01": 30
+      },
+      "fresh_confirm150": {
+        "2wiki/parent_g01": 39
+      }
+    },
+    "counts_are_written_files_not_unique_successes": true,
+    "answers_scores_not_read": true,
+    "confirmation_contents_not_read": true,
+    "selection_boundary": "Independent frozen p02 validation is not used to select these candidates."
+  },
+  "changed_text_records": 38,
+  "unreviewed_changed_records": 0,
+  "independent_representative_cases": 10,
+  "representative_case_audit": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\ANALYSIS.round4_scope_cases.json",
+  "new_API_or_retrieval_calls_from_report": 0,
+  "round4_development_decision": "Retain frozen p02; neither r04 nor s04 exceeds its complete300 native mean F1.",
+  "interpretation": [
+    "S04 is the interaction of scope replacement and added source evidence, not one factor against p02.",
+    "Only same-case paired means enter contrasts and the interaction; partial cohorts are not full300 rankings.",
+    "Positive numeric interaction can reflect overlapping lexical losses or output compression; it does not by itself establish semantic synergy.",
+    "All QA and upstream retrieval are retained. Scope correction, new facts and lexical F1 effects require separate non-blind review.",
+    "No fresh/confirmation answer or score is read for selection. Exposed300 cannot establish independent generalization."
+  ]
+}

@@ -1,0 +1,930 @@
+{
+  "utc": "2026-10-19T23:03:14.209276+00:00",
+  "scope": "Independent non-blind manual review of real round3 e03 cases; selected score ties with F1<1. No API/retrieval/training. No fresh_dev90 or sealed150 case/answer/score reads.",
+  "selection": "Purposive score ties with F1<1; includes output-stable substantive failures, partial-score lexical variants, and one output-expanded score tie. Not an estimate over all214. Added document frozen upstream; gold only offline diagnosis.",
+  "reviewed_count": 20,
+  "maximum_review_budget": 20,
+  "interpretation": "answer_required_new_information_absent_from_parent compares semantic information in all prior final_context, including candidate QA, while classification separately notes new source grounding. Final adoption is output consistency, not causal attribution.",
+  "cases": [
+    {
+      "id": "musique:3hop1__5544_34179_23375",
+      "question": "What year saw the publication of the version of the Molotov–Ribbentrop Pact established by the man who succeeded the leader of the group which created the Soviet state?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__5544_34179_23375.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__5544_34179_23375.json",
+      "prediction": "1946",
+      "parent_prediction": "1946",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "1948",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What group created the Soviet state?",
+          "answer": "The Bolsheviks created the Soviet state."
+        },
+        {
+          "step_id": 2,
+          "request": "Who led the group that created the Soviet state?",
+          "answer": "Vladimir Lenin led the Bolsheviks, the group that created the Soviet state."
+        },
+        {
+          "step_id": 3,
+          "request": "Who succeeded the leader of the group that created the Soviet state?",
+          "answer": "Joseph Stalin succeeded Vladimir Lenin as leader of the Bolsheviks and the Soviet state."
+        },
+        {
+          "step_id": 4,
+          "request": "What version of the Molotov–Ribbentrop Pact was established by the person who succeeded the leader of the group that created the Soviet state?",
+          "answer": "The version of the Molotov–Ribbentrop Pact established by Joseph Stalin—the person who succeeded Vladimir Lenin, leader of the Bolsheviks who created the Soviet state—was the Treaty of Non-aggression between Germany and the Union of Soviet Socialist Republics, signed on 23 August 1939."
+        }
+      ],
+      "unchanged_goal_answer": "The version of the Molotov–Ribbentrop Pact established by Joseph Stalin—the man who succeeded Vladimir Lenin, leader of the Bolsheviks who created the Soviet state—was published in 1946 in the United States and in 1948 in an official U.S. State Department publication.",
+      "additional_document": {
+        "doc_id": "e2fe49eebef9285d3c5971fda72fb8436a30eb312b4a3677297aefefa9825212",
+        "rank": 10,
+        "source": "Molotov–Ribbentrop Pact",
+        "text": "Molotov–Ribbentrop Pact\nThe stated clauses of the Nazi-Soviet non-aggression pact were a guarantee of non-belligerence by each party towards the other, and a written commitment that neither party would ally itself to, or aid, an enemy of the other party. In addition to stipulations of non-aggression, the treaty included a secret protocol that divided territories of Romania, Poland, Lithuania, Latvia, Estonia, and Finland into German and Soviet \"spheres of influence\", anticipating potential \"territorial and political rearrangements\" of these countries. Thereafter, Germany invaded Poland on 1 September 1939. After the Soviet–Japanese ceasefire agreement took effect on 16 September, Stalin ordered his own invasion of Poland on 17 September. Part of southeastern (Karelia) and Salla region in Finland were annexed by the Soviet Union after the Winter War. This was followed by Soviet annexations of Estonia, Latvia, Lithuania, and parts of Romania (Bessarabia, Northern Bukovina, and the Hertza region). Concern about ethnic Ukrainians and Belarusians had been proffered as justification for the Soviet invasion of Poland. Stalin's invasion of Bukovina in 1940 violated the pact, as it went beyond the Soviet sphere of influence agreed with the Axis.",
+        "block": "[Chunk 10 | source=Molotov–Ribbentrop Pact, pages=1-1]\nMolotov–Ribbentrop Pact\nThe stated clauses of the Nazi-Soviet non-aggression pact were a guarantee of non-belligerence by each party towards the other, and a written commitment that neither party would ally itself to, or aid, an enemy of the other party. In addition to stipulations of non-aggression, the treaty included a secret protocol that divided territories of Romania, Poland, Lithuania, Latvia, Estonia, and Finland into German and Soviet \"spheres of influence\", anticipating potential \"territorial and political rearrangements\" of these countries. Thereafter, Germany invaded Poland on 1 September 1939. After the Soviet–Japanese ceasefire agreement took effect on 16 September, Stalin ordered his own invasion of Poland on 17 September. Part of southeastern (Karelia) and Salla region in Finland were annexed by the Soviet Union after the Winter War. This was followed by Soviet annexations of Estonia, Latvia, Lithuania, and parts of Romania (Bessarabia, Northern Bukovina, and the Hertza region). Concern about ethnic Ukrainians and Belarusians had been proffered as justification for the Soviet invasion of Poland. Stalin's invasion of Bukovina in 1940 violated the pact, as it went beyond the Soviet sphere of influence agreed with the Axis."
+      },
+      "parent_context_chars": 9340,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "same_topic_no_target_relation",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增条约条款、秘密议定书及1939-1940侵略史，不含出版年份。",
+        "parent_information": "父Top10 Chunk 3已同时给出1946首次报纸发表及1948年State Department正式出版；父goal QA也同时列两年。",
+        "final_adoption": "最终仍为1946。新增段不能帮助区分两种出版事件；未观察到新增段事实进入短答案。",
+        "failure_note": "F1=0是既有出版事件选择/问题scope问题；不能把1948缺失归因于新增段或将新增条约史当作修复事实。",
+        "certainty": "high_for_text_comparison; uncertain_for_intended_publication_scope",
+        "adds_raw_support_for_fact_already_in_QA": false
+      }
+    },
+    {
+      "id": "2wiki:f3c57d120baf11ebab90acde48001122",
+      "question": "Who is the paternal grandfather of Gauhar Ara Begum?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\f3c57d120baf11ebab90acde48001122.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\f3c57d120baf11ebab90acde48001122.json",
+      "prediction": "Emperor Jahangir",
+      "parent_prediction": "Emperor Jahangir",
+      "f1": 0.6666666666666666,
+      "parent_f1": 0.6666666666666666,
+      "delta_parent": 0.0,
+      "gold_offline_only": "Jahangir",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is Gauhar Ara Begum's father?",
+          "answer": "Gauhar Ara Begum's father is Shah Jahan."
+        },
+        {
+          "step_id": 2,
+          "request": "Who is the father of Gauhar Ara Begum's father?",
+          "answer": "Shah Jahan’s father is Emperor Jahangir."
+        }
+      ],
+      "unchanged_goal_answer": "Gauhar Ara Begum’s paternal grandfather is Emperor Jahangir.",
+      "additional_document": {
+        "doc_id": "58b4572a0a167155c4989f7c8d30e66b92f299e972f0d7ab120d961e2f43ae6c",
+        "rank": 2,
+        "source": "Jahan Shah (Mughal prince)",
+        "text": "Jahan Shah (Mughal prince)\nKhujaista Akhtar Jahan Shah (4 October 1673 – 30 March 1712) was the fourth son of Emperor Bahadur Shah I.",
+        "block": "[Chunk 2 | source=Jahan Shah (Mughal prince), pages=1-1]\nJahan Shah (Mughal prince)\nKhujaista Akhtar Jahan Shah (4 October 1673 – 30 March 1712) was the fourth son of Emperor Bahadur Shah I."
+      },
+      "parent_context_chars": 5197,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "wrong_entity_name_overlap",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增Jahan Shah (1673-1712)为Bahadur Shah I第四子，与目标Shah Jahan及其父Jahangir不是同一个人。",
+        "parent_information": "父QA已给Gauhar Ara -> Shah Jahan -> Emperor Jahangir；Top10包含Gauhar Ara为Shah Jahan子女的原文。",
+        "final_adoption": "最终仍Emperor Jahangir，未采用新增错误实体关系。",
+        "failure_note": "F1=2/3源于gold Jahangir与输出Emperor Jahangir的词形；应与实质事实错误分开。新增段不验证Shah Jahan之父。",
+        "certainty": "high_for_identity_mismatch_and_existing_QA; no_external_fact_check",
+        "adds_raw_support_for_fact_already_in_QA": false
+      }
+    },
+    {
+      "id": "musique:4hop2__161324_14670_8987_8529",
+      "question": "A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country occupied by the Nazi's. When was the word \"Slavs\" used in the national anthem of the unprepared country?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop2__161324_14670_8987_8529.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop2__161324_14670_8987_8529.json",
+      "prediction": "Cannot be determined",
+      "parent_prediction": "Cannot be determined",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "1943–1992",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What country's military branch is equivalent to the US Air Defense Artillery?",
+          "answer": "The United States Army contains the Air Defense Artillery."
+        },
+        {
+          "step_id": 2,
+          "request": "What country was occupied by the Nazis and whose military branch equivalent to the US Air Defense Artillery was unprepared for the invasion?",
+          "answer": "The country occupied by the Nazis whose military branch equivalent to the US Air Defense Artillery was unprepared for the invasion cannot be determined from these passages."
+        }
+      ],
+      "unchanged_goal_answer": "The word \"Slavs\" was used in the national anthem of Yugoslavia (1943–1992) and the Federal Republic of Yugoslavia (1992–2003), but the unprepared country occupied by the Nazis cannot be determined from the provided passages.",
+      "additional_document": {
+        "doc_id": "b0bd05fbe56bf30f4242c379d72808d391e9fa8ab7d8c2a20202627ff4937959",
+        "rank": 8,
+        "source": "Dievs, svētī Latviju!",
+        "text": "Dievs, svētī Latviju!\nThe music and lyrics were written in 1873 by Kārlis Baumanis, a teacher, who was part of the Young Latvian nationalist movement. It has been speculated that Baumanis may have borrowed part of the lyrics from a popular song which was sung to tune of God Save the Queen, modified them and set them to music of his own. Baumanis's lyrics were different from the modern ones: he used the term \"Baltics\" synonymously and interchangeably with \"Latvia\" and \"Latvians\", so \"Latvia\" was actually mentioned only at the beginning of the first verse. Later the term \"Latvia\" was removed and replaced with \"Baltics\" to avoid a ban on the song. This has led to the misapprehension that the term \"Latvia\" was not part of the song until 1920, when it was chosen as national anthem and the word \"Baltics\" was replaced with \"Latvia\".During the annexation of Latvia by the Soviet Union, the singing of \"Dievs, svētī Latviju!\" was banned. The Soviet republic of Latvia had its own anthem. \"Dievs, svētī Latviju!\" was restored as the state anthem of Latvia on 15 February 1990, a very short period before Latvian independence was restored.",
+        "block": "[Chunk 8 | source=Dievs, svētī Latviju!, pages=1-1]\nDievs, svētī Latviju!\nThe music and lyrics were written in 1873 by Kārlis Baumanis, a teacher, who was part of the Young Latvian nationalist movement. It has been speculated that Baumanis may have borrowed part of the lyrics from a popular song which was sung to tune of God Save the Queen, modified them and set them to music of his own. Baumanis's lyrics were different from the modern ones: he used the term \"Baltics\" synonymously and interchangeably with \"Latvia\" and \"Latvians\", so \"Latvia\" was actually mentioned only at the beginning of the first verse. Later the term \"Latvia\" was removed and replaced with \"Baltics\" to avoid a ban on the song. This has led to the misapprehension that the term \"Latvia\" was not part of the song until 1920, when it was chosen as national anthem and the word \"Baltics\" was replaced with \"Latvia\".During the annexation of Latvia by the Soviet Union, the singing of \"Dievs, svētī Latviju!\" was banned. The Soviet republic of Latvia had its own anthem. \"Dievs, svētī Latviju!\" was restored as the state anthem of Latvia on 15 February 1990, a very short period before Latvian independence was restored."
+      },
+      "parent_context_chars": 7836,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "wrong_country_missing_bridge",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增仅为Latvia国歌中的Latvia/Baltics改词及1990恢复信息，没有Slavs年份或目标军队/被侵略国桥接。",
+        "parent_information": "父Top10 Chunk 1已列Yugoslavia 1943-1992等Slavs使用区间；父QA明确无法确定未备战的国家，goal也保留此缺口。",
+        "final_adoption": "最终仍Cannot be determined；未见采用Latvia信息。",
+        "failure_note": "已有候选区间但缺确定国家的桥接，新增国歌主题相似不构成目标国支持。",
+        "certainty": "high_for_missing_bridge_in_displayed_context",
+        "adds_raw_support_for_fact_already_in_QA": false
+      }
+    },
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "question": "How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop2__326964_734214_7713.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop2__326964_734214_7713.json",
+      "prediction": "Cannot be determined",
+      "parent_prediction": "Cannot be determined",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "about 400 years",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where was Lynn Hung born?",
+          "answer": "Lynn Hung was born in Nanjing, China."
+        },
+        {
+          "step_id": 2,
+          "request": "Where were Yaxing Coach's headquarters located?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        },
+        {
+          "step_id": 3,
+          "request": "What city was the headquarters of Yaxing Coach located in?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        }
+      ],
+      "unchanged_goal_answer": "Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.",
+      "additional_document": {
+        "doc_id": "5e5cf66f8d580fb057ee6c8092206b25da5db698f219e06de27741d4123e7914",
+        "rank": 2,
+        "source": "Nanjing",
+        "text": "Nanjing\nNanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China, and had been the world's largest city aggregately for hundreds of years, enjoyed peace and prosperity and beared wars and disasters. Nanjing served as the capital of Eastern Wu, one of the three major states in the Three Kingdoms period (211-280); the Eastern Jin and each of the Southern Dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317-589; the Southern Tang, one of the Ten Kingdoms (937-76); the Ming dynasty when, for the first time, all of China was ruled from the city (1368-1421); and the Republic of China (1927–37, 1945–49) prior to its flight to Taiwan during the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1851–64) and the Japanese puppet regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War, and suffered appalling atrocities in both conflicts, including the Nanjing Massacre. It has been serving as the capital city of Jiangsu province after the China was established, and is still the nominal capital of Republic of China that accommodates many of its important heritage sites, including the Presidential Palace and Sun Yat-sen Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Art Museum.",
+        "block": "[Chunk 2 | source=Nanjing, pages=1-1]\nNanjing\nNanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China, and had been the world's largest city aggregately for hundreds of years, enjoyed peace and prosperity and beared wars and disasters. Nanjing served as the capital of Eastern Wu, one of the three major states in the Three Kingdoms period (211-280); the Eastern Jin and each of the Southern Dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317-589; the Southern Tang, one of the Ten Kingdoms (937-76); the Ming dynasty when, for the first time, all of China was ruled from the city (1368-1421); and the Republic of China (1927–37, 1945–49) prior to its flight to Taiwan during the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1851–64) and the Japanese puppet regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War, and suffered appalling atrocities in both conflicts, including the Nanjing Massacre. It has been serving as the capital city of Jiangsu province after the China was established, and is still the nominal capital of Republic of China that accommodates many of its important heritage sites, including the Presidential Palace and Sun Yat-sen Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Art Museum."
+      },
+      "parent_context_chars": 5028,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "source_grounding_of_existing_fact_without_needed_duration",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增原文明确Nanjing是Jiangsu省会，并提供多段中国历史都城时期；没有about 400 years的目标时长。",
+        "parent_information": "父原文有Lynn Hung出生Nanjing和Yaxing位于Yangzhou,Jiangsu；父goal QA已说Nanjing为Jiangsu省会，却把问题收窄为Yangzhou并结论zero years。新增对省会关系提供原文支持，但该语义事实父context已有。",
+        "final_adoption": "最终仍Cannot be determined；没有输出新增历史时期或所需时长。",
+        "failure_note": "应区分新增原文证实旧QA与引入新答案事实；此例未修复城市/省份scope及所需时长。",
+        "certainty": "high_for_text_comparison; uncertain_for_intended_duration_scope",
+        "adds_raw_support_for_fact_already_in_QA": true
+      }
+    },
+    {
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "question": "When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop3__524186_219173_548463_72134.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop3__524186_219173_548463_72134.json",
+      "prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+      "parent_prediction": "Never",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "1839",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What city is Superior Drill Company located in?",
+          "answer": "Superior Drill Company is located in Springfield, Ohio."
+        },
+        {
+          "step_id": 2,
+          "request": "Who wrote The Poor Boob?",
+          "answer": "The Poor Boob was written by Margaret Mayo, Z. Wall Covington, and Gardner Hunting."
+        },
+        {
+          "step_id": 3,
+          "request": "What state was the screenwriter of The Poor Boob born in?",
+          "answer": "Margaret Mayo was born in Illinois."
+        }
+      ],
+      "unchanged_goal_answer": "Springfield, Ohio, has never been the capital of Illinois.",
+      "additional_document": {
+        "doc_id": "f01e9368d53e9dab4b4136316139e8be2b8ea7cdd169c9eecb50d2e8278046c2",
+        "rank": 2,
+        "source": "Springfield, Ohio",
+        "text": "Springfield, Ohio\nSpringfield is a city in the U.S. state of Ohio and the county seat of Clark County. The municipality is located in southwestern Ohio and is situated on the Mad River, Buck Creek and Beaver Creek, approximately 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. Springfield is home to Wittenberg University, a liberal arts college.",
+        "block": "[Chunk 2 | source=Springfield, Ohio, pages=1-1]\nSpringfield, Ohio\nSpringfield is a city in the U.S. state of Ohio and the county seat of Clark County. The municipality is located in southwestern Ohio and is situated on the Mad River, Buck Creek and Beaver Creek, approximately 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. Springfield is home to Wittenberg University, a liberal arts college."
+      },
+      "parent_context_chars": 5064,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "redundant_wrong_entity_binding",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增Springfield,Ohio位于Ohio及Clark County县治等地理信息；没有Illinois省会或1839年。",
+        "parent_information": "父QA已将Superior Drill Company绑定Springfield,Ohio、作者出生州Illinois，goal结论never；父Top10无纠正Springfield实体/省会年份的原文。",
+        "final_adoption": "输出从Never变成完整的Springfield,Ohio has never been the capital of Illinois，仍延续父goal判断；新增地理事实与该候选兼容。",
+        "failure_note": "该新增段不能修复同名城市/上游实体scope；仅凭输出扩写无法证明新增doc导致错误，候选中已有同样结论。",
+        "certainty": "high_for_text_comparison; uncertain_for_causal_influence",
+        "adds_raw_support_for_fact_already_in_QA": true
+      }
+    },
+    {
+      "id": "musique:2hop__562154_69048",
+      "question": "Who is the Chief Judge in the place where DeltaWomen's headquarters in located?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__562154_69048.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__562154_69048.json",
+      "prediction": "Rosaline Patricia Irorefe Bozimo",
+      "parent_prediction": "Rosaline Patricia Irorefe Bozimo",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Honorable Justice Abiodun Smith",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where are DeltaWomen's headquarters located?",
+          "answer": "DeltaWomen's headquarters are located in Delta State, Nigeria."
+        }
+      ],
+      "unchanged_goal_answer": "Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.",
+      "additional_document": {
+        "doc_id": "a3e9550d8ff57a606e01ddeea1a9ba1892368c0a7284f0f69fcf3c04dbf88962",
+        "rank": 5,
+        "source": "Muhammadu Buhari",
+        "text": "Muhammadu Buhari\nMuhammadu Buhari GCFR (born 17 December 1942) is the President of Nigeria, in office since 2015. He is a retired major general in the Nigerian Army and previously served as the nation's head of state from 31 December 1983 to 27 August 1985, after taking power in a military coup d'état. The term Buharism is ascribed to the Buhari military government.",
+        "block": "[Chunk 5 | source=Muhammadu Buhari, pages=1-1]\nMuhammadu Buhari\nMuhammadu Buhari GCFR (born 17 December 1942) is the President of Nigeria, in office since 2015. He is a retired major general in the Nigerian Army and previously served as the nation's head of state from 31 December 1983 to 27 August 1985, after taking power in a military coup d'état. The term Buharism is ascribed to the Buhari military government."
+      },
+      "parent_context_chars": 5043,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "irrelevant_document_existing_correction_unused",
+        "answer_required_new_information_absent_from_parent": false,
+        "new_information": "新增Muhammadu Buhari为Nigeria总统/前军政府领导人的信息，没有Delta State Chief Judge关系。",
+        "parent_information": "父Top10 Chunk 8明确Rosaline Bozimo 2011年退休并由Honorable Justice Abiodun Smith继任；父goal QA只抽取Bozimo任命与退休，未保留继任者。",
+        "final_adoption": "最终仍Rosaline Patricia Irorefe Bozimo，未采用父Top10已有继任事实；新增总统原文未补该关系。",
+        "failure_note": "这是原context含可纠偏继任事实而最终沿用过时候选的直接例子；只在本数据快照内诊断，不声明2026现任者。",
+        "certainty": "high_for_existing_successor_fact_and_final_nonuse; current_real_world_officeholder_unchecked",
+        "adds_raw_support_for_fact_already_in_QA": false
+      }
+    },
+    {
+      "id": "hotpotqa:5a7571835542992db9473669",
+      "question": "What is the name of the city 200 km north-west of Sydney, Australia that the Armstrong 500 race was moved to?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a7571835542992db9473669.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a7571835542992db9473669.json",
+      "prediction": "Bathurst",
+      "parent_prediction": "Bathurst",
+      "f1": 0.33333333333333337,
+      "parent_f1": 0.33333333333333337,
+      "delta_parent": 0.0,
+      "gold_offline_only": "Bathurst in New South Wales",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What city was the Armstrong 500 race moved to?",
+          "answer": "The Armstrong 500 race was moved to Bathurst."
+        }
+      ],
+      "unchanged_goal_answer": "The Armstrong 500 race was moved to Bathurst, a city approximately 200 km north-west of Sydney, Australia.",
+      "additional_document": {
+        "doc_id": "9337710",
+        "rank": 5,
+        "source": "Bathurst Street, Sydney",
+        "text": "Bathurst Street, Sydney\nBathurst Street is a street in the central business district of Sydney in New South Wales, Australia. Bathurst Street runs for 650 m in an west-east direction with traffic flowing in this direction only. It is situated in the southern portion of the central business district. The western terminus of Bathurst Street is at Harbour Street, Darling Harbour, with the eastern terminus at Elizabeth Street, adjacent to Hyde Park.",
+        "block": "[Chunk 5 | source=Bathurst Street, Sydney, pages=1-1]\nBathurst Street, Sydney\nBathurst Street is a street in the central business district of Sydney in New South Wales, Australia. Bathurst Street runs for 650 m in an west-east direction with traffic flowing in this direction only. It is situated in the southern portion of the central business district. The western terminus of Bathurst Street is at Harbour Street, Darling Harbour, with the eastern terminus at Elizabeth Street, adjacent to Hyde Park."
+      },
+      "parent_context_chars": 5789,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "homonym_street_instead_of_city",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增是Sydney市中心Bathurst Street道路，非距Sydney西北200km的Bathurst城市；不含赛车迁址。",
+        "parent_information": "父Top10已含Bathurst,New South Wales地理距离与1962/1963 Armstrong 500迁到Mount Panorama的原文，完整满足城市识别。",
+        "final_adoption": "仍Bathurst；未采用道路。",
+        "failure_note": "F1=1/3来自gold额外in New South Wales限定词；父原文已经有该州，不能当作缺检索事实或新增doc有益命中。",
+        "certainty": "high_for_homonym_and_native_score_surface_difference"
+      }
+    },
+    {
+      "id": "musique:4hop1__860115_798482_131926_13165",
+      "question": "What treaty ceded territory to the US extending west to the river by the city sharing a border with Elizabeth Berg's birthplace?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop1__860115_798482_131926_13165.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop1__860115_798482_131926_13165.json",
+      "prediction": "Louisiana Purchase",
+      "parent_prediction": "Louisiana Purchase",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Treaty of Paris",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where was Elizabeth Berg born?",
+          "answer": "Elizabeth Berg was born in Saint Paul, Minnesota."
+        },
+        {
+          "step_id": 2,
+          "request": "What city shares a border with Elizabeth Berg's birthplace?",
+          "answer": "Minneapolis shares a border with Saint Paul, Minnesota."
+        },
+        {
+          "step_id": 3,
+          "request": "What river is in the city sharing a border with Elizabeth Berg's birthplace?",
+          "answer": "The Mississippi River is in Minneapolis."
+        }
+      ],
+      "unchanged_goal_answer": "The Louisiana Purchase ceded territory to the US extending west to the Mississippi River, which flows through Minneapolis—the city sharing a border with Elizabeth Berg’s birthplace of Saint Paul, Minnesota.",
+      "additional_document": {
+        "doc_id": "ab6d1990671b07721aa974b407a7b2cd1f89f98dfec1c3819496589632178439",
+        "rank": 2,
+        "source": "French and Indian War",
+        "text": "French and Indian War\nThe outcome was one of the most significant developments in a century of Anglo-French conflict. France ceded its territory east of the Mississippi to Great Britain. It ceded French Louisiana west of the Mississippi River (including New Orleans) to its ally Spain, in compensation for Spain's loss to Britain of Florida (Spain had ceded this to Britain in exchange for the return of Havana, Cuba). France's colonial presence north of the Caribbean was reduced to the islands of Saint Pierre and Miquelon, confirming Britain's position as the dominant colonial power in eastern North America.",
+        "block": "[Chunk 2 | source=French and Indian War, pages=1-1]\nFrench and Indian War\nThe outcome was one of the most significant developments in a century of Anglo-French conflict. France ceded its territory east of the Mississippi to Great Britain. It ceded French Louisiana west of the Mississippi River (including New Orleans) to its ally Spain, in compensation for Spain's loss to Britain of Florida (Spain had ceded this to Britain in exchange for the return of Havana, Cuba). France's colonial presence north of the Caribbean was reduced to the islands of Saint Pierre and Miquelon, confirming Britain's position as the dominant colonial power in eastern North America."
+      },
+      "parent_context_chars": 8856,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "different_cession_event_existing_correction_unused",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增French and Indian War后France向Great Britain/Spain割让Mississippi两侧领土的事件；受让方不是US，未提目标Treaty of Paris。",
+        "parent_information": "父Top10 Chunk 1已明确Mississippi以东于Second Treaty of Paris后归US、以西由Louisiana Purchase取得；父goal却将extending west to the river解释成Louisiana Purchase。",
+        "final_adoption": "仍Louisiana Purchase；新增割让史没有改变输出，也未提供对原有方向/事件歧义的决定性补充。",
+        "failure_note": "正确相关条约及方向对照在旧原文里，不应把此失败归结为e03还没加到答案名。",
+        "certainty": "high_for_recipient_direction_comparison; uncertain_for_intended_query_scope"
+      }
+    },
+    {
+      "id": "musique:2hop__46065_417697",
+      "question": "Mohamed Atta's car made by the car manufacturer owning the naming rights to titans stadium is a type of what?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__46065_417697.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__46065_417697.json",
+      "prediction": "mid-size sedan",
+      "parent_prediction": "mid-size sedan",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Nissan Altima",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What car manufacturer owns the naming rights to titans stadium?",
+          "answer": "Nissan owns the naming rights to Titans Stadium."
+        },
+        {
+          "step_id": 2,
+          "request": "What car was Mohamed Atta driving?",
+          "answer": "Mohamed Atta was driving a 2001 Nissan Altima."
+        }
+      ],
+      "unchanged_goal_answer": "Mohamed Atta's car, a 2001 Nissan Altima, is a type of mid-size sedan.",
+      "additional_document": {
+        "doc_id": "39d327ecc8b6ac3afeb84196059226f8ae5043d4cf9e4ff782e115a8ceb5991e",
+        "rank": 8,
+        "source": "Mohamed Atta's Nissan",
+        "text": "Mohamed Atta's Nissan\n]A 2001 Nissan Altima, 1N4DL01D81C212547 is the VIN of a blue rental car belonging to Alamo Rent a Car, that was found in the Portland International Jetport parking lot, following the September 11, 2001 attacks. It was issued a Massachusetts license plate 3335 VI.",
+        "block": "[Chunk 8 | source=Mohamed Atta's Nissan, pages=1-1]\nMohamed Atta's Nissan\n]A 2001 Nissan Altima, 1N4DL01D81C212547 is the VIN of a blue rental car belonging to Alamo Rent a Car, that was found in the Portland International Jetport parking lot, following the September 11, 2001 attacks. It was issued a Massachusetts license plate 3335 VI."
+      },
+      "parent_context_chars": 6532,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "new_raw_support_for_existing_QA_model_but_granularity_failure",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": true,
+        "new_information": "新增Mohamed Atta's Nissan标题及原文直接给2001 Nissan Altima车型、VIN与租车信息。它为既有QA的车型事实补原文支持；正文没有证明driving动作或mid-size sedan分类。",
+        "parent_information": "父QA #2已答2001 Nissan Altima，goal又将问句type解释成mid-size sedan；父Top10没有Atta车型原文，mid-size luxury sedan只出现在其他车型Nissan Fuga段。",
+        "final_adoption": "仍mid-size sedan，未改成新增doc及旧QA均有的Nissan Altima；车型事实虽获原文支持，最终仍沿goal选择分类层级。",
+        "failure_note": "这是新增来源有用但答案语义未变的例子。是否mid-size sedan在现实中属实未外查；本审阅只指出所给context并未为该分类提供直接车型对应支持。",
+        "certainty": "high_for_existing_model_QA_and_new_source_support; classification_truth_unverified"
+      }
+    },
+    {
+      "id": "musique:4hop1__43565_624859_355213_203322",
+      "question": "Which county shares a border with the county where the city in which the original singer of All By Myself was born is located?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop1__43565_624859_355213_203322.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop1__43565_624859_355213_203322.json",
+      "prediction": "Cannot be determined",
+      "parent_prediction": "Cannot be determined",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Cabarrus County",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who was the original singer of All By Myself?",
+          "answer": "The original singer of \"All by Myself\" was Eric Carmen."
+        },
+        {
+          "step_id": 2,
+          "request": "In what city was the original singer of All By Myself born?",
+          "answer": "The city where Eric Carmen was born cannot be determined from these passages."
+        },
+        {
+          "step_id": 3,
+          "request": "What county contains the city where the original singer of All By Myself was born?",
+          "answer": "The county containing the city where Eric Carmen was born cannot be determined from these passages."
+        }
+      ],
+      "unchanged_goal_answer": "The county that shares a border with the county where the city in which the original singer of \"All By Myself\" was born is located cannot be determined from these passages.",
+      "additional_document": {
+        "doc_id": "1c081eda761342bf11650c6baad424b9cfba21af4d00fe517d66959c0cc3fda1",
+        "rank": 2,
+        "source": "Las Vegas, New Mexico",
+        "text": "Las Vegas, New Mexico\nLas Vegas is a city in and the county seat of San Miguel County, New Mexico, United States. Once two separate municipalities (one a city and the other a town), both were named Las Vegas—West Las Vegas (\"Old Town\") and East Las Vegas (\"New Town\")—are separated by the Gallinas River and retain distinct characters and separate, rival school districts.",
+        "block": "[Chunk 2 | source=Las Vegas, New Mexico, pages=1-1]\nLas Vegas, New Mexico\nLas Vegas is a city in and the county seat of San Miguel County, New Mexico, United States. Once two separate municipalities (one a city and the other a town), both were named Las Vegas—West Las Vegas (\"Old Town\") and East Las Vegas (\"New Town\")—are separated by the Gallinas River and retain distinct characters and separate, rival school districts."
+      },
+      "parent_context_chars": 5629,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "unbound_city_county_document_missing_bridges",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增Las Vegas为San Miguel County县治；没有歌手、出生地或与目标县接壤关系。",
+        "parent_information": "父QA选择Eric Carmen为原唱，但其出生城市及所在县均未确定；Top10是无绑定的城市/县概述，没有后续邻接桥。",
+        "final_adoption": "仍Cannot be determined；未把无绑定San Miguel County当答案。",
+        "failure_note": "新增段与问题只共享city/county关系形式，不能跨缺失桥接直接推出相邻县；gold Cabarrus也不在新增段。",
+        "certainty": "high_for_missing_bindings; original_singer_choice_unverified"
+      }
+    },
+    {
+      "id": "hotpotqa:5a8dde01554299653c1aa159",
+      "question": "In the \"Star Trek\" franchise, DeForest Kelley portrayed a character aboard which starship? ",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a8dde01554299653c1aa159.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a8dde01554299653c1aa159.json",
+      "prediction": "USS Enterprise (NCC-1701)",
+      "parent_prediction": "USS Enterprise (NCC-1701)",
+      "f1": 0.8,
+      "parent_f1": 0.8,
+      "delta_parent": 0.0,
+      "gold_offline_only": "USS \"Enterprise\"",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Which characters did DeForest Kelley portray in the Star Trek franchise?",
+          "answer": "DeForest Kelley portrayed Dr. Leonard H. \"Bones\" McCoy in the Star Trek franchise."
+        },
+        {
+          "step_id": 2,
+          "request": "Which starships were the characters portrayed by DeForest Kelley in the Star Trek franchise aboard?",
+          "answer": "DeForest Kelley’s character Dr. Leonard H. “Bones” McCoy was aboard the USS Enterprise (NCC-1701)."
+        }
+      ],
+      "unchanged_goal_answer": "DeForest Kelley portrayed Dr. Leonard H. \"Bones\" McCoy aboard the USS Enterprise (NCC-1701).",
+      "additional_document": {
+        "doc_id": "671981",
+        "rank": 5,
+        "source": "USS Enterprise (NCC-1701-E)",
+        "text": "USS Enterprise (NCC-1701-E)\nThe USS \"Enterprise\" NCC-1701-E (or \"Enterprise\"-E, to distinguish it from prior and later starships with the same name) is a fictional vessel. It is a \"Sovereign\"-class starship in the \"Star Trek\" franchise. It appears only in the films \"\", \"\" and \"Star Trek Nemesis\", where it serves as the primary setting. It is the sixth Federation starship to carry the name \"Enterprise\".",
+        "block": "[Chunk 5 | source=USS Enterprise (NCC-1701-E), pages=1-1]\nUSS Enterprise (NCC-1701-E)\nThe USS \"Enterprise\" NCC-1701-E (or \"Enterprise\"-E, to distinguish it from prior and later starships with the same name) is a fictional vessel. It is a \"Sovereign\"-class starship in the \"Star Trek\" franchise. It appears only in the films \"\", \"\" and \"Star Trek Nemesis\", where it serves as the primary setting. It is the sixth Federation starship to carry the name \"Enterprise\"."
+      },
+      "parent_context_chars": 5421,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "same_ship_name_different_vessel_no_target_link",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增USS Enterprise NCC-1701-E是另一个具体舰体，段中无DeForest Kelley或McCoy关系。",
+        "parent_information": "父Top10已含Kelley是USS Enterprise的McCoy、NCC-1701原舰介绍；QA和goal均答NCC-1701。",
+        "final_adoption": "仍USS Enterprise (NCC-1701)，未转为E舰。",
+        "failure_note": "F1=.8主要因输出额外舰体编号，与gold USS Enterprise不完全等词；新增E舰名称命中不是支持目标演员关系。",
+        "certainty": "high_for_absent_actor_link_and_vessel_difference"
+      }
+    },
+    {
+      "id": "2wiki:15b9210e0baf11ebab90acde48001122",
+      "question": "Who is Dietrich Ix, Count Of Mark's paternal grandfather?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\15b9210e0baf11ebab90acde48001122.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\15b9210e0baf11ebab90acde48001122.json",
+      "prediction": "Count Adolph II of the Marck",
+      "parent_prediction": "Count Adolph II of the Marck",
+      "f1": 0.888888888888889,
+      "parent_f1": 0.888888888888889,
+      "delta_parent": 0.0,
+      "gold_offline_only": "Adolph II of the Marck",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is Dietrich Ix, Count Of Mark's father?",
+          "answer": "Dietrich IX, Count of Mark's father is Count Adolf III of the Marck."
+        },
+        {
+          "step_id": 2,
+          "request": "Who is the father of Dietrich Ix, Count Of Mark's father?",
+          "answer": "Dietrich IX, Count of Mark's paternal grandfather is Count Adolph II of the Marck."
+        }
+      ],
+      "unchanged_goal_answer": "Dietrich IX, Count of Mark's paternal grandfather is Count Adolph II of the Marck.",
+      "additional_document": {
+        "doc_id": "3601c84530425675fabc740fa564d04be5d9db0f08d45139933d97d2fbd278d5",
+        "rank": 2,
+        "source": "Adolph II of the Marck",
+        "text": "Adolph II of the Marck\nAdolph II of the Marck( died 19/20 October 1347, Fröndenberg) was Count of the Marck. He was the eldest son of Engelbert II of the Mark and Mechtild of Arenberg. Adolph was betrothed to Irmgard of Cleves, daughter of Otto, Count of Cleves and his( second) wife Mechtild of Virneburg. After obtaining a papal dispensation Adolf was allowed to marry Margaret of Cleves, the daughter of Dietrich VIII, Count of Cleves and Margaret of Guelders. Adolph and Margaret of Cleves had seven children:",
+        "block": "[Chunk 2 | source=Adolph II of the Marck, pages=1-1]\nAdolph II of the Marck\nAdolph II of the Marck( died 19/20 October 1347, Fröndenberg) was Count of the Marck. He was the eldest son of Engelbert II of the Mark and Mechtild of Arenberg. Adolph was betrothed to Irmgard of Cleves, daughter of Otto, Count of Cleves and his( second) wife Mechtild of Virneburg. After obtaining a papal dispensation Adolf was allowed to marry Margaret of Cleves, the daughter of Dietrich VIII, Count of Cleves and Margaret of Guelders. Adolph and Margaret of Cleves had seven children:"
+      },
+      "parent_context_chars": 8336,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "target_person_biography_without_required_father_edge",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": "limited_identity_only",
+        "new_information": "新增Adolph II本人出生死亡、其父Engelbert II和婚姻信息；没有明说Adolf III之父为Adolph II，正文到had seven children即停止。",
+        "parent_information": "父QA已给Dietrich IX -> Adolf III -> Count Adolph II链，父Top10含Dietrich父亲及若干复杂/噪声家谱段；新增可确认候选人物存在与头衔，却没补目标缺边。",
+        "final_adoption": "仍Count Adolph II of the Marck；是否参考新增人物身份无法从短输出判定。",
+        "failure_note": "F1=8/9来自Count前缀。不能因为doc标题正好是答案名就认定支持祖父关系；父子关系需要正文，而所加段止于子女列表前。",
+        "certainty": "high_for_added_text_scope; exact_pedigree_not_externally_verified"
+      }
+    },
+    {
+      "id": "musique:3hop1__841091_339990_54675",
+      "question": "What mountain can you see from Portland in the state where Knob Mountain is located?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__841091_339990_54675.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__841091_339990_54675.json",
+      "prediction": "Cannot be determined",
+      "parent_prediction": "Cannot be determined",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Tualatin Mountains",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What state is Knob Mountain in?",
+          "answer": "Knob Mountain is in Pennsylvania."
+        }
+      ],
+      "unchanged_goal_answer": "No mountain visible from Portland can be determined, as the retrieved passages describe Portland, Oregon, which is in a different state than Knob Mountain (Pennsylvania).",
+      "additional_document": {
+        "doc_id": "e8e72c9825151dff0eb6066f3b481610f21eaa4586912642a192396f4ed7802e",
+        "rank": 4,
+        "source": "Catawissa Mountain",
+        "text": "Catawissa Mountain\nCatawissa Mountain is a mountain in Columbia County, Pennsylvania, in the United States. Its peak height is above sea level, making it the fifth-highest mountain in Columbia County. Streams that flow near the mountain include Roaring Creek, Catawissa Creek, and some of its tributaries. The mountain is near Nescopeck Mountain and Little Mountain. Sandstones and rock formations such as the Pocono Formation occur on Catawissa Mountain.",
+        "block": "[Chunk 4 | source=Catawissa Mountain, pages=1-1]\nCatawissa Mountain\nCatawissa Mountain is a mountain in Columbia County, Pennsylvania, in the United States. Its peak height is above sea level, making it the fifth-highest mountain in Columbia County. Streams that flow near the mountain include Roaring Creek, Catawissa Creek, and some of its tributaries. The mountain is near Nescopeck Mountain and Little Mountain. Sandstones and rock formations such as the Pocono Formation occur on Catawissa Mountain."
+      },
+      "parent_context_chars": 5748,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "nearby_mountain_wrong_relation_no_scope_repair",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增Pennsylvania的Catawissa Mountain地理及附近山脉；没有Portland可见关系。",
+        "parent_information": "父QA把Knob Mountain绑定Pennsylvania，goal因原文Portland,Oregon跨州而拒答；父Top10 Chunk 2已经提Tualatin Mountains在Portland城内及诸山可见。",
+        "final_adoption": "仍Cannot be determined，新增段未解决Knob Mountain州别/Portland对象冲突。",
+        "failure_note": "gold Tualatin Mountains相关原文在旧Top10已存在，但上游指称与地理scope冲突阻止最终选它。不能仅凭gold在旧段而把所有证据当充分。",
+        "certainty": "high_for_textual_scope_conflict; intended_Knob_Mountain_entity_uncertain"
+      }
+    },
+    {
+      "id": "2wiki:6856ba560bdd11eba7f7acde48001122",
+      "question": "What is the date of death of Princess Carolina Of Parma's mother?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\6856ba560bdd11eba7f7acde48001122.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\6856ba560bdd11eba7f7acde48001122.json",
+      "prediction": "25 December 1798",
+      "parent_prediction": "25 December 1798",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "18 June 1804",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is Princess Carolina Of Parma's mother?",
+          "answer": "Princess Carolina of Parma's mother was Archduchess Maria Amalia of Austria."
+        }
+      ],
+      "unchanged_goal_answer": "Princess Carolina of Parma's mother, Archduchess Maria Amalia of Austria, died on 25 December 1798.",
+      "additional_document": {
+        "doc_id": "e991d9831d28d30b895aa6986a06af3ee27292754ce041932954d674ed1e37f9",
+        "rank": 2,
+        "source": "Archduchess Maria Amalia of Austria (1780–1798)",
+        "text": "Archduchess Maria Amalia of Austria (1780–1798)\nArchduchess Maria Amalia of Austria (\"Maria Amalia Josephe Johanna Katharina Theresia\"; 15 October 1780 - 25 December 1798) was an Archduchess of Austria by birth.",
+        "block": "[Chunk 2 | source=Archduchess Maria Amalia of Austria (1780–1798), pages=1-1]\nArchduchess Maria Amalia of Austria (1780–1798)\nArchduchess Maria Amalia of Austria (\"Maria Amalia Josephe Johanna Katharina Theresia\"; 15 October 1780 - 25 December 1798) was an Archduchess of Austria by birth."
+      },
+      "parent_context_chars": 6211,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "wrong_homonym_supports_erroneous_candidate_existing_correction_unused",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": "wrong_entity_only",
+        "new_information": "新增Archduchess Maria Amalia (1780-1798)的1798死亡日期，表面吻合候选名称和最终日期，却不是1770年出生Carolina的母亲。",
+        "parent_information": "父Top10 Chunk1给Carolina出生1770及母亲姓名；Chunk9已给Maria Amalia,Duchess of Parma (1746-1804)，死亡18 June 1804。新增1780出生者比Carolina还晚出生10年，不能绑定为其母。",
+        "final_adoption": "仍25 December 1798，与错同名原文及父goal一致；输出无法区分受新doc影响还是沿旧goal。",
+        "failure_note": "已有可纠偏同名人物和正确日期，但候选仍不改；新增同名段可能强化错对象，因果影响uncertain。",
+        "certainty": "high_for_temporal_identity_incompatibility_and_old_correct_date; causal_influence_uncertain"
+      }
+    },
+    {
+      "id": "musique:3hop1__404541_629431_64412",
+      "question": "When did the place of death of Paenitentiam Agere's author become its own country?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__404541_629431_64412.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__404541_629431_64412.json",
+      "prediction": "7 June 1929",
+      "parent_prediction": "7 June 1929",
+      "f1": 0.3333333333333333,
+      "parent_f1": 0.3333333333333333,
+      "delta_parent": 0.0,
+      "gold_offline_only": "11 February 1929",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who authored Paenitentiam Agere?",
+          "answer": "Paenitentiam Agere was authored by Pope John XXIII."
+        },
+        {
+          "step_id": 2,
+          "request": "Where did the author of Paenitentiam Agere die?",
+          "answer": "Pope John XXIII died in Vatican City."
+        }
+      ],
+      "unchanged_goal_answer": "Vatican City became its own country on 7 June 1929, when the Lateran Treaty entered into effect.",
+      "additional_document": {
+        "doc_id": "2d8dae44ab9e5da90683b667cffc92dde526412a79201c2bab9f9a0c6ff62965",
+        "rank": 2,
+        "source": "Vatican City",
+        "text": "Vatican City\nThis situation was resolved on 11 February 1929, when the Lateran Treaty between the Holy See and the Kingdom of Italy was signed by Prime Minister and Head of Government Benito Mussolini on behalf of King Victor Emmanuel III and by Cardinal Secretary of State Pietro Gasparri for Pope Pius XI. The treaty, which became effective on 7 June 1929, established the independent state of Vatican City and reaffirmed the special status of Catholicism in Italy.",
+        "block": "[Chunk 2 | source=Vatican City, pages=1-1]\nVatican City\nThis situation was resolved on 11 February 1929, when the Lateran Treaty between the Holy See and the Kingdom of Italy was signed by Prime Minister and Head of Government Benito Mussolini on behalf of King Victor Emmanuel III and by Cardinal Secretary of State Pietro Gasparri for Pope Pius XI. The treaty, which became effective on 7 June 1929, established the independent state of Vatican City and reaffirmed the special status of Catholicism in Italy."
+      },
+      "parent_context_chars": 6828,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "new_signing_date_and_source_grounding_with_event_scope_ambiguity",
+        "answer_required_new_information_absent_from_parent": "new_11_Feb_signing_date; answer_scope_uncertain",
+        "adds_raw_support_for_fact_already_in_QA": true,
+        "new_information": "新增Vatican City原文明说11 February 1929签Lateran Treaty、7 June 1929生效并建立独立国。11 February签署日期在父完整context缺失，7 June生效日期只在父goal QA已有。",
+        "parent_information": "旧Top10没有Vatican独立日期原文；QA把作者死亡地绑定Vatican，goal给7 June并解释生效。",
+        "final_adoption": "最终仍7 June 1929；新增段为该日期补原文支持，同时提供gold对应11 February的不同事件日期。",
+        "failure_note": "不能只因gold为11 February便断言7 June事实错。问become its own country未细分签署/生效，新doc揭示事件scope歧义，最终选择生效日。",
+        "certainty": "high_for_new_chronology_and_old_QA_support; intended_event_scope_uncertain"
+      }
+    },
+    {
+      "id": "musique:3hop1__857_846_7752",
+      "question": "Who moved the capitol from the city where the Yongle emperor greeted the person to whom the edict was addressed to Beijing?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__857_846_7752.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__857_846_7752.json",
+      "prediction": "Yongle Emperor",
+      "parent_prediction": "Yongle Emperor",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "Yuan Shikai",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "To whom was the edict addressed?",
+          "answer": "The edict was addressed to the Karmapa."
+        },
+        {
+          "step_id": 2,
+          "request": "In what city did the Yongle emperor greet the person to whom the edict was addressed?",
+          "answer": "The Yongle emperor greeted the Karmapa in Nanjing."
+        }
+      ],
+      "unchanged_goal_answer": "The Yongle Emperor moved the capital from Nanjing to Beijing.",
+      "additional_document": {
+        "doc_id": "8dde312074a0b6013aedb09d07dfd9d7a563f6de94b7516fabdf7080abd62f2c",
+        "rank": 4,
+        "source": "Nanjing",
+        "text": "Nanjing\nNanjing first became a state capital in 229 AD, when the state of Eastern Wu founded by Sun Quan during the Three Kingdoms period relocated its capital to Jianye (建業), the city extended on the basis of Jinling Yi in 211 AD. Although conquered by the Western Jin dynasty in 280, Nanjing and its neighbouring areas had been well cultivated and developed into one of the commercial, cultural and political centers of China during the rule of East Wu. This city would soon play a vital role in the following centuries.",
+        "block": "[Chunk 4 | source=Nanjing, pages=1-1]\nNanjing\nNanjing first became a state capital in 229 AD, when the state of Eastern Wu founded by Sun Quan during the Three Kingdoms period relocated its capital to Jianye (建業), the city extended on the basis of Jinling Yi in 211 AD. Although conquered by the Western Jin dynasty in 280, Nanjing and its neighbouring areas had been well cultivated and developed into one of the commercial, cultural and political centers of China during the rule of East Wu. This city would soon play a vital role in the following centuries."
+      },
+      "parent_context_chars": 7418,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "same_city_wrong_era_no_scope_repair",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增Nanjing在229年由Eastern Wu/Sun Quan建都的历史，未描述迁都Beijing者。",
+        "parent_information": "父Top10 Chunk9已直接说1421 Yongle将首都Nanjing迁Beijing，另有Yongle在Nanjing迎Karmapa；父goal因此答Yongle。",
+        "final_adoption": "仍Yongle Emperor；新增229年历史未采用。",
+        "failure_note": "gold Yuan Shikai与父原文支持的Ming事件不同；在未有民国迁都证据下只能标事件/时域scope未解决，不能将此当新增段遗漏某个姓名的充分证据。",
+        "certainty": "high_for_added_document_wrong_era; intended_relocation_event_uncertain"
+      }
+    },
+    {
+      "id": "musique:2hop__13592_49388",
+      "question": "How many games in a season of the league in which Barcelona won titles in 1948 and 1949?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__13592_49388.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__13592_49388.json",
+      "prediction": "22",
+      "parent_prediction": "22",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "38",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What league did Barcelona win titles in during 1948?",
+          "answer": "Barcelona won the La Liga title in 1948."
+        },
+        {
+          "step_id": 2,
+          "request": "What league did Barcelona win titles in during 1949?",
+          "answer": "Barcelona won the La Liga title in 1949."
+        },
+        {
+          "step_id": 3,
+          "request": "What league did Barcelona win titles in during 1948 and 1949?",
+          "answer": "Barcelona won titles in La Liga in both 1948 and 1949."
+        }
+      ],
+      "unchanged_goal_answer": "The 1948–49 and 1949–50 La Liga seasons each consisted of 22 games, as the league had 12 teams at the time and followed a double round-robin format.",
+      "additional_document": {
+        "doc_id": "3095161913413be98f60f3702bf9da8510f43db8f61bf1b5e21a276c6ece6fd7",
+        "rank": 2,
+        "source": "La Liga",
+        "text": "La Liga\nThe competition format follows the usual double round - robin format. During the course of a season, which lasts from August to May, each club plays every other club twice, once at home and once away, for a total of 38 matchdays. Teams receive three points for a win, one point for a draw, and no points for a loss. Teams are ranked by total points, with the highest - ranked club at the end of the season crowned champion.",
+        "block": "[Chunk 2 | source=La Liga, pages=1-1]\nLa Liga\nThe competition format follows the usual double round - robin format. During the course of a season, which lasts from August to May, each club plays every other club twice, once at home and once away, for a total of 38 matchdays. Teams receive three points for a win, one point for a draw, and no points for a loss. Teams are ranked by total points, with the highest - ranked club at the end of the season crowned champion."
+      },
+      "parent_context_chars": 8655,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "new_answer_rule_conflicts_with_historical_candidate_and_is_unused",
+        "answer_required_new_information_absent_from_parent": true,
+        "adds_raw_support_for_fact_already_in_QA": false,
+        "new_information": "新增La Liga一般赛制原文明确每队每季双循环共38 matchdays；38在父完整context（QA和Top10）缺失。此段直接回答识别出的联赛一般一季场数。",
+        "parent_information": "父QA以Barcelona在1948和1949夺冠识别La Liga；父goal再把这两年带入目标场数，答1948-49与1949-50历史赛季22。旧Top10只含冠军历史，没有一般38场规则。",
+        "final_adoption": "最终仍22；未采用新增38场规则。",
+        "failure_note": "这是本深读样本中明确“新增必要目标关系原文但F1仍0”的例子。新doc与goal的数值差异来自一般赛季和历史赛季scope，不能仅称模型忽略矛盾数字；1948/1949在原问中用于识别联赛，goal额外把它作为目标赛季。",
+        "certainty": "high_for_new_38_fact_absence_from_parent_and_nonadoption; historical_22_claim_not_externally_verified"
+      }
+    },
+    {
+      "id": "2wiki:d94d1d720bdd11eba7f7acde48001122",
+      "question": "Where does the performer of song Balance-Toi work at?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\d94d1d720bdd11eba7f7acde48001122.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\d94d1d720bdd11eba7f7acde48001122.json",
+      "prediction": "ASVEL Basket in LNB Pro A",
+      "parent_prediction": "ASVEL Basket in LNB Pro A",
+      "f1": 0,
+      "parent_f1": 0,
+      "delta_parent": 0,
+      "gold_offline_only": "San Antonio Spurs",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is the performer of the song Balance-Toi?",
+          "answer": "The performer of the song \"Balance-Toi\" is Tony Parker."
+        }
+      ],
+      "unchanged_goal_answer": "Tony Parker works as the majority owner of ASVEL Basket in LNB Pro A.",
+      "additional_document": {
+        "doc_id": "b192d123b6841cbdb67ea131b8beb6abb8a2c7e82ac2445ba8ddc1929fb1cf77",
+        "rank": 2,
+        "source": "Tony Parker",
+        "text": "Tony Parker\nWilliam Anthony Parker Jr. (born 17 May 1982) is a French-American former professional basketball player and majority owner of ASVEL Basket in LNB Pro A. The son of a professional basketball player, Parker played for two years for Paris Basket Racing in the French basketball league, before joining the San Antonio Spurs of the National Basketball Association (NBA). He was selected by the Spurs with the 28th overall pick in the 2001 NBA draft, and quickly became their starting point guard. Parker won four NBA championships (2003, 2005, 2007, and 2014), all of which were with the Spurs. He also played for ASVEL Basket in France during the 2011 NBA lockout, and finished his career after one season with the Charlotte Hornets. Tony Parker was named to six NBA All-Star games, three All-NBA Second Teams, and an All-NBA Third Team. He was also the 2007 NBA Finals MVP. A severe injury to his left quadriceps tendon in Game 2 in the second round of the 2017 playoffs ended his season. While playing with the French national team, Parker was named the MVP of EuroBasket 2013, following his team's victory over Lithuania in the final. He finished as the tournament's top scorer, with an average of 19 points per game. In 2015, he became the all-time leading scorer in the EuroBasket competition, a record that was broken by Pau Gasol two years later.",
+        "block": "[Chunk 2 | source=Tony Parker, pages=1-1]\nTony Parker\nWilliam Anthony Parker Jr. (born 17 May 1982) is a French-American former professional basketball player and majority owner of ASVEL Basket in LNB Pro A. The son of a professional basketball player, Parker played for two years for Paris Basket Racing in the French basketball league, before joining the San Antonio Spurs of the National Basketball Association (NBA). He was selected by the Spurs with the 28th overall pick in the 2001 NBA draft, and quickly became their starting point guard. Parker won four NBA championships (2003, 2005, 2007, and 2014), all of which were with the Spurs. He also played for ASVEL Basket in France during the 2011 NBA lockout, and finished his career after one season with the Charlotte Hornets. Tony Parker was named to six NBA All-Star games, three All-NBA Second Teams, and an All-NBA Third Team. He was also the 2007 NBA Finals MVP. A severe injury to his left quadriceps tendon in Game 2 in the second round of the 2017 playoffs ended his season. While playing with the French national team, Parker was named the MVP of EuroBasket 2013, following his team's victory over Lithuania in the final. He finished as the tournament's top scorer, with an average of 19 points per game. In 2015, he became the all-time leading scorer in the EuroBasket competition, a record that was broken by Pau Gasol two years later."
+      },
+      "parent_context_chars": 8041,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "new_historical_employer_plus_raw_support_for_existing_current_role",
+        "answer_required_new_information_absent_from_parent": "new_Spurs_historical_team_relation; target_time_scope_uncertain",
+        "adds_raw_support_for_fact_already_in_QA": true,
+        "new_information": "新增Tony Parker原文确认其为ASVEL多数股东，也补充曾效力San Antonio Spurs、2011年为ASVEL打球及Charlotte Hornets结束球员生涯。Spurs关系不在父完整context。",
+        "parent_information": "父Top10只有Balance-toi段称2007歌手为NBA player Tony Parker；ASVEL身份只在父goal QA给出，无对应原文。",
+        "final_adoption": "最终仍ASVEL Basket in LNB Pro A。新增doc直接支持该当前身份，也给gold对应的历史Spurs球队，但输出未改历史时点。",
+        "failure_note": "这是不同时间快照/角色的答案冲突，不能只因gold Spurs便将来源支持的ASVEL股东身份当事实假；work at问法缺显式时间，适配旧数据gold的时点未解决。不声明2026实际身份。",
+        "certainty": "high_for_new_Spurs_relation_and_existing_ASVEL_QA_grounding; intended_time_scope_uncertain"
+      }
+    },
+    {
+      "id": "musique:4hop1__40316_497223_15840_36002",
+      "question": "What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop1__40316_497223_15840_36002.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop1__40316_497223_15840_36002.json",
+      "prediction": "Stronger third-party support and less strict licensing terms",
+      "parent_prediction": "Stronger third-party support and less strict licensing terms",
+      "f1": 0.11111111111111112,
+      "parent_f1": 0.11111111111111112,
+      "delta_parent": 0.0,
+      "gold_offline_only": "built on 16-bit architectures and offered improved graphics and sound",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What football league are the Los Angeles Rams representative of?",
+          "answer": "The Los Angeles Rams are representative of the National Football League (NFL)."
+        },
+        {
+          "step_id": 2,
+          "request": "What game is named after the football league the Los Angeles Rams are representative of?",
+          "answer": "The game named after the National Football League (NFL) is NFL Football."
+        },
+        {
+          "step_id": 3,
+          "request": "What game system has a 3-letter abbreviation and features the game named after the football league the Los Angeles Rams are representative of?",
+          "answer": "The Nintendo Entertainment System (NES) is the game system with a 3-letter abbreviation that features the game NFL Football."
+        }
+      ],
+      "unchanged_goal_answer": "The Sega Genesis had stronger third-party support and less strict licensing terms compared to the Nintendo Entertainment System (NES), which featured NFL Football.",
+      "additional_document": {
+        "doc_id": "4fbb5da19be4297024b04447dfddca598c289465792fcc9d3bb7552cbcdc0532",
+        "rank": 2,
+        "source": "Nintendo Entertainment System",
+        "text": "Nintendo Entertainment System\nIn the longer run, however, with the NES near its end of its life many third-party publishers such as Electronic Arts supported upstart competing consoles with less strict licensing terms such as the Sega Genesis and then the PlayStation, which eroded and then took over Nintendo's dominance in the home console market, respectively. Consoles from Nintendo's rivals in the post-SNES era had always enjoyed much stronger third-party support than Nintendo, which relied more heavily on first-party games.",
+        "block": "[Chunk 2 | source=Nintendo Entertainment System, pages=1-1]\nNintendo Entertainment System\nIn the longer run, however, with the NES near its end of its life many third-party publishers such as Electronic Arts supported upstart competing consoles with less strict licensing terms such as the Sega Genesis and then the PlayStation, which eroded and then took over Nintendo's dominance in the home console market, respectively. Consoles from Nintendo's rivals in the post-SNES era had always enjoyed much stronger third-party support than Nintendo, which relied more heavily on first-party games."
+      },
+      "parent_context_chars": 7740,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "raw_support_for_existing_alternative_advantage_with_qualified_generalization",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": "licensing_yes; stronger_support_comparison_limited",
+        "new_information": "新增NES原文支持部分发行商因较宽松许可转向Genesis；末句谈post-SNES时代Nintendo对手的第三方支持，并非逐字确认Genesis在整个NES时期比NES支持更强。",
+        "parent_information": "父goal已答stronger third-party support and less strict licensing；父Top10围绕NFL和游戏识别，没有Genesis16bit图形声音或许可/第三方支持事实。",
+        "final_adoption": "最终仍相同两点优点，新增段至少补较宽松许可的原文支撑，但未引入gold所需16bit improved graphics/sound。",
+        "failure_note": "F1=.111不表示所答全部错误；它与gold选择的硬件优点不同，且第三方支持的时代与对象限定被候选泛化，仍需保留uncertain。新增段没有带来此前context缺失的gold硬件事实。",
+        "certainty": "high_for_licensing_source_support_and_hardware_fact_absence; broad_support_comparison_uncertain"
+      }
+    },
+    {
+      "id": "2wiki:4f81c5260bdc11eba7f7acde48001122",
+      "question": "Who is the spouse of the director of film Geordie (Film)?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\4f81c5260bdc11eba7f7acde48001122.json",
+      "parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\4f81c5260bdc11eba7f7acde48001122.json",
+      "prediction": "Bernadette O’Farrell",
+      "parent_prediction": "Bernadette O’Farrell",
+      "f1": 0.5,
+      "parent_f1": 0.5,
+      "delta_parent": 0.0,
+      "gold_offline_only": "Bernadette O'Farrell",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is the director of the film Geordie (Film)?",
+          "answer": "Frank Launder is the director of the film Geordie."
+        }
+      ],
+      "unchanged_goal_answer": "Frank Launder’s spouse was actress Bernadette O’Farrell.",
+      "additional_document": {
+        "doc_id": "d18b57eb52705ef565c016a4695250f307e88b3379856cc67240fa98a3ab602a",
+        "rank": 2,
+        "source": "Frank Launder",
+        "text": "Frank Launder\nFrank Launder (28 January 1906 – 23 February 1997) was a British writer, film director and producer, who made more than 40 films, many of them in collaboration with Sidney Gilliat. He was born in Hitchin, Hertfordshire, England and worked briefly as a clerk before becoming an actor and then a playwright. He began working as a screenwriter on British films in the 1930s, contributing the original story for the classic Will Hay comedy \" Oh, Mr Porter!\" (1937). After writing a number of screenplays with Gilliat, including \"The Lady Vanishes\" (1938) for Alfred Hitchcock, and \"Night Train to Munich\" for Carol Reed; the two men wrote and directed the wartime drama \"Millions Like Us\" (1943). After founding their own production company Individual Pictures, they produced a number of memorable dramas and thrillers including \"I See a Dark Stranger\" (1945) and \"Green for Danger\" (1946), but were best known for their comedies including \"The Happiest Days of Your Life\" (1950) and most famously, the St Trinians series, based on Ronald Searle's cartoons set in an anarchic girls school. He was married to actress Bernadette O'Farrell from 1950 until his death in Monaco. The couple had two children.",
+        "block": "[Chunk 2 | source=Frank Launder, pages=1-1]\nFrank Launder\nFrank Launder (28 January 1906 – 23 February 1997) was a British writer, film director and producer, who made more than 40 films, many of them in collaboration with Sidney Gilliat. He was born in Hitchin, Hertfordshire, England and worked briefly as a clerk before becoming an actor and then a playwright. He began working as a screenwriter on British films in the 1930s, contributing the original story for the classic Will Hay comedy \" Oh, Mr Porter!\" (1937). After writing a number of screenplays with Gilliat, including \"The Lady Vanishes\" (1938) for Alfred Hitchcock, and \"Night Train to Munich\" for Carol Reed; the two men wrote and directed the wartime drama \"Millions Like Us\" (1943). After founding their own production company Individual Pictures, they produced a number of memorable dramas and thrillers including \"I See a Dark Stranger\" (1945) and \"Green for Danger\" (1946), but were best known for their comedies including \"The Happiest Days of Your Life\" (1950) and most famously, the St Trinians series, based on Ronald Searle's cartoons set in an anarchic girls school. He was married to actress Bernadette O'Farrell from 1950 until his death in Monaco. The couple had two children."
+      },
+      "parent_context_chars": 8350,
+      "e03_preserves_parent_context_prefix": true,
+      "review": {
+        "classification": "new_raw_support_for_correct_existing_QA_native_apostrophe_mismatch",
+        "answer_required_new_information_absent_from_parent": false,
+        "adds_raw_support_for_fact_already_in_QA": true,
+        "new_information": "新增Frank Launder原文直接说married to actress Bernadette O'Farrell from1950，补足既有goal QA的配偶事实原文支持。",
+        "parent_information": "父QA已给FrankLaunder -> Bernadette O’Farrell；旧Top10只确认Geordie导演，未包含Launder配偶，其他导演配偶段无关。",
+        "final_adoption": "最终仍Bernadette O’Farrell，和新增原文配偶身份相同；仅沿用弯引号拼写。",
+        "failure_note": "native F1=.5、gold为Bernadette O'Farrell，输出仅姓名中的直/弯apostrophe不同。不能把此分数当配偶事实错误或新增原文未被理解；实际因果采用无法从不变短答案判断。",
+        "certainty": "high_for_direct_spouse_support_and_surface_name_equivalence; adoption_causality_uncertain"
+      }
+    }
+  ],
+  "complete": true,
+  "source_report_added_document_count_at_completion": 214,
+  "sample_summary": {
+    "selection": "20 purposive score ties with F1<1; 19 unchanged predictions and1 expanded prediction (Springfield). No prevalence estimate over214.",
+    "clear_new_answer_fact_ignored": [
+      "musique:2hop__13592_49388"
+    ],
+    "existing_correction_not_used": [
+      "musique:2hop__562154_69048",
+      "2wiki:6856ba560bdd11eba7f7acde48001122",
+      "musique:4hop1__860115_798482_131926_13165"
+    ],
+    "new_raw_support_for_existing_QA_examples": [
+      "musique:2hop__46065_417697",
+      "2wiki:4f81c5260bdc11eba7f7acde48001122",
+      "2wiki:d94d1d720bdd11eba7f7acde48001122"
+    ],
+    "event_or_time_scope_uncertain": [
+      "musique:3hop1__404541_629431_64412",
+      "2wiki:d94d1d720bdd11eba7f7acde48001122",
+      "musique:3hop1__857_846_7752"
+    ],
+    "partial_F1_not_substantive_fact_failure_examples": [
+      "2wiki:f3c57d120baf11ebab90acde48001122",
+      "hotpotqa:5a7571835542992db9473669",
+      "hotpotqa:5a8dde01554299653c1aa159",
+      "2wiki:15b9210e0baf11ebab90acde48001122",
+      "2wiki:4f81c5260bdc11eba7f7acde48001122"
+    ]
+  }
+}

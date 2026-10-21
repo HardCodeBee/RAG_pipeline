@@ -1,0 +1,62 @@
+{
+  "train_n": 3500,
+  "sources": {
+    "BREAK-high/DROP": 864,
+    "BREAK-high/HOTPOT": 1029,
+    "BREAK-high/CWQ": 374,
+    "MuSiQue": 59,
+    "hotpotqa": 14,
+    "musique": 450,
+    "2wiki": 710
+  },
+  "musique_n": 509,
+  "musique_fraction": 0.14542857142857143,
+  "musique_hops": {
+    "2-hop": 191,
+    "3-hop": 166,
+    "4-hop": 152
+  },
+  "musique_target_items": {
+    "1": 163,
+    "2": 187,
+    "3": 152,
+    "4": 7
+  },
+  "training_policy": "Each epoch visits all3500 once; no dataset resampling. Selected165 is1.5 epochs, trained220 is2 epochs.",
+  "causal_limit": "Counts establish exposure, not that scarcity caused the failures. No new training in this iteration.",
+  "score_gap": {
+    "dev": 0.8533333333333334,
+    "formal": 0.7866666666666666,
+    "delta_pp": 6.666666666666677,
+    "mu_contribution_pp": 5.333333333333333,
+    "mu_fraction_of_total_gap": 0.8
+  },
+  "dev_mu_hops": {
+    "2-hop": {
+      "pass": 14,
+      "n": 18
+    },
+    "3-hop": {
+      "pass": 13,
+      "n": 17
+    },
+    "4-hop": {
+      "pass": 8,
+      "n": 15
+    }
+  },
+  "formal_mu_hops": {
+    "2-hop": {
+      "pass": 26,
+      "n": 35
+    },
+    "3-hop": {
+      "pass": 20,
+      "n": 35
+    },
+    "4-hop": {
+      "pass": 8,
+      "n": 30
+    }
+  }
+}

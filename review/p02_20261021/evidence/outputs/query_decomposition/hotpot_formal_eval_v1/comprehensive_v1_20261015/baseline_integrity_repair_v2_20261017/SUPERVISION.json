@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-21T04:33:15.858434+00:00",
+  "pid": 28180,
+  "worker_pid": 20212,
+  "status": "running",
+  "recoveries": {
+    "network": 0,
+    "sqlite": 0
+  },
+  "generation_progress": {
+    "utc": "2026-10-21T04:32:12.804238+00:00",
+    "status": "running",
+    "track": "main",
+    "dataset": "musique",
+    "split": "formal",
+    "method": "b01_rag_top10_cot3",
+    "config": {
+      "id": "fixed",
+      "k": 10,
+      "reader": "cot3",
+      "output_tokens": 512
+    },
+    "remaining_in_method": 440,
+    "budget": {
+      "cap_cny": 300.0,
+      "returned_usage_list_price_cny": 219.4142848,
+      "unreconciled_reserved_cny": 54.1829208,
+      "submission_attempts": 120070,
+      "actual_bill_verified": false
+    }
+  },
+  "own_method_evaluations_paused": true,
+  "chat_notifications_scheduled": false,
+  "continuation_directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\resume_v2_sqlite_20261021"
+}

@@ -1,0 +1,125 @@
+修复 #14 | musique:3hop1__107006_41885_856982 | musique
+What is the Margraviate of the country besides Germany and the country Moonraisers are from, where Lake Constance is located?
+T02: ["What country are Moonraisers from?","What country is Lake Constance in?","What is the Margraviate of the country besides Germany and the country Moonraisers are from where Lake Constance is located?"]
+完整重训: ["What country is Lake Constance in?","What country are Moonraisers from?"]
+T02理由: The third item repeats the original Margraviate target to complete the list, not an independently exposed prerequisite.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #37 | hotpotqa:5a7b77d95542997c3ec971a5 | hotpotqa
+The ninth The Desert Sessions LP was released by by what kind of band?
+T02: ["What is the ninth The Desert Sessions LP?"]
+完整重训: ["What is the ninth The Desert Sessions LP?","What band released the ninth The Desert Sessions LP?"]
+T02理由: Identifies the ninth LP but does not ask which band released it, the intermediate entity whose kind the original requests.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #38 | musique:4hop1__709382_146811_31223_68437 | musique
+When was the territory on the eastern border of the state where the performer of Hello Love died added to the union?
+T02: ["Who performs Hello Love?","What state does the performer of Hello Love belong to?","What territory on the eastern border of the state where the performer of Hello Love belongs did the performer of Hello Love die in?"]
+完整重训: ["Who performs Hello Love?","What state did the performer of Hello Love die in?","What territory on the eastern border of the state where the performer of Hello Love died was added to the union?"]
+T02理由: State where performer died becomes state performer belongs to; last item invents death in the eastern-border territory.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #60 | hotpotqa:5ae4c2b95542995dadf243ef | hotpotqa
+One of the coaches of Southern Methodist University also played what role at the Arizona State Sun Devils?
+T02: ["Who are the coaches of Southern Methodist University?","What roles did the coaches of Southern Methodist University play at the Arizona State Sun Devils?"]
+完整重训: ["Who are the coaches of Southern Methodist University?","Who played a role at the Arizona State Sun Devils among the coaches of Southern Methodist University?"]
+T02理由: Second item asks the original role target for the coaches merely to finish the list, not a further nested prerequisite.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #65 | musique:3hop2__89818_575266_4107 | musique
+What term means an institution like a German Fachhochschule in the country where Salm is located and the country where Dutch is spoken?
+T02: ["What country is Salm in?","What country is Dutch spoken in?","What country contains both the country where Salm is located and the country where Dutch is spoken?"]
+完整重训: ["What country is Salm in?","What country is Dutch spoken in?"]
+T02理由: Invents a containing country that contains the two countries; original asks one institution term used in two countries, not spatial containment.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #69 | musique:3hop1__161436_84068_12463 | musique
+What notes are issued by the controller of monetary policy in the nation Peterson is top authority of a subject in?
+T02: ["What subject is Peterson the top authority on?","What nation is Peterson the top authority on a subject?","Who controls monetary policy in the nation Peterson is the top authority on a subject?"]
+完整重训: ["What subject is Peterson top authority of?","What nation is Peterson top authority of a subject in?","Who controls monetary policy in the nation Peterson is top authority of a subject in?"]
+T02理由: Country question omits the in relation connecting nation to Peterson being an authority; cannot confidently certify that the nation is location rather than subject.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #87 | hotpotqa:5ac097b05542996f0d89cc18 | hotpotqa
+Are Ruggero Deodato from Italy, and Mexican Alejandro Springall, both film directors?
+T02: ["Is Ruggero Deodato from Italy?","Is Mexican Alejandro Springall a film director?"]
+完整重训: ["Is Ruggero Deodato from Italy a film director?","Is Mexican Alejandro Springall a film director?"]
+T02理由: Reasks Ruggero Deodato being from Italy, already supplied, and omits whether he is a film director.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #95 | hotpotqa:5a721a7655429971e9dc9271 | hotpotqa
+What actor from the show Murphy Brown also had a role in a show with fellow actor Steve Howey? 
+T02: ["Who are the actors from the show Murphy Brown?","What shows did fellow actor Steve Howey appear in?","What roles did actors from Murphy Brown have in shows featuring fellow actor Steve Howey?"]
+完整重训: ["Who were the actors in the show Murphy Brown?","What shows did Steve Howey appear in?","What actors appeared in shows with Steve Howey?"]
+T02理由: Role details in shared shows are added although the original requests actor identity; roles are an unrelated attribute for the exposed intersection.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #99 | musique:2hop__136500_79793 | musique
+When did cable cars start in the city Freebie and Bean are in?
+T02: ["What city is Freebie in?","What city is Bean in?","What city is Freebie in and Bean in?"]
+完整重训: ["What city is Freebie and Bean in?"]
+T02理由: Commits to Freebie and Bean as two independently searchable entities; original could be a combined title, and ambiguity must be preserved.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+修复 #104 | hotpotqa:5ae2fca555429928c423958a | hotpotqa
+What was the other single from Eric Stewart and Graham Gouldman's band's 1975 album, besides "I'm Not in Love"?
+T02: ["What was Eric Stewart and Graham Gouldman's band's 1975 album?"]
+完整重训: ["What band did Eric Stewart and Graham Gouldman belong to?","What was the 1975 album by Eric Stewart and Graham Gouldman's band?"]
+T02理由: Asks the1975 album but skips the unknown band associated with Eric Stewart and Graham Gouldman.
+完整重训理由: Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+退步 #6 | musique:4hop2__72459_31688_31714_41245 | musique
+Along with the country where most of the US's oil comes from, one major power recognized the government of the face most closely associated with Libya's new government at an early date. What is the average construction salary in this country?
+T02: ["What country provides most of the US's oil?","Who is the face most closely associated with Libya's new government?","What major power recognized the government of the face most closely associated with Libya's new government at an early date?"]
+完整重训: ["What country does most of the US's oil come from?","Who is the face most closely associated with Libya's new government?","What major power recognized the face most closely associated with Libya's new government at an early date?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Recognition of government becomes recognition of the associated person, same defect as locked R01/original165.
+
+退步 #10 | hotpotqa:5aba52e655429939ce03dc94 | hotpotqa
+This term about a playwright who lived from 1564-1616 presented what about his works? 
+T02: ["Who was the playwright who lived from 1564 to 1616?","What term about the playwright who lived from 1564 to 1616 presented something about his works?"]
+完整重训: ["What term about the playwright who lived from 1564 to 1616 is presented?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Only asks for the term described through an unnamed playwright, omitting the playwright identified by1564-1616 prerequisite.
+
+退步 #27 | musique:4hop1__107210_221169_833580_61459 | musique
+When did Italy fight in the same war as did Albert I of the country hosting the 1920 Summer Olympics, where the country Dia Psalma is from participated in?
+T02: ["What country hosted the 1920 Summer Olympics?","What country is Dia Psalma from?","What war did Albert I of the country hosting the 1920 Summer Olympics fight in?"]
+完整重训: ["What country is Dia Psalma from?","What country hosted the 1920 Summer Olympics?","What war did the country hosting the 1920 Summer Olympics fight in?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: War in which Albert I fought becomes war in which the Olympics-host country fought; ruler and country participation are not interchangeable.
+
+退步 #28 | musique:3hop1__35466_72872_59284 | musique
+Where did the country who won the 2014 event, that the FIFA Considerations Cups is usually considered a warm-up for, finish in the 2006 World Cup?
+T02: ["What event is the FIFA Considerations Cup usually considered a warm-up for?","What country won the 2014 event the FIFA Considerations Cup is usually considered a warm-up for?"]
+完整重训: ["What event is the FIFA Considerations Cups usually considered a warm-up for?","What country won the event the FIFA Considerations Cups is usually considered a warm-up for?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Still omits2014 from event winner description, matching previous model judgments.
+
+退步 #55 | musique:3hop2__42187_9998_46960 | musique
+Which explorer accurately mapped the coasts of Germany's central interest and the name under which WINEP bundles the countries of northwest Africa?
+T02: ["What is Germany's central interest?","What countries make up northwest Africa?","What is WINEP's bundle of the countries of northwest Africa?"]
+完整重训: ["What is Germany's central interest?","What countries are in northwest Africa?","What name does WINEP bundle for the countries in northwest Africa?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: WINEP bundling countries under a name becomes WINEP bundling a name for countries. Intended grouping label may be recoverable, but explicit object/relation is ambiguous; uncertainty retained as nonpass.
+
+退步 #102 | hotpotqa:5a8f05b1554299458435d517 | hotpotqa
+William Pery served as Captain of the Yeomen of the Guard under the lord who served in what position from 1865 to 1868?
+T02: ["Under which lord did William Pery serve as Captain of the Yeomen of the Guard?"]
+完整重训: ["Under whose lord did William Pery serve as Captain of the Yeomen of the Guard?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Under which lord becomes under whose lord, adding an owner-of-lord relation not stated in the original.
+
+退步 #108 | hotpotqa:5ab600fb554299488d4d9a82 | hotpotqa
+Under Which Stanmore born prime minister was John Gorton a serving minister? 
+T02: ["Which prime ministers were born in Stanmore?","In which prime ministers' administrations was John Gorton a serving minister?"]
+完整重训: ["Who was John Gorton a serving minister of?","Who was born in Stanmore?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Both items drop the specified prime-minister type; who was born in Stanmore asks an unbounded person set rather than the prime-minister operand.
+
+退步 #113 | musique:2hop__482554_3315 | musique
+For how many seasons was the performer of Never Too Far a judge on American Idol?
+T02: ["Who performs Never Too Far?"]
+完整重训: ["Who is the performer of Never Too Far?","For how many seasons was the performer of Never Too Far a judge on American Idol?"]
+T02理由: Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+完整重训理由: Repeats original season-count target after identifying performer, rather than asking for the seasons to support counting.

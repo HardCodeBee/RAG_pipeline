@@ -1,0 +1,40 @@
+{
+  "utc": "2026-10-17T09:51:10.722948+00:00",
+  "change": "request-level historical origin retained; new question_request_origin records bind each original question separately",
+  "source": "experiments\\query_decomposition\\baseline_origin_binding_fix_20261017.py",
+  "source_sha256": "f3ece96290569b31e0ff79e97e6271ca5f1af893dc59d75e21db452c9801db08",
+  "validation": {
+    "utc": "2026-10-17T09:49:53.413943+00:00",
+    "passed": true,
+    "checks": {
+      "actual_shared_request_replay_all_question_bindings_idempotent": true,
+      "old_origin_and_response_preserved_no_api_attempts": true,
+      "different_source_or_mode_remains_blocked": true,
+      "other_immutable_records_remain_strict": true,
+      "actual_transport_replay_keeps_each_question_tokens_and_evidence": true,
+      "source_catalog_still_confined_to_method_question_stage_payload": true
+    },
+    "actual_conflict_request": "a2a7d5416b2243e51f6b191798f0e0d07f2be694e9741ec1d1ee6c1e811e250a",
+    "same_request_question_bindings": [
+      [
+        "e166d3380bdb11eba7f7acde48001122",
+        "handler_2_1"
+      ],
+      [
+        "7b3f24c80bdd11eba7f7acde48001122",
+        "handler_2_1"
+      ],
+      [
+        "5a2fe7100bdb11eba7f7acde48001122",
+        "handler_2_1"
+      ]
+    ],
+    "api_calls": 0,
+    "source_sha256": "f3ece96290569b31e0ff79e97e6271ca5f1af893dc59d75e21db452c9801db08",
+    "frozen_v2_config_sha256": "e77b07da0e558e35f290187ead6c10c8cda8b451f89416e6afb56e2c4b33730b"
+  },
+  "generation_conditions_changed": false,
+  "sample_prompt_retrieval_budget_changed": false,
+  "original_results_or_freezes_overwritten": false,
+  "applies_to": "historical origin reuse inside the same method only; all other immutable writes remain strict"
+}

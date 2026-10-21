@@ -1,0 +1,1045 @@
+B0第二轮通用策略优化：进度、同题比较及逐条观察
+
+本报告只读已有结果，不提交API或检索，不修改任何冻结文件。
+本轮是已使用300题上的开发筛选；pilot100是其中的固定子集，不是新留出集。
+所有候选以冻结g01（B0+P1+goal一致性）为父对照；保留原B0/S02。
+g02：只替换goal约定；p02：只增加中间结果/goal候选角色标题（无普通节点时只加goal标题）；s03：g01上叠加既有f01最终检查。
+
+最近调度进度：{"utc": "2026-10-19T22:35:42.719377+00:00", "phase": "extension200", "arm": "s03_g01_plus_f01", "done": 200, "planned": 200, "latest": {"id": "2wiki:d9c801f4088b11ebbd6fac1f6bf848b6", "arm": "s03_g01_plus_f01", "status": "success", "prediction": "Young Medardus", "reason": null}}
+
+父版完整300题F1：69.37194%；原B0：67.36469%。
+
+版本	可计分题数	同题F1	同题g01父F1	差值百分点	升/平/降	先导完成/100	扩展判定
+g02_evidence_goal	100	65.79716	67.47899	-1.68183	3/91/6	100/100	False
+  状态：{"unstarted": 200, "success": 100}
+  hotpotqa：n=33，F1=78.39585%，相对同题父版=-1.84946个百分点。
+  2wiki：n=33，F1=91.96063%，相对同题父版=-1.30536个百分点。
+  musique：n=34，F1=28.17505%，相对同题父版=-1.88453个百分点。
+p02_role_headers	300	70.72417	69.37194	1.35223	9/285/6	100/100	True
+  状态：{"success": 300}
+  hotpotqa：n=100，F1=78.99084%，相对同题父版=1.27576个百分点。
+  2wiki：n=100，F1=93.34739%，相对同题父版=1.51961个百分点。
+  musique：n=100，F1=39.83430%，相对同题父版=1.26134个百分点。
+s03_g01_plus_f01	300	69.71571	69.37194	0.34377	4/291/5	100/100	True
+  状态：{"success": 300}
+  hotpotqa：n=100，F1=77.79084%，相对同题父版=0.07576个百分点。
+  2wiki：n=100，F1=92.82778%，相对同题父版=1.00000个百分点。
+  musique：n=100，F1=38.52852%，相对同题父版=-0.04444个百分点。
+
+完整300题、先导100题及进行中的部分样本分母不同，不能跨行仅按均分排列。只有完整300题候选可参加本轮开发选择。
+
+冻结开发选择：{"selected": "p02_role_headers", "F1": 0.7072417314845074, "scope": "Exposed300 development selection", "B0_and_S02_unchanged": true, "not_independent_confirmation": true}
+
+费用（按namespace分开，避免混入新题父版）：
+旧300候选：新增已知¥1.110647，未核销预留¥0.000000，提交541次。
+新dev90各组：新增已知¥0.440707，未核销预留¥0.006626，提交311次。
+同family其他支出：新增已知¥0.000000，未核销预留¥0.000000，提交0次。
+以上family合计：已知¥1.551354，预留¥0.006626，提交852次。
+累计占用¥217.086078/300（已知¥181.697053+预留¥35.389025）。
+这是本轮增量调用费用，不是重算整个RAG方法的独立运行费用；共享总账可能同时包含其他已授权任务。
+
+冻结FINAL_RESULTS中的budget快照保留原样；其new_*按family统计，可能已包含当时fresh_dev90在途，不能直接称为仅旧300候选开销。
+
+源及回放审计：
+代码pins全部一致：True；运行输入/来源表/先导ID哈希全部一致：True；1200个冻结轨迹源哈希错误数：0。
+此前只读重建审计：{"identical_ordinary_nodes": 300, "ancestor_source_resolves_to_P1_with_B0_nodes": 300, "rebuilt_parent_final_exact": 300, "actual_parent_final_receipt_payload_exact": 300, "original_retrieval_from_original_B0_source": 300, "g02_only_replaces_goal_rule": 300, "p02_only_adds_two_role_headers": 300, "s03_only_adds_existing_final_check": 300, "successful_cached_payload_hash_verified": 2674, "all_cases_passed": 300}
+使用审计版本：OFFLINE_AUDIT.v002.json；其执行源码快照与当前冻结代码一致：True。
+执行前补充依赖pins的旧快照v001另行完整保留；v002已在当前冻结执行码上重建审计通过，不属于实验执行后的源码漂移。
+
+变化观察：
+记录所有最终答案或goal文本变化，包括F1持平；未审阅项保持未确定，不自动据F1判定事实正确。
+仅文字/数字拼写变化与受原文支持的事实修复分开统计；原始标准答案/F1不作任何修改。
+F1变化案例已人工记录33/33；其余文本变化仍保留，未完成事实核查则明确未确定。
+审阅状态：{"同一实体的称谓扩展，词面F1下降": 1, "unreviewed": 33, "同一实体的别名表达变化，词面F1上升": 1, "定义表达补全，F1上升但没有新的事实判断": 2, "goal将未找到证据扩大为不存在，最终F1未变": 1, "从标准答案改为缺答；当前缺少完整关系证据": 1, "缺失桥接前提后拒答，损失可用局部答案": 1, "错误确定答案转为缺答，F1下降不等于事实恶化": 1, "同义改写，词面F1上升": 1, "正确实体附加受支持地点，词面F1下降": 1, "goal中事实错误得到修正，最终答案和F1未变": 1, "同一节目名称增加受支持限定，词面F1下降": 3, "与原文冲突的goal事实仍保留，最终F1持平0": 1, "最终对象和条件改变，F1仍为0": 1, "时间粒度缩短命中计分别名，不证明事件时间修复": 1, "错误确定零值转为缺答，F1下降不等于事实恶化": 1, "同一未匹配目标人物的姓名扩展，F1持平0": 2, "同一名单去除连接词，词面F1上升": 1, "同一地点去除街道地址，短答案匹配改善": 3, "同一地点去除别名，短答案匹配改善": 1, "同一实体去除多余别名，短答案匹配改善": 2, "依据相同事实修正整体比较，真实组合修复": 2, "同一错误否定的措辞扩展，F1下降": 1, "相同地点关系扩为整句，词面F1下降": 1, "相同职业列表去连接词，词面F1下降": 2, "从缺证据的绝对否定转为缺答，F1持平0": 1, "压缩删除原题所求关系细节，答案信息损失": 1, "错误确定答案转为缺答，F1持平0": 2, "最终回答对象/类型修复": 2, "复制错误goal扩大角色集合，事实性回退": 1, "相同错误否定改为明确整句，F1持平0": 1, "同一数值改为阿拉伯数字，纯词面F1下降": 1, "省略问题已限定的计数单位，词面F1下降": 1}
+
+1. g02_evidence_goal | hotpotqa:5a84ad3a5542992a431d1a8b | pilot=True
+Query: What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+F1：1.000000 -> 0.000000；差值-100.000000个百分点。
+标准答案：Back to December
+父版最终：Back to December
+候选最终：None
+父版goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+候选goal：None of the retrieved passages identify a notable work by French music video director Yoann Lemoine that features an apology and plea for forgiveness.
+事实/文字审阅分类：从标准答案改为缺答；当前缺少完整关系证据
+观察：父版Back to December匹配标准答案，候选改为None。原Top1只列出Lemoine执导作品中包含该歌，未在实际返回材料中找到该作品表达致歉/祈求原谅的关系。更保守拒答损失F1，但不能把它直接称为丢弃已有完整支持的答案。
+原文依据：原Top1《Yoann Lemoine》：notable works include ... Taylor Swift’s single Back to December；该片段不解释致歉含义。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a84ad3a5542992a431d1a8b.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a84ad3a5542992a431d1a8b.json
+
+2. g02_evidence_goal | hotpotqa:5ae0a48155429945ae9593df | pilot=True
+Query: The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+F1：0.000000 -> 0.461538；差值+46.153846个百分点。
+标准答案：amount charged by a bookmaker
+父版最终：fee or commission
+候选最终：the fee or commission charged by a bookmaker for accepting a bet
+父版goal：Vigorish refers to the fee or commission charged by a bookmaker on a bet.
+候选goal：Vigorish refers to the fee or commission charged by a bookmaker for accepting a bet.
+事实/文字审阅分类：定义表达补全，F1上升但没有新的事实判断
+观察：父版fee or commission和候选均表达vigorish的手续费含义。候选补bookmaker/accepting a bet，贴近标准答案用词。不是错误对象被修复。
+原文依据：原Top2《Vigorish》：the amount charged by a bookmaker ... for taking a bet from a gambler。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5ae0a48155429945ae9593df.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ae0a48155429945ae9593df.json
+
+3. g02_evidence_goal | musique:4hop1__94201_642284_131926_13165 | pilot=True
+Query: What treaty ceded territory to the US extending west to the body of water by the city where the designer of Southeast Library died?
+F1：0.400000 -> 0.000000；差值-40.000000个百分点。
+标准答案：Treaty of Paris
+父版最终：Adams–Onís Treaty
+候选最终：Cannot be determined
+父版goal：The treaty ceding territory to the US extending west to the Pacific Ocean—the body of water near the city where Ralph Rapson died—cannot be determined, because the city where Ralph Rapson died cannot be determined.
+候选goal：The treaty ceding territory to the US extending west to the Pacific Ocean is the Adams–Onís Treaty, but the body of water by the city where Ralph Rapson died cannot be determined, so the treaty matching that geographic condition cannot be identified.
+事实/文字审阅分类：错误确定答案转为缺答，F1下降不等于事实恶化
+观察：父版Adams–Onís Treaty并非标准Treaty of Paris，却因共同Treaty词得到0.4。前置死亡城市和河流均未知。候选承认无法确定，是更保守的结果；不能把0.4到0解释为把正确条约答错。
+原文依据：原Top1《Adams–Onís Treaty》谈Pacific Ocean；原Top7《Military history of the United States》谈Treaty of Paris和Mississippi River。
+原文依据：冻结前置回答：Ralph Rapson死亡城市、该城市附近水域均不能确定。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop1__94201_642284_131926_13165.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__94201_642284_131926_13165.json
+
+4. g02_evidence_goal | musique:3hop1__109422_720914_27537 | pilot=True
+Query: Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+F1：0.296296 -> 0.000000；差值-29.629630个百分点。
+标准答案：for the conclave in Rome
+父版最终：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+候选最终：Cannot be determined
+父版goal：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+候选goal：The reason Roncalli left the place of death of Titian, the creator of *The Punishment of Tythus*, cannot be determined from these passages.
+事实/文字审阅分类：缺失桥接前提后拒答，损失可用局部答案
+观察：前置子回答未证实Titian死亡地点；原Top1已直接说明Roncalli离开Venice是赴罗马秘密会议。g02因完整链有缺口拒答，最终也放弃已有局部原因。不能称整条证据链已完整，也不能把该损失全归于检索不含最终原因。
+原文依据：原Top1《Pope John XXIII》：Roncalli left Venice for the conclave in Rome well aware that he was papabile。
+原文依据：原Top2《The Punishment of Tythus》只说明作者Titian；前置回答仍未知其死亡地点。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\3hop1__109422_720914_27537.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__109422_720914_27537.json
+
+5. g02_evidence_goal | 2wiki:cdb8b7540bd911eba7f7acde48001122 | pilot=True
+Query: Where was the place of burial of the director of film Broadway Bad?
+F1：1.000000 -> 0.769231；差值-23.076923个百分点。
+标准答案：Westwood Village Memorial Park Cemetery
+父版最终：Westwood Village Memorial Park Cemetery
+候选最终：Westwood Village Memorial Park Cemetery in Los Angeles
+父版goal：Sidney Lanfield, the director of the film *Broadway Bad*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.
+候选goal：Sidney Lanfield is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.
+事实/文字审阅分类：正确实体附加受支持地点，词面F1下降
+观察：墓地名称相同，候选附加in Los Angeles。该地点有原文支持，不能算事实错误；额外地点降低F1。
+原文依据：goal Top2《Sidney Lanfield》：He is interred in the Westwood Village Memorial Park Cemetery in Los Angeles。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\cdb8b7540bd911eba7f7acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\cdb8b7540bd911eba7f7acde48001122.json
+
+6. g02_evidence_goal | 2wiki:6d2f94300bb011ebab90acde48001122 | pilot=True
+Query: Who is the stepfather of Peter Phillips?
+F1：1.000000 -> 0.800000；差值-20.000000个百分点。
+标准答案：Timothy Laurence
+父版最终：Timothy Laurence
+候选最终：Sir Timothy Laurence
+父版goal：Peter Phillips’s stepfather is Timothy Laurence, who married his mother Anne, Princess Royal, in 1992.
+候选goal：Peter Phillips’s stepfather is Sir Timothy Laurence, who married his mother Anne, Princess Royal, in 1992 after her divorce from Captain Mark Phillips.
+事实/文字审阅分类：同一实体的称谓扩展，词面F1下降
+观察：Timothy Laurence变为Sir Timothy Laurence，被识别的人没有改变。此次F1下降来自多出的称谓；没有从返回片段确认Sir本身，不能据此宣称新增称谓有证据或身份事实恶化。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\6d2f94300bb011ebab90acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\6d2f94300bb011ebab90acde48001122.json
+
+7. g02_evidence_goal | hotpotqa:5a72a9ac5542991f9a20c55f | pilot=True
+Query: Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+F1：1.000000 -> 0.909091；差值-9.090909个百分点。
+标准答案：the fourth hour of the TODAY Show
+父版最终：The fourth hour of the TODAY Show
+候选最终：The fourth hour of NBC's "Today Show"
+父版goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+候选goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb was produced by Brian Balthazar.
+事实/文字审阅分类：同一节目名称增加受支持限定，词面F1下降
+观察：两版均指Today Show第四小时。加NBC未改变节目，原文支持；不是组合或检索事实恶化。
+原文依据：原《Hoda Kotb》和《Brian Balthazar》均将NBC、Today Show第四小时及Hoda Kotb连接。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a72a9ac5542991f9a20c55f.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a72a9ac5542991f9a20c55f.json
+
+8. g02_evidence_goal | musique:2hop__789565_416401 | pilot=True
+Query: Who is the child of Empress Dowager Huang's child?
+F1：0.444444 -> 0.500000；差值+5.555556个百分点。
+标准答案：Wang Jipeng
+父版最终：Wang Jipeng (also known as Wang Chang)
+候选最终：Wang Jipeng (Emperor Kangzong of Min)
+父版goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+候选goal：Wang Jipeng (Emperor Kangzong of Min) was the child of Wang Yanjun, Empress Dowager Huang’s child.
+事实/文字审阅分类：同一实体的别名表达变化，词面F1上升
+观察：两版均指王继鹏。用Emperor Kangzong of Min替代also known as Wang Chang改变冗余词数量，未修复新的亲属事实。
+原文依据：goal检索《Wang Jipeng》：used the name Wang Chang ... formally Emperor Kangzong of Min；其父为Wang Yanjun。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\2hop__789565_416401.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__789565_416401.json
+
+9. g02_evidence_goal | hotpotqa:5abec66b5542997ec76fd360 | pilot=True
+Query: What do Josef Veltjens and Hermann Goering have in common?
+F1：0.380952 -> 0.400000；差值+1.904762个百分点。
+标准答案：A veteran World War I fighter pilot ace
+父版最终：Both were German World War I fighter aces and recipients of the Pour le Mérite.
+候选最终：Both were German World War I fighter aces who received the Pour le Mérite.
+父版goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+候选goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces who received the Pour le Mérite.
+事实/文字审阅分类：同义改写，词面F1上升
+观察：and recipients of改为who received，仍为同一组共同事实。两版共同的一战飞行王牌和勋章陈述均有原文支持，没有新的组合事实修复。
+原文依据：原Top1《Josef Veltjens》及Top2《Hermann Göring》均描述World War I fighter ace及Pour le Mérite。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5abec66b5542997ec76fd360.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5abec66b5542997ec76fd360.json
+
+10. g02_evidence_goal | 2wiki:0d118fb00bdb11eba7f7acde48001122 | pilot=True
+Query: Where was the place of burial of the director of film Station West?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Westwood Village Memorial Park Cemetery
+父版最终：Westwood Village Memorial Park Cemetery
+候选最终：Westwood Village Memorial Park Cemetery
+父版goal：Sidney Lanfield, the director of the film *Station West*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.
+候选goal：Sidney Lanfield is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\0d118fb00bdb11eba7f7acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\0d118fb00bdb11eba7f7acde48001122.json
+
+11. g02_evidence_goal | 2wiki:4759b57e0bb011ebab90acde48001122 | pilot=True
+Query: Who is John Fitzgerald, 4Th Earl Of Desmond's uncle?
+F1：0.666667 -> 0.666667；差值+0.000000个百分点。
+标准答案：Maurice FitzGerald, 2nd Earl of Desmond
+父版最终：James FitzGerald, 6th Earl of Desmond
+候选最终：James FitzGerald, 6th Earl of Desmond
+父版goal：John Fitzgerald, 4th Earl of Desmond's uncle was James FitzGerald, 6th Earl of Desmond.
+候选goal：John Fitzgerald, 4th Earl of Desmond's paternal uncle was James FitzGerald, 6th Earl of Desmond.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\4759b57e0bb011ebab90acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\4759b57e0bb011ebab90acde48001122.json
+
+12. g02_evidence_goal | 2wiki:604119f2088011ebbd6cac1f6bf848b6 | pilot=True
+Query: Which film has the director who was born earlier, Sleepers East or The Other Side Of Sunday?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Sleepers East
+父版最终：Sleepers East
+候选最终：Sleepers East
+父版goal：Sleepers East has the director who was born earlier, as Kenneth MacKenna was born on August 19, 1989, and Berit Nesheim was born on January 28, 1945.
+候选goal：Sleepers East has the director who was born earlier, as Kenneth MacKenna was born on August 19, 1899, and Berit Nesheim was born on January 28, 1945.
+事实/文字审阅分类：goal中事实错误得到修正，最终答案和F1未变
+观察：父goal把Kenneth MacKenna出生年误写1989，却仍选择Sleepers East。候选改为原文1899，修正了比较前提；两版最终都为Sleepers East，因此F1不反映这项事实修复。
+原文依据：实际reader_packet《Kenneth MacKenna》：August 19, 1899 – January 15, 1962。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\604119f2088011ebbd6cac1f6bf848b6.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\604119f2088011ebbd6cac1f6bf848b6.json
+
+13. g02_evidence_goal | 2wiki:83f013aa0bda11eba7f7acde48001122 | pilot=True
+Query: Where did Christina Piper's husband die?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Schlüsselburg
+父版最终：Schlüsselburg
+候选最终：Schlüsselburg
+父版goal：Carl Piper died in Schlüsselburg.
+候选goal：Christina Piper's husband, Carl Piper, died in Schlüsselburg.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\83f013aa0bda11eba7f7acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\83f013aa0bda11eba7f7acde48001122.json
+
+14. g02_evidence_goal | 2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6 | pilot=True
+Query: Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：yes
+父版最终：Yes
+候选最终：Yes
+父版goal：Mavrolithari is located in Phocis, Greece, not Evros, while Ampelakia, Evros is located in Greece; therefore, both villages are in the same country—Greece—but Mavrolithari is not in Evros.
+候选goal：Mavrolithari is in Phocis, Greece, not Evros, while Ampelakia is in Evros, Greece; thus, both villages are in Greece, but Mavrolithari is not in Evros.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\8ba63ce8098f11ebbdb0ac1f6bf848b6.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\8ba63ce8098f11ebbdb0ac1f6bf848b6.json
+
+15. g02_evidence_goal | 2wiki:93acf0b9088511ebbd6dac1f6bf848b6 | pilot=True
+Query: Who was born first, Jörn Lenz or Alejandro Romualdo?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Alejandro Romualdo
+父版最终：Alejandro Romualdo
+候选最终：Alejandro Romualdo
+父版goal：Alejandro Romualdo was born first, on December 19, 1926, before Jörn Lenz, who was born on April 12, 1969.
+候选goal：Alejandro Romualdo was born first.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\2wiki\g02_evidence_goal\93acf0b9088511ebbd6dac1f6bf848b6.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\93acf0b9088511ebbd6dac1f6bf848b6.json
+
+16. g02_evidence_goal | hotpotqa:5a70f9335542994082a3e46a | pilot=True
+Query: Which magazine is published more in a year, Essence or Alt for Damerne?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：ALT for Damerne
+父版最终：Alt for Damerne
+候选最终：Alt for Damerne
+父版goal：Alt for Damerne is published more in a year than Essence, as Alt for Damerne is published weekly (52 issues per year) and Essence is published monthly (12 issues per year).
+候选goal：Alt for Damerne is published more in a year than Essence, as Alt for Damerne is weekly (52 issues per year) and Essence is monthly (12 issues per year).
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a70f9335542994082a3e46a.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a70f9335542994082a3e46a.json
+
+17. g02_evidence_goal | hotpotqa:5a7607b6554299109176e619 | pilot=True
+Query: What is the name of the man who was partners with the electrical engineer that was awarded the Nobel Prize in Physics in December 2000?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Robert Noyce
+父版最终：Robert Noyce
+候选最终：Robert Noyce
+父版goal：Robert Noyce was a partner with Jack Kilby, the electrical engineer awarded the Nobel Prize in Physics in December 2000.
+候选goal：Robert Noyce was partners with Jack Kilby, the electrical engineer awarded the Nobel Prize in Physics in December 2000.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a7607b6554299109176e619.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a7607b6554299109176e619.json
+
+18. g02_evidence_goal | hotpotqa:5a7b59115542995eb53be923 | pilot=True
+Query:  What team does the oldest son play for, from the family whose middle son plays for the Chicago Bulls and the mother and father and third son all played basketball.
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Finland national football team
+父版最终：University of Central Florida Knights and the University of Illinois Fighting Illini
+候选最终：University of Central Florida Knights and the University of Illinois Fighting Illini
+父版goal：Jeffrey Jordan, the oldest son, played for the University of Central Florida Knights and the University of Illinois Fighting Illini, not the Chicago Bulls.
+候选goal：Jeffrey Jordan, the oldest son, played for the University of Central Florida Knights and the University of Illinois Fighting Illini, not for the Chicago Bulls.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a7b59115542995eb53be923.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a7b59115542995eb53be923.json
+
+19. g02_evidence_goal | hotpotqa:5a7fd95d5542992e7d278dc5 | pilot=True
+Query: Wagner Moura received what nomination for playing the lead role of "The King of Cocaine"? 
+F1：0.800000 -> 0.800000；差值+0.000000个百分点。
+标准答案：Golden Globe
+父版最终：Golden Globe nomination
+候选最终：Golden Globe nomination
+父版goal：Wagner Moura received a Golden Globe nomination for playing the lead role of Pablo Escobar, who was called "The King of Cocaine", in the Netflix series "Narcos".
+候选goal：Wagner Moura received a Golden Globe nomination for playing the lead role of Pablo Escobar, who was called "The King of Cocaine".
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a7fd95d5542992e7d278dc5.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a7fd95d5542992e7d278dc5.json
+
+20. g02_evidence_goal | hotpotqa:5a812cd555429926c1cdacfc | pilot=True
+Query: Which drink is larger, the Apple-Kneel or the Flaming volcano?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：The flaming volcano
+父版最终：Flaming volcano
+候选最终：Flaming volcano
+父版goal：The Flaming volcano is larger than the Apple-Kneel, with a capacity of about 32 US fluid ounces compared to the Apple-Kneel’s 4.5 ounces.
+候选goal：The Flaming volcano is larger than the Apple-Kneel, as it is served in a volcano bowl with a capacity of about 32 US fluid ounces, compared to the Apple-Kneel’s volume of 4.5 ounces.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a812cd555429926c1cdacfc.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a812cd555429926c1cdacfc.json
+
+21. g02_evidence_goal | hotpotqa:5a89ec7b5542992e4fca8483 | pilot=True
+Query: A Car-Tune Portrait was released on June 26, 1937, the cartoon gives an imaginative take on which second in a set of works by composer Franz Liszt?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Hungarian Rhapsody No. 2
+父版最终：Hungarian Rhapsody No. 2
+候选最终：Hungarian Rhapsody No. 2
+父版goal：A Car-Tune Portrait gives an imaginative take on Franz Liszt's Hungarian Rhapsody No. 2.
+候选goal：A Car-Tune Portrait gives an imaginative take on Franz Liszt's Hungarian Rhapsody No. 2, the second in his set of 19 Hungarian Rhapsodies.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5a89ec7b5542992e4fca8483.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a89ec7b5542992e4fca8483.json
+
+22. g02_evidence_goal | hotpotqa:5ab9cfb455429970cfb8ebae | pilot=True
+Query: Are Über Goober and American Jobs both documentaries about gaming?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：no
+父版最终：No
+候选最终：No
+父版goal：No, Über Goober is a documentary about gaming, but American Jobs is not.
+候选goal：No, only Über Goober is a documentary about gaming; American Jobs is a documentary about the loss of American jobs to foreign competition.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5ab9cfb455429970cfb8ebae.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ab9cfb455429970cfb8ebae.json
+
+23. g02_evidence_goal | hotpotqa:5adc8b5a5542994d58a2f648 | pilot=True
+Query: Which debut album contained a 1999 mega-hit song created by Maurizio Lobina and Jeffrey Jey?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Europop
+父版最终：Europop
+候选最终：Europop
+父版goal：The debut album that contained the 1999 mega-hit song "Blue (Da Ba Dee)", created by Maurizio Lobina and Jeffrey Jey, is *Europop*.
+候选goal：The debut album that contained the 1999 mega-hit song "Blue (Da Ba Dee)" created by Maurizio Lobina and Jeffrey Jey is *Europop*.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5adc8b5a5542994d58a2f648.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5adc8b5a5542994d58a2f648.json
+
+24. g02_evidence_goal | hotpotqa:5ae2dd2055429928c423950d | pilot=True
+Query: What is the county seat of the county where East Lempster, New Hampshire is located?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Newport
+父版最终：Newport
+候选最终：Newport
+父版goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, cannot be determined from the retrieved passages.
+候选goal：The county seat of Sullivan County, New Hampshire is Newport.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5ae2dd2055429928c423950d.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ae2dd2055429928c423950d.json
+
+25. g02_evidence_goal | hotpotqa:5ae40a2955429970de88d8a3 | pilot=True
+Query: In what Italian region was the House of Grimaldi?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Liguria
+父版最终：Liguria
+候选最终：Liguria
+父版goal：The House of Grimaldi was associated with the Liguria region of Italy, as it originated in and ruled the Republic of Genoa.
+候选goal：The House of Grimaldi was associated with the Republic of Genoa in the Liguria region of Italy.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\hotpotqa\g02_evidence_goal\5ae40a2955429970de88d8a3.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ae40a2955429970de88d8a3.json
+
+26. g02_evidence_goal | musique:2hop__124807_135019 | pilot=True
+Query: Who is the mother of Nephalion's father?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Europa
+父版最终：Europa
+候选最终：Europa
+父版goal：Nephalion's father is Minos, whose mother is Europa.
+候选goal：Nephalion's father is Minos, and Minos's mother is Europa.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\2hop__124807_135019.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__124807_135019.json
+
+27. g02_evidence_goal | musique:2hop__156702_51769 | pilot=True
+Query: What is the life expectancy of the type of retriever named after the body of water the Patuxent River turns into?
+F1：0.285714 -> 0.285714；差值+0.000000个百分点。
+标准答案：average lifespan at 9.4 years
+父版最终：10.75 years
+候选最终：10.75 years
+父版goal：The Chesapeake Bay Retriever has a median lifespan of 10.75 years and an average lifespan of 9.4 to 9.85 years.
+候选goal：The Chesapeake Bay Retriever has a median lifespan of 10.75 years and an average lifespan of 9.4 years.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\2hop__156702_51769.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__156702_51769.json
+
+28. g02_evidence_goal | musique:2hop__80834_21969 | pilot=True
+Query: When was the person who was the first viceroy of the British Empire in India impeached?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1786
+父版最终：1787
+候选最终：1787
+父版goal：Warren Hastings, who was the first Governor-General of British India but not the first viceroy (as the viceroyalty was created in 1858), was impeached in 1787 and the impeachment proceedings lasted from 1788 to 1795.
+候选goal：Warren Hastings was impeached in 1787.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\2hop__80834_21969.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__80834_21969.json
+
+29. g02_evidence_goal | musique:3hop1__228_237521_291682 | pilot=True
+Query: Who is the wife of the man who produced the documentary of the pop star who influenced Beyonce?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Liza Minnelli
+父版最终：Liza Minnelli
+候选最终：Liza Minnelli
+父版goal：Liza Minnelli is the wife of David Gest.
+候选goal：Liza Minnelli is the wife of David Gest, who produced the documentary of the pop star who influenced Beyoncé.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\3hop1__228_237521_291682.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__228_237521_291682.json
+
+30. g02_evidence_goal | musique:3hop2__326964_265410_7713 | pilot=True
+Query: How long had Anhua Gao's birthplace been the capitol city of Yaxing Coach's headquarters location?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：about 400 years
+父版最终：Zero
+候选最终：Nanjing had never been the capital city of Yangzhou, so it had not been the capital city of Yaxing Coach's headquarters location for any duration.
+父版goal：Nanjing had never been the capital city of Yangzhou, so the duration is zero.
+候选goal：Nanjing had never been the capital city of Yangzhou, so it had not been the capital city of Yaxing Coach's headquarters location for any duration.
+事实/文字审阅分类：与原文冲突的goal事实仍保留，最终F1持平0
+观察：父版Zero和候选长句均声称南京从未为Yangzhou首府。实际已读原文写about400years。新版规则没有修复古今地名关系误读，只是改变了错误结论的表达。
+原文依据：实际reader_packet《Nanjing》：had been the capital city of Yangzhou for about 400 years from late Han to early Tang。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\3hop2__326964_265410_7713.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__326964_265410_7713.json
+
+31. g02_evidence_goal | musique:3hop2__368986_89048_66294 | pilot=True
+Query: Who played who sang is she really going out with him in the performer of Anthology movie?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Lawrence Hilton - Jacobs
+父版最终：Cannot be determined
+候选最终：Cannot be determined
+父版goal：Michael Jackson performed the album *Anthology*, but Joe Jackson sang “Is She Really Going Out with Him?”, and no retrieved passage states that anyone played Joe Jackson in a movie titled *Anthology*.
+候选goal：No movie titled "Anthology" exists; Anthology is a Michael Jackson music album, not a film, so there is no performer of an "Anthology movie" in which someone played the role of Joe Jackson.
+事实/文字审阅分类：goal将未找到证据扩大为不存在，最终F1未变
+观察：父goal只说没有检索片段说明某人扮演Joe Jackson。候选却断言No movie titled Anthology exists。返回的同名专辑材料不能证明世界上不存在同名电影，属于无依据的全称否定；最终仍为Cannot be determined、F1为0，掩盖该中间结果风险。
+原文依据：实际reader_packet《Anthology (Michael Jackson album)》仅定义该专辑，没有给出不存在同名电影的穷尽性证据。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\3hop2__368986_89048_66294.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__368986_89048_66294.json
+
+32. g02_evidence_goal | musique:4hop1__344155_378185_282674_759393 | pilot=True
+Query: What is the seat of the county sharing a border with the county with a town to which KRSU is licensed to broadcast?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Green Bay
+父版最终：Cannot be determined
+候选最终：Cannot be determined
+父版goal：The seat of the county sharing a border with Swift County, Minnesota cannot be determined from these passages.
+候选goal：The seat of the county sharing a border with Swift County, Minnesota cannot be determined.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop1__344155_378185_282674_759393.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__344155_378185_282674_759393.json
+
+33. g02_evidence_goal | musique:4hop1__40316_497223_15840_36002 | pilot=True
+Query: What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?
+F1：0.111111 -> 0.111111；差值+0.000000个百分点。
+标准答案：built on 16-bit architectures and offered improved graphics and sound
+父版最终：Stronger third-party support and less strict licensing terms
+候选最终：Stronger third-party support and less strict licensing terms
+父版goal：The Sega Genesis had stronger third-party support and less strict licensing terms compared to the Nintendo Entertainment System (NES), which featured NFL Football.
+候选goal：The Sega Genesis had stronger third-party support and less strict licensing terms than the Nintendo Entertainment System (NES).
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop1__40316_497223_15840_36002.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__40316_497223_15840_36002.json
+
+34. g02_evidence_goal | musique:4hop1__443274_17130_70784_61381 | pilot=True
+Query: When was the region that lies to the north of the country where Sar-El is located and the Persian Gulf established?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1932
+父版最终：1979
+候选最终：22 November 1943
+父版goal：The region that lies to the north of Israel and borders the Persian Gulf is Iran, which was established as the Islamic Republic of Iran in 1979.
+候选goal：The region that lies to the north of Israel is Lebanon, and Lebanon was established as an independent republic on 22 November 1943.
+事实/文字审阅分类：最终对象和条件改变，F1仍为0
+观察：Iran/1979改成Lebanon/22 November1943；这不是词面变化。候选只沿Israel北邻取Lebanon，未满足原query的Persian Gulf关联。原题本身存在复杂地理指代，当前变化不能认定为正确修复。
+原文依据：实际《Israel》写Lebanon to the north；该局部关系不足以满足原query全部条件。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop1__443274_17130_70784_61381.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__443274_17130_70784_61381.json
+
+35. g02_evidence_goal | musique:4hop1__690653_378185_282674_759393 | pilot=True
+Query: What is the capital of the county, that shares a border with the other county, that includes the city where Main Hall is located?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Green Bay
+父版最终：Cannot be determined
+候选最终：Cannot be determined
+父版goal：The capital of the county that shares a border with Outagamie County, Wisconsin cannot be determined from these passages.
+候选goal：The capital of the county that shares a border with Outagamie County cannot be determined, as the counties bordering Outagamie County are not identified in the retrieved passages.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop1__690653_378185_282674_759393.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__690653_378185_282674_759393.json
+
+36. g02_evidence_goal | musique:4hop2__71753_261673_70784_61381 | pilot=True
+Query: When was the region that lies to the north of where Israel is located and where Shamal is located established?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1932
+父版最终：1943
+候选最终：1943
+父版goal：Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.
+候选goal：Lebanon, the region lying to the north of Israel (and unrelated to the Shamal wind), was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop2__71753_261673_70784_61381.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop2__71753_261673_70784_61381.json
+
+37. g02_evidence_goal | musique:4hop3__275416_24325_156850_10557 | pilot=True
+Query: Despite being located in East Belgium, the Carnival of the birth place of Guido Maus harks purely to an area. What was the language having the same name as this area of the era with Fastrada's spouse's name later known as?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Medieval Latin
+父版最终：Walloon
+候选最终：Walloon
+父版goal：The language having the same name as the Walloon area and used during Charlemagne’s era was Walloon.
+候选goal：The language having the same name as the Walloon area and used during Charlemagne’s era was not Walloon, as Walloon did not exist as a distinct written language in the 8th–9th century; the vernacular Romance speech in that region at the time was an early form of Old French or Gallo-Romance, while the administrative and liturgical language was Medieval Latin.
+暂定观察：最终答案未变；仅观察goal变化，不推断事实收益
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop3__275416_24325_156850_10557.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop3__275416_24325_156850_10557.json
+
+38. g02_evidence_goal | musique:4hop3__710473_354093_254885_76356 | pilot=True
+Query: Who pushed for a canal crossing across the continent El Valle is located linking the Pacific Ocean and the ocean Sampit River leads to?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Ferdinand de Lesseps
+父版最终：La Société internationale du Canal interocéanique
+候选最终：The French, through La Société internationale du Canal interocéanique
+父版goal：La Société internationale du Canal interocéanique, a French company, pushed for a canal crossing across the continent where El Valle is located (North America) linking the Pacific Ocean and the Atlantic Ocean—but the ocean the Sampit River leads to cannot be determined from the retrieved passages.
+候选goal：The French, through La Société internationale du Canal interocéanique, pushed for a canal crossing across the Isthmus of Panama—located in North America—linking the Pacific Ocean and the Atlantic Ocean.
+暂定观察：答案内容或范围变化；待事实核查，不能将F1变化直接等同事实改善
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_g02_evidence_goal_r001\cases\musique\g02_evidence_goal\4hop3__710473_354093_254885_76356.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop3__710473_354093_254885_76356.json
+
+39. p02_role_headers | 2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6 | pilot=False
+Query: Who lived longer, Friedrich Gogarten or Giangiacomo Feltrinelli?
+F1：0.000000 -> 1.000000；差值+100.000000个百分点。
+标准答案：Friedrich Gogarten
+父版最终：Giangiacomo Feltrinelli
+候选最终：Friedrich Gogarten
+父版goal：Giangiacomo Feltrinelli lived longer than Friedrich Gogarten, as Feltrinelli lived from June 19, 1926, to March 14, 1972 (45 years, 8 months, 24 days), while Gogarten lived from January 13, 1887, to October 16, 1967 (80 years, 9 months, 3 days).
+候选goal：Giangiacomo Feltrinelli lived longer than Friedrich Gogarten, as Feltrinelli lived from June 19, 1926, to March 14, 1972 (45 years, 8 months, 24 days), while Gogarten lived from January 13, 1887, to October 16, 1967 (80 years, 9 months, 3 days).
+事实/文字审阅分类：依据相同事实修正整体比较，真实组合修复
+观察：冻结goal错误声称Feltrinelli活得更久，同句却列其45岁8月、Gogarten80岁9月。父final复制错误赢家，角色标题版改答Gogarten。实际原文的两组生卒日也支持80>45；不是新增检索或别名匹配。
+原文依据：实际《Friedrich Gogarten》：January13,1887–October16,1967。
+原文依据：实际《Giangiacomo Feltrinelli》：19June1926–14March1972。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\2wiki\p02_role_headers\99cf9bb2085a11ebbd5cac1f6bf848b6.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\99cf9bb2085a11ebbd5cac1f6bf848b6.json
+
+40. p02_role_headers | hotpotqa:5ac298805542990b17b15429 | pilot=False
+Query: This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+F1：0.000000 -> 1.000000；差值+100.000000个百分点。
+标准答案：Austral Líneas Aéreas
+父版最终：Yes
+候选最终：Austral Líneas Aéreas
+父版goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+候选goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+事实/文字审阅分类：最终回答对象/类型修复
+观察：冻结goal已经给出Austral Líneas Aéreas。父final回答Yes，候选改为该实体名并匹配标准。没有新增证据，但恢复数据集所求对象；原query表面近似是非句。另须注意原文说Austral是Aerolíneas Argentinas的姊妹公司，而非LAPA，goal仍误绑该关系；不能将实体答对解释为整条链事实正确。
+原文依据：实际《Austral Líneas Aéreas》：the sister company of Aerolíneas Argentinas。
+原文依据：实际《Líneas Aéreas Privadas Argentinas》：LAPA打破Aerolíneas Argentinas及其姊妹Austral控制的市场。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5ac298805542990b17b15429.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ac298805542990b17b15429.json
+
+41. p02_role_headers | musique:2hop__789565_416401 | pilot=True
+Query: Who is the child of Empress Dowager Huang's child?
+F1：0.444444 -> 1.000000；差值+55.555556个百分点。
+标准答案：Wang Jipeng
+父版最终：Wang Jipeng (also known as Wang Chang)
+候选最终：Wang Jipeng
+父版goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+候选goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+事实/文字审阅分类：同一实体去除多余别名，短答案匹配改善
+观察：仍回答Wang Jipeng，只删除括号中的Wang Chang别名，F1从0.4444到1。不属于新事实或新增证据。
+原文依据：冻结goal明确给出Wang Jipeng别名Wang Chang；实际《Wang Jipeng》支持该别名。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\musique\p02_role_headers\2hop__789565_416401.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__789565_416401.json
+
+42. p02_role_headers | 2wiki:f37818400bd911eba7f7acde48001122 | pilot=False
+Query: Where did Elisabeth Magdalena Of Pomerania's husband die?
+F1：0.500000 -> 1.000000；差值+50.000000个百分点。
+标准答案：Mitau
+父版最终：Mitau (now Jelgava)
+候选最终：Mitau
+父版goal：Friedrich Kettler died in Mitau (now Jelgava).
+候选goal：Friedrich Kettler died in Mitau (now Jelgava).
+事实/文字审阅分类：同一地点去除别名，短答案匹配改善
+观察：Mitau(now Jelgava)缩短为Mitau，没有改变死亡地点；未取得新关系事实。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\2wiki\p02_role_headers\f37818400bd911eba7f7acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\f37818400bd911eba7f7acde48001122.json
+
+43. p02_role_headers | hotpotqa:5ae0a48155429945ae9593df | pilot=True
+Query: The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+F1：0.000000 -> 0.500000；差值+50.000000个百分点。
+标准答案：amount charged by a bookmaker
+父版最终：fee or commission
+候选最终：the fee or commission charged by a bookmaker on a bet
+父版goal：Vigorish refers to the fee or commission charged by a bookmaker on a bet.
+候选goal：Vigorish refers to the fee or commission charged by a bookmaker on a bet.
+事实/文字审阅分类：定义表达补全，F1上升但没有新的事实判断
+观察：fee or commission扩展成charged by a bookmaker on a bet，贴近标准答案的关系词；goal和证据未变。
+原文依据：原Top2《Vigorish》明确给出bookmaker向gambler收取赌注费用的定义。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5ae0a48155429945ae9593df.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ae0a48155429945ae9593df.json
+
+44. p02_role_headers | musique:4hop3__373866_5189_38229_86687 | pilot=False
+Query: A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?
+F1：0.500000 -> 1.000000；差值+50.000000个百分点。
+标准答案：May 1990
+父版最终：12 September 1990
+候选最终：1990
+父版goal：The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.
+候选goal：The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.
+事实/文字审阅分类：时间粒度缩短命中计分别名，不证明事件时间修复
+观察：12September1990缩为1990，在原生Mu计分中达到1；标准主答案是May1990。goal仍把问题与9月12日条约混接，因此不能声称修复了月份/事件对应错误。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\4hop3__373866_5189_38229_86687.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop3__373866_5189_38229_86687.json
+
+45. p02_role_headers | musique:3hop1__458916_651917_47686 | pilot=False
+Query: Where do greyhound buses leave from in the birthplace of Spirit If...'s performer?
+F1：0.600000 -> 1.000000；差值+40.000000个百分点。
+标准答案：Toronto Coach Terminal
+父版最终：Toronto Coach Terminal at 610 Bay Street
+候选最终：Toronto Coach Terminal
+父版goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.
+候选goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.
+事实/文字审阅分类：同一地点去除街道地址，短答案匹配改善
+观察：两版均为Toronto Coach Terminal，只去除at610BayStreet。原文支持地址，删除提升词面F1，不属于旧答案地点错误。
+原文依据：实际《Toronto Coach Terminal》：It is located at610BayStreet ... leased ... Coach Canada and Greyhound Canada。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\3hop1__458916_651917_47686.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__458916_651917_47686.json
+
+46. p02_role_headers | musique:3hop1__671542_651917_47686 | pilot=False
+Query: Where do greyhound buses leave from in the city where the performer of Darlings was born?
+F1：0.600000 -> 1.000000；差值+40.000000个百分点。
+标准答案：Toronto Coach Terminal
+父版最终：Toronto Coach Terminal at 610 Bay Street
+候选最终：Toronto Coach Terminal
+父版goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.
+候选goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.
+事实/文字审阅分类：同一地点去除街道地址，短答案匹配改善
+观察：两版均为Toronto Coach Terminal，去掉额外街道地址后匹配标准答案。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\3hop1__671542_651917_47686.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__671542_651917_47686.json
+
+47. p02_role_headers | musique:3hop2__326964_734214_7713 | pilot=False
+Query: How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+F1：0.400000 -> 0.000000；差值-40.000000个百分点。
+标准答案：about 400 years
+父版最终：Zero years
+候选最终：Cannot be determined
+父版goal：Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.
+候选goal：Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.
+事实/文字审阅分类：错误确定零值转为缺答，F1下降不等于事实恶化
+观察：父Zero years并不是标准about400years，只因共享years得0.4。候选改为缺答，未恢复正确历史时长，但也未产生新的错误零值。不能把该下降说成丢失正确答案；与另一Anhua Gao题相比，本题实际packet未检到400years原文。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\3hop2__326964_734214_7713.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__326964_734214_7713.json
+
+48. p02_role_headers | musique:3hop1__857_846_7770 | pilot=True
+Query: Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?
+F1：0.875000 -> 0.736842；差值-13.815789个百分点。
+标准答案：past the west side and then north side
+父版最终：past the west side and then the north side of Nanjing
+候选最终：The Yangtze River flows past the west side and then the north side of Nanjing.
+父版goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+候选goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+事实/文字审阅分类：相同地点关系扩为整句，词面F1下降
+观察：均为长江经过南京西侧后经北侧；候选把主语及flows补回，增加原题未要求重复的词。关系事实未变，短答案压缩退步。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\musique\p02_role_headers\3hop1__857_846_7770.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__857_846_7770.json
+
+49. p02_role_headers | hotpotqa:5a84d2ea5542992a431d1aa8 | pilot=False
+Query: What career titles do Ed Wood and Fernand Rivers share?
+F1：0.800000 -> 0.666667；差值-13.333333个百分点。
+标准答案：actor, writer, producer, and director
+父版最终：actor, film producer, and director
+候选最终：actor, film producer, director
+父版goal：Ed Wood and Fernand Rivers both shared the career titles of actor, film producer, and director.
+候选goal：Ed Wood and Fernand Rivers both shared the career titles of actor, film producer, and director.
+事实/文字审阅分类：相同职业列表去连接词，词面F1下降
+观察：actor、film producer、director均未变，只去掉and。两版同样未包含标准writer；本次F1下降并不说明新增了错误职业事实。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5a84d2ea5542992a431d1aa8.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a84d2ea5542992a431d1aa8.json
+
+50. p02_role_headers | hotpotqa:5a72a9ac5542991f9a20c55f | pilot=True
+Query: Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+F1：1.000000 -> 0.909091；差值-9.090909个百分点。
+标准答案：the fourth hour of the TODAY Show
+父版最终：The fourth hour of the TODAY Show
+候选最终：The fourth hour of NBC's "Today Show"
+父版goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+候选goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+事实/文字审阅分类：同一节目名称增加受支持限定，词面F1下降
+观察：增加NBC称谓，仍指Today Show第四小时；不属于事实错误。
+原文依据：原《Hoda Kotb》和《Brian Balthazar》均支持NBC与该节目第四小时的关系。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5a72a9ac5542991f9a20c55f.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a72a9ac5542991f9a20c55f.json
+
+51. p02_role_headers | musique:2hop__22431_16335 | pilot=False
+Query: Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?
+F1：0.121212 -> 0.083333；差值-3.787879个百分点。
+标准答案：inter-marriage and conversions in the time of the Roman Empire
+父版最终：Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.
+候选最终：Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations
+父版goal：Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.
+候选goal：Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.
+事实/文字审阅分类：压缩删除原题所求关系细节，答案信息损失
+观察：候选删除父回答末尾的maternal lineages及Roman-era intermarriage or conversion，尤其删除了标准要求的通婚和皈依两个因素。留下较宽泛的ancestry/admixture不能完整替代这些具体因素。属于内容压缩损失，不能只算同义词面差异。
+原文依据：实际《Ashkenazi Jews》：genetic-similarity ... may be due to inter-marriage and conversions in the time of the Roman Empire。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\2hop__22431_16335.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__22431_16335.json
+
+52. p02_role_headers | 2wiki:16a91a500bb011ebab90acde48001122 | pilot=True
+Query: Who is the grandchild of Stefan Zamoyski?
+F1：0.333333 -> 0.352941；差值+1.960784个百分点。
+标准答案：Stefan Adam Zamoyski
+父版最终：Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski
+候选最终：Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski
+父版goal：Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.
+候选goal：Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.
+事实/文字审阅分类：同一名单去除连接词，词面F1上升
+观察：五个人名完全不变，只去掉最后and，未改变亲属关系判断。标准答案仅Stefan Adam，返回完整名单仍使F1较低；不能仅凭标准答案判其他四人都是事实错误。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\2wiki\p02_role_headers\16a91a500bb011ebab90acde48001122.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\16a91a500bb011ebab90acde48001122.json
+
+53. p02_role_headers | musique:2hop__289517_139339 | pilot=True
+Query: What was the cast member in After Hours nominated for?
+F1：0.200000 -> 0.181818；差值-1.818182个百分点。
+标准答案：Academy Award for Best Live Action Short Film
+父版最终：No award
+候选最终：No award nomination
+父版goal：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+候选goal：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+事实/文字审阅分类：同一错误否定的措辞扩展，F1下降
+观察：No award改No award nomination，仍沿用goal的未获提名否定，和标准Academy Award for Best Live Action Short Film不一致。goal把识别演员的After Hours额外变成for his role in After Hours的提名范围，原query并未明确该限定。词面部分匹配减少，范围误读未修复。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\musique\p02_role_headers\2hop__289517_139339.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__289517_139339.json
+
+54. p02_role_headers | hotpotqa:5a77c09555429967ab105262 | pilot=False
+Query: What is the species of animal which the town of Antelope, Kansas was named after?
+F1：0.800000 -> 0.800000；差值+0.000000个百分点。
+标准答案：Antilocapra americana
+父版最终：Pronghorn (*Antilocapra americana*)
+候选最终：pronghorn (*Antilocapra americana*)
+父版goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+候选goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5a77c09555429967ab105262.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a77c09555429967ab105262.json
+
+55. p02_role_headers | hotpotqa:5a84ad3a5542992a431d1a8b | pilot=True
+Query: What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Back to December
+父版最终：Back to December
+候选最终："Back to December"
+父版goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+候选goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5a84ad3a5542992a431d1a8b.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a84ad3a5542992a431d1a8b.json
+
+56. p02_role_headers | hotpotqa:5abec66b5542997ec76fd360 | pilot=True
+Query: What do Josef Veltjens and Hermann Goering have in common?
+F1：0.380952 -> 0.380952；差值+0.000000个百分点。
+标准答案：A veteran World War I fighter pilot ace
+父版最终：Both were German World War I fighter aces and recipients of the Pour le Mérite.
+候选最终：Both were German World War I fighter aces and recipients of the Pour le Mérite
+父版goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+候选goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\hotpotqa\p02_role_headers\5abec66b5542997ec76fd360.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5abec66b5542997ec76fd360.json
+
+57. p02_role_headers | musique:2hop__20256_71302 | pilot=False
+Query: In The Godfather, who does the actor producing the Freddie Mercury film play?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Vito Corleone
+父版最终：No actor produced the Freddie Mercury film.
+候选最终：Cannot be determined
+父版goal：No actor produced the Freddie Mercury film, so there is no actor from that film to identify as playing a role in *The Godfather*.
+候选goal：No actor produced the Freddie Mercury film, so there is no actor from that film to identify as playing a role in *The Godfather*.
+事实/文字审阅分类：从缺证据的绝对否定转为缺答，F1持平0
+观察：No actor produced the Freddie Mercury film改为Cannot be determined，不再复制goal的绝对否定；未恢复标准Vito Corleone。仅凭没有取得该身份联系，不能断言不存在这样的演员制片人。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\2hop__20256_71302.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__20256_71302.json
+
+58. p02_role_headers | musique:2hop__562154_69048 | pilot=False
+Query: Who is the Chief Judge in the place where DeltaWomen's headquarters in located?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Honorable Justice Abiodun Smith
+父版最终：Rosaline Bozimo
+候选最终：Rosaline Patricia Irorefe Bozimo
+父版goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+候选goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+事实/文字审阅分类：同一未匹配目标人物的姓名扩展，F1持平0
+观察：Rosaline Bozimo扩为Rosaline Patricia Irorefe Bozimo，仍是同一人物，标准为Honorable Justice Abiodun Smith。本次既未修复人物目标，也不能把姓名变长称为新的事实错误。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\2hop__562154_69048.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__562154_69048.json
+
+59. p02_role_headers | musique:3hop2__132957_595371_40768 | pilot=False
+Query: When did the maker of the Acura Legend, the manufacturer of the Scion xB, and Nissan, open US assembly plants?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1981
+父版最终：early 1980s
+候选最终：Early 1980s
+父版goal：Honda, Toyota, and Nissan opened US assembly plants in the early 1980s.
+候选goal：Honda, Toyota, and Nissan opened US assembly plants in the early 1980s.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_p02_role_headers_r001\cases\musique\p02_role_headers\3hop2__132957_595371_40768.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__132957_595371_40768.json
+
+60. p02_role_headers | musique:3hop2__326964_265410_7713 | pilot=True
+Query: How long had Anhua Gao's birthplace been the capitol city of Yaxing Coach's headquarters location?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：about 400 years
+父版最终：Zero
+候选最终：Cannot be determined
+父版goal：Nanjing had never been the capital city of Yangzhou, so the duration is zero.
+候选goal：Nanjing had never been the capital city of Yangzhou, so the duration is zero.
+事实/文字审阅分类：错误确定答案转为缺答，F1持平0
+观察：父Zero和冻结goal的never结论与已读about400years冲突。候选未采用Zero而改为缺答，但没有恢复正确时长。可以观察到减轻依赖错误goal，不能声称正确解决了问题。
+原文依据：实际reader_packet《Nanjing》明确about400years。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\musique\p02_role_headers\3hop2__326964_265410_7713.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__326964_265410_7713.json
+
+61. p02_role_headers | musique:4hop1__443274_17130_70784_61381 | pilot=True
+Query: When was the region that lies to the north of the country where Sar-El is located and the Persian Gulf established?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1932
+父版最终：1979
+候选最终：Cannot be determined
+父版goal：The region that lies to the north of Israel and borders the Persian Gulf is Iran, which was established as the Islamic Republic of Iran in 1979.
+候选goal：The region that lies to the north of Israel and borders the Persian Gulf is Iran, which was established as the Islamic Republic of Iran in 1979.
+事实/文字审阅分类：错误确定答案转为缺答，F1持平0
+观察：goal仍为Iran/1979，候选最终改为Cannot be determined。说明角色标题条件下最终答案未强制复制goal，但没有恢复标准1932，不能算事实答对。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_p02_role_headers_r001\cases\musique\p02_role_headers\4hop1__443274_17130_70784_61381.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\4hop1__443274_17130_70784_61381.json
+
+62. s03_g01_plus_f01 | 2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6 | pilot=False
+Query: Who lived longer, Friedrich Gogarten or Giangiacomo Feltrinelli?
+F1：0.000000 -> 1.000000；差值+100.000000个百分点。
+标准答案：Friedrich Gogarten
+父版最终：Giangiacomo Feltrinelli
+候选最终：Friedrich Gogarten
+父版goal：Giangiacomo Feltrinelli lived longer than Friedrich Gogarten, as Feltrinelli lived from June 19, 1926, to March 14, 1972 (45 years, 8 months, 24 days), while Gogarten lived from January 13, 1887, to October 16, 1967 (80 years, 9 months, 3 days).
+候选goal：Giangiacomo Feltrinelli lived longer than Friedrich Gogarten, as Feltrinelli lived from June 19, 1926, to March 14, 1972 (45 years, 8 months, 24 days), while Gogarten lived from January 13, 1887, to October 16, 1967 (80 years, 9 months, 3 days).
+事实/文字审阅分类：依据相同事实修正整体比较，真实组合修复
+观察：冻结goal错误声称Feltrinelli活得更久，同句却列其45岁8月、Gogarten80岁9月。父final复制错误赢家，角色标题版改答Gogarten。实际原文的两组生卒日也支持80>45；不是新增检索或别名匹配。
+原文依据：实际《Friedrich Gogarten》：January13,1887–October16,1967。
+原文依据：实际《Giangiacomo Feltrinelli》：19June1926–14March1972。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\2wiki\s03_g01_plus_f01\99cf9bb2085a11ebbd5cac1f6bf848b6.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\2wiki\g01_goal_consistency\99cf9bb2085a11ebbd5cac1f6bf848b6.json
+
+63. s03_g01_plus_f01 | hotpotqa:5ac298805542990b17b15429 | pilot=False
+Query: This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+F1：0.000000 -> 1.000000；差值+100.000000个百分点。
+标准答案：Austral Líneas Aéreas
+父版最终：Yes
+候选最终：Austral Líneas Aéreas
+父版goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+候选goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+事实/文字审阅分类：最终回答对象/类型修复
+观察：冻结goal已经给出Austral Líneas Aéreas。父final回答Yes，候选改为该实体名并匹配标准。没有新增证据，但恢复数据集所求对象；原query表面近似是非句。另须注意原文说Austral是Aerolíneas Argentinas的姊妹公司，而非LAPA，goal仍误绑该关系；不能将实体答对解释为整条链事实正确。
+原文依据：实际《Austral Líneas Aéreas》：the sister company of Aerolíneas Argentinas。
+原文依据：实际《Líneas Aéreas Privadas Argentinas》：LAPA打破Aerolíneas Argentinas及其姊妹Austral控制的市场。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5ac298805542990b17b15429.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ac298805542990b17b15429.json
+
+64. s03_g01_plus_f01 | musique:3hop1__68802_89752_49923 | pilot=False
+Query: How many counties are there in the largest state in the region where the film The Family Stone was set?
+F1：1.000000 -> 0.000000；差值-100.000000个百分点。
+标准答案：sixteen
+父版最终：Sixteen
+候选最终：16
+父版goal：Maine has sixteen counties.
+候选goal：Maine has sixteen counties.
+事实/文字审阅分类：同一数值改为阿拉伯数字，纯词面F1下降
+观察：Sixteen改成16，仍为16个县，事实与冻结goal没有改变。原生计分不等价处理该拼写，使F1从1到0；保留原始分数，不事后改标准答案或挑选格式。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\musique\s03_g01_plus_f01\3hop1__68802_89752_49923.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__68802_89752_49923.json
+
+65. s03_g01_plus_f01 | musique:2hop__789565_416401 | pilot=True
+Query: Who is the child of Empress Dowager Huang's child?
+F1：0.444444 -> 1.000000；差值+55.555556个百分点。
+标准答案：Wang Jipeng
+父版最终：Wang Jipeng (also known as Wang Chang)
+候选最终：Wang Jipeng
+父版goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+候选goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+事实/文字审阅分类：同一实体去除多余别名，短答案匹配改善
+观察：仍回答Wang Jipeng，只删除括号中的Wang Chang别名，F1从0.4444到1。不属于新事实或新增证据。
+原文依据：冻结goal明确给出Wang Jipeng别名Wang Chang；实际《Wang Jipeng》支持该别名。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_s03_g01_plus_f01_r001\cases\musique\s03_g01_plus_f01\2hop__789565_416401.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__789565_416401.json
+
+66. s03_g01_plus_f01 | hotpotqa:5a77cb5e55429967ab1052a7 | pilot=False
+Query: The voice of Homer Simpson also voices what alien character in the television series "The Simpsons"?
+F1：1.000000 -> 0.500000；差值-50.000000个百分点。
+标准答案：Kodos
+父版最终：Kodos
+候选最终：Kang and Kodos
+父版goal：Dan Castellaneta voices the alien characters Kang and Kodos in "The Simpsons".
+候选goal：Dan Castellaneta voices the alien characters Kang and Kodos in "The Simpsons".
+事实/文字审阅分类：复制错误goal扩大角色集合，事实性回退
+观察：父final Kodos正确，候选跟随错误goal改为Kang and Kodos。实际原文明确Kang由Harry Shearer配音，Kodos由Dan Castellaneta配音；不是两个都正确而仅词面变长。新增最终核对提示未阻止采用错误辅助结论。
+原文依据：实际《Kang and Kodos》：Kang is voiced by Harry Shearer and Kodos by Dan Castellaneta。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5a77cb5e55429967ab1052a7.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a77cb5e55429967ab1052a7.json
+
+67. s03_g01_plus_f01 | musique:3hop1__458916_651917_47686 | pilot=False
+Query: Where do greyhound buses leave from in the birthplace of Spirit If...'s performer?
+F1：0.600000 -> 1.000000；差值+40.000000个百分点。
+标准答案：Toronto Coach Terminal
+父版最终：Toronto Coach Terminal at 610 Bay Street
+候选最终：Toronto Coach Terminal
+父版goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.
+候选goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.
+事实/文字审阅分类：同一地点去除街道地址，短答案匹配改善
+观察：两版均为Toronto Coach Terminal，只去除at610BayStreet。原文支持地址，删除提升词面F1，不属于旧答案地点错误。
+原文依据：实际《Toronto Coach Terminal》：It is located at610BayStreet ... leased ... Coach Canada and Greyhound Canada。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\musique\s03_g01_plus_f01\3hop1__458916_651917_47686.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop1__458916_651917_47686.json
+
+68. s03_g01_plus_f01 | hotpotqa:5adf9ee75542992d7e9f93c0 | pilot=False
+Query: How many households does the network that Di-Gata Defenders plays on in South Africa reach?
+F1：1.000000 -> 0.800000；差值-20.000000个百分点。
+标准答案：1.5 million households
+父版最终：1.5 million households
+候选最终：1.5 million
+父版goal：Nickelodeon (Africa), the network on which Di-Gata Defenders plays in South Africa, reaches 1.5 million households across 49 countries in Africa.
+候选goal：Nickelodeon (Africa), the network on which Di-Gata Defenders plays in South Africa, reaches 1.5 million households across 49 countries in Africa.
+事实/文字审阅分类：省略问题已限定的计数单位，词面F1下降
+观察：1.5million households缩为1.5million，数值相同且问题已问households；不是新增错误数量。词面计分因少households从1到0.8。
+原文依据：实际《Nickelodeon (Africa)》：reaches1.5million households in49countries。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5adf9ee75542992d7e9f93c0.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5adf9ee75542992d7e9f93c0.json
+
+69. s03_g01_plus_f01 | hotpotqa:5a84d2ea5542992a431d1aa8 | pilot=False
+Query: What career titles do Ed Wood and Fernand Rivers share?
+F1：0.800000 -> 0.666667；差值-13.333333个百分点。
+标准答案：actor, writer, producer, and director
+父版最终：actor, film producer, and director
+候选最终：actor, film producer, director
+父版goal：Ed Wood and Fernand Rivers both shared the career titles of actor, film producer, and director.
+候选goal：Ed Wood and Fernand Rivers both shared the career titles of actor, film producer, and director.
+事实/文字审阅分类：相同职业列表去连接词，词面F1下降
+观察：actor、film producer、director均未变，只去掉and。两版同样未包含标准writer；本次F1下降并不说明新增了错误职业事实。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5a84d2ea5542992a431d1aa8.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a84d2ea5542992a431d1aa8.json
+
+70. s03_g01_plus_f01 | hotpotqa:5a72a9ac5542991f9a20c55f | pilot=True
+Query: Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+F1：1.000000 -> 0.909091；差值-9.090909个百分点。
+标准答案：the fourth hour of the TODAY Show
+父版最终：The fourth hour of the TODAY Show
+候选最终：The fourth hour of NBC's "Today Show"
+父版goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+候选goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+事实/文字审阅分类：同一节目名称增加受支持限定，词面F1下降
+观察：增加NBC称谓，仍指Today Show第四小时；不属于事实错误。
+原文依据：原《Hoda Kotb》和《Brian Balthazar》均支持NBC与该节目第四小时的关系。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5a72a9ac5542991f9a20c55f.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a72a9ac5542991f9a20c55f.json
+
+71. s03_g01_plus_f01 | hotpotqa:5a84ad3a5542992a431d1a8b | pilot=True
+Query: What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：Back to December
+父版最终：Back to December
+候选最终："Back to December"
+父版goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+候选goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5a84ad3a5542992a431d1a8b.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5a84ad3a5542992a431d1a8b.json
+
+72. s03_g01_plus_f01 | hotpotqa:5ab7f0b9554299366779405d | pilot=False
+Query: What type of vegetation does Tabernaemontana and Crinum have in common?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：plants
+父版最终：None
+候选最终：No vegetation type in common
+父版goal：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.
+候选goal：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.
+事实/文字审阅分类：相同错误否定改为明确整句，F1持平0
+观察：None改为No vegetation type in common，仍沿goal仅比较woody/herbaceous等生长形态后否定共同类型，未恢复标准的共同上位类别plants。没有证据表明此次解释更具体便代表事实更准确。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5ab7f0b9554299366779405d.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\pilot100_network_recovery1_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ab7f0b9554299366779405d.json
+
+73. s03_g01_plus_f01 | hotpotqa:5abce85755429959677d6b3e | pilot=False
+Query: Le Rêve was created by the director behind what Cirque du Soleil production from 1998 onward?
+F1：1.000000 -> 1.000000；差值+0.000000个百分点。
+标准答案：O
+父版最终：O
+候选最终："O"
+父版goal：Le Rêve was created by the director behind the Cirque du Soleil production "O" from 1998 onward.
+候选goal：Le Rêve was created by the director behind the Cirque du Soleil production "O" from 1998 onward.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5abce85755429959677d6b3e.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5abce85755429959677d6b3e.json
+
+74. s03_g01_plus_f01 | hotpotqa:5ae0a48155429945ae9593df | pilot=True
+Query: The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：amount charged by a bookmaker
+父版最终：fee or commission
+候选最终：the fee or commission
+父版goal：Vigorish refers to the fee or commission charged by a bookmaker on a bet.
+候选goal：Vigorish refers to the fee or commission charged by a bookmaker on a bet.
+暂定观察：答案内容或范围变化；待事实核查，不能将F1变化直接等同事实改善
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\pilot100_s03_g01_plus_f01_r001\cases\hotpotqa\s03_g01_plus_f01\5ae0a48155429945ae9593df.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\hotpotqa\g01_goal_consistency\5ae0a48155429945ae9593df.json
+
+75. s03_g01_plus_f01 | musique:2hop__562154_69048 | pilot=False
+Query: Who is the Chief Judge in the place where DeltaWomen's headquarters in located?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：Honorable Justice Abiodun Smith
+父版最终：Rosaline Bozimo
+候选最终：Rosaline Patricia Irorefe Bozimo
+父版goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+候选goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+事实/文字审阅分类：同一未匹配目标人物的姓名扩展，F1持平0
+观察：Rosaline Bozimo扩为Rosaline Patricia Irorefe Bozimo，仍是同一人物，标准为Honorable Justice Abiodun Smith。本次既未修复人物目标，也不能把姓名变长称为新的事实错误。
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\musique\s03_g01_plus_f01\2hop__562154_69048.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\2hop__562154_69048.json
+
+76. s03_g01_plus_f01 | musique:3hop2__132957_595371_40768 | pilot=False
+Query: When did the maker of the Acura Legend, the manufacturer of the Scion xB, and Nissan, open US assembly plants?
+F1：0.000000 -> 0.000000；差值+0.000000个百分点。
+标准答案：1981
+父版最终：early 1980s
+候选最终：Early 1980s
+父版goal：Honda, Toyota, and Nissan opened US assembly plants in the early 1980s.
+候选goal：Honda, Toyota, and Nissan opened US assembly plants in the early 1980s.
+暂定观察：仅大小写/标点/空白变化（文字观察）
+候选记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round2_v1_20261020\rounds\extension200_s03_g01_plus_f01_r001\cases\musique\s03_g01_plus_f01\3hop2__132957_595371_40768.json
+父记录：outputs\query_decomposition\hotpot_formal_eval_v1\b0_targeted_optimization_v2_20261020\rounds\extension200_g01_goal_consistency_r001\cases\musique\g01_goal_consistency\3hop2__132957_595371_40768.json
+
+后续边界：
+新dev90与sealed150均已单独按元数据封存。当前报告不读取它们的query、分解或结果。
+候选需先冻结，再执行新dev验证；封存确认只用于冻结方案的一次性评价，不用其结果继续调规则。

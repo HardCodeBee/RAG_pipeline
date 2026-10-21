@@ -1,0 +1,54 @@
+{
+  "rule": "Flag source year absent from any supporting questions, within band/TV/film/story queries.",
+  "flagged": 6,
+  "review_finding": "All6 inspected: no definite dropped-intermediate-identification year; years constrain the final target or another operand. This rule alone cannot detect semantic errors.",
+  "training_changes": 0,
+  "cases": [
+    {
+      "id": "break:HOTPOT_train_5a712ad95542994082a3e612",
+      "query": "In what 1942 British romance film did actress/singer Jane Birkin's mother star in?",
+      "target": [
+        "Who was actress/singer Jane Birkin's mother?"
+      ]
+    },
+    {
+      "id": "break:HOTPOT_train_5ab432c355429942dd415ed9",
+      "query": "The film \"Intermezzo\" was produced by a man that won an Academy Award for Best Picture for what 1939 film?",
+      "target": [
+        "Who was the man who produced the film Intermezzo?"
+      ]
+    },
+    {
+      "id": "break:HOTPOT_train_5ac0c08a5542992a796ded7a",
+      "query": "The creator of the animates series, based on a novel by Robert A. Heinlein, also directed which film in 1992?",
+      "target": [
+        "What novel by Robert A. Heinlein was adapted into an animated series?",
+        "What animated series was based on a novel by Robert A. Heinlein?",
+        "Who created the animated series based on a novel by Robert A. Heinlein?"
+      ]
+    },
+    {
+      "id": "error_corrected:break:HOTPOT_train_5a7d2a58554299452d57bb3e:candidate0",
+      "query": "Which 2004 horror film is a sequel to a 2002 horror film collaboration consisting of three omnibus segments by directors from three Asian countries?",
+      "target": [
+        "Which 2002 horror film collaboration consists of three omnibus segments by directors from three Asian countries?"
+      ]
+    },
+    {
+      "id": "break:CWQ_train_WebQTest-1056_33b6867ef6bd6d851eca2cdfb0a06fb4",
+      "query": "Which Cleveland Cavaliers draft pick appeared on television prior to 2008?",
+      "target": [
+        "Who were the draft picks of the Cleveland Cavaliers?",
+        "When did the Cleveland Cavaliers draft picks appear on television?"
+      ]
+    },
+    {
+      "id": "musique:3hop1__91116_594903_21414",
+      "query": "During the 1909–1910 rule changing debates, who represented the school that employed the writer of The Significance of the Frontier in American History?",
+      "target": [
+        "Who wrote The Significance of the Frontier in American History?",
+        "What school employed the writer of The Significance of the Frontier in American History?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "qid": "5a8eb63455429917b4a5bdb7",
+    "dataset": "hotpotqa",
+    "our_final": "John Mayer",
+    "react_final": "St. Vincent",
+    "actual_source_relation": "Jonny Browning passage lists St. Vincent among bands/members he has played or recorded with; it does not list John Mayer.",
+    "react_searches": [
+      "Jonny Browning collaboration American musician Berklee College of Music",
+      "Did St. Vincent attend Berklee College of Music?"
+    ],
+    "observed_gap": "Our current original-query retrieval contains the collaborator list but not the St. Vincent educational bridge. The goal answer combines John Mayer education with an unsupported Browning collaboration.",
+    "proposed_followup_not_executed": "Preserve collaborator candidates and their exact relation; test a bounded candidate-aware query rewrite without adding an action loop."
+  },
+  {
+    "qid": "bc7073a80baf11ebab90acde48001122",
+    "dataset": "2wiki",
+    "our_final": "Cannot be determined",
+    "react_final": "Kingkitsarat",
+    "actual_passage": "Anurutha was the forth son of king Inthasom.",
+    "actual_first_child": "Anurutha's parents cannot be determined from these passages.",
+    "react_searches": [
+      "Who is Anurutha?",
+      "Who were King Inthasom's brothers?"
+    ],
+    "observed_gap": "The parents question is plural; the child discards the explicitly supported father when the complete parent set is unavailable. The rewrite therefore never receives the known father identity, while ReAct uses it to retrieve the next relation.",
+    "proposed_followup_not_executed": "Keep supported partial facts in the same complete answer sentence and identify only the genuinely missing portion; keep the fixed independent query plan."
+  }
+]

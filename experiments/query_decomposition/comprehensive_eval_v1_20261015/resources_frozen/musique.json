@@ -1,0 +1,43 @@
+{
+  "corpus": {
+    "dataset": "musique",
+    "documents": 139416,
+    "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+    "manifest_sha256": "83c1cc3588ad629866ade7cc8293d0af57c93f7c36471ddb9f54126703e747f9",
+    "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunks.jsonl",
+    "chunks_sha256": "a3fcaa2bcffc26746dc4f7ffaae09185b21681b81a93de3152eba904d82c7690",
+    "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunk_offsets.npy"
+  },
+  "dense": {
+    "bge": {
+      "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+      "build_id": "build_65e9037e4c1eed7b",
+      "manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+      "embeddings_manifest_sha256": "127376a5563ff08513ca7f55f8dc870c451c6d1c2a184791f4b78133ddaa3ec8",
+      "query_model": "BAAI/bge-small-en-v1.5",
+      "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "query_prefix": "",
+      "space": {
+        "backend": "sentence_transformers",
+        "dimension": 384,
+        "document_prefix": "",
+        "max_sequence_length": 512,
+        "model_name": "BAAI/bge-small-en-v1.5",
+        "normalized": true,
+        "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+        "similarity": "inner_product"
+      },
+      "manifest_name": "DENSE_FROZEN.json"
+    }
+  },
+  "bm25": {
+    "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\bm25",
+    "manifest_sha256": "7db4e8f8ee8904240dd4687151491158a84488eafdae76c4584b82bb4ec4d21e",
+    "sparse_index_id": "sqlite_bm25_d55b72c167fc2357",
+    "backend": "sqlite_bm25_v1",
+    "analyzer": "english_regex_casefold_v1",
+    "k1": 1.5,
+    "b": 0.75
+  }
+}

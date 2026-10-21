@@ -1,0 +1,111 @@
+Answer the Original question using the retrieved passages and auxiliary question-answer pairs.
+Use relevant auxiliary answers as intermediate information. When a retrieved passage gives a conflicting fact about the same entity, relation and conditions, use the passage. Do not transfer a fact about another entity or a different comparison to the Original question.
+Complete the relation, comparison or combination requested by the Original question. Missing information does not establish a negative fact, zero or an empty set. If the available information does not support the final answer, return Cannot be determined.
+For a person, place or organization, use the full identifying name stated in the matching passage. When an auxiliary answer uses a shorter name for the same entity, preserve the fuller source name, including compound surnames and disambiguating suffixes.
+
+Worked examples:
+
+Example 1
+Question:
+Which river does Pack Creek flow into after passing through Spanish Valley?
+
+Context:
+[Chunk 1 | source=Spanish Valley, pages=1-1]
+Spanish Valley
+Pack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.
+
+Auxiliary question-answer pairs
+
+#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado.
+
+Final short answer: Colorado River
+
+Example 2
+Question:
+Are both Leycesteria and Anigozanthos native to Australia?
+
+Context:
+[Chunk 1 | source=Leycesteria, pages=1-1]
+Leycesteria
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+
+[Chunk 2 | source=Anigozanthos, pages=1-1]
+Anigozanthos
+Anigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.
+
+Auxiliary question-answer pairs
+
+#1 Question: Is Leycesteria native to Australia?
+Answer: Leycesteria is native to temperate Asia, not Australia.
+
+#2 Question: Is Anigozanthos native to Australia?
+Answer: Anigozanthos is native to Australia.
+
+#3 Question: Are both Leycesteria and Anigozanthos native to Australia?
+Answer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.
+
+Final short answer: No
+
+Example 3
+Question:
+Baraki Barak District is situated in the western part of a province whose capital is what?
+
+Context:
+[Chunk 1 | source=Baraki Barak District, pages=1-1]
+Baraki Barak District
+Baraki Barak District is situated in the western part of Logar Province, Afghanistan.
+
+[Chunk 2 | source=Logar Province, pages=1-1]
+Logar Province
+Puli Alam is the capital of the province.
+
+Auxiliary question-answer pairs
+
+#1 Question: In which province is Baraki Barak District situated?
+Answer: Baraki Barak District is in Logar Province.
+
+#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?
+Answer: The capital of Logar Province is Kabul.
+
+Final short answer: Puli Alam
+
+Example 4
+Question:
+Which has more species, Clianthus or Callicoma?
+
+Context:
+[Chunk 1 | source=Clianthus, pages=1-1]
+Clianthus
+Clianthus, commonly known as kakabeak ("Kōwhai ngutukākā" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.
+
+[Chunk 2 | source=Callicoma, pages=1-1]
+Callicoma
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+
+Auxiliary question-answer pairs
+
+#1 Question: How many species does Clianthus contain?
+Answer: Clianthus contains two species.
+
+#2 Question: How many species does Callicoma contain?
+Answer: Callicoma contains one species.
+
+#3 Question: Which has more species, Clianthus or Callicoma?
+Answer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.
+
+Final short answer: Clianthus
+
+Actual task:
+
+Original question:
+{original_query}
+
+Context:
+{original_top10_plus_auxiliary}
+
+Final response requirements:
+Return only a concise answer to the Original question. Preserve full identifying names, necessary qualifiers and units; do not shorten a source name to match an auxiliary answer.
+For a supported yes/no answer, return exactly Yes or No.
+Do not list intermediate answers, restate the question, or add explanation or citations.
+Final short answer:

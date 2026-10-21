@@ -1,0 +1,22 @@
+{
+  "task": "fresh_query_only_decomposition_prompt_holdout",
+  "phase": "holdout",
+  "version": "v8",
+  "questions": 60,
+  "model": "qwen-plus-2025-12-01",
+  "max_tokens": 1024,
+  "temperature": 0,
+  "enable_thinking": false,
+  "concurrency": 3,
+  "prompt_path": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\TRAINING_PROMPT_v8.txt",
+  "prompt_sha256": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85",
+  "cases_sha256": "633a666917864880a1d3b919f547ef11bde91c0ba44123f99755d538f911e7d7",
+  "selection_sha256": "36bf9570ad966caecc37127e3fa85190981554ea4b1408f9212bcd5969b43124",
+  "rubric_sha256": "aeb4ee94804134454a821129ce399fb35fc1c763411683e1e34cd6268d043fd8",
+  "inputs": "system=exact frozen prompt,user=original query only; no other fields, labels, answers, passages or prior outputs",
+  "global_cap_cny": 200,
+  "protected_stop_cny": 195,
+  "arm_subcap_cny": 1,
+  "unknown_submission_policy": "one attempt, retain unknown, no replay",
+  "review": "current Codex explicit query-output inspection, not independent human gold"
+}

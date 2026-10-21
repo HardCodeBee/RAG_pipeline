@@ -1,0 +1,33 @@
+{
+  "protocol": {
+    "status": "user_confirmed_candidate_execution",
+    "execute_goal": true,
+    "matched_single_control": true,
+    "merge_policy": "interleave_top10",
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "original_query_top_k": 10,
+    "per_retrieval_top_k": 10,
+    "child_answer_tokens": 128,
+    "final_answer_tokens": 64,
+    "rewrite_tokens": 256,
+    "propagation": "actual full contextual factual sentences; never mechanically extract a bare entity or scalar",
+    "rewrite_inputs": "current self-contained question, original query, previous questions and complete candidate answer sentences; no gold answers or support annotations",
+    "rewrite_output": "one self-contained retrieval question, or the exact original question if no safe useful rewrite exists",
+    "rewrite_gate": "previous complete candidate answers are optional context; explicit missing information must not become a guessed binding",
+    "final_input": "unchanged original Top10 plus generated auxiliary questions and complete answers, same frozen placement and final reader",
+    "comparison": "historical S02 is a descriptive reference; matched ideal-plan control required to isolate dual retrieval if selected",
+    "global_budget_cap_cny": 200,
+    "pilot_subcap_cny": 5,
+    "training_revision_resumed": false,
+    "best_baseline_reference": "historical references are reported offline and never enter generation inputs",
+    "new_method_API_calls_started_at_freeze": false
+  },
+  "protocol_sha256": "9b77f1f768459f98d4f0984b6e2992222f81a59ae2469255ed5ab2a065243cb5",
+  "cases_sha256": "a0ee113a8a600df3b23fcf35be12b983a997eeb0591ade1f717318b08d659a89",
+  "code_sha256": "1e447f31b7cd4b9c7d39fef4c715afcee4a3ccc60b9cabd8c8d3216dbbddb498",
+  "child_and_final_prompts_sha256": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+  "historical_outputs_modified": false,
+  "gold_answers_in_generation_inputs": false,
+  "cache_policy": "reuse only identical full API payloads within the private pilot; per-condition histories remain isolated"
+}

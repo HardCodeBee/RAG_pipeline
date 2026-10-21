@@ -1,0 +1,80 @@
+{
+  "metric": "Frozen v12 complete decomposition F/S/C/U pass, not RAG Answer F1",
+  "overall": {
+    "n": 300,
+    "before_passed": 157,
+    "after_passed": 236,
+    "before_rate": 0.5233333333333333,
+    "after_rate": 0.7866666666666666,
+    "delta_percentage_points": 26.333333333333332,
+    "improved": 85,
+    "regressed": 6,
+    "unchanged": 209,
+    "after_uncertain": 2
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "n": 100,
+      "before_passed": 51,
+      "after_passed": 84,
+      "before_rate": 0.51,
+      "after_rate": 0.84,
+      "delta_percentage_points": 33.0,
+      "improved": 36,
+      "regressed": 3,
+      "unchanged": 61,
+      "after_uncertain": 1
+    },
+    "2wiki": {
+      "n": 100,
+      "before_passed": 71,
+      "after_passed": 98,
+      "before_rate": 0.71,
+      "after_rate": 0.98,
+      "delta_percentage_points": 27.0,
+      "improved": 27,
+      "regressed": 0,
+      "unchanged": 73,
+      "after_uncertain": 0
+    },
+    "musique": {
+      "n": 100,
+      "before_passed": 35,
+      "after_passed": 54,
+      "before_rate": 0.35,
+      "after_rate": 0.54,
+      "delta_percentage_points": 19.0,
+      "improved": 22,
+      "regressed": 3,
+      "unchanged": 75,
+      "after_uncertain": 1
+    }
+  },
+  "paired_stratified_bootstrap_95ci_delta_pp": [
+    21.0,
+    31.666666666666668
+  ],
+  "musique_component_cluster_sensitivity_95ci_delta_pp": [
+    20.915032679738562,
+    31.916666666666668
+  ],
+  "musique_components": 75,
+  "target_observed_at_least90_percent": false,
+  "selection": {
+    "step": 165,
+    "passed": 128,
+    "denominator": 150,
+    "by_dataset_pass": {
+      "hotpotqa": 43,
+      "2wiki": 50,
+      "musique": 35
+    },
+    "worst_dataset_rate": 0.7,
+    "checkpoint_manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192",
+    "dev_review_sha256": "0970ae09087c0109fb984f01e7426ddc9dc254e3aed5b6ecfc55b38ba7ea56f4"
+  },
+  "trained_review_sha256": "6178d855b49c27c7c8c272f879459d2a1a14027d616ae216dc722714034ff784",
+  "trained_predictions_sha256": "50dd5e19d0c03e1ea293252ce5b8cc33cac170b0b2dbaa84074a332e0597cbd3",
+  "limitations": "Current Codex review is not independent human gold. Components/text/ID checks do not establish full paraphrase or pretraining decontamination. Test300 did not select checkpoint.",
+  "api_calls": 0
+}

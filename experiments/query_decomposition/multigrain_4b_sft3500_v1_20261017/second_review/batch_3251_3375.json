@@ -1,0 +1,11 @@
+{
+ "reviewed_master_lines":[3251,3375],
+ "reviewer":"Current Codex inspected all 125 literal query/target pairs; same reviewer, not independent gold. Focused on nested-object coverage, title versus event attachment, and superlative scope.",
+ "revisions":{
+ "3261":{"target":["What group sang Horse with No Name?","What country has the same name as the group that sang Horse with No Name?","What was the first library in the country with the same name as the group that sang Horse with No Name?","What city contains the first library in the country with the same name as the group that sang Horse with No Name?"],"reason":"Expose the unidentified first library as an intermediate object while retaining the deeper city question."},
+ "3296":{"target":["What country held the 1989 Copa América?","On which continent is the country that held the 1989 Copa América the largest country?"],"reason":"Restore largest-within-the-continent scope. The previous target instead selected the largest among Copa America host countries."},
+ "3328":{"target":["Who employs Francesco Cappè?","What is the peacekeeping mission of Francesco Cappè's employer?","What country is the largest troop contributor to the peacekeeping mission of Francesco Cappè's employer?"],"reason":"Retain the still-unidentified mission object before its largest troop contributor, instead of skipping that nested level."},
+ "3329":{"target":["What city did Glenn Odekirk die in?","Who is the performer of Live in the city where Glenn Odekirk died?"],"reason":"Preserve performer of Live in [city] as the source description; do not turn it into the act of performing Live at a location."}
+ },
+ "quarantine":{}
+}

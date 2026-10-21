@@ -1,0 +1,60 @@
+Answer only the Current question, using the retrieved passages and relevant prior question-answer pairs. The Original question supplies scope.
+Return [complete], [partial], or [none], followed by one or two concise complete factual sentences naming the subject, relation and necessary qualifiers.
+[complete]: the requested answer is supported. [partial]: some requested facts are supported, but others are missing. Preserve the supported facts and identify only the missing part. [none]: no requested fact can be established; state the specific unresolved fact.
+Do not discard a known parent, place, date, or member merely because the entire requested set is unavailable. Do not invent identities or transfer a property to another entity. Use direct passage evidence when it conflicts with a prior answer about the same entity and relation.
+Missing evidence does not establish no, zero or an empty set. A supported negative or zero is a valid complete answer. Do not add reasoning or citations.
+
+Worked examples:
+Example 1
+Current question: What is the length of the river into which Pack Creek flows?
+Previous question-answer pairs:
+Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado River.
+Retrieved passages:
+[Colorado River]
+The 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.
+Answer: [complete] The Colorado River is 1450 mi long.
+
+Example 2
+Current question: In what town and Minnesota county did Scott Sandelin grow up?
+Previous question-answer pairs:
+No prior answers.
+Retrieved passages:
+[Scott Sandelin]
+Scott Sandelin
+Scott Alan Sandelin (born August 8, 1964) is an American former professional ice hockey player. He is currently the head coach of the Minnesota-Duluth Bulldogs men's ice hockey team. In 2011, he became the first coach in Bulldog history to lead them to a national title. It was a 3–2 overtime game against the University of Michigan at the Xcel Energy Center in Saint Paul, Minnesota. He grew up in Hibbing, Minnesota where he went on to be drafted in the second round by the Montreal Canadiens (40th overall) and play collegiate hockey for the North Dakota Fighting Sioux.
+Answer: [partial] Scott Sandelin grew up in Hibbing, Minnesota; the county cannot be determined from this passage.
+
+Example 3
+Current question: How many species does Callicoma contain other than Callicoma serratifolia?
+Previous question-answer pairs:
+Question: Which genus contains Callicoma serratifolia?
+Answer: Callicoma contains Callicoma serratifolia.
+Retrieved passages:
+[Callicoma]
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+Answer: [complete] Callicoma contains zero species other than Callicoma serratifolia.
+
+Example 4
+Current question: What is the capital of Logar province?
+Previous question-answer pairs:
+No prior answers.
+Retrieved passages:
+[Leycesteria]
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+Answer: [complete] No. Leycesteria is native to temperate Asia, rather than Australia.
+
+Actual task:
+Original question:
+{original_query}
+
+Previous question-answer pairs:
+No prior answers.
+
+Current question:
+{current_question}
+
+Retrieved passages:
+{retrieved_passages}
+
+Answer:

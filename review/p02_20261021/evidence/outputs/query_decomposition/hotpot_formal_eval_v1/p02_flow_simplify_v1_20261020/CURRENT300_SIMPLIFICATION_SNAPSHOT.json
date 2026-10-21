@@ -1,0 +1,2510 @@
+{
+  "snapshot_started_utc": "2026-10-20T09:21:13.382549+00:00",
+  "snapshot_finished_utc": "2026-10-20T09:21:35.671462+00:00",
+  "planned": 300,
+  "planned_datasets": {
+    "hotpotqa": 100,
+    "2wiki": 100,
+    "musique": 100
+  },
+  "arms": {
+    "union20": {
+      "n": 122,
+      "F1": 0.8973439102416922,
+      "p02_F1": 0.9154157291331831,
+      "delta": -0.018071818891491023,
+      "up": 2,
+      "tie": 115,
+      "down": 5,
+      "planned": 300,
+      "missing": 178,
+      "statuses": {
+        "success": 122,
+        "unstarted": 157,
+        "incomplete": 21
+      },
+      "F1_complete": null,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 16,
+          "F1": 0.8035714285714286,
+          "p02_F1": 0.875,
+          "delta": -0.07142857142857142,
+          "up": 0,
+          "tie": 14,
+          "down": 2,
+          "planned": 100,
+          "statuses": {
+            "unstarted": 80,
+            "success": 16,
+            "incomplete": 4
+          }
+        },
+        "2wiki": {
+          "n": 98,
+          "F1": 0.9212804169286761,
+          "p02_F1": 0.9321161798052554,
+          "delta": -0.010835762876579204,
+          "up": 2,
+          "tie": 93,
+          "down": 3,
+          "planned": 100,
+          "statuses": {
+            "success": 98,
+            "incomplete": 2
+          }
+        },
+        "musique": {
+          "n": 8,
+          "F1": 0.7916666666666666,
+          "p02_F1": 0.7916666666666666,
+          "delta": 0.0,
+          "up": 0,
+          "tie": 8,
+          "down": 0,
+          "planned": 100,
+          "statuses": {
+            "success": 8,
+            "unstarted": 77,
+            "incomplete": 15
+          }
+        }
+      }
+    },
+    "discount20": {
+      "n": 132,
+      "F1": 0.8605682171858643,
+      "p02_F1": 0.8785335851512323,
+      "delta": -0.017965367965367966,
+      "up": 1,
+      "tie": 126,
+      "down": 5,
+      "planned": 300,
+      "missing": 168,
+      "statuses": {
+        "unstarted": 160,
+        "success": 132,
+        "incomplete": 8
+      },
+      "F1_complete": null,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 16,
+          "F1": 0.9285714285714286,
+          "p02_F1": 0.9375,
+          "delta": -0.008928571428571432,
+          "up": 0,
+          "tie": 15,
+          "down": 1,
+          "planned": 100,
+          "statuses": {
+            "unstarted": 80,
+            "success": 16,
+            "incomplete": 4
+          }
+        },
+        "2wiki": {
+          "n": 99,
+          "F1": 0.9102910524479152,
+          "p02_F1": 0.9328018749587377,
+          "delta": -0.022510822510822513,
+          "up": 1,
+          "tie": 94,
+          "down": 4,
+          "planned": 100,
+          "statuses": {
+            "success": 99,
+            "incomplete": 1
+          }
+        },
+        "musique": {
+          "n": 17,
+          "F1": 0.5070028011204482,
+          "p02_F1": 0.5070028011204482,
+          "delta": 0.0,
+          "up": 0,
+          "tie": 17,
+          "down": 0,
+          "planned": 100,
+          "statuses": {
+            "unstarted": 80,
+            "success": 17,
+            "incomplete": 3
+          }
+        }
+      }
+    },
+    "single_final": {
+      "n": 131,
+      "F1": 0.833936970578192,
+      "p02_F1": 0.8631873614585784,
+      "delta": -0.029250390880386397,
+      "up": 8,
+      "tie": 113,
+      "down": 10,
+      "planned": 300,
+      "missing": 169,
+      "statuses": {
+        "unstarted": 160,
+        "success": 129,
+        "incomplete": 9,
+        "success_truncated": 2
+      },
+      "F1_complete": null,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 18,
+          "F1": 0.8698412698412699,
+          "p02_F1": 0.8888888888888888,
+          "delta": -0.01904761904761905,
+          "up": 0,
+          "tie": 16,
+          "down": 2,
+          "planned": 100,
+          "statuses": {
+            "unstarted": 80,
+            "success": 17,
+            "incomplete": 2,
+            "success_truncated": 1
+          }
+        },
+        "2wiki": {
+          "n": 96,
+          "F1": 0.8908038720538721,
+          "p02_F1": 0.9307019335511982,
+          "delta": -0.0398980614973262,
+          "up": 6,
+          "tie": 82,
+          "down": 8,
+          "planned": 100,
+          "statuses": {
+            "success": 95,
+            "incomplete": 4,
+            "success_truncated": 1
+          }
+        },
+        "musique": {
+          "n": 17,
+          "F1": 0.47478991596638653,
+          "p02_F1": 0.4547152194211017,
+          "delta": 0.020074696545284782,
+          "up": 2,
+          "tie": 15,
+          "down": 0,
+          "planned": 100,
+          "statuses": {
+            "unstarted": 80,
+            "success": 17,
+            "incomplete": 3
+          }
+        }
+      }
+    }
+  },
+  "all_arm_common_same_query": {
+    "n": 115,
+    "dataset_counts": {
+      "2wiki": 95,
+      "musique": 5,
+      "hotpotqa": 15
+    },
+    "arms": {
+      "union20": {
+        "n": 115,
+        "F1": 0.8997909308650998,
+        "p02_F1": 0.9189627735152033,
+        "delta": -0.01917184265010352,
+        "up": 2,
+        "tie": 108,
+        "down": 5,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 15,
+            "F1": 0.8571428571428572,
+            "p02_F1": 0.9333333333333333,
+            "delta": -0.07619047619047618,
+            "up": 0,
+            "tie": 13,
+            "down": 2
+          },
+          "2wiki": {
+            "n": 95,
+            "F1": 0.9187945353580028,
+            "p02_F1": 0.9299724802201582,
+            "delta": -0.01117794486215539,
+            "up": 2,
+            "tie": 90,
+            "down": 3
+          },
+          "musique": {
+            "n": 5,
+            "F1": 0.6666666666666667,
+            "p02_F1": 0.6666666666666667,
+            "delta": 0.0,
+            "up": 0,
+            "tie": 5,
+            "down": 0
+          }
+        }
+      },
+      "discount20": {
+        "n": 115,
+        "F1": 0.898341655502781,
+        "p02_F1": 0.9189627735152033,
+        "delta": -0.02062111801242236,
+        "up": 1,
+        "tie": 109,
+        "down": 5,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 15,
+            "F1": 0.9238095238095239,
+            "p02_F1": 0.9333333333333333,
+            "delta": -0.009523809523809526,
+            "up": 0,
+            "tie": 14,
+            "down": 1
+          },
+          "2wiki": {
+            "n": 95,
+            "F1": 0.9065138336036169,
+            "p02_F1": 0.9299724802201582,
+            "delta": -0.023458646616541356,
+            "up": 1,
+            "tie": 90,
+            "down": 4
+          },
+          "musique": {
+            "n": 5,
+            "F1": 0.6666666666666667,
+            "p02_F1": 0.6666666666666667,
+            "delta": 0.0,
+            "up": 0,
+            "tie": 5,
+            "down": 0
+          }
+        }
+      },
+      "single_final": {
+        "n": 115,
+        "F1": 0.8858636049940399,
+        "p02_F1": 0.9189627735152033,
+        "delta": -0.0330991685211634,
+        "up": 7,
+        "tie": 99,
+        "down": 9,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 15,
+            "F1": 0.9238095238095239,
+            "p02_F1": 0.9333333333333333,
+            "delta": -0.009523809523809526,
+            "up": 0,
+            "tie": 14,
+            "down": 1
+          },
+          "2wiki": {
+            "n": 95,
+            "F1": 0.8896544391281234,
+            "p02_F1": 0.9299724802201582,
+            "delta": -0.0403180410920349,
+            "up": 6,
+            "tie": 81,
+            "down": 8
+          },
+          "musique": {
+            "n": 5,
+            "F1": 0.7,
+            "p02_F1": 0.6666666666666667,
+            "delta": 0.03333333333333334,
+            "up": 1,
+            "tie": 4,
+            "down": 0
+          }
+        }
+      }
+    },
+    "ids": [
+      "2wiki:00f34c7e088311ebbd6dac1f6bf848b6",
+      "2wiki:07630b680bde11eba7f7acde48001122",
+      "2wiki:079947de0baf11ebab90acde48001122",
+      "2wiki:07b1cc3c0baf11ebab90acde48001122",
+      "2wiki:085ace840bde11eba7f7acde48001122",
+      "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+      "2wiki:0b0f34d6084a11ebbd55ac1f6bf848b6",
+      "2wiki:0d118fb00bdb11eba7f7acde48001122",
+      "2wiki:0f1094ce086f11ebbd62ac1f6bf848b6",
+      "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+      "2wiki:15b9210e0baf11ebab90acde48001122",
+      "2wiki:16a91a500bb011ebab90acde48001122",
+      "2wiki:1e9c0bbb08a311ebbd7bac1f6bf848b6",
+      "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6",
+      "2wiki:233a579c0bde11eba7f7acde48001122",
+      "2wiki:27018f000baf11ebab90acde48001122",
+      "2wiki:279379df092411ebbdaeac1f6bf848b6",
+      "2wiki:2b42746808cf11ebbd94ac1f6bf848b6",
+      "2wiki:2d2fdefe085311ebbd59ac1f6bf848b6",
+      "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+      "2wiki:318b7d480bda11eba7f7acde48001122",
+      "2wiki:3c9020cd097811ebbdb0ac1f6bf848b6",
+      "2wiki:3cddcc46086511ebbd5eac1f6bf848b6",
+      "2wiki:40b3f66a08cb11ebbd92ac1f6bf848b6",
+      "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+      "2wiki:4228d7300bdb11eba7f7acde48001122",
+      "2wiki:42954d320bb011ebab90acde48001122",
+      "2wiki:43208df60bde11eba7f7acde48001122",
+      "2wiki:441127d6088711ebbd6dac1f6bf848b6",
+      "2wiki:4759b57e0bb011ebab90acde48001122",
+      "2wiki:480e8626089911ebbd77ac1f6bf848b6",
+      "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6",
+      "2wiki:4f81c5260bdc11eba7f7acde48001122",
+      "2wiki:5d6e0f860bb011ebab90acde48001122",
+      "2wiki:5f39895808c711ebbd91ac1f6bf848b6",
+      "2wiki:604119f2088011ebbd6cac1f6bf848b6",
+      "2wiki:61b28c2609a411ebbdb0ac1f6bf848b6",
+      "2wiki:654dbe680bb011ebab90acde48001122",
+      "2wiki:664ed504085e11ebbd5cac1f6bf848b6",
+      "2wiki:6856ba560bdd11eba7f7acde48001122",
+      "2wiki:68a60785087511ebbd67ac1f6bf848b6",
+      "2wiki:6c0c4c1a0bb011ebab90acde48001122",
+      "2wiki:6d2f94300bb011ebab90acde48001122",
+      "2wiki:6e1db6b808c911ebbd92ac1f6bf848b6",
+      "2wiki:6f115d280bde11eba7f7acde48001122",
+      "2wiki:7339445e086811ebbd5eac1f6bf848b6",
+      "2wiki:74b134420bd911eba7f7acde48001122",
+      "2wiki:74f39a760bde11eba7f7acde48001122",
+      "2wiki:751bb456084c11ebbd56ac1f6bf848b6",
+      "2wiki:77fd1ca20bb011ebab90acde48001122",
+      "2wiki:7888c2760baf11ebab90acde48001122",
+      "2wiki:78bc5f540bb011ebab90acde48001122",
+      "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+      "2wiki:7b4cc520091d11ebbdaeac1f6bf848b6",
+      "2wiki:7e73e6560bdd11eba7f7acde48001122",
+      "2wiki:7fbdef41091011ebbdadac1f6bf848b6",
+      "2wiki:8115d246087b11ebbd68ac1f6bf848b6",
+      "2wiki:83f013aa0bda11eba7f7acde48001122",
+      "2wiki:86e8f2bd089b11ebbd78ac1f6bf848b6",
+      "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "2wiki:8bc6a73a0bb011ebab90acde48001122",
+      "2wiki:8f2b2975088a11ebbd6fac1f6bf848b6",
+      "2wiki:923b15ba0bb011ebab90acde48001122",
+      "2wiki:93acf0b9088511ebbd6dac1f6bf848b6",
+      "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+      "2wiki:9d3c3b060bdd11eba7f7acde48001122",
+      "2wiki:9dc413af090311ebbdadac1f6bf848b6",
+      "2wiki:aaadd9f80baf11ebab90acde48001122",
+      "2wiki:ab74ab8709c111ebbdb0ac1f6bf848b6",
+      "2wiki:ae2d8fc308be11ebbd8aac1f6bf848b6",
+      "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+      "2wiki:b8e0d8400baf11ebab90acde48001122",
+      "2wiki:bd058dbd08fd11ebbdadac1f6bf848b6",
+      "2wiki:c231feaa0bdd11eba7f7acde48001122",
+      "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+      "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+      "2wiki:c96e87340baf11ebab90acde48001122",
+      "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+      "2wiki:cdb8b7540bd911eba7f7acde48001122",
+      "2wiki:ce612a020bdd11eba7f7acde48001122",
+      "2wiki:d27c4969084d11ebbd56ac1f6bf848b6",
+      "2wiki:d94d1d720bdd11eba7f7acde48001122",
+      "2wiki:d9c801f4088b11ebbd6fac1f6bf848b6",
+      "2wiki:dc8d75280baf11ebab90acde48001122",
+      "2wiki:de6783560bdd11eba7f7acde48001122",
+      "2wiki:dea18cf408c211ebbd8cac1f6bf848b6",
+      "2wiki:e3d274ec0bae11ebab90acde48001122",
+      "2wiki:e3d870e2085511ebbd59ac1f6bf848b6",
+      "2wiki:e7cd2f5a0bdc11eba7f7acde48001122",
+      "2wiki:ef8a103a0bd911eba7f7acde48001122",
+      "2wiki:f31011fc0bdc11eba7f7acde48001122",
+      "2wiki:f35cb30a0bae11ebab90acde48001122",
+      "2wiki:f37818400bd911eba7f7acde48001122",
+      "2wiki:f3c57d120baf11ebab90acde48001122",
+      "2wiki:fcd3ff500baf11ebab90acde48001122",
+      "hotpotqa:5a71474b5542994082a3e74f",
+      "hotpotqa:5a77cb5e55429967ab1052a7",
+      "hotpotqa:5a794f8155429970f5fffe95",
+      "hotpotqa:5a7a59d15542996c55b2dd67",
+      "hotpotqa:5a89ec7b5542992e4fca8483",
+      "hotpotqa:5a8b91d25542995d1e6f13fc",
+      "hotpotqa:5ab484415542990594ba9c44",
+      "hotpotqa:5ab8883455429916710eb084",
+      "hotpotqa:5abd455c55429924427fcf5a",
+      "hotpotqa:5abed9435542994516f45457",
+      "hotpotqa:5ac298805542990b17b15429",
+      "hotpotqa:5adc020a5542994650320c4c",
+      "hotpotqa:5adcfbf45542990d50227d86",
+      "hotpotqa:5ae0f2bf5542997b2ef7d09e",
+      "hotpotqa:5ae400ab5542995dadf242be",
+      "musique:2hop__412633_15781",
+      "musique:2hop__609313_20273",
+      "musique:3hop1__404541_629431_64412",
+      "musique:3hop2__368986_89048_66294",
+      "musique:4hop1__483807_508773_85832_745702"
+    ]
+  },
+  "matched_success_efficiency_single_final_vs_p02": {
+    "matched_complete_success_queries": 131,
+    "dataset_counts": {
+      "2wiki": 96,
+      "musique": 17,
+      "hotpotqa": 18
+    },
+    "logical_calls": {
+      "p02_total": 808,
+      "single_final_total": 677,
+      "saved": 131,
+      "p02_mean": 6.1679389312977095,
+      "single_final_mean": 5.1679389312977095,
+      "relative_change": -0.16212871287128713
+    },
+    "prompt_tokens": {
+      "p02_total": 1343297,
+      "single_final_total": 1317632,
+      "saved": 25665,
+      "p02_mean": 10254.175572519083,
+      "single_final_mean": 10058.259541984733,
+      "relative_change": -0.019105975819197096
+    },
+    "completion_tokens": {
+      "p02_total": 12996,
+      "single_final_total": 9197,
+      "saved": 3799,
+      "p02_mean": 99.20610687022901,
+      "single_final_mean": 70.20610687022901,
+      "relative_change": -0.2923207140658664
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "matched_complete_success_queries": 18,
+        "dataset_counts": {
+          "hotpotqa": 18
+        },
+        "logical_calls": {
+          "p02_total": 92,
+          "single_final_total": 74,
+          "saved": 18,
+          "p02_mean": 5.111111111111111,
+          "single_final_mean": 4.111111111111111,
+          "relative_change": -0.1956521739130435
+        },
+        "prompt_tokens": {
+          "p02_total": 131153,
+          "single_final_total": 115255,
+          "saved": 15898,
+          "p02_mean": 7286.277777777777,
+          "single_final_mean": 6403.055555555556,
+          "relative_change": -0.12121720433386961
+        },
+        "completion_tokens": {
+          "p02_total": 1705,
+          "single_final_total": 1163,
+          "saved": 542,
+          "p02_mean": 94.72222222222223,
+          "single_final_mean": 64.61111111111111,
+          "relative_change": -0.31788856304985336
+        }
+      },
+      "2wiki": {
+        "matched_complete_success_queries": 96,
+        "dataset_counts": {
+          "2wiki": 96
+        },
+        "logical_calls": {
+          "p02_total": 614,
+          "single_final_total": 518,
+          "saved": 96,
+          "p02_mean": 6.395833333333333,
+          "single_final_mean": 5.395833333333333,
+          "relative_change": -0.1563517915309446
+        },
+        "prompt_tokens": {
+          "p02_total": 1036971,
+          "single_final_total": 1024875,
+          "saved": 12096,
+          "p02_mean": 10801.78125,
+          "single_final_mean": 10675.78125,
+          "relative_change": -0.011664742794157214
+        },
+        "completion_tokens": {
+          "p02_total": 9791,
+          "single_final_total": 6986,
+          "saved": 2805,
+          "p02_mean": 101.98958333333333,
+          "single_final_mean": 72.77083333333333,
+          "relative_change": -0.28648759064446944
+        }
+      },
+      "musique": {
+        "matched_complete_success_queries": 17,
+        "dataset_counts": {
+          "musique": 17
+        },
+        "logical_calls": {
+          "p02_total": 102,
+          "single_final_total": 85,
+          "saved": 17,
+          "p02_mean": 6.0,
+          "single_final_mean": 5.0,
+          "relative_change": -0.16666666666666666
+        },
+        "prompt_tokens": {
+          "p02_total": 175173,
+          "single_final_total": 177502,
+          "saved": -2329,
+          "p02_mean": 10304.29411764706,
+          "single_final_mean": 10441.29411764706,
+          "relative_change": 0.013295427948371038
+        },
+        "completion_tokens": {
+          "p02_total": 1500,
+          "single_final_total": 1048,
+          "saved": 452,
+          "p02_mean": 88.23529411764706,
+          "single_final_mean": 61.64705882352941,
+          "relative_change": -0.30133333333333334
+        }
+      }
+    }
+  },
+  "efficiency_details": [
+    {
+      "id": "2wiki:6d2f94300bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 2,
+        "prompt_tokens": 3610,
+        "completion_tokens": 30
+      },
+      "single_final_efficiency": {
+        "logical_calls": 1,
+        "prompt_tokens": 2193,
+        "completion_tokens": 4
+      }
+    },
+    {
+      "id": "2wiki:0f1094ce086f11ebbd62ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8479,
+        "completion_tokens": 66
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7300,
+        "completion_tokens": 50
+      }
+    },
+    {
+      "id": "2wiki:3c9020cd097811ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8855,
+        "completion_tokens": 81
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7260,
+        "completion_tokens": 65
+      }
+    },
+    {
+      "id": "2wiki:74f39a760bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 12698,
+        "completion_tokens": 72
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 10283,
+        "completion_tokens": 48
+      }
+    },
+    {
+      "id": "2wiki:00f34c7e088311ebbd6dac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8074,
+        "completion_tokens": 86
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6754,
+        "completion_tokens": 69
+      }
+    },
+    {
+      "id": "2wiki:ef8a103a0bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6558,
+        "completion_tokens": 54
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6049,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "2wiki:f3c57d120baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10180,
+        "completion_tokens": 63
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12951,
+        "completion_tokens": 48
+      }
+    },
+    {
+      "id": "musique:4hop1__483807_508773_85832_745702",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9730,
+        "completion_tokens": 69
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9663,
+        "completion_tokens": 56
+      }
+    },
+    {
+      "id": "hotpotqa:5adcfbf45542990d50227d86",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 5201,
+        "completion_tokens": 58
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 4795,
+        "completion_tokens": 38
+      }
+    },
+    {
+      "id": "2wiki:ae2d8fc308be11ebbd8aac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 19041,
+        "completion_tokens": 112
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 20052,
+        "completion_tokens": 89
+      }
+    },
+    {
+      "id": "musique:3hop1__228_237521_291682",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 8,
+        "prompt_tokens": 14297,
+        "completion_tokens": 90
+      },
+      "single_final_efficiency": {
+        "logical_calls": 7,
+        "prompt_tokens": 16645,
+        "completion_tokens": 78
+      }
+    },
+    {
+      "id": "hotpotqa:5a77cb5e55429967ab1052a7",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6775,
+        "completion_tokens": 47
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6097,
+        "completion_tokens": 30
+      }
+    },
+    {
+      "id": "2wiki:441127d6088711ebbd6dac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 12960,
+        "completion_tokens": 157
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 14940,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "id": "hotpotqa:5ab484415542990594ba9c44",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 11843,
+        "completion_tokens": 91
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 10889,
+        "completion_tokens": 84
+      }
+    },
+    {
+      "id": "2wiki:16a91a500bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 2,
+        "prompt_tokens": 4986,
+        "completion_tokens": 129
+      },
+      "single_final_efficiency": {
+        "logical_calls": 1,
+        "prompt_tokens": 2852,
+        "completion_tokens": 64
+      }
+    },
+    {
+      "id": "2wiki:318b7d480bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7614,
+        "completion_tokens": 64
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 7280,
+        "completion_tokens": 27
+      }
+    },
+    {
+      "id": "2wiki:9dc413af090311ebbdadac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9461,
+        "completion_tokens": 86
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7612,
+        "completion_tokens": 69
+      }
+    },
+    {
+      "id": "2wiki:27018f000baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10426,
+        "completion_tokens": 111
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10088,
+        "completion_tokens": 87
+      }
+    },
+    {
+      "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17742,
+        "completion_tokens": 168
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 19348,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "id": "musique:2hop__126188_396277",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8221,
+        "completion_tokens": 98
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8408,
+        "completion_tokens": 75
+      }
+    },
+    {
+      "id": "2wiki:83f013aa0bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6584,
+        "completion_tokens": 29
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6345,
+        "completion_tokens": 20
+      }
+    },
+    {
+      "id": "2wiki:dc8d75280baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 7703,
+        "completion_tokens": 82
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9105,
+        "completion_tokens": 62
+      }
+    },
+    {
+      "id": "2wiki:6c0c4c1a0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12836,
+        "completion_tokens": 149
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11104,
+        "completion_tokens": 116
+      }
+    },
+    {
+      "id": "2wiki:5f39895808c711ebbd91ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9137,
+        "completion_tokens": 90
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8526,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "id": "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17850,
+        "completion_tokens": 105
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 19426,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "id": "2wiki:dea18cf408c211ebbd8cac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 15106,
+        "completion_tokens": 172
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 16606,
+        "completion_tokens": 106
+      }
+    },
+    {
+      "id": "2wiki:15b9210e0baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 11598,
+        "completion_tokens": 93
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12732,
+        "completion_tokens": 69
+      }
+    },
+    {
+      "id": "musique:4hop1__107309_457883_650651_7262",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10626,
+        "completion_tokens": 116
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10411,
+        "completion_tokens": 89
+      }
+    },
+    {
+      "id": "2wiki:e3d274ec0bae11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9137,
+        "completion_tokens": 165
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10745,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "id": "musique:3hop1__604797_443779_52195",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12240,
+        "completion_tokens": 112
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11526,
+        "completion_tokens": 70
+      }
+    },
+    {
+      "id": "2wiki:bd058dbd08fd11ebbdadac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9323,
+        "completion_tokens": 81
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7749,
+        "completion_tokens": 51
+      }
+    },
+    {
+      "id": "2wiki:6856ba560bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6539,
+        "completion_tokens": 75
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6245,
+        "completion_tokens": 44
+      }
+    },
+    {
+      "id": "2wiki:42954d320bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10724,
+        "completion_tokens": 100
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11936,
+        "completion_tokens": 73
+      }
+    },
+    {
+      "id": "2wiki:f37818400bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7371,
+        "completion_tokens": 55
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6832,
+        "completion_tokens": 40
+      }
+    },
+    {
+      "id": "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17855,
+        "completion_tokens": 128
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 20462,
+        "completion_tokens": 107
+      }
+    },
+    {
+      "id": "2wiki:aaadd9f80baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 11658,
+        "completion_tokens": 75
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 13169,
+        "completion_tokens": 59
+      }
+    },
+    {
+      "id": "hotpotqa:5adc020a5542994650320c4c",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8336,
+        "completion_tokens": 95
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6710,
+        "completion_tokens": 48
+      }
+    },
+    {
+      "id": "2wiki:74b134420bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6081,
+        "completion_tokens": 43
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6092,
+        "completion_tokens": 30
+      }
+    },
+    {
+      "id": "hotpotqa:5abd455c55429924427fcf5a",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 2,
+        "prompt_tokens": 3346,
+        "completion_tokens": 67
+      },
+      "single_final_efficiency": {
+        "logical_calls": 1,
+        "prompt_tokens": 2038,
+        "completion_tokens": 64
+      }
+    },
+    {
+      "id": "musique:2hop__156702_51769",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9246,
+        "completion_tokens": 96
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9982,
+        "completion_tokens": 60
+      }
+    },
+    {
+      "id": "2wiki:079947de0baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8801,
+        "completion_tokens": 109
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9840,
+        "completion_tokens": 85
+      }
+    },
+    {
+      "id": "musique:2hop__412633_15781",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7408,
+        "completion_tokens": 48
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6206,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "musique:3hop1__404541_629431_64412",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9900,
+        "completion_tokens": 75
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10967,
+        "completion_tokens": 46
+      }
+    },
+    {
+      "id": "musique:3hop2__368986_89048_66294",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8747,
+        "completion_tokens": 85
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8349,
+        "completion_tokens": 43
+      }
+    },
+    {
+      "id": "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14300,
+        "completion_tokens": 238
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 12638,
+        "completion_tokens": 138
+      }
+    },
+    {
+      "id": "2wiki:b8e0d8400baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9367,
+        "completion_tokens": 123
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10424,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "id": "2wiki:61b28c2609a411ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9590,
+        "completion_tokens": 134
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7796,
+        "completion_tokens": 88
+      }
+    },
+    {
+      "id": "2wiki:923b15ba0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12778,
+        "completion_tokens": 144
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12210,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "id": "2wiki:1e9c0bbb08a311ebbd7bac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17440,
+        "completion_tokens": 133
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 21360,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "id": "2wiki:0b0f34d6084a11ebbd55ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17100,
+        "completion_tokens": 166
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 18757,
+        "completion_tokens": 114
+      }
+    },
+    {
+      "id": "2wiki:07b1cc3c0baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9269,
+        "completion_tokens": 65
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9159,
+        "completion_tokens": 50
+      }
+    },
+    {
+      "id": "2wiki:0d118fb00bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6025,
+        "completion_tokens": 60
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5834,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "musique:3hop1__857_846_7752",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10988,
+        "completion_tokens": 65
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11310,
+        "completion_tokens": 52
+      }
+    },
+    {
+      "id": "2wiki:233a579c0bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10968,
+        "completion_tokens": 64
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12232,
+        "completion_tokens": 50
+      }
+    },
+    {
+      "id": "2wiki:ab74ab8709c111ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8423,
+        "completion_tokens": 77
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7737,
+        "completion_tokens": 55
+      }
+    },
+    {
+      "id": "2wiki:c231feaa0bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7231,
+        "completion_tokens": 61
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 7588,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "musique:2hop__132909_33564",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 5771,
+        "completion_tokens": 42
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5542,
+        "completion_tokens": 26
+      }
+    },
+    {
+      "id": "2wiki:77fd1ca20bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10788,
+        "completion_tokens": 101
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12489,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "id": "2wiki:480e8626089911ebbd77ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 16959,
+        "completion_tokens": 199
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 19290,
+        "completion_tokens": 147
+      }
+    },
+    {
+      "id": "hotpotqa:5a794f8155429970f5fffe95",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 7700,
+        "completion_tokens": 96
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6308,
+        "completion_tokens": 57
+      }
+    },
+    {
+      "id": "2wiki:43208df60bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 10054,
+        "completion_tokens": 43
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 8973,
+        "completion_tokens": 25
+      }
+    },
+    {
+      "id": "hotpotqa:5ab8883455429916710eb084",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6633,
+        "completion_tokens": 132
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5480,
+        "completion_tokens": 78
+      }
+    },
+    {
+      "id": "2wiki:4228d7300bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6006,
+        "completion_tokens": 46
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5954,
+        "completion_tokens": 18
+      }
+    },
+    {
+      "id": "2wiki:40b3f66a08cb11ebbd92ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8949,
+        "completion_tokens": 73
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7244,
+        "completion_tokens": 59
+      }
+    },
+    {
+      "id": "2wiki:78bc5f540bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 2,
+        "prompt_tokens": 4136,
+        "completion_tokens": 51
+      },
+      "single_final_efficiency": {
+        "logical_calls": 1,
+        "prompt_tokens": 2440,
+        "completion_tokens": 3
+      }
+    },
+    {
+      "id": "2wiki:279379df092411ebbdaeac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9512,
+        "completion_tokens": 92
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7959,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "id": "hotpotqa:5ae0f2bf5542997b2ef7d09e",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9324,
+        "completion_tokens": 163
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7572,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "id": "2wiki:f35cb30a0bae11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12810,
+        "completion_tokens": 73
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12522,
+        "completion_tokens": 59
+      }
+    },
+    {
+      "id": "2wiki:de6783560bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6700,
+        "completion_tokens": 35
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5499,
+        "completion_tokens": 26
+      }
+    },
+    {
+      "id": "2wiki:e7cd2f5a0bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 10171,
+        "completion_tokens": 107
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 7866,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "id": "2wiki:595209340bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 14035,
+        "completion_tokens": 96
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 15023,
+        "completion_tokens": 75
+      }
+    },
+    {
+      "id": "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 17546,
+        "completion_tokens": 167
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 18178,
+        "completion_tokens": 113
+      }
+    },
+    {
+      "id": "musique:2hop__609313_20273",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7990,
+        "completion_tokens": 33
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6774,
+        "completion_tokens": 23
+      }
+    },
+    {
+      "id": "musique:3hop1__798544_514761_594810",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9071,
+        "completion_tokens": 91
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8699,
+        "completion_tokens": 70
+      }
+    },
+    {
+      "id": "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 16096,
+        "completion_tokens": 162
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 15904,
+        "completion_tokens": 112
+      }
+    },
+    {
+      "id": "2wiki:6f115d280bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6060,
+        "completion_tokens": 77
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5705,
+        "completion_tokens": 53
+      }
+    },
+    {
+      "id": "2wiki:93acf0b9088511ebbd6dac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8834,
+        "completion_tokens": 109
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7037,
+        "completion_tokens": 66
+      }
+    },
+    {
+      "id": "2wiki:8bc6a73a0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10822,
+        "completion_tokens": 93
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11157,
+        "completion_tokens": 72
+      }
+    },
+    {
+      "id": "2wiki:2d2fdefe085311ebbd59ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10748,
+        "completion_tokens": 109
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8778,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "id": "hotpotqa:5ae400ab5542995dadf242be",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8554,
+        "completion_tokens": 128
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6941,
+        "completion_tokens": 98
+      }
+    },
+    {
+      "id": "2wiki:fcd3ff500baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10627,
+        "completion_tokens": 127
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10485,
+        "completion_tokens": 121
+      }
+    },
+    {
+      "id": "musique:4hop2__71753_158985_70784_61381",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 8,
+        "prompt_tokens": 15038,
+        "completion_tokens": 144
+      },
+      "single_final_efficiency": {
+        "logical_calls": 7,
+        "prompt_tokens": 14527,
+        "completion_tokens": 75
+      }
+    },
+    {
+      "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7723,
+        "completion_tokens": 62
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 7343,
+        "completion_tokens": 32
+      }
+    },
+    {
+      "id": "2wiki:8115d246087b11ebbd68ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 13194,
+        "completion_tokens": 133
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 11797,
+        "completion_tokens": 119
+      }
+    },
+    {
+      "id": "hotpotqa:5ab50e0a5542990594ba9cf0",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 5972,
+        "completion_tokens": 42
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5562,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "2wiki:4759b57e0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 2,
+        "prompt_tokens": 6914,
+        "completion_tokens": 35
+      },
+      "single_final_efficiency": {
+        "logical_calls": 1,
+        "prompt_tokens": 3841,
+        "completion_tokens": 11
+      }
+    },
+    {
+      "id": "2wiki:c96e87340baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12275,
+        "completion_tokens": 101
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11778,
+        "completion_tokens": 92
+      }
+    },
+    {
+      "id": "musique:3hop1__88707_91850_685675",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 11777,
+        "completion_tokens": 94
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11098,
+        "completion_tokens": 64
+      }
+    },
+    {
+      "id": "2wiki:d94d1d720bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 9488,
+        "completion_tokens": 46
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 9316,
+        "completion_tokens": 24
+      }
+    },
+    {
+      "id": "2wiki:604119f2088011ebbd6cac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 16431,
+        "completion_tokens": 177
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 17267,
+        "completion_tokens": 110
+      }
+    },
+    {
+      "id": "2wiki:664ed504085e11ebbd5cac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 13136,
+        "completion_tokens": 177
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 13780,
+        "completion_tokens": 130
+      }
+    },
+    {
+      "id": "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9616,
+        "completion_tokens": 79
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 8391,
+        "completion_tokens": 76
+      }
+    },
+    {
+      "id": "2wiki:751bb456084c11ebbd56ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8582,
+        "completion_tokens": 77
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7123,
+        "completion_tokens": 64
+      }
+    },
+    {
+      "id": "2wiki:7339445e086811ebbd5eac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 7521,
+        "completion_tokens": 123
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6234,
+        "completion_tokens": 79
+      }
+    },
+    {
+      "id": "musique:4hop1__40316_497223_15840_36002",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 8,
+        "prompt_tokens": 13939,
+        "completion_tokens": 130
+      },
+      "single_final_efficiency": {
+        "logical_calls": 7,
+        "prompt_tokens": 16457,
+        "completion_tokens": 136
+      }
+    },
+    {
+      "id": "2wiki:654dbe680bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12238,
+        "completion_tokens": 91
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 12061,
+        "completion_tokens": 70
+      }
+    },
+    {
+      "id": "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 15370,
+        "completion_tokens": 254
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 17253,
+        "completion_tokens": 192
+      }
+    },
+    {
+      "id": "2wiki:68a60785087511ebbd67ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 13353,
+        "completion_tokens": 151
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9872,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "id": "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14280,
+        "completion_tokens": 147
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 15879,
+        "completion_tokens": 117
+      }
+    },
+    {
+      "id": "hotpotqa:5a71474b5542994082a3e74f",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6521,
+        "completion_tokens": 154
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5504,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "id": "2wiki:7e73e6560bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6187,
+        "completion_tokens": 64
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5985,
+        "completion_tokens": 35
+      }
+    },
+    {
+      "id": "2wiki:ce612a020bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 10395,
+        "completion_tokens": 48
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 9501,
+        "completion_tokens": 26
+      }
+    },
+    {
+      "id": "2wiki:6e1db6b808c911ebbd92ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14984,
+        "completion_tokens": 154
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 16409,
+        "completion_tokens": 105
+      }
+    },
+    {
+      "id": "2wiki:085ace840bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7205,
+        "completion_tokens": 52
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6818,
+        "completion_tokens": 30
+      }
+    },
+    {
+      "id": "hotpotqa:5a7a59d15542996c55b2dd67",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 6259,
+        "completion_tokens": 76
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5722,
+        "completion_tokens": 58
+      }
+    },
+    {
+      "id": "hotpotqa:5abed9435542994516f45457",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8185,
+        "completion_tokens": 98
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 6567,
+        "completion_tokens": 68
+      }
+    },
+    {
+      "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9241,
+        "completion_tokens": 139
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7921,
+        "completion_tokens": 88
+      }
+    },
+    {
+      "id": "2wiki:3cddcc46086511ebbd5eac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9589,
+        "completion_tokens": 131
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9215,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 12720,
+        "completion_tokens": 85
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10029,
+        "completion_tokens": 48
+      }
+    },
+    {
+      "id": "musique:4hop1__105401_17130_70784_79935",
+      "dataset": "musique",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10184,
+        "completion_tokens": 112
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 10938,
+        "completion_tokens": 54
+      }
+    },
+    {
+      "id": "2wiki:9d3c3b060bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 10441,
+        "completion_tokens": 60
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 8510,
+        "completion_tokens": 42
+      }
+    },
+    {
+      "id": "2wiki:4f81c5260bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 9056,
+        "completion_tokens": 44
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 8277,
+        "completion_tokens": 29
+      }
+    },
+    {
+      "id": "2wiki:d27c4969084d11ebbd56ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10688,
+        "completion_tokens": 85
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 11095,
+        "completion_tokens": 71
+      }
+    },
+    {
+      "id": "2wiki:86e8f2bd089b11ebbd78ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 12355,
+        "completion_tokens": 115
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 13628,
+        "completion_tokens": 91
+      }
+    },
+    {
+      "id": "hotpotqa:5a89ec7b5542992e4fca8483",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7019,
+        "completion_tokens": 89
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6385,
+        "completion_tokens": 66
+      }
+    },
+    {
+      "id": "hotpotqa:5adbc8e25542996e68525230",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 8,
+        "prompt_tokens": 11117,
+        "completion_tokens": 132
+      },
+      "single_final_efficiency": {
+        "logical_calls": 7,
+        "prompt_tokens": 12643,
+        "completion_tokens": 101
+      }
+    },
+    {
+      "id": "hotpotqa:5a8b91d25542995d1e6f13fc",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 6779,
+        "completion_tokens": 83
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 5650,
+        "completion_tokens": 61
+      }
+    },
+    {
+      "id": "2wiki:7888c2760baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 9276,
+        "completion_tokens": 92
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9987,
+        "completion_tokens": 71
+      }
+    },
+    {
+      "id": "2wiki:2b42746808cf11ebbd94ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14128,
+        "completion_tokens": 122
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 16936,
+        "completion_tokens": 128
+      }
+    },
+    {
+      "id": "2wiki:8f2b2975088a11ebbd6fac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14142,
+        "completion_tokens": 107
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 18628,
+        "completion_tokens": 86
+      }
+    },
+    {
+      "id": "2wiki:d9c801f4088b11ebbd6fac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 14924,
+        "completion_tokens": 218
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 14659,
+        "completion_tokens": 129
+      }
+    },
+    {
+      "id": "hotpotqa:5ac298805542990b17b15429",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 5897,
+        "completion_tokens": 84
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5087,
+        "completion_tokens": 50
+      }
+    },
+    {
+      "id": "2wiki:5d6e0f860bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 11875,
+        "completion_tokens": 131
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 13060,
+        "completion_tokens": 104
+      }
+    },
+    {
+      "id": "2wiki:f31011fc0bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7168,
+        "completion_tokens": 51
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6522,
+        "completion_tokens": 28
+      }
+    },
+    {
+      "id": "2wiki:7fbdef41091011ebbdadac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 11984,
+        "completion_tokens": 84
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9205,
+        "completion_tokens": 68
+      }
+    },
+    {
+      "id": "hotpotqa:5adf9ee75542992d7e9f93c0",
+      "dataset": "hotpotqa",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 5692,
+        "completion_tokens": 70
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 5305,
+        "completion_tokens": 33
+      }
+    },
+    {
+      "id": "2wiki:07630b680bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 4,
+        "prompt_tokens": 7286,
+        "completion_tokens": 43
+      },
+      "single_final_efficiency": {
+        "logical_calls": 3,
+        "prompt_tokens": 6515,
+        "completion_tokens": 31
+      }
+    },
+    {
+      "id": "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 15796,
+        "completion_tokens": 151
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 16690,
+        "completion_tokens": 94
+      }
+    },
+    {
+      "id": "2wiki:e3d870e2085511ebbd59ac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 10,
+        "prompt_tokens": 15633,
+        "completion_tokens": 146
+      },
+      "single_final_efficiency": {
+        "logical_calls": 9,
+        "prompt_tokens": 16810,
+        "completion_tokens": 133
+      }
+    },
+    {
+      "id": "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 10887,
+        "completion_tokens": 95
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 9265,
+        "completion_tokens": 55
+      }
+    },
+    {
+      "id": "2wiki:7b4cc520091d11ebbdaeac1f6bf848b6",
+      "dataset": "2wiki",
+      "p02_efficiency": {
+        "logical_calls": 6,
+        "prompt_tokens": 8559,
+        "completion_tokens": 66
+      },
+      "single_final_efficiency": {
+        "logical_calls": 5,
+        "prompt_tokens": 7161,
+        "completion_tokens": 54
+      }
+    }
+  ],
+  "budget": {
+    "database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+    "experiment_namespace_prefix": "p02_flow_simplify_v1_20261020",
+    "experiment": {
+      "submissions": 700,
+      "known_returned_usage_cny": 1.433677999999999,
+      "unknown_reserved_cny": 0.17686799999999994,
+      "occupied_cny": 1.610545999999999,
+      "unreconciled_requests": 18,
+      "statuses": {
+        "returned_usage": 682,
+        "reserved": 18
+      }
+    },
+    "by_arm": {
+      "union20": {
+        "submissions": 423,
+        "known_returned_usage_cny": 0.7667320000000006,
+        "unknown_reserved_cny": 0.12005519999999997,
+        "occupied_cny": 0.8867872000000006,
+        "unreconciled_requests": 13,
+        "statuses": {
+          "returned_usage": 410,
+          "reserved": 13
+        }
+      },
+      "discount20": {
+        "submissions": 142,
+        "known_returned_usage_cny": 0.2914668,
+        "unknown_reserved_cny": 0.008964799999999998,
+        "occupied_cny": 0.3004316,
+        "unreconciled_requests": 1,
+        "statuses": {
+          "returned_usage": 141,
+          "reserved": 1
+        }
+      },
+      "single_final": {
+        "submissions": 135,
+        "known_returned_usage_cny": 0.3754792,
+        "unknown_reserved_cny": 0.047847999999999995,
+        "occupied_cny": 0.4233272,
+        "unreconciled_requests": 4,
+        "statuses": {
+          "returned_usage": 131,
+          "reserved": 4
+        }
+      }
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "submissions": 118,
+        "known_returned_usage_cny": 0.1683603999999999,
+        "unknown_reserved_cny": 0.03540639999999999,
+        "occupied_cny": 0.20376679999999991,
+        "unreconciled_requests": 5,
+        "statuses": {
+          "returned_usage": 113,
+          "reserved": 5
+        }
+      },
+      "2wiki": {
+        "submissions": 417,
+        "known_returned_usage_cny": 0.9583212000000002,
+        "unknown_reserved_cny": 0.06098399999999999,
+        "occupied_cny": 1.0193052000000002,
+        "unreconciled_requests": 5,
+        "statuses": {
+          "returned_usage": 412,
+          "reserved": 5
+        }
+      },
+      "musique": {
+        "submissions": 165,
+        "known_returned_usage_cny": 0.30699640000000017,
+        "unknown_reserved_cny": 0.08047759999999998,
+        "occupied_cny": 0.38747400000000015,
+        "unreconciled_requests": 8,
+        "statuses": {
+          "returned_usage": 157,
+          "reserved": 8
+        }
+      }
+    },
+    "global": {
+      "submissions": 107764,
+      "known_returned_usage_cny": 188.00319880000137,
+      "unknown_reserved_cny": 35.58718480000003,
+      "occupied_cny": 223.59038360000142,
+      "unreconciled_requests": 2147,
+      "statuses": {
+        "reserved": 2147,
+        "returned_usage": 105574,
+        "http_failed_not_returned_usage": 43
+      }
+    },
+    "global_cap_cny": 300,
+    "actual_bill_verified": false,
+    "meaning": "Known costs are returned-usage estimates recorded by the budget ledger; unknown liabilities remain reserved. Cache replays do not add ledger charges."
+  },
+  "quality_gate": "No selection or promotion from partial results. Absence of statistical significance is not proof of noninferiority. Simplification need not improve F1, but tolerable regression must be judged on complete comparable evaluation.",
+  "partial_scope": "Each arm first uses its own scorable IDs paired with p02, then all arms share the exact common set. Neither replaces a full300 result.",
+  "cost_scope": "Logical calls/tokens include cache reuse; input tokens can increase with20 documents. Actual incremental charges and unknown reserves remain in budget snapshot.",
+  "new_API_calls": 0,
+  "new_index_searches": 0
+}

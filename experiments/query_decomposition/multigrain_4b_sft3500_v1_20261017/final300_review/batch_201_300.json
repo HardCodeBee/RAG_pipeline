@@ -1,0 +1,205 @@
+{
+  "reviewed_indices": [
+    201,
+    300
+  ],
+  "reviewer": "Current Codex inspected every changed output after optimization close; frozen exact question-string judgments inherited for unchanged arrays. Query-only F/S/C/U; no factual answers, source documents or native decomposition labels used.",
+  "exceptions": {
+    "204": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Changes the historical team in which-league-was into the team Ilsinho presently plays for; that membership/time scope is not supplied."
+    },
+    "206": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Replaces creator of Le Reve with director of Le Reve; a director who created a production is not necessarily specified as its director."
+    },
+    "207": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Never identifies the person who went to Englebarts death state during the gold rush before asking their work city."
+    },
+    "216": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Replaces the artist who duetted with Beyonce in Deja Vu and the subject of Cry with generic crying-song questions; the artist prerequisite is missing."
+    },
+    "219": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The console identity retains only three-letter abbreviation, dropping the game named after the Rams league that identifies the intended system."
+    },
+    "220": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The unprepared-country query drops the military-branch-equivalent-to-US-branch condition identifying that country."
+    },
+    "225": {
+      "verdict": "fail",
+      "dimensions": [
+        "C",
+        "U"
+      ],
+      "reason": "Does not identify the unnamed Freddie Mercury film and repeats producer identity with and without the actor qualifier."
+    },
+    "231": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Returns no prerequisite for the unidentified largest foreigner group in2010, which is the other population being discussed."
+    },
+    "232": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C",
+        "U"
+      ],
+      "reason": "Changes diadochi painting themselves to resemble another person into someone painting the diadochi to resemble themselves; adds generic group identity and omits the intended person."
+    },
+    "234": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Changes competition after which MVP awards were given into competition that gave MVP awards, altering temporal/agent relation."
+    },
+    "235": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C"
+      ],
+      "reason": "Turns GDP per person into a Who entity and an edict addressee; neither the addressed person nor greeting place is identified."
+    },
+    "238": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Splits the console jointly identified by abbreviation and Yoshi into separately restricted identity questions; frozen joint-object-description criterion."
+    },
+    "239": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Reasks which city is the headquarters locations capital although the input already specifies it as Anhua Gaos birthplace; no new prerequisite."
+    },
+    "240": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The source starring modifier can attach to film or adapted play; output commits it to the1606 play, so relation faithfulness is uncertain."
+    },
+    "244": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the Persian Gulf condition from the identity of the northern region."
+    },
+    "249": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Asks a generic identity of the already named official My Chick Bad remix instead of exposing a new supporting object or operand."
+    },
+    "250": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Generic known-for profiles supply unspecified attributes despite no comparison criterion in the original; the frozen protocol avoids generic identities/unrelated attributes."
+    },
+    "251": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Drops both given film alternatives and does not ask the computer-programmer condition for each supplied option; the broad film query changes scope."
+    },
+    "252": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Moves the Evros disambiguator from Ampelakia to Mavrolithari as well, adding an unsupported location restriction to the first village."
+    },
+    "256": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the Persian Gulf condition from the northern-region identification."
+    },
+    "257": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Both questions reask the local poetic-form target for the already named poem, rather than identifying a missing intermediate or comparison operand."
+    },
+    "262": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "City and temple identification omit the country-for-Vasilopita condition present in the original city description."
+    },
+    "271": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Changes region north of Shamal location into a region containing Shamal; north-of and contains are not equivalent."
+    },
+    "274": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Returns no identity prerequisite for the unnamed set of Liszt works whose second work is the target."
+    },
+    "278": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Both family-member identities omit the middle sons Chicago Bulls affiliation, a key condition identifying the family."
+    },
+    "280": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops Robert from the supplied full identity Robert, Archduke Of Austria-Este, leaving only a nonunique title."
+    },
+    "284": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The seven-character set identity drops cartoons opening with their own logos, attaching seven to a less restricted character group."
+    }
+  }
+}

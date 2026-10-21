@@ -1,0 +1,206 @@
+{
+  "reviewed_indices": [
+    1,
+    50
+  ],
+  "reviewed_steps": [
+    110,
+    165,
+    220
+  ],
+  "reviewer": "Current Codex inspected every literal original-query/output pair for all three versions, including identical outputs. Frozen v12 F/S/C/U; no answers, passages, dev reference labels or eval300 consulted. Not independent human gold.",
+  "exceptions": {
+    "110": {
+      "2": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Changes a war after which NYC black population declined into the war that caused the decline, adding an unsupported causal relation."
+      },
+      "4": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Skips identifying the story featuring the author of The Hope before asking for that story author and the film-linked book/state."
+      },
+      "17": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Treats the apparent input typo if the Burbs as the film title If the Burbs, changing the identifying title rather than extracting its cast."
+      },
+      "40": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Never independently asks which city is adjacent to the described state capital; the useful adjacent-city intermediate is missing."
+      },
+      "44": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Does not expose the unidentified work of the writer, retained inside the interpretation request; the useful work intermediate is missing."
+      },
+      "48": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Skips the short-story identity; the book query also changes a film based on a book into a film filmed in a book or an unrestricted book by the author."
+      },
+      "50": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "The show-identification need drops the input restriction about teenage friends from a Wisconsin town, leaving only Matt McKenzie having a role."
+      },
+      "23": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Identifies the rules-setting body but skips the majority party in that body before the House-control date target."
+      },
+      "35": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Drops the killed-as-many-as-60-patients identifying condition when extracting the person who received the three life terms."
+      }
+    },
+    "165": {
+      "2": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S",
+          "C"
+        ],
+        "reason": "Asks what city died in a war, dropping the artist-to-death-city relation and failing to isolate the intended war and death-city prerequisites."
+      },
+      "4": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Skips identifying the story author after identifying the story; the book question loses the based-on relation and instead asks what book the film was filmed in."
+      },
+      "17": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Treats the apparent input typo if the Burbs as the film title If the Burbs, changing the identifying title rather than extracting its cast."
+      },
+      "40": {
+        "verdict": "fail",
+        "dimensions": [
+          "C",
+          "U"
+        ],
+        "reason": "Omits the adjacent-city intermediate and adds an original-equivalent county target; that county question is not a newly exposed supporting operation."
+      },
+      "44": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Does not expose the unidentified work of the writer, retained inside the interpretation request; the useful work intermediate is missing."
+      },
+      "48": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Skips the short-story identity; the book query also changes a film based on a book into a film filmed in a book or an unrestricted book by the author."
+      },
+      "50": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "The show-identification need drops the input restriction about teenage friends from a Wisconsin town, leaving only Matt McKenzie having a role."
+      }
+    },
+    "220": {
+      "2": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Changes a war after which NYC black population declined into the war that caused the decline, adding an unsupported causal relation."
+      },
+      "4": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Skips identifying the story featuring the author of The Hope before asking for that story author and the film-linked book/state."
+      },
+      "17": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Treats the apparent input typo if the Burbs as the film title If the Burbs, changing the identifying title rather than extracting its cast."
+      },
+      "40": {
+        "verdict": "fail",
+        "dimensions": [
+          "C",
+          "U"
+        ],
+        "reason": "Omits the adjacent-city intermediate and adds an original-equivalent county target; that county question is not a newly exposed supporting operation."
+      },
+      "44": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Does not expose the unidentified work of the writer, retained inside the interpretation request; the useful work intermediate is missing."
+      },
+      "48": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Skips the short-story identity; the book query also changes a film based on a book into a film filmed in a book or an unrestricted book by the author."
+      },
+      "50": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "U"
+        ],
+        "reason": "Show identification drops the teenage-friends/Wisconsin description; the extra question asks what lives or friends the show focused on rather than a useful prerequisite for the town."
+      },
+      "18": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C",
+          "U"
+        ],
+        "reason": "Only restates the complete painter target, weakens having a painting to being associated with paintings, and exposes neither a painter-condition operand nor the painting identity."
+      },
+      "31": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "After identifying the German cinematographer, adds a copy of the original actor target with the five-count requirement removed; this is not a new prerequisite."
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-21T04:33:20.150961+00:00",
+  "pid": 36912,
+  "status": "stopped_no_restart",
+  "supervisor_restarts": 0,
+  "locks_held": {
+    "supervisor": true,
+    "worker": true
+  },
+  "seconds_without_observed_activity": 50,
+  "phase": {
+    "track": "main",
+    "dataset": "musique",
+    "split": "formal",
+    "method": "b01_rag_top10_cot3",
+    "status": "running",
+    "reason": null
+  },
+  "audit_passed": true,
+  "audit_utc": "2026-10-21T04:29:49.344811+00:00",
+  "processed": 10576,
+  "scorable": 10520,
+  "planned": 13500,
+  "budget": {
+    "cumulative_cap_cny": 300.0,
+    "submission_guard_cny": 299.9,
+    "known_cny": 219.41932079999998,
+    "unknown_reserves_cny": 54.7872688,
+    "occupied_cny": 274.2065896,
+    "remaining_cny": 25.79341040000002
+  },
+  "chat_notifications_scheduled": false,
+  "poll_seconds": 20,
+  "audit_seconds": 300
+}

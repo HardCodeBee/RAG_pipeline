@@ -1,0 +1,24 @@
+{
+  "reviewed_indices": [
+    111,
+    150
+  ],
+  "reviewer": "Current Codex inspected changed question strings; identical outputs inherit frozen control verdicts. Query-only, no answers/test300 used.",
+  "exceptions": {
+    "118": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still asserts that Fuhrman worked as a detective in a restaurant, reversing the victim/restaurant and detective/case relation."
+    },
+    "126": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Restores the region-containing-Layana binding, but still does not identify the described Martin as a separate intermediate; frozen completeness criterion remains unmet."
+    }
+  }
+}

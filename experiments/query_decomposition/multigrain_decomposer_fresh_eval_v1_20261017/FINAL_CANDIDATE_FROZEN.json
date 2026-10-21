@@ -1,0 +1,33 @@
+{
+  "status": "candidate_for_confirmation_not_production_promotion",
+  "utc": "2026-10-17T07:36:27.855870+00:00",
+  "old_control": "v4",
+  "best_single_pass": "v8",
+  "candidate": "v8",
+  "holdout_arms": [
+    "v4",
+    "v8"
+  ],
+  "editor_adopted": false,
+  "selection_reason": "predeclared development full-denominator passes; v9 must improve over v8; otherwise retain cheaper single pass",
+  "dev_passes": {
+    "v2": 30,
+    "v3": 32,
+    "v4": 37,
+    "v5": 37,
+    "v6": 42,
+    "v7": 40,
+    "v8": 43,
+    "v9": 42
+  },
+  "dev_results_sha256": "a1591de5e40510717e6211cf1bdc64f26ece4c30723e63d8004e9b1790ce3d34",
+  "review_sha256": "053d9763082a04cfe7db3e6561f86d09751983bf7e7884f981233a060ed4c5b7",
+  "holdout_sha256": "2db2f0158178b45f5e06effc8b3d16fa33f95eea6111a58e4d6406ac29a1ae8f",
+  "prompt_hashes": {
+    "v4": "b17a916bf2a81973b5e588cc03346226c9c26aa1ed9ff25c2db62fbb0e3cae1c",
+    "v8": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85"
+  },
+  "holdout_text_inspected_before_freeze": false,
+  "no_retuning_on_holdout": true,
+  "claim": "API decomposition semantic subset review, not trained4B accuracy or downstreamF1"
+}

@@ -1,0 +1,59 @@
+Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.
+The original question supplies scope; answer only the current subquestion.
+Resolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.
+Return one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.
+
+Original question:
+Where was the husband of Jeanne Raunay born?
+
+Relevant prior question-answer pairs:
+#1 Question: Who is Jeanne Raunay's husband?
+Answer: Jeanne Raunay's husband was André Beaunier.
+
+Current subquestion #2:
+Where was the husband of Jeanne Raunay born?
+
+Retrieved passages:
+[Chunk 1 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 2 | source=André Beaunier, pages=1-1]
+André Beaunier
+André Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.
+
+[Chunk 3 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]
+Louis-Antoine Beaunier
+Louis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.
+
+[Chunk 5 | source=Rahel la Fermosa, pages=1-1]
+Rahel la Fermosa
+Rahel( La( Ladino for" Rachel the Beautiful"; originally" Rahel Esra"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.
+
+[Chunk 6 | source=Guy Beaulne, pages=1-1]
+Guy Beaulne
+Guy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.
+
+[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]
+Jeanne Bonaparte
+Princess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.
+
+[Chunk 8 | source=Beau Brady, pages=1-1]
+Beau Brady
+Beau Brady is an Australian actor from Sydney, Australia.
+
+[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]
+Jeanne Bonaparte
+Princess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.
+
+[Chunk 10 | source=Nicolas Beaudan, pages=1-1]
+Nicolas Beaudan
+Nicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the" black cat". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.
+
+For a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.
+
+Answer:

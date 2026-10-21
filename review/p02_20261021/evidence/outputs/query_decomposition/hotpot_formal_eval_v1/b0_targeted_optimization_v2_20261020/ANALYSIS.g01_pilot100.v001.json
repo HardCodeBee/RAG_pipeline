@@ -1,0 +1,378 @@
+{
+  "snapshot_utc": "2026-10-19T21:57:54.471708+00:00",
+  "phase": "g01 pilot100 completed; extension200 running; f01 not yet audited",
+  "scope": "Only existing100 pilot successes, all physical/reused request payloads inspected. No API requests or changes to source/results.",
+  "counts": {
+    "g01_successful_cases": 100,
+    "ordinary_nodes_checked": 177,
+    "all_nodes_checked": 277,
+    "ordinary_nodes_exact_cases": 100,
+    "all_nonoutput_fields_exact_cases": 100,
+    "only_goal_rule_insertion_cases": 100,
+    "context_exact_reconstruction_cases": 100,
+    "final_only_context_updated_from_P1_cases": 100,
+    "formatter_original_trigger_preserved_cases": 100,
+    "formatter_triggered_cases": 0,
+    "actual_goal_payload_checked": 100,
+    "actual_generation_contract_checked": 200,
+    "actual_payloads_checked": 200,
+    "actual_final_payload_checked": 100,
+    "frozen_source_pins_checked": 8,
+    "frozen_case_hashes_checked": 600
+  },
+  "problems": [],
+  "f01_audited_cases": 0,
+  "pilot_scores": {
+    "scorable": 100,
+    "statuses": {
+      "success": 100,
+      "unstarted": 200
+    },
+    "F1": 0.6638763458763459,
+    "same_parent_F1": 0.6496300366300366,
+    "delta_parent": 0.014246309246309246,
+    "paired95": [
+      -0.000991785991785994,
+      0.03958850593850593
+    ],
+    "up": 3,
+    "tie": 94,
+    "down": 3,
+    "pilot_scorable": 100,
+    "pilot_delta": 0.014246309246309246,
+    "expand": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 33,
+        "F1": 0.7497835497835497,
+        "delta_parent": -0.0027417027417027456
+      },
+      "2wiki": {
+        "n": 33,
+        "F1": 0.888047138047138,
+        "delta_parent": 0.030303030303030304
+      },
+      "musique": {
+        "n": 34,
+        "F1": 0.3629182908594673,
+        "delta_parent": 0.015150209267856329
+      }
+    }
+  },
+  "interpretation": {
+    "up3": "1 supported common-country combination correction;1 alias compression;1 wrong Zero years with years token overlap",
+    "down3": "2 supported location/common-occupation wording changes;1 evidence-aligned partial cause addition plus verbosity and study-scope mixture",
+    "not_supported": "No evidence that all+1.4246pp is semantic correctness improvement or numerical comparison repair. Gold only used for offline interpretation."
+  },
+  "reviews": [
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "query": "How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\3hop2__326964_734214_7713.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop2__326964_734214_7713.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop2__326964_734214_7713.json",
+      "scoring": {
+        "id": "musique:3hop2__326964_734214_7713",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Zero years",
+        "f1": 0.4,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 0.4,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "about 400 years",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where was Lynn Hung born?",
+          "answer": "Lynn Hung was born in Nanjing, China."
+        },
+        {
+          "step_id": 2,
+          "request": "Where were Yaxing Coach's headquarters located?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        },
+        {
+          "step_id": 3,
+          "request": "What city was the headquarters of Yaxing Coach located in?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        }
+      ],
+      "old_goal_answer": "Nanjing has been the capital city of Jiangsu province since the founding of the People's Republic of China, but it was never the capital city of Yangzhou—the location of Yaxing Coach's headquarters—so the premise is invalid.",
+      "new_goal_answer": "Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.",
+      "P1_parent_prediction": "Cannot be determined",
+      "new_prediction": "Zero years",
+      "classification": "F1上升但事实风险增加；不是正确的数值组合修复",
+      "mechanism": "旧goal已把现代城市Yangzhou与历史行政区关系混淆，父最终缺答；新goal将“never”变成zero years，最终Zero years。标准about 400 years，仅years重合即得0.4。当前goal读到的是南京作为江苏省会等段落，没有400年或never的直接依据，不能把缺证转换为零。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China, and had been the world's largest city aggregately for hundreds of years, enjoyed peace and prosperity and beared wars and disasters. Nanjing served as the capital of Eastern Wu, one of the three major states in the Three Kingdoms period (211-280); the Eastern Jin and each of the Southern Dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317-589; the Southern Tang, one of the Ten Kingdoms (937-76); the Ming dynasty when, for the first time, all of China was ruled from the city (1368-1421); and the Republic of China (1927–37, 1945–49) prior to its flight to Taiwan during the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1851–64) and the Japanese puppet regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War, and suffered appalling atrocities in both conflicts, including the Nanjing Massacre. It has been serving as the capital city of Jiangsu province after the China was established, and is still the nominal capital of Republic of China that accommodates many of its important heritage sites, including the Presidential Palace and Sun Yat-sen Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Art Museum."
+        },
+        {
+          "rank": 4,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing ( listen; Chinese: 南京, \"Southern Capital\") is the city situated in the heartland of lower Yangtze River region in China, which has long been a major centre of culture, education, research, politics, economy, transport networks and tourism. It is the capital city of Jiangsu province of People's Republic of China and the second largest city in East China, with a total population of 8,216,100, and legally the capital of Republic of China which lost the mainland during the civil war. The city whose name means \"Southern Capital\" has a prominent place in Chinese history and culture, having served as the capitals of various Chinese dynasties, kingdoms and republican governments dating from the 3rd century AD to 1949. Prior to the advent of pinyin romanization, Nanjing's city name was spelled as Nanking or Nankin. Nanjing has a number of other names, and some historical names are now used as names of districts of the city, and among them there is the name Jiangning (江寧), whose former character Jiang (江, River) is the former part of the name Jiangsu and latter character Ning (寧, simplified form 宁, Peace) is the short name of Nanjing. When being the capital of a state, for instance, ROC, Jing (京) is adopted as the abbreviation of Nanjing. Although as a city located in southern part of China becoming Chinese national capital as early as in Jin dynasty, the name Nanjing was designated to the city in Ming dynasty, about a thousand years later. Nanjing is particularly known as Jinling (金陵, literally meaning Gold Mountain) and the old name has been used since the Warring States Period in Zhou Dynasty."
+        },
+        {
+          "rank": 6,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing first became a state capital in 229 AD, when the state of Eastern Wu founded by Sun Quan during the Three Kingdoms period relocated its capital to Jianye (建業), the city extended on the basis of Jinling Yi in 211 AD. Although conquered by the Western Jin dynasty in 280, Nanjing and its neighbouring areas had been well cultivated and developed into one of the commercial, cultural and political centers of China during the rule of East Wu. This city would soon play a vital role in the following centuries."
+        },
+        {
+          "rank": 8,
+          "source": "Nanjing",
+          "text": "Nanjing\nIt is believed that Nanjing was the largest city in the world from 1358 to 1425 with a population of 487,000 in 1400. Nanjing remained the capital of the Ming Empire until 1421, when the third emperor of the Ming dynasty, the Yongle Emperor, relocated the capital to Beijing."
+        },
+        {
+          "rank": 10,
+          "source": "Nanjing",
+          "text": "Nanjing\nIn 1927, the Kuomintang (KMT; Nationalist Party) under Generalissimo Chiang Kai-shek again established Nanjing as the capital of the Republic of China, and this became internationally recognized once KMT forces took Beijing in 1928. The following decade is known as the Nanking decade."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__789565_416401",
+      "query": "Who is the child of Empress Dowager Huang's child?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__789565_416401.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__789565_416401.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__789565_416401.json",
+      "scoring": {
+        "id": "musique:2hop__789565_416401",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Wang Jipeng (also known as Wang Chang)",
+        "f1": 0.4444444444444445,
+        "parent_f1": 0.3076923076923077,
+        "B0_f1": 0.3076923076923077,
+        "delta_parent": 0.13675213675213677,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "Wang Jipeng",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who was Empress Dowager Huang's child?",
+          "answer": "Empress Dowager Huang's child was Wang Yanjun (also known as Wang Lin, Emperor Huizong)."
+        }
+      ],
+      "old_goal_answer": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min) was the child of Empress Dowager Huang's child, Wang Yanjun.",
+      "new_goal_answer": "Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.",
+      "P1_parent_prediction": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min)",
+      "new_prediction": "Wang Jipeng (also known as Wang Chang)",
+      "classification": "同一正确实体的别名压缩",
+      "mechanism": "旧新goal均为Wang Jipeng，仅删Emperor Kangzong of Min称号，最终仍带Wang Chang别名；不是新检索或新关系发现。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        6
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Empress Dowager Huang",
+          "text": "Empress Dowager Huang\nEmpress Dowager Huang (黃太后, personal name unknown), referred to semi-formally as Empress Dowager Longqi (龍啟太后) after her son Wang Yanjun's \"Longqi\" era name, was an empress dowager of the Chinese Five Dynasties and Ten Kingdoms period state Min. She was the primary concubine of Wang Shenzhi (Prince Zhongyi), who was commonly regarded as the founder of the Min state, and the mother of Wang Yanjun (also known as Wang Lin, Emperor Huizong), the first Min ruler to claim the title of emperor."
+        },
+        {
+          "rank": 6,
+          "source": "Wang Jipeng",
+          "text": "Wang Jipeng\nWang Jipeng (王繼鵬) (d. August 29, 939), used the name Wang Chang (王昶) from 935 to 939, formally Emperor Kangzong of Min (閩康宗), was an emperor of the Chinese Five Dynasties and Ten Kingdoms Period state Min. He inherited the throne after his father Wang Yanjun (Emperor Huizong, later also known as Wang Lin) was assassinated, possibly at his instigation. He himself was in turn killed in a coup headed by his uncle Wang Yanxi (Emperor Jingzong, later also known as Wang Xi), who succeeded him."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5abec66b5542997ec76fd360",
+      "query": "What do Josef Veltjens and Hermann Goering have in common?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\hotpotqa\\g01_goal_consistency\\5abec66b5542997ec76fd360.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abec66b5542997ec76fd360.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5abec66b5542997ec76fd360.json",
+      "scoring": {
+        "id": "hotpotqa:5abec66b5542997ec76fd360",
+        "dataset": "hotpotqa",
+        "arm": "g01_goal_consistency",
+        "prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+        "f1": 0.38095238095238093,
+        "parent_f1": 0.4,
+        "B0_f1": 0.32,
+        "delta_parent": -0.01904761904761909,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "A veteran World War I fighter pilot ace",
+      "prior_QA": [],
+      "old_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces who received the Pour le Mérite.",
+      "new_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.",
+      "P1_parent_prediction": "Both were German World War I fighter aces who received the Pour le Mérite.",
+      "new_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+      "classification": "事实相同的同义表达变化导致F1下降",
+      "mechanism": "who received the Pour le Mérite改为and recipients of the Pour le Mérite；两段原文均支持共同职业和奖项，没有观察到事实退化。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Josef Veltjens",
+          "text": "Josef Veltjens\nJosef \"Seppl\" Veltjens (2 June 1894 – 6 October 1943) was a German World War I fighter ace credited with 35 victories. In later years, he served as an international arms dealer, as well as a personal emissary from Hermann Göring to Benito Mussolini. He was awarded Pour le Mérite, the Royal House Order of Hohenzollern, and the Iron Cross."
+        },
+        {
+          "rank": 2,
+          "source": "Hermann Göring",
+          "text": "Hermann Göring\nHermann Wilhelm Göring (or Goering; ] ; 12 January 1893 – 15 October 1946) was a German political and military leader as well as one of the most powerful figures in the Nazi Party (NSDAP) that ruled Germany from 1933 to 1945. A veteran World War I fighter pilot ace, he was a recipient of the \"Pour le Mérite\". He was the last commander of \"Jagdgeschwader\" 1, the fighter wing once led by Manfred von Richthofen."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ae0006755429925eb1afbd3",
+      "query": "Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\hotpotqa\\g01_goal_consistency\\5ae0006755429925eb1afbd3.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ae0006755429925eb1afbd3.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5ae0006755429925eb1afbd3.json",
+      "scoring": {
+        "id": "hotpotqa:5ae0006755429925eb1afbd3",
+        "dataset": "hotpotqa",
+        "arm": "g01_goal_consistency",
+        "prediction": "700 block of Higuera Street in downtown San Luis Obispo",
+        "f1": 0.4285714285714285,
+        "parent_f1": 0.5,
+        "B0_f1": 0.4285714285714285,
+        "delta_parent": -0.07142857142857151,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "San Luis Obispo, California",
+      "prior_QA": [],
+      "old_goal_answer": "Bubblegum Alley is located in downtown San Luis Obispo, California, specifically in the 700 block of Higuera Street.",
+      "new_goal_answer": "Bubblegum Alley is located in the 700 block of Higuera Street in downtown San Luis Obispo, California.",
+      "P1_parent_prediction": "downtown San Luis Obispo, California, specifically in the 700 block of Higuera Street",
+      "new_prediction": "700 block of Higuera Street in downtown San Luis Obispo",
+      "classification": "位置表达与最终短化导致F1下降",
+      "mechanism": "旧新goal均保留San Luis Obispo, California与Higuera Street；新最终输出街道+城市而省掉California，仍与原文位置一致，但未贴合标准所求城市州表达。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Bubblegum Alley",
+          "text": "Bubblegum Alley\nBubblegum Alley is a tourist attraction in downtown San Luis Obispo, California, known for its accumulation of used bubble gum on the walls of an alley. It is a 15 ft high and 70 ft long alley lined with chewed gum left by passers-by. It covers a stretch of 20 meters in the 700 block of Higuera Street in downtown San Luis Obispo."
+        },
+        {
+          "rank": 2,
+          "source": "Gum Wall",
+          "text": "Gum Wall\nThe Market Theater Gum Wall is a brick wall covered in used chewing gum, in an alleyway in downtown Seattle. It is located in Post Alley under Pike Place Market. Similar to Bubblegum Alley in San Luis Obispo, California, the Market Theater Gum Wall is a local landmark. Parts of the wall can be covered several inches thick, 15 feet high for 50 feet."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__22431_16335",
+      "query": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__22431_16335.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__22431_16335.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__22431_16335.json",
+      "scoring": {
+        "id": "musique:2hop__22431_16335",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+        "f1": 0.12121212121212122,
+        "parent_f1": 0.14285714285714288,
+        "B0_f1": 0.14285714285714288,
+        "delta_parent": -0.02164502164502166,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "inter-marriage and conversions in the time of the Roman Empire",
+      "prior_QA": [],
+      "old_goal_answer": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "new_goal_answer": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+      "P1_parent_prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "new_prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+      "classification": "补入受支持原因但句子冗长；F1下降不能等同事实变差",
+      "mechanism": "新goal/最终补入Roman-era intermarriage or conversion，goal Top4确实写inter-marriage and conversions in the time of the Roman Empire；但主体答案仍是shared Southern European ancestry和historical admixture的概括，未直接只答两个原因，新增词拉低原生F1。还混入Top2的maternal lineages表述，跨研究合并，需保留范围风险。",
+      "semantic_improvement_supported": "部分原因更贴合原文，未完全纠正原题两因素表达",
+      "evidence_ranks": [
+        2,
+        4
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nIn an ethnic sense, an Ashkenazi Jew is one whose ancestry can be traced to the Jews who settled in Central Europe. For roughly a thousand years, the Ashkenazim were a reproductively isolated population in Europe, despite living in many countries, with little inflow or outflow from migration, conversion, or intermarriage with other groups, including other Jews. Human geneticists have argued that genetic variations have been identified that show high frequencies among Ashkenazi Jews, but not in the general European population, be they for patrilineal markers (Y-chromosome haplotypes) and for matrilineal markers (mitotypes). However, a 2013 study of Ashkenazi mitochondrial DNA, from the University of Huddersfield in England, suggests that at least 80 percent of the Ashkenazi maternal lineages derive from the assimilation of mtDNAs indigenous to Europe, probably as a consequence of conversion. Since the middle of the 20th century, many Ashkenazi Jews have intermarried, both with members of other Jewish communities and with people of other nations and faiths."
+        },
+        {
+          "rank": 4,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nA 2010 study on Jewish ancestry by Atzmon-Ostrer et al. stated \"Two major groups were identified by principal component, phylogenetic, and identity by descent (IBD) analysis: Middle Eastern Jews and European/Syrian Jews. The IBD segment sharing and the proximity of European Jews to each other and to southern European populations suggested similar origins for European Jewry and refuted large-scale genetic contributions of Central and Eastern European and Slavic populations to the formation of Ashkenazi Jewry\", as both groups – the Middle Eastern Jews and European/Syrian Jews – shared common ancestors in the Middle East about 2500 years ago. The study examines genetic markers spread across the entire genome and shows that the Jewish groups (Ashkenazi and non Ashkenazi) share large swaths of DNA, indicating close relationships and that each of the Jewish groups in the study (Iranian, Iraqi, Syrian, Italian, Turkish, Greek and Ashkenazi) has its own genetic signature but is more closely related to the other Jewish groups than to their fellow non-Jewish countrymen. Atzmon's team found that the SNP markers in genetic segments of 3 million DNA letters or longer were 10 times more likely to be identical among Jews than non-Jews. Results of the analysis also tally with biblical accounts of the fate of the Jews. The study also found that with respect to non-Jewish European groups, the population most closely related to Ashkenazi Jews are modern-day Italians. The study speculated that the genetic-similarity between Ashkenazi Jews and Italians may be due to inter-marriage and conversions in the time of the Roman Empire. It was also found that any two Ashkenazi Jewish participants in the study shared about as much DNA as fourth or fifth cousins."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+      "query": "Are Dent Du Géant and Monte Matto both located in the same country?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\2wiki\\g01_goal_consistency\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "scoring": {
+        "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+        "dataset": "2wiki",
+        "arm": "g01_goal_consistency",
+        "prediction": "Yes",
+        "f1": 1.0,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 1.0,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "yes",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What country is Dent Du Géant located in?",
+          "answer": "Dent du Géant is located in both France and Italy."
+        },
+        {
+          "step_id": 2,
+          "request": "What country is Monte Matto located in?",
+          "answer": "Monte Matto is located in Italy."
+        }
+      ],
+      "old_goal_answer": "Dent Du Géant and Monte Matto are not both located in the same country, as Dent Du Géant is located in both France and Italy while Monte Matto is located solely in Italy.",
+      "new_goal_answer": "Dent Du Géant is located in both France and Italy, and Monte Matto is located in Italy, so they are both located in at least one same country—Italy.",
+      "P1_parent_prediction": "No",
+      "new_prediction": "Yes",
+      "classification": "集合交集/共同国家判断纠正",
+      "mechanism": "辅助先验未变：Dent du Géant位于France和Italy，Monte Matto位于Italy。旧goal要求两地国家集合完全一致所以No；新goal按存在共同国家Italy判断Yes，符合原文和标准。不是数值运算修复。",
+      "semantic_improvement_supported": true,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Monte Matto",
+          "text": "Monte Matto\nMonte Matto is a 3,097- meter- high( 10,161 ft) mountain in Piedmont, in the province of Cuneo, Italy. It is part of the Maritime Alps, dividing the Meris valley from the Gesso della Valletta valley. The mountain peak, consisting of a ridge of four aligned summits, can be seen from most of the plains near Cuneo. The ridge is composed of two different rock formations, one made up of granitoid gneiss, the other of mixed gneiss and different kinds of migmatite. The four peaks are( from east to west) cima Est( 3,088 m), cima Centrale( 3,097 m), cima Bobba( 3,079 m) and cima Verani( 3,020 m). The mountain is clearly visible from the plains around Cuneo as a triangular shape with a peculiar tiny\" tooth\"( which corresponds to cima Centrale, i.e. the central summit). It is part of the natural park\" Parco Naturale delle Alpi Marittime\". The fauna includes marmot, chamois and, at higher altitudes, the alpine ibex."
+        },
+        {
+          "rank": 2,
+          "source": "Dent du Géant",
+          "text": "Dent du Géant\nThe Dent du Géant( It.: Dente del Gigante,\" giant's tooth\")( 4,013 m) is a mountain in the Mont Blanc massif in France and Italy. The Dent du Géant remained unclimbed during the golden age of alpinism, and was a much- coveted peak in the 1870s, repelling many parties who attempted it mostly from the Rochefort ridge. In 1880 the strong team of Albert F. Mummery and Alexander Burgener tried to force a passage via the south- west face but were repelled by a band of slabs, causing Mummery to exclaim,' Absolutely inaccessible by fair means!' The mountain has two summits, apart and separated by a small col( an' extremely awkward notch' according to W. W. Graham): This ascent marked the end of the so- called silver age of alpinism. On 28 July 1935 the Austrian climbers Herbert Burggasser and Rudi Leitz first ascended the vertical- to- overhanging 160 m-high south face. It was the first climb in the Western Alps systematically aided by the pitons and artificial techniques that were already in use by climbers in the Eastern Alps. During a heat wave in the summer of 2019, a glaciological rarity in the form of a previously unseen lake emerged at the foot of the Dent du Géant, the Aiguilles Marbrées and the Col de Rochefort at an altitude of about 3400 meters, that was considered as evidence for the effects of global warming on the glaciers in the Alps. The following facilities serve the mountain:"
+        }
+      ]
+    }
+  ]
+}

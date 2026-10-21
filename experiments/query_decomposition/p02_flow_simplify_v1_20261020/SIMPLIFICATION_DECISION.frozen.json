@@ -1,0 +1,182 @@
+{
+  "utc": "2026-10-20T10:11:47.629281+00:00",
+  "scope": "Fixed exposed development300,100 per dataset; not an untouched test or proof of noninferiority.",
+  "user_criterion": "No F1 improvement required; retain useful simplification unless regression is material.",
+  "numeric_noninferiority_margin": null,
+  "status": "complete_and_independently_verified",
+  "decisions": {
+    "timing_only": {
+      "status": "accepted_equivalent_simplification",
+      "reason": "All300 replay preserves887nodes and1774fullmodelcalls exactly; only original-query retrieval timing changes. No claim of an extra physical index search saved."
+    },
+    "union20": {
+      "status": "retained_as_usable_simplification_candidate",
+      "reason": "Removes per-node truncation while retaining the original-first interleaving. Small observed overall F1 change under the user criterion; increased reader cost is explicit.",
+      "F1": 0.7031243481968344,
+      "delta_vs_p02": -0.004117383287673143,
+      "logical_generation_calls": 1774,
+      "equal_rate_model_cost": {
+        "p02": 2.3262523999999996,
+        "candidate": 2.7058968,
+        "saved": -0.37964440000000055,
+        "relative_change": 0.1632000035765683,
+        "actual_paid_cost": false,
+        "cache_reuse_does_not_reduce_this_logical_cost": true
+      },
+      "replaces_frozen_p02": false
+    },
+    "discount20": {
+      "status": "not_selected_for_simplification",
+      "reason": "Same candidate set and generation calls; no overall F1 advantage over the simpler interleaving; no need to retain added ordering logic."
+    },
+    "single_final": {
+      "status": "not_adopted_as_current_default",
+      "reason": "The deletion saves a call/query but yields a material HotpotQA regression and lower overall F1 under this unchanged final-prompt configuration.",
+      "direct_parent_comparison": {
+        "comparison": "single_final minus discount20",
+        "n": 300,
+        "dataset_counts": {
+          "musique": 100,
+          "2wiki": 100,
+          "hotpotqa": 100
+        },
+        "single_final_F1": 0.6767614237614237,
+        "comparison_F1": 0.7002507732662419,
+        "delta": -0.02348934950481816,
+        "paired_bootstrap95": [
+          -0.04919605191898542,
+          0.0013105879750470635
+        ],
+        "up": 18,
+        "tie": 253,
+        "down": 29,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": true,
+        "by_dataset": {
+          "hotpotqa": {
+            "comparison": "single_final minus discount20",
+            "n": 100,
+            "dataset_counts": {
+              "hotpotqa": 100
+            },
+            "single_final_F1": 0.7447857142857139,
+            "comparison_F1": 0.7940858585858583,
+            "delta": -0.0493001443001443,
+            "paired_bootstrap95": [
+              -0.0944395743145743,
+              -0.008537265512265524
+            ],
+            "up": 3,
+            "tie": 85,
+            "down": 12,
+            "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+            "replicates": 10000,
+            "seed": 20261020,
+            "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+            "numeric_noninferiority_margin": null,
+            "all300_comparison_complete": false
+          },
+          "2wiki": {
+            "comparison": "single_final minus discount20",
+            "n": 100,
+            "dataset_counts": {
+              "2wiki": 100
+            },
+            "single_final_F1": 0.8951717171717172,
+            "comparison_F1": 0.9111881419234361,
+            "delta": -0.016016424751718873,
+            "paired_bootstrap95": [
+              -0.05660583778966132,
+              0.016302367158984796
+            ],
+            "up": 6,
+            "tie": 89,
+            "down": 5,
+            "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+            "replicates": 10000,
+            "seed": 20261020,
+            "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+            "numeric_noninferiority_margin": null,
+            "all300_comparison_complete": false
+          },
+          "musique": {
+            "comparison": "single_final minus discount20",
+            "n": 100,
+            "dataset_counts": {
+              "musique": 100
+            },
+            "single_final_F1": 0.3903268398268398,
+            "comparison_F1": 0.3954783192894311,
+            "delta": -0.00515147946259132,
+            "paired_bootstrap95": [
+              -0.056284418379495944,
+              0.04502669179245094
+            ],
+            "up": 9,
+            "tie": 79,
+            "down": 12,
+            "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+            "replicates": 10000,
+            "seed": 20261020,
+            "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+            "numeric_noninferiority_margin": null,
+            "all300_comparison_complete": false
+          }
+        }
+      },
+      "equal_rate_model_cost": {
+        "candidate": 2.2407188000000002,
+        "saved": 0.46326679999999953,
+        "relative_change": -0.17132739168433425,
+        "actual_paid_cost": false,
+        "cache_reuse_does_not_reduce_this_logical_cost": true,
+        "discount20": 2.7039855999999998
+      },
+      "logical_generation_calls": 1474,
+      "broader_claim": "This does not establish that a one-answer architecture must fail; prompt responsibility and final raw-evidence routing changed jointly.",
+      "records_and_code_preserved": true
+    }
+  },
+  "candidate_entrypoint": {
+    "module": "experiments.query_decomposition.p02_flow_simplify_v1_20261020.pipeline",
+    "function": "execute",
+    "arm": "union20",
+    "readout": "PROTOCOL.frozen.json/readout",
+    "prompt_model_retrieval_protocol_sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+    "pipeline_sha256": "8ffd74da8b0db0029c17c09ca56bb58fb650bab480955dc36d701531647f95e2",
+    "goal_preanswer_retained": true,
+    "production_default_changed": false
+  },
+  "evidence": {
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\RESULTS300.frozen.json": "1ef4eb4445305b3321a5754292fe12d34d3803d8ceba77519532bdf46c72c0e4",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\VERIFICATION300.frozen.json": "1a1d0e2af54ed4a5869b599cb88d8d680b85eb0eda6ec71f9ffa31002267c316",
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\ADOPTION_POLICY.user_update_20261020.json": "c6ac09d5e3683215218be72a6772f0ca8041500489d2f1d4a0cc7176ead80175",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\OFFLINE_AUDIT.json": "16c2734d2d19b394cce8679a4983b11cfd68ac689093bb1a6b1197e9d324d55e"
+  },
+  "actual_cost": {
+    "new_physical_requests": 1409,
+    "returned_usage_estimate_cny": 2.9746207999999985,
+    "unreconciled_reserved_cny": 0.6442695999999999,
+    "occupied_cny": 3.6188903999999984,
+    "unreconciled_requests": 62,
+    "statuses": {
+      "returned_usage": 1347,
+      "reserved": 62
+    }
+  },
+  "budget": {
+    "global_known_cny": 189.5441416,
+    "global_reserved_cny": 36.0545864,
+    "global_occupied_cny": 225.598728,
+    "experiment_known_cny": 2.9746208,
+    "experiment_reserved_cny": 0.6442696,
+    "experiment_submissions": 1409,
+    "global_cap_cny": 300,
+    "actual_bill_verified": false
+  },
+  "fresh60_run": false
+}

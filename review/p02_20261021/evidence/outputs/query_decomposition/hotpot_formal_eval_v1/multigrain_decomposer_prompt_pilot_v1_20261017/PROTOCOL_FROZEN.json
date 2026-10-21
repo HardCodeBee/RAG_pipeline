@@ -1,0 +1,48 @@
+{
+  "task": "paired_query_only_decomposition_prompt_diagnostic",
+  "questions": 36,
+  "datasets": {
+    "hotpotqa": 12,
+    "2wiki": 12,
+    "musique": 12
+  },
+  "arms": {
+    "v1": {
+      "prompt_file": "TRAINING_PROMPT_v1.txt",
+      "sha256": "873d905540e7b1cd9a5615374a74b3760c909858376b1268ce177f00c05dc756"
+    },
+    "v2": {
+      "prompt_file": "TRAINING_PROMPT_v2.txt",
+      "sha256": "fb406934ef2b66c687fdcf534a1af107a6cbcf65a0d62f96593e3d92c5e2fcde"
+    }
+  },
+  "source_cases": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\cases.frozen.jsonl",
+  "cases_sha256": "07b2c6c03ae235f3ba7011af29a7fb01fe33170d04e33d124a282110d0db9dbb",
+  "selection": "all 36 prior fresh36 diagnostic cases; unchanged IDs, no QA-result selection",
+  "prior_exposure": "These questions have been used and inspected in previous local diagnostics; not an independent test set.",
+  "inputs": "system=exact versioned prompt; user=original question only; no labels, documents, answers or qrels",
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "max_tokens": 1024,
+  "concurrency": 3,
+  "planned_calls": 72,
+  "budget_cap_cny": 200,
+  "protected_global_stop_cny": 195,
+  "pilot_subcap_cny": 1.0,
+  "transport": "streaming with usage; SDK retries disabled; unknown submissions never retried",
+  "comparison": "bundle of prompt edits; not a single-sentence causal ablation",
+  "semantic_rubric": [
+    "faithfulness_and_unknowns",
+    "self_containment",
+    "supporting_information_coverage",
+    "distinct_usefulness"
+  ],
+  "original_question_policy": {
+    "v1": "forbidden in model output",
+    "v2": "allowed if naturally generated; no extra mandatory goal"
+  },
+  "runtime_compilation": "remove exact normalized original-query duplicates and duplicate strings; append exact original once at end; no semantic rewriting",
+  "review": "Current Codex direct inspection of literal query/output pairs; not independent human gold or blind multi-model review.",
+  "fourB_claim": "API performance does not establish trained 4B accuracy or downstream RAG gains."
+}

@@ -1,0 +1,144 @@
+{
+  "ordering": "All revisions occurred before package/data freezing and any v3 model inference; reconstructed exact before/after from this chat tool history. Individual edit timestamps were not separately recorded.",
+  "revisions": [
+    {
+      "record": "native",
+      "extension_index": 19,
+      "query": "What is the country of origin of the album called 11/6/00 - from the city where the performer of Subtle Ways was formed in the state where Fleet Glacier is located?",
+      "before": [
+        "What performer made Subtle Ways?",
+        "What state is Fleet Glacier located in?",
+        "In what city in the state where Fleet Glacier is located was the performer of Subtle Ways formed?",
+        "Who made the album called 11/6/00 named for the city where the performer of Subtle Ways was formed in the state where Fleet Glacier is located?"
+      ],
+      "after": [
+        "What performer made Subtle Ways?",
+        "What state is Fleet Glacier located in?",
+        "In what city in the state where Fleet Glacier is located was the performer of Subtle Ways formed?",
+        "What is the album called 11/6/00 from the city where the performer of Subtle Ways was formed in the state where Fleet Glacier is located?"
+      ],
+      "reason": "Remove invented naming relation; source only says album from the city."
+    },
+    {
+      "record": "native",
+      "extension_index": 72,
+      "query": "When did the first restaurant that McDonaldization is named after open in the country of citizenship of the author of Doctrine and Discipline of Divorce?",
+      "before": [
+        "What restaurant company is McDonaldization named after?",
+        "Who authored Doctrine and Discipline of Divorce?",
+        "What country was the author of Doctrine and Discipline of Divorce a citizen of?"
+      ],
+      "after": [
+        "What restaurant is McDonaldization named after?",
+        "Who authored Doctrine and Discipline of Divorce?",
+        "What country was the author of Doctrine and Discipline of Divorce a citizen of?"
+      ],
+      "reason": "Remove company type not supplied by source."
+    },
+    {
+      "record": "native",
+      "extension_index": 58,
+      "query": "Tuolumne, with Springfield in a neighboring county, in the state where Finding Dory takes place, is in what country?",
+      "before": [
+        "In what state does Finding Dory take place?",
+        "What county contains Springfield in the state where Finding Dory takes place?",
+        "What county contains Tuolumne in the state where Finding Dory takes place and neighbors the county containing Springfield in that state?"
+      ],
+      "after": [
+        "In what state does Finding Dory take place?",
+        "What county contains Springfield?",
+        "What county in the state where Finding Dory takes place contains Tuolumne and neighbors the county containing Springfield?"
+      ],
+      "reason": "Do not impose Tuolumne state restriction on neighboring Springfield county."
+    },
+    {
+      "record": "native",
+      "extension_index": 14,
+      "query": "How large are the oil reserves where a film was produced concerning Marooned in a country where the mother of Uday Hussein lived?",
+      "before": [
+        "Who was Uday Hussein's mother?",
+        "In what country did Uday Hussein's mother live?",
+        "What film concerning Marooned was produced in the country where Uday Hussein's mother lived?",
+        "Where was the film concerning Marooned produced in the country where Uday Hussein's mother lived?"
+      ],
+      "after": null,
+      "reason": "Quarantine unclear relation rather than choosing whether Marooned names a film or a subject."
+    },
+    {
+      "record": "native",
+      "extension_index": 16,
+      "query": "The country having Sunbirds besides the continent containing the river merged into by Tekezé River is a type of what?",
+      "before": [
+        "What river does the Tekezé River merge into?",
+        "What continent contains the river that the Tekezé River merges into?",
+        "What country has Sunbirds besides the continent containing the river that the Tekezé River merges into?"
+      ],
+      "after": null,
+      "reason": "Quarantine unresolved spatial relation."
+    },
+    {
+      "record": "synthetic",
+      "index": 18,
+      "before": {
+        "query": "What is the depth of the sea that the river emptying into the Lora flows from?",
+        "target": [
+          "What river empties into the Lora?",
+          "What sea does the river emptying into the Lora flow from?"
+        ]
+      },
+      "after": {
+        "skill": "river_direction",
+        "query": "What is the depth of the lake that the river emptying into the Lora flows from?",
+        "target": [
+          "What river empties into the Lora?",
+          "What lake does the river emptying into the Lora flow from?"
+        ]
+      },
+      "reason": "Use a lake source for the upstream contrast; do not add geographic awkwardness."
+    },
+    {
+      "record": "synthetic",
+      "index": 29,
+      "before": {
+        "query": "Where did the person who took charge of the largest institution after the collapse of an intelligence-gathering target die?",
+        "target": [
+          "What was the intelligence-gathering target that collapsed?",
+          "What was the largest institution?",
+          "Who took charge of the largest institution after the collapse of the intelligence-gathering target?"
+        ]
+      },
+      "after": {
+        "skill": "unknown_type_preservation",
+        "query": "Where did the person who took charge of Ravo Institute after the collapse of an intelligence-gathering target die?",
+        "target": [
+          "What was the intelligence-gathering target that collapsed?",
+          "Who took charge of Ravo Institute after the collapse of the intelligence-gathering target?"
+        ]
+      },
+      "reason": "Remove ambiguous largest-institution criterion and generic identity."
+    },
+    {
+      "record": "synthetic",
+      "index": 37,
+      "before": {
+        "query": "Did both schools in the city where Nora was born receive awards before 2010?",
+        "target": [
+          "In what city was Nora born?",
+          "What are the two schools in the city where Nora was born?",
+          "Did each of the two schools in the city where Nora was born receive an award before 2010?"
+        ]
+      },
+      "after": {
+        "skill": "comparison_scope",
+        "query": "Did both schools in the city where Nora was born receive awards before 2010?",
+        "target": [
+          "In what city was Nora born?",
+          "What are the two schools in the city where Nora was born?",
+          "Which of the two schools in the city where Nora was born received awards before 2010?"
+        ]
+      },
+      "reason": "Ask the supported subset as an intermediate rather than restating the final Boolean goal."
+    }
+  ],
+  "training_data_changed_after_launch": false
+}

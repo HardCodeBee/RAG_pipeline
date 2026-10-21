@@ -1,0 +1,34 @@
+Round4 scope替换：冻结前概念审阅记录
+日期：2026-10-20（Australia/Sydney）
+
+父版：原p02_role_headers，保留完整问答、role标题、原Top10、示例、P1输出规则、既有事实冲突/缺答/全名要求与位置。
+
+被替换的原句：
+Do not transfer a fact about another entity or a different comparison to the Original question.
+
+root最初草案：
+Use the Original question to set the answer target and conditions; do not inherit extra restrictions or an intermediate answer target from auxiliary questions.
+
+概念审阅：
+目标合理：正确的局部事实也可能回答了不同对象、不同关系或附带了原问题没有要求的限制；这种错误不必表现成原文与局部事实相互矛盾。
+但初稿中“do not inherit extra restrictions”可能被模型宽泛解释成不要使用前置问答补出的合法桥接条件。前置结果本就应帮助解析原题里的描述性实体，因此不能笼统禁止承接。
+
+root据此于主协议冻结/API执行之前选定的最终句：
+Auxiliary results may resolve references in the Original question; they must not change its requested answer target, relation or conditions.
+
+定稿原因：
+明确允许前置结果解析原题指代，同时要求保留原题的所求对象、关系和条件。替换原句一次，不在旧规则后堆新规则。
+这是概念审阅后的文字澄清，不来自新query、fresh90、封存150或任何本轮生成结果。
+
+执行臂：
+r04_scope_contract：只有以上一句替换。
+s04_scope_plus_evidence：以上替换与冻结round3 e03_goal_evidence相组合，属于interaction试验。原p02、已完成e03和r04可用于分别观察措辞、附加原文及组合。
+e03的选文保持原机械规则：goal reader原rank中第一个doc_id不在原Top10的已有段落；不按标准答案或最终F1筛选。
+全部文档重复时，s04与r04完整payload一致，应该跨臂复用首次成功结果，不再付费生成一次。
+
+限制：
+这句不执行程序化语义核查。模型仍可能误解原题指代或关系，不能预先宣称scope问题已经解决。
+s04会增加已经检到的原文信息，其收益不能全部归于prompt措辞。
+
+初稿的离线审计保存在OFFLINE_AUDIT.draft_scope.v001.json，仅记录未冻结原型；当前有效离线审计以最终句对应的OFFLINE_AUDIT.json为准。
+本轮文本选择和离线审计阶段没有API、SSH、训练或新检索调用。

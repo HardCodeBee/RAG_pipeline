@@ -13,3 +13,33 @@
 *.npy binary
 *.npz binary
 *.faiss binary
+
+# Exact-byte P02 review snapshot; preserve frozen source and evidence hashes.
+/review/** -text
+/experiments/** -text
+/src/p02_multigrain_timing_cachefix_v1/** -text
+/outputs/query_decomposition/hotpot_formal_eval_v1/** -text
+"/.gitattributes" -text
+"/configs/active_rag_candidates.json" -text
+"/README.md" -text
+"/scripts/cli_support.py" -text
+"/scripts/run_p02_multigrain.py" -text
+"/src/__init__.py" -text
+"/src/config.py" -text
+"/src/embedders/__init__.py" -text
+"/src/embedders/text_embedder.py" -text
+"/src/generators/__init__.py" -text
+"/src/generators/api_options.py" -text
+"/src/indexes/__init__.py" -text
+"/src/indexes/streaming_flat_index.py" -text
+"/src/model_backends/__init__.py" -text
+"/src/model_backends/huggingface_snapshot.py" -text
+"/src/persistence/__init__.py" -text
+"/src/persistence/artifact_io.py" -text
+"/src/persistence/artifact_validation.py" -text
+"/src/provenance.py" -text
+"/src/query_plan.py" -text
+"/src/records.py" -text
+"/src/retrievers/__init__.py" -text
+"/src/retrievers/chunk_store.py" -text
+"/src/retrievers/sqlite_bm25.py" -text

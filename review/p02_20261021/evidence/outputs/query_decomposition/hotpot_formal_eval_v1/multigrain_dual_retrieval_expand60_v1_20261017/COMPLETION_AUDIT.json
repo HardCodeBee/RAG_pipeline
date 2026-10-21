@@ -1,0 +1,81 @@
+{
+  "planned_total": 60,
+  "per_dataset": {
+    "hotpotqa": 20,
+    "2wiki": 20,
+    "musique": 20
+  },
+  "old24_outputs_and_scores_preserved": true,
+  "new36_answer_outputs": 70,
+  "new36_missing_condition_outputs": 2,
+  "same_generation_function_as_pilot": true,
+  "same_prompts_and_frozen_protocol": true,
+  "all_successful_cases_execute_goal_and_retain_all_original10": true,
+  "all_complete_answers_preserved_in_auxiliary": true,
+  "reader_packets_10_unique_documents": true,
+  "active_or_unknown_logical_requests": {
+    "api\\2wiki": 0,
+    "api\\2wiki_native_v2": 0,
+    "api\\hotpotqa": 0,
+    "api\\musique_native_v2": 0,
+    "baseline400_exact_probe": 0,
+    "frozen_s02_musique_new12": 0,
+    "react_musique_missing8": 0
+  },
+  "length_limited_raw_finals_scored_without_retry": {
+    "api\\2wiki": 0,
+    "api\\2wiki_native_v2": 0,
+    "api\\hotpotqa": 0,
+    "api\\musique_native_v2": 1
+  },
+  "native_order_controls": {
+    "2wiki": [
+      {
+        "qid": "1a1c0bd40bdd11eba7f7acde48001122",
+        "same_top10_order": true
+      },
+      {
+        "qid": "32f0334c0bb011ebab90acde48001122",
+        "same_top10_order": true
+      }
+    ],
+    "musique": [
+      {
+        "qid": "2hop__123148_5385",
+        "same_top10_order": true
+      },
+      {
+        "qid": "2hop__166820_52835",
+        "same_top10_order": true
+      }
+    ]
+  },
+  "frozen_hash_checks": {
+    "cases": true,
+    "runner": true,
+    "protocol": true,
+    "prompts": true,
+    "native_continuation": true
+  },
+  "fresh36_four_way_common": {
+    "pairs": 35,
+    "missing": 1,
+    "mean_f1": {
+      "single_original": 0.4392273655873833,
+      "dual_original_rewritten": 0.6384120921095711,
+      "frozen_s02": 0.6664513077958456,
+      "react": 0.6298839535814326
+    }
+  },
+  "total60_four_way_common": {
+    "pairs": 59,
+    "missing": 1,
+    "mean_f1": {
+      "single_original": 0.48397925385384066,
+      "dual_original_rewritten": 0.6527303371271468,
+      "frozen_s02": 0.5987423012348235,
+      "react": 0.6335469781132792
+    }
+  },
+  "budget_under_both_caps": true
+}

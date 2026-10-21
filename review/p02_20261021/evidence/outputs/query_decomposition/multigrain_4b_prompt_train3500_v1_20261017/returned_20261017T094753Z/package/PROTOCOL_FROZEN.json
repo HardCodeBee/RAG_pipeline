@@ -1,0 +1,51 @@
+{
+  "task": "original4B_shared100_four_prompt_selection",
+  "queries": 100,
+  "planned_outputs": 400,
+  "arms": [
+    "v6",
+    "v8",
+    "v11",
+    "v12"
+  ],
+  "api_calls": 0,
+  "adapter_loaded": false,
+  "training_started": false,
+  "query_sha256": "891483e29f13b30a9887243b93cbb3dbc0fdfcde1138c849e362e4030c11748a",
+  "selection_sha256": "70c1ce33d6251a9814bb1f45bfca16d447fc7031e631330deeb86d7299d8b0d6",
+  "prompts": {
+    "v6": {
+      "source": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\TRAINING_PROMPT_v6.txt",
+      "sha256": "c2eed6cc60579847cd6e3d684a72f49c346ff9c700c456f992894914733a8786",
+      "bytes": 6310
+    },
+    "v8": {
+      "source": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\TRAINING_PROMPT_v8.txt",
+      "sha256": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85",
+      "bytes": 3987
+    },
+    "v11": {
+      "source": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\TRAINING_PROMPT_v11.txt",
+      "sha256": "221d4ac357cc289cd2b228d24cb198e59376e7e57dc07bf4d533fb6b9abc5283",
+      "bytes": 2412
+    },
+    "v12": {
+      "source": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\TRAINING_PROMPT_v12.txt",
+      "sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+      "bytes": 2379
+    }
+  },
+  "input": "system=exact frozen prompt,user=original query only; no source answers/passages/reference decompositions",
+  "review": "Current Codex reviews400 literal outputs under unchanged F/S/C/U; not human gold. Whole-query pass includes format compliance; uncertain/generation failures/truncation retain full100 denominator.",
+  "selection_order": [
+    "whole-query semantic pass count",
+    "minimum dataset pass rate",
+    "fewer distinct cases with F or S failure",
+    "fewer mean input tokens"
+  ],
+  "model": "base Qwen3-4B-Instruct-2507 only; original weights, no adapter",
+  "no_postprocessing": "No inferred rewrites, reference replacement, JSON repair, format-constrained generation or extra editorial calls.",
+  "same_queries_all_arms": true,
+  "queries_excluded_from_training": true,
+  "remote_scope": "inference_only_user_manual_upload_return"
+}

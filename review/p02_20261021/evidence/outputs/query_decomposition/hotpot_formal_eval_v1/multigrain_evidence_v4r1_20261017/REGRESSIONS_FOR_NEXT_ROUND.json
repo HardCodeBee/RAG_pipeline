@@ -1,0 +1,71 @@
+[
+  {
+    "dataset": "musique",
+    "qid": "2hop__805610_392181",
+    "question": "What did the director of \"A Stitch for Time\" win at the 54th Academy Awards?",
+    "type": "2-hop",
+    "historical_f1": null,
+    "evaluation_group": "regression",
+    "qdmr": {
+      "steps": [
+        {
+          "id": 1,
+          "request": "Who directed A Stitch for Time?"
+        },
+        {
+          "id": 2,
+          "request": "What did the director of \"A Stitch for Time\" win at the 54th Academy Awards?"
+        }
+      ],
+      "goal": 2
+    }
+  },
+  {
+    "dataset": "musique",
+    "qid": "3hop1__136083_87694_64412",
+    "question": "When did the location of the Basilica that is named after the same saint as the Schleswig Cathedral and the head of the catholic religion become its own country?",
+    "type": "3-hop",
+    "historical_f1": null,
+    "evaluation_group": "regression",
+    "qdmr": {
+      "steps": [
+        {
+          "id": 1,
+          "request": "After which saint is Schleswig Cathedral named?"
+        },
+        {
+          "id": 2,
+          "request": "Where is the Basilica named after the same saint as Schleswig Cathedral and the head of the Catholic religion located?"
+        },
+        {
+          "id": 3,
+          "request": "When did the location of the Basilica that is named after the same saint as the Schleswig Cathedral and the head of the catholic religion become its own country?"
+        }
+      ],
+      "goal": 3
+    }
+  },
+  {
+    "dataset": "2wiki",
+    "qid": "32f0334c0bb011ebab90acde48001122",
+    "question": "Who is the maternal grandmother of André De Laval-Montmorency?",
+    "type": "inference",
+    "historical_group": "success",
+    "historical_f1": 1.0,
+    "qdmr": {
+      "steps": [
+        {
+          "id": 1,
+          "request": "Who is the mother of André De Laval-Montmorency?"
+        },
+        {
+          "id": 2,
+          "request": "Who is the maternal grandmother of André De Laval-Montmorency?"
+        }
+      ],
+      "goal": 2
+    },
+    "plan_provenance": "Codex-authored from original question only; no factual intermediate answers inserted; not human gold or proof of correctness",
+    "evaluation_group": "regression"
+  }
+]

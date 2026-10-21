@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-18T04:09:24.194758+00:00",
+  "before_any_r02_outputs_reviewed": true,
+  "changes": [
+    {
+      "phase": "dev60",
+      "variant": "r01_old_data",
+      "index": 35,
+      "before": "fail_F",
+      "after": "pass",
+      "reason": "Who can refer to an institutional actor as well as a person; no explicit human-only type is imposed. Initial interpretation overclaimed a type error. Corrected before model selection."
+    },
+    {
+      "phase": "dev60",
+      "variant": "r01_old_data",
+      "index": 11,
+      "before": "fail_U",
+      "after": "uncertain_U",
+      "reason": "Signer relation repaired. Remaining feature question has a utility ambiguity; uncertainty remains nonpass, no score gain."
+    }
+  ],
+  "initial_provisional_passes": 45,
+  "corrected_passes": 46,
+  "parent_judgments_unchanged": true
+}

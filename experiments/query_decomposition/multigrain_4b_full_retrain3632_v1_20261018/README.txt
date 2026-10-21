@@ -1,0 +1,1 @@
+Full retraining on3632 merged rows. Original4B base + new LoRA, not continuation. Uniform2-epoch cap228updates; fixeddev60 semantic selection at114/171/228. v12 unchanged. No API calls. Original data/adapters and warm-start pilots preserved.

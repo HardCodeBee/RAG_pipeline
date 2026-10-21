@@ -1,0 +1,25 @@
+{
+  "native_inputs": 120,
+  "accepted_native": 96,
+  "quarantined_native": 24,
+  "accepted_synthetic": 40,
+  "reviewer": "Current Codex author and second-pass self-review; not independent human gold or independent double review.",
+  "review_scope": "All120 query/target or quarantine decisions and all40 explicit fictional examples inspected under original F/S/C/U. Native answers/passages/decomposition labels never consulted.",
+  "second_pass_changes": [
+    "Native19 remove invented named-after relation; preserve album from the city.",
+    "Native72 remove invented company type; retain restaurant.",
+    "Native58 apply state to Tuolumne county without additionally forcing neighboring Springfield county into that state.",
+    "Native14 and16 quarantine unresolved source relations instead of preserving ambiguous authored targets.",
+    "Synthetic18 use a lake source for the upstream river; preserve into/from direction.",
+    "Synthetic29 name Ravo Institute to avoid an unspecified largest-institution ranking and redundant identity query.",
+    "Synthetic37 request the award-winning school subset rather than paraphrasing the final all-schools Boolean goal."
+  ],
+  "fixed_base_policy": "Same8 previous label fixes for both controls;4 previously uncertain rows withheld from both. Original3500 untouched.",
+  "label_file_hashes": {
+    "native_001_030.json": "aaca5fd75b9773db1ffe271e47d7dc71e9a76c94f9c98c5c1368466162866b34",
+    "native_031_060.json": "bab4fa12ea56bc221b041cb983f08fa263e1e4e9cbdb8e42b68513222c5e65f4",
+    "native_061_090.json": "5d1b91e22cc886e2807483e46acc53b09a6e75dd06de6dd9fff28c02d580982c",
+    "native_091_120.json": "5c2539895bba02134ad0b5a36e3306c268297222db9a2988a47ebeebdbb7dbc7",
+    "synthetic40.json": "76099bb86a7d4be61a0992a36633878be3a83438f7f3e6b59fb70b1db5a7f607"
+  }
+}

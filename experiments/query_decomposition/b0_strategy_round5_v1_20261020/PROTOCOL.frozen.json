@@ -1,0 +1,70 @@
+{
+  "utc": "2026-10-19T23:18:20.729053+00:00",
+  "parent": "frozen p02_role_headers",
+  "arms": [
+    "e05_example_role_headers"
+  ],
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "sample_role": "Exposed diagnostic300, full300 one fixed arm; no outcome-based pilot gate.",
+  "n_per_arm": 300,
+  "single_factor": {
+    "e05_example_role_headers": "Render the four fixed worked-example QA blocks with the same intermediate/candidate-goal role headers as actual p02. Preserve every example question, answer, passage, order, final label and all actual-task bytes."
+  },
+  "mechanism": "The actual p02 task separates intermediate answers from a candidate conclusion, while existing demonstrations use one generic QA heading. Test matching demonstration roles without adding instructions or changing task evidence.",
+  "selection": "Highest complete300 native mean F1 against p02; keep p02 on tie or incomplete candidate. Development selection only.",
+  "fixed": [
+    "R02",
+    "ordinary and goal QA",
+    "all rewrite outputs",
+    "retrieval packets",
+    "p02 QA headers",
+    "root Top10",
+    "all auxiliary QA",
+    "model",
+    "example content and order",
+    "actual-task input bytes",
+    "P1 readout",
+    "final64"
+  ],
+  "fresh_data_boundary": "This candidate is motivated by example/runtime role-format mismatch, not by validation answers. Existing p02 dev90 validation and ongoing confirmation150 keep the frozen p02 candidate. A successor may reuse dev90 only as labeled development validation; no confirmation results for tuning.",
+  "cache": "Exact complete payload only; first successful p02 receipt or successful prior infrastructure attempt. No successful request rerun.",
+  "retries": "One immutable infrastructure recovery; retain unknown liability; no algorithm retry.",
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 2
+  },
+  "input_hashes": {
+    "runtime300.frozen.jsonl": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "SOURCES.frozen.jsonl": "f92033e785f4255a7ab97605f4b1f9d6e68e395a4b3d7a298d06f8bac0000abc"
+  },
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\experiment.py": "8d2aac4da822e406d4c1efae33fb143997e04a580d9e15cd9773261af8a56eab",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\PROTOCOL.frozen.json": "008216868349425387cf4f14043ca00a03092560710e10e1fc0bfef4f2da39d1",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_RESULTS.frozen.json": "0df873874c08aa795491400a367df0011e6383c58cfb7a816117356e65ac52d5",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_AUDIT.frozen.json": "64d40a6ee62aaef65e2645883dce7cce0b96906f3e69cb95ac8a54f15a803c62",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\receipts.py": "77061a24b408874c52f8ee6ac70bcb1ee9c47579155a4c5e6258684c53f1e06a",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\experiment.py": "f55fd3f7f7b4d271ee252b40c8fb6237d1e17ada0f8e90438313a5522c3fca72",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\strategy.py": "143224eadd9e8931d37650552590f296d1ca919a6b8ae92cd5c55082ba88cfe7",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\OFFLINE_AUDIT.py": "cac568c6a5f06e0e21b004c18b3909d97c443fd4a0fb56c5140aa6ced7e6ee90",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\OFFLINE_AUDIT.frozen.json": "630af96df64386161b48517d4c306ea3afb57d391bc0fc249898ea8aef0229b1",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\PROTOCOL.frozen.json": "bdff41e027724bd1cc00b82b46b5b9d0ed312ab2e0fed2074b87e7c7f7024085",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\SELECTION.frozen.json": "a0201d7d57050b8600a956c83e87ebf5daf761352ee9c1ff15b174ec0b5bc2a4",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\FINAL_RESULTS.frozen.json": "631a0206fe0d173a4d0deb920a2063e46a95ec67705835708229a406e5080963",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\scoring.py": "eacf840b36ac458a53810733e4101e4d20773080ef18a2f33a427573f00f7e83",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\common\\scoring.py": "dfb1c6dacef94a3a0061b65af2965f6a8d6cbcd232c1dbeb41fb2c1e146cc185",
+    "data\\multihop_comprehensive_v1_20261015\\2wiki\\official\\2wikimultihop_evaluate_v1.1.py": "7c09ee2ec98c7ecb57df79eb68dba22eb381ab58d50e730dfcefafb4dda31458",
+    "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\id_aliases.json": "f08ffcb6c2cefca9bdbe86b4248d6ad7a7743762d3f7264c14ff0bae85726fb6",
+    "data\\multihop_comprehensive_v1_20261015\\musique\\official\\metrics\\answer.py": "10368f619b4d5ef5d83748c05a96c0afd332a14ab5c010740c98d58dfaefe974"
+  }
+}

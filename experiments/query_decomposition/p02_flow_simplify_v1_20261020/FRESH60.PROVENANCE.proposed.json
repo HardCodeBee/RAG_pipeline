@@ -1,0 +1,649 @@
+{
+  "roster": {
+    "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\dev60.questions.frozen.jsonl",
+    "sha256": "149af5001cb8edc1971a08774a441a9e555c5825a3cfd0c79e6e52cf5024952d"
+  },
+  "identity": {
+    "api_calls": 0,
+    "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+    "do_sample": false,
+    "max_new_tokens": 1024,
+    "num_beams": 1,
+    "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "query_sha256": "149af5001cb8edc1971a08774a441a9e555c5825a3cfd0c79e6e52cf5024952d",
+    "seed": 1729
+  },
+  "identity_file": {
+    "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\IDENTITY.json",
+    "sha256": "10652383142b86bed785067dfa8b29e649cb19f260e20d724cc5359d6fa58cbe"
+  },
+  "prediction_bindings": [
+    {
+      "id": "hotpotqa:5a71214d5542994082a3e5b9",
+      "source_index": 1,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\001.json",
+      "sha256": "718a63f2dc5f6ec026a86068fdc0f20b7eb622a568ab1dd2bae5817baa66637c",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:a603e82f092611ebbdaeac1f6bf848b6",
+      "source_index": 2,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\002.json",
+      "sha256": "fc9ebe3c058a9a8f4c05c7b37c3b0722db64affd7755088266592fdfed04fb4b",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__131631_609442",
+      "source_index": 3,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\003.json",
+      "sha256": "e11367c0af9deb268b52d1d7de0c07ebf07a71fec4ccaee64cf03ea40ca4cc08",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:f29c4915088c11ebbd70ac1f6bf848b6",
+      "source_index": 4,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\004.json",
+      "sha256": "d295deb30f85533c30a70ae24fef5f814ec8851f46a8e4854efaf5a1d7ed0daa",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop1__136687_74386_516763",
+      "source_index": 5,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\005.json",
+      "sha256": "de438ddfd18dd838e937db5d705a8f6f314f98f7beda8527127c404ffa676db9",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a727a635542994cef4bc2c9",
+      "source_index": 6,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\006.json",
+      "sha256": "c50a747ee488872377c8fdae4286024248d72b058d5b18f6c527a7f58df6aa55",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a73a7c755429978a71e9068",
+      "source_index": 7,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\007.json",
+      "sha256": "260e3af909c17ebe0a7dc5a26fb678d979daaa1284c4f1b49a97f029726fa87e",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ac3ac1855429939154138ab",
+      "source_index": 8,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\008.json",
+      "sha256": "ab0640f9c3086c7607efd60fc9093810b8f57cb9397c37e2d64b37ec110ea5de",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:6a6d24740bb011ebab90acde48001122",
+      "source_index": 9,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\009.json",
+      "sha256": "cdaf92dd2b2e84fa5f8c61320dd9f2617f8d40597df8ad186efb5de215e5bf9d",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:42359f760bde11eba7f7acde48001122",
+      "source_index": 10,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\010.json",
+      "sha256": "a81b25121fe228dc6efd8bc0088bb5f847d9ef4025abfe36b9c8301572d12123",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop1__325072_344284_86983_516763",
+      "source_index": 11,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\011.json",
+      "sha256": "daf3dfe5890cefa8570374e086f201ceb8a7a555b0533690dbec8bb8b1a6b86b",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:c504923408fe11ebbdadac1f6bf848b6",
+      "source_index": 12,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\012.json",
+      "sha256": "42564775e4fb93fc9297a049e5d9904aa11298152e932768df41e643bb1e3160",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:6a94f9180bb011ebab90acde48001122",
+      "source_index": 13,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\013.json",
+      "sha256": "8d82fd017645dff7dd8841f2c9e6ed7d0e5a47b109b241df50462afb89cf459b",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:3c742be008da11ebbd9cac1f6bf848b6",
+      "source_index": 14,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\014.json",
+      "sha256": "17b823ff6d33d8819ce067c6df81ce41f4ab9e96e47424708972bb813212f235",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__145172_158069",
+      "source_index": 15,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\015.json",
+      "sha256": "457d60d352279f296c0a9ba63bf556d5ff0063a117e1c8d14d59fcd4b809d1d7",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:ceadeee60bdd11eba7f7acde48001122",
+      "source_index": 16,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\016.json",
+      "sha256": "6f3aa9acbb4f04bd63081bef415dfc761a78176fa5b1dad9db276f80918b2252",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a8672e4554299211dda2b39",
+      "source_index": 17,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\017.json",
+      "sha256": "7c0dffcb5eca8fff6f2f08e911a2d77920c25535b2659ef8082c864476755c93",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a8a4b9955429930ff3c0d88",
+      "source_index": 18,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\018.json",
+      "sha256": "08a7be344e0281447946b981044d5cc8099586f6d98484cee4e58acf5146f852",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a75e3845542994ccc91864e",
+      "source_index": 19,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\019.json",
+      "sha256": "45c0026e6e7ca2a4e8af9d5bbe91ebd451e0d7af5c08723004fa16f678af24d5",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop3__332923_46089_61674_1952",
+      "source_index": 20,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\020.json",
+      "sha256": "4dfeaa8b20fcd2042f125fc35ab12dfaee28ca38e4cae88b0653dccb087ee282",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:d62f491208b311ebbd86ac1f6bf848b6",
+      "source_index": 21,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\021.json",
+      "sha256": "3c29c4a960ae196d5b437f1d3325001889d59f335875d390f0c4f44dc8332b07",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:0f44750808e411ebbda4ac1f6bf848b6",
+      "source_index": 22,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\022.json",
+      "sha256": "dcea2738f82c83e5559ec5e7f0372645e4df658efcdaca204e9c43e346029fa2",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a88401c5542994846c1ce60",
+      "source_index": 23,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\023.json",
+      "sha256": "0b64f4e07a6fb546314f238f2860d83477a893afd9b169ca3612f5f46946b052",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__454356_49700",
+      "source_index": 24,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\024.json",
+      "sha256": "0b42781c8a46d83d3994dde1073fc117d3a50567cfd7e0e41cae3fefd5c1fae7",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:396b04e7089911ebbd77ac1f6bf848b6",
+      "source_index": 25,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\025.json",
+      "sha256": "7c8db6828e388495a8fff8c695ad7337f441b4d08bf8e244037da2f23b941427",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:8f8aaf0b088711ebbd6dac1f6bf848b6",
+      "source_index": 26,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\026.json",
+      "sha256": "09dfd578a0f870ba056acd52d51710139c7fa94cbeffe37bd641662ccb741d11",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop1__345990_631365_53191",
+      "source_index": 27,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\027.json",
+      "sha256": "5b34b605c4930096a99c1b974166ccb5066d437ab6c6bb23f78f8178486c5fec",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a83b1e75542990548d0b220",
+      "source_index": 28,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\028.json",
+      "sha256": "bd334333c12e0e3a922f70743acae802f565865fd806e0d987dce142fd4daaf9",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ab865195542990e739ec8e3",
+      "source_index": 29,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\029.json",
+      "sha256": "58e67e85a1e89166aebd1c1ab8d9e103c2ea75ec5901ed6bf2e758e8e30af9ae",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a866b5b554299211dda2b23",
+      "source_index": 30,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\030.json",
+      "sha256": "ba765194eba4756bd980f1b163d75d4795a31433945f038e857e48fd8d6d5dd8",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop3__313385_280480_160165_606586",
+      "source_index": 31,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\031.json",
+      "sha256": "4d3211bf17d04e80d7244e16a0a4b0731070008ab5d8170ee1b7cb6ec21eb501",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop1__642304_829000_51791_75635",
+      "source_index": 32,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\032.json",
+      "sha256": "f625fac41cf1f553e443e9132766417ab066d92dfbef78a855711d681478dd34",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:3c23074c086211ebbd5dac1f6bf848b6",
+      "source_index": 33,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\033.json",
+      "sha256": "f40f77694462a7d17d4369548fd6a6898b550f5b8e14800ce9e122956937b087",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:6ec70dc60bda11eba7f7acde48001122",
+      "source_index": 34,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\034.json",
+      "sha256": "1cf7b1b5089a5a713ff701cefefea6bb4f7614770109c813998ceae33f1571fd",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop2__576659_69760_609883",
+      "source_index": 35,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\035.json",
+      "sha256": "71ef8a6e3459b64abec861f7d855977c91026bb039ad211276e8140cfac2396b",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:dc93b4e60bdd11eba7f7acde48001122",
+      "source_index": 36,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\036.json",
+      "sha256": "744383cb494fbe75b63a97c94bee43c0fb73421f3f662595d335a7ff1e8e2bf4",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a88e2f35542993b751ca8ad",
+      "source_index": 37,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\037.json",
+      "sha256": "f10d47750500b8d7f77a7f1525396d547eb9e43b9bb4a5f714259897cb22e268",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5abd4f2e5542993062266c4b",
+      "source_index": 38,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\038.json",
+      "sha256": "e3f81a88d3690efb6d91d504f84cd62bb602272a3555684f19a85a1acd25d799",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ab3c470554299233954ffa1",
+      "source_index": 39,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\039.json",
+      "sha256": "f08c408a35f92b30642c6ebc5aaa68f9f968a4002878c23ae3aa5e11416ef160",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop2__160165_642527_606586",
+      "source_index": 40,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\040.json",
+      "sha256": "b19e442b933f6607042735705194b247c3dc71a3ce6d14b54ffd49b57af44d56",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__788549_44359",
+      "source_index": 41,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\041.json",
+      "sha256": "ef6c1d681ded32cc7b9029956e795fe12ff032ae5bea8d496ced7279fc21dc6a",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ac005a15542997719eab6fc",
+      "source_index": 42,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\042.json",
+      "sha256": "9af298b7ff7a3395b70eaad97b7aa9c38dd806aa7705ecdceb10b5df3ab54dd5",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop2__10725_83398_484788_851470",
+      "source_index": 43,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\043.json",
+      "sha256": "b013d9ad3dadc906cf3eeb6072685cdc208798a3239772fb0b949d4c482e27a4",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:a591f7380baf11ebab90acde48001122",
+      "source_index": 44,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\044.json",
+      "sha256": "a8e468641369ff2e3bc69708dd9634692fcc566b81ac1bad4a5151c97ac77269",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ab6087a554299110f2199be",
+      "source_index": 45,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\045.json",
+      "sha256": "b9f144e053e7e38e74167ae202f9e05e8b3d8ea8ae49a857d00c9299a69bdfed",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop1__475407_159891_86976",
+      "source_index": 46,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\046.json",
+      "sha256": "ceac241b59b8168af3042f48917c68288a15a3761dbbdd071eec5eba174c8a35",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:aff36dd4092411ebbdaeac1f6bf848b6",
+      "source_index": 47,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\047.json",
+      "sha256": "bbf0ea161ecec69f6886649f004996130f94bf675a42dbee597d9287316afb77",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:6a701bca0bb011ebab90acde48001122",
+      "source_index": 48,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\048.json",
+      "sha256": "2e9227736ba83348191d3ddd5e77865a796774177544c33e615a6c771b5270bf",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop1__234534_50519_158615",
+      "source_index": 49,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\049.json",
+      "sha256": "875ca278b47c60b391788760bf16773d42f8dd9e19c51ef7ee48c3d5424a601c",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ae13f3c5542997b2ef7d168",
+      "source_index": 50,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\050.json",
+      "sha256": "0dd51546e4b8242f4d76bd066a978ba0520aa4058e8b6e160790358a78e7772f",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__750968_62766",
+      "source_index": 51,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\051.json",
+      "sha256": "c6f6db53d6f694967183fe116156619c6822019ea08accf5bc1cadfa239035ad",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:4hop1__42151_35341_71250_135051",
+      "source_index": 52,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\052.json",
+      "sha256": "1ad85e1bf2e4b3f7620a8b5e94caa133faabec40f4bdf72928d3fab3ab61be49",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:2e8f23e80bde11eba7f7acde48001122",
+      "source_index": 53,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\053.json",
+      "sha256": "d9674aece29662e5e97cc5181c95b73fd0e82c338d140489c255af50e8c688ca",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__149723_533616",
+      "source_index": 54,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\054.json",
+      "sha256": "5a950aaad3414a35984b62a6e620e282598c4eac0f3af231a54d8af2f4b68cc5",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5ac285335542996773102552",
+      "source_index": 55,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\055.json",
+      "sha256": "1b16f6abbdd55061ddae901f21bbc10d27e5400655945060df93dc635a289591",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:2hop__515667_13640",
+      "source_index": 56,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\056.json",
+      "sha256": "3e787861a537967da2732c122d64e91a4950566503da4b5c2f652800d9fbd7aa",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5add60905542995b365fab1d",
+      "source_index": 57,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\057.json",
+      "sha256": "56559b7a4e239086f29eb31d81e8770b766172a595b1af99fd59d56566dfdbb9",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "hotpotqa:5a8a484f5542996c9b8d5e94",
+      "source_index": 58,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\058.json",
+      "sha256": "2b19314203ae8b026b8d051472e1c73fb5085c0b836d258cafc6b641eb455c95",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "2wiki:6a6283f20bb011ebab90acde48001122",
+      "source_index": 59,
+      "source_split": "dev",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\059.json",
+      "sha256": "90cb702d757b5890403cfeb32d78d7bd55831739e5fb84e9b0f83e49ec3147ae",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    },
+    {
+      "id": "musique:3hop1__36186_715233_43805",
+      "source_index": 60,
+      "source_split": "train_held_out_query_only",
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions\\060.json",
+      "sha256": "1975ebc02b0a4fd27d0788966fe50f0219128bb683dd37445536e61165e52fed",
+      "identity_sha256_in_prediction": "e889c63a0d6e1d60c792b4361ac57544f64a6314e2a8cce642929d5d90031f97"
+    }
+  ],
+  "excluded_rosters": [
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\runtime300.frozen.jsonl",
+      "sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+      "n": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\fresh_validation\\dev90.query_only.frozen.jsonl",
+      "sha256": "92b8888e120352b9cb904388f6862c76f88e099d9b4cb6bc7e19ff977c16f6df",
+      "n": 90
+    },
+    {
+      "path": "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\fresh_validation\\sealed150.query_only.frozen.jsonl",
+      "sha256": "a0764ab7f3711afcf228774f6cc515d2f03f8e6bf927a22519a1213509cb5363",
+      "n": 150
+    }
+  ],
+  "excluded_unique_ids": 540,
+  "training_sources_checked": [
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\DATA3632.frozen.jsonl",
+      "sha256": "096fd1ae6a998e6db3c0bff8d03653f6ba84163455563e7017dd249c756eb27f",
+      "n": 3632
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\data\\MASTER_3500.jsonl",
+      "sha256": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+      "n": 3500
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\continuation\\MASTER3500_SCOPE8.candidate.jsonl",
+      "sha256": "fddd8b542e9658a2e5c2fd6fef9df6a9b071cb6c5e6471d6662e8a121fccd002",
+      "n": 3500
+    }
+  ],
+  "prior_RAG_case_files_found": {},
+  "status": "proposed preparation only; method configuration not selected here",
+  "created_utc": "2026-10-20T09:03:19.483168+00:00",
+  "selection": "Complete preexisting decomposer dev60 roster in original order; no answer, F1 or semantic verdict selection",
+  "n": 60,
+  "dataset_counts": {
+    "hotpotqa": 20,
+    "2wiki": 20,
+    "musique": 20
+  },
+  "source_type_counts": {
+    "hotpotqa": {
+      "bridge": 14,
+      "comparison": 6
+    },
+    "2wiki": {
+      "comparison": 5,
+      "bridge_comparison": 5,
+      "inference": 5,
+      "compositional": 5
+    },
+    "musique": {
+      "2hop": 7,
+      "3hop1": 5,
+      "4hop1": 3,
+      "4hop3": 2,
+      "3hop2": 2,
+      "4hop2": 1
+    }
+  },
+  "runtime": {
+    "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\fresh60.runtime.proposed.jsonl",
+    "sha256": "c794c5878b6d3e43253f34e3c90118a5f504d2d9efdf16e21b6827b67d3e162b"
+  },
+  "references_local_scoring_only": {
+    "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\fresh60.references.local.proposed.jsonl",
+    "sha256": "cfbb30ebd93dc194b4ed42218e9be5c5b55dea2a7bd69a6614b527048706e01b"
+  },
+  "native_sources": {
+    "hotpotqa": {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\offline_gold_source\\validation.parquet",
+      "sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6"
+    },
+    "2wiki": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\dev.json",
+      "sha256": "21b0a6ffef454f887b5a7a6115db443d3476e99fefeb05d4c5fb73be01582554"
+    },
+    "musique": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\native\\musique_ans_v1.0_train.jsonl",
+      "sha256": "83a75b1e11e4e9bb8f8308e72ac40ca617ae4431b3a0d955b61cab259248490a"
+    }
+  },
+  "corpus_alignment": {
+    "hotpotqa": {
+      "path": "data\\beir\\hotpotqa\\manifest.json",
+      "sha256": "f56f958547cc15dbc1243f39185d85047244db3658cb65cc74636d2915fd9cb5",
+      "documents": 5233329,
+      "scope": "Frozen complete BEIR HotpotQA corpus",
+      "new_corpus_or_index_built": false
+    },
+    "2wiki": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+      "sha256": "edb00254897d87e5d966281207d9a20291660ec4d35f561f5fa92436ddeeecbc",
+      "documents": 430225,
+      "scope": "all official associated train/dev/test contexts; MuSiQue includes Ans and Full paragraphs",
+      "new_corpus_or_index_built": false
+    },
+    "musique": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+      "sha256": "83c1cc3588ad629866ade7cc8293d0af57c93f7c36471ddb9f54126703e747f9",
+      "documents": 139416,
+      "scope": "all official associated train/dev/test contexts; MuSiQue includes Ans and Full paragraphs",
+      "new_corpus_or_index_built": false
+    }
+  },
+  "protocol_used_for_resource_identity_only": {
+    "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\PROTOCOL.frozen.json",
+    "sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960"
+  },
+  "training_overlap": {
+    "exact_id": 0,
+    "normalized_query": 0,
+    "musique_primitives": 0
+  },
+  "normalization": "Unicode NFKC + casefold + collapsed whitespace",
+  "native_question_alignment": "All60 exact id and query match; answer fields copied only after membership fixed",
+  "runtime_fields": [
+    "id",
+    "qid",
+    "dataset",
+    "question",
+    "supporting_questions",
+    "type"
+  ],
+  "runtime_has_no_reference_fields": true,
+  "raw_decomposition_rewritten": false,
+  "prior_RAG_exposure_scope": "No actual case files found by filename in scoped formal-eval output trees; excludes remote/code/cache/artifact folders. Not a claim that all external histories are unknowable.",
+  "limitations": [
+    "The decomposer dev60 previously participated in decomposition checkpoint selection. It is exposed for the decomposer and new only to this downstream RAG comparison; not untouched holdout.",
+    "MuSiQue20 are primitive-isolated native train heldout queries, not official dev or test. Existing global corpus includes train/dev/test paragraphs.",
+    "Legacy generation explicitly passed do_sample=False and num_beams=1; source IDENTITY lacks later explicit_generation_config_v002/use_model_defaults=False compatibility. Effective later-contract equivalence is not asserted.",
+    "All60 are retained irrespective of semantic decomposition quality. Format validity is not semantic correctness.",
+    "Future root evaluation must freeze chosen300 candidate and fresh comparison rules before viewing fresh scores. No such choice is made by this script."
+  ],
+  "new_api_calls": 0,
+  "new_model_inference": 0,
+  "new_retrieval_calls": 0,
+  "ssh_calls": 0,
+  "script": {
+    "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\prepare_fresh60.py",
+    "sha256": "5b5359d5fe5a8b5130262bca7072326def0705a5eff09a355eca4846802d0863"
+  }
+}

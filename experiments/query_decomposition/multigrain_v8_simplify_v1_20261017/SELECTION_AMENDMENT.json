@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-17T08:16:26.743560+00:00",
+  "stage": "after v8/v10 dev review, before v11 submissions and all confirmation inspection",
+  "reason": "v10 full denominator pass count rose only because more API responses returned; on common50 it loses3 and gains0. User requires simplification with maintained semantic quality.",
+  "added_acceptance_condition": "A shorter candidate must also have paired common-available pass count >= v8. Full60 counts remain primary reported; do not treat availability as semantic gain.",
+  "v10_decision": "reject as quality-preserving simplification: common50 v8=30, v10=27",
+  "unchanged": "rubric, case selection, full denominators, no retries, max three candidates and sealed confirmation"
+}

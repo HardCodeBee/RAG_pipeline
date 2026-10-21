@@ -1,0 +1,140 @@
+MuSiQue对象限定与关系保持：诊断、受控优化及新题确认
+2026-10-18；完整运行记录见同目录DECISIONS.json，精确数值见FINAL_METRICS.json。
+
+结论
+
+85.33%和78.67%是同一冻结检查点在不同样本上的分解通过率，不是同题重测下降。本轮保留原checkpoint165、v12及旧成绩，完成3个prompt候选、2个等预算训练候选，再在未用于本轮选择的120道新query上确认一个候选。
+新120题：原基线96/120=80.00%，候选t02_mu50为100/120=83.33%；MuSiQue29/40→30/40。净增4题，有提升，但未接近90%。配对提升95%自举区间[0.00,+7.50]个百分点，精确McNemar双侧p=0.21875；不能据此声称已建立稳定或显著优势。
+这些数值是按原F/S/C/U标准由当前同一Codex作query/output审阅的估计，不是独立人工金标准、答案准确率或下游RAG F1。未运行本轮下游问答。
+
+一、为什么85.33%变成78.67%
+
+                    开发150，每类50       原正式300，每类100
+HotpotQA            43/50=86%              84/100=84%
+2Wiki               50/50=100%             98/100=98%
+MuSiQue             35/50=70%              54/100=54%
+合计                128/150=85.33%         236/300=78.67%
+
+两个样本的模型、v12、解码方式及评分标准相同；开发集参与了检查点选择，开发成绩可能乐观。总差6.67个百分点中MuSiQue贡献5.33，即80%。这不是单独证明过拟合的证据。
+MuSiQue开发2/3/4跳18/17/15，正式35/35/30，四跳比例均30%，所以不能解释为正式样本四跳更多。
+原开发Mu中没有4hop2，仅2条4hop3；原正式中分别7与8条。按正式观察到的ID前缀通过率重加权到开发配额，得到56.12%，比正式54%高2.12个百分点。因此前缀组成只描述性地解释一部分差异，不能解释全部16个百分点；每个前缀内的具体关系家族、样本波动和开发选择也有影响。ID前缀是数据集标记，不把它未经核实地等同于外部图结构类别。
+
+二、是不是训练集中缺少MuSiQue
+
+3500条中Hotpot1043、2Wiki710、MuSiQue509、DROP864、CWQ374。MuSiQue占14.54%，不是没有这类样本。
+509条Mu包含2跳191、3跳166、4跳152。4跳占Mu子集29.86%，原生train中4跳占1175/19938=5.89%；本训练子集实际上已经相对原生数据增加了长跳题，不能简单再归因于未抽到四跳。
+原生编码统计：完整一轮Mu监督token15251/88045=17.32%；所选165步实际Mu示例738/5260次，监督token22165/132311=16.75%。这些是样本/token暴露，不是测得的梯度贡献。
+但覆盖不均：训练3hop2仅21条、4hop2仅20条；509条中显式“north of”0条。词面缺失不能证明没有语义等价结构，但说明定向抽样比只凑数量更有针对性。原生train/dev的“north of ... and”线索也明显不同（1/37），存在关系家族分布差异。
+训练审查80条：按2/3/4跳各随机20条，再定向20条长嵌套，72通过、4明确错误、4不确定。随后扩查相关Crawford House家族，确认另4条明确缺陷。共同8条改动写入独立候选3500，原3500逐字节保留。
+主要修订：把用于限定出生地的州条件放回对应问句；不把“情报收集目标”擅自改成“国家”；去除原题已经给出的头衔的重复提问。单独问出某州，不等于其他子问题就自动带上了该州限定。
+抽查含定向样本，且作者与复核者都是同一Codex，不能把4/80或8条外推成整个训练集的独立错误率。训练中没有发现直接教会“after which→led to”的词面样本，不能据此声称该错误就是标签直接教出来的。
+
+三、冻结和评估边界
+
+原基线：Qwen3-4B-Instruct-2507普通LoRA checkpoint165，v12，原生非thinking模板，greedy/seed1729/max_new_tokens1024，保持不变。
+所有方法仍输出无跨题引用的独立支持问句JSON数组；原始query在程序中另行检索和回答。没有改回#引用格式，没有新纠错模型、API改写或ReAct循环。
+保持原F/S/C/U：对象、关系方向和条件忠实；问句独立可理解；有用的中间需求和所需运算属性有覆盖；支持问题确实有用。不强制把原生每跳拆成一个子问题，也不以唯一参考标签作字符串匹配。未知参数事实、原题没有的类型/性别不应被擅自填入。普通同义改写与有效替代路径允许通过。不确定保留在完整分母中。
+新筛选90题：50 Mu、20 Hot、20 Wiki；这是Mu富集诊断集，选择看各数据集和三类等权宏平均，不把90题粗通过率与旧平衡集直接比较。
+新确认120题：三个数据集各40，生成前冻结；只用于一次最终候选/原基线配对确认，不根据输出继续改动并反复报告这个集合的最高分。
+Mu新题来自原生test的query-only投影，Hot/Wiki来自未使用dev；旧训练、旧评估、历史已见题按ID/文本排除，Mu还排除共享基础问题。screen/confirm的Mu基础问题相互隔离。新旧Mu来源不同，所以只在同一新题中比较方法，不说旧78.67%直接提高到了83.33%。
+先锁定基线审阅，再看候选；完全相同的问句数组继承基线判定。记录实际prompt、原始输出、native token、参数、检查点、逐题原因。
+
+四、没有采用的prompt优化
+
+没有再堆叠规则。只更换原prompt前两个示例槽位，其余规则和后三例不变：
+M01：固定两个经过核查的真实Mu训练示例，展示联合限定与机构角色。
+M02：从72条经过审阅的Mu训练例中，用固定BM25词/双词组选择两个示例；不使用评估答案或运行时数据集标签。
+M03：两个人工构造、无事实答案的示例，展示共享方位关系及制造者/赠与者角色。训练结构检查后、任何新题语义审阅前登记为有界第三候选。
+
+方案               Hot/20   Wiki/20   Mu/50   合计/90   三类宏平均
+原v12              17       20        33      70        83.67%
+M01固定真实示例     15       20        30      65        78.33%
+M02相似度选例       13       20        32      65        76.33%
+M03关系对照示例     16       20        34      70        82.67%
+
+三者均未通过预定的Mu+宏平均提升及控制组损失门槛，全部保留记录并拒绝采用。M03虽修复部分限定，同时引入乐队名被当作器官、出生地强行限定成城镇等问题。最终候选仍使用原v12，不把无效prompt尝试包装成成功改进。
+
+五、实际采用候选的改动及对照
+
+三个prompt候选都失败后才执行事前写入的条件训练计划：
+两个候选都从原165的独立副本出发，使用同一8标签修订3500，20个新增update，每步32条、microbatch1，共640条本阶段不重复样本；LoRA结构不变；AdamW重新初始化，lr3e-5，2步warmup后恒定，seed1837，token加权损失、有限梯度检查及冻结基模型校验保持原训练实现。不挑选中途检查点，只评分最终20步。
+T01原比例：640次中Mu91。
+T02 Mu50：640次中Mu320。
+“50%”仅指新增20步，不是整个训练历程。T02累计Mu1058/5900次，约17.93%。没有加入新的独立训练query。T02/T01比较的是共同标签修订条件下的相对采样份额，并不单独证明增加独立样本的效果。
+
+方案               Hot/20  Wiki/20  Mu/50  合计/90  Mu携带F或S的题数
+原基线             17      20       33     70       8
+T01原比例20步       17      20       32     69       10
+T02 Mu50 20步       17      20       37     74       7
+
+原比例多训练没有改善，不能说“再训练20步就有收益”。T02通过筛选：Mu与宏平均提高，控制组未下降，Mu对象/关系/独立性问题没有增加。只将它冻结为唯一候选后，才看120题确认结果。
+另试过纯文本完全重复的机械去重，只处理原query或辅助句的字面重复，不涉及语义筛查。它对T02改动0题，因此最终候选不加这个额外处理，T02收益不能归功于后处理。
+
+六、新120题确认结果
+
+                  原165/v12                T02/v12
+HotpotQA          28/40=70.0%              31/40=77.5%
+2Wiki             39/40=97.5%              39/40=97.5%
+MuSiQue           29/40=72.5%              30/40=75.0%
+合计              96/120=80.00%            100/120=83.33%
+
+5题不通过→通过，1题通过→不通过，净增4题。修复编号57/88/90/92/117；退步19。Mu修复88/117、退步19，净增1题；携带F或S的Mu题9→8。预定确认门槛全部通过，候选单独冻结，原基线不覆盖。
+30,000次按数据集分层的同题自举，整体差值95%区间[0.00,+7.50]个百分点；配对精确McNemar p=0.21875。样本小、单训练随机种子、非独立语义审阅，因此只报告观察到的点估计提升，不能宣称稳定接近90%或已经解决限定和关系错误。
+
+七、与用户关心的两种问题直接对应的真实例子
+
+筛选66，限定丢失修复：
+原query：Which county shares a border with the county Mountain View is in from the province where Herbert Collins was born?
+原输出：["What province was Herbert Collins born in?", "What county is Mountain View in?"]
+候选：["What province was Herbert Collins born in?", "What county is Mountain View in within the province Herbert Collins was born in?"]
+变化是省条件现在保留在所限定的Mountain View所属县问题中，仍是完整独立问句；不是依赖另一个问题存在就假定绑定成立。这是筛选案例，不伪称新确认案例。
+
+确认117，时间限定修复：
+原query：What was the per km2 population density in 2013 of the birthplace of Francis Birtles?
+原输出：["Where was Francis Birtles born?", "What was the population of the birthplace of Francis Birtles in 2013?", "What is the area of the birthplace of Francis Birtles in square kilometers?"]
+候选：["Where was Francis Birtles born?", "What was the population in 2013 of the birthplace of Francis Birtles?", "What was the area in square kilometers of the birthplace of Francis Birtles in 2013?"]
+候选把2013同时保留在人口与面积上，避免分母换成未限定年份的面积。
+
+确认88，关系保持修复：
+原query：What is the mouth of the watercourse of the river in which Brown recovered the duckbill skull?
+原输出：["What river did Brown recover a duckbill skull from?", "What watercourse is in the river from which Brown recovered a duckbill skull?"]
+候选：["In which river did Brown recover the duckbill skull?", "What is the watercourse of the river in which Brown recovered the duckbill skull?"]
+原问的watercourse of被改成watercourse in，擅自加入包含关系；候选保留原关系，没有用参数知识替原文消歧。
+
+确认19，新退步必须保留：
+原query：What is the birthplace of the first president of the school where Yoshio Fukuyama studied or worked?
+原输出：["What school did Yoshio Fukuyama study or work at?", "Who was the first president of the school where Yoshio Fukuyama studied or worked?"]
+候选：["Where did Yoshio Fukuyama study or work?", "Who was the first president of the place where Yoshio Fukuyama studied or worked?"]
+明确的学校变成宽泛的地方，扩大了对象范围，判F失败，不能用其他修复抵消而不报告。
+
+确认13，尚未解决的角色/关系转移：
+原query：Elisabeth Christine of Brunswick-Wolfenbüttel's spouse had the same title as Henry's ally and belonged to a certain family. Who is the father of Matilda from that same family?
+两者均输出：["Who was Elisabeth Christine of Brunswick-Wolfenbüttel's spouse?", "Who was Henry's ally?", "What family did Henry's ally belong to?"]
+原题只说配偶与盟友头衔相同，不能把配偶所属家族换成盟友所属家族。此题没有改善。
+筛选3的“after which”仍变成“led to”，候选虽补出了获胜者，时间先后被改成因果仍判失败，不以步骤更完整冒充关系忠实。
+完整逐题输出、判定及JSON引用见CONFIRMATION_CASES.json与reviews目录。
+
+八、补充稀少前缀诊断及样本问题
+
+事前拟3hop2/4hop2/4hop3各8题；严格排除训练、已见评估、已预留扩展候选及共享基础问题后没有额外4hop2可用，不放宽隔离，也不以其他题隐藏缺口。主120题仍含预先保留的1道4hop2。
+实际16条：3hop2/4hop3各8，其中8条来自query-only test，8条来自未入训train；属于定向诊断，不并入平衡120。
+生成后发现3和5文本重复、ID不同。保留原始16条并单列15个唯一文本，不在看过输出后换题。原/候选均12/16；按唯一文本均11/15，没有整体收益。共享部分基础问题的结构家族也限制独立性。
+候选在其中一题把吸引物的城市限定放回问句，但另一句仍把未指定的“某人的城市”限定成其原籍，所以仍判失败。不能只展示部分修复。
+最终聚合核对曾发现候选第13条遗漏了显式失败条目，导致一次中间文件暂计13/16；已按未变的基线标准修复为12/16，REVIEW_CORRECTION_rare13.json保存原值、修正值和理由，主120题及候选选择不受影响。
+
+九、冻结、记录、运行完成状态和后续边界
+
+原检查点、原训练3500、原v12、原开发评估与选择结果的哈希全部验证未变；远端父检查点与新候选清单逐文件校验。新候选远端路径及身份见CANDIDATE_FROZEN_v2.json。
+本轮812次4B分解生成，全部返回，无格式非法、显式跨题引用、截断或生成错误；新增40个训练update为两个独立候选各20步。训练候选与基线的native输入token完全一致。未调用回答API，API费用0。没有后台未完成的本轮作业。
+运行问题如实保留：首包Windows清单路径修成POSIX；154215在加载GPU/更新权重前被prompt字节哈希阻止，原因是本地CRLF存储。实际此前90题payload逐条与冻结LF v12一致。按原LF字节重封包，不改配置/data/code，154217重跑成功；154227确认完成。不是把失败或缺失题删出分母。
+训练扩展准备：已经冻结180道原生Mu train候选及其中60道优先输入，但这只是待标注query，不是已经完成扩展的训练集；接受标签0条，新增独立训练query使用0条。不能将本轮增权结果称作已验证的数据扩展收益。
+这一有界迭代已完成，保留原基线并单独冻结小幅提升候选，90%目标尚未达到。下一轮若继续，应使用未入训的关系家族做明确限定、关系方向、角色归属的正例与少量成对近似反例，先完成60题标注和逐条复核，再做同预算“旧数据增权/新增关系覆盖”对照。现120题已经揭示结果，只能成为后续诊断集，下一轮必须另冻结新确认query。不能持续针对同一确认集调到90%，也不建议再堆prompt规则。
+
+主要文件
+DECISIONS.json：逐项决策、失败方案、选择与停止边界。
+FINAL_METRICS.json：所有分组、F/S/C/U重叠计数、逐题改善/退步与配对统计。
+FINAL_VERIFICATION.json：原基线未变、812条实际输入输出和分母/去重核验。
+CANDIDATE_FROZEN_v2.json：新候选的独立可回溯配置、检查点路径与选择边界。
+TRAINING_PATCH8.json：8条训练标签修改前后及理由；修改仅在候选副本中。
+raw_screen/raw_confirmation/raw_rare：未经改写的全部实际生成。
+reviews：逐题语义审阅；审阅者与非独立性声明均保存。

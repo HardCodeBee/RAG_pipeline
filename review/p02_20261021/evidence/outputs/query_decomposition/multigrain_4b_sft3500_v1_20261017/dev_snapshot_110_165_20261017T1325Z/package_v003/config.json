@@ -1,0 +1,70 @@
+{
+  "model_path": "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/models/qwen3_4b_instruct_2507",
+  "expected_base_parameters": 4022468096,
+  "expected_adapter_parameters": 66060288,
+  "template_policy": "qwen3_instruct_native_nonthinking",
+  "lora": {
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "bias": "none",
+    "use_rslora": false,
+    "use_dora": false,
+    "modules_to_save": null
+  },
+  "seed": 1729,
+  "allow_tf32": false,
+  "attn_implementation": "sdpa",
+  "base_identity_file": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/BASE_MODEL_IDENTITY.json",
+  "runtime_device": "cuda",
+  "adapter_path": null,
+  "data_dir": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/data",
+  "output_root": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/results",
+  "prompt_file": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/v12.txt",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "data_sha256": {
+    "dev150.master.jsonl": "111ce2836a4ac1cc4fd0ca553a58c78377d6198ea2c5eaceffb7a233de3eb733",
+    "dev150.messages.jsonl": "306a737febe9e39a8b4b63255e7f4111a31e38487f372534245946c40438f9dc",
+    "MASTER_3500.jsonl": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+    "train3500.messages.jsonl": "34c83b0eb0e967270b625d82714c8deb0387a1a7d536564ebcc458ccefbe29ff",
+    "train_probe150.master.jsonl": "08d4a25fa358f32d2cd7a0752945b277af1348f9a67fe09bfdbc974c67da24f5",
+    "train_probe150.messages.jsonl": "aaacf939449cc3752c38a2ed1da991bcb410e708ee34a0c387225ed82565ec2d"
+  },
+  "train_records": 3500,
+  "dev_records": 150,
+  "micro_batch": 1,
+  "max_length": 1024,
+  "epochs_max": 3,
+  "warmup_steps": 10,
+  "scheduler_horizon": 330,
+  "gradient_checkpointing": true,
+  "max_new_tokens": 1024,
+  "num_beams": 1,
+  "optimizer": {
+    "lr": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "clip": 1.0
+  },
+  "scheduler": "fixed330_linear_warmup10_decay",
+  "tail_policy": "12_actual_no_replay_no_drop",
+  "checkpoint_selection": [
+    "dev_complete_pass",
+    "worst_dataset_pass",
+    "earliest_step"
+  ],
+  "prompt_payload_policy": "exact_frozen_v12_bytes_no_strip"
+}

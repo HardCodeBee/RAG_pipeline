@@ -1,0 +1,23 @@
+60题复验：下降题核查
+全部计划60，单路60、双路59、ReAct60；1个双路子回答触及原128 token上限，不重试、不换题。
+原24+新增36；主要配对比较59，新增样本共同有效35。统计保留原分母和缺失范围。
+
+Who is the maternal grandmother of André De Laval-Montmorency?
+{"single": {"prediction": "Jeanne de Laval-Tinténiac", "f1": 1.0, "em": 1.0}, "dual": {"prediction": "Jeanne de Laval", "f1": 0.6666666666666666, "em": 0.0}, "react": {"prediction": "Jeanne de Laval", "f1": 0.6666666666666666, "em": 0.0}}
+Original24 repeated case; single retains Jeanne de Laval-Tinténiac, dual drops Tinténiac.
+ReAct also outputs Jeanne de Laval and gets the same two-thirds F1 as dual.
+No repair or alias reassignment applied to official scoring.
+
+What is the award that the director of film Manoranjan won?
+{"single": {"prediction": "The award that the director of film Manoranjan won cannot be determined from the retrieved passages.", "f1": 0.13333333333333336, "em": 0.0}, "dual": {"prediction": "None", "f1": 0, "em": 0.0}, "react": {"prediction": "None", "f1": 0, "em": 0.0}}
+New36 case. Both final predictions fail: single abstains in a sentence; dual answers None.
+Single F1=0.133333 comes from award token overlap in an abstention, not a correct award answer.
+Dual goal rewrite identifies Shammi Kapoor, retrieves his biography and correctly states his two Filmfare awards. OriginalTop10 lacks that biography; its award mentions concern other people.
+The correct intermediate fact appears in the final helper, yet final output is None. This is observed failure to use available auxiliary information, not observed lack of retrieval evidence. Prompt causation has not been isolated by intervention.
+
+Who is Victoria Sackville-West, Baroness Sackville's child-in-law?
+{"single": {"prediction": "Harold Nicolson", "f1": 1.0, "em": 1.0}, "dual": {"prediction": "Sir Harold Nicolson", "f1": 0.8571428571428571, "em": 0.0}, "react": {"prediction": "Sir Harold Nicolson", "f1": 0.8571428571428571, "em": 0.0}}
+New36 case. Single Harold Nicolson versus dual Sir Harold Nicolson.
+Vita Sackville-West source explicitly describes her husband as Sir Harold Nicolson. The dual child sentence preserves mother-daughter-spouse relation.
+The extra supported honorific reduces native F1 from1 to0.857142857 and EM from1 to0. ReAct uses the same longer form. No observed wrong-person answer.
+

@@ -1,0 +1,66 @@
+{
+  "method": "manual offline review of actual reader passages and generated answers; no new judge model; statuses emitted online are not these review labels",
+  "categories": {
+    "fact_availability": [
+      "complete",
+      "partial",
+      "none",
+      "ambiguous"
+    ],
+    "answer_use": [
+      "supported",
+      "supported_part_discarded",
+      "wrong_relation_or_entity",
+      "abstained",
+      "unsupported_selection"
+    ],
+    "scope": "Label current child requirement separately from full original-query sufficiency; qrels or gold-string occurrence alone do not establish answerability."
+  },
+  "verified_prior_cases": [
+    {
+      "dataset": "2wiki",
+      "qid": "bc7073a80baf11ebab90acde48001122",
+      "current_question": "Who are Anurutha's parents?",
+      "source": "Anurutha",
+      "span": "Anurutha was the forth son of king Inthasom.",
+      "response": "Anurutha's parents cannot be determined from these passages.",
+      "fact_availability": "partial",
+      "answer_use": "supported_part_discarded",
+      "missing": "mother identity, then uncle relation; father is explicitly available",
+      "target": "retain known father as a complete factual sentence, not an entirely unknown parent set"
+    },
+    {
+      "dataset": "hotpotqa",
+      "qid": "5a8eb63455429917b4a5bdb7",
+      "source": "Jonny Browning",
+      "span": "Jonny has played in bands or recorded with members of many other bands, including: St. Vincent, The Polyphonic Spree, Drive-By Truckers, And You Will Know Us By The Trail Of Dead, Verbena, and Servotron.",
+      "response": "Jonny Browning collaborated with John Mayer, an American musician, singer-songwriter, and multi-instrumentalist who attended Berklee College of Music.",
+      "fact_availability": "partial",
+      "answer_use": "wrong_relation_or_entity",
+      "missing": "St. Vincent educational bridge in current reader; no Browning-Mayer collaboration support",
+      "target": "separate missing correct-candidate attribute evidence from unsupported relation assembly"
+    },
+    {
+      "dataset": "hotpotqa",
+      "qid": "5a83431d5542993344745ff5",
+      "source": "Speedpass",
+      "span": "Speedpass is a keychain RFID device introduced in 1997 by Mobil Oil Corp. ... It was originally developed by Verifone.",
+      "response": "Mobil Oil Corp. created the keychain RFID device used for electronic payment at McDonald's and 400 other Chicago-area restaurants.",
+      "fact_availability": "complete for developer versus introducer identity, not the whole HQ question",
+      "answer_use": "wrong_relation_or_entity",
+      "missing": "Verifone headquarters is not established merely by finding this identity paragraph",
+      "qualification": "Original query says created, so do not infer synonym resolution from F1 alone; source explicitly distinguishes the roles"
+    },
+    {
+      "dataset": "2wiki",
+      "qid": "54bf355508b811ebbd88ac1f6bf848b6",
+      "source": "Alexandre Tsutsunava",
+      "span": "Alexandre Tsutsunava( born – 25 October 1955) was a Georgian theatre and film director.",
+      "response": "The death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.",
+      "fact_availability": "ambiguous",
+      "answer_use": "abstained",
+      "qualification": "Date fragment survives but source formatting is damaged. Do not describe it as a clean explicit died-on sentence or an unequivocal extraction failure."
+    }
+  ],
+  "not_additive": "One case may have retrieval and reading problems at different nodes; these purposive cases do not estimate population proportions."
+}

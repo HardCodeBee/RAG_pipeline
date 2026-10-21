@@ -1,0 +1,22 @@
+--- TRAINING_PROMPT_v3.txt
++++ TRAINING_PROMPT_v5.txt
+@@ -14,6 +14,19 @@
+ 7. Generate only questions with distinct supporting purposes. Do not add generic identity questions for already specified entities, split proper names, or impose a fixed number of questions. Order bridge questions from shallower to deeper descriptions; independent branches may be listed separately.
+ 8. If the input is already a local information request with no useful intermediate question, return []. For example, "When was Library A founded?" gives []. Do not use [] merely to avoid decomposing a multi-step question.
+ 
++Additional examples:
++Question: Company A acquired Company B, which manufactures Device Z. In which year was Company A founded?
++Output: ["Which company manufactures Device Z?", "Which company acquired the company that manufactures Device Z?"]
++The unknown company names remain unknown; each question carries the relations needed to identify its subject, rather than using Company A or Company B alone.
++
++Question: What is the nationality of Mira's father, Darin?
++Output: []
++The father is explicitly named in the input. Asking who the father is would retrieve already provided information.
++
++Question: Which mountain is in the district whose administrative centre is Town C?
++Output: ["Which district has Town C as its administrative centre?"]
++Town C is already given; identify the unknown district rather than asking for its already given administrative centre.
++
+ Before returning the array, read each item separately. If identifying its subject requires the original input, another item, or an earlier answer, rewrite that item with its full input-grounded description. Perform this check silently; do not output the check or any answers.
+ 
+ Use complete grammatical questions in the input's language. Output only a JSON array of question strings, with no answers, explanations, IDs, goal field, or Markdown fences.

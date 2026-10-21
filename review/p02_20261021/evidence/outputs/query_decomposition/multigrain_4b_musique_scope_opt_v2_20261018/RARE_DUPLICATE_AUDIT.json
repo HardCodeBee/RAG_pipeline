@@ -1,0 +1,92 @@
+{
+  "raw_n": 16,
+  "unique_text_n": 15,
+  "duplicate_indices": [
+    3,
+    5
+  ],
+  "duplicate_ids": [
+    "musique:4hop3__39178_419859_22784_86234",
+    "musique:4hop3__656765_419859_22784_86234"
+  ],
+  "retained_unique_indices": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "unique_text_results": {
+    "b00_v12": {
+      "n": 15,
+      "passes": 11,
+      "verdicts": {
+        "pass": 11,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 15,
+          "passes": 11
+        }
+      },
+      "mu_FS": [
+        9,
+        12
+      ]
+    },
+    "t02_mu50": {
+      "n": 15,
+      "passes": 11,
+      "verdicts": {
+        "pass": 11,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 1,
+        "U": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 15,
+          "passes": 11
+        }
+      },
+      "mu_FS": [
+        9
+      ]
+    }
+  },
+  "policy": "Detected after generation. No replacements or denominator concealment. Report both raw and unique; purposive diagnostic not independent population evidence."
+}

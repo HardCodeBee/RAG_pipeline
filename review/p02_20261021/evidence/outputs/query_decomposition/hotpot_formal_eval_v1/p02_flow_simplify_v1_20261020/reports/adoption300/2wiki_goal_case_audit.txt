@@ -1,0 +1,203 @@
+2Wiki100：discount20 与 single_final 的goal阶段合并核查
+
+discount20 F1=91.1188141923%；single_final F1=89.5171717172%；差值=-1.6016424752个百分点。
+6升、89平、5降；EM85%→84%。正贡献+1.5896825397pp，负贡献-3.1913250149pp。
+100/100普通子问答的原问题、回答、prompt、改写、阅读原文完全相同；0条exact-original supporting过滤。
+100/100 discount goal读取包与single最终读取包完全相同；单次最终读者没有丢原始Top10，66题新增489篇原文曝光，最终均值10→14.89篇。
+这是省略goal预答并改由最终LLM直接读合并原文的联动变化，不能称单独删除goal句的纯因果实验。
+single保留1条length最终回答按既定口径计分；不补写或清洗答案。
+
+六个代表案例：前三个为实质下降，后三个为表述/标点F1上升。
+
+2wiki:dea18cf408c211ebbd8cac1f6bf848b6
+Which film whose director is younger, Orfeu or Love Is On The Air?
+完整分解：["Who directed the film Orfeu?", "Who directed the film Love Is On The Air?", "When was the director of the film Orfeu born?", "When was the director of the film Love Is On The Air born?"]
+p02最终：Orfeu
+discount goal：Orfeu’s director, Carlos Diegues (born May 19, 1940), is younger than Love Is on the Air’s director, Nick Grinde (born January 12, 1893).
+discount最终：Orfeu
+single最终：Love Is On The Air
+F1：discount=1.0；single=0
+观察：四个普通子答案分别已给出两名导演及1940/1893出生日期。discount goal明确1940年出生者更年轻，最终答Orfeu；single最终仍选Love Is On The Air。两者的原始与改写检索及普通问答相同。
+解释边界：说明最终任务整合阶段存在退步；没有counterfactual prompt对照，不能证明单独删除goal句而非更长最终原文/职责调整造成。
+普通前置问答：
+Who directed the film Orfeu?
+Orfeu was directed by Carlos Diegues.
+Who directed the film Love Is On The Air?
+Love Is on the Air was directed by Nick Grinde.
+When was the director of the film Orfeu born?
+Carlos Diegues was born on May 19, 1940.
+When was the director of the film Love Is On The Air born?
+Nick Grinde was born on January 12, 1893.
+对应原文：
+rank=1 source=Orfeu doc_id=2c07ff0cf2dbd16776c83a80148f736f435122373d4354a33da81a62c7c9f624
+Orfeu
+Orfeu is a 1999 Brazilian drama film directed by Carlos Diegues, based on the play" Orfeu da Conceição" by Vinicius de Moraes. It retells the Greek legend of Orpheus and Eurydice, setting it in the modern context of Rio de Janeiro during Carnival. Toni Garrido stars as Orfeu, Patrícia França as Eurídice and Murilo Benício as Lucinho. Mostly shot in scenographic" favela" in Jacarepaguá, Rio de Janeiro, it included scenes from the 1998 Carnival celebration in which Garrido paraded with the samba school Viradouro.
+
+2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6
+Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?
+完整分解：["What country is Mavrolithari, Evros located in?", "What country is Ampelakia, Evros located in?"]
+p02最终：Yes
+discount goal：Mavrolithari is in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is in the Evros regional unit, Greece; thus, both villages are located in Greece, but Mavrolithari is not in Evros.
+discount最终：Yes
+single最终：No
+F1：discount=1.0；single=0
+观察：分解错误地给Mavrolithari附加Evros限定；普通子答首句又说not located in Greece，却在同一句承认Phocis,Greece。goal依据原文纠正为两村都在Greece，single最终输出No；当前最终原文排名1、2仍清楚显示两村均在Greece。
+解释边界：可观察goal曾纠正，而single没有正确使用冲突证据；不能断言模型内部唯一依据是前置错误句。
+普通前置问答：
+What country is Mavrolithari, Evros located in?
+Mavrolithari, Evros is not located in Greece; the passage states Mavrolithari is in northern Phocis, Greece, not in the Evros regional unit.
+What country is Ampelakia, Evros located in?
+Ampelakia, Evros is located in Greece.
+对应原文：
+rank=1 source=Ampelakia, Evros doc_id=48237979d7c9a724250c5e2ebbf00cf9aa7fed05b58e72ff76ee3650e3da148d
+Ampelakia, Evros
+Ampelakia( Greek: Αμπελάκια meaning vineyards) is a village in the municipality of Orestiada in the northern part of the Evros regional unit in Greece. Its population was 470 in 2011. Ampelakia is located about 12 km west of central Orestiada. The nearest larger village is Neochori to its northeast.
+rank=2 source=Mavrolithari doc_id=30fdcd6f1cba077aeef744d3fee21a338587dc11d8be285e81f77b04e8b087d8
+Mavrolithari
+Mavrolithari  is a village on Mount Oeta in northern Phocis, Greece, at an altitude of 1.140 meters. Since the 2011 local government reform it is part of the municipality of Delphi, and the municipal unit of Kallieis. Population was 491 in the 2011 census.
+
+2wiki:0910eaa909b711ebbdb0ac1f6bf848b6
+Are Dent Du Géant and Monte Matto both located in the same country?
+完整分解：["What country is Dent Du Géant located in?", "What country is Monte Matto located in?"]
+p02最终：Yes
+discount goal：Dent du Géant is located in both France and Italy, and Monte Matto is located in Italy, so they are both located in at least one same country—Italy.
+discount最终：Yes
+single最终：No
+F1：discount=1.0；single=0
+观察：普通答案France and Italy、Italy均正确且完全相同；goal明确共享Italy并得到Yes。single最终No，虽然最终原文前两篇和普通辅助都仍保留France/Italy与Italy事实。
+解释边界：可能把国家集合不完全相等当成没有共同国家，只是解释假设；未记录模型推理，不能把它写成已证实的内部机制。
+普通前置问答：
+What country is Dent Du Géant located in?
+Dent du Géant is located in both France and Italy.
+What country is Monte Matto located in?
+Monte Matto is located in Italy.
+对应原文：
+rank=1 source=Monte Matto doc_id=af614bb1a1e33bc92796ae28671df565a89365a4eaca0d7a76cae4c9e12f1bf1
+Monte Matto
+Monte Matto is a 3,097- meter- high( 10,161 ft) mountain in Piedmont, in the province of Cuneo, Italy. It is part of the Maritime Alps, dividing the Meris valley from the Gesso della Valletta valley. The mountain peak, consisting of a ridge of four aligned summits, can be seen from most of the plains near Cuneo. The ridge is composed of two different rock formations, one made up of granitoid gneiss, the other of mixed gneiss and different kinds of migmatite. The four peaks are( from east to west) cima Est( 3,088 m), cima Centrale( 3,097 m), cima Bobba( 3,079 m) and cima Verani( 3,020 m). The mountain is clearly visible from the plains around Cuneo as a triangular shape with a peculiar tiny" tooth"( which corresponds to cima Centrale, i.e. the central summit). It is part of the natural park" Parco Naturale delle Alpi Marittime". The fauna includes marmot, chamois and, at higher altitudes, the alpine ibex.
+rank=2 source=Dent du Géant doc_id=7cc5951e208d4b65119c5c13f50672382c0041c2690ed45ea5deee05f001a0af
+Dent du Géant
+The Dent du Géant( It.: Dente del Gigante," giant's tooth")( 4,013 m) is a mountain in the Mont Blanc massif in France and Italy. The Dent du Géant remained unclimbed during the golden age of alpinism, and was a much- coveted peak in the 1870s, repelling many parties who attempted it mostly from the Rochefort ridge. In 1880 the strong team of Albert F. Mummery and Alexander Burgener tried to force a passage via the south- west face but were repelled by a band of slabs, causing Mummery to exclaim,' Absolutely inaccessible by fair means!' The mountain has two summits, apart and separated by a small col( an' extremely awkward notch' according to W. W. Graham): This ascent marked the end of the so- called silver age of alpinism. On 28 July 1935 the Austrian climbers Herbert Burggasser and Rudi Leitz first ascended the vertical- to- overhanging 160 m-high south face. It was the first climb in the Western Alps systematically aided by the pitons and artificial techniques that were already in use by climbers in the Eastern Alps. During a heat wave in the summer of 2019, a glaciological rarity in the form of a previously unseen lake emerged at the foot of the Dent du Géant, the Aiguilles Marbrées and the Col de Rochefort at an altitude of about 3400 meters, that was considered as evidence for the effects of global warming on the glaciers in the Alps. The following facilities serve the mountain:
+
+2wiki:c231feaa0bdd11eba7f7acde48001122
+Where was the place of burial of Khamerernebty Ii's husband?
+完整分解：["Who was Khamerernebty Ii's husband?"]
+p02最终：Pyramid of Menkaure at Giza
+discount goal：Khamerernebty II's husband Menkaure was buried in the Pyramid of Menkaure at Giza.
+discount最终：Pyramid of Menkaure at Giza
+single最终：Pyramid of Menkaure
+F1：discount=0.7499999999999999；single=1.0
+观察：两者都找到Menkaure墓葬；discount goal和最终都带at Giza，single直接输出标准实体Pyramid of Menkaure，从0.75到1。新最终原文含Menkaure条目，但没有新事实正确性被本对照证明。
+解释边界：这是最终答案范围/词数匹配收益，不能称发现了discount未知的新正确事实。
+普通前置问答：
+Who was Khamerernebty Ii's husband?
+Khamerernebty II's husband was Menkaure.
+对应原文：
+rank=1 source=Khamerernebty II doc_id=6e375fd03cde493892077db7ffcb1a5d5ac6320d58b6fca0c3726f5340457eb2
+Khamerernebty II
+Khamerernebty II was an ancient Egyptian queen of the 4th dynasty. She was a daughter of Pharaoh Khafra and Queen Khamerernebty I. She married her brother Menkaure and she was the mother of Prince Khuenre.
+rank=2 source=Menkaure doc_id=ce9b384c8e1ff8488f9a340098d391403e03bb2ebcd92dc9cfa1be681867b865
+Menkaure
+Menkaure (also Menkaura, Egyptian transliteration "mn-k3w-Rˁ"), was an ancient Egyptian king (pharaoh) of the 4th dynasty during the Old Kingdom, who is well known under his Hellenized names Mykerinos  (by Herodotus) and Menkheres (by Manetho). According to Manetho, he was the throne successor of king Bikheris, but according to archaeological evidence he rather was the successor of king Khafre. Menkaure became famous for his tomb, the Pyramid of Menkaure, at Giza and his beautiful statue triads, showing the king together with his wives Rekhetre and Khamerernebty.
+
+2wiki:4f81c5260bdc11eba7f7acde48001122
+Who is the spouse of the director of film Geordie (Film)?
+完整分解：["Who is the director of the film Geordie (Film)?"]
+p02最终：Bernadette O’Farrell
+discount goal：Frank Launder’s spouse was actress Bernadette O’Farrell.
+discount最终：Bernadette O’Farrell
+single最终：Bernadette O'Farrell
+F1：discount=0.5；single=1.0
+观察：discount与p02输出Bernadette O’Farrell（弯引号），single输出Bernadette O'Farrell（直引号）。native F1由0.5到1，人物身份没有观察到改变；新增Frank Launder原文直接使用直引号姓氏。
+解释边界：标点/官方token归一化差异，不是半个事实被修复。不能把这0.5 F1当作新的语义成功。
+普通前置问答：
+Who is the director of the film Geordie (Film)?
+Frank Launder is the director of the film Geordie.
+对应原文：
+rank=1 source=Geordie (film) doc_id=0cccc6164e8c0ec682620482745a5c929b2248930305ad9bcf81047ad59963dc
+Geordie (film)
+Geordie( released in the United States as Wee Geordie) is a 1955 British film directed and co-produced by Frank Launder, with Bill Travers in the title role as a Scotsman who becomes an athlete and competes at the 1956 Summer Olympics in Melbourne. The film is based on David Walker's 1950 novel of the same title, adapted for the screen by Launder and his co-producer Sidney Gilliat.
+rank=2 source=Frank Launder doc_id=d18b57eb52705ef565c016a4695250f307e88b3379856cc67240fa98a3ab602a
+Frank Launder
+Frank Launder (28 January 1906 – 23 February 1997) was a British writer, film director and producer, who made more than 40 films, many of them in collaboration with Sidney Gilliat. He was born in Hitchin, Hertfordshire, England and worked briefly as a clerk before becoming an actor and then a playwright. He began working as a screenwriter on British films in the 1930s, contributing the original story for the classic Will Hay comedy " Oh, Mr Porter!" (1937). After writing a number of screenplays with Gilliat, including "The Lady Vanishes" (1938) for Alfred Hitchcock, and "Night Train to Munich" for Carol Reed; the two men wrote and directed the wartime drama "Millions Like Us" (1943). After founding their own production company Individual Pictures, they produced a number of memorable dramas and thrillers including "I See a Dark Stranger" (1945) and "Green for Danger" (1946), but were best known for their comedies including "The Happiest Days of Your Life" (1950) and most famously, the St Trinians series, based on Ronald Searle's cartoons set in an anarchic girls school. He was married to actress Bernadette O'Farrell from 1950 until his death in Monaco. The couple had two children.
+rank=3 source=Geordie (film) doc_id=7d1303ead98ee3c4a6b64da69f64772c790482c499e55c9f7f7db315b4dab797
+Geordie (film)
+Geordie (released in the United States as Wee Geordie) is a 1955 British film directed and co-produced by Frank Launder, with Bill Travers in the title role as a Scotsman who becomes an athlete and competes at the 1956 Summer Olympics in Melbourne. The film is based on David Walker's 1950 novel of the same title, adapted for the screen by Launder and his co-producer Sidney Gilliat.
+rank=4 source=Frank Launder doc_id=8479001382e2f5c8985a192b48c5e46d72fe50d4c78e144490d85f522267892e
+Frank Launder
+Frank Launder( 28 January 1906 – 23 February 1997) was a British writer, film director and producer, who made more than 40 films, many of them in collaboration with Sidney Gilliat. He was born in Hitchin, Hertfordshire, England and worked briefly as a clerk before becoming an actor and then a playwright. He began working as a screenwriter on British films in the 1930s, contributing the original story for the classic Will Hay comedy " Oh, Mr Porter!"( 1937). After writing a number of screenplays with Gilliat, including" The Lady Vanishes"( 1938) for Alfred Hitchcock, and" Night Train to Munich" for Carol Reed; the two men wrote and directed the wartime drama" Millions Like Us"( 1943). After founding their own production company Individual Pictures, they produced a number of memorable dramas and thrillers including" I See a Dark Stranger"( 1945) and" Green for Danger"( 1946), but were best known for their comedies including" The Happiest Days of Your Life"( 1950) and most famously, the St Trinians series, based on Ronald Searle's cartoons set in an anarchic girls school. He was married to actress Bernadette O' Farrell from 1950 until his death in Monaco. The couple had two children.
+
+2wiki:15b9210e0baf11ebab90acde48001122
+Who is Dietrich Ix, Count Of Mark's paternal grandfather?
+完整分解：["Who is Dietrich Ix, Count Of Mark's father?", "Who is the father of Dietrich Ix, Count Of Mark's father?"]
+p02最终：Count Adolph II of the Marck
+discount goal：Dietrich IX, Count of Mark's paternal grandfather is Count Adolph II of the Marck.
+discount最终：Count Adolph II of the Marck
+single最终：Adolph II of the Marck
+F1：discount=0.888888888888889；single=1.0
+观察：discount目标句和最终均为Count Adolph II of the Marck，single去掉Count变为Adolph II of the Marck，0.8889到1。普通父系关系答案未变，最终额外原文包含Adolph II of the Marck条目。
+解释边界：实体不变的表述匹配收益；不能据此证明删除goal改善事实推理。
+普通前置问答：
+Who is Dietrich Ix, Count Of Mark's father?
+Dietrich IX, Count of Mark's father is Count Adolf III of the Marck.
+Who is the father of Dietrich Ix, Count Of Mark's father?
+Adolf III of the Marck's father is Count Adolph II of the Marck.
+对应原文：
+rank=1 source=Dietrich IX, Count of Mark doc_id=a868c890a678400dc349c5be8de6eec30fc3e73ad81c82cba3f86ca36aac5016
+Dietrich IX, Count of Mark
+Dietrich IX, Count of Mark (1374–1398) was the Count of Mark from 1393 until 1398. Dietrich was the second son of Count Adolf III of the Marck and Margaret of Jülich. His father had acquired the County of Cleves in 1368 and reserved this title for his eldest son Adolph to succeed him after his death. Dietrich already received the title of Count of Mark in 1393, when his father was still alive. When Dietrich fell in battle in 1398, he was succeeded by his elder brother Adolph, who had become Count of Cleves in 1394. Thus the County of Mark and the County of Cleves were reunited again.
+rank=2 source=Adolph II of the Marck doc_id=3601c84530425675fabc740fa564d04be5d9db0f08d45139933d97d2fbd278d5
+Adolph II of the Marck
+Adolph II of the Marck( died 19/20 October 1347, Fröndenberg) was Count of the Marck. He was the eldest son of Engelbert II of the Mark and Mechtild of Arenberg. Adolph was betrothed to Irmgard of Cleves, daughter of Otto, Count of Cleves and his( second) wife Mechtild of Virneburg. After obtaining a papal dispensation Adolf was allowed to marry Margaret of Cleves, the daughter of Dietrich VIII, Count of Cleves and Margaret of Guelders. Adolph and Margaret of Cleves had seven children:
+rank=3 source=Dietrich IX, Count of Mark doc_id=72abbb3c1ff038aea23780096ef417cc8abe806da592370c2a560ff4f41b8e67
+Dietrich IX, Count of Mark
+Dietrich IX, Count of Mark( 1374 – 1398) was the Count of Mark from 1393 until 1398. Dietrich was the second son of Count Adolf III of the Marck and Margaret of Jülich. His father had acquired the County of Cleves in 1368 and reserved this title for his eldest son Adolph to succeed him after his death. Dietrich already received the title of Count of Mark in 1393, when his father was still alive. When Dietrich fell in battle in 1398, he was succeeded by his elder brother Adolph, who had become Count of Cleves in 1394. Thus the County of Mark and the County of Cleves were reunited again.
+rank=4 source=Adolph II of the Marck doc_id=84fa95fdbbc6e194c0b6f950e5ed684f6a845d7966d4179bf7492f14d8799e76
+Adolph II of the Marck
+Adolph II of the Marck (died 19/20 October 1347, Fröndenberg) was Count of the Marck. He was the eldest son of Engelbert II of the Mark and Mechtild of Arenberg. Adolph was betrothed to Irmgard of Cleves, daughter of Otto, Count of Cleves and his (second) wife Mechtild of Virneburg. After obtaining a papal dispensation Adolf was allowed to marry Margaret of Cleves, the daughter of Dietrich VIII, Count of Cleves and Margaret of Guelders. Adolph and Margaret of Cleves had seven children:
+
+全部11条变化（其余89条持平）：
+2wiki:16a91a500bb011ebab90acde48001122 Who is the grandchild of Stefan Zamoyski?
+discount=Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski | single=Adam Stefan Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Wladyslaw Ignacy, Adam Zdzisław Zamoyski, Władysław Zdzisław Zamo
+delta=-0.08021390374331555; expanded_ambiguous_name_list_and_final_truncation
+2wiki:dea18cf408c211ebbd8cac1f6bf848b6 Which film whose director is younger, Orfeu or Love Is On The Air?
+discount=Orfeu | single=Love Is On The Air
+delta=-1.0; comparison_conclusion_not_completed
+2wiki:15b9210e0baf11ebab90acde48001122 Who is Dietrich Ix, Count Of Mark's paternal grandfather?
+discount=Count Adolph II of the Marck | single=Adolph II of the Marck
+delta=0.11111111111111105; honorific_removed
+2wiki:42954d320bb011ebab90acde48001122 Who is Princess Adelgunde Of Bavaria's mother-in-law?
+discount=Maria Beatrice of Savoy | single=Princess Maria Beatrice of Savoy
+delta=-0.11111111111111105; extra_honorific
+2wiki:923b15ba0bb011ebab90acde48001122 Who is the paternal grandfather of Araripe Júnior?
+discount=Tristão Gonçalves de Alencar, later Araripe | single=Tristão Gonçalves de Alencar
+delta=0.16666666666666663; shorter_identifying_name
+2wiki:c231feaa0bdd11eba7f7acde48001122 Where was the place of burial of Khamerernebty Ii's husband?
+discount=Pyramid of Menkaure at Giza | single=Pyramid of Menkaure
+delta=0.2500000000000001; short_answer_surface_precision
+2wiki:fcd3ff500baf11ebab90acde48001122 Who is Teriimaevarua Iii's paternal grandmother?
+discount=Queen Pōmare IV of Tahiti | single=Queen Pōmare IV
+delta=0.22857142857142854; remove_geographic_qualifier
+2wiki:085ace840bde11eba7f7acde48001122 Where was the mother of Shubhendra Shankar born?
+discount=Maihar Estate in Madhya Pradesh | single=Maihar Estate
+delta=0.33333333333333326; shorter_location_phrase
+2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6 Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?
+discount=Yes | single=No
+delta=-1.0; prior_answer_error_no_longer_explicitly_repaired
+2wiki:0910eaa909b711ebbdb0ac1f6bf848b6 Are Dent Du Géant and Monte Matto both located in the same country?
+discount=Yes | single=No
+delta=-1.0; set_overlap_combination_not_completed
+2wiki:4f81c5260bdc11eba7f7acde48001122 Who is the spouse of the director of film Geordie (Film)?
+discount=Bernadette O’Farrell | single=Bernadette O'Farrell
+delta=0.5; apostrophe_tokenization_match
+
+解释与采用边界：
+All100 ordinary prefixes and all100 goal retrieval packets match; changes lie at goal/last-reader interface, not earlier decomposition, retrieval or ordinary answer changes.
+single_final keeps every original-query final Top10 document, exposes additional goal-route documents in66 queries, and removes the generated goal candidate conclusion; this is a stage/representation merge, not an isolated delete-one-sentence experiment.
+3 full1->0 regressions are comparison/combination/repair failures despite available premises. Goal had explicitly correct conclusions in these3.
+6 increases are observed surface-answer improvements (name/qualifier/punctuation), not newly established correct factual chains.
+Single_final may still be worthwhile for fewer calls and simpler control flow; these100 data alone neither enforce rejection nor prove noninferiority. User has not specified a numeric acceptable-loss margin.
+Observed lineage does not prove the internal causal reason, and a longer input/noise explanation has not been isolated.
+
+全部100题来源路径及SHA、全部11条升降、6个案例完整原文包与prompt均见同名JSON。
+本次新增API=0，索引查询=0，已pin源码改动=0。

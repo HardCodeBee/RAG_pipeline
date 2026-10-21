@@ -1,0 +1,52 @@
+{
+  "protocol": {
+    "scope": "12 fresh query IDs + all preceding dual-vs-single losses + separately reported ReAct-gap cases; manual query-only plans, diagnostic development",
+    "conditions": {
+      "reuse_new": {
+        "rewrite": "partial_binding_v5",
+        "final": "v2"
+      },
+      "reuse_previous": {
+        "rewrite": "v2",
+        "final": "v2"
+      },
+      "reuse_single": {
+        "rewrite": "none",
+        "final": "v2"
+      },
+      "support_new": {
+        "rewrite": "partial_binding_v5",
+        "final": "aux_absence_v5"
+      },
+      "support_previous": {
+        "rewrite": "v2",
+        "final": "aux_absence_v5"
+      },
+      "support_single": {
+        "rewrite": "none",
+        "final": "aux_absence_v5"
+      }
+    },
+    "model": "qwen-plus-2025-12-01",
+    "rewrite_tokens": 256,
+    "child_tokens": 128,
+    "final_tokens": 64,
+    "reuse_added_document_cap": 5,
+    "global_cap_cny": 200,
+    "round_subcap_cny": 5,
+    "frozen_files": {
+      "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\cases.frozen.jsonl": "5b19d2d0acac842d0e7c4e0bf3354de63d09c743fa10b642db622012cff4c94c",
+      "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\prompts.py": "964f43cad4218f2baeb62b9a0cd7ef4507d3e85dea5f0e0dda82f95ee4c51679",
+      "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\child_examples.json": "674c5d26c3b099f669ba26efafede05db9661f937d1142d08b280130f04d4aec",
+      "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\final_examples.json": "8ba0b9335c8f39ffd1e7e2ebcb01580c8f521bb0370890c7ca4ea09aec5d45ad",
+      "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\prompts.py": "fbaca89e88585f175d387b079e8106aa29380a56e628966c2abd6dc48723bafb",
+      "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\prompts.py": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+      "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\final_examples.json": "b97e53900f3d1b87a064d5a5a65a337c02d6c1ae39753bfd2753e0435f72db87",
+      "outputs\\query_decomposition\\hotpot_formal_eval_v1\\multigrain_evidence_v4r1_20261017\\CASE_RESULTS.jsonl": "820fbaf2fab24da511466e5e7d6d74cb82679cac19dbd51d15851a5ec2eb4643"
+    },
+    "passing_gate": "all planned complete; support_new mean F1 above support_single, zero individual losses; also report all isolated factors, previous dual and ReAct",
+    "two_factors": "rewrite v2/partial-binding/none crossed with final v2/auxiliary-absence distinction. Each upstream branch feeds both final prompts with identical context; original path, child prompt, once-only reread, corpus, retriever, merge Top10 and placement fixed"
+  },
+  "runner_sha256": "a27556297b77af151205e0e87314bb83f08242144c262bd7f2ff4b67f44c5446",
+  "gold_in_generation": false
+}

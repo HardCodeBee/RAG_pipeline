@@ -1,0 +1,276 @@
+{
+  "utc": "2026-10-19T20:56:33.539474+00:00",
+  "complete": true,
+  "results": {
+    "utc": "2026-10-19T20:56:33.430338+00:00",
+    "baseline": {
+      "n": 300,
+      "F1": 0.6736469411679938,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7718190476190473
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.8913766788766787
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.35774509700825485
+        }
+      }
+    },
+    "arms": {
+      "A_child_prompt_C08": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6520588071123162,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": -0.021588134055677905,
+        "paired_stratified_bootstrap95": [
+          -0.04997682390140724,
+          0.00799086183796707
+        ],
+        "up": 21,
+        "down": 31,
+        "tie": 248,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7367262737262736,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": -0.0350927738927739
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.863598901098901,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": -0.027777777777777776
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.3558512465117728,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": -0.0018938504964820752
+          }
+        }
+      },
+      "B_rewrite_prompt_c02": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6755317415527944,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": 0.0018848003848003848,
+        "paired_stratified_bootstrap95": [
+          -0.006333333333333335,
+          0.011468584656084652
+        ],
+        "up": 2,
+        "down": 4,
+        "tie": 294,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7626321789321787,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": -0.009186868686868688
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.8913766788766787,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": 0.0
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.37258636684952473,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": 0.014841269841269843
+          }
+        }
+      },
+      "C_final_readout_P1": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6809325664588823,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": 0.007285625290888449,
+        "paired_stratified_bootstrap95": [
+          -0.0002765149300017702,
+          0.016674841111617413
+        ],
+        "up": 11,
+        "down": 1,
+        "tie": 288,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7783333333333331,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": 0.0065142857142857155
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.8936843711843712,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": 0.0023076923076923075
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.3707799948589422,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": 0.013034897850687326
+          }
+        }
+      },
+      "D_drop_whole_abstentions": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6736469411679938,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": 0.0,
+        "paired_stratified_bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "up": 0,
+        "down": 0,
+        "tie": 300,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7718190476190473,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": 0.0
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.8913766788766787,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": 0.0
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.35774509700825485,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": 0.0
+          }
+        }
+      },
+      "E_remove_sentence_formatter": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6736469411679938,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": 0.0,
+        "paired_stratified_bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "up": 0,
+        "down": 0,
+        "tie": 300,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7718190476190473,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": 0.0
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.8913766788766787,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": 0.0
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.35774509700825485,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": 0.0
+          }
+        }
+      },
+      "F_child_length_fallback": {
+        "planned": 300,
+        "scorable": 300,
+        "statuses": {
+          "success": 300
+        },
+        "F1": 0.6736469411679938,
+        "B0_same_queries_F1": 0.6736469411679938,
+        "delta_F1": 0.0,
+        "paired_stratified_bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "up": 0,
+        "down": 0,
+        "tie": 300,
+        "by_dataset": {
+          "hotpotqa": {
+            "scorable": 100,
+            "F1": 0.7718190476190473,
+            "B0_F1": 0.7718190476190473,
+            "delta_F1": 0.0
+          },
+          "2wiki": {
+            "scorable": 100,
+            "F1": 0.8913766788766787,
+            "B0_F1": 0.8913766788766787,
+            "delta_F1": 0.0
+          },
+          "musique": {
+            "scorable": 100,
+            "F1": 0.35774509700825485,
+            "B0_F1": 0.35774509700825485,
+            "delta_F1": 0.0
+          }
+        }
+      }
+    },
+    "budget": {
+      "global_returned_cny": 178.7868564,
+      "global_reserve_cny": 35.3823984,
+      "experiment_returned_cny": 2.0950615999999997,
+      "experiment_reserve_cny": 0,
+      "experiment_submissions": 1579,
+      "by_arm": {
+        "A_child_prompt_C08": {
+          "new_returned_usage_cny": 0,
+          "new_reserved_cny": 0,
+          "new_submissions": 0
+        },
+        "B_rewrite_prompt_c02": {
+          "new_returned_usage_cny": 0,
+          "new_reserved_cny": 0,
+          "new_submissions": 0
+        },
+        "C_final_readout_P1": {
+          "new_returned_usage_cny": 0,
+          "new_reserved_cny": 0,
+          "new_submissions": 0
+        }
+      }
+    },
+    "all_complete": true,
+    "scope": "Frozen300 diagnostic cohort. Prompt-only interventions are independent; D/E/F are exact full-trajectory offline replays, not API resampling. No new remote/training jobs.",
+    "metric": "Native Answer F1; 2Wiki aliases/demonyms, MuSiQue aliases. Incomplete provider calls excluded and counted. Algorithm failures count as zero."
+  }
+}

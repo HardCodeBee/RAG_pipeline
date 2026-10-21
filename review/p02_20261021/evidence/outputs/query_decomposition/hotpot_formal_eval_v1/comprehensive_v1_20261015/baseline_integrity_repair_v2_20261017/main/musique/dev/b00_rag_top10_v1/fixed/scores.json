@@ -1,0 +1,84 @@
+{
+  "dataset": "musique",
+  "reference_sha256": "1513347e4c54c010ee09a6d439bb00385484c2fdcdeca61ae3dcb43fa9d5b520",
+  "overall": {
+    "planned": 100,
+    "terminal_records": 20,
+    "available": 20,
+    "missing": 80,
+    "f1_available": 0.32323199302604333,
+    "em_available": 0.25,
+    "f1_all_planned_bounds": [
+      0.06464639860520867,
+      0.8646463986052086
+    ],
+    "statuses": {
+      "success": 20,
+      "unstarted": 80
+    }
+  },
+  "by_type": {
+    "2-hop": {
+      "planned": 52,
+      "terminal_records": 9,
+      "available": 9,
+      "missing": 43,
+      "f1_available": 0.6296296296296295,
+      "em_available": 0.5555555555555556,
+      "f1_all_planned_bounds": [
+        0.10897435897435896,
+        0.9358974358974359
+      ],
+      "statuses": {
+        "success": 9,
+        "unstarted": 43
+      }
+    },
+    "3-hop": {
+      "planned": 31,
+      "terminal_records": 7,
+      "available": 7,
+      "missing": 24,
+      "f1_available": 0.024844720496894408,
+      "em_available": 0.0,
+      "f1_all_planned_bounds": [
+        0.005610098176718092,
+        0.7798036465638148
+      ],
+      "statuses": {
+        "success": 7,
+        "unstarted": 24
+      }
+    },
+    "4-hop": {
+      "planned": 17,
+      "terminal_records": 4,
+      "available": 4,
+      "missing": 13,
+      "f1_available": 0.156015037593985,
+      "em_available": 0.0,
+      "f1_all_planned_bounds": [
+        0.03670942061034941,
+        0.8014153029632906
+      ],
+      "statuses": {
+        "success": 4,
+        "unstarted": 13
+      }
+    }
+  },
+  "returned_usage_cny": 0,
+  "reserved_unreconciled_cny": 0,
+  "logical_calls": 20,
+  "unsubmitted_trace_calls": 0,
+  "logical_cold_cost_cny": 0.026441199999999998,
+  "logical_cost_missing_calls": 0,
+  "logical_tokens": {
+    "prompt": 32734,
+    "completion": 127
+  },
+  "metric": "native official Answer EM/F1; 2Wiki v1.1 entity aliases/demonyms; MuSiQue Ans answer_aliases",
+  "support_metric": "gold document coverage of passages actually shown; not official sentence-support or joint F1",
+  "hallucination_rate_evaluated": false,
+  "cost_pricing": "frozen Beijing tiered public list prices; actual bill not verified"
+}

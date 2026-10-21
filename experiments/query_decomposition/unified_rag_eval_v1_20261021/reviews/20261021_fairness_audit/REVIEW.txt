@@ -1,0 +1,130 @@
+基线选择、P02统一层接入与比较公平性审核
+日期：2026-10-21（Australia/Sydney）；审核方案修订005。
+状态：只读审核；以下调整均为建议，尚未采用，不恢复评估。
+机器证据：同目录AUDIT.json。未提交API请求、GPU作业、索引搜索或重新计分；86份受保护冻结源码不变。
+
+1. 判断
+九种基线覆盖单次检索、CoT读取、自问自答、行动式检索、交错推理检索、迭代生成检索、模块化分解、混合检索重排及分解重排，选择有代表性。
+当前实现应称为“统一资源下的本地适配”，不称为论文原版复现或覆盖当前所有最强方法。
+P02共享请求、完整输入和完整响应核验层的方向合理；这只提供统一的基础条件，尚不能证明新生成行为无变化。
+整个方法组目前没有共同的原始query检索预算；只有ReAct和Iter-RetGen明确对齐50个检索文档槽位。
+取消累计经费上限不取消公平比较所需的单题资源额度。经费政策与检索/生成资源约束是两件独立的事。
+
+2. 当前检索预算核算
+单位：每个原始query的候选文档槽位，即所有逻辑检索操作请求的top-k之和，在合并/去重之前计数。
+重复命中文档不变成额外免费额度；缓存回放也按逻辑检索记额度。缓存只节省本次真实新增开销。
+该量不是最终上下文文档数、唯一文档数、生成token数，也不是LLM调用数指标。
+
+方法                     HotpotQA       2Wiki          MuSiQue       说明
+Top-10 RAG               10             10             10            单次检索
+Top-10+CoT               10             10             10            cot3指三条示例，不是三次采样
+Self-Ask                 <=30           <=50           <=30          k10、最多3/5/3次检索
+ReAct                    <=50           <=50           <=50          k10、最多5次检索
+IRCoT                    <=48           <=48           <=64          最多8次检索，k6/6/8；保留池最多15篇
+Iter-RetGen（主版本）     50             50             50            k10/T5；失败可提前退出
+Decomp                   无统一总计数   无统一总计数   无统一总计数  外层与内层各8任务步，k4/6/6；仍有有限任务上限，不能当成8次检索
+Hybrid+Rerank            <=40           <=100          <=40          BM25与BGE各20/50/20；最终10篇
+QD+Rerank                <=60           <=40           <=40          原问题加最多5/3/3个子查询，每个top10；最终10篇
+P02                      依赖分解长度   依赖分解长度   依赖分解长度  见下式，最终原问题检索包已在goal步骤中取得
+
+P02有m个supporting_questions时，原问题goal也执行检索：原查询路径m+1次，历史答案改写路径最多m次。
+因此候选槽位上界为10*(2m+1)。改写文本与原查询相同时不会执行第二次检索，所以上界不能当实际消耗。
+例如m=2时上界50；m=4时上界90。当前冻结1500题的潜在上界最大为110/90/110；可能超过50的题分别21/114/98。
+这些是已冻结分解长度的资源审计，未使用正式F1，不能据此挑选最有利的正式评估预算。
+P02每个子问题/goal合并包只有10篇、最终原文也是10篇，并不意味着整个流程只检索10篇。
+同理IRCoT的15篇保留池不意味着总计只获得15个候选槽位。
+
+3. 基线选择与实现忠实度
+保留Top-10及Top-10+CoT作为基础参照；保留Self-Ask、ReAct、IRCoT、Iter-RetGen和Decomp覆盖不同自适应路线。
+QD+Rerank是与P02最接近的强比较对象：都有分解、多查询检索、候选整合，后续信息组织不同，宜作为重点比较。
+其原论文还包含完整的单查询RAG+Reranker系统，支持建议增加“Dense Top-B+相同交叉编码器重排→Top10→回答”这一完整RAG基线。
+该新基线可检查简单扩大候选池并重排的收益；不属于组件单测，是否增加及B值仍待批准。
+Hybrid+Rerank包含BM25额外信号，保留并标注双检索器资源；它不能替代单Dense+Reranker来隔离资源差异。
+不因某基线分数低而删除，也不因某论文名称知名而忽略其本地工具/控制器差异。
+
+已核对的适配差异：
+- ReAct本地只有BGE Search和Finish，原论文的Wikipedia环境还包含Lookup；本地结果不能概括完整ReAct原工具环境。[1]
+- Self-Ask原搜索整合将搜索返回的答案送回模型；本地适配返回原文段落，再要求模型产出Intermediate answer，形成不同接口负担。[2]
+- IRCoT保留逐句推理、累计证据及独立最终reader；原论文明确独立reader比直接抽取检索CoT答案更合适，不能为了统一最终调用形式删掉它。[3]
+- Iter-RetGen保留“上一轮完整生成+原问题检索，当前检索文档生成”的结构；多轮并非必然优于少轮，原论文也分析迭代次数与性能/开销的关系。[4]
+- Decomp保留嵌套模块和标题QA，但严格JSON与BGE是本地适配；格式约束、标题绑定需要单独检查，不能归结为原方法能力不足。[5]
+- QD+Rerank保留原问题与独立子查询、候选合并、按原问题重排的结构。[6]
+
+4. 基线是否被实现细节压低
+现有主要检查点共有341条按既定协议计零的算法失败：Self-Ask148条missing_intermediate_answer；ReAct81条no_finish_within_budget；Decomp112条，其中102条title_not_in_retrieved_results。
+这是内部失败原因盘点，覆盖进度不齐，不是各方法的正式500题分数或故障率排名。
+抽查Self-Ask回执可见：一次输出Intermediate answer及新Follow-up，下一次只重复Follow-up，触发缺中间答案。
+这些证据说明接口/预算结束规则值得审查；它们不证明全部是解析器bug，也不证明放宽规则就一定提高语义正确性。
+建议先在开发集验证：已执行Follow-up的回显处理、标题的确定性字符规范化、预算用尽时能否正常完成回答。
+Decomp要求标题来自真实检索结果是合理证据约束；不能允许臆造标题，或用无依据的模糊匹配救分。
+当前341条失败继续保留计零，不能看正式结果后逐题修答案或只重跑失败题以择优。
+任何通用控制器修复都必须版本化、开发集验证、统一重放，并保留旧结果与费用。
+
+5. P02接入统一层的合理边界
+已保留：冻结分解器与输出、P02提示词/示例、历史答案条件改写、双路交错合并、child/goal回答、必要的句式整理、最终原问题原文及辅助QA。
+统一的部分：模型/温度/thinking身份、API请求/回执、完整响应及usage、长查询完整窗口策略、缓存来源绑定、失败记录及计时边界。
+不在共享层强加相同planner、相同最终提示词、相同分解题数或新reranker；不把两路检索缩为一路，不取消goal，不擅自削减子问题。
+同最终提示词控制与机制消融继续搁置；当前结果只能比较完整方法配置，不能把差异归因于某个单一机制。
+
+三项仍需谨慎的影响：
+5.1 新请求真实max_tokens从原256/128/64提高到32768。完整结束的历史响应符合已批准复用规则，但改变上限不构成新推理结果完全相同的证明。
+    32768是逐请求安全上限，不是原始query总生成预算。它不能证明LLM开销对齐，也不意味着应鼓励每个阶段生成长文。
+    保留各方法自己的动作/一句推理/最终答案结束语义，先查开发记录中的冗余输出；任何新增stop策略都要单独验证，不能重新引入截断失败或丢失usage。
+5.2 长BGE查询的完整窗口平均可避免丢掉后半段，但向量改变仍可能改变排序，不保证所有方法必然提升。统一政策合理，性能无损尚未通过新推理验证。
+5.3 远端迁移需核验同语料/索引/模型及实际检索排序；允许浮点分数微差不等于允许文档集合/顺序悄悄变化。变化影响prompt时按严格规则重算下游。
+现有离线检查和781条回放支持接口及已保存轨迹的一致性，不证明所有未来新请求和新远端检索都无变化。
+
+6. 公平且保护方法表现的建议
+建议在同一方案内明确两种完整RAG比较，均保留500题目标；是否采用仍待用户决定：
+A. 完整配置结果：保留原方法结构，记录F1/EM、实际tokens/费用及组件时间，说明各自资源额度，不称等预算。
+B. 共同资源上限对照：P02与迭代基线在相同原始query候选槽位B下运行；例如50/100为开发集候选档，最终档位和结束规则先在开发集确定并审批。
+   每个算法可在额度内选择合适k与迭代参数、正常提前结束；不强迫耗尽额度，不用“统一5轮”代替真正资源核算。
+   内层/外层、原查询/改写查询、原问题/子问题都扣同一原始query的额度；P02使用完整四步分解不应因错误计数平白多得资源。
+   若某档不足以执行原P02结构，受限运行必须明确标为受限配置；不覆盖冻结主方法或把中断结果冒充完整自然表现。
+   给最终回答保留必要执行空间，先验证预算结束处理；不能把一方硬中断为0而另一方允许继续求解。
+
+仅对齐检索B时，只能称检索预算对齐。生成长度、反复读取的累计输入、reranker及分解器仍不同。
+继续报告已批准的输入/输出tokens、API估算费用和自托管组件处理时间；用相近实际成本下的质量比较补充解释，不增设LLM调用数指标。
+P02训练分解器的推理时间与tokens需要计入，缺少GPU机时单价时不编造费用；额外训练资源须披露。
+固定每阶段最大输出并不会对齐整题tokens；强行使用完全相同最终输入会改变各方法的信息组织方式，不是本轮已批准的公平条件。
+
+7. 重新选参与已有结果复用
+当前基线参数来自修复前dev100选择。v2冻结文件明确保留这些参数，dev20仅用于完整性检查，未重新做F1选参。
+因此不能保证在新完整输入/输出协议下仍是每族最合适的参数；T5的matched50也是按ReAct额度设定，而非在修复后开发集上最优。
+若采用预算对照或修改停止规则，建议先在既有开发集、统一修复协议和预先确定的候选范围下重新验证受影响配置，再冻结正式500；不据正式F1调参。
+Iter-RetGen应保留原生开发选择与受预算配置的身份，不把迭代越多默认成越强。
+现有10533条v2结果与781条P02候选仍有保存价值；新预算表不得整表改名复用。
+新协议逐阶段重放后，只有资源消耗合法、消息与来源仍匹配、结束轨迹不受预算变化影响的部分可迁移；其他部分及受影响下游需重算。
+严格复用C1继续有效；完整复用数需在最终预算/控制器协议确定后重新审计，不能预先承诺11314条全进新预算表。
+
+8. 训练问题重合：必须披露的另一项公平性问题
+已独立核对冻结训练query文本与正式题：HotpotQA3题、2Wiki2题、MuSiQue2题，共7题，和原EXPOSURE_AUDIT记录一致。
+这仅证明问题文本曾用于分解器训练，不证明训练包含标准答案或造成最终答案泄漏；也不能称这7题为完全未见过的分解评估问题。
+建议保留既定每集500题结果，同时补充对所有方法使用同一排除名单的“无训练问题重合”完整流程结果重聚合；不得只替P02排除。
+这属于训练暴露敏感性分析，不是因题目失败而缩分母；不擅自换题，也不把497/498/498冒称完整500。
+如要求完全无此暴露的主评，则须另批更换/重训分解器或重新冻结题集；这会影响既有模型、轨迹和复用范围，不能作为小修静默执行。
+
+9. 下一步待审内容与当前保护
+优先确认：是否采用完整配置表加共同预算对照；共同B及开发验证规则；是否增加单Dense+Reranker；训练重合附表的披露方式。
+所有建议目前未修改活动基线、冻结P02、检索k、迭代次数、缓存库、计时名单或正式题集；暂停标记保持有效。
+这份审核没有重新开启同提示词控制、机制消融或多模型/多检索器扩展。
+
+10. 核心源码及原始证据
+src/p02_multigrain_timing_cachefix_v1/core/pipeline.py：原查询与改写查询、Top10合并、goal和最终reader。
+experiments/query_decomposition/unified_rag_eval_v1_20261021/p02_shared_layer.py：仅替换回调层，完整响应核验。
+experiments/query_decomposition/baseline_integrity_repair_v2_20261017/methods/*/method.py：各方法独立控制器。
+experiments/query_decomposition/baseline_integrity_repair_v2_20261017/prepare.py：保留旧dev选择，dev20非F1选参。
+outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/matched50/CONFIG_FROZEN.json：Iter/ReAct既定50槽位定义。
+experiments/query_decomposition/p02_formal1500_v1_20261021/EXPOSURE_AUDIT.frozen.json：训练问题文本重合。
+AUDIT.json：实际选参、资源矩阵、失败原因、训练重合query IDs及来源哈希；不包含重新评分结果。
+
+11. 原论文与审查方法来源
+[1] Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. ICLR2023. https://arxiv.org/abs/2210.03629
+[2] Press et al. Measuring and Narrowing the Compositionality Gap in Language Models. https://arxiv.org/abs/2210.03350
+[3] Trivedi et al. Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions. ACL2023. https://aclanthology.org/2023.acl-long.557/
+[4] Shao et al. Enhancing Retrieval-Augmented Large Language Models with Iterative Retrieval-Generation Synergy. EMNLP Findings2023. https://aclanthology.org/2023.findings-emnlp.620/
+[5] Khot et al. Decomposed Prompting: A Modular Approach for Solving Complex Tasks. ICLR2023. https://arxiv.org/abs/2210.02406
+[6] Ammann, Golde, Akbik. Question Decomposition for Retrieval-Augmented Generation. ACL SRW2025. https://aclanthology.org/2025.acl-srw.32/
+审查使用scientific-critical-thinking技能（C:/Users/12442/.codex/skills/scientific-critical-thinking/SKILL.md），用于区分方法忠实度、资源混杂、开发选择与证据范围；未把清单计数当质量分数。
+技能来源引用：Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents. arXiv:2609.00065. https://doi.org/10.48550/arXiv.2609.00065
+已核对该arXiv记录当前修订为2026-09-02的v2；没有把技能文献当本地实验效果证据。

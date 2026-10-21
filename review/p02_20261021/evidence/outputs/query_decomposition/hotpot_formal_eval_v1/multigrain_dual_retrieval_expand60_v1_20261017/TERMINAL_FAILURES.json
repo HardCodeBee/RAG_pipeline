@@ -1,0 +1,56 @@
+[
+  {
+    "dataset": "musique",
+    "qid": "2hop__124412_402641",
+    "missing_conditions": [
+      "single_original",
+      "dual_original_rewritten"
+    ],
+    "status": "provider_or_transport_missing",
+    "errors": [
+      {
+        "type": "RuntimeError",
+        "reason": "Missing or incomplete model response; retained in API checkpoint"
+      },
+      {
+        "type": "RuntimeError",
+        "reason": "Missing or incomplete model response; retained in API checkpoint"
+      }
+    ],
+    "failed_requests": [
+      {
+        "id": "d849e4a6468772b82c0e2cdc221b7acc3cbdc12e824354945db5c04f3367a0c9",
+        "stage": "single_original/answer/2",
+        "status": "failed",
+        "result": "{\"error_code\":null,\"failure_causes\":[{\"errno\":null,\"type\":\"BadRequestError\"},{\"errno\":null,\"type\":\"HTTPStatusError\"}],\"failure_class\":\"BadRequestError\",\"http_status\":400,\"latency_seconds\":1.1907508000149392,\"retry_after_seconds\":null,\"status\":\"failed\"}"
+      },
+      {
+        "id": "cef050ced0bce82880f54888c3a638af0012ab643923e17540fe682d3be9ea9e",
+        "stage": "dual_original_rewritten/answer/2",
+        "status": "failed",
+        "result": "{\"error_code\":null,\"failure_causes\":[{\"errno\":null,\"type\":\"BadRequestError\"},{\"errno\":null,\"type\":\"HTTPStatusError\"}],\"failure_class\":\"BadRequestError\",\"http_status\":400,\"latency_seconds\":1.3671130000147969,\"retry_after_seconds\":null,\"status\":\"failed\"}"
+      }
+    ],
+    "changed_prompt_to_bypass_rejection": false
+  },
+  {
+    "dataset": "musique",
+    "qid": "4hop1__151650_5274_458768_33637",
+    "missing_conditions": [
+      "dual_original_rewritten"
+    ],
+    "status": "provider_or_transport_missing",
+    "errors": [
+      {
+        "type": "RuntimeError",
+        "reason": "Missing or incomplete model response; retained in API checkpoint"
+      },
+      {
+        "type": "RuntimeError",
+        "reason": "Missing or incomplete model response; retained in API checkpoint"
+      }
+    ],
+    "failed_requests": [],
+    "changed_prompt_to_bypass_rejection": false
+  }
+]

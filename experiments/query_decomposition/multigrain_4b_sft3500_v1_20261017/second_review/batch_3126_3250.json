@@ -1,0 +1,11 @@
+{
+ "reviewed_master_lines":[3126,3250],
+ "reviewer":"Current Codex inspected all 125 literal query/target pairs; same reviewer, not independent gold.",
+ "revisions":{
+ "3137":{"target":["What state contains Lawngtlai district?","What was the largest Presbyterian denomination brought to the state encompassing Lawngtlai district?"],"reason":"Retain the deeper denomination object before asking when it was brought to the state; preserve the original largest qualification and geographical description."},
+ "3213":{"target":["Who were the male cast members of Rough Waters?","What city did the male cast member of Rough Waters live in at the time of his death?"],"reason":"The input's his supplies a gender qualifier; keep it within each independently interpreted question rather than erase that disambiguator."},
+ "3218":{"target":["What city did Timothy Pitkin die in?","Who or what is Harvard's most intense rival?"],"reason":"Do not add an institution type to the unspecified rival; ask for its identity with the original ambiguity."},
+ "3220":{"target":["What country retaliated for a surprise invasion?","What region of the country that retaliated for a surprise invasion contains the Chechen republic?"],"reason":"Keep the source attachment between the Chechen region and the country retaliating for the invasion, rather than detach them into unrelated region and country lookups. No country identity is assumed."}
+ },
+ "quarantine":{}
+}

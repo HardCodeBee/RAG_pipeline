@@ -1,0 +1,1082 @@
+取消goal预回答的简化评估：300题当前证据
+读取起点：2026-10-20T10:07:06.738483+00:00
+报告完成：2026-10-20T10:07:33.694068+00:00
+不要求F1提升；不设用户未给定的非劣数值阈值；不据部分结果自动采纳或升级。
+下表F1为可计分题均值，未完成保留分母和边界，算法失败计0。
+
+配置	计分/计划	F1%	同题p02Δpp	直接父配置Δpp	直接父比较n	同题成功平均逻辑调用	同题p02平均逻辑调用	本组新已知费用/预留元
+union20	300/300	70.3124	-0.4117	-0.4117	300	5.913333333333333	5.913333333333333	1.428424/0.243033
+  hotpotqa: 100/100; F1=78.2813%; p02Δ=-0.7095pp; 父Δ=-0.7095pp; matched-success n=100; calls=5.1/5.1; modeled元=0.672132/0.608571; 实际新已知/预留=0.299679/0.072110
+  2wiki: 100/100; F1=92.2855%; p02Δ=-1.0619pp; 父Δ=-1.0619pp; matched-success n=100; calls=6.48/6.48; modeled元=1.045900/0.891954; 实际新已知/预留=0.560000/0.024504
+  musique: 100/100; F1=40.3705%; p02Δ=0.5362pp; 父Δ=0.5362pp; matched-success n=100; calls=6.16/6.16; modeled元=0.987864/0.825727; 实际新已知/预留=0.568745/0.146418
+  状态：{"success": 300}
+  全计划F1边界：[0.7031243481968344, 0.7031243481968344]
+discount20	300/300	70.0251	-0.6991	-0.2874	300	5.913333333333333	5.913333333333333	0.715383/0.166422
+  hotpotqa: 100/100; F1=79.4086%; p02Δ=0.4177pp; 父Δ=1.1273pp; matched-success n=100; calls=5.1/5.1; modeled元=0.671889/0.608571; 实际新已知/预留=0.122588/0.035561
+  2wiki: 100/100; F1=91.1188%; p02Δ=-2.2286pp; 父Δ=-1.1667pp; matched-success n=100; calls=6.48/6.48; modeled元=1.045719/0.891954; 实际新已知/预留=0.135384/0.000000
+  musique: 100/100; F1=39.5478%; p02Δ=-0.2865pp; 父Δ=-0.8227pp; matched-success n=100; calls=6.16/6.16; modeled元=0.986378/0.825727; 实际新已知/预留=0.457411/0.130861
+  状态：{"success": 300}
+  全计划F1边界：[0.7002507732662419, 0.7002507732662419]
+single_final	300/300	67.6761	-3.0480	-2.3489	300	4.913333333333333	5.913333333333333	0.830814/0.234815
+  hotpotqa: 100/100; F1=74.4786%; p02Δ=-4.5123pp; 父Δ=-4.9300pp; matched-success n=100; calls=4.1/5.1; modeled元=0.538478/0.608571; 实际新已知/预留=0.234380/0.028153
+  2wiki: 100/100; F1=89.5172%; p02Δ=-3.8302pp; 父Δ=-1.6016pp; matched-success n=100; calls=5.48/6.48; modeled元=0.879633/0.891954; 实际新已知/预留=0.291754/0.036480
+  musique: 100/100; F1=39.0327%; p02Δ=-0.8016pp; 父Δ=-0.5151pp; matched-success n=100; calls=5.16/6.16; modeled元=0.822608/0.825727; 实际新已知/预留=0.304680/0.170182
+  状态：{"success": 296, "success_truncated": 4}
+  全计划F1边界：[0.6767614237614237, 0.6767614237614237]
+
+三组共同同题：
+{
+  "n": 300,
+  "dataset_counts": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "arms": {
+    "union20": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "F1_available": 0.7031243481968344,
+      "EM_available": 0.61,
+      "F1_complete": 0.7031243481968344,
+      "EM_complete": 0.61,
+      "F1_all_planned_bounds": [
+        0.7031243481968344,
+        0.7031243481968344
+      ],
+      "paired_with_frozen_p02": {
+        "n": 300,
+        "F1": 0.7031243481968344,
+        "baseline_F1": 0.7072417314845074,
+        "delta": -0.004117383287673143,
+        "up": 14,
+        "tie": 276,
+        "down": 10
+      },
+      "paired_with_direct_parent": {
+        "n": 300,
+        "F1": 0.7031243481968344,
+        "parent_F1": 0.7072417314845074,
+        "delta": -0.004117383287673143,
+        "up": 14,
+        "tie": 276,
+        "down": 10
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.7828131313131311,
+          "EM_available": 0.65,
+          "F1_complete": 0.7828131313131311,
+          "EM_complete": 0.65,
+          "F1_all_planned_bounds": [
+            0.7828131313131311,
+            0.7828131313131311
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.7828131313131311,
+            "baseline_F1": 0.7899083694083693,
+            "delta": -0.007095238095238095,
+            "up": 2,
+            "tie": 96,
+            "down": 2
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.7828131313131311,
+            "parent_F1": 0.7899083694083693,
+            "delta": -0.007095238095238095,
+            "up": 2,
+            "tie": 96,
+            "down": 2
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.9228548085901026,
+          "EM_available": 0.86,
+          "F1_complete": 0.9228548085901026,
+          "EM_complete": 0.86,
+          "F1_all_planned_bounds": [
+            0.9228548085901026,
+            0.9228548085901025
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.9228548085901026,
+            "baseline_F1": 0.9334738562091504,
+            "delta": -0.010619047619047618,
+            "up": 2,
+            "tie": 95,
+            "down": 3
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.9228548085901026,
+            "parent_F1": 0.9334738562091504,
+            "delta": -0.010619047619047618,
+            "up": 2,
+            "tie": 95,
+            "down": 3
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.4037051046872692,
+          "EM_available": 0.32,
+          "F1_complete": 0.4037051046872692,
+          "EM_complete": 0.32,
+          "F1_all_planned_bounds": [
+            0.4037051046872692,
+            0.40370510468726933
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.4037051046872692,
+            "baseline_F1": 0.3983429688360029,
+            "delta": 0.005362135851266287,
+            "up": 10,
+            "tie": 85,
+            "down": 5
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.4037051046872692,
+            "parent_F1": 0.3983429688360029,
+            "delta": 0.005362135851266287,
+            "up": 10,
+            "tie": 85,
+            "down": 5
+          }
+        }
+      }
+    },
+    "discount20": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "F1_available": 0.7002507732662419,
+      "EM_available": 0.6033333333333334,
+      "F1_complete": 0.7002507732662419,
+      "EM_complete": 0.6033333333333334,
+      "F1_all_planned_bounds": [
+        0.7002507732662419,
+        0.7002507732662419
+      ],
+      "paired_with_frozen_p02": {
+        "n": 300,
+        "F1": 0.7002507732662419,
+        "baseline_F1": 0.7072417314845074,
+        "delta": -0.006990958218265616,
+        "up": 12,
+        "tie": 278,
+        "down": 10
+      },
+      "paired_with_direct_parent": {
+        "n": 300,
+        "F1": 0.7002507732662419,
+        "parent_F1": 0.7031243481968344,
+        "delta": -0.0028735749305924736,
+        "up": 7,
+        "tie": 286,
+        "down": 7
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.7940858585858583,
+          "EM_available": 0.66,
+          "F1_complete": 0.7940858585858583,
+          "EM_complete": 0.66,
+          "F1_all_planned_bounds": [
+            0.7940858585858583,
+            0.7940858585858583
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.7940858585858583,
+            "baseline_F1": 0.7899083694083693,
+            "delta": 0.004177489177489177,
+            "up": 2,
+            "tie": 97,
+            "down": 1
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.7940858585858583,
+            "parent_F1": 0.7828131313131311,
+            "delta": 0.011272727272727275,
+            "up": 2,
+            "tie": 98,
+            "down": 0
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.9111881419234361,
+          "EM_available": 0.85,
+          "F1_complete": 0.9111881419234361,
+          "EM_complete": 0.85,
+          "F1_all_planned_bounds": [
+            0.9111881419234361,
+            0.9111881419234362
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.9111881419234361,
+            "baseline_F1": 0.9334738562091504,
+            "delta": -0.022285714285714287,
+            "up": 1,
+            "tie": 95,
+            "down": 4
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.9111881419234361,
+            "parent_F1": 0.9228548085901026,
+            "delta": -0.011666666666666665,
+            "up": 0,
+            "tie": 98,
+            "down": 2
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.3954783192894311,
+          "EM_available": 0.3,
+          "F1_complete": 0.3954783192894311,
+          "EM_complete": 0.3,
+          "F1_all_planned_bounds": [
+            0.3954783192894311,
+            0.3954783192894311
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.3954783192894311,
+            "baseline_F1": 0.3983429688360029,
+            "delta": -0.002864649546571743,
+            "up": 9,
+            "tie": 86,
+            "down": 5
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.3954783192894311,
+            "parent_F1": 0.4037051046872692,
+            "delta": -0.00822678539783803,
+            "up": 5,
+            "tie": 90,
+            "down": 5
+          }
+        }
+      }
+    },
+    "single_final": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 296,
+        "success_truncated": 4
+      },
+      "F1_available": 0.6767614237614237,
+      "EM_available": 0.5933333333333334,
+      "F1_complete": 0.6767614237614237,
+      "EM_complete": 0.5933333333333334,
+      "F1_all_planned_bounds": [
+        0.6767614237614237,
+        0.6767614237614237
+      ],
+      "paired_with_frozen_p02": {
+        "n": 300,
+        "F1": 0.6767614237614237,
+        "baseline_F1": 0.7072417314845074,
+        "delta": -0.030480307723083792,
+        "up": 25,
+        "tie": 244,
+        "down": 31
+      },
+      "paired_with_direct_parent": {
+        "n": 300,
+        "F1": 0.6767614237614237,
+        "parent_F1": 0.7002507732662419,
+        "delta": -0.023489349504818163,
+        "up": 18,
+        "tie": 253,
+        "down": 29
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 99,
+            "success_truncated": 1
+          },
+          "F1_available": 0.7447857142857139,
+          "EM_available": 0.62,
+          "F1_complete": 0.7447857142857139,
+          "EM_complete": 0.62,
+          "F1_all_planned_bounds": [
+            0.7447857142857139,
+            0.7447857142857139
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.7447857142857139,
+            "baseline_F1": 0.7899083694083693,
+            "delta": -0.04512265512265512,
+            "up": 3,
+            "tie": 85,
+            "down": 12
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.7447857142857139,
+            "parent_F1": 0.7940858585858583,
+            "delta": -0.049300144300144316,
+            "up": 3,
+            "tie": 85,
+            "down": 12
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 99,
+            "success_truncated": 1
+          },
+          "F1_available": 0.8951717171717172,
+          "EM_available": 0.84,
+          "F1_complete": 0.8951717171717172,
+          "EM_complete": 0.84,
+          "F1_all_planned_bounds": [
+            0.8951717171717172,
+            0.8951717171717172
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.8951717171717172,
+            "baseline_F1": 0.9334738562091504,
+            "delta": -0.03830213903743315,
+            "up": 6,
+            "tie": 86,
+            "down": 8
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.8951717171717172,
+            "parent_F1": 0.9111881419234361,
+            "delta": -0.016016424751718873,
+            "up": 6,
+            "tie": 89,
+            "down": 5
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 98,
+            "success_truncated": 2
+          },
+          "F1_available": 0.3903268398268398,
+          "EM_available": 0.32,
+          "F1_complete": 0.3903268398268398,
+          "EM_complete": 0.32,
+          "F1_all_planned_bounds": [
+            0.3903268398268398,
+            0.3903268398268398
+          ],
+          "paired_with_frozen_p02": {
+            "n": 100,
+            "F1": 0.3903268398268398,
+            "baseline_F1": 0.3983429688360029,
+            "delta": -0.008016129009163066,
+            "up": 16,
+            "tie": 73,
+            "down": 11
+          },
+          "paired_with_direct_parent": {
+            "n": 100,
+            "F1": 0.3903268398268398,
+            "parent_F1": 0.3954783192894311,
+            "delta": -0.005151479462591322,
+            "up": 9,
+            "tie": 79,
+            "down": 12
+          }
+        }
+      }
+    }
+  }
+}
+
+single_final配对差值与bootstrap95%：
+{
+  "p02_role_headers": {
+    "comparison": "single_final minus p02_role_headers",
+    "n": 300,
+    "dataset_counts": {
+      "musique": 100,
+      "2wiki": 100,
+      "hotpotqa": 100
+    },
+    "single_final_F1": 0.6767614237614237,
+    "comparison_F1": 0.7072417314845074,
+    "delta": -0.030480307723083775,
+    "paired_bootstrap95": [
+      -0.060536399736219146,
+      -0.0013849165354196356
+    ],
+    "up": 25,
+    "tie": 244,
+    "down": 31,
+    "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+    "replicates": 10000,
+    "seed": 20261020,
+    "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+    "numeric_noninferiority_margin": null,
+    "all300_comparison_complete": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "comparison": "single_final minus p02_role_headers",
+        "n": 100,
+        "dataset_counts": {
+          "hotpotqa": 100
+        },
+        "single_final_F1": 0.7447857142857139,
+        "comparison_F1": 0.7899083694083693,
+        "delta": -0.04512265512265512,
+        "paired_bootstrap95": [
+          -0.08891338383838383,
+          -0.0057619047619047615
+        ],
+        "up": 3,
+        "tie": 85,
+        "down": 12,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      },
+      "2wiki": {
+        "comparison": "single_final minus p02_role_headers",
+        "n": 100,
+        "dataset_counts": {
+          "2wiki": 100
+        },
+        "single_final_F1": 0.8951717171717172,
+        "comparison_F1": 0.9334738562091504,
+        "delta": -0.03830213903743316,
+        "paired_bootstrap95": [
+          -0.09333333333333332,
+          0.011975638740344623
+        ],
+        "up": 6,
+        "tie": 86,
+        "down": 8,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      },
+      "musique": {
+        "comparison": "single_final minus p02_role_headers",
+        "n": 100,
+        "dataset_counts": {
+          "musique": 100
+        },
+        "single_final_F1": 0.3903268398268398,
+        "comparison_F1": 0.3983429688360029,
+        "delta": -0.008016129009163066,
+        "paired_bootstrap95": [
+          -0.0687614252563169,
+          0.050149900970489186
+        ],
+        "up": 16,
+        "tie": 73,
+        "down": 11,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      }
+    }
+  },
+  "discount20": {
+    "comparison": "single_final minus discount20",
+    "n": 300,
+    "dataset_counts": {
+      "musique": 100,
+      "2wiki": 100,
+      "hotpotqa": 100
+    },
+    "single_final_F1": 0.6767614237614237,
+    "comparison_F1": 0.7002507732662419,
+    "delta": -0.02348934950481816,
+    "paired_bootstrap95": [
+      -0.04919605191898542,
+      0.0013105879750470635
+    ],
+    "up": 18,
+    "tie": 253,
+    "down": 29,
+    "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+    "replicates": 10000,
+    "seed": 20261020,
+    "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+    "numeric_noninferiority_margin": null,
+    "all300_comparison_complete": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "comparison": "single_final minus discount20",
+        "n": 100,
+        "dataset_counts": {
+          "hotpotqa": 100
+        },
+        "single_final_F1": 0.7447857142857139,
+        "comparison_F1": 0.7940858585858583,
+        "delta": -0.0493001443001443,
+        "paired_bootstrap95": [
+          -0.0944395743145743,
+          -0.008537265512265524
+        ],
+        "up": 3,
+        "tie": 85,
+        "down": 12,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      },
+      "2wiki": {
+        "comparison": "single_final minus discount20",
+        "n": 100,
+        "dataset_counts": {
+          "2wiki": 100
+        },
+        "single_final_F1": 0.8951717171717172,
+        "comparison_F1": 0.9111881419234361,
+        "delta": -0.016016424751718873,
+        "paired_bootstrap95": [
+          -0.05660583778966132,
+          0.016302367158984796
+        ],
+        "up": 6,
+        "tie": 89,
+        "down": 5,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      },
+      "musique": {
+        "comparison": "single_final minus discount20",
+        "n": 100,
+        "dataset_counts": {
+          "musique": 100
+        },
+        "single_final_F1": 0.3903268398268398,
+        "comparison_F1": 0.3954783192894311,
+        "delta": -0.00515147946259132,
+        "paired_bootstrap95": [
+          -0.056284418379495944,
+          0.04502669179245094
+        ],
+        "up": 9,
+        "tie": 79,
+        "down": 12,
+        "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+        "replicates": 10000,
+        "seed": 20261020,
+        "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+        "numeric_noninferiority_margin": null,
+        "all300_comparison_complete": false
+      }
+    }
+  }
+}
+
+同题完整成功逻辑调用/token/同价模型成本：
+{
+  "union20": {
+    "matched_complete_success_queries": 300,
+    "quality_oracle_selection": false,
+    "logical_calls": {
+      "p02_total": 1774,
+      "candidate_total": 1774,
+      "saved": 0,
+      "p02_mean": 5.913333333333333,
+      "candidate_mean": 5.913333333333333,
+      "relative_change": 0.0
+    },
+    "prompt_tokens": {
+      "p02_total": 2837258,
+      "candidate_total": 3311231,
+      "saved": -473973,
+      "p02_mean": 9457.526666666667,
+      "candidate_mean": 11037.436666666666,
+      "relative_change": 0.16705319008704883
+    },
+    "completion_tokens": {
+      "p02_total": 28223,
+      "candidate_total": 28456,
+      "saved": -233,
+      "p02_mean": 94.07666666666667,
+      "candidate_mean": 94.85333333333334,
+      "relative_change": 0.008255677993126175
+    },
+    "equal_rate_modeled_generation_cny": {
+      "p02": 2.3262523999999996,
+      "candidate": 2.7058968,
+      "saved": -0.37964440000000055,
+      "relative_change": 0.1632000035765683,
+      "actual_paid_cost": false,
+      "cache_reuse_does_not_reduce_this_logical_cost": true
+    }
+  },
+  "discount20": {
+    "matched_complete_success_queries": 300,
+    "quality_oracle_selection": false,
+    "logical_calls": {
+      "p02_total": 1774,
+      "candidate_total": 1774,
+      "saved": 0,
+      "p02_mean": 5.913333333333333,
+      "candidate_mean": 5.913333333333333,
+      "relative_change": 0.0
+    },
+    "prompt_tokens": {
+      "p02_total": 2837258,
+      "candidate_total": 3308282,
+      "saved": -471024,
+      "p02_mean": 9457.526666666667,
+      "candidate_mean": 11027.606666666667,
+      "relative_change": 0.16601380628761994
+    },
+    "completion_tokens": {
+      "p02_total": 28223,
+      "candidate_total": 28680,
+      "saved": -457,
+      "p02_mean": 94.07666666666667,
+      "candidate_mean": 95.6,
+      "relative_change": 0.016192467136732454
+    },
+    "equal_rate_modeled_generation_cny": {
+      "p02": 2.3262523999999996,
+      "candidate": 2.7039855999999998,
+      "saved": -0.3777332000000002,
+      "relative_change": 0.16237842462838525,
+      "actual_paid_cost": false,
+      "cache_reuse_does_not_reduce_this_logical_cost": true
+    }
+  },
+  "single_final": {
+    "matched_complete_success_queries": 300,
+    "quality_oracle_selection": false,
+    "logical_calls": {
+      "p02_total": 1774,
+      "candidate_total": 1474,
+      "saved": 300,
+      "p02_mean": 5.913333333333333,
+      "candidate_mean": 4.913333333333333,
+      "relative_change": -0.16910935738444194
+    },
+    "prompt_tokens": {
+      "p02_total": 2837258,
+      "candidate_total": 2751306,
+      "saved": 85952,
+      "p02_mean": 9457.526666666667,
+      "candidate_mean": 9171.02,
+      "relative_change": -0.03029403741217753
+    },
+    "completion_tokens": {
+      "p02_total": 28223,
+      "candidate_total": 19837,
+      "saved": 8386,
+      "p02_mean": 94.07666666666667,
+      "candidate_mean": 66.12333333333333,
+      "relative_change": -0.29713354356376004
+    },
+    "equal_rate_modeled_generation_cny": {
+      "p02": 2.3262523999999996,
+      "candidate": 2.2407188000000002,
+      "saved": 0.08553359999999932,
+      "relative_change": -0.03676883901334152,
+      "actual_paid_cost": false,
+      "cache_reuse_does_not_reduce_this_logical_cost": true
+    }
+  }
+}
+
+single_final vs discount20同题完整成功效率（隔离取消goal预答）：
+{
+  "matched_complete_success_queries": 300,
+  "quality_oracle_selection": false,
+  "logical_calls": {
+    "candidate_total": 1474,
+    "saved": 300,
+    "candidate_mean": 4.913333333333333,
+    "relative_change": -0.16910935738444194,
+    "discount20_total": 1774,
+    "discount20_mean": 5.913333333333333
+  },
+  "prompt_tokens": {
+    "candidate_total": 2751306,
+    "saved": 556976,
+    "candidate_mean": 9171.02,
+    "relative_change": -0.16835807830166835,
+    "discount20_total": 3308282,
+    "discount20_mean": 11027.606666666667
+  },
+  "completion_tokens": {
+    "candidate_total": 19837,
+    "saved": 8843,
+    "candidate_mean": 66.12333333333333,
+    "relative_change": -0.30833333333333335,
+    "discount20_total": 28680,
+    "discount20_mean": 95.6
+  },
+  "equal_rate_modeled_generation_cny": {
+    "candidate": 2.2407188000000002,
+    "saved": 0.46326679999999953,
+    "relative_change": -0.17132739168433425,
+    "actual_paid_cost": false,
+    "cache_reuse_does_not_reduce_this_logical_cost": true,
+    "discount20": 2.7039855999999998
+  },
+  "comparison_baseline": "discount20",
+  "by_dataset": {
+    "hotpotqa": {
+      "matched_complete_success_queries": 100,
+      "quality_oracle_selection": false,
+      "logical_calls": {
+        "candidate_total": 410,
+        "saved": 100,
+        "candidate_mean": 4.1,
+        "relative_change": -0.19607843137254902,
+        "discount20_total": 510,
+        "discount20_mean": 5.1
+      },
+      "prompt_tokens": {
+        "candidate_total": 658412,
+        "saved": 159789,
+        "candidate_mean": 6584.12,
+        "relative_change": -0.19529308812871166,
+        "discount20_total": 818201,
+        "discount20_mean": 8182.01
+      },
+      "completion_tokens": {
+        "candidate_total": 5874,
+        "saved": 2790,
+        "candidate_mean": 58.74,
+        "relative_change": -0.3220221606648199,
+        "discount20_total": 8664,
+        "discount20_mean": 86.64
+      },
+      "equal_rate_modeled_generation_cny": {
+        "candidate": 0.5384776,
+        "saved": 0.13341119999999995,
+        "relative_change": -0.19856142861735449,
+        "actual_paid_cost": false,
+        "cache_reuse_does_not_reduce_this_logical_cost": true,
+        "discount20": 0.6718888
+      },
+      "comparison_baseline": "discount20"
+    },
+    "2wiki": {
+      "matched_complete_success_queries": 100,
+      "quality_oracle_selection": false,
+      "logical_calls": {
+        "candidate_total": 548,
+        "saved": 100,
+        "candidate_mean": 5.48,
+        "relative_change": -0.15432098765432098,
+        "discount20_total": 648,
+        "discount20_mean": 6.48
+      },
+      "prompt_tokens": {
+        "candidate_total": 1081211,
+        "saved": 200053,
+        "candidate_mean": 10812.11,
+        "relative_change": -0.1561372207445148,
+        "discount20_total": 1281264,
+        "discount20_mean": 12812.64
+      },
+      "completion_tokens": {
+        "candidate_total": 7332,
+        "saved": 3022,
+        "candidate_mean": 73.32,
+        "relative_change": -0.2918678771489279,
+        "discount20_total": 10354,
+        "discount20_mean": 103.54
+      },
+      "equal_rate_modeled_generation_cny": {
+        "candidate": 0.8796328,
+        "saved": 0.16608639999999997,
+        "relative_change": -0.1588250459588004,
+        "actual_paid_cost": false,
+        "cache_reuse_does_not_reduce_this_logical_cost": true,
+        "discount20": 1.0457192
+      },
+      "comparison_baseline": "discount20"
+    },
+    "musique": {
+      "matched_complete_success_queries": 100,
+      "quality_oracle_selection": false,
+      "logical_calls": {
+        "candidate_total": 516,
+        "saved": 100,
+        "candidate_mean": 5.16,
+        "relative_change": -0.16233766233766234,
+        "discount20_total": 616,
+        "discount20_mean": 6.16
+      },
+      "prompt_tokens": {
+        "candidate_total": 1011683,
+        "saved": 197134,
+        "candidate_mean": 10116.83,
+        "relative_change": -0.16308010228181768,
+        "discount20_total": 1208817,
+        "discount20_mean": 12088.17
+      },
+      "completion_tokens": {
+        "candidate_total": 6631,
+        "saved": 3031,
+        "candidate_mean": 66.31,
+        "relative_change": -0.3137031670461602,
+        "discount20_total": 9662,
+        "discount20_mean": 96.62
+      },
+      "equal_rate_modeled_generation_cny": {
+        "candidate": 0.8226083999999999,
+        "saved": 0.16376920000000006,
+        "relative_change": -0.16603093987535814,
+        "actual_paid_cost": false,
+        "cache_reuse_does_not_reduce_this_logical_cost": true,
+        "discount20": 0.9863776
+      },
+      "comparison_baseline": "discount20"
+    }
+  }
+}
+
+实际原300新增请求费用（包括重试/未知，排除fresh60及历史种子费用）：
+{
+  "database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+  "original300_only": {
+    "new_physical_requests": 1409,
+    "returned_usage_estimate_cny": 2.9746207999999985,
+    "unreconciled_reserved_cny": 0.6442695999999999,
+    "occupied_cny": 3.6188903999999984,
+    "unreconciled_requests": 62,
+    "statuses": {
+      "returned_usage": 1347,
+      "reserved": 62
+    }
+  },
+  "by_arm": {
+    "union20": {
+      "new_physical_requests": 744,
+      "returned_usage_estimate_cny": 1.4284244000000001,
+      "unreconciled_reserved_cny": 0.24303279999999997,
+      "occupied_cny": 1.6714572,
+      "unreconciled_requests": 27,
+      "statuses": {
+        "returned_usage": 717,
+        "reserved": 27
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "new_physical_requests": 193,
+          "returned_usage_estimate_cny": 0.2996788000000001,
+          "unreconciled_reserved_cny": 0.07211039999999999,
+          "occupied_cny": 0.37178920000000004,
+          "unreconciled_requests": 9,
+          "statuses": {
+            "returned_usage": 184,
+            "reserved": 9
+          }
+        },
+        "2wiki": {
+          "new_physical_requests": 270,
+          "returned_usage_estimate_cny": 0.5600004000000006,
+          "unreconciled_reserved_cny": 0.024503999999999998,
+          "occupied_cny": 0.5845044000000006,
+          "unreconciled_requests": 2,
+          "statuses": {
+            "returned_usage": 268,
+            "reserved": 2
+          }
+        },
+        "musique": {
+          "new_physical_requests": 281,
+          "returned_usage_estimate_cny": 0.5687451999999995,
+          "unreconciled_reserved_cny": 0.14641839999999998,
+          "occupied_cny": 0.7151635999999995,
+          "unreconciled_requests": 16,
+          "statuses": {
+            "returned_usage": 265,
+            "reserved": 16
+          }
+        }
+      }
+    },
+    "discount20": {
+      "new_physical_requests": 346,
+      "returned_usage_estimate_cny": 0.7153827999999999,
+      "unreconciled_reserved_cny": 0.1664216,
+      "occupied_cny": 0.8818043999999998,
+      "unreconciled_requests": 16,
+      "statuses": {
+        "returned_usage": 330,
+        "reserved": 16
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "new_physical_requests": 68,
+          "returned_usage_estimate_cny": 0.12258759999999999,
+          "unreconciled_reserved_cny": 0.0355608,
+          "occupied_cny": 0.1581484,
+          "unreconciled_requests": 4,
+          "statuses": {
+            "returned_usage": 64,
+            "reserved": 4
+          }
+        },
+        "2wiki": {
+          "new_physical_requests": 54,
+          "returned_usage_estimate_cny": 0.13538400000000006,
+          "unreconciled_reserved_cny": 0,
+          "occupied_cny": 0.13538400000000006,
+          "unreconciled_requests": 0,
+          "statuses": {
+            "returned_usage": 54
+          }
+        },
+        "musique": {
+          "new_physical_requests": 224,
+          "returned_usage_estimate_cny": 0.45741119999999985,
+          "unreconciled_reserved_cny": 0.1308608,
+          "occupied_cny": 0.5882719999999999,
+          "unreconciled_requests": 12,
+          "statuses": {
+            "returned_usage": 212,
+            "reserved": 12
+          }
+        }
+      }
+    },
+    "single_final": {
+      "new_physical_requests": 319,
+      "returned_usage_estimate_cny": 0.8308136,
+      "unreconciled_reserved_cny": 0.23481519999999997,
+      "occupied_cny": 1.0656288,
+      "unreconciled_requests": 19,
+      "statuses": {
+        "returned_usage": 300,
+        "reserved": 19
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "new_physical_requests": 103,
+          "returned_usage_estimate_cny": 0.23438000000000006,
+          "unreconciled_reserved_cny": 0.0281528,
+          "occupied_cny": 0.26253280000000007,
+          "unreconciled_requests": 3,
+          "statuses": {
+            "returned_usage": 100,
+            "reserved": 3
+          }
+        },
+        "2wiki": {
+          "new_physical_requests": 103,
+          "returned_usage_estimate_cny": 0.29175399999999996,
+          "unreconciled_reserved_cny": 0.03648,
+          "occupied_cny": 0.32823399999999997,
+          "unreconciled_requests": 3,
+          "statuses": {
+            "returned_usage": 100,
+            "reserved": 3
+          }
+        },
+        "musique": {
+          "new_physical_requests": 113,
+          "returned_usage_estimate_cny": 0.30467959999999994,
+          "unreconciled_reserved_cny": 0.17018239999999998,
+          "occupied_cny": 0.4748619999999999,
+          "unreconciled_requests": 13,
+          "statuses": {
+            "returned_usage": 100,
+            "reserved": 13
+          }
+        }
+      }
+    }
+  },
+  "excluded_other_subtree_charge_rows": 0,
+  "actual_invoice_verified": false,
+  "scope": "All physical requests in original300 method namespaces, including retry rounds and superseded prefixes; historical seeded receipts and fresh60 requests are not charged here. Unreconciled reservations may include active requests."
+}
+
+限制：
+Positive F1 gain is not required for a useful simplification.
+No statistical nonsignificance is interpreted as equivalence or noninferiority.
+Incomplete infrastructure cases are missing, not zero; algorithm failures count zero.
+Bootstrap describes observed development queries and does not establish unseen generalization.
+Matched full-success efficiency excludes incomplete or algorithm-aborted trajectories; their observed prefix costs remain in selected usage and the actual ledger.
+Logical modeled cost counts cached generations at frozen identical rates; it is not the actual new charge.
+Files were captured once during a running evaluation; later request/cost snapshots can advance during report construction.

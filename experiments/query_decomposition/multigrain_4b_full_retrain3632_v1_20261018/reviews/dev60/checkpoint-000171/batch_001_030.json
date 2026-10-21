@@ -1,0 +1,46 @@
+{
+  "reviewed_indices": [
+    1,
+    30
+  ],
+  "method": "All changed arrays inspected under unchanged F/S/C/U; exact T02 arrays inherit locked review. Same Codex, uncertainty nonpass. No answers/passages.",
+  "exceptions": {
+    "3": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Range query now preserves the state but asks the original target after the state prerequisite; no new intermediate is clearly exposed, so whether the original-equivalent exception applies is uncertain and retained as nonpass."
+    },
+    "8": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Empty list omits the two operand classification needs exposed by what both named entities are."
+    },
+    "11": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Still changes purchase treaty into treaty signed in the purchased state and reidentifies a feature despite supplied Ten Thousand Smokes."
+    },
+    "19": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Last award item repeats the full original target including naming constraint to complete the list, rather than a separate receipt/naming operand."
+    },
+    "20": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still omits continent containing Nyamuragira."
+    }
+  },
+  "acceptance_notes": "Row25 preserves exact film names. Row30[] avoids reasking already supplied season facts. Row35 retains representative-city relation; Who may denote an organization. Row60 correctly exposes berth atoll and its containing ocean."
+}

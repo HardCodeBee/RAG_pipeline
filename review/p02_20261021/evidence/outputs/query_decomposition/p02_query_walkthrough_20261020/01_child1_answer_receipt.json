@@ -1,0 +1,91 @@
+{
+  "logical_call": {
+    "qid": "6c7f03240bdb11eba7f7acde48001122",
+    "stage": "legacy/answer/1",
+    "payload_sha256": "ed3ac74aabfe7cbf99f58c59945584f63307846983772543df548dc0f612051b",
+    "request_id": "80691cb0bbbac91ee0005ed5f8cd6e5d1b89f83a077e7c78a927572630bcba7e",
+    "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+    "status": "success",
+    "reused": true,
+    "usage": {
+      "completion_tokens": 13,
+      "completion_tokens_details": null,
+      "prompt_tokens": 1631,
+      "prompt_tokens_details": null,
+      "total_tokens": 1644
+    },
+    "finish_reason": "stop",
+    "http_status": null
+  },
+  "source_database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+  "stored_stage": "legacy/answer/1",
+  "stored_status": "success",
+  "payload": {
+    "extra_body": {
+      "enable_thinking": false
+    },
+    "max_tokens": 128,
+    "messages": [
+      {
+        "content": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nWorked examples:\n\nExample 1\nOriginal question:\nWhat is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?\n\nRelevant prior question-answer pairs:\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado River.\n\nCurrent subquestion #2:\nWhat is the length of #1?\n\nRetrieved passages:\n[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.\n\nAnswer: The Colorado River is 1450 mi long.\n\nExample 2\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nHow many species does Clianthus contain?\n\nRetrieved passages:\n[Clianthus]\nThey have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.\n\nAnswer: The total species count of Clianthus cannot be determined from these passages.\n\nExample 3\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\n#1 Question: Which genus contains Callicoma serratifolia?\nAnswer: Callicoma contains Callicoma serratifolia.\n\nCurrent subquestion #2:\nHow many species does #1 contain other than Callicoma serratifolia?\n\nRetrieved passages:\n[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAnswer: Callicoma contains zero species other than Callicoma serratifolia.\n\nExample 4\nOriginal question:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nIs Leycesteria native to Australia?\n\nRetrieved passages:\n[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\nAnswer: No. Leycesteria is native to temperate Asia, rather than Australia.\n\nActual task:\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nWho is Jeanne Raunay's husband?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 3 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 4 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 5 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.\n\n[Chunk 6 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.\n\n[Chunk 7 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.\n\n[Chunk 8 | source=Neha (actress), pages=1-1]\nNeha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.\n\n[Chunk 9 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.\n\n[Chunk 10 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.\n\nAnswer:",
+        "role": "user"
+      }
+    ],
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0.0
+  },
+  "result": {
+    "answer": "Jeanne Raunay's husband was André Beaunier.",
+    "finish_reason": "stop",
+    "latency_seconds": 1.586972799967043,
+    "raw_response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": "Jeanne Raunay's husband was André Beaunier.",
+            "function_call": null,
+            "refusal": null,
+            "role": "assistant",
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1792449049,
+      "id": "chatcmpl-7a05f9a9-cdc6-92d0-80e8-059d786d0c0b",
+      "model": "qwen-plus-2025-12-01",
+      "moderation": null,
+      "object": "chat.completion",
+      "service_tier": null,
+      "stream_transport": {
+        "chunks": 8,
+        "first_chunk_seconds": 1.2774110999889672,
+        "include_usage": true,
+        "post_terminal_trailer_failure": null,
+        "stream": true,
+        "total_seconds": 1.586516199982725
+      },
+      "system_fingerprint": null,
+      "usage": {
+        "completion_tokens": 13,
+        "completion_tokens_details": null,
+        "prompt_tokens": 1631,
+        "prompt_tokens_details": null,
+        "total_tokens": 1644
+      }
+    },
+    "returned_model": "qwen-plus-2025-12-01",
+    "status": "success",
+    "usage": {
+      "completion_tokens": 13,
+      "completion_tokens_details": null,
+      "prompt_tokens": 1631,
+      "prompt_tokens_details": null,
+      "total_tokens": 1644
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "round": "multigrain_prompt_v2_20261017",
+  "our_condition": "c03_both",
+  "single_condition": "c04_single",
+  "react_config": {
+    "id": "k10_s5",
+    "k": 10,
+    "max_search": 5
+  },
+  "comparison": "same questions, frozen shared corpora/BGE retriever and qwen-plus-2025-12-01; each method keeps its own prompts/search policy",
+  "scope_limit": "ours uses manually fixed query-only reference plans in a diagnostic pilot; no claim about an automatic decomposer, equal search/token budget, official ReAct reproduction, SOTA, or broad dominance",
+  "cost_limit": "logical standalone API cost uses all per-case calls including reused successes, not newly paid experiment cost; excludes local retrieval wall time and plan authoring",
+  "overall": {
+    "planned": 13,
+    "methods": {
+      "ours": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6153846153846154,
+        "mean_em_available": 0.5384615384615384,
+        "usage_available": 13,
+        "mean_logical_api_calls": 5.6923076923076925,
+        "mean_logical_standalone_cny": 0.0072544
+      },
+      "single": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.38461538461538464,
+        "mean_em_available": 0.38461538461538464,
+        "usage_available": 13,
+        "mean_logical_api_calls": 3.8461538461538463,
+        "mean_logical_standalone_cny": 0.006574153846153847
+      },
+      "react": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.7435897435897437,
+        "mean_em_available": 0.6923076923076923,
+        "usage_available": 13,
+        "mean_logical_api_calls": 3.5384615384615383,
+        "mean_logical_standalone_cny": 0.009928184615384614
+      }
+    },
+    "paired_ours_minus_react": {
+      "pairs": 13,
+      "mean_difference": -0.12820512820512822,
+      "gains": 1,
+      "ties": 10,
+      "losses": 2,
+      "loss_qids": [
+        "5a8eb63455429917b4a5bdb7",
+        "bc7073a80baf11ebab90acde48001122"
+      ]
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 4,
+      "methods": {
+        "ours": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 5.0,
+          "mean_logical_standalone_cny": 0.0054863
+        },
+        "single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.5,
+          "mean_logical_standalone_cny": 0.004992
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "mean_em_available": 0.75,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.0,
+          "mean_logical_standalone_cny": 0.0057873
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 4,
+        "mean_difference": -0.25,
+        "gains": 0,
+        "ties": 3,
+        "losses": 1,
+        "loss_qids": [
+          "5a8eb63455429917b4a5bdb7"
+        ]
+      }
+    },
+    "2wiki": {
+      "planned": 5,
+      "methods": {
+        "ours": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_em_available": 0.6,
+          "usage_available": 5,
+          "mean_logical_api_calls": 6.0,
+          "mean_logical_standalone_cny": 0.00794216
+        },
+        "single": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.4,
+          "mean_em_available": 0.4,
+          "usage_available": 5,
+          "mean_logical_api_calls": 4.0,
+          "mean_logical_standalone_cny": 0.007313999999999999
+        },
+        "react": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.9333333333333333,
+          "mean_em_available": 0.8,
+          "usage_available": 5,
+          "mean_logical_api_calls": 3.0,
+          "mean_logical_standalone_cny": 0.007558399999999998
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 5,
+        "mean_difference": -0.2,
+        "gains": 0,
+        "ties": 4,
+        "losses": 1,
+        "loss_qids": [
+          "bc7073a80baf11ebab90acde48001122"
+        ]
+      }
+    },
+    "musique": {
+      "planned": 4,
+      "methods": {
+        "ours": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5833333333333333,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 6.0,
+          "mean_logical_standalone_cny": 0.0081628
+        },
+        "single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.25,
+          "mean_em_available": 0.25,
+          "usage_available": 4,
+          "mean_logical_api_calls": 4.0,
+          "mean_logical_standalone_cny": 0.0072315
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 4.75,
+          "mean_logical_standalone_cny": 0.0170313
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 4,
+        "mean_difference": 0.08333333333333333,
+        "gains": 1,
+        "ties": 3,
+        "losses": 0,
+        "loss_qids": []
+      }
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "methods": {
+        "ours": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.611111111111111,
+          "mean_em_available": 0.5833333333333334,
+          "usage_available": 12,
+          "mean_logical_api_calls": 5.833333333333333,
+          "mean_logical_standalone_cny": 0.0073065000000000005
+        },
+        "single": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.3333333333333333,
+          "mean_em_available": 0.3333333333333333,
+          "usage_available": 12,
+          "mean_logical_api_calls": 3.9166666666666665,
+          "mean_logical_standalone_cny": 0.0066037
+        },
+        "react": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "mean_em_available": 0.75,
+          "usage_available": 12,
+          "mean_logical_api_calls": 3.6666666666666665,
+          "mean_logical_standalone_cny": 0.010448966666666665
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 12,
+        "mean_difference": -0.1388888888888889,
+        "gains": 1,
+        "ties": 9,
+        "losses": 2,
+        "loss_qids": [
+          "5a8eb63455429917b4a5bdb7",
+          "bc7073a80baf11ebab90acde48001122"
+        ]
+      }
+    },
+    "regression": {
+      "planned": 1,
+      "methods": {
+        "ours": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_em_available": 0.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 4.0,
+          "mean_logical_standalone_cny": 0.006629199999999999
+        },
+        "single": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "mean_em_available": 1.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 3.0,
+          "mean_logical_standalone_cny": 0.0062196
+        },
+        "react": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_em_available": 0.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 2.0,
+          "mean_logical_standalone_cny": 0.0036787999999999994
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      }
+    }
+  }
+}

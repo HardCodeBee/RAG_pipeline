@@ -1,0 +1,41 @@
+优化逐次改动记录
+
+b00冻结checkpoint165＋v12。旧数据、prompt、模型、评分和300题正式对照均保留。
+
+c01_adjacent_bridge
+目的：Explicitly expose the neighboring-city intermediate; preserve standalone nested descriptions.
+改动：Replace only the first example; retain all instructions and four other examples.
+prompt SHA256：53b963b59de988f855b7855bfc3fd2a5eba6f4784ac8318b6b9f93d147230e31
+--- b00_v12
++++ c01_adjacent_bridge
+@@ -8,8 +8,8 @@
+ 
+ Ask for prerequisites, not for the original target just to complete the list. An original-equivalent question is allowed only if it naturally arises from a supporting operation above; otherwise omit it. Do not query already supplied facts, generic identities, unrelated attributes or duplicate needs. If neither operation exposes a useful prerequisite, return [].
+ 
+-Input: What is the population of the capital of the country where the author of Book R was born?
+-Output: ["Who wrote Book R?", "Where was the author of Book R born?", "Which country contains the birthplace of the author of Book R?", "What is the capital of the country where the author of Book R was born?"]
++Input: What is the population of the city bordering the capital of the province containing Museum Q?
++Output: ["Which province contains Museum Q?", "What is the capital of the province containing Museum Q?", "Which city borders the capital of the province containing Museum Q?"]
+ 
+ Input: Who owns the company where the composer of Song S works?
+ Output: ["Who composed Song S?", "Which company does the composer of Song S work for?"]
+
+
+c02_full_description
+目的：Retain identifying genre/nationality/year and past-tense relation; no extra rules.
+改动：Replace only the composer-company example with a fully qualified past-singer band example.
+prompt SHA256：8faf600d697ee6b04b5def435c8b87d0e377358dc22396cef0027408762d6b5d
+--- b00_v12
++++ c02_full_description
+@@ -11,8 +11,8 @@
+ Input: What is the population of the capital of the country where the author of Book R was born?
+ Output: ["Who wrote Book R?", "Where was the author of Book R born?", "Which country contains the birthplace of the author of Book R?", "What is the capital of the country where the author of Book R was born?"]
+ 
+-Input: Who owns the company where the composer of Song S works?
+-Output: ["Who composed Song S?", "Which company does the composer of Song S work for?"]
++Input: Where was the American folk band founded in 1983 whose lead singer was Lio formed?
++Output: ["Which American folk band founded in 1983 had Lio as its lead singer?"]
+ 
+ Input: Are Arin and Bo both American singers?
+ Output: ["Is Arin an American singer?", "Is Bo an American singer?"]
+

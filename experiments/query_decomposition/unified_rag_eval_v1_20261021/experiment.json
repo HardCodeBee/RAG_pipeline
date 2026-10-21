@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "query_decomposition/unified_rag_eval_v1_20261021",
+  "protocol_version": "unified_full_rag_plan_revision006_pending_execution",
+  "state": "paused",
+  "files": [
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/metrics.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/move_archive.ps1",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/p02_shared_layer.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/prepare_archive.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/prepare_plan.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/test_contracts.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/timing.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/verify.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/verify_archive.py",
+      "role": "Approved unified evaluation plan infrastructure and offline-only checks",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/audit_reuse.py",
+      "role": "Read-only recorded-cache and budget review; never inference or migration",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/execution_policy.py",
+      "role": "Offline timing cohort, bounded recovery and relative expense notification policies; no dispatch",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/test_execution_policy.py",
+      "role": "Offline timing cohort, bounded recovery and relative expense notification policies; no dispatch",
+      "sha256": null
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/audit_fairness.py",
+      "role": "Read-only baseline fidelity, original-query budget and exposure audit; never evaluation dispatch",
+      "sha256": null
+    }
+  ],
+  "commands": {
+    "check": "experiments/query_decomposition/unified_rag_eval_v1_20261021/verify.py"
+  },
+  "status_source": "experiments/query_decomposition/unified_rag_eval_v1_20261021/VERIFICATION.json",
+  "evidence_paths": [
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.txt",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/DECISIONS.jsonl",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/ARCHIVE_INVENTORY.json",
+    "archives/rag_evaluation_history_20261021/INDEX.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021T051154Z/PROPOSAL.txt",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021T051154Z/REUSE_AUDIT.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021T051154Z/PROPOSAL.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/execution_details/DETAILS_MANIFEST.frozen.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021_fairness_audit/REVIEW.txt",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021_fairness_audit/AUDIT.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021_official_config_selection/PAPER_CONFIG_MAP.json",
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021_official_config_selection/DECISION_UPDATE.txt"
+  ],
+  "depends_on": [
+    "rag/p02_multigrain_timing_cachefix_v1"
+  ]
+}

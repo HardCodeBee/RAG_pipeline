@@ -1,0 +1,96 @@
+{
+  "checked_utc": "2026-10-17T15:17:17.960331+00:00",
+  "phase": "completed",
+  "baseline": "checkpoint165 + byte-exact v12",
+  "dev150": {
+    "b00": 128,
+    "c01": 125,
+    "c02": 129,
+    "n": 150
+  },
+  "refine44": {
+    "baseline": 22,
+    "candidate": 9,
+    "fixed": 2,
+    "regressed": 15,
+    "decision": "reject_no_expansion"
+  },
+  "confirmation90": {
+    "b00_v12": {
+      "reviewed": 90,
+      "planned": 90,
+      "passed": 78,
+      "verdicts": {
+        "uncertain": 2,
+        "pass": 78,
+        "fail": 10
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "uncertain": 1,
+          "pass": 26,
+          "fail": 3
+        },
+        "2wiki": {
+          "pass": 30
+        },
+        "musique": {
+          "pass": 22,
+          "fail": 7,
+          "uncertain": 1
+        }
+      }
+    },
+    "c02_full_description": {
+      "reviewed": 90,
+      "planned": 90,
+      "passed": 78,
+      "verdicts": {
+        "uncertain": 2,
+        "pass": 78,
+        "fail": 10
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "uncertain": 1,
+          "pass": 26,
+          "fail": 3
+        },
+        "2wiki": {
+          "pass": 30
+        },
+        "musique": {
+          "pass": 22,
+          "fail": 7,
+          "uncertain": 1
+        }
+      }
+    },
+    "paired": {
+      "fixes": [],
+      "regressions": [],
+      "delta": 0.0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ]
+    },
+    "decision": "retain_b00_no_confirmed_gain",
+    "scope": "One-time90, current Codex query-only nonindependent review. Development150 remains separate; no RAG F1 inference."
+  },
+  "decision": "retain_b00_no_confirmed_gain",
+  "optimization_generation_calls": 524,
+  "formal300_evaluation_complete": true,
+  "api_calls": 0,
+  "new_training_runs_this_iteration": 0,
+  "running_or_queued_jobs_for_this_iteration": [],
+  "remote_evidence": "REMOTE_FINAL_STATUS.json",
+  "frozen_file_checks": {
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\v12.txt": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12\\MASTER_3500.jsonl": true,
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev_review\\checkpoint-000165.jsonl": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\SELECTED_CHECKPOINT.json": true
+  },
+  "further_model_or_prompt_changes_from_confirmation90_or_formal300": false
+}

@@ -1,0 +1,164 @@
+{
+  "utc": "2026-10-20T12:26:05.877330+00:00",
+  "candidate": "terminal_goal",
+  "primary_control": "union20",
+  "status": "completed_not_adopted",
+  "planned": 300,
+  "scorable": 300,
+  "missing": 0,
+  "changes": "Goal outputs Conclusion and Final answer in one call; legacy final call removed; all upstream frozen",
+  "reason": "Observed overall Answer-F1 decreased 2.5253pp and HotpotQA 5.4615pp; current simplification does not meet the user preference to avoid material regression",
+  "F1": {
+    "hotpotqa": 0.7281984126984125,
+    "2wiki": 0.9270433455433456,
+    "musique": 0.37837106858658587
+  },
+  "F1_overall": 0.6778709422761149,
+  "paired_with_union20": {
+    "n": 300,
+    "candidate_F1": 0.6778709422761149,
+    "comparison_F1": 0.7031243481968344,
+    "delta": -0.025253405920719712,
+    "up": 17,
+    "tie": 253,
+    "down": 30
+  },
+  "efficiency": {
+    "matched_full_returned_flows": 300,
+    "algorithm_failures_among_returned": 3,
+    "logical_generations": {
+      "union20": 1774,
+      "terminal_goal": 1474,
+      "saved": 300,
+      "relative_change": -0.16910935738444194
+    },
+    "prompt_tokens": {
+      "union20": 3311231,
+      "terminal_goal": 2526503,
+      "saved": 784728,
+      "relative_change": -0.23698980832204095
+    },
+    "completion_tokens": {
+      "union20": 28456,
+      "terminal_goal": 33730,
+      "saved": -5274,
+      "relative_change": 0.18533876862524598
+    },
+    "equal_rate_generation_cny": {
+      "union20": 2.705896800000001,
+      "terminal_goal": 2.088662400000001,
+      "saved": 0.6172344000000001,
+      "relative_change": -0.2281071473235786
+    },
+    "actual_paid_cost": false,
+    "by_dataset": {
+      "hotpotqa": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 0,
+        "logical_generations": {
+          "union20": 510,
+          "terminal_goal": 410,
+          "saved": 100,
+          "relative_change": -0.19607843137254902
+        },
+        "prompt_tokens": {
+          "union20": 818448,
+          "terminal_goal": 582741,
+          "saved": 235707,
+          "relative_change": -0.2879926397278752
+        },
+        "completion_tokens": {
+          "union20": 8687,
+          "terminal_goal": 10037,
+          "saved": -1350,
+          "relative_change": 0.15540462760446644
+        },
+        "equal_rate_generation_cny": {
+          "union20": 0.6721324,
+          "terminal_goal": 0.48626680000000005,
+          "saved": 0.1858655999999999,
+          "relative_change": -0.2765312310491206
+        },
+        "actual_paid_cost": false
+      },
+      "2wiki": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 2,
+        "logical_generations": {
+          "union20": 648,
+          "terminal_goal": 548,
+          "saved": 100,
+          "relative_change": -0.15432098765432098
+        },
+        "prompt_tokens": {
+          "union20": 1281520,
+          "terminal_goal": 1005133,
+          "saved": 276387,
+          "relative_change": -0.21567123415943568
+        },
+        "completion_tokens": {
+          "union20": 10342,
+          "terminal_goal": 12404,
+          "saved": -2062,
+          "relative_change": 0.1993811641848772
+        },
+        "equal_rate_generation_cny": {
+          "union20": 1.0458999999999998,
+          "terminal_goal": 0.8289143999999997,
+          "saved": 0.2169856000000001,
+          "relative_change": -0.2074630461803233
+        },
+        "actual_paid_cost": false
+      },
+      "musique": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 1,
+        "logical_generations": {
+          "union20": 616,
+          "terminal_goal": 516,
+          "saved": 100,
+          "relative_change": -0.16233766233766234
+        },
+        "prompt_tokens": {
+          "union20": 1211263,
+          "terminal_goal": 938629,
+          "saved": 272634,
+          "relative_change": -0.22508241397615547
+        },
+        "completion_tokens": {
+          "union20": 9427,
+          "terminal_goal": 11289,
+          "saved": -1862,
+          "relative_change": 0.1975177681128673
+        },
+        "equal_rate_generation_cny": {
+          "union20": 0.9878644,
+          "terminal_goal": 0.7734812000000001,
+          "saved": 0.21438319999999988,
+          "relative_change": -0.21701682943529485
+        },
+        "actual_paid_cost": false
+      }
+    }
+  },
+  "length_failures": 3,
+  "hotpot_length_failures": 0,
+  "length_only_upper_bound": "Even assigning F1=1 to all three length failures raises overall F1 by at most 1pp, less than the observed 2.5253pp loss",
+  "scope_limit": "Does not establish that two model calls are intrinsically necessary. Tests this exact goal prompt/output contract and model, not every possible merged one-call prompt.",
+  "selected_reference_retained": "union20 retained; original frozen p02 untouched; candidate saved for audit only",
+  "report_sha256": "75eb6e5dadaf6599521384f3ad3c4cf58eb8884bed722bf790ec0c11976f030f",
+  "verification_sha256": "d55e5364e61094e6c3b5e702d23eb7b56289d89d854be65f5029fe3905b08767",
+  "budget": {
+    "global_known_cny": 190.222566,
+    "global_reserved_cny": 36.123748,
+    "global_occupied_cny": 226.346314,
+    "experiment_known_cny": 0.6784243999999999,
+    "experiment_reserved_cny": 0.06916159999999999,
+    "experiment_submissions": 308,
+    "global_cap_cny": 300,
+    "actual_bill_verified": false
+  },
+  "successes_rerun": false,
+  "new_training": false,
+  "new_retrieval": false
+}

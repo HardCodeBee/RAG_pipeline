@@ -1,0 +1,50 @@
+{
+  "explicit_north_of": {
+    "count": 0,
+    "ids": []
+  },
+  "region_then_and": {
+    "count": 0,
+    "ids": []
+  },
+  "role_vocabulary": {
+    "count": 17,
+    "ids": [
+      "error_corrected:musique:2hop__216682_153528:candidate0",
+      "error_corrected:musique:2hop__307555_88957:candidate0",
+      "error_corrected:musique:2hop__453821_56101:candidate0",
+      "error_corrected:musique:2hop__678848_66282:candidate0",
+      "musique:2hop__133024_663762",
+      "musique:2hop__122463_86840",
+      "musique:2hop__779155_181429",
+      "musique:2hop__132711_653391",
+      "musique:2hop__75710_66282",
+      "musique:2hop__42240_57062",
+      "musique:2hop__107249_90561",
+      "musique:2hop__310956_60600",
+      "musique:3hop1__105999_62641_126090",
+      "musique:3hop2__337255_105813_83343",
+      "musique:4hop1__132458_84360_334118_85185",
+      "musique:4hop1__132458_84360_334118_21414",
+      "musique:4hop1__132435_84360_334118_21414"
+    ]
+  },
+  "native_word_cues": {
+    "train": {
+      "n": 19938,
+      "north_of": 19,
+      "north_of_then_and": 1
+    },
+    "dev": {
+      "n": 2417,
+      "north_of": 38,
+      "north_of_then_and": 37
+    },
+    "test": {
+      "n": 2459,
+      "north_of": 2,
+      "north_of_then_and": 1
+    }
+  },
+  "limitation": "Word cues only: conjunction does not establish shared relation attachment; absence does not rule out synonyms or equivalent structure. Native dev/test composition differs; no causal claim from this scan."
+}

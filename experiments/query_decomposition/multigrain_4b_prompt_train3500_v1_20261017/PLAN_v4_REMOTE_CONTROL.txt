@@ -1,0 +1,20 @@
+2026-10-17 用户授权直接SSH连接远端。
+
+本文件仅替换PLAN_v3的手动上传/取回方式；四提示词、同一100题、原始4B、无LoRA、无API及其它冻结实验设置均不变。
+认证使用用户本轮提供的信息，通过不回显终端临时输入；密码不写入文件、配置、实验记录或远端包。本机已有known_hosts用于核验服务器。
+SSH已实测成功：cluster1.comp.anu.edu.au，u7830488，实际登录节点cluster1-login-1。
+受限环境最初域名解析失败；经授权网络访问后DNS/TCP与SSH认证成功。不是当前密码被拒绝。
+
+远端独立实验目录：/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017
+冻结包在package子目录，不改旧模型、环境、LoRA或训练文件。
+上传ZIP摘要与本地一致；CPU包检查及原始模型文件大小检查通过。
+已提交作业153945，名称base4b-prompt100，单A6000，计划400次。
+截至2026-10-17T09:17:05Z：PENDING，原因Resources。
+同账号原有作业153941 rag-robust-v1正在使用A6000；未取消、暂停、修改或与其共享GPU。
+调度器当前显示的预测启动时间依赖原作业时间上限，不作为确定开工时间或完成时间。
+CPU预检使用实际基础模型的config.json/tokenizer.json/tokenizer_config.json并核验内容摘要，400个输入加1024输出上限均小于262144上下文。平均输入token数：v6=1250.19、v8=825.19、v11=528.19、v12=517.19。
+环境包版本与原协议一致。此为CPU/tokenizer预检，不代表已完成GPU模型加载或生成；实际权重全摘要、GPU分配和参数数目仍由冻结执行器在获配后检查。
+
+本地launch记录：outputs/query_decomposition/multigrain_4b_prompt_train3500_v1_20261017/remote_launch/
+包含JOB_SUBMISSION.json、runtime_config.json、CPU_PREFLIGHT.json、STATUS_SNAPSHOT.json。
+不重复提交等待中的作业。后续先查153945的调度状态和既有case文件；执行结束后导出并下载返回ZIP，运行accept_return.py，再逐题语义复核。

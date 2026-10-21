@@ -1,0 +1,24 @@
+{
+  "eligible_candidates": [
+    "union20",
+    "discount20",
+    "single_final"
+  ],
+  "cohort": "complete original development300",
+  "metric": "Native final Answer F1 over all300, algorithm failures zero, no infrastructure missing",
+  "eligibility": "All3 candidates must each have300 scorable cases before choosing any one",
+  "ordering": [
+    "descending native F1_complete",
+    "ascending successful logical generation calls",
+    "ascending logical prompt_tokens + completion_tokens",
+    "ascending arm name"
+  ],
+  "call_cost_tiebreak": "Logical calls/tokens include exact successful cache reuse; not actual new billed requests",
+  "fresh_answers_or_scores_used_for_selection": false,
+  "new60_membership_changes_allowed": false,
+  "new60_prompt_tuning_allowed": false,
+  "baseline": "p02_role_headers",
+  "baseline_execution": "timing_only; all model payloads byte-equivalent to frozen p02",
+  "candidate_execution": "Unchanged frozen isolated pipeline.execute for the selected arm",
+  "scope": "New downstream RAG comparison only; previously exposed decomposer dev60, not unseen holdout"
+}

@@ -1,0 +1,122 @@
+Answer the original question using the retrieved passages and auxiliary question-answer pairs.
+Auxiliary answers are candidate intermediate results: use relevant ones, but correct or disregard them when direct passage evidence for the same entity and scope conflicts. A fact absent from these passages is not thereby false; auxiliary answers may come from other retrieved passages.
+Complete the original question's comparison or combination; return its requested answer, not a list of intermediate answers.
+For comparisons, use the same criterion and level of detail for both entities; a longer auxiliary list alone does not establish greater scope.
+Return only the short answer. For a yes/no question, return exactly Yes or No when a definite answer is supported. Do not add citations or explanation.
+
+Worked examples:
+
+Example 1
+Question:
+What is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?
+
+Context:
+[Chunk 1 | source=Spanish Valley, pages=1-1]
+Spanish Valley
+Pack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.
+
+[Chunk 2 | source=Colorado River, pages=1-1]
+Colorado River
+The 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.
+
+Auxiliary question-answer pairs
+
+#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado River.
+
+#2 Question: What is the length of #1?
+Answer: The Colorado River is 1450 mi long.
+
+Final short answer: 1450 mi
+
+Example 2
+Question:
+Are both Leycesteria and Anigozanthos native to Australia?
+
+Context:
+[Chunk 1 | source=Leycesteria, pages=1-1]
+Leycesteria
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+
+[Chunk 2 | source=Anigozanthos, pages=1-1]
+Anigozanthos
+Anigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.
+
+Auxiliary question-answer pairs
+
+#1 Question: Is Leycesteria native to Australia?
+Answer: No. Leycesteria is native to temperate Asia.
+
+#2 Question: Is Anigozanthos native to Australia?
+Answer: Yes. Anigozanthos is an Australian plant genus.
+
+#3 Question: Are both #1 and #2 true?
+Answer: Yes, both are native to Australia.
+
+Final short answer: No
+
+Example 3
+Question:
+Baraki Barak District is situated in the western part of a province whose capital is what?
+
+Context:
+[Chunk 1 | source=Baraki Barak District, pages=1-1]
+Baraki Barak District
+Baraki Barak District is situated in the western part of Logar Province, Afghanistan.
+
+[Chunk 2 | source=Logar Province, pages=1-1]
+Logar Province
+Puli Alam is the capital of the province.
+
+Auxiliary question-answer pairs
+
+#1 Question: In which province is Baraki Barak District situated?
+Answer: Baraki Barak District is in Logar Province.
+
+#2 Question: What is the capital of #1?
+Answer: The capital of Logar Province is Kabul.
+
+Final short answer: Puli Alam
+
+Example 4
+Question:
+Which has more species, Clianthus or Callicoma?
+
+Context:
+[Chunk 1 | source=Clianthus, pages=1-1]
+Clianthus
+Clianthus, commonly known as kakabeak ("Kōwhai ngutukākā" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.
+
+[Chunk 2 | source=Callicoma, pages=1-1]
+Callicoma
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+
+Auxiliary question-answer pairs
+
+#1 Question: How many species does Clianthus contain?
+Answer: Earlier retrieval did not establish the species count of Clianthus.
+
+#2 Question: How many species does Callicoma contain?
+Answer: Callicoma contains one species.
+
+#3 Question: Which genus has more species according to #1 and #2?
+Answer: Callicoma has more species than Clianthus.
+
+Final short answer: Clianthus
+
+Actual task:
+
+Question:
+{original_query}
+
+Context:
+{original_top10_with_inserted_auxiliary_QA}
+
+Final response requirements:
+Answer the original Question, not an auxiliary question.
+Return only the shortest complete answer: the requested name, place, date,
+number, category, relationship or short phrase.
+Keep all requested items and necessary qualifiers or units.
+For a supported yes/no answer, return exactly Yes or No.
+Do not restate the question or copy a full auxiliary sentence.
+Final short answer:

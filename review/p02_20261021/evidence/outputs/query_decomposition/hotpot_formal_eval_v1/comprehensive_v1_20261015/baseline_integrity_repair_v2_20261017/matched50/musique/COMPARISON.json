@@ -1,0 +1,94 @@
+{
+  "utc": "2026-10-21T03:38:25.694544+00:00",
+  "dataset": "musique",
+  "planned": 500,
+  "maximum_retrieval_calls_each": 5,
+  "per_retrieval_k_each": 10,
+  "maximum_document_slots_each": 50,
+  "iter_overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 490,
+    "missing": 10,
+    "f1_available": 0.38524511236396,
+    "em_available": 0.2938775510204082,
+    "f1_all_planned_bounds": [
+      0.37754021011668076,
+      0.3975402101166808
+    ],
+    "statuses": {
+      "success": 490,
+      "failed": 2,
+      "provider_content_rejected": 8
+    }
+  },
+  "react_overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 493,
+    "missing": 7,
+    "f1_available": 0.4362000116162714,
+    "em_available": 0.3306288032454361,
+    "f1_all_planned_bounds": [
+      0.4300932114536436,
+      0.4440932114536436
+    ],
+    "statuses": {
+      "success": 432,
+      "algorithm_failure": 61,
+      "provider_content_rejected": 5,
+      "failed": 2
+    }
+  },
+  "iter_minus_react": {
+    "planned": 500,
+    "common_scored": 483,
+    "missing_pair_counts": {
+      "treatment_only": 10,
+      "control_only": 7
+    },
+    "planned_mean_difference_interval": [
+      -0.06655300133696283,
+      -0.03255300133696283
+    ],
+    "difference_units": "F1 fraction; multiply by100 for percentage points",
+    "ci_scope": "conditional on common scored cohort; all planned missingness bounds retained",
+    "query_group_bootstrap_stratified_by_type": true,
+    "seed": 2026101707,
+    "replicates": 10000,
+    "mean_difference_common": -0.055644928920251385,
+    "gain": 59,
+    "tie": 327,
+    "loss": 97,
+    "paired_95_ci_common": [
+      -0.09340147399693104,
+      -0.016364819729386797
+    ],
+    "two_sided_group_sign_flip_p": 0.005699430056994301
+  },
+  "same_scorable_cohort_required_for_pairing": true,
+  "not_equal_realized_cost": true,
+  "hallucination_judge_called": false,
+  "actual_usage": {
+    "iter": {
+      "mean_retrieval_calls_terminal": 4.95,
+      "max_retrieval_calls": 5,
+      "mean_returned_document_slots_terminal": 49.5,
+      "logical_prompt_tokens": 8217011,
+      "logical_completion_tokens": 1773419,
+      "new_returned_prompt_tokens": 8152772,
+      "new_returned_completion_tokens": 1769792,
+      "per_query_tokens": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\musique\\formal\\b05_iter_retgen_bge\\k10_t5\\per_query_tokens.jsonl"
+    },
+    "react": {
+      "mean_retrieval_calls_terminal": 2.77,
+      "max_retrieval_calls": 5,
+      "mean_returned_document_slots_terminal": 27.7,
+      "logical_prompt_tokens": 6830124,
+      "logical_completion_tokens": 225435,
+      "new_returned_prompt_tokens": 4007100,
+      "new_returned_completion_tokens": 152959,
+      "per_query_tokens": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b03_react_dense\\k10_s5\\per_query_tokens.jsonl"
+    }
+  }
+}

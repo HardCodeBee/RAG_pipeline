@@ -1,0 +1,53 @@
+{
+  "reviewed_indices": [
+    1,
+    30
+  ],
+  "method": "Same frozen F/S/C/U, same Codex. Exact arrays inherit T02; every changed array inspected. Uncertainty nonpass. No factual answers or passages.",
+  "exceptions": {
+    "1": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Turns the1942 film Casablanca into a live stage version of some other film; reverses adaptation relation and invents a film prerequisite."
+    },
+    "3": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Garfield-Park range item omits the identifying state containing Pawnee National Grassland park, matching the frozen R01 dev3 defect."
+    },
+    "11": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Purchase treaty becomes treaty signed in the purchased state; reidentifies a geographical feature of supplied Ten Thousand Smokes rather than its type."
+    },
+    "20": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still omits the continent containing Nyamuragira, leaving this unknown nested inside the region request."
+    },
+    "29": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Who scored the specified goal and who was the striker scoring that same goal appear to duplicate one identity need; utility ambiguity is nonpass, consistent with the prior broad/full identity policy."
+    },
+    "30": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Reasks the supplied best-season/16th-place1969 facts instead of a clearly exposed unknown prerequisite."
+    }
+  },
+  "acceptance_notes": "Rows15/24 expose birthplace/deathplace then city/state granularity. Row19 asks receipt operand plus naming-source person. Row25 restores exact film name. Row60 restores atoll then ocean, retaining Tuvalu/berth constraints."
+}

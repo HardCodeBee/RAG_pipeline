@@ -1,0 +1,324 @@
+{
+  "utc": "2026-10-19T23:04:43.795561+00:00",
+  "sample_role": "Exposed old300 development; not fresh validation",
+  "parent_p02_F1_full300": 0.7072417314845074,
+  "arms": {
+    "q03_question_last": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.6949484263013676,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.012293305183140065,
+      "F1_all_planned_bounds": [
+        0.6949484263013676,
+        0.6949484263013676
+      ],
+      "up": 8,
+      "tie": 282,
+      "down": 10,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7660988455988453,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": -0.023809523809523808,
+          "F1_all_planned_bounds": [
+            0.7660988455988453,
+            0.7660988455988453
+          ],
+          "up": 2,
+          "tie": 93,
+          "down": 5,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9332777777777777,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": -0.00019607843137254888,
+          "F1_all_planned_bounds": [
+            0.9332777777777777,
+            0.9332777777777777
+          ],
+          "up": 0,
+          "tie": 99,
+          "down": 1,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.38546865552747905,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.012874313308523833,
+          "F1_all_planned_bounds": [
+            0.38546865552747905,
+            0.38546865552747905
+          ],
+          "up": 6,
+          "tie": 90,
+          "down": 4,
+          "states": {}
+        }
+      }
+    },
+    "e03_goal_evidence": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "F1": 0.6955408143055202,
+      "same_parent_F1": 0.7072417314845074,
+      "delta_parent": -0.011700917178987353,
+      "F1_all_planned_bounds": [
+        0.6955408143055202,
+        0.6955408143055202
+      ],
+      "up": 6,
+      "tie": 287,
+      "down": 7,
+      "states": {
+        "success": 300
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.7630194805194803,
+          "same_parent_F1": 0.7899083694083693,
+          "delta_parent": -0.026888888888888893,
+          "F1_all_planned_bounds": [
+            0.7630194805194803,
+            0.7630194805194803
+          ],
+          "up": 1,
+          "tie": 95,
+          "down": 4,
+          "states": {}
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.9334738562091504,
+          "same_parent_F1": 0.9334738562091504,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091504
+          ],
+          "up": 0,
+          "tie": 100,
+          "down": 0,
+          "states": {}
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "F1": 0.39012910618792973,
+          "same_parent_F1": 0.3983429688360029,
+          "delta_parent": -0.008213862648073174,
+          "F1_all_planned_bounds": [
+            0.39012910618792973,
+            0.39012910618792973
+          ],
+          "up": 5,
+          "tie": 92,
+          "down": 3,
+          "states": {}
+        }
+      },
+      "by_extra_document_availability": {
+        "additional_document": {
+          "planned": 214,
+          "scorable": 214,
+          "missing": 0,
+          "F1": 0.6775036749335815,
+          "same_parent_F1": 0.6939068298573956,
+          "delta_parent": -0.016403154923814046,
+          "F1_all_planned_bounds": [
+            0.6775036749335815,
+            0.6775036749335815
+          ],
+          "up": 6,
+          "tie": 201,
+          "down": 7,
+          "states": {}
+        },
+        "exact_reuse_no_new_document": {
+          "planned": 86,
+          "scorable": 86,
+          "missing": 0,
+          "F1": 0.7404239285566233,
+          "same_parent_F1": 0.7404239285566233,
+          "delta_parent": 0.0,
+          "F1_all_planned_bounds": [
+            0.7404239285566233,
+            0.7404239285566233
+          ],
+          "up": 0,
+          "tie": 86,
+          "down": 0,
+          "states": {}
+        }
+      }
+    }
+  },
+  "simple_context_checks": {
+    "q03_question_last/nodes_identical_to_p02": 300,
+    "q03_question_last/context_identical_no_new_evidence": 300,
+    "e03_goal_evidence/nodes_identical_to_p02": 300,
+    "e03_goal_evidence/expected_extra_context": 214,
+    "e03_goal_evidence/no_extra_exact_parent_prompt": 86,
+    "e03_goal_evidence/no_extra_exact_parent_answer": 86
+  },
+  "costs": {
+    "old300_round3": {
+      "known_cny": 1.1469288,
+      "unreconciled_reserved_cny": 0,
+      "occupied_cny": 1.1469288,
+      "provider_submissions": 514
+    },
+    "old300_by_arm": {
+      "q03_question_last": {
+        "known_cny": 0.649072,
+        "unreconciled_reserved_cny": 0,
+        "provider_submissions": 300
+      },
+      "e03_goal_evidence": {
+        "known_cny": 0.4978568,
+        "unreconciled_reserved_cny": 0,
+        "provider_submissions": 214
+      }
+    },
+    "round2_independent_dev90": {
+      "known_cny": 0.8919284,
+      "unreconciled_reserved_cny": 0.009032799999999999,
+      "occupied_cny": 0.9009611999999999,
+      "provider_submissions": 606
+    },
+    "global": {
+      "known_cny": 183.2952032,
+      "unreconciled_reserved_cny": 35.3914312,
+      "occupied_cny": 218.6866344,
+      "provider_submissions": 105197
+    },
+    "global_cap_cny": 300,
+    "own_namespaces": [
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\methods\\2wiki\\e03_goal_evidence",
+        "known_cny": 0.151752,
+        "reserved_cny": 0,
+        "submissions": 62
+      },
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\methods\\hotpotqa\\e03_goal_evidence",
+        "known_cny": 0.1316824,
+        "reserved_cny": 0,
+        "submissions": 62
+      },
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\methods\\musique\\e03_goal_evidence",
+        "known_cny": 0.21442239999999999,
+        "reserved_cny": 0,
+        "submissions": 90
+      },
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_q03_question_last_r001\\methods\\2wiki\\q03_question_last",
+        "known_cny": 0.2282844,
+        "reserved_cny": 0,
+        "submissions": 100
+      },
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_q03_question_last_r001\\methods\\hotpotqa\\q03_question_last",
+        "known_cny": 0.19559839999999998,
+        "reserved_cny": 0,
+        "submissions": 100
+      },
+      {
+        "namespace": "b0_strategy_round3_v1_20261020\\rounds\\full300_q03_question_last_r001\\methods\\musique\\q03_question_last",
+        "known_cny": 0.22518919999999998,
+        "reserved_cny": 0,
+        "submissions": 100
+      }
+    ],
+    "interpretation": "Incremental provider use, not cold end-to-end method cost; unknown liabilities retained; actual bill not reconciled."
+  },
+  "independent_validation_status_only": {
+    "written_case_files_by_dataset_method": {
+      "2wiki/p02_role_headers": 30,
+      "2wiki/parent_g01": 30,
+      "hotpotqa/p02_role_headers": 30,
+      "hotpotqa/parent_g01": 30,
+      "musique/p02_role_headers": 31,
+      "musique/parent_g01": 30
+    },
+    "written_files_are_not_necessarily_unique_successes": true,
+    "scores_answers_not_read": true,
+    "sealed150_not_read": true,
+    "independence": "Round2 frozen p02 dev90 validation remains separate; it is not used to select or edit round3 candidates."
+  },
+  "new_API_or_retrieval_calls_from_report": 0,
+  "interpretation": [
+    "q03 moves the actual Original question block only, without adding evidence.",
+    "e03 adds at most one previously retrieved source passage and retains all QA/rootTop10; its gains cannot be called formatting-only.",
+    "Native F1 is unchanged. Numeric spelling, aliases, conjunctions and verbose answers can change score without changing facts.",
+    "Manual case reviews are non-blind; literal answer presence is not entailment."
+  ],
+  "manual_reviews_present": 69,
+  "changed_records": 50,
+  "unreviewed_changed_records": 0,
+  "all_added_document_records": 214,
+  "added_document_manual_review_states": {
+    "unreviewed": 176,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_text_comparison; uncertain_for_intended_publication_scope'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_identity_mismatch_and_existing_QA; no_external_fact_check'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_missing_bridge_in_displayed_context'}": 1,
+    "无目标时段/事件的新信息；与问题国家名相关但时间错位": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_text_comparison; uncertain_for_intended_duration_scope'}": 1,
+    "补地点背景但非所求时间；核心Ohio对象已经出现在辅助中": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_existing_successor_fact_and_final_nonuse; current_real_world_officeholder_unchecked'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_homonym_and_native_score_surface_difference'}": 1,
+    "有新日期但属于CountyofTripoli错误对象，不能支持所求地区成立时间": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_recipient_direction_comparison; uncertain_for_intended_query_scope'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_existing_model_QA_and_new_source_support; classification_truth_unverified'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_missing_bindings; original_singer_choice_unverified'}": 1,
+    "新增可核查车站原文，但车站与地址内容在原goal已知；并非新增答案实体": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_absent_actor_link_and_vessel_difference'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': 'limited_identity_only', 'certainty': 'high_for_added_text_scope; exact_pedigree_not_externally_verified'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_textual_scope_conflict; intended_Knob_Mountain_entity_uncertain'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': 'wrong_entity_only', 'certainty': 'high_for_temporal_identity_incompatibility_and_old_correct_date; causal_influence_uncertain'}": 1,
+    "无目标共同类别新事实，新增湿地背景与问题不直接相关": 1,
+    "{'new_answer_information': 'new_11_Feb_signing_date; answer_scope_uncertain', 'new_source_support_for_known_QA': True, 'certainty': 'high_for_new_chronology_and_old_QA_support; intended_event_scope_uncertain'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_added_document_wrong_era; intended_relocation_event_uncertain'}": 1,
+    "是；新增所求奖项/提名事实，原材料只有错误否定；最终没有采用": 1,
+    "无所求命名/物种的新事实；是另一动物的无关段落": 1,
+    "无；新增古罗马皇帝事件，与所求教宗离开原因无关": 1,
+    "部分；新增CharlesUniversity及Mach助手间接关系，但最终仍为宽泛UniversityofPrague，直接受聘关系支持有限": 1,
+    "{'new_answer_information': True, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_new_38_fact_absence_from_parent_and_nonadoption; historical_22_claim_not_externally_verified'}": 1,
+    "无所求县治事实；新增的是同名县消歧页的截断介绍": 1,
+    "新增独立原文支持，但答案方位已在QA中；最终改动主要是压缩": 1,
+    "新增原文支持旧QA已有WilliamPeel亲子关系，不是发现标准ArthurPeel": 1,
+    "无新增总部关系；文中Orlando仅为经营地点，答案城市原本已知": 1,
+    "{'new_answer_information': 'new_Spurs_historical_team_relation; target_time_scope_uncertain', 'new_source_support_for_known_QA': True, 'certainty': 'high_for_new_Spurs_relation_and_existing_ASVEL_QA_grounding; intended_time_scope_uncertain'}": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': 'licensing_yes; stronger_support_comparison_limited', 'certainty': 'high_for_licensing_source_support_and_hardware_fact_absence; broad_support_comparison_uncertain'}": 1,
+    "无目标两人的新关系，新增另一音乐人Zedd的生平": 1,
+    "新增独立原文支持已有16县事实，没有新答案值": 1,
+    "{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_direct_spouse_support_and_surface_name_equivalence; adoption_causality_uncertain'}": 1,
+    "无所求地区成立时间，新文讲另一个历史领地": 1,
+    "是；新增此前final缺失的Delta入海位置事实，最终采用并更符合原题": 1,
+    "无公司实体关系的新事实，新增的是Austral普通词义": 1,
+    "新增人物与单曲的原文支持，答案内容原本已知": 1
+  },
+  "scored_changes": 31
+}

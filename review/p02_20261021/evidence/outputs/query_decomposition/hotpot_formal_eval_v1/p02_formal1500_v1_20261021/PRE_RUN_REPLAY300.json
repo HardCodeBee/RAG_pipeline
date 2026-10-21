@@ -1,0 +1,33 @@
+{
+  "method": "p02_multigrain_timing_cachefix_v1",
+  "passed": true,
+  "files_checked": 46,
+  "file_check": "existence_only; behavior checked by replay",
+  "new_API_calls": 0,
+  "counts": {
+    "cases": 300,
+    "nodes": 887,
+    "logical_model_calls": 1774,
+    "logical_retrievals": 1296
+  },
+  "all_prompts_outputs_and_packets_exact": true,
+  "native_Answer_F1": 0.7072417314845074,
+  "by_dataset": {
+    "musique": {
+      "n": 100,
+      "F1": 0.3983429688360029
+    },
+    "2wiki": {
+      "n": 100,
+      "F1": 0.9334738562091504
+    },
+    "hotpotqa": {
+      "n": 100,
+      "F1": 0.7899083694083693
+    }
+  },
+  "scope": "Recorded exact-input replay, not fresh inference or independent generalization",
+  "score_scope": "Recorded native scores, verified predictions are identical; no new judge",
+  "new_index_searches": 0,
+  "new_remote_calls": 0
+}

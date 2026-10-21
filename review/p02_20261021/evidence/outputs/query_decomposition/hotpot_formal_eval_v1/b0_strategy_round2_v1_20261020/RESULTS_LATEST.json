@@ -1,0 +1,126 @@
+{
+  "utc": "2026-10-19T22:36:08.442127+00:00",
+  "parent300_F1": 0.6937193899056644,
+  "B0_300_F1": 0.6736469411679938,
+  "arms": {
+    "g02_evidence_goal": {
+      "scorable": 100,
+      "statuses": {
+        "unstarted": 200,
+        "success": 100
+      },
+      "F1": 0.6579715562215561,
+      "same_parent_F1": 0.674789886039886,
+      "delta_parent": -0.01681832981832982,
+      "paired95": [
+        -0.04354616032116032,
+        0.004261887186887185
+      ],
+      "up": 3,
+      "tie": 91,
+      "down": 6,
+      "pilot_scorable": 100,
+      "pilot_delta": -0.01681832981832982,
+      "expand": false,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 33,
+          "F1": 0.7839584657766476,
+          "delta_parent": -0.018494636676454856
+        },
+        "2wiki": {
+          "n": 33,
+          "F1": 0.9196063196063197,
+          "delta_parent": -0.01305361305361305
+        },
+        "musique": {
+          "n": 34,
+          "F1": 0.281750520721109,
+          "delta_parent": -0.018845315904139435
+        }
+      }
+    },
+    "p02_role_headers": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.7072417314845074,
+      "same_parent_F1": 0.6937193899056644,
+      "delta_parent": 0.013522341578843123,
+      "paired95": [
+        0.0026590954045094903,
+        0.027312871881873414
+      ],
+      "up": 9,
+      "tie": 285,
+      "down": 6,
+      "pilot_scorable": 100,
+      "pilot_delta": 0.008279145948650589,
+      "expand": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7899083694083693,
+          "delta_parent": 0.012757575757575754
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9334738562091504,
+          "delta_parent": 0.015196078431372549
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.3983429688360029,
+          "delta_parent": 0.012613370547581071
+        }
+      }
+    },
+    "s03_g01_plus_f01": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.6971571003433749,
+      "same_parent_F1": 0.6937193899056644,
+      "delta_parent": 0.0034377104377104374,
+      "paired95": [
+        -0.008939393939393938,
+        0.016445202020202006
+      ],
+      "up": 4,
+      "tie": 291,
+      "down": 5,
+      "pilot_scorable": 100,
+      "pilot_delta": 0.004646464646464646,
+      "expand": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7779083694083693,
+          "delta_parent": 0.0007575757575757546
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9282777777777776,
+          "delta_parent": 0.01
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.3852851538439774,
+          "delta_parent": -0.000444444444444444
+        }
+      }
+    }
+  },
+  "budget": {
+    "global_known_cny": 181.5657084,
+    "global_reserved_cny": 35.401564799999996,
+    "global_occupied_cny": 216.9672732,
+    "new_known_cny": 1.4200092,
+    "new_reserved_cny": 0.019166399999999997,
+    "new_submissions": 757,
+    "cap_cny": 300
+  },
+  "sample_role": "Exposed existing diagnostic300; pilot is not fresh holdout."
+}

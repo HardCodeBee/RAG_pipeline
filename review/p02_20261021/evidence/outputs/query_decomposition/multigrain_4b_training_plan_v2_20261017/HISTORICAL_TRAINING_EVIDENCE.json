@@ -1,0 +1,306 @@
+{
+  "training_records": 2368,
+  "epochs": 2,
+  "updates": 148,
+  "consumed_examples": 4736,
+  "learning_rate": 0.0001,
+  "effective_batch": 32,
+  "micro_batch": 1,
+  "lora": {
+    "bias": "none",
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "modules_to_save": null,
+    "r": 32,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "use_dora": false,
+    "use_rslora": false
+  },
+  "warmup_ratio": 0.03,
+  "weight_decay": 0.01,
+  "first_training_loss": 2.1327580492943525,
+  "last_training_loss": 0.1200710540288128,
+  "loss_windows": [
+    {
+      "updates": [
+        1,
+        10
+      ],
+      "mean_training_target_token_loss": 0.9009893720591208
+    },
+    {
+      "updates": [
+        11,
+        37
+      ],
+      "mean_training_target_token_loss": 0.20394561818883866
+    },
+    {
+      "updates": [
+        38,
+        74
+      ],
+      "mean_training_target_token_loss": 0.16374141434917455
+    },
+    {
+      "updates": [
+        75,
+        111
+      ],
+      "mean_training_target_token_loss": 0.11894852027005588
+    },
+    {
+      "updates": [
+        112,
+        148
+      ],
+      "mean_training_target_token_loss": 0.11178159797280976
+    },
+    {
+      "updates": [
+        139,
+        148
+      ],
+      "mean_training_target_token_loss": 0.1087165424509294
+    }
+  ],
+  "best_validation_loss": null,
+  "validation_loss_recorded": false,
+  "historical_semantic_dev": [
+    {
+      "model_key": "route2:initial",
+      "queries": 500,
+      "semantic_pass": 282,
+      "semantic_fail": 210,
+      "semantic_uncertain": 8,
+      "question_style_pass": 495,
+      "question_style_uncertain": 0,
+      "raw_json_valid": 500,
+      "schema_reference_valid": 499,
+      "question_mark_all_steps": 500,
+      "generation_failures": 0,
+      "truncated_outputs": 0,
+      "content_semantics_first5_pass": 358,
+      "fully_usable": 279,
+      "checks_fail": {
+        "coverage": 39,
+        "conditions": 88,
+        "bindings": 42,
+        "unknowns": 20,
+        "goal": 36,
+        "granularity": 112
+      },
+      "source_semantic": {
+        "BREAK-high/CWQ": {
+          "queries": 100,
+          "passes": 55
+        },
+        "BREAK-high/DROP": {
+          "queries": 100,
+          "passes": 73
+        },
+        "BREAK-high/HOTPOT": {
+          "queries": 200,
+          "passes": 82
+        },
+        "MuSiQue": {
+          "queries": 100,
+          "passes": 72
+        }
+      },
+      "semantic_pass_rate": 0.564
+    },
+    {
+      "model_key": "route2:update_000037",
+      "queries": 500,
+      "semantic_pass": 358,
+      "semantic_fail": 135,
+      "semantic_uncertain": 7,
+      "question_style_pass": 481,
+      "question_style_uncertain": 0,
+      "raw_json_valid": 500,
+      "schema_reference_valid": 491,
+      "question_mark_all_steps": 500,
+      "generation_failures": 0,
+      "truncated_outputs": 0,
+      "content_semantics_first5_pass": 379,
+      "fully_usable": 349,
+      "checks_fail": {
+        "coverage": 54,
+        "conditions": 78,
+        "bindings": 62,
+        "unknowns": 1,
+        "goal": 27,
+        "granularity": 47
+      },
+      "source_semantic": {
+        "BREAK-high/CWQ": {
+          "queries": 100,
+          "passes": 86
+        },
+        "BREAK-high/DROP": {
+          "queries": 100,
+          "passes": 77
+        },
+        "BREAK-high/HOTPOT": {
+          "queries": 200,
+          "passes": 138
+        },
+        "MuSiQue": {
+          "queries": 100,
+          "passes": 57
+        }
+      },
+      "semantic_pass_rate": 0.716
+    },
+    {
+      "model_key": "route2:update_000074",
+      "queries": 500,
+      "semantic_pass": 407,
+      "semantic_fail": 85,
+      "semantic_uncertain": 8,
+      "question_style_pass": 486,
+      "question_style_uncertain": 0,
+      "raw_json_valid": 500,
+      "schema_reference_valid": 499,
+      "question_mark_all_steps": 500,
+      "generation_failures": 0,
+      "truncated_outputs": 0,
+      "content_semantics_first5_pass": 443,
+      "fully_usable": 398,
+      "checks_fail": {
+        "coverage": 10,
+        "conditions": 34,
+        "bindings": 24,
+        "unknowns": 2,
+        "goal": 10,
+        "granularity": 44
+      },
+      "source_semantic": {
+        "BREAK-high/CWQ": {
+          "queries": 100,
+          "passes": 94
+        },
+        "BREAK-high/DROP": {
+          "queries": 100,
+          "passes": 77
+        },
+        "BREAK-high/HOTPOT": {
+          "queries": 200,
+          "passes": 149
+        },
+        "MuSiQue": {
+          "queries": 100,
+          "passes": 87
+        }
+      },
+      "semantic_pass_rate": 0.814
+    },
+    {
+      "model_key": "route2:update_000111",
+      "queries": 500,
+      "semantic_pass": 409,
+      "semantic_fail": 83,
+      "semantic_uncertain": 8,
+      "question_style_pass": 486,
+      "question_style_uncertain": 0,
+      "raw_json_valid": 500,
+      "schema_reference_valid": 497,
+      "question_mark_all_steps": 500,
+      "generation_failures": 0,
+      "truncated_outputs": 0,
+      "content_semantics_first5_pass": 450,
+      "fully_usable": 400,
+      "checks_fail": {
+        "coverage": 9,
+        "conditions": 30,
+        "bindings": 20,
+        "unknowns": 1,
+        "goal": 10,
+        "granularity": 50
+      },
+      "source_semantic": {
+        "BREAK-high/CWQ": {
+          "queries": 100,
+          "passes": 92
+        },
+        "BREAK-high/DROP": {
+          "queries": 100,
+          "passes": 73
+        },
+        "BREAK-high/HOTPOT": {
+          "queries": 200,
+          "passes": 156
+        },
+        "MuSiQue": {
+          "queries": 100,
+          "passes": 88
+        }
+      },
+      "semantic_pass_rate": 0.818
+    },
+    {
+      "model_key": "route2:update_000148",
+      "queries": 500,
+      "semantic_pass": 424,
+      "semantic_fail": 70,
+      "semantic_uncertain": 6,
+      "question_style_pass": 487,
+      "question_style_uncertain": 0,
+      "raw_json_valid": 500,
+      "schema_reference_valid": 498,
+      "question_mark_all_steps": 500,
+      "generation_failures": 0,
+      "truncated_outputs": 0,
+      "content_semantics_first5_pass": 454,
+      "fully_usable": 415,
+      "checks_fail": {
+        "coverage": 8,
+        "conditions": 29,
+        "bindings": 17,
+        "unknowns": 1,
+        "goal": 13,
+        "granularity": 36
+      },
+      "source_semantic": {
+        "BREAK-high/CWQ": {
+          "queries": 100,
+          "passes": 92
+        },
+        "BREAK-high/DROP": {
+          "queries": 100,
+          "passes": 80
+        },
+        "BREAK-high/HOTPOT": {
+          "queries": 200,
+          "passes": 161
+        },
+        "MuSiQue": {
+          "queries": 100,
+          "passes": 91
+        }
+      },
+      "semantic_pass_rate": 0.848
+    }
+  ],
+  "optimizer_update_seconds": 2827.0940602301853,
+  "reported_training_seconds": 2832.8181671785424,
+  "wall_seconds": 3081.52250790596,
+  "peak_allocated_GiB": 10.40682077407837,
+  "peak_reserved_GiB": 21.3828125,
+  "interpretation": "Training loss flattened late, while dev semantic pass still improved at epoch2. No held-out validation loss was recorded; cannot establish absence of overfitting or full semantic convergence. Old steps/goal task differs from current standalone-support-array task.",
+  "source_files": {
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\runs\\route2_train\\metrics.jsonl": "0af1b683fa88385adbc3707a7bc794e4901876cc44599197efb1c1b28a18c9a3",
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\runs\\route2_train\\SUMMARY.json": "f800c8f32cfdce0bcb0ac117a00f809918065ffe9c1b150f280afbb9ecfe5153",
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\checkpoints\\route2_lora\\checkpoint-000148\\training_config.json": "a924c59d2003686d5782881f0d60057a1a2ef23172c5c27484af862b9643ee46",
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\results\\COMMON_METRICS.json": "2a29c9c8c14bffae50cf4b6a275124259551feb44720abc89a6c8c754f3e4731"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-19T20:35:42.707546+00:00",
+  "cases": 21,
+  "by_reason": {
+    "invalid_action": 8,
+    "no_finish_within_budget": 13
+  },
+  "by_hop": {
+    "4hop2": 3,
+    "3hop2": 2,
+    "4hop3": 2,
+    "4hop1": 6,
+    "3hop1": 4,
+    "2hop": 4
+  },
+  "last_finish_by_reason": {
+    "no_finish_within_budget": {
+      "stop": 12,
+      "length": 1
+    },
+    "invalid_action": {
+      "length": 8
+    }
+  },
+  "invalid_action_contains_relaxed_action": 0,
+  "budget_final_action_types": {
+    "search": 13
+  },
+  "with_exact_search_repetition": 7,
+  "full_gold_docs_read": 2,
+  "paid_api_calls": 0,
+  "frozen_input_sha256": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\FINAL_RESULTS.frozen.json": "3107e675656517d31cc3fced34a4057fc21a9f0867fa58d4f0aef5b86b0e2bb5",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\CASE_RESULTS.jsonl": "287d7b164153fd7c3ae7a4669c5ab9c220d95cd0604de4baab13690c91d3a459",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\COMPLETION.frozen.json": "7c5375282107a0a258529d8ea9ef24f2fd2e90abb4b9eb63e4dd2485709c1912"
+  },
+  "limitations": [
+    "All changes are offline diagnosis only. No new final answers, larger budgets or retraining.",
+    "Gold document hits do not imply sufficient evidence or model use.",
+    "A truncated reply may contain no action; its ungenerated continuation cannot be recovered offline."
+  ]
+}

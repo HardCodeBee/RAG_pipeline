@@ -1,0 +1,186 @@
+{
+  "reviewed_indices": [
+    1,
+    44
+  ],
+  "reviewer": "Current Codex inspected all changed arrays; unchanged arrays inherit frozen baseline. No answer/passages or formal300 outputs.",
+  "exceptions": {
+    "1": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes all author, citizenship and constrained-nation prerequisites."
+    },
+    "2": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes both birth-date operands of the comparison."
+    },
+    "3": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the unidentified river prerequisite."
+    },
+    "6": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the useful district-condition operand without replacing it."
+    },
+    "9": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Removes the duplicate county target but still omits the adjacent-city intermediate."
+    },
+    "10": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Still drops the teenage-friends description and repeats the final town target."
+    },
+    "11": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "U"
+      ],
+      "reason": "Asks unqualified Who was the murder victim with no restaurant or Fuhrman/case binding; this is a generic original-target copy."
+    },
+    "12": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the father intermediate and paternal-grandmother decomposition."
+    },
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops the first-match identity prerequisite, a frozen defect already observed in earlier checkpoints."
+    },
+    "15": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Adds a writer query for The Story without the performer-of-That-Wasnt-Me binding; it is an unnecessary ambiguous target copy."
+    },
+    "17": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Asks the county of the state capital rather than the county of the neighboring location; the latter location is still missing."
+    },
+    "18": {
+      "verdict": "fail",
+      "dimensions": [
+        "C",
+        "U"
+      ],
+      "reason": "Still omits grandparents identity under frozen completeness and adds a duplicate of the original contact target."
+    },
+    "21": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Drops the artist death city and asserts a war caused population decline rather than preserving after which."
+    },
+    "26": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Restores identifying descriptors but still changes was lead singer to presently has lead singer."
+    },
+    "30": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the unnamed wrestler identity prerequisite."
+    },
+    "31": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the mother intermediate of maternal-grandmother composition."
+    },
+    "33": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C"
+      ],
+      "reason": "Still uses unqualified Martin and incorrectly attaches the Navardun region to the death place; described person identity remains missing."
+    },
+    "34": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the mother intermediate of maternal-grandmother composition."
+    },
+    "35": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the useful producer/ownership intersection operand."
+    },
+    "38": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes both useful role/school intersection operands."
+    },
+    "39": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes both country operands of same-country comparison."
+    },
+    "40": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes both nationality operands of comparison."
+    },
+    "41": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes the guest-vocals song-set prerequisite for the chart condition."
+    },
+    "43": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Deletes both birth-date operands of earlier-birth comparison."
+    }
+  }
+}

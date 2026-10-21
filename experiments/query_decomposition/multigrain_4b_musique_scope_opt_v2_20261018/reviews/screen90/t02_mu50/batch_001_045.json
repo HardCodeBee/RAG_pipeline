@@ -1,0 +1,66 @@
+{
+  "reviewed_indices": [
+    1,
+    45
+  ],
+  "exceptions": {
+    "3": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Exposes the missing conflict winners, but still replaces after which with led to, adding causality."
+    },
+    "5": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Adds the war-time condition directly to Harrisons death, resolving an original modifier that could describe occupation of the place instead."
+    },
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Town identity still omits the southwestern-island condition."
+    },
+    "19": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still attaches country support to considering Tito too independent instead of the attempt to convince the person."
+    },
+    "22": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Adds unrestricted Who served as Attorney General after author identity; it does not ask a distinct supporting fact about the described author."
+    },
+    "23": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still lacks the inhabitants of each territory for the intersection."
+    },
+    "26": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "The two film-cast requests might support an implicit intersection, but actor-to-character support is not explicit; retain the same utility boundary as locked baseline26, not a confirmed repair."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "S",
+        "C"
+      ],
+      "reason": "Merges actor-in-film and portrayal clauses into a malformed request and never identifies the character whose portrayals are counted."
+    }
+  },
+  "reviewer": "All changed1..45 inspected.9 restores both directional modifiers,24 explicitly identifies the county. Raw outputs and baseline labels unchanged."
+}

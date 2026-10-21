@@ -1,0 +1,215 @@
+{
+  "utc": "2026-10-19T20:20:17.328656+00:00",
+  "all600_baseline_cases_scorable": true,
+  "original_whole_method_case_hashes_protected": 1200,
+  "unaffected_new_baseline_complete_cases_protected": 409,
+  "wrapper_correction_replays": [
+    {
+      "id": "musique:4hop2__161324_14670_8987_8529",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop2__161324_14670_8987_8529.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161324_14670_8987_8529.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "edf29bae84086deeac43dbc666bf8b7fa4ccb890d27c6eebe63245d43451dd42"
+    },
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop2__326964_734214_7713.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop2__326964_734214_7713.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "17dcd89c632fab70667db4b358c2b2a2a7649963e2ae8364b823b93320a8c1e4"
+    },
+    {
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop3__524186_219173_548463_72134.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__524186_219173_548463_72134.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "daeea1355deca4a9abb49f8b16ea3a87ec5f13b089fe164ae730fba49cd43aa3"
+    },
+    {
+      "id": "musique:4hop2__161602_426860_88460_21074",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop2__161602_426860_88460_21074.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161602_426860_88460_21074.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "2bde9403ac19d03a4095f0d43a5d291ba8bedcffdf9f22746d07476fb2198cf5"
+    },
+    {
+      "id": "musique:3hop1__841091_339990_54675",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__841091_339990_54675.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__841091_339990_54675.json",
+      "original_parser_action": [
+        "search",
+        "Is there a Portland, Pennsylvania?",
+        "Thought: There is no Portland in Pennsylvania—so the question likely contains a geographic mismatch. However, the only major \"Portland\" commonly associated with mountain views is Portland, Oregon, which famously has views of Mount Hood (and other Cascade volcanoes). But Knob Mountain is in Pennsylvania, not Oregon. Since the question asks for “the mountain you can see from Portland in the state where Knob Mountain is located”, and no Portland exists in Pennsylvania, the phrasing may be erroneous—or it may intend “What prominent mountain is visible from Portland, *and* what is the state where Knob Mountain is located?” But that doesn’t yield a single mountain. Alternatively, perhaps the question conflates “Portland” with “Bloomsburg”, which *is* mentioned in the observation as a place from which Knob Mountain is visible—and Bloomsburg is in Columbia County, Pennsylvania, the same county as Knob Mountain. But the question explicitly says “from Portland”. Let’s verify whether there is any lesser-known Portland in Pennsylvania.\nAction: Search[Is there a Portland, Pennsylvania?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "ed938341cb7f2e76af9052886ae747db33d4f5108428d5a3ced37b6274732476"
+    },
+    {
+      "id": "musique:3hop1__847684_339990_54675",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__847684_339990_54675.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__847684_339990_54675.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "e62cc11bd828a5f11ca2adc9f0db8a24e6a9ee81233113b1f670d1d3198d816a"
+    },
+    {
+      "id": "musique:4hop3__275416_24325_156850_10557",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop3__275416_24325_156850_10557.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__275416_24325_156850_10557.json",
+      "original_parser_action": [
+        "search",
+        "What language was spoken in the Malmedy region during Charlemagne's era?",
+        "Thought: Guido Maus was born in Malmedy, which is in East Belgium. The Carnival of Malmedy is associated with the German-speaking Community of Belgium, and historically harks to the region of Eupen-Malmedy, which was part of the Prussian Rhineland and later the German Empire before becoming Belgian. The area’s traditional language is German. Fastrada’s spouse was Charlemagne (Charles the Great), who ruled the Carolingian Empire in the 8th–9th centuries; during his era, the vernacular spoken in that region was Old High German — the early form of the German language.\nAction: Search[What language was spoken in the Malmedy region during Charlemagne's era?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "e1f7945cdd5b99f6fff324dcb5a3fa9f7b49f2e8db680f0cfc5295c305d4ae18"
+    },
+    {
+      "id": "musique:3hop1__102461_24918_24991",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__102461_24918_24991.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__102461_24918_24991.json",
+      "original_parser_action": [
+        "search",
+        "What Soviet President visited Ukraine during protests?",
+        "Thought: Andrey Dashkov was born in Kharkiv, Ukraine, as stated in the observation. So his birth country is Ukraine.\nAction: Search[What Soviet President visited Ukraine during protests?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "ac505ccfc379bb16296059f37d13c4cbdf8e8b25e38fbe9c51c5a7635d796518"
+    },
+    {
+      "id": "musique:2hop__753715_51329",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__753715_51329.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\2hop__753715_51329.json",
+      "original_parser_action": [
+        "search",
+        "Who was actress Mary Philips married to?",
+        "Thought: The previous searches for \"Mary Philips' husband\" returned no relevant results. I need to search specifically for \"Mary Philips\" the actress, as she was a known American stage and film actress active in the early-to-mid 20th century, and her husband was likely a prominent figure in Hollywood — possibly a director or producer. A well-known fact is that she was married to director William Wyler.\nAction: Search[Who was actress Mary Philips married to?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "058895a86f25b2747ba5af8fa5c54ca369a2904ff5314f806d13d8284eebfd33"
+    },
+    {
+      "id": "musique:4hop2__71753_158985_70784_61381",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop2__71753_158985_70784_61381.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__71753_158985_70784_61381.json",
+      "original_parser_action": [
+        "search",
+        "When was the modern Republic of Lebanon established?",
+        "Thought: The region immediately north of Israel is Lebanon. Historical context shows Lebanon was established as a French mandate after the Ottoman Empire's dissolution and gained independence in 1943, with full sovereignty achieved on November 22, 1943, when France recognized Lebanese independence — though French troops fully withdrew only in 1946. The question asks when the region was \"established\", and the modern Lebanese state was formally established upon independence in 1943. I need to confirm the official establishment year of modern Lebanon.\nAction: Search[When was the modern Republic of Lebanon established?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "a779e180c0866ec36b6fd0556b6eff7eefcb723964d0b1ca62059b42f6012db5"
+    },
+    {
+      "id": "musique:3hop1__587540_514761_594810",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__587540_514761_594810.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__587540_514761_594810.json",
+      "original_parser_action": [
+        "search",
+        "Who is Miranda Lambert's current spouse and what is his profession?",
+        "Thought: The search for Brendan McLoughlin's record label association returned no relevant information. I need to verify if Brendan McLoughlin is a musician or artist signed to a label—or if he is instead associated with a label in another capacity (e.g., A&R, management, etc.). Alternatively, perhaps the question refers to Miranda Lambert’s *former* spouse, Blake Shelton, who is also a country artist and has been associated with Warner Bros. Records Nashville. But the question says “spouse”, and Miranda Lambert’s current spouse is Brendan McLoughlin — who is not known as a recording artist. Let me confirm Miranda Lambert’s marital history and label affiliations of her spouses.\nAction: Search[Who is Miranda Lambert's current spouse and what is his profession?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "a309e03f13a2b3f84961ae0c9bac90cbc5b3607a826ecaa430ed22c4a69f68e9"
+    },
+    {
+      "id": "musique:4hop3__316459_41402_157761_13584",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop3__316459_41402_157761_13584.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__316459_41402_157761_13584.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "c0b66fee685b396be4594e581cae09d2226fca4e9ed423903a75314da0cef520"
+    },
+    {
+      "id": "musique:2hop__22431_16335",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__22431_16335.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\2hop__22431_16335.json",
+      "original_parser_action": [
+        "search",
+        "What are the two main genetic factors explaining Ashkenazi Jewish genetic distinctiveness?",
+        "Thought: The prior searches did not yield the definitive largest foreign-born group in the U.S. in 2010. Standard U.S. Census Bureau data shows that, as of the 2010 American Community Survey, the largest foreign-born population group by country of origin was individuals born in Mexico. I now need to verify whether Ashkenazi Jews and Mexican Americans share genetic similarities — but the question states “Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?” This phrasing is suspicious: Ashkenazi Jews and Mexicans are not meaningfully genetically similar; they derive from distinct ancestral populations (Levantine/European vs. Indigenous American/Spain). However, the question likely intends a different interpretation — perhaps conflating “foreigners” with European immigrant groups historically associated with Ashkenazi Jewish migration (e.g., Germans, Poles, Russians), or referencing shared genetic bottlenecks and founder effects — both well-documented for Ashkenazi Jews and some European diaspora groups. But the question says “largest single group of foreigners in 2010”, and U.S. Census 2010 data confirms Mexicans were the largest foreign-born group. Yet genetic similarity between Ashkenazi Jews and Mexican Americans is negligible. Therefore, the question may be misphrased or refer to a different context — possibly the UK? In the UK 2011 census (closest to 2010), the largest foreign-born group was India. But again, no strong genetic overlap. Alternatively, the question may intend “Ashkenazi Jews and [other] European-descended groups” — and the two shared genetic factors are well-established: **founder effect** and **genetic drift**, both resulting from historical population bottlenecks and endogamy. These are the two primary factors explaining Ashkenazi genetic distinctiveness — and they apply comparably to other historically isolated, endogamous populations (e.g., French Canadians, Amish, Finns). So the answer is likely those two factors — regardless of which “largest group” is named.\nAction: Search[What are the two main genetic factors explaining Ashkenazi Jewish genetic distinctiveness?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "96fe821d03d4d9c3f5b893403a74a453cdcb8861f9e12447f01331f780be2c99"
+    },
+    {
+      "id": "musique:2hop__17508_17335",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__17508_17335.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\2hop__17508_17335.json",
+      "original_parser_action": [
+        "search",
+        "When did Diadochi begin issuing coins depicting themselves in Alexander's likeness?",
+        "Thought: The observation states: \"The image of Alexander the Great was also an important artistic theme, and all of the diadochi had themselves depicted imitating Alexander's youthful look.\" This confirms the core claim — the diadochi portrayed themselves in the likeness of Alexander — but it does not specify *when* they did so. Since the diadochi began asserting authority immediately after Alexander’s death in 323 BCE, and coinage and portraiture were key tools of legitimacy from the outset, the practice likely began in the early Diadochi period (323–301 BCE), especially as they established their own courts and minted coins bearing Alexander-inspired imagery. The earliest known examples (e.g., Lysimachus’ silver tetradrachms showing Alexander with horns of Ammon) date to c. 297 BCE, but the practice started earlier. The observation does not give a precise year, but the historical consensus is that this iconographic imitation began shortly after 323 BCE and intensified during the Wars of the Diadochi.\nAction: Search[When did Diadochi begin issuing coins depicting themselves in Alexander's likeness?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "38293a0519b15ac5351f0b57d47e0b7254494e882e9791e062b3a00f6246a6de"
+    },
+    {
+      "id": "2wiki:085ace840bde11eba7f7acde48001122",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\2wiki\\b03_react_dense\\085ace840bde11eba7f7acde48001122.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\2wiki\\b03_react_dense\\085ace840bde11eba7f7acde48001122.json",
+      "original_parser_action": [
+        "search",
+        "Where was Allauddin Khan born?",
+        "Thought: Annapurna Devi was the daughter of Allauddin Khan, the founder of the Maihar gharana, and was given the name 'Annapurna' by the former Maharaja Brijnath Singh of the former Maihar Estate (M.P.). This strongly suggests she was born in Maihar, Madhya Pradesh.\nAction: Search[Where was Allauddin Khan born?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "726acb47078f60734800e86d729f1e3f77876013e6d43ef18fc9beb405198945"
+    },
+    {
+      "id": "musique:4hop1__105401_17130_70784_79935",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__105401_17130_70784_79935.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop1__105401_17130_70784_79935.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "539bfdd0fc23de7737c99ce8e3738e82b4b28d3afac07947a6e7b99e95de931a"
+    },
+    {
+      "id": "musique:3hop1__106042_64399_53006",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__106042_64399_53006.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__106042_64399_53006.json",
+      "original_parser_action": null,
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "f983107693890b6e05a4ea8ac633ba7c92b74a841361f6fc3e00a376d4b7af07"
+    },
+    {
+      "id": "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+      "original_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\2wiki\\b03_react_dense\\2f54952f087811ebbd67ac1f6bf848b6.json",
+      "selected_case": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\2wiki\\b03_react_dense\\2f54952f087811ebbd67ac1f6bf848b6.json",
+      "original_parser_action": [
+        "search",
+        "When did Michael Gordon die?",
+        "Thought: I now know that \"Move Over, Darling\" was directed by Michael Gordon and \"Grief Street\" was directed by Richard Thorpe. I need to find the death years of Michael Gordon and Richard Thorpe to determine who died earlier.\nAction: Search[When did Michael Gordon die?]"
+      ],
+      "original_length_reply_reused_byte_identically": true,
+      "request_id": "eb5c80bea6bcd7dccd4a1d1600869805b7b03aa3281cacbae8aef8850c7b9992"
+    }
+  ],
+  "newly_resubmitted_successful_same_trajectory_payloads": [],
+  "statuses": {
+    "b00_rag_top10_v1": {
+      "success": 299,
+      "success_truncated": 1
+    },
+    "b03_react_dense": {
+      "success": 277,
+      "algorithm_failure": 22,
+      "success_truncated": 1
+    }
+  },
+  "budget": {
+    "known_usage_cny": 176.90824039999998,
+    "unknown_reserves_cny": 35.3823984,
+    "occupied_cny": 212.29063879999998,
+    "remaining_cny": 87.70936120000002,
+    "extension_occupied_cny": 3.0072872,
+    "cap_cny": 300,
+    "invoice_verified": false
+  },
+  "new_audit_api_calls": 0,
+  "runtime_gold_exposure": false
+}

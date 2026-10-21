@@ -1,0 +1,331 @@
+"""本文件定义了流水线各阶段之间传递的数据结构。"""
+
+from __future__ import annotations
+import math
+from dataclasses import asdict, dataclass
+from typing import Any, Mapping
+
+
+class _AsDictRecord:
+    __slots__ = ()
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True, slots=True)
+class PageRecord(_AsDictRecord):
+    """
+    doc_id: 文档 ID 用来标识这页属于哪一篇文档
+    source: 原始来源
+    page  : 页码
+    text  : 正文文本
+    """
+
+    doc_id: str
+    source: str
+    page: int
+    text: str
+
+    def __post_init__(self) -> None:
+        if any(
+            (
+                not isinstance(value, str) or not value.strip()
+                for value in (self.doc_id, self.source, self.text)
+            )
+        ):
+            raise ValueError("PageRecord text identifiers and text must be non-empty")
+        if (
+            isinstance(self.page, bool)
+            or not isinstance(self.page, int)
+            or self.page <= 0
+        ):
+            raise ValueError("PageRecord.page must be a positive integer")
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, Any]) -> PageRecord:
+        return cls(
+            doc_id=value["doc_id"],
+            source=value["source"],
+            page=value["page"],
+            text=value["text"],
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ChunkRecord(_AsDictRecord):
+    """
+    chunk_id: 文本块 ID
+    vector_id  : 用于ChunkRecord 和向量索引之间的连接ID
+    doc_id  : 文档 ID 表示这个 chunk 来自哪篇文档
+    page_start/page_end: chunk 覆盖的页面范围
+    text    :  chunk 的正文内容
+    token_count: chunk 的 token 数
+    """
+
+    chunk_id: str
+    vector_id: int
+    doc_id: str
+    source: str
+    page_start: int
+    page_end: int
+    text: str
+    token_count: int
+
+    def __post_init__(self) -> None:
+        text_fields = (self.chunk_id, self.doc_id, self.source, self.text)
+        if any(
+            (not isinstance(value, str) or not value.strip() for value in text_fields)
+        ):
+            raise ValueError(
+                "ChunkRecord identifiers, source, and text must be non-empty"
+            )
+        if (
+            isinstance(self.vector_id, bool)
+            or not isinstance(self.vector_id, int)
+            or self.vector_id < 0
+        ):
+            raise ValueError("ChunkRecord.vector_id must be a non-negative integer")
+        if (
+            isinstance(self.page_start, bool)
+            or not isinstance(self.page_start, int)
+            or self.page_start <= 0
+        ):
+            raise ValueError("ChunkRecord.page_start must be a positive integer")
+        if (
+            isinstance(self.page_end, bool)
+            or not isinstance(self.page_end, int)
+            or self.page_end < self.page_start
+        ):
+            raise ValueError(
+                "ChunkRecord.page_end must be an integer no smaller than page_start"
+            )
+        if (
+            isinstance(self.token_count, bool)
+            or not isinstance(self.token_count, int)
+            or self.token_count <= 0
+        ):
+            raise ValueError("ChunkRecord.token_count must be a positive integer")
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, Any]) -> ChunkRecord:
+        return cls(
+            chunk_id=value["chunk_id"],
+            vector_id=value["vector_id"],
+            doc_id=value["doc_id"],
+            source=value["source"],
+            page_start=value["page_start"],
+            page_end=value["page_end"],
+            text=value["text"],
+            token_count=value["token_count"],
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class DocumentEmbeddingInput:
+    """Structured text available only at the document-embedding boundary."""
+
+    text: str
+    title: str | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.text, str):
+            raise TypeError("DocumentEmbeddingInput.text must be a string")
+        if self.title is not None and (not isinstance(self.title, str)):
+            raise TypeError("DocumentEmbeddingInput.title must be a string or None")
+        if not self.text.strip() and (
+            not (self.title is not None and self.title.strip())
+        ):
+            raise ValueError("DocumentEmbeddingInput must contain text or a title")
+
+
+@dataclass(frozen=True, slots=True)
+class EmbeddingSpaceSpec(_AsDictRecord):
+    """
+    backend: 所使用的模型类型
+    model_name: 模型名称
+    revision: 模型版本
+    dimension: 向量维度
+    normalized: 向量是否做了 L2 normalize 归一化
+    similarity: 计算相似的方式
+    document_prefix: 文档侧 embedding 前缀
+    max_sequence_length: 模型最大输入长度
+    """
+
+    backend: str
+    model_name: str
+    revision: str | None
+    dimension: int
+    normalized: bool
+    similarity: str
+    document_prefix: str = ""
+    max_sequence_length: int | None = None
+    encoder_family: str | None = None
+    pooling: str | None = None
+    document_input_format: str = "text"
+
+    def __post_init__(self) -> None:
+        names = (self.backend, self.model_name, self.similarity)
+        if any((not isinstance(value, str) or not value.strip() for value in names)):
+            raise ValueError("Embedding space names must be non-empty")
+        if self.revision is not None and (
+            not isinstance(self.revision, str) or not self.revision.strip()
+        ):
+            raise ValueError("EmbeddingSpaceSpec.revision must be non-empty or None")
+        if not isinstance(self.document_prefix, str):
+            raise TypeError("EmbeddingSpaceSpec.document_prefix must be a string")
+        if self.encoder_family is not None and (
+            not isinstance(self.encoder_family, str) or not self.encoder_family.strip()
+        ):
+            raise ValueError(
+                "EmbeddingSpaceSpec.encoder_family must be non-empty or None"
+            )
+        if self.pooling is not None and (
+            not isinstance(self.pooling, str) or not self.pooling.strip()
+        ):
+            raise ValueError("EmbeddingSpaceSpec.pooling must be non-empty or None")
+        if (
+            not isinstance(self.document_input_format, str)
+            or not self.document_input_format.strip()
+        ):
+            raise ValueError(
+                "EmbeddingSpaceSpec.document_input_format must be non-empty"
+            )
+        if (
+            isinstance(self.dimension, bool)
+            or not isinstance(self.dimension, int)
+            or self.dimension <= 0
+        ):
+            raise ValueError("EmbeddingSpaceSpec.dimension must be a positive integer")
+        if not isinstance(self.normalized, bool):
+            raise TypeError("EmbeddingSpaceSpec.normalized must be a boolean")
+        if self.max_sequence_length is not None and (
+            isinstance(self.max_sequence_length, bool)
+            or not isinstance(self.max_sequence_length, int)
+            or self.max_sequence_length <= 0
+        ):
+            raise ValueError(
+                "EmbeddingSpaceSpec.max_sequence_length must be positive or None"
+            )
+
+    @classmethod
+    def from_mapping(cls, value: Mapping[str, Any]) -> EmbeddingSpaceSpec:
+        return cls(
+            backend=value["backend"],
+            model_name=value["model_name"],
+            revision=value.get("revision"),
+            dimension=value["dimension"],
+            normalized=value["normalized"],
+            similarity=value["similarity"],
+            document_prefix=value.get("document_prefix", ""),
+            max_sequence_length=value.get("max_sequence_length"),
+            encoder_family=value.get("encoder_family"),
+            pooling=value.get("pooling"),
+            document_input_format=value.get("document_input_format", "text"),
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        value = asdict(self)
+        if self.encoder_family is None:
+            value.pop("encoder_family")
+        if self.pooling is None:
+            value.pop("pooling")
+        if self.document_input_format == "text":
+            value.pop("document_input_format")
+        return value
+
+
+@dataclass(frozen=True, slots=True)
+class VectorHit:
+    """
+    vector_id : 索引返回的向量 ID 用来之后找回对应的 ChunkRecord
+    score     : 索引返回的分数
+    """
+
+    vector_id: int
+    score: float
+
+    def __post_init__(self) -> None:
+        if (
+            isinstance(self.vector_id, bool)
+            or not isinstance(self.vector_id, int)
+            or self.vector_id < 0
+        ):
+            raise ValueError("VectorHit.vector_id must be a non-negative integer")
+        if not math.isfinite(self.score):
+            raise ValueError("VectorHit.score must be finite")
+
+
+@dataclass(frozen=True, slots=True)
+class SearchHit:
+    """
+    rank : 该检索结果的排名 从 1 开始
+    chunk: 完整的 ChunkRecord
+    score: 从 VectorHit 继承来的相似度分数
+    """
+
+    rank: int
+    chunk: ChunkRecord
+    score: float
+
+    def __post_init__(self) -> None:
+        if (
+            isinstance(self.rank, bool)
+            or not isinstance(self.rank, int)
+            or self.rank <= 0
+        ):
+            raise ValueError("SearchHit.rank must be a positive integer")
+        if not math.isfinite(self.score):
+            raise ValueError("SearchHit.score must be finite")
+        if not isinstance(self.chunk, ChunkRecord):
+            raise TypeError("SearchHit.chunk must be a ChunkRecord")
+
+    def to_dict(self, *, include_text: bool = True) -> dict[str, Any]:
+        value = {
+            "rank": self.rank,
+            "chunk_id": self.chunk.chunk_id,
+            "vector_id": self.chunk.vector_id,
+            "doc_id": self.chunk.doc_id,
+            "score": self.score,
+            "source": self.chunk.source,
+            "page_start": self.chunk.page_start,
+            "page_end": self.chunk.page_end,
+            "text": self.chunk.text,
+            "token_count": self.chunk.token_count,
+        }
+        if not include_text:
+            value.pop("text")
+        return value
+
+
+@dataclass(frozen=True, slots=True)
+class RetrievalTrace:
+    """
+    top_k       : top k。
+    results     :所有 SearchHit 列表
+    timings_ms  :检索过程里的分阶段耗时，单位是毫秒。
+    """
+
+    top_k: int
+    results: tuple[SearchHit, ...]
+    timings_ms: Mapping[str, float]
+
+    def __post_init__(self) -> None:
+        if (
+            isinstance(self.top_k, bool)
+            or not isinstance(self.top_k, int)
+            or self.top_k < 0
+        ):
+            raise ValueError("RetrievalTrace.top_k must be a non-negative integer")
+        if not all((isinstance(result, SearchHit) for result in self.results)):
+            raise TypeError("RetrievalTrace.results must contain SearchHit values")
+
+
+@dataclass(frozen=True, slots=True)
+class ContextPackage:
+    """Retrieved context selected for prompt construction."""
+
+    text: str
+    results: tuple[SearchHit, ...]
+    token_count: int
+    truncated: bool

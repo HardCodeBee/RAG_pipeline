@@ -1,0 +1,89 @@
+{
+  "utc": "2026-10-19T22:08:19.341801+00:00",
+  "parent300_F1": 0.6809325664588823,
+  "B0_300_F1": 0.6736469411679938,
+  "arms": {
+    "g01_goal_consistency": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.6937193899056644,
+      "same_parent_F1": 0.6809325664588823,
+      "delta_parent": 0.012786823446782168,
+      "paired95": [
+        0.0019428619497117946,
+        0.025893769197110266
+      ],
+      "up": 8,
+      "tie": 285,
+      "down": 7,
+      "pilot_scorable": 100,
+      "pilot_delta": 0.014246309246309246,
+      "expand": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7771507936507934,
+          "delta_parent": -0.0011825396825396837
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9182777777777776,
+          "delta_parent": 0.024593406593406596
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.3857295982884218,
+          "delta_parent": 0.01494960342947959
+        }
+      }
+    },
+    "f01_final_consistency": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.6867276961657768,
+      "same_parent_F1": 0.6809325664588823,
+      "delta_parent": 0.0057951297068944115,
+      "paired95": [
+        -0.006826555470673118,
+        0.019517834534746294
+      ],
+      "up": 6,
+      "tie": 288,
+      "down": 6,
+      "pilot_scorable": 100,
+      "pilot_delta": 0.006342099077393194,
+      "expand": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7853766233766231,
+          "delta_parent": 0.007043290043290039
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9038804496157437,
+          "delta_parent": 0.010196078431372548
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.37092601550496285,
+          "delta_parent": 0.0001460206460206459
+        }
+      }
+    }
+  },
+  "budget": {
+    "global_known_cny": 180.1456992,
+    "global_reserved_cny": 35.3823984,
+    "global_occupied_cny": 215.5280976,
+    "new_known_cny": 1.3588428,
+    "new_reserved_cny": 0,
+    "new_submissions": 718,
+    "cap_cny": 300
+  },
+  "sample_role": "Exposed existing diagnostic300; pilot is not fresh holdout."
+}

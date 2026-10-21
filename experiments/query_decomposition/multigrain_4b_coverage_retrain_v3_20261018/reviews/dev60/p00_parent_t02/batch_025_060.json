@@ -1,0 +1,15 @@
+{
+  "reviewed_indices": [25,60],
+  "exceptions": {
+    "25": {"verdict":"fail","dimensions":["F"],"reason":"Changes the named film Blood Of The Losers into Blood Of The Losners in both identity and date requests; original names must be preserved."},
+    "30": {"verdict":"fail","dimensions":["U"],"reason":"Reasks the already supplied best-season fact rather than a useful unknown prerequisite."},
+    "32": {"verdict":"fail","dimensions":["F","C"],"reason":"Substitutes Lom's country for the main subject of the Ottoman era in that country's history. Omits the historical subject and asks who seized Libya from the wrong entity."},
+    "37": {"verdict":"fail","dimensions":["U"],"reason":"Reidentifies the film despite Alien Autopsy being given by name; no distinct unknown prerequisite."},
+    "39": {"verdict":"fail","dimensions":["F"],"reason":"Drops1945, a stated identifying restriction on the game between South Melbourne and Carlton."},
+    "43": {"verdict":"fail","dimensions":["F"],"reason":"Changes popular government phonology into merely having it. The show helper also loses the shared-continent constraint involving the Dutch reform church's country."},
+    "50": {"verdict":"fail","dimensions":["F"],"reason":"The battles in which the commander was involved are substituted for the battles during which Noss served as that commander's gunner; the joint service restriction is lost."},
+    "57": {"verdict":"uncertain","dimensions":["C"],"reason":"Empty helpers may leave the cross-person intersection unsupported, but the original commonality property is unspecified and querying a guessed profession would also add an assumption. Preserve uncertainty instead of inventing a required occupation or claiming a factual error."},
+    "60": {"verdict":"fail","dimensions":["F","C"],"reason":"The atoll where the berth is available becomes any atoll in an ocean containing the berth. It never asks for the ocean containing the correctly identified atoll, the needed intermediate."}
+  },
+  "reviewer":"All36 original/output pairs inspected before candidate outputs. Same F/S/C/U. Row31 exposes neighbor-county candidates without asserting a different named entity. Row35 allows the conference-city location path, so no mandatory representative-identity lookup is invented. Row46 exposes the fully disambiguated state; no fixed native-hop count is forced. Row8 supplies classification operands; kinship nested expansions remain allowed by v12."
+}

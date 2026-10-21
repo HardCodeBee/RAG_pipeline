@@ -1,0 +1,464 @@
+{
+  "sample_file": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\pilot60.runtime.frozen.jsonl",
+  "sample_sha256": "608eac937aebec113ee7c2f88f6cb30bf83895b08bc06781114aa8b9db6938b0",
+  "reference_file": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\references300.local.frozen.jsonl",
+  "reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+  "planned": 60,
+  "dataset_counts": {
+    "hotpotqa": 20,
+    "2wiki": 20,
+    "musique": 20
+  },
+  "metric": "Native Answer F1/EM: HotpotQA; 2Wiki v1.1 entity aliases/demonyms; MuSiQue answer aliases",
+  "aggregation": "Mean over planned query cohort only when complete; available-only mean and missing bounds otherwise; datasets also reported separately.",
+  "scores_are_0_to_1": true,
+  "algorithm_failure_scored_zero": true,
+  "infrastructure_missing_not_scored_zero": true,
+  "arms": {
+    "union20": {
+      "planned": 60,
+      "scorable": 57,
+      "missing": 3,
+      "statuses": {
+        "success": 57,
+        "incomplete": 3
+      },
+      "F1_available": 0.7564049011417434,
+      "EM_available": 0.6842105263157895,
+      "F1_complete": null,
+      "EM_complete": null,
+      "F1_all_planned_bounds": [
+        0.7185846560846563,
+        0.7685846560846561
+      ],
+      "paired_with_frozen_p02": {
+        "n": 57,
+        "F1": 0.7564049011417434,
+        "baseline_F1": 0.7696324143692564,
+        "delta": -0.013227513227513227,
+        "up": 2,
+        "tie": 53,
+        "down": 2
+      },
+      "paired_with_direct_parent": {
+        "n": 57,
+        "F1": 0.7564049011417434,
+        "parent_F1": 0.7696324143692564,
+        "delta": -0.013227513227513227,
+        "up": 2,
+        "tie": 53,
+        "down": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 20,
+          "scorable": 19,
+          "missing": 1,
+          "statuses": {
+            "success": 19,
+            "incomplete": 1
+          },
+          "F1_available": 0.7819548872180452,
+          "EM_available": 0.7368421052631579,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.7428571428571429,
+            0.792857142857143
+          ],
+          "paired_with_frozen_p02": {
+            "n": 19,
+            "F1": 0.7819548872180452,
+            "baseline_F1": 0.8421052631578947,
+            "delta": -0.06015037593984962,
+            "up": 0,
+            "tie": 17,
+            "down": 2
+          },
+          "paired_with_direct_parent": {
+            "n": 19,
+            "F1": 0.7819548872180452,
+            "parent_F1": 0.8421052631578947,
+            "delta": -0.06015037593984962,
+            "up": 0,
+            "tie": 17,
+            "down": 2
+          }
+        },
+        "2wiki": {
+          "planned": 20,
+          "scorable": 20,
+          "missing": 0,
+          "statuses": {
+            "success": 20
+          },
+          "F1_available": 0.9652777777777779,
+          "EM_available": 0.85,
+          "F1_complete": 0.9652777777777779,
+          "EM_complete": 0.85,
+          "F1_all_planned_bounds": [
+            0.9652777777777779,
+            0.9652777777777779
+          ],
+          "paired_with_frozen_p02": {
+            "n": 20,
+            "F1": 0.9652777777777779,
+            "baseline_F1": 0.9569444444444445,
+            "delta": 0.008333333333333331,
+            "up": 1,
+            "tie": 19,
+            "down": 0
+          },
+          "paired_with_direct_parent": {
+            "n": 20,
+            "F1": 0.9652777777777779,
+            "parent_F1": 0.9569444444444445,
+            "delta": 0.008333333333333331,
+            "up": 1,
+            "tie": 19,
+            "down": 0
+          }
+        },
+        "musique": {
+          "planned": 20,
+          "scorable": 18,
+          "missing": 2,
+          "statuses": {
+            "success": 18,
+            "incomplete": 2
+          },
+          "F1_available": 0.4973544973544974,
+          "EM_available": 0.4444444444444444,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.44761904761904764,
+            0.5476190476190477
+          ],
+          "paired_with_frozen_p02": {
+            "n": 18,
+            "F1": 0.4973544973544974,
+            "baseline_F1": 0.48500881834215165,
+            "delta": 0.012345679012345682,
+            "up": 1,
+            "tie": 17,
+            "down": 0
+          },
+          "paired_with_direct_parent": {
+            "n": 18,
+            "F1": 0.4973544973544974,
+            "parent_F1": 0.48500881834215165,
+            "delta": 0.012345679012345682,
+            "up": 1,
+            "tie": 17,
+            "down": 0
+          }
+        }
+      },
+      "logical_usage_on_selected_case_records": {
+        "prompt_tokens": 655433,
+        "completion_tokens": 5770,
+        "successful_logical_calls": 352
+      },
+      "new_success_request_ids_on_selected_records": 243,
+      "cost_note": "Logical usage includes exact cache replays; actual payments and unresolved reservations are reported by the runner budget ledger."
+    },
+    "discount20": {
+      "planned": 60,
+      "scorable": 59,
+      "missing": 1,
+      "statuses": {
+        "success": 59,
+        "incomplete": 1
+      },
+      "F1_available": 0.7448883508205543,
+      "EM_available": 0.6779661016949152,
+      "F1_complete": null,
+      "EM_complete": null,
+      "F1_all_planned_bounds": [
+        0.732473544973545,
+        0.7491402116402118
+      ],
+      "paired_with_frozen_p02": {
+        "n": 59,
+        "F1": 0.7448883508205543,
+        "baseline_F1": 0.743543179983858,
+        "delta": 0.0013451708366962604,
+        "up": 1,
+        "tie": 57,
+        "down": 1
+      },
+      "paired_with_direct_parent": {
+        "n": 57,
+        "F1": 0.771024784182679,
+        "parent_F1": 0.7564049011417434,
+        "delta": 0.014619883040935673,
+        "up": 1,
+        "tie": 55,
+        "down": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 20,
+          "scorable": 19,
+          "missing": 1,
+          "statuses": {
+            "success": 19,
+            "incomplete": 1
+          },
+          "F1_available": 0.8345864661654135,
+          "EM_available": 0.7894736842105263,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.7928571428571429,
+            0.8428571428571431
+          ],
+          "paired_with_frozen_p02": {
+            "n": 19,
+            "F1": 0.8345864661654135,
+            "baseline_F1": 0.8421052631578947,
+            "delta": -0.007518796992481205,
+            "up": 0,
+            "tie": 18,
+            "down": 1
+          },
+          "paired_with_direct_parent": {
+            "n": 19,
+            "F1": 0.8345864661654135,
+            "parent_F1": 0.7819548872180452,
+            "delta": 0.05263157894736842,
+            "up": 1,
+            "tie": 18,
+            "down": 0
+          }
+        },
+        "2wiki": {
+          "planned": 20,
+          "scorable": 20,
+          "missing": 0,
+          "statuses": {
+            "success": 20
+          },
+          "F1_available": 0.9569444444444445,
+          "EM_available": 0.85,
+          "F1_complete": 0.9569444444444445,
+          "EM_complete": 0.85,
+          "F1_all_planned_bounds": [
+            0.9569444444444445,
+            0.9569444444444443
+          ],
+          "paired_with_frozen_p02": {
+            "n": 20,
+            "F1": 0.9569444444444445,
+            "baseline_F1": 0.9569444444444445,
+            "delta": 0.0,
+            "up": 0,
+            "tie": 20,
+            "down": 0
+          },
+          "paired_with_direct_parent": {
+            "n": 20,
+            "F1": 0.9569444444444445,
+            "parent_F1": 0.9652777777777779,
+            "delta": -0.008333333333333331,
+            "up": 0,
+            "tie": 19,
+            "down": 1
+          }
+        },
+        "musique": {
+          "planned": 20,
+          "scorable": 20,
+          "missing": 0,
+          "statuses": {
+            "success": 20
+          },
+          "F1_available": 0.44761904761904764,
+          "EM_available": 0.4,
+          "F1_complete": 0.44761904761904764,
+          "EM_complete": 0.4,
+          "F1_all_planned_bounds": [
+            0.44761904761904764,
+            0.44761904761904764
+          ],
+          "paired_with_frozen_p02": {
+            "n": 20,
+            "F1": 0.44761904761904764,
+            "baseline_F1": 0.43650793650793646,
+            "delta": 0.011111111111111113,
+            "up": 1,
+            "tie": 19,
+            "down": 0
+          },
+          "paired_with_direct_parent": {
+            "n": 18,
+            "F1": 0.4973544973544974,
+            "parent_F1": 0.4973544973544974,
+            "delta": 0.0,
+            "up": 0,
+            "tie": 18,
+            "down": 0
+          }
+        }
+      },
+      "logical_usage_on_selected_case_records": {
+        "prompt_tokens": 671126,
+        "completion_tokens": 5894,
+        "successful_logical_calls": 358
+      },
+      "new_success_request_ids_on_selected_records": 102,
+      "cost_note": "Logical usage includes exact cache replays; actual payments and unresolved reservations are reported by the runner budget ledger."
+    },
+    "single_final": {
+      "planned": 60,
+      "scorable": 58,
+      "missing": 2,
+      "statuses": {
+        "success": 57,
+        "incomplete": 2,
+        "success_truncated": 1
+      },
+      "F1_available": 0.7290366721401205,
+      "EM_available": 0.6551724137931034,
+      "F1_complete": null,
+      "EM_complete": null,
+      "F1_all_planned_bounds": [
+        0.7047354497354498,
+        0.7380687830687831
+      ],
+      "paired_with_frozen_p02": {
+        "n": 58,
+        "F1": 0.7290366721401205,
+        "baseline_F1": 0.7563628899835797,
+        "delta": -0.027326217843459222,
+        "up": 4,
+        "tie": 50,
+        "down": 4
+      },
+      "paired_with_direct_parent": {
+        "n": 58,
+        "F1": 0.7290366721401205,
+        "parent_F1": 0.7577312534209086,
+        "delta": -0.028694581280788174,
+        "up": 3,
+        "tie": 51,
+        "down": 4
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 20,
+          "scorable": 19,
+          "missing": 1,
+          "statuses": {
+            "success": 18,
+            "incomplete": 1,
+            "success_truncated": 1
+          },
+          "F1_available": 0.8240601503759399,
+          "EM_available": 0.7368421052631579,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.7828571428571429,
+            0.832857142857143
+          ],
+          "paired_with_frozen_p02": {
+            "n": 19,
+            "F1": 0.8240601503759399,
+            "baseline_F1": 0.8421052631578947,
+            "delta": -0.01804511278195489,
+            "up": 0,
+            "tie": 17,
+            "down": 2
+          },
+          "paired_with_direct_parent": {
+            "n": 19,
+            "F1": 0.8240601503759399,
+            "parent_F1": 0.8345864661654135,
+            "delta": -0.010526315789473682,
+            "up": 0,
+            "tie": 18,
+            "down": 1
+          }
+        },
+        "2wiki": {
+          "planned": 20,
+          "scorable": 20,
+          "missing": 0,
+          "statuses": {
+            "success": 20
+          },
+          "F1_available": 0.9277777777777778,
+          "EM_available": 0.85,
+          "F1_complete": 0.9277777777777778,
+          "EM_complete": 0.85,
+          "F1_all_planned_bounds": [
+            0.9277777777777778,
+            0.9277777777777778
+          ],
+          "paired_with_frozen_p02": {
+            "n": 20,
+            "F1": 0.9277777777777778,
+            "baseline_F1": 0.9569444444444445,
+            "delta": -0.029166666666666664,
+            "up": 2,
+            "tie": 17,
+            "down": 1
+          },
+          "paired_with_direct_parent": {
+            "n": 20,
+            "F1": 0.9277777777777778,
+            "parent_F1": 0.9569444444444445,
+            "delta": -0.029166666666666664,
+            "up": 2,
+            "tie": 17,
+            "down": 1
+          }
+        },
+        "musique": {
+          "planned": 20,
+          "scorable": 19,
+          "missing": 1,
+          "statuses": {
+            "success": 19,
+            "incomplete": 1
+          },
+          "F1_available": 0.424812030075188,
+          "EM_available": 0.3684210526315789,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.4035714285714286,
+            0.45357142857142846
+          ],
+          "paired_with_frozen_p02": {
+            "n": 19,
+            "F1": 0.424812030075188,
+            "baseline_F1": 0.4594820384294068,
+            "delta": -0.03467000835421888,
+            "up": 2,
+            "tie": 16,
+            "down": 1
+          },
+          "paired_with_direct_parent": {
+            "n": 19,
+            "F1": 0.424812030075188,
+            "parent_F1": 0.4711779448621554,
+            "delta": -0.046365914786967416,
+            "up": 1,
+            "tie": 16,
+            "down": 2
+          }
+        }
+      },
+      "logical_usage_on_selected_case_records": {
+        "prompt_tokens": 557369,
+        "completion_tokens": 4050,
+        "successful_logical_calls": 298
+      },
+      "new_success_request_ids_on_selected_records": 58,
+      "cost_note": "Logical usage includes exact cache replays; actual payments and unresolved reservations are reported by the runner budget ledger."
+    }
+  }
+}

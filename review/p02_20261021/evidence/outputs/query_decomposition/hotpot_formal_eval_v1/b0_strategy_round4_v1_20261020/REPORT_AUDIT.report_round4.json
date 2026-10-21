@@ -1,0 +1,84 @@
+{
+  "utc": "2026-10-19T23:25:04.639800+00:00",
+  "phase": "complete_full300",
+  "native_score_parity_with_frozen_driver": {
+    "r04_scope_contract": {
+      "scorable": true,
+      "up": true,
+      "tie": true,
+      "down": true,
+      "F1": true,
+      "hotpotqa": true,
+      "2wiki": true,
+      "musique": true
+    },
+    "s04_scope_plus_evidence": {
+      "scorable": true,
+      "up": true,
+      "tie": true,
+      "down": true,
+      "F1": true,
+      "hotpotqa": true,
+      "2wiki": true,
+      "musique": true
+    }
+  },
+  "source_pins_checked": 26,
+  "input_hashes_checked": 2,
+  "pin_mismatches": [],
+  "actual_payload_node_context_prompt_checks": {
+    "r04_scope_contract/nodes_equal_p02": 300,
+    "r04_scope_contract/context_equal_factor_control": 300,
+    "r04_scope_contract/only_scope_sentence_replaced": 300,
+    "s04_scope_plus_evidence/nodes_equal_p02": 300,
+    "s04_scope_plus_evidence/context_equal_factor_control": 300,
+    "s04_scope_plus_evidence/only_scope_sentence_replaced": 300,
+    "no_extra_both_scorable": 86,
+    "no_extra_s04_prompt_equals_r04": 86,
+    "no_extra_s04_prediction_equals_r04": 86,
+    "no_extra_s04_reused_receipt": 86,
+    "no_extra_same_physical_request": 86
+  },
+  "all_changed_text_records": 38,
+  "manual_review_records_used": 38,
+  "manual_unique_query_ids": 27,
+  "unreviewed_changed_records": 0,
+  "representative_fixed_case_reviews": 10,
+  "representative_reviews_complete": true,
+  "expected_new_submissions_no_infra_retries": 514,
+  "actual_new_submissions": 515,
+  "infrastructure_extra_submissions": 1,
+  "cache_no_novel_docs": 86,
+  "cache_correct_same_payload_same_prediction_same_physical_request": 86,
+  "preserved_infrastructure_failed_attempts": [
+    {
+      "arm": "r04_scope_contract",
+      "id": "musique:3hop1__458916_651917_47686",
+      "status": "incomplete",
+      "error_type": "RecordedFailure",
+      "retryable_infrastructure": true,
+      "failed_request_id": null,
+      "request_status": "unknown",
+      "http_status": null
+    }
+  ],
+  "new_round4_cost": {
+    "known_cny": 1.149394,
+    "unreconciled_reserved_cny": 0.0090064,
+    "occupied_cny": 1.1584004,
+    "provider_submissions": 515
+  },
+  "report_code_sha256": "6e242a13af567e4b66f95b54bed59a717e58014a6ed5cab92dc4bb7f0396202c",
+  "report_data_sha256": "0c141913f82f596c3096de81e22891298853b941920475ef827661d21565a9c6",
+  "limitations": [
+    "Exposed old300 diagnostic/dev set; no independent generalization inference.",
+    "Non-blind mechanism review is not experimental mediation proof.",
+    "Gold read only for old300 offline scoring; no runtime rules/doc selection use gold.",
+    "Independent validation inspected only filename counts and namespace budget; no answers/scores read.",
+    "Positive numeric interaction may arise from overlapping lexical penalties rather than fact correction."
+  ],
+  "new_API_calls": 0,
+  "new_retrieval_calls": 0,
+  "frozen_execution_files_modified": false,
+  "issues": []
+}

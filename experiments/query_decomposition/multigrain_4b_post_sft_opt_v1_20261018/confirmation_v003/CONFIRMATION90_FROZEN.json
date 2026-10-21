@@ -1,0 +1,105 @@
+{
+  "seed": "20261018-post-sft-confirm90-01",
+  "n": 90,
+  "desired_quotas": {
+    "hotpotqa": {
+      "bridge": 21,
+      "comparison": 9
+    },
+    "2wiki": {
+      "comparison": 8,
+      "inference": 8,
+      "compositional": 7,
+      "bridge_comparison": 7
+    },
+    "musique": {
+      "2-hop": 12,
+      "3-hop": 10,
+      "4-hop": 8
+    }
+  },
+  "actual_quotas": {
+    "hotpotqa": {
+      "bridge": 21,
+      "comparison": 9
+    },
+    "2wiki": {
+      "comparison": 8,
+      "inference": 8,
+      "compositional": 7,
+      "bridge_comparison": 7
+    },
+    "musique": {
+      "2-hop": 13,
+      "3-hop": 10,
+      "4-hop": 7
+    }
+  },
+  "available": {
+    "hotpotqa/comparison": 990,
+    "hotpotqa/bridge": 3827,
+    "2wiki/compositional": 4917,
+    "2wiki/comparison": 2837,
+    "2wiki/inference": 1407,
+    "2wiki/bridge_comparison": 2552,
+    "musique/2-hop": 714,
+    "musique/3-hop": 89,
+    "musique/4-hop": 7
+  },
+  "excluded": {
+    "known_id_or_text": 4316,
+    "shared_mu_training_dev_test_primitive": 742
+  },
+  "selection_uses_outputs_or_answers": false,
+  "role": "One-time new-query confirmation after dev-only selection; no follow-up tuning from confirmation outputs.",
+  "mu_primitive_exclusion": "All3500 train + dev150 + original formal300; retain exclusion even if four-hop quota cannot be filled.",
+  "excluded_sources": [
+    "analysis\\hotpotqa_query_taxonomy_validation_20261007\\samples.jsonl",
+    "experiments\\query_decomposition\\api_qdmr_suitability_v1\\data\\queries.jsonl",
+    "experiments\\query_decomposition\\auxiliary_qa_rag_v1\\inputs_frozen\\queries600.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\ablation.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\formal.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\ablation.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\formal.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\ablation.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\formal.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\formal.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\formal.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_dev_operational2.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_phase_known_facts_dev2.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical10.questions.jsonl",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical2.questions.jsonl",
+    "experiments\\query_decomposition\\ircot_alignment_v1\\inputs_frozen\\questions500.jsonl",
+    "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\dev.questions.jsonl",
+    "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\test.questions.jsonl",
+    "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\EXCLUDE_FROM_TRAINING.jsonl",
+    "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\questions100.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\remote\\queries100.query_only.jsonl",
+    "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\dev.questions.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\hard_cases_for_4b\\CANDIDATES.jsonl",
+    "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\holdout.questions.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_dual_confirm60_v1_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\new36.questions.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_dual_retrieval_pilot_v1_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_evidence_v4_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\cases.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_EXAMPLES_DRAFT.jsonl",
+    "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\dev.questions.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\holdout.questions.frozen.jsonl",
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\data\\accepted_master.jsonl",
+    "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\data\\runtime_qwen_train.jsonl",
+    "outputs\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\training\\MASTER_3500.jsonl",
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12\\MASTER_3500.jsonl",
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl",
+    "experiments\\query_decomposition\\multigrain_4b_frozen_eval300_v1_20261017\\questions300.frozen.jsonl"
+  ]
+}

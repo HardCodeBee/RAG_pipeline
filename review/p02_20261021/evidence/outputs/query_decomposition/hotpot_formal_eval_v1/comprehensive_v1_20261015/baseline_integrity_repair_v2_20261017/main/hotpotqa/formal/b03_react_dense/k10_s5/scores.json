@@ -1,0 +1,70 @@
+{
+  "dataset": "hotpotqa",
+  "reference_sha256": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+  "overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 499,
+    "missing": 1,
+    "f1_available": 0.6951376854534835,
+    "em_available": 0.5691382765531062,
+    "f1_all_planned_bounds": [
+      0.6937474100825766,
+      0.6957474100825766
+    ],
+    "statuses": {
+      "success": 485,
+      "algorithm_failure": 14,
+      "failed": 1
+    }
+  },
+  "by_type": {
+    "bridge": {
+      "planned": 407,
+      "terminal_records": 407,
+      "available": 406,
+      "missing": 1,
+      "f1_available": 0.6754503251857517,
+      "em_available": 0.5344827586206896,
+      "f1_all_planned_bounds": [
+        0.6737907420771871,
+        0.6762477445341897
+      ],
+      "statuses": {
+        "success": 395,
+        "algorithm_failure": 11,
+        "failed": 1
+      }
+    },
+    "comparison": {
+      "planned": 93,
+      "terminal_records": 93,
+      "available": 93,
+      "missing": 0,
+      "f1_available": 0.7810846560846562,
+      "em_available": 0.7204301075268817,
+      "f1_all_planned_bounds": [
+        0.7810846560846562,
+        0.7810846560846562
+      ],
+      "statuses": {
+        "success": 90,
+        "algorithm_failure": 3
+      }
+    }
+  },
+  "returned_usage_cny": 0.14125,
+  "reserved_unreconciled_cny": 0,
+  "logical_calls": 1446,
+  "unsubmitted_trace_calls": 0,
+  "logical_cold_cost_cny": 2.9611444,
+  "logical_cost_missing_calls": 1,
+  "logical_tokens": {
+    "prompt": 3434998,
+    "completion": 106573
+  },
+  "metric": "native official Answer EM/F1; 2Wiki v1.1 entity aliases/demonyms; MuSiQue Ans answer_aliases",
+  "support_metric": "gold document coverage of passages actually shown; not official sentence-support or joint F1",
+  "hallucination_rate_evaluated": false,
+  "cost_pricing": "frozen Beijing tiered public list prices; actual bill not verified"
+}

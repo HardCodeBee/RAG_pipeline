@@ -1,0 +1,232 @@
+{
+  "utc": "2026-10-20T10:08:51.867395+00:00",
+  "passed": true,
+  "scorable_method_cases": 900,
+  "cases_per_dataset_per_arm": 100,
+  "native_F1_recomputed_from_actual_case_predictions": true,
+  "full_payload_usage_receipts_checked": 6796,
+  "full_logical_usage": {
+    "p02": {
+      "logical_calls": 1774,
+      "prompt_tokens": 2837258,
+      "completion_tokens": 28223
+    },
+    "union20": {
+      "logical_calls": 1774,
+      "prompt_tokens": 3311231,
+      "completion_tokens": 28456
+    },
+    "discount20": {
+      "logical_calls": 1774,
+      "prompt_tokens": 3308282,
+      "completion_tokens": 28680
+    },
+    "single_final": {
+      "logical_calls": 1474,
+      "prompt_tokens": 2751306,
+      "completion_tokens": 19837
+    }
+  },
+  "matched_efficiency_and_equal_rate_modeled_cost_verified": true,
+  "single_final_bootstrap_recomputed": {
+    "p02_role_headers": {
+      "comparison": "single_final minus p02_role_headers",
+      "n": 300,
+      "dataset_counts": {
+        "musique": 100,
+        "2wiki": 100,
+        "hotpotqa": 100
+      },
+      "single_final_F1": 0.6767614237614237,
+      "comparison_F1": 0.7072417314845074,
+      "delta": -0.030480307723083775,
+      "paired_bootstrap95": [
+        -0.060536399736219146,
+        -0.0013849165354196356
+      ],
+      "up": 25,
+      "tie": 244,
+      "down": 31,
+      "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+      "replicates": 10000,
+      "seed": 20261020,
+      "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+      "numeric_noninferiority_margin": null,
+      "all300_comparison_complete": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "comparison": "single_final minus p02_role_headers",
+          "n": 100,
+          "dataset_counts": {
+            "hotpotqa": 100
+          },
+          "single_final_F1": 0.7447857142857139,
+          "comparison_F1": 0.7899083694083693,
+          "delta": -0.04512265512265512,
+          "paired_bootstrap95": [
+            -0.08891338383838383,
+            -0.0057619047619047615
+          ],
+          "up": 3,
+          "tie": 85,
+          "down": 12,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        },
+        "2wiki": {
+          "comparison": "single_final minus p02_role_headers",
+          "n": 100,
+          "dataset_counts": {
+            "2wiki": 100
+          },
+          "single_final_F1": 0.8951717171717172,
+          "comparison_F1": 0.9334738562091504,
+          "delta": -0.03830213903743316,
+          "paired_bootstrap95": [
+            -0.09333333333333332,
+            0.011975638740344623
+          ],
+          "up": 6,
+          "tie": 86,
+          "down": 8,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        },
+        "musique": {
+          "comparison": "single_final minus p02_role_headers",
+          "n": 100,
+          "dataset_counts": {
+            "musique": 100
+          },
+          "single_final_F1": 0.3903268398268398,
+          "comparison_F1": 0.3983429688360029,
+          "delta": -0.008016129009163066,
+          "paired_bootstrap95": [
+            -0.0687614252563169,
+            0.050149900970489186
+          ],
+          "up": 16,
+          "tie": 73,
+          "down": 11,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        }
+      }
+    },
+    "discount20": {
+      "comparison": "single_final minus discount20",
+      "n": 300,
+      "dataset_counts": {
+        "musique": 100,
+        "2wiki": 100,
+        "hotpotqa": 100
+      },
+      "single_final_F1": 0.6767614237614237,
+      "comparison_F1": 0.7002507732662419,
+      "delta": -0.02348934950481816,
+      "paired_bootstrap95": [
+        -0.04919605191898542,
+        0.0013105879750470635
+      ],
+      "up": 18,
+      "tie": 253,
+      "down": 29,
+      "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+      "replicates": 10000,
+      "seed": 20261020,
+      "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+      "numeric_noninferiority_margin": null,
+      "all300_comparison_complete": true,
+      "by_dataset": {
+        "hotpotqa": {
+          "comparison": "single_final minus discount20",
+          "n": 100,
+          "dataset_counts": {
+            "hotpotqa": 100
+          },
+          "single_final_F1": 0.7447857142857139,
+          "comparison_F1": 0.7940858585858583,
+          "delta": -0.0493001443001443,
+          "paired_bootstrap95": [
+            -0.0944395743145743,
+            -0.008537265512265524
+          ],
+          "up": 3,
+          "tie": 85,
+          "down": 12,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        },
+        "2wiki": {
+          "comparison": "single_final minus discount20",
+          "n": 100,
+          "dataset_counts": {
+            "2wiki": 100
+          },
+          "single_final_F1": 0.8951717171717172,
+          "comparison_F1": 0.9111881419234361,
+          "delta": -0.016016424751718873,
+          "paired_bootstrap95": [
+            -0.05660583778966132,
+            0.016302367158984796
+          ],
+          "up": 6,
+          "tie": 89,
+          "down": 5,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        },
+        "musique": {
+          "comparison": "single_final minus discount20",
+          "n": 100,
+          "dataset_counts": {
+            "musique": 100
+          },
+          "single_final_F1": 0.3903268398268398,
+          "comparison_F1": 0.3954783192894311,
+          "delta": -0.00515147946259132,
+          "paired_bootstrap95": [
+            -0.056284418379495944,
+            0.04502669179245094
+          ],
+          "up": 9,
+          "tie": 79,
+          "down": 12,
+          "bootstrap": "Paired query bootstrap stratified by dataset, preserving observed dataset counts/weights",
+          "replicates": 10000,
+          "seed": 20261020,
+          "scope": "Conditional development-cohort uncertainty; not API-generation randomness or proof of noninferiority",
+          "numeric_noninferiority_margin": null,
+          "all300_comparison_complete": false
+        }
+      }
+    }
+  },
+  "actual_original300_costs_match_ledger_and_exclude_fresh": true,
+  "numeric_noninferiority_margin": null,
+  "automatic_adoption_claimed": false,
+  "final_report_sha256": "1ef4eb4445305b3321a5754292fe12d34d3803d8ceba77519532bdf46c72c0e4",
+  "verification_source_sha256": "35887318c97ad8ae46527a4f8d23bdfdfcb22db6b915690d795ea1ef4512a15b",
+  "new_api_calls": 0,
+  "new_index_searches": 0
+}

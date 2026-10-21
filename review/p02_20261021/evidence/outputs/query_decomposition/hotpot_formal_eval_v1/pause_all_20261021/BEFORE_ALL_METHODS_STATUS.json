@@ -1,0 +1,63 @@
+{
+  "utc": "2026-10-21T04:33:21.464071+00:00",
+  "status": "draining_or_stopped",
+  "planned": 15000,
+  "processed": 11394,
+  "scorable": 11299,
+  "baselines": {
+    "planned": 13500,
+    "processed": 10576,
+    "scorable": 10520,
+    "status": "stopped_no_restart",
+    "utc": "2026-10-21T04:33:20.150961+00:00"
+  },
+  "p02": {
+    "method": "p02_multigrain_timing_cachefix_v1",
+    "planned": 1500,
+    "processed": 818,
+    "scorable": 779,
+    "by_dataset": {
+      "hotpotqa": {
+        "success": 281,
+        "incomplete": 37
+      },
+      "2wiki": {
+        "success": 498,
+        "incomplete": 2
+      },
+      "musique": {}
+    },
+    "controller_lock_held": true,
+    "supervisor": {
+      "utc": "2026-10-21T04:32:55.312616+00:00",
+      "state": "watching",
+      "worker_pid": 36684,
+      "recovery": 0,
+      "budget": {
+        "global_known_cny": 219.4353784,
+        "global_reserved_cny": 54.778723199999995,
+        "global_occupied_cny": 274.2141016,
+        "experiment_known_cny": 5.9277244,
+        "experiment_reserved_cny": 0.39732959999999995,
+        "experiment_submissions": 4415,
+        "global_cap_cny": 300,
+        "actual_bill_verified": false
+      }
+    },
+    "remote_decompositions": 1500,
+    "remote_queue": "COMPLETING|1:02:06|weirdo",
+    "remote_receipt_utc": "2026-10-20T23:50:11.182173+00:00",
+    "experiment_occupied_cny": 6.332356,
+    "subcap_cny": 20,
+    "audit_passed": true,
+    "audit_utc": "2026-10-21T04:28:57.811999+00:00"
+  },
+  "budget": {
+    "known_cny": 219.446324,
+    "unknown_reserved_cny": 54.86608,
+    "occupied_cny": 274.312404,
+    "cap_cny": 300,
+    "remaining_cny": 25.687596
+  },
+  "chat_notifications_scheduled": false
+}

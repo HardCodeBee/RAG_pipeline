@@ -1,0 +1,144 @@
+{
+  "checked_utc": "2026-10-17T13:53:43.284320+00:00",
+  "job_id": "153978",
+  "revision": "v003_exact_v12",
+  "queue": "JOBID NAME STATE TIME TIME_LIMIT NODELIST(REASON)\n153984 rewrite-role-short-score PENDING 0:00 10:00 (Dependency)\n153979 rewrite-sft-role-short-v1 RUNNING 4:43 1:00:00 weirdo\n",
+  "accounting": "153978|COMPLETED|01:36:21|0:0\n153978.batch|COMPLETED|01:36:21|0:0\n153978.extern|COMPLETED|01:36:21|0:0\n153978.0|COMPLETED|01:36:17|0:0\n",
+  "smoke_verified": true,
+  "train_metrics_present": true,
+  "api_calls": 0,
+  "train_STATE.json": {
+    "api_calls": 0,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/results/train/checkpoints/checkpoint-000220",
+    "consumed_examples": 7000,
+    "global_step": 220,
+    "semantic_checkpoint_selection": "pending_local_dev_review",
+    "status": "early_stopped"
+  },
+  "train_LATEST_CHECKPOINT.json": {
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/results/train/checkpoints/checkpoint-000220",
+    "global_step": 220
+  },
+  "train_metrics.jsonl": {
+    "rows": 220,
+    "last": [
+      {
+        "actual_examples": 32,
+        "consumed_examples": 6956,
+        "epoch": 2,
+        "gradient_norm": 0.5149895548820496,
+        "learning_rate": 3.5312500000000005e-05,
+        "loss": 0.0963059005374302,
+        "seconds": 19.082362585002556,
+        "step": 218
+      },
+      {
+        "actual_examples": 32,
+        "consumed_examples": 6988,
+        "epoch": 2,
+        "gradient_norm": 0.6992480158805847,
+        "learning_rate": 3.5e-05,
+        "loss": 0.1322461566911855,
+        "seconds": 19.070796069921926,
+        "step": 219
+      },
+      {
+        "actual_examples": 12,
+        "consumed_examples": 7000,
+        "epoch": 2,
+        "gradient_norm": 0.7450459599494934,
+        "learning_rate": 3.46875e-05,
+        "loss": 0.07692950447180293,
+        "seconds": 7.161895388038829,
+        "step": 220
+      }
+    ]
+  },
+  "train_validation.jsonl": {
+    "rows": 4,
+    "all": [
+      {
+        "bad_checks": 0,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.16345772261238564,
+          "target_tokens": 4038
+        },
+        "gap": 0.01757861737542618,
+        "step": 55,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.14587910523695946,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "bad_checks": 0,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.15832024649575285,
+          "target_tokens": 4038
+        },
+        "gap": 0.05647391261536755,
+        "step": 110,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.1018463338803853,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "bad_checks": 1,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.18288240893709173,
+          "target_tokens": 4038
+        },
+        "gap": 0.10453954372338709,
+        "step": 165,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.07834286521370465,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "bad_checks": 2,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.15735508515404917,
+          "target_tokens": 4038
+        },
+        "gap": 0.10731704794554567,
+        "step": 220,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.0500380372085035,
+          "target_tokens": 4462
+        }
+      }
+    ]
+  },
+  "dev_predictions": [
+    {
+      "checkpoint": "checkpoint-000110",
+      "cases": 150
+    },
+    {
+      "checkpoint": "checkpoint-000165",
+      "cases": 150
+    },
+    {
+      "checkpoint": "checkpoint-000220",
+      "cases": 150
+    }
+  ],
+  "checkpoints": [
+    "checkpoint-000055",
+    "checkpoint-000110",
+    "checkpoint-000165",
+    "checkpoint-000220"
+  ],
+  "log_out": "{\"step\": 216, \"epoch\": 2, \"examples\": 32, \"loss\": 0.08014535746960016}\n{\"step\": 217, \"epoch\": 2, \"examples\": 32, \"loss\": 0.09435683231935156}\n{\"step\": 218, \"epoch\": 2, \"examples\": 32, \"loss\": 0.0963059005374302}\n{\"step\": 219, \"epoch\": 2, \"examples\": 32, \"loss\": 0.1322461566911855}\n{\"step\": 220, \"epoch\": 2, \"examples\": 12, \"loss\": 0.07692950447180293}",
+  "log_err": "Loading weights: 100%|█████████▉| 397/398 [00:00<00:00, 2065.98it/s, Materializing param=model.layers.35.self_attn.v_proj.weight]\nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2065.98it/s, Materializing param=model.norm.weight]                      \nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2065.98it/s, Materializing param=model.norm.weight]\nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2083.22it/s, Materializing param=model.norm.weight]\nThe following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details."
+}

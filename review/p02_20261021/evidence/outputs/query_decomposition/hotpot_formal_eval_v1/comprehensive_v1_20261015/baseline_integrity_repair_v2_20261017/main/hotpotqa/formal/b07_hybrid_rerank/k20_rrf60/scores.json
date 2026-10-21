@@ -1,0 +1,65 @@
+{
+  "dataset": "hotpotqa",
+  "reference_sha256": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+  "overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 500,
+    "missing": 0,
+    "f1_available": 0.649587517779778,
+    "em_available": 0.506,
+    "f1_all_planned_bounds": [
+      0.649587517779778,
+      0.649587517779778
+    ],
+    "statuses": {
+      "success": 500
+    }
+  },
+  "by_type": {
+    "bridge": {
+      "planned": 407,
+      "terminal_records": 407,
+      "available": 407,
+      "missing": 0,
+      "f1_available": 0.6119303775228349,
+      "em_available": 0.4520884520884521,
+      "f1_all_planned_bounds": [
+        0.6119303775228349,
+        0.6119303775228349
+      ],
+      "statuses": {
+        "success": 407
+      }
+    },
+    "comparison": {
+      "planned": 93,
+      "terminal_records": 93,
+      "available": 93,
+      "missing": 0,
+      "f1_available": 0.8143881208397338,
+      "em_available": 0.7419354838709677,
+      "f1_all_planned_bounds": [
+        0.8143881208397338,
+        0.8143881208397338
+      ],
+      "statuses": {
+        "success": 93
+      }
+    }
+  },
+  "returned_usage_cny": 0,
+  "reserved_unreconciled_cny": 0,
+  "logical_calls": 500,
+  "unsubmitted_trace_calls": 0,
+  "logical_cold_cost_cny": 0.5116855999999999,
+  "logical_cost_missing_calls": 0,
+  "logical_tokens": {
+    "prompt": 634432,
+    "completion": 2070
+  },
+  "metric": "native official Answer EM/F1; 2Wiki v1.1 entity aliases/demonyms; MuSiQue Ans answer_aliases",
+  "support_metric": "gold document coverage of passages actually shown; not official sentence-support or joint F1",
+  "hallucination_rate_evaluated": false,
+  "cost_pricing": "frozen Beijing tiered public list prices; actual bill not verified"
+}

@@ -1,0 +1,265 @@
+{
+  "n": 16,
+  "parent_passes": 4,
+  "candidate_passes": 3,
+  "fixes": [
+    11,
+    13
+  ],
+  "regressions": [
+    5,
+    15,
+    16
+  ],
+  "scope": "Purposive old-problem regression diagnostic; patterns informed training, not fresh population evaluation or a checkpoint-selection gate. Same Codex review.",
+  "rows": [
+    {
+      "index": 1,
+      "id": "musique:3hop1__3571_36635_87083",
+      "query": "Who holds veto power in the organization in which the winners of the conflict after which more people began to keep dogs as pets were allotted seats?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "First item still replaces temporal after which with causal led to.",
+      "output": [
+        "What conflict led to more people beginning to keep dogs as pets?",
+        "Who won the conflict after which more people began to keep dogs as pets?",
+        "In what organization were the winners of the conflict after which more people began to keep dogs as pets allotted seats?"
+      ]
+    },
+    {
+      "index": 2,
+      "id": "musique:3hop1__387468_10129_10094",
+      "query": "In 2009, what was the annual real growth of urbanites in the place neighboring the south of Liu Ying's birthplace to the north?",
+      "parent_verdict": "pass",
+      "verdict": "pass",
+      "dimensions": [],
+      "reason": "Identical array: Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted.",
+      "output": [
+        "Where was Liu Ying born?",
+        "What place neighbors the south of Liu Ying's birthplace to the north?"
+      ]
+    },
+    {
+      "index": 3,
+      "id": "musique:4hop2__82843_8914_18402_40957",
+      "query": "Zhou travelled across a sea with a Chinese delegation to convince the person who considered Tito too independent to support the country that invented the first car in the world. What was done to counteract the overpopulation of the mnemiopsis in that sea?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still attaches support of car-inventing country to considering Tito independent instead of the attempt to convince the person; sea item also loses mission condition.",
+      "output": [
+        "What sea did Zhou travel across with a Chinese delegation?",
+        "What country invented the first car in the world?",
+        "Who considered Tito too independent to support the country that invented the first car in the world?"
+      ]
+    },
+    {
+      "index": 4,
+      "id": "musique:3hop2__15282_94588_1252",
+      "query": "How many times has the actor who appeared with Elizabeth in the film portrayed the main character in Octopussy?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "S",
+        "C"
+      ],
+      "reason": "Identical array: Merges actor-in-film and portrayal clauses into a malformed request and never identifies the character whose portrayals are counted.",
+      "output": [
+        "Who was the actor who appeared with Elizabeth in the film portrayed the main character in Octopussy?"
+      ]
+    },
+    {
+      "index": 5,
+      "id": "musique:4hop1__518643_27692_695507_571416",
+      "query": "Which county shares a border with the county Mountain View is in from the province where Herbert Collins was born?",
+      "parent_verdict": "pass",
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "County containing Mountain View drops the identifying province; final border-county item repeats original target as completion.",
+      "output": [
+        "In what province was Herbert Collins born?",
+        "In what county is Mountain View?",
+        "What county shares a border with the county containing Mountain View in the province where Herbert Collins was born?"
+      ]
+    },
+    {
+      "index": 6,
+      "id": "musique:4hop1__159049_46905_153002_61416",
+      "query": "Who is the husband of Taylor from the Real Housewives of the city where the actor of the mother of the character waiting for Ross is from?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still uses the mother/character rather than the actor playing the mother for origin-city relation.",
+      "output": [
+        "Who was the character waiting for Ross?",
+        "Who played the character waiting for Ross?",
+        "What city is the mother of the character waiting for Ross from?",
+        "Who is Taylor from the Real Housewives of the city where the mother of the character waiting for Ross is from?"
+      ]
+    },
+    {
+      "index": 7,
+      "id": "musique:3hop1__32254_284934_36418",
+      "query": "For which mission did the operator of what detected the storms on Neptune astronauts first learn Russian?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Mission item makes operator learn Russian, dropping the astronauts-of-operator binding.",
+      "output": [
+        "What detected the storms on Neptune?",
+        "Who operated what detected the storms on Neptune?",
+        "What mission did the operator of what detected the storms on Neptune first learn Russian in?"
+      ]
+    },
+    {
+      "index": 8,
+      "id": "musique:4hop2__8960_82843_18402_40957",
+      "query": "Zhou traveled with a Chinese delegation to convince the person with whom Tito's belief in self-determination caused a rift to support the country where the first car was invented. What was done to counteract the overpopulation of mnemiopsis in the destination of this delegation?",
+      "parent_verdict": "uncertain",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Reverses whose self-determination belief caused a rift; also narrows delegation destination to a country without support.",
+      "output": [
+        "What country invented the first car?",
+        "What person's belief in self-determination caused a rift with Tito?",
+        "To what country did the Chinese delegation travel to convince the person whose belief in self-determination caused a rift with Tito to support the country where the first car was invented?"
+      ]
+    },
+    {
+      "index": 9,
+      "id": "musique:4hop2__209582_13954_836568_124496",
+      "query": "Elisabeth Christine of Brunswick-Wolfenbüttel's spouse had the same title as Henry's ally and belonged to a certain family. Who is the father of Matilda from that same family?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Family still belongs to Henry ally rather than Elisabeth spouse; missing spouse/title binding.",
+      "output": [
+        "Who was Henry's ally who had the same title as Elisabeth Christine of Brunswick-Wolfenbüttel's spouse?",
+        "What family did Henry's ally who had the same title as Elisabeth Christine of Brunswick-Wolfenbüttel's spouse belong to?"
+      ]
+    },
+    {
+      "index": 10,
+      "id": "musique:3hop1__123388_41483_600324",
+      "query": "What is the birthplace of the first president of the school where Yoshio Fukuyama studied or worked?",
+      "parent_verdict": "fail",
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "School/president relation is repaired, but broader study/work-place plus school identity may duplicate one need; utility ambiguity retained as nonpass.",
+      "output": [
+        "Where did Yoshio Fukuyama study or work?",
+        "What school did Yoshio Fukuyama study or work at?",
+        "Who was the first president of the school where Yoshio Fukuyama studied or worked?"
+      ]
+    },
+    {
+      "index": 11,
+      "id": "musique:4hop1__830110_202077_391232_769830",
+      "query": "The Berchtesgaden National Park is found in land that neighbors a certain city. Who is the sibling of the screenwriter of the film Season in this certain city?",
+      "parent_verdict": "fail",
+      "verdict": "pass",
+      "dimensions": [],
+      "reason": "Preserves city adjacent to park-containing land and film-in-that-city qualifier for its screenwriter.",
+      "output": [
+        "In what land is Berchtesgaden National Park found?",
+        "What city is adjacent to the land containing Berchtesgaden National Park?",
+        "Who is the screenwriter of the film Season in the city adjacent to the land containing Berchtesgaden National Park?"
+      ]
+    },
+    {
+      "index": 12,
+      "id": "musique:3hop1__735542_216091_135373",
+      "query": "What is the sea that the river that is the mouth of the Chandalar empties into, named after?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "River whose mouth receives Chandalar becomes river whose mouth is in Chandalar, reversing hydrological direction.",
+      "output": [
+        "What river has its mouth in the Chandalar?",
+        "What sea does the river whose mouth is in the Chandalar empty into?"
+      ]
+    },
+    {
+      "index": 13,
+      "id": "musique:3hop1__802058_680388_111942",
+      "query": "Sibylle is from the region where Bardentreffen is held, which also has a railway to Crailsheim. When was she born?",
+      "parent_verdict": "fail",
+      "verdict": "pass",
+      "dimensions": [],
+      "reason": "Drops the unqualified bare-Sibylle lookup. Region questions provide the two original intersection operands without changing ownership.",
+      "output": [
+        "In what region is Bardentreffen held?",
+        "In what region is there a railway to Crailsheim?"
+      ]
+    },
+    {
+      "index": 14,
+      "id": "musique:3hop1__144428_680388_135145",
+      "query": "Maria Elisabeth was Princess of a region that currently has a railway to Crailsheim, and is the birthplace of Marc Oechler. Who was her mother?",
+      "parent_verdict": "fail",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Identical array: Still queries the region of bare Maria Elisabeth without the combined railway and Marc-Oechler-birthplace identifying conditions.",
+      "output": [
+        "What region was Maria Elisabeth Princess of?",
+        "What region is the birthplace of Marc Oechler?",
+        "What region currently has a railway to Crailsheim?"
+      ]
+    },
+    {
+      "index": 15,
+      "id": "musique:2hop__161339_436196",
+      "query": "What is the mouth of the watercourse of the river in which Brown recovered the duckbill skull?",
+      "parent_verdict": "pass",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Watercourse of the river becomes watercourse in the river, changing the explicit relation.",
+      "output": [
+        "In what river did Brown recover the duckbill skull?",
+        "What watercourse is in the river where Brown recovered the duckbill skull?"
+      ]
+    },
+    {
+      "index": 16,
+      "id": "musique:2hop__724841_13913",
+      "query": "What was the per km2 population density in 2013 of the birthplace of Francis Birtles?",
+      "parent_verdict": "pass",
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Area denominator drops2013 and no longer keeps calculation inputs time-consistent.",
+      "output": [
+        "Where was Francis Birtles born?",
+        "What was the population of the birthplace of Francis Birtles in 2013?",
+        "What was the area in square kilometers of the birthplace of Francis Birtles?"
+      ]
+    }
+  ]
+}

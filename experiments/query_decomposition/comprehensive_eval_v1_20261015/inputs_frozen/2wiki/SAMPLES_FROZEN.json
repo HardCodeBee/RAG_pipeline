@@ -1,0 +1,57 @@
+{
+  "dataset": "2wiki",
+  "seed": 2026101501,
+  "files_sha256": {
+    "dev.questions.jsonl": "a85c4371d1870a14e40934d714974fea825f0bb4348e3962909808cd102ee994",
+    "dev.references.local.jsonl": "462152f68292b7d30a2f2193c3bea97e6823f21e76c115e1af85a67e5db0cd4c",
+    "dev.positions.json": "5084c6ca6af5234cb0bc9fce82dd6fa3c2d109174c62d79a37621fc80ec410f1",
+    "formal.questions.jsonl": "3392fab398a5a86b6cf095cbbdcde22cb5942b2b009f667071fc49ef1b6bc642",
+    "formal.references.local.jsonl": "e89690b5c5d7e050a3fa9145a02ac4faa243e0b454f63568c963ea7c76bb220f",
+    "formal.positions.json": "daecae8fd04dd34ae16d883c4a6637282d7a3593b07ec7dda09d97d51e5cd4e7",
+    "ablation.questions.jsonl": "0778d43e22fffb648037670ff2781d0470e373cc060389dd60c743c6588b5d40",
+    "ablation.references.local.jsonl": "e80ae7a0c479b12edcd676ffddc301a32786e40de0573a05c4c91efc83deaea4",
+    "ablation.positions.json": "b0b2a3389bdd04d594215098b1d1a4173c5d5e20778eacbe81f0291b9f5fb237"
+  },
+  "splits": {
+    "dev": {
+      "questions": 100,
+      "type_counts": {
+        "inference": 13,
+        "bridge_comparison": 22,
+        "comparison": 23,
+        "compositional": 42
+      },
+      "groups": 100
+    },
+    "formal": {
+      "questions": 500,
+      "type_counts": {
+        "compositional": 212,
+        "inference": 63,
+        "comparison": 113,
+        "bridge_comparison": 112
+      },
+      "groups": 500
+    },
+    "ablation": {
+      "questions": 200,
+      "type_counts": {
+        "compositional": 85,
+        "inference": 25,
+        "comparison": 45,
+        "bridge_comparison": 45
+      },
+      "groups": 200
+    }
+  },
+  "selection_used_answers_or_model_outputs": false,
+  "dev_formal_groups_disjoint": true,
+  "ablation_subset_formal": true,
+  "sources": [
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\dev.json",
+      "sha256": "21b0a6ffef454f887b5a7a6115db443d3476e99fefeb05d4c5fb73be01582554"
+    }
+  ],
+  "exposure_audit_sha256": "d34d2bc8d86f174e660be10191c6872751fbd1b13d3531af5d31b9682ec322ec"
+}

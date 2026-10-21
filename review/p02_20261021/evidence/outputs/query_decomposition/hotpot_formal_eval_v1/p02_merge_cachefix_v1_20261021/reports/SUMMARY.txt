@@ -1,0 +1,648 @@
+Canonical-cache-controlled Top10 versus full union
+2026-10-20T13:13:47.036769+00:00
+All F1 values below are raw0..1 proportions.
+{
+  "snapshot_started_utc": "2026-10-20T13:13:32.164328+00:00",
+  "snapshot_finished_utc": "2026-10-20T13:13:47.036769+00:00",
+  "planned": 300,
+  "dataset_counts": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "arms": {
+    "timing_only": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "F1_available": 0.7072417314845074,
+      "EM_available": 0.6133333333333333,
+      "F1_complete": 0.7072417314845074,
+      "F1_all_planned_bounds": [
+        0.7072417314845074,
+        0.7072417314845074
+      ],
+      "logical_usage": {
+        "selected_case_records": 300,
+        "logical_attempts": 1774,
+        "logical_generations": 1774,
+        "prompt_tokens": 2837258,
+        "completion_tokens": 28223,
+        "unreturned_calls": 0,
+        "usage_missing": 0,
+        "equal_rate_generation_cny": 2.3262524000000027,
+        "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.7899083694083693,
+          "EM_available": 0.66,
+          "F1_complete": 0.7899083694083693,
+          "F1_all_planned_bounds": [
+            0.7899083694083693,
+            0.7899083694083692
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 510,
+            "logical_generations": 510,
+            "prompt_tokens": 739189,
+            "completion_tokens": 8610,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 0.6085711999999996,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.9334738562091504,
+          "EM_available": 0.87,
+          "F1_complete": 0.9334738562091504,
+          "F1_all_planned_bounds": [
+            0.9334738562091504,
+            0.9334738562091502
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 648,
+            "logical_generations": 648,
+            "prompt_tokens": 1089218,
+            "completion_tokens": 10290,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 0.8919543999999995,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.3983429688360029,
+          "EM_available": 0.31,
+          "F1_complete": 0.3983429688360029,
+          "F1_all_planned_bounds": [
+            0.3983429688360029,
+            0.398342968836003
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 616,
+            "logical_generations": 616,
+            "prompt_tokens": 1008851,
+            "completion_tokens": 9323,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 0.8257267999999999,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        }
+      }
+    },
+    "union20": {
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "F1_available": 0.7036005386730249,
+      "EM_available": 0.6133333333333333,
+      "F1_complete": 0.7036005386730249,
+      "F1_all_planned_bounds": [
+        0.7036005386730249,
+        0.7036005386730247
+      ],
+      "logical_usage": {
+        "selected_case_records": 300,
+        "logical_attempts": 1774,
+        "logical_generations": 1774,
+        "prompt_tokens": 3310428,
+        "completion_tokens": 28484,
+        "unreturned_calls": 0,
+        "usage_missing": 0,
+        "equal_rate_generation_cny": 2.7053104000000014,
+        "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.7842417027417027,
+          "EM_available": 0.66,
+          "F1_complete": 0.7842417027417027,
+          "F1_all_planned_bounds": [
+            0.7842417027417027,
+            0.7842417027417025
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 510,
+            "logical_generations": 510,
+            "prompt_tokens": 817701,
+            "completion_tokens": 8721,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 0.6716027999999998,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.9228548085901026,
+          "EM_available": 0.86,
+          "F1_complete": 0.9228548085901026,
+          "F1_all_planned_bounds": [
+            0.9228548085901026,
+            0.9228548085901025
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 648,
+            "logical_generations": 648,
+            "prompt_tokens": 1281464,
+            "completion_tokens": 10336,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 1.0458431999999998,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "missing": 0,
+          "statuses": {
+            "success": 100
+          },
+          "F1_available": 0.4037051046872692,
+          "EM_available": 0.32,
+          "F1_complete": 0.4037051046872692,
+          "F1_all_planned_bounds": [
+            0.4037051046872692,
+            0.40370510468726933
+          ],
+          "logical_usage": {
+            "selected_case_records": 100,
+            "logical_attempts": 616,
+            "logical_generations": 616,
+            "prompt_tokens": 1211263,
+            "completion_tokens": 9427,
+            "unreturned_calls": 0,
+            "usage_missing": 0,
+            "equal_rate_generation_cny": 0.9878644,
+            "scope": "Logical generations of selected records, including cached replays; incomplete prefixes remain labelled."
+          }
+        }
+      }
+    }
+  },
+  "primary_union20_minus_new_timing_only": {
+    "n": 300,
+    "dataset_counts": {
+      "musique": 100,
+      "2wiki": 100,
+      "hotpotqa": 100
+    },
+    "candidate_F1": 0.7036005386730249,
+    "comparison_F1": 0.7072417314845074,
+    "delta": -0.0036411928114826655,
+    "up": 14,
+    "tie": 277,
+    "down": 9,
+    "paired_bootstrap95": [
+      -0.022851459339774553,
+      0.014428675863186732
+    ],
+    "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+    "numeric_noninferiority_margin": null,
+    "not_a_noninferiority_claim": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "dataset_counts": {
+          "hotpotqa": 100
+        },
+        "candidate_F1": 0.7842417027417027,
+        "comparison_F1": 0.7899083694083693,
+        "delta": -0.005666666666666666,
+        "up": 2,
+        "tie": 97,
+        "down": 1,
+        "paired_bootstrap95": [
+          -0.03,
+          0.01
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "2wiki": {
+        "n": 100,
+        "dataset_counts": {
+          "2wiki": 100
+        },
+        "candidate_F1": 0.9228548085901026,
+        "comparison_F1": 0.9334738562091504,
+        "delta": -0.010619047619047622,
+        "up": 2,
+        "tie": 95,
+        "down": 3,
+        "paired_bootstrap95": [
+          -0.047285714285714285,
+          0.021666666666666664
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "musique": {
+        "n": 100,
+        "dataset_counts": {
+          "musique": 100
+        },
+        "candidate_F1": 0.4037051046872692,
+        "comparison_F1": 0.3983429688360029,
+        "delta": 0.00536213585126629,
+        "up": 10,
+        "tie": 85,
+        "down": 5,
+        "paired_bootstrap95": [
+          -0.03521906996988518,
+          0.04369439948135598
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      }
+    }
+  },
+  "all_arm_common_same_query": {
+    "n": 300,
+    "by_dataset": {
+      "hotpotqa": 100,
+      "2wiki": 100,
+      "musique": 100
+    },
+    "timing_only_F1": 0.7072417314845074,
+    "union20_F1": 0.7036005386730249
+  },
+  "baseline_replay_scoring_check": {
+    "available": 300,
+    "score_differences_from_frozen_p02": 0,
+    "prediction_differences": 0
+  },
+  "historical_union_cache_repair_diagnostic": {
+    "n": 300,
+    "dataset_counts": {
+      "musique": 100,
+      "2wiki": 100,
+      "hotpotqa": 100
+    },
+    "candidate_F1": 0.7036005386730249,
+    "comparison_F1": 0.7031243481968344,
+    "delta": 0.00047619047619047635,
+    "up": 1,
+    "tie": 299,
+    "down": 0,
+    "paired_bootstrap95": [
+      0.0,
+      0.001428571428571429
+    ],
+    "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+    "numeric_noninferiority_margin": null,
+    "not_a_noninferiority_claim": true,
+    "prediction_changed": 2,
+    "not_the_primary_method_comparison": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "dataset_counts": {
+          "hotpotqa": 100
+        },
+        "candidate_F1": 0.7842417027417027,
+        "comparison_F1": 0.7828131313131311,
+        "delta": 0.001428571428571429,
+        "up": 1,
+        "tie": 99,
+        "down": 0,
+        "paired_bootstrap95": [
+          0.0,
+          0.004285714285714287
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "2wiki": {
+        "n": 100,
+        "dataset_counts": {
+          "2wiki": 100
+        },
+        "candidate_F1": 0.9228548085901026,
+        "comparison_F1": 0.9228548085901026,
+        "delta": 0.0,
+        "up": 0,
+        "tie": 100,
+        "down": 0,
+        "paired_bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      },
+      "musique": {
+        "n": 100,
+        "dataset_counts": {
+          "musique": 100
+        },
+        "candidate_F1": 0.4037051046872692,
+        "comparison_F1": 0.4037051046872692,
+        "delta": 0.0,
+        "up": 0,
+        "tie": 100,
+        "down": 0,
+        "paired_bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_method": "Paired query bootstrap stratified by dataset;10000 resamples;seed20261021",
+        "numeric_noninferiority_margin": null,
+        "not_a_noninferiority_claim": true
+      }
+    }
+  },
+  "matched_scorable_flow_efficiency": {
+    "matched_scorable_queries": 300,
+    "algorithm_failures_included": true,
+    "logical_generations": {
+      "timing_only": 1774,
+      "union20": 1774,
+      "change": 0,
+      "relative_change": 0.0
+    },
+    "prompt_tokens": {
+      "timing_only": 2837258,
+      "union20": 3310428,
+      "change": 473170,
+      "relative_change": 0.16677017035461703
+    },
+    "completion_tokens": {
+      "timing_only": 28223,
+      "union20": 28484,
+      "change": 261,
+      "relative_change": 0.009247776636076958
+    },
+    "equal_rate_generation_cny": {
+      "timing_only": 2.3262524000000027,
+      "union20": 2.7053104000000014,
+      "change": 0.3790579999999988,
+      "relative_change": 0.16294792430950242
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "matched_scorable_queries": 100,
+        "algorithm_failures_included": true,
+        "logical_generations": {
+          "timing_only": 510,
+          "union20": 510,
+          "change": 0,
+          "relative_change": 0.0
+        },
+        "prompt_tokens": {
+          "timing_only": 739189,
+          "union20": 817701,
+          "change": 78512,
+          "relative_change": 0.1062137017731595
+        },
+        "completion_tokens": {
+          "timing_only": 8610,
+          "union20": 8721,
+          "change": 111,
+          "relative_change": 0.01289198606271777
+        },
+        "equal_rate_generation_cny": {
+          "timing_only": 0.6085711999999996,
+          "union20": 0.6716027999999998,
+          "change": 0.06303160000000019,
+          "relative_change": 0.10357309054388414
+        }
+      },
+      "2wiki": {
+        "matched_scorable_queries": 100,
+        "algorithm_failures_included": true,
+        "logical_generations": {
+          "timing_only": 648,
+          "union20": 648,
+          "change": 0,
+          "relative_change": 0.0
+        },
+        "prompt_tokens": {
+          "timing_only": 1089218,
+          "union20": 1281464,
+          "change": 192246,
+          "relative_change": 0.1764991030262078
+        },
+        "completion_tokens": {
+          "timing_only": 10290,
+          "union20": 10336,
+          "change": 46,
+          "relative_change": 0.0044703595724003885
+        },
+        "equal_rate_generation_cny": {
+          "timing_only": 0.8919543999999995,
+          "union20": 1.0458431999999998,
+          "change": 0.15388880000000027,
+          "relative_change": 0.1725298961471577
+        }
+      },
+      "musique": {
+        "matched_scorable_queries": 100,
+        "algorithm_failures_included": true,
+        "logical_generations": {
+          "timing_only": 616,
+          "union20": 616,
+          "change": 0,
+          "relative_change": 0.0
+        },
+        "prompt_tokens": {
+          "timing_only": 1008851,
+          "union20": 1211263,
+          "change": 202412,
+          "relative_change": 0.20063616926582817
+        },
+        "completion_tokens": {
+          "timing_only": 9323,
+          "union20": 9427,
+          "change": 104,
+          "relative_change": 0.01115520755121742
+        },
+        "equal_rate_generation_cny": {
+          "timing_only": 0.8257267999999999,
+          "union20": 0.9878644,
+          "change": 0.1621376000000001,
+          "relative_change": 0.19635743928863655
+        }
+      }
+    }
+  },
+  "actual_costs": {
+    "new_namespace": {
+      "physical_requests": 16,
+      "returned_usage_cny": 0.03549800000000001,
+      "unreconciled_reserved_cny": 0,
+      "occupied_cny": 0.03549800000000001,
+      "unreconciled_requests": 0,
+      "statuses": {
+        "returned_usage": 16
+      }
+    },
+    "by_arm": {
+      "timing_only": {
+        "physical_requests": 0,
+        "returned_usage_cny": 0,
+        "unreconciled_reserved_cny": 0,
+        "occupied_cny": 0,
+        "unreconciled_requests": 0,
+        "statuses": {},
+        "by_dataset": {
+          "hotpotqa": {
+            "physical_requests": 0,
+            "returned_usage_cny": 0,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0,
+            "unreconciled_requests": 0,
+            "statuses": {}
+          },
+          "2wiki": {
+            "physical_requests": 0,
+            "returned_usage_cny": 0,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0,
+            "unreconciled_requests": 0,
+            "statuses": {}
+          },
+          "musique": {
+            "physical_requests": 0,
+            "returned_usage_cny": 0,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0,
+            "unreconciled_requests": 0,
+            "statuses": {}
+          }
+        }
+      },
+      "union20": {
+        "physical_requests": 16,
+        "returned_usage_cny": 0.03549800000000001,
+        "unreconciled_reserved_cny": 0,
+        "occupied_cny": 0.03549800000000001,
+        "unreconciled_requests": 0,
+        "statuses": {
+          "returned_usage": 16
+        },
+        "by_dataset": {
+          "hotpotqa": {
+            "physical_requests": 9,
+            "returned_usage_cny": 0.016705199999999996,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0.016705199999999996,
+            "unreconciled_requests": 0,
+            "statuses": {
+              "returned_usage": 9
+            }
+          },
+          "2wiki": {
+            "physical_requests": 7,
+            "returned_usage_cny": 0.018792800000000002,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0.018792800000000002,
+            "unreconciled_requests": 0,
+            "statuses": {
+              "returned_usage": 7
+            }
+          },
+          "musique": {
+            "physical_requests": 0,
+            "returned_usage_cny": 0,
+            "unreconciled_reserved_cny": 0,
+            "occupied_cny": 0,
+            "unreconciled_requests": 0,
+            "statuses": {}
+          }
+        }
+      }
+    },
+    "global": {
+      "physical_requests": 109149,
+      "returned_usage_cny": 191.0890936000013,
+      "unreconciled_reserved_cny": 42.55830320000001,
+      "occupied_cny": 233.6473968000013,
+      "unreconciled_requests": 2286,
+      "statuses": {
+        "reserved": 2286,
+        "returned_usage": 106820,
+        "http_failed_not_returned_usage": 43
+      }
+    },
+    "global_cap_cny": 300,
+    "unexpected_namespace_charge_rows": [],
+    "actual_invoice_verified": false,
+    "historical_cache_usage_not_charged_here": true
+  },
+  "receipt_usage_errors": [],
+  "all_saved_receipt_usage_verified": true,
+  "frozen_unit_rates_cny_per_token": {
+    "prompt": 8e-07,
+    "completion": 2e-06
+  },
+  "metric": "Native final Answer F1/EM; 2Wiki aliases/demonyms; MuSiQue aliases",
+  "algorithm_failure_scored_zero": true,
+  "infrastructure_missing_not_scored_zero": true,
+  "numeric_noninferiority_margin": null,
+  "auto_promoted": false,
+  "new_API_calls": 0,
+  "new_index_searches": 0,
+  "source_pins": {
+    "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\scorer.py": "8dcf8a84bd6718d866bd633163ca79859cf15491ec19d758eb11fedf3ebdc186",
+    "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\runtime300.frozen.jsonl": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc"
+  },
+  "notes": [
+    "Primary comparison uses actual new timing_only versus new union20 case records on identical questions.",
+    "Canonical p02 successful full payloads have priority; controlled replay is not all-fresh inference.",
+    "Historical union is reported only to expose the cache repair, never used as a new trajectory.",
+    "Logical cold costs count cached generations; physical ledger includes all new retries and unknown liabilities.",
+    "Incomplete means are labelled; bootstrap crossing zero does not establish equivalence or noninferiority.",
+    "This is an exposed development300 comparison, not an independent generalization test."
+  ]
+}

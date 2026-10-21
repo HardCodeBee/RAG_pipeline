@@ -1,0 +1,57 @@
+{
+  "protocol": {
+    "scope": "round2:12 different fresh questions plus all round1 paired losses; development evidence only",
+    "conditions": {
+      "dual_final_v2": {
+        "rewrite": "frozen_v2",
+        "final": "v2"
+      },
+      "dual_final_v3": {
+        "rewrite": "frozen_v2",
+        "final": "v3"
+      },
+      "single_final_v2": {
+        "rewrite": "none",
+        "final": "v2"
+      },
+      "single_final_v3": {
+        "rewrite": "none",
+        "final": "v3"
+      }
+    },
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "rewrite_tokens": 256,
+    "child_tokens": 128,
+    "final_tokens": 64,
+    "global_cap_cny": 200,
+    "protected_global_cutoff_cny": 195,
+    "round_subcap_cny": 5,
+    "cases_sha256": "e9dd8fdbe0ed80c692386397985b45a53753ffa6823456ceed1d2030e35d4f8d",
+    "new_prompt_sha256": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "new_examples_sha256": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "v2_prompts_sha256": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+    "v2_examples_sha256": "b97e53900f3d1b87a064d5a5a65a337c02d6c1ae39753bfd2753e0435f72db87",
+    "child_prompts_sha256": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "previous_results_sha256": "6e3f83399dd53f7e8b21c82f5823278acdf5061882a2765da8ad236e3159b0c9",
+    "passing_gate": "all13 complete; dual_final_v3 mean F1 above single_final_v3; zero individual F1 losses, including the mandatory regression",
+    "sample_notes": "Hotpot/2Wiki2 historical full successes+2 zeros each. Mu2 full successes+1 zero+1 partial(0.6667), explicitly retained as partial. New query IDs can share corpus facts/templates; not an unseen-corpus or independent generalization claim."
+  },
+  "checks": {
+    "cases": true,
+    "prompts": true,
+    "examples": true,
+    "v2_prompts": true,
+    "v2_examples": true,
+    "child_prompts": true,
+    "previous_results": true
+  },
+  "runner_sha256": "3aaede2bc3bd40dac5c5ab91f3ee6796e6d240bea7af5c8501c188d76fea8096",
+  "old_outputs_modified": false,
+  "gold_in_generation": false,
+  "sample": {
+    "fresh": 12,
+    "regression": 1
+  }
+}

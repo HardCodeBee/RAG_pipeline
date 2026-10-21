@@ -1,0 +1,125 @@
+{
+  "recorded_utc": "2026-10-18T04:27:24.523276+00:00",
+  "gates": {
+    "r01_old_data": {
+      "mu_strictly_higher": false,
+      "overall_not_lower": false,
+      "controls_net_loss_at_most1": true,
+      "mu_FS_not_increased": true
+    },
+    "r02_expanded": {
+      "mu_strictly_higher": true,
+      "overall_not_lower": true,
+      "controls_net_loss_at_most1": true,
+      "mu_FS_not_increased": true
+    }
+  },
+  "selected": "r02_expanded",
+  "dev_summary": {
+    "p00_parent_t02": {
+      "n": 60,
+      "passed": 47,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 13
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 15
+        }
+      },
+      "verdicts": {
+        "fail": 12,
+        "pass": 47,
+        "uncertain": 1
+      },
+      "mu_FS": [
+        11,
+        32,
+        43,
+        60
+      ]
+    },
+    "r01_old_data": {
+      "n": 60,
+      "passed": 46,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 14
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 13
+        }
+      },
+      "verdicts": {
+        "fail": 11,
+        "pass": 46,
+        "uncertain": 3
+      },
+      "mu_FS": [
+        3,
+        32,
+        43,
+        60
+      ],
+      "fixes": [
+        30
+      ],
+      "regressions": [
+        3,
+        40
+      ]
+    },
+    "r02_expanded": {
+      "n": 60,
+      "passed": 51,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 15
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 17
+        }
+      },
+      "verdicts": {
+        "fail": 8,
+        "pass": 51,
+        "uncertain": 1
+      },
+      "mu_FS": [
+        32,
+        43
+      ],
+      "fixes": [
+        11,
+        30,
+        37,
+        60
+      ],
+      "regressions": []
+    }
+  },
+  "confirmation_used_for_selection": false,
+  "plan_sha256": "b1f506ebaec574987fb2d126cbf6382cf3e86c91bb71cb13fffbe8ce79fb7423",
+  "old_baselines_retained": true,
+  "checkpoint": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+  "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+  "confirm_sha256": "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa"
+}

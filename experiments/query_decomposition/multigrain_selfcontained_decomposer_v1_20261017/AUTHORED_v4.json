@@ -1,0 +1,186 @@
+{
+  "reviewer": "Current Codex, same nonblind context; every literal original-query/v4-output pair inspected before v5 generation. Applicable authored v3 notes retained only after this inspection. No answers or passages used.",
+  "rubric": "Frozen PILOT_REVIEW_RULES.txt. P=all checks pass; FSCU identifies failed checks; ? prefix identifies uncertainty; X=unavailable response. This is an explicit manual encoding, not automatic semantic scoring.",
+  "cases": [
+    {
+      "qid": "5ae1f079554299234fd04343",
+      "code": "U",
+      "reason": "仍新增未限定到目标公路的Which county is located in Kentucky?，没有独立支持用途。"
+    },
+    {
+      "qid": "c116cee408ac11ebbd83ac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影的导演身份和出生时间分别保留完整片名及对应关系。"
+    },
+    {
+      "qid": "2hop__124412_402641",
+      "code": "P",
+      "reason": "父亲身份及父亲之子的完整描述均可独立理解，允许自然产生原题。"
+    },
+    {
+      "qid": "5ae33c4d5542992f92d82262",
+      "code": "?C",
+      "reason": "仍只有原题改述，保留v2关于局部限定关系与有用中间分解边界的不确定判定。"
+    },
+    {
+      "qid": "73dcc04808de11ebbd9eac1f6bf848b6",
+      "code": "P",
+      "reason": "分别查询两部电影导演的去世日期，允许直接以中等粒度请求比较属性。"
+    },
+    {
+      "qid": "2hop__156085_436709",
+      "code": "P",
+      "reason": "配偶身份及该配偶的创作者问题均独立完整，保留原句的关系方向。"
+    },
+    {
+      "qid": "5ae0c7b055429945ae95944b",
+      "code": "P",
+      "reason": "保留团体、1590年代和剧场类型；按共同内容口径不强制实体身份展开，原题等价表达单列。"
+    },
+    {
+      "qid": "ab622778089911ebbd77ac1f6bf848b6",
+      "code": "P",
+      "reason": "分别取得导演身份及年龄以支持older比较；年龄时间口径风险另记，不引入人物生卒背景知识强行判错。"
+    },
+    {
+      "qid": "2hop__503085_110222",
+      "code": "P",
+      "reason": "画家身份和出生日期均保留作品名；末题自然等价原题。"
+    },
+    {
+      "qid": "5abf0bf95542997719eab63a",
+      "code": "S",
+      "reason": "第二题再次只写that Spanish poet and playwright，未保留José Rubia Barcia及其出版作品关系，不能独立识别对象。"
+    },
+    {
+      "qid": "c51148bc0bdb11eba7f7acde48001122",
+      "code": "U",
+      "reason": "第二题保留父亲关系的完整消歧，但第一题仍重复查询括号已给出的父亲身份。"
+    },
+    {
+      "qid": "2hop__635187_861533",
+      "code": "P",
+      "reason": "所在省及邻省问题均保留Lago District定位描述。"
+    },
+    {
+      "qid": "5ab8cd3d5542991b5579f009",
+      "code": "P",
+      "reason": "查询指定时期乐队名称和命名来源；保留v2对active from措辞风险的记录，不额外判事实错误。"
+    },
+    {
+      "qid": "b0fe569c0bdd11eba7f7acde48001122",
+      "code": "P",
+      "reason": "歌曲表演者和来源国两题均独立保留歌曲名。"
+    },
+    {
+      "qid": "3hop1__540585_568433_51423",
+      "code": "P",
+      "reason": "最后一题完整保留制作公司、总部和城市链，修复that city。"
+    },
+    {
+      "qid": "5abad3445542996cc5e49ea0",
+      "code": "P",
+      "reason": "保留兄弟身份、交易关系与1992-93赛季限定。"
+    },
+    {
+      "qid": "f77e7afa0bda11eba7f7acde48001122",
+      "code": "P",
+      "reason": "大学创办者及其配偶问题均保留完整大学名和关系。"
+    },
+    {
+      "qid": "3hop1__573244_339990_15538",
+      "code": "P",
+      "reason": "地点问题及恢复死刑的州问题都保留Kashinka Hollow描述。Where可能返回不同地点层级，作为风险另记。"
+    },
+    {
+      "qid": "5a8333115542993344745feb",
+      "code": "SU",
+      "reason": "新增county containing the summit没有识别summit的描述，且询问县治没有提供未知县身份；其余两题虽正确，首题仍无用且未锚定。"
+    },
+    {
+      "qid": "1a25fd560bb011ebab90acde48001122",
+      "code": "P",
+      "reason": "父亲与祖父问题均保留完整姓名及爵位，未猜测实际父辈人名。"
+    },
+    {
+      "qid": "3hop1__483634_720378_15538",
+      "code": "P",
+      "reason": "最后一题保留Howard Mill到县到州的完整描述，修复that state。"
+    },
+    {
+      "qid": "5a7912f655429974737f796c",
+      "code": "P",
+      "reason": "演员身份及生日问题保留Lex Luthor与电影全名。"
+    },
+    {
+      "qid": "20bf77b40bb011ebab90acde48001122",
+      "code": "P",
+      "reason": "直接配偶关系返回空数组，程序追加原题。"
+    },
+    {
+      "qid": "3hop1__51933_40769_64047",
+      "code": "?CU",
+      "reason": "恢复为询问汽车公司而非豪华部门身份，并询问泛化车身样式。与冻结v2同类：RX 350已经明确，可直接补查日期，必要桥接及静态样式用途不确定，不强制逐边拆分。"
+    },
+    {
+      "qid": "5a89a02955429946c8d6e975",
+      "code": "P",
+      "reason": "两部电影分别查询发行时间，未猜测电影版本。"
+    },
+    {
+      "qid": "6a8a71280bb011ebab90acde48001122",
+      "code": "U",
+      "reason": "仍询问已命名人物的泛化身份，随后只重复uncle原题。"
+    },
+    {
+      "qid": "4hop2__567956_14670_8987_8529",
+      "code": "SC",
+      "reason": "Country A/B仍裸用，没有附带原题关系定义，无法在单题中识别国家；增加军种问题不能补足国家绑定。"
+    },
+    {
+      "qid": "5ae14def55429901ffe4ae4a",
+      "code": "P",
+      "reason": "两人的导演身份判断分开请求，原题保留合取要求。"
+    },
+    {
+      "qid": "ed0838b508dc11ebbd9dac1f6bf848b6",
+      "code": "P",
+      "reason": "分别询问两部电影来自哪个国家，保留比较属性和对象。"
+    },
+    {
+      "qid": "4hop2__71753_648517_70784_79935",
+      "code": "P",
+      "reason": "请求Israel所在区域、其北方区域、战役地点及所在区域，最后保留原题创建时间需求。没有跨题指代，没有用外部事实消解原题两地点关系的歧义。"
+    },
+    {
+      "qid": "5a77685e5542993569682d83",
+      "code": "P",
+      "reason": "两场战役分别查询发生时间，供原题比较先后。"
+    },
+    {
+      "qid": "ee5cf4a008a711ebbd7fac1f6bf848b6",
+      "code": "P",
+      "reason": "两家博物馆分别查询成立时间，名称完整。"
+    },
+    {
+      "qid": "4hop1__408432_32392_823060_610794",
+      "code": "P",
+      "reason": "所在地、州首府、邻接城市和县四个层次均保留完整描述。"
+    },
+    {
+      "qid": "5a7ca95b55429935c91b5287",
+      "code": "P",
+      "reason": "两位作家的出生及去世时间分别请求，保留人名国籍职业对应。"
+    },
+    {
+      "qid": "fa7ad32b093411ebbdaeac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影分别请求发行时间。"
+    },
+    {
+      "qid": "4hop1__151650_5274_458768_33637",
+      "code": "P",
+      "reason": "请求较大group与唱片公司身份以及完整总部城市描述，不再把group限定为record label，并保留only。先中等粒度再浅层的排序记录为执行效率风险，不当作语义失败。"
+    }
+  ]
+}

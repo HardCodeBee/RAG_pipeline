@@ -1,0 +1,25 @@
+{
+  "repo_id": "Qwen/Qwen3-4B-Instruct-2507",
+  "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "adapter_path": null,
+  "expected_base_parameters": 4022468096,
+  "expected_adapter_parameters": 0,
+  "allow_upstream_checkpoint": true,
+  "template_policy": "qwen3_instruct_native_nonthinking",
+  "dtype": "bfloat16",
+  "runtime_device": "cuda",
+  "seed": 1729,
+  "max_new_tokens": 1024,
+  "num_beams": 1,
+  "allow_tf32": false,
+  "attn_implementation": "sdpa",
+  "arms": [
+    "v6",
+    "v8",
+    "v11",
+    "v12"
+  ],
+  "model_path": "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/models/qwen3_4b_instruct_2507",
+  "base_identity_file": "/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/results/BASE_MODEL_IDENTITY.runtime.json",
+  "output_dir": "/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/results"
+}

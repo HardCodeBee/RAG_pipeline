@@ -1,0 +1,32 @@
+{
+  "scope": "Post-completion review; no changes to methods, scorer or candidate selection.",
+  "case": {
+    "id": "musique:3hop1__131783_131926_13165",
+    "dataset": "musique",
+    "query": "What treaty ceded territory to the US extending west to the body of water by the location of the Minikahda Club?",
+    "gold_answer": "Treaty of Paris",
+    "parent": {
+      "arm": "parent_g01",
+      "status": "success",
+      "prediction": "Cannot be determined",
+      "em": 0,
+      "f1": 0
+    },
+    "candidate": {
+      "arm": "p02_role_headers",
+      "status": "success",
+      "prediction": "Adams–Onís Treaty",
+      "em": 0,
+      "f1": 0.4
+    },
+    "delta_F1": 0.4
+  },
+  "unchanged_upstream": true,
+  "unchanged_goal_answer": "The Adams–Onís Treaty of 1819 ceded territory to the US extending west to the Pacific Ocean, but no retrieved passage links it—or any treaty—to Lake Calhoun or establishes that any treaty’s western boundary reached Lake Calhoun.",
+  "final_visible_excerpts": [
+    "[Chunk 6 | source=Republic of Cuba (1902–1959), pages=1-1]\nRepublic of Cuba (1902–1959)\nAfter the Spanish -- American War, Spain and the United States signed the Treaty of Paris (1898), by which Spain ceded Puerto Rico, the Philippines, and Guam to the United States for the sum of $20 million. Cuba gained formal independence from the U.S. on May 20, 1902, as the Republic of Cuba. Under Cuba's new constitution, the U.S. retained the right to intervene in Cuban affairs and to supervise its finances and foreign relations. Under the Platt Amendment, the U.S. leased the Guantánamo Bay naval base from Cuba.",
+    "[Chunk 10 | source=Adams–Onís Treaty, pages=1-1]\nAdams–Onís Treaty\nThe Adams -- Onís Treaty of 1819, also known as the Transcontinental Treaty, the Florida Purchase Treaty, or the Florida Treaty, was a treaty between the United States and Spain in 1819 that ceded Florida to the U.S. and defined the boundary between the U.S. and New Spain. It settled a standing border dispute between the two countries and was considered a triumph of American diplomacy. It came in the midst of increasing tensions related to Spain's territorial boundaries in North America against the United States and Great Britain in the aftermath of the American Revolution; and also during the Latin American Wars of Independence. Florida had become a burden to Spain, which could not afford to send settlers or garrisons. Madrid decided to cede the territory to the United States through the Adams -- Onís Treaty in exchange for settling the boundary dispute along the Sabine River in Spanish Texas. The treaty established the boundary of U.S. territory and claims through the Rocky Mountains and west to the Pacific Ocean, in exchange for the U.S. paying residents' claims against the Spanish government up to a total of $5,000,000 and relinquishing the US claims on parts of Spanish Texas west of the Sabine River and other Spanish areas, under the terms of the Louisiana Purchase."
+  ],
+  "finding": "Only shared token treaty increases native F1 from0 to0.4; the candidate still differs from the benchmark Treaty of Paris. The unchanged goal explicitly reports no supporting link between its Adams-Onis/Pacific fact and Lake Calhoun. The final p02 answer retains the candidate name and drops that gap. This is not demonstrated successful factual recovery.",
+  "new_api_calls": 0
+}

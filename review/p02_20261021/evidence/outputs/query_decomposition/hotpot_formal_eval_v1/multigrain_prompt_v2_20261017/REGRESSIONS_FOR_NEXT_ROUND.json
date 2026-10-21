@@ -1,0 +1,25 @@
+[
+  {
+    "dataset": "2wiki",
+    "qid": "32f0334c0bb011ebab90acde48001122",
+    "question": "Who is the maternal grandmother of André De Laval-Montmorency?",
+    "type": "inference",
+    "historical_group": "success",
+    "historical_f1": 1.0,
+    "qdmr": {
+      "steps": [
+        {
+          "id": 1,
+          "request": "Who is the mother of André De Laval-Montmorency?"
+        },
+        {
+          "id": 2,
+          "request": "Who is the maternal grandmother of André De Laval-Montmorency?"
+        }
+      ],
+      "goal": 2
+    },
+    "plan_provenance": "Codex-authored from original question only; no factual intermediate answers inserted; not human gold or proof of correctness",
+    "evaluation_group": "regression"
+  }
+]

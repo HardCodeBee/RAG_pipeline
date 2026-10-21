@@ -1,0 +1,381 @@
+{
+  "format": "training-only message export plus separated audit; no model weights, training launch, answers or passages",
+  "accepted_records": 3500,
+  "files": [
+    {
+      "path": "BASELINE_COMPARISON.json",
+      "size": 3468,
+      "sha256": "efd97a4dcd1ffb3604cbb0b535426504615bca2ba54c1d5b69cb0191200cd2b6"
+    },
+    {
+      "path": "BASELINE_REPORT.txt",
+      "size": 1794,
+      "sha256": "11e6aebcf4fb282cbd743303c22b14cf0a7b12b9e197f070030a37fa44786535"
+    },
+    {
+      "path": "BASELINE_SEMANTIC_REVIEW.jsonl",
+      "size": 276745,
+      "sha256": "26388e752e33d22601f3a4d65ba0f5aed8514c2ed81b033739755692934ed6d7"
+    },
+    {
+      "path": "DATASET_README.txt",
+      "size": 5090,
+      "sha256": "f3dbb99b61e6131cbb4ea1ae59db4371edf21be9012ac5953771e2c5fef02c85"
+    },
+    {
+      "path": "DATA_REPORT.json",
+      "size": 1469,
+      "sha256": "e15ceb62a0574027580fecfe4abc8c1867027ebee687a22739152e45289cf47a"
+    },
+    {
+      "path": "DECISIONS.txt",
+      "size": 6441,
+      "sha256": "b412f26036b381df3077d6bd3fe0623c88280e3729b5a5162d87fd3fd855e309"
+    },
+    {
+      "path": "EXCLUDE_FROM_TRAINING.jsonl",
+      "size": 21102,
+      "sha256": "e8960ceb781d5b390a93eebb96928aaf9c55e83282048598013c47412d0b7a5b"
+    },
+    {
+      "path": "EXCLUDE_FUTURE_EVALUATION.jsonl",
+      "size": 1330761,
+      "sha256": "360a5a3e529722549f658778d6f22e8b58aa8e47e01e4fd3bab62e9b3ddab046"
+    },
+    {
+      "path": "FINAL_PROMPT.txt",
+      "size": 2379,
+      "sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8"
+    },
+    {
+      "path": "FINAL_PROMPT_SELECTION.json",
+      "size": 3648,
+      "sha256": "a35348a2dafafc74577e1844c1d11783b80234e2764ffa82bccf55db56051af1"
+    },
+    {
+      "path": "FINAL_VALIDATION.json",
+      "size": 1643,
+      "sha256": "d236f2673ed6d667d77518b849e450e6222d4828d23014d1ca4a8e082408517a"
+    },
+    {
+      "path": "MASTER_3500.jsonl",
+      "size": 4619295,
+      "sha256": "1028d1059d9a48dc4a66a0ee5a4601e975472cad9960068ef404711a93c8dda7"
+    },
+    {
+      "path": "TOKEN_LENGTHS.jsonl",
+      "size": 543852,
+      "sha256": "a4c7278183d7fa2bdb1a79b43404b4242a43aaf2095ca088f68ceaec40db5672"
+    },
+    {
+      "path": "audit/INPUTS_FROZEN.json",
+      "size": 9546,
+      "sha256": "fa4f5d075ee83fc85e175568ba40f31257e55c5f431da07f8f8044f4d47d3212"
+    },
+    {
+      "path": "audit/LABELING_INPUTS.frozen.jsonl",
+      "size": 2213343,
+      "sha256": "5451d09caecd126f0445791cc97be5cba21b56f6554389fbedf72d2b59090061"
+    },
+    {
+      "path": "audit/NEW_2WIKI_DRAFTS.unreviewed.jsonl",
+      "size": 234782,
+      "sha256": "f9f1d4148a3e2975ea4287de879c6ef4224ad52dde3ef154785ad709edfbd77e"
+    },
+    {
+      "path": "audit/NEW_SELECTION.json",
+      "size": 247,
+      "sha256": "80625ba224627229391a61f5fe1549b6288408ab163db77e6cc2cf601167814e"
+    },
+    {
+      "path": "audit/OLD_DRAFTS.unreviewed.jsonl",
+      "size": 915283,
+      "sha256": "752596a96e43fedf62f1d517276a905bdf90e439420a40fea474c3bd9fda9070"
+    },
+    {
+      "path": "audit/OLD_NEW_DIFF.jsonl",
+      "size": 2039798,
+      "sha256": "f2a41dd5a148d7ee1eaf1af1df407b889fca293f0bccd1b749ee1d3582a67b1d"
+    },
+    {
+      "path": "audit/QUALITY_SAMPLE300.frozen.jsonl",
+      "size": 87598,
+      "sha256": "0dc3160de02ae520a8465425236057418145095a2a0efbd293a50f08fd07936e"
+    },
+    {
+      "path": "audit/QUALITY_SAMPLE300.review.jsonl",
+      "size": 148399,
+      "sha256": "752da7f8fc75ef088551e42675665d3b20c2c1800d4af291d65581b429a73b22"
+    },
+    {
+      "path": "audit/QUARANTINE.jsonl",
+      "size": 58143,
+      "sha256": "9f1bfd97e52766b00b0c28f249ffff4796037645f0a663603fe15e253424bf03"
+    },
+    {
+      "path": "audit/REVIEWED_ALL.jsonl",
+      "size": 4677438,
+      "sha256": "5879b6bbbea010b9799b007b05fc57936e2f829f28322f1af4c31c59940a5692"
+    },
+    {
+      "path": "audit/baseline_predictions400.raw.jsonl",
+      "size": 2348929,
+      "sha256": "af7c07f0546c41f178547b9728dde7d18ee0b2478abc6d3c4d6295d317ef38bd"
+    },
+    {
+      "path": "audit/baseline_questions100.frozen.jsonl",
+      "size": 26775,
+      "sha256": "1dc3a1cc9046565509b58fff587a04ab646e0fa8f025c950c4fc0abe6791c8e9"
+    },
+    {
+      "path": "audit/code/BASELINE_AUTHORED.json",
+      "size": 12970,
+      "sha256": "f11ea338b651a9b22ec3c28f51a970a4aae88c16df201954821174bd35d926bb"
+    },
+    {
+      "path": "audit/code/assemble_training.py",
+      "size": 6223,
+      "sha256": "e2c15272989ef48d33259e7504440e8dfdaf9b203d078faa856fec4b1c891077"
+    },
+    {
+      "path": "audit/code/audit_training_progress.py",
+      "size": 3152,
+      "sha256": "f090e29e52e4359e0f3a77f0001285f60144d7828d1f14771d28383707bddea0"
+    },
+    {
+      "path": "audit/code/author_bridge_review.py",
+      "size": 2301,
+      "sha256": "b5a7b15dfd00aa04a10b0a838f87f60d0e249ed652635552a497ec8199d5a67c"
+    },
+    {
+      "path": "audit/code/new_training_labels.py",
+      "size": 7075,
+      "sha256": "88aaa3551ccc8e330568d602efe593b950ee74db58cd32636f7371b64cee1d72"
+    },
+    {
+      "path": "audit/code/review_baseline.py",
+      "size": 3840,
+      "sha256": "d94165141b93db58f621631f2ebbeb01b238720b6f15bd2231dd0e7a1447534d"
+    },
+    {
+      "path": "audit/code/training_drafts.py",
+      "size": 3882,
+      "sha256": "24a15074d1bb0b032c82f431cd32cb9551d80511212558cb1ae6a81e5a917927"
+    },
+    {
+      "path": "audit/code/training_sources.py",
+      "size": 6688,
+      "sha256": "27c025a69c2e961952e2feaaf461f5397af859ef34de30b22cc1af006254ce9a"
+    },
+    {
+      "path": "audit/code/validate_training.py",
+      "size": 4518,
+      "sha256": "0d2ad77290668c837b25316a8868d70d74a6ca0cd9c060bbc25d0cc102795ce7"
+    },
+    {
+      "path": "audit/training_reviews/SECOND_REVIEW_CORRECTIONS.json",
+      "size": 1975,
+      "sha256": "8cc40c7b5c992375f3b27b4d9aa8a4b0e29c22e332b5092b84ce702e50c6b90c"
+    },
+    {
+      "path": "audit/training_reviews/hard_2369_2404.json",
+      "size": 5506,
+      "sha256": "e048349cc21342e820d7d6aba7dba1db8ea6301eda0fb37939074a617276d406"
+    },
+    {
+      "path": "audit/training_reviews/musique_3285_3364.json",
+      "size": 5306,
+      "sha256": "78e8dc06f24fddbb348932b387d333e379206539f92f57e99034ba8f8fef579b"
+    },
+    {
+      "path": "audit/training_reviews/musique_3365_3434.json",
+      "size": 4659,
+      "sha256": "381df5d2ed057e62710f8b69b5c77e94555f5fb17f1b7eb2583c2bb67c8aee47"
+    },
+    {
+      "path": "audit/training_reviews/musique_3535_3609.json",
+      "size": 9802,
+      "sha256": "7d68a9d6a0c0a1f4b2323b19fee40b39d1171a568d04521d3dd0f7185cc5bbd0"
+    },
+    {
+      "path": "audit/training_reviews/musique_3610_3681.json",
+      "size": 9425,
+      "sha256": "572cd9f6d7fae6b09a70a1195b4a2d61a9ed4c81a5807a361bdba43bc0ce5eb6"
+    },
+    {
+      "path": "audit/training_reviews/musique_3682_3682.json",
+      "size": 427,
+      "sha256": "6ad5070cf61ff758b840745127dfc6e26baa38103de476108a7a3c8094d163ec"
+    },
+    {
+      "path": "audit/training_reviews/musique_3885_3954.json",
+      "size": 16278,
+      "sha256": "3ceba974edcbc9715685d848f7f1d5eaf79d3914b67f3b5a70bfaa728717297c"
+    },
+    {
+      "path": "audit/training_reviews/musique_3955_4030.json",
+      "size": 17273,
+      "sha256": "53b34cea865edbfc4058a722342d701b00476b53585c5dafc77ea48e8074fafd"
+    },
+    {
+      "path": "audit/training_reviews/musique_4031_4032.json",
+      "size": 515,
+      "sha256": "bc504ef9cc6b31fb6f44cd4344b37d0ba7e15dd34bdd55d2c06b103fa04a1bb8"
+    },
+    {
+      "path": "audit/training_reviews/new2wiki_2405_2579.json",
+      "size": 1591,
+      "sha256": "7e303bfb39b9ba16826e9b090a0d71bccbd51e0c7c7863ba68d3e3f8ffe9d37d"
+    },
+    {
+      "path": "audit/training_reviews/new2wiki_2625_2799.json",
+      "size": 1215,
+      "sha256": "e3d0ca05c741754f674af7abd9a1430ee6981ea8a64efdc966523fbc98b8773d"
+    },
+    {
+      "path": "audit/training_reviews/new2wiki_2845_3019.json",
+      "size": 923,
+      "sha256": "506b24e94c37e78d6e348447d6fb13a1e9c19df47042ed0369974f312746ba04"
+    },
+    {
+      "path": "audit/training_reviews/new2wiki_3065_3239.json",
+      "size": 5859,
+      "sha256": "ba81436060c395d9b29ff2b7d0e6097d05ee8429f02b782176b16f11f2b3fcc6"
+    },
+    {
+      "path": "audit/training_reviews/old_0001_0080.json",
+      "size": 2943,
+      "sha256": "4d63883f3683ad26a8b3600269150c36f3b593dba5c0c7cbe0a2ef7f363a4895"
+    },
+    {
+      "path": "audit/training_reviews/old_0081_0160.json",
+      "size": 2906,
+      "sha256": "c3bb5017f77873f73f98e14ddc0c51fd29be4acc3a4773fefe7c3378152df98a"
+    },
+    {
+      "path": "audit/training_reviews/old_0161_0260.json",
+      "size": 4160,
+      "sha256": "ec877f61d490e5fec82def769a0e0a51edbe12840ebbf160e97ab3c3f382d60d"
+    },
+    {
+      "path": "audit/training_reviews/old_0261_0360.json",
+      "size": 5869,
+      "sha256": "83850094aeb77ff78d839cfe8bb32260ddc2fb6d3cfd6bd6b43194f4bc6b829f"
+    },
+    {
+      "path": "audit/training_reviews/old_0361_0460.json",
+      "size": 6892,
+      "sha256": "354a25a872be8e5beeaf90a582e546ce6725675e602fa5e9d4d685f5aa9c3bb8"
+    },
+    {
+      "path": "audit/training_reviews/old_0461_0560.json",
+      "size": 7161,
+      "sha256": "03373696b848af065f71f53a6ebb7aaecc55fb4d0adacfacce711b7b56a13be3"
+    },
+    {
+      "path": "audit/training_reviews/old_0561_0660.json",
+      "size": 6569,
+      "sha256": "85b18f8ee21292c53192f32e8aa5e0dfc9f20ca3047e7ed8b6a08fb18cec45d2"
+    },
+    {
+      "path": "audit/training_reviews/old_0661_0760.json",
+      "size": 6106,
+      "sha256": "2c586ff912d4d513b393c78bdde105e462f884a006d2beb11ea6828b52be2337"
+    },
+    {
+      "path": "audit/training_reviews/old_0761_0860.json",
+      "size": 6272,
+      "sha256": "61f43fe3fdd8543b86af7ad32f7cd6e141fbe7661b3966c5a259e7c9257a652c"
+    },
+    {
+      "path": "audit/training_reviews/old_0861_0960.json",
+      "size": 5674,
+      "sha256": "8585b201826f4e3f2ceda71050726ad38405966f6ca84427b288d263727a6747"
+    },
+    {
+      "path": "audit/training_reviews/old_0961_1060.json",
+      "size": 5132,
+      "sha256": "c8eeeb49e23e6efee04b126da5c249f6d8773b27cb2819f1fc013ebc7081e43e"
+    },
+    {
+      "path": "audit/training_reviews/old_1061_1160.json",
+      "size": 6905,
+      "sha256": "4d604e12a7dbeb4d95ccf9f432cb96a036623c86dc202a518ca1ffec0588c4de"
+    },
+    {
+      "path": "audit/training_reviews/old_1161_1280.json",
+      "size": 4706,
+      "sha256": "15e441ab1d6f6ff871cb8feac22432fcf68df6950a6483c29df9ab283e231d1e"
+    },
+    {
+      "path": "audit/training_reviews/old_1281_1400.json",
+      "size": 5944,
+      "sha256": "6eca0bb5cd2864ce1d9e336f496c8ed7d235b9d9cae0284ae8416260759ba6ee"
+    },
+    {
+      "path": "audit/training_reviews/old_1401_1520.json",
+      "size": 4624,
+      "sha256": "a44dad7649714bf856843da235a43c517d418d6b89ff6a030b097ea6b53226e5"
+    },
+    {
+      "path": "audit/training_reviews/old_1521_1640.json",
+      "size": 8977,
+      "sha256": "dceb40b472a25be16584347ebeeca86f94349857fac38c096d122495ee786fdf"
+    },
+    {
+      "path": "audit/training_reviews/old_1641_1760.json",
+      "size": 7472,
+      "sha256": "4849cd08d2139cbf3ddec38e418698724dbc7c2bf67612cfb942514859d37e2b"
+    },
+    {
+      "path": "audit/training_reviews/old_1761_1840.json",
+      "size": 5190,
+      "sha256": "a17d40eb526e982c879ba407028d4af412941fe95e0d1993d21f68670d4a2024"
+    },
+    {
+      "path": "audit/training_reviews/old_1841_1920.json",
+      "size": 5878,
+      "sha256": "60e987c85dacbe559ed9f4986dae354daa1165d0f7a4a1a2c49bf3cfdfee39e3"
+    },
+    {
+      "path": "audit/training_reviews/old_1921_2000.json",
+      "size": 4167,
+      "sha256": "7349136439e186bb0ba97f1a00c66eabc4055e1cf0cac2e22ed3e045b639fff2"
+    },
+    {
+      "path": "audit/training_reviews/old_2001_2080.json",
+      "size": 2510,
+      "sha256": "518b262b822c6920d6182ca0f40f84967621d2181439bac023937b7118dc5990"
+    },
+    {
+      "path": "audit/training_reviews/old_2081_2200.json",
+      "size": 3400,
+      "sha256": "98ead43442d5c0ecb71345d4f0f2751edcb7e233700c667e4ee1ac0021fc270e"
+    },
+    {
+      "path": "audit/training_reviews/old_2201_2320.json",
+      "size": 5839,
+      "sha256": "4982f40215c1c7e70289ec80b25114639b30b636f4cff89fa0396ff795452ecd"
+    },
+    {
+      "path": "audit/training_reviews/old_2321_2368.json",
+      "size": 3414,
+      "sha256": "e4433402ce47bae59d7d8471e22242661cc8ef991d8c40198d912f31a20ce40b"
+    },
+    {
+      "path": "base_tokenizer/tokenizer.json",
+      "size": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+    },
+    {
+      "path": "base_tokenizer/tokenizer_config.json",
+      "size": 9377,
+      "sha256": "a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3"
+    },
+    {
+      "path": "train3500.messages.jsonl",
+      "size": 9552859,
+      "sha256": "7cce06106ba98534c686bcf7bb69fa0a028ab6e2a73fc56df0ef9a0f6e64efad"
+    }
+  ]
+}

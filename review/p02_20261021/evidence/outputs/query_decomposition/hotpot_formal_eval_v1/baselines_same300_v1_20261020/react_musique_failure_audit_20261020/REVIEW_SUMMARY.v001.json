@@ -1,0 +1,42 @@
+{
+  "version": "v001_offline_causal_review",
+  "paid_api_calls": 0,
+  "new_cost_cny": 0,
+  "cases": 21,
+  "immediate_exit_counts": {
+    "invalid_action": 8,
+    "no_finish_within_budget": 13
+  },
+  "exact_search_repetition": {
+    "affected_cases": 7,
+    "additional_repeated_executions": 11,
+    "among_budget_failures": 7,
+    "budget_failures": 13
+  },
+  "confirmed_native_cross_state_entity_joins": [
+    "musique:4hop3__524186_219173_548463_72134",
+    "musique:4hop1__43565_624859_355213_203322",
+    "musique:3hop1__847684_339990_54675",
+    "musique:4hop1__344155_378185_282674_759393"
+  ],
+  "exact_prompt_reconstruction": {
+    "passed": true,
+    "exact_prompts_rebuilt": 102,
+    "max_prompt_tokens": 9966,
+    "max_retrieval_query_tokens": 22,
+    "retrieval_queries_checked": 81,
+    "new_api_calls": 0
+  },
+  "underlying_cause_tags_are_nonexclusive_observations": true,
+  "recovery_rate_not_measured": true,
+  "labels_or_failures_excluded_from_formal_scoring": 0,
+  "frozen_scores_and_method_unchanged": true,
+  "frozen_result_hashes": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\FINAL_RESULTS.frozen.json": "3107e675656517d31cc3fced34a4057fc21a9f0867fa58d4f0aef5b86b0e2bb5",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\CASE_RESULTS.jsonl": "287d7b164153fd7c3ae7a4669c5ab9c220d95cd0604de4baab13690c91d3a459",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\COMPLETION.frozen.json": "7c5375282107a0a258529d8ea9ef24f2fd2e90abb4b9eb63e4dd2485709c1912"
+  },
+  "native_label_source_sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b",
+  "review_source_sha256": "3dd9eff253bccd46f22d503473610c9e28f3720d7b1d7dbb736fdce87e0ff580",
+  "primary_original_implementation_url": "https://github.com/ysymyth/ReAct/blob/master/hotpotqa.ipynb"
+}

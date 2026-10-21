@@ -1,0 +1,51 @@
+{
+  "task": "terminal_goal_v1_20261020",
+  "arm": "terminal_goal",
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "max_tokens": 128,
+  "workers": 3,
+  "max_rounds": 4,
+  "primary_control": "union20",
+  "planned": 300,
+  "dataset_counts": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "parent_protocol_sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+  "source_pins": {
+    "experiments\\query_decomposition\\terminal_goal_v1_20261020\\run.py": "1b68159eb2a0411f4be87a03acc0380418c0304a8c77aa00657d9665779b845c",
+    "experiments\\query_decomposition\\terminal_goal_v1_20261020\\candidate.py": "6dcc496b47ea7de42cd603e1e04ad5bcb8d325f56dee2a5bf9c207dc8b1e38c6"
+  },
+  "input_hashes": {
+    "runtime300.frozen.jsonl": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "UNION_SOURCES.frozen.json": "45933fd4993c577d4ffee27fcc386f45bb4de4399e83f100ec2d527fc4780138"
+  },
+  "changes": [
+    "Replace terminal goal output contract with complete Conclusion plus Final answer in one call",
+    "Mechanically extract Final answer; preserve Conclusion and raw output",
+    "Delete legacy/final and terminal-goal sentence_format; ordinary formatting unchanged"
+  ],
+  "fixed": [
+    "All ordinary nodes and their API receipts",
+    "Goal rewrite",
+    "Goal original-first full deduplicated union<=20",
+    "Original question and prior QA",
+    "Goal factual-evidence instructions and GOAL_RULE",
+    "Model/temperature/thinking/max128 and retrieval resources"
+  ],
+  "parsing_policy": "candidate.parse_output only; stop finish required; invalid/empty/two-line contract failure scores zero, no semantic repair",
+  "infrastructure_policy": "Keep unknown liabilities; no success rerun; only missing infrastructure cases in a new immutable round; per-dataset circuit",
+  "adoption_policy": "User accepts simplification without F1 gain; report paired losses and uncertainty rather than invent a noninferiority margin",
+  "global_cap_cny": 300,
+  "dispatch_ceiling_cny": 299.9,
+  "shared_project_subcap_cny": 25,
+  "cost_unit": {
+    "prompt_token_cny": 8e-07,
+    "completion_token_cny": 2e-06
+  },
+  "scope": "Previously exposed development300; controlled downstream ablation, not fresh independent test"
+}

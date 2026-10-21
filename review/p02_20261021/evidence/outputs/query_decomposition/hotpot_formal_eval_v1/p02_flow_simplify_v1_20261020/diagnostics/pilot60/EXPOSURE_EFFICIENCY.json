@@ -1,0 +1,1276 @@
+{
+  "utc": "2026-10-20T09:11:31.572549+00:00",
+  "sample": "pilot60",
+  "sample_sha256": "608eac937aebec113ee7c2f88f6cb30bf83895b08bc06781114aa8b9db6938b0",
+  "planned_per_arm": 60,
+  "scope": "Actual complete successful changed trajectories on the same available IDs; algorithm failures/infrastructure missingness remain visible in status counts but do not have an invented complete reader trajectory.",
+  "not_fixed_packet_replay": true,
+  "historical_19_support_loss_nodes_not_reused_as_new_rate": true,
+  "support_recall_or_semantic_relevance_evaluated": false,
+  "gold_source_mapping_loaded": false,
+  "support_note": "No gold relevance labels are used here. Full candidate retention does not establish support completeness or answer correctness.",
+  "arms": {
+    "union20": {
+      "complete_success_cases": 40,
+      "reader_instances": 160,
+      "child_reader_instances": 120,
+      "final_reader_instances": 40,
+      "dual_reader_instances": 54,
+      "child_doc_count": {
+        "n": 120,
+        "total": 1577,
+        "mean": 13.141666666666667,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 70,
+          "11": 2,
+          "12": 2,
+          "13": 1,
+          "14": 3,
+          "15": 3,
+          "16": 5,
+          "17": 4,
+          "18": 7,
+          "19": 3,
+          "20": 20
+        }
+      },
+      "dual_doc_count": {
+        "n": 54,
+        "total": 917,
+        "mean": 16.98148148148148,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 4,
+          "11": 2,
+          "12": 2,
+          "13": 1,
+          "14": 3,
+          "15": 3,
+          "16": 5,
+          "17": 4,
+          "18": 7,
+          "19": 3,
+          "20": 20
+        }
+      },
+      "final_doc_count": {
+        "n": 40,
+        "total": 400,
+        "mean": 10.0,
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 40
+        }
+      },
+      "all_actual_reader_docs": {
+        "n": 160,
+        "total": 1977,
+        "mean": 12.35625,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 110,
+          "11": 2,
+          "12": 2,
+          "13": 1,
+          "14": 3,
+          "15": 3,
+          "16": 5,
+          "17": 4,
+          "18": 7,
+          "19": 3,
+          "20": 20
+        }
+      },
+      "same_ID_p02_reader_docs": {
+        "n": 160,
+        "total": 1600,
+        "mean": 10.0,
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 160
+        }
+      },
+      "actual_complete_prompt_chars": 1621630,
+      "same_ID_p02_complete_prompt_chars": 1410999,
+      "candidate_union_not_fully_retained_instances": 0,
+      "missing_selected_blocks": 0,
+      "reader_instances_over20": 0,
+      "rewritten_rank6_10_occurrences_retrieved": 270,
+      "rewritten_rank6_10_occurrences_read": 270,
+      "original_route_docs_dropped": 0,
+      "rewritten_route_docs_dropped": 0,
+      "same_ID_p02_rewritten_route_docs_dropped": 196,
+      "final_routing_errors": 0,
+      "same_request_steps_compared": 120,
+      "same_request_rewrite_changed": 12,
+      "same_request_candidate_set_changed": 8,
+      "same_request_answer_changed": 33,
+      "logical_success_calls": 240,
+      "exact_cache_reused_calls": 28,
+      "logical_prompt_tokens": 438033,
+      "logical_completion_tokens": 4023,
+      "logical_cold_usage_estimate_cny": 0.3584724,
+      "statuses": {
+        "success": 40,
+        "incomplete": 20
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "complete_success_cases": 16,
+          "reader_instances": 58,
+          "child_reader_instances": 42,
+          "final_reader_instances": 16,
+          "dual_reader_instances": 13,
+          "child_doc_count": {
+            "n": 42,
+            "total": 501,
+            "mean": 11.928571428571429,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 31,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "dual_doc_count": {
+            "n": 13,
+            "total": 211,
+            "mean": 16.23076923076923,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 2,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "final_doc_count": {
+            "n": 16,
+            "total": 160,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 16
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 58,
+            "total": 661,
+            "mean": 11.39655172413793,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 47,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 58,
+            "total": 580,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 58
+            }
+          },
+          "actual_complete_prompt_chars": 490434,
+          "same_ID_p02_complete_prompt_chars": 449885,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 65,
+          "rewritten_rank6_10_occurrences_read": 65,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 42,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 42,
+          "same_request_rewrite_changed": 3,
+          "same_request_candidate_set_changed": 2,
+          "same_request_answer_changed": 15,
+          "logical_success_calls": 84,
+          "exact_cache_reused_calls": 13,
+          "logical_prompt_tokens": 130047,
+          "logical_completion_tokens": 1560,
+          "logical_cold_usage_estimate_cny": 0.10715759999999999
+        },
+        "2wiki": {
+          "complete_success_cases": 19,
+          "reader_instances": 84,
+          "child_reader_instances": 65,
+          "final_reader_instances": 19,
+          "dual_reader_instances": 34,
+          "child_doc_count": {
+            "n": 65,
+            "total": 893,
+            "mean": 13.738461538461538,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 33,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 1,
+              "20": 16
+            }
+          },
+          "dual_doc_count": {
+            "n": 34,
+            "total": 583,
+            "mean": 17.147058823529413,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 2,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 1,
+              "20": 16
+            }
+          },
+          "final_doc_count": {
+            "n": 19,
+            "total": 190,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 19
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 84,
+            "total": 1083,
+            "mean": 12.892857142857142,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 52,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 1,
+              "20": 16
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 84,
+            "total": 840,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 84
+            }
+          },
+          "actual_complete_prompt_chars": 924432,
+          "same_ID_p02_complete_prompt_chars": 785341,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 170,
+          "rewritten_rank6_10_occurrences_read": 170,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 125,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 65,
+          "same_request_rewrite_changed": 8,
+          "same_request_candidate_set_changed": 5,
+          "same_request_answer_changed": 14,
+          "logical_success_calls": 130,
+          "exact_cache_reused_calls": 13,
+          "logical_prompt_tokens": 256386,
+          "logical_completion_tokens": 2117,
+          "logical_cold_usage_estimate_cny": 0.20934279999999994
+        },
+        "musique": {
+          "complete_success_cases": 5,
+          "reader_instances": 18,
+          "child_reader_instances": 13,
+          "final_reader_instances": 5,
+          "dual_reader_instances": 7,
+          "child_doc_count": {
+            "n": 13,
+            "total": 183,
+            "mean": 14.076923076923077,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 6,
+              "15": 2,
+              "16": 1,
+              "18": 1,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "dual_doc_count": {
+            "n": 7,
+            "total": 123,
+            "mean": 17.571428571428573,
+            "min": 15,
+            "max": 20,
+            "histogram": {
+              "15": 2,
+              "16": 1,
+              "18": 1,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "final_doc_count": {
+            "n": 5,
+            "total": 50,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 5
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 18,
+            "total": 233,
+            "mean": 12.944444444444445,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 11,
+              "15": 2,
+              "16": 1,
+              "18": 1,
+              "19": 1,
+              "20": 2
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 18,
+            "total": 180,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 18
+            }
+          },
+          "actual_complete_prompt_chars": 206764,
+          "same_ID_p02_complete_prompt_chars": 175773,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 35,
+          "rewritten_rank6_10_occurrences_read": 35,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 29,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 13,
+          "same_request_rewrite_changed": 1,
+          "same_request_candidate_set_changed": 1,
+          "same_request_answer_changed": 4,
+          "logical_success_calls": 26,
+          "exact_cache_reused_calls": 2,
+          "logical_prompt_tokens": 51600,
+          "logical_completion_tokens": 346,
+          "logical_cold_usage_estimate_cny": 0.041971999999999995
+        }
+      }
+    },
+    "discount20": {
+      "complete_success_cases": 52,
+      "reader_instances": 206,
+      "child_reader_instances": 154,
+      "final_reader_instances": 52,
+      "dual_reader_instances": 74,
+      "child_doc_count": {
+        "n": 154,
+        "total": 2063,
+        "mean": 13.396103896103897,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 84,
+          "11": 2,
+          "12": 3,
+          "13": 2,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 7,
+          "18": 11,
+          "19": 9,
+          "20": 22
+        }
+      },
+      "dual_doc_count": {
+        "n": 74,
+        "total": 1263,
+        "mean": 17.06756756756757,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 4,
+          "11": 2,
+          "12": 3,
+          "13": 2,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 7,
+          "18": 11,
+          "19": 9,
+          "20": 22
+        }
+      },
+      "final_doc_count": {
+        "n": 52,
+        "total": 520,
+        "mean": 10.0,
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 52
+        }
+      },
+      "all_actual_reader_docs": {
+        "n": 206,
+        "total": 2583,
+        "mean": 12.53883495145631,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 136,
+          "11": 2,
+          "12": 3,
+          "13": 2,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 7,
+          "18": 11,
+          "19": 9,
+          "20": 22
+        }
+      },
+      "same_ID_p02_reader_docs": {
+        "n": 206,
+        "total": 2060,
+        "mean": 10.0,
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 206
+        }
+      },
+      "actual_complete_prompt_chars": 2166872,
+      "same_ID_p02_complete_prompt_chars": 1863900,
+      "candidate_union_not_fully_retained_instances": 0,
+      "missing_selected_blocks": 0,
+      "reader_instances_over20": 0,
+      "rewritten_rank6_10_occurrences_retrieved": 370,
+      "rewritten_rank6_10_occurrences_read": 370,
+      "original_route_docs_dropped": 0,
+      "rewritten_route_docs_dropped": 0,
+      "same_ID_p02_rewritten_route_docs_dropped": 275,
+      "final_routing_errors": 0,
+      "same_request_steps_compared": 154,
+      "same_request_rewrite_changed": 12,
+      "same_request_candidate_set_changed": 8,
+      "same_request_answer_changed": 39,
+      "logical_success_calls": 308,
+      "exact_cache_reused_calls": 213,
+      "logical_prompt_tokens": 578660,
+      "logical_completion_tokens": 5107,
+      "logical_cold_usage_estimate_cny": 0.47314199999999995,
+      "statuses": {
+        "success": 52,
+        "incomplete": 8
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "complete_success_cases": 16,
+          "reader_instances": 56,
+          "child_reader_instances": 40,
+          "final_reader_instances": 16,
+          "dual_reader_instances": 11,
+          "child_doc_count": {
+            "n": 40,
+            "total": 461,
+            "mean": 11.525,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 31,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1
+            }
+          },
+          "dual_doc_count": {
+            "n": 11,
+            "total": 171,
+            "mean": 15.545454545454545,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 2,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1
+            }
+          },
+          "final_doc_count": {
+            "n": 16,
+            "total": 160,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 16
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 56,
+            "total": 621,
+            "mean": 11.089285714285714,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 47,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 1
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 56,
+            "total": 560,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 56
+            }
+          },
+          "actual_complete_prompt_chars": 462122,
+          "same_ID_p02_complete_prompt_chars": 431976,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 55,
+          "rewritten_rank6_10_occurrences_read": 55,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 32,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 40,
+          "same_request_rewrite_changed": 3,
+          "same_request_candidate_set_changed": 2,
+          "same_request_answer_changed": 12,
+          "logical_success_calls": 80,
+          "exact_cache_reused_calls": 68,
+          "logical_prompt_tokens": 121791,
+          "logical_completion_tokens": 1513,
+          "logical_cold_usage_estimate_cny": 0.1004588
+        },
+        "2wiki": {
+          "complete_success_cases": 19,
+          "reader_instances": 84,
+          "child_reader_instances": 65,
+          "final_reader_instances": 19,
+          "dual_reader_instances": 34,
+          "child_doc_count": {
+            "n": 65,
+            "total": 892,
+            "mean": 13.723076923076922,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 33,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 2,
+              "20": 15
+            }
+          },
+          "dual_doc_count": {
+            "n": 34,
+            "total": 582,
+            "mean": 17.11764705882353,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 2,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 2,
+              "20": 15
+            }
+          },
+          "final_doc_count": {
+            "n": 19,
+            "total": 190,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 19
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 84,
+            "total": 1082,
+            "mean": 12.880952380952381,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 52,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 2,
+              "20": 15
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 84,
+            "total": 840,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 84
+            }
+          },
+          "actual_complete_prompt_chars": 924561,
+          "same_ID_p02_complete_prompt_chars": 785341,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 170,
+          "rewritten_rank6_10_occurrences_read": 170,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 125,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 65,
+          "same_request_rewrite_changed": 7,
+          "same_request_candidate_set_changed": 4,
+          "same_request_answer_changed": 12,
+          "logical_success_calls": 130,
+          "exact_cache_reused_calls": 114,
+          "logical_prompt_tokens": 256430,
+          "logical_completion_tokens": 2161,
+          "logical_cold_usage_estimate_cny": 0.20946599999999996
+        },
+        "musique": {
+          "complete_success_cases": 17,
+          "reader_instances": 66,
+          "child_reader_instances": 49,
+          "final_reader_instances": 17,
+          "dual_reader_instances": 29,
+          "child_doc_count": {
+            "n": 49,
+            "total": 710,
+            "mean": 14.489795918367347,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 20,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 4,
+              "16": 1,
+              "17": 3,
+              "18": 5,
+              "19": 6,
+              "20": 7
+            }
+          },
+          "dual_doc_count": {
+            "n": 29,
+            "total": 510,
+            "mean": 17.586206896551722,
+            "min": 12,
+            "max": 20,
+            "histogram": {
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 4,
+              "16": 1,
+              "17": 3,
+              "18": 5,
+              "19": 6,
+              "20": 7
+            }
+          },
+          "final_doc_count": {
+            "n": 17,
+            "total": 170,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 17
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 66,
+            "total": 880,
+            "mean": 13.333333333333334,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 37,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 4,
+              "16": 1,
+              "17": 3,
+              "18": 5,
+              "19": 6,
+              "20": 7
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 66,
+            "total": 660,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 66
+            }
+          },
+          "actual_complete_prompt_chars": 780189,
+          "same_ID_p02_complete_prompt_chars": 646583,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 145,
+          "rewritten_rank6_10_occurrences_read": 145,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 118,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 49,
+          "same_request_rewrite_changed": 2,
+          "same_request_candidate_set_changed": 2,
+          "same_request_answer_changed": 15,
+          "logical_success_calls": 98,
+          "exact_cache_reused_calls": 31,
+          "logical_prompt_tokens": 200439,
+          "logical_completion_tokens": 1433,
+          "logical_cold_usage_estimate_cny": 0.16321719999999998
+        }
+      }
+    },
+    "single_final": {
+      "complete_success_cases": 54,
+      "reader_instances": 162,
+      "child_reader_instances": 108,
+      "final_reader_instances": 54,
+      "dual_reader_instances": 80,
+      "child_doc_count": {
+        "n": 108,
+        "total": 1347,
+        "mean": 12.472222222222221,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 75,
+          "12": 1,
+          "13": 1,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 2,
+          "18": 5,
+          "19": 6,
+          "20": 13
+        }
+      },
+      "dual_doc_count": {
+        "n": 80,
+        "total": 1375,
+        "mean": 17.1875,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 4,
+          "11": 2,
+          "12": 3,
+          "13": 2,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 7,
+          "18": 13,
+          "19": 13,
+          "20": 22
+        }
+      },
+      "final_doc_count": {
+        "n": 54,
+        "total": 848,
+        "mean": 15.703703703703704,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 11,
+          "11": 2,
+          "12": 2,
+          "13": 1,
+          "14": 2,
+          "15": 3,
+          "16": 4,
+          "17": 5,
+          "18": 8,
+          "19": 7,
+          "20": 9
+        }
+      },
+      "all_actual_reader_docs": {
+        "n": 162,
+        "total": 2195,
+        "mean": 13.549382716049383,
+        "min": 10,
+        "max": 20,
+        "histogram": {
+          "10": 86,
+          "11": 2,
+          "12": 3,
+          "13": 2,
+          "14": 4,
+          "15": 5,
+          "16": 5,
+          "17": 7,
+          "18": 13,
+          "19": 13,
+          "20": 22
+        }
+      },
+      "same_ID_p02_reader_docs": {
+        "n": 216,
+        "total": 2160,
+        "mean": 10.0,
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 216
+        }
+      },
+      "actual_complete_prompt_chars": 1883898,
+      "same_ID_p02_complete_prompt_chars": 1961607,
+      "candidate_union_not_fully_retained_instances": 0,
+      "missing_selected_blocks": 0,
+      "reader_instances_over20": 0,
+      "rewritten_rank6_10_occurrences_retrieved": 400,
+      "rewritten_rank6_10_occurrences_read": 400,
+      "original_route_docs_dropped": 0,
+      "rewritten_route_docs_dropped": 0,
+      "same_ID_p02_rewritten_route_docs_dropped": 305,
+      "final_routing_errors": 0,
+      "same_request_steps_compared": 108,
+      "same_request_rewrite_changed": 2,
+      "same_request_candidate_set_changed": 1,
+      "same_request_answer_changed": 23,
+      "logical_success_calls": 270,
+      "exact_cache_reused_calls": 216,
+      "logical_prompt_tokens": 510771,
+      "logical_completion_tokens": 3730,
+      "logical_cold_usage_estimate_cny": 0.41607679999999986,
+      "statuses": {
+        "success": 53,
+        "incomplete": 6,
+        "success_truncated": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "complete_success_cases": 18,
+          "reader_instances": 46,
+          "child_reader_instances": 28,
+          "final_reader_instances": 18,
+          "dual_reader_instances": 15,
+          "child_doc_count": {
+            "n": 28,
+            "total": 297,
+            "mean": 10.607142857142858,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 26,
+              "18": 1,
+              "19": 1
+            }
+          },
+          "dual_doc_count": {
+            "n": 15,
+            "total": 246,
+            "mean": 16.4,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 2,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 3,
+              "19": 4
+            }
+          },
+          "final_doc_count": {
+            "n": 18,
+            "total": 259,
+            "mean": 14.38888888888889,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 7,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 2,
+              "19": 3
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 46,
+            "total": 556,
+            "mean": 12.08695652173913,
+            "min": 10,
+            "max": 19,
+            "histogram": {
+              "10": 33,
+              "14": 1,
+              "15": 1,
+              "16": 1,
+              "17": 3,
+              "18": 3,
+              "19": 4
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 64,
+            "total": 640,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 64
+            }
+          },
+          "actual_complete_prompt_chars": 425396,
+          "same_ID_p02_complete_prompt_chars": 494821,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 75,
+          "rewritten_rank6_10_occurrences_read": 75,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 52,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 28,
+          "same_request_rewrite_changed": 1,
+          "same_request_candidate_set_changed": 1,
+          "same_request_answer_changed": 9,
+          "logical_success_calls": 74,
+          "exact_cache_reused_calls": 56,
+          "logical_prompt_tokens": 115255,
+          "logical_completion_tokens": 1163,
+          "logical_cold_usage_estimate_cny": 0.09453
+        },
+        "2wiki": {
+          "complete_success_cases": 19,
+          "reader_instances": 65,
+          "child_reader_instances": 46,
+          "final_reader_instances": 19,
+          "dual_reader_instances": 34,
+          "child_doc_count": {
+            "n": 46,
+            "total": 604,
+            "mean": 13.130434782608695,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 30,
+              "14": 1,
+              "16": 1,
+              "18": 3,
+              "20": 11
+            }
+          },
+          "dual_doc_count": {
+            "n": 34,
+            "total": 582,
+            "mean": 17.11764705882353,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 2,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 2,
+              "20": 15
+            }
+          },
+          "final_doc_count": {
+            "n": 19,
+            "total": 288,
+            "mean": 15.157894736842104,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 3,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 1,
+              "16": 2,
+              "17": 1,
+              "18": 1,
+              "19": 2,
+              "20": 4
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 65,
+            "total": 892,
+            "mean": 13.723076923076922,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 33,
+              "11": 2,
+              "12": 2,
+              "13": 1,
+              "14": 2,
+              "16": 3,
+              "17": 1,
+              "18": 4,
+              "19": 2,
+              "20": 15
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 84,
+            "total": 840,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 84
+            }
+          },
+          "actual_complete_prompt_chars": 776397,
+          "same_ID_p02_complete_prompt_chars": 785341,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 170,
+          "rewritten_rank6_10_occurrences_read": 170,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 125,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 46,
+          "same_request_rewrite_changed": 1,
+          "same_request_candidate_set_changed": 0,
+          "same_request_answer_changed": 6,
+          "logical_success_calls": 111,
+          "exact_cache_reused_calls": 92,
+          "logical_prompt_tokens": 218014,
+          "logical_completion_tokens": 1519,
+          "logical_cold_usage_estimate_cny": 0.1774492
+        },
+        "musique": {
+          "complete_success_cases": 17,
+          "reader_instances": 51,
+          "child_reader_instances": 34,
+          "final_reader_instances": 17,
+          "dual_reader_instances": 31,
+          "child_doc_count": {
+            "n": 34,
+            "total": 446,
+            "mean": 13.117647058823529,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 19,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 2,
+              "17": 2,
+              "18": 1,
+              "19": 5,
+              "20": 2
+            }
+          },
+          "dual_doc_count": {
+            "n": 31,
+            "total": 547,
+            "mean": 17.64516129032258,
+            "min": 12,
+            "max": 20,
+            "histogram": {
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 4,
+              "16": 1,
+              "17": 3,
+              "18": 6,
+              "19": 7,
+              "20": 7
+            }
+          },
+          "final_doc_count": {
+            "n": 17,
+            "total": 301,
+            "mean": 17.705882352941178,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 1,
+              "15": 2,
+              "16": 1,
+              "17": 1,
+              "18": 5,
+              "19": 2,
+              "20": 5
+            }
+          },
+          "all_actual_reader_docs": {
+            "n": 51,
+            "total": 747,
+            "mean": 14.647058823529411,
+            "min": 10,
+            "max": 20,
+            "histogram": {
+              "10": 20,
+              "12": 1,
+              "13": 1,
+              "14": 1,
+              "15": 4,
+              "16": 1,
+              "17": 3,
+              "18": 6,
+              "19": 7,
+              "20": 7
+            }
+          },
+          "same_ID_p02_reader_docs": {
+            "n": 68,
+            "total": 680,
+            "mean": 10.0,
+            "min": 10,
+            "max": 10,
+            "histogram": {
+              "10": 68
+            }
+          },
+          "actual_complete_prompt_chars": 682105,
+          "same_ID_p02_complete_prompt_chars": 681445,
+          "candidate_union_not_fully_retained_instances": 0,
+          "missing_selected_blocks": 0,
+          "reader_instances_over20": 0,
+          "rewritten_rank6_10_occurrences_retrieved": 155,
+          "rewritten_rank6_10_occurrences_read": 155,
+          "original_route_docs_dropped": 0,
+          "rewritten_route_docs_dropped": 0,
+          "same_ID_p02_rewritten_route_docs_dropped": 128,
+          "final_routing_errors": 0,
+          "same_request_steps_compared": 34,
+          "same_request_rewrite_changed": 0,
+          "same_request_candidate_set_changed": 0,
+          "same_request_answer_changed": 8,
+          "logical_success_calls": 85,
+          "exact_cache_reused_calls": 68,
+          "logical_prompt_tokens": 177502,
+          "logical_completion_tokens": 1048,
+          "logical_cold_usage_estimate_cny": 0.1440976
+        }
+      }
+    }
+  },
+  "errors": [],
+  "new_API_calls": 0,
+  "new_index_searches": 0,
+  "actual_payment_note": "Logical cold usage includes cache reuse; use report.py/budget.sqlite3 for actual task incremental cost and unresolved reservations.",
+  "code_sha256": "4b433907f5f453ece20ee5adf1fa6cd68158738d1bf306dfe36b74d4c909236f"
+}

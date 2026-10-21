@@ -1,0 +1,85 @@
+{
+  "records": [
+    {
+      "id": "2wiki:085ace840bde11eba7f7acde48001122",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\2wiki\\b03_react_dense\\085ace840bde11eba7f7acde48001122.json",
+      "case_sha256": "c8d8e5040ac580add84b9c2deb6ef80e91282c5361ebf15337f09776fc219935",
+      "request_id": "726acb47078f60734800e86d729f1e3f77876013e6d43ef18fc9beb405198945",
+      "finish_reason": "length",
+      "original_parser_action": [
+        "search",
+        "Where was Allauddin Khan born?",
+        "Thought: Annapurna Devi was the daughter of Allauddin Khan, the founder of the Maihar gharana, and was given the name 'Annapurna' by the former Maharaja Brijnath Singh of the former Maihar Estate (M.P.). This strongly suggests she was born in Maihar, Madhya Pradesh.\nAction: Search[Where was Allauddin Khan born?]"
+      ],
+      "wrapper_only_failure": true
+    },
+    {
+      "id": "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\2wiki\\b03_react_dense\\2f54952f087811ebbd67ac1f6bf848b6.json",
+      "case_sha256": "bd767cf07ce56f97583a4b155dfebe9836a5deb328dc599b65efb57058a6b301",
+      "request_id": "eb5c80bea6bcd7dccd4a1d1600869805b7b03aa3281cacbae8aef8850c7b9992",
+      "finish_reason": "length",
+      "original_parser_action": [
+        "search",
+        "When did Michael Gordon die?",
+        "Thought: I now know that \"Move Over, Darling\" was directed by Michael Gordon and \"Grief Street\" was directed by Richard Thorpe. I need to find the death years of Michael Gordon and Richard Thorpe to determine who died earlier.\nAction: Search[When did Michael Gordon die?]"
+      ],
+      "wrapper_only_failure": true
+    },
+    {
+      "id": "musique:3hop1__841091_339990_54675",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__841091_339990_54675.json",
+      "case_sha256": "03069398768633af180cafe74dba8d0b6c45165f5646311d70faae408cf8853f",
+      "request_id": "ed938341cb7f2e76af9052886ae747db33d4f5108428d5a3ced37b6274732476",
+      "finish_reason": "length",
+      "original_parser_action": [
+        "search",
+        "Is there a Portland, Pennsylvania?",
+        "Thought: There is no Portland in Pennsylvania—so the question likely contains a geographic mismatch. However, the only major \"Portland\" commonly associated with mountain views is Portland, Oregon, which famously has views of Mount Hood (and other Cascade volcanoes). But Knob Mountain is in Pennsylvania, not Oregon. Since the question asks for “the mountain you can see from Portland in the state where Knob Mountain is located”, and no Portland exists in Pennsylvania, the phrasing may be erroneous—or it may intend “What prominent mountain is visible from Portland, *and* what is the state where Knob Mountain is located?” But that doesn’t yield a single mountain. Alternatively, perhaps the question conflates “Portland” with “Bloomsburg”, which *is* mentioned in the observation as a place from which Knob Mountain is visible—and Bloomsburg is in Columbia County, Pennsylvania, the same county as Knob Mountain. But the question explicitly says “from Portland”. Let’s verify whether there is any lesser-known Portland in Pennsylvania.\nAction: Search[Is there a Portland, Pennsylvania?]"
+      ],
+      "wrapper_only_failure": true
+    },
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop2__326964_734214_7713.json",
+      "case_sha256": "f0b8028724a9cc633514039fb3d2d443540a329f1acc19c71247948a796bbee0",
+      "request_id": "17dcd89c632fab70667db4b358c2b2a2a7649963e2ae8364b823b93320a8c1e4",
+      "finish_reason": "length",
+      "original_parser_action": null,
+      "wrapper_only_failure": false
+    },
+    {
+      "id": "musique:4hop2__161324_14670_8987_8529",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop2__161324_14670_8987_8529.json",
+      "case_sha256": "dd49c55dd43e86c06c72e39f171d633c7188fdc9365b514b5fdaec287f5b1aa3",
+      "request_id": "edf29bae84086deeac43dbc666bf8b7fa4ccb890d27c6eebe63245d43451dd42",
+      "finish_reason": "length",
+      "original_parser_action": null,
+      "wrapper_only_failure": false
+    },
+    {
+      "id": "musique:4hop2__161602_426860_88460_21074",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop2__161602_426860_88460_21074.json",
+      "case_sha256": "8958d70e20b099331fac935f05a6020a28ef93d2e941841d56d6319674b0828b",
+      "request_id": "2bde9403ac19d03a4095f0d43a5d291ba8bedcffdf9f22746d07476fb2198cf5",
+      "finish_reason": "length",
+      "original_parser_action": null,
+      "wrapper_only_failure": false
+    },
+    {
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "case_path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop3__524186_219173_548463_72134.json",
+      "case_sha256": "fcb3ebdd48cbfaaf4f974e4ad10e456f26909c4170c2fb1f1ac85bb25de2930f",
+      "request_id": "daeea1355deca4a9abb49f8b16ea3a87ec5f13b089fe164ae730fba49cd43aa3",
+      "finish_reason": "length",
+      "original_parser_action": null,
+      "wrapper_only_failure": false
+    }
+  ],
+  "counts": {
+    "valid_action": 3,
+    "invalid_action": 4
+  },
+  "new_api_calls": 0,
+  "replay_selection_uses_F1": false
+}

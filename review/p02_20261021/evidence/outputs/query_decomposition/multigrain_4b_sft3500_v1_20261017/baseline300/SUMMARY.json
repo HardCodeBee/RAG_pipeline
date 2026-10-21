@@ -1,0 +1,49 @@
+{
+  "reviewed": 300,
+  "planned": 300,
+  "complete": true,
+  "verdicts": {
+    "fail": 139,
+    "pass": 157,
+    "uncertain": 4
+  },
+  "passed_over_full300": 0.5233333333333333,
+  "by_dataset": {
+    "hotpotqa": {
+      "reviewed": 100,
+      "denominator": 100,
+      "verdicts": {
+        "fail": 48,
+        "pass": 51,
+        "uncertain": 1
+      }
+    },
+    "2wiki": {
+      "reviewed": 100,
+      "denominator": 100,
+      "verdicts": {
+        "fail": 28,
+        "pass": 71,
+        "uncertain": 1
+      }
+    },
+    "musique": {
+      "reviewed": 100,
+      "denominator": 100,
+      "verdicts": {
+        "fail": 63,
+        "uncertain": 2,
+        "pass": 35
+      }
+    }
+  },
+  "failed_dimensions_overlapping": {
+    "F": 71,
+    "C": 70,
+    "U": 51,
+    "S": 28
+  },
+  "provenance": "Original4B/no adapter/v12/greedy; current Codex query-only nonindependent review; not downstream Answer F1.",
+  "source_prediction_sha256": "3baf64b33cbdef8069d0fb532c331cd7e53a18ae4ee9b0837dcf8515126c09ad",
+  "api_calls": 0
+}

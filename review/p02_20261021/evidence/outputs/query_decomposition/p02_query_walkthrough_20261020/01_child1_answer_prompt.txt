@@ -1,0 +1,125 @@
+Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.
+The original question supplies scope; answer only the current subquestion.
+Resolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.
+Return one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.
+
+Worked examples:
+
+Example 1
+Original question:
+What is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?
+
+Relevant prior question-answer pairs:
+#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado River.
+
+Current subquestion #2:
+What is the length of #1?
+
+Retrieved passages:
+[Colorado River]
+The 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.
+
+Answer: The Colorado River is 1450 mi long.
+
+Example 2
+Original question:
+Which has more species, Clianthus or Callicoma?
+
+Relevant prior question-answer pairs:
+No prior question-answer pairs are required.
+
+Current subquestion #1:
+How many species does Clianthus contain?
+
+Retrieved passages:
+[Clianthus]
+They have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.
+
+Answer: The total species count of Clianthus cannot be determined from these passages.
+
+Example 3
+Original question:
+Which has more species, Clianthus or Callicoma?
+
+Relevant prior question-answer pairs:
+#1 Question: Which genus contains Callicoma serratifolia?
+Answer: Callicoma contains Callicoma serratifolia.
+
+Current subquestion #2:
+How many species does #1 contain other than Callicoma serratifolia?
+
+Retrieved passages:
+[Callicoma]
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+
+Answer: Callicoma contains zero species other than Callicoma serratifolia.
+
+Example 4
+Original question:
+Are both Leycesteria and Anigozanthos native to Australia?
+
+Relevant prior question-answer pairs:
+No prior question-answer pairs are required.
+
+Current subquestion #1:
+Is Leycesteria native to Australia?
+
+Retrieved passages:
+[Leycesteria]
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+
+Answer: No. Leycesteria is native to temperate Asia, rather than Australia.
+
+Actual task:
+Original question:
+Where was the husband of Jeanne Raunay born?
+
+Relevant prior question-answer pairs:
+No prior question-answer pairs are required.
+
+Current subquestion #1:
+Who is Jeanne Raunay's husband?
+
+Retrieved passages:
+[Chunk 1 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 2 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 3 | source=Jacqueline Roque, pages=1-1]
+Jacqueline Roque
+Jacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.
+
+[Chunk 4 | source=Jacqueline Roque, pages=1-1]
+Jacqueline Roque
+Jacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.
+
+[Chunk 5 | source=Jeanne Fallières, pages=1-1]
+Jeanne Fallières
+Jeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.
+
+[Chunk 6 | source=Jeanne Fallières, pages=1-1]
+Jeanne Fallières
+Jeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.
+
+[Chunk 7 | source=Jeannette Vermeersch, pages=1-1]
+Jeannette Vermeersch
+Jeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.
+
+[Chunk 8 | source=Neha (actress), pages=1-1]
+Neha (actress)
+Shabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.
+
+[Chunk 9 | source=Lucie Dreyfus, pages=1-1]
+Lucie Dreyfus
+Lucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.
+
+[Chunk 10 | source=Lucie Dreyfus, pages=1-1]
+Lucie Dreyfus
+Lucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.
+
+Answer:

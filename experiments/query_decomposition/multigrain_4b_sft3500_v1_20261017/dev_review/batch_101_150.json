@@ -1,0 +1,225 @@
+{
+  "reviewed_indices": [
+    101,
+    150
+  ],
+  "reviewed_steps": [
+    110,
+    165,
+    220
+  ],
+  "reviewer": "Current Codex inspected every literal original-query/output pair for all three versions. Frozen v12 F/S/C/U; no answers, passages, dev reference labels or eval300 consulted. Not independent human gold.",
+  "exceptions": {
+    "110": {
+      "102": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S",
+          "C"
+        ],
+        "reason": "Unqualified Martin is separated from the Navardun administrative-entity description; Martin identity is missing and the origin questions in110/220 change the death-place relation."
+      },
+      "105": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Does not reliably identify the underlying feature whose first widely used version was1.1; asks which drives use that unnamed feature instead of exposing the feature identity."
+      },
+      "117": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Splits the single body described as determining rules of both the US House and US Senate into separate body questions, each dropping the other chamber condition."
+      },
+      "118": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Changes the detective investigating the murder into a detective who worked in a restaurant; this unsupported restaurant-employment relation does not identify the intended victim/restaurant."
+      },
+      "119": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Stops at the state capital and never exposes the location sharing a border with it before the county target."
+      },
+      "126": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Never identifies Martin of the region containing Layana, retaining or losing that unknown person inside the death-city query rather than exposing the person prerequisite."
+      },
+      "139": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Attaches the conflict to when the recording artist died rather than the burning of the death city, and never isolates which conflict followed by healthcare involvement is meant."
+      },
+      "104": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "The nation-identification question drops proximity to the author citizenship country; no separate neighboring-country operand preserves this identification condition."
+      },
+      "108": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Asks for Usonian Automatic houses built after Pappas, reversing the input request for the earlier house after which Pappas was built."
+      },
+      "127": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Who sings The Story drops the source restriction that this is The Story sung by the performer of That Wasnt Me, losing the song/performer binding."
+      },
+      "136": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Reverses the district serving Witkins Township into districts served by Witkins Township."
+      }
+    },
+    "165": {
+      "102": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S",
+          "C"
+        ],
+        "reason": "Where did Martin die drops the administrative-territorial-entity/Navardun descriptor; asks the region but never identifies that Martin or preserves the binding."
+      },
+      "105": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Does not reliably identify the underlying feature whose first widely used version was1.1; asks which drives use that unnamed feature instead of exposing the feature identity."
+      },
+      "117": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Splits the single body described as determining rules of both the US House and US Senate into separate body questions, each dropping the other chamber condition."
+      },
+      "118": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Changes the detective investigating the murder into a detective who worked in a restaurant; this unsupported restaurant-employment relation does not identify the intended victim/restaurant."
+      },
+      "119": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Stops at the state capital and never exposes the location sharing a border with it before the county target."
+      },
+      "126": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S",
+          "C"
+        ],
+        "reason": "Where did Martin die omits the original region-containing-Layana description, and the identity of the described Martin is not separately exposed."
+      },
+      "139": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Changes the conflict after which government involvement in healthcare occurred into the conflict that led to that involvement, asserting unsupported causation."
+      },
+      "104": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "The nation-identification question drops proximity to the author citizenship country; no separate neighboring-country operand preserves this identification condition."
+      },
+      "108": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "The malformed largest-of-among question does not identify the earlier house after which the Pappas house was built."
+      }
+    },
+    "220": {
+      "102": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S",
+          "C"
+        ],
+        "reason": "Unqualified Martin is separated from the Navardun administrative-entity description; Martin identity is missing and the origin questions in110/220 change the death-place relation."
+      },
+      "105": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Malformed first feature question changes first widely used version to first used version, and the second asks for drives rather than exposing the intended powered-when-off feature."
+      },
+      "117": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Splits the single body described as determining rules of both the US House and US Senate into separate body questions, each dropping the other chamber condition."
+      },
+      "118": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Changes the detective investigating the murder into a detective who worked in a restaurant; this unsupported restaurant-employment relation does not identify the intended victim/restaurant."
+      },
+      "119": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Stops at the state capital and never exposes the location sharing a border with it before the county target."
+      },
+      "126": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Never identifies Martin of the region containing Layana, retaining or losing that unknown person inside the death-city query rather than exposing the person prerequisite."
+      },
+      "139": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "C"
+        ],
+        "reason": "Attaches the conflict to when the recording artist died rather than the burning of the death city, and never isolates which conflict followed by healthcare involvement is meant."
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "logical_call": {
+    "qid": "6c7f03240bdb11eba7f7acde48001122",
+    "stage": "legacy/answer/2",
+    "payload_sha256": "88a29c46e1d4f359053bdcc72e68460e074d3a32b165e457580ed44c7f9cff8a",
+    "request_id": "d7eb1733ff1db0f769f644e4bfab6bcaa35c3c789b559e39ab3910b2dec862b4",
+    "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+    "status": "success",
+    "reused": true,
+    "usage": {
+      "completion_tokens": 22,
+      "completion_tokens_details": null,
+      "prompt_tokens": 1415,
+      "prompt_tokens_details": null,
+      "total_tokens": 1437
+    },
+    "finish_reason": "stop",
+    "http_status": null
+  },
+  "source_database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+  "stored_stage": "legacy/answer/2",
+  "stored_status": "success",
+  "payload": {
+    "extra_body": {
+      "enable_thinking": false
+    },
+    "max_tokens": 128,
+    "messages": [
+      {
+        "content": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent subquestion #2:\nWhere was the husband of Jeanne Raunay born?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.\n\n[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.\n\n[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.\n\n[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.\n\n[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.\n\nFor a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.\n\nAnswer:",
+        "role": "user"
+      }
+    ],
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0.0
+  },
+  "result": {
+    "answer": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux.",
+    "finish_reason": "stop",
+    "latency_seconds": 1.7567620999761857,
+    "raw_response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux.",
+            "function_call": null,
+            "refusal": null,
+            "role": "assistant",
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1792449061,
+      "id": "chatcmpl-a23c083b-105b-9dc3-b84e-c1096bb7c3ac",
+      "model": "qwen-plus-2025-12-01",
+      "moderation": null,
+      "object": "chat.completion",
+      "service_tier": null,
+      "stream_transport": {
+        "chunks": 10,
+        "first_chunk_seconds": 1.2550685000023805,
+        "include_usage": true,
+        "post_terminal_trailer_failure": null,
+        "stream": true,
+        "total_seconds": 1.7565402999753132
+      },
+      "system_fingerprint": null,
+      "usage": {
+        "completion_tokens": 22,
+        "completion_tokens_details": null,
+        "prompt_tokens": 1415,
+        "prompt_tokens_details": null,
+        "total_tokens": 1437
+      }
+    },
+    "returned_model": "qwen-plus-2025-12-01",
+    "status": "success",
+    "usage": {
+      "completion_tokens": 22,
+      "completion_tokens_details": null,
+      "prompt_tokens": 1415,
+      "prompt_tokens_details": null,
+      "total_tokens": 1437
+    }
+  }
+}

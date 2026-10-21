@@ -1,0 +1,82 @@
+{
+  "utc": "2026-10-19T23:23:23.306937+00:00",
+  "parent300_F1": 0.7072417314845075,
+  "arms": {
+    "r04_scope_contract": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.7043386214366607,
+      "same_parent_F1": 0.7072417314845075,
+      "delta_parent": -0.002903110047846889,
+      "paired95_descriptive": [
+        -0.011666666666666667,
+        0.0036250697767145
+      ],
+      "up": 3,
+      "tie": 295,
+      "down": 2,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7908174603174603,
+          "delta_parent": 0.0009090909090909094
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9334738562091504,
+          "delta_parent": 0.0
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.38872454778337123,
+          "delta_parent": -0.009618421052631578
+        }
+      }
+    },
+    "s04_scope_plus_evidence": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.7019635652063412,
+      "same_parent_F1": 0.7072417314845075,
+      "delta_parent": -0.005278166278166278,
+      "paired95_descriptive": [
+        -0.017723251748251748,
+        0.004721833721833722
+      ],
+      "up": 5,
+      "tie": 292,
+      "down": 3,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7761507936507935,
+          "delta_parent": -0.013757575757575755
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9334738562091504,
+          "delta_parent": 0.0
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.3962660457590798,
+          "delta_parent": -0.0020769230769230773
+        }
+      }
+    }
+  },
+  "budget": {
+    "global_known_cny": 184.971012,
+    "global_reserved_cny": 35.406928799999996,
+    "global_occupied_cny": 220.3779408,
+    "new_known_cny": 1.149394,
+    "new_reserved_cny": 0.0090064,
+    "new_submissions": 515,
+    "cap_cny": 300
+  },
+  "sample_role": "Exposed diagnostic300, full300 for both arms; no outcome-based pilot gate."
+}

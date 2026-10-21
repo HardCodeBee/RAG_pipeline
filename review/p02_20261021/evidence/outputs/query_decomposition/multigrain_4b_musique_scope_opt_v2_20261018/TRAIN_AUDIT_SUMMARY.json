@@ -1,0 +1,22 @@
+{
+  "n": 80,
+  "verdicts": {
+    "pass": 72,
+    "uncertain": 4,
+    "fail": 4
+  },
+  "by_cohort": {
+    "random20_per_hop": {
+      "pass": 53,
+      "uncertain": 3,
+      "fail": 4
+    },
+    "targeted_long_nested20": {
+      "pass": 19,
+      "uncertain": 1
+    }
+  },
+  "original_training_labels_changed": 0,
+  "in_context_bank_n": 72,
+  "limitation": "60 stratified random records20/hop plus20 purposive long/nested; not an unweighted random estimate of all509 label error or an independent gold audit. Questionable records excluded only from this example bank."
+}

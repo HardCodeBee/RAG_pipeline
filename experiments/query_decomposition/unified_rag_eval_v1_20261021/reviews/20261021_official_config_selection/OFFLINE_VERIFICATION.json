@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-21T06:32:09.607829+00:00",
+  "plan_revision": 6,
+  "passed": true,
+  "primary_equal_budget": false,
+  "separate_equal_budget_extension": true,
+  "published_iter_configs_mock_validated": [
+    {
+      "dataset": "hotpotqa",
+      "config": {
+        "id": "paper_f1_k5_t4",
+        "k": 5,
+        "iterations": 4
+      },
+      "mock_controller_compatible": true
+    },
+    {
+      "dataset": "2wiki",
+      "config": {
+        "id": "paper_f1_k5_t6",
+        "k": 5,
+        "iterations": 6
+      },
+      "mock_controller_compatible": true
+    },
+    {
+      "dataset": "musique",
+      "config": {
+        "id": "paper_f1_k5_t7",
+        "k": 5,
+        "iterations": 7
+      },
+      "mock_controller_compatible": true
+    }
+  ],
+  "all_baseline_runtime_configs_frozen": false,
+  "protected_frozen_sources_unchanged": 86,
+  "timing_cohort_and_profile_manifest_unchanged": true,
+  "API_charge_rows_unchanged": 120094,
+  "new_API_requests": 0,
+  "new_GPU_jobs": 0,
+  "execution_approved": false,
+  "cache_migration_started": false,
+  "additional_overlap_experiment_scheduled": false,
+  "known_exposure_audit_preserved": true
+}

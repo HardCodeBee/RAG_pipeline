@@ -1,0 +1,245 @@
+分数据集表现与错误分析（仅复用已冻结复核，不改判）
+
+每数据集同40题，存疑不算通过；指标为分解通过率，不是RAG F1。
+版本	HotpotQA	2Wiki	MuSiQue	总计
+original165	32/40 (80.00%)	39/40 (97.50%)	25/40 (62.50%)	96/120 (80.00%)
+T02	30/40 (75.00%)	39/40 (97.50%)	29/40 (72.50%)	98/120 (81.67%)
+R01_old40	31/40 (77.50%)	39/40 (97.50%)	27/40 (67.50%)	97/120 (80.83%)
+R02_expanded40	32/40 (80.00%)	39/40 (97.50%)	32/40 (80.00%)	103/120 (85.83%)
+full3632_step228	32/40 (80.00%)	39/40 (97.50%)	29/40 (72.50%)	100/120 (83.33%)
+
+MuSiQue同题变化（百分点；配对bootstrap 30000次，seed2718）
+T02_vs_original165: 修复[6, 19, 28, 67, 109]；退步[14]；净增4；差值+10.00pp；95%区间[0.0, 22.5]；McNemar双侧p=0.21875
+R02_expanded40_vs_T02: 修复[14, 24, 51, 65]；退步[28]；净增3；差值+7.50pp；95%区间[-2.5, 17.5]；McNemar双侧p=0.37500
+R02_expanded40_vs_R01_old40: 修复[6, 24, 51, 65, 67]；退步[]；净增5；差值+12.50pp；95%区间[2.5, 22.5]；McNemar双侧p=0.06250
+full3632_step228_vs_T02: 修复[14, 38, 65, 69, 99]；退步[6, 27, 28, 55, 113]；净增0；差值+0.00pp；95%区间[-15.0, 15.0]；McNemar双侧p=1.00000
+full3632_step228_vs_R02_expanded40: 修复[38, 69, 99]；退步[6, 24, 27, 51, 55, 113]；净增-3；差值-7.50pp；95%区间[-22.5, 7.5]；McNemar双侧p=0.50781
+
+各数据集未通过情况；F忠实性，S独立表达，C需求覆盖，U辅助效用。维度可重叠且包括存疑。
+original165/hotpotqa: {'fail': 7, 'pass': 32, 'uncertain': 1}；维度计数{'F': 4, 'S': 0, 'C': 2, 'U': 4}；F/S风险[32, 33, 96, 108]
+original165/2wiki: {'pass': 39, 'uncertain': 1}；维度计数{'F': 0, 'S': 0, 'C': 1, 'U': 0}；F/S风险[]
+original165/musique: {'fail': 15, 'pass': 25}；维度计数{'F': 11, 'S': 0, 'C': 3, 'U': 3}；F/S风险[6, 24, 28, 38, 41, 45, 62, 67, 69, 76, 109]
+T02/hotpotqa: {'fail': 9, 'pass': 30, 'uncertain': 1}；维度计数{'F': 2, 'S': 0, 'C': 4, 'U': 6}；F/S风险[32, 33]
+T02/2wiki: {'pass': 39, 'uncertain': 1}；维度计数{'F': 0, 'S': 0, 'C': 1, 'U': 0}；F/S风险[]
+T02/musique: {'pass': 29, 'fail': 9, 'uncertain': 2}；维度计数{'F': 8, 'S': 0, 'C': 2, 'U': 1}；F/S风险[24, 38, 41, 45, 65, 69, 76, 99]
+R01_old40/hotpotqa: {'fail': 8, 'pass': 31, 'uncertain': 1}；维度计数{'F': 2, 'S': 0, 'C': 3, 'U': 6}；F/S风险[32, 33]
+R01_old40/2wiki: {'pass': 39, 'uncertain': 1}；维度计数{'F': 0, 'S': 0, 'C': 1, 'U': 0}；F/S风险[]
+R01_old40/musique: {'fail': 11, 'pass': 27, 'uncertain': 2}；维度计数{'F': 11, 'S': 0, 'C': 2, 'U': 3}；F/S风险[6, 24, 28, 38, 41, 45, 62, 67, 69, 76, 99]
+R02_expanded40/hotpotqa: {'fail': 5, 'pass': 32, 'uncertain': 3}；维度计数{'F': 2, 'S': 0, 'C': 3, 'U': 4}；F/S风险[31, 32]
+R02_expanded40/2wiki: {'pass': 39, 'uncertain': 1}；维度计数{'F': 0, 'S': 0, 'C': 1, 'U': 0}；F/S风险[]
+R02_expanded40/musique: {'pass': 32, 'fail': 6, 'uncertain': 2}；维度计数{'F': 8, 'S': 0, 'C': 1, 'U': 1}；F/S风险[28, 38, 41, 45, 62, 69, 76, 99]
+full3632_step228/hotpotqa: {'fail': 8, 'pass': 32}；维度计数{'F': 6, 'S': 0, 'C': 2, 'U': 3}；F/S风险[29, 32, 33, 96, 102, 108]
+full3632_step228/2wiki: {'pass': 39, 'uncertain': 1}；维度计数{'F': 0, 'S': 0, 'C': 1, 'U': 0}；F/S风险[]
+full3632_step228/musique: {'fail': 10, 'pass': 29, 'uncertain': 1}；维度计数{'F': 9, 'S': 0, 'C': 2, 'U': 1}；F/S风险[6, 24, 27, 28, 41, 45, 55, 62, 76]
+
+定向选择的实际案例（非随机抽样）
+
+#6 musique:4hop2__72459_31688_31714_41245
+Along with the country where most of the US's oil comes from, one major power recognized the government of the face most closely associated with Libya's new government at an early date. What is the average construction salary in this country?
+original165: fail ['F']
+["What country does most of the US's oil come from?","Who is the face most closely associated with Libya's new government?","What major power recognized the face most closely associated with Libya's new government at an early date?"]
+Recognition of government becomes recognition of the associated person.
+T02: pass []
+["What country provides most of the US's oil?","Who is the face most closely associated with Libya's new government?","What major power recognized the government of the face most closely associated with Libya's new government at an early date?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R01_old40: fail ['F']
+["What country does most of the US's oil come from?","Who is the face most closely associated with Libya's new government?","What major power recognized the face most closely associated with Libya's new government at an early date?"]
+Recognition of a government is replaced with recognition of the associated person.
+R02_expanded40: pass []
+["What country does most of the US's oil come from?","Who is the face most closely associated with Libya's new government?","What major power recognized the government of the face most closely associated with Libya's new government at an early date?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: fail ['F']
+["What country does most of the US's oil come from?","Who is the face most closely associated with Libya's new government?","What major power recognized the face most closely associated with Libya's new government at an early date?"]
+Recognition of government becomes recognition of the associated person, same defect as locked R01/original165.
+
+#24 musique:3hop1__248015_809999_533791
+Who is the mother of Tsarevich Ivan Ivanovich of the country where in August 2004 a bombing occurred in the location Fili is?
+original165: fail ['F']
+["What country was bombed in August 2004 in the location Fili?"]
+Identical array: inherit locked parent. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description.
+T02: fail ['F']
+["What country was bombed in August 2004 in the location Fili?"]
+Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description.
+R01_old40: fail ['F']
+["What country was bombed in August 2004 in the location Fili?"]
+Identical array: inherit locked parent. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description.
+R02_expanded40: pass []
+["What country was Fili in when a bombing occurred in August 2004?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: fail ['F']
+["What country was bombed in August 2004 in the location Fili?"]
+Exact array: locked T02 verdict. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description.
+
+#27 musique:4hop1__107210_221169_833580_61459
+When did Italy fight in the same war as did Albert I of the country hosting the 1920 Summer Olympics, where the country Dia Psalma is from participated in?
+original165: pass []
+["What country hosted the 1920 Summer Olympics?","What country is Dia Psalma from?","What war did Albert I of the country hosting the 1920 Summer Olympics fight in?"]
+Identical array: inherit locked parent. Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+T02: pass []
+["What country hosted the 1920 Summer Olympics?","What country is Dia Psalma from?","What war did Albert I of the country hosting the 1920 Summer Olympics fight in?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R01_old40: pass []
+["What country is Dia Psalma from?","What country hosted the 1920 Summer Olympics?","What war did Albert I of the country hosting the 1920 Summer Olympics fight in?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R02_expanded40: pass []
+["What country is Dia Psalma from?","What country hosted the 1920 Summer Olympics?","What war did Albert I of the country hosting the 1920 Summer Olympics fight in?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: fail ['F']
+["What country is Dia Psalma from?","What country hosted the 1920 Summer Olympics?","What war did the country hosting the 1920 Summer Olympics fight in?"]
+War in which Albert I fought becomes war in which the Olympics-host country fought; ruler and country participation are not interchangeable.
+
+#28 musique:3hop1__35466_72872_59284
+Where did the country who won the 2014 event, that the FIFA Considerations Cups is usually considered a warm-up for, finish in the 2006 World Cup?
+original165: fail ['F']
+["What event is the FIFA Considerations Cups usually considered a warm-up for?","What country won the event the FIFA Considerations Cups is usually considered a warm-up for?"]
+Omits2014 from the event-winner identifier.
+T02: pass []
+["What event is the FIFA Considerations Cup usually considered a warm-up for?","What country won the 2014 event the FIFA Considerations Cup is usually considered a warm-up for?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R01_old40: fail ['F']
+["What event is the FIFA Considerations Cups usually considered a warm-up for?","What country won the event the FIFA Considerations Cups is usually considered a warm-up for?"]
+Drops2014 from the event winner description.
+R02_expanded40: fail ['F']
+["What event is the FIFA Considerations Cups usually considered a warm-up for?","What country won the event the FIFA Considerations Cups is usually considered a warm-up for?"]
+Drops2014 from the country winning the event; changes the identifying time condition.
+full3632_step228: fail ['F']
+["What event is the FIFA Considerations Cups usually considered a warm-up for?","What country won the event the FIFA Considerations Cups is usually considered a warm-up for?"]
+Still omits2014 from event winner description, matching previous model judgments.
+
+#38 musique:4hop1__709382_146811_31223_68437
+When was the territory on the eastern border of the state where the performer of Hello Love died added to the union?
+original165: fail ['F']
+["Who performs Hello Love?","What state is the performer of Hello Love from?","What territory is on the eastern border of the state of the performer of Hello Love?"]
+Replaces state of death with state performer is from.
+T02: fail ['F']
+["Who performs Hello Love?","What state does the performer of Hello Love belong to?","What territory on the eastern border of the state where the performer of Hello Love belongs did the performer of Hello Love die in?"]
+State where performer died becomes state performer belongs to; last item invents death in the eastern-border territory.
+R01_old40: fail ['F', 'U']
+["Who performs Hello Love?","What state was the performer of Hello Love in?","What territory on the eastern border of the state where the performer of Hello Love was in was added to the union?"]
+State of death becomes state performer was in; last item repeats the original territory admission target.
+R02_expanded40: fail ['F', 'U']
+["Who performed Hello Love?","What state was the performer of Hello Love in?","What territory on the eastern border of the state where the performer of Hello Love was in was added to the union?"]
+State where performer died becomes state performer was in; added last item also repeats the original territory-admission target as completion.
+full3632_step228: pass []
+["Who performs Hello Love?","What state did the performer of Hello Love die in?","What territory on the eastern border of the state where the performer of Hello Love died was added to the union?"]
+Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+#41 musique:4hop3__164419_608613_89818_4107
+What term is used to refer to an institution like a German Fachhochschule in Eric Losfeld's birth country and the country where Dutch is spoken?
+original165: fail ['F']
+["What country is Eric Losfeld from?","What country is Dutch spoken in?"]
+Replaces birth country with country person is from.
+T02: fail ['F']
+["What country is Eric Losfeld from?","What country speaks Dutch?"]
+Birth country of Eric Losfeld becomes country he is from, a related property not guaranteed equivalent.
+R01_old40: fail ['F']
+["What country is Eric Losfeld from?","What country is Dutch spoken in?","What term is used to refer to an institution like a German Fachhochschule in Eric Losfeld's country of birth?","What term is used to refer to an institution like a German Fachhochschule in the country where Dutch is spoken?"]
+Still substitutes country of origin for birth country in the first item; extra term operands do not repair that false substitution.
+R02_expanded40: fail ['F']
+["What country is Eric Losfeld from?","What country is Dutch spoken in?"]
+Still substitutes country Eric Losfeld is from for his birth country.
+full3632_step228: fail ['F']
+["What country is Eric Losfeld from?","What country is Dutch spoken in?"]
+Still replaces birth country with country person is from, exact same array as locked R02 row41.
+
+#45 musique:4hop1__101723_221169_833580_61459
+What year did Italy enter the same conflict as did Albert I of the country hosting the 1920 Summer Olympics where the country Don Kulick lives in sent a team?
+original165: fail ['F']
+["What country hosted the 1920 Summer Olympics?","What country does Don Kulick live in?","What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?","What conflict did the country Don Kulick lives in enter?"]
+Country sending a team to the Olympics becomes a country entering the conflict.
+T02: fail ['F']
+["What country hosted the 1920 Summer Olympics?","What country does Don Kulick live in?","What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?","What conflict did the country Don Kulick lives in send a team to?"]
+A team sent to the1920 Olympics becomes a team sent to a conflict; modifier attachment and event relation change.
+R01_old40: fail ['F']
+["What country hosted the 1920 Summer Olympics?","What country does Don Kulick live in?","What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?","What conflict did the country Don Kulick lives in send a team to?"]
+Identical array: inherit locked parent. A team sent to the1920 Olympics becomes a team sent to a conflict; modifier attachment and event relation change.
+R02_expanded40: fail ['F']
+["What country does Don Kulick live in?","What country hosted the 1920 Summer Olympics?","What conflict did Albert I of the country hosting the 1920 Summer Olympics participate in?","What country sent a team to the conflict Albert I of the country hosting the 1920 Summer Olympics participated in?"]
+Still attaches sending a team to a conflict instead of the1920 Summer Olympics.
+full3632_step228: fail ['F']
+["What country did Don Kulick live in?","What country hosted the 1920 Summer Olympics?","What country sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in?","What conflict did Albert I of the country that sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in enter?"]
+Olympics host and participant countries are exchanged; Albert I is bound to participating country instead of the host. Also changes Don Kulick lives to lived.
+
+#51 musique:4hop1__577566_252313_26424_581618
+Who founded the chain of music-themed restaurants with its first establishment in the birthplace of the Bigger Than Life producer?
+original165: fail ['C']
+["Who produced Bigger Than Life?","Where was the producer of Bigger Than Life born?"]
+Identical array: inherit locked parent. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested.
+T02: fail ['C']
+["Who produced Bigger Than Life?","Where was the producer of Bigger Than Life born?"]
+Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested.
+R01_old40: fail ['C']
+["Who produced Bigger Than Life?","Where was the producer of Bigger Than Life born?"]
+Identical array: inherit locked parent. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested.
+R02_expanded40: pass []
+["Who produced Bigger Than Life?","Where was the producer of Bigger Than Life born?","What chain of music-themed restaurants had its first establishment in the birthplace of the producer of Bigger Than Life?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: fail ['C']
+["Who produced Bigger Than Life?","Where was the producer of Bigger Than Life born?"]
+Exact array: locked T02 verdict. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested.
+
+#65 musique:3hop2__89818_575266_4107
+What term means an institution like a German Fachhochschule in the country where Salm is located and the country where Dutch is spoken?
+original165: fail ['U']
+["What country is Salm in?","What country is Dutch spoken in?","What institution is a German Fachhochschule?"]
+Adds generic identity/definition of already supplied German Fachhochschule rather than a country-specific term need.
+T02: fail ['F']
+["What country is Salm in?","What country is Dutch spoken in?","What country contains both the country where Salm is located and the country where Dutch is spoken?"]
+Invents a containing country that contains the two countries; original asks one institution term used in two countries, not spatial containment.
+R01_old40: fail ['U']
+["What country is Salm in?","What country is Dutch spoken in?","What institution is a German Fachhochschule?"]
+Removes invented country containment but adds generic definition of already given German Fachhochschule, rather than a missing country-specific term prerequisite.
+R02_expanded40: pass []
+["In what country is Salm located?","In what country is Dutch spoken?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: pass []
+["What country is Salm in?","What country is Dutch spoken in?"]
+Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold.
+
+#113 musique:2hop__482554_3315
+For how many seasons was the performer of Never Too Far a judge on American Idol?
+original165: pass []
+["Who is the performer of Never Too Far?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+T02: pass []
+["Who performs Never Too Far?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R01_old40: pass []
+["Who performs Never Too Far?","During which seasons was the performer of Never Too Far a judge on American Idol?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+R02_expanded40: pass []
+["Who performs Never Too Far?","During which seasons was the performer of Never Too Far a judge on American Idol?"]
+Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted.
+full3632_step228: fail ['U']
+["Who is the performer of Never Too Far?","For how many seasons was the performer of Never Too Far a judge on American Idol?"]
+Repeats original season-count target after identifying performer, rather than asking for the seasons to support counting.
+
+#119 2wiki:505840b40bb011ebab90acde48001122
+Who is Agnes Dunbar Moodie Fitzgibbon's uncle?
+original165: uncertain ['C']
+[]
+Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.
+T02: uncertain ['C']
+[]
+Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.
+R01_old40: uncertain ['C']
+[]
+Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.
+R02_expanded40: uncertain ['C']
+[]
+Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.
+full3632_step228: uncertain ['C']
+[]
+Exact array: locked T02 verdict. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.
+
+旧16题为定向困难回归集，不能当新样本总体通过率。
+T02 4/16，R02 3/16。
+
+范围限制：
+Decomposition F/S/C/U pass, not downstream RAG F1. Uncertain counts as nonpass.
+Same Codex authored labels and reviewed outputs; not independent human gold.
+Mu evaluation is custom native-train held-out with training-primitive exclusion, not official test.
+F/S/C/U labels overlap and include uncertain risks; not mutually exclusive root causes.
+Paired query bootstrap and McNemar are descriptive, conditional on verdicts and one seed; related Mu rows may share primitives.
+R02 versus R01 matches parent, updates and exposures, not target tokens; native96 and synthetic40 effects are not isolated.
+Full fresh retraining differs from continuation in initialization, sampling and schedule; no single-factor causal claim.

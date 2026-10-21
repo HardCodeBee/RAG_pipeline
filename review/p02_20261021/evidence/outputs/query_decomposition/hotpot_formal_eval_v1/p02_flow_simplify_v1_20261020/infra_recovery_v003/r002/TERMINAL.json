@@ -1,0 +1,197 @@
+{
+  "round": 2,
+  "datasets": [
+    {
+      "dataset": "musique",
+      "new_scorable_cases": 13,
+      "remaining_eligible": 1,
+      "no_progress_streak": 0,
+      "provider_records": {
+        "request_status_counts": {
+          "success": 28,
+          "unknown": 1
+        },
+        "failure_classes": {
+          "{\"error_code\": null, \"failure_class\": \"APIConnectionError\", \"http_status\": null, \"status\": \"unknown\"}": 1
+        },
+        "note": "Request records are not a count of all missing cases or proof the provider processed a request"
+      },
+      "case_statuses": {
+        "scorable": 299,
+        "success": 297,
+        "missing": 1,
+        "eligible_infrastructure": 1,
+        "success_truncated": 2,
+        "missing_error_types": {
+          "RecordedFailure": 1
+        }
+      },
+      "dispatch_result": {
+        "utc": "2026-10-20T10:00:16.200170+00:00",
+        "attempted": 14,
+        "planned": 14,
+        "budget": {
+          "global_known_cny": 189.4874136,
+          "global_reserved_cny": 36.0415056,
+          "global_occupied_cny": 225.5289192,
+          "experiment_known_cny": 2.9178927999999997,
+          "experiment_reserved_cny": 0.6311888,
+          "experiment_submissions": 1380,
+          "global_cap_cny": 300,
+          "actual_bill_verified": false
+        }
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "new_scorable_cases": 13,
+      "remaining_eligible": 3,
+      "no_progress_streak": 0,
+      "provider_records": {
+        "request_status_counts": {
+          "success": 18,
+          "unknown": 2
+        },
+        "failure_classes": {
+          "{\"error_code\": null, \"failure_class\": \"APIConnectionError\", \"http_status\": null, \"status\": \"unknown\"}": 2
+        },
+        "note": "Request records are not a count of all missing cases or proof the provider processed a request"
+      },
+      "case_statuses": {
+        "scorable": 297,
+        "success": 296,
+        "missing": 3,
+        "eligible_infrastructure": 3,
+        "success_truncated": 1,
+        "missing_error_types": {
+          "RecordedFailure": 3
+        }
+      },
+      "dispatch_result": {
+        "utc": "2026-10-20T10:04:01.305505+00:00",
+        "attempted": 16,
+        "planned": 16,
+        "budget": {
+          "global_known_cny": 189.52736399999998,
+          "global_reserved_cny": 36.0545864,
+          "global_occupied_cny": 225.58195039999998,
+          "experiment_known_cny": 2.9578431999999997,
+          "experiment_reserved_cny": 0.6442696,
+          "experiment_submissions": 1400,
+          "global_cap_cny": 300,
+          "actual_bill_verified": false
+        }
+      }
+    }
+  ],
+  "after": {
+    "planned": 900,
+    "scorable": 896,
+    "eligible_missing": [
+      {
+        "id": "musique:4hop3__316459_41402_157761_13584",
+        "qid": "4hop3__316459_41402_157761_13584",
+        "dataset": "musique",
+        "arm": "union20",
+        "status": "incomplete",
+        "retryable_infrastructure": true,
+        "error_type": "RecordedFailure",
+        "reason": "Recorded unsuccessful request; no replay: unknown",
+        "failed_stage": "legacy/answer/5",
+        "request_status": "unknown",
+        "http_status": null,
+        "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\cases\\musique\\union20\\4hop3__316459_41402_157761_13584.json",
+        "source_sha256": "87081c89c3079bc0c34d27babe4f12e084acd2c28a061f4e6e0fe6580afaa011"
+      },
+      {
+        "id": "hotpotqa:5ac1d4ad5542994d76dccef7",
+        "qid": "5ac1d4ad5542994d76dccef7",
+        "dataset": "hotpotqa",
+        "arm": "discount20",
+        "status": "incomplete",
+        "retryable_infrastructure": true,
+        "error_type": "RecordedFailure",
+        "reason": "Recorded unsuccessful request; no replay: unknown",
+        "failed_stage": "legacy/rewrite/3",
+        "request_status": "unknown",
+        "http_status": null,
+        "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\cases\\hotpotqa\\discount20\\5ac1d4ad5542994d76dccef7.json",
+        "source_sha256": "6687ae81dd80512ee1056df41862635d2de9c9ae938e9848555cd712c452899c"
+      },
+      {
+        "id": "hotpotqa:5a7daad55542995f4f4022b7",
+        "qid": "5a7daad55542995f4f4022b7",
+        "dataset": "hotpotqa",
+        "arm": "single_final",
+        "status": "incomplete",
+        "retryable_infrastructure": true,
+        "error_type": "RecordedFailure",
+        "reason": "Recorded unsuccessful request; no replay: unknown",
+        "failed_stage": "legacy/final",
+        "request_status": "unknown",
+        "http_status": null,
+        "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\cases\\hotpotqa\\single_final\\5a7daad55542995f4f4022b7.json",
+        "source_sha256": "044161f3213e54f1def17e0a9141870bbf9fd617d8375558f10b42fa41b95465"
+      },
+      {
+        "id": "hotpotqa:5ac1d4ad5542994d76dccef7",
+        "qid": "5ac1d4ad5542994d76dccef7",
+        "dataset": "hotpotqa",
+        "arm": "single_final",
+        "status": "incomplete",
+        "retryable_infrastructure": true,
+        "error_type": "RecordedFailure",
+        "reason": "Recorded unsuccessful request; no replay: unknown",
+        "failed_stage": "legacy/rewrite/3",
+        "request_status": "unknown",
+        "http_status": null,
+        "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\cases\\hotpotqa\\single_final\\5ac1d4ad5542994d76dccef7.json",
+        "source_sha256": "7fdd371bf6622fa41caf2d03ff032b9840ff8d8581f46fac2f83cc3668c32a5b"
+      }
+    ],
+    "nonretryable_missing": [],
+    "by_dataset": {
+      "2wiki": {
+        "scorable": 300,
+        "success": 299,
+        "success_truncated": 1,
+        "missing_error_types": {}
+      },
+      "musique": {
+        "scorable": 299,
+        "success": 297,
+        "missing": 1,
+        "eligible_infrastructure": 1,
+        "success_truncated": 2,
+        "missing_error_types": {
+          "RecordedFailure": 1
+        }
+      },
+      "hotpotqa": {
+        "scorable": 297,
+        "success": 296,
+        "missing": 3,
+        "eligible_infrastructure": 3,
+        "success_truncated": 1,
+        "missing_error_types": {
+          "RecordedFailure": 3
+        }
+      }
+    },
+    "budget": {
+      "global_known_cny": 189.52736399999998,
+      "global_reserved_cny": 36.0545864,
+      "global_occupied_cny": 225.58195039999998,
+      "experiment_known_cny": 2.9578431999999997,
+      "experiment_reserved_cny": 0.6442696,
+      "experiment_submissions": 1400,
+      "global_cap_cny": 300,
+      "actual_bill_verified": false
+    }
+  },
+  "no_progress_streak": {
+    "2wiki": 0,
+    "musique": 0,
+    "hotpotqa": 0
+  }
+}

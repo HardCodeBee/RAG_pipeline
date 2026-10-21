@@ -1,0 +1,51 @@
+# 入选实验与结果索引
+
+完整文件映射、哈希及压缩轨迹成员见 [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json)。本索引覆盖选择的来源根；被索引的历史实验不代表当前仍计划执行。逐题记录包含完整RAG轨迹及分解器组件记录，按来源报告和分类判断，不把归档条数当成完整流程题数。
+
+| 原始结果根 | 可直接阅读文件数 | 逐题记录数 | 其他归档记录数 | 分类 |
+| --- | ---: | ---: | ---: | --- |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_six_single_changes_v1_20261020` | 18 | 1800 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round2_v1_20261020` | 297 | 1183 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round3_v1_20261020` | 17 | 601 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round4_v1_20261020` | 16 | 601 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round5_v1_20261020` | 16 | 300 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_targeted_optimization_v1_20261020` | 2 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/b0_targeted_optimization_v2_20261020` | 23 | 604 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/baseline_before_after_20261021` | 1 | 0 | 0 | 历史基线参考 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/baselines_same300_v1_20261020` | 31 | 0 | 0 | 历史基线参考 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/complete_pipeline_comparison_v1_20261020` | 82 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017` | 370 | 0 | 0 | 历史基线参考 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_60_expansion_preparation_20261017` | 2 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_candidate_p02_v1_20261021` | 2 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_fresh_eval_v1_20261017` | 2421 | 602 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_followup_20261017` | 4 | 0 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_pilot_v1_20261017` | 296 | 72 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_v3_20261017` | 149 | 36 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_v4_20261017` | 148 | 36 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_v5_20261017` | 148 | 36 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_dual_confirm60_v1_20261017` | 23 | 119 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_dual_retrieval_expand60_v1_20261017` | 37 | 71 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_dual_retrieval_pilot_v1_20261017` | 23 | 48 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_evidence_v4_20261017` | 4 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_evidence_v4r1_20261017` | 16 | 90 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_partial_bind_v5_20261017` | 24 | 96 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_prompt_v2_20261017` | 17 | 65 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_prompt_v3_20261017` | 15 | 52 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_v8_simplify_v1_20261017` | 1460 | 360 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/p02_flow_simplify_v1_20261020` | 80 | 1299 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/p02_formal1500_v1_20261021` | 1529 | 851 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021` | 18 | 610 | 590 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/p02_simplification_review_20261020` | 8 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/pause_all_20261021` | 6 | 0 | 0 | 暂停回执 |
+| `outputs/query_decomposition/hotpot_formal_eval_v1/terminal_goal_v1_20261020` | 29 | 308 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018` | 41 | 0 | 2801 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_frozen_eval300_v1_20261017` | 27 | 300 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_full_retrain3632_v1_20261018` | 29 | 0 | 1254 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_musique_scope_opt_v2_20261018` | 62 | 0 | 838 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_post_sft_opt_v1_20261018` | 392 | 0 | 185 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_prompt_train3500_v1_20261017` | 47 | 400 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_sft3500_v1_20261017` | 1171 | 0 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_training_coverage_audit_v1_20261018` | 6 | 0 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/multigrain_4b_training_plan_v2_20261017` | 3 | 0 | 0 | 分解器/组件来源 |
+| `outputs/query_decomposition/p02_merge_exposure_audit_20261020` | 8 | 0 | 0 | 完整RAG演进/执行审计 |
+| `outputs/query_decomposition/p02_query_walkthrough_20261020` | 25 | 0 | 0 | 完整RAG演进/执行审计 |

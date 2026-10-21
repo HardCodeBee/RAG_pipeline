@@ -1,0 +1,132 @@
+{
+  "utc": "2026-10-17T09:50:26.935104+00:00",
+  "dataset": "2wiki",
+  "config": {
+    "id": "t2",
+    "k": 5,
+    "iterations": 2
+  },
+  "overall": {
+    "n": 500,
+    "old_f1": 0.4462252619932602,
+    "new_f1": 0.4779936507936508,
+    "round1_f1": 0.3439253968253968,
+    "repair_gain_tie_loss": {
+      "tie": 408,
+      "loss": 66,
+      "gain": 26
+    },
+    "round2_gain_tie_loss": {
+      "gain": 111,
+      "tie": 351,
+      "loss": 38
+    },
+    "round1_full_gold": 136,
+    "round2_full_gold": 239,
+    "round2_lost_some_gold_hits": 87,
+    "round2_gained_some_gold_hits": 142
+  },
+  "by_type": {
+    "bridge_comparison": {
+      "n": 112,
+      "old_f1": 0.08559739267590352,
+      "new_f1": 0.1364795918367347,
+      "round1_f1": 0.18037840136054423,
+      "repair_gain_tie_loss": {
+        "tie": 75,
+        "loss": 27,
+        "gain": 10
+      },
+      "round2_gain_tie_loss": {
+        "gain": 9,
+        "tie": 89,
+        "loss": 14
+      },
+      "round1_full_gold": 0,
+      "round2_full_gold": 0,
+      "round2_lost_some_gold_hits": 54,
+      "round2_gained_some_gold_hits": 14
+    },
+    "comparison": {
+      "n": 113,
+      "old_f1": 0.6923487004654248,
+      "new_f1": 0.7168141592920354,
+      "round1_f1": 0.8141592920353983,
+      "repair_gain_tie_loss": {
+        "tie": 102,
+        "loss": 8,
+        "gain": 3
+      },
+      "round2_gain_tie_loss": {
+        "tie": 92,
+        "loss": 16,
+        "gain": 5
+      },
+      "round1_full_gold": 90,
+      "round2_full_gold": 75,
+      "round2_lost_some_gold_hits": 23,
+      "round2_gained_some_gold_hits": 3
+    },
+    "compositional": {
+      "n": 212,
+      "old_f1": 0.46661294624218086,
+      "new_f1": 0.48921084156933214,
+      "round1_f1": 0.19072327044025159,
+      "repair_gain_tie_loss": {
+        "tie": 188,
+        "loss": 16,
+        "gain": 8
+      },
+      "round2_gain_tie_loss": {
+        "gain": 74,
+        "tie": 131,
+        "loss": 7
+      },
+      "round1_full_gold": 34,
+      "round2_full_gold": 132,
+      "round2_lost_some_gold_hits": 4,
+      "round2_gained_some_gold_hits": 101
+    },
+    "inference": {
+      "n": 63,
+      "old_f1": 0.5772757977935479,
+      "new_f1": 0.6190224237843286,
+      "round1_f1": 0.3067775258251449,
+      "repair_gain_tie_loss": {
+        "loss": 15,
+        "tie": 43,
+        "gain": 5
+      },
+      "round2_gain_tie_loss": {
+        "tie": 39,
+        "gain": 23,
+        "loss": 1
+      },
+      "round1_full_gold": 12,
+      "round2_full_gold": 32,
+      "round2_lost_some_gold_hits": 6,
+      "round2_gained_some_gold_hits": 24
+    }
+  },
+  "native_react_config": {
+    "id": "k10_s5",
+    "k": 10,
+    "max_search": 5
+  },
+  "new_finish_reasons": {
+    "stop": 998
+  },
+  "old_finish_reasons": {
+    "length": 227,
+    "stop": 771
+  },
+  "new_logical_generation_calls": 1000,
+  "old_overflow_retrievals": 92,
+  "new_overflow_queries_full_window_encoding": 101,
+  "new_truncated_queries": 0,
+  "round2_missing_original_question": 0,
+  "new_incomplete_logical_calls": 0,
+  "matched25_formal_started": false,
+  "no_new_api_calls": true,
+  "interpretation": "Native T2/k5 is not the pending equal-maximum-budget T5/k5 comparison; gold coverage is descriptive, not a causal attribution."
+}

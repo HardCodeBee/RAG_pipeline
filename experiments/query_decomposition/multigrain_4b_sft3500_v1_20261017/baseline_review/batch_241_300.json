@@ -1,0 +1,32 @@
+{
+ "reviewed_indices":[241,300],
+ "reviewer":"Current Codex inspected all 60 original-query/literal-output pairs under frozen F/S/C/U; same reviewer, not independent human gold. Minor recoverable grammatical inflection alone is not treated as relation corruption.",
+ "exceptions":{
+ "244":{"verdict":"fail","dimensions":["F"],"reason":"Drops the Persian Gulf qualification from the target-region identification and its creation-date question."},
+ "246":{"verdict":"fail","dimensions":["F","C"],"reason":"Asks film direction dates instead of director birth dates and omits director identities."},
+ "247":{"verdict":"fail","dimensions":["U"],"reason":"Adds an unspecified associated-with person lookup for a project already explicitly attributed to Alex Gazin."},
+ "249":{"verdict":"fail","dimensions":["U"],"reason":"Adds generic identities for Brittany Nicole Carpentero and the supplied named remix, instead of useful prerequisites."},
+ "250":{"verdict":"uncertain","dimensions":["F"],"reason":"Both what leaves the common attribute unspecified; imposing profession may be intended but cannot be established query-only."},
+ "252":{"verdict":"fail","dimensions":["F"],"reason":"Copies Evros from the second village onto Mavrolithari, adding a location restriction to the wrong entity."},
+ "255":{"verdict":"fail","dimensions":["F","C"],"reason":"Station in the city becomes station serves the city; Allen's county is not separately identified."},
+ "256":{"verdict":"fail","dimensions":["F"],"reason":"Treats the Persian Gulf qualification as an independent Gulf-creation-date target instead of part of the region's geographic description."},
+ "257":{"verdict":"fail","dimensions":["U"],"reason":"Only repeats the local poem-form target; no unknown nested object or operand is extracted."},
+ "259":{"verdict":"fail","dimensions":["S","U"],"reason":"That company requires the prior answer; Who released and Which company released duplicate the same intermediate identity."},
+ "262":{"verdict":"fail","dimensions":["C"],"reason":"Empty array omits the recoverable Vasilopita-country and city/temple prerequisites."},
+ "266":{"verdict":"fail","dimensions":["U"],"reason":"Adds a broad advantages-over-other-platforms question that discards the Drac's Night Out comparator."},
+ "268":{"verdict":"fail","dimensions":["C","U"],"reason":"Generic What is Brassia/Achimenes identities do not ask the required herb condition; exact Boolean operands are omitted."},
+ "271":{"verdict":"fail","dimensions":["F","C"],"reason":"North-region lookup omits the Shamal location condition and does not expose the region containing Israel before the combined region."},
+ "272":{"verdict":"fail","dimensions":["C"],"reason":"Only death-date questions; unknown director identities are not exposed."},
+ "274":{"verdict":"fail","dimensions":["S","C","U"],"reason":"The cartoon lacks an independent title in an item; generic set with a second piece fails to identify the relevant set; adds a vague connection question."},
+ "278":{"verdict":"fail","dimensions":["F","S","U"],"reason":"That family is cross-item anaphora; first family query loses mother/father/third-son qualifiers, then queries those supplied qualifiers as if unknown."},
+ "279":{"verdict":"fail","dimensions":["F"],"reason":"Unrestricted recorder identity drops American singer-songwriter conditions that identify the intended performer of the song."},
+ "280":{"verdict":"fail","dimensions":["F"],"reason":"Drops Robert from the named Archduke, leaving an ambiguous title rather than the original person."},
+ "282":{"verdict":"fail","dimensions":["S","C"],"reason":"That novel requires the previous item; the character prerequisite is replaced by a generic true-story question."},
+ "285":{"verdict":"fail","dimensions":["F"],"reason":"Asks when films were born rather than when their identified directors were born."},
+ "286":{"verdict":"fail","dimensions":["F","U"],"reason":"Queries a shortened name already supplied as Austral and an unneeded truth test, rather than exposing a useful unknown prerequisite."},
+ "287":{"verdict":"fail","dimensions":["C"],"reason":"Covers spouse's sibling but not the spouse-of-own-sibling branch of sibling-in-law; the input does not disambiguate to one branch."},
+ "290":{"verdict":"fail","dimensions":["C"],"reason":"Empty array omits Lady Godiva's unknown birthplace."},
+ "291":{"verdict":"fail","dimensions":["F","S","U"],"reason":"That town is cross-item reference; first town identity drops the census-population qualifier; second asks for the supplied population value."},
+ "295":{"verdict":"fail","dimensions":["C"],"reason":"Only director death dates; director-identity prerequisites are omitted."}
+ }
+}

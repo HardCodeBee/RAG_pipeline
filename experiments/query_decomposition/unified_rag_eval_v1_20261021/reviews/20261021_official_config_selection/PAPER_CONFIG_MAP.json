@@ -1,0 +1,157 @@
+{
+  "updated_utc": "2026-10-21T06:28:40.358678+00:00",
+  "plan_revision": 6,
+  "status": "source_mapping_prepared_not_all_runtime_configs_frozen",
+  "policy": "Primary baselines use paper best reported corresponding-dataset Answer-F1 configuration where specified; otherwise record author defaults/search ranges and compatibility gaps without inventing a unique official best. No new local F1 tuning by default.",
+  "scope": "Algorithm hyperparameters under the approved common generation/corpus/retrieval and v2 integrity layers; original-paper model/tool differences remain explicit adaptations.",
+  "main_cross_method_equal_budget": false,
+  "common_generation_policy_preserved": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "new_request_max_tokens": 32768,
+    "max_input": 997952,
+    "context": 1000000
+  },
+  "P02": "Keep frozen selected P02 main method; do not trim it to a shared retrieval budget.",
+  "methods": {
+    "b00_rag_top10_v1": {
+      "kind": "local_reference_control",
+      "status": "no_unique_official_best_to_claim",
+      "current_control": {
+        "k": 10
+      },
+      "note": "Generic Top10 complete-RAG control, not a named paper reproduction."
+    },
+    "b01_rag_top10_cot3": {
+      "kind": "local_reference_control",
+      "status": "no_unique_official_RAG_best_to_claim",
+      "current_control": {
+        "k": 10,
+        "demonstrations": 3
+      },
+      "note": "Three examples do not mean three sampled chains; prompt transfer remains a local adaptation."
+    },
+    "b02_selfask_dense": {
+      "kind": "published_method_adaptation",
+      "paper": "https://arxiv.org/abs/2210.03350",
+      "author_repo": "https://github.com/ofirpress/self-ask",
+      "author_README_blob_sha": "38a735d628ba23feaf9c0761ed2505d38f951cbe",
+      "verified_facts": "Original search integration returns search-engine answers; it does not supply a universal Dense top-k setting.",
+      "status": "dense_interface_and_numeric_limits_need_explicit_compatibility_mapping",
+      "do_not_claim": "Existing local k10/s3 or s5 is not established as the original paper best."
+    },
+    "b03_react_dense": {
+      "kind": "published_method_adaptation",
+      "paper": "https://arxiv.org/abs/2210.03629",
+      "author_notebook": "https://github.com/ysymyth/ReAct/blob/master/hotpotqa.ipynb",
+      "author_notebook_blob_sha": "0bd48a1f559bc19c3de634422240beb5cc6a111e",
+      "verified_facts": {
+        "example_max_action_steps": 7,
+        "example_generation_temperature": 0,
+        "example_generation_max_tokens": 100,
+        "original_tools": [
+          "Search",
+          "Lookup",
+          "Finish"
+        ]
+      },
+      "status": "seven_actions_are_not_seven_dense_searches; tool/stop mapping not yet frozen",
+      "do_not_claim": "Current dense Search-only adaptation is not the original Wikipedia tool environment."
+    },
+    "b04_ircot_bge": {
+      "kind": "published_method_adaptation",
+      "paper": "https://aclanthology.org/2023.acl-long.557.pdf",
+      "paper_location": "Section4.1",
+      "author_README": "https://github.com/StonyBrookNLP/ircot/blob/main/README.md",
+      "author_README_blob_sha": "8b587f7711ebc8fc04eb35f14862a0cc0b9fe9dd",
+      "verified_facts": {
+        "K_search_range": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "demonstration_M_search_range": [
+          1,
+          2,
+          3
+        ],
+        "retained_paragraph_cap": 15,
+        "final_reader": "independent; CoT for GPT3, direct for FlanT5"
+      },
+      "status": "published_best_depends_on_dataset_and_model; Qwen_BGE_numeric_mapping_not_frozen",
+      "note": "The paper and official code select best hyperparameters on dev; no unique universal best scalar is specified. Do not relabel current local selected parameters as official."
+    },
+    "b05_iter_retgen_bge": {
+      "kind": "published_method_adaptation",
+      "url": "https://aclanthology.org/2023.findings-emnlp.620.pdf",
+      "location": "Section4.4 and Table2, PDF pages5-6",
+      "retrieval_k": 5,
+      "primary_selection_metric": "published Answer-F1 per corresponding dataset, not local formal F1",
+      "published_model": "text-davinci-003",
+      "published_retriever": "Contriever-MSMARCO",
+      "published_decoding": "greedy",
+      "selected": {
+        "hotpotqa": {
+          "id": "paper_f1_k5_t4",
+          "k": 5,
+          "iterations": 4,
+          "published_F1_percent": 61.1
+        },
+        "2wiki": {
+          "id": "paper_f1_k5_t6",
+          "k": 5,
+          "iterations": 6,
+          "published_F1_percent": 48.1
+        },
+        "musique": {
+          "id": "paper_f1_k5_t7",
+          "k": 5,
+          "iterations": 7,
+          "published_F1_percent": 42.0
+        }
+      },
+      "status": "paper_numbers_verified_selected_pending_local_compatibility_validation",
+      "local_adaptation": "Retain approved Qwen-Plus/BGE common layers; selected k and iterations are from published Table2 F1 maxima."
+    },
+    "b06_decomp_bge": {
+      "kind": "published_method_adaptation",
+      "paper": "https://arxiv.org/html/2210.02406v2",
+      "paper_location": "Appendix A.2",
+      "verified_facts": {
+        "Decomp_Ctxt_K_search_range": [
+          2,
+          4,
+          6
+        ],
+        "selection": "Heldout100 per dataset; best depends on generator/reader."
+      },
+      "status": "no_unique_cross_model_K_or_dense_JSON_runtime_limit_verified",
+      "do_not_claim": "Existing nested8-task bound is not established as a paper best config."
+    },
+    "b07_hybrid_rerank": {
+      "kind": "local_extra_resource_reference_control",
+      "status": "no_single_official_paper_best_identified_for_this_composed_control",
+      "note": "BM25+BGE+RRF+cross-encoder is the current local reference composition. Keep its provenance; do not call local k20/k50 selection official best."
+    },
+    "b08_qd_rerank": {
+      "kind": "published_method_adaptation",
+      "paper": "https://aclanthology.org/2025.acl-srw.32.pdf",
+      "paper_location": "Sections4.4-4.5",
+      "verified_facts": {
+        "k": 10,
+        "paper_generator": "Qwen2.5-32B-Instruct",
+        "paper_encoder": "bge-large-en-v1.5",
+        "paper_reranker": "bge-reranker-large",
+        "temperature": 0.8,
+        "top_p": 0.8
+      },
+      "official_repo": "https://github.com/Wecoreator/qd_rag",
+      "repo_probe": "GitHub connector reported empty repository HTTP404 on this review",
+      "status": "retrieval_k_verified; model/decoding/subquery-cap mapping requires compatibility record",
+      "note": "Current common model/BGE-small and temperature0 differ from paper; local max_queries3/5 is not established as a paper best parameter."
+    }
+  },
+  "important": "This map contains verified paper facts and unresolved adaptations. It is not proof that all local main configurations reproduce official best performance. No paid jobs or configuration reruns started."
+}

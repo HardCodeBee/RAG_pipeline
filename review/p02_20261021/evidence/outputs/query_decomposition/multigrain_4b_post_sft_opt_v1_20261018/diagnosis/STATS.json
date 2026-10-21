@@ -1,0 +1,133 @@
+{
+  "dataset_types": {
+    "hotpotqa": {
+      "bridge": {
+        "n": 35,
+        "passed": 29,
+        "median_query_words": 18
+      },
+      "comparison": {
+        "n": 15,
+        "passed": 14,
+        "median_query_words": 10
+      }
+    },
+    "2wiki": {
+      "bridge_comparison": {
+        "n": 12,
+        "passed": 12,
+        "median_query_words": 17.0
+      },
+      "comparison": {
+        "n": 13,
+        "passed": 13,
+        "median_query_words": 11
+      },
+      "compositional": {
+        "n": 12,
+        "passed": 12,
+        "median_query_words": 11.5
+      },
+      "inference": {
+        "n": 13,
+        "passed": 13,
+        "median_query_words": 9
+      }
+    },
+    "musique": {
+      "2-hop": {
+        "n": 18,
+        "passed": 14,
+        "median_query_words": 12.5
+      },
+      "3-hop": {
+        "n": 17,
+        "passed": 13,
+        "median_query_words": 21
+      },
+      "4-hop": {
+        "n": 15,
+        "passed": 8,
+        "median_query_words": 22
+      }
+    }
+  },
+  "primary_categories": {
+    "coverage": {
+      "count": 7,
+      "fraction_of22": 0.3181818181818182,
+      "by_dataset": {
+        "musique": 7
+      }
+    },
+    "identification_or_binding": {
+      "count": 7,
+      "fraction_of22": 0.3181818181818182,
+      "by_dataset": {
+        "hotpotqa": 4,
+        "musique": 3
+      }
+    },
+    "relation_or_attachment": {
+      "count": 5,
+      "fraction_of22": 0.22727272727272727,
+      "by_dataset": {
+        "musique": 3,
+        "hotpotqa": 2
+      }
+    },
+    "unnecessary_need": {
+      "count": 3,
+      "fraction_of22": 0.13636363636363635,
+      "by_dataset": {
+        "musique": 2,
+        "hotpotqa": 1
+      }
+    }
+  },
+  "overlapping_dimensions": {
+    "F": 14,
+    "S": 4,
+    "C": 12,
+    "U": 4
+  },
+  "faithfulness_flagged": 14,
+  "without_faithfulness_flag": 8,
+  "training_sources": {
+    "BREAK-high/DROP": 864,
+    "BREAK-high/HOTPOT": 1029,
+    "BREAK-high/CWQ": 374,
+    "MuSiQue": 59,
+    "hotpotqa": 14,
+    "musique": 450,
+    "2wiki": 710
+  },
+  "2wiki_train_types": {
+    "inference": 180,
+    "compositional": 178,
+    "comparison": 177,
+    "bridge_comparison": 175
+  },
+  "2wiki_dev_families": {
+    "relative_attribute": 4,
+    "film_director_comparison": 13,
+    "media_creator_attribute": 8,
+    "media_comparison": 3,
+    "kinship_composition": 12,
+    "person_comparison": 7,
+    "other": 1,
+    "boolean_comparison": 2
+  },
+  "2wiki_train_families": {
+    "kinship_composition": 160,
+    "other": 114,
+    "relative_attribute": 41,
+    "boolean_comparison": 120,
+    "media_creator_attribute": 177,
+    "person_comparison": 20,
+    "media_comparison": 23,
+    "film_director_comparison": 55
+  },
+  "50_successes_exact_binomial_95_lower_assuming_iid": 0.9288782635358024,
+  "statistical_caution": "Template/family dependence makes iid binomial inference optimistic; 50/50 is not the population rate."
+}

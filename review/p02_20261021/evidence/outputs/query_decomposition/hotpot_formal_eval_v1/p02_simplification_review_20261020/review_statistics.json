@@ -1,0 +1,278 @@
+{
+  "union20": {
+    "all": {
+      "n": 300,
+      "baseline_F1": 0.7072417314845074,
+      "F1": 0.7031243481968344,
+      "delta_pp": -0.41173832876731425,
+      "up": 14,
+      "tie": 276,
+      "down": 10,
+      "positive_contribution_pp": 1.6151656314699794,
+      "negative_contribution_pp": -2.0269039602372936,
+      "paired_bootstrap95_pp": [
+        -2.2978628198827478,
+        1.3918605699855697
+      ],
+      "exposure": {
+        "child_doc_count": {
+          "n": 887,
+          "total": 11948,
+          "mean": 13.470124013528748,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 497,
+            "11": 5,
+            "12": 18,
+            "13": 9,
+            "14": 16,
+            "15": 25,
+            "16": 27,
+            "17": 29,
+            "18": 43,
+            "19": 68,
+            "20": 150
+          }
+        },
+        "dual_doc_count": {
+          "n": 409,
+          "total": 7168,
+          "mean": 17.52567237163814,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 19,
+            "11": 5,
+            "12": 18,
+            "13": 9,
+            "14": 16,
+            "15": 25,
+            "16": 27,
+            "17": 29,
+            "18": 43,
+            "19": 68,
+            "20": 150
+          }
+        },
+        "same_request_steps_compared": 887,
+        "same_request_rewrite_changed": 39,
+        "same_request_candidate_set_changed": 31,
+        "same_request_answer_changed": 187,
+        "original_route_docs_dropped": 0,
+        "rewritten_route_docs_dropped": 0,
+        "missing_selected_blocks": 0
+      }
+    },
+    "hotpotqa": {
+      "n": 100,
+      "baseline_F1": 0.7899083694083693,
+      "F1": 0.7828131313131311,
+      "delta_pp": -0.7095238095238094,
+      "up": 2,
+      "tie": 96,
+      "down": 2,
+      "positive_contribution_pp": 0.4333333333333333,
+      "negative_contribution_pp": -1.1428571428571428,
+      "paired_bootstrap95_pp": [
+        -3.1428571428571432,
+        0.9571428571428571
+      ],
+      "exposure": {
+        "child_doc_count": {
+          "n": 255,
+          "total": 3167,
+          "mean": 12.419607843137255,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 170,
+            "11": 2,
+            "12": 5,
+            "13": 2,
+            "14": 6,
+            "15": 7,
+            "16": 7,
+            "17": 9,
+            "18": 10,
+            "19": 15,
+            "20": 22
+          }
+        },
+        "dual_doc_count": {
+          "n": 89,
+          "total": 1507,
+          "mean": 16.93258426966292,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 4,
+            "11": 2,
+            "12": 5,
+            "13": 2,
+            "14": 6,
+            "15": 7,
+            "16": 7,
+            "17": 9,
+            "18": 10,
+            "19": 15,
+            "20": 22
+          }
+        },
+        "same_request_steps_compared": 255,
+        "same_request_rewrite_changed": 9,
+        "same_request_candidate_set_changed": 8,
+        "same_request_answer_changed": 47,
+        "original_route_docs_dropped": 0,
+        "rewritten_route_docs_dropped": 0,
+        "missing_selected_blocks": 0
+      }
+    },
+    "2wiki": {
+      "n": 100,
+      "baseline_F1": 0.9334738562091504,
+      "F1": 0.9228548085901026,
+      "delta_pp": -1.0619047619047621,
+      "up": 2,
+      "tie": 95,
+      "down": 3,
+      "positive_contribution_pp": 1.1666666666666665,
+      "negative_contribution_pp": -2.2285714285714286,
+      "paired_bootstrap95_pp": [
+        -4.666666666666667,
+        2.1666666666666665
+      ],
+      "exposure": {
+        "child_doc_count": {
+          "n": 324,
+          "total": 4406,
+          "mean": 13.598765432098766,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 185,
+            "11": 3,
+            "12": 9,
+            "13": 4,
+            "14": 3,
+            "15": 2,
+            "16": 7,
+            "17": 2,
+            "18": 11,
+            "19": 13,
+            "20": 85
+          }
+        },
+        "dual_doc_count": {
+          "n": 153,
+          "total": 2696,
+          "mean": 17.62091503267974,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 14,
+            "11": 3,
+            "12": 9,
+            "13": 4,
+            "14": 3,
+            "15": 2,
+            "16": 7,
+            "17": 2,
+            "18": 11,
+            "19": 13,
+            "20": 85
+          }
+        },
+        "same_request_steps_compared": 324,
+        "same_request_rewrite_changed": 15,
+        "same_request_candidate_set_changed": 10,
+        "same_request_answer_changed": 50,
+        "original_route_docs_dropped": 0,
+        "rewritten_route_docs_dropped": 0,
+        "missing_selected_blocks": 0
+      }
+    },
+    "musique": {
+      "n": 100,
+      "baseline_F1": 0.3983429688360029,
+      "F1": 0.4037051046872692,
+      "delta_pp": 0.536213585126629,
+      "up": 10,
+      "tie": 85,
+      "down": 5,
+      "positive_contribution_pp": 3.2454968944099383,
+      "negative_contribution_pp": -2.7092833092833093,
+      "paired_bootstrap95_pp": [
+        -3.472524350649351,
+        4.31645613746157
+      ],
+      "exposure": {
+        "child_doc_count": {
+          "n": 308,
+          "total": 4375,
+          "mean": 14.204545454545455,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 142,
+            "12": 4,
+            "13": 3,
+            "14": 7,
+            "15": 16,
+            "16": 13,
+            "17": 18,
+            "18": 22,
+            "19": 40,
+            "20": 43
+          }
+        },
+        "dual_doc_count": {
+          "n": 167,
+          "total": 2965,
+          "mean": 17.75449101796407,
+          "min": 10,
+          "max": 20,
+          "histogram": {
+            "10": 1,
+            "12": 4,
+            "13": 3,
+            "14": 7,
+            "15": 16,
+            "16": 13,
+            "17": 18,
+            "18": 22,
+            "19": 40,
+            "20": 43
+          }
+        },
+        "same_request_steps_compared": 308,
+        "same_request_rewrite_changed": 15,
+        "same_request_candidate_set_changed": 13,
+        "same_request_answer_changed": 90,
+        "original_route_docs_dropped": 0,
+        "rewritten_route_docs_dropped": 0,
+        "missing_selected_blocks": 0
+      }
+    }
+  },
+  "other_arms": {
+    "discount20": {
+      "overall": 0.7002507732662419,
+      "by_dataset": {
+        "hotpotqa": 0.7940858585858583,
+        "2wiki": 0.9111881419234361,
+        "musique": 0.3954783192894311
+      }
+    },
+    "single_final": {
+      "overall": 0.6767614237614237,
+      "by_dataset": {
+        "hotpotqa": 0.7447857142857139,
+        "2wiki": 0.8951717171717172,
+        "musique": 0.3903268398268398
+      }
+    }
+  },
+  "scope": "Observed exposed development300, not population-wide effect or proof of causal attention mechanisms",
+  "new_API_calls": 0
+}

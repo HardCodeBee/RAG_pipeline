@@ -1,0 +1,55 @@
+{
+  "scope": "12 fresh cases + all previous dual losses + 2 targeted ReAct-gap diagnostics; manual query-only plans, development only",
+  "conditions": {
+    "baseline_dual": {
+      "child": "old",
+      "reread": false,
+      "dual": true
+    },
+    "baseline_single": {
+      "child": "old",
+      "reread": false,
+      "dual": false
+    },
+    "partial_dual": {
+      "child": "partial",
+      "reread": false,
+      "dual": true
+    },
+    "partial_single": {
+      "child": "partial",
+      "reread": false,
+      "dual": false
+    },
+    "reuse_dual": {
+      "child": "partial",
+      "reread": true,
+      "dual": true
+    },
+    "reuse_single": {
+      "child": "partial",
+      "reread": true,
+      "dual": false
+    }
+  },
+  "model": "qwen-plus-2025-12-01",
+  "rewrite_tokens": 256,
+  "child_tokens": 128,
+  "final_tokens": 64,
+  "global_cap_cny": 200,
+  "round_subcap_cny": 5,
+  "reuse_added_document_cap": 5,
+  "frozen_files": {
+    "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\prompts.py": "fbaca89e88585f175d387b079e8106aa29380a56e628966c2abd6dc48723bafb",
+    "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\cases.frozen.jsonl": "5b67ff0c84b7170293100993d1cfa719888ac13d641214de31d9fe65f3382e3b",
+    "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\child_examples.json": "674c5d26c3b099f669ba26efafede05db9661f937d1142d08b280130f04d4aec",
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\prompts.py": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\final_examples.json": "b97e53900f3d1b87a064d5a5a65a337c02d6c1ae39753bfd2753e0435f72db87",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\examples.json": "d858014b0fd20d6982f0bf03b944c1b22ffce24aab46b971ac83671f4240de77"
+  },
+  "passing_gate": "all15 complete; reuse_dual mean F1 > reuse_single; zero per-query losses; no gold-based runtime choice",
+  "retrieval": "unchanged original-first rank-interleave dedup Top10; no extra searches from reread",
+  "reread": "Only partial/none/unparsed nodes, once, after fixed first pass; retain all current10 docs, append <=5 unique already-retrieved docs; freeze all first-pass histories",
+  "preexecution_correction": "Teaching mismatch fixed; interrupted Douglas Scott query excluded, replaced by next hash-screened bridge query before new API submission. Original frozen data retained in PREEXECUTION_FREEZE_HISTORY.json."
+}

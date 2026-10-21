@@ -1,0 +1,13 @@
+2026-10-17 round3 corrected execution v4r1 frozen before API submission
+Original v4 was aborted after detecting a teaching question/context mismatch, before valid evaluation. Preserve all original files and liabilities. Same sample is a protocol correction, not a new evaluation round.
+Revert failed v3 final-name reinforcement. Keep v2 final prompt and v2 rewriter exactly. No new model or retraining.
+A: preserve supported partial factual information; one status marker controls reread and is stripped before propagation/helper. Status is self-report, not independently verified evidence.
+A also aligns four child shots to self-contained questions; replaces the entirely unknown count shot with a real Scott Sandelin excerpt teaching partial town knowledge. Baseline controls retain old shots. Do not claim the status marker alone causes any gain.
+B: one reread of existing materials only for incomplete factual nodes. Keep original reader docs; append up to5 unique docs from original query and other fixed nodes, rank-round-robin. No extra queries, no iteration, no corrected answer feeds another retry.
+Branches remain self-contained and never stop because of earlier missing answers. Reread outputs replace their own first answer, never chosen by gold or F1.
+Six conditions isolate old versus new child prompt and the added reread; partial/reuse share byte-identical first-pass trajectories. All final prompts v2.
+12 new IDs exclude preceding48 unique IDs, selected in deterministic hash order with query-type screening. Mu restricted to existing ReAct availability, not its score. Add prior1 loss and2 observed ReAct-gap cases separately. Manual plans assume semantic correctness, not an independently annotated oracle.
+Audit retrieved fact availability separately from answer utilization; gold-name occurrence or qrels hit is not sufficient evidence. Full final-question sufficiency differs from partial local-node evidence.
+
+Pre-execution correction: preserve original v4 liabilities; replace only interrupted unknown Douglas Scott query with next hash-screened fresh bridge case. Preserve old r1 freeze in PREEXECUTION_FREEZE_HISTORY.json; no r1 API calls yet. Successful exact payloads from aborted v4 may be reused, never the unknown payload.
+Implementation detail for attribution: the new child prompt uses the same four teaching shots for ordinary and goal nodes; legacy baseline goal nodes retain their previous no-shot prompt. Therefore the child-prompt comparison tests this whole recorded interface, not an isolated status-token effect.

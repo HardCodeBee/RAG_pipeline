@@ -1,0 +1,241 @@
+{
+  "scope": "Post-run descriptive review; never used for generation or choosing outputs; native F1/EM unchanged. F1 differences do not alone establish factual regressions or causal mechanisms.",
+  "decline_cases": [
+    {
+      "qid": "32f0334c0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is the maternal grandmother of André De Laval-Montmorency?",
+      "evaluation_group": "original24",
+      "gold_answer": "Jeanne de Laval-Tinténiac",
+      "predictions": {
+        "single": {
+          "prediction": "Jeanne de Laval-Tinténiac",
+          "f1": 1.0,
+          "em": 1.0
+        },
+        "dual": {
+          "prediction": "Jeanne de Laval",
+          "f1": 0.6666666666666666,
+          "em": 0.0
+        },
+        "react": {
+          "prediction": "Jeanne de Laval",
+          "f1": 0.6666666666666666,
+          "em": 0.0
+        }
+      },
+      "observations": [
+        "Original24 repeated case; single retains Jeanne de Laval-Tinténiac, dual drops Tinténiac.",
+        "ReAct also outputs Jeanne de Laval and gets the same two-thirds F1 as dual.",
+        "No repair or alias reassignment applied to official scoring."
+      ],
+      "arm_traces": {
+        "single_original": [
+          {
+            "request": "Who is the mother of André De Laval-Montmorency?",
+            "rewritten_query": "Who is the mother of André De Laval-Montmorency?",
+            "answer": "André de Laval-Montmorency’s mother is Anne de Laval."
+          },
+          {
+            "request": "Who is the maternal grandmother of André De Laval-Montmorency?",
+            "rewritten_query": "Who is the maternal grandmother of André De Laval-Montmorency?",
+            "answer": "André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval-Tinténiac."
+          }
+        ],
+        "dual_original_rewritten": [
+          {
+            "request": "Who is the mother of André De Laval-Montmorency?",
+            "rewritten_query": "Who is the mother of André De Laval-Montmorency?",
+            "answer": "André de Laval-Montmorency’s mother is Anne de Laval."
+          },
+          {
+            "request": "Who is the maternal grandmother of André De Laval-Montmorency?",
+            "rewritten_query": "Who is the mother of Anne de Laval?",
+            "answer": "André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval."
+          }
+        ]
+      }
+    },
+    {
+      "qid": "581696180bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "What is the award that the director of film Manoranjan won?",
+      "evaluation_group": "new36",
+      "gold_answer": "Filmfare Award",
+      "predictions": {
+        "single": {
+          "prediction": "The award that the director of film Manoranjan won cannot be determined from the retrieved passages.",
+          "f1": 0.13333333333333336,
+          "em": 0.0
+        },
+        "dual": {
+          "prediction": "None",
+          "f1": 0,
+          "em": 0.0
+        },
+        "react": {
+          "prediction": "None",
+          "f1": 0,
+          "em": 0.0
+        }
+      },
+      "observations": [
+        "New36 case. Both final predictions fail: single abstains in a sentence; dual answers None.",
+        "Single F1=0.133333 comes from award token overlap in an abstention, not a correct award answer.",
+        "Dual goal rewrite identifies Shammi Kapoor, retrieves his biography and correctly states his two Filmfare awards. OriginalTop10 lacks that biography; its award mentions concern other people.",
+        "The correct intermediate fact appears in the final helper, yet final output is None. This is observed failure to use available auxiliary information, not observed lack of retrieval evidence. Prompt causation has not been isolated by intervention."
+      ],
+      "arm_traces": {
+        "single_original": [
+          {
+            "request": "Who directed Manoranjan?",
+            "rewritten_query": "Who directed Manoranjan?",
+            "answer": "Shammi Kapoor directed the film Manoranjan."
+          },
+          {
+            "request": "What is the award that the director of film Manoranjan won?",
+            "rewritten_query": "What is the award that the director of film Manoranjan won?",
+            "answer": "The award that Shammi Kapoor, the director of the film Manoranjan, won cannot be determined from the retrieved passages."
+          }
+        ],
+        "dual_original_rewritten": [
+          {
+            "request": "Who directed Manoranjan?",
+            "rewritten_query": "Who directed Manoranjan?",
+            "answer": "Shammi Kapoor directed the film Manoranjan."
+          },
+          {
+            "request": "What is the award that the director of film Manoranjan won?",
+            "rewritten_query": "What is the award that Shammi Kapoor won?",
+            "answer": "Shammi Kapoor won the Filmfare Best Actor Award in 1968 for *Brahmachari* and the Filmfare Award for Best Supporting Actor in 1982 for *Vidhaata*."
+          }
+        ]
+      },
+      "support_excerpt": {
+        "source": "Shammi Kapoor",
+        "doc_id": "689a2e66d23c4500c78342adbd9c432decb76f73f3887de7b2b6969aa3c350bf",
+        "excerpt": "He received the Filmfare Best Actor Award in 1968 for his performance in\" Brahmachari\" and Filmfare Award for Best Supporting Actor for\" Vidhaata\" in 1982. "
+      }
+    },
+    {
+      "qid": "1195a6f00bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is Victoria Sackville-West, Baroness Sackville's child-in-law?",
+      "evaluation_group": "new36",
+      "gold_answer": "Harold Nicolson",
+      "predictions": {
+        "single": {
+          "prediction": "Harold Nicolson",
+          "f1": 1.0,
+          "em": 1.0
+        },
+        "dual": {
+          "prediction": "Sir Harold Nicolson",
+          "f1": 0.8571428571428571,
+          "em": 0.0
+        },
+        "react": {
+          "prediction": "Sir Harold Nicolson",
+          "f1": 0.8571428571428571,
+          "em": 0.0
+        }
+      },
+      "observations": [
+        "New36 case. Single Harold Nicolson versus dual Sir Harold Nicolson.",
+        "Vita Sackville-West source explicitly describes her husband as Sir Harold Nicolson. The dual child sentence preserves mother-daughter-spouse relation.",
+        "The extra supported honorific reduces native F1 from1 to0.857142857 and EM from1 to0. ReAct uses the same longer form. No observed wrong-person answer."
+      ],
+      "arm_traces": {
+        "single_original": [
+          {
+            "request": "Who are the children of Victoria Sackville-West, Baroness Sackville?",
+            "rewritten_query": "Who are the children of Victoria Sackville-West, Baroness Sackville?",
+            "answer": "Victoria Sackville-West, Baroness Sackville, had one child: Vita Sackville-West."
+          },
+          {
+            "request": "Who is Victoria Sackville-West, Baroness Sackville's child-in-law?",
+            "rewritten_query": "Who is Victoria Sackville-West, Baroness Sackville's child-in-law?",
+            "answer": "Victoria Sackville-West, Baroness Sackville's child-in-law is Harold Nicolson, who married her daughter Vita Sackville-West."
+          }
+        ],
+        "dual_original_rewritten": [
+          {
+            "request": "Who are the children of Victoria Sackville-West, Baroness Sackville?",
+            "rewritten_query": "Who are the children of Victoria Sackville-West, Baroness Sackville?",
+            "answer": "Victoria Sackville-West, Baroness Sackville, had one child: Vita Sackville-West."
+          },
+          {
+            "request": "Who is Victoria Sackville-West, Baroness Sackville's child-in-law?",
+            "rewritten_query": "Who is Vita Sackville-West's spouse?",
+            "answer": "Victoria Sackville-West, Baroness Sackville's child-in-law is Sir Harold Nicolson, the husband of her daughter Vita Sackville-West."
+          }
+        ]
+      }
+    }
+  ],
+  "execution_failure": [
+    {
+      "dataset": "hotpotqa",
+      "qid": "5ae54c085542992663a4f1c4",
+      "condition": "dual_original_rewritten",
+      "stage": "dual_original_rewritten/answer/2",
+      "request_id": "323863af9928890c4c2d881725e3263e2a42202a192a9d8d60417d9af42a862e",
+      "finish_reason": "length",
+      "completion_tokens": 128,
+      "reason": "Child answer reached fixed original128 output cap; partial answer is not a complete original-protocol response. No retry, cap increase, imputation, replacement question or partial sentence propagation.",
+      "skip_scope": "execution for this known terminal qid only; retain existing single answer and planned60 denominator"
+    }
+  ],
+  "conclusions": {
+    "new35_dual_vs_single": {
+      "pairs": 35,
+      "planned": 36,
+      "mean_difference": 0.19210884353741495,
+      "left_mean_f1": 0.8854421768707484,
+      "right_mean_f1": 0.6933333333333334,
+      "gains": 7,
+      "ties": 26,
+      "losses": 2,
+      "gain_qids": [
+        "5ab94d9a554299743d22eae3",
+        "5a8b058055429971feec4612",
+        "5a8661535542994775f60758",
+        "3f894264086411ebbd5eac1f6bf848b6",
+        "8531b4a0089a11ebbd77ac1f6bf848b6",
+        "512a07dc0bda11eba7f7acde48001122",
+        "2hop__143915_68489"
+      ],
+      "loss_qids": [
+        "581696180bdb11eba7f7acde48001122",
+        "1195a6f00bb011ebab90acde48001122"
+      ],
+      "paired_bootstrap95_conditional_on_sample": [
+        0.07020408163265307,
+        0.3349659863945578
+      ]
+    },
+    "new35_dual_vs_react": {
+      "pairs": 35,
+      "planned": 36,
+      "mean_difference": 0.1323809523809524,
+      "left_mean_f1": 0.8854421768707484,
+      "right_mean_f1": 0.753061224489796,
+      "gains": 5,
+      "ties": 30,
+      "losses": 0,
+      "gain_qids": [
+        "5a8661535542994775f60758",
+        "5ac41f1d5542991943173924",
+        "fbe7c55e085811ebbd5bac1f6bf848b6",
+        "3hop2__159979_30587_44003",
+        "4hop1__606685_508773_85832_745702"
+      ],
+      "loss_qids": [],
+      "paired_bootstrap95_conditional_on_sample": [
+        0.02857142857142857,
+        0.2457142857142857
+      ]
+    },
+    "limits": "Retained original24 purposive cases plus new36 type-stratified/ReAct-available cases; manually supplied query-only plans. This is an ideal-decomposition pilot, not trained4B, full-benchmark, cost-matched ReAct or SOTA evidence."
+  }
+}

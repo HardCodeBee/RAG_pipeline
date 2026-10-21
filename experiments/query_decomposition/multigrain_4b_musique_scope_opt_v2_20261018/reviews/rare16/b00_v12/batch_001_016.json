@@ -1,0 +1,38 @@
+{
+  "reviewed_indices": [
+    1,
+    16
+  ],
+  "exceptions": {
+    "6": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Does not identify the other learned languages and the popularity properties needed for the comparison; country/language identities alone do not supply them."
+    },
+    "9": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Narrows Harriets city to her origin and omits that city from the attraction identity, losing its location restriction."
+    },
+    "12": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Asks the destination country of immigration instead of when Britain encouraged workers immigration, the required temporal operand."
+    },
+    "13": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Omits the identity of the unnamed world based on the work featuring Death Eaters before its opening-date target."
+    }
+  },
+  "reviewer": "All16 baseline raw pairs inspected before rare nominee outputs. Same source typo/deictic ambiguity preserved. Rows3 and5 have identical question text and outputs; keep16 original records and separately report15 unique texts, without replacing samples after inference."
+}

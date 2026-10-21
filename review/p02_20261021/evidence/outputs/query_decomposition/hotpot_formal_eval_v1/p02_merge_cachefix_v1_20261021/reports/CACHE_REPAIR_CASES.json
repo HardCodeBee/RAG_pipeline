@@ -1,0 +1,643 @@
+{
+  "planned": 300,
+  "counts": {
+    "node_outputs_or_prompts_changed": 14,
+    "final_prompt_changed": 11,
+    "prediction_changed": 2
+  },
+  "changes": [
+    {
+      "id": "hotpotqa:5adcfbf45542990d50227d86",
+      "dataset": "hotpotqa",
+      "question": "Into Dust is a song by the alternative rock band formed in which city?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5adcfbf45542990d50227d86.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5adcfbf45542990d50227d86.json",
+      "old_prediction": "Santa Monica, California",
+      "new_prediction": "Santa Monica, California",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": true,
+      "node_changes": [
+        {
+          "step_id": 2,
+          "request": "Into Dust is a song by the alternative rock band formed in which city?",
+          "changed": [
+            "rewritten_query",
+            "child_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Mazzy Star, the alternative rock band that has the song \"Into Dust\", was formed in Santa Monica, California.",
+          "new_answer": "Mazzy Star, the alternative rock band that has the song \"Into Dust\", was formed in Santa Monica, California.",
+          "old_rewrite": "\"Into Dust\" is a song by the alternative rock band Mazzy Star, which was formed in which city?",
+          "new_rewrite": "Into Dust is a song by the alternative rock band Mazzy Star formed in which city?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Do both films: Illusion (1929 Film) and Melancholie Der Engel have the directors from the same country?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\cbdd888308b511ebbd88ac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\2wiki\\union20\\cbdd888308b511ebbd88ac1f6bf848b6.json",
+      "old_prediction": "Yes",
+      "new_prediction": "Yes",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "Who directed the film Illusion (1929 Film)?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Lothar Mendes directed the film *Illusion* (1929).",
+          "new_answer": "Lothar Mendes directed the film Illusion (1929 Film).",
+          "old_rewrite": "Who directed the film Illusion (1929 Film)?",
+          "new_rewrite": "Who directed the film Illusion (1929 Film)?"
+        },
+        {
+          "step_id": 2,
+          "request": "Who directed the film Melancholie Der Engel?",
+          "changed": [
+            "rewritten_query",
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Marian Dora directed the film *Melancholie der Engel*.",
+          "new_answer": "Marian Dora directed the film Melancholie Der Engel.",
+          "old_rewrite": "Who directed the film *Melancholie Der Engel*?",
+          "new_rewrite": "Who directed the film Melancholie Der Engel?"
+        },
+        {
+          "step_id": 3,
+          "request": "What country is the director of the film Illusion (1929 Film) from?",
+          "changed": [
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Lothar Mendes was German-born.",
+          "new_answer": "Lothar Mendes was German-born.",
+          "old_rewrite": "What country is Lothar Mendes from?",
+          "new_rewrite": "What country is Lothar Mendes from?"
+        },
+        {
+          "step_id": 4,
+          "request": "What country is the director of the film Melancholie Der Engel from?",
+          "changed": [
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Marian Dora is from Germany.",
+          "new_answer": "Marian Dora is from Germany.",
+          "old_rewrite": "What country is Marian Dora from?",
+          "new_rewrite": "What country is Marian Dora from?"
+        },
+        {
+          "step_id": 5,
+          "request": "Do both films: Illusion (1929 Film) and Melancholie Der Engel have the directors from the same country?",
+          "changed": [
+            "rewritten_query",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Yes, both films have directors from Germany: Lothar Mendes was German-born and Marian Dora is from Germany.",
+          "new_answer": "Yes, both films have directors from Germany: Lothar Mendes was German-born and Marian Dora is from Germany.",
+          "old_rewrite": "Do both films: *Illusion* (1929) and *Melancholie der Engel* have directors from Germany?",
+          "new_rewrite": "Do both films: Illusion (1929 Film) and Melancholie Der Engel have the directors from the same country?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ab7f0b9554299366779405d",
+      "dataset": "hotpotqa",
+      "question": "What type of vegetation does Tabernaemontana and Crinum have in common?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab7f0b9554299366779405d.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab7f0b9554299366779405d.json",
+      "old_prediction": "None",
+      "new_prediction": "No vegetation type in common",
+      "old_f1": 0.0,
+      "new_f1": 0.0,
+      "prediction_changed": true,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "What types of vegetation are associated with Tabernaemontana?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Tabernaemontana is associated with shrub and small tree vegetation.",
+          "new_answer": "Tabernaemontana is associated with shrubs and small trees.",
+          "old_rewrite": "What types of vegetation are associated with Tabernaemontana?",
+          "new_rewrite": "What types of vegetation are associated with Tabernaemontana?"
+        },
+        {
+          "step_id": 2,
+          "request": "What types of vegetation are associated with Crinum?",
+          "changed": [
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Crinum is associated with aquatic, marshy, swampy, and streamside vegetation.",
+          "new_answer": "Crinum is associated with perennial plants, including aquatic and swamp-dwelling species.",
+          "old_rewrite": "What types of vegetation are associated with Crinum?",
+          "new_rewrite": "What types of vegetation are associated with Crinum?"
+        },
+        {
+          "step_id": 3,
+          "request": "What type of vegetation does Tabernaemontana and Crinum have in common?",
+          "changed": [
+            "rewritten_query",
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana is associated with shrub and small tree vegetation while Crinum is associated with aquatic, marshy, swampy, and streamside vegetation, and no retrieved passage indicates overlap between these categories.",
+          "new_answer": "Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana is associated with shrubs and small trees (woody plants), while Crinum is associated with perennial herbaceous plants (non-woody, bulb-derived) found in moist habitats like swamps and marshes.",
+          "old_rewrite": "What type of vegetation does shrub and small tree vegetation and aquatic, marshy, swampy, and streamside vegetation have in common?",
+          "new_rewrite": "What type of vegetation does shrubs and small trees and perennial plants, including aquatic and swamp-dwelling species have in common?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5adc020a5542994650320c4c",
+      "dataset": "hotpotqa",
+      "question": "Are Jeff Ragsdale and Millard Webb both authors?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5adc020a5542994650320c4c.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\union20\\5adc020a5542994650320c4c.json",
+      "old_prediction": "No",
+      "new_prediction": "No",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "Is Jeff Ragsdale an author?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Yes, Jeff Ragsdale is an author.",
+          "new_answer": "Yes. Jeff Ragsdale is an author, as evidenced by his 2012 nonfiction book \"Jeff, One Lonely Guy\".",
+          "old_rewrite": "Is Jeff Ragsdale an author?",
+          "new_rewrite": "Is Jeff Ragsdale an author?"
+        },
+        {
+          "step_id": 2,
+          "request": "Is Millard Webb an author?",
+          "changed": [
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Millard Webb was a screenwriter and director, not an author in the literary sense.",
+          "new_answer": "Millard Webb was a screenwriter and director, but the retrieved passages do not state that he was an author.",
+          "old_rewrite": "Is Millard Webb an author?",
+          "new_rewrite": "Is Millard Webb an author?"
+        },
+        {
+          "step_id": 3,
+          "request": "Are Jeff Ragsdale and Millard Webb both authors?",
+          "changed": [
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Jeff Ragsdale is an author, but Millard Webb was a screenwriter and director, not an author in the literary sense.",
+          "new_answer": "Jeff Ragsdale is an author, but Millard Webb is not described as an author in the retrieved passages.",
+          "old_rewrite": "Are Jeff Ragsdale and Millard Webb both authors?",
+          "new_rewrite": "Are Jeff Ragsdale and Millard Webb both authors?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Which film whose director is younger, L'Ultimo Amante or Are You Listening? (Film)?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\4b11ef0808cf11ebbd95ac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r000\\cases\\2wiki\\union20\\4b11ef0808cf11ebbd95ac1f6bf848b6.json",
+      "old_prediction": "L'Ultimo Amante",
+      "new_prediction": "L'Ultimo Amante",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 5,
+          "request": "Which film whose director is younger, L'Ultimo Amante or Are You Listening? (Film)?",
+          "changed": [
+            "rewritten_query",
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "L'Ultimo Amante is the film whose director is younger, as Mario Mattoli (born 30 November 1898) was younger than Harry Beaumont (born 10 February 1888).",
+          "new_answer": "L'Ultimo Amante, whose director Mario Mattoli was born on 30 November 1898, has a younger director than Are You Listening? (Film), whose director Harry Beaumont was born on 10 February 1888.",
+          "old_rewrite": "Which film whose director was born later, L'Ultimo Amante or Are You Listening? (Film)?",
+          "new_rewrite": "Which film whose director is younger, L'Ultimo Amante or Are You Listening? (Film)?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\140fbeda08c611ebbd90ac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r000\\cases\\2wiki\\union20\\140fbeda08c611ebbd90ac1f6bf848b6.json",
+      "old_prediction": "Two For Tonight",
+      "new_prediction": "Two For Tonight",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": true,
+      "node_changes": [
+        {
+          "step_id": 5,
+          "request": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+          "changed": [
+            "rewritten_query",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Frank Tuttle, the director of *Two For Tonight*, died on January 6, 1963, before Sergei Yutkevich, the director of *Light Over Russia*, who died on April 24, 1985.",
+          "new_answer": "Frank Tuttle, the director of *Two For Tonight*, died on January 6, 1963, before Sergei Yutkevich, the director of *Light Over Russia*, who died on April 24, 1985.",
+          "old_rewrite": "Which film has the director who died first, *Two For Tonight* or *Light Over Russia*?",
+          "new_rewrite": "Which film has the director who died first, Two For Tonight or Light Over Russia?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ab50e0a5542990594ba9cf0",
+      "dataset": "hotpotqa",
+      "question": "The lead of the CBS series \"I Had Three Wives\" played what role in \"Godspell\"?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab50e0a5542990594ba9cf0.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab50e0a5542990594ba9cf0.json",
+      "old_prediction": "Jesus",
+      "new_prediction": "Jesus",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "Who is the lead of the CBS series I Had Three Wives?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "The lead of the CBS series \"I Had Three Wives\" was Victor Garber.",
+          "new_answer": "Victor Garber is the lead of the CBS series \"I Had Three Wives\".",
+          "old_rewrite": "Who is the lead of the CBS series I Had Three Wives?",
+          "new_rewrite": "Who is the lead of the CBS series I Had Three Wives?"
+        },
+        {
+          "step_id": 2,
+          "request": "The lead of the CBS series \"I Had Three Wives\" played what role in \"Godspell\"?",
+          "changed": [
+            "rewritten_query",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Victor Garber played Jesus in \"Godspell\".",
+          "new_answer": "Victor Garber played Jesus in \"Godspell\".",
+          "old_rewrite": "Victor Garber played what role in \"Godspell\"?",
+          "new_rewrite": "What role did Victor Garber play in \"Godspell\"?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Was Ausaf Ali or Steven Perry born first?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\c4bdfbea08c911ebbd92ac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\2wiki\\union20\\c4bdfbea08c911ebbd92ac1f6bf848b6.json",
+      "old_prediction": "Ausaf Ali",
+      "new_prediction": "Ausaf Ali",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": true,
+      "node_changes": [
+        {
+          "step_id": 3,
+          "request": "Was Ausaf Ali or Steven Perry born first?",
+          "changed": [
+            "rewritten_query",
+            "child_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Ausaf Ali was born first.",
+          "new_answer": "Ausaf Ali was born first.",
+          "old_rewrite": "Was Ausaf Ali, born on 11 May 1982, or Steven Perry, born on September 7, 1988, born first?",
+          "new_rewrite": "Was Ausaf Ali born on 11 May 1982 or was Steven Perry born on September 7, 1988 first?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a71474b5542994082a3e74f",
+      "dataset": "hotpotqa",
+      "question": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was when Caroline Johnson became a Member of Parliament?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5a71474b5542994082a3e74f.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5a71474b5542994082a3e74f.json",
+      "old_prediction": "Sleaford and North Hykeham by-election",
+      "new_prediction": "Sleaford and North Hykeham by-election",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "What triggered Caroline Johnson's becoming a Member of Parliament?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Caroline Johnson's becoming a Member of Parliament was triggered by the 8 December 2016 by-election in Sleaford and North Hykeham.",
+          "new_answer": "Caroline Johnson's becoming a Member of Parliament was triggered by the by-election in Sleaford and North Hykeham on 8 December 2016, which followed the resignation of Conservative MP Stephen Phillips on 4 November 2016.",
+          "old_rewrite": "What triggered Caroline Johnson's becoming a Member of Parliament?",
+          "new_rewrite": "What triggered Caroline Johnson's becoming a Member of Parliament?"
+        },
+        {
+          "step_id": 2,
+          "request": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was when Caroline Johnson became a Member of Parliament?",
+          "changed": [
+            "rewritten_query",
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the 8 December 2016 by-election in Sleaford and North Hykeham, when Caroline Johnson became a Member of Parliament.",
+          "new_answer": "The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the Sleaford and North Hykeham by-election on 8 December 2016, when Caroline Johnson became a Member of Parliament.",
+          "old_rewrite": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was the 8 December 2016 by-election in Sleaford and North Hykeham?",
+          "new_rewrite": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was the by-election in Sleaford and North Hykeham on 8 December 2016?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a7a59d15542996c55b2dd67",
+      "dataset": "hotpotqa",
+      "question": "What other female rappers appeared Brittany Nicole Carpentero in the official remix to My Chick Bad?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5a7a59d15542996c55b2dd67.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5a7a59d15542996c55b2dd67.json",
+      "old_prediction": "Diamond, Eve, and Trina",
+      "new_prediction": "Eve and Trina",
+      "old_f1": 0.8571428571428571,
+      "new_f1": 1.0,
+      "prediction_changed": true,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "What is the official remix to My Chick Bad that features Brittany Nicole Carpentero?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "The official remix to \"My Chick Bad\" that features Brittany Nicole Carpentero is the remix featuring Diamond, Eve, and Trina.",
+          "new_answer": "The official remix to \"My Chick Bad\" that features Brittany Nicole Carpentero is not identified in the retrieved passages.",
+          "old_rewrite": "What is the official remix to My Chick Bad that features Brittany Nicole Carpentero?",
+          "new_rewrite": "What is the official remix to My Chick Bad that features Brittany Nicole Carpentero?"
+        },
+        {
+          "step_id": 2,
+          "request": "What other female rappers appeared Brittany Nicole Carpentero in the official remix to My Chick Bad?",
+          "changed": [
+            "rewritten_query",
+            "child_prompt",
+            "rewrite_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Diamond (Brittany Nicole Carpentero), Eve, and Trina appeared together in the official remix to \"My Chick Bad\".",
+          "new_answer": "Diamond (Brittany Nicole Carpentero), Eve, and Trina appeared together in the official remix to \"My Chick Bad\".",
+          "old_rewrite": "What other female rappers appeared with Diamond, Eve, and Trina in the official remix to \"My Chick Bad\"?",
+          "new_rewrite": "What other female rappers appeared in the official remix to \"My Chick Bad\" that features Brittany Nicole Carpentero?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5abed9435542994516f45457",
+      "dataset": "hotpotqa",
+      "question": "Which of the following stars Jeff Bridges as a computer programmer: Tron or The Million Dollar Duck?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5abed9435542994516f45457.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\union20\\5abed9435542994516f45457.json",
+      "old_prediction": "Tron",
+      "new_prediction": "Tron",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 2,
+          "request": "In The Million Dollar Duck, who is portrayed as a computer programmer?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "No character portrayed as a computer programmer is mentioned in the retrieved passages about The Million Dollar Duck.",
+          "new_answer": "No character portrayed as a computer programmer is mentioned in the retrieved passages for *The Million Dollar Duck*.",
+          "old_rewrite": "In The Million Dollar Duck, who is portrayed as a computer programmer?",
+          "new_rewrite": "In The Million Dollar Duck, who is portrayed as a computer programmer?"
+        },
+        {
+          "step_id": 3,
+          "request": "Which of the following stars Jeff Bridges as a computer programmer: Tron or The Million Dollar Duck?",
+          "changed": [
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Tron stars Jeff Bridges as a computer programmer, while The Million Dollar Duck does not feature Jeff Bridges or any character portrayed as a computer programmer.",
+          "new_answer": "Tron stars Jeff Bridges as a computer programmer, while The Million Dollar Duck does not feature Jeff Bridges or any character portrayed as a computer programmer.",
+          "old_rewrite": "Which of the following stars Jeff Bridges as a computer programmer: Tron or The Million Dollar Duck?",
+          "new_rewrite": "Which of the following stars Jeff Bridges as a computer programmer: Tron or The Million Dollar Duck?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\2wiki\\union20\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "old_prediction": "Yes",
+      "new_prediction": "Yes",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "What country is Mavrolithari, Evros located in?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Mavrolithari, Evros is not located in Greece; the passage states Mavrolithari is in northern Phocis, Greece, not in the Evros regional unit.",
+          "new_answer": "Mavrolithari, Evros is not located in Greece; the passage states Mavrolithari is in northern Phocis, Greece, not Evros.",
+          "old_rewrite": "What country is Mavrolithari, Evros located in?",
+          "new_rewrite": "What country is Mavrolithari, Evros located in?"
+        },
+        {
+          "step_id": 2,
+          "request": "What country is Ampelakia, Evros located in?",
+          "changed": [
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Ampelakia, Evros is located in Greece.",
+          "new_answer": "Ampelakia, Evros is located in Greece.",
+          "old_rewrite": "What country is Ampelakia, Evros located in?",
+          "new_rewrite": "What country is Ampelakia, Evros located in?"
+        },
+        {
+          "step_id": 3,
+          "request": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+          "changed": [
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia, Evros is located in Greece; therefore, both villages are in the same country, Greece.",
+          "new_answer": "Mavrolithari is located in northern Phocis, Greece, not Evros, while Ampelakia, Evros is located in Greece, so both villages are in the same country—Greece—but Mavrolithari is not in Evros.",
+          "old_rewrite": "Are both villages, Mavrolithari and Ampelakia, Evros, located in Greece?",
+          "new_rewrite": "Are both villages, Mavrolithari and Ampelakia, Evros, located in Greece?"
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ac298805542990b17b15429",
+      "dataset": "hotpotqa",
+      "question": "This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5ac298805542990b17b15429.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\hotpotqa\\union20\\5ac298805542990b17b15429.json",
+      "old_prediction": "Yes",
+      "new_prediction": "Yes",
+      "old_f1": 0.0,
+      "new_f1": 0.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 1,
+          "request": "What are the sister companies of Líneas Aéreas Privadas Argentinas?",
+          "changed": [
+            "initial_answer",
+            "answer"
+          ],
+          "same_child_prompt": true,
+          "old_answer": "Líneas Aéreas Privadas Argentinas’s only sister company mentioned is Austral Líneas Aéreas.",
+          "new_answer": "The sister company of Líneas Aéreas Privadas Argentinas is Austral Líneas Aéreas.",
+          "old_rewrite": "What are the sister companies of Líneas Aéreas Privadas Argentinas?",
+          "new_rewrite": "What are the sister companies of Líneas Aéreas Privadas Argentinas?"
+        },
+        {
+          "step_id": 2,
+          "request": "This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?",
+          "changed": [
+            "child_prompt",
+            "rewrite_prompt"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "Yes, Austral Líneas Aéreas is most commonly known by its shortened name Austral.",
+          "new_answer": "Yes, Austral Líneas Aéreas is most commonly known by its shortened name Austral.",
+          "old_rewrite": "Is Austral Líneas Aéreas most commonly known by its shortened name Austral?",
+          "new_rewrite": "Is Austral Líneas Aéreas most commonly known by its shortened name Austral?"
+        }
+      ]
+    },
+    {
+      "id": "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Are Transamerica Corporation and World Wonder Ring Stardom both located in the same country?",
+      "old_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\7a465cb4095111ebbdaeac1f6bf848b6.json",
+      "new_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r001\\cases\\2wiki\\union20\\7a465cb4095111ebbdaeac1f6bf848b6.json",
+      "old_prediction": "No",
+      "new_prediction": "No",
+      "old_f1": 1.0,
+      "new_f1": 1.0,
+      "prediction_changed": false,
+      "same_final_prompt": false,
+      "node_changes": [
+        {
+          "step_id": 3,
+          "request": "Are Transamerica Corporation and World Wonder Ring Stardom both located in the same country?",
+          "changed": [
+            "rewritten_query",
+            "initial_answer",
+            "answer",
+            "child_prompt",
+            "raw_rewrite",
+            "reader_packet"
+          ],
+          "same_child_prompt": false,
+          "old_answer": "No, Transamerica Corporation and World Wonder Ring Stardom are not located in the same country; Transamerica Corporation is located in the United States, and World Wonder Ring Stardom is located in Japan.",
+          "new_answer": "No, Transamerica Corporation and World Wonder Ring Stardom are not located in the same country; Transamerica Corporation is located in the United States and World Wonder Ring Stardom is located in Japan.",
+          "old_rewrite": "Are Transamerica Corporation and World Wonder Ring Stardom both located in the United States and Japan, respectively?",
+          "new_rewrite": "Are Transamerica Corporation and World Wonder Ring Stardom both located in the United States and Japan?"
+        }
+      ]
+    }
+  ],
+  "note": "Historical union diagnostic only. New primary pair is canonical timing_only versus actual recomputed union20."
+}

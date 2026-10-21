@@ -1,0 +1,256 @@
+{
+  "method": "p02_multigrain_timing_cachefix_v1",
+  "planned": 1500,
+  "dataset_counts": {
+    "hotpotqa": 500,
+    "2wiki": 500,
+    "musique": 500
+  },
+  "cohort": "All original formal1500; no exclusions or replacements",
+  "model": "qwen-plus-2025-12-01",
+  "base_url": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "resources": {
+    "hotpotqa": {
+      "schema_version": 1,
+      "workspace_root": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline",
+      "corpus": {
+        "dataset": "hotpotqa",
+        "document_unit": "one BEIR title+text corpus record = one presegmented local chunk",
+        "documents": 5233329,
+        "manifest": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/manifest.json",
+        "manifest_sha256": "f56f958547cc15dbc1243f39185d85047244db3658cb65cc74636d2915fd9cb5",
+        "queries": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/queries/queries.jsonl",
+        "qrels": {
+          "train": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/qrels/train.tsv"
+        },
+        "chunks": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunks.jsonl",
+        "offsets": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy",
+        "chunks_sha256": "c1b3c7a721f8e9b31615ae1ab8e5a5ce1a0a2d12d6c7c6f0923fa879b85b7dd6"
+      },
+      "identical_id_policy": "request_max_k_plus_1_filter_doc_id_equal_original_query_id_then_keep_max_k",
+      "bm25": {
+        "directory": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b",
+        "manifest_sha256": "4ed27e0c29af9d1a90986ecd3c1618a0d270e07880fc4af7d48b93157cf38dda",
+        "sparse_index_id": "sqlite_bm25_04df51906ff9598b",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      },
+      "dense": {
+        "bge": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b",
+          "build_id": "build_65e9037e4c1eed7b",
+          "manifest_sha256": "ef2dcd84730799b24399ea19ce4ff10ffd27556729fb78a9430948cc240399a1",
+          "embeddings_manifest_sha256": "127376a5563ff08513ca7f55f8dc870c451c6d1c2a184791f4b78133ddaa3ec8",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        },
+        "contriever": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_0ae2963a3d8dbbd8",
+          "build_id": "build_0ae2963a3d8dbbd8",
+          "manifest_sha256": "9d570d2797b78fd821d9193fa0f3aeaaa8e90727c5291d174175c6b736af2811",
+          "embeddings_manifest_sha256": "f07a3f335a695c694eb9cc6b49c767c8d1aeeafd9803fe8ce94377236c2dd019",
+          "query_model": "facebook/contriever",
+          "query_revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--contriever/snapshots/2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_space_text",
+            "document_prefix": "",
+            "encoder_family": "contriever",
+            "max_sequence_length": 512,
+            "model_name": "facebook/contriever",
+            "normalized": false,
+            "pooling": "masked_mean",
+            "revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+            "similarity": "inner_product"
+          }
+        },
+        "dpr": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_e2d1b1d727a8ee45",
+          "build_id": "build_e2d1b1d727a8ee45",
+          "manifest_sha256": "352480f0663de2d1c7d4bf39187e5adcf21fd372265d42b5248d2737f6db8aff",
+          "embeddings_manifest_sha256": "5975ca2979bacd666b9099a52053d34b8d4ead6f501a1cf9b257f58d26f27211",
+          "query_model": "facebook/dpr-question_encoder-multiset-base",
+          "query_revision": "5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--dpr-question_encoder-multiset-base/snapshots/5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_text_pair",
+            "document_prefix": "",
+            "encoder_family": "dpr",
+            "max_sequence_length": 256,
+            "model_name": "facebook/dpr-ctx_encoder-multiset-base",
+            "normalized": false,
+            "pooling": "pooler_output",
+            "revision": "fdb3d46584386d2f20aa00724ae31cebc348d16b",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    },
+    "2wiki": {
+      "corpus": {
+        "dataset": "2wiki",
+        "documents": 430225,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "edb00254897d87e5d966281207d9a20291660ec4d35f561f5fa92436ddeeecbc",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a1d7e50b8a46405735e4076c06ff0109b38ada19f879752be866026c3f1fdfb1",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+          "build_id": "comprehensive_2wiki_global_bge_v1",
+          "manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "embeddings_manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\bm25",
+        "manifest_sha256": "57303882724c3f34ae721c4b8f6c1755f9668cf2a217824eecac4a6b30feb9ad",
+        "sparse_index_id": "sqlite_bm25_b8da8dcd3002b1a2",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    },
+    "musique": {
+      "corpus": {
+        "dataset": "musique",
+        "documents": 139416,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "83c1cc3588ad629866ade7cc8293d0af57c93f7c36471ddb9f54126703e747f9",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a3fcaa2bcffc26746dc4f7ffaae09185b21681b81a93de3152eba904d82c7690",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+          "build_id": "comprehensive_musique_global_bge_v1",
+          "manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "embeddings_manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\bm25",
+        "manifest_sha256": "7db4e8f8ee8904240dd4687151491158a84488eafdae76c4584b82bb4ec4d21e",
+        "sparse_index_id": "sqlite_bm25_d55b72c167fc2357",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "workers": 3,
+  "max_rounds": 4,
+  "global_cap_cny": 300,
+  "dispatch_ceiling_cny": 299.9,
+  "local_subcap_cny": 20,
+  "source_pins": {
+    "experiments/query_decomposition/p02_formal1500_v1_20261021/run.py": "dbeacf69701b94e6576a2bf3b3ebb862a554469c50fa478d3160f457adf92a72",
+    "experiments/query_decomposition/p02_formal1500_v1_20261021/network.py": "19ab391043f40b57a87fdf39f2f7f5da647b8297972a1e0938bfa0886bbb78bb",
+    "experiments/query_decomposition/p02_formal1500_v1_20261021/score.py": "52aafb395b2f4633f206656382f0035d8d060455db291bc172a9fc4188ab88c9",
+    "experiments/query_decomposition/p02_formal1500_v1_20261021/prepare.py": "3d109b760305d42e0c39f9b143788a7016df8f33e34b444073571cf2f357633b",
+    "src/p02_multigrain_timing_cachefix_v1/core/cache.py": "ffb53f958c60cb7b1cb3854df904f32fea417b3b429525019d1607407bc7f237",
+    "src/p02_multigrain_timing_cachefix_v1/core/child_prompts.py": "f31f860488afc626f6f24d47eca826fa726036c1311d6762af7d552df54230e1",
+    "src/p02_multigrain_timing_cachefix_v1/core/final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "src/p02_multigrain_timing_cachefix_v1/core/llm.py": "58a8a09c951df0151a49b6fc710a298a45cf3d8dad163d1c92ee76ca1e3ffa97",
+    "src/p02_multigrain_timing_cachefix_v1/core/offsets.py": "1737a581cc4dcd05a862d2ccbde75de9c73e9a697a4fb52d16a91119e60225c2",
+    "src/p02_multigrain_timing_cachefix_v1/core/pipeline.py": "b78e693df0645e4ad165141a17d57a7ca546349313c27ae5bd69e23ae0963b3a",
+    "src/p02_multigrain_timing_cachefix_v1/core/replay.py": "5a7169e1fc804775b182e7bb10c092b7ac346045fd8c3256895834fcea2ff7e3",
+    "src/p02_multigrain_timing_cachefix_v1/core/retrieval.py": "96d70006955661c396364fc49ec35cd773dacde85d43dc2d2b3ea7e580c46e1f",
+    "src/p02_multigrain_timing_cachefix_v1/core/rewrite_prompts.py": "d516dfd66a9b966810e227e481fe71f892c3d7807ebc32225dee69a44de0aeaa",
+    "src/p02_multigrain_timing_cachefix_v1/core/runtime.py": "d181e865b4c9e5263a152fa4dfd9e94c1b6e486a8b59fbb504f7977111779696",
+    "src/p02_multigrain_timing_cachefix_v1/core/__init__.py": "06d2c77409a0a1fbbebb2f030f5cf84a1081737ab130eef39df2413aa579fff7",
+    "src/p02_multigrain_timing_cachefix_v1/prompts/child_examples.json": "cd733331d36b1eda4123cb5ca4916c951f78010d62d9e4d9d1c58eac3d9abb21",
+    "src/p02_multigrain_timing_cachefix_v1/prompts/decomposition_v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "src/p02_multigrain_timing_cachefix_v1/prompts/final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/FROZEN.json": "ca0a9bc68dd896578558dc2a019796cc1f28641a700b6cba1092e8ee2a662a07",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/run.py": "666c3189536abbcb2d7b5c3ae096521df5c2738c5fa25e9fd7c28b283b16c325",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/cache.py": "f50768cf3ceae6feba8314c866109074f50200af64987664eca6fe0cda857082",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/retrieval_adapter.py": "40f94578571de7fedca5935381b3b93fb29534e8994ab2c432270a7d9a9841e2",
+    "experiments/query_decomposition/decomposition_error_expand60_v1_20261019/run.py": "abef1a3636bda14dbff76e75dae26dc96eaf14aa291d76783f4d089ddafac830",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/PROTOCOL.frozen.json": "04e95b9b924c1553e5337ab72ce73594e15e8eac719f3069f82b37511e4a76ed"
+  },
+  "input_pins": {
+    "questions1500.frozen.jsonl": "f3435f965cda17fb45297d094bd32d68252537e11a21d48e2ac244b11a6c3a3e",
+    "references1500.local.frozen.jsonl": "08bbd3ba2fa20c44fd11be89894b13f3ce8192719159e05c9191a9e9926abf33",
+    "v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "queries1500.id_query.frozen.jsonl": "6dae32373db4fbb1a21cc4ce28bb2f25ad846777b29407f7d1555d1bc09b0b5a",
+    "REMOTE_INPUTS.frozen.json": "e831fe1a4a42233ad9d0e6679e8f079ffdf1cb80a871d7c8c1f2dad0ea987af5",
+    "AMENDMENT001_ALL1500.user.frozen.json": "ccb4496b8605bd01acbf24b481514bce21f65012d39f7d1305343dad8bc2c97d",
+    "SUCCESS_BINDINGS.frozen.json": "62aac9dcdd2bb0b97b26ed6b2de882160d3c9b588e2fa0ce96924936023de13b"
+  },
+  "original_inputs_manifest_sha256": "aa61d64c0e5dcbc8cdfaafff4be75a68649e06c0072a711122662856a7646369",
+  "packaging_revision": 2,
+  "packaging_revision_note": "Concurrent standalone cleanup completed before execution; fresh 300-case exact prompt/output/packet replay passed. Initial package-manifest pin superseded by this explicit revision; no algorithm change.",
+  "frozen_method_settings": [
+    "R02/v12",
+    "delay root retrieval until goal",
+    "legacy rewrite256",
+    "dual original-first interleave deduplicated reader10",
+    "legacy complete child answer128",
+    "goal preanswer retained",
+    "p02 role headers",
+    "final4shot/P1 short answer64",
+    "original BGE512 exact full-index search"
+  ],
+  "scoring": "Separate native final Answer F1/EM; algorithm failure=0, infrastructure missing kept missing, all1500 denominator and bounds retained",
+  "recovery": "Only retryable infrastructure failures in fresh immutable rounds; never rerun successful complete cases; reuse every exact successful full payload; unknown liabilities retained",
+  "scope": "P02 formal1500 only; do not resume other paused methods/ablations or alter baseline configuration",
+  "new_training": false
+}

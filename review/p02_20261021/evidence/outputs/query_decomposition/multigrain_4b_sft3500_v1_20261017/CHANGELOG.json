@@ -1,0 +1,124 @@
+{
+  "recorded_utc": "2026-10-17T11:59:50.215467+00:00",
+  "changes": [
+    {
+      "id": "D001",
+      "change": "Full second query/target-only review of3500; preserve v001, revise36, quarantine5, author/review5 reserves, export immutable v0023500.",
+      "purpose": "Fix relation/qualifier/coverage defects without pretending all textual changes are semantic errors.",
+      "evidence": "reaudit/DECISIONS.progress.jsonl",
+      "sha256": "c345f41344b80f2dbd4df7fa82d9f1c84ec58ba264859d9f935c4a743c689f29"
+    },
+    {
+      "id": "D002",
+      "change": "Freeze separate dev150 and current-Codex references; freeze train-only diagnostic150.",
+      "purpose": "Observe validation loss/semantic generalization and select checkpoint without test300.",
+      "evidence": "data_v002/VALIDATION.json",
+      "sha256": "5591b5484a5a9c7a6fdec1602021af2c40ed16c247ca03e618c7e79fad31fbfd"
+    },
+    {
+      "id": "E001",
+      "change": "Finish original4B/no-adapter/v12 independent300 generation and F/S/C/U review.",
+      "purpose": "Establish untouched same-question before/after comparison; no tuning from these cases.",
+      "evidence": "baseline300/SUMMARY.json",
+      "sha256": "b2a8cc3d956ee0a0ab9c696766583b39b43c8671de2aae4393fa22f46cbcdc57"
+    },
+    {
+      "id": "T001",
+      "change": "New adapter/optimizer on original Qwen3-4B; use approved LoRA32/64/.05, lr1e-4, fixed330 schedule, min2/max3 epochs.",
+      "purpose": "Use independent dev evidence for plateau/overfit control instead of inferring convergence from training loss.",
+      "evidence": "remote_v003/config.json",
+      "sha256": "dd3f62e933824c299f1e9d44e3c10c682d2dc5dd3fb8bd12b71a2361d9c37486"
+    },
+    {
+      "id": "T002",
+      "change": "New3500 sampler uses109 batches32 plus final12; actual-target-token gradient normalization.",
+      "purpose": "Avoid replaying20 or dropping12 when3500 is not divisible by32; old2368 had no such tail.",
+      "evidence": "CPU_NUMERICAL_CHECKS.json",
+      "sha256": "6160a3f5f11637b6faa06a01abd785bb6bebc41dd815dfd6f6b42bd8811ac71e"
+    },
+    {
+      "id": "V001",
+      "change": "Before submission, align array-format statistics to frozen baseline; explicit references remain a separate diagnostic/S failure.",
+      "purpose": "Prevent changing the comparison metric by counting references as JSON format errors.",
+      "evidence": "remote/code/contract.py",
+      "sha256": "7e07cf37f07e93689624346cbc9089dbe362dd067f8d5339752cf8a4bb4c3c2d"
+    },
+    {
+      "id": "V002",
+      "change": "Check native supervision masks for3800 records, synthetic tail gradients, and real AdamW/scheduler CPU serialization at55->56.",
+      "purpose": "Verify mathematical/serialization invariants before actual4B GPU smoke.",
+      "evidence": "LOCAL_CONTRACT_CHECKS.json",
+      "sha256": "ea007c7b27c58ed7e01cd057fa26921489e5436959fae89034df749a4b061f35"
+    },
+    {
+      "id": "S001",
+      "change": "Submit original bundle153977, then hold/cancel it before any GPU work after exact-prompt audit found a stripped final newline. Submit corrected v003 job153978.",
+      "purpose": "Execute approved training with byte-exact v12, without old adapter or smoke weights; preserve both versions.",
+      "evidence": "JOB_SUBMISSION.json",
+      "sha256": "f75eb0afc19c944fa9af32283dd399adef09cf26e873461071742658531457b0"
+    },
+    {
+      "id": "E002",
+      "change": "Prepare dev-only selection, selected-checkpoint eval300 generation, small return export and paired/cluster-sensitivity comparison scripts.",
+      "purpose": "Require real dev/test outputs before selecting or claiming accuracy gains.",
+      "execution": "not yet run; awaiting GPU training and current-Codex semantic review"
+    },
+    {
+      "id": "V003",
+      "change": "Preserve frozen v12 final newline; no label/hyperparameter change. All300 actual baseline input-token sequences match exactly;3800 loss encodings rechecked.",
+      "purpose": "Make actual training/after-evaluation system payload identical to the frozen before-model baseline.",
+      "evidence": "EXACT_PROMPT_REVISION.json",
+      "sha256": "0d1f5ed5b13ae0e73b10cea4375245bc4b2e5c9d22b2abb70136ff39b732fe66"
+    },
+    {
+      "id": "E002_DEV450",
+      "change": "Review all150 literal dev predictions at each of110/165/220; select165 with128 passes using frozen criteria.",
+      "purpose": "Measure semantic decomposition quality without using final300 for selection.",
+      "evidence": "SELECTED_CHECKPOINT.json",
+      "sha256": "cba5fe5a5ebf1d43e6cca74018b7248e0645654e008cb255b6915b02e56db0b1"
+    },
+    {
+      "id": "T004_EARLY_STOP",
+      "change": "Record successful job153978 completion and preset early stop at220 after7000 samples.",
+      "purpose": "Distinguish min_delta plateau from loss rising monotonically or job failure.",
+      "evidence": "DEV_SELECTION_REPORT.txt",
+      "sha256": "7bb0d5666734e467bea3cb730181dea6e402b8b9b5a77435cfd699f60d189cbe"
+    },
+    {
+      "id": "E003_FINAL300",
+      "change": "Freeze selected165 and submit same300/v12/greedy inference as Slurm154009.",
+      "purpose": "Obtain untouched paired before-after semantic evaluation; no prompt, data, adapter selection or parameter changes.",
+      "evidence": "final300/JOB_SUBMISSION.json",
+      "sha256": "2a2d5b512ae34ea7ae0781ad391e50d007ab06c5e6aa128e055d30f1e44c0461"
+    },
+    {
+      "id": "E004_FINAL300_REVIEWED",
+      "change": "Complete original sealed300 review after prompt optimization closure;157->236 passes,85 improvements,6 regressions; preserve2 uncertain in denominator.",
+      "purpose": "Finish approved model-training evaluation without test-set checkpoint or prompt selection.",
+      "evidence": "FINAL300_COMPARISON.json",
+      "sha256": "f0d8d6e2c59e2910f188e3bc91a86238ce2f4cd7f895b84462f6debc2d4fbb1b"
+    }
+  ],
+  "latest_remote_snapshot": {
+    "checked_utc": "2026-10-17T15:15:07.334686+00:00",
+    "accounting": "JobID|JobName|State|Elapsed|ExitCode\n153978|multigrain-v12-sft3500|COMPLETED|01:36:21|0:0\n153978.batch|batch|COMPLETED|01:36:21|0:0\n153978.extern|extern|COMPLETED|01:36:21|0:0\n153978.0|python|COMPLETED|01:36:17|0:0\n154009|multigrain-v12-final300|COMPLETED|00:13:35|0:0\n154009.batch|batch|COMPLETED|00:13:35|0:0\n154009.extern|extern|COMPLETED|00:13:35|0:0\n154009.0|python|COMPLETED|00:13:27|0:0\n154018|multigrain-prompt-opt150|COMPLETED|00:13:42|0:0\n154018.batch|batch|COMPLETED|00:13:42|0:0\n154018.extern|extern|COMPLETED|00:13:42|0:0\n154018.0|python|COMPLETED|00:13:38|0:0\n154020|multigrain-refine44|COMPLETED|00:02:32|0:0\n154020.batch|batch|COMPLETED|00:02:32|0:0\n154020.extern|extern|COMPLETED|00:02:32|0:0\n154020.0|python|COMPLETED|00:02:28|0:0\n154022|multigrain-confirm90|COMPLETED|00:08:16|0:0\n154022.batch|batch|COMPLETED|00:08:16|0:0\n154022.extern|extern|COMPLETED|00:08:16|0:0\n154022.0|python|COMPLETED|00:08:12|0:0\n",
+    "queue": "JOBID NAME STATE TIME NODELIST(REASON)\n",
+    "api_calls": 0
+  },
+  "api_calls": 0,
+  "last_updated_utc": "2026-10-17T15:17:17.960331+00:00",
+  "completion": {
+    "checked_utc": "2026-10-17T15:17:17.960331+00:00",
+    "job_id": "154009",
+    "selected_checkpoint_step": 165,
+    "status": "completed_and_reviewed",
+    "completed_cases": 300,
+    "reviewed_cases": 300,
+    "passed": 236,
+    "fail": 62,
+    "uncertain": 2,
+    "api_calls": 0,
+    "remote_accounting": "JobID|JobName|State|Elapsed|ExitCode\n153978|multigrain-v12-sft3500|COMPLETED|01:36:21|0:0\n153978.batch|batch|COMPLETED|01:36:21|0:0\n153978.extern|extern|COMPLETED|01:36:21|0:0\n153978.0|python|COMPLETED|01:36:17|0:0\n154009|multigrain-v12-final300|COMPLETED|00:13:35|0:0\n154009.batch|batch|COMPLETED|00:13:35|0:0\n154009.extern|extern|COMPLETED|00:13:35|0:0\n154009.0|python|COMPLETED|00:13:27|0:0\n154018|multigrain-prompt-opt150|COMPLETED|00:13:42|0:0\n154018.batch|batch|COMPLETED|00:13:42|0:0\n154018.extern|extern|COMPLETED|00:13:42|0:0\n154018.0|python|COMPLETED|00:13:38|0:0\n154020|multigrain-refine44|COMPLETED|00:02:32|0:0\n154020.batch|batch|COMPLETED|00:02:32|0:0\n154020.extern|extern|COMPLETED|00:02:32|0:0\n154020.0|python|COMPLETED|00:02:28|0:0\n154022|multigrain-confirm90|COMPLETED|00:08:16|0:0\n154022.batch|batch|COMPLETED|00:08:16|0:0\n154022.extern|extern|COMPLETED|00:08:16|0:0\n154022.0|python|COMPLETED|00:08:12|0:0\n",
+    "queue": "JOBID NAME STATE TIME NODELIST(REASON)\n"
+  }
+}

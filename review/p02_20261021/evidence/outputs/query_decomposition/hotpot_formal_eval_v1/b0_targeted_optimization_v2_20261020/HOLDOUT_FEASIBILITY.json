@@ -1,0 +1,590 @@
+{
+  "metadata_only_selection": true,
+  "new_api_calls": 0,
+  "remote_calls": 0,
+  "known_input_files": [
+    {
+      "path": "experiments\\query_decomposition\\api_qdmr_suitability_v1\\data\\queries.jsonl",
+      "query_records": 1200
+    },
+    {
+      "path": "experiments\\query_decomposition\\auxiliary_qa_rag_v1\\inputs_frozen\\queries600.jsonl",
+      "query_records": 600
+    },
+    {
+      "path": "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\runtime300.frozen.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\bpb_bart_smoke_v1\\smoke_cases.jsonl",
+      "query_records": 14
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round1\\cases.inputs.jsonl",
+      "query_records": 24
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round10\\cases.inputs.jsonl",
+      "query_records": 89
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round2\\cases.inputs.jsonl",
+      "query_records": 25
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round3\\cases.inputs.jsonl",
+      "query_records": 29
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round4\\cases.inputs.jsonl",
+      "query_records": 30
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round5\\cases.inputs.jsonl",
+      "query_records": 34
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round6\\cases.inputs.jsonl",
+      "query_records": 37
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round7\\cases.inputs.jsonl",
+      "query_records": 51
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round8\\cases.inputs.jsonl",
+      "query_records": 43
+    },
+    {
+      "path": "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\round9\\cases.inputs.jsonl",
+      "query_records": 47
+    },
+    {
+      "path": "experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\queries300.query_only.frozen.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\runtime300.frozen.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_eval60_v1_20261019\\queries60.query_only.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_eval60_v1_20261019\\runtime60.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\confirmation18.query_only.frozen.jsonl",
+      "query_records": 18
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\confirmation18.runtime.frozen.jsonl",
+      "query_records": 18
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\fresh18_round2.query_only.frozen.jsonl",
+      "query_records": 18
+    },
+    {
+      "path": "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\fresh18_round2.runtime.frozen.jsonl",
+      "query_records": 18
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\ablation.questions.jsonl",
+      "query_records": 200
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\dev.questions.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\formal.questions.jsonl",
+      "query_records": 500
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\ablation.questions.jsonl",
+      "query_records": 200
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\dev.questions.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\formal.questions.jsonl",
+      "query_records": 500
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\ablation.questions.jsonl",
+      "query_records": 200
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\dev.questions.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\formal.questions.jsonl",
+      "query_records": 500
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_corrected_same60_revision46_v1_20261019\\runtime60.frozen.jsonl",
+      "query_records": 1
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_corrected_same60_v1_20261019\\runtime60.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_error_downstream_v1_20261018\\direct11.runtime.frozen.jsonl",
+      "query_records": 11
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_error_downstream_v1_20261018\\runtime_questions.frozen.jsonl",
+      "query_records": 120
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_error_expand60_v1_20261019\\candidates300.query_only.frozen.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\decomposition_error_expand60_v1_20261019\\new_errors.runtime.frozen.jsonl",
+      "query_records": 49
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\dev.questions.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\formal.questions.jsonl",
+      "query_records": 200
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\dev.questions.jsonl",
+      "query_records": 200
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\formal.questions.jsonl",
+      "query_records": 1000
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_dev_operational2.questions.jsonl",
+      "query_records": 2
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_phase_known_facts_dev2.questions.jsonl",
+      "query_records": 2
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical10.questions.jsonl",
+      "query_records": 10
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical2.questions.jsonl",
+      "query_records": 2
+    },
+    {
+      "path": "experiments\\query_decomposition\\ideal_decomposition_rag_v1\\inputs_frozen\\cases40.jsonl",
+      "query_records": 40
+    },
+    {
+      "path": "experiments\\query_decomposition\\ideal_decomposition_rag_v2\\inputs_frozen\\cases100.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_alignment_v1\\inputs_frozen\\questions500.jsonl",
+      "query_records": 500
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\dev.questions.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\test.questions.jsonl",
+      "query_records": 500
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\BASE3496.frozen.jsonl",
+      "query_records": 3496
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\confirm120.questions.frozen.jsonl",
+      "query_records": 120
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\DATA3632.frozen.jsonl",
+      "query_records": 3632
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\dev60.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\HISTORICAL16.frozen.jsonl",
+      "query_records": 16
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\HISTORICAL16.query_only.frozen.jsonl",
+      "query_records": 16
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\NATIVE120_INPUTS.frozen.jsonl",
+      "query_records": 120
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\NEW136_ACCEPTED.frozen.jsonl",
+      "query_records": 136
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_frozen_eval300_v1_20261017\\EXCLUDE_FROM_TRAINING.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_frozen_eval300_v1_20261017\\questions300.frozen.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_frozen_eval300_v1_20261017\\remote\\queries300.query_only.jsonl",
+      "query_records": 300
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\confirm120.questions.frozen.jsonl",
+      "query_records": 120
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\DATA3632.frozen.jsonl",
+      "query_records": 3632
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\dev150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\dev60.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\train_probe150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\confirm120.questions.frozen.jsonl",
+      "query_records": 120
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\continuation\\MASTER3500_SCOPE8.candidate.jsonl",
+      "query_records": 3500
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\MU_EXPANSION180_QUERY_CANDIDATES.frozen.jsonl",
+      "query_records": 180
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\rare_queries.frozen.jsonl",
+      "query_records": 16
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\screen90.questions.frozen.jsonl",
+      "query_records": 90
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_post_sft_opt_v1_20261018\\confirmation90.questions.frozen.jsonl",
+      "query_records": 90
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_post_sft_opt_v1_20261018\\confirmation_v003\\confirmation90.questions.frozen.jsonl",
+      "query_records": 90
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_post_sft_opt_v1_20261018\\queries150.frozen.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_post_sft_opt_v1_20261018\\refine_v002\\queries44.frozen.jsonl",
+      "query_records": 44
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\EXCLUDE_FROM_TRAINING.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\questions100.frozen.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\remote\\queries100.query_only.jsonl",
+      "query_records": 100
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote\\data\\dev150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote\\data\\MASTER_3500.jsonl",
+      "query_records": 3500
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote\\data\\train_probe150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\data\\dev150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\data\\MASTER_3500.jsonl",
+      "query_records": 3500
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\data\\train_probe150.master.jsonl",
+      "query_records": 150
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\replacement_candidates.frozen.jsonl",
+      "query_records": 5
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\dev.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\hard_cases_for_4b\\CANDIDATES.jsonl",
+      "query_records": 36
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\holdout.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_confirm60_v1_20261017\\cases.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\cases.frozen.jsonl",
+      "query_records": 36
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\new36.questions.frozen.jsonl",
+      "query_records": 36
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_pilot_v1_20261017\\cases.frozen.jsonl",
+      "query_records": 24
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_evidence_v4_20261017\\cases.frozen.jsonl",
+      "query_records": 15
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\cases.frozen.jsonl",
+      "query_records": 15
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\cases.frozen.jsonl",
+      "query_records": 17
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\cases.frozen.jsonl",
+      "query_records": 13
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\cases.frozen.jsonl",
+      "query_records": 13
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\dev.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\holdout.questions.frozen.jsonl",
+      "query_records": 60
+    },
+    {
+      "path": "experiments\\query_decomposition\\query_form_ablation_v1\\inputs_frozen\\rewrite_query_only.jsonl",
+      "query_records": 320
+    },
+    {
+      "path": "experiments\\query_decomposition\\reader_context_route_ablation50_v1_20261020\\queries50.query_only.frozen.jsonl",
+      "query_records": 50
+    },
+    {
+      "path": "experiments\\query_decomposition\\reader_context_route_ablation50_v1_20261020\\runtime50.frozen.jsonl",
+      "query_records": 50
+    },
+    {
+      "path": "experiments\\query_decomposition\\reader_context_route_ablation_v1_20261019\\queries12.query_only.frozen.jsonl",
+      "query_records": 12
+    },
+    {
+      "path": "experiments\\query_decomposition\\reader_context_route_ablation_v1_20261019\\runtime12.frozen.jsonl",
+      "query_records": 12
+    },
+    {
+      "path": "experiments\\query_decomposition\\retrieval_mechanism_audit_v1_20261019\\QUERIES.frozen.jsonl",
+      "query_records": 70
+    }
+  ],
+  "known_id_strings": 15368,
+  "known_query_strings": 10259,
+  "known_musique_primitives": 3152,
+  "training_musique_primitives": 1137,
+  "training_query_sources_union": [
+    "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\DATA3632.frozen.jsonl",
+    "outputs\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\training\\MASTER_3500.jsonl"
+  ],
+  "availability": {
+    "hotpotqa": {
+      "native_rows": {
+        "comparison": 1487,
+        "bridge": 5918
+      },
+      "after_known_id_and_text": {
+        "comparison": 958,
+        "bridge": 3802
+      },
+      "also_training_primitive_disjoint": {
+        "comparison": 958,
+        "bridge": 3802
+      },
+      "also_all_known_primitive_disjoint": {
+        "comparison": 958,
+        "bridge": 3802
+      }
+    },
+    "2wiki": {
+      "native_rows": {
+        "compositional": 5236,
+        "comparison": 3040,
+        "inference": 1549,
+        "bridge_comparison": 2751
+      },
+      "after_known_id_and_text": {
+        "compositional": 4880,
+        "comparison": 2799,
+        "inference": 1369,
+        "bridge_comparison": 2515
+      },
+      "also_training_primitive_disjoint": {
+        "compositional": 4880,
+        "comparison": 2799,
+        "inference": 1369,
+        "bridge_comparison": 2515
+      },
+      "also_all_known_primitive_disjoint": {
+        "compositional": 4880,
+        "comparison": 2799,
+        "inference": 1369,
+        "bridge_comparison": 2515
+      }
+    },
+    "musique": {
+      "native_rows": {
+        "2-hop": 1252,
+        "3-hop": 760,
+        "4-hop": 405
+      },
+      "after_known_id_and_text": {
+        "2-hop": 834,
+        "3-hop": 471,
+        "4-hop": 217
+      },
+      "also_training_primitive_disjoint": {
+        "2-hop": 827,
+        "3-hop": 408,
+        "4-hop": 183
+      },
+      "also_all_known_primitive_disjoint": {
+        "2-hop": 314,
+        "3-hop": 4
+      }
+    }
+  },
+  "resources": {
+    "hotpotqa": {
+      "documents": 5233329,
+      "corpus_manifest": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/manifest.json",
+      "bge_build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b",
+      "bge_model": "BAAI/bge-small-en-v1.5"
+    },
+    "2wiki": {
+      "documents": 430225,
+      "corpus_manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+      "bge_build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+      "bge_model": "BAAI/bge-small-en-v1.5",
+      "dense_manifest": "data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense\\DENSE_FROZEN.json",
+      "full_corpus_embeddings_count_verified": true,
+      "dense_source_sha256_matches_corpus": true
+    },
+    "musique": {
+      "documents": 139416,
+      "corpus_manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+      "bge_build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+      "bge_model": "BAAI/bge-small-en-v1.5",
+      "dense_manifest": "data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense\\DENSE_FROZEN.json",
+      "full_corpus_embeddings_count_verified": true,
+      "dense_source_sha256_matches_corpus": true
+    }
+  },
+  "matching_R02_cache_roots": [
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\component_chain_eval60_v1_20261019\\remote\\r02",
+      "raw_records": 60
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\component_chain_opt_v2_20261019\\remote\\r02",
+      "raw_records": 18
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\component_chain_opt_v2_20261019\\remote\\r02_round2",
+      "raw_records": 18
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019",
+      "raw_records": 300
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_010\\results\\v001\\training40\\r02_expanded\\predictions",
+      "raw_records": 60
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_011\\results\\v001\\training40\\r02_expanded\\predictions",
+      "raw_records": 60
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_012\\results\\confirmation\\r02_expanded",
+      "raw_records": 120
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_012\\results\\historical16\\r02_expanded",
+      "raw_records": 16
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_012\\results\\v001\\training40\\r02_expanded\\predictions",
+      "raw_records": 60
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\confirmation\\r02_expanded",
+      "raw_records": 120
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\historical16\\r02_expanded",
+      "raw_records": 16
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\predictions",
+      "raw_records": 60
+    }
+  ],
+  "matching_R02_cached_distinct_ids": 592,
+  "matching_R02_cache_overlap_with_eligible": 0,
+  "limitations": [
+    "Input inventory is conservative but not a complete exposure ledger.",
+    "No guarantee of paraphrase independence or pretrained-model decontamination.",
+    "Corpus document exposure is expected for a fixed retrieval corpus, distinct from query/outcome exposure.",
+    "No actual validation cohort has been frozen and no new native answers used for outcome selection."
+  ]
+}

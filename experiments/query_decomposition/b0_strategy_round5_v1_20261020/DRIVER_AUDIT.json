@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "blocking_findings": [],
+  "budget_tests": [
+    {
+      "test": "valid_reservation",
+      "passed": true,
+      "rollback_clean": true
+    },
+    {
+      "test": "local2_rejected",
+      "passed": true,
+      "rollback_clean": true
+    },
+    {
+      "test": "global299_9_rejected",
+      "passed": true,
+      "rollback_clean": true
+    },
+    {
+      "test": "unknown_local_reservation_counts",
+      "passed": true,
+      "rollback_clean": true
+    },
+    {
+      "test": "unknown_global_reservation_counts",
+      "passed": true,
+      "rollback_clean": true
+    },
+    {
+      "test": "duplicate_rid_rejected",
+      "passed": true,
+      "rollback_clean": true
+    }
+  ],
+  "budget_testing_database": "in-memory sqlite only; global ledger never opened for writing",
+  "limits": {
+    "global_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 2
+  },
+  "private_transport": {
+    "original_round2_globals_unchanged": true,
+    "HERE_OUT_ARMS_correct": true,
+    "Budget_override_actual": true,
+    "single_final64_arm_only": true,
+    "recovery_one_immutable_round": true,
+    "successful_results_not_rerun": true
+  },
+  "offline_prompt_audit": {
+    "actual_parent_receipts": 300,
+    "actual_task_and_readout_unchanged": 300,
+    "examples_only_three_ordinary_four_goal_headers_added": true,
+    "fewshot_content_and_order_preserved": true,
+    "frozen_original_examples_file_unchanged": true
+  },
+  "evaluation": {
+    "refs_match_previous_commitment": true,
+    "scoring_and_native_alias_sources_listed_for_pre_submission_protocol_pins": true,
+    "complete300_strict_gain_only": true
+  },
+  "admission": "Ready to freeze/prepare; this audit did not create the main protocol or submit API calls.",
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\experiment.py": "f55fd3f7f7b4d271ee252b40c8fb6237d1e17ada0f8e90438313a5522c3fca72",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\strategy.py": "143224eadd9e8931d37650552590f296d1ca919a6b8ae92cd5c55082ba88cfe7",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\OFFLINE_AUDIT.py": "cac568c6a5f06e0e21b004c18b3909d97c443fd4a0fb56c5140aa6ced7e6ee90",
+    "experiments\\query_decomposition\\b0_strategy_round5_v1_20261020\\OFFLINE_AUDIT.json": "630af96df64386161b48517d4c306ea3afb57d391bc0fc249898ea8aef0229b1",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc"
+  },
+  "fresh90_or_confirmation_results_read": false,
+  "new_api_calls": 0,
+  "new_retrieval_calls": 0,
+  "new_remote_calls": 0
+}

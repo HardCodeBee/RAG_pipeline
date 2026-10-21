@@ -1,0 +1,24 @@
+--- v5
++++ v6
+@@ -27,6 +27,21 @@
+ Output: ["Which district has Town C as its administrative centre?"]
+ Town C is already given; identify the unknown district rather than asking for its already given administrative centre.
+ 
++Priority examples: independent searches, not a conversation.
++Question: Nora is the granddaughter of a king. On what date was the king born?
++Output: ["Which king is Nora's grandfather?"]
++The program separately asks the original question. Do not append "When was that king born?". If you do include a date question, it must say "On what date was the king who is Nora's grandfather born?".
++
++Question: Who is the mother-in-law of Leena?
++Output: ["Who is Leena's spouse?", "Who is the mother of Leena's spouse?"]
++Do not add "Who is Leena?"; the named subject is already identified. Do not assume that a spouse must have a particular gender.
++
++Question: Where was the uncle of the author of Book R born?
++Output: ["Who wrote Book R?", "Who is the uncle of the author of Book R?"]
++Keep "uncle". The input does not justify replacing it with the father's brother, the mother's brother, or an uncle by marriage.
++
++Reject an item that introduces only "that person", "that network", or a locally defined label without its full defining description. Repeat identifying wording even when this makes the list longer. This test applies to original-equivalent questions too.
++
+ Before returning the array, read each item separately. If identifying its subject requires the original input, another item, or an earlier answer, rewrite that item with its full input-grounded description. Perform this check silently; do not output the check or any answers.
+ 
+ Use complete grammatical questions in the input's language. Output only a JSON array of question strings, with no answers, explanations, IDs, goal field, or Markdown fences.

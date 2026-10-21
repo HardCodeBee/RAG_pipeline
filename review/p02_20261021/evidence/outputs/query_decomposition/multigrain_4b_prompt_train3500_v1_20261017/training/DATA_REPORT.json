@@ -1,0 +1,52 @@
+{
+  "status": "ready_for_training_setup_not_trained",
+  "accepted_count": 3500,
+  "quarantined_count": 50,
+  "target_count": 3500,
+  "mechanical_errors": [],
+  "by_dataset": {
+    "BREAK-high/DROP": 864,
+    "BREAK-high/HOTPOT": 1029,
+    "BREAK-high/CWQ": 376,
+    "MuSiQue": 59,
+    "hotpotqa": 14,
+    "musique": 450,
+    "2wiki": 708
+  },
+  "by_cohort": {
+    "old2368": 2328,
+    "user_designated_hard": 33,
+    "new_train_pool": 1139
+  },
+  "native_2wiki_types": {
+    "comparison": 175,
+    "inference": 175,
+    "compositional": 175,
+    "bridge_comparison": 175
+  },
+  "native_musique_hops": {
+    "2-hop": 147,
+    "3-hop": 146,
+    "4-hop": 146
+  },
+  "empty_support_arrays": 392,
+  "support_count_distribution": {
+    "1": 980,
+    "0": 392,
+    "2": 1649,
+    "3": 255,
+    "5": 4,
+    "6": 2,
+    "4": 217,
+    "7": 1
+  },
+  "old_source_unchanged": true,
+  "all_prompt100_excluded": true,
+  "selected_prompt": "v12",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "selection_is_fresh_test": false,
+  "review_limit": "Current Codex authored and reviewed; some 2Wiki uses inspected templates and every query/parsed span. No independent human gold, guaranteed90% semantic accuracy, retrieval or downstream QA result.",
+  "api_calls": 0,
+  "training_started": false,
+  "final_validation_sha256": "d236f2673ed6d667d77518b849e450e6222d4828d23014d1ca4a8e082408517a"
+}

@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "blocking_findings": [],
+  "private_binding": {
+    "predecessor_module_unchanged": true,
+    "run_phase_and_delegate_budget_globals_private": true,
+    "wrapper_uses_round4_paths": true,
+    "HERE_OUT_ARMS_and_final_renderer_correct": true,
+    "no_goal_ordinary_rewrite_calls_for_these_arms": true
+  },
+  "cross_arm_cache": {
+    "synthetic_contract_audit_passed": true,
+    "same_case_first_success_without_scores": true,
+    "temporary_manifest_deepcopy": true,
+    "p02_base_and_control_not_replaced": true,
+    "actual_receipt_compared_with_entire_expected_payload": true,
+    "same_payload_cases_from_all300": 86,
+    "remaining214_differ": true,
+    "scope": "Reuse requires an available successful r04 receipt; HTTP/unknown cases remain separately accounted."
+  },
+  "frozen_source_pins_verified": 26,
+  "input_files_verified": 2,
+  "base_and_control_hashes_verified": 600,
+  "generation": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "max_tokens": 64,
+    "workers_per_phase": 3
+  },
+  "recovery": {
+    "immutable_rounds": 2,
+    "one_infrastructure_recovery": true,
+    "successful_algorithm_cases_not_rerun": true,
+    "unknown_reservations_retained": true
+  },
+  "budget": {
+    "global_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 5,
+    "snapshot": {
+      "global_known_cny": 183.3725512,
+      "global_reserved_cny": 35.4035936,
+      "global_occupied_cny": 218.7761448,
+      "new_known_cny": 0.077348,
+      "new_reserved_cny": 0.012162399999999999,
+      "new_submissions": 37,
+      "cap_cny": 300
+    }
+  },
+  "evaluation": {
+    "references_match_prior_six_commitment": true,
+    "references_native_scorers_and_aliases_pinned_in_main_protocol": true,
+    "pinned_before_submission_by_protocol_prepare": true,
+    "only_complete300_strict_gain_selected": true,
+    "ties_keep_p02": true
+  },
+  "scope": {
+    "r04_one_sentence_replacement": true,
+    "s04_explicit_interaction": true,
+    "all887QA_and_original3000_docs_retained": true,
+    "fresh90_or_sealed150_read": false
+  },
+  "source_identity": {
+    "protocol_sha256": "f5c9feaaf6765f8db818fd599d9f41043a4b5aed2fedbb7ac7b8bbd31b40e7a2",
+    "driver_sha256": "7343ba77746efa74c385f9590002b6fb05769f03a059fd6a59aebdbed45c0d59",
+    "strategy_sha256": "5a013a53a233692b0f80e0ffebf22c512c45be704ee31a503b07e1cbede5567b",
+    "cache_audit_sha256": "2a70aea722233c476149e1e2f11bf634f22baa3c4a61ffbfdf42fb655f44b048"
+  },
+  "new_api_calls_for_audit": 0,
+  "new_retrieval_calls_for_audit": 0,
+  "new_remote_calls_for_audit": 0
+}

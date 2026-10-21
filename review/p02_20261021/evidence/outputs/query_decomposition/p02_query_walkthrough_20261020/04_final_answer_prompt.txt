@@ -1,0 +1,163 @@
+Answer the Original question using the retrieved passages and auxiliary question-answer pairs.
+Use relevant auxiliary answers as intermediate information. When a retrieved passage gives a conflicting fact about the same entity, relation and conditions, use the passage. Do not transfer a fact about another entity or a different comparison to the Original question.
+Complete the relation, comparison or combination requested by the Original question. Missing information does not establish a negative fact, zero or an empty set. If the available information does not support the final answer, return Cannot be determined.
+For a person, place or organization, use the full identifying name stated in the matching passage. When an auxiliary answer uses a shorter name for the same entity, preserve the fuller source name, including compound surnames and disambiguating suffixes.
+
+Worked examples:
+
+Example 1
+Question:
+Which river does Pack Creek flow into after passing through Spanish Valley?
+
+Context:
+[Chunk 1 | source=Spanish Valley, pages=1-1]
+Spanish Valley
+Pack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.
+
+Auxiliary question-answer pairs
+
+#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado.
+
+Final short answer: Colorado River
+
+Example 2
+Question:
+Are both Leycesteria and Anigozanthos native to Australia?
+
+Context:
+[Chunk 1 | source=Leycesteria, pages=1-1]
+Leycesteria
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+
+[Chunk 2 | source=Anigozanthos, pages=1-1]
+Anigozanthos
+Anigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.
+
+Auxiliary question-answer pairs
+
+#1 Question: Is Leycesteria native to Australia?
+Answer: Leycesteria is native to temperate Asia, not Australia.
+
+#2 Question: Is Anigozanthos native to Australia?
+Answer: Anigozanthos is native to Australia.
+
+#3 Question: Are both Leycesteria and Anigozanthos native to Australia?
+Answer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.
+
+Final short answer: No
+
+Example 3
+Question:
+Baraki Barak District is situated in the western part of a province whose capital is what?
+
+Context:
+[Chunk 1 | source=Baraki Barak District, pages=1-1]
+Baraki Barak District
+Baraki Barak District is situated in the western part of Logar Province, Afghanistan.
+
+[Chunk 2 | source=Logar Province, pages=1-1]
+Logar Province
+Puli Alam is the capital of the province.
+
+Auxiliary question-answer pairs
+
+#1 Question: In which province is Baraki Barak District situated?
+Answer: Baraki Barak District is in Logar Province.
+
+#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?
+Answer: The capital of Logar Province is Kabul.
+
+Final short answer: Puli Alam
+
+Example 4
+Question:
+Which has more species, Clianthus or Callicoma?
+
+Context:
+[Chunk 1 | source=Clianthus, pages=1-1]
+Clianthus
+Clianthus, commonly known as kakabeak ("Kōwhai ngutukākā" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.
+
+[Chunk 2 | source=Callicoma, pages=1-1]
+Callicoma
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+
+Auxiliary question-answer pairs
+
+#1 Question: How many species does Clianthus contain?
+Answer: Clianthus contains two species.
+
+#2 Question: How many species does Callicoma contain?
+Answer: Callicoma contains one species.
+
+#3 Question: Which has more species, Clianthus or Callicoma?
+Answer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.
+
+Final short answer: Clianthus
+
+Actual task:
+
+Original question:
+Where was the husband of Jeanne Raunay born?
+
+Context:
+Auxiliary question-answer pairs
+
+Intermediate candidate results
+
+#1 Question: Who is Jeanne Raunay's husband?
+Answer: Jeanne Raunay's husband was André Beaunier.
+
+Candidate conclusion for the Original question
+
+#2 Question: Where was the husband of Jeanne Raunay born?
+Answer: André Beaunier, the husband of Jeanne Raunay, was born in Évreux.
+
+[Chunk 1 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 2 | source=Jeanne Raunay, pages=1-1]
+Jeanne Raunay
+Jeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.
+
+[Chunk 3 | source=Rahel la Fermosa, pages=1-1]
+Rahel la Fermosa
+Rahel( La( Ladino for" Rachel the Beautiful"; originally" Rahel Esra"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.
+
+[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]
+Jeanne Bonaparte
+Princess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.
+
+[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]
+Jeanne Bonaparte
+Princess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.
+
+[Chunk 6 | source=Jacqueline Roque, pages=1-1]
+Jacqueline Roque
+Jacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.
+
+[Chunk 7 | source=Jacqueline Roque, pages=1-1]
+Jacqueline Roque
+Jacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.
+
+[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]
+Prince Jacques, Duke of Orléans
+Prince Jacques of Orléans, Duke of Orléans, "fils de France" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.
+
+[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]
+Prince Jacques, Duke of Orléans
+Prince Jacques of Orléans, Duke of Orléans," fils de France"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.
+
+[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]
+Jeannette Vermeersch
+Jeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.
+
+Final response requirements:
+Return only the requested answer: a name, value, category or brief phrase.
+Preserve the answer's complete identifying name and any qualifier required by the Original question.
+Exclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.
+For a supported yes/no answer, return exactly Yes or No.
+Do not restate the question, copy a full auxiliary sentence, or add explanation or citations.
+Final short answer:

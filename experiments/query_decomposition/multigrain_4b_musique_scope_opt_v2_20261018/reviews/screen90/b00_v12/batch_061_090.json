@@ -1,0 +1,60 @@
+{
+  "reviewed_indices": [
+    61,
+    90
+  ],
+  "exceptions": {
+    "66": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "County containing Mountain View loses the province-of-Herbert-Collins-birth condition, while the separate province question does not bind it to this county."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Taylor identification drops Real Housewives context and makes her simply from the city; also omits identity of the actor playing the described mother before that actors origin city."
+    },
+    "69": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Skips the spouse identity between the Dutchman cast member and that spouses death place."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Final mission question drops the operator/agency link identifying the astronauts; generic astronauts first learning Russian changes the original scope."
+    },
+    "72": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "For the song intersection, asks Please Please Me tracks but omits songs covered by Tiffany, the other operand condition."
+    },
+    "77": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Identifies river and sea but not the unnamed three-year-old migrant drowned in that sea before asking the migrants background."
+    },
+    "89": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Reverses ownership of the belief from Tito to another person, turns an attempt to convince into actual support, and never identifies the delegation destination."
+    }
+  },
+  "reviewer": "Current Codex inspected all61..90 baseline pairs before any candidate inspection; frozen F/S/C/U."
+}

@@ -1,0 +1,2956 @@
+{
+  "utc": "2026-10-20T00:49:34.429426+00:00",
+  "cohort": "Frozen one-time confirmation150;50 per dataset; no tuning or reselection",
+  "candidate_arm": "p02_role_headers",
+  "continuation_state": "partial_missing_retained",
+  "source_audit": {
+    "frozen_method_source_pins_verified": 20,
+    "original_parent_r000_cases_unchanged": 150,
+    "continuation_source_sha256": "463ea5651af5048a2810f54367b685cb70ac071924a331f71967213e31e48860",
+    "runtime_sha256": "f7e90ae0c3be822cdb8424f60122a105d98f94a95fec136ff171b894a55e8add",
+    "reference_sha256": "5fb6a9f4a4105262a0a1b1be2e62a6d8cb4fd3998510c169e004e7e3880beb2a",
+    "native_metrics_and_aliases_hashes_match": true
+  },
+  "execution_audit": {
+    "checks": {
+      "parent_exact_first_failed_payload_retried": 2,
+      "parent_successful_node_prefix_unchanged": 2,
+      "continuation_logical_calls_payload_verified": 912,
+      "successful_full_payload_receipts_reused": 758,
+      "candidate_physical_requests_exact_final_only": 150,
+      "candidate_nodes_and_actual_final_payload_verified": 149
+    },
+    "first_recovery_payloads": [
+      {
+        "id": "musique:3hop2__607269_467331_162182",
+        "payload_sha256": "9e587ec0a7ec811365a418effd7a3fae42c97bb4aed1d6da46653c64a4c102eb",
+        "old_request_id": "d6d870714d46799e404ed8381918b4cdb515b4c526d429d250b45049279813ee",
+        "new_request_id": "bd24cacf635766d6434e4f7a3738b4b2b358f7d2ad51f64fe0f3209b952d7a8d",
+        "old_status": "failed",
+        "new_status": "failed",
+        "old_error_code": null,
+        "actual_payload_equal": true
+      },
+      {
+        "id": "hotpotqa:5ab3b2c4554299233954ff8a",
+        "payload_sha256": "c2bc75bb5815987360dcfb47a89d52343aaf97fcd7f2cb67976e854104a0d9c2",
+        "old_request_id": "9015280a4bd49643651b9154682eda6514a602bfa8261593e8d862463d6649c0",
+        "new_request_id": "3bb3e152af84502fbd2915a34120d2e20a5e952b1ca2c43800b6b8c1dfb01ed7",
+        "old_status": "unknown",
+        "new_status": "success",
+        "old_error_code": null,
+        "actual_payload_equal": true
+      }
+    ],
+    "issues": [],
+    "failed_parent_never_relabelled_as_algorithm_failure_by_report": true,
+    "success_cache_is_complete_payload_only": true
+  },
+  "parent": {
+    "planned": 150,
+    "scorable": 149,
+    "missing": 1,
+    "F1_available": 0.6693123058894871,
+    "EM_available": 0.5369127516778524,
+    "F1_full": null,
+    "F1_full_bounds": [
+      0.6648502238502239,
+      0.6715168905168905
+    ],
+    "statuses": {
+      "success": 149,
+      "incomplete": 1
+    }
+  },
+  "candidate_summary": {
+    "planned": 150,
+    "scorable": 149,
+    "missing": 1,
+    "F1_available": 0.6719968696478763,
+    "EM_available": 0.5369127516778524,
+    "F1_full": null,
+    "F1_full_bounds": [
+      0.6675168905168904,
+      0.6741835571835572
+    ],
+    "statuses": {
+      "success": 149,
+      "unstarted": 1
+    }
+  },
+  "paired": {
+    "n_cohort": 150,
+    "n_matched": 149,
+    "n_unmatched": 1,
+    "sum_matched_deltas": 0.4,
+    "parent_F1": 0.6693123058894871,
+    "candidate_F1": 0.6719968696478763,
+    "delta_F1": 0.002684563758389262,
+    "paired95": [
+      0.0,
+      0.008053691275167786
+    ],
+    "up": 1,
+    "tie": 148,
+    "down": 0,
+    "full_denominator_delta_bounds": [
+      -0.004,
+      0.009333333333333332
+    ],
+    "full_denominator_bounds_definition": "(sum matched deltas +/- unmatched count) / full planned count; missing answers are not assigned zero",
+    "bootstrap": "5000 paired resamples within dataset, seed20261020; confirmation interval"
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "parent": {
+        "planned": 50,
+        "scorable": 50,
+        "missing": 0,
+        "F1_available": 0.7402539682539683,
+        "EM_available": 0.6,
+        "F1_full": 0.7402539682539683,
+        "F1_full_bounds": [
+          0.7402539682539683,
+          0.7402539682539683
+        ],
+        "statuses": {
+          "success": 50
+        }
+      },
+      "candidate": {
+        "planned": 50,
+        "scorable": 50,
+        "missing": 0,
+        "F1_available": 0.7402539682539683,
+        "EM_available": 0.6,
+        "F1_full": 0.7402539682539683,
+        "F1_full_bounds": [
+          0.7402539682539683,
+          0.7402539682539683
+        ],
+        "statuses": {
+          "success": 50
+        }
+      },
+      "paired": {
+        "n_cohort": 50,
+        "n_matched": 50,
+        "n_unmatched": 0,
+        "sum_matched_deltas": 0.0,
+        "parent_F1": 0.7402539682539683,
+        "candidate_F1": 0.7402539682539683,
+        "delta_F1": 0.0,
+        "paired95": [
+          0.0,
+          0.0
+        ],
+        "up": 0,
+        "tie": 50,
+        "down": 0,
+        "full_denominator_delta_bounds": [
+          0.0,
+          0.0
+        ],
+        "full_denominator_bounds_definition": "(sum matched deltas +/- unmatched count) / full planned count; missing answers are not assigned zero",
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; confirmation interval"
+      }
+    },
+    "2wiki": {
+      "parent": {
+        "planned": 50,
+        "scorable": 50,
+        "missing": 0,
+        "F1_available": 0.826058608058608,
+        "EM_available": 0.72,
+        "F1_full": 0.826058608058608,
+        "F1_full_bounds": [
+          0.826058608058608,
+          0.826058608058608
+        ],
+        "statuses": {
+          "success": 50
+        }
+      },
+      "candidate": {
+        "planned": 50,
+        "scorable": 50,
+        "missing": 0,
+        "F1_available": 0.826058608058608,
+        "EM_available": 0.72,
+        "F1_full": 0.826058608058608,
+        "F1_full_bounds": [
+          0.826058608058608,
+          0.826058608058608
+        ],
+        "statuses": {
+          "success": 50
+        }
+      },
+      "paired": {
+        "n_cohort": 50,
+        "n_matched": 50,
+        "n_unmatched": 0,
+        "sum_matched_deltas": 0.0,
+        "parent_F1": 0.826058608058608,
+        "candidate_F1": 0.826058608058608,
+        "delta_F1": 0.0,
+        "paired95": [
+          0.0,
+          0.0
+        ],
+        "up": 0,
+        "tie": 50,
+        "down": 0,
+        "full_denominator_delta_bounds": [
+          0.0,
+          0.0
+        ],
+        "full_denominator_bounds_definition": "(sum matched deltas +/- unmatched count) / full planned count; missing answers are not assigned zero",
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; confirmation interval"
+      }
+    },
+    "musique": {
+      "parent": {
+        "planned": 50,
+        "scorable": 49,
+        "missing": 1,
+        "F1_available": 0.43697764820213797,
+        "EM_available": 0.2857142857142857,
+        "F1_full": null,
+        "F1_full_bounds": [
+          0.42823809523809525,
+          0.4482380952380953
+        ],
+        "statuses": {
+          "success": 49,
+          "incomplete": 1
+        }
+      },
+      "candidate": {
+        "planned": 50,
+        "scorable": 49,
+        "missing": 1,
+        "F1_available": 0.44514091350826046,
+        "EM_available": 0.2857142857142857,
+        "F1_full": null,
+        "F1_full_bounds": [
+          0.43623809523809526,
+          0.4562380952380954
+        ],
+        "statuses": {
+          "success": 49,
+          "unstarted": 1
+        }
+      },
+      "paired": {
+        "n_cohort": 50,
+        "n_matched": 49,
+        "n_unmatched": 1,
+        "sum_matched_deltas": 0.4,
+        "parent_F1": 0.43697764820213797,
+        "candidate_F1": 0.44514091350826046,
+        "delta_F1": 0.00816326530612245,
+        "paired95": [
+          0.0,
+          0.02448979591836735
+        ],
+        "up": 1,
+        "tie": 48,
+        "down": 0,
+        "full_denominator_delta_bounds": [
+          -0.012,
+          0.027999999999999997
+        ],
+        "full_denominator_bounds_definition": "(sum matched deltas +/- unmatched count) / full planned count; missing answers are not assigned zero",
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; confirmation interval"
+      }
+    }
+  },
+  "missing_ids": [
+    "musique:3hop2__607269_467331_162182"
+  ],
+  "execution_exception": "Exactly one unchanged-payload retry of the previous Mu HTTP400, outside the original auto-retry list; retain original failure.",
+  "provider_input_rejection_confirmed": true,
+  "provider_diagnostic_events": [
+    {
+      "utc": "2026-10-20T00:41:00.217580+00:00",
+      "event": "provider_error",
+      "id": "musique:3hop2__607269_467331_162182",
+      "arm": "parent_g01",
+      "payload_sha256": "9e587ec0a7ec811365a418effd7a3fae42c97bb4aed1d6da46653c64a4c102eb",
+      "error_type": "BadRequestError",
+      "http_status": 400,
+      "provider_code": "None",
+      "message": "data: {\"error\":{\"code\":\"data_inspection_failed\",\"param\":null,\"message\":\"Input text data may contain inappropriate content.\",\"type\":\"data_inspection_failed\"},\"id\":\"chatcmpl-3b049c38-2bd4-9c3c-b2c7-9a1768b930df\"}",
+      "provider_error": null
+    },
+    {
+      "utc": "2026-10-20T00:44:23.921115+00:00",
+      "event": "provider_error",
+      "id": "2wiki:8b2b74a40bb011ebab90acde48001122",
+      "arm": "p02_role_headers",
+      "payload_sha256": "51a9574be6b97036097b127d588b9110aa1bcf1d001897de262944b01ae8a109",
+      "error_type": "APIConnectionError",
+      "http_status": null,
+      "provider_code": "None",
+      "message": "Connection error.",
+      "provider_error": null
+    }
+  ],
+  "physical_and_cost": {
+    "request_statuses": {
+      "success": 1048,
+      "unknown": 2,
+      "failed": 2
+    },
+    "attempt_statuses": {
+      "success": 1048,
+      "unknown": 2,
+      "failed": 2
+    },
+    "cost": {
+      "original_parent_r000": {
+        "known_cny": 1.1450160000000007,
+        "reserved_cny": 0.0023168,
+        "submissions": 898,
+        "statuses": {
+          "returned_usage": 896,
+          "http_failed_not_returned_usage": 1,
+          "reserved": 1
+        },
+        "occupied_cny": 1.1473328000000007
+      },
+      "confirmation_all": {
+        "known_cny": 1.4663335999999993,
+        "reserved_cny": 0.0098792,
+        "submissions": 1052,
+        "statuses": {
+          "returned_usage": 1048,
+          "http_failed_not_returned_usage": 2,
+          "reserved": 2
+        },
+        "occupied_cny": 1.4762127999999994
+      },
+      "continuation": {
+        "known_cny": 0.3213176000000001,
+        "reserved_cny": 0.0075623999999999995,
+        "submissions": 154,
+        "statuses": {
+          "http_failed_not_returned_usage": 1,
+          "returned_usage": 152,
+          "reserved": 1
+        },
+        "occupied_cny": 0.3288800000000001
+      }
+    },
+    "cumulative": {
+      "known_cny": 186.5695208,
+      "reserved_cny": 35.4103168,
+      "occupied_cny": 221.9798376,
+      "cap_cny": 300
+    },
+    "cost_scope": "Returned-usage price estimates and retained unknown reservations, not verified billing; original parent and continuation separated."
+  },
+  "all_case_native_scores": [
+    {
+      "id": "musique:3hop1__139787_88110_77129",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.4
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.4
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__222497_309482_80702",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__819901_32392_823060_610794",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:aa94f24e084911ebbd55ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:29832e3b08fa11ebbdacac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7b241b554299042af8f705",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__136083_87694_124169",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__131820_29339_508306_70744",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:3hop2__90098_91678_10557",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__524186_219173_638950_72134",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5a837d9a554299123d8c213e",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae3cd685542990afbd1e1de",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:e73b5e7a0bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__20268_42004",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:0176afc7089511ebbd75ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5aba9d7955429901930fa85f",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:7486fee80bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a904f6355429916514e746e",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a756dd65542996c70cfaef9",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae7909f5542994a481bbda6",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__51465_53706_795904_580996",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:82ce34f6096011ebbdafac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:d70241c808c711ebbd91ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:772cba800bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__23459_35124",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:2714c89a0baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8571428571428571
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8571428571428571
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ac273455542992f1f2b38d4",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8ac0595542992d82986f6c",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:ea3c4b2e08ce11ebbd94ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:8076797a0bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5abbaf6c554299660624171c",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.1904761904761905
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.1904761904761905
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:2ab21c22085411ebbd59ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7b1023554299042af8f6c2",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__128420_375952",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.3333333333333333
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.3333333333333333
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:2002bf0c0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:c02cc6f408d011ebbd95ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a81fbc25542990a1d231f09",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__525129_315334_131926_87157",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5ac19ba355429963665198b7",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ab51dae5542991779162d82",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop2__160585_39078_8987_8974",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:41bbec360bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.2666666666666667
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.2666666666666667
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__29339_40482",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae55ed15542992663a4f1ea",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__560534_91104",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop2__607269_467331_162182",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "incomplete",
+        "em": null,
+        "f1": null
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "unstarted",
+        "em": null,
+        "f1": null
+      },
+      "delta": null
+    },
+    {
+      "id": "2wiki:1a9c21ac0bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5714285714285715
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5714285714285715
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:47f733600bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__497845_629431_124169",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:701d5e580baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.3076923076923077
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.3076923076923077
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__131783_131926_13165",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.4
+      },
+      "delta": 0.4
+    },
+    {
+      "id": "musique:2hop__199513_801817",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:15b86f340baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:3ef1dc1e08c611ebbd90ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8af05d55429950cd6afc1a",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:c1327e9908be11ebbd8aac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:7d8c2e1808dd11ebbd9dac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:038fb14a0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:f8eeca420bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:55c6ec5e0bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.4
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7f924c55429969796c1aba",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:3a13d0620baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7456ec55429979e288290f",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:18035ea008be11ebbd8aac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__10900_21567",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__723404_58556",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5ac132a755429964131be17c",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:207788f1084a11ebbd55ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ab3b2c4554299233954ff8a",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae395d85542992f92d82313",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__768500_730460_78782",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.7499999999999999
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.7499999999999999
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__637555_339990_15538",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:3hop2__125104_127483_10557",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a845d735542996488c2e52e",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:f9e9d784084d11ebbd56ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:1891309e08b011ebbd84ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7f7b365542992097ad2f80",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.22222222222222224
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.22222222222222224
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__73796_87694_124169",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:2hop__75714_148696",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.8571428571428571
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.8571428571428571
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:8b2b74a40bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__463353_80420",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5abe7e1d55429976d4830b36",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:bd9ab21208fc11ebbdadac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:5d85a6c808ae11ebbd83ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__47210_53706_795904_580996",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:91e41ba80baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:637434540bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop2__132957_132798_40768",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:9286bbd6099a11ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__315267_277284",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.33333333333333337
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.33333333333333337
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a80b3a9554299485f5986cc",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7f74975542992097ad2f77",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:e49ab30c08d511ebbd98ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:21e70b7e0bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:98c9943608ee11ebbda8ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae2b794554299495565db10",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:6b0a2728087811ebbd67ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop2__222979_133154_40768",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:2hop__70584_198548",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__160230_470287_345497_72134",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5adbfb3f55429947ff17388a",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.8
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae2a9c6554299492dc91c42",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ade9c9c5542997c77adee8c",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae46ebc5542995dadf24331",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:4a9acefe0baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a859a755542992a431d1b6d",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:ac96e828084d11ebbd56ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:2d7263cc0bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "2wiki:c42ecf5508cb11ebbd93ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ab431e65542991751b4d6e2",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:858455fe087a11ebbd67ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__770487_494646",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__136129_87694_64412",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:2hop__62951_64006",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:86b7e74808e211ebbda4ac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__734582_74481",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a72d7b35542991f9a20c5be",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:59603ef00bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae2e73a55429928c4239545",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8e36835542995085b373e2",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8cca64554299653c1aa125",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop2__781093_223623_162182",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:200805ca0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__335899_124498",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop2__782397_467331_162182",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__391873_88622",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5a76db3555429972597f13e7",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__58323_375563_161848_44231",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a75f1a755429976ec32bcb1",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5abd82dc5542993062266cb6",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8351fd55429954d2e2ec98",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:3hop1__622497_160088_49779",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5ae0b7cf554299603e418446",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:addf79a0085911ebbd5bac1f6bf848b6",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a8f1672554299458435d558",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5adf3feb5542993a75d2644c",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop1__28352_53706_795904_580996",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:4hop2__5206_14670_8987_8529",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "musique:4hop1__525129_315334_131926_90707",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5714285714285715
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0.5714285714285715
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ab859a955429934fafe6d7b",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5ae320a95542991a06ce992e",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a77a7db5542995d8318124d",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__316459_41402_146281_13584",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5a78c235554299078472775d",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "2wiki:f1490af20bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0.0,
+        "f1": 0
+      },
+      "delta": 0
+    },
+    {
+      "id": "hotpotqa:5a8660ba55429960ec39b684",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "hotpotqa:5a7768cb5542993569682d88",
+      "dataset": "hotpotqa",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1.0,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__275416_24325_125104_10557",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:2hop__91667_81007",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta": 0.0
+    },
+    {
+      "id": "musique:4hop3__160230_470287_862998_72134",
+      "dataset": "musique",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "em": 0,
+        "f1": 0
+      },
+      "delta": 0
+    }
+  ],
+  "new_API_calls": 0,
+  "new_retrieval_calls": 0,
+  "missing_answers_assigned_zero": false,
+  "candidate_reselected": false,
+  "frozen_method_modified": false,
+  "original_scorer_comparison": {
+    "SCORES.progress.json": {
+      "sha256": "406d4310de13e603da8b6e0a84284d6f19e2a94acb9bcd3f600c51e3964094ca",
+      "numeric_fields_checked": 76,
+      "native_scores_and_bootstrap_exact": true
+    }
+  },
+  "changed_case_review": {
+    "scope": "Post-execution, non-blind interpretation of the fixed confirmation result only; no tuning or reselection.",
+    "changed_cases": [
+      {
+        "id": "musique:3hop1__131783_131926_13165",
+        "query": "What treaty ceded territory to the US extending west to the body of water by the location of the Minikahda Club?",
+        "reference_answer": "Treaty of Paris",
+        "parent_prediction": "Cannot be determined",
+        "candidate_prediction": "Adams–Onís Treaty",
+        "parent_f1": 0.0,
+        "candidate_f1": 0.4,
+        "new_EM": 0,
+        "classification": "incorrect_candidate_lexical_credit_without_factual_repair",
+        "unchanged_ordinary_answer": "Lake Calhoun is near the location of the Minikahda Club.",
+        "unchanged_goal_answer": "The Adams–Onís Treaty of 1819 ceded territory to the US extending west to the Pacific Ocean, but no retrieved passage links it—or any treaty—to Lake Calhoun or establishes that any treaty’s western boundary reached Lake Calhoun.",
+        "evidence": [
+          {
+            "stage": "Original-query Top10 raw passage visible to both final readers",
+            "rank": 6,
+            "source": "Republic of Cuba (1902–1959)",
+            "doc_id": "ce457c794b261e1237fd5ff46a959471c67bf9228f894580383923b4b04852b6",
+            "observation": "Mentions the Treaty of Paris of1898 and Spanish cessions involving Puerto Rico, the Philippines and Guam. This is not evidence completing the Lake Calhoun boundary relation in the original query."
+          },
+          {
+            "stage": "Original-query Top10 raw passage visible to both final readers",
+            "rank": 10,
+            "source": "Adams–Onís Treaty",
+            "doc_id": "14c9376ea58505cec693a40b76e80840fd32c512cd4219432f37664a8c216a54",
+            "observation": "Supports the1819 treaty's boundary reaching the Pacific Ocean. It does not connect that boundary to Lake Calhoun."
+          }
+        ],
+        "interpretation": "The candidate selects the Adams–Onís name already present in the unchanged goal while omitting that goal's explicit unresolved bridge. Its nonzero native F1 comes from lexical overlap on Treaty with Treaty of Paris; the requested treaty was not recovered. This is not a factual repair, and neither answer newly achieves EM. The observation is consistent with accepting a partial goal candidate, but a single output is not a guarantee of a deterministic causal mechanism.",
+        "factual_repair_demonstrated": false,
+        "runtime_algorithm_modified": false
+      }
+    ],
+    "overall_interpretation": "Mean native F1 is slightly positive on149 pairs, but its only gain is lexical credit for an incorrect treaty candidate. There are zero newly exact answers. The interval includes zero, and the full150 missing-answer bounds permit either sign; stable superiority or factual improvement has not been established."
+  }
+}

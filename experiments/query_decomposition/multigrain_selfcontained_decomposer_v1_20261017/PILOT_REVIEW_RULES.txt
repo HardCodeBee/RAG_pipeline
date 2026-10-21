@@ -1,0 +1,15 @@
+Scope: direct current-context review of literal original questions and actual API outputs; no claim of blind independent review or human gold. Never use reference answers, retrieved evidence or downstream QA scores to decide decomposition quality.
+
+Use the same core content rubric for v1 and v2. Assess raw model output, and separately inspect the deterministic list after exact-original/duplicate removal and original-query append.
+
+Core checks:
+F faithfulness_and_unknowns: generated supporting questions preserve the relevant entity identity, relation direction, qualifier attachment and scope; no guessed factual bindings or invented restrictions. A supporting question may isolate one condition or one branch; it need not repeat every original condition if that condition applies to a different relation or the final operation.
+S self_containment: each question identifies its object/relation without another generated question or answer. Nested descriptions are allowed. Vague context references, #N tags and 'the previous answer' fail. Original ambiguity may be retained; no unsupported resolution is required.
+C supporting_information_coverage: expose the useful intermediate bridge facts and/or facts required by the final comparison or operation. Complementary granularities are permitted; forcing one-document atomicity is not the rubric. Omitting a genuinely useful bridge/property, failing to expose both comparison branches, or copying only the original multistep question fails. A truly local query may return [].
+U distinct_usefulness: each non-original question has an identifiable supporting purpose. Avoid unrelated background identity questions, invented information needs and needless expansions. A naturally emitted original-equivalent question is permitted under v2 and excluded from the v1-v2 common content penalty when it only adds a terminal question. Repetition is also reported as a separate list-level issue.
+
+Verdicts: pass if all four core checks pass and output is mechanically executable; fail if any core check fails; uncertain if interpretation cannot be resolved from the original question. Keep uncertain and API failures in the full 36-per-arm denominator.
+
+Record version-specific instruction violations separately: original-equivalent output violates v1's original-exclusion rule but may comply with v2. Do not count a merely relaxed original-question policy as a content-quality improvement.
+
+Additional observations: request/output length, exact and semantic original repetitions, unnecessary questions, missing bridge levels, misattached temporal conditions, changed comparison objects, and ambiguity. Do not equate formatting compliance with semantic correctness, or API decomposition quality with trained-4B performance or downstream Answer F1.

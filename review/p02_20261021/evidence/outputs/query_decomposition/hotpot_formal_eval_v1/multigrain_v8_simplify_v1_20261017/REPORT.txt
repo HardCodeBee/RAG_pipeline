@@ -1,0 +1,224 @@
+v8精简与语义保持优化：完整实验报告
+
+结论：v11从3987字节缩短到2412字节（减少39.50%），新确认集与v8同为41/60通过。共同有效58题中，v8通过41题，v11通过40题；修复2题、损害3题。尚未证明语义质量改善或统计不劣，未达到90%。v8继续作为主版本，v11仅作为冻结的精简候选。
+
+尤其需要保留的负结果：共同有效确认题中，跨题指代S从3题增至11题。开发集上的指代减少没有泛化到确认集。语义F、覆盖C、冗余U计数互有重叠，不能相加作为因果贡献。
+
+范围：全新调优60题＋预留确认60题，各含HotpotQA/2Wiki/MuSiQue各20题。按照旧配额分层、固定种子抽样，排除已知旧题ID及规范化精确文本；不宣称消除所有同义改写或预训练泄漏。
+模型：qwen-plus-2025-12-01，temperature=0，thinking关闭，每题每版本单次调用，max_tokens=1024。system为完整版本提示词，user只有原query；没有检索原文、标准答案、参考分解或下游分数。
+评审：沿用F/S/C/U四项，当前Codex同上下文非盲逐题初审；不是独立人工金标。完全相同的字面问题列表可沿用已审判定，不同输出逐条审阅。
+分母：不确定及API不可用保留在计划60题分母；另外报告共同有效配对结果，不把API返回更多称为语义收益。
+这不是训练后4B正确率，也不是RAG Answer F1。训练集与原冻结RAG配置均未改动。
+
+每次改动：
+v10：合并重复禁止项与自查段落，保留两类构造操作及四个示例，3987→2065字节。共同50题30→27，新增退步3题，无新增通过；不采用。
+v11：改为直接从原题构造、由内向外展开未知对象，再独立恢复完整描述；改用三层嵌套及精确布尔谓词等示例。2412字节。开发集共同48题30→33，修复4题/损害1题，按记录规则选为确认候选。
+v12：把构造进一步压成两类提取操作＋对原句最小改写，明确前提与最终目标边界，替换为四层桥接和作品作者—任职公司示例；2379字节。指代下降但新增冗余身份/方向/位置问，完整开发集38题通过，低于v11的41题；未采用。
+
+记录修订：最初冻结规则以完整通过数为主；v10显示API返回差异可产生伪增益后，在v11/v12提交及确认集解封之前，增加共同有效配对不得下降的候选资格要求（SELECTION_AMENDMENT.json）。
+评审修订：dev第15题战争短语附着有原始歧义，统一更正v8/v10判定；无新增通过，保留旧汇总快照和REVIEW_AMENDMENT_001.json，不隐藏修订。
+
+协议与所有版本：experiments\query_decomposition\multigrain_v8_simplify_v1_20261017
+开发集最优候选：v11
+
+dev (full planned denominator60):
+  v8: {'unavailable': 8, 'fail': 20, 'pass': 31, 'uncertain': 1}; pass=51.67%; input tokens=823.8; output tokens=33.7; bytes=3987
+  v10: {'unavailable': 4, 'pass': 33, 'fail': 20, 'uncertain': 3}; pass=55.00%; input tokens=445.5; output tokens=34.5; bytes=2065
+  v11: {'pass': 41, 'fail': 14, 'unavailable': 4, 'uncertain': 1}; pass=68.33%; input tokens=525.9; output tokens=35.4; bytes=2412
+  v12: {'pass': 38, 'uncertain': 3, 'fail': 15, 'unavailable': 4}; pass=63.33%; input tokens=515.4; output tokens=39.9; bytes=2379
+Paired comparisons: [{"before": "v8", "after": "v10", "n": 50, "before_pass": 30, "after_pass": 27, "gained": [], "lost": [17, 32, 34]}, {"before": "v8", "after": "v11", "n": 48, "before_pass": 30, "after_pass": 33, "gained": [3, 43, 46, 57], "lost": [14]}, {"before": "v8", "after": "v12", "n": 51, "before_pass": 31, "after_pass": 33, "gained": [7, 36, 43, 46, 57], "lost": [32, 40, 58]}, {"before": "v10", "after": "v11", "n": 52, "before_pass": 32, "after_pass": 37, "gained": [3, 17, 32, 34, 43, 46], "lost": [14]}, {"before": "v10", "after": "v12", "n": 52, "before_pass": 30, "after_pass": 34, "gained": [7, 17, 34, 36, 43, 46], "lost": [40, 58]}, {"before": "v11", "after": "v12", "n": 52, "before_pass": 38, "after_pass": 38, "gained": [7, 14, 36], "lost": [3, 32, 58]}]
+By dataset: {"v8": {"hotpotqa": {"unavailable": 1, "pass": 11, "fail": 7, "uncertain": 1}, "2wiki": {"unavailable": 6, "pass": 13, "fail": 1}, "musique": {"fail": 12, "pass": 7, "unavailable": 1}}, "v10": {"hotpotqa": {"unavailable": 2, "pass": 11, "fail": 6, "uncertain": 1}, "2wiki": {"pass": 17, "unavailable": 1, "uncertain": 1, "fail": 1}, "musique": {"fail": 13, "uncertain": 1, "pass": 5, "unavailable": 1}}, "v11": {"hotpotqa": {"pass": 13, "fail": 4, "unavailable": 2, "uncertain": 1}, "2wiki": {"pass": 18, "unavailable": 1, "fail": 1}, "musique": {"pass": 10, "fail": 9, "unavailable": 1}}, "v12": {"hotpotqa": {"pass": 13, "fail": 6, "uncertain": 1}, "2wiki": {"pass": 14, "unavailable": 3, "uncertain": 1, "fail": 2}, "musique": {"uncertain": 1, "fail": 7, "pass": 11, "unavailable": 1}}}
+
+holdout (full planned denominator60):
+  v8: {'fail': 17, 'pass': 41, 'uncertain': 1, 'unavailable': 1}; pass=68.33%; input tokens=825.5; output tokens=37.1; bytes=3987
+  v11: {'fail': 17, 'pass': 41, 'unavailable': 1, 'uncertain': 1}; pass=68.33%; input tokens=528.3; output tokens=35.7; bytes=2412
+Paired comparisons: [{"before": "v8", "after": "v11", "n": 58, "before_pass": 41, "after_pass": 40, "gained": [37, 52], "lost": [25, 55, 60]}]
+By dataset: {"v8": {"hotpotqa": {"fail": 6, "pass": 14}, "2wiki": {"pass": 19, "unavailable": 1}, "musique": {"fail": 11, "pass": 8, "uncertain": 1}}, "v11": {"hotpotqa": {"fail": 6, "pass": 14}, "2wiki": {"pass": 19, "uncertain": 1}, "musique": {"fail": 11, "pass": 8, "unavailable": 1}}}
+
+确认集实际改善与退步例子（完整原query与原样输出）：
+
+37. hotpotqa: Which satellite was operational for longer, International Ultraviolet Explorer or EXOSAT?
+v8 {"code": "F", "verdict": "fail", "reason": "v8将实际运作开始/结束换成launch/decommission，事件边界不等价；v11直接问operational与cease operation。", "questions": ["When was the International Ultraviolet Explorer launched?", "When was the International Ultraviolet Explorer decommissioned?", "When was EXOSAT launched?", "When was EXOSAT decommissioned?"], "literal_answer": "[\"When was the International Ultraviolet Explorer launched?\", \"When was the International Ultraviolet Explorer decommissioned?\", \"When was EXOSAT launched?\", \"When was EXOSAT decommissioned?\"]", "request_id": "8cf017e24e93a2e65c11d5022280c9239245eb1838312b94a4461f3e448a4eaf"}
+v11 {"code": "P", "verdict": "pass", "reason": "v8将实际运作开始/结束换成launch/decommission，事件边界不等价；v11直接问operational与cease operation。", "questions": ["When did the International Ultraviolet Explorer become operational?", "When did the International Ultraviolet Explorer cease operation?", "When did EXOSAT become operational?", "When did EXOSAT cease operation?"], "literal_answer": "[\"When did the International Ultraviolet Explorer become operational?\", \"When did the International Ultraviolet Explorer cease operation?\", \"When did EXOSAT become operational?\", \"When did EXOSAT cease operation?\"]", "request_id": "7663fc5b16d8639e3e030c1792a9dba9ca9e03f363d869e9f7d83c64584cb944"}
+
+52. musique: Yagutil Mishiev is a citizen of a country that someone had argued had become an imperialist power. Where did this someone declare that he would intervene in the Korean conflict?
+v8 {"code": "C", "verdict": "fail", "reason": "v8缺国籍国家这一有用桥接层；v11补出国家身份，再保留imperialist power说法与Korean conflict声明关系。", "questions": ["Who argued that Yagutil Mishiev's country had become an imperialist power?", "Where did the person who argued that Yagutil Mishiev's country had become an imperialist power declare that he would intervene in the Korean conflict?"], "literal_answer": "[\"Who argued that Yagutil Mishiev's country had become an imperialist power?\", \"Where did the person who argued that Yagutil Mishiev's country had become an imperialist power declare that he would intervene in the Korean conflict?\"]", "request_id": "75c68e6cf0d0b34e43bd48732e919dd953fee894a681743c507fcc6a18b67148"}
+v11 {"code": "P", "verdict": "pass", "reason": "v8缺国籍国家这一有用桥接层；v11补出国家身份，再保留imperialist power说法与Korean conflict声明关系。", "questions": ["Which country is Yagutil Mishiev a citizen of?", "Who argued that Yagutil Mishiev's country had become an imperialist power?", "Where did the person who argued that Yagutil Mishiev's country had become an imperialist power declare that he would intervene in the Korean conflict?"], "literal_answer": "[\"Which country is Yagutil Mishiev a citizen of?\", \"Who argued that Yagutil Mishiev's country had become an imperialist power?\", \"Where did the person who argued that Yagutil Mishiev's country had become an imperialist power declare that he would intervene in the Korean conflict?\"]", "request_id": "7cce87ca33f82f899e4a0661f9a702af97e082af39fdb23d754edaaad7aa1fe6"}
+
+25. hotpotqa: What composer with an Italian libretto was born 4 March 1678?
+v8 {"code": "P", "verdict": "pass", "reason": "v8保留出生日期与Italian libretto条件；v11作品问题the composer未附出生日期描述，不能独立定位。", "questions": ["Who was born on 4 March 1678 and composed works with an Italian libretto?"], "literal_answer": "[\"Who was born on 4 March 1678 and composed works with an Italian libretto?\"]", "request_id": "a215526ca1a0a0fc6f81950100397a7e6c7e6cc1ebc4f58154f83c14f5ccc77b"}
+v11 {"code": "S", "verdict": "fail", "reason": "v8保留出生日期与Italian libretto条件；v11作品问题the composer未附出生日期描述，不能独立定位。", "questions": ["Who is the composer born on 4 March 1678?", "Which of the composer's works has an Italian libretto?"], "literal_answer": "[\"Who is the composer born on 4 March 1678?\", \"Which of the composer's works has an Italian libretto?\"]", "request_id": "17728b25138b09a3e473012fb5b1e87c58a769c8e19f73b77673bf528bb1c547"}
+
+55. musique: What is the name of the game reserve in the country where hunters spend 50 to 100 times more than the average ecotourist?
+v8 {"code": "P", "verdict": "pass", "reason": "v8保留50-100倍消费国家完整描述；v11末问that country。", "questions": ["In which country do hunters spend 50 to 100 times more than the average ecotourist?", "What is the name of the game reserve in the country where hunters spend 50 to 100 times more than the average ecotourist?"], "literal_answer": "[\"In which country do hunters spend 50 to 100 times more than the average ecotourist?\", \"What is the name of the game reserve in the country where hunters spend 50 to 100 times more than the average ecotourist?\"]", "request_id": "8b50c8e90fe3b318f5675b5340952da00d14f48a0e2ffb2acd2b3effde378268"}
+v11 {"code": "S", "verdict": "fail", "reason": "v8保留50-100倍消费国家完整描述；v11末问that country。", "questions": ["In which country do hunters spend 50 to 100 times more than the average ecotourist?", "What is the name of the game reserve in that country?"], "literal_answer": "[\"In which country do hunters spend 50 to 100 times more than the average ecotourist?\", \"What is the name of the game reserve in that country?\"]", "request_id": "02bc07fb3d8e9718c464203f9245d65b617046e680bfe670015452b693c5e9ea"}
+
+60. 2wiki: Are Zelig and I Was Here (Film) from the same country?
+v8 {"code": "P", "verdict": "pass", "reason": "v8明确查询来源国；v11where produced可能指来源国或实际制作地点，无法从query确认等价，沿用dev32不确定标准。", "questions": ["What country is the film Zelig from?", "What country is the film I Was Here (Film) from?"], "literal_answer": "[\"What country is the film Zelig from?\", \"What country is the film I Was Here (Film) from?\"]", "request_id": "6d954812f7e43f55ac30e55f4fa17127c0bfd5b489b53ed850581d596ae7e623"}
+v11 {"code": "?F", "verdict": "uncertain", "reason": "v8明确查询来源国；v11where produced可能指来源国或实际制作地点，无法从query确认等价，沿用dev32不确定标准。", "questions": ["Where was Zelig produced?", "Where was I Was Here (Film) produced?"], "literal_answer": "[\"Where was Zelig produced?\", \"Where was I Was Here (Film) produced?\"]", "request_id": "aef936573397ffac6d3b0d7a40ffcba753187da6cb68eaa928141f620024ff3e"}
+
+正式审计：{
+  "utc": "2026-10-17T08:34:00.512466+00:00",
+  "v8_unchanged": true,
+  "request_attempts": 360,
+  "request_states": {
+    "success": 338,
+    "unknown": 22
+  },
+  "one_attempt_per_request": true,
+  "unknown_requests_replayed": false,
+  "query_only_payloads_passed": true,
+  "frozen_split_no_overlap": true,
+  "holdout_tuning": false,
+  "trained_model_or_frozen_RAG_changed": false,
+  "review_type": "same-context Codex authored review, nonblind, not independent human gold",
+  "candidate": "v11",
+  "target_met_holdout": false,
+  "study_estimated_cny": 0.1891716,
+  "study_unknown_reserved_cny": 0.10369919999999999,
+  "global_estimated_cny": 147.6172416,
+  "global_unknown_reserved_cny": 20.2583352,
+  "actual_bill_verified": false,
+  "observations": {
+    "dev": {
+      "v8": {
+        "failures": 20,
+        "failed_checks_overlapping": {
+          "F": 10,
+          "S": 8,
+          "C": 5,
+          "U": 3
+        },
+        "mean_questions_returned": 2.326923076923077,
+        "prompt_utf8_bytes": 3987
+      },
+      "v10": {
+        "failures": 20,
+        "failed_checks_overlapping": {
+          "F": 9,
+          "S": 12,
+          "C": 2,
+          "U": 4
+        },
+        "mean_questions_returned": 2.5535714285714284,
+        "prompt_utf8_bytes": 2065,
+        "common_with_v8": {
+          "n": 50,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 10,
+              "S": 8,
+              "C": 4,
+              "U": 3
+            },
+            "v10": {
+              "F": 9,
+              "S": 12,
+              "C": 2,
+              "U": 4
+            }
+          }
+        }
+      },
+      "v11": {
+        "failures": 14,
+        "failed_checks_overlapping": {
+          "F": 5,
+          "S": 5,
+          "C": 2,
+          "U": 3
+        },
+        "mean_questions_returned": 2.4285714285714284,
+        "prompt_utf8_bytes": 2412,
+        "common_with_v8": {
+          "n": 48,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 7,
+              "S": 6,
+              "C": 4,
+              "U": 3
+            },
+            "v11": {
+              "F": 5,
+              "S": 5,
+              "C": 2,
+              "U": 3
+            }
+          }
+        }
+      },
+      "v12": {
+        "failures": 15,
+        "failed_checks_overlapping": {
+          "F": 5,
+          "S": 4,
+          "C": 2,
+          "U": 6
+        },
+        "mean_questions_returned": 2.642857142857143,
+        "prompt_utf8_bytes": 2379,
+        "common_with_v8": {
+          "n": 51,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 9,
+              "S": 8,
+              "C": 5,
+              "U": 3
+            },
+            "v12": {
+              "F": 5,
+              "S": 4,
+              "C": 2,
+              "U": 6
+            }
+          }
+        }
+      }
+    },
+    "holdout": {
+      "v8": {
+        "failures": 17,
+        "failed_checks_overlapping": {
+          "F": 9,
+          "S": 3,
+          "C": 7,
+          "U": 2
+        },
+        "mean_questions_returned": 2.3220338983050848,
+        "prompt_utf8_bytes": 3987
+      },
+      "v11": {
+        "failures": 17,
+        "failed_checks_overlapping": {
+          "F": 6,
+          "S": 11,
+          "C": 5,
+          "U": 2
+        },
+        "mean_questions_returned": 2.4237288135593222,
+        "prompt_utf8_bytes": 2412,
+        "common_with_v8": {
+          "n": 58,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 8,
+              "S": 3,
+              "C": 7,
+              "U": 2
+            },
+            "v11": {
+              "F": 6,
+              "S": 11,
+              "C": 5,
+              "U": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+费用为返回token用量按既有价格估算，不是核实账单；未知请求预留单列，不重发。完整分母、共同分母及各数据集分布均保留。

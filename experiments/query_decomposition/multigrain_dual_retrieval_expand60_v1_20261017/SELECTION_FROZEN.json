@@ -1,0 +1,78 @@
+{
+  "target_total": 60,
+  "old_diagnostic24_preserved": true,
+  "fresh_cases": 36,
+  "per_dataset_new": {
+    "hotpotqa": 12,
+    "2wiki": 12,
+    "musique": 12
+  },
+  "seed": 20261017,
+  "type_quotas_new": {
+    "hotpotqa": {
+      "bridge": 8,
+      "comparison": 4
+    },
+    "2wiki": {
+      "bridge_comparison": 3,
+      "compositional": 3,
+      "inference": 3,
+      "comparison": 3
+    },
+    "musique": {
+      "2-hop": 4,
+      "3-hop": 4,
+      "4-hop": 4
+    }
+  },
+  "exclude": {
+    "hotpotqa": [
+      "5a7933b255429907847277eb",
+      "5a83431d5542993344745ff5",
+      "5a860baa554299211dda2a4c",
+      "5a89706055429951533612f9",
+      "5ab3eeb5554299233954fff4",
+      "5ab5de535542992aa134a3b6",
+      "5add7a335542992200553b37",
+      "5ade5e335542992fa25da766"
+    ],
+    "2wiki": [
+      "1a1c0bd40bdd11eba7f7acde48001122",
+      "32f0334c0bb011ebab90acde48001122",
+      "5112118e0baf11ebab90acde48001122",
+      "54bf355508b811ebbd88ac1f6bf848b6",
+      "54eff598089711ebbd76ac1f6bf848b6",
+      "8820c510086411ebbd5eac1f6bf848b6",
+      "9564cd35089311ebbd75ac1f6bf848b6",
+      "d4f03e3a0bdd11eba7f7acde48001122"
+    ],
+    "musique": [
+      "2hop__123148_5385",
+      "2hop__166820_52835",
+      "2hop__201704_135481",
+      "2hop__286268_97805",
+      "2hop__341176_711757",
+      "2hop__39420_39345",
+      "2hop__424908_500483",
+      "2hop__6735_6733",
+      "2hop__67660_67223",
+      "2hop__73717_653666",
+      "2hop__81379_84616",
+      "2hop__846844_47134",
+      "3hop1__109185_720914_41132",
+      "3hop1__488744_443779_52195",
+      "3hop1__504362_443779_52195",
+      "3hop1__649930_15840_36002",
+      "3hop1__765388_42197_18397",
+      "3hop1__801799_547811_41132",
+      "3hop1__92251_34179_23375",
+      "3hop2__304722_423353_63959",
+      "3hop2__6989_37759_74563",
+      "4hop1__151650_5274_458768_33633",
+      "4hop1__726152_153080_159767_81096",
+      "4hop3__175072_88460_30152_20999"
+    ]
+  },
+  "selection_uses_answers_or_method_outcomes": false,
+  "reporting": "fresh36 primary expansion result and total60 mixed diagnostic result separately; type-stratified means are not population estimates"
+}

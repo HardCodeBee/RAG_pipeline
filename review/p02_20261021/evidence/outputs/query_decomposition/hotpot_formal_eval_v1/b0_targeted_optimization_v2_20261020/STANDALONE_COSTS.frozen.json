@@ -1,0 +1,61 @@
+{
+  "scope": "Full300 successful-method logical token cost at recorded list rates, as if generated once; includes replayed frozen upstream. Not marginal API fees or cold latency.",
+  "parent": {
+    "logical_generation_calls": 1774,
+    "by_stage": {
+      "answer": 887,
+      "rewrite": 587,
+      "final": 300
+    },
+    "tokens": {
+      "prompt_tokens": 2817122,
+      "completion_tokens": 27544
+    },
+    "list_rate_generation_cny": 2.3087855999999998
+  },
+  "arms": {
+    "g01_goal_consistency": {
+      "n": 300,
+      "logical_generation_calls": 1774,
+      "by_stage": {
+        "answer": 887,
+        "rewrite": 587,
+        "final": 300
+      },
+      "tokens": {
+        "prompt_tokens": 2834014,
+        "completion_tokens": 28244
+      },
+      "list_rate_generation_cny": 2.3236991999999996
+    },
+    "f01_final_consistency": {
+      "n": 300,
+      "logical_generation_calls": 1774,
+      "by_stage": {
+        "answer": 887,
+        "rewrite": 587,
+        "final": 300
+      },
+      "tokens": {
+        "prompt_tokens": 2825822,
+        "completion_tokens": 27528
+      },
+      "list_rate_generation_cny": 2.3157136
+    }
+  },
+  "marginal_budget": {
+    "global_known_cny": 180.1456992,
+    "global_reserved_cny": 35.3823984,
+    "global_occupied_cny": 215.5280976,
+    "new_known_cny": 1.3588428,
+    "new_reserved_cny": 0,
+    "new_submissions": 718,
+    "cap_cny": 300
+  },
+  "new_api_calls_for_this_report": 0,
+  "excluded": [
+    "retrieval hardware cost",
+    "remote decomposition GPU monetary price",
+    "provider invoice reconciliation"
+  ]
+}

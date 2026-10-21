@@ -1,0 +1,81 @@
+{
+  "frozen_utc": "2026-10-19T22:52:39.611182+00:00",
+  "purpose": "Supplementary native Answer EM/F1 scoring provenance, frozen before first round3 score summary.",
+  "timing": "After API submissions had begun; before first round3 scoring/summarization. This was NOT pinned before submission in the main protocol.",
+  "not_pre_submission_pin": true,
+  "main_protocol_unchanged": true,
+  "main_protocol_sha256": "4a7f4c56fc0ebf3a9cd8f50c0d176b72824dcc304399ad3d84429d016b238dc8",
+  "files": {
+    "reference300": {
+      "path": "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl",
+      "sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+      "bytes": 101071
+    },
+    "comprehensive_metric_dispatch": {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\scoring.py",
+      "sha256": "eacf840b36ac458a53810733e4101e4d20773080ef18a2f33a427573f00f7e83",
+      "bytes": 6136
+    },
+    "hotpot_actual_answer_metric": {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\common\\scoring.py",
+      "sha256": "dfb1c6dacef94a3a0061b65af2965f6a8d6cbcd232c1dbeb41fb2c1e146cc185",
+      "bytes": 931
+    },
+    "two_wiki_official_metric": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\official\\2wikimultihop_evaluate_v1.1.py",
+      "sha256": "7c09ee2ec98c7ecb57df79eb68dba22eb381ab58d50e730dfcefafb4dda31458",
+      "bytes": 8575
+    },
+    "two_wiki_aliases_and_demonyms": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\id_aliases.json",
+      "sha256": "f08ffcb6c2cefca9bdbe86b4248d6ad7a7743762d3f7264c14ff0bae85726fb6",
+      "bytes": 17501406
+    },
+    "musique_official_answer_metric": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\official\\metrics\\answer.py",
+      "sha256": "10368f619b4d5ef5d83748c05a96c0afd332a14ab5c010740c98d58dfaefe974",
+      "bytes": 2837
+    },
+    "round3_summarizer_and_selection": {
+      "path": "experiments\\query_decomposition\\b0_strategy_round3_v1_20261020\\experiment.py",
+      "sha256": "25fab429d161bd3944ea7824643ac46328e2b9c2aaf4b15dc48c2e386a1fc3f0",
+      "bytes": 13900
+    },
+    "six_protocol_prior_reference_commitment": {
+      "path": "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\PROTOCOL.frozen.json",
+      "sha256": "5b48f6eab47c596d1ba69054b7a377122d9ccee1ebc8f5e03d4f283b54e0a184",
+      "bytes": 27069
+    }
+  },
+  "reference_commitment": {
+    "previous_protocol": "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\PROTOCOL.frozen.json",
+    "expected_reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "actual_reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "matched": true
+  },
+  "metrics": {
+    "hotpotqa": "Actual local official-compatible normalize/exact/F1 implementation common/scoring.py; not a claim to load an author script.",
+    "2wiki": "Official v1.1 AST-extracted answer functions; answers plus entity aliases and demonyms from frozen id_aliases.",
+    "musique": "Official answer.py AST-extracted exact/F1 functions; max across answer and aliases in reference300."
+  },
+  "scoring_output_files_absent_at_freeze": [
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\RESULTS_LATEST.json",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\PAIRED_DETAILS.jsonl",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\FINAL_RESULTS.frozen.json",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\SELECTION.frozen.json"
+  ],
+  "budget_snapshot_after_some_submissions": {
+    "global_known_cny": 182.1659756,
+    "global_reserved_cny": 35.392612,
+    "global_occupied_cny": 217.5585876,
+    "new_known_cny": 0.2518476,
+    "new_reserved_cny": 0.0102136,
+    "new_submissions": 118,
+    "cap_cny": 300
+  },
+  "reference_inputs_used_by_generation": false,
+  "generation_or_request_payload_changed": false,
+  "new_api_calls_for_this_freeze": 0,
+  "new_retrieval_calls_for_this_freeze": 0,
+  "python": "3.11.5 | packaged by Anaconda, Inc. | (main, Sep 11 2023, 13:26:23) [MSC v.1916 64 bit (AMD64)]"
+}

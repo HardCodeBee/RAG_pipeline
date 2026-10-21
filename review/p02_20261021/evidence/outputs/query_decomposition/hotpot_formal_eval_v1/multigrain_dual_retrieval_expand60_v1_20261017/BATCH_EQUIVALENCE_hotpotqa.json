@@ -1,0 +1,66 @@
+{
+  "fixed_queries_prefetched": 28,
+  "control_queries": [
+    {
+      "qid": "5a7933b255429907847277eb",
+      "query": "Was composer Philip Glass also a teacher?",
+      "expected_ids": [
+        "24540",
+        "40265746",
+        "7829289",
+        "37324255",
+        "33661802",
+        "6823047",
+        "2291404",
+        "34754305",
+        "23864930",
+        "17931285"
+      ],
+      "actual_ids": [
+        "24540",
+        "40265746",
+        "7829289",
+        "37324255",
+        "33661802",
+        "6823047",
+        "2291404",
+        "34754305",
+        "23864930",
+        "17931285"
+      ],
+      "same_top10_order": true,
+      "max_score_absolute_difference": 2.384185791015625e-07
+    },
+    {
+      "qid": "5a83431d5542993344745ff5",
+      "query": "Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?",
+      "expected_ids": [
+        "1324009",
+        "17835922",
+        "2480627",
+        "3049527",
+        "8873624",
+        "14923316",
+        "53804483",
+        "13413915",
+        "37579562",
+        "23737536"
+      ],
+      "actual_ids": [
+        "1324009",
+        "17835922",
+        "2480627",
+        "3049527",
+        "8873624",
+        "14923316",
+        "53804483",
+        "13413915",
+        "37579562",
+        "23737536"
+      ],
+      "same_top10_order": true,
+      "max_score_absolute_difference": 1.7881393432617188e-07
+    }
+  ],
+  "algorithm": "existing native retrieve_many; same normalized BGE and exact FlatIP"
+}

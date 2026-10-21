@@ -1,0 +1,171 @@
+Answer the original question using the retrieved passages and auxiliary question-answer pairs.
+Auxiliary answers are candidate intermediate results: use relevant ones, but correct or disregard them when direct passage evidence for the same entity and scope conflicts. A fact absent from these passages is not thereby false; auxiliary answers may come from other retrieved passages.
+Complete the original question's comparison or combination; return its requested answer, not a list of intermediate answers.
+For comparisons, use the same criterion and level of detail for both entities; a longer auxiliary list alone does not establish greater scope.
+Return only the short answer. For a yes/no question, return exactly Yes or No when a definite answer is supported. Do not add citations or explanation.
+
+Worked examples:
+
+Example 1
+Question:
+What is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?
+
+Context:
+[Chunk 1 | source=Spanish Valley, pages=1-1]
+Spanish Valley
+Pack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.
+
+[Chunk 2 | source=Colorado River, pages=1-1]
+Colorado River
+The 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.
+
+Auxiliary question-answer pairs
+
+#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?
+Answer: Pack Creek flows into the Colorado River.
+
+#2 Question: What is the length of #1?
+Answer: The Colorado River is 1450 mi long.
+
+Final short answer: 1450 mi
+
+Example 2
+Question:
+Are both Leycesteria and Anigozanthos native to Australia?
+
+Context:
+[Chunk 1 | source=Leycesteria, pages=1-1]
+Leycesteria
+Leycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.
+
+[Chunk 2 | source=Anigozanthos, pages=1-1]
+Anigozanthos
+Anigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.
+
+Auxiliary question-answer pairs
+
+#1 Question: Is Leycesteria native to Australia?
+Answer: No. Leycesteria is native to temperate Asia.
+
+#2 Question: Is Anigozanthos native to Australia?
+Answer: Yes. Anigozanthos is an Australian plant genus.
+
+#3 Question: Are both #1 and #2 true?
+Answer: Yes, both are native to Australia.
+
+Final short answer: No
+
+Example 3
+Question:
+Baraki Barak District is situated in the western part of a province whose capital is what?
+
+Context:
+[Chunk 1 | source=Baraki Barak District, pages=1-1]
+Baraki Barak District
+Baraki Barak District is situated in the western part of Logar Province, Afghanistan.
+
+[Chunk 2 | source=Logar Province, pages=1-1]
+Logar Province
+Puli Alam is the capital of the province.
+
+Auxiliary question-answer pairs
+
+#1 Question: In which province is Baraki Barak District situated?
+Answer: Baraki Barak District is in Logar Province.
+
+#2 Question: What is the capital of #1?
+Answer: The capital of Logar Province is Kabul.
+
+Final short answer: Puli Alam
+
+Example 4
+Question:
+Which has more species, Clianthus or Callicoma?
+
+Context:
+[Chunk 1 | source=Clianthus, pages=1-1]
+Clianthus
+Clianthus, commonly known as kakabeak ("Kōwhai ngutukākā" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.
+
+[Chunk 2 | source=Callicoma, pages=1-1]
+Callicoma
+Callicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.
+
+Auxiliary question-answer pairs
+
+#1 Question: How many species does Clianthus contain?
+Answer: Earlier retrieval did not establish the species count of Clianthus.
+
+#2 Question: How many species does Callicoma contain?
+Answer: Callicoma contains one species.
+
+#3 Question: Which genus has more species according to #1 and #2?
+Answer: Callicoma has more species than Clianthus.
+
+Final short answer: Clianthus
+
+Actual task:
+
+Question:
+How many times did the plague occur in the place of death of the creator of La Schiavona?
+
+Context:
+[Chunk 1 | source=Antonine Plague, pages=1-1]
+Antonine Plague
+The Antonine Plague of 165 to 180 AD, also known as the Plague of Galen (from the name of the Greek physician living in the Roman Empire who described it), was an ancient pandemic brought back to the Roman Empire by troops returning from campaigns in the Near East. Scholars have suspected it to have been either smallpox or measles, but the true cause remains undetermined. The epidemic may have claimed the life of a Roman emperor, Lucius Verus, who died in 169 and was the co-regent of Marcus Aurelius Antoninus, whose family name, Antoninus, has become associated with the epidemic. The disease broke out again nine years later, according to the Roman historian Dio Cassius (155–235), causing up to 2,000 deaths a day in Rome, one quarter of those who were affected, giving the disease a mortality rate of about 25%. The total deaths have been estimated at five million, and the disease killed as much as one-third of the population in some areas and devastated the Roman army.
+
+[Chunk 2 | source=Black Death, pages=1-1]
+Black Death
+The plague disease, caused by Yersinia pestis, is enzootic (commonly present) in populations of fleas carried by ground rodents, including marmots, in various areas including Central Asia, Kurdistan, Western Asia, Northern India and Uganda. Nestorian graves dating to 1338–39 near Lake Issyk Kul in Kyrgyzstan have inscriptions referring to plague and are thought by many epidemiologists to mark the outbreak of the epidemic, from which it could easily have spread to China and India. In October 2010, medical geneticists suggested that all three of the great waves of the plague originated in China. In China, the 13th century Mongol conquest caused a decline in farming and trading. However, economic recovery had been observed at the beginning of the 14th century. In the 1330s a large number of natural disasters and plagues led to widespread famine, starting in 1331, with a deadly plague arriving soon after. Epidemics that may have included plague killed an estimated 25 million Chinese and other Asians during the 15 years before it reached Constantinople in 1347.
+
+[Chunk 3 | source=Black Death, pages=1-1]
+Black Death
+In the first half of the 17th century, a plague claimed some 1.7 million victims in Italy, or about 14% of the population. In 1656, the plague killed about half of Naples' 300,000 inhabitants. More than 1.25 million deaths resulted from the extreme incidence of plague in 17th-century Spain. The plague of 1649 probably reduced the population of Seville by half. In 1709–13, a plague epidemic that followed the Great Northern War (1700–21, Sweden v. Russia and allies) killed about 100,000 in Sweden, and 300,000 in Prussia. The plague killed two-thirds of the inhabitants of Helsinki, and claimed a third of Stockholm's population. Europe's last major epidemic occurred in 1720 in Marseille.
+
+[Chunk 4 | source=La Schiavona, pages=1-1]
+La Schiavona
+Portrait of a Lady, also known as La Schiavona (the woman from Dalmatia), is a 1510–12 portrait by Titian of an unknown woman.
+
+[Chunk 5 | source=Black Death, pages=1-1]
+Black Death
+The plague repeatedly returned to haunt Europe and the Mediterranean throughout the 14th to 17th centuries. According to Biraben, the plague was present somewhere in Europe in every year between 1346 and 1671. The Second Pandemic was particularly widespread in the following years: 1360–63; 1374; 1400; 1438–39; 1456–57; 1464–66; 1481–85; 1500–03; 1518–31; 1544–48; 1563–66; 1573–88; 1596–99; 1602–11; 1623–40; 1644–54; and 1664–67. Subsequent outbreaks, though severe, marked the retreat from most of Europe (18th century) and northern Africa (19th century). According to Geoffrey Parker, "France alone lost almost a million people to the plague in the epidemic of 1628–31."
+
+[Chunk 6 | source=Black Death, pages=1-1]
+Black Death
+The Black Death, also known as the Great Plague, the Black Plague, or simply the Plague, was one of the most devastating pandemics in human history, resulting in the deaths of an estimated 75 to 200 million people in Eurasia and peaking in Europe from 1347 to 1351. The bacterium Yersinia pestis, which results in several forms of plague, is believed to have been the cause. The plague created a series of religious, social and economic upheavals, which had profound effects on the course of European history.
+
+[Chunk 7 | source=Black Death, pages=1-1]
+Black Death
+The plague disease, caused by Yersinia pestis, is enzootic (commonly present) in populations of fleas carried by ground rodents, including marmots, in various areas including Central Asia, Kurdistan, Western Asia, Northern India and Uganda. Due to climate change in Asia, rodents began to flee the dried out grasslands to more populated areas, spreading the disease. Nestorian graves dating to 1338 -- 1339 near Lake Issyk Kul in Kyrgyzstan have inscriptions referring to plague and are thought by many epidemiologists to mark the outbreak of the epidemic, from which it could easily have spread to China and India. In October 2010, medical geneticists suggested that all three of the great waves of the plague originated in China. In China, the 13th - century Mongol conquest caused a decline in farming and trading. However, economic recovery had been observed at the beginning of the 14th century. In the 1330s, a large number of natural disasters and plagues led to widespread famine, starting in 1331, with a deadly plague arriving soon after. Epidemics that may have included plague killed an estimated 25 million Chinese and other Asians during the 15 years before it reached Constantinople in 1347.
+
+Auxiliary question-answer pairs
+
+#1 Question: Who created La Schiavona?
+Answer: Titian created La Schiavona.
+
+#2 Question: Where did the creator of La Schiavona die?
+Answer: Titian died in Venice.
+
+#3 Question: How many times did the plague occur in the place of death of the creator of La Schiavona?
+Answer: The plague occurred 22 times in Venice between 1361 and 1528.
+
+[Chunk 8 | source=Great Plague of Vienna, pages=1-1]
+Great Plague of Vienna
+The Great Plague of Vienna occurred in 1679 in Vienna, Austria, the imperial residence of the Austrian Habsburg rulers. From contemporary descriptions, the disease is believed to have been bubonic plague, which is caused by the bacterium "Yersinia pestis", carried by fleas associated with the black rat and other rodents. The city was crippled by the epidemic, which recurred fitfully into the early 1680s, claiming an estimated 76,000 residents.
+
+[Chunk 9 | source=Black Death, pages=1-1]
+Black Death
+The Black Death, also known as the Great Plague, the Black Plague, or the Plague, was one of the most devastating pandemics in human history, resulting in the deaths of an estimated 75 to 200 million people in Eurasia and peaking in Europe from 1347 to 1351. The bacterium Yersinia pestis, which results in several forms of plague, is believed to have been the cause. The plague created a series of religious, social and economic upheavals, which had profound effects on the course of European history.
+
+[Chunk 10 | source=Black Death, pages=1-1]
+Black Death
+In 1466, perhaps 40,000 people died of the plague in Paris. During the 16th and 17th centuries, the plague was present in Paris around 30 per cent of the time. The Black Death ravaged Europe for three years before it continued on into Russia, where the disease was present somewhere in the country 25 times between 1350 to 1490. Plague epidemics ravaged London in 1563, 1593, 1603, 1625, 1636, and 1665, reducing its population by 10 to 30% during those years. Over 10% of Amsterdam's population died in 1623–25, and again in 1635–36, 1655, and 1664. Plague occurred in Venice 22 times between 1361 and 1528. The plague of 1576–77 killed 50,000 in Venice, almost a third of the population. Late outbreaks in central Europe included the Italian Plague of 1629–1631, which is associated with troop movements during the Thirty Years' War, and the Great Plague of Vienna in 1679. Over 60% of Norway's population died in 1348–50. The last plague outbreak ravaged Oslo in 1654.
+
+Final response requirements:
+Answer the original Question, not an auxiliary question.
+Return only the shortest complete answer: the requested name, place, date,
+number, category, relationship or short phrase.
+Keep all requested items and necessary qualifiers or units.
+For a supported yes/no answer, return exactly Yes or No.
+Do not restate the question or copy a full auxiliary sentence.
+Final short answer:

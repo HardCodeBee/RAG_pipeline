@@ -1,0 +1,77 @@
+{
+  "utc": "2026-10-19T23:07:27.899839+00:00",
+  "parent": "frozen p02_role_headers",
+  "arms": [
+    "r04_scope_contract",
+    "s04_scope_plus_evidence"
+  ],
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "sample_role": "Exposed diagnostic300, full300 for both arms; no outcome-based pilot gate.",
+  "n_per_arm": 300,
+  "single_factor": {
+    "r04_scope_contract": "Replace one existing final-instruction sentence with a compact contract: auxiliary results resolve references but cannot change the Original question answer target, relation or conditions. No added rule block.",
+    "s04_scope_plus_evidence": "Same sentence substitution plus exactly the previously frozen e03 first-new-goal-passage policy; explicit interaction study. Retain p02 and completed e03 as controls."
+  },
+  "scope_replacement": {
+    "old": "Do not transfer a fact about another entity or a different comparison to the Original question.",
+    "new": "Auxiliary results may resolve references in the Original question; they must not change its requested answer target, relation or conditions."
+  },
+  "mechanism": "A locally true auxiliary fact may impose the wrong target/restriction without contradicting a passage. Distinguish reference resolution from changing the asked relation.",
+  "selection": "Highest complete300 native mean F1 against p02; keep p02 on tie or incomplete candidate. Development selection only.",
+  "fixed": [
+    "R02",
+    "ordinary and goal QA",
+    "all rewrite outputs",
+    "retrieval packets",
+    "p02 QA headers",
+    "root Top10",
+    "all auxiliary QA",
+    "model",
+    "examples",
+    "P1 readout",
+    "final64"
+  ],
+  "fresh_data_boundary": "Do not read/use round2 dev90 scores or sealed150 to choose these interventions. Existing p02 dev90 validation and its confirmation candidate remain unchanged. Any winning successor needs its own frozen validation protocol.",
+  "cache": "Exact complete payload only; first successful p02 receipt, successful prior infrastructure attempt, or same-case earlier r04 arm. In86 no-new-document cases s04 exactly equals r04 and is reused.",
+  "retries": "One immutable infrastructure recovery; retain unknown liability; no algorithm retry.",
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 5
+  },
+  "input_hashes": {
+    "runtime300.frozen.jsonl": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "SOURCES.frozen.jsonl": "f92033e785f4255a7ab97605f4b1f9d6e68e395a4b3d7a298d06f8bac0000abc"
+  },
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\experiment.py": "8d2aac4da822e406d4c1efae33fb143997e04a580d9e15cd9773261af8a56eab",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\PROTOCOL.frozen.json": "008216868349425387cf4f14043ca00a03092560710e10e1fc0bfef4f2da39d1",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_RESULTS.frozen.json": "0df873874c08aa795491400a367df0011e6383c58cfb7a816117356e65ac52d5",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_AUDIT.frozen.json": "64d40a6ee62aaef65e2645883dce7cce0b96906f3e69cb95ac8a54f15a803c62",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\receipts.py": "77061a24b408874c52f8ee6ac70bcb1ee9c47579155a4c5e6258684c53f1e06a",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef",
+    "experiments\\query_decomposition\\b0_strategy_round4_v1_20261020\\experiment.py": "7343ba77746efa74c385f9590002b6fb05769f03a059fd6a59aebdbed45c0d59",
+    "experiments\\query_decomposition\\b0_strategy_round4_v1_20261020\\strategy.py": "5a013a53a233692b0f80e0ffebf22c512c45be704ee31a503b07e1cbede5567b",
+    "experiments\\query_decomposition\\b0_strategy_round4_v1_20261020\\OFFLINE_AUDIT.py": "2040faf5a6006d24493320c931f963be07437b67a899bb2814b84c4e4e0a22bf",
+    "experiments\\query_decomposition\\b0_strategy_round4_v1_20261020\\OFFLINE_AUDIT.frozen.json": "207fd351aa38ba0bc2a4a1eae8f73f0f273e784f2ddf8f38267274874c9e3722",
+    "experiments\\query_decomposition\\b0_strategy_round3_v1_20261020\\strategy.py": "505ea5188c6acd07251da541f11310f69b454c121f30d61d9ed4e2fc82b03847",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\FINAL_RESULTS.frozen.json": "1fafd15822079790358e16aa3bc79ae676af53fab23711f2f79868c3eb7bec12",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\PROTOCOL.frozen.json": "bdff41e027724bd1cc00b82b46b5b9d0ed312ab2e0fed2074b87e7c7f7024085",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\SELECTION.frozen.json": "a0201d7d57050b8600a956c83e87ebf5daf761352ee9c1ff15b174ec0b5bc2a4",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\FINAL_RESULTS.frozen.json": "631a0206fe0d173a4d0deb920a2063e46a95ec67705835708229a406e5080963",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\scoring.py": "eacf840b36ac458a53810733e4101e4d20773080ef18a2f33a427573f00f7e83",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\common\\scoring.py": "dfb1c6dacef94a3a0061b65af2965f6a8d6cbcd232c1dbeb41fb2c1e146cc185",
+    "data\\multihop_comprehensive_v1_20261015\\2wiki\\official\\2wikimultihop_evaluate_v1.1.py": "7c09ee2ec98c7ecb57df79eb68dba22eb381ab58d50e730dfcefafb4dda31458",
+    "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\id_aliases.json": "f08ffcb6c2cefca9bdbe86b4248d6ad7a7743762d3f7264c14ff0bae85726fb6",
+    "data\\multihop_comprehensive_v1_20261015\\musique\\official\\metrics\\answer.py": "10368f619b4d5ef5d83748c05a96c0afd332a14ab5c010740c98d58dfaefe974"
+  }
+}

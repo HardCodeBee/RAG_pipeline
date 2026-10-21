@@ -1,0 +1,58 @@
+{
+  "utc": "2026-10-18T06:43:56Z",
+  "job_id": "154422",
+  "queue": "",
+  "accounting": "154422|COMPLETED|00:06:11|0:0",
+  "smoke": {
+    "api_calls": 0,
+    "base_unchanged": true,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/results/smoke/checkpoints/checkpoint-000002",
+    "consumed_examples": 64,
+    "global_step": 2,
+    "initial_adapter": null,
+    "planned_examples": 64,
+    "semantic_selection": "pending_dev60_review",
+    "status": "smoke_passed"
+  },
+  "smoke_last_update": {
+    "actual_examples": 32,
+    "consumed_examples": 64,
+    "epoch": 1,
+    "gradient_norm": 6.647878170013428,
+    "learning_rate": 1e-05,
+    "loss": 1.8177291220841716,
+    "next_learning_rate": 1.5e-05,
+    "seconds": 19.01961164199747,
+    "step": 2,
+    "target_tokens": 804
+  },
+  "smoke_dev_counts": {},
+  "train": {
+    "api_calls": 0,
+    "base_unchanged": true,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/results/train/checkpoints/checkpoint-000228",
+    "consumed_examples": 7264,
+    "global_step": 228,
+    "initial_adapter": null,
+    "planned_examples": 7264,
+    "semantic_selection": "pending_dev60_review",
+    "status": "completed"
+  },
+  "train_last_update": {
+    "actual_examples": 16,
+    "consumed_examples": 7264,
+    "epoch": 2,
+    "gradient_norm": 0.9042845368385315,
+    "learning_rate": 0.0,
+    "loss": 0.12913142153852988,
+    "next_learning_rate": 0.0,
+    "seconds": 9.67207192699425,
+    "step": 228,
+    "target_tokens": 415
+  },
+  "train_dev_counts": {
+    "checkpoint-000171": 60,
+    "checkpoint-000228": 60,
+    "checkpoint-000114": 60
+  }
+}

@@ -1,0 +1,15 @@
+Write one optional retrieval rewrite of the current question using relevant prior question-answer pairs. Prior answers are candidate facts, not verified evidence. Use their full statements to identify which entity or relation an answer belongs to.
+Preserve the current question's requested object, relation, scope, dates, negation, and comparison direction. Replace a descriptive reference with a relevant explicit entity only when the prior statement actually supplies that identity. Do not concatenate a complete answer sentence into a noun slot. Do not use a statement of missing evidence as an entity, a negative fact, zero, or an empty set. Do not arbitrarily select one member of a multi-valued answer. Do not insert factual comparison answers or solve the question.
+When no relevant usable prior information improves the retrieval expression, return the current question exactly unchanged. Return only one complete question, with no explanation or Markdown.
+
+Original question:
+How many times did the plague occur in the place of death of the creator of La Schiavona?
+
+Prior question-answer pairs:
+Question: Who created La Schiavona?
+Candidate factual answer: Titian created La Schiavona.
+
+Current question:
+Where did the creator of La Schiavona die?
+
+Retrieval question:

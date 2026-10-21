@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "real_API_calls": 0,
+  "global_budget_untouched": true,
+  "checks": [
+    "new retry ID differs from old failed ID",
+    "old failed request bytes and unknown reserve unchanged",
+    "new charge settles separately",
+    "identical model/messages/decoding payload",
+    "per-trajectory successful receipt overrides global alternatives",
+    "new unknown is not shared as a success cache entry",
+    "first complete answer protected even when wrong",
+    "every retry records start/end and prior failure ID"
+  ],
+  "scratch": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\offline_retry_validation\\1792430379869043500",
+  "retry_driver_sha256": "14bd7a3387e67e4f424e1670846c33a125c581e27c8550d922d397a72a3c7473"
+}

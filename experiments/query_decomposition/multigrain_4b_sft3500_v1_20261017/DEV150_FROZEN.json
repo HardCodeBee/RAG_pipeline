@@ -1,0 +1,42 @@
+{
+  "seed": "20261017-sft3500-dev150-v12-01",
+  "quotas": {
+    "hotpotqa": {
+      "bridge": 35,
+      "comparison": 15
+    },
+    "2wiki": {
+      "comparison": 13,
+      "inference": 13,
+      "compositional": 12,
+      "bridge_comparison": 12
+    },
+    "musique": {
+      "2-hop": 18,
+      "3-hop": 17,
+      "4-hop": 15
+    }
+  },
+  "selection_uses_predictions_or_answers": false,
+  "role": "development_loss_and_checkpoint_selection_only; never formal_test",
+  "questions_sha256": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606",
+  "v002_sha256": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+  "excluded_eval300_sha256": "9739c44926d5ec6442ceefe401984fc83d332c1486426071874a1d2fb6c74d72",
+  "mu_primitive_components_excluded": 1165,
+  "candidate_exclusions": {
+    "known_id_or_text": 4267,
+    "shared_train_or_eval300_component": 594
+  },
+  "available": {
+    "hotpotqa/bridge": 3862,
+    "hotpotqa/comparison": 1005,
+    "2wiki/comparison": 2810,
+    "2wiki/inference": 1412,
+    "2wiki/compositional": 4900,
+    "2wiki/bridge_comparison": 2541,
+    "musique/2-hop": 775,
+    "musique/3-hop": 193,
+    "musique/4-hop": 39
+  },
+  "references": "pending_current_Codex_query_only_authoring_and_review"
+}

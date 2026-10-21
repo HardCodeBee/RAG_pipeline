@@ -1,0 +1,71 @@
+single_final与直接父版本discount20复核
+范围：冻结且已曝光的300题；不是仅删除一次调用的因果对照。
+
+overall: n=300; F1 70.0250773266% -> 67.6761423761%; delta=-2.3489349505pp; up/tie/down=18/253/29
+hotpotqa: n=100; F1 79.4085858586% -> 74.4785714286%; delta=-4.9300144300pp; up/tie/down=3/85/12
+2wiki: n=100; F1 91.1188141923% -> 89.5171717172%; delta=-1.6016424752pp; up/tie/down=6/89/5
+musique: n=100; F1 39.5478319289% -> 39.0326839827%; delta=-0.5151479463pp; up/tie/down=9/79/12
+
+300/300普通前缀完全一致；300/300原goal reader=新final reader；原query Top10文档ID丢失0；exactduplicate过滤0。
+216题最终新增1618篇文档，总曝光3000→4618，平均10→15.3933。
+因此，回退不是普通分解/检索/子回答发生变化，也不是已有原query文档被挤掉；但不是单独删除goal句的纯因果实验。
+
+联动改变：
+Delete goal factual-answer generation and its generated full-sentence candidate conclusion from helper.
+Delete GOAL_RULE-bearing goal-reader call; unchanged final prompt does not inherit that extra rule (0/300 final prompts contain it).
+Route complete goal dual-query union to final: original final Top10 retained and216/300 receive extra documents; mean10 to15.3933 passages. Ordering, Chunk labels and token positions can also change; their separate frequencies were not isolated.
+Keep final max64, final instructions, role-helper rendering, and the four old worked examples; final reader now must derive the missing goal conclusion itself.
+Code supports exact-text original-query filtering in single_final only, but this was triggered0/300; it is not an explanation of the observed cohort regression.
+
+hotpotqa:5ae0a48155429945ae9593df
+The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+分解：["Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"]
+普通答案：[{"step_id": 1, "request": "Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?", "answer": "The pseudonymous partner to \"Willis the Guard\" was Vigorish.", "rewritten_query": "Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"}]
+原goal：Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.
+旧最终：the amount charged by a bookmaker for taking a bet
+新最终：vigorish
+F1：{"discount_f1": 0.7272727272727273, "single_f1": 0.0, "delta": -0.7272727272727273}
+普通答案Vigorish只解决桥接对象；goal曾依据Vigorish条目明确生成bookmaker收费定义。single最终虽有同一原文却只返回vigorish，观察到最后一跳定义未被用于回答。不能证明模型内部只复制了前置答案。
+
+2wiki:dea18cf408c211ebbd8cac1f6bf848b6
+Which film whose director is younger, Orfeu or Love Is On The Air?
+分解：["Who directed the film Orfeu?", "Who directed the film Love Is On The Air?", "When was the director of the film Orfeu born?", "When was the director of the film Love Is On The Air born?"]
+普通答案：[{"step_id": 1, "request": "Who directed the film Orfeu?", "answer": "Orfeu was directed by Carlos Diegues.", "rewritten_query": "Who directed the film Orfeu?"}, {"step_id": 2, "request": "Who directed the film Love Is On The Air?", "answer": "Love Is on the Air was directed by Nick Grinde.", "rewritten_query": "Who directed the film Love Is On The Air?"}, {"step_id": 3, "request": "When was the director of the film Orfeu born?", "answer": "Carlos Diegues was born on May 19, 1940.", "rewritten_query": "When was Carlos Diegues born?"}, {"step_id": 4, "request": "When was the director of the film Love Is On The Air born?", "answer": "Nick Grinde was born on January 12, 1893.", "rewritten_query": "When was Nick Grinde born?"}]
+原goal：Orfeu’s director, Carlos Diegues (born May 19, 1940), is younger than Love Is on the Air’s director, Nick Grinde (born January 12, 1893).
+旧最终：Orfeu
+新最终：Love Is On The Air
+F1：{"discount_f1": 1.0, "single_f1": 0, "delta": -1.0}
+四个普通答案及子检索原文已经建立电影→导演→1940/1893出生日期；goal明确1940出生者更年轻并答Orfeu。single选Love Is On The Air。可观察比较结论错误，但不能区分删除goal结论、移除其规则、原文位置变化各自贡献。
+
+musique:2hop__56806_7298
+What pop artist started his career on adult contemporary radio along with the subject of the song The One That Got Away?
+分解：["Who is the subject of the song The One That Got Away?"]
+普通答案：[{"step_id": 1, "request": "Who is the subject of the song The One That Got Away?", "answer": "The subject of the song \"The One That Got Away\" is Josh Groban.", "rewritten_query": "Who is the subject of the song The One That Got Away?"}]
+原goal：Michael Bublé started his career on adult contemporary radio along with Josh Groban.
+旧最终：Michael Bublé
+新最终：Josh Groban
+F1：{"discount_f1": 1.0, "single_f1": 0, "delta": -1.0}
+普通答案及歌曲原文明确subject=Josh Groban；goal阅读的Adult contemporary music第一篇明确Michael Bublé和Josh Groban均从AC起步，旧goal与最终正确给Michael。single只答Josh Groban，漏掉along with所需的另一个人。原文足够、没有新增证据丢失。
+
+hotpotqa:5a84ad3a5542992a431d1a8b
+What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+原goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+旧最终："Back to December"
+新最终：Cannot be determined
+当前检索原文仅列出Yoann Lemoine拍过Back to December等作品，没有说明哪首包含道歉与请求原谅。goal和旧最终金标正确，但最后一跳关联没有被已保存原文支持；single拒答的F1损失不能直接等同事实性损伤。参数知识或无依据猜测均可能，不能从输出认定内部来源。
+
+hotpotqa:5ae2dd2055429928c423950d
+What is the county seat of the county where East Lempster, New Hampshire is located?
+原goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, is Newport.
+旧最终：Newport
+新最终：New London
+当前材料确定East Lempster属于Sullivan County, New Hampshire，goal改写漏New Hampshire并召回其他州Sullivan County，全部goal合并材料无Newport。旧goal给出金标Newport但缺乏该轮原文支撑；single答New London同样无证据。观察到F1下降，不足以证明丢掉了经原文验证的正确推理步骤。
+
+边界：
+Observed goal conclusions provide explicit composition and target resolution in the selected cases; model internal reasoning is not observable.
+Longer final input, omitted goal conclusion, removed goal consistency instruction, shifted raw evidence and example-role mismatch were not isolated independently.
+F1 regressions include alias/qualifier/wording changes, unsupported old gold matches and genuinely wrong new factual targets; do not call every regression hallucination.
+This comparison uses discount20, not union20 or p02, as the direct parent.
+
+完整原文、完整goal/最终prompt、全部300题源路径与SHA及升降见同名JSON。
+本次API=0；真实检索=0；冻结文件修改=0。

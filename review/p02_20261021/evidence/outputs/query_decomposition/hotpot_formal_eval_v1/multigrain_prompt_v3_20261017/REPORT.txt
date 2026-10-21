@@ -1,0 +1,364 @@
+prompt优化第2轮：固定改写器，只修订最终姓名选择
+状态：全部完成
+12道新题＋上一轮1道下降题。新题不与此前24＋12题重合；部分Mu题与旧题共享语料事实/模板，不能当独立泛化测试。
+Mu历史分组含2道F1=1、1道F1=0、1道F1=0.6667；未把部分分伪装成零分。各组使用相同query-only参考分解，假定正确而非独立人工金标。
+改写器/检索/子回答/完整句传递/goal执行/原始Top10/辅助位置全部沿用。每条单路或双路历史分别送入旧v2与新v3最终prompt，直接隔离最终prompt效果。
+
+方案	全部F1%	新题F1%	回归题F1%
+双路＋上一版最终prompt	66.67	66.67	66.67
+双路＋姓名修订prompt	62.05	61.67	66.67
+单路＋上一版最终prompt	44.62	40.00	100.00
+单路＋姓名修订prompt	47.69	43.33	100.00
+
+同一最终prompt下双路减单路：{"pairs": 13, "planned": 13, "mean_difference": 0.14358974358974358, "gains": 3, "ties": 9, "losses": 1, "loss_qids": ["32f0334c0bb011ebab90acde48001122"]}
+最终prompt改动在双路上的效果：{"pairs": 13, "planned": 13, "mean_difference": -0.04615384615384615, "gains": 1, "ties": 11, "losses": 1, "loss_qids": ["2hop__846844_47134"]}
+最终prompt改动在单路上的效果：{"pairs": 13, "planned": 13, "mean_difference": 0.03076923076923077, "gains": 1, "ties": 12, "losses": 0, "loss_qids": []}
+通过本批门槛：False
+零下降只适用于已评估样本，不保证未来任意题。没有用标准答案选择运行时输出。
+
+逐题完整执行：
+
+hotpotqa/fresh/5ade630e55429975fa854eb7
+原题：The genus containing lions also contains several poorly known what?
+标准答案（仅离线评分）：Old World fossil representatives
+双路＋上一版最终prompt：extinct species；F1=0.0
+双路＋姓名修订prompt：extinct species；F1=0.0
+单路＋上一版最终prompt：extinct species；F1=0.0
+单路＋姓名修订prompt：extinct species；F1=0.0
+双路＋姓名修订prompt：
+#1 Which genus contains lions?
+检索改写：Which genus contains lions?
+完整回答：The genus containing lions is Panthera.
+#2 The genus containing lions also contains several poorly known what?
+检索改写：The genus Panthera also contains several poorly known what?
+完整回答：The genus containing lions, Panthera, also contains several poorly known extinct species.
+单路＋姓名修订prompt：
+#1 Which genus contains lions?
+检索改写：Which genus contains lions?
+完整回答：The genus containing lions is Panthera.
+#2 The genus containing lions also contains several poorly known what?
+检索改写：The genus containing lions also contains several poorly known what?
+完整回答：The genus containing lions, Panthera, also contains several poorly known extinct species such as the cave lion.
+
+hotpotqa/fresh/5a90ab995542990a98493683
+原题：Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?
+标准答案（仅离线评分）：Medinilla
+双路＋上一版最终prompt：Both；F1=0.0
+双路＋姓名修订prompt：Both Osteomeles and Medinilla；F1=0.4
+单路＋上一版最终prompt：Both；F1=0.0
+单路＋姓名修订prompt：Both Osteomeles and Medinilla；F1=0.4
+双路＋姓名修订prompt：
+#1 Does the genus Osteomeles extend to Pacific Ocean islands?
+检索改写：Does the genus Osteomeles extend to Pacific Ocean islands?
+完整回答：Yes. Osteomeles extends to Pacific Ocean islands, including the Cook Islands, Tonga, Pitcairn Island, and Rapa Iti.
+#2 Does the genus Medinilla extend to Pacific Ocean islands?
+检索改写：Does the genus Medinilla extend to Pacific Ocean islands?
+完整回答：Yes. Medinilla extends to western Pacific Ocean islands.
+#3 Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?
+检索改写：Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?
+完整回答：Both Osteomeles and Medinilla expand to Pacific Ocean islands: Osteomeles extends to the Cook Islands, Tonga, Pitcairn Island, and Rapa Iti, while Medinilla extends to western Pacific Ocean islands.
+单路＋姓名修订prompt：
+#1 Does the genus Osteomeles extend to Pacific Ocean islands?
+检索改写：Does the genus Osteomeles extend to Pacific Ocean islands?
+完整回答：Yes. Osteomeles extends to Pacific Ocean islands, including the Cook Islands, Tonga, Pitcairn Island, and Rapa Iti.
+#2 Does the genus Medinilla extend to Pacific Ocean islands?
+检索改写：Does the genus Medinilla extend to Pacific Ocean islands?
+完整回答：Yes. Medinilla extends to western Pacific Ocean islands.
+#3 Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?
+检索改写：Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?
+完整回答：Both Osteomeles and Medinilla expand to Pacific Ocean islands: Osteomeles extends to the Cook Islands, Tonga, Pitcairn Island, and Rapa Iti, while Medinilla extends to western Pacific Ocean islands.
+
+hotpotqa/fresh/5a77d31c55429967ab1052c0
+原题：When was the pianist who recorded Live at Shelly's Manne-Hole born?
+标准答案（仅离线评分）：September 23, 1935
+双路＋上一版最终prompt：September 23, 1935；F1=1.0
+双路＋姓名修订prompt：September 23, 1935；F1=1.0
+单路＋上一版最终prompt：September 23, 1935；F1=1.0
+单路＋姓名修订prompt：September 23, 1935；F1=1.0
+双路＋姓名修订prompt：
+#1 Which pianist recorded Live at Shelly's Manne-Hole?
+检索改写：Which pianist recorded Live at Shelly's Manne-Hole?
+完整回答：Les McCann recorded Live at Shelly's Manne-Hole.
+#2 When was the pianist who recorded Live at Shelly's Manne-Hole born?
+检索改写：When was Les McCann born?
+完整回答：Les McCann was born on September 23, 1935.
+单路＋姓名修订prompt：
+#1 Which pianist recorded Live at Shelly's Manne-Hole?
+检索改写：Which pianist recorded Live at Shelly's Manne-Hole?
+完整回答：Les McCann recorded Live at Shelly's Manne-Hole.
+#2 When was the pianist who recorded Live at Shelly's Manne-Hole born?
+检索改写：When was the pianist who recorded Live at Shelly's Manne-Hole born?
+完整回答：Les McCann was born on September 23, 1935.
+
+hotpotqa/fresh/5ae383e15542992f92d822fb
+原题：Which film is newer, The Apple Dumpling Gang or Heavyweights?
+标准答案（仅离线评分）：Heavyweights
+双路＋上一版最终prompt：Heavyweights；F1=1.0
+双路＋姓名修订prompt：Heavyweights；F1=1.0
+单路＋上一版最终prompt：Heavyweights；F1=1.0
+单路＋姓名修订prompt：Heavyweights；F1=1.0
+双路＋姓名修订prompt：
+#1 In what year was The Apple Dumpling Gang released?
+检索改写：In what year was The Apple Dumpling Gang released?
+完整回答：The Apple Dumpling Gang was released in 1975.
+#2 In what year was Heavyweights released?
+检索改写：In what year was Heavyweights released?
+完整回答：Heavyweights was released in 1995.
+#3 Which film is newer, The Apple Dumpling Gang or Heavyweights?
+检索改写：Which film is newer, The Apple Dumpling Gang or Heavyweights?
+完整回答：Heavyweights is newer than The Apple Dumpling Gang.
+单路＋姓名修订prompt：
+#1 In what year was The Apple Dumpling Gang released?
+检索改写：In what year was The Apple Dumpling Gang released?
+完整回答：The Apple Dumpling Gang was released in 1975.
+#2 In what year was Heavyweights released?
+检索改写：In what year was Heavyweights released?
+完整回答：Heavyweights was released in 1995.
+#3 Which film is newer, The Apple Dumpling Gang or Heavyweights?
+检索改写：Which film is newer, The Apple Dumpling Gang or Heavyweights?
+完整回答：Heavyweights is newer than The Apple Dumpling Gang.
+
+2wiki/fresh/1bb538ec0bda11eba7f7acde48001122
+原题：What is the place of birth of the director of film Chronicles Of A Dive Bomber?
+标准答案（仅离线评分）：Leningrad
+双路＋上一版最终prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：Cannot be determined；F1=0
+单路＋上一版最终prompt：Cannot be determined；F1=0
+单路＋姓名修订prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：
+#1 Who directed the film Chronicles Of A Dive Bomber?
+检索改写：Who directed the film Chronicles Of A Dive Bomber?
+完整回答：Naum Birman directed the film Chronicles of a Dive Bomber.
+#2 What is the place of birth of the director of film Chronicles Of A Dive Bomber?
+检索改写：What is the place of birth of Naum Birman?
+完整回答：The place of birth of Naum Birman, the director of the film *Chronicles of a Dive Bomber*, cannot be determined from the retrieved passages.
+单路＋姓名修订prompt：
+#1 Who directed the film Chronicles Of A Dive Bomber?
+检索改写：Who directed the film Chronicles Of A Dive Bomber?
+完整回答：Naum Birman directed the film Chronicles of a Dive Bomber.
+#2 What is the place of birth of the director of film Chronicles Of A Dive Bomber?
+检索改写：What is the place of birth of the director of film Chronicles Of A Dive Bomber?
+完整回答：The place of birth of Naum Birman cannot be determined from the retrieved passages.
+
+2wiki/fresh/bade33cb08d211ebbd96ac1f6bf848b6
+原题：Which film has the director died first, L'Arma or The Mill Of Good Luck?
+标准答案（仅离线评分）：The Mill Of Good Luck
+双路＋上一版最终prompt：The Mill of Good Luck；F1=1.0
+双路＋姓名修订prompt：The Mill of Good Luck；F1=1.0
+单路＋上一版最终prompt：Cannot be determined；F1=0
+单路＋姓名修订prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：
+#1 Who directed the film L'Arma?
+检索改写：Who directed the film L'Arma?
+完整回答：Pasquale Squitieri directed the film L'Arma.
+#2 On what date did the director of L'Arma die?
+检索改写：On what date did Pasquale Squitieri die?
+完整回答：Pasquale Squitieri died on 18 February 2017.
+#3 Who directed the film The Mill Of Good Luck?
+检索改写：Who directed the film The Mill Of Good Luck?
+完整回答：Victor Iliu directed the film The Mill of Good Luck.
+#4 On what date did the director of The Mill Of Good Luck die?
+检索改写：On what date did Victor Iliu die?
+完整回答：Victor Iliu died on 4 September 1968.
+#5 Which film has the director died first, L'Arma or The Mill Of Good Luck?
+检索改写：Which film has the director who died first, L'Arma or The Mill Of Good Luck?
+完整回答：The director of The Mill of Good Luck died first.
+单路＋姓名修订prompt：
+#1 Who directed the film L'Arma?
+检索改写：Who directed the film L'Arma?
+完整回答：Pasquale Squitieri directed the film L'Arma.
+#2 On what date did the director of L'Arma die?
+检索改写：On what date did the director of L'Arma die?
+完整回答：Pasquale Squitieri’s death date cannot be determined from these passages.
+#3 Who directed the film The Mill Of Good Luck?
+检索改写：Who directed the film The Mill Of Good Luck?
+完整回答：Victor Iliu directed the film The Mill of Good Luck.
+#4 On what date did the director of The Mill Of Good Luck die?
+检索改写：On what date did the director of The Mill Of Good Luck die?
+完整回答：Victor Iliu’s death date cannot be determined from these passages.
+#5 Which film has the director died first, L'Arma or The Mill Of Good Luck?
+检索改写：Which film has the director died first, L'Arma or The Mill Of Good Luck?
+完整回答：The death dates of Pasquale Squitieri and Victor Iliu cannot be determined from these passages, so it cannot be determined which director died first.
+
+2wiki/fresh/c244022c0baf11ebab90acde48001122
+原题：Who is the maternal grandfather of Sophie Of France (1734–1782)?
+标准答案（仅离线评分）：Stanisław Leszczyński
+双路＋上一版最终prompt：Stanisław Leszczyński；F1=1.0
+双路＋姓名修订prompt：Stanisław Leszczyński；F1=1.0
+单路＋上一版最终prompt：Stanisław I Leszczyński；F1=0.8
+单路＋姓名修订prompt：Stanisław I Leszczyński；F1=0.8
+双路＋姓名修订prompt：
+#1 Who is the mother of Sophie Of France (1734–1782)?
+检索改写：Who is the mother of Sophie Of France (1734–1782)?
+完整回答：Sophie of France (1734–1782)’s mother was Marie Leszczyńska.
+#2 Who is the maternal grandfather of Sophie Of France (1734–1782)?
+检索改写：Who is the father of Marie Leszczyńska?
+完整回答：Sophie of France (1734–1782)’s maternal grandfather was Stanisław Leszczyński, King of Poland and later Duke of Lorraine.
+单路＋姓名修订prompt：
+#1 Who is the mother of Sophie Of France (1734–1782)?
+检索改写：Who is the mother of Sophie Of France (1734–1782)?
+完整回答：Sophie of France (1734–1782)’s mother was Marie Leszczyńska.
+#2 Who is the maternal grandfather of Sophie Of France (1734–1782)?
+检索改写：Who is the maternal grandfather of Sophie Of France (1734–1782)?
+完整回答：Sophie of France (1734–1782)’s maternal grandfather was Stanisław I Leszczyński.
+
+2wiki/fresh/73b99793086f11ebbd62ac1f6bf848b6
+原题：Did the movies The Shadow Of Evil and The Lone Wolf Takes A Chance, originate from the same country?
+标准答案（仅离线评分）：no
+双路＋上一版最终prompt：No；F1=1.0
+双路＋姓名修订prompt：No；F1=1.0
+单路＋上一版最终prompt：No；F1=1.0
+单路＋姓名修订prompt：No；F1=1.0
+双路＋姓名修订prompt：
+#1 From which country does the film The Shadow Of Evil originate?
+检索改写：From which country does the film The Shadow Of Evil originate?
+完整回答：The film *The Shadow of Evil* originates from France and Italy as a French/Italian co-production.
+#2 From which country does the film The Lone Wolf Takes A Chance originate?
+检索改写：From which country does the film The Lone Wolf Takes A Chance originate?
+完整回答：The film *The Lone Wolf Takes a Chance* originates from the United States.
+#3 Did the movies The Shadow Of Evil and The Lone Wolf Takes A Chance, originate from the same country?
+检索改写：Did the films *The Shadow of Evil* and *The Lone Wolf Takes a Chance* originate from the same country?
+完整回答：No, *The Shadow of Evil* originated from France and Italy as a co-production, while *The Lone Wolf Takes a Chance* originated from the United States.
+单路＋姓名修订prompt：
+#1 From which country does the film The Shadow Of Evil originate?
+检索改写：From which country does the film The Shadow Of Evil originate?
+完整回答：The film *The Shadow of Evil* originates from France and Italy as a French/Italian co-production.
+#2 From which country does the film The Lone Wolf Takes A Chance originate?
+检索改写：From which country does the film The Lone Wolf Takes A Chance originate?
+完整回答：The film *The Lone Wolf Takes a Chance* originates from the United States.
+#3 Did the movies The Shadow Of Evil and The Lone Wolf Takes A Chance, originate from the same country?
+检索改写：Did the movies The Shadow Of Evil and The Lone Wolf Takes A Chance, originate from the same country?
+完整回答：No, *The Shadow of Evil* originated from France and Italy as a co-production, while *The Lone Wolf Takes a Chance* originated from the United States.
+
+musique/fresh/4hop1__151650_5274_458768_33633
+原题：What date did Gaspar reach the region which would be the headquarters of the record label of which the only larger label is the one that signed Desde El Principio?
+标准答案（仅离线评分）：August 3, 1769
+双路＋上一版最终prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：Cannot be determined；F1=0
+单路＋上一版最终prompt：Cannot be determined；F1=0
+单路＋姓名修订prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：
+#1 Which record label signed Desde El Principio?
+检索改写：Which record label signed Desde El Principio?
+完整回答：Desde El Principio was signed to Sony Music Entertainment.
+#2 Which record label has as its only larger label the label that signed Desde El Principio?
+检索改写：Which record label has as its only larger label Sony Music Entertainment?
+完整回答：Disa Records has as its only larger label the label that signed Desde El Principio.
+#3 In which region is the headquarters of the record label whose only larger label is the one that signed Desde El Principio?
+检索改写：In which region is the headquarters of Disa Records?
+完整回答：The headquarters of Disa Records is in San Nicolás de los Garza, Nuevo León, Mexico.
+#4 What date did Gaspar reach the region which would be the headquarters of the record label of which the only larger label is the one that signed Desde El Principio?
+检索改写：What date did Gaspar reach San Nicolás de los Garza, Nuevo León, Mexico?
+完整回答：The date Gaspar reached the region which would be the headquarters of Disa Records cannot be determined.
+单路＋姓名修订prompt：
+#1 Which record label signed Desde El Principio?
+检索改写：Which record label signed Desde El Principio?
+完整回答：Desde El Principio was signed to Sony Music Entertainment.
+#2 Which record label has as its only larger label the label that signed Desde El Principio?
+检索改写：Which record label has as its only larger label the label that signed Desde El Principio?
+完整回答：The record label with Sony Music Entertainment as its only larger label cannot be determined from these passages.
+#3 In which region is the headquarters of the record label whose only larger label is the one that signed Desde El Principio?
+检索改写：In which region is the headquarters of the record label whose only larger label is the one that signed Desde El Principio?
+完整回答：The headquarters region of the record label whose only larger label is Sony Music Entertainment cannot be determined from these passages.
+#4 What date did Gaspar reach the region which would be the headquarters of the record label of which the only larger label is the one that signed Desde El Principio?
+检索改写：What date did Gaspar reach the region which would be the headquarters of the record label of which the only larger label is the one that signed Desde El Principio?
+完整回答：The date Gaspar reached the region which would be the headquarters of the record label whose only larger label is Sony Music Entertainment cannot be determined from these passages.
+
+musique/fresh/2hop__846844_47134
+原题：What is the mascot of the school that owns Goss Stadium at Coleman Field?
+标准答案（仅离线评分）：Benny Beaver
+双路＋上一版最终prompt：Benny Beaver；F1=1.0
+双路＋姓名修订prompt：Oregon State Beavers；F1=0
+单路＋上一版最终prompt：Beavers；F1=0
+单路＋姓名修订prompt：Oregon State Beavers；F1=0
+双路＋姓名修订prompt：
+#1 Which school owns Goss Stadium at Coleman Field?
+检索改写：Which school owns Goss Stadium at Coleman Field?
+完整回答：Oregon State University owns Goss Stadium at Coleman Field.
+#2 What is the mascot of the school that owns Goss Stadium at Coleman Field?
+检索改写：What is the mascot of Oregon State University?
+完整回答：The mascot of Oregon State University, which owns Goss Stadium at Coleman Field, is Benny Beaver.
+单路＋姓名修订prompt：
+#1 Which school owns Goss Stadium at Coleman Field?
+检索改写：Which school owns Goss Stadium at Coleman Field?
+完整回答：Oregon State University owns Goss Stadium at Coleman Field.
+#2 What is the mascot of the school that owns Goss Stadium at Coleman Field?
+检索改写：What is the mascot of the school that owns Goss Stadium at Coleman Field?
+完整回答：The mascot of Oregon State University, which owns Goss Stadium at Coleman Field, is the Beavers.
+
+musique/fresh/2hop__341176_711757
+原题：What other district is found in the same county as Gmina Stężyca?
+标准答案（仅离线评分）：Gmina Ryki
+双路＋上一版最终prompt：Gmina Ryki；F1=1.0
+双路＋姓名修订prompt：Gmina Ryki；F1=1.0
+单路＋上一版最终prompt：Gmina Ryki；F1=1.0
+单路＋姓名修订prompt：Gmina Ryki；F1=1.0
+双路＋姓名修订prompt：
+#1 In which county is Gmina Stężyca located?
+检索改写：In which county is Gmina Stężyca located?
+完整回答：Gmina Stężyca is located in Ryki County.
+#2 What other district is found in the same county as Gmina Stężyca?
+检索改写：What other district is found in the same county as Gmina Stężyca?
+完整回答：Ryki County contains Gmina Ryki as another district besides Gmina Stężyca.
+单路＋姓名修订prompt：
+#1 In which county is Gmina Stężyca located?
+检索改写：In which county is Gmina Stężyca located?
+完整回答：Gmina Stężyca is located in Ryki County.
+#2 What other district is found in the same county as Gmina Stężyca?
+检索改写：What other district is found in the same county as Gmina Stężyca?
+完整回答：Ryki County contains Gmina Ryki as another district besides Gmina Stężyca.
+
+musique/fresh/3hop1__801799_547811_41132
+原题：How many times did plague occur in the birth city of the composer of La fida ninfa?
+标准答案（仅离线评分）：22
+双路＋上一版最终prompt：22；F1=1.0
+双路＋姓名修订prompt：22；F1=1.0
+单路＋上一版最终prompt：Cannot be determined；F1=0
+单路＋姓名修订prompt：Cannot be determined；F1=0
+双路＋姓名修订prompt：
+#1 Who composed La fida ninfa?
+检索改写：Who composed La fida ninfa?
+完整回答：Antonio Vivaldi composed La fida ninfa.
+#2 In which city was the composer of La fida ninfa born?
+检索改写：In which city was Antonio Vivaldi born?
+完整回答：Antonio Vivaldi was born in Venice.
+#3 How many times did plague occur in the birth city of the composer of La fida ninfa?
+检索改写：How many times did plague occur in Venice?
+完整回答：Plague occurred in Venice 22 times between 1361 and 1528.
+单路＋姓名修订prompt：
+#1 Who composed La fida ninfa?
+检索改写：Who composed La fida ninfa?
+完整回答：Antonio Vivaldi composed La fida ninfa.
+#2 In which city was the composer of La fida ninfa born?
+检索改写：In which city was the composer of La fida ninfa born?
+完整回答：Antonio Vivaldi was born in Venice.
+#3 How many times did plague occur in the birth city of the composer of La fida ninfa?
+检索改写：How many times did plague occur in the birth city of the composer of La fida ninfa?
+完整回答：The number of times plague occurred in Venice cannot be determined.
+
+2wiki/regression/32f0334c0bb011ebab90acde48001122
+原题：Who is the maternal grandmother of André De Laval-Montmorency?
+标准答案（仅离线评分）：Jeanne de Laval-Tinténiac
+双路＋上一版最终prompt：Jeanne de Laval；F1=0.6666666666666666
+双路＋姓名修订prompt：Jeanne de Laval；F1=0.6666666666666666
+单路＋上一版最终prompt：Jeanne de Laval-Tinténiac；F1=1.0
+单路＋姓名修订prompt：Jeanne de Laval-Tinténiac；F1=1.0
+双路＋姓名修订prompt：
+#1 Who is the mother of André De Laval-Montmorency?
+检索改写：Who is the mother of André De Laval-Montmorency?
+完整回答：André de Laval-Montmorency’s mother is Anne de Laval.
+#2 Who is the maternal grandmother of André De Laval-Montmorency?
+检索改写：Who is the mother of Anne de Laval?
+完整回答：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval.
+单路＋姓名修订prompt：
+#1 Who is the mother of André De Laval-Montmorency?
+检索改写：Who is the mother of André De Laval-Montmorency?
+完整回答：André de Laval-Montmorency’s mother is Anne de Laval.
+#2 Who is the maternal grandmother of André De Laval-Montmorency?
+检索改写：Who is the maternal grandmother of André De Laval-Montmorency?
+完整回答：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval-Tinténiac.
+
+新增返回用量估算CNY：0.163516
+未结预留CNY：0.0039976
+所有修改及用途见实验目录DECISIONS.txt；API请求、原始输出和缓存凭据保存在本目录api/，逐题材料在cases/。
+冻结检查：{"prompts": true, "examples": true, "v2_prompts": true, "v2_examples": true, "cases": true, "previous_results": true, "child_prompts": true}

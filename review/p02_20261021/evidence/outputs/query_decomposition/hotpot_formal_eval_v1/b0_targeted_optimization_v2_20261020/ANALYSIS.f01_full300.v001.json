@@ -1,0 +1,699 @@
+{
+  "snapshot_utc": "2026-10-19T22:09:43.447261+00:00",
+  "phase": "f01 completed300; independent of g01; not stacked",
+  "scope": "All300 actual cases and300 final API payloads inspected; all887 nodes and final contexts byte/value-identical to B0+P1. No new API calls.",
+  "counts": {
+    "success_cases": 300,
+    "nodes_checked": 887,
+    "qid_query_identity_cases": 300,
+    "all_nodes_exact_cases": 300,
+    "all_context_exact_cases": 300,
+    "only_FINAL_CHECK_cases": 300,
+    "single_final_call_cases": 300,
+    "actual_payload_matches": 300,
+    "actual_generation_contract": 300,
+    "raw_response_preserved": 300,
+    "actual_payloads_checked": 300,
+    "source_pins_checked": 8,
+    "frozen_case_hashes_checked": 600
+  },
+  "problems": [],
+  "results_snapshot": {
+    "scorable": 300,
+    "statuses": {
+      "success": 300
+    },
+    "F1": 0.6867276961657768,
+    "same_parent_F1": 0.6809325664588823,
+    "delta_parent": 0.0057951297068944115,
+    "paired95": [
+      -0.006826555470673118,
+      0.019517834534746294
+    ],
+    "up": 6,
+    "tie": 288,
+    "down": 6,
+    "pilot_scorable": 100,
+    "pilot_delta": 0.006342099077393194,
+    "expand": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "F1": 0.7853766233766231,
+        "delta_parent": 0.007043290043290039
+      },
+      "2wiki": {
+        "n": 100,
+        "F1": 0.9038804496157437,
+        "delta_parent": 0.010196078431372548
+      },
+      "musique": {
+        "n": 100,
+        "F1": 0.37092601550496285,
+        "delta_parent": 0.0001460206460206459
+      }
+    }
+  },
+  "interpretation": {
+    "up6": "1 clear age-comparison repair;1 company answer-type recovery with original sister-relation ambiguity;4 same-entity definition/alias/list/address expression changes",
+    "down6": "1 clear wrong-alien-object regression;1 numeric word/digit mismatch without factual change;4 unchanged-identity/list/background or under-specific-cause wording changes",
+    "nonexclusive_boundary": "Non-blind case interpretation, not exclusive causal attribution or population hallucination rate. Definition completeness and formatting may coexist; output alone cannot reveal internal attention.",
+    "candidate_boundary": "f01 is P1 plus FINAL_CHECK only, never g01+f01. g01 did not fix the motivating age query whereas f01 did, but selection is by full cohort, not that single case.",
+    "gold_boundary": "References loaded for offline review/scoring only; no runtime gold-derived formatting/filters."
+  },
+  "reviews": [
+    {
+      "id": "hotpotqa:5a77cb5e55429967ab1052a7",
+      "query": "The voice of Homer Simpson also voices what alien character in the television series \"The Simpsons\"?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\hotpotqa\\f01_final_consistency\\5a77cb5e55429967ab1052a7.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a77cb5e55429967ab1052a7.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5a77cb5e55429967ab1052a7.json",
+      "scoring": {
+        "id": "hotpotqa:5a77cb5e55429967ab1052a7",
+        "dataset": "hotpotqa",
+        "arm": "f01_final_consistency",
+        "prediction": "Kang and Kodos",
+        "f1": 0.5,
+        "parent_f1": 1.0,
+        "B0_f1": 0.5,
+        "delta_parent": -0.5,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Kodos",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who provides the voice of Homer Simpson?",
+          "answer": "Dan Castellaneta provides the voice of Homer Simpson."
+        }
+      ],
+      "unchanged_goal_answer": "Dan Castellaneta voices the alien characters Kang and Kodos in \"The Simpsons\".",
+      "P1_parent_prediction": "Kodos",
+      "f01_prediction": "Kang and Kodos",
+      "classification": "最终退回错误辅助结论；实质对象错误",
+      "mechanism": "相同goal误说Dan Castellaneta给Kang和Kodos配音；父P1最终依据原文正确答Kodos，f01却最终Kang and Kodos。原query Top10明确Kang为Harry Shearer、Kodos为Dan Castellaneta。不能从短答读取内部注意力，但该例表明FINAL_CHECK并不保证按检索事实排除错误辅助结论。",
+      "semantic_improvement_supported": false,
+      "packet": "original_query",
+      "evidence_ranks": [
+        2,
+        8,
+        10
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Dan Castellaneta",
+          "text": "Dan Castellaneta\nDaniel Louis Castellaneta ( ; born October 29, 1957) is an American actor, voice actor, comedian and screenwriter. Noted for his long-running role as Homer Simpson on the animated television series \"The Simpsons\", he also voices many other characters for the show, including Abraham \"Grampa\" Simpson, Barney Gumble, Krusty the Clown, Sideshow Mel, Groundskeeper Willie, Mayor Quimby and Hans Moleman."
+        },
+        {
+          "rank": 8,
+          "source": "Homer Simpson",
+          "text": "Homer Simpson\nHomer Jay Simpson is a fictional character and the main protagonist of the American animated television series \"The Simpsons\" as the patriarch of the eponymous family. He is voiced by Dan Castellaneta and first appeared on television, along with the rest of his family, in \"The Tracey Ullman Show\" short \"Good Night\" on April 19, 1987. Homer was created and designed by cartoonist Matt Groening while he was waiting in the lobby of James L. Brooks' office. Groening had been called to pitch a series of shorts based on his comic strip \"Life in Hell\" but instead decided to create a new set of characters. He named the character after his father, Homer Groening. After appearing for three seasons on \"The Tracey Ullman Show\", the Simpson family got their own series on Fox that debuted December 17, 1989."
+        },
+        {
+          "rank": 10,
+          "source": "Kang and Kodos",
+          "text": "Kang and Kodos\nKang and Kodos are a duo of fictional recurring characters in the animated television series \"The Simpsons\". Kang is voiced by Harry Shearer and Kodos by Dan Castellaneta. They are aliens from the fictional planet Rigel VII and appear almost exclusively in the \"Treehouse of Horror\" episodes. The duo has appeared in at least one segment of all twenty-seven Treehouse of Horror episodes. Sometimes their appearance is the focus of a plot, other times a brief cameo. Kang and Kodos are often bent on the conquest of Earth and are usually seen working on sinister plans to invade and subjugate humanity."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:16a91a500bb011ebab90acde48001122",
+      "query": "Who is the grandchild of Stefan Zamoyski?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_f01_final_consistency_r001\\cases\\2wiki\\f01_final_consistency\\16a91a500bb011ebab90acde48001122.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\16a91a500bb011ebab90acde48001122.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\16a91a500bb011ebab90acde48001122.json",
+      "scoring": {
+        "id": "2wiki:16a91a500bb011ebab90acde48001122",
+        "dataset": "2wiki",
+        "arm": "f01_final_consistency",
+        "prediction": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski",
+        "f1": 0.35294117647058826,
+        "parent_f1": 0.33333333333333337,
+        "B0_f1": 0.33333333333333337,
+        "delta_parent": 0.019607843137254888,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "Stefan Adam Zamoyski",
+      "prior_QA": [],
+      "unchanged_goal_answer": "Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, who are the children of his son Władysław Zdzisław Zamoyski.",
+      "P1_parent_prediction": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski",
+      "f01_prediction": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski",
+      "classification": "同一名单删连接词；词面分数提升",
+      "mechanism": "最终仅删最后一项前and，名单成员完全不变；既未收束到标准单一人名，也未验证名单中每个族谱关系。本审阅不把分数小升认定事实改善。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2,
+        3
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Stefan Zamoyski",
+          "text": "Stefan Zamoyski\nCount Stefan Zamoyski (1837–1899) was a Polish nobleman (szlachcic). Stefan was member of the Sejm in Galicia and owner of Wysocko, Baranów and Kłuszyn estates. He married Zofia Potocka on 24 August 1870 in Krzeszowice. They had five children together: Adam Zdzisław Zamoyski, Władysław Zdzisław Zamoyski, Zygmunt Zamoyski, Zofia Zamoyska, Katarzyna Zamoyska and Wanda Zamoyska"
+        },
+        {
+          "rank": 2,
+          "source": "Stefan Zamoyski",
+          "text": "Stefan Zamoyski\nCount Stefan Zamoyski( 1837–1899) was a Polish nobleman( szlachcic). Stefan was member of the Sejm in Galicia and owner of Wysocko, Baranów and Kłuszyn estates. He married Zofia Potocka on 24 August 1870 in Krzeszowice. They had five children together: Adam Zdzisław Zamoyski, Władysław Zdzisław Zamoyski, Zygmunt Zamoyski, Zofia Zamoyska, Katarzyna Zamoyska and Wanda Zamoyska"
+        },
+        {
+          "rank": 3,
+          "source": "Stefan Adam Zamoyski",
+          "text": "Stefan Adam Zamoyski\nCount Stefan Adam Zamoyski (17 February 1904 – 27 October 1976) was a Polish nobleman, landowner, and magnate. Stefan had a degree of Doctor of Law. He was owner of Wysock estates. Lt.-Col. Count Stefan Zamoyski served as an aide-de-camp to Polish Prime Minister-in-exile Wladislaw Sikorski in London. In December 1940, Lt.-Col. Zamoyski wrote to the head of RAF Bomber Command, requesting that the German concentration camp Auschwitz be bombed to allow the Polish political prisoners there at the time to escape; the RAF declined to act. He was awarded with the Virtuti Militari Order. Following World War II, Count Zamoyski remained in Britain. He was working at the Jockey Club when he came into contact with Captain Kazimierz Bobinski and working together , they finished Bobinski's work in compiling the Bobinski-Zamoyski Family Tables of Racehorses, published in 1954. He married Elżbieta Czartoryska on 26 June 1929 in Gołuchów. They have three children:"
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__789565_416401",
+      "query": "Who is the child of Empress Dowager Huang's child?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_f01_final_consistency_r001\\cases\\musique\\f01_final_consistency\\2hop__789565_416401.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__789565_416401.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__789565_416401.json",
+      "scoring": {
+        "id": "musique:2hop__789565_416401",
+        "dataset": "musique",
+        "arm": "f01_final_consistency",
+        "prediction": "Wang Jipeng",
+        "f1": 1.0,
+        "parent_f1": 0.3076923076923077,
+        "B0_f1": 0.3076923076923077,
+        "delta_parent": 0.6923076923076923,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "Wang Jipeng",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who was Empress Dowager Huang's child?",
+          "answer": "Empress Dowager Huang's child was Wang Yanjun (also known as Wang Lin, Emperor Huizong)."
+        }
+      ],
+      "unchanged_goal_answer": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min) was the child of Empress Dowager Huang's child, Wang Yanjun.",
+      "P1_parent_prediction": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min)",
+      "f01_prediction": "Wang Jipeng",
+      "classification": "正确实体别名压缩",
+      "mechanism": "从Wang Jipeng带Wang Chang及Emperor Kangzong of Min别名改为仅Wang Jipeng；同一真实实体，原文关系未变。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        6
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Empress Dowager Huang",
+          "text": "Empress Dowager Huang\nEmpress Dowager Huang (黃太后, personal name unknown), referred to semi-formally as Empress Dowager Longqi (龍啟太后) after her son Wang Yanjun's \"Longqi\" era name, was an empress dowager of the Chinese Five Dynasties and Ten Kingdoms period state Min. She was the primary concubine of Wang Shenzhi (Prince Zhongyi), who was commonly regarded as the founder of the Min state, and the mother of Wang Yanjun (also known as Wang Lin, Emperor Huizong), the first Min ruler to claim the title of emperor."
+        },
+        {
+          "rank": 6,
+          "source": "Wang Jipeng",
+          "text": "Wang Jipeng\nWang Jipeng (王繼鵬) (d. August 29, 939), used the name Wang Chang (王昶) from 935 to 939, formally Emperor Kangzong of Min (閩康宗), was an emperor of the Chinese Five Dynasties and Ten Kingdoms Period state Min. He inherited the throne after his father Wang Yanjun (Emperor Huizong, later also known as Wang Lin) was assassinated, possibly at his instigation. He himself was in turn killed in a coup headed by his uncle Wang Yanxi (Emperor Jingzong, later also known as Wang Xi), who succeeded him."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ae0a48155429945ae9593df",
+      "query": "The pseudonymous partner to \"Willis the Guard\" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\hotpotqa\\f01_final_consistency\\5ae0a48155429945ae9593df.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ae0a48155429945ae9593df.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5ae0a48155429945ae9593df.json",
+      "scoring": {
+        "id": "hotpotqa:5ae0a48155429945ae9593df",
+        "dataset": "hotpotqa",
+        "arm": "f01_final_consistency",
+        "prediction": "the portion of a bet charged by a bookmaker as commission or fee",
+        "f1": 0.4285714285714285,
+        "parent_f1": 0.0,
+        "B0_f1": 0.4285714285714285,
+        "delta_parent": 0.4285714285714285,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "amount charged by a bookmaker",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?",
+          "answer": "The pseudonymous partner to \"Willis the Guard\" was Vigorish."
+        }
+      ],
+      "unchanged_goal_answer": "Vigorish refers to the portion of a bet charged by a bookmaker as commission or fee.",
+      "P1_parent_prediction": "commission or fee",
+      "f01_prediction": "the portion of a bet charged by a bookmaker as commission or fee",
+      "classification": "定义关系表达恢复；并非新事实发现",
+      "mechanism": "父P1过短commission or fee，f01恢复the portion of a bet charged by a bookmaker as commission or fee，保留原文及goal的关系成分，F1更高；两种表达大体同义，不能据此称旧答案事实错误。",
+      "semantic_improvement_supported": "关系更明确，但核心定义同义",
+      "packet": "original_query",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Buckner &amp; Garcia",
+          "text": "Buckner &amp; Garcia\nBuckner & Garcia, was an American musical duo consisting of Jerry Buckner and Gary Garcia from Akron, Ohio. Their first recording was made in 1972, when they performed a novelty song called \"Gotta Hear the Beat\", which they recorded as Animal Jack. Later, in 1980, they wrote a novelty Christmas song titled \"Merry Christmas in the NFL\", imagining sports journalist Howard Cosell as Santa Claus. Performed under the pseudonym Willis the Guard & Vigorish, the song reached No. 82 on the Billboard charts despite limited airplay after Cosell found the song offensive. In 1981, the duo wrote a sentimental country theme to back the poem \"Footprints in the Sand\", performed by Edgel Groves. The duo also wrote the lyrics for extra verses of an extended version of the \"WKRP in Cincinnati\" theme song in 1982."
+        },
+        {
+          "rank": 2,
+          "source": "Vigorish",
+          "text": "Vigorish\nVigorish, or simply the vig, also known as juice, under-juice, the cut or the take, is the amount charged by a bookmaker, or \"bookie\", for taking a bet from a gambler. In the United States, it also means the interest on a shark's loan. The term originates from the Russian word for \"winnings\", выигрыш \"vyigrysh\"."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+      "query": "Who lived longer, Friedrich Gogarten or Giangiacomo Feltrinelli?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\2wiki\\f01_final_consistency\\99cf9bb2085a11ebbd5cac1f6bf848b6.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\99cf9bb2085a11ebbd5cac1f6bf848b6.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\99cf9bb2085a11ebbd5cac1f6bf848b6.json",
+      "scoring": {
+        "id": "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+        "dataset": "2wiki",
+        "arm": "f01_final_consistency",
+        "prediction": "Friedrich Gogarten",
+        "f1": 1.0,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 1.0,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Friedrich Gogarten",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "When was Friedrich Gogarten born?",
+          "answer": "Friedrich Gogarten was born on January 13, 1887."
+        },
+        {
+          "step_id": 2,
+          "request": "When did Friedrich Gogarten die?",
+          "answer": "Friedrich Gogarten died on October 16, 1967."
+        },
+        {
+          "step_id": 3,
+          "request": "When was Giangiacomo Feltrinelli born?",
+          "answer": "Giangiacomo Feltrinelli was born on June 19, 1926."
+        },
+        {
+          "step_id": 4,
+          "request": "When did Giangiacomo Feltrinelli die?",
+          "answer": "Giangiacomo Feltrinelli died on March 14, 1972."
+        }
+      ],
+      "unchanged_goal_answer": "Giangiacomo Feltrinelli lived longer than Friedrich Gogarten, as Feltrinelli lived from June 19, 1926, to March 14, 1972 (45 years, 8 months, 24 days), while Gogarten lived from January 13, 1887, to October 16, 1967 (80 years, 9 months, 3 days).",
+      "P1_parent_prediction": "Giangiacomo Feltrinelli",
+      "f01_prediction": "Friedrich Gogarten",
+      "classification": "数值比较纠正；绕过自相矛盾的辅助结论",
+      "mechanism": "4个前置日期正确，goal错误写Feltrinelli lived longer却列45岁与Gogarten80岁。所有材料未改，f01最终按80>45答Gogarten；实际goal reader Top1/2与5分别支持两人生卒日期。这是明确的比较正确性提升。g01单独候选在本题未纠正，不将二者合并。",
+      "semantic_improvement_supported": true,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2,
+        5
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Giangiacomo Feltrinelli",
+          "text": "Giangiacomo Feltrinelli\nGiangiacomo Feltrinelli (19 June 1926 – 14 March 1972) was an influential Italian publisher and businessman active following the Second World War. He founded a vast library of documents mainly in the history of international labor and socialist movements. He became a militant and clandestine left-wing activist preceding Italy's Years of lead. Feltrinelli is perhaps most famous for his decision to translate and publish Boris Pasternak's novel \"Doctor Zhivago\" in the West after the manuscript was smuggled out of the Soviet Union in the late 1950s. He died violently under mysterious circumstances in 1972."
+        },
+        {
+          "rank": 2,
+          "source": "Giangiacomo Feltrinelli",
+          "text": "Giangiacomo Feltrinelli\nGiangiacomo Feltrinelli( 19 June 1926 – 14 March 1972) was an influential Italian publisher and businessman active following the Second World War. He founded a vast library of documents mainly in the history of international labor and socialist movements. He became a militant and clandestine left- wing activist preceding Italy's Years of lead. Feltrinelli is perhaps most famous for his decision to translate and publish Boris Pasternak's novel\" Doctor Zhivago\" in the West after the manuscript was smuggled out of the Soviet Union in the late 1950s. He died violently under mysterious circumstances in 1972."
+        },
+        {
+          "rank": 5,
+          "source": "Friedrich Gogarten",
+          "text": "Friedrich Gogarten\nFriedrich Gogarten (January 13, 1887 – October 16, 1967) was a Lutheran theologian, co-founder of dialectical theology in Germany in the early 20th century."
+        }
+      ]
+    },
+    {
+      "id": "musique:3hop1__102461_24918_24991",
+      "query": "What went down after the Soviet President visiting the the birth country of Andrey Dashkov while the protests were taking place departed from the Kremlin?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_f01_final_consistency_r001\\cases\\musique\\f01_final_consistency\\3hop1__102461_24918_24991.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__102461_24918_24991.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop1__102461_24918_24991.json",
+      "scoring": {
+        "id": "musique:3hop1__102461_24918_24991",
+        "dataset": "musique",
+        "arm": "f01_final_consistency",
+        "prediction": "The Soviet flag was lowered for the last time and replaced with the Russian tricolor, and the next day the Soviet Union was formally dissolved.",
+        "f1": 0.18181818181818182,
+        "parent_f1": 0.19999999999999998,
+        "B0_f1": 0.18181818181818182,
+        "delta_parent": -0.01818181818181816,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "Soviet flag",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What country was Andrey Dashkov born in?",
+          "answer": "Andrey Dashkov was born in Ukraine."
+        },
+        {
+          "step_id": 2,
+          "request": "Who was the Soviet President who visited the birth country of Andrey Dashkov while the protests were taking place?",
+          "answer": "Soviet President Mikhail Gorbachev visited Ukraine while protests were taking place."
+        }
+      ],
+      "unchanged_goal_answer": "After Soviet President Mikhail Gorbachev departed from the Kremlin on December 25, 1991, the Soviet flag was lowered for the last time and replaced with the Russian tricolor, and the next day the Soviet Union was formally dissolved.",
+      "P1_parent_prediction": "The Soviet flag was lowered for the last time and replaced with the Russian tricolor, and the Soviet Union was formally dissolved.",
+      "f01_prediction": "The Soviet flag was lowered for the last time and replaced with the Russian tricolor, and the next day the Soviet Union was formally dissolved.",
+      "classification": "同一答案增加时间背景导致F1下降",
+      "mechanism": "最终仅增加and the next day，事实主干相同；仍以整件事描述回答所求Soviet flag，输出对象未收束。不能把这次小降当事实退化。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Dissolution of the Soviet Union",
+          "text": "Dissolution of the Soviet Union\nOn September 30, 1989, thousands of Belorussians, denouncing local leaders, marched through Minsk to demand additional cleanup of the 1986 Chernobyl disaster site in Ukraine. Up to 15,000 protesters wearing armbands bearing radioactivity symbols and carrying the banned red-and-white Belorussian national flag filed through torrential rain in defiance of a ban by local authorities. Later, they gathered in the city center near the government's headquarters, where speakers demanded resignation of Yefrem Sokolov, the republic's Communist Party leader, and called for the evacuation of half a million people from the contaminated zones."
+        },
+        {
+          "rank": 2,
+          "source": "Dissolution of the Soviet Union",
+          "text": "Dissolution of the Soviet Union\nIn a nationally televised speech early in the morning of December 25, 1991, Gorbachev resigned as president of the USSR – or, as he put it, \"I hereby discontinue my activities at the post of President of the Union of Soviet Socialist Republics.\" He declared the office extinct, and all of its powers (such as control of the nuclear arsenal) were ceded to Yeltsin. A week earlier, Gorbachev had met with Yeltsin and accepted the fait accompli of the Soviet Union's dissolution. On the same day, the Supreme Soviet of the Russian SFSR adopted a statute to change Russia's legal name from \"Russian Soviet Federative Socialist Republic\" to \"Russian Federation,\" showing that it was now a sovereign state."
+        }
+      ]
+    },
+    {
+      "id": "musique:3hop1__458916_651917_47686",
+      "query": "Where do greyhound buses leave from in the birthplace of Spirit If...'s performer?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\musique\\f01_final_consistency\\3hop1__458916_651917_47686.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__458916_651917_47686.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop1__458916_651917_47686.json",
+      "scoring": {
+        "id": "musique:3hop1__458916_651917_47686",
+        "dataset": "musique",
+        "arm": "f01_final_consistency",
+        "prediction": "Toronto Coach Terminal",
+        "f1": 1.0,
+        "parent_f1": 0.6,
+        "B0_f1": 0.6,
+        "delta_parent": 0.4,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Toronto Coach Terminal",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who performs Spirit If'?",
+          "answer": "Kevin Drew performs Spirit If...."
+        },
+        {
+          "step_id": 2,
+          "request": "Where was the performer of Spirit If' born?",
+          "answer": "Kevin Drew was born in Toronto, Canada."
+        }
+      ],
+      "unchanged_goal_answer": "Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.",
+      "P1_parent_prediction": "Toronto Coach Terminal at 610 Bay Street",
+      "f01_prediction": "Toronto Coach Terminal",
+      "classification": "同一正确车站名称的地址压缩",
+      "mechanism": "Toronto Coach Terminal at610 Bay Street缩为Toronto Coach Terminal；原文Top2支持两者，无检索或关系改变，F1增益来自答案范围与标准表达更一致。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Toronto Coach Terminal",
+          "text": "Toronto Coach Terminal\nThe Toronto Coach Terminal is the central bus station for inter-city services in Toronto, Ontario, Canada. It is located at 610 Bay Street, in the city's Downtown. The terminal is owned by Toronto Coach Terminal Inc., a wholly owned subsidiary of the Toronto Transit Commission (TTC). The TTC managed the station directly until July 8, 2012, when it was leased out in its entirety to bus lines Coach Canada and Greyhound Canada for $1.2 million annually. Opened in 1931 as the Gray Coach Terminal, the Art Deco style terminal was home base for Gray Coach, an interurban bus service then owned by the TTC. It replaced an earlier open air terminal, Gray Line Terminal."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a84d2ea5542992a431d1aa8",
+      "query": "What career titles do Ed Wood and Fernand Rivers share?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\hotpotqa\\f01_final_consistency\\5a84d2ea5542992a431d1aa8.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a84d2ea5542992a431d1aa8.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5a84d2ea5542992a431d1aa8.json",
+      "scoring": {
+        "id": "hotpotqa:5a84d2ea5542992a431d1aa8",
+        "dataset": "hotpotqa",
+        "arm": "f01_final_consistency",
+        "prediction": "actor, film producer, director",
+        "f1": 0.6666666666666665,
+        "parent_f1": 0.8000000000000002,
+        "B0_f1": 0.8000000000000002,
+        "delta_parent": -0.13333333333333364,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "actor, writer, producer, and director",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What career titles does Ed Wood have?",
+          "answer": "Ed Wood was a filmmaker, actor, writer, producer, and director."
+        },
+        {
+          "step_id": 2,
+          "request": "What career titles does Fernand Rivers have?",
+          "answer": "Fernand Rivers was an actor, screenwriter, film producer, and director."
+        }
+      ],
+      "unchanged_goal_answer": "Ed Wood and Fernand Rivers both shared the career titles of actor, film producer, and director.",
+      "P1_parent_prediction": "actor, film producer, and director",
+      "f01_prediction": "actor, film producer, director",
+      "classification": "名单删连接词导致F1下降",
+      "mechanism": "actor, film producer, and director删and，职业集合未变；旧新均未解决原文writer/screenwriter共同职业。不可将连接词造成下降解释为职业事实退化。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Ed Wood",
+          "text": "Ed Wood\nEdward Davis Wood Jr. (October 10, 1924 – December 10, 1978) was an American filmmaker, actor, writer, producer, and director."
+        },
+        {
+          "rank": 2,
+          "source": "Fernand Rivers",
+          "text": "Fernand Rivers\nFernand Rivers (born François Large, 6 September 1879, Saint-Lager - 12 September 1960) was a French actor, screenwriter, film producer and director. He was the brother of the actor Rivers Cadet."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+      "query": "Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\hotpotqa\\f01_final_consistency\\5a72a9ac5542991f9a20c55f.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a72a9ac5542991f9a20c55f.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5a72a9ac5542991f9a20c55f.json",
+      "scoring": {
+        "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+        "dataset": "hotpotqa",
+        "arm": "f01_final_consistency",
+        "prediction": "The fourth hour of NBC's \"Today Show\"",
+        "f1": 0.9090909090909091,
+        "parent_f1": 1.0,
+        "B0_f1": 1.0,
+        "delta_parent": -0.09090909090909094,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "the fourth hour of the TODAY Show",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What shows did Hoda Kotb co-host?",
+          "answer": "Hoda Kotb co-hosted NBC's \"Today Show\" fourth hour with Kathie Lee Gifford."
+        },
+        {
+          "step_id": 2,
+          "request": "What shows were produced by Brian Balthazar?",
+          "answer": "Brian Balthazar was the co-executive producer of the fourth hour of the TODAY Show on NBC with Kathie Lee Gifford and Hoda Kotb."
+        }
+      ],
+      "unchanged_goal_answer": "The fourth hour of NBC's \"Today Show\" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.",
+      "P1_parent_prediction": "The fourth hour of the TODAY Show",
+      "f01_prediction": "The fourth hour of NBC's \"Today Show\"",
+      "classification": "同一节目加入网络名称/引号的表达变化",
+      "mechanism": "the fourth hour of the TODAY Show变为the fourth hour of NBC's Today Show；前置与goal均支持，身份未变，词面额外词导致降分。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2,
+        3
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Hoda Kotb",
+          "text": "Hoda Kotb\nHoda Kotb ( ; Arabic: هدى قطب‎ ‎  \"Hudā Quṭb\" ] , born August 9, 1964) is an American television news anchor and TV host known as the co-host of NBC's \"Today Show\"' s fourth hour with Kathie Lee Gifford. An Egyptian American, she won a Daytime Emmy Award in 2010 as part of the \"Today Show\" team. Kotb is also a correspondent for \"Dateline NBC\"."
+        },
+        {
+          "rank": 2,
+          "source": "Jimmy Kimmel",
+          "text": "Jimmy Kimmel\nJames Christian Kimmel (born November 13, 1967) is an American television host, comedian, writer, and producer. He is the host and executive producer of \"Jimmy Kimmel Live!\", a late-night talk show that premiered on ABC in 2003. Kimmel hosted the Primetime Emmy Awards in 2012 and 2016, as well as the Academy Awards in February 2017."
+        },
+        {
+          "rank": 3,
+          "source": "Brian Balthazar",
+          "text": "Brian Balthazar\nBrian Balthazar is a TV personality and the executive producer and developer of several programs on broadcast and cable television. He has frequently appeared on television as the editor of the website POPgoesTheWeek.com on The Wendy Williams Show, The Today Show on NBC, VH1, CNN, TV Guide Network and Showbiz Tonight on HLN. He has also hosted specials for HGTV. In summer of 2014 he became co-executive producer of ABC's The View. As a television executive and producer, he was HGTV's network executive overseeing the popular series House Hunters and launched the fourth hour of the TODAY Show on NBC with Kathie Lee Gifford and Hoda Kotb"
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__22431_16335",
+      "query": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_f01_final_consistency_r001\\cases\\musique\\f01_final_consistency\\2hop__22431_16335.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__22431_16335.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__22431_16335.json",
+      "scoring": {
+        "id": "musique:2hop__22431_16335",
+        "dataset": "musique",
+        "arm": "f01_final_consistency",
+        "prediction": "shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations",
+        "f1": 0.08333333333333333,
+        "parent_f1": 0.14285714285714288,
+        "B0_f1": 0.14285714285714288,
+        "delta_parent": -0.05952380952380955,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "inter-marriage and conversions in the time of the Roman Empire",
+      "prior_QA": [],
+      "unchanged_goal_answer": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "P1_parent_prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "f01_prediction": "shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations",
+      "classification": "概括性错误/不完整答案的删词变化",
+      "mechanism": "最终删particularly in Southern Europe，仍没有直接给原文Top4所说inter-marriage和conversions in Roman Empire两因素。分数下降不表明发生新的关系错误；原有归纳过宽未解决。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        2,
+        4
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nIn an ethnic sense, an Ashkenazi Jew is one whose ancestry can be traced to the Jews who settled in Central Europe. For roughly a thousand years, the Ashkenazim were a reproductively isolated population in Europe, despite living in many countries, with little inflow or outflow from migration, conversion, or intermarriage with other groups, including other Jews. Human geneticists have argued that genetic variations have been identified that show high frequencies among Ashkenazi Jews, but not in the general European population, be they for patrilineal markers (Y-chromosome haplotypes) and for matrilineal markers (mitotypes). However, a 2013 study of Ashkenazi mitochondrial DNA, from the University of Huddersfield in England, suggests that at least 80 percent of the Ashkenazi maternal lineages derive from the assimilation of mtDNAs indigenous to Europe, probably as a consequence of conversion. Since the middle of the 20th century, many Ashkenazi Jews have intermarried, both with members of other Jewish communities and with people of other nations and faiths."
+        },
+        {
+          "rank": 4,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nA 2010 study on Jewish ancestry by Atzmon-Ostrer et al. stated \"Two major groups were identified by principal component, phylogenetic, and identity by descent (IBD) analysis: Middle Eastern Jews and European/Syrian Jews. The IBD segment sharing and the proximity of European Jews to each other and to southern European populations suggested similar origins for European Jewry and refuted large-scale genetic contributions of Central and Eastern European and Slavic populations to the formation of Ashkenazi Jewry\", as both groups – the Middle Eastern Jews and European/Syrian Jews – shared common ancestors in the Middle East about 2500 years ago. The study examines genetic markers spread across the entire genome and shows that the Jewish groups (Ashkenazi and non Ashkenazi) share large swaths of DNA, indicating close relationships and that each of the Jewish groups in the study (Iranian, Iraqi, Syrian, Italian, Turkish, Greek and Ashkenazi) has its own genetic signature but is more closely related to the other Jewish groups than to their fellow non-Jewish countrymen. Atzmon's team found that the SNP markers in genetic segments of 3 million DNA letters or longer were 10 times more likely to be identical among Jews than non-Jews. Results of the analysis also tally with biblical accounts of the fate of the Jews. The study also found that with respect to non-Jewish European groups, the population most closely related to Ashkenazi Jews are modern-day Italians. The study speculated that the genetic-similarity between Ashkenazi Jews and Italians may be due to inter-marriage and conversions in the time of the Roman Empire. It was also found that any two Ashkenazi Jewish participants in the study shared about as much DNA as fourth or fifth cousins."
+        }
+      ]
+    },
+    {
+      "id": "musique:3hop1__68802_89752_49923",
+      "query": "How many counties are there in the largest state in the region where the film The Family Stone was set?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\musique\\f01_final_consistency\\3hop1__68802_89752_49923.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__68802_89752_49923.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop1__68802_89752_49923.json",
+      "scoring": {
+        "id": "musique:3hop1__68802_89752_49923",
+        "dataset": "musique",
+        "arm": "f01_final_consistency",
+        "prediction": "16",
+        "f1": 0,
+        "parent_f1": 1.0,
+        "B0_f1": 0,
+        "delta_parent": -1.0,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "sixteen",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where was the film The Family Stone set?",
+          "answer": "The film The Family Stone was set in a small New England town."
+        },
+        {
+          "step_id": 2,
+          "request": "What region contains the setting of the film The Family Stone?",
+          "answer": "The region containing the setting of the film The Family Stone is New England."
+        },
+        {
+          "step_id": 3,
+          "request": "What is the largest state in the region containing the setting of the film The Family Stone?",
+          "answer": "Maine is the largest state in New England."
+        }
+      ],
+      "unchanged_goal_answer": "Maine has sixteen counties.",
+      "P1_parent_prediction": "Sixteen",
+      "f01_prediction": "16",
+      "classification": "数值完全相同但原生F1表示差异",
+      "mechanism": "Sixteen变16，原文及goal均为sixteen counties。最终数值事实不变，原生评分不做数字词归一化所以1降0；禁止运行时按gold定制数字格式。",
+      "semantic_improvement_supported": false,
+      "packet": "goal",
+      "evidence_ranks": [
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "List of counties in Maine",
+          "text": "List of counties in Maine\nThis is a list of the sixteen counties in the U.S. state of Maine. Before statehood, Maine was officially part of the state of Massachusetts and was called the District of Maine. Maine was granted statehood on March 15, 1820 as part of the Missouri Compromise. Nine of the sixteen counties had their borders defined while Maine was still part of Massachusetts, and hence are older than the state itself. Even after 1820, the exact location of the northern border of Maine was disputed with Britain, until the question was settled and the northern counties signed their final official form, the Webster - Ashburton Treaty, signed in 1842. Almost all of Aroostook County was disputed land until the treaty was signed."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ac298805542990b17b15429",
+      "query": "This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_f01_final_consistency_r001\\cases\\hotpotqa\\f01_final_consistency\\5ac298805542990b17b15429.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ac298805542990b17b15429.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5ac298805542990b17b15429.json",
+      "scoring": {
+        "id": "hotpotqa:5ac298805542990b17b15429",
+        "dataset": "hotpotqa",
+        "arm": "f01_final_consistency",
+        "prediction": "Austral Líneas Aéreas",
+        "f1": 1.0,
+        "parent_f1": 0.0,
+        "B0_f1": 0.0,
+        "delta_parent": 1.0,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Austral Líneas Aéreas",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What are the sister companies of Líneas Aéreas Privadas Argentinas?",
+          "answer": "The sister company of Líneas Aéreas Privadas Argentinas is Austral Líneas Aéreas."
+        }
+      ],
+      "unchanged_goal_answer": "Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.",
+      "P1_parent_prediction": "Yes",
+      "f01_prediction": "Austral Líneas Aéreas",
+      "classification": "按数据集意图恢复答案类型；原题关系有歧义",
+      "mechanism": "旧新goal均给Austral全名，父最终Yes，新最终Austral Líneas Aéreas。原query近似判断句而标准要求公司名；更贴合数据集意图但非新事实发现。注意Top1/2实际写Austral是Aerolíneas Argentinas的sister，而非LAPA；原题/分解有sister修饰归属歧义，不能声称整个链条事实得到纠正。",
+      "semantic_improvement_supported": "答案类型改善，但原题关系存在歧义",
+      "packet": "goal",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Austral Líneas Aéreas",
+          "text": "Austral Líneas Aéreas\nCielos del Sur S.A., operating as Austral Líneas Aéreas, more commonly known by its shortened name Austral, is a domestic airline of Argentina, the sister company of Aerolíneas Argentinas. It is the second largest domestic scheduled airline in the country, after Aerolíneas Argentinas itself. As a subsidiary of Aerolíneas Argentinas, the company shares its headquarters with that airline, which is located in the Aeroparque Jorge Newbery of Buenos Aires, the main base of operations of the company."
+        },
+        {
+          "rank": 2,
+          "source": "Líneas Aéreas Privadas Argentinas",
+          "text": "Líneas Aéreas Privadas Argentinas\nLíneas Aéreas Privadas Argentinas (English: \"Private Argentine Air Lines\" ), more commonly known by the acronym LAPA, was an airline based in Buenos Aires, Argentina. At its heyday, the carrier operated international services to the United States and Uruguay, as well as an extensive domestic network within Argentina. Additionally, the company also operated charter services. Domestic and regional flights were operated from downtown's Aeroparque Jorge Newbery, whereas an international service to Atlanta was operated from Ministro Pistarini International Airport. LAPA was the first carrier to break a monopolistic market controlled by Aerolíneas Argentinas and its sister company Austral Líneas Aéreas, offering competitive prices. It ceased operations in April 2003."
+        }
+      ]
+    }
+  ]
+}

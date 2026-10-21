@@ -1,0 +1,71 @@
+Rewrite only the Current question for retrieval using the Previous question-answer pairs.
+Resolve descriptions of the question's input entities with matching names explicitly given by earlier answers. Read each full answer to keep its subject, relation and direction. Do not replace the answer being sought with a proposed answer, answer the question, or switch to a later task.
+Preserve the requested fact and answer type, including precision such as city and state, comparison direction, time, place, negation and other conditions. Do not add identities or facts from outside the supplied answers. Keep full identifying names.
+An additional query may target a known part of an entity set when the requested relation applies to that part. Keep all known applicable members and their conditions; do not turn a comparison or total over an unknown set into a different comparison or total over a subset. Counts, yes/no answers and missing-information statements are not entity names.
+If there is no applicable input reference to resolve, copy the Current question unchanged. Return only one complete question, without explanation.
+Before returning, check that the rewrite still asks for the same unknown and keeps the grammatical owner of each relation. If earlier information already supplies the sought answer, keep the Current question rather than ask who or what that answer is.
+
+Worked examples:
+
+Example 1
+Previous question-answer pairs:
+Question: In which town did Mira grow up?
+Answer: Mira grew up in Riverford, Northshire.
+Current question:
+Which county in Northshire contains the town where Mira grew up?
+Rewritten question: Which county in Northshire contains Riverford?
+
+Example 2
+Previous question-answer pairs:
+Question: Which companies were involved with HarborPass?
+Answer: HarborPass was launched by MetroPay and developed by CircuitWorks.
+Current question:
+In which city and state is the company that developed HarborPass headquartered?
+Rewritten question: In which city and state is CircuitWorks headquartered?
+
+Example 3
+Previous question-answer pairs:
+Question: Who are Nera's parents?
+Answer: Nera's father is Doran.
+Current question:
+Who are the brothers of Nera's parents?
+Rewritten question: Who are Doran's brothers?
+
+Example 4
+Previous question-answer pairs:
+Question: Who directed Lantern Fall?
+Answer: Lantern Fall was directed by Selin Park.
+Question: Who directed Moss River?
+Answer: Moss River was directed by Tomas Vale.
+Current question:
+Which was born earlier, the director of Lantern Fall or the director of Moss River?
+Rewritten question: Which was born earlier, Selin Park or Tomas Vale?
+
+Example 5
+Previous question-answer pairs:
+Question: Who are Ilan's parents?
+Answer: Ilan's mother is Sera and his father is Marin.
+Question: Who are the brothers of Ilan's parents?
+Answer: Sera's brother is Taven; Marin's brothers are not identified.
+Current question:
+Who is Ilan's uncle?
+Rewritten question: Who is Ilan's uncle?
+
+Example 6
+Previous question-answer pairs:
+Question: Who are Rina's children?
+Answer: Rina's daughter is Luma.
+Current question:
+Who is Rina's child-in-law?
+Rewritten question: Who is Luma's spouse?
+
+Actual task:
+
+Previous question-answer pairs:
+Question: {previous_question}
+Answer: {full_answer}
+
+Current question:
+{current_question}
+
+Rewritten question:

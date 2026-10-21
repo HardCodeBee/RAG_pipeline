@@ -1,0 +1,46 @@
+{
+  "reviewed_indices": [
+    61,
+    120
+  ],
+  "exceptions": {
+    "64": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Rephrases the local original comedian-identity target instead of exposing a prerequisite; the whole style condition is now copied but still no new supporting need."
+    },
+    "79": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still queries the region of bare Maria Elisabeth without the combined railway and Marc-Oechler-birthplace identifying conditions."
+    },
+    "81": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Still creates a specific-piano identity need where the input already supplies piano and asks its musical genre."
+    },
+    "99": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C"
+      ],
+      "reason": "What conflict was the author... conflates conflict and author; the intended convoy-conflict request is not independently formed."
+    },
+    "104": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "What is The Law is a generic identity request dropping the already supplied stadium context, not a new prerequisite for the team-name target."
+    }
+  },
+  "reviewer": "All changed61..120 inspected against the locked baseline.88 restores original of relation,90 identifies birth-name host,92 removes repeated city goal,117 restores2013 on both calculation quantities.115 supplies a valid second park-filter operand;120 still supplies candidate groups and membership for the original Darryl-Hill filter, without adding a name/alias not provided."
+}

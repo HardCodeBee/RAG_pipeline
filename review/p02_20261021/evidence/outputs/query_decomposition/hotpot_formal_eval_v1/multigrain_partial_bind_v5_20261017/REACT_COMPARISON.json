@@ -1,0 +1,152 @@
+{
+  "our_condition": "support_new",
+  "single_condition": "support_single",
+  "overall": {
+    "planned": 17,
+    "pairs": 16,
+    "our_f1": 0.6457419590643275,
+    "our_em": 0.5,
+    "react_em": 0.5,
+    "react_f1": 0.7255140692640693,
+    "mean_difference": -0.07977211019974177,
+    "gains": 2,
+    "ties": 8,
+    "losses": 6,
+    "loss_qids": [
+      "5ae24abc5542994d89d5b3c3",
+      "5ab8cd3d5542991b5579f009",
+      "5a8eb63455429917b4a5bdb7",
+      "2hop__96177_62765",
+      "2hop__805610_392181",
+      "3hop1__136083_87694_64412"
+    ],
+    "our_mean_calls": 5.8125,
+    "react_mean_calls": 2.9375,
+    "our_mean_standalone_cny": 0.0087379,
+    "react_mean_standalone_cny": 0.006480300000000001
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 5,
+      "pairs": 5,
+      "our_f1": 0.5052631578947369,
+      "our_em": 0.4,
+      "react_em": 0.6,
+      "react_f1": 0.8928571428571429,
+      "mean_difference": -0.387593984962406,
+      "gains": 0,
+      "ties": 2,
+      "losses": 3,
+      "loss_qids": [
+        "5ae24abc5542994d89d5b3c3",
+        "5ab8cd3d5542991b5579f009",
+        "5a8eb63455429917b4a5bdb7"
+      ],
+      "our_mean_calls": 6.0,
+      "react_mean_calls": 2.8,
+      "our_mean_standalone_cny": 0.008584239999999998,
+      "react_mean_standalone_cny": 0.0052480800000000005
+    },
+    "2wiki": {
+      "planned": 6,
+      "pairs": 6,
+      "our_f1": 0.9444444444444445,
+      "our_em": 0.8333333333333334,
+      "react_em": 0.5,
+      "react_f1": 0.6527777777777778,
+      "mean_difference": 0.2916666666666667,
+      "gains": 2,
+      "ties": 4,
+      "losses": 0,
+      "loss_qids": [],
+      "our_mean_calls": 6.166666666666667,
+      "react_mean_calls": 3.1666666666666665,
+      "our_mean_standalone_cny": 0.009779466666666665,
+      "react_mean_standalone_cny": 0.0080772
+    },
+    "musique": {
+      "planned": 6,
+      "pairs": 5,
+      "our_f1": 0.42777777777777787,
+      "our_em": 0.2,
+      "react_em": 0.4,
+      "react_f1": 0.6454545454545455,
+      "mean_difference": -0.2176767676767677,
+      "gains": 0,
+      "ties": 2,
+      "losses": 3,
+      "loss_qids": [
+        "2hop__96177_62765",
+        "2hop__805610_392181",
+        "3hop1__136083_87694_64412"
+      ],
+      "our_mean_calls": 5.2,
+      "react_mean_calls": 2.8,
+      "our_mean_standalone_cny": 0.00764168,
+      "react_mean_standalone_cny": 0.005796239999999999
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "pairs": 11,
+      "our_f1": 0.7044125465178097,
+      "our_em": 0.6363636363636364,
+      "react_em": 0.5454545454545454,
+      "react_f1": 0.7012987012987013,
+      "mean_difference": 0.0031138452191083817,
+      "gains": 2,
+      "ties": 6,
+      "losses": 3,
+      "loss_qids": [
+        "5ae24abc5542994d89d5b3c3",
+        "5ab8cd3d5542991b5579f009",
+        "2hop__96177_62765"
+      ],
+      "our_mean_calls": 5.818181818181818,
+      "react_mean_calls": 3.0,
+      "our_mean_standalone_cny": 0.008542399999999999,
+      "react_mean_standalone_cny": 0.006729200000000001
+    },
+    "regression": {
+      "planned": 3,
+      "pairs": 3,
+      "our_f1": 0.5277777777777778,
+      "our_em": 0.0,
+      "react_em": 0.0,
+      "react_f1": 0.6313131313131314,
+      "mean_difference": -0.10353535353535354,
+      "gains": 0,
+      "ties": 1,
+      "losses": 2,
+      "loss_qids": [
+        "2hop__805610_392181",
+        "3hop1__136083_87694_64412"
+      ],
+      "our_mean_calls": 4.666666666666667,
+      "react_mean_calls": 2.6666666666666665,
+      "our_mean_standalone_cny": 0.0070984,
+      "react_mean_standalone_cny": 0.005588133333333333
+    },
+    "competitor_gap": {
+      "planned": 2,
+      "pairs": 2,
+      "our_f1": 0.5,
+      "our_em": 0.5,
+      "react_em": 1.0,
+      "react_f1": 1.0,
+      "mean_difference": -0.5,
+      "gains": 0,
+      "ties": 1,
+      "losses": 1,
+      "loss_qids": [
+        "5a8eb63455429917b4a5bdb7"
+      ],
+      "our_mean_calls": 7.5,
+      "react_mean_calls": 3.0,
+      "our_mean_standalone_cny": 0.0122724,
+      "react_mean_standalone_cny": 0.0064496
+    }
+  },
+  "limit": "manual query-only reference plans versus frozen adapted ReAct k10 s5; shared corpora/BGE/model, different prompts/search budgets; diagnostic, not official SOTA or automatic-method dominance"
+}

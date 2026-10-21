@@ -1,0 +1,44 @@
+{
+  "checked_utc": "2026-10-17T12:08:52.705785+00:00",
+  "training_job": {
+    "id": "153978",
+    "name": "multigrain-v12-sft3500",
+    "state": "PENDING",
+    "reason": "Resources"
+  },
+  "occupying_job": {
+    "id": "153976",
+    "name": "rag-robust-v1",
+    "user": "u7830488",
+    "node": "weirdo",
+    "gpu": "1 A6000",
+    "elapsed": "00:27:27",
+    "time_limit": "1-00:00:00",
+    "command": "/home/projects/u7830488/robustness_models_retrievers_v1_20261017/experiments/query_decomposition/robustness_models_retrievers_v1_20261017/remote/a6000_baselines_only_v1.sbatch",
+    "workdir": "/home/projects/u7830488/robustness_models_retrievers_v1_20261017",
+    "latest_logged_cell": {
+      "model": "Qwen/Qwen3-4B",
+      "dataset": "musique",
+      "retriever": "bge",
+      "method": "b07_hybrid_rerank",
+      "split": "formal",
+      "terminal_records": 120,
+      "planned": 200,
+      "last_running_utc": "2026-10-17T12:08:49.237344+00:00"
+    }
+  },
+  "step_explanation": {
+    "records": 3500,
+    "micro_batch": 1,
+    "regular_accumulation": 32,
+    "full_updates_per_epoch": 109,
+    "tail_examples": 12,
+    "updates_per_epoch": 110,
+    "max_epochs": 3,
+    "max_updates": 330,
+    "max_consumed_examples": 10500,
+    "early_stop_min_step": 220,
+    "dev_loss_patience": 2
+  },
+  "actions": "Read-only job/script/log inspection; neither job altered."
+}

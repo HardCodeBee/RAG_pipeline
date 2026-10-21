@@ -1,0 +1,65 @@
+{
+  "utc": "2026-10-19T22:21:31.362432+00:00",
+  "parent": "frozen g01_goal_consistency: B0 + P1 + goal consistency",
+  "arms": [
+    "g02_evidence_goal",
+    "p02_role_headers",
+    "s03_g01_plus_f01"
+  ],
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "goal_evidence_rule": "Base the requested conclusion on the supporting facts, not on agreement with earlier conclusions. If a required premise remains unsupported, state that gap instead of assigning it a factual value.",
+  "single_factor": {
+    "g02_evidence_goal": "Replace g01 GOAL_RULE with shorter evidence/premise wording; no added rule.",
+    "p02_role_headers": "Only label intermediate candidate QA and goal candidate conclusion separately; preserve every QA and its order.",
+    "s03_g01_plus_f01": "Only add previously frozen f01 FINAL_CHECK to g01 final P1 readout; explicit interaction test."
+  },
+  "pilot_n": 100,
+  "maximum_n_per_arm": 300,
+  "pilot_sample": "33 HotpotQA/33 2Wiki/34 MuSiQue; deterministic query-ID hash, not outcome selection",
+  "gate": "Expand an arm from pilot100 to full300 only if all100 scorable and paired mean native F1 strictly exceeds frozen g01. No claim of independent confirmation.",
+  "selection": "Among complete300 arms and parent choose higher mean native F1, prefer fewer edits on exact tie; preserve B0 and S02 unchanged. Describe result as development selection, not significance or generalization.",
+  "sample_role": "Exposed existing diagnostic300; pilot is not fresh holdout.",
+  "fixed": [
+    "R02 decomposition",
+    "all ordinary child prompts/answers",
+    "all rewrite outputs",
+    "all query strings and retrieved packets",
+    "original-first interleaving/dedup Top10",
+    "full original-query Top10",
+    "all auxiliary QA included",
+    "model and generation limits (goal128/final64)",
+    "no external factual knowledge added by program"
+  ],
+  "upstream_replay_scope": "Full frozen B0 prefix including actual retrieval and ordinary QA; no changed output is used to retrieve because only last goal/final are varied.",
+  "cache": "Exact full payload only; same-case frozen g01 first, then its P1 ancestor and f01. First successful receipt, no score-based selection.",
+  "retries": "At most one new immutable recovery round for infrastructure failures; preserve unknown liabilities and successful prefixes. Algorithm failure is retained, not retried.",
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 5
+  },
+  "fresh_validation": {
+    "development": "fresh_validation/dev90.query_only.frozen.jsonl",
+    "sealed_confirmation": "fresh_validation/sealed150.query_only.frozen.jsonl",
+    "rule": "Freeze old300 winner before fresh dev90; only if fresh dev gain, evaluate exactly that frozen version against g01 on sealed150. Do not tune on confirmation."
+  },
+  "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "source_manifest_sha256": "34cfce08057be8eb50466d6cb75269accbbeb041f59b2e27780dbc307a74f1fa",
+  "pilot_sha256": "7dec2fcb388c0881b1f2045ea1d454e20023e1e113597400170d13dedc94d43c",
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\experiment.py": "8d2aac4da822e406d4c1efae33fb143997e04a580d9e15cd9773261af8a56eab",
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\PROTOCOL.frozen.json": "008216868349425387cf4f14043ca00a03092560710e10e1fc0bfef4f2da39d1",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_RESULTS.frozen.json": "0df873874c08aa795491400a367df0011e6383c58cfb7a816117356e65ac52d5",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_AUDIT.frozen.json": "64d40a6ee62aaef65e2645883dce7cce0b96906f3e69cb95ac8a54f15a803c62",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\receipts.py": "77061a24b408874c52f8ee6ac70bcb1ee9c47579155a4c5e6258684c53f1e06a",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef"
+  }
+}

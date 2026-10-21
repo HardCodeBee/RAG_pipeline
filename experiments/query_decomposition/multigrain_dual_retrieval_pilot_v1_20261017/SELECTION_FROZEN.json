@@ -1,0 +1,15 @@
+{
+  "cases": 24,
+  "per_dataset": {
+    "hotpotqa": 8,
+    "2wiki": 8,
+    "musique": 8
+  },
+  "selection": "targeted diagnostic selection conditional on historical F1 endpoints and reasoning types; not a random population estimate",
+  "success_definition": "historical final native Answer F1 equals 1",
+  "failure_definition": "historical final native Answer F1 equals 0; infrastructure missingness excluded",
+  "plan_semantics": "self-contained questions at multiple levels of granularity, no hard #N references; last step preserves original query",
+  "gold_answers_or_supports_in_plan_inputs": false,
+  "candidate_method_outputs_used_for_selection": false,
+  "training_revision_resumed": false
+}

@@ -1,0 +1,41 @@
+请执行原始Qwen3-4B-Instruct-2507的提示词基线测试。
+
+用户已经确定：只使用原始基础4B，不加载LoRA，不训练，不调用阿里或其它额外API。四个冻结提示词v6/v8/v11/v12，每个使用同一批100题，共400条原始分解。
+新目标是独立问题字符串的JSON数组，不是旧steps/goal。不要把输出修成正确格式；格式错误、#N引用、截断、空数组[]及其它原生表现都保留。[]并非天然错误，语义评审在本地完成。
+
+1. 将包解压到独立目录，保留全部相对结构。进入解压目录，先运行：
+   python3 prepare_remote.py --check-package
+
+2. 核查既有基础权重与环境，CPU预检：
+   python3 prepare_remote.py
+   默认旧route：/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer
+   模型：该route下models/qwen3_4b_instruct_2507；python：environment/venv/bin/python。
+   如果部署路径已变，使用--route-root /实际route；也可显式给--model-path /现有基础模型路径 --python /现有环境/bin/python。
+   只允许部署路径变化；权重必须满足本包的原始模型revision和内容manifest。不要下载另一版本、加载checkpoint-000148、安装依赖或修改旧训练目录。
+   模型/环境缺失则返回具体缺失项。不要自行替换模型或提示词。
+
+3. 在可用的既有A6000 Slurm环境提交一次：
+   python3 prepare_remote.py --submit
+   若指定了迁移路径，提交时带上与步骤2相同参数。
+   本包沿用已验证的db4ai account/partition/qos和单A6000 launcher。先确认该资源仍可用；若集群策略已变，报告，不擅自切换GPU/环境或在登录节点运行GPU。
+   保存results/JOB_SUBMISSION.json的job_id，使用squeue/sacct和results/slurm-*.out/err跟踪到结束。
+   基础模型只加载一次，四prompt按题交替运行；同一prompt同一题只保留一次已落盘尝试。不要增加采样次数挑结果。
+   若中断，先确认旧job已结束，再运行同路径参数的：
+   python3 prepare_remote.py --submit --resume
+   已完成的生成（包括失败、格式错误）不重跑；只续未完成项。未知sbatch提交需要先核对调度器，不能重发。
+
+固定生成：BF16、原生nonthinking chat template、greedy、num_beams=1、seed=1729、max_new_tokens=1024；不添加think前缀、不约束JSON生成、不截断输入。完整输入token长度在TOKEN_PREFLIGHT.json。
+真实模型报告必须adapter=null、adapter_parameters=0，基础参数4022468096。所有权重冻结，model.eval，仅推理。
+模型revision：cdbee75f17c01a7cc42f958dc650907174af0554。
+基础模型files manifest：271c937fb07875d2dd9b1b9d21ec7a199f6d78f22c9c77027d35e642c42f39ea。
+
+4. 完成后核查SUMMARY.json：completed_attempts=400，各prompt=100；不要要求全部format_valid，也不要人工修正输出让它们通过。
+   返回文件保留原query、raw_output、独立数组解析、输入输出token IDs、生成设置、错误/截断、模型身份与实际运行环境。
+   如失败，也保留已完成结果和日志，明确缺多少条。不要删原记录或改分母。
+
+5. 作业结束后CPU打包（运行时写锁会阻止活跃GPU过程中的导出）：
+   python3 prepare_remote.py --export-return
+   将生成的base4b_prompt100_return.zip提供给用户下载。
+   返回包含results记录、配置、身份、日志和冻结输入；不包含权重、adapter、凭据或训练数据。
+
+远端不调用API，不进行语义自动评分、prompt修改、训练数据标注、检索或最终QA。本地Codex负责400条逐题语义审核与最终prompt选择。

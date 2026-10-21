@@ -1,0 +1,48 @@
+{
+  "reviewed_indices": [
+    41,
+    110
+  ],
+  "reviewer": "Current Codex inspected every changed output; identical question strings preserve frozen baseline judgments. No answers or formal300 used.",
+  "exceptions": {
+    "48": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still omits the short-story identity and changes based-on into filmed in the book/state, corrupting the film-book relation."
+    },
+    "93": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops the first-match identity prerequisite; this is the same omission already failed for the checkpoint110/220 control versions."
+    },
+    "102": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C"
+      ],
+      "reason": "The death-place query still uses unqualified Martin, dropping the Navardun-region binding and missing the described person identity."
+    },
+    "108": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "The useful earlier-house question is preceded by an unnecessary generic Which house is the Pappas house identity question."
+    },
+    "109": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Drops current from the arrangement restriction and omits identifying the unnamed arranger before asking for the described animated series."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "musique",
+  "official": 2417,
+  "eligible": 2417,
+  "excluded": 0,
+  "overlapping_reason_counts": {},
+  "manifest_sha256": "784c42441527e24e9788ab4d2e35f360d16b54d35d22401874fb17023e33cc4d",
+  "actual_training_sha256": "33fc7f15c1aebbbf1cf06aca7a830500d0929d610d42c39b96aa8f0ac2132895",
+  "lexical_pairs_checked": 1875,
+  "lexical_edges": 39,
+  "sealed_project_test_questions_opened": false,
+  "limitations": [
+    "Lexical heuristics do not prove semantic or base-model pretraining decontamination.",
+    "Protected project-test text is not read; exact/template/source metadata are used.",
+    "MuSiQue is target-transfer evaluation after excluding known query/family exposure, not a wholly unseen training source."
+  ]
+}

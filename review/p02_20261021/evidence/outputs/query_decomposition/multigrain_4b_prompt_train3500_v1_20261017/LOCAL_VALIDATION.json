@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-17T09:11:47.945984+00:00",
+  "status": "local_checks_passed_remote_not_run",
+  "unit_tests_passed": 8,
+  "package_file_hashes_match": true,
+  "queries100_id_and_query_only": true,
+  "same100_all_four_prompts": true,
+  "train_exclusions_match100": true,
+  "datasets": {
+    "2wiki": 33,
+    "hotpotqa": 34,
+    "musique": 33
+  },
+  "local_tokenizer_check": {
+    "old_adapter_copy_sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506",
+    "original_base_manifest_expected_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "byte_identical": false,
+    "use_for_base_token_length_claim": false
+  },
+  "local_input_token_lengths": "not asserted: local adapter-saved tokenizer is not byte-identical to original base tokenizer",
+  "output_token_limit": 1024,
+  "gpu_model_load_tested_locally": false,
+  "remote_context_check": "required with verified original base tokenizer and model config before generating; input+1024 must fit",
+  "api_calls": 0,
+  "archive_sha256": "09b2a5812e12080ac1d865aa3a6a4a3ca52c7f79ee5dddf8a1af1b3f518b9f93"
+}

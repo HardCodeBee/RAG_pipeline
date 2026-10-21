@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "scope": "Network-free exact timing-only receipt replay plus fixed-packet reader-input diagnostics",
+  "source_runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "source_manifest_sha256": "34cfce08057be8eb50466d6cb75269accbbeb041f59b2e27780dbc307a74f1fa",
+  "pipeline_sha256": "8ffd74da8b0db0029c17c09ca56bb58fb650bab480955dc36d701531647f95e2",
+  "audit_code_sha256": "84f4890f17dbc498bbe090280c44fdfd599c3461afc209c5079ad9778ed24677",
+  "counts": {
+    "cases": 300,
+    "timing_nodes": 887,
+    "exact_payload_receipts": 1774,
+    "timing_logical_retrievals": 1296,
+    "union20_nodes": 887,
+    "union20_reader_docs": 11944,
+    "union20_old_reader_docs": 8870,
+    "discount20_nodes": 887,
+    "discount20_reader_docs": 11944,
+    "discount20_old_reader_docs": 8870
+  },
+  "by_dataset": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "new_api_calls": 0,
+  "new_index_searches": 0,
+  "timing_only_outputs_equal_frozen_p02": true,
+  "changed_prompt_predictions_not_replayed_or_scored": true,
+  "candidate_set_integrity_and_all_reader_blocks_verified": true,
+  "semantic_quality_or_new_final_F1_claimed": false
+}

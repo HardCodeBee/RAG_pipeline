@@ -1,0 +1,48 @@
+{
+  "reviewed_indices": [
+    1,
+    40
+  ],
+  "reviewer": "Current Codex inspected original query and b00 output before reading any c02 confirmation outputs; fixed F/S/C/U, not independent human gold. All changed c02 arrays subsequently inspected; unchanged question strings inherit these locked baseline judgments.",
+  "baseline_exceptions": {
+    "1": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Asks the meaning of reddish water in Hawaiian, rather than clearly asking which location has that name meaning; intended translation versus restatement is unclear."
+    },
+    "18": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "The source has an incomplete city-where-Slavko clause; output adds from as an unsupported relation and skips identifying the film language before its co-official country."
+    },
+    "24": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Asks the second movie without first identifying the unnamed series described by the death-place name."
+    },
+    "32": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Skips identifying the film named after Vladimirs birthplace before asking its original language."
+    },
+    "39": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the six-episode identifying description when extracting the BBC crime drama adapted by Luther: The Calling."
+    }
+  },
+  "candidate_exceptions": {},
+  "baseline_judgment_source": "baseline_001_040.frozen.json"
+}

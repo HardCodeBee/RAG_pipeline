@@ -1,0 +1,95 @@
+{
+  "utc": "2026-10-18T05:07:28.652336+00:00",
+  "queue": "JOBID STATE TIME NODELIST\n",
+  "states": {
+    "results/historical16/r02_expanded/STATE.json": {
+      "api_calls": 0,
+      "completed": 16,
+      "planned": 16,
+      "status": "completed"
+    },
+    "results/confirmation/r02_expanded/STATE.json": {
+      "api_calls": 0,
+      "completed": 120,
+      "planned": 120,
+      "status": "completed"
+    },
+    "results/confirmation/p00_parent_t02/STATE.json": {
+      "api_calls": 0,
+      "completed": 120,
+      "planned": 120,
+      "status": "completed"
+    },
+    "results/confirmation/original165/STATE.json": {
+      "api_calls": 0,
+      "completed": 120,
+      "planned": 120,
+      "status": "completed"
+    },
+    "results/confirmation/r01_old_data/STATE.json": {
+      "api_calls": 0,
+      "completed": 120,
+      "planned": 120,
+      "status": "completed"
+    },
+    "results/v001/training40/STATE.json": {
+      "api_calls": 0,
+      "status": "completed",
+      "trials": [
+        "r01_old_data",
+        "r02_expanded"
+      ]
+    },
+    "results/v001/parent_dev60/STATE.json": {
+      "api_calls": 0,
+      "completed": 60,
+      "planned": 60,
+      "status": "completed"
+    },
+    "results/v001/training40/r02_expanded/STATE.json": {
+      "api_calls": 0,
+      "base_unchanged": true,
+      "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+      "completed_cases": 60,
+      "completed_updates": 40,
+      "parent_unchanged": true,
+      "status": "completed"
+    },
+    "results/v001/training40/r01_old_data/STATE.json": {
+      "api_calls": 0,
+      "base_unchanged": true,
+      "checkpoint_manifest_sha256": "5dd6feb4e73669c6e1c9791a9121a51c0c503d979e395ad7ac021d98b3c2d0b7",
+      "completed_cases": 60,
+      "completed_updates": 40,
+      "parent_unchanged": true,
+      "status": "completed"
+    }
+  },
+  "trials": {
+    "r01_old_data": {
+      "updates": 40,
+      "last": {
+        "examples": 32,
+        "gradient_norm": 0.6788833737373352,
+        "learning_rate": 2e-05,
+        "loss": 0.07581583533138833,
+        "seconds": 19.01178981899284,
+        "step": 40,
+        "target_tokens": 602
+      }
+    },
+    "r02_expanded": {
+      "updates": 40,
+      "last": {
+        "examples": 32,
+        "gradient_norm": 0.5072365999221802,
+        "learning_rate": 2e-05,
+        "loss": 0.09624733642714581,
+        "seconds": 18.98184053809382,
+        "step": 40,
+        "target_tokens": 832
+      }
+    }
+  },
+  "error_tail": "zing param=model.layers.35.self_attn.q_norm.weight]\nLoading weights:  99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 395/398 [00:00<00:00, 2263.14it/s, Materializing param=model.layers.35.self_attn.q_norm.weight]\nLoading weights:  99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 396/398 [00:00<00:00, 2263.14it/s, Materializing param=model.layers.35.self_attn.q_proj.weight]\nLoading weights:  99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 396/398 [00:00<00:00, 2263.14it/s, Materializing param=model.layers.35.self_attn.q_proj.weight]\nLoading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 397/398 [00:00<00:00, 2263.14it/s, Materializing param=model.layers.35.self_attn.v_proj.weight]\nLoading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 397/398 [00:00<00:00, 2263.14it/s, Materializing param=model.layers.35.self_attn.v_proj.weight]\nLoading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 398/398 [00:00<00:00, 2263.14it/s, Materializing param=model.norm.weight]                      \nLoading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 398/398 [00:00<00:00, 2263.14it/s, Materializing param=model.norm.weight]\nLoading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 398/398 [00:00<00:00, 2190.86it/s, Materializing param=model.norm.weight]\nThe following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.\n"
+}

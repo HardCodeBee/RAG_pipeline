@@ -1,0 +1,89 @@
+{
+  "completed_utc": "2026-10-20T14:20:38.582015+00:00",
+  "status": "complete",
+  "primary_method": "s04_scope_plus_evidence",
+  "primary_folder": "src/s04",
+  "second_candidate": "p02_multigrain_timing_cachefix_v1",
+  "second_folder": "src/p02_multigrain_timing_cachefix_v1",
+  "selection_file": "configs/active_rag_candidates.json",
+  "selection_sha256": "7bbb73498a6ce8c179f6a3a0b25e30b17f9e66d0f7fdb2244874d5741e8f7959",
+  "legacy_S02": "src/s02; retained byte-identical code/configs as historical baseline",
+  "package_manifests": {
+    "s04": "bdba3a7ee0680cd1279f887fa1608b8d2bd17fcc13028d33a74c00a7496a3899",
+    "p02_multigrain_timing_cachefix_v1": "f049e16188d7b79fdf15710fce4304fe3fa076761966ea663fbf289c6f73dabb"
+  },
+  "independent_copy_replay": {
+    "passed": true,
+    "checks": [
+      {
+        "method": "s04_scope_plus_evidence",
+        "copied_directory_outside_src": true,
+        "python_isolated_mode": true,
+        "ancestor_method_code_and_databases_not_needed": true,
+        "cases": 300,
+        "F1": 0.7019635652063412,
+        "new_API_calls": 0
+      },
+      {
+        "method": "p02_multigrain_timing_cachefix_v1",
+        "copied_directory_outside_src": true,
+        "python_isolated_mode": true,
+        "ancestor_method_code_and_databases_not_needed": true,
+        "cases": 300,
+        "F1": 0.7072417314845074,
+        "new_API_calls": 0
+      }
+    ],
+    "large_external_resources_loaded": false,
+    "new_API_calls": 0
+  },
+  "runtime_cache_contract": {
+    "passed": true,
+    "checks": [
+      {
+        "package": "s04",
+        "dependency_isolation": true,
+        "native_cache_adapter": true,
+        "repeat_same_success_no_new_request_rows": true,
+        "new_API_calls": 0
+      },
+      {
+        "package": "p02_multigrain_timing_cachefix_v1",
+        "dependency_isolation": true,
+        "native_cache_adapter": true,
+        "repeat_same_success_no_new_request_rows": true,
+        "new_API_calls": 0
+      }
+    ],
+    "new_API_calls": 0
+  },
+  "registry_check": {
+    "new_package_registry_passed": true,
+    "new_package_registry_errors": [],
+    "global_registry_passed": false,
+    "global_error_count": 4333,
+    "other_workspace_error_examples": [
+      "evidence_sufficiency/propositionizer_official_v1: missing protocol_version",
+      "evidence_sufficiency/propositionizer_official_v1: commands must be an object",
+      "Unowned source: experiments/context_sufficiency_20261001/build_facts.py",
+      "Unowned source: experiments/context_sufficiency_20261001/clarity_study.py"
+    ],
+    "old_S02_files_byte_unchanged": 43,
+    "new_API_calls": 0
+  },
+  "new_API_calls": 0,
+  "new_API_cost_cny": 0,
+  "new_index_searches": 0,
+  "new_remote_calls": 0,
+  "limits": [
+    "Replay equivalence, not new quality evaluation",
+    "Large corpus/index/model weights remain explicit external assets",
+    "Repository-wide registry still contains unrelated existing errors; no new package errors"
+  ],
+  "change_records": [
+    "experiments/rag/candidate_packages_v1_20261021/ACTIVATION.frozen.json",
+    "experiments/rag/candidate_packages_v1_20261021/PACKAGING_FIXES.r001.json",
+    "experiments/rag/candidate_packages_v1_20261021/REGISTRY_FIXES.r002.json",
+    "experiments/rag/candidate_packages_v1_20261021/REGISTRY_FIXES.r003.json"
+  ]
+}

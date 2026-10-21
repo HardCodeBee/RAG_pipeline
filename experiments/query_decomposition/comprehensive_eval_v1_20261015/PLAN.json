@@ -1,0 +1,21 @@
+{
+  "version": "comprehensive_eval_v1_20261015",
+  "status": "prepared_not_executed",
+  "purpose": "multi-dataset answer utility, evidence acquisition, contribution attribution, robustness and efficiency",
+  "frozen_main_method": "s02_child4",
+  "main_datasets": [
+    {"name": "HotpotQA", "planned_new_evaluation_questions": 500, "legacy200_kept_separately": true, "strata": ["bridge", "comparison"]},
+    {"name": "2WikiMultihopQA", "planned_evaluation_questions": 500, "strata": ["comparison", "inference", "compositional", "bridge_comparison"]},
+    {"name": "MuSiQue-Ans", "planned_evaluation_questions": 500, "strata": ["2-hop", "3-hop", "4-hop"]}
+  ],
+  "main_methods": ["Top10/v1", "Top10+CoT", "Self-Ask", "ReAct", "IRCoT", "Iter-RetGen", "Decomp", "Hybrid+Rerank", "QD+Rerank", "s02_child4"],
+  "diagnostic_controls": ["same_final_reader_without_helper", "no_retrieval"],
+  "core_ablations": ["helper_vs_no_helper_with_same_reader", "contextual_reread_vs_short_QA_on_fixed_packets", "goal_retrieval_vs_original_packet", "final_reliability_and_goal_constraints_removed_only"],
+  "primary_metrics": ["official_answer_f1", "official_answer_em"],
+  "secondary_evaluation": ["gold_document_recall", "full_gold_document_coverage", "incremental_subquery_coverage", "final_answer_source_support_audit", "call_token_latency_and_cost", "paired_confidence_intervals"],
+  "final_support_audit": {"random_queries_per_dataset": 100, "methods": ["Top10/v1", "ReAct", "s02_child4"], "planned_final_answers": 900, "only_final_answers_are_hallucination_rate_targets": true},
+  "resource_policy": {"training_new_models": false, "original_frozen_sources_modified": false, "remote_scope": "query_decomposition_only_manual_user_handoff", "global_api_cap_cny": 200, "new_phase_allocation_cny": {"main_and_preparation": 105, "ablations_and_robustness": 30, "transfer": 15, "source_audit": 15}},
+  "unready_dependencies": ["new_samples_not_frozen", "2Wiki_global_corpus_and_index", "MuSiQue_global_corpus_and_index", "native_dataset_scorers_and_aliases", "QD+Rerank_adapter", "same-reader_control", "new_remote_QDMR_returns", "second_generator_identity_and_availability"],
+  "report": "LITERATURE_AND_PLAN.txt",
+  "generation_api_calls_in_preparation": 0
+}

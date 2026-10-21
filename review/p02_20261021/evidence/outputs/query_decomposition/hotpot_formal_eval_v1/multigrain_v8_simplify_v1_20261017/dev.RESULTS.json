@@ -1,0 +1,313 @@
+{
+  "phase": "dev",
+  "scope": "query-only type-stratified subset, single current-Codex review; not human-gold, trained4B or RAG-F1",
+  "stats": {
+    "v8": {
+      "planned": 60,
+      "verdicts": {
+        "unavailable": 8,
+        "fail": 20,
+        "pass": 31,
+        "uncertain": 1
+      },
+      "pass_rate_full": 0.5166666666666667,
+      "failed_checks": {
+        "F": 10,
+        "S": 8,
+        "C": 5,
+        "U": 3
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "unavailable": 1,
+          "pass": 11,
+          "fail": 7,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "unavailable": 6,
+          "pass": 13,
+          "fail": 1
+        },
+        "musique": {
+          "fail": 12,
+          "pass": 7,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 823.7884615384615,
+      "mean_output_tokens": 33.73076923076923
+    },
+    "v10": {
+      "planned": 60,
+      "verdicts": {
+        "unavailable": 4,
+        "pass": 33,
+        "fail": 20,
+        "uncertain": 3
+      },
+      "pass_rate_full": 0.55,
+      "failed_checks": {
+        "F": 9,
+        "S": 12,
+        "C": 2,
+        "U": 4
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "unavailable": 2,
+          "pass": 11,
+          "fail": 6,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 17,
+          "unavailable": 1,
+          "uncertain": 1,
+          "fail": 1
+        },
+        "musique": {
+          "fail": 13,
+          "uncertain": 1,
+          "pass": 5,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 445.4642857142857,
+      "mean_output_tokens": 34.535714285714285
+    },
+    "v11": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 41,
+        "fail": 14,
+        "unavailable": 4,
+        "uncertain": 1
+      },
+      "pass_rate_full": 0.6833333333333333,
+      "failed_checks": {
+        "F": 5,
+        "S": 5,
+        "C": 2,
+        "U": 3
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 13,
+          "fail": 4,
+          "unavailable": 2,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 18,
+          "unavailable": 1,
+          "fail": 1
+        },
+        "musique": {
+          "pass": 10,
+          "fail": 9,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 525.8571428571429,
+      "mean_output_tokens": 35.392857142857146
+    },
+    "v12": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 38,
+        "uncertain": 3,
+        "fail": 15,
+        "unavailable": 4
+      },
+      "pass_rate_full": 0.6333333333333333,
+      "failed_checks": {
+        "F": 5,
+        "S": 4,
+        "C": 2,
+        "U": 6
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 13,
+          "fail": 6,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 14,
+          "unavailable": 3,
+          "uncertain": 1,
+          "fail": 2
+        },
+        "musique": {
+          "uncertain": 1,
+          "fail": 7,
+          "pass": 11,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 515.4464285714286,
+      "mean_output_tokens": 39.875
+    }
+  },
+  "all_common": {
+    "n": 45,
+    "passes": {
+      "v8": 29,
+      "v10": 26,
+      "v11": 31,
+      "v12": 31
+    }
+  },
+  "pairs": [
+    {
+      "before": "v8",
+      "after": "v10",
+      "n": 50,
+      "before_pass": 30,
+      "after_pass": 27,
+      "gained": [],
+      "lost": [
+        17,
+        32,
+        34
+      ]
+    },
+    {
+      "before": "v8",
+      "after": "v11",
+      "n": 48,
+      "before_pass": 30,
+      "after_pass": 33,
+      "gained": [
+        3,
+        43,
+        46,
+        57
+      ],
+      "lost": [
+        14
+      ]
+    },
+    {
+      "before": "v8",
+      "after": "v12",
+      "n": 51,
+      "before_pass": 31,
+      "after_pass": 33,
+      "gained": [
+        7,
+        36,
+        43,
+        46,
+        57
+      ],
+      "lost": [
+        32,
+        40,
+        58
+      ]
+    },
+    {
+      "before": "v10",
+      "after": "v11",
+      "n": 52,
+      "before_pass": 32,
+      "after_pass": 37,
+      "gained": [
+        3,
+        17,
+        32,
+        34,
+        43,
+        46
+      ],
+      "lost": [
+        14
+      ]
+    },
+    {
+      "before": "v10",
+      "after": "v12",
+      "n": 52,
+      "before_pass": 30,
+      "after_pass": 34,
+      "gained": [
+        7,
+        17,
+        34,
+        36,
+        43,
+        46
+      ],
+      "lost": [
+        40,
+        58
+      ]
+    },
+    {
+      "before": "v11",
+      "after": "v12",
+      "n": 52,
+      "before_pass": 38,
+      "after_pass": 38,
+      "gained": [
+        7,
+        14,
+        36
+      ],
+      "lost": [
+        3,
+        32,
+        58
+      ]
+    }
+  ],
+  "audit": {
+    "v8": {
+      "requests": 60,
+      "statuses": {
+        "success": 52,
+        "unknown": 8
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85"
+    },
+    "v10": {
+      "requests": 60,
+      "statuses": {
+        "unknown": 4,
+        "success": 56
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "8ca50abaff0f4795aa1191eeae3ed2f2709be8578036a30fa433ee293a48596f"
+    },
+    "v11": {
+      "requests": 60,
+      "statuses": {
+        "success": 56,
+        "unknown": 4
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "221d4ac357cc289cd2b228d24cb198e59376e7e57dc07bf4d533fb6b9abc5283"
+    },
+    "v12": {
+      "requests": 60,
+      "statuses": {
+        "success": 56,
+        "unknown": 4
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8"
+    }
+  },
+  "study_usage_list_price_cny": 0.11668279999999999,
+  "study_unknown_reserved_cny": 0.0938832,
+  "global_usage_list_price_cny": 147.337642,
+  "global_unknown_reserved_cny": 20.2207368,
+  "actual_bill_verified": false
+}

@@ -1,0 +1,143 @@
+{
+  "b00_v12": {
+    "reviewed": 90,
+    "passed": 70,
+    "verdicts": {
+      "pass": 70,
+      "fail": 18,
+      "uncertain": 2
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "reviewed": 20,
+        "passed": 17
+      },
+      "2wiki": {
+        "reviewed": 20,
+        "passed": 20
+      },
+      "musique": {
+        "reviewed": 50,
+        "passed": 33
+      }
+    },
+    "macro_pass_rate": 0.8366666666666667
+  },
+  "m01_static_mu": {
+    "reviewed": 90,
+    "passed": 65,
+    "verdicts": {
+      "pass": 65,
+      "fail": 24,
+      "uncertain": 1
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "reviewed": 20,
+        "passed": 15
+      },
+      "2wiki": {
+        "reviewed": 20,
+        "passed": 20
+      },
+      "musique": {
+        "reviewed": 50,
+        "passed": 30
+      }
+    },
+    "macro_pass_rate": 0.7833333333333333,
+    "paired": {
+      "fixes": [
+        9,
+        24
+      ],
+      "regressions": [
+        4,
+        15,
+        58,
+        59,
+        60,
+        68,
+        76
+      ]
+    }
+  },
+  "m02_adaptive_mu": {
+    "reviewed": 90,
+    "passed": 65,
+    "verdicts": {
+      "pass": 65,
+      "fail": 25
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "reviewed": 20,
+        "passed": 13
+      },
+      "2wiki": {
+        "reviewed": 20,
+        "passed": 20
+      },
+      "musique": {
+        "reviewed": 50,
+        "passed": 32
+      }
+    },
+    "macro_pass_rate": 0.7633333333333333,
+    "paired": {
+      "fixes": [
+        9,
+        24,
+        26,
+        69
+      ],
+      "regressions": [
+        5,
+        15,
+        22,
+        28,
+        58,
+        59,
+        60,
+        76,
+        90
+      ]
+    }
+  },
+  "m03_scope_contrast": {
+    "reviewed": 90,
+    "passed": 70,
+    "verdicts": {
+      "pass": 70,
+      "fail": 19,
+      "uncertain": 1
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "reviewed": 20,
+        "passed": 16
+      },
+      "2wiki": {
+        "reviewed": 20,
+        "passed": 20
+      },
+      "musique": {
+        "reviewed": 50,
+        "passed": 34
+      }
+    },
+    "macro_pass_rate": 0.8266666666666667,
+    "paired": {
+      "fixes": [
+        9,
+        24,
+        69
+      ],
+      "regressions": [
+        15,
+        22,
+        68
+      ]
+    }
+  }
+}

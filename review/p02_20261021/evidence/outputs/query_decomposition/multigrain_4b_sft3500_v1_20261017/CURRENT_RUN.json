@@ -1,0 +1,39 @@
+{
+  "job_id": "153978",
+  "remote_package": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+  "local_package": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003",
+  "local_data": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12",
+  "config_sha256": "dd3f62e933824c299f1e9d44e3c10c682d2dc5dd3fb8bd12b71a2361d9c37486",
+  "superseded_job": "153977_cancelled_before_start",
+  "latest_status": {
+    "training_status": "completed_with_preset_early_stop_at220",
+    "selected_checkpoint_step": 165,
+    "dev150_passed": 128,
+    "formal300_passed": 236,
+    "formal300_reviewed": 300,
+    "all_relevant_jobs_completed": true,
+    "checked_utc": "2026-10-17T15:17:17.960331+00:00",
+    "remote_evidence": "../multigrain_4b_post_sft_opt_v1_20261018/REMOTE_FINAL_STATUS.json",
+    "api_calls": 0
+  },
+  "api_calls": 0,
+  "training_status": "early_stopped_at_220",
+  "selected_checkpoint_step": 165,
+  "selection_record": "SELECTED_CHECKPOINT.json",
+  "final300_status": {
+    "checked_utc": "2026-10-17T15:17:17.960331+00:00",
+    "job_id": "154009",
+    "selected_checkpoint_step": 165,
+    "status": "completed_and_reviewed",
+    "completed_cases": 300,
+    "reviewed_cases": 300,
+    "passed": 236,
+    "fail": 62,
+    "uncertain": 2,
+    "api_calls": 0,
+    "remote_accounting": "JobID|JobName|State|Elapsed|ExitCode\n153978|multigrain-v12-sft3500|COMPLETED|01:36:21|0:0\n153978.batch|batch|COMPLETED|01:36:21|0:0\n153978.extern|extern|COMPLETED|01:36:21|0:0\n153978.0|python|COMPLETED|01:36:17|0:0\n154009|multigrain-v12-final300|COMPLETED|00:13:35|0:0\n154009.batch|batch|COMPLETED|00:13:35|0:0\n154009.extern|extern|COMPLETED|00:13:35|0:0\n154009.0|python|COMPLETED|00:13:27|0:0\n154018|multigrain-prompt-opt150|COMPLETED|00:13:42|0:0\n154018.batch|batch|COMPLETED|00:13:42|0:0\n154018.extern|extern|COMPLETED|00:13:42|0:0\n154018.0|python|COMPLETED|00:13:38|0:0\n154020|multigrain-refine44|COMPLETED|00:02:32|0:0\n154020.batch|batch|COMPLETED|00:02:32|0:0\n154020.extern|extern|COMPLETED|00:02:32|0:0\n154020.0|python|COMPLETED|00:02:28|0:0\n154022|multigrain-confirm90|COMPLETED|00:08:16|0:0\n154022.batch|batch|COMPLETED|00:08:16|0:0\n154022.extern|extern|COMPLETED|00:08:16|0:0\n154022.0|python|COMPLETED|00:08:12|0:0\n",
+    "queue": "JOBID NAME STATE TIME NODELIST(REASON)\n"
+  },
+  "semantic_checkpoint_selection": "completed_on_dev150_selected165",
+  "last_updated_utc": "2026-10-17T15:17:17.960331+00:00"
+}

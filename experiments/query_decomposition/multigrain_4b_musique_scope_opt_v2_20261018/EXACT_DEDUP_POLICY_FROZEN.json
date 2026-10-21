@@ -1,0 +1,9 @@
+{
+  "purpose": "The original query is separately retrieved/answered. Eliminate only literal duplicate work; not a semantic repair model or filter.",
+  "normalization": "NFKC,casefold,collapse whitespace,strip final ?!. only; preserve all internal punctuation, words and order.",
+  "valid_inputs_only": "JSON string arrays with no explicit references. Invalid generations remain invalid.",
+  "review": "Original generated outputs/grades unchanged. For adapter grades, inherit the raw grade if unchanged; inherit locked baseline if resulting array matches; otherwise inspect every changed result under the same rubric.",
+  "comparison": "Show raw and processed outcomes separately. Same Mu/macro/control/F-or-S gates; prefer raw configuration on equal scores. Extra model inference0.",
+  "selection_uses_unseen_t02_outputs": false,
+  "confirmation": "If a processed nominee qualifies, score raw baseline versus that frozen processed configuration on untouched120; retain the raw nominee result too. Do not pool with targeted rare diagnostic."
+}

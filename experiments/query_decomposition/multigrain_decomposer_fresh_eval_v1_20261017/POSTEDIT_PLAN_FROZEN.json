@@ -1,0 +1,19 @@
+{
+  "amendment": "one_same_API_postedit_after_three_single_generation_candidates",
+  "base_version": "v8",
+  "old_control": "v4",
+  "rationale": "single-pass candidates remain far below90%; test an explicitly separate draft-plus-one-edit method; no new trained model",
+  "selection": "best development full-denominator pass count; shorter prompt breaks ties",
+  "base_dev_passes": 43,
+  "editor_prompt_sha256": "f336bbef5bfce14087ec01ed2577648f78c15fdc0ce2549c2186550bb5e9ed41",
+  "single_generation_limit_completed": 3,
+  "initial_selection_protocol_preserved": true,
+  "new_api_calls": "one editor call for every available base draft, no correctness-label gating and no retry of unknown drafts",
+  "generation_inputs": "original query plus exact raw base question-list draft; no judgments, answers or passages",
+  "adoption": "v9 must exceed base dev pass count to be selected; otherwise retain single-pass base",
+  "confirmation": "Freeze after dev v9, then evaluate v4 and base on sealed60; evaluate v9 using those same frozen base drafts without looking at confirmation scores before editing",
+  "holdout_read_before_this_amendment": false,
+  "cost": "inherit draft generation costs plus incremental edit; never call this a single-prompt effect",
+  "no_holdout_tuning": true,
+  "global_budget_cap_cny": 200
+}

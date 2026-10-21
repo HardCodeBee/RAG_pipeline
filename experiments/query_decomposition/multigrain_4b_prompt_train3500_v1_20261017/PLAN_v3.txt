@@ -1,0 +1,10 @@
+2026-10-17：用户明确“原始4B”。
+父版本PLAN_v2.txt保留；本文件解除其中的模型身份待定项。
+
+唯一推理模型：Qwen/Qwen3-4B-Instruct-2507，revision cdbee75f17c01a7cc42f958dc650907174af0554，使用原始基础权重；adapter_path=null、adapter参数0，不加载checkpoint-000148，不训练、不调用额外API。
+四个prompt：v6/v8/v11/v12。同一批100道新query，计划400条原样生成。
+本轮配额：HotpotQA34（bridge24/comparison10）；2Wiki33（comparison9、其它三类各8）；MuSiQue33（2/3/4-hop各11）。
+推理设置：原生nonthinking模板、BF16、greedy、num_beams1、seed1729、max_new_tokens1024；输入不截断，输出截断另记；新数组解析器不复用旧steps/goal判定。
+选择按完整语义通过数→最弱数据集通过率→F或S失误涉及题数并集→输入token数，全部400条由当前Codex审阅；不能将合法数组率当语义正确率。
+本轮100题永久排除后续3500训练。保留原旧2368训练文件只读。
+远端包由用户手动上传/取回，只执行query分解；本地负责选择、数据构建和复核。

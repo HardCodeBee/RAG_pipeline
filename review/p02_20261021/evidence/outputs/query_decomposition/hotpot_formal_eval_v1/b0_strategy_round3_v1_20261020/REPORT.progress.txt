@@ -1,0 +1,999 @@
+B0第三轮：冻结p02的两项独立最终阅读端改动
+
+仅汇总实际已写回结果，不调用API或检索；不修改冻结配置/标准答案/原生评分。
+旧300为开发选择样本。独立p02 fresh90答案/分数及sealed150均未读取，不能与本轮选型混用。
+快照：2026-10-19T23:04:43.795561+00:00
+完整300题p02父版F1：70.72417%
+
+版本	可计分/计划	同题F1	同题p02	差值百分点	升/平/降	缺失
+q03_question_last	300/300	69.49484%	70.72417%	-1.22933	8/282/10	0
+状态：{"success": 300}
+完整计划分母F1范围（缺失保留0到1）：[0.6949484263013676, 0.6949484263013676]
+  hotpotqa：100/100，同题F1=76.60988%, 同题父版=78.99084%, 差值=-2.38095%。
+  2wiki：100/100，同题F1=93.32778%, 同题父版=93.34739%, 差值=-0.01961%。
+  musique：100/100，同题F1=38.54687%, 同题父版=39.83430%, 差值=-1.28743%。
+e03_goal_evidence	300/300	69.55408%	70.72417%	-1.17009	6/287/7	0
+状态：{"success": 300}
+完整计划分母F1范围（缺失保留0到1）：[0.6955408143055202, 0.6955408143055202]
+  hotpotqa：100/100，同题F1=76.30195%, 同题父版=78.99084%, 差值=-2.68889%。
+  2wiki：100/100，同题F1=93.34739%, 同题父版=93.34739%, 差值=0.00000%。
+  musique：100/100，同题F1=39.01291%, 同题父版=39.83430%, 差值=-0.82139%。
+  additional_document：214/214，F1=67.75037%, 同题父版=69.39068%, 差值=-1.64032%, 升平降=6/201/7。
+  exact_reuse_no_new_document：86/86，F1=74.04239%, 同题父版=74.04239%, 差值=0.00000%, 升平降=0/86/0。
+
+费用按namespace独立统计：
+old300_round3：已知¥1.146929，未知请求预留¥0.000000，提交514次。
+round2_independent_dev90：已知¥0.891928，未知请求预留¥0.009033，提交606次。
+global：已知¥183.295203，未知请求预留¥35.391431，提交105197次。
+  q03_question_last：已知¥0.649072，预留¥0.000000，提交300次。
+  e03_goal_evidence：已知¥0.497857，预留¥0.000000，提交214次。
+这是新增调用估算，非完整方法冷启动成本；未核对实际账单，未知预留不释放。
+
+独立验证仅状态计数：{"written_case_files_by_dataset_method": {"2wiki/p02_role_headers": 30, "2wiki/parent_g01": 30, "hotpotqa/p02_role_headers": 30, "hotpotqa/parent_g01": 30, "musique/p02_role_headers": 31, "musique/parent_g01": 30}, "written_files_are_not_necessarily_unique_successes": true, "scores_answers_not_read": true, "sealed150_not_read": true, "independence": "Round2 frozen p02 dev90 validation remains separate; it is not used to select or edit round3 candidates."}
+
+新增原文逐例档案：ADDED_DOCUMENT_CASES.report_round3.json，当前214题，包含最终答案和F1不变的题；未人工核查项保持unreviewed。
+变化实例：记录F1升/降及分数持平的文本变化；未审阅项明确未审，不按词面重合自动判事实正确。
+
+1. q03_question_last | 2wiki:3c9020cd097811ebbdb0ac1f6bf848b6
+Query: Which film was released more recently, Paul Temple'S Triumph or The Quick And The Undead?
+标准答案（离线解释）：The Quick And The Undead
+F1：1.000000 -> 1.000000
+p02：The Quick And The Undead
+候选：The Quick and the Undead
+未改动goal：The Quick and the Undead was released more recently than Paul Temple's Triumph.
+审阅：同一电影名称的大小写变化，F1持平
+观察：The Quick And The Undead变The Quick and the Undead，实体未变，原生评分忽略大小写；无新增证据。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\2wiki\q03_question_last\3c9020cd097811ebbdb0ac1f6bf848b6.json
+
+2. q03_question_last | musique:3hop2__326964_734214_7713
+Query: How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+标准答案（离线解释）：about 400 years
+F1：0.000000 -> 0.400000
+p02：Cannot be determined
+候选：Zero years
+未改动goal：Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.
+审阅：错误确定零值重新出现，词面F1上升不代表事实改善
+观察：p02缺答改Zero years，复制未改变goal中的错误零值。标准about400years仅共享years得0.4；实际最终材料没有400年证据，本次没有新检索或新原文，不能当成时长算对。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop2__326964_734214_7713.json
+
+3. q03_question_last | musique:4hop3__524186_219173_548463_72134
+Query: When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?
+标准答案（离线解释）：1839
+F1：0.000000 -> 0.000000
+p02：Never
+候选：Springfield, Ohio, has never been the capital of Illinois.
+未改动goal：Springfield, Ohio, has never been the capital of Illinois.
+审阅：同一否定扩成整句，原题存在同名城市错接
+观察：Never扩为Springfield Ohio从未为Illinois首府的完整否定，F1仍0。原始支持将公司所在Springfield Ohio与州首府Springfield Illinois混接；不能只根据未命中1839判推理事实恶化。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\4hop3__524186_219173_548463_72134.json
+
+4. q03_question_last | musique:2hop__562154_69048
+Query: Who is the Chief Judge in the place where DeltaWomen's headquarters in located?
+标准答案（离线解释）：Honorable Justice Abiodun Smith
+F1：0.000000 -> 0.000000
+p02：Rosaline Patricia Irorefe Bozimo
+候选：Rosaline Bozimo
+未改动goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+审阅：同一未匹配目标人物的姓名缩短，F1持平0
+观察：Rosaline Patricia Irorefe Bozimo缩为Rosaline Bozimo，仍同一人，未恢复标准Honorable Justice Abiodun Smith；不把姓名长短当身份事实改变。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__562154_69048.json
+
+5. q03_question_last | 2wiki:16a91a500bb011ebab90acde48001122
+Query: Who is the grandchild of Stefan Zamoyski?
+标准答案（离线解释）：Stefan Adam Zamoyski
+F1：0.352941 -> 0.333333
+p02：Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski
+候选：Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski
+未改动goal：Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.
+审阅：相同族谱名单增加and，词面F1下降
+观察：名单成员未变，只在最后一项前增加and。没有从此次变化验证所有家族关系；不能据分数小降断言事实恶化。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\2wiki\q03_question_last\16a91a500bb011ebab90acde48001122.json
+
+6. q03_question_last | hotpotqa:5ac3dfb15542995c82c4ac71
+Query: What did both Karel Bossart and Sergei Korolev design?
+标准答案（离线解释）：rocket
+F1：0.000000 -> 0.285714
+p02：intercontinental ballistic missiles
+候选：Atlas ICBM and R-7 Booster Rocket
+未改动goal：Both Karel Bossart and Sergei Korolev designed intercontinental ballistic missiles—Bossart the Atlas ICBM and Korolev the R-7 Booster Rocket.
+审阅：共同类别变为两个个体型号，词面得分上升但目标未必改善
+观察：旧答共同类别intercontinental ballistic missiles，新列Atlas ICBM与R-7 Booster Rocket，两者在原Top1/2和goal中均出现。题目问both design what，标准rocket；新句仅因含Rocket得分，列各自型号不等于更好完成共同类别判断。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5ac3dfb15542995c82c4ac71.json
+
+7. q03_question_last | musique:4hop2__71753_729371_70784_61381
+Query: When was the region immediately north of the region home to Israel and the location of Operation Earnest Will established?
+标准答案（离线解释）：1932
+F1：0.000000 -> 0.000000
+p02：1920
+候选：Cannot be determined
+未改动goal：Lebanon, the region immediately north of Israel and distinct from the Persian Gulf where Operation Earnest Will occurred, was established as a modern state under the French Mandate following the dissolution of the Ottoman Empire after World War I, with its borders formalized in 1920.
+审阅：错误确定年份转为缺答，F1持平0
+观察：父1920与标准1932不符，新答Cannot be determined，未恢复地区链。原有goal将嵌套地区变成Lebanon，本次未改上游或加入新证据。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\4hop2__71753_729371_70784_61381.json
+
+8. q03_question_last | hotpotqa:5ab55455554299488d4d993b
+Query:  Mount Stimson is the second highest peak in national park that encompasses how many acres?
+标准答案（离线解释）：over 1 million
+F1：0.666667 -> 0.857143
+p02：1 million acres
+候选：over 1 million acres
+未改动goal：Glacier National Park encompasses over 1 million acres.
+审阅：恢复既有材料中的数量限定，答案更完整
+观察：1million acres恢复为over1million acres，保留此前goal已有over限定；goal reader Top5 Glacier National Park明确over1million acre。本次final没有新增原文，改善是已有信息的读出。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5ab55455554299488d4d993b.json
+
+9. q03_question_last | musique:3hop1__671542_651917_47686
+Query: Where do greyhound buses leave from in the city where the performer of Darlings was born?
+标准答案（离线解释）：Toronto Coach Terminal
+F1：1.000000 -> 0.600000
+p02：Toronto Coach Terminal
+候选：Toronto Coach Terminal at 610 Bay Street
+未改动goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.
+审阅：同一正确车站补入街道地址，词面F1下降
+观察：Toronto Coach Terminal增加at610BayStreet，与goal相同且原文支持。车站身份不变，多余地址导致原生F1降低。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop1__671542_651917_47686.json
+
+10. q03_question_last | musique:2hop__789565_416401
+Query: Who is the child of Empress Dowager Huang's child?
+标准答案（离线解释）：Wang Jipeng
+F1：1.000000 -> 0.444444
+p02：Wang Jipeng
+候选：Wang Jipeng (also known as Wang Chang)
+未改动goal：Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.
+审阅：同一正确人物增加别名，词面F1下降
+观察：Wang Jipeng增括号also knownasWangChang，身份关系没有变化，均已在goal和源文中；分数下降属于输出范围变化。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__789565_416401.json
+
+11. q03_question_last | musique:2hop__289517_139339
+Query: What was the cast member in After Hours nominated for?
+标准答案（离线解释）：Academy Award for Best Live Action Short Film
+F1：0.181818 -> 0.200000
+p02：No award nomination
+候选：No award
+未改动goal：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+审阅：相同错误否定压短，词面F1小升
+观察：Noaward nomination改Noaward，仍沿goal把提名范围错误收窄为forhisroleinAfterHours。未输出标准奥斯卡短片奖；关键提名原文仅在goal reader，不在当前最终context。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__289517_139339.json
+
+12. q03_question_last | musique:3hop1__847684_339990_54675
+Query: What mountains can you see from Portland, in the state containing the county where Lorenz Park is located?
+标准答案（离线解释）：Tualatin Mountains
+F1：0.000000 -> 0.285714
+p02：Cannot be determined
+候选：No mountains can be determined.
+未改动goal：No mountains visible from Portland, in the state containing the county where Lorenz Park is located, can be determined, because Portland is in Oregon, not New York, and the scope requires Portland to be in New York—the state containing Columbia County, where Lorenz Park is located—but no Portland in New York is mentioned or implied in the retrieved passages.
+审阅：缺答变明确缺答却获得目标词面分数
+观察：Cannotbedetermined变Nomountainscanbedetermined，仍未识别标准TualatinMountains，只因重复mountains而F1上升。原始支持还存在ColumbiaCounty纽约/俄勒冈同名错接；不称正确回答改善。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop1__847684_339990_54675.json
+
+13. q03_question_last | hotpotqa:5a77c09555429967ab105262
+Query: What is the species of animal which the town of Antelope, Kansas was named after?
+标准答案（离线解释）：Antilocapra americana
+F1：0.800000 -> 0.800000
+p02：pronghorn (*Antilocapra americana*)
+候选：Pronghorn (*Antilocapra americana*)
+未改动goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+审阅：同一动物名称大小写变化，F1持平
+观察：pronghorn首字母改大写，物种与拉丁学名不变；没有新证据或新判断。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5a77c09555429967ab105262.json
+
+14. q03_question_last | musique:3hop1__109422_720914_27537
+Query: Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+标准答案（离线解释）：for the conclave in Rome
+F1：0.296296 -> 0.444444
+p02：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+候选：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII.
+未改动goal：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+审阅：同一受支持离开原因的背景压缩，F1上升
+观察：删除papabile及随后当选等背景，仍为赴罗马conclave。原Top1PopeJohnXXIII支持此原因；未弥补Titian死亡地的上游缺口，不能称全证据链完整。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop1__109422_720914_27537.json
+
+15. q03_question_last | musique:4hop1__94201_642284_131926_13165
+Query: What treaty ceded territory to the US extending west to the body of water by the city where the designer of Southeast Library died?
+标准答案（离线解释）：Treaty of Paris
+F1：0.400000 -> 0.000000
+p02：Adams–Onís Treaty
+候选：Cannot be determined
+未改动goal：The treaty ceding territory to the US extending west to the Pacific Ocean—the body of water near the city where Ralph Rapson died—cannot be determined, because the city where Ralph Rapson died cannot be determined.
+审阅：错误确定条约转为缺答，F1下降不等于事实恶化
+观察：Adams–OnísTreaty并非标准TreatyofParis，只因Treaty得0.4。上游死亡城市与水域仍未知，q03采用goal缺答而不再猜错误条约；未恢复正确答案。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\4hop1__94201_642284_131926_13165.json
+
+16. q03_question_last | musique:2hop__80834_21969
+Query: When was the person who was the first viceroy of the British Empire in India impeached?
+标准答案（离线解释）：1786
+F1：0.000000 -> 0.000000
+p02：1787
+候选：Cannot be determined
+未改动goal：Warren Hastings, who was the first Governor-General of British India but not the first viceroy (as the viceroyalty was created in 1858), was impeached in 1787 and the impeachment proceedings lasted from 1788 to 1795.
+审阅：有原文支持但与标准不一致的年份转为缺答
+观察：标准1786，父1787确实被实际Top2WarrenHastings支持；题目把firstviceroy与firstGovernorGeneral混用。候选缺答仍F1=0，不能仅凭标准说原文1787为模型幻觉。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__80834_21969.json
+
+17. q03_question_last | hotpotqa:5abb23035542992ccd8e7f22
+Query: Kenneth Arnold reported the first unidentified object sighting in what city and state in 1947?
+标准答案（离线解释）：Mount Rainier, Washington
+F1：1.000000 -> 0.857143
+p02：Mount Rainier, Washington
+候选：near Mount Rainier, Washington
+未改动goal：Kenneth Arnold reported the first unidentified object sighting near Mount Rainier in Washington state, but the specific city is not stated in the retrieved passages.
+审阅：同一目击位置增加受支持介词，词面F1下降
+观察：MountRainierWashington改nearMountRainierWashington，实际Top1正写nearMountRainierWashington。位置事实未改变，原题问city但标准为山名，计分对介词敏感。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5abb23035542992ccd8e7f22.json
+
+18. q03_question_last | hotpotqa:5abec66b5542997ec76fd360
+Query: What do Josef Veltjens and Hermann Goering have in common?
+标准答案（离线解释）：A veteran World War I fighter pilot ace
+F1：0.380952 -> 0.380952
+p02：Both were German World War I fighter aces and recipients of the Pour le Mérite
+候选：Both were German World War I fighter aces and recipients of the Pour le Mérite.
+未改动goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+审阅：同一共同职业与奖项添加句号，F1持平
+观察：最终仅末尾增加句号，职业/奖项未变；不作事实变化。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5abec66b5542997ec76fd360.json
+
+19. q03_question_last | hotpotqa:5addbf645542997dc7907014
+Query: Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?
+标准答案（离线解释）：Vernon Kay
+F1：1.000000 -> 0.571429
+p02：Vernon Kay
+候选：Melanie Sykes and Vernon Kay
+未改动goal：Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.
+审阅：共同主持人交集退回主持人并集，实质目标偏差
+观察：p02正确VernonKay，q03输出MelanieSykes和VernonKay。原Top1有首节目二人先后主持，Top2第二节目仅VernonKay；候选未完成共同主持人的交集。全部证据和goal不变，不能归因新检索。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5addbf645542997dc7907014.json
+
+20. q03_question_last | hotpotqa:5ae2dd2055429928c423950d
+Query: What is the county seat of the county where East Lempster, New Hampshire is located?
+标准答案（离线解释）：Newport
+F1：1.000000 -> 0.000000
+p02：Newport
+候选：Cannot be determined
+未改动goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, cannot be determined from the retrieved passages.
+审阅：匹配标准的答案转为缺答，但实际材料未支持该县治
+观察：p02Newport匹配标准，q03缺答；实际原Top10和goalpacket未见Newport，只有不相干StraffordCountyDover、SullivanCountyIndianaSullivan、SullivanCountyPennsylvaniaLaporte。当前goal亦缺答。不能说q03丢弃了已输入的正确县治原文。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5ae2dd2055429928c423950d.json
+
+21. q03_question_last | musique:3hop1__857_846_7770
+Query: Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?
+标准答案（离线解释）：past the west side and then north side
+F1：0.736842 -> 0.875000
+p02：The Yangtze River flows past the west side and then the north side of Nanjing.
+候选：past the west side and then the north side of Nanjing
+未改动goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+审阅：同一长江方位关系缩为短语，词面F1上升
+观察：删除TheYangtzeRiverflows等复述主语谓语，保留西侧后北侧的关系。事实未变，当前问句置后让输出更短，但不能由此推断注意力机制。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop1__857_846_7770.json
+
+22. q03_question_last | hotpotqa:5a90bb4e55429916514e7536
+Query: When was the town Emma Gramatica given its current name?
+标准答案（离线解释）：1927
+F1：0.000000 -> 0.000000
+p02：No town was given the name “Emma Gramatica”; Emma Gramatica was an Italian actress, not a town.
+候选：No town was given the name “Emma Gramatica”.
+未改动goal：No town was given the name “Emma Gramatica”; Emma Gramatica was an Italian actress, not a town.
+审阅：同一未回答日期的否定压短，F1持平0
+观察：删EmmaGramatica为女演员的解释，保留No townwasgiven...。仍未回答1927；本次没有新事实输入，不能将更短解释视为日期判断改善。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5a90bb4e55429916514e7536.json
+
+23. q03_question_last | musique:4hop1__161765_53706_795904_580996
+Query: What city shares a border with the city where the person who went to the state where Englebart died during the gold rush works?
+标准答案（离线解释）：Rio Linda
+F1：0.000000 -> 0.000000
+p02：Citrus Heights, Rancho Cordova, and Folsom
+候选：Citrus Heights
+未改动goal：Sacramento shares borders with several cities including Citrus Heights, Rancho Cordova, and Folsom.
+审阅：未匹配标准的相邻城市候选收束，F1持平0
+观察：从CitrusHeights/RanchoCordova/Folsom多地改只答CitrusHeights，依然未命中RioLinda。没有证据表明本次收束修复上游对象，不能将选项减少当作事实验证。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\4hop1__161765_53706_795904_580996.json
+
+24. q03_question_last | musique:2hop__20256_71302
+Query: In The Godfather, who does the actor producing the Freddie Mercury film play?
+标准答案（离线解释）：Vito Corleone
+F1：0.000000 -> 0.000000
+p02：Cannot be determined
+候选：No actor produced the Freddie Mercury film.
+未改动goal：No actor produced the Freddie Mercury film, so there is no actor from that film to identify as playing a role in *The Godfather*.
+审阅：缺答退回无证据的绝对否定，F1持平0
+观察：Cannotbedetermined变NoactorproducedFreddieMercuryfilm，重新复制goal的绝对否定。缺少演员身份链证据不能证明不存在该演员；未恢复标准VitoCorleone，属确定性风险而非新证据结论。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__20256_71302.json
+
+25. q03_question_last | musique:2hop__22431_16335
+Query: Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?
+标准答案（离线解释）：inter-marriage and conversions in the time of the Roman Empire
+F1：0.083333 -> 0.083333
+p02：Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations
+候选：shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations
+未改动goal：Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.
+审阅：相同宽泛原因概括的大小写变化，F1持平
+观察：仅Shared改shared，仍没有完整读出实际原文中RomanEmpire时期的通婚和皈依两个具体因素。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__22431_16335.json
+
+26. q03_question_last | hotpotqa:5a71474b5542994082a3e74f
+Query: What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was when Caroline Johnson became a Member of Parliament?
+标准答案（离线解释）：The Sleaford and North Hykeham by-election
+F1：1.000000 -> 0.714286
+p02：Sleaford and North Hykeham by-election
+候选：Sleaford and North Hykeham by-election on 8 December 2016
+未改动goal：The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the Sleaford and North Hykeham by-election on 8 December 2016, when Caroline Johnson became a Member of Parliament.
+审阅：同一补选名称附加既有日期，词面F1下降
+观察：SleafordandNorthHykehamby-election增加on8December2016，与未改goal一致。补选实体未变，额外日期降低原生F1，不解释为新增错误事件。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5a71474b5542994082a3e74f.json
+
+27. q03_question_last | musique:3hop2__326964_265410_7713
+Query: How long had Anhua Gao's birthplace been the capitol city of Yaxing Coach's headquarters location?
+标准答案（离线解释）：about 400 years
+F1：0.000000 -> 0.000000
+p02：Cannot be determined
+候选：Zero
+未改动goal：Nanjing had never been the capital city of Yangzhou, so the duration is zero.
+审阅：缺答退回错误零值，F1持平0
+观察：Cannotbedetermined变Zero，采用错误goal从未为首府的零值；已检到400年原文仅在goalreader第10段，未进入当前finalcontext。本次顺序调整不补入证据，不能称原文被最终LLM忽略。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop2__326964_265410_7713.json
+
+28. q03_question_last | musique:3hop1__68802_89752_49923
+Query: How many counties are there in the largest state in the region where the film The Family Stone was set?
+标准答案（离线解释）：sixteen
+F1：1.000000 -> 0.000000
+p02：Sixteen
+候选：16
+未改动goal：Maine has sixteen counties.
+审阅：同一数值改为数字，纯计分失分
+观察：Sixteen改16，事实均为16个县，原生Mu评分不将数字词与阿拉伯数字等价，F1从1降0；不改标准、不按gold挑拼写。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\3hop1__68802_89752_49923.json
+
+29. q03_question_last | musique:2hop__85463_66122
+Query: When did the stalemate happen in the war where UN troops approached the Yalu River?
+标准答案（离线解释）：began 10 July 1951
+F1：0.285714 -> 0.363636
+p02：Late May 1951
+候选：Late May 1951 to 27 July 1953
+未改动goal：The stalemate in the Korean War began in late May 1951, after the UN’s “Line Kansas” halt and subsequent offensive action stand-down, and lasted until the armistice of 27 July 1953.
+审阅：同一未匹配起点的日期扩展，F1上升不证明事件时间修复
+观察：LateMay1951增加to27July1953，范围信息来自既有goal。标准起点began10July1951并未恢复；新句部分July/年份词面提高分数，不称正确找到了停滞开始时间。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\musique\q03_question_last\2hop__85463_66122.json
+
+30. q03_question_last | hotpotqa:5ac298805542990b17b15429
+Query: This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+标准答案（离线解释）：Austral Líneas Aéreas
+F1：1.000000 -> 0.000000
+p02：Austral Líneas Aéreas
+候选：Yes
+未改动goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+审阅：公司实体退回Yes，原题答案类型偏移
+观察：p02按标准答Austral全名，问题置后改Yes，可能顺从原query近似判断句的表面形式。goal及事实完全不变；原文还说Austral是Aerolíneas而非LAPA的姊妹公司，不能称旧链全对或新Yes是经证据验证的关系。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5ac298805542990b17b15429.json
+
+31. q03_question_last | hotpotqa:5a893f305542993b751ca91e
+Query: The Whitehead Light is located in what town with a population of 2,591 during the 2010 census?
+标准答案（离线解释）：St.George
+F1：0.000000 -> 0.000000
+p02：St. George, Maine
+候选：St. George
+未改动goal：The Whitehead Light is located in the town of St. George, Maine, which had a population of 2,591 during the 2010 census.
+审阅：同一地点删除州名，F1持平
+观察：St.GeorgeMaine缩为St.George，地点身份未变。标准St.George没有空格，候选St. George含空格，原生词面计分未命中；本次不是地理事实修复。
+新增原文是否提供新信息：not_applicable_question_order_only
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_q03_question_last_r001\cases\hotpotqa\q03_question_last\5a893f305542993b751ca91e.json
+
+32. e03_goal_evidence | musique:4hop3__373866_5189_38229_86687
+Query: A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?
+标准答案（离线解释）：May 1990
+F1：1.000000 -> 0.500000
+p02：1990
+候选：12 September 1990
+未改动goal：The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.
+审阅：无关历史新文下扩为已有错误日期，F1下降
+观察：1990扩为12September1990，原goal已混入两加四条约签署日，未恢复主标准May1990。新增德国苏联1918–1941关系仅谈1930年代，完全不提供1990年NATO同意统一德国的新事实；不能归为利用新增证据修复事件时间。父1990命中原生计分别名不证明旧月日正确。
+新增原文是否提供新信息：无目标时段/事件的新信息；与问题国家名相关但时间错位
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop3__373866_5189_38229_86687.json
+实际新增原文：goal rank=8; source=Germany–Soviet Union relations, 1918–1941; doc_id=434900bbb5b0f8dc2b493a2c5d41469072d7eef5ed5d1e1732f104cad071288f
+Germany–Soviet Union relations, 1918–1941
+Cooperation ended in 1933, as Adolf Hitler came to power and created Nazi Germany. The countries' economic relationship dwindled at the beginning of the Nazi era, but some diplomatic initiatives continued through the 1930s, culminating with the Molotov -- Ribbentrop Pact of 1939 and various trade agreements. Few questions concerning the origins of the Second World War are more controversial and ideologically loaded than the issue of the policies of the Soviet Union under Joseph Stalin towards Nazi Germany between the Nazi seizure of power and the German invasion of the USSR on June 22, 1941.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+33. e03_goal_evidence | musique:4hop3__524186_219173_548463_72134
+Query: When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?
+标准答案（离线解释）：1839
+F1：0.000000 -> 0.000000
+p02：Never
+候选：Springfield, Ohio, has never been the capital of Illinois.
+未改动goal：Springfield, Ohio, has never been the capital of Illinois.
+审阅：同一否定扩成整句，仍受原始同名地点错接影响
+观察：Never扩成SpringfieldOhio从未为Illinois首府；新增SpringfieldOhio文只支持位于Ohio等地理背景，原有前置和goal已含该对象，不能提供标准1839所需Illinois州首府事实。原题支持存在Ohio/Illinois同名城市错接。
+新增原文是否提供新信息：补地点背景但非所求时间；核心Ohio对象已经出现在辅助中
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop3__524186_219173_548463_72134.json
+实际新增原文：goal rank=2; source=Springfield, Ohio; doc_id=f01e9368d53e9dab4b4136316139e8be2b8ea7cdd169c9eecb50d2e8278046c2
+Springfield, Ohio
+Springfield is a city in the U.S. state of Ohio and the county seat of Clark County. The municipality is located in southwestern Ohio and is situated on the Mad River, Buck Creek and Beaver Creek, approximately 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. Springfield is home to Wittenberg University, a liberal arts college.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+34. e03_goal_evidence | musique:4hop2__71753_729371_70784_61381
+Query: When was the region immediately north of the region home to Israel and the location of Operation Earnest Will established?
+标准答案（离线解释）：1932
+F1：0.000000 -> 0.000000
+p02：1920
+候选：1109
+未改动goal：Lebanon, the region immediately north of Israel and distinct from the Persian Gulf where Operation Earnest Will occurred, was established as a modern state under the French Mandate following the dissolution of the Ottoman Empire after World War I, with its borders formalized in 1920.
+审阅：新增原文日期被用于错误地区，F1持平0但目标变坏
+观察：1920改1109，直接与新增CountyofTripoli的1109–1289对应。新增文讲十字军时期Tripoli领地，不是原题要求成立的国家/地区。候选把源文真实日期迁移到错目标，不能把有出处当作正确回答；父Lebanon/1920同样没恢复标准1932。
+新增原文是否提供新信息：有新日期但属于CountyofTripoli错误对象，不能支持所求地区成立时间
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop2__71753_729371_70784_61381.json
+实际新增原文：goal rank=2; source=County of Tripoli; doc_id=aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7
+County of Tripoli
+The County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": false, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+35. e03_goal_evidence | musique:3hop1__671542_651917_47686
+Query: Where do greyhound buses leave from in the city where the performer of Darlings was born?
+标准答案（离线解释）：Toronto Coach Terminal
+F1：1.000000 -> 0.600000
+p02：Toronto Coach Terminal
+候选：Toronto Coach Terminal at 610 Bay Street
+未改动goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.
+审阅：新原文支持已有车站并引出额外地址，F1下降
+观察：p02TorontoCoachTerminal改加at610BayStreet。新增Top2TorontoCoachTerminal确实支持车站和地址，但这两项已经在未改goal中，属于新增独立原文支持而非新答案身份。地点事实未变，地址冗余降低原生F1。
+新增原文是否提供新信息：新增可核查车站原文，但车站与地址内容在原goal已知；并非新增答案实体
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__671542_651917_47686.json
+实际新增原文：goal rank=2; source=Toronto Coach Terminal; doc_id=e7864b3f56e01946d9cc0e918de81e856af53687bb96d3d58e60d8401c2f2377
+Toronto Coach Terminal
+The Toronto Coach Terminal is the central bus station for inter-city services in Toronto, Ontario, Canada. It is located at 610 Bay Street, in the city's Downtown. The terminal is owned by Toronto Coach Terminal Inc., a wholly owned subsidiary of the Toronto Transit Commission (TTC). The TTC managed the station directly until July 8, 2012, when it was leased out in its entirety to bus lines Coach Canada and Greyhound Canada for $1.2 million annually. Opened in 1931 as the Gray Coach Terminal, the Art Deco style terminal was home base for Gray Coach, an interurban bus service then owned by the TTC. It replaced an earlier open air terminal, Gray Line Terminal.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+36. e03_goal_evidence | hotpotqa:5ab7f0b9554299366779405d
+Query: What type of vegetation does Tabernaemontana and Crinum have in common?
+标准答案（离线解释）：plants
+F1：0.000000 -> 0.000000
+p02：None
+候选：No vegetation type in common
+未改动goal：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.
+审阅：同一错误共同类别否定扩成明确短语，F1持平0
+观察：None改No vegetationtypeincommon，仍按woody/herbaceous等生长形态否定共同类型，而原Top10已分别写二者为plants。新Shrubswamp只描述湿地生态系统，未比较两类植物，不提供所需共同类别。
+新增原文是否提供新信息：无目标共同类别新事实，新增湿地背景与问题不直接相关
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5ab7f0b9554299366779405d.json
+实际新增原文：goal rank=2; source=Shrub swamp; doc_id=21735863
+Shrub swamp
+Shrub swamps — also called scrub swamps or buttonbush swamps — are a type of freshwater wetland ecosystem occurring in areas too wet to become swamps (“true” or freshwater swamp forest), but too dry or too shallow to become marshes. They are often considered transitional (“mid-successional”) between wet meadows or fens and conifer or hardwood swamps.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+37. e03_goal_evidence | musique:2hop__289517_139339
+Query: What was the cast member in After Hours nominated for?
+标准答案（离线解释）：Academy Award for Best Live Action Short Film
+F1：0.181818 -> 0.181818
+p02：No award nomination
+候选：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+未改动goal：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+审阅：加入明确提名原文后仍复制错误限定的否定，F1未改善
+观察：新增GriffinDunne文明确1995 AcademyAwardforBestLiveActionShortFilm提名，且不在原final材料；e03最终仍复制forhisroleinAfterHours没有获提名。这说明有用原文已送入最终端但目标范围仍误把桥接电影当提名限定，不能说本次继续失败仅因证据没进入。
+新增原文是否提供新信息：是；新增所求奖项/提名事实，原材料只有错误否定；最终没有采用
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__289517_139339.json
+实际新增原文：goal rank=2; source=Griffin Dunne; doc_id=9c07e829d3774c70541fd9056f804c03691b92e35393c33e41c7ddbbcc27d86b
+Griffin Dunne
+In 1995, Griffin Dunne was nominated for an Academy Award for Best Live Action Short Film for "Duke of Groove", which he directed and co-wrote. He shared the nomination with producer Thom Colwell. Along with his producing partner, actress/producer Amy Robinson, he has produced several films including "Baby It's You", "After Hours", "Running on Empty" and "Game 6" through their company, Double Play Productions.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+38. e03_goal_evidence | hotpotqa:5a77c09555429967ab105262
+Query: What is the species of animal which the town of Antelope, Kansas was named after?
+标准答案（离线解释）：Antilocapra americana
+F1：0.800000 -> 0.000000
+p02：pronghorn (*Antilocapra americana*)
+候选：pronghorn
+未改动goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+审阅：同一物种删除拉丁学名，词面F1下降
+观察：Pronghorn带Antilocapraamericana改只保留pronghorn，物种身份未变；新Waterbuck是另一非洲羚羊的介绍，未提供本题命名关系。不能按F1下降称候选把物种改成waterbuck，但新增原文没有帮助核查命名。
+新增原文是否提供新信息：无所求命名/物种的新事实；是另一动物的无关段落
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5a77c09555429967ab105262.json
+实际新增原文：goal rank=10; source=Waterbuck; doc_id=1148408
+Waterbuck
+The waterbuck ("Kobus ellipsiprymnus") is a large antelope found widely in sub-Saharan Africa. It is placed in the genus "Kobus" of the family Bovidae. It was first described by Irish naturalist William Ogilby in 1833. The thirteen subspecies are grouped under two varieties: the common or ellipsen waterbuck and the defassa waterbuck. The head-and-body length is typically between 177 - and the average height is between 120 and . A sexually dimorphic antelope, males are taller as well as heavier than females. Males reach approximately 127 cm at the shoulder, while females reach 119 cm . Males typically weigh 198 - and females 161 - . The coat colour varies from brown to grey. The long, spiral horns, present only on males, curve backward, then forward and are 55 - long.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+39. e03_goal_evidence | musique:3hop1__109422_720914_27537
+Query: Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+标准答案（离线解释）：for the conclave in Rome
+F1：0.296296 -> 0.444444
+p02：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+候选：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII.
+未改动goal：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+审阅：无关古代历史原文下答案背景压缩，F1上升
+观察：删除papabile及随后当选的背景，保留赴Romeconclave，内容父材料已有。新增Numerian讲284年罗马皇帝继承及被杀，与Roncalli/Titian不相干，增分不能归为利用新增事实。
+新增原文是否提供新信息：无；新增古罗马皇帝事件，与所求教宗离开原因无关
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__109422_720914_27537.json
+实际新增原文：goal rank=6; source=Numerian; doc_id=96a9c02362c0fc768813c7b4b1077a8bf6f9935d75bb3b1ac97824b4a70ea2fd
+Numerian
+Aper officially broke the news of Numerian's death in Nicomedia (İzmit) in November 284, though Gibbon represents the occurrence of this event at Heraclea, in Thrace, and the discovery, which the prefect attempted to conceal, as due to the forwardness of the soldiery, who forced open the Imperial tent to investigate for themselves the situation of their invisible monarch. Numerian's generals and tribunes called a council for the succession, which met at Chalcedon across the Bosphorus, where they chose as emperor Diocletian, commander of the cavalry arm of the imperial bodyguard, despite Aper's attempts to garner support. The army of the east unanimously saluted their new Augustus. Diocletian accepted the purple imperial vestments and raised his sword to the light of the sun, swearing an oath denying responsibility for Numerian's death. He asserted that Aper had killed Numerian and concealed the deed. In full view of the army, Diocletian then turned and killed Aper, who had been hauled bound before the assembly.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+40. e03_goal_evidence | musique:2hop__135651_669373
+Query: Which university employed the person that Mach bands are named after?
+标准答案（离线解释）：Charles University
+F1：0.000000 -> 0.400000
+p02：Cannot be determined
+候选：University of Prague
+未改动goal：Ernst Mach was employed by the University of Vienna and later by the University of Prague, but no retrieved passage states which university employed him.
+审阅：补入大学与助手的间接桥接后恢复部分匹配答案
+观察：父缺答，新答UniversityofPrague。新增VinkoDvorak文出现CharlesUniversityPrague并说毕业后为ErnstMach助手，提供当前原文缺失的具体大学与Mach关系线索，但未直接说Mach受聘于此；目标CharlesUniversity未完整读出。goal原先已混有UniversityofPrague断言，不能仅凭变化断言新增段是唯一推理依据。
+新增原文是否提供新信息：部分；新增CharlesUniversity及Mach助手间接关系，但最终仍为宽泛UniversityofPrague，直接受聘关系支持有限
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__135651_669373.json
+实际新增原文：goal rank=4; source=Vinko Dvořák; doc_id=3db2218038d31ade375be05c1711c0c7d0bc2a5dfd8c371498a4d2684d376bf9
+Vinko Dvořák
+He studied mathematics and physics at the Charles University in Prague, and after graduating he became an assistant to professor Ernst Mach. After obtaining his doctorate in Prague in 1873/1874 he came to Zagreb (at the time also part of Austria-Hungary) and founded the Physics Cabinet at the Faculty of Philosophy in 1875.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+41. e03_goal_evidence | hotpotqa:5ae2dd2055429928c423950d
+Query: What is the county seat of the county where East Lempster, New Hampshire is located?
+标准答案（离线解释）：Newport
+F1：1.000000 -> 0.000000
+p02：Newport
+候选：Cannot be determined
+未改动goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, cannot be determined from the retrieved passages.
+审阅：缺失目标县治原文时转为缺答，F1下降
+观察：p02Newport匹配标准，e03Cannotbedetermined。新增SullivanCounty仅列该名共有六个美国县，没有目标NewHampshire县治；原材料也无Newport。不能说e03已收到正确县治却故意丢弃。
+新增原文是否提供新信息：无所求县治事实；新增的是同名县消歧页的截断介绍
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5ae2dd2055429928c423950d.json
+实际新增原文：goal rank=2; source=Sullivan County; doc_id=52938
+Sullivan County
+Sullivan County is the name of six counties in the United States of America:
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+42. e03_goal_evidence | musique:3hop1__857_846_7770
+Query: Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?
+标准答案（离线解释）：past the west side and then north side
+F1：0.736842 -> 0.875000
+p02：The Yangtze River flows past the west side and then the north side of Nanjing.
+候选：past the west side and then the north side of Nanjing
+未改动goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+审阅：新增原文支持已有方位，最终输出更短而F1提高
+观察：新增Nanjing文明确长江经南京西侧再北侧，但这一方位已经在原goal。最终只删TheYangtzeRiverflows等复述主体，关系内容未变，不算发现新方向事实。
+新增原文是否提供新信息：新增独立原文支持，但答案方位已在QA中；最终改动主要是压缩
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__857_846_7770.json
+实际新增原文：goal rank=2; source=Nanjing; doc_id=f0a72bc21d138357eb88db8fae9c0b58c0d18729cae54383fd1a681b39ee905f
+Nanjing
+Nanjing, with a total land area of 6,598 square kilometres (2,548 sq mi), is situated in the heartland of drainage area of lower reaches of Yangtze River, and in Yangtze River Delta, one of the largest economic zones of China. The Yangtze River flows past the west side and then north side of Nanjing City, while the Ningzheng Ridge surrounds the north, east and south side of the city. The city is 300 kilometres (190 mi) west-northwest of Shanghai, 1,200 kilometres (750 mi) south-southeast of Beijing, and 1,400 kilometres (870 mi) east-northeast of Chongqing. The downstream Yangtze River flows from Jiujiang, Jiangxi, through Anhui and Jiangsu to East Sea, north to drainage basin of downstream Yangtze is Huai River basin and south to it is Zhe River basin, and they are connected by the Grand Canal east to Nanjing. The area around Nanjing is called Hsiajiang (下江, Downstream River) region, with Jianghuai (江淮) stressing northern part and Jiangzhe (江浙) stressing southern part. The region is also known as Dongnan (東南, South East, the Southeast) and Jiangnan (江南, River South, south of Yangtze).
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+43. e03_goal_evidence | musique:2hop__25396_212301
+Query: Who is the child of the person who issued the Tamworth manifesto?
+标准答案（离线解释）：Arthur Peel
+F1：0.307692 -> 0.500000
+p02：William Peel, Sidney Peel, and William Yates Peel
+候选：William Peel
+未改动goal：Robert Peel had multiple children, including William Peel, Sidney Peel, and William Yates Peel.
+审阅：新增原文确认已有候选子女，列表缩短带来词面增分
+观察：新WilliamPeel文明确他为RobertPeel第三子，确有亲子关系；该人旧goal已列出，候选缩为WilliamPeel。标准ArthurPeel仍未得到，分数上升也来自Peel词重合与列表缩短。问题可能有多个真实子女，不能称William在事实层面必为错误。
+新增原文是否提供新信息：新增原文支持旧QA已有WilliamPeel亲子关系，不是发现标准ArthurPeel
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__25396_212301.json
+实际新增原文：goal rank=2; source=William Peel (Royal Navy officer); doc_id=e0799a9a211ae239730fec0704245a05cacdf119b98f1b1ebb95995c81f2ab65
+William Peel (Royal Navy officer)
+Captain Sir William Peel VC KCB (2 November 1824 – 27 April 1858) was a British naval officer and recipient of the Victoria Cross, the highest and most prestigious award for gallantry in the face of the enemy that can be awarded to British and Commonwealth forces. He was the third son of the Prime Minister Sir Robert Peel. Like his father, he was educated at Harrow School.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+44. e03_goal_evidence | hotpotqa:5abee4ff5542993fe9a41d7d
+Query: Jim Atchison was the President of the theme park that had headquarters in what city?
+标准答案（离线解释）：Orlando
+F1：0.666667 -> 1.000000
+p02：Orlando, Florida
+候选：Orlando
+未改动goal：SeaWorld Parks & Entertainment, the theme park company where Jim Atchison was President, had its headquarters in Orlando, Florida.
+审阅：同一总部城市删除州名，F1上升
+观察：OrlandoFlorida缩为Orlando，城市身份未变。新增SeaWorld只列运营地点包含Orlando等城市，没有说明总部，不能因命中Orlando就认定其新增总部证据；总部答案本已在QA中。
+新增原文是否提供新信息：无新增总部关系；文中Orlando仅为经营地点，答案城市原本已知
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5abee4ff5542993fe9a41d7d.json
+实际新增原文：goal rank=3; source=SeaWorld; doc_id=418732
+SeaWorld
+SeaWorld is a United States chain of marine mammal parks, oceanariums, animal theme parks, and rehabilitation centers owned by SeaWorld Entertainment (one park will be owned and operated by Miral under a license). The parks feature killer whale, sea lion, and dolphin shows and zoological displays featuring various other marine animals. There are operations located within the United States in Orlando, Florida; San Diego, California; San Antonio, Texas; later outside the United States such as Abu Dhabi, United Arab Emirates; and previously Aurora, Ohio. On March 5, 2007, SeaWorld Orlando announced addition of the Aquatica water park to its adventure park family, which already includes SeaWorld and Discovery Cove.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+45. e03_goal_evidence | hotpotqa:5ab6be2f55429954757d335c
+Query: Zakk Wylde and Damon Albarn are both what?
+标准答案（离线解释）：singer, songwriter, and multi-instrumentalist
+F1：0.222222 -> 0.000000
+p02：musicians, singers, songwriters, and multi-instrumentalists
+候选：musicians
+未改动goal：Zakk Wylde and Damon Albarn are both musicians, singers, songwriters, and multi-instrumentalists.
+审阅：追加错人物原文后共同职业信息压缩丢失，F1下降
+观察：父答musicians,singers,songwriters,multi-instrumentalists，新只musicians，丢失原Top1/2和QA支持的具体共同职业。新Zedd文是另一音乐人，未比较Zakk和Damon；不能作为本题共同职业证据，也无法仅凭输出确认内部注意力原因。
+新增原文是否提供新信息：无目标两人的新关系，新增另一音乐人Zedd的生平
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5ab6be2f55429954757d335c.json
+实际新增原文：goal rank=5; source=Zedd; doc_id=32971765
+Zedd
+Anton Zaslavski (Russian: Антон Заславский ; born 2 September 1989), better known by his stage name Zedd ( ), is a Russian-German musician, DJ, songwriter and record producer. He primarily produces and performs electro house music, but has diversified his genre and musical style, drawing influences from progressive house, dubstep, and classical music. Zedd grew up and began his career in Kaiserslautern, Germany.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+46. e03_goal_evidence | musique:3hop1__68802_89752_49923
+Query: How many counties are there in the largest state in the region where the film The Family Stone was set?
+标准答案（离线解释）：sixteen
+F1：1.000000 -> 0.000000
+p02：Sixteen
+候选：16
+未改动goal：Maine has sixteen counties.
+审阅：新原文确认既有数值，但数字表示导致计分失分
+观察：新增ListofcountiesinMaine明确sixteen，与原goal和p02的Sixteen相同。e03最终16，事实数值未变，原生评分数字词不等价导致1到0；不是新增原文给错数量。
+新增原文是否提供新信息：新增独立原文支持已有16县事实，没有新答案值
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__68802_89752_49923.json
+实际新增原文：goal rank=2; source=List of counties in Maine; doc_id=af59bf06331c0c7c48360dd48cc083c172912a8e5197742b3b6f04d0ea3cf918
+List of counties in Maine
+This is a list of the sixteen counties in the U.S. state of Maine. Before statehood, Maine was officially part of the state of Massachusetts and was called the District of Maine. Maine was granted statehood on March 15, 1820 as part of the Missouri Compromise. Nine of the sixteen counties had their borders defined while Maine was still part of Massachusetts, and hence are older than the state itself. Even after 1820, the exact location of the northern border of Maine was disputed with Britain, until the question was settled and the northern counties signed their final official form, the Webster - Ashburton Treaty, signed in 1842. Almost all of Aroostook County was disputed land until the treaty was signed.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": false, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+47. e03_goal_evidence | musique:4hop2__71753_261673_70784_61381
+Query: When was the region that lies to the north of where Israel is located and where Shamal is located established?
+标准答案（离线解释）：1932
+F1：0.000000 -> 0.000000
+p02：1943
+候选：Lebanon
+未改动goal：Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.
+审阅：错误年份改成地区名，新增答案类型偏移而F1持平0
+观察：原问When，父1943错于标准1932，候选却答Lebanon而非时间。新CountyofTripoli讲1109–1289十字军领地，与所求地区成立时间不符；未修复上游地区对象，还丢失回答时间的类型。
+新增原文是否提供新信息：无所求地区成立时间，新文讲另一个历史领地
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop2__71753_261673_70784_61381.json
+实际新增原文：goal rank=2; source=County of Tripoli; doc_id=aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7
+County of Tripoli
+The County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+48. e03_goal_evidence | musique:3hop1__635099_131926_89261
+Query: Where does the body of water by the city where Write This Down was formed empty into the Gulf of Mexico?
+标准答案（离线解释）：the Mississippi River Delta
+F1：0.800000 -> 1.000000
+p02：Mississippi River
+候选：Mississippi River Delta
+未改动goal：The Mississippi River, which is near Minneapolis, Minnesota—where Write This Down was formed—empties into the Gulf of Mexico.
+审阅：新增必要入海位置原文并完成目标对象修复
+观察：p02MississippiRiver停在前置河名，新增MississippiRiver文明确flows...toMississippiRiverDeltaintheGulfofMexico，这条Delta原文此前不在最终context，goal也已删Delta。e03答Delta，属于真正利用新入最终端的所求位置事实修复，不只是短化。
+新增原文是否提供新信息：是；新增此前final缺失的Delta入海位置事实，最终采用并更符合原题
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__635099_131926_89261.json
+实际新增原文：goal rank=2; source=Mississippi River; doc_id=725940b6b339fc7c7aa7ba21084b66d1806988dd091df46c1e66ffa4f49f2c08
+Mississippi River
+The Mississippi River is the chief river of the second - largest drainage system on the North American continent, second only to the Hudson Bay drainage system. The stream is entirely within the United States (although its drainage basin reaches into Canada), its source is Lake Itasca in northern Minnesota and it flows generally south for 2,320 miles (3,730 km) to the Mississippi River Delta in the Gulf of Mexico. With its many tributaries, the Mississippi's watershed drains all or parts of 31 U.S. states and two Canadian provinces between the Rocky and Appalachian Mountains. The Mississippi ranks as the fourth - longest and fifteenth - largest river in the world by discharge. The river either borders or passes through the states of Minnesota, Wisconsin, Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi, and Louisiana.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": false, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+49. e03_goal_evidence | hotpotqa:5ac298805542990b17b15429
+Query: This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+标准答案（离线解释）：Austral Líneas Aéreas
+F1：1.000000 -> 0.000000
+p02：Austral Líneas Aéreas
+候选：Yes
+未改动goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+审阅：公司名退回Yes，新增同词异义段未提供公司关系
+观察：Austral全名变Yes，回到原query表面判断句，未按数据集意图输出公司实体。新增Austral仅解释southern的词义，不涉及航空公司，未提供必要关系。旧链也误把Aerolíneas的姊妹公司挂到LAPA，不能称完整事实原本正确。
+新增原文是否提供新信息：无公司实体关系的新事实，新增的是Austral普通词义
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5ac298805542990b17b15429.json
+实际新增原文：goal rank=3; source=Austral; doc_id=2706147
+Austral
+Austral means southern, often in reference to the Southern Hemisphere.
+词面检查（不等于支持）：{"candidate_answer_in_added_text": false, "gold_answer_in_added_text_offline_only": false, "candidate_answer_in_parent_context": false, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+50. e03_goal_evidence | hotpotqa:5ac5101455429924173fb592
+Query: What is the name of the number-one single featuring the winner of Celebrity Apprentice 3?
+标准答案（离线解释）：Every Rose Has Its Thorn
+F1：1.000000 -> 1.000000
+p02：Every Rose Has Its Thorn
+候选："Every Rose Has Its Thorn"
+未改动goal：The number-one single featuring Bret Michaels, the winner of Celebrity Apprentice 3, is "Every Rose Has Its Thorn".
+审阅：同一正确歌名增加引号，F1持平
+观察：EveryRoseHasItsThorn增双引号，身份无变化。新增BretMichaels文支持他与Poison/该number-one单曲的联系，但歌名和number-one事实已在原goal；不能把引号变化称为新发现。
+新增原文是否提供新信息：新增人物与单曲的原文支持，答案内容原本已知
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5ac5101455429924173fb592.json
+实际新增原文：goal rank=2; source=Bret Michaels; doc_id=1055912
+Bret Michaels
+Bret Michael Sychak (born March 15, 1963), professionally known as Bret Michaels, is an American singer-songwriter and musician. He gained fame as the lead singer of the glam metal band Poison who have sold over 50 million records worldwide and 15 million records in the United States alone. The band has also charted ten singles to the Top 40 of the "Billboard" Hot 100, including six Top 10 singles and a number-one single, "Every Rose Has Its Thorn".
+词面检查（不等于支持）：{"candidate_answer_in_added_text": true, "gold_answer_in_added_text_offline_only": true, "candidate_answer_in_parent_context": true, "warning": "Literal presence is neither factual support nor proof of new information; manual review required."}
+
+新增原文但最终输出不变的补充审阅：
+以下为目的性抽取的失败/部分分代表例，不估计214题总体的信息命中率。
+
+musique:3hop1__5544_34179_23375 | What year saw the publication of the version of the Molotov–Ribbentrop Pact established by the man who succeeded the leader of the group which created the Soviet state?
+F1：0.000000 -> 0.000000
+最终：1946
+未改动goal：The version of the Molotov–Ribbentrop Pact established by Joseph Stalin—the man who succeeded Vladimir Lenin, leader of the Bolsheviks who created the Soviet state—was published in 1946 in the United States and in 1948 in an official U.S. State Department publication.
+审阅：same_topic_no_target_relation
+观察：父Top10 Chunk 3已同时给出1946首次报纸发表及1948年State Department正式出版；父goal QA也同时列两年。
+新增条约条款、秘密议定书及1939-1940侵略史，不含出版年份。
+最终仍为1946。新增段不能帮助区分两种出版事件；未观察到新增段事实进入短答案。
+F1=0是既有出版事件选择/问题scope问题；不能把1948缺失归因于新增段或将新增条约史当作修复事实。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_text_comparison; uncertain_for_intended_publication_scope'}
+新增原文：rank=10; source=Molotov–Ribbentrop Pact; doc_id=e2fe49eebef9285d3c5971fda72fb8436a30eb312b4a3677297aefefa9825212
+Molotov–Ribbentrop Pact
+The stated clauses of the Nazi-Soviet non-aggression pact were a guarantee of non-belligerence by each party towards the other, and a written commitment that neither party would ally itself to, or aid, an enemy of the other party. In addition to stipulations of non-aggression, the treaty included a secret protocol that divided territories of Romania, Poland, Lithuania, Latvia, Estonia, and Finland into German and Soviet "spheres of influence", anticipating potential "territorial and political rearrangements" of these countries. Thereafter, Germany invaded Poland on 1 September 1939. After the Soviet–Japanese ceasefire agreement took effect on 16 September, Stalin ordered his own invasion of Poland on 17 September. Part of southeastern (Karelia) and Salla region in Finland were annexed by the Soviet Union after the Winter War. This was followed by Soviet annexations of Estonia, Latvia, Lithuania, and parts of Romania (Bessarabia, Northern Bukovina, and the Hertza region). Concern about ethnic Ukrainians and Belarusians had been proffered as justification for the Soviet invasion of Poland. Stalin's invasion of Bukovina in 1940 violated the pact, as it went beyond the Soviet sphere of influence agreed with the Axis.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__5544_34179_23375.json
+
+2wiki:f3c57d120baf11ebab90acde48001122 | Who is the paternal grandfather of Gauhar Ara Begum?
+F1：0.666667 -> 0.666667
+最终：Emperor Jahangir
+未改动goal：Gauhar Ara Begum’s paternal grandfather is Emperor Jahangir.
+审阅：wrong_entity_name_overlap
+观察：父QA已给Gauhar Ara -> Shah Jahan -> Emperor Jahangir；Top10包含Gauhar Ara为Shah Jahan子女的原文。
+新增Jahan Shah (1673-1712)为Bahadur Shah I第四子，与目标Shah Jahan及其父Jahangir不是同一个人。
+最终仍Emperor Jahangir，未采用新增错误实体关系。
+F1=2/3源于gold Jahangir与输出Emperor Jahangir的词形；应与实质事实错误分开。新增段不验证Shah Jahan之父。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_identity_mismatch_and_existing_QA; no_external_fact_check'}
+新增原文：rank=2; source=Jahan Shah (Mughal prince); doc_id=58b4572a0a167155c4989f7c8d30e66b92f299e972f0d7ab120d961e2f43ae6c
+Jahan Shah (Mughal prince)
+Khujaista Akhtar Jahan Shah (4 October 1673 – 30 March 1712) was the fourth son of Emperor Bahadur Shah I.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\2wiki\e03_goal_evidence\f3c57d120baf11ebab90acde48001122.json
+
+musique:4hop2__161324_14670_8987_8529 | A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country occupied by the Nazi's. When was the word "Slavs" used in the national anthem of the unprepared country?
+F1：0.000000 -> 0.000000
+最终：Cannot be determined
+未改动goal：The word "Slavs" was used in the national anthem of Yugoslavia (1943–1992) and the Federal Republic of Yugoslavia (1992–2003), but the unprepared country occupied by the Nazis cannot be determined from the provided passages.
+审阅：wrong_country_missing_bridge
+观察：父Top10 Chunk 1已列Yugoslavia 1943-1992等Slavs使用区间；父QA明确无法确定未备战的国家，goal也保留此缺口。
+新增仅为Latvia国歌中的Latvia/Baltics改词及1990恢复信息，没有Slavs年份或目标军队/被侵略国桥接。
+最终仍Cannot be determined；未见采用Latvia信息。
+已有候选区间但缺确定国家的桥接，新增国歌主题相似不构成目标国支持。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_missing_bridge_in_displayed_context'}
+新增原文：rank=8; source=Dievs, svētī Latviju!; doc_id=b0bd05fbe56bf30f4242c379d72808d391e9fa8ab7d8c2a20202627ff4937959
+Dievs, svētī Latviju!
+The music and lyrics were written in 1873 by Kārlis Baumanis, a teacher, who was part of the Young Latvian nationalist movement. It has been speculated that Baumanis may have borrowed part of the lyrics from a popular song which was sung to tune of God Save the Queen, modified them and set them to music of his own. Baumanis's lyrics were different from the modern ones: he used the term "Baltics" synonymously and interchangeably with "Latvia" and "Latvians", so "Latvia" was actually mentioned only at the beginning of the first verse. Later the term "Latvia" was removed and replaced with "Baltics" to avoid a ban on the song. This has led to the misapprehension that the term "Latvia" was not part of the song until 1920, when it was chosen as national anthem and the word "Baltics" was replaced with "Latvia".During the annexation of Latvia by the Soviet Union, the singing of "Dievs, svētī Latviju!" was banned. The Soviet republic of Latvia had its own anthem. "Dievs, svētī Latviju!" was restored as the state anthem of Latvia on 15 February 1990, a very short period before Latvian independence was restored.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop2__161324_14670_8987_8529.json
+
+musique:3hop2__326964_734214_7713 | How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+F1：0.000000 -> 0.000000
+最终：Cannot be determined
+未改动goal：Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.
+审阅：source_grounding_of_existing_fact_without_needed_duration
+观察：父原文有Lynn Hung出生Nanjing和Yaxing位于Yangzhou,Jiangsu；父goal QA已说Nanjing为Jiangsu省会，却把问题收窄为Yangzhou并结论zero years。新增对省会关系提供原文支持，但该语义事实父context已有。
+新增原文明确Nanjing是Jiangsu省会，并提供多段中国历史都城时期；没有about 400 years的目标时长。
+最终仍Cannot be determined；没有输出新增历史时期或所需时长。
+应区分新增原文证实旧QA与引入新答案事实；此例未修复城市/省份scope及所需时长。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_text_comparison; uncertain_for_intended_duration_scope'}
+新增原文：rank=2; source=Nanjing; doc_id=5e5cf66f8d580fb057ee6c8092206b25da5db698f219e06de27741d4123e7914
+Nanjing
+Nanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China, and had been the world's largest city aggregately for hundreds of years, enjoyed peace and prosperity and beared wars and disasters. Nanjing served as the capital of Eastern Wu, one of the three major states in the Three Kingdoms period (211-280); the Eastern Jin and each of the Southern Dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317-589; the Southern Tang, one of the Ten Kingdoms (937-76); the Ming dynasty when, for the first time, all of China was ruled from the city (1368-1421); and the Republic of China (1927–37, 1945–49) prior to its flight to Taiwan during the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1851–64) and the Japanese puppet regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War, and suffered appalling atrocities in both conflicts, including the Nanjing Massacre. It has been serving as the capital city of Jiangsu province after the China was established, and is still the nominal capital of Republic of China that accommodates many of its important heritage sites, including the Presidential Palace and Sun Yat-sen Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Art Museum.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop2__326964_734214_7713.json
+
+musique:2hop__562154_69048 | Who is the Chief Judge in the place where DeltaWomen's headquarters in located?
+F1：0.000000 -> 0.000000
+最终：Rosaline Patricia Irorefe Bozimo
+未改动goal：Rosaline Bozimo was appointed Chief Judge of Delta State, Nigeria, effective 23 March 2003, and retired on 1 January 2011.
+审阅：irrelevant_document_existing_correction_unused
+观察：父Top10 Chunk 8明确Rosaline Bozimo 2011年退休并由Honorable Justice Abiodun Smith继任；父goal QA只抽取Bozimo任命与退休，未保留继任者。
+新增Muhammadu Buhari为Nigeria总统/前军政府领导人的信息，没有Delta State Chief Judge关系。
+最终仍Rosaline Patricia Irorefe Bozimo，未采用父Top10已有继任事实；新增总统原文未补该关系。
+这是原context含可纠偏继任事实而最终沿用过时候选的直接例子；只在本数据快照内诊断，不声明2026现任者。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_existing_successor_fact_and_final_nonuse; current_real_world_officeholder_unchecked'}
+新增原文：rank=5; source=Muhammadu Buhari; doc_id=a3e9550d8ff57a606e01ddeea1a9ba1892368c0a7284f0f69fcf3c04dbf88962
+Muhammadu Buhari
+Muhammadu Buhari GCFR (born 17 December 1942) is the President of Nigeria, in office since 2015. He is a retired major general in the Nigerian Army and previously served as the nation's head of state from 31 December 1983 to 27 August 1985, after taking power in a military coup d'état. The term Buharism is ascribed to the Buhari military government.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__562154_69048.json
+
+hotpotqa:5a7571835542992db9473669 | What is the name of the city 200 km north-west of Sydney, Australia that the Armstrong 500 race was moved to?
+F1：0.333333 -> 0.333333
+最终：Bathurst
+未改动goal：The Armstrong 500 race was moved to Bathurst, a city approximately 200 km north-west of Sydney, Australia.
+审阅：homonym_street_instead_of_city
+观察：父Top10已含Bathurst,New South Wales地理距离与1962/1963 Armstrong 500迁到Mount Panorama的原文，完整满足城市识别。
+新增是Sydney市中心Bathurst Street道路，非距Sydney西北200km的Bathurst城市；不含赛车迁址。
+仍Bathurst；未采用道路。
+F1=1/3来自gold额外in New South Wales限定词；父原文已经有该州，不能当作缺检索事实或新增doc有益命中。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_homonym_and_native_score_surface_difference'}
+新增原文：rank=5; source=Bathurst Street, Sydney; doc_id=9337710
+Bathurst Street, Sydney
+Bathurst Street is a street in the central business district of Sydney in New South Wales, Australia. Bathurst Street runs for 650 m in an west-east direction with traffic flowing in this direction only. It is situated in the southern portion of the central business district. The western terminus of Bathurst Street is at Harbour Street, Darling Harbour, with the eastern terminus at Elizabeth Street, adjacent to Hyde Park.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5a7571835542992db9473669.json
+
+musique:4hop1__860115_798482_131926_13165 | What treaty ceded territory to the US extending west to the river by the city sharing a border with Elizabeth Berg's birthplace?
+F1：0.000000 -> 0.000000
+最终：Louisiana Purchase
+未改动goal：The Louisiana Purchase ceded territory to the US extending west to the Mississippi River, which flows through Minneapolis—the city sharing a border with Elizabeth Berg’s birthplace of Saint Paul, Minnesota.
+审阅：different_cession_event_existing_correction_unused
+观察：父Top10 Chunk 1已明确Mississippi以东于Second Treaty of Paris后归US、以西由Louisiana Purchase取得；父goal却将extending west to the river解释成Louisiana Purchase。
+新增French and Indian War后France向Great Britain/Spain割让Mississippi两侧领土的事件；受让方不是US，未提目标Treaty of Paris。
+仍Louisiana Purchase；新增割让史没有改变输出，也未提供对原有方向/事件歧义的决定性补充。
+正确相关条约及方向对照在旧原文里，不应把此失败归结为e03还没加到答案名。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_recipient_direction_comparison; uncertain_for_intended_query_scope'}
+新增原文：rank=2; source=French and Indian War; doc_id=ab6d1990671b07721aa974b407a7b2cd1f89f98dfec1c3819496589632178439
+French and Indian War
+The outcome was one of the most significant developments in a century of Anglo-French conflict. France ceded its territory east of the Mississippi to Great Britain. It ceded French Louisiana west of the Mississippi River (including New Orleans) to its ally Spain, in compensation for Spain's loss to Britain of Florida (Spain had ceded this to Britain in exchange for the return of Havana, Cuba). France's colonial presence north of the Caribbean was reduced to the islands of Saint Pierre and Miquelon, confirming Britain's position as the dominant colonial power in eastern North America.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop1__860115_798482_131926_13165.json
+
+musique:2hop__46065_417697 | Mohamed Atta's car made by the car manufacturer owning the naming rights to titans stadium is a type of what?
+F1：0.000000 -> 0.000000
+最终：mid-size sedan
+未改动goal：Mohamed Atta's car, a 2001 Nissan Altima, is a type of mid-size sedan.
+审阅：new_raw_support_for_existing_QA_model_but_granularity_failure
+观察：父QA #2已答2001 Nissan Altima，goal又将问句type解释成mid-size sedan；父Top10没有Atta车型原文，mid-size luxury sedan只出现在其他车型Nissan Fuga段。
+新增Mohamed Atta's Nissan标题及原文直接给2001 Nissan Altima车型、VIN与租车信息。它为既有QA的车型事实补原文支持；正文没有证明driving动作或mid-size sedan分类。
+仍mid-size sedan，未改成新增doc及旧QA均有的Nissan Altima；车型事实虽获原文支持，最终仍沿goal选择分类层级。
+这是新增来源有用但答案语义未变的例子。是否mid-size sedan在现实中属实未外查；本审阅只指出所给context并未为该分类提供直接车型对应支持。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_existing_model_QA_and_new_source_support; classification_truth_unverified'}
+新增原文：rank=8; source=Mohamed Atta's Nissan; doc_id=39d327ecc8b6ac3afeb84196059226f8ae5043d4cf9e4ff782e115a8ceb5991e
+Mohamed Atta's Nissan
+]A 2001 Nissan Altima, 1N4DL01D81C212547 is the VIN of a blue rental car belonging to Alamo Rent a Car, that was found in the Portland International Jetport parking lot, following the September 11, 2001 attacks. It was issued a Massachusetts license plate 3335 VI.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__46065_417697.json
+
+musique:4hop1__43565_624859_355213_203322 | Which county shares a border with the county where the city in which the original singer of All By Myself was born is located?
+F1：0.000000 -> 0.000000
+最终：Cannot be determined
+未改动goal：The county that shares a border with the county where the city in which the original singer of "All By Myself" was born is located cannot be determined from these passages.
+审阅：unbound_city_county_document_missing_bridges
+观察：父QA选择Eric Carmen为原唱，但其出生城市及所在县均未确定；Top10是无绑定的城市/县概述，没有后续邻接桥。
+新增Las Vegas为San Miguel County县治；没有歌手、出生地或与目标县接壤关系。
+仍Cannot be determined；未把无绑定San Miguel County当答案。
+新增段与问题只共享city/county关系形式，不能跨缺失桥接直接推出相邻县；gold Cabarrus也不在新增段。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_missing_bindings; original_singer_choice_unverified'}
+新增原文：rank=2; source=Las Vegas, New Mexico; doc_id=1c081eda761342bf11650c6baad424b9cfba21af4d00fe517d66959c0cc3fda1
+Las Vegas, New Mexico
+Las Vegas is a city in and the county seat of San Miguel County, New Mexico, United States. Once two separate municipalities (one a city and the other a town), both were named Las Vegas—West Las Vegas ("Old Town") and East Las Vegas ("New Town")—are separated by the Gallinas River and retain distinct characters and separate, rival school districts.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop1__43565_624859_355213_203322.json
+
+hotpotqa:5a8dde01554299653c1aa159 | In the "Star Trek" franchise, DeForest Kelley portrayed a character aboard which starship? 
+F1：0.800000 -> 0.800000
+最终：USS Enterprise (NCC-1701)
+未改动goal：DeForest Kelley portrayed Dr. Leonard H. "Bones" McCoy aboard the USS Enterprise (NCC-1701).
+审阅：same_ship_name_different_vessel_no_target_link
+观察：父Top10已含Kelley是USS Enterprise的McCoy、NCC-1701原舰介绍；QA和goal均答NCC-1701。
+新增USS Enterprise NCC-1701-E是另一个具体舰体，段中无DeForest Kelley或McCoy关系。
+仍USS Enterprise (NCC-1701)，未转为E舰。
+F1=.8主要因输出额外舰体编号，与gold USS Enterprise不完全等词；新增E舰名称命中不是支持目标演员关系。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_absent_actor_link_and_vessel_difference'}
+新增原文：rank=5; source=USS Enterprise (NCC-1701-E); doc_id=671981
+USS Enterprise (NCC-1701-E)
+The USS "Enterprise" NCC-1701-E (or "Enterprise"-E, to distinguish it from prior and later starships with the same name) is a fictional vessel. It is a "Sovereign"-class starship in the "Star Trek" franchise. It appears only in the films "", "" and "Star Trek Nemesis", where it serves as the primary setting. It is the sixth Federation starship to carry the name "Enterprise".
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\hotpotqa\e03_goal_evidence\5a8dde01554299653c1aa159.json
+
+2wiki:15b9210e0baf11ebab90acde48001122 | Who is Dietrich Ix, Count Of Mark's paternal grandfather?
+F1：0.888889 -> 0.888889
+最终：Count Adolph II of the Marck
+未改动goal：Dietrich IX, Count of Mark's paternal grandfather is Count Adolph II of the Marck.
+审阅：target_person_biography_without_required_father_edge
+观察：父QA已给Dietrich IX -> Adolf III -> Count Adolph II链，父Top10含Dietrich父亲及若干复杂/噪声家谱段；新增可确认候选人物存在与头衔，却没补目标缺边。
+新增Adolph II本人出生死亡、其父Engelbert II和婚姻信息；没有明说Adolf III之父为Adolph II，正文到had seven children即停止。
+仍Count Adolph II of the Marck；是否参考新增人物身份无法从短输出判定。
+F1=8/9来自Count前缀。不能因为doc标题正好是答案名就认定支持祖父关系；父子关系需要正文，而所加段止于子女列表前。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': 'limited_identity_only', 'certainty': 'high_for_added_text_scope; exact_pedigree_not_externally_verified'}
+新增原文：rank=2; source=Adolph II of the Marck; doc_id=3601c84530425675fabc740fa564d04be5d9db0f08d45139933d97d2fbd278d5
+Adolph II of the Marck
+Adolph II of the Marck( died 19/20 October 1347, Fröndenberg) was Count of the Marck. He was the eldest son of Engelbert II of the Mark and Mechtild of Arenberg. Adolph was betrothed to Irmgard of Cleves, daughter of Otto, Count of Cleves and his( second) wife Mechtild of Virneburg. After obtaining a papal dispensation Adolf was allowed to marry Margaret of Cleves, the daughter of Dietrich VIII, Count of Cleves and Margaret of Guelders. Adolph and Margaret of Cleves had seven children:
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\2wiki\e03_goal_evidence\15b9210e0baf11ebab90acde48001122.json
+
+musique:3hop1__841091_339990_54675 | What mountain can you see from Portland in the state where Knob Mountain is located?
+F1：0.000000 -> 0.000000
+最终：Cannot be determined
+未改动goal：No mountain visible from Portland can be determined, as the retrieved passages describe Portland, Oregon, which is in a different state than Knob Mountain (Pennsylvania).
+审阅：nearby_mountain_wrong_relation_no_scope_repair
+观察：父QA把Knob Mountain绑定Pennsylvania，goal因原文Portland,Oregon跨州而拒答；父Top10 Chunk 2已经提Tualatin Mountains在Portland城内及诸山可见。
+新增Pennsylvania的Catawissa Mountain地理及附近山脉；没有Portland可见关系。
+仍Cannot be determined，新增段未解决Knob Mountain州别/Portland对象冲突。
+gold Tualatin Mountains相关原文在旧Top10已存在，但上游指称与地理scope冲突阻止最终选它。不能仅凭gold在旧段而把所有证据当充分。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_textual_scope_conflict; intended_Knob_Mountain_entity_uncertain'}
+新增原文：rank=4; source=Catawissa Mountain; doc_id=e8e72c9825151dff0eb6066f3b481610f21eaa4586912642a192396f4ed7802e
+Catawissa Mountain
+Catawissa Mountain is a mountain in Columbia County, Pennsylvania, in the United States. Its peak height is above sea level, making it the fifth-highest mountain in Columbia County. Streams that flow near the mountain include Roaring Creek, Catawissa Creek, and some of its tributaries. The mountain is near Nescopeck Mountain and Little Mountain. Sandstones and rock formations such as the Pocono Formation occur on Catawissa Mountain.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__841091_339990_54675.json
+
+2wiki:6856ba560bdd11eba7f7acde48001122 | What is the date of death of Princess Carolina Of Parma's mother?
+F1：0.000000 -> 0.000000
+最终：25 December 1798
+未改动goal：Princess Carolina of Parma's mother, Archduchess Maria Amalia of Austria, died on 25 December 1798.
+审阅：wrong_homonym_supports_erroneous_candidate_existing_correction_unused
+观察：父Top10 Chunk1给Carolina出生1770及母亲姓名；Chunk9已给Maria Amalia,Duchess of Parma (1746-1804)，死亡18 June 1804。新增1780出生者比Carolina还晚出生10年，不能绑定为其母。
+新增Archduchess Maria Amalia (1780-1798)的1798死亡日期，表面吻合候选名称和最终日期，却不是1770年出生Carolina的母亲。
+仍25 December 1798，与错同名原文及父goal一致；输出无法区分受新doc影响还是沿旧goal。
+已有可纠偏同名人物和正确日期，但候选仍不改；新增同名段可能强化错对象，因果影响uncertain。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': 'wrong_entity_only', 'certainty': 'high_for_temporal_identity_incompatibility_and_old_correct_date; causal_influence_uncertain'}
+新增原文：rank=2; source=Archduchess Maria Amalia of Austria (1780–1798); doc_id=e991d9831d28d30b895aa6986a06af3ee27292754ce041932954d674ed1e37f9
+Archduchess Maria Amalia of Austria (1780–1798)
+Archduchess Maria Amalia of Austria ("Maria Amalia Josephe Johanna Katharina Theresia"; 15 October 1780 - 25 December 1798) was an Archduchess of Austria by birth.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\2wiki\e03_goal_evidence\6856ba560bdd11eba7f7acde48001122.json
+
+musique:3hop1__404541_629431_64412 | When did the place of death of Paenitentiam Agere's author become its own country?
+F1：0.333333 -> 0.333333
+最终：7 June 1929
+未改动goal：Vatican City became its own country on 7 June 1929, when the Lateran Treaty entered into effect.
+审阅：new_signing_date_and_source_grounding_with_event_scope_ambiguity
+观察：旧Top10没有Vatican独立日期原文；QA把作者死亡地绑定Vatican，goal给7 June并解释生效。
+新增Vatican City原文明说11 February 1929签Lateran Treaty、7 June 1929生效并建立独立国。11 February签署日期在父完整context缺失，7 June生效日期只在父goal QA已有。
+最终仍7 June 1929；新增段为该日期补原文支持，同时提供gold对应11 February的不同事件日期。
+不能只因gold为11 February便断言7 June事实错。问become its own country未细分签署/生效，新doc揭示事件scope歧义，最终选择生效日。
+新增信息判断：{'new_answer_information': 'new_11_Feb_signing_date; answer_scope_uncertain', 'new_source_support_for_known_QA': True, 'certainty': 'high_for_new_chronology_and_old_QA_support; intended_event_scope_uncertain'}
+新增原文：rank=2; source=Vatican City; doc_id=2d8dae44ab9e5da90683b667cffc92dde526412a79201c2bab9f9a0c6ff62965
+Vatican City
+This situation was resolved on 11 February 1929, when the Lateran Treaty between the Holy See and the Kingdom of Italy was signed by Prime Minister and Head of Government Benito Mussolini on behalf of King Victor Emmanuel III and by Cardinal Secretary of State Pietro Gasparri for Pope Pius XI. The treaty, which became effective on 7 June 1929, established the independent state of Vatican City and reaffirmed the special status of Catholicism in Italy.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__404541_629431_64412.json
+
+musique:3hop1__857_846_7752 | Who moved the capitol from the city where the Yongle emperor greeted the person to whom the edict was addressed to Beijing?
+F1：0.000000 -> 0.000000
+最终：Yongle Emperor
+未改动goal：The Yongle Emperor moved the capital from Nanjing to Beijing.
+审阅：same_city_wrong_era_no_scope_repair
+观察：父Top10 Chunk9已直接说1421 Yongle将首都Nanjing迁Beijing，另有Yongle在Nanjing迎Karmapa；父goal因此答Yongle。
+新增Nanjing在229年由Eastern Wu/Sun Quan建都的历史，未描述迁都Beijing者。
+仍Yongle Emperor；新增229年历史未采用。
+gold Yuan Shikai与父原文支持的Ming事件不同；在未有民国迁都证据下只能标事件/时域scope未解决，不能将此当新增段遗漏某个姓名的充分证据。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_added_document_wrong_era; intended_relocation_event_uncertain'}
+新增原文：rank=4; source=Nanjing; doc_id=8dde312074a0b6013aedb09d07dfd9d7a563f6de94b7516fabdf7080abd62f2c
+Nanjing
+Nanjing first became a state capital in 229 AD, when the state of Eastern Wu founded by Sun Quan during the Three Kingdoms period relocated its capital to Jianye (建業), the city extended on the basis of Jinling Yi in 211 AD. Although conquered by the Western Jin dynasty in 280, Nanjing and its neighbouring areas had been well cultivated and developed into one of the commercial, cultural and political centers of China during the rule of East Wu. This city would soon play a vital role in the following centuries.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\3hop1__857_846_7752.json
+
+musique:2hop__13592_49388 | How many games in a season of the league in which Barcelona won titles in 1948 and 1949?
+F1：0.000000 -> 0.000000
+最终：22
+未改动goal：The 1948–49 and 1949–50 La Liga seasons each consisted of 22 games, as the league had 12 teams at the time and followed a double round-robin format.
+审阅：new_answer_rule_conflicts_with_historical_candidate_and_is_unused
+观察：父QA以Barcelona在1948和1949夺冠识别La Liga；父goal再把这两年带入目标场数，答1948-49与1949-50历史赛季22。旧Top10只含冠军历史，没有一般38场规则。
+新增La Liga一般赛制原文明确每队每季双循环共38 matchdays；38在父完整context（QA和Top10）缺失。此段直接回答识别出的联赛一般一季场数。
+最终仍22；未采用新增38场规则。
+这是本深读样本中明确“新增必要目标关系原文但F1仍0”的例子。新doc与goal的数值差异来自一般赛季和历史赛季scope，不能仅称模型忽略矛盾数字；1948/1949在原问中用于识别联赛，goal额外把它作为目标赛季。
+新增信息判断：{'new_answer_information': True, 'new_source_support_for_known_QA': False, 'certainty': 'high_for_new_38_fact_absence_from_parent_and_nonadoption; historical_22_claim_not_externally_verified'}
+新增原文：rank=2; source=La Liga; doc_id=3095161913413be98f60f3702bf9da8510f43db8f61bf1b5e21a276c6ece6fd7
+La Liga
+The competition format follows the usual double round - robin format. During the course of a season, which lasts from August to May, each club plays every other club twice, once at home and once away, for a total of 38 matchdays. Teams receive three points for a win, one point for a draw, and no points for a loss. Teams are ranked by total points, with the highest - ranked club at the end of the season crowned champion.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\2hop__13592_49388.json
+
+2wiki:d94d1d720bdd11eba7f7acde48001122 | Where does the performer of song Balance-Toi work at?
+F1：0.000000 -> 0.000000
+最终：ASVEL Basket in LNB Pro A
+未改动goal：Tony Parker works as the majority owner of ASVEL Basket in LNB Pro A.
+审阅：new_historical_employer_plus_raw_support_for_existing_current_role
+观察：父Top10只有Balance-toi段称2007歌手为NBA player Tony Parker；ASVEL身份只在父goal QA给出，无对应原文。
+新增Tony Parker原文确认其为ASVEL多数股东，也补充曾效力San Antonio Spurs、2011年为ASVEL打球及Charlotte Hornets结束球员生涯。Spurs关系不在父完整context。
+最终仍ASVEL Basket in LNB Pro A。新增doc直接支持该当前身份，也给gold对应的历史Spurs球队，但输出未改历史时点。
+这是不同时间快照/角色的答案冲突，不能只因gold Spurs便将来源支持的ASVEL股东身份当事实假；work at问法缺显式时间，适配旧数据gold的时点未解决。不声明2026实际身份。
+新增信息判断：{'new_answer_information': 'new_Spurs_historical_team_relation; target_time_scope_uncertain', 'new_source_support_for_known_QA': True, 'certainty': 'high_for_new_Spurs_relation_and_existing_ASVEL_QA_grounding; intended_time_scope_uncertain'}
+新增原文：rank=2; source=Tony Parker; doc_id=b192d123b6841cbdb67ea131b8beb6abb8a2c7e82ac2445ba8ddc1929fb1cf77
+Tony Parker
+William Anthony Parker Jr. (born 17 May 1982) is a French-American former professional basketball player and majority owner of ASVEL Basket in LNB Pro A. The son of a professional basketball player, Parker played for two years for Paris Basket Racing in the French basketball league, before joining the San Antonio Spurs of the National Basketball Association (NBA). He was selected by the Spurs with the 28th overall pick in the 2001 NBA draft, and quickly became their starting point guard. Parker won four NBA championships (2003, 2005, 2007, and 2014), all of which were with the Spurs. He also played for ASVEL Basket in France during the 2011 NBA lockout, and finished his career after one season with the Charlotte Hornets. Tony Parker was named to six NBA All-Star games, three All-NBA Second Teams, and an All-NBA Third Team. He was also the 2007 NBA Finals MVP. A severe injury to his left quadriceps tendon in Game 2 in the second round of the 2017 playoffs ended his season. While playing with the French national team, Parker was named the MVP of EuroBasket 2013, following his team's victory over Lithuania in the final. He finished as the tournament's top scorer, with an average of 19 points per game. In 2015, he became the all-time leading scorer in the EuroBasket competition, a record that was broken by Pau Gasol two years later.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\2wiki\e03_goal_evidence\d94d1d720bdd11eba7f7acde48001122.json
+
+musique:4hop1__40316_497223_15840_36002 | What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?
+F1：0.111111 -> 0.111111
+最终：Stronger third-party support and less strict licensing terms
+未改动goal：The Sega Genesis had stronger third-party support and less strict licensing terms compared to the Nintendo Entertainment System (NES), which featured NFL Football.
+审阅：raw_support_for_existing_alternative_advantage_with_qualified_generalization
+观察：父goal已答stronger third-party support and less strict licensing；父Top10围绕NFL和游戏识别，没有Genesis16bit图形声音或许可/第三方支持事实。
+新增NES原文支持部分发行商因较宽松许可转向Genesis；末句谈post-SNES时代Nintendo对手的第三方支持，并非逐字确认Genesis在整个NES时期比NES支持更强。
+最终仍相同两点优点，新增段至少补较宽松许可的原文支撑，但未引入gold所需16bit improved graphics/sound。
+F1=.111不表示所答全部错误；它与gold选择的硬件优点不同，且第三方支持的时代与对象限定被候选泛化，仍需保留uncertain。新增段没有带来此前context缺失的gold硬件事实。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': 'licensing_yes; stronger_support_comparison_limited', 'certainty': 'high_for_licensing_source_support_and_hardware_fact_absence; broad_support_comparison_uncertain'}
+新增原文：rank=2; source=Nintendo Entertainment System; doc_id=4fbb5da19be4297024b04447dfddca598c289465792fcc9d3bb7552cbcdc0532
+Nintendo Entertainment System
+In the longer run, however, with the NES near its end of its life many third-party publishers such as Electronic Arts supported upstart competing consoles with less strict licensing terms such as the Sega Genesis and then the PlayStation, which eroded and then took over Nintendo's dominance in the home console market, respectively. Consoles from Nintendo's rivals in the post-SNES era had always enjoyed much stronger third-party support than Nintendo, which relied more heavily on first-party games.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\musique\e03_goal_evidence\4hop1__40316_497223_15840_36002.json
+
+2wiki:4f81c5260bdc11eba7f7acde48001122 | Who is the spouse of the director of film Geordie (Film)?
+F1：0.500000 -> 0.500000
+最终：Bernadette O’Farrell
+未改动goal：Frank Launder’s spouse was actress Bernadette O’Farrell.
+审阅：new_raw_support_for_correct_existing_QA_native_apostrophe_mismatch
+观察：父QA已给FrankLaunder -> Bernadette O’Farrell；旧Top10只确认Geordie导演，未包含Launder配偶，其他导演配偶段无关。
+新增Frank Launder原文直接说married to actress Bernadette O'Farrell from1950，补足既有goal QA的配偶事实原文支持。
+最终仍Bernadette O’Farrell，和新增原文配偶身份相同；仅沿用弯引号拼写。
+native F1=.5、gold为Bernadette O'Farrell，输出仅姓名中的直/弯apostrophe不同。不能把此分数当配偶事实错误或新增原文未被理解；实际因果采用无法从不变短答案判断。
+新增信息判断：{'new_answer_information': False, 'new_source_support_for_known_QA': True, 'certainty': 'high_for_direct_spouse_support_and_surface_name_equivalence; adoption_causality_uncertain'}
+新增原文：rank=2; source=Frank Launder; doc_id=d18b57eb52705ef565c016a4695250f307e88b3379856cc67240fa98a3ab602a
+Frank Launder
+Frank Launder (28 January 1906 – 23 February 1997) was a British writer, film director and producer, who made more than 40 films, many of them in collaboration with Sidney Gilliat. He was born in Hitchin, Hertfordshire, England and worked briefly as a clerk before becoming an actor and then a playwright. He began working as a screenwriter on British films in the 1930s, contributing the original story for the classic Will Hay comedy " Oh, Mr Porter!" (1937). After writing a number of screenplays with Gilliat, including "The Lady Vanishes" (1938) for Alfred Hitchcock, and "Night Train to Munich" for Carol Reed; the two men wrote and directed the wartime drama "Millions Like Us" (1943). After founding their own production company Individual Pictures, they produced a number of memorable dramas and thrillers including "I See a Dark Stranger" (1945) and "Green for Danger" (1946), but were best known for their comedies including "The Happiest Days of Your Life" (1950) and most famously, the St Trinians series, based on Ronald Searle's cartoons set in an anarchic girls school. He was married to actress Bernadette O'Farrell from 1950 until his death in Monaco. The couple had two children.
+实际文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round3_v1_20261020\rounds\full300_e03_goal_evidence_r001\cases\2wiki\e03_goal_evidence\4f81c5260bdc11eba7f7acde48001122.json

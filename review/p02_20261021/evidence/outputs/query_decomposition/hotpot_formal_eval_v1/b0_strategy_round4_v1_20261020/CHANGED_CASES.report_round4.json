@@ -1,0 +1,1744 @@
+[
+  {
+    "id": "musique:4hop3__373866_5189_38229_86687",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "12 September 1990",
+    "f1": 0.5,
+    "em": 0,
+    "parent_f1": 1.0,
+    "delta_parent": -0.5,
+    "has_extra_document": true,
+    "question": "A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?",
+    "gold_offline_only": "May 1990",
+    "p02_prediction": "1990",
+    "e03_prediction": "12 September 1990",
+    "e03_f1": 0.5,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What group of nations was the People's Socialist Republic of Albania a member of?",
+        "answer": "The People's Socialist Republic of Albania was a member of the Warsaw Pact."
+      },
+      {
+        "step_id": 2,
+        "request": "What country controlled the group of nations the People's Socialist Republic of Albania was a member of?",
+        "answer": "The Soviet Union controlled the Warsaw Pact."
+      },
+      {
+        "step_id": 3,
+        "request": "What organization did Eisenhower not discuss during the campaign?",
+        "answer": "Eisenhower did not discuss NATO during the campaign."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\4hop3__373866_5189_38229_86687.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop3__373866_5189_38229_86687.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop3__373866_5189_38229_86687.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__373866_5189_38229_86687.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:4hop3__373866_5189_38229_86687",
+      "classification": "已有错误具体日期重新进入最终，F1下降",
+      "note": "p02的1990改为12September1990，与冻结goal的两加四条约日相同，没有恢复May1990同意统一的事件时间。r04不加原文，不能称新日期得到新证据验证；父年份仅匹配别名不代表月份正确。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:3hop2__326964_734214_7713",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "Zero years",
+    "f1": 0.4,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0.4,
+    "has_extra_document": true,
+    "question": "How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?",
+    "gold_offline_only": "about 400 years",
+    "p02_prediction": "Cannot be determined",
+    "e03_prediction": "Cannot be determined",
+    "e03_f1": 0,
+    "delta_vs_e03": 0.4,
+    "unchanged_goal_answer": "Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Where was Lynn Hung born?",
+        "answer": "Lynn Hung was born in Nanjing, China."
+      },
+      {
+        "step_id": 2,
+        "request": "Where were Yaxing Coach's headquarters located?",
+        "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+      },
+      {
+        "step_id": 3,
+        "request": "What city was the headquarters of Yaxing Coach located in?",
+        "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\3hop2__326964_734214_7713.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop2__326964_734214_7713.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop2__326964_734214_7713.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop2__326964_734214_7713.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:3hop2__326964_734214_7713",
+      "classification": "缺答变错误零值，词面F1提高",
+      "note": "Cannotbedetermined改Zeroyears，复制未改变goal从未为扬州首府的错误零值；标准about400years仅因years重合得0.4。原final材料没有400年，不把F1提升视为时长修复。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:4hop3__524186_219173_548463_72134",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?",
+    "gold_offline_only": "1839",
+    "p02_prediction": "Never",
+    "e03_prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Springfield, Ohio, has never been the capital of Illinois.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What city is Superior Drill Company located in?",
+        "answer": "Superior Drill Company is located in Springfield, Ohio."
+      },
+      {
+        "step_id": 2,
+        "request": "Who wrote The Poor Boob?",
+        "answer": "The Poor Boob was written by Margaret Mayo, Z. Wall Covington, and Gardner Hunting."
+      },
+      {
+        "step_id": 3,
+        "request": "What state was the screenwriter of The Poor Boob born in?",
+        "answer": "Margaret Mayo was born in Illinois."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\4hop3__524186_219173_548463_72134.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop3__524186_219173_548463_72134.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop3__524186_219173_548463_72134.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__524186_219173_548463_72134.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "classification": "同一否定扩成整句，原题同名城市错接未消除",
+      "note": "Never扩为SpringfieldOhio从未为Illinois首府，未回答标准1839；原支持把公司所在Ohio与Illinois州首府同名Springfield连接，不能仅据标准将这一否定判为新事实错。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+    "dataset": "2wiki",
+    "arm": "r04_scope_contract",
+    "prediction": "Main Street to Broadway",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "Which film has the director born first, Bay Of Angels or Main Street To Broadway?",
+    "gold_offline_only": "Main Street To Broadway",
+    "p02_prediction": "Main Street To Broadway",
+    "e03_prediction": "Main Street To Broadway",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The director of Main Street to Broadway, Tay Garnett, was born on June 13, 1894, before Jacques Demy, the director of Bay of Angels, who was born on June 5, 1931.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who directed the film Bay Of Angels?",
+        "answer": "Bay of Angels was directed by Jacques Demy."
+      },
+      {
+        "step_id": 2,
+        "request": "Who directed the film Main Street To Broadway?",
+        "answer": "Main Street to Broadway was directed by Tay Garnett."
+      },
+      {
+        "step_id": 3,
+        "request": "When was the director of the film Bay Of Angels born?",
+        "answer": "Jacques Demy, the director of Bay of Angels, was born on 5 June 1931."
+      },
+      {
+        "step_id": 4,
+        "request": "When was the director of the film Main Street To Broadway born?",
+        "answer": "Tay Garnett, the director of Main Street to Broadway, was born on June 13, 1894."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\2wiki\\r04_scope_contract\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\2wiki\\B0_legacy_multigrain_R02\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+      "classification": "同一电影名称大小写变化，F1持平",
+      "note": "MainStreetToBroadway改MainStreettoBroadway，电影与比较赢家相同，没有新事实。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "hotpotqa:5ab7f0b9554299366779405d",
+    "dataset": "hotpotqa",
+    "arm": "r04_scope_contract",
+    "prediction": "No vegetation type in common",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "What type of vegetation does Tabernaemontana and Crinum have in common?",
+    "gold_offline_only": "plants",
+    "p02_prediction": "None",
+    "e03_prediction": "No vegetation type in common",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What types of vegetation are associated with Tabernaemontana?",
+        "answer": "Tabernaemontana is associated with shrubs and small trees."
+      },
+      {
+        "step_id": 2,
+        "request": "What types of vegetation are associated with Crinum?",
+        "answer": "Crinum is associated with perennial plants, including aquatic and swamp-dwelling species."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\hotpotqa\\r04_scope_contract\\5ab7f0b9554299366779405d.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ab7f0b9554299366779405d.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ab7f0b9554299366779405d.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ab7f0b9554299366779405d.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "hotpotqa:5ab7f0b9554299366779405d",
+      "classification": "同一错误共同类型否定扩成短语，F1持平0",
+      "note": "None改Novegetationtypeincommon，仍按woody/herbaceous生长形态否定共同类型，原Top10已写两个类群均为plants。新scope约定没有使最终采用共同上位类别，不把解释扩展视为事实改进。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "hotpotqa:5abd455c55429924427fcf5a",
+    "dataset": "hotpotqa",
+    "arm": "r04_scope_contract",
+    "prediction": "Cannot be determined",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "What does Age of Chance and Vector share in common? ",
+    "gold_offline_only": "was a rock band",
+    "p02_prediction": "Nothing",
+    "e03_prediction": "Nothing",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Age of Chance and Vector share no commonality based on the retrieved passages, as “Age of Chance” is not mentioned in any passage and “Vector” refers only to mathematical, statistical, or gaming concepts (e.g., probability vector, random vector, board game, magazine), with no indication of a shared property or relation.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\hotpotqa\\r04_scope_contract\\5abd455c55429924427fcf5a.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abd455c55429924427fcf5a.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abd455c55429924427fcf5a.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abd455c55429924427fcf5a.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "hotpotqa:5abd455c55429924427fcf5a",
+      "classification": "无目标实体材料时绝对否定转为缺答，F1持平0",
+      "note": "Nothing改Cannotbedetermined。原Top10是Probabilityvector、Multivariaterandomvariable等数学/统计/游戏歧义文，完全未出现AgeofChance；不能因缺失乐队文断言二者无共同点。新答案更保守但未解决检索对象或恢复rockband。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "hotpotqa:5abec66b5542997ec76fd360",
+    "dataset": "hotpotqa",
+    "arm": "r04_scope_contract",
+    "prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+    "f1": 0.38095238095238093,
+    "em": 0.0,
+    "parent_f1": 0.38095238095238093,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "What do Josef Veltjens and Hermann Goering have in common?",
+    "gold_offline_only": "A veteran World War I fighter pilot ace",
+    "p02_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite",
+    "e03_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite",
+    "e03_f1": 0.38095238095238093,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\hotpotqa\\r04_scope_contract\\5abec66b5542997ec76fd360.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abec66b5542997ec76fd360.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abec66b5542997ec76fd360.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abec66b5542997ec76fd360.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "hotpotqa:5abec66b5542997ec76fd360",
+      "classification": "同一共同职业/奖项句增加句号，F1持平",
+      "note": "最终只增加末尾句号，人物共同职业和PourleMérite奖项均未变，本次没有新事实。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:3hop1__857_846_7770",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "past the west side and then the north side of Nanjing",
+    "f1": 0.8750000000000001,
+    "em": 0,
+    "parent_f1": 0.7368421052631579,
+    "delta_parent": 0.13815789473684226,
+    "has_extra_document": true,
+    "question": "Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?",
+    "gold_offline_only": "past the west side and then north side",
+    "p02_prediction": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "e03_prediction": "past the west side and then the north side of Nanjing",
+    "e03_f1": 0.8750000000000001,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "To whom was the edict addressed?",
+        "answer": "The edict was addressed to the Karmapa."
+      },
+      {
+        "step_id": 2,
+        "request": "In what city did the Yongle emperor greet the person to whom the edict was addressed?",
+        "answer": "The Yongle emperor greeted the Karmapa in Nanjing."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\3hop1__857_846_7770.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__857_846_7770.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__857_846_7770.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__857_846_7770.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:3hop1__857_846_7770",
+      "classification": "已有方位关系去掉复述主语，词面F1提高",
+      "note": "删除TheYangtzeRiverflows等词，仍经南京西侧再北侧，方位与goal和原文相同。r04无新增证据，不能称又找到了新的城市/方位事实。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+    "dataset": "hotpotqa",
+    "arm": "r04_scope_contract",
+    "prediction": "The fourth hour of the TODAY Show",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 0.9090909090909091,
+    "delta_parent": 0.09090909090909094,
+    "has_extra_document": false,
+    "question": "Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?",
+    "gold_offline_only": "the fourth hour of the TODAY Show",
+    "p02_prediction": "The fourth hour of NBC's \"Today Show\"",
+    "e03_prediction": "The fourth hour of NBC's \"Today Show\"",
+    "e03_f1": 0.9090909090909091,
+    "delta_vs_e03": 0.09090909090909094,
+    "unchanged_goal_answer": "The fourth hour of NBC's \"Today Show\" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What shows did Hoda Kotb co-host?",
+        "answer": "Hoda Kotb co-hosted NBC's \"Today Show\" fourth hour with Kathie Lee Gifford."
+      },
+      {
+        "step_id": 2,
+        "request": "What shows were produced by Brian Balthazar?",
+        "answer": "Brian Balthazar was the co-executive producer of the fourth hour of the TODAY Show on NBC with Kathie Lee Gifford and Hoda Kotb."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\hotpotqa\\r04_scope_contract\\5a72a9ac5542991f9a20c55f.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a72a9ac5542991f9a20c55f.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a72a9ac5542991f9a20c55f.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a72a9ac5542991f9a20c55f.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+      "classification": "同一节目删除网络称谓/引号，词面F1提高",
+      "note": "NBCsTodayShow第四小时改theTODAYShow第四小时，节目身份不变。删除受支持但多余称谓匹配标准，不是scope关系或新事实修复。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:3hop1__68802_89752_49923",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "16",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 1.0,
+    "delta_parent": -1.0,
+    "has_extra_document": true,
+    "question": "How many counties are there in the largest state in the region where the film The Family Stone was set?",
+    "gold_offline_only": "sixteen",
+    "p02_prediction": "Sixteen",
+    "e03_prediction": "16",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Maine has sixteen counties.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Where was the film The Family Stone set?",
+        "answer": "The film The Family Stone was set in a small New England town."
+      },
+      {
+        "step_id": 2,
+        "request": "What region contains the setting of the film The Family Stone?",
+        "answer": "The region containing the setting of the film The Family Stone is New England."
+      },
+      {
+        "step_id": 3,
+        "request": "What is the largest state in the region containing the setting of the film The Family Stone?",
+        "answer": "Maine is the largest state in New England."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\3hop1__68802_89752_49923.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__68802_89752_49923.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__68802_89752_49923.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__68802_89752_49923.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:3hop1__68802_89752_49923",
+      "classification": "同一数量改成数字，纯计分下降",
+      "note": "Sixteen改16，均为16个县，未改变实体或数值；原生Mu计分未归一化数字词，F1从1降0。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:4hop2__71753_261673_70784_61381",
+    "dataset": "musique",
+    "arm": "r04_scope_contract",
+    "prediction": "Lebanon",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "When was the region that lies to the north of where Israel is located and where Shamal is located established?",
+    "gold_offline_only": "1932",
+    "p02_prediction": "1943",
+    "e03_prediction": "Lebanon",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Where is Israel located?",
+        "answer": "Israel is located in the Middle East, on the southeastern shore of the Mediterranean Sea and the northern shore of the Red Sea."
+      },
+      {
+        "step_id": 2,
+        "request": "Where is Shamal located?",
+        "answer": "Shamal is a northwesterly wind blowing over Iraq and the Persian Gulf states, not a region."
+      },
+      {
+        "step_id": 3,
+        "request": "What region lies to the north of where Israel is located and where Shamal is located?",
+        "answer": "Lebanon lies to the north of Israel, and Shamal is a wind, not a region."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\musique\\r04_scope_contract\\4hop2__71753_261673_70784_61381.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop2__71753_261673_70784_61381.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop2__71753_261673_70784_61381.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__71753_261673_70784_61381.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "musique:4hop2__71753_261673_70784_61381",
+      "classification": "所问时间退成地区名，目标答案类型偏移",
+      "note": "p02答1943已错于标准1932，r04却答Lebanon而不是时间；冻结goal已给错地区/年份，r04未修复上游条件，最终还遗漏原题When所求类型。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "hotpotqa:5a893f305542993b751ca91e",
+    "dataset": "hotpotqa",
+    "arm": "r04_scope_contract",
+    "prediction": "St. George",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "The Whitehead Light is located in what town with a population of 2,591 during the 2010 census?",
+    "gold_offline_only": "St.George",
+    "p02_prediction": "St. George, Maine",
+    "e03_prediction": "St. George, Maine",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The Whitehead Light is located in the town of St. George, Maine, which had a population of 2,591 during the 2010 census.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_r04_scope_contract_r001\\cases\\hotpotqa\\r04_scope_contract\\5a893f305542993b751ca91e.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a893f305542993b751ca91e.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a893f305542993b751ca91e.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a893f305542993b751ca91e.json",
+    "review": {
+      "arm": "r04_scope_contract",
+      "id": "hotpotqa:5a893f305542993b751ca91e",
+      "classification": "同一城镇删除州名，F1持平",
+      "note": "St.GeorgeMaine缩为St.George，地点未变；标准St.George与候选St. George的空格/标点使原生计分未命中，不能当新地理事实变化。",
+      "scope": "non-blind old300 recorded-case review; no new evidence in r04"
+    }
+  },
+  {
+    "id": "musique:4hop3__373866_5189_38229_86687",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "1990",
+    "f1": 1.0,
+    "em": 1,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?",
+    "gold_offline_only": "May 1990",
+    "p02_prediction": "1990",
+    "e03_prediction": "12 September 1990",
+    "e03_f1": 0.5,
+    "delta_vs_e03": 0.5,
+    "unchanged_goal_answer": "The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What group of nations was the People's Socialist Republic of Albania a member of?",
+        "answer": "The People's Socialist Republic of Albania was a member of the Warsaw Pact."
+      },
+      {
+        "step_id": 2,
+        "request": "What country controlled the group of nations the People's Socialist Republic of Albania was a member of?",
+        "answer": "The Soviet Union controlled the Warsaw Pact."
+      },
+      {
+        "step_id": 3,
+        "request": "What organization did Eisenhower not discuss during the campaign?",
+        "answer": "Eisenhower did not discuss NATO during the campaign."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\4hop3__373866_5189_38229_86687.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop3__373866_5189_38229_86687.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop3__373866_5189_38229_86687.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__373866_5189_38229_86687.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:4hop3__373866_5189_38229_86687",
+      "classification": "具体错误日期压回年份，命中计分别名但未恢复月份",
+      "note": "相同e03新增的1930年代德国苏联段不含1990信息；s04相对e03从12September1990缩为1990，恢复p02与native别名，F1+.5。没有输出主标准May1990，不能称修复了同意统一与条约签署的事件时间对应。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    },
+    "additional_document": {
+      "rank": 8,
+      "doc_id": "434900bbb5b0f8dc2b493a2c5d41469072d7eef5ed5d1e1732f104cad071288f",
+      "source": "Germany–Soviet Union relations, 1918–1941",
+      "text": "Germany–Soviet Union relations, 1918–1941\nCooperation ended in 1933, as Adolf Hitler came to power and created Nazi Germany. The countries' economic relationship dwindled at the beginning of the Nazi era, but some diplomatic initiatives continued through the 1930s, culminating with the Molotov -- Ribbentrop Pact of 1939 and various trade agreements. Few questions concerning the origins of the Second World War are more controversial and ideologically loaded than the issue of the policies of the Soviet Union under Joseph Stalin towards Nazi Germany between the Nazi seizure of power and the German invasion of the USSR on June 22, 1941."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:4hop3__524186_219173_548463_72134",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?",
+    "gold_offline_only": "1839",
+    "p02_prediction": "Never",
+    "e03_prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Springfield, Ohio, has never been the capital of Illinois.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What city is Superior Drill Company located in?",
+        "answer": "Superior Drill Company is located in Springfield, Ohio."
+      },
+      {
+        "step_id": 2,
+        "request": "Who wrote The Poor Boob?",
+        "answer": "The Poor Boob was written by Margaret Mayo, Z. Wall Covington, and Gardner Hunting."
+      },
+      {
+        "step_id": 3,
+        "request": "What state was the screenwriter of The Poor Boob born in?",
+        "answer": "Margaret Mayo was born in Illinois."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\4hop3__524186_219173_548463_72134.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop3__524186_219173_548463_72134.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop3__524186_219173_548463_72134.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__524186_219173_548463_72134.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "classification": "同一否定扩为整句，原始同名城市问题未解决",
+      "note": "与e03完全同句SpringfieldOhio从未为Illinois首府；新增Ohio市介绍只确认位置，不给标准1839。p02的Never同义，scope替换未解决原始Ohio/Illinois同名错接。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "f01e9368d53e9dab4b4136316139e8be2b8ea7cdd169c9eecb50d2e8278046c2",
+      "source": "Springfield, Ohio",
+      "text": "Springfield, Ohio\nSpringfield is a city in the U.S. state of Ohio and the county seat of Clark County. The municipality is located in southwestern Ohio and is situated on the Mad River, Buck Creek and Beaver Creek, approximately 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. Springfield is home to Wittenberg University, a liberal arts college."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+    "dataset": "2wiki",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Main Street to Broadway",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "Which film has the director born first, Bay Of Angels or Main Street To Broadway?",
+    "gold_offline_only": "Main Street To Broadway",
+    "p02_prediction": "Main Street To Broadway",
+    "e03_prediction": "Main Street To Broadway",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The director of Main Street to Broadway, Tay Garnett, was born on June 13, 1894, before Jacques Demy, the director of Bay of Angels, who was born on June 5, 1931.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who directed the film Bay Of Angels?",
+        "answer": "Bay of Angels was directed by Jacques Demy."
+      },
+      {
+        "step_id": 2,
+        "request": "Who directed the film Main Street To Broadway?",
+        "answer": "Main Street to Broadway was directed by Tay Garnett."
+      },
+      {
+        "step_id": 3,
+        "request": "When was the director of the film Bay Of Angels born?",
+        "answer": "Jacques Demy, the director of Bay of Angels, was born on 5 June 1931."
+      },
+      {
+        "step_id": 4,
+        "request": "When was the director of the film Main Street To Broadway born?",
+        "answer": "Tay Garnett, the director of Main Street to Broadway, was born on June 13, 1894."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\2wiki\\s04_scope_plus_evidence\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\2wiki\\p02_role_headers\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\2wiki\\e03_goal_evidence\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\2wiki\\B0_legacy_multigrain_R02\\c62ca325089b11ebbd78ac1f6bf848b6.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+      "classification": "无新增文档精确复用r04，只有电影名大小写变化",
+      "note": "该题无novel文档，s04相同prompt与r04结果复用；MainStreetToBroadway改MainStreettoBroadway，电影和赢家不变。不是叠加证据的收益。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    }
+  },
+  {
+    "id": "musique:4hop2__71753_729371_70784_61381",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "1109",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "When was the region immediately north of the region home to Israel and the location of Operation Earnest Will established?",
+    "gold_offline_only": "1932",
+    "p02_prediction": "1920",
+    "e03_prediction": "1109",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Lebanon, the region immediately north of Israel and distinct from the Persian Gulf where Operation Earnest Will occurred, was established as a modern state under the French Mandate following the dissolution of the Ottoman Empire after World War I, with its borders formalized in 1920.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What region is home to Israel?",
+        "answer": "Israel is a country in the Middle East."
+      },
+      {
+        "step_id": 2,
+        "request": "Where was Operation Earnest Will located?",
+        "answer": "Operation Earnest Will was located in the Persian Gulf."
+      },
+      {
+        "step_id": 3,
+        "request": "What region is immediately north of the region containing Israel?",
+        "answer": "The region immediately north of the region containing Israel is Lebanon."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\4hop2__71753_729371_70784_61381.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop2__71753_729371_70784_61381.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop2__71753_729371_70784_61381.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__71753_729371_70784_61381.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:4hop2__71753_729371_70784_61381",
+      "classification": "继续采用新增文的错误对象日期，F1持平0",
+      "note": "e03和s04均1109，与新增CountyofTripoli年份对应。问题原所求地区成立时间未恢复；scope替换没有阻止把十字军时期Tripoli领地成立年用于错目标。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7",
+      "source": "County of Tripoli",
+      "text": "County of Tripoli\nThe County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:3hop1__671542_651917_47686",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Toronto Coach Terminal",
+    "f1": 1.0,
+    "em": 1,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "Where do greyhound buses leave from in the city where the performer of Darlings was born?",
+    "gold_offline_only": "Toronto Coach Terminal",
+    "p02_prediction": "Toronto Coach Terminal",
+    "e03_prediction": "Toronto Coach Terminal at 610 Bay Street",
+    "e03_f1": 0.6,
+    "delta_vs_e03": 0.4,
+    "unchanged_goal_answer": "Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who performed Darlings?",
+        "answer": "Kevin Drew performed Darlings."
+      },
+      {
+        "step_id": 2,
+        "request": "What city was the performer of Darlings born in?",
+        "answer": "Kevin Drew was born in Toronto."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\3hop1__671542_651917_47686.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__671542_651917_47686.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__671542_651917_47686.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__671542_651917_47686.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:3hop1__671542_651917_47686",
+      "classification": "删除额外地址恢复p02，scope交互收益主要为表达",
+      "note": "s04从e03的TorontoCoachTerminalat610BayStreet缩为车站名，恢复p02。新增车站原文支持地址和车站，但两者原goal已知；相对e03+.4为输出收束，不是新的位置事实发现。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "e7864b3f56e01946d9cc0e918de81e856af53687bb96d3d58e60d8401c2f2377",
+      "source": "Toronto Coach Terminal",
+      "text": "Toronto Coach Terminal\nThe Toronto Coach Terminal is the central bus station for inter-city services in Toronto, Ontario, Canada. It is located at 610 Bay Street, in the city's Downtown. The terminal is owned by Toronto Coach Terminal Inc., a wholly owned subsidiary of the Toronto Transit Commission (TTC). The TTC managed the station directly until July 8, 2012, when it was leased out in its entirety to bus lines Coach Canada and Greyhound Canada for $1.2 million annually. Opened in 1931 as the Gray Coach Terminal, the Art Deco style terminal was home base for Gray Coach, an interurban bus service then owned by the TTC. It replaced an earlier open air terminal, Gray Line Terminal."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "hotpotqa:5ab7f0b9554299366779405d",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "No vegetation type in common",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "What type of vegetation does Tabernaemontana and Crinum have in common?",
+    "gold_offline_only": "plants",
+    "p02_prediction": "None",
+    "e03_prediction": "No vegetation type in common",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What types of vegetation are associated with Tabernaemontana?",
+        "answer": "Tabernaemontana is associated with shrubs and small trees."
+      },
+      {
+        "step_id": 2,
+        "request": "What types of vegetation are associated with Crinum?",
+        "answer": "Crinum is associated with perennial plants, including aquatic and swamp-dwelling species."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5ab7f0b9554299366779405d.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ab7f0b9554299366779405d.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ab7f0b9554299366779405d.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ab7f0b9554299366779405d.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5ab7f0b9554299366779405d",
+      "classification": "共同类型仍被缩为生长形态否定，未发生scope修复",
+      "note": "p02None、e03和s04Novegetationtypeincommon。旧原Top10已写两类均plants，新增Shrubswamp讲湿地生态系统，不提供两类植物的共同目标关系；scope替换未纠正只比woody/herbaceous的范围。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "21735863",
+      "source": "Shrub swamp",
+      "text": "Shrub swamp\nShrub swamps — also called scrub swamps or buttonbush swamps — are a type of freshwater wetland ecosystem occurring in areas too wet to become swamps (“true” or freshwater swamp forest), but too dry or too shallow to become marshes. They are often considered transitional (“mid-successional”) between wet meadows or fens and conifer or hardwood swamps."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "hotpotqa:5abd455c55429924427fcf5a",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Cannot be determined",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "What does Age of Chance and Vector share in common? ",
+    "gold_offline_only": "was a rock band",
+    "p02_prediction": "Nothing",
+    "e03_prediction": "Nothing",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Age of Chance and Vector share no commonality based on the retrieved passages, as “Age of Chance” is not mentioned in any passage and “Vector” refers only to mathematical, statistical, or gaming concepts (e.g., probability vector, random vector, board game, magazine), with no indication of a shared property or relation.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5abd455c55429924427fcf5a.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abd455c55429924427fcf5a.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abd455c55429924427fcf5a.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abd455c55429924427fcf5a.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5abd455c55429924427fcf5a",
+      "classification": "无新文档精确复用r04的证据不足表达",
+      "note": "s04与r04同Cannotbedetermined，p02/e03为Nothing。原Top10错检数学等Vector且无AgeofChance；缺答比绝对否定校准更合理，但未找到rockband。该题无novel文档，不归为加证据的交互收益。",
+      "scope": "non-blind old300 fixed interaction review; compare p02 and e03 separately"
+    }
+  },
+  {
+    "id": "musique:2hop__289517_139339",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "No award nomination",
+    "f1": 0.18181818181818182,
+    "em": 0,
+    "parent_f1": 0.18181818181818182,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "What was the cast member in After Hours nominated for?",
+    "gold_offline_only": "Academy Award for Best Live Action Short Film",
+    "p02_prediction": "No award nomination",
+    "e03_prediction": "Griffin Dunne was not nominated for any award for his role in *After Hours*.",
+    "e03_f1": 0.18181818181818182,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Griffin Dunne was not nominated for any award for his role in *After Hours*.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who was the cast member in After Hours?",
+        "answer": "Griffin Dunne was the cast member in *After Hours*."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\2hop__289517_139339.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__289517_139339.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__289517_139339.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__289517_139339.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:2hop__289517_139339",
+      "classification": "收到目标新事实仍保持错误电影限定，F1持平",
+      "note": "实际S04 final_context已追加Griffin Dunne 1995年因Duke of Groove获奥斯卡最佳真人短片提名的原文，但最终仍No award nomination，沿用goal新增的for his role in After Hours限制；原题未要求奖项必须来自After Hours。与p02/e03同分，不能称新scope句加原文已经消除了误限定。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "9c07e829d3774c70541fd9056f804c03691b92e35393c33e41c7ddbbcc27d86b",
+      "source": "Griffin Dunne",
+      "text": "Griffin Dunne\nIn 1995, Griffin Dunne was nominated for an Academy Award for Best Live Action Short Film for \"Duke of Groove\", which he directed and co-wrote. He shared the nomination with producer Thom Colwell. Along with his producing partner, actress/producer Amy Robinson, he has produced several films including \"Baby It's You\", \"After Hours\", \"Running on Empty\" and \"Game 6\" through their company, Double Play Productions."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "hotpotqa:5a77c09555429967ab105262",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "pronghorn",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.8,
+    "delta_parent": -0.8,
+    "has_extra_document": true,
+    "question": "What is the species of animal which the town of Antelope, Kansas was named after?",
+    "gold_offline_only": "Antilocapra americana",
+    "p02_prediction": "pronghorn (*Antilocapra americana*)",
+    "e03_prediction": "pronghorn",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What species of animal was the town of Antelope, Kansas named after?",
+        "answer": "The town of Antelope, Kansas was named after the pronghorn, which is colloquially called the American antelope."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5a77c09555429967ab105262.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a77c09555429967ab105262.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a77c09555429967ab105262.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a77c09555429967ab105262.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5a77c09555429967ab105262",
+      "classification": "同一物种改用俗名，词面F1下降",
+      "note": "父pronghorn (Antilocapra americana)改pronghorn，原Top3 Pronghorn明确二者为同一物种；goal也保留学名。新增Waterbuck讲另一种非洲羚羊，不提供命名对象新事实。F1由0.8降0主要是学名被省略，不是改答水羚。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 10,
+      "doc_id": "1148408",
+      "source": "Waterbuck",
+      "text": "Waterbuck\nThe waterbuck (\"Kobus ellipsiprymnus\") is a large antelope found widely in sub-Saharan Africa. It is placed in the genus \"Kobus\" of the family Bovidae. It was first described by Irish naturalist William Ogilby in 1833. The thirteen subspecies are grouped under two varieties: the common or ellipsen waterbuck and the defassa waterbuck. The head-and-body length is typically between 177 - and the average height is between 120 and . A sexually dimorphic antelope, males are taller as well as heavier than females. Males reach approximately 127 cm at the shoulder, while females reach 119 cm . Males typically weigh 198 - and females 161 - . The coat colour varies from brown to grey. The long, spiral horns, present only on males, curve backward, then forward and are 55 - long."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:3hop1__109422_720914_27537",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+    "f1": 0.29629629629629634,
+    "em": 0,
+    "parent_f1": 0.29629629629629634,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "Why did Roncalli leave the place of death of The Punishment of Tythus' creator?",
+    "gold_offline_only": "for the conclave in Rome",
+    "p02_prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+    "e03_prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII.",
+    "e03_f1": 0.4444444444444445,
+    "delta_vs_e03": -0.14814814814814814,
+    "unchanged_goal_answer": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who created The Punishment of Tythus?",
+        "answer": "Titian created The Punishment of Tythus."
+      },
+      {
+        "step_id": 2,
+        "request": "Where did the creator of The Punishment of Tythus die?",
+        "answer": "The place of death of Titian, the creator of The Punishment of Tythus, cannot be determined from these passages."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\3hop1__109422_720914_27537.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__109422_720914_27537.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__109422_720914_27537.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__109422_720914_27537.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:3hop1__109422_720914_27537",
+      "classification": "正确原因附带过多背景，较e03词面F1下降",
+      "note": "S04恢复与p02完全相同的长句，e03删去papabile及当选教宗等背景而分数更高；原Top10已明确Roncalli离威尼斯去罗马参加conclave，新增Numerian文无关。此处相对e03回落来自冗长表达，未见原因事实改变。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 6,
+      "doc_id": "96a9c02362c0fc768813c7b4b1077a8bf6f9935d75bb3b1ac97824b4a70ea2fd",
+      "source": "Numerian",
+      "text": "Numerian\nAper officially broke the news of Numerian's death in Nicomedia (İzmit) in November 284, though Gibbon represents the occurrence of this event at Heraclea, in Thrace, and the discovery, which the prefect attempted to conceal, as due to the forwardness of the soldiery, who forced open the Imperial tent to investigate for themselves the situation of their invisible monarch. Numerian's generals and tribunes called a council for the succession, which met at Chalcedon across the Bosphorus, where they chose as emperor Diocletian, commander of the cavalry arm of the imperial bodyguard, despite Aper's attempts to garner support. The army of the east unanimously saluted their new Augustus. Diocletian accepted the purple imperial vestments and raised his sword to the light of the sun, swearing an oath denying responsibility for Numerian's death. He asserted that Aper had killed Numerian and concealed the deed. In full view of the army, Diocletian then turned and killed Aper, who had been hauled bound before the assembly."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:2hop__135651_669373",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "University of Vienna",
+    "f1": 0.4,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0.4,
+    "has_extra_document": true,
+    "question": "Which university employed the person that Mach bands are named after?",
+    "gold_offline_only": "Charles University",
+    "p02_prediction": "Cannot be determined",
+    "e03_prediction": "University of Prague",
+    "e03_f1": 0.4,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Ernst Mach was employed by the University of Vienna and later by the University of Prague, but no retrieved passage states which university employed him.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who are Mach bands named after?",
+        "answer": "Mach bands are named after the physicist Ernst Mach."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\2hop__135651_669373.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__135651_669373.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__135651_669373.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__135651_669373.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:2hop__135651_669373",
+      "classification": "模糊雇佣候选换成另一大学，词面收益未对应标准目标",
+      "note": "S04 Vienna，e03 Prague，父Cannot be determined；新增Vinko Dvorak文写Charles University in Prague及随后成为Mach助理，却没有直接说明Mach在Vienna任职。goal本身列Vienna/Prague并同时声明无依据。S04的University与标准Charles University重合得0.4，不应报告为恢复了Charles University或新增原文证实Vienna。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 4,
+      "doc_id": "3db2218038d31ade375be05c1711c0c7d0bc2a5dfd8c371498a4d2684d376bf9",
+      "source": "Vinko Dvořák",
+      "text": "Vinko Dvořák\nHe studied mathematics and physics at the Charles University in Prague, and after graduating he became an assistant to professor Ernst Mach. After obtaining his doctorate in Prague in 1873/1874 he came to Zagreb (at the time also part of Austria-Hungary) and founded the Physics Cabinet at the Faculty of Philosophy in 1875."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "hotpotqa:5abec66b5542997ec76fd360",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+    "f1": 0.38095238095238093,
+    "em": 0.0,
+    "parent_f1": 0.38095238095238093,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "What do Josef Veltjens and Hermann Goering have in common?",
+    "gold_offline_only": "A veteran World War I fighter pilot ace",
+    "p02_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite",
+    "e03_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite",
+    "e03_f1": 0.38095238095238093,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5abec66b5542997ec76fd360.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abec66b5542997ec76fd360.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abec66b5542997ec76fd360.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abec66b5542997ec76fd360.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5abec66b5542997ec76fd360",
+      "classification": "同一共同职业/奖项句增加句号，F1持平",
+      "note": "本题无新增doc，S04完整复用R04。相对p02只加末尾句号，保持同一German WWI fighter aces/Pour le Merite共同事实。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    }
+  },
+  {
+    "id": "hotpotqa:5ae2dd2055429928c423950d",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Newport",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "What is the county seat of the county where East Lempster, New Hampshire is located?",
+    "gold_offline_only": "Newport",
+    "p02_prediction": "Newport",
+    "e03_prediction": "Cannot be determined",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 1.0,
+    "unchanged_goal_answer": "The county seat of Sullivan County, New Hampshire, where East Lempster is located, cannot be determined from the retrieved passages.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What county is East Lempster, New Hampshire in?",
+        "answer": "East Lempster, New Hampshire is in Sullivan County."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5ae2dd2055429928c423950d.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ae2dd2055429928c423950d.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ae2dd2055429928c423950d.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ae2dd2055429928c423950d.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5ae2dd2055429928c423950d",
+      "classification": "较e03恢复正确县城答案，但新增段落未提供县城依据",
+      "note": "S04 Newport与父相同，e03缺答。实际原Top10只给East Lempster属于Sullivan County，新增Sullivan County是六个同名县的消歧列表，没有Newport；goal也缺答。只能确认最终答案恢复，不能把恢复归因于新增县城事实或严格材料内推理。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "52938",
+      "source": "Sullivan County",
+      "text": "Sullivan County\nSullivan County is the name of six counties in the United States of America:"
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:3hop1__857_846_7770",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "f1": 0.7368421052631579,
+    "em": 0,
+    "parent_f1": 0.7368421052631579,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?",
+    "gold_offline_only": "past the west side and then north side",
+    "p02_prediction": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "e03_prediction": "past the west side and then the north side of Nanjing",
+    "e03_f1": 0.8750000000000001,
+    "delta_vs_e03": -0.13815789473684226,
+    "unchanged_goal_answer": "The Yangtze River flows past the west side and then the north side of Nanjing.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "To whom was the edict addressed?",
+        "answer": "The edict was addressed to the Karmapa."
+      },
+      {
+        "step_id": 2,
+        "request": "In what city did the Yongle emperor greet the person to whom the edict was addressed?",
+        "answer": "The Yongle emperor greeted the Karmapa in Nanjing."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\3hop1__857_846_7770.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__857_846_7770.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__857_846_7770.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__857_846_7770.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:3hop1__857_846_7770",
+      "classification": "同一方位关系加重复主语，较e03词面F1下降",
+      "note": "S04与p02完全相同全句，e03只输出past west side then north side of Nanjing；新增Nanjing明确同一方位，未改变城市/方向。相对e03降0.138主要为短答案表达变长。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "f0a72bc21d138357eb88db8fae9c0b58c0d18729cae54383fd1a681b39ee905f",
+      "source": "Nanjing",
+      "text": "Nanjing\nNanjing, with a total land area of 6,598 square kilometres (2,548 sq mi), is situated in the heartland of drainage area of lower reaches of Yangtze River, and in Yangtze River Delta, one of the largest economic zones of China. The Yangtze River flows past the west side and then north side of Nanjing City, while the Ningzheng Ridge surrounds the north, east and south side of the city. The city is 300 kilometres (190 mi) west-northwest of Shanghai, 1,200 kilometres (750 mi) south-southeast of Beijing, and 1,400 kilometres (870 mi) east-northeast of Chongqing. The downstream Yangtze River flows from Jiujiang, Jiangxi, through Anhui and Jiangsu to East Sea, north to drainage basin of downstream Yangtze is Huai River basin and south to it is Zhe River basin, and they are connected by the Grand Canal east to Nanjing. The area around Nanjing is called Hsiajiang (下江, Downstream River) region, with Jianghuai (江淮) stressing northern part and Jiangzhe (江浙) stressing southern part. The region is also known as Dongnan (東南, South East, the Southeast) and Jiangnan (江南, River South, south of Yangtze)."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "musique:2hop__25396_212301",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "William Peel",
+    "f1": 0.5,
+    "em": 0,
+    "parent_f1": 0.3076923076923077,
+    "delta_parent": 0.1923076923076923,
+    "has_extra_document": true,
+    "question": "Who is the child of the person who issued the Tamworth manifesto?",
+    "gold_offline_only": "Arthur Peel",
+    "p02_prediction": "William Peel, Sidney Peel, and William Yates Peel",
+    "e03_prediction": "William Peel",
+    "e03_f1": 0.5,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Robert Peel had multiple children, including William Peel, Sidney Peel, and William Yates Peel.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who issued the Tamworth manifesto?",
+        "answer": "Robert Peel issued the Tamworth Manifesto."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\2hop__25396_212301.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\2hop__25396_212301.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\2hop__25396_212301.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__25396_212301.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:2hop__25396_212301",
+      "classification": "有原文支持的非标准子女，压缩名单得到词面收益",
+      "note": "S04/e03 William Peel，p02列William/Sidney/William Yates Peel；新增William Peel文明确其为Robert Peel第三子，因此对子女关系有实际支持。但标准Arthur Peel未恢复，0.3077到0.5的上升仅姓氏重合增加，不能等同正确识别标准人物。原问child单数亦未限定何子，保留答案非唯一的边界。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "e0799a9a211ae239730fec0704245a05cacdf119b98f1b1ebb95995c81f2ab65",
+      "source": "William Peel (Royal Navy officer)",
+      "text": "William Peel (Royal Navy officer)\nCaptain Sir William Peel VC KCB (2 November 1824 – 27 April 1858) was a British naval officer and recipient of the Victoria Cross, the highest and most prestigious award for gallantry in the face of the enemy that can be awarded to British and Commonwealth forces. He was the third son of the Prime Minister Sir Robert Peel. Like his father, he was educated at Harrow School."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "hotpotqa:5abee4ff5542993fe9a41d7d",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Orlando",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 0.6666666666666666,
+    "delta_parent": 0.33333333333333337,
+    "has_extra_document": true,
+    "question": "Jim Atchison was the President of the theme park that had headquarters in what city?",
+    "gold_offline_only": "Orlando",
+    "p02_prediction": "Orlando, Florida",
+    "e03_prediction": "Orlando",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "SeaWorld Parks & Entertainment, the theme park company where Jim Atchison was President, had its headquarters in Orlando, Florida.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Which theme park was Jim Atchison President of?",
+        "answer": "Jim Atchison was President of SeaWorld Parks & Entertainment."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5abee4ff5542993fe9a41d7d.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abee4ff5542993fe9a41d7d.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abee4ff5542993fe9a41d7d.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abee4ff5542993fe9a41d7d.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5abee4ff5542993fe9a41d7d",
+      "classification": "同一总部城市去掉州名，词面F1上升",
+      "note": "S04/e03 Orlando与父Orlando Florida指同一城市，goal已含总部完整句；新增SeaWorld只是列Orlando等经营地点，不能独立证明总部关系，未取得新总部事实。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 3,
+      "doc_id": "418732",
+      "source": "SeaWorld",
+      "text": "SeaWorld\nSeaWorld is a United States chain of marine mammal parks, oceanariums, animal theme parks, and rehabilitation centers owned by SeaWorld Entertainment (one park will be owned and operated by Miral under a license). The parks feature killer whale, sea lion, and dolphin shows and zoological displays featuring various other marine animals. There are operations located within the United States in Orlando, Florida; San Diego, California; San Antonio, Texas; later outside the United States such as Abu Dhabi, United Arab Emirates; and previously Aurora, Ohio. On March 5, 2007, SeaWorld Orlando announced addition of the Aquatica water park to its adventure park family, which already includes SeaWorld and Discovery Cove."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "hotpotqa:5abce85755429959677d6b3e",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "\"O\"",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "Le Rêve was created by the director behind what Cirque du Soleil production from 1998 onward?",
+    "gold_offline_only": "O",
+    "p02_prediction": "O",
+    "e03_prediction": "O",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Le Rêve was created by the director behind the Cirque du Soleil production \"O\" from 1998 onward.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who created Le Rêve?",
+        "answer": "Le Rêve was created by Franco Dragone."
+      },
+      {
+        "step_id": 2,
+        "request": "What Cirque du Soleil productions has the creator of Le Rêve directed since 1998?",
+        "answer": "Franco Dragone directed the Cirque du Soleil productions \"O\", \"La Nouba\", \"Mystère\", \"Alegría\", and \"Quidam\" since 1998."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5abce85755429959677d6b3e.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5abce85755429959677d6b3e.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5abce85755429959677d6b3e.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abce85755429959677d6b3e.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5abce85755429959677d6b3e",
+      "classification": "同一作品标题增加引号，F1持平",
+      "note": "S04的\"O\"与p02/e03 O相同，新增L Altrofilm讲另一导演公司，与Franco Dragone/Cirque du Soleil作品关系无关。没有新增目标事实。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 3,
+      "doc_id": "43067405",
+      "source": "L'Altrofilm",
+      "text": "L'Altrofilm\nL'Altrofilm is an Italian entertainment company known for distributing independent and foreign films. Founded in 1998 by the director and producer Louis Nero. L'Altrofilm is a leading independent film motion picture distribution and production company in Italy."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:4hop1__161765_53706_795904_580996",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Citrus Heights",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "What city shares a border with the city where the person who went to the state where Englebart died during the gold rush works?",
+    "gold_offline_only": "Rio Linda",
+    "p02_prediction": "Citrus Heights, Rancho Cordova, and Folsom",
+    "e03_prediction": "Citrus Heights, Rancho Cordova, and Folsom",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Sacramento shares borders with several cities including Citrus Heights, Rancho Cordova, and Folsom.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "In what state did Englebart die during the gold rush?",
+        "answer": "Englebart died in California, not during the gold rush."
+      },
+      {
+        "step_id": 2,
+        "request": "Who went to the state where Englebart died during the gold rush?",
+        "answer": "William S. Hamilton went to California during the gold rush."
+      },
+      {
+        "step_id": 3,
+        "request": "In what city does the person who went to the state where Englebart died during the gold rush work?",
+        "answer": "William S. Hamilton worked in Sacramento."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\4hop1__161765_53706_795904_580996.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop1__161765_53706_795904_580996.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop1__161765_53706_795904_580996.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__161765_53706_795904_580996.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:4hop1__161765_53706_795904_580996",
+      "classification": "错误边界城市列表缩成一个候选，仍未恢复标准城市",
+      "note": "S04从Citrus Heights/Rancho Cordova/Folsom三名压成Citrus Heights，继续复制冻结goal候选；新增Sacramento段落只含首府、人口、区位，没有这些城市的接壤关系或Rio Linda。未解决目标事实缺失，也不能把简短答复当作验证了边界关系。",
+      "scope": "non-blind old300 actual final-context and QA review; p02/e03/r04/s04 fixed before reading outcomes"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "bc796c14261ef548d21eb034d6072ef27530d0df7e98c20ab0df391ccd0eee31",
+      "source": "Sacramento, California",
+      "text": "Sacramento, California\nSacramento (/ ˌsækrəˈmɛntoʊ / SAK - rə - MEN - toh, locally also / ˌsækrəˈmɛnoʊ / SAK - rə - MEN - oh; Spanish: (sakɾaˈmento)) is the capital city of the U.S. state of California and the seat of Sacramento County. It is at the confluence of the Sacramento River and the American River in the northern portion of California's expansive Central Valley, known as the Sacramento Valley. Its estimated 2016 population of 493,025 makes it the sixth - largest city in California, the fastest - growing big city in the state, and the 35th largest city in the United States. Sacramento is the cultural and economic core of the Sacramento metropolitan area, which includes seven counties with a 2010 population of 2,414,783. Its metropolitan area is the fourth largest in California after the Greater Los Angeles area, the San Francisco Bay Area, and the San Diego metropolitan area, and is the 27th largest in the United States. In 2002, the Civil Rights Project at Harvard University conducted for Time magazine named Sacramento ``America's Most Diverse City ''."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "The fourth hour of the TODAY Show",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 0.9090909090909091,
+    "delta_parent": 0.09090909090909094,
+    "has_extra_document": false,
+    "question": "Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?",
+    "gold_offline_only": "the fourth hour of the TODAY Show",
+    "p02_prediction": "The fourth hour of NBC's \"Today Show\"",
+    "e03_prediction": "The fourth hour of NBC's \"Today Show\"",
+    "e03_f1": 0.9090909090909091,
+    "delta_vs_e03": 0.09090909090909094,
+    "unchanged_goal_answer": "The fourth hour of NBC's \"Today Show\" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What shows did Hoda Kotb co-host?",
+        "answer": "Hoda Kotb co-hosted NBC's \"Today Show\" fourth hour with Kathie Lee Gifford."
+      },
+      {
+        "step_id": 2,
+        "request": "What shows were produced by Brian Balthazar?",
+        "answer": "Brian Balthazar was the co-executive producer of the fourth hour of the TODAY Show on NBC with Kathie Lee Gifford and Hoda Kotb."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5a72a9ac5542991f9a20c55f.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a72a9ac5542991f9a20c55f.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a72a9ac5542991f9a20c55f.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a72a9ac5542991f9a20c55f.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+      "classification": "同一节目去掉网络名称，词面F1上升",
+      "note": "本题无novel-doc，S04精确复用R04同一请求。第四小时TODAY Show目标未变，仅去除NBC及标点，未修复新的节目交集或取得新事实。",
+      "scope": "non-blind old300 fixed candidate review; final-context and frozen QA available"
+    }
+  },
+  {
+    "id": "hotpotqa:5ab6be2f55429954757d335c",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "musicians, singers, songwriters, and multi-instrumentalists",
+    "f1": 0.22222222222222224,
+    "em": 0.0,
+    "parent_f1": 0.22222222222222224,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "Zakk Wylde and Damon Albarn are both what?",
+    "gold_offline_only": "singer, songwriter, and multi-instrumentalist",
+    "p02_prediction": "musicians, singers, songwriters, and multi-instrumentalists",
+    "e03_prediction": "musicians",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.22222222222222224,
+    "unchanged_goal_answer": "Zakk Wylde and Damon Albarn are both musicians, singers, songwriters, and multi-instrumentalists.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What is Zakk Wylde?",
+        "answer": "Zakk Wylde is an American musician, singer, songwriter, multi-instrumentalist, and occasional actor."
+      },
+      {
+        "step_id": 2,
+        "request": "What is Damon Albarn?",
+        "answer": "Damon Albarn is an English singer, songwriter, and multi-instrumentalist."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5ab6be2f55429954757d335c.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ab6be2f55429954757d335c.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ab6be2f55429954757d335c.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ab6be2f55429954757d335c.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5ab6be2f55429954757d335c",
+      "classification": "保留较完整共同职业，较e03避免过度压缩",
+      "note": "S04与p02相同，恢复singers/songwriters/multi-instrumentalists等双方原文和QA已支持的共同职业；e03只答musicians。新增Zedd属于另一音乐人，没有新目标事实。相对e03提高0.222，但与标准仍有复数形态及musicians额外词差异，不是新增证据带来的职业发现。",
+      "scope": "non-blind old300 fixed candidate review; final-context and frozen QA available"
+    },
+    "additional_document": {
+      "rank": 5,
+      "doc_id": "32971765",
+      "source": "Zedd",
+      "text": "Zedd\nAnton Zaslavski (Russian: Антон Заславский ; born 2 September 1989), better known by his stage name Zedd ( ), is a Russian-German musician, DJ, songwriter and record producer. He primarily produces and performs electro house music, but has diversified his genre and musical style, drawing influences from progressive house, dubstep, and classical music. Zedd grew up and began his career in Kaiserslautern, Germany."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:3hop1__68802_89752_49923",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "16",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 1.0,
+    "delta_parent": -1.0,
+    "has_extra_document": true,
+    "question": "How many counties are there in the largest state in the region where the film The Family Stone was set?",
+    "gold_offline_only": "sixteen",
+    "p02_prediction": "Sixteen",
+    "e03_prediction": "16",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Maine has sixteen counties.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Where was the film The Family Stone set?",
+        "answer": "The film The Family Stone was set in a small New England town."
+      },
+      {
+        "step_id": 2,
+        "request": "What region contains the setting of the film The Family Stone?",
+        "answer": "The region containing the setting of the film The Family Stone is New England."
+      },
+      {
+        "step_id": 3,
+        "request": "What is the largest state in the region containing the setting of the film The Family Stone?",
+        "answer": "Maine is the largest state in New England."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\3hop1__68802_89752_49923.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__68802_89752_49923.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__68802_89752_49923.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__68802_89752_49923.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:3hop1__68802_89752_49923",
+      "classification": "同一正确数值转为阿拉伯数字，词面F1下降",
+      "note": "S04和e03/R04同为16；p02 Sixteen，均表示十六。新增List of counties in Maine原文直接写sixteen，goal亦正确，不能把F1 1到0解释为县数事实错误。数字损失在R04和e03各出现，组合不重复扣两次会产生正数值interaction，不代表语义协同。",
+      "scope": "non-blind old300 frozen candidate review; actual QA, final-context and added document checked"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "af59bf06331c0c7c48360dd48cc083c172912a8e5197742b3b6f04d0ea3cf918",
+      "source": "List of counties in Maine",
+      "text": "List of counties in Maine\nThis is a list of the sixteen counties in the U.S. state of Maine. Before statehood, Maine was officially part of the state of Massachusetts and was called the District of Maine. Maine was granted statehood on March 15, 1820 as part of the Missouri Compromise. Nine of the sixteen counties had their borders defined while Maine was still part of Massachusetts, and hence are older than the state itself. Even after 1820, the exact location of the northern border of Maine was disputed with Britain, until the question was settled and the northern counties signed their final official form, the Webster - Ashburton Treaty, signed in 1842. Almost all of Aroostook County was disputed land until the treaty was signed."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "musique:4hop2__71753_261673_70784_61381",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Lebanon",
+    "f1": 0,
+    "em": 0,
+    "parent_f1": 0,
+    "delta_parent": 0,
+    "has_extra_document": true,
+    "question": "When was the region that lies to the north of where Israel is located and where Shamal is located established?",
+    "gold_offline_only": "1932",
+    "p02_prediction": "1943",
+    "e03_prediction": "Lebanon",
+    "e03_f1": 0,
+    "delta_vs_e03": 0,
+    "unchanged_goal_answer": "Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Where is Israel located?",
+        "answer": "Israel is located in the Middle East, on the southeastern shore of the Mediterranean Sea and the northern shore of the Red Sea."
+      },
+      {
+        "step_id": 2,
+        "request": "Where is Shamal located?",
+        "answer": "Shamal is a northwesterly wind blowing over Iraq and the Persian Gulf states, not a region."
+      },
+      {
+        "step_id": 3,
+        "request": "What region lies to the north of where Israel is located and where Shamal is located?",
+        "answer": "Lebanon lies to the north of Israel, and Shamal is a wind, not a region."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\4hop2__71753_261673_70784_61381.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\4hop2__71753_261673_70784_61381.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\4hop2__71753_261673_70784_61381.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__71753_261673_70784_61381.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:4hop2__71753_261673_70784_61381",
+      "classification": "建立时间被替换成地名，答案类型仍偏离",
+      "note": "S04/R04/e03 Lebanon，父1943也非标准1932。When问时间，新scope明确target仍未约束输出类型；上游将Shamal解析为风并把目标错定Lebanon，新增Tripoli 1109年历史文未修复对象。此题F1都0，但有可见答案类型风险。",
+      "scope": "non-blind old300 frozen candidate review; actual QA, final-context and added document checked"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7",
+      "source": "County of Tripoli",
+      "text": "County of Tripoli\nThe County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "musique:3hop1__635099_131926_89261",
+    "dataset": "musique",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Mississippi River Delta",
+    "f1": 1.0,
+    "em": 1,
+    "parent_f1": 0.8,
+    "delta_parent": 0.19999999999999996,
+    "has_extra_document": true,
+    "question": "Where does the body of water by the city where Write This Down was formed empty into the Gulf of Mexico?",
+    "gold_offline_only": "the Mississippi River Delta",
+    "p02_prediction": "Mississippi River",
+    "e03_prediction": "Mississippi River Delta",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The Mississippi River, which is near Minneapolis, Minnesota—where Write This Down was formed—empties into the Gulf of Mexico.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "In what city was Write This Down formed?",
+        "answer": "Write This Down was formed in Minneapolis, Minnesota."
+      },
+      {
+        "step_id": 2,
+        "request": "What body of water is near the city where Write This Down was formed?",
+        "answer": "The Mississippi River is near Minneapolis, Minnesota, where Write This Down was formed."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\musique\\s04_scope_plus_evidence\\3hop1__635099_131926_89261.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\musique\\p02_role_headers\\3hop1__635099_131926_89261.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\musique\\e03_goal_evidence\\3hop1__635099_131926_89261.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__635099_131926_89261.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "musique:3hop1__635099_131926_89261",
+      "classification": "新增原文提供出海口目标，真实关系修复",
+      "note": "S04/e03 Mississippi River Delta，p02/R04只答Mississippi River；goal答河流近Minneapolis且流入墨西哥湾，未给Delta。原最终Top10没有Delta，新增rank2 Mississippi River明确flows ... to the Mississippi River Delta in the Gulf of Mexico，因此是实际新目标事实入读并被使用，不是仅省词或scope句单独收益。",
+      "scope": "non-blind old300 frozen candidate review; actual QA, final-context and added document checked"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "725940b6b339fc7c7aa7ba21084b66d1806988dd091df46c1e66ffa4f49f2c08",
+      "source": "Mississippi River",
+      "text": "Mississippi River\nThe Mississippi River is the chief river of the second - largest drainage system on the North American continent, second only to the Hudson Bay drainage system. The stream is entirely within the United States (although its drainage basin reaches into Canada), its source is Lake Itasca in northern Minnesota and it flows generally south for 2,320 miles (3,730 km) to the Mississippi River Delta in the Gulf of Mexico. With its many tributaries, the Mississippi's watershed drains all or parts of 31 U.S. states and two Canadian provinces between the Rocky and Appalachian Mountains. The Mississippi ranks as the fourth - longest and fifteenth - largest river in the world by discharge. The river either borders or passes through the states of Minnesota, Wisconsin, Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi, and Louisiana."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  },
+  {
+    "id": "hotpotqa:5ac298805542990b17b15429",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Yes",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 1.0,
+    "delta_parent": -1.0,
+    "has_extra_document": true,
+    "question": "This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?",
+    "gold_offline_only": "Austral Líneas Aéreas",
+    "p02_prediction": "Austral Líneas Aéreas",
+    "e03_prediction": "Yes",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "What are the sister companies of Líneas Aéreas Privadas Argentinas?",
+        "answer": "The sister company of Líneas Aéreas Privadas Argentinas is Austral Líneas Aéreas."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5ac298805542990b17b15429.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ac298805542990b17b15429.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ac298805542990b17b15429.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ac298805542990b17b15429.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5ac298805542990b17b15429",
+      "classification": "公司名改是非回答，目标类型退步；原题措辞与事实需保留歧义",
+      "note": "S04/e03 Yes，p02/R04公司名称。新增Austral仅解释southern，无公司关系。原query语法形似确认句而标准要求名称，F1从1到0反映本基准目标未满足；同时冻结QA把Austral错说成LAPA姐妹公司，原文为Aerolineas Argentinas姐妹公司，不能将父名称命中直接等同完整关系正确。",
+      "scope": "non-blind old300 frozen candidate review; actual QA, final-context and added document checked"
+    },
+    "additional_document": {
+      "rank": 3,
+      "doc_id": "2706147",
+      "source": "Austral",
+      "text": "Austral\nAustral means southern, often in reference to the Southern Hemisphere."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": false,
+      "gold_surface_in_added_text_offline_only": false
+    }
+  },
+  {
+    "id": "hotpotqa:5a893f305542993b751ca91e",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "St. George",
+    "f1": 0.0,
+    "em": 0.0,
+    "parent_f1": 0.0,
+    "delta_parent": 0.0,
+    "has_extra_document": false,
+    "question": "The Whitehead Light is located in what town with a population of 2,591 during the 2010 census?",
+    "gold_offline_only": "St.George",
+    "p02_prediction": "St. George, Maine",
+    "e03_prediction": "St. George, Maine",
+    "e03_f1": 0.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The Whitehead Light is located in the town of St. George, Maine, which had a population of 2,591 during the 2010 census.",
+    "prior_QA": [],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5a893f305542993b751ca91e.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5a893f305542993b751ca91e.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5a893f305542993b751ca91e.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5a893f305542993b751ca91e.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5a893f305542993b751ca91e",
+      "classification": "同一城镇省略州名，原生分词差异仍为0",
+      "note": "本题无novel-doc，S04精确复用R04。St. George Maine改St. George，仍与goal/原文同一城镇；标准St.George的无空格写法与原生词级F1不匹配，持平0不代表地点识别失败。",
+      "scope": "non-blind old300 frozen candidate review; actual QA, final-context and added document checked"
+    }
+  },
+  {
+    "id": "hotpotqa:5ac5101455429924173fb592",
+    "dataset": "hotpotqa",
+    "arm": "s04_scope_plus_evidence",
+    "prediction": "Every Rose Has Its Thorn",
+    "f1": 1.0,
+    "em": 1.0,
+    "parent_f1": 1.0,
+    "delta_parent": 0.0,
+    "has_extra_document": true,
+    "question": "What is the name of the number-one single featuring the winner of Celebrity Apprentice 3?",
+    "gold_offline_only": "Every Rose Has Its Thorn",
+    "p02_prediction": "Every Rose Has Its Thorn",
+    "e03_prediction": "\"Every Rose Has Its Thorn\"",
+    "e03_f1": 1.0,
+    "delta_vs_e03": 0.0,
+    "unchanged_goal_answer": "The number-one single featuring Bret Michaels, the winner of Celebrity Apprentice 3, is \"Every Rose Has Its Thorn\".",
+    "prior_QA": [
+      {
+        "step_id": 1,
+        "request": "Who won Celebrity Apprentice 3?",
+        "answer": "Bret Michaels won Celebrity Apprentice 3."
+      },
+      {
+        "step_id": 2,
+        "request": "What is the number-one single featuring the winner of Celebrity Apprentice 3?",
+        "answer": "The number-one single featuring Bret Michaels is \"Every Rose Has Its Thorn\"."
+      }
+    ],
+    "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round4_v1_20261020\\rounds\\full300_s04_scope_plus_evidence_r001\\cases\\hotpotqa\\s04_scope_plus_evidence\\5ac5101455429924173fb592.json",
+    "p02_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\cases\\hotpotqa\\p02_role_headers\\5ac5101455429924173fb592.json",
+    "e03_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round3_v1_20261020\\rounds\\full300_e03_goal_evidence_r001\\cases\\hotpotqa\\e03_goal_evidence\\5ac5101455429924173fb592.json",
+    "base_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ac5101455429924173fb592.json",
+    "review": {
+      "arm": "s04_scope_plus_evidence",
+      "id": "hotpotqa:5ac5101455429924173fb592",
+      "classification": "同一歌曲标题去掉引号，F1持平",
+      "note": "S04与p02同为Every Rose Has Its Thorn，e03仅多引号；新增Bret Michaels简介确实确认其乐队该冠军单曲，但父goal与最终早已同答，未产生本题F1或目标变化。",
+      "scope": "non-blind old300 fixed candidate actual-added-document review"
+    },
+    "additional_document": {
+      "rank": 2,
+      "doc_id": "1055912",
+      "source": "Bret Michaels",
+      "text": "Bret Michaels\nBret Michael Sychak (born March 15, 1963), professionally known as Bret Michaels, is an American singer-songwriter and musician. He gained fame as the lead singer of the glam metal band Poison who have sold over 50 million records worldwide and 15 million records in the United States alone. The band has also charted ten singles to the Top 40 of the \"Billboard\" Hot 100, including six Top 10 singles and a number-one single, \"Every Rose Has Its Thorn\"."
+    },
+    "literal_checks_not_entailment": {
+      "answer_surface_in_added_text": true,
+      "gold_surface_in_added_text_offline_only": true
+    }
+  }
+]

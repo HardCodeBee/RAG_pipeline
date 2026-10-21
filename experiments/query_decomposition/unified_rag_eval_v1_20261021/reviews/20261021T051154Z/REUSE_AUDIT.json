@@ -1,0 +1,597 @@
+{
+  "utc": "2026-10-21T05:13:29.084433+00:00",
+  "status": "review_only_no_migration_no_execution",
+  "new_API_requests": 0,
+  "new_GPU_jobs": 0,
+  "new_index_searches": 0,
+  "baseline_inventory": {
+    "utc": "2026-10-21T05:11:56.763211+00:00",
+    "primary_protocol": "v2 + matched50 Iter k10/T5",
+    "planned": 13500,
+    "processed": 10589,
+    "scorable": 10533,
+    "rows": [
+      {
+        "dataset": "hotpotqa",
+        "method": "b00_rag_top10_v1",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b01_rag_top10_cot3",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 499,
+        "statuses": {
+          "success": 499,
+          "provider_content_rejected": 1
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b02_selfask_dense",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 470,
+          "algorithm_failure": 30
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b03_react_dense",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 499,
+        "statuses": {
+          "success": 485,
+          "failed": 1,
+          "algorithm_failure": 14
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b04_ircot_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b05_iter_retgen_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 470,
+        "statuses": {
+          "success": 470,
+          "unknown": 27,
+          "provider_content_rejected": 3
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b06_decomp_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 445,
+          "algorithm_failure": 55
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b07_hybrid_rerank",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        }
+      },
+      {
+        "dataset": "hotpotqa",
+        "method": "b08_qd_rerank",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 499,
+        "statuses": {
+          "success": 499,
+          "provider_content_rejected": 1
+        }
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b00_rag_top10_v1",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b01_rag_top10_cot3",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b02_selfask_dense",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 382,
+          "algorithm_failure": 118
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b03_react_dense",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 499,
+        "statuses": {
+          "success": 493,
+          "algorithm_failure": 6,
+          "provider_content_rejected": 1
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b04_ircot_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b05_iter_retgen_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 498,
+        "statuses": {
+          "success": 498,
+          "provider_content_rejected": 2
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b06_decomp_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 499,
+        "statuses": {
+          "success": 442,
+          "algorithm_failure": 57,
+          "failed": 1
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b07_hybrid_rerank",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "2wiki",
+        "method": "b08_qd_rerank",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 500,
+        "statuses": {
+          "success": 500
+        },
+        "missing_recovery_report": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\RESULTS.json"
+      },
+      {
+        "dataset": "musique",
+        "method": "b00_rag_top10_v1",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 498,
+        "statuses": {
+          "success": 498,
+          "failed": 2
+        }
+      },
+      {
+        "dataset": "musique",
+        "method": "b01_rag_top10_cot3",
+        "planned": 500,
+        "processed": 89,
+        "scorable": 89,
+        "statuses": {
+          "success": 89
+        }
+      },
+      {
+        "dataset": "musique",
+        "method": "b02_selfask_dense",
+        "planned": 500,
+        "processed": 0,
+        "scorable": 0,
+        "statuses": {}
+      },
+      {
+        "dataset": "musique",
+        "method": "b03_react_dense",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 493,
+        "statuses": {
+          "success": 432,
+          "algorithm_failure": 61,
+          "failed": 2,
+          "provider_content_rejected": 5
+        }
+      },
+      {
+        "dataset": "musique",
+        "method": "b04_ircot_bge",
+        "planned": 500,
+        "processed": 0,
+        "scorable": 0,
+        "statuses": {}
+      },
+      {
+        "dataset": "musique",
+        "method": "b05_iter_retgen_bge",
+        "planned": 500,
+        "processed": 500,
+        "scorable": 490,
+        "statuses": {
+          "success": 490,
+          "failed": 2,
+          "provider_content_rejected": 8
+        }
+      },
+      {
+        "dataset": "musique",
+        "method": "b06_decomp_bge",
+        "planned": 500,
+        "processed": 0,
+        "scorable": 0,
+        "statuses": {}
+      },
+      {
+        "dataset": "musique",
+        "method": "b07_hybrid_rerank",
+        "planned": 500,
+        "processed": 0,
+        "scorable": 0,
+        "statuses": {}
+      },
+      {
+        "dataset": "musique",
+        "method": "b08_qd_rerank",
+        "planned": 500,
+        "processed": 0,
+        "scorable": 0,
+        "statuses": {}
+      }
+    ],
+    "budget": {
+      "cumulative_cap_cny": 300.0,
+      "submission_guard_cny": 299.9,
+      "known_cny": 219.4958576,
+      "unknown_reserves_cny": 54.4043504,
+      "occupied_cny": 273.900208,
+      "remaining_cny": 26.099792000000008
+    }
+  },
+  "p02_by_dataset": {
+    "hotpotqa": {
+      "processed_old": 321,
+      "scorable_old": 283,
+      "whole_case_candidates": 283,
+      "remaining_if_candidates_approved": 217,
+      "candidate_mean_logical_usage_cny": 0.005673382332155477,
+      "blocking_reasons": {
+        "old_case_incomplete_prefixes_only": 38
+      }
+    },
+    "2wiki": {
+      "processed_old": 500,
+      "scorable_old": 498,
+      "whole_case_candidates": 498,
+      "remaining_if_candidates_approved": 2,
+      "candidate_mean_logical_usage_cny": 0.008559791164658622,
+      "blocking_reasons": {
+        "old_case_incomplete_prefixes_only": 2
+      }
+    },
+    "musique": {
+      "processed_old": 0,
+      "scorable_old": 0,
+      "whole_case_candidates": 0,
+      "remaining_if_candidates_approved": 500,
+      "candidate_mean_logical_usage_cny": null,
+      "blocking_reasons": {}
+    }
+  },
+  "p02_receipts": {
+    "unique_receipts": 4392,
+    "eligible": 4352,
+    "ineligible": 40,
+    "reason_not_success": 40,
+    "reason_not_complete_stop": 40,
+    "reason_missing_usage": 40,
+    "reason_model_mismatch": 40
+  },
+  "p02_finish_reasons": {
+    "stop": 4352,
+    "None": 40
+  },
+  "p02_first_chunk_observations": 4352,
+  "p02_exact_first_content_TTFT_observations": 0,
+  "p02_eligible_binding_keys": 4352,
+  "p02_unique_saved_queries": 3098,
+  "p02_overflow_saved_queries": 0,
+  "baseline_cost_and_timing_inventory": [
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0010398616000000004,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 500,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b00_rag_top10_v1/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.0031651358717434833,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 499,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b01_rag_top10_cot3/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.004643483999999996,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1305,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b02_selfask_dense/k10_s3/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.005908630861723452,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1445,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b03_react_dense/k10_s5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0166278456,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 3204,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b04_ircot_bge/k6/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "valid_primary_checkpoint": 470,
+      "complete_usage_cases": 470,
+      "mean_logical_usage_cny": 0.015479679999999996,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 2323,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/matched50/hotpotqa/formal/b05_iter_retgen_bge/k10_t5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0070958463999999995,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 5007,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b06_decomp_bge/k4_cot/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0010233711999999998,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 500,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b07_hybrid_rerank/k20_rrf60/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.0013211198396793598,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 998,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/hotpotqa/formal/b08_qd_rerank/standalone5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0014627712000000008,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 500,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b00_rag_top10_v1/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.0036254052104208417,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 499,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b01_rag_top10_cot3/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.007184208416833659,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1498,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b02_selfask_dense/k10_s5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.009798885771543081,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1686,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b03_react_dense/k10_s5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.02157207214428856,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 3319,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b04_ircot_bge/k6/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "valid_primary_checkpoint": 496,
+      "complete_usage_cases": 496,
+      "mean_logical_usage_cny": 0.021626720161290316,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 2441,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/matched50/2wiki/formal/b05_iter_retgen_bge/k10_t5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "valid_primary_checkpoint": 499,
+      "complete_usage_cases": 499,
+      "mean_logical_usage_cny": 0.010284530661322637,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 7105,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b06_decomp_bge/k6_cot/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0018219999999999998,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 500,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b07_hybrid_rerank/k50_rrf60/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "valid_primary_checkpoint": 500,
+      "complete_usage_cases": 500,
+      "mean_logical_usage_cny": 0.0018087440000000019,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1000,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/2wiki/formal/b08_qd_rerank/standalone3/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "valid_primary_checkpoint": 498,
+      "complete_usage_cases": 498,
+      "mean_logical_usage_cny": 0.0013125590361445787,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 498,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/musique/formal/b00_rag_top10_v1/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "valid_primary_checkpoint": 89,
+      "complete_usage_cases": 89,
+      "mean_logical_usage_cny": 0.0039111595505617975,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 95,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/musique/formal/b01_rag_top10_cot3/fixed/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "valid_primary_checkpoint": 493,
+      "complete_usage_cases": 493,
+      "mean_logical_usage_cny": 0.011980076267748484,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 1878,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/main/musique/formal/b03_react_dense/k10_s5/checkpoint.sqlite3"
+    },
+    {
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "valid_primary_checkpoint": 490,
+      "complete_usage_cases": 490,
+      "mean_logical_usage_cny": 0.020527340408163272,
+      "first_content_ttft_receipts": 0,
+      "first_chunk_only_receipts": 2445,
+      "source": "outputs/query_decomposition/hotpot_formal_eval_v1/comprehensive_v1_20261015/baseline_integrity_repair_v2_20261017/matched50/musique/formal/b05_iter_retgen_bge/k10_t5/checkpoint.sqlite3"
+    }
+  ],
+  "budget": {
+    "submissions": 120094,
+    "known_cny": 219.4958576,
+    "unknown_reserved_cny": 54.4043504,
+    "occupied_cny": 273.900208,
+    "remaining_to300": 26.099792000000008,
+    "dispatch_headroom_to299_9": 25.999791999999985
+  },
+  "limitations": [
+    "Whole-case candidates require user-approved migration and concrete v2 binding validation before publication.",
+    "No real inference/index search; overflow cases are deferred instead of guessed.",
+    "No F1/gold read and no result selected by score.",
+    "Old first-chunk timing cannot reconstruct first-content TTFT."
+  ]
+}

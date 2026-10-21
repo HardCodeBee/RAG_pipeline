@@ -1,0 +1,32 @@
+{
+  "source": "experiments\\query_decomposition\\multigrain_dual_retrieval_pilot_v1_20261017\\run.py",
+  "source_sha256": "1e447f31b7cd4b9c7d39fef4c715afcee4a3ccc60b9cabd8c8d3216dbbddb498",
+  "generation_algorithm_changed": false,
+  "edits": [
+    [
+      "from .screen_musique import HERE, OUT, CAMPAIGN, rows, load, write",
+      "from .prepare import HERE, OUT, CAMPAIGN, rows, load, write"
+    ],
+    [
+      "from .methods import single, dual",
+      "from experiments.query_decomposition.multigrain_dual_retrieval_pilot_v1_20261017.methods import single, dual"
+    ],
+    [
+      "assert len(cases) == 24",
+      "assert len(cases) == 36"
+    ],
+    [
+      "OUT / \"musique_baseline_screening_network_v2/checkpoint.sqlite3\"",
+      "OUT / \"frozen_s02_musique_new12/checkpoint.sqlite3\""
+    ],
+    [
+      "task\": \"multigrain_dual_retrieval_diagnostic\"",
+      "task\": \"multigrain_dual_retrieval_expansion60\""
+    ],
+    [
+      "                    retrieval.load()\n                    with ThreadPoolExecutor",
+      "                    retrieval.load()\n                    retrieval.retrieve_many([{ \"qid\": case[\"qid\"], \"query\": step[\"request\"] } for case in selected for step in case[\"qdmr\"][\"steps\"]], 10)\n                    print(json.dumps({\"dataset\": dataset, \"fixed_original_subquery_packets\": \"ready\", \"questions\": len(selected)}), flush=True)\n                    with ThreadPoolExecutor"
+    ]
+  ],
+  "batching": "Use existing native Retrieval.retrieve_many to prefetch fixed self-contained original subqueries. Same frozen encoder/index/top-k, no reranking or merge change; dynamic rewrites remain online."
+}

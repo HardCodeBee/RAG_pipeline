@@ -1,0 +1,366 @@
+{
+  "reviewer": "Current Codex same-context nonblind direct query/output review. Candidate prompt and rubric were frozen before holdout inspection. No answers, passages or reference plans used.",
+  "rubric": "Same F/S/C/U; uncertain and unavailable retained in planned60; no holdout tuning.",
+  "cases": [
+    {
+      "index": 1,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两版均识别Stephanie Von Hohenlohe丈夫，终问可由原query另执行。"
+    },
+    {
+      "index": 2,
+      "v4": "U",
+      "v8": "U",
+      "reason": "两版都额外询问已由出生地与capital等同关系给出的capital值；该问重复出生地信息，没有新增县身份桥接。"
+    },
+    {
+      "index": 3,
+      "v4": "FSU",
+      "v8": "X",
+      "reason": "v4把only group larger目标总部地换成唱片公司总部地，另问无关group大小且用that record label；v8无完整返回。"
+    },
+    {
+      "index": 4,
+      "v4": "P",
+      "v8": "F",
+      "reason": "v4保留Falling Stars角色扮演游戏类型及publisher关系；v8省略game对象类型，两个问句均未保留原题类型消歧。"
+    },
+    {
+      "index": 5,
+      "v4": "P",
+      "v8": "P",
+      "reason": "各自职业或主要角色可作为both what共同类别的属性支持；原题类别椭圆不被补成确定事实。"
+    },
+    {
+      "index": 6,
+      "v4": "C",
+      "v8": "P",
+      "reason": "v4只复制整体布尔题，未提供双方事实；v8分别查询来源地。"
+    },
+    {
+      "index": 7,
+      "v4": "F",
+      "v8": "P",
+      "reason": "v4把配偶母亲改成泛parent，丢失所求亲属关系；v8完整保留spouse mother。"
+    },
+    {
+      "index": 8,
+      "v4": "S",
+      "v8": "S",
+      "reason": "两版末问that party没有在同一问中保留dominated until mid20th century描述。"
+    },
+    {
+      "index": 9,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别取得指定作品作曲者身份与作曲者出生时间，完整作品关系保留。"
+    },
+    {
+      "index": 10,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别查询Family Guy与原题给定Peter Griffith角色的电影来源，保留输入姓名，不凭记忆改名。"
+    },
+    {
+      "index": 11,
+      "v4": "S",
+      "v8": "P",
+      "reason": "v4末问that English rock band缺少专辑关系；v8末问以完整box-set标题定位band，独立关系可识别，前问还保留English rock范围。"
+    },
+    {
+      "index": 12,
+      "v4": "FS",
+      "v8": "FS",
+      "reason": "两版均用that Basilica/location/governor，且未保留head of catholic religion这一输入约束；原句附着歧义另记。"
+    },
+    {
+      "index": 13,
+      "v4": "S",
+      "v8": "U",
+      "reason": "v4用that character；v8修复指代但额外询问原题已明确为Walt Disney的创作者。"
+    },
+    {
+      "index": 14,
+      "v4": "S",
+      "v8": "F",
+      "reason": "v4用that state；v8把Infest表演者形成州改问Infest本身来源州，改变对象，另给Pathology增加band类型。"
+    },
+    {
+      "index": 15,
+      "v4": "P",
+      "v8": "P",
+      "reason": "v4直接判断双方rock-band成员资格；v8各自genre可支持rock属性，最终原题仍判断band类别；没有把未知genre回答预填成事实。"
+    },
+    {
+      "index": 16,
+      "v4": "X",
+      "v8": "P",
+      "reason": "v4无完整返回；v8定位The Canon of Medicine作者并问其Venus相对太阳观点，完整作品关系保留。"
+    },
+    {
+      "index": 17,
+      "v4": "X",
+      "v8": "P",
+      "reason": "v4无完整返回；v8分别查询两片上映时间。"
+    },
+    {
+      "index": 18,
+      "v4": "P",
+      "v8": "P",
+      "reason": "双方出生时间分别查，完整姓名保留。"
+    },
+    {
+      "index": 19,
+      "v4": "X",
+      "v8": "S",
+      "reason": "v4无完整返回；v8后续问that person未携带改革Lichtenberg宗教的完整关系。"
+    },
+    {
+      "index": 20,
+      "v4": "U",
+      "v8": "S",
+      "reason": "v4重复查询group larger与only group larger身份，旧同类口径记无独立用途；v8用that group/that city和referred to in the question，独立性失败。原题explorer未限定的歧义另记。"
+    },
+    {
+      "index": 21,
+      "v4": "U",
+      "v8": "P",
+      "reason": "v4新增双方泛身份Who is查找；v8用生日支持年龄比较。"
+    },
+    {
+      "index": 22,
+      "v4": "F",
+      "v8": "P",
+      "reason": "v4把未限定uncle选定为父亲的兄弟；v8保留原关系。单一已命名对象的多义亲属查找不强制展开到某条家系，原题等价终项按共同内容口径可保留。"
+    },
+    {
+      "index": 23,
+      "v4": "P",
+      "v8": "F",
+      "reason": "v4保留昵称国家、行动者来源国及Tripartite参与方；总部查询还有行动者角色这一独立锚点，不同于循环复问同一关系值。v8首问把国家昵称改成有headquarters的组织，改变关系。"
+    },
+    {
+      "index": 24,
+      "v4": "P",
+      "v8": "P",
+      "reason": "Mormonism创立者身份为母亲查询提供有效桥接，原query另执行。"
+    },
+    {
+      "index": 25,
+      "v4": "S",
+      "v8": "S",
+      "reason": "两版末问that political body没有在本问中定义President USAF appointments支持机构。"
+    },
+    {
+      "index": 26,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别取得West Bengal首府与学院位置，支持地点相等判断。"
+    },
+    {
+      "index": 27,
+      "v4": "P",
+      "v8": "P",
+      "reason": "先取季数/集序号对应标题，再查完整描述的主题。"
+    },
+    {
+      "index": 28,
+      "v4": "P",
+      "v8": "P",
+      "reason": "双方导演及出生时间分别查，完整长片名保留。"
+    },
+    {
+      "index": 29,
+      "v4": "P",
+      "v8": "P",
+      "reason": "完整片名导演身份及其死亡地点关系独立可识别。"
+    },
+    {
+      "index": 30,
+      "v4": "P",
+      "v8": "FC",
+      "reason": "v4直接判断双方American singer；v8改成出生地点，不能等同国籍且未覆盖歌手身份条件。"
+    },
+    {
+      "index": 31,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别查询两出版物的出版时间，v8明确first，v4普通When published可用于时间比较，不借参数知识假设其他期次。"
+    },
+    {
+      "index": 32,
+      "v4": "P",
+      "v8": "P",
+      "reason": "指定书名作者及作者配偶关系完整。"
+    },
+    {
+      "index": 33,
+      "v4": "P",
+      "v8": "P",
+      "reason": "National Women Party创立者身份提供出生地查询桥接。"
+    },
+    {
+      "index": 34,
+      "v4": "X",
+      "v8": "P",
+      "reason": "v4无完整返回；v8定位Reggaeton Lento演唱男团及该完整描述男团形成日期。"
+    },
+    {
+      "index": 35,
+      "v4": "P",
+      "v8": "P",
+      "reason": "以WAPL获广播许可地区定位县及其邻县再查capital，问题均有完整关系锚点。"
+    },
+    {
+      "index": 36,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两片导演身份与来源国分别查，支持同国判断。"
+    },
+    {
+      "index": 37,
+      "v4": "P",
+      "v8": "P",
+      "reason": "完整1978 film Pugachev消歧与导演获奖关系保留；v4What is director语法另记。"
+    },
+    {
+      "index": 38,
+      "v4": "P",
+      "v8": "P",
+      "reason": "Maria Salviati母亲为局部单一亲属关系，原题等价项允许；不强制额外家系展开。"
+    },
+    {
+      "index": 39,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两片导演死亡时间分别查，中等粒度或另加导演身份均允许。"
+    },
+    {
+      "index": 40,
+      "v4": "P",
+      "v8": "F",
+      "reason": "v4保留战争→冲突→对手国完整关系；v8给对手增加primary排名限定，原题未表达。"
+    },
+    {
+      "index": 41,
+      "v4": "?U",
+      "v8": "?U",
+      "reason": "两版将原题拆成极宽shaken with ice与区别Margarita条件；是有用候选交集还是无锚点泛检索仅凭原题难定，保留用途不确定，不用答案消歧。"
+    },
+    {
+      "index": 42,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别查询双方American documentary分类条件。"
+    },
+    {
+      "index": 43,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两部完整电影名上映时间分别查。"
+    },
+    {
+      "index": 44,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两片导演身份及来源国分别查，保留The Slayer Film消歧。"
+    },
+    {
+      "index": 45,
+      "v4": "U",
+      "v8": "P",
+      "reason": "v4反问输入已给出的The Churchills系列标题；v8只保留已知节目主持者的局部请求，原题等价项允许。"
+    },
+    {
+      "index": 46,
+      "v4": "P",
+      "v8": "P",
+      "reason": "配偶身份→配偶母亲，完整Quintus Caecilius Metellus Celer名称保留。"
+    },
+    {
+      "index": 47,
+      "v4": "FSU",
+      "v8": "FS",
+      "reason": "v4泛问已命名Susan身份且用that film，alive/died after不等同last release during lifetime；v8仍用that film并新增shortly thereafter，未保留原限定关系。"
+    },
+    {
+      "index": 48,
+      "v4": "FU",
+      "v8": "F",
+      "reason": "两版把line later operated as part of what的组成关系改成What entity later operated the line操作者关系，不能直接等同；v4还泛问已命名设计者身份。"
+    },
+    {
+      "index": 49,
+      "v4": "P",
+      "v8": "P",
+      "reason": "保留球队、指定FA Cup赛季冠军及最近获胜时间，独立描述完整。"
+    },
+    {
+      "index": 50,
+      "v4": "U",
+      "v8": "U",
+      "reason": "泛问Which American band is from Knoxville Tennessee没有专辑锚点或完整候选集合用途，与先前Kentucky县案例同口径；其他问题虽可用，该额外项仍记无独立用途。"
+    },
+    {
+      "index": 51,
+      "v4": "P",
+      "v8": "P",
+      "reason": "The Escapist 2002 Film消歧及导演就读地点完整保留。"
+    },
+    {
+      "index": 52,
+      "v4": "P",
+      "v8": "P",
+      "reason": "作品创作者→去世地→Roncali离开该完整描述地点的原因，关系逐层保留。"
+    },
+    {
+      "index": 53,
+      "v4": "P",
+      "v8": "P",
+      "reason": "未知国家身份通过明确ISO代码取得，原query另查国家位置。"
+    },
+    {
+      "index": 54,
+      "v4": "P",
+      "v8": "P",
+      "reason": "两片上映时间分别查，大小写/撇号规范化不改对象。"
+    },
+    {
+      "index": 55,
+      "v4": "S",
+      "v8": "P",
+      "reason": "v4末问that leader未独立定义；v8完整保留Juan Romero de Figueroa及留在教区的关系。"
+    },
+    {
+      "index": 56,
+      "v4": "P",
+      "v8": "P",
+      "reason": "paternal grandmother明确为父亲的母亲，各问完整识别。"
+    },
+    {
+      "index": 57,
+      "v4": "P",
+      "v8": "P",
+      "reason": "分别查询American film Elephant的编剧和导演，两个角色均保留。"
+    },
+    {
+      "index": 58,
+      "v4": "F",
+      "v8": "F",
+      "reason": "原题later known as作用于特定时代语言形式，两版却问Holy Roman Empire后来的名称，改变修饰与所求对象。"
+    },
+    {
+      "index": 59,
+      "v4": "F",
+      "v8": "P",
+      "reason": "v4首问Feel Good省略Robin Thicke Song原有消歧；v8两问完整保留限定。"
+    },
+    {
+      "index": 60,
+      "v4": "P",
+      "v8": "P",
+      "reason": "Elite Squad与The Last Dawn的导演出生时间独立查询，另加导演身份也有用，未强制唯一粒度。"
+    }
+  ]
+}

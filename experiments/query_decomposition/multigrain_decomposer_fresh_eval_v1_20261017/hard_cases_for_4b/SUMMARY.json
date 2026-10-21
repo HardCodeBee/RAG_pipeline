@@ -1,0 +1,59 @@
+{
+  "selection_rule": "at_least_two_explicit_single_pass_semantic_failures",
+  "old36_versions": [
+    "v2",
+    "v3",
+    "v4",
+    "v5"
+  ],
+  "fresh60_versions": [
+    "v2",
+    "v3",
+    "v4",
+    "v5",
+    "v6",
+    "v7",
+    "v8"
+  ],
+  "excluded_from_failure_count": [
+    "API unavailable",
+    "uncertain",
+    "v9 two-stage editor"
+  ],
+  "queries_screened": 96,
+  "candidates": 36,
+  "by_dataset": {
+    "hotpotqa": 14,
+    "musique": 14,
+    "2wiki": 8
+  },
+  "by_cohort": {
+    "fresh_development60": 28,
+    "old_exposed36": 8
+  },
+  "by_priority": {
+    "latest_still_fails": 17,
+    "latest_uncertain": 1,
+    "latest_unavailable": 2,
+    "previously_hard_now_fixed": 16
+  },
+  "by_label_status": {
+    "needs_gold_decomposition": 30,
+    "needs_original_review": 6
+  },
+  "failure_mode_counts_overlap": {
+    "S": 21,
+    "F": 12,
+    "U": 15,
+    "C": 5
+  },
+  "protected_metadata_overlaps": 0,
+  "actual_sft_files_changed": false,
+  "gold_labels_authored": 0,
+  "review_quality": "current Codex nonblind rubric judgments, not human gold",
+  "source_review_sha256": {
+    "old36": "19ed0f76baf5753cc34bb504380d824a1c3c28e6b8a17277b6b2983fbf76a4ab",
+    "fresh60": "053d9763082a04cfe7db3e6561f86d09751983bf7e7884f981233a060ed4c5b7"
+  },
+  "holdout60_used_for_hard_case_selection": false
+}

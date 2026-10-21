@@ -1,0 +1,29 @@
+完整流程同口径300题评估
+三个数据集各100题；只含接受的四个完整流程。
+四组共同可计分题目：300
+
+统一共同题目排名：
+1. B0_legacy_multigrain_R02: F1=67.3647%, n=300
+2. R02_C08_c02_r1p1_integrated_candidate: F1=66.5486%, n=300
+3. s02_child4: F1=66.0411%, n=300
+4. c06_comparison_criterion: F1=64.7102%, n=300
+补跑状态：{'utc': '2026-10-19T18:44:43.497452+00:00', 'phase': 'completed_all_four_full300', 'recovery_terminal': True, 'supervisor_pid': 40336, 'scorable_method_cases': 1200, 'original_complete_results_unchanged': 1075, 'rounds_completed': 2}
+
+各组进度和新增开销：
+s02_child4: 已有执行终态记录=300/300（含中断，不等于成功完成）, 可计分=300/300, 状态分类={'final_answer_returned': 300}, new_calls=1051, usage=¥1.738127, reserve=¥0.052607
+B0_legacy_multigrain_R02: 已有执行终态记录=300/300（含中断，不等于成功完成）, 可计分=300/300, 状态分类={'final_answer_returned': 300}, new_calls=1510, usage=¥1.924606, reserve=¥0.190220
+R02_C08_c02_r1p1_integrated_candidate: 已有执行终态记录=300/300（含中断，不等于成功完成）, 可计分=300/300, 状态分类={'final_answer_returned': 300}, new_calls=1818, usage=¥2.723613, reserve=¥0.418186
+c06_comparison_criterion: 已有执行终态记录=300/300（含中断，不等于成功完成）, 可计分=300/300, 状态分类={'final_answer_returned': 300}, new_calls=1109, usage=¥1.493698, reserve=¥0.049871
+
+现有两组同题比较（每对单独列出分母）：
+s02_child4 vs B0_legacy_multigrain_R02: n=300, F1=66.0411% vs 67.3647%, delta(b-a)=+1.3236pp
+s02_child4 vs R02_C08_c02_r1p1_integrated_candidate: n=300, F1=66.0411% vs 66.5486%, delta(b-a)=+0.5075pp
+s02_child4 vs c06_comparison_criterion: n=300, F1=66.0411% vs 64.7102%, delta(b-a)=-1.3309pp
+B0_legacy_multigrain_R02 vs R02_C08_c02_r1p1_integrated_candidate: n=300, F1=67.3647% vs 66.5486%, delta(b-a)=-0.8161pp
+B0_legacy_multigrain_R02 vs c06_comparison_criterion: n=300, F1=67.3647% vs 64.7102%, delta(b-a)=-2.6545pp
+R02_C08_c02_r1p1_integrated_candidate vs c06_comparison_criterion: n=300, F1=66.5486% vs 64.7102%, delta(b-a)=-1.8384pp
+
+旧版分解由自主SSH任务推进：job=155948, completed=300/300, queue=, accounting=155948|COMPLETED|00:27:17|0:0
+
+累计占用：¥209.066906/¥300；包括未知请求预留。费用为用量估算，未核对账单。
+完整方法开销与本次新增开销分别保留；缓存执行耗时不能当作冷启动端到端延迟。

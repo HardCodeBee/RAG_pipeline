@@ -1,0 +1,91 @@
+{
+  "logical_call": {
+    "qid": "6c7f03240bdb11eba7f7acde48001122",
+    "stage": "legacy/rewrite/2",
+    "payload_sha256": "436f513a14aff42487d69b34db8a6640955b32057770e7003b5c8fe06e14cd3f",
+    "request_id": "9a7937682afd2abde46f20fae069359c3acee1467192d53fc06e476ad625f6fd",
+    "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+    "status": "success",
+    "reused": true,
+    "usage": {
+      "completion_tokens": 8,
+      "completion_tokens_details": null,
+      "prompt_tokens": 337,
+      "prompt_tokens_details": null,
+      "total_tokens": 345
+    },
+    "finish_reason": "stop",
+    "http_status": null
+  },
+  "source_database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+  "stored_stage": "legacy/rewrite/2",
+  "stored_status": "success",
+  "payload": {
+    "extra_body": {
+      "enable_thinking": false
+    },
+    "max_tokens": 256,
+    "messages": [
+      {
+        "content": "Rewrite the Current question for retrieval using the Previous question-answer pairs.\nReplace a descriptive reference only with the matching entity explicitly supplied by an earlier answer. Keep the fact requested by the Current question, its relation, conditions and comparison direction unchanged. Use the meaning of the complete earlier sentence; do not paste that sentence into a noun slot.\nDo not answer the Current question or introduce a factual identity that the previous answers have not supplied. If no relevant replacement is available, return the Current question unchanged.\nReturn only one complete question, without explanation.\n\nWorked examples:\n\nExample 1\nPrevious question-answer pairs:\nQuestion: Which river does Pack Creek flow into?\nAnswer: Pack Creek flows into the Colorado River.\nCurrent question:\nWhat is the length of the river into which Pack Creek flows?\nRewritten question: What is the length of the Colorado River?\n\nExample 2\nPrevious question-answer pairs:\nQuestion: Who created the Mona Lisa?\nAnswer: Leonardo da Vinci created the Mona Lisa.\nCurrent question:\nWhere did the creator of the Mona Lisa die?\nRewritten question: Where did Leonardo da Vinci die?\n\nExample 3\nPrevious question-answer pairs:\nQuestion: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\nCurrent question:\nHow many species does Callicoma contain?\nRewritten question: How many species does Callicoma contain?\n\nActual task:\n\nPrevious question-answer pairs:\nQuestion: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent question:\nWhere was the husband of Jeanne Raunay born?\n\nRewritten question:",
+        "role": "user"
+      }
+    ],
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0.0
+  },
+  "result": {
+    "answer": "Where was André Beaunier born?",
+    "finish_reason": "stop",
+    "latency_seconds": 1.3874539000098594,
+    "raw_response": {
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "annotations": null,
+            "audio": null,
+            "content": "Where was André Beaunier born?",
+            "function_call": null,
+            "refusal": null,
+            "role": "assistant",
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1792449054,
+      "id": "chatcmpl-8af1c949-4d9b-9fcd-82fa-76c41b5d6771",
+      "model": "qwen-plus-2025-12-01",
+      "moderation": null,
+      "object": "chat.completion",
+      "service_tier": null,
+      "stream_transport": {
+        "chunks": 7,
+        "first_chunk_seconds": 1.178922799997963,
+        "include_usage": true,
+        "post_terminal_trailer_failure": null,
+        "stream": true,
+        "total_seconds": 1.3872017999528907
+      },
+      "system_fingerprint": null,
+      "usage": {
+        "completion_tokens": 8,
+        "completion_tokens_details": null,
+        "prompt_tokens": 337,
+        "prompt_tokens_details": null,
+        "total_tokens": 345
+      }
+    },
+    "returned_model": "qwen-plus-2025-12-01",
+    "status": "success",
+    "usage": {
+      "completion_tokens": 8,
+      "completion_tokens_details": null,
+      "prompt_tokens": 337,
+      "prompt_tokens_details": null,
+      "total_tokens": 345
+    }
+  }
+}

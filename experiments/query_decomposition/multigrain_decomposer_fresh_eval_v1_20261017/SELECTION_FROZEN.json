@@ -1,0 +1,139 @@
+{
+  "seed": "20261017-fresh-multigrain-01",
+  "utc": "2026-10-17T06:56:03.774495+00:00",
+  "queries_each_phase": 60,
+  "quotas_each_phase": {
+    "hotpotqa": {
+      "bridge": 14,
+      "comparison": 6
+    },
+    "2wiki": {
+      "comparison": 5,
+      "inference": 5,
+      "compositional": 5,
+      "bridge_comparison": 5
+    },
+    "musique": {
+      "2-hop": 7,
+      "3-hop": 7,
+      "4-hop": 6
+    }
+  },
+  "source_counts": {
+    "hotpotqa": 7405,
+    "2wiki": 12576,
+    "musique": 2417
+  },
+  "eligible_counts": {
+    "2wiki": 11876,
+    "hotpotqa": 5562,
+    "musique": 1811
+  },
+  "sources": [
+    {
+      "path": "analysis\\hotpotqa_difficulty_retrieval_20261002\\source_labels\\validation_labels.jsonl",
+      "sha256": "352f7c7428e6abc169ad4ddf17ac3dc614af77addd0049944ef9a231d059acdb"
+    },
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\dev.json",
+      "sha256": "21b0a6ffef454f887b5a7a6115db443d3476e99fefeb05d4c5fb73be01582554"
+    },
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\native\\musique_ans_v1.0_dev.jsonl",
+      "sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b"
+    }
+  ],
+  "excluded_query_files": [
+    {
+      "path": "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\data\\runtime_qwen_train.jsonl",
+      "sha256": "33fc7f15c1aebbbf1cf06aca7a830500d0929d610d42c39b96aa8f0ac2132895"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_pilot_v1_20261017\\cases.frozen.jsonl",
+      "sha256": "a0ee113a8a600df3b23fcf35be12b983a997eeb0591ade1f717318b08d659a89"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\cases.frozen.jsonl",
+      "sha256": "3f042a1b625768a3ed18641f0ee866449cf843576cda999de05bb98148b4ae8b"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_EXAMPLES_DRAFT.jsonl",
+      "sha256": "f7c15ba760c71f8dfd2b5f786a4e80af867ed74cf44c86da3c1594e18539d109"
+    },
+    {
+      "path": "experiments\\query_decomposition\\auxiliary_qa_rag_v1\\inputs_frozen\\queries600.jsonl",
+      "sha256": "b6f30cec3e2a824f865cb5271796c3089c9258322e50bea0e03f935c882c87a3"
+    },
+    {
+      "path": "experiments\\query_decomposition\\api_qdmr_suitability_v1\\data\\queries.jsonl",
+      "sha256": "129bd3598e764e12a183f331e625c0d87c0e085e3e8a3d09403297d40db9f3f4"
+    },
+    {
+      "path": "analysis\\hotpotqa_query_taxonomy_validation_20261007\\samples.jsonl",
+      "sha256": "b75d599cec2dd64454c9a0fc084c3d61ec876a8ef4017d5890e492d0d88c29c9"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\ablation.questions.jsonl",
+      "sha256": "0778d43e22fffb648037670ff2781d0470e373cc060389dd60c743c6588b5d40"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\dev.questions.jsonl",
+      "sha256": "a85c4371d1870a14e40934d714974fea825f0bb4348e3962909808cd102ee994"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\formal.questions.jsonl",
+      "sha256": "3392fab398a5a86b6cf095cbbdcde22cb5942b2b009f667071fc49ef1b6bc642"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\ablation.questions.jsonl",
+      "sha256": "1137ac10b59486ecbf06056a32f63545183be678c2a972a36bfc9d41df6b2655"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\dev.questions.jsonl",
+      "sha256": "04161964652fb3e77e35ea07e114305ad0a100edb4d4cceae59c4657fda0e0c4"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\formal.questions.jsonl",
+      "sha256": "b091e4dba07eb749106f90c96f8cea3c1b68c61b172026d29f81f564e8db4048"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\ablation.questions.jsonl",
+      "sha256": "bdde265fedc806d54df380c8bf0d24209f9439351b92eb19ee50bb9feb8a9e14"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\dev.questions.jsonl",
+      "sha256": "6ee85d599a800fb45ab7c7fc880cee4268dd90ba37c4eb72b5554e28361d9d32"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\formal.questions.jsonl",
+      "sha256": "d75032eb5e99b3ff87b7ec03a9dc0e18c7a424cd7c7b7325b38045bad0ff3fd3"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\dev.questions.jsonl",
+      "sha256": "2741b4ff3bd0b19092aa59dd78d3d9e17ab5baca4eb46df0dbca3899efb3ed67"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\formal.questions.jsonl",
+      "sha256": "10ca64f975ea6417c9e768105639ac2d6b0e59f8e989d78a9d81040a7fc90bfc"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\dev.questions.jsonl",
+      "sha256": "59ef2963badc6cea5608b35445e69da0ccce73eeb81783c0d78af4f604eca262"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\formal.questions.jsonl",
+      "sha256": "b08ae29d4c5987e0a66dd286166fb0069ced79bd6c39653c89ec43feef2aa9fb"
+    }
+  ],
+  "manifest_sha256": "784c42441527e24e9788ab4d2e35f360d16b54d35d22401874fb17023e33cc4d",
+  "excluded_ids": 9787,
+  "excluded_normalized_queries": 6775,
+  "selection_uses_outcomes_or_answers": false,
+  "dev_holdout_disjoint_ids_and_normalized_text": true,
+  "holdout_policy": "Do not inspect query text/output until candidate prompt and selection rule are frozen. Never retune on confirmation.",
+  "initial_comparison": "v2,v3,v4,v5 on dev60. Select best old version by pass count, then shortest prompt for ties. Optimize only on dev60; compare selected old version with final candidate on holdout60.",
+  "target": "90% whole-query F/S/C/U semantic pass; uncertain and unavailable retained in planned denominator",
+  "optimization_limit": "At most three new prompt candidates on development; stop if dev >=90%; then one holdout confirmation, no holdout tuning.",
+  "limitations": "Type-stratified development/confirmation subsets, current Codex review not human gold. Exclusions use known source IDs and normalized exact text, not complete paraphrase or pretraining decontamination.",
+  "rubric_sha256": "aeb4ee94804134454a821129ce399fb35fc1c763411683e1e34cd6268d043fd8"
+}

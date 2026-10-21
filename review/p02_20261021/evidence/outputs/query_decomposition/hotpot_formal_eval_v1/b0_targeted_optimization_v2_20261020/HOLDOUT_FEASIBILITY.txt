@@ -1,0 +1,96 @@
+B0候选的新题验证可行性核查（仅离线准备，2026-10-20 Australia/Sydney）
+
+一、结论
+
+可以在当前300题之外准备新的分层300题（每数据集100题），继续使用完全相同的语料、BGE索引与生成模型。当前2Wiki与MuSiQue语料不是已评估500题的段落并集，无需为新题扩充或重建索引。
+
+本次尚未抽取或冻结任何新验证样本，没有进行新分解、检索、生成、API或SSH。候选冻结之后再按预先固定的ID哈希排序抽样，只进行一次确认比较；确认题不用于新增规则、示例或版本选择。当前300题及其100题先导都是已暴露开发诊断样本。
+
+二、资源一致性的依据
+
+以下路径均相对仓库根目录 C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline。
+
+共同资源契约：
+experiments/query_decomposition/complete_pipeline_comparison_v1_20261020/EVAL300_PROTOCOL.frozen.json
+
+HotpotQA：5,233,329个BEIR文档。
+语料清单：data/beir/hotpotqa/manifest.json
+BGE构建：artifacts/build_65e9037e4c1eed7b
+
+2Wiki：430,225个去重段落。
+语料清单：data/multihop_comprehensive_v1_20261015/2wiki/corpus/CORPUS_FROZEN.json
+BGE清单：data/multihop_comprehensive_v1_20261015/2wiki/corpus/dense/DENSE_FROZEN.json
+
+MuSiQue：139,416个去重段落。
+语料清单：data/multihop_comprehensive_v1_20261015/musique/corpus/CORPUS_FROZEN.json
+BGE清单：data/multihop_comprehensive_v1_20261015/musique/corpus/dense/DENSE_FROZEN.json
+
+2Wiki与MuSiQue的CORPUS_FROZEN均声明覆盖官方train/dev/test全部关联上下文；MuSiQue同时纳入Ans/Full上下文，question_conditioned_candidate_corpus=false。DENSE_FROZEN的documents与上述全量文档数一致，source_sha256对应同一chunks源文件。
+
+三者继续固定BAAI/bge-small-en-v1.5，revision=5c38ec7c405ec4b44b94cc5a9bb96e735b38267a，384维、归一化、内积、max_sequence_length=512。应保留现有query编码方式、空prefix、原query同ID排除策略、Top-10规则和双路合并方式。换验证query不改变这些资源。
+
+这些证据说明已有资源可用于新dev query，不等于保证任一题一定召回支持段落，也不等于重做了全量索引字节校验或逐题支持文档覆盖率。语料中包含验证题的原始文档，是固定检索环境的一部分，需与在调参中读过该题query/答案/模型结果区分。
+
+三、新题来源与可用数
+
+HotpotQA问题元数据：
+analysis/hotpotqa_difficulty_retrieval_20261002/source_labels/validation_labels.jsonl
+原始dev共7,405题；现有metadata直接提供ID/question/type，不需要读取参考答案选题。
+
+2Wiki问题来源：
+data/multihop_comprehensive_v1_20261015/2wiki/native/dev.json
+原始dev共12,576题；选择时仅使用_id/question/type。
+
+MuSiQue问题来源：
+data/multihop_comprehensive_v1_20261015/musique/native/musique_ans_v1.0_dev.jsonl
+原始dev共2,417题；选择时仅使用id/question，以及question_decomposition的长度作为跳数，不使用其子答案。
+
+本次保守扫描已知输入JSONL及few-shot JSON，排除已知ID和NFKC/casefold/空白/末尾标点归一化后的相同问题；额外排除R02原3500和扩充3632训练集合并后的MuSiQue primitive组件。候选可用数：
+
+HotpotQA：bridge 3,802；comparison 958；合计4,760。
+2Wiki：compositional 4,880；comparison 2,799；inference 1,369；bridge_comparison 2,515；合计11,563。
+MuSiQue：2-hop 827；3-hop 408；4-hop 183；合计1,418。
+
+完整已知文件目录和分层数量见同目录HOLDOUT_FEASIBILITY.json。该扫描纳入训练/旧开发与正式样本/分解器选择与确认/错误候选/已有问答流程实验/教学示例，但不是穷尽所有历史会话的曝光账本。输入文件名筛选可能漏掉不规则命名记录；正式冻结前应再核对项目split_manifest及所有当前使用的few-shot和最新新增题单。
+
+R02训练数据的保守并集来源：
+experiments/query_decomposition/multigrain_4b_full_retrain3632_v1_20261018/DATA3632.frozen.jsonl
+outputs/query_decomposition/multigrain_4b_prompt_train3500_v1_20261017/training/MASTER_3500.jsonl
+两个集合并集共识别1,137个MuSiQue primitive ID。R02是warm-start，旧样本即使在后续3632中隔离，也可能已经用于原3500训练，不能仅按新3632去重。冻结验证前仍应以R02选中模型的最终训练来源清单复核。
+
+四、建议抽样口径
+
+优先新300题：HotpotQA 100=70 bridge+30 comparison；2Wiki 100=四类型各25；MuSiQue 100=35二跳+35三跳+30四跳。与当前开发300的类型分布一致，均有足够候选。
+
+低成本备选150题：HotpotQA 50=35 bridge+15 comparison；2Wiki 50可预先固定12/13/12/13分配；MuSiQue 50=18二跳+17三跳+15四跳。不得看已有模型结果、检索命中率、gold答案或候选通过与否决定入选。
+
+确定排除表之后，固定一个新seed，按hash(seed+dataset+qid)排序、在每个分层内取前N题。保留所有入选题；不得因分解失败、检索失败或答案不利而换题。生成期间不向运行时或远端分解包加入参考答案。
+
+建议比较冻结B0、冻结B0+P1父配置和最终选中的一套B0候选；是否增加S02/ReAct应另外固定预算和比较目的。不同时在新验证集继续搜索多个prompt后取最好结果。
+
+五、R02缓存可复用边界
+
+只接受选中R02的checkpoint_manifest_sha256：
+728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92
+仍需同一v12 prompt、相同query文本与greedy设置一致。
+
+已发现匹配身份的缓存共592个不同ID，包括当前暴露300题，以及旧dev60、confirm120、historical16、component_chain_eval60、两批18题等已有分解/流程实验输入。部分有返回快照重复副本，已按ID去重。
+
+缓存入口包括：
+outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/raw
+outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/*/results/**/r02_expanded
+outputs/query_decomposition/hotpot_formal_eval_v1/component_chain_eval60_v1_20261019/remote/r02
+outputs/query_decomposition/hotpot_formal_eval_v1/component_chain_opt_v2_20261019/remote/r02
+outputs/query_decomposition/hotpot_formal_eval_v1/component_chain_opt_v2_20261019/remote/r02_round2
+
+上述592个缓存ID与本次新题候选池交集为0。因此不能为了省分解而把这些旧缓存题称为独立验证；真正的新300/150题仍需选中R02再执行一次query-only分解，本次尚未执行或打包。
+
+六、独立性边界
+
+可承诺的是：新题与已知训练、开发、教学示例的ID/规范化文本不重叠，且MuSiQue与实际训练primitive不重叠；候选方案冻结后一次性验证，不按结果挑题。
+
+不可承诺的是：完全未曾在任何历史会话见过、与所有旧题无语义改写关系、与预训练数据不重叠。
+
+如果进一步要求MuSiQue与所有旧开发题的primitive都不重叠，候选只余314道二跳、4道三跳、0道四跳，无法保留代表性的三/四跳分布。因此建议将“训练primitive排除”作为主验证约束，并明确新组合可能与旧开发题共用部分primitive；不能把这种验证称为全部基础事实也全新。
+
+本次只记录可行性，没有选出实际新验证题，也没有使用新验证题答案或模型成绩决定选择。API费用0；SSH调用0；冻结B0/S02及现有候选源码、协议均未修改。

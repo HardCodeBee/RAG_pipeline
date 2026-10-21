@@ -1,0 +1,38 @@
+{
+  "reviewed_indices": [
+    46,
+    90
+  ],
+  "exceptions": {
+    "55": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still omits identity of the person occupying the place."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Asks who played the character rather than the characters mother, then replaces the actor origin city with the fictional mothers city; required mother/actor bindings remain wrong."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still loses the detector-operator condition on the astronauts in its mission query."
+    },
+    "89": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Repairs Titos belief ownership and identifies the delegation destination without forcing a country. However country that invented the car may substitute national agency for the original invention-location relation; do not count a confirmed full repair."
+    }
+  },
+  "reviewer": "All changed46..90 inspected.66 restores the province within county identity;69 spouse,72 intersection operand,77 migrant identity are repaired.52 is accepted as the ordinary writing-credit paraphrase in the given screenwriter context, without inventing a separate book."
+}

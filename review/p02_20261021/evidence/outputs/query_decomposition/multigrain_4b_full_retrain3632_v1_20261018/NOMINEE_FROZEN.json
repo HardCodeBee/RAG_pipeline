@@ -1,0 +1,123 @@
+{
+  "recorded_utc": "2026-10-18T06:36:09.517508+00:00",
+  "selected": "checkpoint-000228",
+  "gates": {
+    "checkpoint-000114": {
+      "total_strictly_above_T02": false,
+      "mu_not_lower": false,
+      "HotWiki_net_loss_at_most1": true,
+      "mu_FS_not_increased": false
+    },
+    "checkpoint-000171": {
+      "total_strictly_above_T02": false,
+      "mu_not_lower": false,
+      "HotWiki_net_loss_at_most1": true,
+      "mu_FS_not_increased": true
+    },
+    "checkpoint-000228": {
+      "total_strictly_above_T02": true,
+      "mu_not_lower": true,
+      "HotWiki_net_loss_at_most1": true,
+      "mu_FS_not_increased": true
+    }
+  },
+  "dev_summary": {
+    "checkpoint-000114": {
+      "n": 60,
+      "passed": 42,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 10
+        }
+      },
+      "mu_FS": [
+        3,
+        11,
+        32,
+        35,
+        40,
+        43,
+        46
+      ],
+      "verdicts": {
+        "fail": 16,
+        "pass": 42,
+        "uncertain": 2
+      }
+    },
+    "checkpoint-000171": {
+      "n": 60,
+      "passed": 46,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 14
+        }
+      },
+      "mu_FS": [
+        11,
+        32,
+        46
+      ],
+      "verdicts": {
+        "fail": 12,
+        "pass": 46,
+        "uncertain": 2
+      }
+    },
+    "checkpoint-000228": {
+      "n": 60,
+      "passed": 48,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 16
+        }
+      },
+      "mu_FS": [
+        11,
+        32
+      ],
+      "verdicts": {
+        "fail": 11,
+        "pass": 48,
+        "uncertain": 1
+      }
+    }
+  },
+  "plan_sha256": "f12fc396853d930708360bdb06272c8897e54b813cee95e7bcaeb99a98eea74f",
+  "policy_sha256": "02e9fae9bcb5c10866c0ee2f412b22d9dc49200283e279c2cfcc7a20de21ba2a",
+  "confirmation_used_for_selection": false,
+  "baseline": "frozen T02",
+  "pilot_R02_passes": 51,
+  "api_calls": 0,
+  "old_models_retained": true,
+  "checkpoint": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/results/train/checkpoints/checkpoint-000228",
+  "checkpoint_manifest_sha256": "208846d93844bf5e59deb4d1ec2828ea140a02b30b76b24a18a6e3d2074b35e5",
+  "strictly_above_pilot_R02": false
+}

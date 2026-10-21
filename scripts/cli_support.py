@@ -12,6 +12,8 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Iterator
 
+from src.generators.api_options import api_key_env
+
 
 def positive_int(value: str) -> int:
     parsed = int(value)
@@ -41,14 +43,16 @@ def configure_utf8_output() -> None:
 
 
 @contextmanager
-def temporary_openai_api_key(
+def temporary_api_key(
     key_file: str | Path | None,
     *,
     allowed_root: str | Path,
+    provider: str = "openai",
 ) -> Iterator[None]:
     """Temporarily load one local key without adding it or its path to metadata."""
 
-    if os.environ.get("OPENAI_API_KEY"):
+    environment_name = api_key_env(provider)
+    if os.environ.get(environment_name):
         yield
         return
     if key_file is None:
@@ -75,8 +79,12 @@ def temporary_openai_api_key(
     if len(lines) != 1 or "=" in lines[0] or any(character.isspace() for character in lines[0]):
         raise ValueError("The API key file must contain exactly one key value")
 
-    os.environ["OPENAI_API_KEY"] = lines[0]
+    os.environ[environment_name] = lines[0]
     try:
         yield
     finally:
-        os.environ.pop("OPENAI_API_KEY", None)
+        os.environ.pop(environment_name, None)
+
+
+# Existing experiment scripts keep their explicit OpenAI credential behavior.
+temporary_openai_api_key = temporary_api_key

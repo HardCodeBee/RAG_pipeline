@@ -1,0 +1,2461 @@
+{
+  "scope": "old24 purposive diagnostics plus36 fresh type-stratified random cases;60 total,20 per dataset",
+  "fresh36": {
+    "planned": 36,
+    "conditions": {
+      "single_original": {
+        "available": 35,
+        "missing": 1,
+        "mean_f1_available": 0.4392273655873833,
+        "all_planned_f1_bounds": [
+          0.4270266054321782,
+          0.4548043832099559
+        ],
+        "statuses": {
+          "success": 35,
+          "provider_or_transport_missing": 1
+        },
+        "all_gold_docs_shown": 13,
+        "rewrites": 0,
+        "steps_with_added_gold_docs": 0,
+        "steps_with_displaced_gold_docs": 0,
+        "mean_final_prompt_tokens": 2675.8285714285716,
+        "all_original_top10_preserved": true
+      },
+      "dual_original_rewritten": {
+        "available": 35,
+        "missing": 1,
+        "mean_f1_available": 0.6384120921095712,
+        "all_planned_f1_bounds": [
+          0.6206784228843053,
+          0.6484562006620832
+        ],
+        "statuses": {
+          "success": 34,
+          "provider_or_transport_missing": 1,
+          "success_truncated": 1
+        },
+        "all_gold_docs_shown": 23,
+        "rewrites": 47,
+        "steps_with_added_gold_docs": 17,
+        "steps_with_displaced_gold_docs": 1,
+        "mean_final_prompt_tokens": 2674.5142857142855,
+        "all_original_top10_preserved": true
+      }
+    },
+    "historical_references": {
+      "frozen_s02": {
+        "available": 35,
+        "missing": 1,
+        "mean_f1_available": 0.6664513077958456,
+        "all_planned_f1_bounds": [
+          0.6479387714681832,
+          0.675716549245961
+        ],
+        "statuses": {
+          "success": 35,
+          "failed": 1
+        }
+      },
+      "top10_v1": {
+        "available": 28,
+        "missing": 8,
+        "mean_f1_available": 0.47447979191676676,
+        "all_planned_f1_bounds": [
+          0.36903983815748526,
+          0.5912620603797075
+        ],
+        "statuses": {
+          "success": 28,
+          "unstarted": 8
+        }
+      },
+      "react": {
+        "available": 36,
+        "missing": 0,
+        "mean_f1_available": 0.6123871770930595,
+        "all_planned_f1_bounds": [
+          0.6123871770930595,
+          0.6123871770930595
+        ],
+        "statuses": {
+          "success": 33,
+          "algorithm_failure": 3
+        }
+      }
+    },
+    "dual_minus_single": {
+      "pairs": 35,
+      "missing_pairs": 1,
+      "mean_difference": 0.19918472652218783,
+      "gains": 9,
+      "ties": 26,
+      "losses": 0,
+      "dual_mean_f1_common": 0.6384120921095711,
+      "reference_mean_f1_common": 0.4392273655873833,
+      "exploratory_paired95_ci": [
+        0.11360537372843876,
+        0.29455992923485186
+      ],
+      "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+    },
+    "dual_minus_frozen_s02": {
+      "pairs": 35,
+      "missing_pairs": 1,
+      "mean_difference": -0.028039215686274512,
+      "gains": 4,
+      "ties": 25,
+      "losses": 6,
+      "dual_mean_f1_common": 0.6384120921095711,
+      "reference_mean_f1_common": 0.6664513077958456,
+      "exploratory_paired95_ci": [
+        -0.13170578231292515,
+        0.08094037615046018
+      ],
+      "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+    },
+    "dual_minus_react": {
+      "pairs": 35,
+      "missing_pairs": 1,
+      "mean_difference": 0.008528138528138537,
+      "gains": 5,
+      "ties": 25,
+      "losses": 5,
+      "dual_mean_f1_common": 0.6384120921095711,
+      "reference_mean_f1_common": 0.6298839535814326,
+      "exploratory_paired95_ci": [
+        -0.1029251700680272,
+        0.11361440940012366
+      ],
+      "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+    },
+    "four_way_common": {
+      "pairs": 35,
+      "missing": 1,
+      "mean_f1": {
+        "single_original": 0.4392273655873833,
+        "dual_original_rewritten": 0.6384120921095711,
+        "frozen_s02": 0.6664513077958456,
+        "react": 0.6298839535814326
+      }
+    }
+  },
+  "old24": {
+    "planned": 24,
+    "conditions": {
+      "single_original": {
+        "available": 24,
+        "missing": 0,
+        "mean_f1_available": 0.5492424242424242,
+        "all_planned_f1_bounds": [
+          0.5492424242424242,
+          0.5492424242424242
+        ],
+        "statuses": {
+          "success": 24
+        },
+        "all_gold_docs_shown": 10,
+        "rewrites": 0,
+        "steps_with_added_gold_docs": 0,
+        "steps_with_displaced_gold_docs": 0,
+        "mean_final_prompt_tokens": 2763.4583333333335,
+        "all_original_top10_preserved": true
+      },
+      "dual_original_rewritten": {
+        "available": 24,
+        "missing": 0,
+        "mean_f1_available": 0.673611111111111,
+        "all_planned_f1_bounds": [
+          0.673611111111111,
+          0.673611111111111
+        ],
+        "statuses": {
+          "success": 24
+        },
+        "all_gold_docs_shown": 18,
+        "rewrites": 30,
+        "steps_with_added_gold_docs": 15,
+        "steps_with_displaced_gold_docs": 1,
+        "mean_final_prompt_tokens": 2763.75,
+        "all_original_top10_preserved": true
+      }
+    },
+    "historical_references": {
+      "frozen_s02": {
+        "available": 24,
+        "missing": 0,
+        "mean_f1_available": 0.5,
+        "all_planned_f1_bounds": [
+          0.5,
+          0.5
+        ],
+        "statuses": {
+          "success": 24
+        }
+      },
+      "top10_v1": {
+        "available": 24,
+        "missing": 0,
+        "mean_f1_available": 0.5583110516934046,
+        "all_planned_f1_bounds": [
+          0.5583110516934046,
+          0.5583110516934046
+        ],
+        "statuses": {
+          "success": 24
+        }
+      },
+      "react": {
+        "available": 24,
+        "missing": 0,
+        "mean_f1_available": 0.6388888888888888,
+        "all_planned_f1_bounds": [
+          0.6388888888888888,
+          0.6388888888888887
+        ],
+        "statuses": {
+          "success": 23,
+          "algorithm_failure": 1
+        }
+      }
+    },
+    "dual_minus_single": {
+      "pairs": 24,
+      "missing_pairs": 0,
+      "mean_difference": 0.12436868686868686,
+      "gains": 4,
+      "ties": 19,
+      "losses": 1,
+      "dual_mean_f1_common": 0.673611111111111,
+      "reference_mean_f1_common": 0.5492424242424242
+    },
+    "dual_minus_frozen_s02": {
+      "pairs": 24,
+      "missing_pairs": 0,
+      "mean_difference": 0.17361111111111113,
+      "gains": 5,
+      "ties": 18,
+      "losses": 1,
+      "dual_mean_f1_common": 0.673611111111111,
+      "reference_mean_f1_common": 0.5
+    },
+    "dual_minus_react": {
+      "pairs": 24,
+      "missing_pairs": 0,
+      "mean_difference": 0.03472222222222223,
+      "gains": 5,
+      "ties": 16,
+      "losses": 3,
+      "dual_mean_f1_common": 0.673611111111111,
+      "reference_mean_f1_common": 0.6388888888888888
+    },
+    "four_way_common": {
+      "pairs": 24,
+      "missing": 0,
+      "mean_f1": {
+        "single_original": 0.5492424242424242,
+        "dual_original_rewritten": 0.673611111111111,
+        "frozen_s02": 0.5,
+        "react": 0.6388888888888888
+      }
+    }
+  },
+  "total60": {
+    "planned": 60,
+    "conditions": {
+      "single_original": {
+        "available": 59,
+        "missing": 1,
+        "mean_f1_available": 0.4839792538538406,
+        "all_planned_f1_bounds": [
+          0.4759129329562766,
+          0.49257959962294323
+        ],
+        "statuses": {
+          "success": 59,
+          "provider_or_transport_missing": 1
+        },
+        "all_gold_docs_shown": 23,
+        "rewrites": 0,
+        "steps_with_added_gold_docs": 0,
+        "steps_with_displaced_gold_docs": 0,
+        "mean_final_prompt_tokens": 2711.4745762711864,
+        "all_original_top10_preserved": true
+      },
+      "dual_original_rewritten": {
+        "available": 59,
+        "missing": 1,
+        "mean_f1_available": 0.6527303371271467,
+        "all_planned_f1_bounds": [
+          0.6418514981750275,
+          0.6585181648416942
+        ],
+        "statuses": {
+          "success": 58,
+          "provider_or_transport_missing": 1,
+          "success_truncated": 1
+        },
+        "all_gold_docs_shown": 41,
+        "rewrites": 77,
+        "steps_with_added_gold_docs": 32,
+        "steps_with_displaced_gold_docs": 2,
+        "mean_final_prompt_tokens": 2710.813559322034,
+        "all_original_top10_preserved": true
+      }
+    },
+    "historical_references": {
+      "frozen_s02": {
+        "available": 59,
+        "missing": 1,
+        "mean_f1_available": 0.5987423012348239,
+        "all_planned_f1_bounds": [
+          0.5887632628809101,
+          0.6054299295475768
+        ],
+        "statuses": {
+          "success": 59,
+          "failed": 1
+        }
+      },
+      "top10_v1": {
+        "available": 52,
+        "missing": 8,
+        "mean_f1_available": 0.5131711425829073,
+        "all_planned_f1_bounds": [
+          0.44474832357185295,
+          0.5780816569051862
+        ],
+        "statuses": {
+          "success": 52,
+          "unstarted": 8
+        }
+      },
+      "react": {
+        "available": 60,
+        "missing": 0,
+        "mean_f1_available": 0.6229878618113911,
+        "all_planned_f1_bounds": [
+          0.6229878618113911,
+          0.622987861811391
+        ],
+        "statuses": {
+          "success": 56,
+          "algorithm_failure": 4
+        }
+      }
+    },
+    "dual_minus_single": {
+      "pairs": 59,
+      "missing_pairs": 1,
+      "mean_difference": 0.16875108327330607,
+      "gains": 13,
+      "ties": 45,
+      "losses": 1,
+      "dual_mean_f1_common": 0.6527303371271468,
+      "reference_mean_f1_common": 0.48397925385384066
+    },
+    "dual_minus_frozen_s02": {
+      "pairs": 59,
+      "missing_pairs": 1,
+      "mean_difference": 0.05398803589232303,
+      "gains": 9,
+      "ties": 43,
+      "losses": 7,
+      "dual_mean_f1_common": 0.6527303371271468,
+      "reference_mean_f1_common": 0.5987423012348235
+    },
+    "dual_minus_react": {
+      "pairs": 59,
+      "missing_pairs": 1,
+      "mean_difference": 0.01918335901386749,
+      "gains": 10,
+      "ties": 41,
+      "losses": 8,
+      "dual_mean_f1_common": 0.6527303371271468,
+      "reference_mean_f1_common": 0.6335469781132792
+    },
+    "four_way_common": {
+      "pairs": 59,
+      "missing": 1,
+      "mean_f1": {
+        "single_original": 0.48397925385384066,
+        "dual_original_rewritten": 0.6527303371271468,
+        "frozen_s02": 0.5987423012348235,
+        "react": 0.6335469781132792
+      }
+    }
+  },
+  "fresh_by_dataset": {
+    "hotpotqa": {
+      "planned": 12,
+      "conditions": {
+        "single_original": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.5236111111111111,
+          "all_planned_f1_bounds": [
+            0.5236111111111111,
+            0.5236111111111109
+          ],
+          "statuses": {
+            "success": 12
+          },
+          "all_gold_docs_shown": 7,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2319.75,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.5916666666666667,
+          "all_planned_f1_bounds": [
+            0.5916666666666667,
+            0.5916666666666668
+          ],
+          "statuses": {
+            "success": 12
+          },
+          "all_gold_docs_shown": 9,
+          "rewrites": 8,
+          "steps_with_added_gold_docs": 2,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2320.4166666666665,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.7011904761904763,
+          "all_planned_f1_bounds": [
+            0.7011904761904763,
+            0.7011904761904763
+          ],
+          "statuses": {
+            "success": 12
+          }
+        },
+        "top10_v1": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.5424603174603174,
+          "all_planned_f1_bounds": [
+            0.5424603174603174,
+            0.5424603174603174
+          ],
+          "statuses": {
+            "success": 12
+          }
+        },
+        "react": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.7428571428571429,
+          "all_planned_f1_bounds": [
+            0.7428571428571429,
+            0.7428571428571429
+          ],
+          "statuses": {
+            "success": 12
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": 0.06805555555555555,
+        "gains": 2,
+        "ties": 10,
+        "losses": 0,
+        "dual_mean_f1_common": 0.5916666666666667,
+        "reference_mean_f1_common": 0.5236111111111111,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.1791666666666667
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": -0.10952380952380952,
+        "gains": 2,
+        "ties": 7,
+        "losses": 3,
+        "dual_mean_f1_common": 0.5916666666666667,
+        "reference_mean_f1_common": 0.7011904761904763,
+        "exploratory_paired95_ci": [
+          -0.35000000000000003,
+          0.14047619047619045
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": -0.15119047619047618,
+        "gains": 1,
+        "ties": 8,
+        "losses": 3,
+        "dual_mean_f1_common": 0.5916666666666667,
+        "reference_mean_f1_common": 0.7428571428571429,
+        "exploratory_paired95_ci": [
+          -0.40119047619047615,
+          0.05714285714285714
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 12,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.5236111111111111,
+          "dual_original_rewritten": 0.5916666666666667,
+          "frozen_s02": 0.7011904761904763,
+          "react": 0.7428571428571429
+        }
+      }
+    },
+    "2wiki": {
+      "planned": 12,
+      "conditions": {
+        "single_original": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.4806829908997092,
+          "all_planned_f1_bounds": [
+            0.4806829908997092,
+            0.48068299089970906
+          ],
+          "statuses": {
+            "success": 12
+          },
+          "all_gold_docs_shown": 5,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2945.3333333333335,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.826916221033868,
+          "all_planned_f1_bounds": [
+            0.826916221033868,
+            0.826916221033868
+          ],
+          "statuses": {
+            "success": 12
+          },
+          "all_gold_docs_shown": 11,
+          "rewrites": 18,
+          "steps_with_added_gold_docs": 10,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2951.0,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.8200067905950258,
+          "all_planned_f1_bounds": [
+            0.8200067905950258,
+            0.8200067905950258
+          ],
+          "statuses": {
+            "success": 12
+          }
+        },
+        "top10_v1": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.48132586367880487,
+          "all_planned_f1_bounds": [
+            0.48132586367880487,
+            0.4813258636788049
+          ],
+          "statuses": {
+            "success": 12
+          }
+        },
+        "react": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.8562091503267973,
+          "all_planned_f1_bounds": [
+            0.8562091503267973,
+            0.8562091503267973
+          ],
+          "statuses": {
+            "success": 12
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": 0.3462332301341589,
+        "gains": 5,
+        "ties": 7,
+        "losses": 0,
+        "dual_mean_f1_common": 0.826916221033868,
+        "reference_mean_f1_common": 0.48068299089970923,
+        "exploratory_paired95_ci": [
+          0.2102683178534572,
+          0.5079979360165119
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": 0.006909430438842197,
+        "gains": 1,
+        "ties": 10,
+        "losses": 1,
+        "dual_mean_f1_common": 0.826916221033868,
+        "reference_mean_f1_common": 0.8200067905950258,
+        "exploratory_paired95_ci": [
+          -0.0380952380952381,
+          0.05882352941176469
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 12,
+        "missing_pairs": 0,
+        "mean_difference": -0.029292929292929284,
+        "gains": 1,
+        "ties": 10,
+        "losses": 1,
+        "dual_mean_f1_common": 0.826916221033868,
+        "reference_mean_f1_common": 0.8562091503267973,
+        "exploratory_paired95_ci": [
+          -0.11818181818181815,
+          0.030303030303030304
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 12,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.48068299089970923,
+          "dual_original_rewritten": 0.826916221033868,
+          "frozen_s02": 0.8200067905950258,
+          "react": 0.8562091503267973
+        }
+      }
+    },
+    "musique": {
+      "planned": 12,
+      "conditions": {
+        "single_original": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.30194805194805197,
+          "all_planned_f1_bounds": [
+            0.2767857142857143,
+            0.3601190476190476
+          ],
+          "statuses": {
+            "provider_or_transport_missing": 1,
+            "success": 11
+          },
+          "all_gold_docs_shown": 1,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2770.2727272727275,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.48376623376623373,
+          "all_planned_f1_bounds": [
+            0.44345238095238093,
+            0.5267857142857141
+          ],
+          "statuses": {
+            "provider_or_transport_missing": 1,
+            "success": 10,
+            "success_truncated": 1
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 21,
+          "steps_with_added_gold_docs": 5,
+          "steps_with_displaced_gold_docs": 1,
+          "mean_final_prompt_tokens": 2759.181818181818,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.461038961038961,
+          "all_planned_f1_bounds": [
+            0.4226190476190476,
+            0.5059523809523808
+          ],
+          "statuses": {
+            "failed": 1,
+            "success": 11
+          }
+        },
+        "top10_v1": {
+          "available": 4,
+          "missing": 8,
+          "mean_f1_available": 0.25,
+          "all_planned_f1_bounds": [
+            0.08333333333333333,
+            0.75
+          ],
+          "statuses": {
+            "unstarted": 8,
+            "success": 4
+          }
+        },
+        "react": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.2380952380952381,
+          "all_planned_f1_bounds": [
+            0.2380952380952381,
+            0.23809523809523814
+          ],
+          "statuses": {
+            "algorithm_failure": 3,
+            "success": 9
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 11,
+        "missing_pairs": 1,
+        "mean_difference": 0.18181818181818182,
+        "gains": 2,
+        "ties": 9,
+        "losses": 0,
+        "dual_mean_f1_common": 0.48376623376623373,
+        "reference_mean_f1_common": 0.30194805194805197,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.36363636363636365
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 11,
+        "missing_pairs": 1,
+        "mean_difference": 0.022727272727272728,
+        "gains": 1,
+        "ties": 8,
+        "losses": 2,
+        "dual_mean_f1_common": 0.48376623376623373,
+        "reference_mean_f1_common": 0.461038961038961,
+        "exploratory_paired95_ci": [
+          -0.13636363636363635,
+          0.22727272727272727
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 11,
+        "missing_pairs": 1,
+        "mean_difference": 0.22402597402597405,
+        "gains": 3,
+        "ties": 7,
+        "losses": 1,
+        "dual_mean_f1_common": 0.48376623376623373,
+        "reference_mean_f1_common": 0.25974025974025977,
+        "exploratory_paired95_ci": [
+          0.03896103896103897,
+          0.45137987012986897
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 11,
+        "missing": 1,
+        "mean_f1": {
+          "single_original": 0.30194805194805197,
+          "dual_original_rewritten": 0.48376623376623373,
+          "frozen_s02": 0.461038961038961,
+          "react": 0.25974025974025977
+        }
+      }
+    }
+  },
+  "total_by_dataset": {
+    "hotpotqa": {
+      "planned": 20,
+      "conditions": {
+        "single_original": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.5641666666666667,
+          "all_planned_f1_bounds": [
+            0.5641666666666667,
+            0.5641666666666666
+          ],
+          "statuses": {
+            "success": 20
+          },
+          "all_gold_docs_shown": 11,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2368.25,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.655,
+          "all_planned_f1_bounds": [
+            0.655,
+            0.655
+          ],
+          "statuses": {
+            "success": 20
+          },
+          "all_gold_docs_shown": 15,
+          "rewrites": 15,
+          "steps_with_added_gold_docs": 5,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2366.45,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.6207142857142858,
+          "all_planned_f1_bounds": [
+            0.6207142857142858,
+            0.6207142857142856
+          ],
+          "statuses": {
+            "success": 20
+          }
+        },
+        "top10_v1": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.5921428571428572,
+          "all_planned_f1_bounds": [
+            0.5921428571428572,
+            0.5921428571428571
+          ],
+          "statuses": {
+            "success": 20
+          }
+        },
+        "react": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.779047619047619,
+          "all_planned_f1_bounds": [
+            0.779047619047619,
+            0.7790476190476191
+          ],
+          "statuses": {
+            "success": 20
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": 0.09083333333333334,
+        "gains": 3,
+        "ties": 17,
+        "losses": 0,
+        "dual_mean_f1_common": 0.655,
+        "reference_mean_f1_common": 0.5641666666666667
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": 0.034285714285714274,
+        "gains": 4,
+        "ties": 13,
+        "losses": 3,
+        "dual_mean_f1_common": 0.655,
+        "reference_mean_f1_common": 0.6207142857142858
+      },
+      "dual_minus_react": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": -0.12404761904761905,
+        "gains": 2,
+        "ties": 14,
+        "losses": 4,
+        "dual_mean_f1_common": 0.655,
+        "reference_mean_f1_common": 0.7790476190476191
+      },
+      "four_way_common": {
+        "pairs": 20,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.5641666666666667,
+          "dual_original_rewritten": 0.655,
+          "frozen_s02": 0.6207142857142858,
+          "react": 0.7790476190476191
+        }
+      }
+    },
+    "2wiki": {
+      "planned": 20,
+      "conditions": {
+        "single_original": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.4884097945398255,
+          "all_planned_f1_bounds": [
+            0.4884097945398255,
+            0.48840979453982564
+          ],
+          "statuses": {
+            "success": 20
+          },
+          "all_gold_docs_shown": 9,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2942.0,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.7794830659536542,
+          "all_planned_f1_bounds": [
+            0.7794830659536542,
+            0.7794830659536544
+          ],
+          "statuses": {
+            "success": 20
+          },
+          "all_gold_docs_shown": 19,
+          "rewrites": 29,
+          "steps_with_added_gold_docs": 17,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2947.5,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.6920040743570155,
+          "all_planned_f1_bounds": [
+            0.6920040743570155,
+            0.6920040743570155
+          ],
+          "statuses": {
+            "success": 20
+          }
+        },
+        "top10_v1": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.5221288515406163,
+          "all_planned_f1_bounds": [
+            0.5221288515406163,
+            0.5221288515406162
+          ],
+          "statuses": {
+            "success": 20
+          }
+        },
+        "react": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.7470588235294117,
+          "all_planned_f1_bounds": [
+            0.7470588235294117,
+            0.7470588235294116
+          ],
+          "statuses": {
+            "success": 20
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": 0.29107327141382866,
+        "gains": 7,
+        "ties": 12,
+        "losses": 1,
+        "dual_mean_f1_common": 0.7794830659536541,
+        "reference_mean_f1_common": 0.48840979453982547
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": 0.08747899159663866,
+        "gains": 3,
+        "ties": 15,
+        "losses": 2,
+        "dual_mean_f1_common": 0.7794830659536541,
+        "reference_mean_f1_common": 0.6920040743570156
+      },
+      "dual_minus_react": {
+        "pairs": 20,
+        "missing_pairs": 0,
+        "mean_difference": 0.03242424242424243,
+        "gains": 3,
+        "ties": 15,
+        "losses": 2,
+        "dual_mean_f1_common": 0.7794830659536541,
+        "reference_mean_f1_common": 0.7470588235294117
+      },
+      "four_way_common": {
+        "pairs": 20,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.48840979453982547,
+          "dual_original_rewritten": 0.7794830659536541,
+          "frozen_s02": 0.6920040743570156,
+          "react": 0.7470588235294117
+        }
+      }
+    },
+    "musique": {
+      "planned": 20,
+      "conditions": {
+        "single_original": {
+          "available": 19,
+          "missing": 1,
+          "mean_f1_available": 0.39490772385509226,
+          "all_planned_f1_bounds": [
+            0.37516233766233764,
+            0.42516233766233763
+          ],
+          "statuses": {
+            "success": 19,
+            "provider_or_transport_missing": 1
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2830.1052631578946,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 19,
+          "missing": 1,
+          "mean_f1_available": 0.5169172932330827,
+          "all_planned_f1_bounds": [
+            0.49107142857142855,
+            0.5410714285714284
+          ],
+          "statuses": {
+            "success": 18,
+            "provider_or_transport_missing": 1,
+            "success_truncated": 1
+          },
+          "all_gold_docs_shown": 7,
+          "rewrites": 33,
+          "steps_with_added_gold_docs": 10,
+          "steps_with_displaced_gold_docs": 2,
+          "mean_final_prompt_tokens": 2824.157894736842,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 19,
+          "missing": 1,
+          "mean_f1_available": 0.4774436090225564,
+          "all_planned_f1_bounds": [
+            0.45357142857142857,
+            0.5035714285714284
+          ],
+          "statuses": {
+            "success": 19,
+            "failed": 1
+          }
+        },
+        "top10_v1": {
+          "available": 12,
+          "missing": 8,
+          "mean_f1_available": 0.3666221033868093,
+          "all_planned_f1_bounds": [
+            0.21997326203208556,
+            0.6199732620320855
+          ],
+          "statuses": {
+            "success": 12,
+            "unstarted": 8
+          }
+        },
+        "react": {
+          "available": 20,
+          "missing": 0,
+          "mean_f1_available": 0.34285714285714286,
+          "all_planned_f1_bounds": [
+            0.34285714285714286,
+            0.34285714285714286
+          ],
+          "statuses": {
+            "success": 16,
+            "algorithm_failure": 4
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 19,
+        "missing_pairs": 1,
+        "mean_difference": 0.12200956937799044,
+        "gains": 3,
+        "ties": 16,
+        "losses": 0,
+        "dual_mean_f1_common": 0.5169172932330827,
+        "reference_mean_f1_common": 0.3949077238550923
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 19,
+        "missing_pairs": 1,
+        "mean_difference": 0.039473684210526314,
+        "gains": 2,
+        "ties": 15,
+        "losses": 2,
+        "dual_mean_f1_common": 0.5169172932330827,
+        "reference_mean_f1_common": 0.4774436090225564
+      },
+      "dual_minus_react": {
+        "pairs": 19,
+        "missing_pairs": 1,
+        "mean_difference": 0.15601503759398497,
+        "gains": 5,
+        "ties": 12,
+        "losses": 2,
+        "dual_mean_f1_common": 0.5169172932330827,
+        "reference_mean_f1_common": 0.3609022556390978
+      },
+      "four_way_common": {
+        "pairs": 19,
+        "missing": 1,
+        "mean_f1": {
+          "single_original": 0.3949077238550923,
+          "dual_original_rewritten": 0.5169172932330827,
+          "frozen_s02": 0.4774436090225564,
+          "react": 0.3609022556390978
+        }
+      }
+    }
+  },
+  "fresh_by_type": {
+    "2wiki/bridge_comparison": {
+      "planned": 3,
+      "conditions": {
+        "single_original": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.10526315789473684,
+          "all_planned_f1_bounds": [
+            0.10526315789473684,
+            0.10526315789473688
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 0,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2925.3333333333335,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 8,
+          "steps_with_added_gold_docs": 6,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2947.3333333333335,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "top10_v1": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.3333333333333333,
+          "all_planned_f1_bounds": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "react": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.8947368421052632,
+        "gains": 3,
+        "ties": 0,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 0.10526315789473684,
+        "exploratory_paired95_ci": [
+          0.6842105263157895,
+          1.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 3,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.10526315789473684,
+          "dual_original_rewritten": 1.0,
+          "frozen_s02": 1.0,
+          "react": 1.0
+        }
+      }
+    },
+    "2wiki/comparison": {
+      "planned": 3,
+      "conditions": {
+        "single_original": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 3034.6666666666665,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 4,
+          "steps_with_added_gold_docs": 1,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 3034.6666666666665,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "top10_v1": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "all_planned_f1_bounds": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "react": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 1.0,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 3,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 1.0,
+          "dual_original_rewritten": 1.0,
+          "frozen_s02": 1.0,
+          "react": 1.0
+        }
+      }
+    },
+    "2wiki/compositional": {
+      "planned": 3,
+      "conditions": {
+        "single_original": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.2828282828282828,
+          "all_planned_f1_bounds": [
+            0.2828282828282828,
+            0.2828282828282829
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 1,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2936.3333333333335,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6161616161616161,
+          "all_planned_f1_bounds": [
+            0.6161616161616161,
+            0.6161616161616162
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 2,
+          "rewrites": 3,
+          "steps_with_added_gold_docs": 1,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2936.6666666666665,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6161616161616161,
+          "all_planned_f1_bounds": [
+            0.6161616161616161,
+            0.6161616161616162
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "top10_v1": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.2222222222222222,
+          "all_planned_f1_bounds": [
+            0.2222222222222222,
+            0.22222222222222218
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "react": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.5555555555555555,
+          "all_planned_f1_bounds": [
+            0.5555555555555555,
+            0.5555555555555554
+          ],
+          "statuses": {
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.3333333333333333,
+        "gains": 1,
+        "ties": 2,
+        "losses": 0,
+        "dual_mean_f1_common": 0.6161616161616161,
+        "reference_mean_f1_common": 0.2828282828282828,
+        "exploratory_paired95_ci": [
+          0.0,
+          1.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 0.6161616161616161,
+        "reference_mean_f1_common": 0.6161616161616161,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.06060606060606061,
+        "gains": 1,
+        "ties": 2,
+        "losses": 0,
+        "dual_mean_f1_common": 0.6161616161616161,
+        "reference_mean_f1_common": 0.5555555555555555,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.1818181818181818
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 3,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.2828282828282828,
+          "dual_original_rewritten": 0.6161616161616161,
+          "frozen_s02": 0.6161616161616161,
+          "react": 0.5555555555555555
+        }
+      }
+    },
+    "2wiki/inference": {
+      "planned": 3,
+      "conditions": {
+        "single_original": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.534640522875817,
+          "all_planned_f1_bounds": [
+            0.534640522875817,
+            0.5346405228758169
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 1,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2885.0,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6915032679738563,
+          "all_planned_f1_bounds": [
+            0.6915032679738563,
+            0.6915032679738561
+          ],
+          "statuses": {
+            "success": 3
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 3,
+          "steps_with_added_gold_docs": 2,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2885.3333333333335,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6638655462184875,
+          "all_planned_f1_bounds": [
+            0.6638655462184875,
+            0.6638655462184874
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "top10_v1": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.7030812324929973,
+          "all_planned_f1_bounds": [
+            0.7030812324929973,
+            0.703081232492997
+          ],
+          "statuses": {
+            "success": 3
+          }
+        },
+        "react": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.869281045751634,
+          "all_planned_f1_bounds": [
+            0.869281045751634,
+            0.8692810457516339
+          ],
+          "statuses": {
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.1568627450980392,
+        "gains": 1,
+        "ties": 2,
+        "losses": 0,
+        "dual_mean_f1_common": 0.6915032679738563,
+        "reference_mean_f1_common": 0.534640522875817,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.4705882352941176
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": 0.02763772175536879,
+        "gains": 1,
+        "ties": 1,
+        "losses": 1,
+        "dual_mean_f1_common": 0.6915032679738563,
+        "reference_mean_f1_common": 0.6638655462184875,
+        "exploratory_paired95_ci": [
+          -0.1523809523809524,
+          0.23529411764705876
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 3,
+        "missing_pairs": 0,
+        "mean_difference": -0.17777777777777773,
+        "gains": 0,
+        "ties": 2,
+        "losses": 1,
+        "dual_mean_f1_common": 0.6915032679738563,
+        "reference_mean_f1_common": 0.869281045751634,
+        "exploratory_paired95_ci": [
+          -0.5333333333333332,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 3,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.534640522875817,
+          "dual_original_rewritten": 0.6915032679738563,
+          "frozen_s02": 0.6638655462184875,
+          "react": 0.869281045751634
+        }
+      }
+    },
+    "hotpotqa/bridge": {
+      "planned": 8,
+      "conditions": {
+        "single_original": {
+          "available": 8,
+          "missing": 0,
+          "mean_f1_available": 0.5354166666666667,
+          "all_planned_f1_bounds": [
+            0.5354166666666667,
+            0.5354166666666667
+          ],
+          "statuses": {
+            "success": 8
+          },
+          "all_gold_docs_shown": 3,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2414.625,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 8,
+          "missing": 0,
+          "mean_f1_available": 0.6375,
+          "all_planned_f1_bounds": [
+            0.6375,
+            0.6375
+          ],
+          "statuses": {
+            "success": 8
+          },
+          "all_gold_docs_shown": 5,
+          "rewrites": 5,
+          "steps_with_added_gold_docs": 2,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2415.625,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 8,
+          "missing": 0,
+          "mean_f1_available": 0.5517857142857143,
+          "all_planned_f1_bounds": [
+            0.5517857142857143,
+            0.5517857142857143
+          ],
+          "statuses": {
+            "success": 8
+          }
+        },
+        "top10_v1": {
+          "available": 8,
+          "missing": 0,
+          "mean_f1_available": 0.4386904761904762,
+          "all_planned_f1_bounds": [
+            0.4386904761904762,
+            0.4386904761904762
+          ],
+          "statuses": {
+            "success": 8
+          }
+        },
+        "react": {
+          "available": 8,
+          "missing": 0,
+          "mean_f1_available": 0.7392857142857143,
+          "all_planned_f1_bounds": [
+            0.7392857142857143,
+            0.7392857142857143
+          ],
+          "statuses": {
+            "success": 8
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 8,
+        "missing_pairs": 0,
+        "mean_difference": 0.10208333333333333,
+        "gains": 2,
+        "ties": 6,
+        "losses": 0,
+        "dual_mean_f1_common": 0.6375,
+        "reference_mean_f1_common": 0.5354166666666667,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.26875000000000004
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 8,
+        "missing_pairs": 0,
+        "mean_difference": 0.08571428571428572,
+        "gains": 2,
+        "ties": 5,
+        "losses": 1,
+        "dual_mean_f1_common": 0.6375,
+        "reference_mean_f1_common": 0.5517857142857143,
+        "exploratory_paired95_ci": [
+          -0.18214285714285716,
+          0.3895535714285675
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 8,
+        "missing_pairs": 0,
+        "mean_difference": -0.10178571428571428,
+        "gains": 1,
+        "ties": 5,
+        "losses": 2,
+        "dual_mean_f1_common": 0.6375,
+        "reference_mean_f1_common": 0.7392857142857143,
+        "exploratory_paired95_ci": [
+          -0.41428571428571426,
+          0.14821428571428572
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 8,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.5354166666666667,
+          "dual_original_rewritten": 0.6375,
+          "frozen_s02": 0.5517857142857143,
+          "react": 0.7392857142857143
+        }
+      }
+    },
+    "hotpotqa/comparison": {
+      "planned": 4,
+      "conditions": {
+        "single_original": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "all_planned_f1_bounds": [
+            0.5,
+            0.5
+          ],
+          "statuses": {
+            "success": 4
+          },
+          "all_gold_docs_shown": 4,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2130.0,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "all_planned_f1_bounds": [
+            0.5,
+            0.5
+          ],
+          "statuses": {
+            "success": 4
+          },
+          "all_gold_docs_shown": 4,
+          "rewrites": 3,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2130.0,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            1.0,
+            1.0
+          ],
+          "statuses": {
+            "success": 4
+          }
+        },
+        "top10_v1": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "all_planned_f1_bounds": [
+            0.75,
+            0.75
+          ],
+          "statuses": {
+            "success": 4
+          }
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "all_planned_f1_bounds": [
+            0.75,
+            0.75
+          ],
+          "statuses": {
+            "success": 4
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "dual_mean_f1_common": 0.5,
+        "reference_mean_f1_common": 0.5,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": -0.5,
+        "gains": 0,
+        "ties": 2,
+        "losses": 2,
+        "dual_mean_f1_common": 0.5,
+        "reference_mean_f1_common": 1.0,
+        "exploratory_paired95_ci": [
+          -1.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": -0.25,
+        "gains": 0,
+        "ties": 3,
+        "losses": 1,
+        "dual_mean_f1_common": 0.5,
+        "reference_mean_f1_common": 0.75,
+        "exploratory_paired95_ci": [
+          -0.75,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 4,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.5,
+          "dual_original_rewritten": 0.5,
+          "frozen_s02": 1.0,
+          "react": 0.75
+        }
+      }
+    },
+    "musique/2-hop": {
+      "planned": 4,
+      "conditions": {
+        "single_original": {
+          "available": 3,
+          "missing": 1,
+          "mean_f1_available": 0.5238095238095238,
+          "all_planned_f1_bounds": [
+            0.3928571428571429,
+            0.6428571428571428
+          ],
+          "statuses": {
+            "provider_or_transport_missing": 1,
+            "success": 3
+          },
+          "all_gold_docs_shown": 1,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2363.6666666666665,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 3,
+          "missing": 1,
+          "mean_f1_available": 0.8571428571428572,
+          "all_planned_f1_bounds": [
+            0.6428571428571429,
+            0.8928571428571428
+          ],
+          "statuses": {
+            "provider_or_transport_missing": 1,
+            "success": 3
+          },
+          "all_gold_docs_shown": 2,
+          "rewrites": 3,
+          "steps_with_added_gold_docs": 1,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2365.0,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 3,
+          "missing": 1,
+          "mean_f1_available": 0.8571428571428572,
+          "all_planned_f1_bounds": [
+            0.6428571428571429,
+            0.8928571428571428
+          ],
+          "statuses": {
+            "failed": 1,
+            "success": 3
+          }
+        },
+        "top10_v1": {
+          "available": 1,
+          "missing": 3,
+          "mean_f1_available": 1.0,
+          "all_planned_f1_bounds": [
+            0.25,
+            1.0
+          ],
+          "statuses": {
+            "unstarted": 3,
+            "success": 1
+          }
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.6428571428571429,
+          "all_planned_f1_bounds": [
+            0.6428571428571429,
+            0.6428571428571428
+          ],
+          "statuses": {
+            "algorithm_failure": 1,
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 3,
+        "missing_pairs": 1,
+        "mean_difference": 0.3333333333333333,
+        "gains": 1,
+        "ties": 2,
+        "losses": 0,
+        "dual_mean_f1_common": 0.8571428571428572,
+        "reference_mean_f1_common": 0.5238095238095238,
+        "exploratory_paired95_ci": [
+          0.0,
+          1.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 3,
+        "missing_pairs": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 0.8571428571428572,
+        "reference_mean_f1_common": 0.8571428571428572,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 3,
+        "missing_pairs": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 0.8571428571428572,
+        "reference_mean_f1_common": 0.8571428571428572,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 3,
+        "missing": 1,
+        "mean_f1": {
+          "single_original": 0.5238095238095238,
+          "dual_original_rewritten": 0.8571428571428572,
+          "frozen_s02": 0.8571428571428572,
+          "react": 0.8571428571428572
+        }
+      }
+    },
+    "musique/3-hop": {
+      "planned": 4,
+      "conditions": {
+        "single_original": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.0625,
+          "all_planned_f1_bounds": [
+            0.0625,
+            0.0625
+          ],
+          "statuses": {
+            "success": 4
+          },
+          "all_gold_docs_shown": 0,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2746.75,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.3125,
+          "all_planned_f1_bounds": [
+            0.3125,
+            0.3125
+          ],
+          "statuses": {
+            "success": 4
+          },
+          "all_gold_docs_shown": 1,
+          "rewrites": 7,
+          "steps_with_added_gold_docs": 2,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 2738.0,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.125,
+          "all_planned_f1_bounds": [
+            0.125,
+            0.125
+          ],
+          "statuses": {
+            "success": 4
+          }
+        },
+        "top10_v1": {
+          "available": 3,
+          "missing": 1,
+          "mean_f1_available": 0.0,
+          "all_planned_f1_bounds": [
+            0.0,
+            0.25
+          ],
+          "statuses": {
+            "success": 3,
+            "unstarted": 1
+          }
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.07142857142857142,
+          "all_planned_f1_bounds": [
+            0.07142857142857142,
+            0.0714285714285714
+          ],
+          "statuses": {
+            "algorithm_failure": 1,
+            "success": 3
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.25,
+        "gains": 1,
+        "ties": 3,
+        "losses": 0,
+        "dual_mean_f1_common": 0.3125,
+        "reference_mean_f1_common": 0.0625,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.75
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.1875,
+        "gains": 1,
+        "ties": 2,
+        "losses": 1,
+        "dual_mean_f1_common": 0.3125,
+        "reference_mean_f1_common": 0.125,
+        "exploratory_paired95_ci": [
+          -0.1875,
+          0.75
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.24107142857142858,
+        "gains": 1,
+        "ties": 2,
+        "losses": 1,
+        "dual_mean_f1_common": 0.3125,
+        "reference_mean_f1_common": 0.07142857142857142,
+        "exploratory_paired95_ci": [
+          -0.026785714285714274,
+          0.75
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 4,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.0625,
+          "dual_original_rewritten": 0.3125,
+          "frozen_s02": 0.125,
+          "react": 0.07142857142857142
+        }
+      }
+    },
+    "musique/4-hop": {
+      "planned": 4,
+      "conditions": {
+        "single_original": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.375,
+          "all_planned_f1_bounds": [
+            0.375,
+            0.375
+          ],
+          "statuses": {
+            "success": 4
+          },
+          "all_gold_docs_shown": 0,
+          "rewrites": 0,
+          "steps_with_added_gold_docs": 0,
+          "steps_with_displaced_gold_docs": 0,
+          "mean_final_prompt_tokens": 3098.75,
+          "all_original_top10_preserved": true
+        },
+        "dual_original_rewritten": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.375,
+          "all_planned_f1_bounds": [
+            0.375,
+            0.375
+          ],
+          "statuses": {
+            "success": 3,
+            "success_truncated": 1
+          },
+          "all_gold_docs_shown": 0,
+          "rewrites": 11,
+          "steps_with_added_gold_docs": 2,
+          "steps_with_displaced_gold_docs": 1,
+          "mean_final_prompt_tokens": 3076.0,
+          "all_original_top10_preserved": true
+        }
+      },
+      "historical_references": {
+        "frozen_s02": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "all_planned_f1_bounds": [
+            0.5,
+            0.5
+          ],
+          "statuses": {
+            "success": 4
+          }
+        },
+        "top10_v1": {
+          "available": 0,
+          "missing": 4,
+          "mean_f1_available": null,
+          "all_planned_f1_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "unstarted": 4
+          }
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.0,
+          "all_planned_f1_bounds": [
+            0.0,
+            0.0
+          ],
+          "statuses": {
+            "success": 3,
+            "algorithm_failure": 1
+          }
+        }
+      },
+      "dual_minus_single": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "dual_mean_f1_common": 0.375,
+        "reference_mean_f1_common": 0.375,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_frozen_s02": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": -0.125,
+        "gains": 0,
+        "ties": 3,
+        "losses": 1,
+        "dual_mean_f1_common": 0.375,
+        "reference_mean_f1_common": 0.5,
+        "exploratory_paired95_ci": [
+          -0.375,
+          0.0
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "dual_minus_react": {
+        "pairs": 4,
+        "missing_pairs": 0,
+        "mean_difference": 0.375,
+        "gains": 2,
+        "ties": 2,
+        "losses": 0,
+        "dual_mean_f1_common": 0.375,
+        "reference_mean_f1_common": 0.0,
+        "exploratory_paired95_ci": [
+          0.0,
+          0.75
+        ],
+        "ci_note": "10000 within-dataset/type bootstrap resamples; conditional on these small reference-plan strata, not a proof of general superiority"
+      },
+      "four_way_common": {
+        "pairs": 4,
+        "missing": 0,
+        "mean_f1": {
+          "single_original": 0.375,
+          "dual_original_rewritten": 0.375,
+          "frozen_s02": 0.5,
+          "react": 0.0
+        }
+      }
+    }
+  },
+  "expansion_returned_usage_list_price_cny": 0.531486,
+  "expansion_unresolved_reserved_cny": 0.054797599999999995,
+  "global_returned_usage_list_price_cny": 140.23158279999998,
+  "global_unresolved_reserved_cny": 12.9805408,
+  "api_execution": {
+    "api\\2wiki": {
+      "requests": {},
+      "attempts": {}
+    },
+    "api\\2wiki_native_v2": {
+      "requests": {
+        "success": 101
+      },
+      "attempts": {
+        "success": 101,
+        "unknown": 2
+      }
+    },
+    "api\\hotpotqa": {
+      "requests": {
+        "success": 69
+      },
+      "attempts": {
+        "success": 69,
+        "unknown": 3
+      }
+    },
+    "api\\musique_native_v2": {
+      "requests": {
+        "failed": 2,
+        "success": 102
+      },
+      "attempts": {
+        "failed": 2,
+        "success": 102,
+        "unknown": 1
+      }
+    },
+    "baseline400_exact_probe": {
+      "requests": {
+        "failed": 1
+      },
+      "attempts": {
+        "failed": 1
+      }
+    },
+    "frozen_s02_musique_new12": {
+      "requests": {
+        "failed": 1,
+        "success": 51
+      },
+      "attempts": {
+        "failed": 1,
+        "success": 51,
+        "unknown": 2
+      }
+    },
+    "react_musique_missing8": {
+      "requests": {
+        "success": 25
+      },
+      "attempts": {
+        "success": 25
+      }
+    }
+  },
+  "frozen_hash_checks": {
+    "cases": true,
+    "runner": true,
+    "protocol": true,
+    "prompts": true,
+    "native_continuation": true
+  },
+  "limitations": [
+    "Question-only reference decompositions are an assumed ideal condition, not independent human oracle labels.",
+    "Frozen S02 uses actual4B outputs; comparison includes decomposition and execution changes.",
+    "Matched single/dual comparison isolates the optional rewriting-and-extra-retrieval flow, with added compute.",
+    "No independent complete-sentence or mandatory-binding ablation.",
+    "Report available denominators and full-planned bounds; API missingness is not F1 zero.",
+    "Gold-document visibility does not prove factual entailment or final evidence coverage."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "utc": "2026-10-20T12:24:06.679196+00:00",
+  "passed": true,
+  "native_predictions_independently_parsed_and_scored": 300,
+  "per_dataset_n": {
+    "hotpotqa": 100,
+    "2wiki": 100,
+    "musique": 100
+  },
+  "statuses": {
+    "success": 297,
+    "algorithm_failure": 3
+  },
+  "final_F1": 0.6778709422761149,
+  "by_dataset_F1": {
+    "hotpotqa": 0.7281984126984125,
+    "2wiki": 0.9270433455433456,
+    "musique": 0.37837106858658587
+  },
+  "full_payload_usage_receipts_checked": 1474,
+  "source_union_logical_calls": 1774,
+  "removed_legacy_goal_formatter_final_calls": 600,
+  "new_terminal_goal_calls": 300,
+  "new_logical_calls": 1474,
+  "prompt_tokens": 2526503,
+  "completion_tokens": 33730,
+  "equal_rate_modeled_generation_cny": 2.0886624,
+  "goal_document_blocks_preserved": 4633,
+  "ordinary_QA_nodes_and_all_prefix_receipts_unchanged": true,
+  "successful_cases_or_payloads_rerun": false,
+  "only_terminal_goal_new_physical_requests": true,
+  "actual_new_costs_match_namespace_budget": true,
+  "global_budget_occupied_cny": 226.34631400000046,
+  "global_budget_cap_cny": 300,
+  "algorithm_failure_raw_outputs_scored_zero": [
+    {
+      "id": "2wiki:16a91a500bb011ebab90acde48001122",
+      "finish_reason": "length",
+      "raw": "Conclusion: Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.  \nFinal answer: Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy",
+      "scored_f1": 0.0
+    },
+    {
+      "id": "2wiki:f37818400bd911eba7f7acde48001122",
+      "finish_reason": "length",
+      "raw": "Conclusion: Friedrich Kettler, Elisabeth Magdalena of Pomerania's husband, died in Mitau (now Jelgava), as indicated by his birthplace listed in the passage and the absence of any conflicting death location; the passage states he was born \"25 November 1569 in Mitau (now Jelgava)\" and died \"17 August 1642\", but does not explicitly state where he died—however, given he ruled Courland continuously until his death in 1642 and no other location is cited for his death, and Mitau/Jelg",
+      "scored_f1": 0.0
+    },
+    {
+      "id": "musique:3hop1__691197_15840_36002",
+      "finish_reason": "length",
+      "raw": "Conclusion: The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound over the NES’s 8-bit architecture, a larger library of games, a lower price point, stronger third-party support due to less strict licensing terms, and marketing positioning targeting older gamers with more mature titles and edgy advertisements.\nFinal answer: The Sega Genesis had a 16-bit architecture offering improved graphics and sound, a larger library of games, a lower price point, stronger third-party support due to less strict licensing terms, and marketing targeting older gamers with more mature titles and edgy advertisements.",
+      "scored_f1": 0.0
+    }
+  ],
+  "numeric_noninferiority_margin": null,
+  "automatic_adoption_claimed": false,
+  "report_sha256": "75eb6e5dadaf6599521384f3ad3c4cf58eb8884bed722bf790ec0c11976f030f",
+  "verification_source_sha256": "aa69136fff5f9ce3db1ebc470e44bd22f1159857edc1a4141149ba32a3d1ea62",
+  "new_API_calls": 0,
+  "new_index_searches": 0
+}

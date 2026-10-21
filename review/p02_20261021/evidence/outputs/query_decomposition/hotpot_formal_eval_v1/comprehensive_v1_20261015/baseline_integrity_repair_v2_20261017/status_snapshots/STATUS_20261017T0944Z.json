@@ -1,0 +1,203 @@
+{
+  "utc": "2026-10-17T09:44:38.006144+00:00",
+  "generation_progress": {
+    "utc": "2026-10-17T08:21:22.272448+00:00",
+    "status": "stopped_for_audit",
+    "error": "ValueError",
+    "reason": "Immutable method state differs: request_origin/a2a7d5416b2243e51f6b191798f0e0d07f2be694e9741ec1d1ee6c1e811e250a",
+    "budget": {
+      "cap_cny": 200,
+      "returned_usage_list_price_cny": 146.9985396,
+      "unreconciled_reserved_cny": 20.125337599999998,
+      "submission_attempts": 86365,
+      "actual_bill_verified": false
+    }
+  },
+  "dev_gate_passed": true,
+  "formal": [
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "success": 500
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 500,
+        "missing": 0,
+        "f1_available": 0.5330801368566073,
+        "em_available": 0.46,
+        "f1_all_planned_bounds": [
+          0.5330801368566073,
+          0.5330801368566073
+        ],
+        "statuses": {
+          "success": 500
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "provider_content_rejected": 1,
+        "success": 499
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 499,
+        "missing": 1,
+        "f1_available": 0.3891990329866082,
+        "em_available": 0.3587174348697395,
+        "f1_all_planned_bounds": [
+          0.388420634920635,
+          0.390420634920635
+        ],
+        "statuses": {
+          "success": 499,
+          "provider_content_rejected": 1
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "algorithm_failure": 118,
+        "success": 381,
+        "unknown": 1
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 499,
+        "missing": 1,
+        "f1_available": 0.5228411478552628,
+        "em_available": 0.4589178356713427,
+        "f1_all_planned_bounds": [
+          0.5217954655595524,
+          0.5237954655595524
+        ],
+        "statuses": {
+          "success": 381,
+          "algorithm_failure": 118,
+          "unknown": 1
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "algorithm_failure": 6,
+        "provider_content_rejected": 1,
+        "success": 493
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 499,
+        "missing": 1,
+        "f1_available": 0.8338135053153327,
+        "em_available": 0.7675350701402806,
+        "f1_all_planned_bounds": [
+          0.832145878304702,
+          0.834145878304702
+        ],
+        "statuses": {
+          "success": 493,
+          "algorithm_failure": 6,
+          "provider_content_rejected": 1
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "success": 499,
+        "unknown": 1
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 499,
+        "missing": 1,
+        "f1_available": 0.7528189134401558,
+        "em_available": 0.7094188376753507,
+        "f1_all_planned_bounds": [
+          0.7513132756132755,
+          0.7533132756132755
+        ],
+        "statuses": {
+          "success": 499,
+          "unknown": 1
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "terminal_records_current": 500,
+      "statuses_current": {
+        "success": 500
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 500,
+        "available": 500,
+        "missing": 0,
+        "f1_available": 0.47799365079365086,
+        "em_available": 0.436,
+        "f1_all_planned_bounds": [
+          0.47799365079365086,
+          0.47799365079365086
+        ],
+        "statuses": {
+          "success": 500
+        }
+      },
+      "scores_up_to_date": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "terminal_records_current": 63,
+      "statuses_current": {
+        "algorithm_failure": 7,
+        "success": 56
+      },
+      "last_written_scores": {
+        "planned": 500,
+        "terminal_records": 60,
+        "available": 60,
+        "missing": 440,
+        "f1_available": 0.6865079365079365,
+        "em_available": 0.6333333333333333,
+        "f1_all_planned_bounds": [
+          0.08238095238095237,
+          0.9623809523809524
+        ],
+        "statuses": {
+          "success": 53,
+          "algorithm_failure": 7,
+          "unstarted": 440
+        }
+      },
+      "scores_up_to_date": false
+    }
+  ],
+  "new_api_calls_by_this_status_check": 0
+}

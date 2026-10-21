@@ -1,0 +1,33 @@
+2026-10-17 | 多粒度、自包含子问题＋完整句传递＋可选改写双路检索 | 小样本诊断
+
+用户授权：从当前三个评估数据集中选取原方法成功和失败 query，假设分解正确，实际执行检索、子问题回答及最终回答，检查收益及执行问题。存在不明确选择时直接询问。
+训练文本修订及数据扩展继续暂停；本目录不生成训练标签、不训练模型、不更改正式评估或冻结方法。
+
+样本准备：每数据集历史 F1=1 四题、F1=0 四题，共24题；类型覆盖的定向样本，不能据此估计总体F1收益或失败原因比例。
+HotpotQA/2Wiki 使用当前冻结 S02 的 formal500 逐题结果。MuSiQue 尚无 S02 结果，先在独立目录上运行冻结 formal500 顺序前24题的原 S02，再选取成功/失败。其既有其他基线也尚未全部完成，不能写成全量已完成。
+原方法筛选使用实际远端4B输出，不人为修正；候选方案使用基于 query 编写的自包含分解。对比历史方法时存在分解及执行方案同时变化，因此已询问是否加入同一理想分解的单路检索对照。
+分解草案仅使用原 query，未知实体保持描述，不从标准答案、支持文档或原模型答案填入。所谓“理想分解”是本轮固定参考计划的实验假设，不声称获得人工金标或正确性证明。
+
+候选方案三个待答问题：
+1. goal 是否单独检索、生成完整句，再进入最终辅助材料。
+2. 是否增加相同理想分解、完整句传递的原始子问题单路检索对照。
+3. 两路各 Top10 后，交替去重保留10篇，还是全部去重并集最多20篇。
+三个答案到达前，不发送候选方案API请求；独立推进原方法筛选、样本及代码准备。
+
+完整句传递：每步实际生成的完整实体—关系—结果语句，既提供给下一步检索改写，也作为最终辅助材料。保留限定和缺答语义；不将 None、零或否定统一作机械筛除。
+前置信息仅作可选帮助。改写失败或前置缺答时，原始子问题仍可执行；改写不替换原始回答目标。
+最终原始 Top10 保留，沿用冻结辅助位置和最终 reader。两路候选与实际输入文档分别记录，保留重叠、截断和原路证据被挤出的情况。
+调用、响应、改写前后 query、文档、每步完整回答和最终 F1 均保留。方法目录与正式评估隔离，仅共享不可变资源及总预算账本。
+
+基础设施事件：首次筛选调用在受限环境中发生 DNS 及备用 DNS 解析失败。保留原9次失败尝试和预算预留；在外部网络下验证同一阿里主机的DNS、正常证书校验TLS1.3成功后，使用新的网络执行命名空间继续同样的冻结方法。
+原请求在DNS阶段未建立提供方TCP/TLS连接，依据保存在DNS_PRE_SUBMISSION_RECONCILIATION.json；不删除原日志或假装它们返回了答案。新网络执行已出现成功响应。
+
+用户已确认执行设置：goal 也检索和生成完整句，并进入最终辅助材料；同时运行同理想分解的单路与双路对照；两路各Top10，按名次交替、去重、原始路优先保留10篇。最佳基线的具体含义另行询问，作为离线报告参照，不改变生成配置。
+
+原方法MuSiQue筛选已完成24/24，F1=1有9题、F1=0有7题；按预定规则抽取各4题。全24题案例与问题式分解已冻结并由当前Codex语境逐条核对，无新增事实答案。用户澄清不要求寻找最强基线：报告冻结S02作为主要历史参照，已有Top10/ReAct作为额外参照。
+
+OFFLINE_REPORT_ONLY: added actual per-node document changes, coverage, short-answer formatting-call counts, API usage/status and frozen generation-hash checks. Generation code, frozen questions, prompts, merge policy and histories unchanged.
+
+TRANSPORT_AUDIT_CLARIFICATION: observed one MuSiQue ConnectionResetError/10054 attempt with unknown status, followed by successful completion under inherited common.runtime.Transport bounded in-process retry policy. This existing policy permits at most two retries for newly issued requests, keeps unknown liability reservations, and takes the first complete response; a restart does not automatically replay unknown request records. Pilot runtime was not changed. Added attempt-status counts to offline report, so successful logical calls do not conceal failed network attempts.
+
+COMPLETED: 24 cases x 2 conditions, all48 outputs successful, no missing logical responses. Shared generation source/config/prompts hashes unchanged. Offline exact-trace review found 5 target-changing rewrites among30 changed expressions; this review was not used to rerun or filter answers. Three transient main-pilot unknown attempts (one per dataset) recovered via the inherited bounded in-process policy; their fee reservations remain. Completion, budget and raw traces recorded separately.

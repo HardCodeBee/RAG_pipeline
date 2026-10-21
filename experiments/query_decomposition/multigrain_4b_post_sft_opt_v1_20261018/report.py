@@ -1,0 +1,81 @@
+"""Write concrete diagnostic evidence separately from optimization outcomes."""
+from prepare import HERE, OUT, OLD, TRAIN, DEV, rows, write, family
+import collections, json, unicodedata
+
+DETAILS = {
+2: ('死亡地点关系被改坏', '原题要“艺术家的死亡城市”，输出变成“哪座城市在战争中死去”。人物→死亡地点的关系被破坏；战争条件也未成为可独立解释的需求。', '先完整抽出艺术家身份、该艺术家的死亡城市、满足原文时间描述的战争，保留“之后”而不推成“导致”。'),
+4: ('故事→作者的中间层缺失', '虽然问到了故事，但跳过故事作者身份；书籍问题又把“电影基于一本书”变成“在一本书中拍摄”。既有覆盖问题，也有关系表达问题。', '按作者The Hope→出现该作者的故事→该故事作者→电影基于的书→拍摄州逐层保留；每问仍用完整原始描述。'),
+17: ('疑似拼写错误被纳入片名', '原句为“What star if the Burbs was Canadian?”，输出把“If the Burbs”作为标题。原句本身不规范；仅凭query不能把所有责任确定归于模型。', '列为源文本风险，不设计按ID或片名硬编码修复；后续单列噪声文本诊断。冻结原判不改分。'),
+40: ('跨过相邻城市直接问县', '已有州和州府，最后却直接问“包含相邻城市的县”，未显式识别相邻城市。该最后一问接近原目标，可能答对县；此失败并不证明它歪曲了事实。', '保留“哪个城市与Erskine College所在州的州府相邻”这一独立中间需求，县由程序追加的原题查询处理。'),
+44: ('work这一层未展开且原题有歧义', '输出识别作者和作品的解释版本，但未单独识别work。若原句work回指The Canon of Medicine，是否需要额外作品身份问题有争议。', '保留冻结C标签；在报告中明确这是完整性标准的判定，不能直接称为事实错误。不要通过新增无依据的作品名称“纠错”。'),
+48: ('短篇故事→作者→书籍关系不完整', '遗漏短篇故事身份；书籍问题成为泛泛询问该作者写了什么书，未保留与Storm of the Century的based-on限制。', '保留短篇故事身份及作者，再限定为该电影基于的书；不能用任意一本该作者的书代替。'),
+50: ('电视剧身份条件被缩短', '仅剩“Matt McKenzie出演过哪部剧”，丢掉“青少年朋友的生活”和“威斯康星小镇”等描述。演员有多部作品时，检索对象会不确定。', '电视剧识别问句保留演员、青少年朋友生活和威斯康星小镇三部分；不猜剧名或小镇名。'),
+59: ('未显式识别祖父母', '只有“Spielberg祖父母来自哪个国家”。这本身是有意义且可独立检索的问题；失败来自冻结标准要求额外浅层身份问题。', '把它与语义错误分开看。可以测试增加祖父母身份是否有用，但不能声称现有问句错误或一定不能回答，更不能强制依赖该身份题成功。'),
+60: ('职位被不必要地展开为任职者', '已问作者和死亡城市，又问该城市的Governor是谁；原题问的是Governor职位何时结束。无时间限定的任职者身份并非必要前提。', '保留城市需求，原题处理职位撤销时间；避免把每个名词都机械转成“是谁”。'),
+61: ('身份条件和时态丢失', 'American metalcore、mid-2009被删掉；“lead vocalist was Jerry Roush”被改成“has Jerry Roush as its lead vocalist”，还引入现任关系。', '完整保留类型、成立时间以及过去的主唱关系；不使用现任关系替换过去关系。'),
+72: ('别名没有传入独立问句', 'Barak的括注别名Bosnian Coarse-haired Hound被丢掉。该问句未必会答错，但独立检索失去原题已提供的消歧信息。', 'Barak子问题同时保留别名；不额外检索已提供的“Barak还叫什么”事实。'),
+74: ('已知剧集标题的身份重问', '原题已给South Park和White People Renovating Houses，模型又问这是哪一集；没有清楚暴露新的中间对象。', '如果没有额外前提需求，返回空数组，由原题查整体集数；不为凑步骤而复制目标。原句语法异常也单独保留。'),
+81: ('重复原题目标', '宗教问题有用，第二问的Nigerians/2010/percentage目标与原题等价，而程序还会追加原题。', '保留Avicenna宗教需求即可。冗余不等于回答内容虚假，也不等于下游一定受损。'),
+102: ('Martin丢失地区绑定', '原句虽不通顺，但地区/Navardun修饰Martin。输出把地区问题与无任何限定的“Where did Martin die?”分开，独立检索时不知道是哪位Martin。', '每个Martin问句保留“Navardun所在行政区域的Martin”全描述，同时显式识别该Martin；不填入猜测的人名或地区。'),
+104: ('国家身份的邻近条件丢失', '前面识别小说作者和国籍，但目标国家只剩“首次参加1952 Olympics的国家”，丢掉“在该作者国籍国附近”。', '国家身份问句同时保留首次参赛年份与邻近哪个国家的完整描述；先前问答不能代替独立问句中的绑定。'),
+105: ('把技术特征身份换成驱动器列表', '原题有“1.1是首个广泛使用版本的特征”和“关机后仍供电的特征”两个层次，输出先查有哪些驱动器，而未可靠识别前一个特征。', '先问1.1版本所标识的特征是什么，再保留完整技术关系；不猜协议名，也不增加驱动器清单。'),
+108: ('largest和built after的附着没有保住', '输出“What house is the Pappas house the largest of ...”未识别Pappas house之前的那座房屋。', '单独识别“Pappas house在其之后建造的房屋”，保留built after方向；原句附着不清也记录为源文本风险。'),
+117: ('共同条件被拆成两个对象', '原题是“决定US House和US Senate规则的body”，输出分别查两院各自的body。若两者不是同一个对象，独立答案无法保证保持原题共同绑定。', '可以分别问两人所属党派，但body身份问句要同时保留两院条件；不能用两个独立body查询替代共同对象。'),
+118: ('侦探和受害者的工作关系混淆', '受害者在餐厅工作、Fuhrman任侦探，被写成“Fuhrman在哪家餐厅当侦探工作”。行为主体和关系附着都发生变化。', '保留受害者→餐厅、侦探→案件的不同关系；原句which的先行词不清时避免生成新的就业事实。'),
+119: ('州府之后的相邻地点缺失', '州和州府已经暴露，但“与州府接壤的地点”没有成为子问题；原题最终问该地点所在县。', '增加相邻地点的身份问题，继续使用原题完整描述，而不是把原题县目标提前当辅助结果。'),
+126: ('Martin只保留裸姓名', '前问Layana在哪个region，后问Martin死亡城市，但没有“Layana所在region的Martin”描述。由于每问单独检索，前一个region答案不能自动消除Martin歧义。', '身份、死亡城市问题都保留完整地区修饰；地区、Martin、死亡城市三个粒度可并存，不能强行用前一题短答案替换。'),
+139: ('先后关系改为因果', '原题是冲突“之后”政府介入医疗，输出问哪个冲突“led the government to”介入医疗，增加因果断言。', '用“was followed by”或保留after which，不以常识补出因果；艺术家死亡与焚城也要保持各自时间附着。')}
+
+def main():
+    stats=json.loads((OUT/'diagnosis/STATS.json').read_text(encoding='utf-8'))
+    failures=rows(OUT/'diagnosis/ALL22_FAILURES.jsonl')
+    assert set(DETAILS)=={x['index'] for x in failures}
+    norm=lambda s:' '.join(unicodedata.normalize('NFKC',s).casefold().split()).strip(' ?!.')
+    train,dev=rows(TRAIN),rows(DEV)
+    train_text={norm(x['query']) for x in train}
+    ids={x['source']['id'] for x in train}
+    check={'train_dev_exact_normalized_text_overlap':sum(norm(x['query']) in train_text for x in dev),
+           'train_dev_native_id_overlap':sum(x['qid'] in ids for x in dev)}
+    assert check=={'train_dev_exact_normalized_text_overlap':0,'train_dev_native_id_overlap':0}
+    write(OUT/'diagnosis/EXACT_OVERLAP_CHECK.json',check)
+    lines=['冻结基线与逐题错误分析','',
+    '范围：3500条训练后的checkpoint165＋v12；dev150，每数据集50题。128通过、22失败。基线权重、prompt、数据、判分均冻结。',
+    '本报告只使用dev150及训练query/标签，不读取原正式300题输出用于优化。此审阅是当前Codex query-only审阅，不是独立人工金标，也不是下游RAG Answer F1。','',
+    '一、错误共同点',
+    '按人工主因互斥归组：中间需求覆盖7/22（31.82%）；身份限定/绑定7/22（31.82%）；关系或附着5/22（22.73%）；不必要需求3/22（13.64%）。一题可能同时含其他问题，不能把主因频率当作因果贡献。',
+    '冻结F/S/C/U标记可重叠：F14、S4、C12、U4。14题有F标记；8题没有F标记，不能说22题都歪曲了正确事实。原句风险单独人工标记，不从分母删除，不改基线分数。',
+    'Hotpot：桥接29/35、比较14/15；失败主要是长识别短语被缩短、别名丢失、关系附着错误。MuSiQue：2跳14/18、3跳13/17、4跳8/15；覆盖主因7题全部出自MuSiQue。',
+    '步骤多并不保证保留关系：#4、#48都生成较长数组，仍漏桥或问错对象。应同时看忠实度与中间覆盖，不能只要求输出更多问题。','',
+    '二、为什么本次2Wiki可以50/50',
+    '本次样本构成为comparison13、inference13、compositional12、bridge_comparison12，四类均全通过。',
+    '观察到的问题主要是对两个名字取同一属性、把祖父母/姻亲拆为两段亲属关系、识别作品作者/导演、分别取两个导演的日期。关系词和命名对象边界比复杂MuSiQue更显式。',
+    '训练集中已有2Wiki710条：comparison177、inference180、compositional178、bridge_comparison175。其广义题型均覆盖本次dev题型。Hotpot训练条数反而更多，因此不能把差异单独归因于样本数量。',
+    '2Wiki dev广义问题家族：'+json.dumps(stats['2wiki_dev_families'],ensure_ascii=False),
+    '2Wiki train广义问题家族：'+json.dumps(stats['2wiki_train_families'],ensure_ascii=False),
+    '这些是可复核的粗粒度诊断规则，不是官方模板ID，不证明逐题模板完全相同，更不证明模型只在背诵。',
+    '本次独立重查训练/dev：ID和规范化query精确重合均为0；未证明不存在语义近似题或预训练暴露。',
+    '50/50只代表这50题。即便假设独立同分布，二项分布95%双侧精确区间下界也约92.89%；存在题型相关时，不能把它当作全部2Wiki100%正确率。',
+    '2Wiki论文明确采用预设模板和逻辑规则生成问题，这与观察一致；论文仍将其视为多跳QA挑战。分解容易不等于检索或回答容易。',
+    '来源：Constructing A Multi-hop QA Dataset for Comprehensive Evaluation of Reasoning Steps, COLING2020, https://aclanthology.org/2020.coling-main.580.pdf',
+    'MuSiQue论文以相互依赖的单跳问题组合构造2–4跳问题；这解释其结构差异，但不能直接证明本地错误由数据构造造成。来源：https://aclanthology.org/2022.tacl-1.31/','',
+    '实际同类例子：训练“Who is younger, Steve Courtin or Yevgeny Primakov Jr.?”取两人的出生日期；dev“Who is younger, Panayiotis Pounnas or Primož Čučnik?”同样取出生日期。',
+    '实际同类例子：训练“Who is the maternal grandfather of Princess Alexandra Of Hanover (Born 1999)?”取母亲再取母亲的父亲；dev“Who is the maternal grandmother of Dakota Johnson?”取母亲再取母亲的母亲。',
+    '实际dev导演比较：“Which film has the director died earlier, Il Disertore or The Battle Of Algiers?”输出两个导演身份和各自死亡日期，共四问，完全从问句关系抽取，无需提前知道任何日期。','',
+    '三、全部22题（原始输出保留，不把建议当成模型实测结果）']
+    for r in failures:
+        title,why,fix=DETAILS[r['index']]
+        lines += ['',f"题目{r['index']} | {r['dataset']} | {r['id']}", '原query：'+r['query'],
+            '冻结分解：'+r['raw_output'],'冻结失败维度：'+','.join(r['failed_dimensions']),
+            '具体问题：'+title+'。'+why,'改善方向（建议，非实测输出）：'+fix]
+    lines += ['','四、优化安排与记录',
+    '1. b00：冻结checkpoint165和v12，复用literal dev150输出作为对照；不改旧评分。',
+    '2. c01：仅替换原第一条示例为Museum Q→省→省会→接壤城市，正文规则及其余四条示例不变。针对缺少相邻对象。',
+    '3. c02：仅替换原composer-company示例为保留国籍、流派、成立年和过去主唱关系的乐队身份问题，其他不变。针对限定丢失及时间关系。',
+    '4. 每个候选均在完整dev150上运行，检查修复以及损害；不按数据集或问题ID做运行时分流。没有整体收益则保留b00。',
+    '5. 另行预冻结新的原生90题，每数据集30题；排除训练、dev150、正式300及既有问题；MuSiQue进一步排除共享单跳组件。只有dev有收益，才用一次新样本确认；不根据确认结果反复优化。',
+    '6. 本轮不重训、不调用API、不改检索链、不使用ReAct循环；首先确认轻量提示是否能改善，不能预先宣称可以达到90%。',
+    '状态、prompt逐字改动、哈希与作业号见PROTOCOL_FROZEN.json、BASELINE_FROZEN.json、JOB_SUBMISSION.json和RUN_STATUS.json。','']
+    (OUT/'ERROR_ANALYSIS_AND_PLAN.txt').write_text('\n'.join(lines),encoding='utf-8')
+    print('Wrote all22 literal cases, qualified dataset explanation, and executable optimization plan.')
+
+if __name__=='__main__':main()

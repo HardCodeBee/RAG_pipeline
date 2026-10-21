@@ -1,0 +1,117 @@
+{
+  "utc": "2026-10-21T03:38:01.020220+00:00",
+  "dataset": "2wiki",
+  "planned": 500,
+  "maximum_retrieval_calls_each": 5,
+  "per_retrieval_k_each": 10,
+  "maximum_document_slots_each": 50,
+  "iter_overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 496,
+    "missing": 4,
+    "f1_available": 0.5830069124423962,
+    "em_available": 0.5403225806451613,
+    "f1_all_planned_bounds": [
+      0.578342857142857,
+      0.586342857142857
+    ],
+    "statuses": {
+      "success": 496,
+      "provider_content_rejected": 4
+    }
+  },
+  "react_overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 499,
+    "missing": 1,
+    "f1_available": 0.8338135053153327,
+    "em_available": 0.7675350701402806,
+    "f1_all_planned_bounds": [
+      0.832145878304702,
+      0.834145878304702
+    ],
+    "statuses": {
+      "success": 493,
+      "algorithm_failure": 6,
+      "provider_content_rejected": 1
+    }
+  },
+  "iter_minus_react": {
+    "planned": 500,
+    "common_scored": 496,
+    "missing_pair_counts": {
+      "treatment_only": 3,
+      "both": 1
+    },
+    "planned_mean_difference_interval": [
+      -0.2558030211618447,
+      -0.2458030211618447
+    ],
+    "difference_units": "F1 fraction; multiply by100 for percentage points",
+    "ci_scope": "conditional on common scored cohort; all planned missingness bounds retained",
+    "query_group_bootstrap_stratified_by_type": true,
+    "seed": 2026101707,
+    "replicates": 10000,
+    "mean_difference_common": -0.2518175616550854,
+    "gain": 30,
+    "tie": 309,
+    "loss": 157,
+    "paired_95_ci_common": [
+      -0.29074776634326566,
+      -0.21356929068059285
+    ],
+    "two_sided_group_sign_flip_p": 9.999000099990002e-05
+  },
+  "same_scorable_cohort_required_for_pairing": true,
+  "not_equal_realized_cost": true,
+  "hallucination_judge_called": false,
+  "iter50_minus_old_native_iter": {
+    "planned": 500,
+    "common_scored": 496,
+    "missing_pair_counts": {
+      "treatment_only": 4
+    },
+    "planned_mean_difference_interval": [
+      0.10034920634920635,
+      0.10834920634920633
+    ],
+    "difference_units": "F1 fraction; multiply by100 for percentage points",
+    "ci_scope": "conditional on common scored cohort; all planned missingness bounds retained",
+    "query_group_bootstrap_stratified_by_type": true,
+    "seed": 2026101707,
+    "replicates": 10000,
+    "mean_difference_common": 0.10519073220686125,
+    "gain": 78,
+    "tie": 397,
+    "loss": 21,
+    "paired_95_ci_common": [
+      0.07100462429595496,
+      0.14003208205325138
+    ],
+    "two_sided_group_sign_flip_p": 9.999000099990002e-05
+  },
+  "actual_usage": {
+    "iter": {
+      "mean_retrieval_calls_terminal": 4.984,
+      "max_retrieval_calls": 5,
+      "mean_returned_document_slots_terminal": 49.84,
+      "logical_prompt_tokens": 10349658,
+      "logical_completion_tokens": 1239215,
+      "new_returned_prompt_tokens": 10187830,
+      "new_returned_completion_tokens": 1227715,
+      "per_query_tokens": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\2wiki\\formal\\b05_iter_retgen_bge\\k10_t5\\per_query_tokens.jsonl"
+    },
+    "react": {
+      "mean_retrieval_calls_terminal": 2.374,
+      "max_retrieval_calls": 5,
+      "mean_returned_document_slots_terminal": 23.74,
+      "logical_prompt_tokens": 5843775,
+      "logical_completion_tokens": 107312,
+      "new_returned_prompt_tokens": 28288,
+      "new_returned_completion_tokens": 547,
+      "per_query_tokens": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\per_query_tokens.jsonl"
+    }
+  }
+}

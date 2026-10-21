@@ -1,0 +1,209 @@
+{
+  "utc": "2026-10-19T23:00:02.603528+00:00",
+  "cohort": "fresh development90,30 per dataset",
+  "candidate": "p02_role_headers",
+  "candidate_protocol_sha256": "e91dbe64848e72be42e025f53ca1240f454e2f5a6df52f6c7b85d16a6de2ffb1",
+  "runtime_sha256": "d12094d64a47c51efcc25b7458b94602e601ef4004db1adf64c89569f2e587bb",
+  "references_sha256": "ace941163e5ebf9547bde93445af0159a0bd512c8736c03f2705ec5b5088cfa1",
+  "metric": "native Answer EM/F1; 2Wiki v1.1 aliases/demonyms; MuSiQue answer_aliases",
+  "sample_role": "Development comparison; not independent confirmation or for tuning sealed150",
+  "parent": {
+    "planned": 90,
+    "scorable": 90,
+    "missing": 0,
+    "F1_available": 0.6264326414326413,
+    "EM_available": 0.5111111111111111,
+    "F1_full": 0.6264326414326413,
+    "EM_full": 0.5111111111111111,
+    "F1_full_bounds": [
+      0.6264326414326413,
+      0.6264326414326413
+    ],
+    "statuses": {
+      "success": 90
+    }
+  },
+  "candidate_summary": {
+    "planned": 90,
+    "scorable": 90,
+    "missing": 0,
+    "F1_available": 0.6387460317460315,
+    "EM_available": 0.5222222222222223,
+    "F1_full": 0.6387460317460315,
+    "EM_full": 0.5222222222222223,
+    "F1_full_bounds": [
+      0.6387460317460315,
+      0.6387460317460315
+    ],
+    "statuses": {
+      "success": 90
+    }
+  },
+  "paired": {
+    "n_matched": 90,
+    "parent_F1": 0.6264326414326413,
+    "candidate_F1": 0.6387460317460315,
+    "delta_F1": 0.012313390313390312,
+    "up": 2,
+    "tie": 87,
+    "down": 1,
+    "paired95_descriptive": [
+      -0.001299145299145299,
+      0.037037037037037035
+    ],
+    "bootstrap": "5000 paired resamples within dataset, seed20261020; descriptive development interval"
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "parent": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.6147619047619048,
+        "EM_available": 0.43333333333333335,
+        "F1_full": 0.6147619047619048,
+        "EM_full": 0.43333333333333335,
+        "F1_full_bounds": [
+          0.6147619047619048,
+          0.6147619047619048
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "candidate": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.6203174603174605,
+        "EM_available": 0.43333333333333335,
+        "F1_full": 0.6203174603174605,
+        "EM_full": 0.43333333333333335,
+        "F1_full_bounds": [
+          0.6203174603174605,
+          0.6203174603174605
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "paired": {
+        "n_matched": 30,
+        "parent_F1": 0.6147619047619048,
+        "candidate_F1": 0.6203174603174605,
+        "delta_F1": 0.005555555555555554,
+        "up": 1,
+        "tie": 29,
+        "down": 0,
+        "paired95_descriptive": [
+          0.0,
+          0.016666666666666663
+        ],
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; descriptive development interval"
+      }
+    },
+    "2wiki": {
+      "parent": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.9285714285714286,
+        "EM_available": 0.9,
+        "F1_full": 0.9285714285714286,
+        "EM_full": 0.9,
+        "F1_full_bounds": [
+          0.9285714285714286,
+          0.9285714285714286
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "candidate": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.9285714285714286,
+        "EM_available": 0.9,
+        "F1_full": 0.9285714285714286,
+        "EM_full": 0.9,
+        "F1_full_bounds": [
+          0.9285714285714286,
+          0.9285714285714286
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "paired": {
+        "n_matched": 30,
+        "parent_F1": 0.9285714285714286,
+        "candidate_F1": 0.9285714285714286,
+        "delta_F1": 0.0,
+        "up": 0,
+        "tie": 30,
+        "down": 0,
+        "paired95_descriptive": [
+          0.0,
+          0.0
+        ],
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; descriptive development interval"
+      }
+    },
+    "musique": {
+      "parent": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.33596459096459097,
+        "EM_available": 0.2,
+        "F1_full": 0.33596459096459097,
+        "EM_full": 0.2,
+        "F1_full_bounds": [
+          0.33596459096459097,
+          0.33596459096459097
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "candidate": {
+        "planned": 30,
+        "scorable": 30,
+        "missing": 0,
+        "F1_available": 0.3673492063492063,
+        "EM_available": 0.23333333333333334,
+        "F1_full": 0.3673492063492063,
+        "EM_full": 0.23333333333333334,
+        "F1_full_bounds": [
+          0.3673492063492063,
+          0.3673492063492063
+        ],
+        "statuses": {
+          "success": 30
+        }
+      },
+      "paired": {
+        "n_matched": 30,
+        "parent_F1": 0.33596459096459097,
+        "candidate_F1": 0.3673492063492063,
+        "delta_F1": 0.031384615384615386,
+        "up": 1,
+        "tie": 28,
+        "down": 1,
+        "paired95_descriptive": [
+          -0.0058461538461538455,
+          0.1
+        ],
+        "bootstrap": "5000 paired resamples within dataset, seed20261020; descriptive development interval"
+      }
+    }
+  },
+  "sealed_confirmation_opened": false,
+  "new_API_calls": 0,
+  "gate": {
+    "complete_90_pairs": true,
+    "passed": true,
+    "rule": "Both full90 terminal/scorable, fixed candidate mean F1 greater than parent; no CI threshold."
+  }
+}

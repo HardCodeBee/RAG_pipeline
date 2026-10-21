@@ -1,0 +1,171 @@
+{
+  "reviewed_indices": [
+    51,
+    100
+  ],
+  "reviewed_steps": [
+    110,
+    165,
+    220
+  ],
+  "reviewer": "Current Codex inspected every literal original-query/output pair for all three versions. Frozen v12 F/S/C/U; no answers, passages, dev reference labels or eval300 consulted. Not independent human gold.",
+  "exceptions": {
+    "110": {
+      "59": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Asks the country of the unidentified grandparents but never exposes who Steven Spielberg grandparents are; the shallower identity prerequisite is missing."
+      },
+      "60": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Adds an unqualified individual Governor query although the original asks when the Governor post ended, not the identity of any officeholder."
+      },
+      "72": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S"
+        ],
+        "reason": "The independently searched Barak question omits the explicitly supplied Bosnian Coarse-haired Hound alias, losing the input disambiguator."
+      },
+      "74": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Asks to identify the already named South Park episode rather than exposing a new prerequisite; this is a generic identity/original-target restatement."
+      },
+      "81": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "After the useful religion question, copies the original percentage target; that percentage copy is not an exposed prerequisite or calculation operand."
+      },
+      "53": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "U"
+        ],
+        "reason": "Reverses was defeated by Alan Hevesi into who defeated Alan Hevesi, producing an unsupported inverse relation rather than a useful supporting need."
+      },
+      "93": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Asks for the winning team of the described first match but never exposes which match was first in the 1943 Copa del Generalissimo."
+      },
+      "96": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Drops the country-music-artist disambiguator when identifying the writer of Show Her; the input restricts which writer is relevant."
+      }
+    },
+    "165": {
+      "59": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Asks the country of the unidentified grandparents but never exposes who Steven Spielberg grandparents are; the shallower identity prerequisite is missing."
+      },
+      "60": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Adds an unqualified individual Governor query although the original asks when the Governor post ended, not the identity of any officeholder."
+      },
+      "72": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S"
+        ],
+        "reason": "The independently searched Barak question omits the explicitly supplied Bosnian Coarse-haired Hound alias, losing the input disambiguator."
+      },
+      "74": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Asks to identify the already named South Park episode rather than exposing a new prerequisite; this is a generic identity/original-target restatement."
+      },
+      "81": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "After the useful religion question, copies the original percentage target; that percentage copy is not an exposed prerequisite or calculation operand."
+      },
+      "61": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Changes whose lead vocalist was Jerry Roush to presently has Jerry Roush as its lead vocalist; step165 also drops American metalcore and mid-2009 conditions."
+      }
+    },
+    "220": {
+      "59": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Asks the country of the unidentified grandparents but never exposes who Steven Spielberg grandparents are; the shallower identity prerequisite is missing."
+      },
+      "60": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Adds an unqualified individual Governor query although the original asks when the Governor post ended, not the identity of any officeholder."
+      },
+      "72": {
+        "verdict": "fail",
+        "dimensions": [
+          "F",
+          "S"
+        ],
+        "reason": "The independently searched Barak question omits the explicitly supplied Bosnian Coarse-haired Hound alias, losing the input disambiguator."
+      },
+      "74": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "Asks to identify the already named South Park episode rather than exposing a new prerequisite; this is a generic identity/original-target restatement."
+      },
+      "81": {
+        "verdict": "fail",
+        "dimensions": [
+          "U"
+        ],
+        "reason": "After the useful religion question, copies the original percentage target; that percentage copy is not an exposed prerequisite or calculation operand."
+      },
+      "61": {
+        "verdict": "fail",
+        "dimensions": [
+          "F"
+        ],
+        "reason": "Changes whose lead vocalist was Jerry Roush to presently has Jerry Roush as its lead vocalist; step165 also drops American metalcore and mid-2009 conditions."
+      },
+      "93": {
+        "verdict": "fail",
+        "dimensions": [
+          "C"
+        ],
+        "reason": "Asks for the winning team of the described first match but never exposes which match was first in the 1943 Copa del Generalissimo."
+      }
+    }
+  }
+}

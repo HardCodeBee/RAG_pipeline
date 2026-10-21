@@ -1,0 +1,19 @@
+{
+  "recorded_utc": "2026-10-18T00:11:29.294151+00:00",
+  "recorded_before_any_continuation_prediction_review": true,
+  "baseline_mu_F_or_S_cases": [
+    3,
+    9,
+    19,
+    37,
+    66,
+    67,
+    70,
+    89
+  ],
+  "baseline_mu_F_or_S_count": 8,
+  "gate": "Original screen gate AND Mu count of rows carrying F or S must not exceed baseline. Strict full-pass remains primary; no rubric or baseline judgment changes.",
+  "selection": "Eligible end20 model with highest Mu full passes, then macro rate. One nominee only.",
+  "confirmation": "Original higher-total+higher-Mu gate AND Mu F/S row count must not increase AND combined Hotpot+2Wiki net loss at most1. New balanced120 only once; no subsequent edits from these outputs.",
+  "reason": "User prioritizes object-scope and relation faithfulness; avoid adopting coverage gains that worsen these defects."
+}

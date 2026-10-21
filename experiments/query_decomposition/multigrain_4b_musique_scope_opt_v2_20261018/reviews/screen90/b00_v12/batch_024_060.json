@@ -1,0 +1,59 @@
+{
+  "reviewed_indices": [
+    24,
+    60
+  ],
+  "exceptions": {
+    "24": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Does not explicitly identify the county containing Christie Shaner birthplace before the first neighboring-county query; the generic birthplace answer may be a town, leaving that intermediate embedded."
+    },
+    "26": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "The unrestricted Harry Potter cast-to-character inventory may be an unnecessary generic need, though it could supply a relation operand; preserve uncertainty under the frozen utility criterion."
+    },
+    "27": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Country identity alone omits the population living there before Spanish arrival, the group whose percentage is requested."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "The second question makes a film the agent portraying a character in Octopussy; original asks how often the described actor portrayed that character."
+    },
+    "39": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Skips the neighboring county identity between Weavervilles county and that neighboring countys state."
+    },
+    "54": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "What is Om and What is Six Organs ask generic identities without a supplied exact comparison property; frozen policy does not invent a property for both what."
+    },
+    "55": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Identifies only the place and never the person occupying it during the specified war, before the persons religion target."
+    }
+  },
+  "reviewer": "Current Codex inspected every24..60 baseline pair before candidate inspection; uncertain generic-role case26 retained."
+}

@@ -1,0 +1,40 @@
+{
+  "reviewed_indices": [
+    41,
+    80
+  ],
+  "method": "All changed arrays read literally against original, same F/S/C/U rubric; exact arrays inherit T02. Non-independent Codex review.",
+  "exceptions": {
+    "41": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still substitutes country of origin for birth country in the first item; extra term operands do not repair that false substitution."
+    },
+    "62": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "First continent item loses the sailing/ocean/eastern-Russia conditions; unnamed ocean is still unexposed."
+    },
+    "65": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Removes invented country containment but adds generic definition of already given German Fachhochschule, rather than a missing country-specific term prerequisite."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Original two countries collectively become two countries for each named item; generic country invaded by Muslim armies loses both identifiers."
+    }
+  },
+  "notes": "R01 row14 retains both exclusions and replaces target with country prerequisite. R01 row108 is allowed original-equivalent intersection, consistent with R02 row95. Broad/full organization identity in row79 accepted as a described unknown intermediate."
+}

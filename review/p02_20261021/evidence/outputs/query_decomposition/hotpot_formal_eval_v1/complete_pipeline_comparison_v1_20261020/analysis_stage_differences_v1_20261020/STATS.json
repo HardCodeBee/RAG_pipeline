@@ -1,0 +1,586 @@
+{
+  "utc": "2026-10-19T19:26:11.618112+00:00",
+  "n": 300,
+  "metric": "native final Answer F1, common complete300",
+  "api_calls": 0,
+  "retrieval_calls": 0,
+  "source_files": [
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\offline_gold_source\\validation.parquet",
+      "sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6"
+    },
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\dev.json",
+      "sha256": "21b0a6ffef454f887b5a7a6115db443d3476e99fefeb05d4c5fb73be01582554"
+    },
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\native\\musique_ans_v1.0_dev.jsonl",
+      "sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b"
+    }
+  ],
+  "final_results_sha256": "70541e4b6da853206292e34de6a801fc74f16f9522536d11490e45eae16f3b68",
+  "comparisons": {
+    "B0_vs_integrated": {
+      "all": {
+        "n": 300,
+        "a": "B0_legacy_multigrain_R02",
+        "b": "R02_C08_c02_r1p1_integrated_candidate",
+        "a_f1": 0.6736469411679938,
+        "b_f1": 0.6654856331777386,
+        "delta_b_minus_a_pp": -0.8161307990255353,
+        "up": 26,
+        "down": 26,
+        "tie": 248,
+        "positive_delta_sum": 11.284151082835292,
+        "negative_delta_sum": -13.732543479911902,
+        "up_ids": [
+          "musique:2hop__742831_156034",
+          "musique:3hop1__671542_651917_47686",
+          "musique:2hop__789565_416401",
+          "hotpotqa:5ae0a48155429945ae9593df",
+          "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+          "2wiki:0d118fb00bdb11eba7f7acde48001122",
+          "musique:3hop1__102461_24918_24991",
+          "musique:3hop1__109422_720914_27537",
+          "musique:2hop__135651_669373",
+          "musique:3hop1__458916_651917_47686",
+          "hotpotqa:5abec66b5542997ec76fd360",
+          "hotpotqa:5addbf645542997dc7907014",
+          "hotpotqa:5ab5cedf554299488d4d9a34",
+          "musique:3hop1__857_846_7770",
+          "2wiki:cdb8b7540bd911eba7f7acde48001122",
+          "hotpotqa:5abee4ff5542993fe9a41d7d",
+          "hotpotqa:5a7e14505542995ed0d16685",
+          "musique:3hop1__587540_514761_594810",
+          "hotpotqa:5ae0006755429925eb1afbd3",
+          "musique:4hop1__88342_49853_128008_92225",
+          "musique:3hop1__691197_15840_36002",
+          "musique:3hop2__326964_265410_7713",
+          "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+          "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+          "musique:3hop1__346812_15840_36002",
+          "2wiki:4f81c5260bdc11eba7f7acde48001122"
+        ],
+        "down_ids": [
+          "2wiki:24a007b40bdc11eba7f7acde48001122",
+          "2wiki:16a91a500bb011ebab90acde48001122",
+          "hotpotqa:5abd14c455429924427fceec",
+          "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+          "2wiki:42954d320bb011ebab90acde48001122",
+          "2wiki:f37818400bd911eba7f7acde48001122",
+          "musique:2hop__582045_161450",
+          "2wiki:923b15ba0bb011ebab90acde48001122",
+          "hotpotqa:5a84ad3a5542992a431d1a8b",
+          "musique:2hop__289517_139339",
+          "hotpotqa:5a77c09555429967ab105262",
+          "2wiki:4228d7300bdb11eba7f7acde48001122",
+          "musique:4hop3__129318_29339_508306_70744",
+          "musique:4hop1__94201_642284_131926_13165",
+          "musique:2hop__104095_40501",
+          "hotpotqa:5ae4c01e55429913cc2044f3",
+          "hotpotqa:5abce85755429959677d6b3e",
+          "hotpotqa:5a84d2ea5542992a431d1aa8",
+          "musique:4hop1__40316_497223_15840_36002",
+          "hotpotqa:5a72a9ac5542991f9a20c55f",
+          "musique:2hop__22431_16335",
+          "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+          "2wiki:085ace840bde11eba7f7acde48001122",
+          "hotpotqa:5a7a59d15542996c55b2dd67",
+          "musique:2hop__557411_652060",
+          "musique:2hop__85463_66122"
+        ]
+      },
+      "hotpotqa": {
+        "n": 100,
+        "a": "B0_legacy_multigrain_R02",
+        "b": "R02_C08_c02_r1p1_integrated_candidate",
+        "a_f1": 0.7718190476190473,
+        "b_f1": 0.7550779220779218,
+        "delta_b_minus_a_pp": -1.6741125541125546,
+        "up": 7,
+        "down": 8,
+        "tie": 85,
+        "positive_delta_sum": 2.6929870129870133,
+        "negative_delta_sum": -4.367099567099568,
+        "up_ids": [
+          "hotpotqa:5ae0a48155429945ae9593df",
+          "hotpotqa:5abec66b5542997ec76fd360",
+          "hotpotqa:5addbf645542997dc7907014",
+          "hotpotqa:5ab5cedf554299488d4d9a34",
+          "hotpotqa:5abee4ff5542993fe9a41d7d",
+          "hotpotqa:5a7e14505542995ed0d16685",
+          "hotpotqa:5ae0006755429925eb1afbd3"
+        ],
+        "down_ids": [
+          "hotpotqa:5abd14c455429924427fceec",
+          "hotpotqa:5a84ad3a5542992a431d1a8b",
+          "hotpotqa:5a77c09555429967ab105262",
+          "hotpotqa:5ae4c01e55429913cc2044f3",
+          "hotpotqa:5abce85755429959677d6b3e",
+          "hotpotqa:5a84d2ea5542992a431d1aa8",
+          "hotpotqa:5a72a9ac5542991f9a20c55f",
+          "hotpotqa:5a7a59d15542996c55b2dd67"
+        ]
+      },
+      "2wiki": {
+        "n": 100,
+        "a": "B0_legacy_multigrain_R02",
+        "b": "R02_C08_c02_r1p1_integrated_candidate",
+        "a_f1": 0.8913766788766787,
+        "b_f1": 0.8782142857142857,
+        "delta_b_minus_a_pp": -1.3162393162393164,
+        "up": 6,
+        "down": 9,
+        "tie": 85,
+        "positive_delta_sum": 3.9615384615384617,
+        "negative_delta_sum": -5.277777777777778,
+        "up_ids": [
+          "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+          "2wiki:0d118fb00bdb11eba7f7acde48001122",
+          "2wiki:cdb8b7540bd911eba7f7acde48001122",
+          "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+          "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+          "2wiki:4f81c5260bdc11eba7f7acde48001122"
+        ],
+        "down_ids": [
+          "2wiki:24a007b40bdc11eba7f7acde48001122",
+          "2wiki:16a91a500bb011ebab90acde48001122",
+          "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+          "2wiki:42954d320bb011ebab90acde48001122",
+          "2wiki:f37818400bd911eba7f7acde48001122",
+          "2wiki:923b15ba0bb011ebab90acde48001122",
+          "2wiki:4228d7300bdb11eba7f7acde48001122",
+          "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+          "2wiki:085ace840bde11eba7f7acde48001122"
+        ]
+      },
+      "musique": {
+        "n": 100,
+        "a": "B0_legacy_multigrain_R02",
+        "b": "R02_C08_c02_r1p1_integrated_candidate",
+        "a_f1": 0.35774509700825485,
+        "b_f1": 0.36316469174100746,
+        "delta_b_minus_a_pp": 0.5419594732752624,
+        "up": 13,
+        "down": 9,
+        "tie": 78,
+        "positive_delta_sum": 4.629625608309818,
+        "negative_delta_sum": -4.0876661350345564,
+        "up_ids": [
+          "musique:2hop__742831_156034",
+          "musique:3hop1__671542_651917_47686",
+          "musique:2hop__789565_416401",
+          "musique:3hop1__102461_24918_24991",
+          "musique:3hop1__109422_720914_27537",
+          "musique:2hop__135651_669373",
+          "musique:3hop1__458916_651917_47686",
+          "musique:3hop1__857_846_7770",
+          "musique:3hop1__587540_514761_594810",
+          "musique:4hop1__88342_49853_128008_92225",
+          "musique:3hop1__691197_15840_36002",
+          "musique:3hop2__326964_265410_7713",
+          "musique:3hop1__346812_15840_36002"
+        ],
+        "down_ids": [
+          "musique:2hop__582045_161450",
+          "musique:2hop__289517_139339",
+          "musique:4hop3__129318_29339_508306_70744",
+          "musique:4hop1__94201_642284_131926_13165",
+          "musique:2hop__104095_40501",
+          "musique:4hop1__40316_497223_15840_36002",
+          "musique:2hop__22431_16335",
+          "musique:2hop__557411_652060",
+          "musique:2hop__85463_66122"
+        ]
+      }
+    },
+    "B0_vs_S02_MuSiQue": {
+      "n": 100,
+      "a": "B0_legacy_multigrain_R02",
+      "b": "s02_child4",
+      "a_f1": 0.35774509700825485,
+      "b_f1": 0.41395122885370556,
+      "delta_b_minus_a_pp": 5.620613184545074,
+      "up": 19,
+      "down": 10,
+      "tie": 71,
+      "positive_delta_sum": 9.50511756904946,
+      "negative_delta_sum": -3.8845043845043836,
+      "up_ids": [
+        "musique:4hop3__373866_5189_38229_86687",
+        "musique:3hop2__326964_734214_7713",
+        "musique:4hop2__161602_426860_88460_21074",
+        "musique:2hop__742831_156034",
+        "musique:4hop1__43565_624859_355213_203322",
+        "musique:2hop__41158_35124",
+        "musique:2hop__789565_416401",
+        "musique:2hop__56806_7298",
+        "musique:3hop1__404541_629431_64412",
+        "musique:2hop__85993_512508",
+        "musique:3hop1__102461_24918_24991",
+        "musique:2hop__135651_669373",
+        "musique:2hop__42747_83837",
+        "musique:3hop1__458916_651917_47686",
+        "musique:2hop__13592_49388",
+        "musique:3hop1__857_846_7770",
+        "musique:3hop1__587540_514761_594810",
+        "musique:3hop1__691197_15840_36002",
+        "musique:3hop1__346812_15840_36002"
+      ],
+      "down_ids": [
+        "musique:3hop1__604797_443779_52195",
+        "musique:4hop3__129456_29339_508306_70744",
+        "musique:2hop__582045_161450",
+        "musique:3hop2__855821_223623_162182",
+        "musique:2hop__289517_139339",
+        "musique:3hop1__226638_538202_84283",
+        "musique:4hop3__129318_29339_508306_70744",
+        "musique:4hop1__40316_497223_15840_36002",
+        "musique:2hop__22431_16335",
+        "musique:3hop1__635099_131926_89261"
+      ]
+    },
+    "integrated_vs_S02_MuSiQue": {
+      "n": 100,
+      "a": "R02_C08_c02_r1p1_integrated_candidate",
+      "b": "s02_child4",
+      "a_f1": 0.36316469174100746,
+      "b_f1": 0.41395122885370556,
+      "delta_b_minus_a_pp": 5.078653711269811,
+      "up": 20,
+      "down": 11,
+      "tie": 69,
+      "positive_delta_sum": 9.450465057818,
+      "negative_delta_sum": -4.3718113465481885,
+      "up_ids": [
+        "musique:4hop3__373866_5189_38229_86687",
+        "musique:3hop2__326964_734214_7713",
+        "musique:4hop2__161602_426860_88460_21074",
+        "musique:4hop1__43565_624859_355213_203322",
+        "musique:2hop__41158_35124",
+        "musique:2hop__56806_7298",
+        "musique:3hop1__404541_629431_64412",
+        "musique:2hop__85993_512508",
+        "musique:3hop1__102461_24918_24991",
+        "musique:4hop3__129318_29339_508306_70744",
+        "musique:4hop1__94201_642284_131926_13165",
+        "musique:2hop__104095_40501",
+        "musique:2hop__42747_83837",
+        "musique:2hop__13592_49388",
+        "musique:3hop1__587540_514761_594810",
+        "musique:4hop1__40316_497223_15840_36002",
+        "musique:2hop__22431_16335",
+        "musique:2hop__557411_652060",
+        "musique:3hop1__346812_15840_36002",
+        "musique:2hop__85463_66122"
+      ],
+      "down_ids": [
+        "musique:3hop1__671542_651917_47686",
+        "musique:3hop1__604797_443779_52195",
+        "musique:4hop3__129456_29339_508306_70744",
+        "musique:3hop2__855821_223623_162182",
+        "musique:2hop__289517_139339",
+        "musique:3hop1__226638_538202_84283",
+        "musique:3hop1__109422_720914_27537",
+        "musique:4hop1__88342_49853_128008_92225",
+        "musique:3hop1__691197_15840_36002",
+        "musique:3hop2__326964_265410_7713",
+        "musique:3hop1__635099_131926_89261"
+      ]
+    }
+  },
+  "coverage": {
+    "all": {
+      "B0_legacy_multigrain_R02": {
+        "root_gold": {
+          "full": 105,
+          "mean_recall": 0.6288888888888889
+        },
+        "child_reader_gold": {
+          "full": 219,
+          "mean_recall": 0.8652777777777779
+        },
+        "root_plus_child_gold": {
+          "full": 221,
+          "mean_recall": 0.8694444444444446
+        }
+      },
+      "R02_C08_c02_r1p1_integrated_candidate": {
+        "root_gold": {
+          "full": 105,
+          "mean_recall": 0.6288888888888889
+        },
+        "child_reader_gold": {
+          "full": 214,
+          "mean_recall": 0.8566666666666667
+        },
+        "root_plus_child_gold": {
+          "full": 215,
+          "mean_recall": 0.8591666666666666
+        }
+      },
+      "s02_child4": {
+        "root_gold": {
+          "full": 105,
+          "mean_recall": 0.6288888888888889
+        },
+        "child_reader_gold": {
+          "full": 187,
+          "mean_recall": 0.7716666666666666
+        },
+        "root_plus_child_gold": {
+          "full": 198,
+          "mean_recall": 0.8294444444444444
+        }
+      }
+    },
+    "hotpotqa": {
+      "B0_legacy_multigrain_R02": {
+        "root_gold": {
+          "full": 59,
+          "mean_recall": 0.775
+        },
+        "child_reader_gold": {
+          "full": 78,
+          "mean_recall": 0.88
+        },
+        "root_plus_child_gold": {
+          "full": 79,
+          "mean_recall": 0.885
+        }
+      },
+      "R02_C08_c02_r1p1_integrated_candidate": {
+        "root_gold": {
+          "full": 59,
+          "mean_recall": 0.775
+        },
+        "child_reader_gold": {
+          "full": 76,
+          "mean_recall": 0.87
+        },
+        "root_plus_child_gold": {
+          "full": 77,
+          "mean_recall": 0.875
+        }
+      },
+      "s02_child4": {
+        "root_gold": {
+          "full": 59,
+          "mean_recall": 0.775
+        },
+        "child_reader_gold": {
+          "full": 78,
+          "mean_recall": 0.83
+        },
+        "root_plus_child_gold": {
+          "full": 83,
+          "mean_recall": 0.905
+        }
+      }
+    },
+    "2wiki": {
+      "B0_legacy_multigrain_R02": {
+        "root_gold": {
+          "full": 37,
+          "mean_recall": 0.675
+        },
+        "child_reader_gold": {
+          "full": 97,
+          "mean_recall": 0.985
+        },
+        "root_plus_child_gold": {
+          "full": 97,
+          "mean_recall": 0.985
+        }
+      },
+      "R02_C08_c02_r1p1_integrated_candidate": {
+        "root_gold": {
+          "full": 37,
+          "mean_recall": 0.675
+        },
+        "child_reader_gold": {
+          "full": 96,
+          "mean_recall": 0.98
+        },
+        "root_plus_child_gold": {
+          "full": 96,
+          "mean_recall": 0.98
+        }
+      },
+      "s02_child4": {
+        "root_gold": {
+          "full": 37,
+          "mean_recall": 0.675
+        },
+        "child_reader_gold": {
+          "full": 73,
+          "mean_recall": 0.85
+        },
+        "root_plus_child_gold": {
+          "full": 76,
+          "mean_recall": 0.89
+        }
+      }
+    },
+    "musique": {
+      "B0_legacy_multigrain_R02": {
+        "root_gold": {
+          "full": 9,
+          "mean_recall": 0.4366666666666667
+        },
+        "child_reader_gold": {
+          "full": 44,
+          "mean_recall": 0.7308333333333334
+        },
+        "root_plus_child_gold": {
+          "full": 45,
+          "mean_recall": 0.7383333333333334
+        }
+      },
+      "R02_C08_c02_r1p1_integrated_candidate": {
+        "root_gold": {
+          "full": 9,
+          "mean_recall": 0.4366666666666667
+        },
+        "child_reader_gold": {
+          "full": 42,
+          "mean_recall": 0.72
+        },
+        "root_plus_child_gold": {
+          "full": 42,
+          "mean_recall": 0.7225
+        }
+      },
+      "s02_child4": {
+        "root_gold": {
+          "full": 9,
+          "mean_recall": 0.4366666666666667
+        },
+        "child_reader_gold": {
+          "full": 36,
+          "mean_recall": 0.635
+        },
+        "root_plus_child_gold": {
+          "full": 39,
+          "mean_recall": 0.6933333333333332
+        }
+      }
+    }
+  },
+  "invariants": {
+    "same_R02_plans": 300,
+    "same_root_packets": 300
+  },
+  "S02_Mu_goal_plans": {
+    "retrieve": 90,
+    "skip": 7,
+    "no_active_goal": 3
+  },
+  "S02_Mu_by_hop": {
+    "2-hop": {
+      "n": 35,
+      "a": "B0_legacy_multigrain_R02",
+      "b": "s02_child4",
+      "a_f1": 0.3971536400107829,
+      "b_f1": 0.5403558346415489,
+      "delta_b_minus_a_pp": 14.320219463076608,
+      "up": 8,
+      "down": 3,
+      "tie": 24,
+      "positive_delta_sum": 5.3700854700854705,
+      "negative_delta_sum": -0.35800865800865805,
+      "up_ids": [
+        "musique:2hop__742831_156034",
+        "musique:2hop__41158_35124",
+        "musique:2hop__789565_416401",
+        "musique:2hop__56806_7298",
+        "musique:2hop__85993_512508",
+        "musique:2hop__135651_669373",
+        "musique:2hop__42747_83837",
+        "musique:2hop__13592_49388"
+      ],
+      "down_ids": [
+        "musique:2hop__582045_161450",
+        "musique:2hop__289517_139339",
+        "musique:2hop__22431_16335"
+      ]
+    },
+    "3-hop": {
+      "n": 35,
+      "a": "B0_legacy_multigrain_R02",
+      "b": "s02_child4",
+      "a_f1": 0.47975978908309735,
+      "b_f1": 0.4881416585773065,
+      "delta_b_minus_a_pp": 0.8381869494209179,
+      "up": 8,
+      "down": 4,
+      "tie": 23,
+      "positive_delta_sum": 3.0933654322973214,
+      "negative_delta_sum": -2.8,
+      "up_ids": [
+        "musique:3hop2__326964_734214_7713",
+        "musique:3hop1__404541_629431_64412",
+        "musique:3hop1__102461_24918_24991",
+        "musique:3hop1__458916_651917_47686",
+        "musique:3hop1__857_846_7770",
+        "musique:3hop1__587540_514761_594810",
+        "musique:3hop1__691197_15840_36002",
+        "musique:3hop1__346812_15840_36002"
+      ],
+      "down_ids": [
+        "musique:3hop1__604797_443779_52195",
+        "musique:3hop2__855821_223623_162182",
+        "musique:3hop1__226638_538202_84283",
+        "musique:3hop1__635099_131926_89261"
+      ]
+    },
+    "4-hop": {
+      "n": 30,
+      "a": "B0_legacy_multigrain_R02",
+      "b": "s02_child4",
+      "a_f1": 0.1694179894179894,
+      "b_f1": 0.17992368742368742,
+      "delta_b_minus_a_pp": 1.0505698005698,
+      "up": 3,
+      "down": 3,
+      "tie": 24,
+      "positive_delta_sum": 1.0416666666666665,
+      "negative_delta_sum": -0.7264957264957266,
+      "up_ids": [
+        "musique:4hop3__373866_5189_38229_86687",
+        "musique:4hop2__161602_426860_88460_21074",
+        "musique:4hop1__43565_624859_355213_203322"
+      ],
+      "down_ids": [
+        "musique:4hop3__129456_29339_508306_70744",
+        "musique:4hop3__129318_29339_508306_70744",
+        "musique:4hop1__40316_497223_15840_36002"
+      ]
+    }
+  },
+  "B0_C08_changed_cases": {
+    "integrated_lower": {
+      "n": 26,
+      "identical_all_child_reader_packets": 14,
+      "identical_helper": 0,
+      "identical_final_context": 0,
+      "better_gold_reader_recall_integrated": 0,
+      "worse_gold_reader_recall_integrated": 3,
+      "equal_gold_reader_recall": 23
+    },
+    "integrated_higher": {
+      "n": 26,
+      "identical_all_child_reader_packets": 15,
+      "identical_helper": 1,
+      "identical_final_context": 1,
+      "better_gold_reader_recall_integrated": 1,
+      "worse_gold_reader_recall_integrated": 1,
+      "equal_gold_reader_recall": 24
+    }
+  },
+  "limits": [
+    "No causal intervention: complete methods differ in several interfaces.",
+    "Gold-document coverage is retrospective reader exposure, not entailment, evidence sufficiency or final-reader access.",
+    "Equal gold-document recall can conceal different supporting text or distractors."
+  ]
+}

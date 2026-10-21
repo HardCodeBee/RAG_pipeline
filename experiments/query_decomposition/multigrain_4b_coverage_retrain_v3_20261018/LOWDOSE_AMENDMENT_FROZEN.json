@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-18T04:14:07.870152+00:00",
+  "information_available": "Parent60 locked47/60; old-data40 reviewed46/60. Expanded40 still training; no expanded outputs reviewed.",
+  "condition": "Neither40-step arm passes original dev gate. One additional fixed20-step prefix only; same data, parent,seed andhyperparameters.",
+  "reason": "Test whether longer continuation causes unwanted extra questions, rather than assuming more updates are better. This is a disclosed adaptive duration trial, not part of initial two-arm preplan.",
+  "selection": "Reuse dev60 as development only; choose20 only if it satisfies same Mu/overall/control/F-S gate. Sealed confirm120 remains untouched and is used only once.",
+  "protected_original_plan_sha256": "b1f506ebaec574987fb2d126cbf6382cf3e86c91bb71cb13fffbe8ce79fb7423",
+  "lowdose_plan_sha256": "36ff7b9fd6b3d1a992deeaf8abc1a16c2be699f7f2ea28d938f504ddaf49d336",
+  "code_sha256": "b49aa6c1bf84e29fce8bf4b879a4bda7425767cbcc48ef40605ea4c1c9e8c4aa",
+  "no_data_or_prompt_change": true
+}

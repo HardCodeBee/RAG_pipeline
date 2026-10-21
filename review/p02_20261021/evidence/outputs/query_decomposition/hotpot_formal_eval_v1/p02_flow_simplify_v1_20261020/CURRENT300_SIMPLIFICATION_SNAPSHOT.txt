@@ -1,0 +1,482 @@
+简化流程当前300题快照：2026-10-20T09:21:35.671462+00:00
+以下均为部分可计分同题描述，尚不据此选择或升级版本；算法失败计0、基础设施缺失不填0。
+arm	计分/300	F1%	同题p02%	差值pp	升/平/降
+union20	122/300	89.7344	91.5416	-1.8072	2/115/5
+{"arm": "union20", "by_dataset": {"hotpotqa": {"n": 16, "F1": 0.8035714285714286, "p02_F1": 0.875, "delta": -0.07142857142857142, "up": 0, "tie": 14, "down": 2, "planned": 100, "statuses": {"unstarted": 80, "success": 16, "incomplete": 4}}, "2wiki": {"n": 98, "F1": 0.9212804169286761, "p02_F1": 0.9321161798052554, "delta": -0.010835762876579204, "up": 2, "tie": 93, "down": 3, "planned": 100, "statuses": {"success": 98, "incomplete": 2}}, "musique": {"n": 8, "F1": 0.7916666666666666, "p02_F1": 0.7916666666666666, "delta": 0.0, "up": 0, "tie": 8, "down": 0, "planned": 100, "statuses": {"success": 8, "unstarted": 77, "incomplete": 15}}}}
+discount20	132/300	86.0568	87.8534	-1.7965	1/126/5
+{"arm": "discount20", "by_dataset": {"hotpotqa": {"n": 16, "F1": 0.9285714285714286, "p02_F1": 0.9375, "delta": -0.008928571428571432, "up": 0, "tie": 15, "down": 1, "planned": 100, "statuses": {"unstarted": 80, "success": 16, "incomplete": 4}}, "2wiki": {"n": 99, "F1": 0.9102910524479152, "p02_F1": 0.9328018749587377, "delta": -0.022510822510822513, "up": 1, "tie": 94, "down": 4, "planned": 100, "statuses": {"success": 99, "incomplete": 1}}, "musique": {"n": 17, "F1": 0.5070028011204482, "p02_F1": 0.5070028011204482, "delta": 0.0, "up": 0, "tie": 17, "down": 0, "planned": 100, "statuses": {"unstarted": 80, "success": 17, "incomplete": 3}}}}
+single_final	131/300	83.3937	86.3187	-2.9250	8/113/10
+{"arm": "single_final", "by_dataset": {"hotpotqa": {"n": 18, "F1": 0.8698412698412699, "p02_F1": 0.8888888888888888, "delta": -0.01904761904761905, "up": 0, "tie": 16, "down": 2, "planned": 100, "statuses": {"unstarted": 80, "success": 17, "incomplete": 2, "success_truncated": 1}}, "2wiki": {"n": 96, "F1": 0.8908038720538721, "p02_F1": 0.9307019335511982, "delta": -0.0398980614973262, "up": 6, "tie": 82, "down": 8, "planned": 100, "statuses": {"success": 95, "incomplete": 4, "success_truncated": 1}}, "musique": {"n": 17, "F1": 0.47478991596638653, "p02_F1": 0.4547152194211017, "delta": 0.020074696545284782, "up": 2, "tie": 15, "down": 0, "planned": 100, "statuses": {"unstarted": 80, "success": 17, "incomplete": 3}}}}
+
+三组共同可计分交集（p02同题）：
+{
+  "n": 115,
+  "dataset_counts": {
+    "2wiki": 95,
+    "musique": 5,
+    "hotpotqa": 15
+  },
+  "arms": {
+    "union20": {
+      "n": 115,
+      "F1": 0.8997909308650998,
+      "p02_F1": 0.9189627735152033,
+      "delta": -0.01917184265010352,
+      "up": 2,
+      "tie": 108,
+      "down": 5,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 15,
+          "F1": 0.8571428571428572,
+          "p02_F1": 0.9333333333333333,
+          "delta": -0.07619047619047618,
+          "up": 0,
+          "tie": 13,
+          "down": 2
+        },
+        "2wiki": {
+          "n": 95,
+          "F1": 0.9187945353580028,
+          "p02_F1": 0.9299724802201582,
+          "delta": -0.01117794486215539,
+          "up": 2,
+          "tie": 90,
+          "down": 3
+        },
+        "musique": {
+          "n": 5,
+          "F1": 0.6666666666666667,
+          "p02_F1": 0.6666666666666667,
+          "delta": 0.0,
+          "up": 0,
+          "tie": 5,
+          "down": 0
+        }
+      }
+    },
+    "discount20": {
+      "n": 115,
+      "F1": 0.898341655502781,
+      "p02_F1": 0.9189627735152033,
+      "delta": -0.02062111801242236,
+      "up": 1,
+      "tie": 109,
+      "down": 5,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 15,
+          "F1": 0.9238095238095239,
+          "p02_F1": 0.9333333333333333,
+          "delta": -0.009523809523809526,
+          "up": 0,
+          "tie": 14,
+          "down": 1
+        },
+        "2wiki": {
+          "n": 95,
+          "F1": 0.9065138336036169,
+          "p02_F1": 0.9299724802201582,
+          "delta": -0.023458646616541356,
+          "up": 1,
+          "tie": 90,
+          "down": 4
+        },
+        "musique": {
+          "n": 5,
+          "F1": 0.6666666666666667,
+          "p02_F1": 0.6666666666666667,
+          "delta": 0.0,
+          "up": 0,
+          "tie": 5,
+          "down": 0
+        }
+      }
+    },
+    "single_final": {
+      "n": 115,
+      "F1": 0.8858636049940399,
+      "p02_F1": 0.9189627735152033,
+      "delta": -0.0330991685211634,
+      "up": 7,
+      "tie": 99,
+      "down": 9,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 15,
+          "F1": 0.9238095238095239,
+          "p02_F1": 0.9333333333333333,
+          "delta": -0.009523809523809526,
+          "up": 0,
+          "tie": 14,
+          "down": 1
+        },
+        "2wiki": {
+          "n": 95,
+          "F1": 0.8896544391281234,
+          "p02_F1": 0.9299724802201582,
+          "delta": -0.0403180410920349,
+          "up": 6,
+          "tie": 81,
+          "down": 8
+        },
+        "musique": {
+          "n": 5,
+          "F1": 0.7,
+          "p02_F1": 0.6666666666666667,
+          "delta": 0.03333333333333334,
+          "up": 1,
+          "tie": 4,
+          "down": 0
+        }
+      }
+    }
+  },
+  "ids": [
+    "2wiki:00f34c7e088311ebbd6dac1f6bf848b6",
+    "2wiki:07630b680bde11eba7f7acde48001122",
+    "2wiki:079947de0baf11ebab90acde48001122",
+    "2wiki:07b1cc3c0baf11ebab90acde48001122",
+    "2wiki:085ace840bde11eba7f7acde48001122",
+    "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+    "2wiki:0b0f34d6084a11ebbd55ac1f6bf848b6",
+    "2wiki:0d118fb00bdb11eba7f7acde48001122",
+    "2wiki:0f1094ce086f11ebbd62ac1f6bf848b6",
+    "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+    "2wiki:15b9210e0baf11ebab90acde48001122",
+    "2wiki:16a91a500bb011ebab90acde48001122",
+    "2wiki:1e9c0bbb08a311ebbd7bac1f6bf848b6",
+    "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6",
+    "2wiki:233a579c0bde11eba7f7acde48001122",
+    "2wiki:27018f000baf11ebab90acde48001122",
+    "2wiki:279379df092411ebbdaeac1f6bf848b6",
+    "2wiki:2b42746808cf11ebbd94ac1f6bf848b6",
+    "2wiki:2d2fdefe085311ebbd59ac1f6bf848b6",
+    "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+    "2wiki:318b7d480bda11eba7f7acde48001122",
+    "2wiki:3c9020cd097811ebbdb0ac1f6bf848b6",
+    "2wiki:3cddcc46086511ebbd5eac1f6bf848b6",
+    "2wiki:40b3f66a08cb11ebbd92ac1f6bf848b6",
+    "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+    "2wiki:4228d7300bdb11eba7f7acde48001122",
+    "2wiki:42954d320bb011ebab90acde48001122",
+    "2wiki:43208df60bde11eba7f7acde48001122",
+    "2wiki:441127d6088711ebbd6dac1f6bf848b6",
+    "2wiki:4759b57e0bb011ebab90acde48001122",
+    "2wiki:480e8626089911ebbd77ac1f6bf848b6",
+    "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6",
+    "2wiki:4f81c5260bdc11eba7f7acde48001122",
+    "2wiki:5d6e0f860bb011ebab90acde48001122",
+    "2wiki:5f39895808c711ebbd91ac1f6bf848b6",
+    "2wiki:604119f2088011ebbd6cac1f6bf848b6",
+    "2wiki:61b28c2609a411ebbdb0ac1f6bf848b6",
+    "2wiki:654dbe680bb011ebab90acde48001122",
+    "2wiki:664ed504085e11ebbd5cac1f6bf848b6",
+    "2wiki:6856ba560bdd11eba7f7acde48001122",
+    "2wiki:68a60785087511ebbd67ac1f6bf848b6",
+    "2wiki:6c0c4c1a0bb011ebab90acde48001122",
+    "2wiki:6d2f94300bb011ebab90acde48001122",
+    "2wiki:6e1db6b808c911ebbd92ac1f6bf848b6",
+    "2wiki:6f115d280bde11eba7f7acde48001122",
+    "2wiki:7339445e086811ebbd5eac1f6bf848b6",
+    "2wiki:74b134420bd911eba7f7acde48001122",
+    "2wiki:74f39a760bde11eba7f7acde48001122",
+    "2wiki:751bb456084c11ebbd56ac1f6bf848b6",
+    "2wiki:77fd1ca20bb011ebab90acde48001122",
+    "2wiki:7888c2760baf11ebab90acde48001122",
+    "2wiki:78bc5f540bb011ebab90acde48001122",
+    "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+    "2wiki:7b4cc520091d11ebbdaeac1f6bf848b6",
+    "2wiki:7e73e6560bdd11eba7f7acde48001122",
+    "2wiki:7fbdef41091011ebbdadac1f6bf848b6",
+    "2wiki:8115d246087b11ebbd68ac1f6bf848b6",
+    "2wiki:83f013aa0bda11eba7f7acde48001122",
+    "2wiki:86e8f2bd089b11ebbd78ac1f6bf848b6",
+    "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+    "2wiki:8bc6a73a0bb011ebab90acde48001122",
+    "2wiki:8f2b2975088a11ebbd6fac1f6bf848b6",
+    "2wiki:923b15ba0bb011ebab90acde48001122",
+    "2wiki:93acf0b9088511ebbd6dac1f6bf848b6",
+    "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+    "2wiki:9d3c3b060bdd11eba7f7acde48001122",
+    "2wiki:9dc413af090311ebbdadac1f6bf848b6",
+    "2wiki:aaadd9f80baf11ebab90acde48001122",
+    "2wiki:ab74ab8709c111ebbdb0ac1f6bf848b6",
+    "2wiki:ae2d8fc308be11ebbd8aac1f6bf848b6",
+    "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+    "2wiki:b8e0d8400baf11ebab90acde48001122",
+    "2wiki:bd058dbd08fd11ebbdadac1f6bf848b6",
+    "2wiki:c231feaa0bdd11eba7f7acde48001122",
+    "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+    "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+    "2wiki:c96e87340baf11ebab90acde48001122",
+    "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+    "2wiki:cdb8b7540bd911eba7f7acde48001122",
+    "2wiki:ce612a020bdd11eba7f7acde48001122",
+    "2wiki:d27c4969084d11ebbd56ac1f6bf848b6",
+    "2wiki:d94d1d720bdd11eba7f7acde48001122",
+    "2wiki:d9c801f4088b11ebbd6fac1f6bf848b6",
+    "2wiki:dc8d75280baf11ebab90acde48001122",
+    "2wiki:de6783560bdd11eba7f7acde48001122",
+    "2wiki:dea18cf408c211ebbd8cac1f6bf848b6",
+    "2wiki:e3d274ec0bae11ebab90acde48001122",
+    "2wiki:e3d870e2085511ebbd59ac1f6bf848b6",
+    "2wiki:e7cd2f5a0bdc11eba7f7acde48001122",
+    "2wiki:ef8a103a0bd911eba7f7acde48001122",
+    "2wiki:f31011fc0bdc11eba7f7acde48001122",
+    "2wiki:f35cb30a0bae11ebab90acde48001122",
+    "2wiki:f37818400bd911eba7f7acde48001122",
+    "2wiki:f3c57d120baf11ebab90acde48001122",
+    "2wiki:fcd3ff500baf11ebab90acde48001122",
+    "hotpotqa:5a71474b5542994082a3e74f",
+    "hotpotqa:5a77cb5e55429967ab1052a7",
+    "hotpotqa:5a794f8155429970f5fffe95",
+    "hotpotqa:5a7a59d15542996c55b2dd67",
+    "hotpotqa:5a89ec7b5542992e4fca8483",
+    "hotpotqa:5a8b91d25542995d1e6f13fc",
+    "hotpotqa:5ab484415542990594ba9c44",
+    "hotpotqa:5ab8883455429916710eb084",
+    "hotpotqa:5abd455c55429924427fcf5a",
+    "hotpotqa:5abed9435542994516f45457",
+    "hotpotqa:5ac298805542990b17b15429",
+    "hotpotqa:5adc020a5542994650320c4c",
+    "hotpotqa:5adcfbf45542990d50227d86",
+    "hotpotqa:5ae0f2bf5542997b2ef7d09e",
+    "hotpotqa:5ae400ab5542995dadf242be",
+    "musique:2hop__412633_15781",
+    "musique:2hop__609313_20273",
+    "musique:3hop1__404541_629431_64412",
+    "musique:3hop2__368986_89048_66294",
+    "musique:4hop1__483807_508773_85832_745702"
+  ]
+}
+
+single_final与p02完整成功同题的逻辑调用/token比较：
+{
+  "matched_complete_success_queries": 131,
+  "dataset_counts": {
+    "2wiki": 96,
+    "musique": 17,
+    "hotpotqa": 18
+  },
+  "logical_calls": {
+    "p02_total": 808,
+    "single_final_total": 677,
+    "saved": 131,
+    "p02_mean": 6.1679389312977095,
+    "single_final_mean": 5.1679389312977095,
+    "relative_change": -0.16212871287128713
+  },
+  "prompt_tokens": {
+    "p02_total": 1343297,
+    "single_final_total": 1317632,
+    "saved": 25665,
+    "p02_mean": 10254.175572519083,
+    "single_final_mean": 10058.259541984733,
+    "relative_change": -0.019105975819197096
+  },
+  "completion_tokens": {
+    "p02_total": 12996,
+    "single_final_total": 9197,
+    "saved": 3799,
+    "p02_mean": 99.20610687022901,
+    "single_final_mean": 70.20610687022901,
+    "relative_change": -0.2923207140658664
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "matched_complete_success_queries": 18,
+      "dataset_counts": {
+        "hotpotqa": 18
+      },
+      "logical_calls": {
+        "p02_total": 92,
+        "single_final_total": 74,
+        "saved": 18,
+        "p02_mean": 5.111111111111111,
+        "single_final_mean": 4.111111111111111,
+        "relative_change": -0.1956521739130435
+      },
+      "prompt_tokens": {
+        "p02_total": 131153,
+        "single_final_total": 115255,
+        "saved": 15898,
+        "p02_mean": 7286.277777777777,
+        "single_final_mean": 6403.055555555556,
+        "relative_change": -0.12121720433386961
+      },
+      "completion_tokens": {
+        "p02_total": 1705,
+        "single_final_total": 1163,
+        "saved": 542,
+        "p02_mean": 94.72222222222223,
+        "single_final_mean": 64.61111111111111,
+        "relative_change": -0.31788856304985336
+      }
+    },
+    "2wiki": {
+      "matched_complete_success_queries": 96,
+      "dataset_counts": {
+        "2wiki": 96
+      },
+      "logical_calls": {
+        "p02_total": 614,
+        "single_final_total": 518,
+        "saved": 96,
+        "p02_mean": 6.395833333333333,
+        "single_final_mean": 5.395833333333333,
+        "relative_change": -0.1563517915309446
+      },
+      "prompt_tokens": {
+        "p02_total": 1036971,
+        "single_final_total": 1024875,
+        "saved": 12096,
+        "p02_mean": 10801.78125,
+        "single_final_mean": 10675.78125,
+        "relative_change": -0.011664742794157214
+      },
+      "completion_tokens": {
+        "p02_total": 9791,
+        "single_final_total": 6986,
+        "saved": 2805,
+        "p02_mean": 101.98958333333333,
+        "single_final_mean": 72.77083333333333,
+        "relative_change": -0.28648759064446944
+      }
+    },
+    "musique": {
+      "matched_complete_success_queries": 17,
+      "dataset_counts": {
+        "musique": 17
+      },
+      "logical_calls": {
+        "p02_total": 102,
+        "single_final_total": 85,
+        "saved": 17,
+        "p02_mean": 6.0,
+        "single_final_mean": 5.0,
+        "relative_change": -0.16666666666666666
+      },
+      "prompt_tokens": {
+        "p02_total": 175173,
+        "single_final_total": 177502,
+        "saved": -2329,
+        "p02_mean": 10304.29411764706,
+        "single_final_mean": 10441.29411764706,
+        "relative_change": 0.013295427948371038
+      },
+      "completion_tokens": {
+        "p02_total": 1500,
+        "single_final_total": 1048,
+        "saved": 452,
+        "p02_mean": 88.23529411764706,
+        "single_final_mean": 61.64705882352941,
+        "relative_change": -0.30133333333333334
+      }
+    }
+  }
+}
+
+费用：
+{
+  "database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+  "experiment_namespace_prefix": "p02_flow_simplify_v1_20261020",
+  "experiment": {
+    "submissions": 700,
+    "known_returned_usage_cny": 1.433677999999999,
+    "unknown_reserved_cny": 0.17686799999999994,
+    "occupied_cny": 1.610545999999999,
+    "unreconciled_requests": 18,
+    "statuses": {
+      "returned_usage": 682,
+      "reserved": 18
+    }
+  },
+  "by_arm": {
+    "union20": {
+      "submissions": 423,
+      "known_returned_usage_cny": 0.7667320000000006,
+      "unknown_reserved_cny": 0.12005519999999997,
+      "occupied_cny": 0.8867872000000006,
+      "unreconciled_requests": 13,
+      "statuses": {
+        "returned_usage": 410,
+        "reserved": 13
+      }
+    },
+    "discount20": {
+      "submissions": 142,
+      "known_returned_usage_cny": 0.2914668,
+      "unknown_reserved_cny": 0.008964799999999998,
+      "occupied_cny": 0.3004316,
+      "unreconciled_requests": 1,
+      "statuses": {
+        "returned_usage": 141,
+        "reserved": 1
+      }
+    },
+    "single_final": {
+      "submissions": 135,
+      "known_returned_usage_cny": 0.3754792,
+      "unknown_reserved_cny": 0.047847999999999995,
+      "occupied_cny": 0.4233272,
+      "unreconciled_requests": 4,
+      "statuses": {
+        "returned_usage": 131,
+        "reserved": 4
+      }
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "submissions": 118,
+      "known_returned_usage_cny": 0.1683603999999999,
+      "unknown_reserved_cny": 0.03540639999999999,
+      "occupied_cny": 0.20376679999999991,
+      "unreconciled_requests": 5,
+      "statuses": {
+        "returned_usage": 113,
+        "reserved": 5
+      }
+    },
+    "2wiki": {
+      "submissions": 417,
+      "known_returned_usage_cny": 0.9583212000000002,
+      "unknown_reserved_cny": 0.06098399999999999,
+      "occupied_cny": 1.0193052000000002,
+      "unreconciled_requests": 5,
+      "statuses": {
+        "returned_usage": 412,
+        "reserved": 5
+      }
+    },
+    "musique": {
+      "submissions": 165,
+      "known_returned_usage_cny": 0.30699640000000017,
+      "unknown_reserved_cny": 0.08047759999999998,
+      "occupied_cny": 0.38747400000000015,
+      "unreconciled_requests": 8,
+      "statuses": {
+        "returned_usage": 157,
+        "reserved": 8
+      }
+    }
+  },
+  "global": {
+    "submissions": 107764,
+    "known_returned_usage_cny": 188.00319880000137,
+    "unknown_reserved_cny": 35.58718480000003,
+    "occupied_cny": 223.59038360000142,
+    "unreconciled_requests": 2147,
+    "statuses": {
+      "reserved": 2147,
+      "returned_usage": 105574,
+      "http_failed_not_returned_usage": 43
+    }
+  },
+  "global_cap_cny": 300,
+  "actual_bill_verified": false,
+  "meaning": "Known costs are returned-usage estimates recorded by the budget ledger; unknown liabilities remain reserved. Cache replays do not add ledger charges."
+}
+
+没有显著差异不能宣称非劣；完成同题评估前不升级版本。

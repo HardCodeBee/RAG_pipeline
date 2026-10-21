@@ -1,0 +1,91 @@
+{
+  "scope": "Post-freeze diagnostic review of the complete p02-vs-g01 development90 comparison. Not used to select round4/round5 interventions or change fixed p02 confirmation150.",
+  "cases": [
+    {
+      "id": "musique:3hop1__857_846_7849",
+      "dataset": "musique",
+      "query": "What other types of theater performance are seen in the city where the Yongle emperor greeted the person to whom the edict was addressed?",
+      "gold_answer": "Suzhou pingtan, spoken theatre and puppet theatre",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "prediction": "Kunqu opera, Yang opera, Yue (Shaoxing) opera, Xi opera, Jing (Peking) opera, Suzhou pingtan, spoken theatre, and puppet theatre",
+        "em": 0,
+        "f1": 0.5384615384615384
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "prediction": "Kunqu opera, Yang opera, Yue (Shaoxing) opera, Xi opera, Jing (Peking) opera, Suzhou pingtan, spoken theatre, puppet theatre",
+        "em": 0,
+        "f1": 0.48
+      },
+      "delta_F1": -0.058461538461538454,
+      "classification": "Same overbroad list; lexical F1 regression",
+      "finding": "Both answers retain the same eight performance types, whereas the requested other types are the last three. Removing and changes native token F1; it does not fix the scope error.",
+      "identical_nodes_and_root_packet": true,
+      "supporting_original_excerpt": []
+    },
+    {
+      "id": "musique:3hop1__673934_831637_91775",
+      "dataset": "musique",
+      "query": "What does seal stand for in the operator of list of destroyer classes of the operator of the USS Kajeruna seals?",
+      "gold_answer": "Sea, Air, and Land",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "prediction": "SEAL does not stand for anything in this context.",
+        "em": 0,
+        "f1": 0
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "prediction": "Sea, Air, and Land",
+        "em": 1,
+        "f1": 1.0
+      },
+      "delta_F1": 1.0,
+      "classification": "Correct final extraction despite misleading goal conclusion",
+      "finding": "Root Chunk5 United States Navy SEALs explicitly defines Sea, Air, and Land. The unchanged goal says SEAL is not applicable but also mentions that expansion. p02 answers the supported expansion; g01 repeats the negative goal conclusion. This is one observed recovery, not proof of the models internal attention mechanism.",
+      "identical_nodes_and_root_packet": true,
+      "supporting_original_excerpt": [
+        "[Chunk 5 | source=United States Navy SEALs, pages=1-1]\nUnited States Navy SEALs\nThe United States Navy's ``Sea, Air, and Land ''Teams, commonly abbreviated as the Navy SEALs, are the U.S. Navy's primary special operations force and a component of the Naval Special Warfare Command. Among the SEALs' main functions are conducting small - unit maritime military operations that originate from, and return to, a river, ocean, swamp, delta, or coastline. The SEALs are trained to operate in all environments (Sea, Air, and Land) for which they are named."
+      ]
+    },
+    {
+      "id": "hotpotqa:5ae3e0535542992e3233c496",
+      "dataset": "hotpotqa",
+      "query": "The 1948 Commonwealth Prime Ministers' Conference was hosted by the Prime Minister from what British party?",
+      "gold_answer": "Labour",
+      "parent": {
+        "arm": "parent_g01",
+        "status": "success",
+        "prediction": "British Labour Party",
+        "em": 0.0,
+        "f1": 0.5
+      },
+      "candidate": {
+        "arm": "p02_role_headers",
+        "status": "success",
+        "prediction": "Labour Party",
+        "em": 0.0,
+        "f1": 0.6666666666666666
+      },
+      "delta_F1": 0.16666666666666663,
+      "classification": "Same party; shorter wording improves lexical F1",
+      "finding": "British Labour Party becomes Labour Party. Both name the same political party; this F1 gain is not a new fact retrieval or reasoning repair.",
+      "identical_nodes_and_root_packet": true,
+      "supporting_original_excerpt": []
+    }
+  ],
+  "counts": {
+    "F1_up": 2,
+    "F1_down": 1,
+    "ties": 87,
+    "observed_correct_final_recovery": 1,
+    "same_fact_wording_gain": 1,
+    "same_scope_error_wording_regression": 1
+  },
+  "new_api_calls": 0
+}

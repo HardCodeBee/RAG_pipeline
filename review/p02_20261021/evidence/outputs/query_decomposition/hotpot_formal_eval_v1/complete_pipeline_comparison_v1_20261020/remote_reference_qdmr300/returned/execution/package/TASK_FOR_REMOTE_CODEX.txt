@@ -1,0 +1,11 @@
+Execute ONLY old-style query decomposition for 300 records.
+Use unchanged checkpoint-000148, original instruction and decoding. Do not use R02 or convert its arrays.
+No retrieval, answering, training, gold access, scoring, or API calls.
+Preserve IDs verbatim. Historical filenames contain200; actual frozen count is 300.
+Verify PACKAGE_MANIFEST.json; then run python prepare_remote.py --submit on the existing deployment.
+If needed use --route-root to change deployment paths only. Reconcile Slurm state before resuming.
+Run name: complete_pipeline_eval300_reference_qdmr_20261020
+Return the complete runs/complete_pipeline_eval300_reference_qdmr_20261020/ folder including raw predictions, runtime config, identities, diagnostics, elapsed/token logs;
+also execution/package/ (predictor source and its identity), model_identity/BASE_MODEL_IDENTITY.json,
+checkpoint_identity/checkpoint-000148/manifest.json, and a SHA256 RETURN_FILE_MANIFEST.json.
+Zip as complete_pipeline_eval300_reference_qdmr_20261020_returned.zip. Return no weights or credentials.

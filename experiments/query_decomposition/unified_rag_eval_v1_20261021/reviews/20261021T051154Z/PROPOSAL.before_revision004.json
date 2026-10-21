@@ -1,0 +1,57 @@
+{
+  "status": "C1_approved_T1_B1_pending",
+  "review": "REUSE_AUDIT.json",
+  "quality_reuse": {
+    "hotpotqa": {
+      "baseline_v2_reusable": 4467,
+      "p02_candidates": 283,
+      "combined_if_approved": 4750,
+      "remaining": 250
+    },
+    "2wiki": {
+      "baseline_v2_reusable": 4496,
+      "p02_candidates": 498,
+      "combined_if_approved": 4994,
+      "remaining": 6
+    },
+    "musique": {
+      "baseline_v2_reusable": 1570,
+      "p02_candidates": 0,
+      "combined_if_approved": 1570,
+      "remaining": 3430
+    }
+  },
+  "baseline_algorithm_failures_preserved": 341,
+  "extra_original_baseline_upper_candidates": 946,
+  "proposal_C1": "Retain existing v2 results; migrate P02 only after same-case/stage/message stop+usage verification; preserve original max_tokens and provenance; exclude incomplete/unknown; recompute only changed downstream; no paid request as part of cache approval",
+  "proposal_T1": {
+    "recommended": "fixed20 stratified queries per dataset, same60 IDs for all10 primary methods; measurement-only full flows; no S02 rerun; fresh generation and retrieval packets, warm model/index; concurrency1; P02 decomposition separately warm-timed with frozen outputs unchanged",
+    "estimated_CNY": 4.6252563915549345,
+    "alternatives": {
+      "incremental_only": "No extra paid timing; some/all historical query TTFT remain missing; cannot claim complete timing comparison",
+      "paired50_estimated_CNY": 11.563140978887338,
+      "all500_estimated_CNY": 115.63140978887337
+    },
+    "status": "awaiting_user"
+  },
+  "proposal_B1": {
+    "recommended": "Keep global cap300; quality first; initially P02 new spend<=6, baselines new spend<=17, exceptional recovery<=2, unallocated dispatch balance0.999792; paid timing budget0 until reviewed savings leave headroom",
+    "future_optional_cap320": "Requires explicit user increase; never activated automatically",
+    "known_cost_cny": 219.4958576,
+    "unknown_reserves_cny": 54.4043504,
+    "dispatch_headroom_cny": 25.999791999999985,
+    "cost_scenarios": {
+      "baseline_full_flow_equivalent": 20.783173340168705,
+      "P02_full_flow_equivalent": 4.80653692261058,
+      "quality_total": 25.589710262779285,
+      "timing_20_per_dataset": 4.6252563915549345,
+      "timing_50_per_dataset": 11.563140978887338,
+      "timing_full500_per_dataset": 115.63140978887337,
+      "limitation": "Scenario estimate from observed logical usage. Extra eligible prefixes may lower incremental expense; unknowns, retries and unobserved MuSiQue cells can raise it. Not a spending authorization or cost guarantee."
+    },
+    "status": "awaiting_user"
+  },
+  "sequence": "Confirm C1 first, then T1, then B1 and a separate resume instruction. All holds stay active.",
+  "C1_status": "approved_by_user",
+  "C1_execution": "not_started"
+}

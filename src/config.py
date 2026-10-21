@@ -12,6 +12,8 @@ from typing import Any
 
 import yaml
 
+from src.generators.api_options import DASHSCOPE_BASE_URL, get_api_option
+
 
 _ROOT_KEYS = {
     "paths",
@@ -546,16 +548,22 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     prompt = _mapping(value.setdefault("prompt", {}), "prompt")
     _unknown(prompt, {"version"}, "prompt")
     prompt["version"] = _choice(
-        prompt.get("version", "fixed_qa_v1"),
-        {"fixed_qa_v1"},
+        prompt.get("version", "hotpot_short_answer_v1"),
+        {
+            "hotpot_short_answer_v1",
+            "hotpot_multihop_short_answer_v2",
+        },
         "prompt.version",
     )
 
-    # generation explicitly selects either remote OpenAI or local extractive generation.
+    # Resolve a numbered API choice to explicit, recorded generation settings.
     generation = _mapping(value.get("generation"), "generation")
+    if "api_option" in generation:
+        _unknown(generation, {"api_option"}, "generation API option")
+        generation = value["generation"] = get_api_option(generation["api_option"])
     generation["provider"] = _choice(
         generation.get("provider"),
-        {"extractive", "openai"},
+        {"extractive", "openai", "dashscope"},
         "generation.provider",
     )
     if generation["provider"] == "extractive":
@@ -563,7 +571,8 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
     else:
         _unknown(
             generation,
-            {"provider", "model", "temperature", "max_output_tokens", "timeout_seconds", "max_retries"},
+            {"provider", "model", "temperature", "max_output_tokens", "timeout_seconds", "max_retries"}
+            | ({"enable_thinking", "base_url"} if generation["provider"] == "dashscope" else set()),
             "generation",
         )
         generation["model"] = _text(generation.get("model"), "generation.model")
@@ -584,6 +593,13 @@ def validate_config(config: dict[str, Any]) -> dict[str, Any]:
             "generation.max_retries",
             minimum=0,
         )
+        if generation["provider"] == "dashscope":
+            generation["base_url"] = _text(
+                generation.get("base_url", DASHSCOPE_BASE_URL), "generation.base_url"
+            )
+            generation["enable_thinking"] = _boolean(
+                generation.get("enable_thinking", False), "generation.enable_thinking"
+            )
     generation["max_output_tokens"] = _integer(
         generation.get("max_output_tokens", 512),
         "generation.max_output_tokens",
@@ -627,9 +643,13 @@ def resolve_cli_path(project_root: str | Path, value: str | Path) -> Path:
     return _resolve_against(project_root, value)
 
 
-def apply_cli_overrides(config: dict[str, Any], *, top_k: int | None = None) -> dict[str, Any]:
+def apply_cli_overrides(
+    config: dict[str, Any], *, top_k: int | None = None, api_option: int | None = None,
+) -> dict[str, Any]:
     # 命令行覆盖项不修改原配置，而是返回一个重新校验过的副本。
     effective = copy.deepcopy(config)
+    if api_option is not None:
+        effective["generation"] = get_api_option(api_option)
     if top_k is not None:
         _integer(top_k, "retrieval.top_k", minimum=0)
         effective["retrieval"]["final_k"] = top_k

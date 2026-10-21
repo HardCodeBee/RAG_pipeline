@@ -1,0 +1,583 @@
+{
+  "utc": "2026-10-19T20:20:09.889031+00:00",
+  "status": "complete",
+  "planned": 300,
+  "five_way_common_n": 300,
+  "methods": {
+    "B0_legacy_multigrain_R02": {
+      "planned": 300,
+      "available": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "overhead": {
+        "logical_generation_calls": 1774,
+        "logical_calls_by_stage": {
+          "legacy": 1774
+        },
+        "logical_tokens": {
+          "prompt_tokens": 2808722,
+          "completion_tokens": 27673
+        },
+        "standalone_returned_usage_cny": 2.3023236,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 364,
+        "new_provider_submissions": 1510,
+        "new_request_statuses": {
+          "success": 1480,
+          "unknown": 30
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 2348930,
+          "completion_tokens": 22731
+        },
+        "new_charged_usage_estimate_cny": 1.924606,
+        "retry_method_case_attempts": 43,
+        "retry_provider_submissions": 160,
+        "retry_request_statuses": {
+          "success": 160
+        },
+        "retry_charged_usage_estimate_cny": 0.2286772,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.19022,
+        "logical_retrieval_calls": 1596,
+        "retrieval_cache_hits": 1071,
+        "new_retrieval_seconds": 2939.2339486991987,
+        "physical_retrieval_calls_including_retries": 1760,
+        "actual_replayed_execution_seconds_sum": 15036.321802999824,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency.",
+        "current_extension_new_submissions": 0,
+        "current_extension_new_usage_cny": 0.0,
+        "current_extension_new_reserves_cny": 0.0,
+        "historical_overhead_scope": "Other new_* fields describe the earlier complete300 campaign, not this extension."
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100
+        }
+      }
+    },
+    "R02_C08_c02_r1p1_integrated_candidate": {
+      "planned": 300,
+      "available": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 299,
+        "success_truncated": 1
+      },
+      "overhead": {
+        "logical_generation_calls": 1758,
+        "logical_calls_by_stage": {
+          "c08_c02": 1758
+        },
+        "logical_tokens": {
+          "prompt_tokens": 3322988,
+          "completion_tokens": 32907
+        },
+        "standalone_returned_usage_cny": 2.7242044,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 151,
+        "new_provider_submissions": 1818,
+        "new_request_statuses": {
+          "success": 1757,
+          "unknown": 61
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 3322281,
+          "completion_tokens": 32894
+        },
+        "new_charged_usage_estimate_cny": 2.7236127999999997,
+        "retry_method_case_attempts": 63,
+        "retry_provider_submissions": 255,
+        "retry_request_statuses": {
+          "success": 255
+        },
+        "retry_charged_usage_estimate_cny": 0.41060159999999996,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.41818639999999996,
+        "logical_retrieval_calls": 1592,
+        "retrieval_cache_hits": 1098,
+        "new_retrieval_seconds": 2773.761322700302,
+        "physical_retrieval_calls_including_retries": 1833,
+        "actual_replayed_execution_seconds_sum": 17144.069007300015,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency.",
+        "current_extension_new_submissions": 0,
+        "current_extension_new_usage_cny": 0.0,
+        "current_extension_new_reserves_cny": 0.0,
+        "historical_overhead_scope": "Other new_* fields describe the earlier complete300 campaign, not this extension."
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100
+        }
+      }
+    },
+    "s02_child4": {
+      "planned": 300,
+      "available": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 300
+      },
+      "overhead": {
+        "logical_generation_calls": 1387,
+        "logical_calls_by_stage": {
+          "short_node_1": 283,
+          "short_node_2": 111,
+          "contextual_node_1": 283,
+          "contextual_node_2": 283,
+          "contextual_node_3": 111,
+          "final": 300,
+          "short_node_3": 4,
+          "short_node_4": 4,
+          "contextual_node_4": 4,
+          "contextual_node_5": 4
+        },
+        "logical_tokens": {
+          "prompt_tokens": 2708815,
+          "completion_tokens": 18783
+        },
+        "standalone_returned_usage_cny": 2.204618,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 350,
+        "new_provider_submissions": 1051,
+        "new_request_statuses": {
+          "success": 1045,
+          "unknown": 6
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 2135724,
+          "completion_tokens": 14774
+        },
+        "new_charged_usage_estimate_cny": 1.7381271999999999,
+        "retry_method_case_attempts": 12,
+        "retry_provider_submissions": 33,
+        "retry_request_statuses": {
+          "success": 33
+        },
+        "retry_charged_usage_estimate_cny": 0.0619292,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.0526072,
+        "logical_retrieval_calls": 912,
+        "retrieval_cache_hits": 688,
+        "new_retrieval_seconds": 1259.7851022001705,
+        "physical_retrieval_calls_including_retries": 947,
+        "actual_replayed_execution_seconds_sum": 7322.111397199333,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency.",
+        "current_extension_new_submissions": 0,
+        "current_extension_new_usage_cny": 0.0,
+        "current_extension_new_reserves_cny": 0.0,
+        "historical_overhead_scope": "Other new_* fields describe the earlier complete300 campaign, not this extension."
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100
+        }
+      }
+    },
+    "b00_rag_top10_v1": {
+      "planned": 300,
+      "available": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 299,
+        "success_truncated": 1
+      },
+      "overhead": {
+        "logical_generation_calls": 300,
+        "logical_tokens": {
+          "prompt_tokens": 460331,
+          "completion_tokens": 1818
+        },
+        "standalone_returned_usage_cny": 0.3719008,
+        "exact_payload_reuses": 18,
+        "new_provider_submissions": 282,
+        "new_request_statuses": {
+          "success": 282
+        },
+        "new_charged_usage_estimate_cny": 0.3529912,
+        "new_unresolved_reserves_cny": 0.0,
+        "current_extension_new_submissions": 282,
+        "current_extension_new_usage_cny": 0.3529912,
+        "current_extension_new_reserves_cny": 0.0
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100
+        }
+      }
+    },
+    "b03_react_dense": {
+      "planned": 300,
+      "available": 300,
+      "missing": 0,
+      "statuses": {
+        "success": 277,
+        "algorithm_failure": 22,
+        "success_truncated": 1
+      },
+      "overhead": {
+        "logical_generation_calls": 996,
+        "logical_tokens": {
+          "prompt_tokens": 3094485,
+          "completion_tokens": 87014
+        },
+        "standalone_returned_usage_cny": 2.6496159999999995,
+        "exact_payload_reuses": 59,
+        "new_provider_submissions": 997,
+        "new_request_statuses": {
+          "success": 996,
+          "unknown": 1
+        },
+        "new_charged_usage_estimate_cny": 2.6496159999999995,
+        "new_unresolved_reserves_cny": 0.00468,
+        "current_extension_new_submissions": 997,
+        "current_extension_new_usage_cny": 2.6496159999999995,
+        "current_extension_new_reserves_cny": 0.00468
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100
+        }
+      }
+    }
+  },
+  "ranking": [
+    {
+      "method": "b03_react_dense",
+      "n": 300,
+      "f1": 0.6827103315787527,
+      "em": 0.59,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7657581453634082
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.9244444444444443
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.3579284049284049
+        }
+      }
+    },
+    {
+      "method": "B0_legacy_multigrain_R02",
+      "n": 300,
+      "f1": 0.6736469411679937,
+      "em": 0.57,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7718190476190473
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8913766788766787
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.35774509700825485
+        }
+      }
+    },
+    {
+      "method": "R02_C08_c02_r1p1_integrated_candidate",
+      "n": 300,
+      "f1": 0.6654856331777383,
+      "em": 0.5733333333333334,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7550779220779218
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8782142857142857
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.36316469174100746
+        }
+      }
+    },
+    {
+      "method": "s02_child4",
+      "n": 300,
+      "f1": 0.6604110737903307,
+      "em": 0.5533333333333333,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7480108225108224
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8192711700064639
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.41395122885370556
+        }
+      }
+    },
+    {
+      "method": "b00_rag_top10_v1",
+      "n": 300,
+      "f1": 0.5059422370980712,
+      "em": 0.41,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.6620714285714285
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.577783380018674
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.2779719027041101
+        }
+      }
+    }
+  ],
+  "paired": [
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "R02_C08_c02_r1p1_integrated_candidate",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -0.8161307990255361,
+      "bootstrap95_delta_pp": [
+        -3.544754507188718,
+        1.988038295281716
+      ],
+      "planned300_delta_bounds_pp": [
+        -0.816130799025536,
+        -0.816130799025536
+      ],
+      "up": 26,
+      "down": 26,
+      "tie": 248
+    },
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "s02_child4",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -1.323586737766304,
+      "bootstrap95_delta_pp": [
+        -4.826993858580933,
+        2.1151104423468974
+      ],
+      "planned300_delta_bounds_pp": [
+        -1.3235867377663035,
+        -1.3235867377663035
+      ],
+      "up": 38,
+      "down": 38,
+      "tie": 224
+    },
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "b00_rag_top10_v1",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -16.77047040699229,
+      "bootstrap95_delta_pp": [
+        -21.58105862471245,
+        -12.087951572354152
+      ],
+      "planned300_delta_bounds_pp": [
+        -16.770470406992292,
+        -16.770470406992292
+      ],
+      "up": 34,
+      "down": 90,
+      "tie": 176
+    },
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "b03_react_dense",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 0.9063390410758836,
+      "bootstrap95_delta_pp": [
+        -2.2859832589437854,
+        4.0944011991906715
+      ],
+      "planned300_delta_bounds_pp": [
+        0.9063390410758831,
+        0.9063390410758831
+      ],
+      "up": 45,
+      "down": 34,
+      "tie": 221
+    },
+    {
+      "a": "R02_C08_c02_r1p1_integrated_candidate",
+      "b": "s02_child4",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -0.5074559387407681,
+      "bootstrap95_delta_pp": [
+        -3.9311326511036264,
+        2.934544682656522
+      ],
+      "planned300_delta_bounds_pp": [
+        -0.5074559387407681,
+        -0.5074559387407681
+      ],
+      "up": 36,
+      "down": 35,
+      "tie": 229
+    },
+    {
+      "a": "R02_C08_c02_r1p1_integrated_candidate",
+      "b": "b00_rag_top10_v1",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -15.954339607966752,
+      "bootstrap95_delta_pp": [
+        -20.671579344376102,
+        -11.287929089950667
+      ],
+      "planned300_delta_bounds_pp": [
+        -15.954339607966757,
+        -15.954339607966757
+      ],
+      "up": 34,
+      "down": 83,
+      "tie": 183
+    },
+    {
+      "a": "R02_C08_c02_r1p1_integrated_candidate",
+      "b": "b03_react_dense",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 1.722469840101419,
+      "bootstrap95_delta_pp": [
+        -1.912792944871892,
+        5.3351748283393015
+      ],
+      "planned300_delta_bounds_pp": [
+        1.722469840101419,
+        1.722469840101419
+      ],
+      "up": 44,
+      "down": 31,
+      "tie": 225
+    },
+    {
+      "a": "s02_child4",
+      "b": "b00_rag_top10_v1",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -15.446883669225981,
+      "bootstrap95_delta_pp": [
+        -20.10876363795998,
+        -10.843045857400705
+      ],
+      "planned300_delta_bounds_pp": [
+        -15.446883669225988,
+        -15.446883669225988
+      ],
+      "up": 24,
+      "down": 77,
+      "tie": 199
+    },
+    {
+      "a": "s02_child4",
+      "b": "b03_react_dense",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 2.229925778842187,
+      "bootstrap95_delta_pp": [
+        -1.5826223679571205,
+        6.106526801372001
+      ],
+      "planned300_delta_bounds_pp": [
+        2.2299257788421873,
+        2.2299257788421873
+      ],
+      "up": 48,
+      "down": 38,
+      "tie": 214
+    },
+    {
+      "a": "b00_rag_top10_v1",
+      "b": "b03_react_dense",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 17.67680944806817,
+      "bootstrap95_delta_pp": [
+        13.086650896738325,
+        22.470290920915545
+      ],
+      "planned300_delta_bounds_pp": [
+        17.676809448068173,
+        17.676809448068173
+      ],
+      "up": 87,
+      "down": 26,
+      "tie": 187
+    }
+  ],
+  "budget": {
+    "known_usage_cny": 176.90577439999998,
+    "unknown_reserves_cny": 35.3933032,
+    "occupied_cny": 212.29907759999998,
+    "remaining_cny": 87.70092240000002,
+    "extension_occupied_cny": 3.0072872,
+    "cap_cny": 300,
+    "invoice_verified": false
+  },
+  "limitations": [
+    "Existing300 has already been used for decomposition diagnostics; not untouched holdout.",
+    "Shared-resource local ReAct adaptation with BGE Search and no Wiki Lookup; not original-paper reproduction.",
+    "Frozen64/512 generation limits are retained; length failures are disclosed, not silently propagated."
+  ],
+  "protocol_sha256": "6185a33841397ecd03de4883e7d4a99c289164aea4ccdd117574673b7945ad83",
+  "hallucination_judge_called": false,
+  "original_results_unchanged": true,
+  "cost_note": "Known returned usage at list rates; actual invoice not checked. Historical unknown reserves retained. Selected-method standalone cost differs from new marginal calls."
+}

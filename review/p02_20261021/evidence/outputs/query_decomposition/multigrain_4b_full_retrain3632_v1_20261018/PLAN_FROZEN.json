@@ -1,0 +1,91 @@
+{
+  "run": "multigrain_4b_full_retrain3632_v1_20261018",
+  "stage": "Full retraining; distinct from completed 40-update continuation trials.",
+  "initialization": "Immutable original Qwen3-4B-Instruct-2507 base + fresh ordinary LoRA. No old adapter/optimizer initialization.",
+  "data": {
+    "total": 3632,
+    "reused_old": 3496,
+    "new_native_musique": 96,
+    "new_explicit_synthetic": 40,
+    "old_data_changes": "Prior eight documented label fixes retained; four uncertain old records quarantined, not declared factually false. Original3500 immutable.",
+    "native_quarantine": 24,
+    "unchanged_known_issue": "One old DROP exact-goal repetition remains deferred, not silently changed after freezing.",
+    "review": "Codex authoring plus same-reviewer second pass; not independent human gold.",
+    "sha256": "096fd1ae6a998e6db3c0bff8d03653f6ba84163455563e7017dd249c756eb27f"
+  },
+  "training": {
+    "epochs_cap": 2,
+    "updates_per_epoch": 114,
+    "updates_cap": 228,
+    "micro_batch": 1,
+    "effective_batch": 32,
+    "epoch_tail": 16,
+    "examples_per_epoch": 3632,
+    "total_exposures": 7264,
+    "sampler": "Uniform shuffled without replacement within each epoch; no focused oversampling.",
+    "seed": 1729,
+    "lr": 5e-05,
+    "warmup_updates": 10,
+    "lr_schedule": "update1..10 = peak*(update/10); update11..228 = peak*(228-update)/218; fixed horizon.",
+    "optimizer": "Fresh AdamW beta .9/.999, eps1e-8, weight_decay.01; gradient clip1.",
+    "lora": {
+      "r": 32,
+      "lora_alpha": 64,
+      "lora_dropout": 0.05,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "bias": "none",
+      "use_rslora": false,
+      "use_dora": false,
+      "modules_to_save": null
+    },
+    "bf16": true,
+    "max_length": 1024,
+    "truncate": false,
+    "reason": "All old/new records reused. Old peak near1.5 epochs and later overfit motivate cap2 and lower LR; not a controlled data-only causal comparison.",
+    "checkpoint_updates": [
+      57,
+      114,
+      171,
+      228
+    ],
+    "generated_dev60_updates": [
+      114,
+      171,
+      228
+    ],
+    "loss_monitor": "Same frozen old dev150 and train_probe150 at57/114/171/228; diagnostic only, no test-based scheduler changes.",
+    "smoke": "Two updates in separate fresh process; verify changed/reloaded adapter and unchanged base. Formal run starts fresh again."
+  },
+  "selection": {
+    "source": "Only fixed dev60, not confirm120; train all fixed228 before semantic choice.",
+    "eligibility": "Total>=47/60; Mu>=15/20; Hot+Wiki>=31/40; Mu F/S failure rows<=4. If no checkpoint qualifies retain frozen baseline, no forced promotion.",
+    "ranking": "Highest total pass, then highest worst-dataset pass, then earliest update.",
+    "rubric": "Original F/S/C/U; uncertainty is nonpass; exact arrays inherit locked parent. Same Codex, not independent.",
+    "frozen_parent": "T02:47/60 total, Mu15/20. Pilot R02:51/60 total, Mu17/20 reported alongside, never overwritten."
+  },
+  "confirmation": {
+    "roster_sha256": "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa",
+    "n": 120,
+    "already_queued_pilot_jobs": [
+      "154345",
+      "154347"
+    ],
+    "at_design_freeze": "No new confirmation model outputs viewed. Existing jobs pending at2026-10-18T04:35:37Z.",
+    "policy": "Keep pilot confirmation jobs. Freeze this recipe before viewing outputs; score one dev-selected full-SFT model once on the same fixed120, no reselection or subsequent changes from these scores.",
+    "mu_scope": "Unused native-train held-out with primitive exclusion, not an official MuSiQue dev/test estimate.",
+    "measure": "Decomposition pass, not downstream QA F1; report full denominators and paired uncertainty."
+  },
+  "api_calls": 0,
+  "prompt": "Exact frozen v12 bytes, native nonthinking greedy evaluation; no postprocessing.",
+  "preservation": "Original3500, checkpoint165, T02, pilotR01/R02 all read-only; new isolated directory.",
+  "batches_sha256": "e57363d26f5b83553ad727601f477e4f85724b586f897b0917fd953c1823af1c",
+  "config_sha256": "7c8282558a3815e168acafe5c20bff60e3b66022efa6bcb1a7def17392994078"
+}

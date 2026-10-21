@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-20T10:11:47.754974+00:00",
+  "status": "complete",
+  "sample": 300,
+  "datasets": {
+    "hotpotqa": 100,
+    "2wiki": 100,
+    "musique": 100
+  },
+  "scorable_by_arm": {
+    "union20": 300,
+    "discount20": 300,
+    "single_final": 300
+  },
+  "missing_by_arm": {
+    "union20": 0,
+    "discount20": 0,
+    "single_final": 0
+  },
+  "independent_verification_passed": true,
+  "selected_candidate": "union20",
+  "goal_preanswer_retained": true,
+  "decision_file": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\SIMPLIFICATION_DECISION.frozen.json",
+  "summary_file": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\FINAL_SUMMARY.txt",
+  "budget": {
+    "global_known_cny": 189.5441416,
+    "global_reserved_cny": 36.0545864,
+    "global_occupied_cny": 225.598728,
+    "experiment_known_cny": 2.9746208,
+    "experiment_reserved_cny": 0.6442696,
+    "experiment_submissions": 1409,
+    "global_cap_cny": 300,
+    "actual_bill_verified": false
+  }
+}

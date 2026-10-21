@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-18T06:48:54.580171+00:00",
+  "training_job": "154361",
+  "training_complete": true,
+  "evaluation_job": "154422",
+  "evaluation_complete": true,
+  "dev_selected": "checkpoint-000228",
+  "dev_passes": 48,
+  "T02_dev_passes": 47,
+  "full_heldout_passes": 100,
+  "T02_heldout_passes": 98,
+  "R02_heldout_passes": 103,
+  "formal_gate": {
+    "total_strictly_higher": true,
+    "mu_not_lower": true,
+    "mu_FS_not_increased": false
+  },
+  "promote_full_retrain": false,
+  "reason": "Full model point gain over T02 is small and CI crosses zero; Mu pass count unchanged and Mu F/S-risk count increases8 to9 including uncertainty; full model also trails R02 point score. Keep prior models and do not replace frozen best with this full retrain.",
+  "frozen_T02_retained": true,
+  "R02_retained": true,
+  "api_calls": 0,
+  "further_test_based_tuning_performed": false
+}

@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "checks_count": 48,
+  "checks": [
+    {
+      "check": "case: byte-identical raw copy",
+      "passed": true
+    },
+    {
+      "check": "parent: byte-identical raw copy",
+      "passed": true
+    },
+    {
+      "check": "remote: byte-identical raw copy",
+      "passed": true
+    },
+    {
+      "check": "remote/query/runtime/case identity",
+      "passed": true
+    },
+    {
+      "check": "remote raw parses to actual supporting questions",
+      "passed": true
+    },
+    {
+      "check": "remote prompt SHA",
+      "passed": true
+    },
+    {
+      "check": "remote identity SHA",
+      "passed": true
+    },
+    {
+      "check": "remote greedy/no reference/truncation/error",
+      "passed": true
+    },
+    {
+      "check": "remote token ID counts",
+      "passed": true
+    },
+    {
+      "check": "program appends original query as goal",
+      "passed": true
+    },
+    {
+      "check": "p02 equals parent upstream nodes and root",
+      "passed": true
+    },
+    {
+      "check": "root is reused for original goal retrieval",
+      "passed": true
+    },
+    {
+      "check": "ordinary has no rewrite/formatter",
+      "passed": true
+    },
+    {
+      "check": "ordinary reader uses original route only",
+      "passed": true
+    },
+    {
+      "check": "goal rewrite accepted",
+      "passed": true
+    },
+    {
+      "check": "goal retains full previous QA",
+      "passed": true
+    },
+    {
+      "check": "goal no formatter; both sentence outputs retained",
+      "passed": true
+    },
+    {
+      "check": "merge exactly matches frozen function",
+      "passed": true
+    },
+    {
+      "check": "two routes have no common doc IDs; five from each retained",
+      "passed": true
+    },
+    {
+      "check": "root lacks birthplace, rewritten rank1 and merged rank2 contain it",
+      "passed": true
+    },
+    {
+      "check": "node1 prompt exact renderer match",
+      "passed": true
+    },
+    {
+      "check": "node2 prompt exact renderer match",
+      "passed": true
+    },
+    {
+      "check": "rewrite prompt exact legacy renderer match",
+      "passed": true
+    },
+    {
+      "check": "p02 helper exact renderer",
+      "passed": true
+    },
+    {
+      "check": "final prompt/context exact renderer",
+      "passed": true
+    },
+    {
+      "check": "final actual context is helper then original Top10 only",
+      "passed": true
+    },
+    {
+      "check": "01_child1_answer: payload SHA verified",
+      "passed": true
+    },
+    {
+      "check": "01_child1_answer: full user prompt exactly matches saved case",
+      "passed": true
+    },
+    {
+      "check": "01_child1_answer: generation config",
+      "passed": true
+    },
+    {
+      "check": "01_child1_answer: successful output/usage exactly matches case receipt",
+      "passed": true
+    },
+    {
+      "check": "02_goal_query_rewrite: payload SHA verified",
+      "passed": true
+    },
+    {
+      "check": "02_goal_query_rewrite: full user prompt exactly matches saved case",
+      "passed": true
+    },
+    {
+      "check": "02_goal_query_rewrite: generation config",
+      "passed": true
+    },
+    {
+      "check": "02_goal_query_rewrite: successful output/usage exactly matches case receipt",
+      "passed": true
+    },
+    {
+      "check": "03_goal_answer: payload SHA verified",
+      "passed": true
+    },
+    {
+      "check": "03_goal_answer: full user prompt exactly matches saved case",
+      "passed": true
+    },
+    {
+      "check": "03_goal_answer: generation config",
+      "passed": true
+    },
+    {
+      "check": "03_goal_answer: successful output/usage exactly matches case receipt",
+      "passed": true
+    },
+    {
+      "check": "04_final_answer: payload SHA verified",
+      "passed": true
+    },
+    {
+      "check": "04_final_answer: full user prompt exactly matches saved case",
+      "passed": true
+    },
+    {
+      "check": "04_final_answer: generation config",
+      "passed": true
+    },
+    {
+      "check": "04_final_answer: successful output/usage exactly matches case receipt",
+      "passed": true
+    },
+    {
+      "check": "four logical calls, three reused and final new",
+      "passed": true
+    },
+    {
+      "check": "four logical retrievals, three unique queries, p02 all cached",
+      "passed": true
+    },
+    {
+      "check": "parent performs three actual retrievals",
+      "passed": true
+    },
+    {
+      "check": "native 2Wiki scoring",
+      "passed": true
+    },
+    {
+      "check": "gold reference excluded from runtime",
+      "passed": true
+    },
+    {
+      "check": "all pinned protocol sources unchanged",
+      "passed": true
+    }
+  ]
+}

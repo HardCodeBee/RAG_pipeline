@@ -1,0 +1,33 @@
+{
+  "job_id": "154347",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--dependency=afterok:154345",
+    "--job-name=coverage-v3-oldcontrol",
+    "--time=00:15:00",
+    "--chdir=/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018",
+    "--output=/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/train-%j.out",
+    "--error=/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/train-%j.err",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/runtime/run_stage.slurm",
+    "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python",
+    "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/package_v001/score_model.py",
+    "--base-package",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+    "--checkpoint",
+    "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r01_old_data/checkpoint-final",
+    "--checkpoint-sha",
+    "5dd6feb4e73669c6e1c9791a9121a51c0c503d979e395ad7ac021d98b3c2d0b7",
+    "--queries",
+    "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/package_v001/confirm120.questions.frozen.jsonl",
+    "--queries-sha",
+    "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa",
+    "--prompt",
+    "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/package_v001/v12.txt",
+    "--output",
+    "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/confirmation/r01_old_data"
+  ],
+  "submitted_utc": "2026-10-18T04:30:19.878473+00:00",
+  "purpose": "Supplementary same40-step old-data control on untouched confirm120; no model reselection.",
+  "api_calls": 0
+}

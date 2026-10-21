@@ -1,0 +1,410 @@
+MuSiQue ReAct 21 题算法失败：离线逐题核查 v001
+
+范围：同一批 300 题中 MuSiQue 100 题的全部 21 个 ReAct algorithm_failure。
+未排除这些题，正式 F1 不变。没有新 API 调用，没有扩大预算重跑，没有改动冻结控制器。
+直接原因依据代码和实际回复可精确判定；底层检索/语义/数据原因是有记录支持的观察，并非完成干预实验后得到的因果恢复率。
+
+结论
+不能把这 21 题直接解释成 ReAct 思路本身的失败。当前失败首先发生在本地动作生成/终止协议：8 题回复达到 512 token 仍无合法动作；13 题已执行 5 次搜索，下一次仍要 Search，被控制器停止。
+这些退出机制不等于全部根因。此前还存在桥接事实检索不到、重复查询、对象/条件漂移，以及至少 4 题原始 gold 链跨州错接同名地点。延长 token 或轮数能改变退出，但能否得到正确答案尚未验证。
+本地 ReAct 在 MuSiQue 的最终 F1 为 35.7928%；这是整套本地资源/模型/工具/提示/预算的结果，不能当作原论文在 MuSiQue 的复现成绩。21 个算法失败也不是全部最终答案错误的数量。
+
+A. 精确可核查的运行机制
+1) invalid_action：8/21=38.10%。8 个末轮回复全部 finish_reason=length，completion_tokens=512；未生成完整 Search[...] 或 Finish[...]。宽松空白/跨行括号匹配也找不到动作，因此不是解析器拒收已经存在的合法动作。程序没有只补动作的恢复调用，直接保存空终答/F1=0。
+2) no_finish_within_budget：13/21=61.90%。每题实际完成 5 次 Search，再得到第 6 轮回复。13 个末轮回复全部要求 Search，不是 Finish；该搜索不会执行，程序保存空终答/F1=0。其中 12 个末轮自然结束，1 个长度截断但合法 Search 已在截断前出现。
+3) 这 13 题中 7 题出现精确重复的已执行查询，额外占用 11 个搜索轮次。重复查询也会累计预算；取得缓存不等于不计搜索次数。其余多题有近义改写重搜，但未把它们混算为精确重复。
+4) 已逐字重建全部 102 个实际 prompt；81 次实际检索与对应 qid/历史/回包一致。最大输入 9966 token，最长检索问句 22 token。未发现观察丢失、串题、超长检索问句截断或上下文窗口溢出。21 条轨迹的选定调用均已返回；不是 HTTP 429/断网导致的缺答。
+5) 仅 2 题读齐全部标注 gold 段落：Lynn Hung、La Liga。命中所有 gold 文档仍不等于关系无歧义、文本严格支持或模型正确使用。
+
+B. 与作者 HotpotQA 实现的区别
+核查官方源码：https://github.com/ysymyth/ReAct/blob/master/hotpotqa.ipynb
+作者版本使用 6 个例子、编号 Thought/Action、在 Observation 前停止生成，并在 Thought/Action 解析失败时追加一次只生成 Action 的调用；主循环最多 7 个动作机会。工具是 Wikipedia Search/Lookup/Finish。
+本地版本使用 3 个 HotpotQA 训练例子、不编号的 Thought/Action，一次生成最多 512 token，没有 API stop 参数，也没有补动作恢复。工具是统一 BGE 语料 Top-10 Search/Finish，不提供 Wiki Lookup；最多 5 次实际 Search 和随后一次 Finish 机会。提示没有声明当前剩余搜索数。
+作者示例模型为 text-davinci-002、单次上限 100 token；本地是 Qwen-Plus-2025-12-01。模型/分词/提示不同，不能仅比较 100 和 512 就判断资源是否充足。
+重要限定：作者实现的主循环耗尽后也调用空 finish[]，不是保证会强制生成正确非空答案。因此“到达预算时另行强制回答”应视为新终止策略，不能冒称作者原版已具备。
+本地控制器与历史冻结快照字节一致，只能证明没有临时改弱；不能证明完整复现了论文作者实现。搜索上限 5 沿用历史开发集选定配置，没有针对这 100 题调参。
+已知的旧包装层“一概拒收 length 回复”已在本轮正式汇总前修复并按原回复回放；当前 21 题是修复之后的冻结结果，不是该旧问题残留。
+
+C. 全部 21 题逐题记录
+
+[01] musique:4hop2__161324_14670_8987_8529
+原 query：A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country occupied by the Nazi's. When was the word "Slavs" used in the national anthem of the unprepared country?
+gold：1943–1992
+直接退出：invalid_action；实际搜索 1；精确重复额外执行 0；gold 段落 0/4。
+实际动作顺序：
+  action_1: search[country unprepared for Nazi invasion military branch equivalent to US Air Defense Artillery]；已执行；finish=stop；生成 51 token。
+  action_2: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：第一次复合搜索后，模型把目标国家猜向波兰；末轮在讨论波兰国歌时大量重复同一行歌词，直到 512 token 截断，未输出动作。原始标签意图是南斯拉夫及 1943–1992。
+归因边界：512 上限直接触发退出，但此前已经猜错对象并出现重复生成；扩大上限不等于纠正国家。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.4000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop2__161324_14670_8987_8529.json
+
+[02] musique:3hop2__326964_734214_7713
+原 query：How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+gold：about 400 years
+直接退出：invalid_action；实际搜索 4；精确重复额外执行 0；gold 段落 3/3。
+实际动作顺序：
+  action_1: search[Where was Lynn Hung born?]；已执行；finish=stop；生成 22 token。
+  action_2: search[Where is Yaxing Coach headquartered?]；已执行；finish=stop；生成 36 token。
+  action_3: search[Is Nanjing the capital of Jiangsu province?]；已执行；finish=stop；生成 74 token。
+  action_4: search[When did Nanjing become the capital of Jiangsu province?]；已执行；finish=stop；生成 58 token。
+  action_5: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：实际先得到 Lynn Hung 出生地南京、Yaxing 总部扬州/江苏，随后把目标改成南京作为江苏省省会的时长。末轮考虑 1953 到 2025 的约 72 年，512 token 用完仍无动作。
+原始标注/证据限定：原始 Nanjing 段落给出汉末到唐初为 Yangzhou 首府约 400 年，Yaxing 段落的 Yangzhou 却是现代总部城市；同名历史行政区和现代城市本身有歧义。不能把三篇 gold 文档命中理解成关系已经无歧义。
+归因边界：已读齐 3 篇标注支持段落；长度/动作修复只能使轨迹继续，不能保证模型回到正确的历史关系。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.4000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\3hop2__326964_734214_7713.json
+
+[03] musique:4hop3__524186_219173_548463_72134
+原 query：When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?
+gold：1839
+直接退出：invalid_action；实际搜索 3；精确重复额外执行 0；gold 段落 3/4。
+实际动作顺序：
+  action_1: search[Who was the screenwriter of "The Poor Boob"?]；已执行；finish=stop；生成 39 token。
+  action_2: search[Where was Margaret Mayo born?]；已执行；finish=stop；生成 79 token。
+  action_3: search[Where is Superior Drill Company located?]；已执行；finish=stop；生成 53 token。
+  action_4: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：实际查到 Margaret Mayo 出生于 Illinois，以及 Superior Drill Company 位于 Springfield, Ohio。模型识别出两个州不一致，试图消解矛盾，末轮 512 token 截断而无动作。
+原始标注/证据限定：原始支持材料将 Springfield, Ohio 的公司所在地连接到了 Springfield, Illinois 的建都年份 1839。不是单纯“模型没把 Springfield 替换进去”，而是原始 gold 链的跨州同名实体错接。
+归因边界：就算强制输出答案，也不能要求模型在保持原题地点约束的同时必然得到 gold 1839。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop3__524186_219173_548463_72134.json
+
+[04] musique:4hop2__161602_426860_88460_21074
+原 query：Who runs the school system in the country that is the natural boundary between the country that hosted the tournament and the country where That Dam is located?
+gold：the Ministry of Education
+直接退出：invalid_action；实际搜索 2；精确重复额外执行 0；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[What is "That Dam" and which tournament is referenced in this context?]；已执行；finish=stop；生成 51 token。
+  action_2: search[famous dam nicknamed "That Dam" or "The Dam" near an international sports tournament host country]；已执行；finish=stop；生成 290 token。
+  action_3: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：题目未说明是哪一场 tournament，且把一个 country 写成两国之间的 natural boundary。模型围绕 That Dam、老挝、泰国、河流边界猜测，两次检索后 512 token 截断。
+原始标注/证据限定：原始分解直接把未指明的 tournament 绑定到 Thailand，再把自然边界回答为 Myanmar；这些绑定不能由原题的明确实体唯一确定。
+归因边界：缺少消歧线索，不能把失败全部归于输出长度或动作语法。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0417；b00_rag_top10_v1=0.2857；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop2__161602_426860_88460_21074.json
+
+[05] musique:4hop1__43565_624859_355213_203322
+原 query：Which county shares a border with the county where the city in which the original singer of All By Myself was born is located?
+gold：Cabarrus County
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 1；gold 段落 3/4。
+实际动作顺序：
+  action_1: search[Who was the original singer of "All By Myself"?]；已执行；finish=stop；生成 33 token。
+  action_2: search[Where was Eric Carmen born?]；已执行；finish=stop；生成 43 token。
+  action_3: search[Where was Eric Carmen born?]；已执行；finish=stop；生成 47 token。
+  action_4: search[Eric Carmen birthplace]；已执行；finish=stop；生成 33 token。
+  action_5: search[What county is Cleveland, Ohio in?]；已执行；finish=stop；生成 58 token。
+  action_6: search[Which counties border Cuyahoga County, Ohio?]；未执行；finish=stop；生成 71 token。
+具体观察：模型沿 Eric Carmen → Cleveland, Ohio → Cuyahoga County 检索；出生地搜索精确重复一次。5 次搜索后申请查询 Cuyahoga 的邻县，未获执行。
+原始标注/证据限定：原始支持段落一篇写 Cleveland, Ohio 的 Eric Carmen，下一篇却是 Cleveland, North Carolina/Rowan County，最终 gold 为 Cabarrus County。原始 gold 在 Cleveland 处跨州错接。
+归因边界：当前轨迹继续找 Ohio 邻县也不应自然得到北卡的 gold；多给一次搜索不能证明能够修复。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.5000；b00_rag_top10_v1=0.5000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\4hop1__43565_624859_355213_203322.json
+
+[06] musique:3hop1__702699_792411_51423
+原 query：What is the name of the castle in the birth city of the performer on the album Maria?
+gold：Casa Loma
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 1/3。
+实际动作顺序：
+  action_1: search[performer on the album Maria]；已执行；finish=stop；生成 30 token。
+  action_2: search[Where was Jane Siberry born?]；已执行；finish=stop；生成 47 token。
+  action_3: search[Jane Siberry birthplace]；已执行；finish=stop；生成 54 token。
+  action_4: search[Jane Siberry birthplace city]；已执行；finish=stop；生成 69 token。
+  action_5: search[Jane Siberry birthplace Wikipedia]；已执行；finish=stop；生成 65 token。
+  action_6: search[castle in Toronto]；未执行；finish=stop；生成 101 token。
+具体观察：先正确找到 Maria 的表演者 Jane Siberry，随后 4 次出生地问法没取得明确出生城市。末轮根据参数知识提出 Search[castle in Toronto]，这是第 6 次搜索申请，被预算拦截。gold 为 Casa Loma。
+原始标注/证据限定：原始标注的中间支持段落为 Gavin Bradley 的简介，提到其位于 Toronto 且与 Jane Siberry 合作；它不直接证明 Jane Siberry 的出生地。
+归因边界：本题最直接显示最后一跳候选搜索被停止，但未执行的搜索是否召回 Casa Loma 尚未验证。B0、整合版和 S02 在本题均为 F1=1。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=1.0000；R02_C08_c02_r1p1_integrated_candidate=1.0000；s02_child4=1.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\3hop1__702699_792411_51423.json
+
+[07] musique:4hop1__107309_457883_650651_7262
+原 query：The Embassy of the country where palitaw comes from is found in Bandar Seri Begawan in Country A. Who was a prominent figure at the radio division of the creator of The Biggest Loser at Country A?
+gold：Walter Sabo
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 3/4。
+实际动作顺序：
+  action_1: search[Where does palitaw come from?]；已执行；finish=stop；生成 56 token。
+  action_2: search[Who created The Biggest Loser?]；已执行；finish=stop；生成 84 token。
+  action_3: search[Who is a prominent figure at the radio division of BNC Network HD?]；已执行；finish=stop；生成 214 token。
+  action_4: search[BNC Network HD Brunei radio division prominent figure]；已执行；finish=stop；生成 110 token。
+  action_5: search[RTB Brunei Director of Radio Pengiran Haji Mohammad Yusof]；已执行；finish=stop；生成 253 token。
+  action_6: search[RTB Brunei Director General Pengiran Dato Seri Setia Haji Awang Abdul Momin]；未执行；finish=stop；生成 245 token。
+具体观察：确认 Brunei 后，模型将 The Biggest Loser 的 creator/原节目来源与当地播出机构混淆，转向 BNC Network HD、RTB 的广播部门人物。最后还想查 RTB 领导，5 次搜索用完。
+原始标注/证据限定：gold 路线借 Brunei 版节目段落中的 NBC 连接到 NBC Radio 的 Walter Sabo。
+归因边界：在错误的 RTB 分支继续搜索，不保证回到 NBC；属于语义对象漂移叠加预算退出。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\4hop1__107309_457883_650651_7262.json
+
+[08] musique:3hop2__132957_595371_40768
+原 query：When did the maker of the Acura Legend, the manufacturer of the Scion xB, and Nissan, open US assembly plants?
+gold：1981
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 2；gold 段落 2/3。
+实际动作顺序：
+  action_1: search[Who made the Acura Legend?]；已执行；finish=stop；生成 48 token。
+  action_2: search[When did Honda open its first US assembly plant?]；已执行；finish=stop；生成 163 token。
+  action_3: search[When did Honda open its first automobile assembly plant in the United States?]；已执行；finish=stop；生成 103 token。
+  action_4: search[When did Honda open its first automobile assembly plant in the United States?]；已执行；finish=stop；生成 88 token。
+  action_5: search[When did Honda open its first automobile assembly plant in the United States?]；已执行；finish=stop；生成 79 token。
+  action_6: search[When did Nissan open its Smyrna Assembly Plant?]；未执行；finish=stop；生成 323 token。
+具体观察：Honda 的首家美国汽车组装厂问法执行了 3 次（多出 2 次精确重复），最后才申请 Nissan 的 Smyrna 工厂年份，已达搜索上限。
+原始标注/证据限定：支持段落同时说 1973 危机后的十年和 1981 自愿出口限制，gold 为 1981；模型尝试区分各厂实际开设年份。这是出口限制时间与开厂时间的语义歧义，不能假设 gold 年份是所有厂家同年开厂的直接证据。
+归因边界：去掉重复可以释放轮次，但是否得到 gold 年份仍取决于时间关系的解释。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\3hop2__132957_595371_40768.json
+
+[09] musique:2hop__132909_33564
+原 query：During which era was the company that makes Nirbhay founded?
+gold：From the 1950s to the 1970s
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 2；gold 段落 1/2。
+实际动作顺序：
+  action_1: search[Which company manufactures the Nirbhay cruise missile?]；已执行；finish=stop；生成 31 token。
+  action_2: search[When was the Defence Research and Development Organisation (DRDO) founded?]；已执行；finish=stop；生成 51 token。
+  action_3: search[When was the Defence Research and Development Organisation (DRDO) founded?]；已执行；finish=stop；生成 53 token。
+  action_4: search[When was the Defence Research and Development Organisation (DRDO) founded?]；已执行；finish=stop；生成 53 token。
+  action_5: search[When was Defence Research and Development Organisation (DRDO) established in India?]；已执行；finish=stop；生成 59 token。
+  action_6: search[When was DRDO established?]；未执行；finish=stop；生成 62 token。
+具体观察：第一步正确找到 Nirbhay 的 DRDO，随后同一成立时间问法执行 3 次，再做一个变体；末轮仍想查 DRDO 成立时间。实际回包没有找到明确所需段落。
+原始标注/证据限定：gold 范围来自 Hyderabad 段落对 1950s–1970s 期间多家机构在该地设立的整体描述；模型想到的 DRDO 组织成立年 1958 与“当地设立机构时期”不是完全同一字段。
+归因边界：此处 Search 不能保证像实体百科工具那样返回 DRDO 的对应段落；重复无新证据的搜索消耗了有限轮次。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\2hop__132909_33564.json
+
+[10] musique:3hop1__847684_339990_54675
+原 query：What mountains can you see from Portland, in the state containing the county where Lorenz Park is located?
+gold：Tualatin Mountains
+直接退出：invalid_action；实际搜索 2；精确重复额外执行 0；gold 段落 1/3。
+实际动作顺序：
+  action_1: search[Where is Lorenz Park located?]；已执行；finish=stop；生成 24 token。
+  action_2: search[Is there a Portland in New York State?]；已执行；finish=stop；生成 323 token。
+  action_3: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：第一次读到 Lorenz Park 位于 Columbia County, New York，随后找 New York 的 Portland。末轮在 New York/Maine/Oregon 的 Portland 之间消歧，512 token 截断。
+原始标注/证据限定：原始 gold 支持链从 Columbia County, New York 接到了 Columbia County, Oregon，再接 Portland, Oregon 和 Tualatin Mountains，存在跨州同名县错接。
+归因边界：模型保留 New York 限定本身合理；不能将“未跳到 Oregon”都当成方法推理错误。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\3hop1__847684_339990_54675.json
+
+[11] musique:4hop1__344155_378185_282674_759393
+原 query：What is the seat of the county sharing a border with the county with a town to which KRSU is licensed to broadcast?
+gold：Green Bay
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 1；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[What town is KRSU licensed to?]；已执行；finish=stop；生成 136 token。
+  action_2: search[What county is Appleton, Minnesota in?]；已执行；finish=stop；生成 37 token。
+  action_3: search[Appleton, Minnesota county]；已执行；finish=stop；生成 48 token。
+  action_4: search[Appleton Minnesota county seat]；已执行；finish=stop；生成 42 token。
+  action_5: search[Appleton, Minnesota county]；已执行；finish=stop；生成 48 token。
+  action_6: search[Appleton Minnesota location county]；未执行；finish=stop；生成 46 token。
+具体观察：实际 KRSU 段落写 Appleton, Minnesota。后续一直查这个带州名的城市属于哪个县，精确重复一次，5 次搜索后还想继续查。
+原始标注/证据限定：原始 gold 后继段落 John C. Petersen 写 Appleton, Wisconsin / Outagamie County，再接 Brown County/Green Bay。Appleton 从 Minnesota 被错接到 Wisconsin。
+归因边界：本题不能拿 Green Bay 当作遵守 Minnesota 约束时也应推出的答案；无终答和原始标注矛盾是两个层次。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\4hop1__344155_378185_282674_759393.json
+
+[12] musique:3hop1__109422_720914_27537
+原 query：Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+gold：for the conclave in Rome
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 3；gold 段落 2/3。
+实际动作顺序：
+  action_1: search[Who created "The Punishment of Tythus" and where did they die?]；已执行；finish=stop；生成 43 token。
+  action_2: search[Where did Titian die?]；已执行；finish=stop；生成 43 token。
+  action_3: search[Where did Titian die?]；已执行；finish=stop；生成 84 token。
+  action_4: search[Where did Titian die?]；已执行；finish=stop；生成 37 token。
+  action_5: search[Where did Titian die?]；已执行；finish=stop；生成 37 token。
+  action_6: search[Where did Titian die in 1576?]；未执行；finish=stop；生成 59 token。
+具体观察：找到 Titian 后，同一 Search[Where did Titian die?] 连续执行 4 次（多出 3 次精确重复）。回包含画作在 Venice 的信息，但没有直接证明作者去世地点；最后又申请加 1576 的变体，被上限停止。
+原始标注/证据限定：不能把“作品收藏/位于 Venice”当成“作者死于 Venice”。实际未读到 gold 最后一步的 Roncalli 离开 Venice 去 Rome 参加 conclave 的段落。
+归因边界：明确存在检索重复和桥接事实缺口，不是读齐证据却拒绝完成最终答案。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.3158；R02_C08_c02_r1p1_integrated_candidate=0.3200；s02_child4=0.3158；b00_rag_top10_v1=0.4706；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\3hop1__109422_720914_27537.json
+
+[13] musique:4hop1__94201_642284_131926_13165
+原 query：What treaty ceded territory to the US extending west to the body of water by the city where the designer of Southeast Library died?
+gold：Treaty of Paris
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[designer of Southeast Library death city]；已执行；finish=stop；生成 29 token。
+  action_2: search[Where did Ralph Rapson die?]；已执行；finish=stop；生成 62 token。
+  action_3: search[Ralph Rapson death location]；已执行；finish=stop；生成 39 token。
+  action_4: search[Ralph Rapson birth and death date and location]；已执行；finish=stop；生成 51 token。
+  action_5: search[Ralph Rapson death place]；已执行；finish=stop；生成 46 token。
+  action_6: search[What body of water is Minneapolis located on?]；未执行；finish=stop；生成 188 token。
+具体观察：找到 Ralph Rapson 后，4 次死亡地点变体仍未找到所需城市。末轮猜 Minneapolis，并申请查询其附近水体；已用完 5 次搜索。
+原始标注/证据限定：末轮文本还自行生成 Observation，但这是模型生成的文字，不是工具返回。原解析器只保留 Search 之前的有效动作，不会把这些文字当作检索证据。
+归因边界：继续执行还需水体与条约两步，不能断言把上限从 5 加到 6 就能答出 Treaty of Paris。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.4000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.4000；b00_rag_top10_v1=0.4000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\4hop1__94201_642284_131926_13165.json
+
+[14] musique:2hop__753715_51329
+原 query：with what movie did Mary Philips' husband win his only oscar?
+gold：The African Queen
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 0/2。
+实际动作顺序：
+  action_1: search[Who was Mary Philips' husband?]；已执行；finish=stop；生成 24 token。
+  action_2: search[Who was Mary Philips married to?]；已执行；finish=stop；生成 54 token。
+  action_3: search[Who was actress Mary Philips married to?]；已执行；finish=length；生成 512 token。
+  action_4: search[Mary Philips actress husband William Wyler]；已执行；finish=stop；生成 81 token。
+  action_5: search[Mary Philips husband Oscar winner]；已执行；finish=stop；生成 209 token。
+  action_6: search[Mary Philips husband Robert Sherwood Oscar wins]；未执行；finish=stop；生成 241 token。
+具体观察：Mary Philips 的丈夫一直没得到证据支持，后续猜 William Wyler，再转 Robert Sherwood；最后申请查 Robert Sherwood 的奥斯卡，达到搜索上限。
+原始标注/证据限定：gold 链是 Mary Philips → Humphrey Bogart → The African Queen，当前轨迹未读到标注支持段落。
+归因边界：错误对象进入检索之后会带走后续轮次；单纯放宽轮数不保证纠正丈夫实体。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\2hop__753715_51329.json
+
+[15] musique:2hop__13592_49388
+原 query：How many games in a season of the league in which Barcelona won titles in 1948 and 1949?
+gold：38
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 2/2。
+实际动作顺序：
+  action_1: search[Which league did Barcelona win titles in 1948 and 1949?]；已执行；finish=stop；生成 48 token。
+  action_2: search[How many games in La Liga season 1948–49?]；已执行；finish=stop；生成 58 token。
+  action_3: search[How many teams in La Liga 1948–49?]；已执行；finish=stop；生成 93 token。
+  action_4: search[How many teams in La Liga 1948–49 season?]；已执行；finish=stop；生成 110 token。
+  action_5: search[La Liga 1948–49 season number of teams]；已执行；finish=stop；生成 86 token。
+  action_6: search[La Liga 1948–49 standings]；未执行；finish=stop；生成 122 token。
+具体观察：第一步确定 La Liga，第二次实际返回的 Top-2 La Liga 明写每队每季共 38 matchdays，但模型把 1948/1949（用于识别联赛的条件）带到后继季赛制度问题，反复查 1948–49 的球队数。末轮提出用 n×(n−1) 计算全部比赛，再申请 standings，搜索用尽。
+原始标注/证据限定：本题 gold=38，两篇标注段落均实际读到；历史赛季解释存在语言歧义，但模型的检索目标和 gold 所问当前通用赛制不同，且从单队赛程转向全部比赛总量。
+归因边界：这是证据已经出现仍持续搜另一个目标的案例；提高搜索预算不能自动恢复正确限定范围。S02 在该题 F1=1，B0=0。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=1.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\2hop__13592_49388.json
+
+[16] musique:4hop2__71753_158985_70784_61381
+原 query：When was the region immediately north of the region where Israel is located and the site of the most growth in desalination for agricultural use established?
+gold：1932
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 0；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[What region is immediately north of Israel?]；已执行；finish=stop；生成 25 token。
+  action_2: search[When was Lebanon established as a modern nation-state?]；已执行；finish=stop；生成 57 token。
+  action_3: search[When did Lebanon gain independence?]；已执行；finish=stop；生成 67 token。
+  action_4: search[When did Lebanon gain full independence from France?]；已执行；finish=stop；生成 413 token。
+  action_5: search[When was modern Lebanon established as an independent country?]；已执行；finish=stop；生成 111 token。
+  action_6: search[When was the modern Republic of Lebanon established?]；未执行；finish=length；生成 512 token。
+具体观察：把“某地区以北、且满足海水淡化条件的地区”缩成 Israel 以北的国家，随后一条路径查询 Lebanon 的建立/独立年份直到轮次用完。末轮虽 512 token 截断，但 Search 已完整，直接原因仍是预算，不属于 8 个无动作案例。
+原始标注/证据限定：gold 路线用 Middle East、Persian Gulf、Saudi Arabia，原始地域关系本身也有方向/范围歧义，不能把所有地理偏差仅归于轮次。
+归因边界：当前错误目标 Lebanon 已稳定，继续加搜索不直接解决嵌套条件丢失。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop2__71753_158985_70784_61381.json
+
+[17] musique:4hop1__690653_378185_282674_759393
+原 query：What is the capital of the county, that shares a border with the other county, that includes the city where Main Hall is located?
+gold：Green Bay
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 1；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[Where is Main Hall located?]；已执行；finish=stop；生成 24 token。
+  action_2: search[What county is Appleton, Wisconsin in?]；已执行；finish=stop；生成 36 token。
+  action_3: search[What county is Appleton, Wisconsin in?]；已执行；finish=stop；生成 61 token。
+  action_4: search[Appleton Wisconsin county]；已执行；finish=stop；生成 38 token。
+  action_5: search[Appleton Wisconsin county name]；已执行；finish=stop；生成 49 token。
+  action_6: search[Appleton Wisconsin county]；未执行；finish=stop；生成 62 token。
+具体观察：与 KRSU 题不同，这题 Main Hall → Appleton, Wisconsin 的实体链正确。后续多种县名问法返回其他 Wisconsin 城镇段落，未取得 Outagamie County；精确重复一次。最后虽想到 Outagamie，仍申请搜索 Appleton 所在县，被预算停止。
+原始标注/证据限定：不能与第 11 题混为同一 Appleton 跨州错误；该题首个地点就正确匹配 Wisconsin。
+归因边界：主要是密集检索对县级桥接事实召回不稳，再叠加重复；最终还缺邻县与县城关系。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\4hop1__690653_378185_282674_759393.json
+
+[18] musique:4hop3__316459_41402_157761_13584
+原 query：A country gained control of Florida after the war in which Charles Edmund Nugent saw action. Besides the different areas of that country, what other differences are there between Real Madrid and the team for the city he moved to in 1999?
+gold：two cities
+直接退出：invalid_action；实际搜索 2；精确重复额外执行 0；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[Which war did Charles Edmund Nugent see action in, and which country gained control of Florida afterward?]；已执行；finish=stop；生成 51 token。
+  action_2: search[When was Charles Edmund Nugent born?]；已执行；finish=stop；生成 213 token。
+  action_3: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：题目先说 Charles Edmund Nugent，随后说“he moved to in 1999”。模型查到 Nugent 是更早年代的人物，认为该 he 无法指代 Nugent，转而猜测其他足球人物，512 token 截断。
+原始标注/证据限定：原始分解的 1999/Barcelona 实际来自 Flavio Manzoni 的段落，但题面没有给出该人的明确先行词；原始战争/Florida 关系也有歧义。
+归因边界：可确认题面存在跨子题指代脱落；仅修动作格式无法恢复题面未提供的人名。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop3__316459_41402_157761_13584.json
+
+[19] musique:4hop1__105401_17130_70784_79935
+原 query：When was the region that lies to the north of the region where Strangers No More took place and the Persian Gulf created?
+gold：1930
+直接退出：invalid_action；实际搜索 1；精确重复额外执行 0；gold 段落 1/4。
+实际动作顺序：
+  action_1: search[Where did the documentary "Strangers No More" take place?]；已执行；finish=stop；生成 40 token。
+  action_2: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：先正确取得 Strangers No More 在 Israel，随后围绕“同时位于 Israel 和 Persian Gulf 以北”推测 Turkey/Anatolia，以及地质形成还是建国时间，512 token 截断。
+原始标注/证据限定：gold 路线转到 Saudi Arabia 并取 1930；原始 north of 与地域范围表达有歧义，不能把全部差异归为模型忘记正确答案。
+归因边界：属于长推理协议失败叠加题意/地域关系歧义，扩大 token 不保证走向 gold。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\4hop1__105401_17130_70784_79935.json
+
+[20] musique:3hop1__106042_64399_53006
+原 query：What is the great mosque constructed at the site of the old temple in the city originating christianity in Rome, Egypt, Judea and the country for Vasilopita?
+gold：Al - Aqsa Mosque
+直接退出：invalid_action；实际搜索 1；精确重复额外执行 0；gold 段落 0/3。
+实际动作顺序：
+  action_1: search[city originating Christianity in Rome Egypt Judea and country for Vasilopita]；已执行；finish=stop；生成 51 token。
+  action_2: (无完整动作)；未执行；finish=length；生成 512 token。
+具体观察：一次复合检索后，512-token Thought 多次提到 Jerusalem 和 Al-Aqsa，同时考虑 Dome of the Rock，但未给出 Search 或 Finish。其他四套流程在该题均 F1=1。
+归因边界：说明无合法动作并不代表模型完全没有想到正确候选；也不能因为 Thought 同时列出正确和其他候选，就事后按 gold 选择一项作为正式答案。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=1.0000；R02_C08_c02_r1p1_integrated_candidate=1.0000；s02_child4=1.0000；b00_rag_top10_v1=1.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r001\cases\musique\b03_react_dense\3hop1__106042_64399_53006.json
+
+[21] musique:2hop__511454_120259
+原 query：When was Lady Godiva's birthplace abolished?
+gold：918
+直接退出：no_finish_within_budget；实际搜索 5；精确重复额外执行 1；gold 段落 0/2。
+实际动作顺序：
+  action_1: search[What was Lady Godiva's birthplace?]；已执行；finish=stop；生成 26 token。
+  action_2: search[What was Lady Godiva's birthplace?]；已执行；finish=stop；生成 45 token。
+  action_3: search[Where was Lady Godiva born?]；已执行；finish=stop；生成 52 token。
+  action_4: search[Lady Godiva birthplace]；已执行；finish=stop；生成 46 token。
+  action_5: search[Lady Godiva birthplace historical location]；已执行；finish=stop；生成 129 token。
+  action_6: search[When was the Kingdom of Mercia abolished?]；未执行；finish=stop；生成 379 token。
+具体观察：5 次出生地检索（含一次精确重复）没有取得支持段落。末轮明确提出 Mercia，并写出其政治实体结束的年份 918，但仍输出 Search[When was the Kingdom of Mercia abolished?]，不是 Finish[918]。第 6 次搜索没有执行，最后答案为空，F1=0。
+原始标注/证据限定：918 在此来自模型参数知识推断，检索并未支持出生地→Mercia 的桥接；不能声称证据链已闭合。
+归因边界：这是终止策略可能损失已有候选答案的直接线索；是否改为预算耗尽时答题就能提升，需预先固定策略后另做对照。
+同题既有最终 F1（仅供参照，不据此重选轨迹）：B0_legacy_multigrain_R02=0.0000；R02_C08_c02_r1p1_integrated_candidate=0.0000；s02_child4=0.0000；b00_rag_top10_v1=0.0000；b03_react_dense=0.0000
+实际选中结果：outputs\query_decomposition\hotpot_formal_eval_v1\baselines_same300_v1_20261020\attempts\r000\cases\musique\b03_react_dense\2hop__511454_120259.json
+
+D. 四个已确认的原始同名实体错接：逐字核对支持段落
+以下取自本地归档的 MuSiQue native dev 文件，而非模型自造 Observation。发现问题后仍保留原始评分与全部题目；不能选择性删题。
+
+[03] musique:4hop3__524186_219173_548463_72134
+[Superior Drill Company]
+Superior Drilling Company was a manufacturer of farming implements that formed in the late 1800' to 1903 in Springfield, Ohio, United States.
+[Margaret Mayo (playwright)]
+Margaret Mayo, born Lillian Elizabeth Slatten (November 19, 1882 in Brownsville, Illinois – February 25, 1951), was an American actress, playwright and screenwriter.
+[Springfield, Illinois]
+Springfield's original name was Calhoun, after Senator John C. Calhoun of South Carolina. The land that Springfield now occupies was originally settled by trappers and traders who came to the Sangamon River in 1818. The settlement's first cabin was built in 1820, by John Kelly. It was located at what is now the northwest corner of Second Street and Jefferson Street. In 1821, Calhoun became the county seat of Sangamon County due to fertile soil and trading opportunities. Settlers from Kentucky, Virginia, and as far as North Carolina came to the city. By 1832, Senator Calhoun had fallen out of the favor with the public and the town renamed itself Springfield after Springfield, Massachusetts. At that time, Springfield, Massachusetts was comparable to modern - day Silicon Valley -- known for industrial innovation, concentrated prosperity, and the celebrated Springfield Armory. Most importantly, it was a city that had built itself up from frontier outpost to national power through ingenuity -- an example that the newly named Springfield, Illinois, sought to emulate. Kaskaskia was the first capital of the Illinois Territory from its organization in 1809, continuing through statehood in 1818, and through the first year as a state in 1819. Vandalia was the second state capital of Illinois from 1819 to 1839. Springfield became the third and current capital of Illinois in 1839. The designation was largely due to the efforts of Abraham Lincoln and his associates; nicknamed the ``Long Nine ''for their combined height of 54 feet (16 m).
+原生分解：[{"id": 524186, "question": "The Poor Boob >> screenwriter", "answer": "Margaret Mayo", "paragraph_support_idx": 2}, {"id": 219173, "question": "#1 >> place of birth", "answer": "Illinois", "paragraph_support_idx": 15}, {"id": 548463, "question": "Superior Drill Company >> headquarters location", "answer": "Springfield", "paragraph_support_idx": 8}, {"id": 72134, "question": "when did #3 become the capital of #2", "answer": "1839", "paragraph_support_idx": 1}]
+
+[05] musique:4hop1__43565_624859_355213_203322
+[The Definitive Collection (Eric Carmen album)]
+The Definitive Collection is a 1997 greatest hits compilation album of all the singles released by Cleveland, Ohio singer-songwriter Eric Carmen. It features five hits by the Raspberries, a power pop group which he led in the early 1970s. It also contains his versions of two major hits which he wrote for Shaun Cassidy, two popular songs from the movie "Dirty Dancing", and his greatest hit, "All By Myself".
+[Cleveland, North Carolina]
+Cleveland is a town in the Cleveland Township of Rowan County, North Carolina, United States. The population was 871 at the 2010 census.
+[Gold Hill, North Carolina]
+Gold Hill is a small unincorporated community in southeastern Rowan County, North Carolina near the Cabarrus County line. It is situated near the Yadkin River and is served by U.S. Highway 52 and Old Beatty Ford Road. Gold was found in this small town outside Salisbury in the 19th century.
+原生分解：[{"id": 43565, "question": "who is the original singer of all by myself", "answer": "Eric Carmen", "paragraph_support_idx": 3}, {"id": 624859, "question": "#1 >> place of birth", "answer": "Cleveland", "paragraph_support_idx": 19}, {"id": 355213, "question": "#2 >> located in the administrative territorial entity", "answer": "Rowan County", "paragraph_support_idx": 0}, {"id": 203322, "question": "#3 >> shares border with", "answer": "Cabarrus County", "paragraph_support_idx": 12}]
+
+[10] musique:3hop1__847684_339990_54675
+[Lorenz Park, New York]
+Lorenz Park is a census-designated place (CDP) in Columbia County, New York, United States. The population was 2,053 at the 2010 census.
+[Socialist Party of Oregon (Columbia County, Oregon)]
+The Socialist Party of Oregon in Columbia County, Oregon began around the First Red Scare. The first year (1914) it went mainstream, the Socialist party had 27 more registered members than the Prohibition Party, who were some members of the Suffrage movement. The Socialist party was similar to the Progressive Party in the county, as it tried from the outskirts of government to make change. While Socialism failed its first year, it still received attention from the press who was aware of the October Revolution (1918) in Russia (Now the Soviet Union) by a similarly named government led by Vladimir Lenin.
+原生分解：[{"id": 847684, "question": "Lorenz Park >> located in the administrative territorial entity", "answer": "Columbia County", "paragraph_support_idx": 1}, {"id": 339990, "question": "#1 >> located in the administrative territorial entity", "answer": "Oregon", "paragraph_support_idx": 7}, {"id": 54675, "question": "what mountain can you see from portland #2", "answer": "Tualatin Mountains", "paragraph_support_idx": 0}]
+
+[11] musique:4hop1__344155_378185_282674_759393
+[KRSU (FM)]
+KRSU (88.5 FM) is a radio station licensed to Appleton, Minnesota. The station is owned by Minnesota Public Radio (MPR), and airs MPR's "Classical Music Network", originating from KSJN in Minneapolis/St. Paul.
+[John C. Petersen]
+John C. Petersen (November 2, 1842 – July 10, 1887) was an American butcher and farmer from Appleton, Wisconsin who served as a member of the Wisconsin State Assembly from Outagamie County. He was elected in 1878 as a Greenbacker, and was re-elected the next year as a "Greenback Democrat" (even though he was opposed by a Democrat).
+原生分解：[{"id": 344155, "question": "KRSU >> licensed to broadcast to", "answer": "Appleton", "paragraph_support_idx": 7}, {"id": 378185, "question": "#1 >> located in the administrative territorial entity", "answer": "Outagamie County", "paragraph_support_idx": 0}, {"id": 282674, "question": "#2 >> shares border with", "answer": "Brown County", "paragraph_support_idx": 2}, {"id": 759393, "question": "#3 >> capital", "answer": "Green Bay", "paragraph_support_idx": 14}]
+
+E. 可以验证但尚未执行的最小对照
+E1：只对无动作回复追加一次 Action-only 恢复，其他设置不变。检验缺少动作补救造成多大损失；不是从 Thought 按 gold 挑答案。
+E2：搜索预算仍为 5，只在最后一步明确只能 Finish，要求给出当前最佳短答案或固定无法判断表达。检验终止协议；不要同时增加搜索。
+E3：另设 5→7 次搜索配置，不改变动作恢复与最终协议，检验更多搜索的实际净收益和费用。
+E4：单独比较更短的 Thought 约定或更高输出上限，检验 512 截断；两者不能混为一个变量。
+每项都保存旧配置，先明确策略再推理，完整计入调用/重复/失败；若要替换正式基线，应在同一批 MuSiQue 100 题乃至完整 300 题检验净效应，不能只补成功后替换 21 条失败。
+数据标注矛盾另做错误分析；不得因方法是否答对而删题，也不能把按有问题的 gold 得零分解释成事实判断必错。
+
+F. 可复核文件
+CASE_TRACES.jsonl：21 题的完整原始回复、实际 prompt、实际工具包、native 支持段落/原生分解及来源路径。
+ALL21_LAST_REPLIES.txt：逐题动作和末轮完整原始回复。
+CASE_REVIEWS.v001.json：人工逐题观察与同题既有分数。
+PROMPT_RECONSTRUCTION_AUDIT.json：102 个 prompt 和 81 个检索输入核查结果。
+REVIEW_SUMMARY.v001.json：机械统计、原始文件 hash、零新增调用与核查边界。
+本次新增 API 费用：0 元。冻结结果、正式分母和 F1 均未改变。

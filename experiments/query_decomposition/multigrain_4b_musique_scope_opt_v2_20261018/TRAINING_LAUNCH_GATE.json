@@ -1,0 +1,30 @@
+{
+  "all_three_prompt_candidates_failed_screen_gate": true,
+  "gates": {
+    "m01_static_mu": {
+      "passed": 65,
+      "mu": 30,
+      "macro": 0.7833333333333333,
+      "control_delta": -2,
+      "eligible": false
+    },
+    "m02_adaptive_mu": {
+      "passed": 65,
+      "mu": 32,
+      "macro": 0.7633333333333333,
+      "control_delta": -4,
+      "eligible": false
+    },
+    "m03_scope_contrast": {
+      "passed": 70,
+      "mu": 34,
+      "macro": 0.8266666666666667,
+      "control_delta": -1,
+      "eligible": false
+    }
+  },
+  "summary_sha256": "a8871fd18cc15aa7214540da7b6d07e9cf1bd932138ae570129a485c6ad9c715",
+  "recorded_utc": "2026-10-18T00:06:05.007095+00:00",
+  "baseline_unchanged": true,
+  "train_control": "Same corrected3500, same20 updates, only sampling differs; not new-data diversity."
+}

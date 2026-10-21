@@ -1,0 +1,71 @@
+{
+  "dataset": "hotpotqa",
+  "reference_sha256": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+  "overall": {
+    "planned": 500,
+    "terminal_records": 500,
+    "available": 470,
+    "missing": 30,
+    "f1_available": 0.6672680280037447,
+    "em_available": 0.5340425531914894,
+    "f1_all_planned_bounds": [
+      0.6272319463235201,
+      0.6872319463235201
+    ],
+    "statuses": {
+      "success": 470,
+      "unknown": 27,
+      "provider_content_rejected": 3
+    }
+  },
+  "by_type": {
+    "bridge": {
+      "planned": 407,
+      "terminal_records": 407,
+      "available": 386,
+      "missing": 21,
+      "f1_available": 0.6454316271564637,
+      "em_available": 0.49222797927461137,
+      "f1_all_planned_bounds": [
+        0.6121292581877027,
+        0.6637263097847543
+      ],
+      "statuses": {
+        "success": 386,
+        "unknown": 20,
+        "provider_content_rejected": 1
+      }
+    },
+    "comparison": {
+      "planned": 93,
+      "terminal_records": 93,
+      "available": 84,
+      "missing": 9,
+      "f1_available": 0.7676114890400603,
+      "em_available": 0.7261904761904762,
+      "f1_all_planned_bounds": [
+        0.6933265062297319,
+        0.790100699778119
+      ],
+      "statuses": {
+        "success": 84,
+        "unknown": 7,
+        "provider_content_rejected": 2
+      }
+    }
+  },
+  "returned_usage_cny": 7.2108908,
+  "reserved_unreconciled_cny": 13.9264712,
+  "logical_calls": 2385,
+  "unsubmitted_trace_calls": 0,
+  "logical_cold_cost_cny": 7.290611200000002,
+  "logical_cost_missing_calls": 30,
+  "logical_tokens": {
+    "prompt": 6627144,
+    "completion": 994448
+  },
+  "metric": "native official Answer EM/F1; 2Wiki v1.1 entity aliases/demonyms; MuSiQue Ans answer_aliases",
+  "support_metric": "gold document coverage of passages actually shown; not official sentence-support or joint F1",
+  "hallucination_rate_evaluated": false,
+  "cost_pricing": "frozen Beijing tiered public list prices; actual bill not verified"
+}

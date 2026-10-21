@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-17T10:00:02.720278+00:00",
+  "id": "iter_react_matched50_20261017",
+  "source_sha256": "ad0fe979d90d1667eb7961651808154514a8078940fb0484aba725c1e3ae3095",
+  "authorization": "User requested equal Iter-RetGen/ReAct budgets and reevaluation of Iter-RetGen",
+  "iter_config": {
+    "id": "k10_t5",
+    "k": 10,
+    "iterations": 5
+  },
+  "react_config": {
+    "id": "k10_s5",
+    "k": 10,
+    "max_search": 5
+  },
+  "definition": "Equal maximum5 retrieval calls,10 passages per call,50 document slots; actual use and generation tokens are reported separately. ReAct may Finish early.",
+  "datasets": [
+    "2wiki",
+    "hotpotqa",
+    "musique"
+  ],
+  "formal_per_dataset": 500,
+  "dev_integrity_per_dataset": 20,
+  "execution_order": "2wiki then hotpotqa then musique; each paired evaluation first. Resume remaining non-Iter native baseline repairs afterwards, within the existing global budget.",
+  "primary_iter_directory": "matched50/<dataset>/formal/b05_iter_retgen_bge/k10_t5",
+  "primary_react_directory": "main/<dataset>/formal/b03_react_dense/k10_s5",
+  "superseded_for_primary_comparison": [
+    "native Iter k5/T2 or T3",
+    "unstarted matched25 formal comparison"
+  ],
+  "unchanged": [
+    "sample and references",
+    "model and endpoint",
+    "method prompts and demonstrations",
+    "retrieval backend and corpus",
+    "full-input/full-output safeguards",
+    "native ReAct parameters",
+    "all non-Iter native baseline parameters"
+  ],
+  "old_results_deleted_or_overwritten": false,
+  "new_model_training": false,
+  "source_v2_config_sha256": "e77b07da0e558e35f290187ead6c10c8cda8b451f89416e6afb56e2c4b33730b",
+  "origin_binding_validation_sha256": "2220b28ee8e6a8f321304a70958687358cc434800846ab1bfbf3baa19fce9f13",
+  "global_budget_cny": 200,
+  "protected_submission_cap_cny": 195,
+  "selection": "T5/k10 fixed from unchanged ReAct allowance, not selected by F1; dev20 checks technical integrity only"
+}

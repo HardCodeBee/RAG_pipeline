@@ -1,0 +1,64 @@
+冻结p02确认150：独立原生指标复核
+原始样本保持150题（每数据集50），仅缺失答案保留为空，不记作0或算法失败。
+终结状态：partial_missing_retained
+数据集 | 已配对/原定 | g01 F1% | p02 F1% | 差值百分点 | 配对95%区间百分点 | 升/平/降
+总体 | 149/150 | 66.93123 | 67.19969 | +0.26846 | [+0.00000, +0.80537] | 1/148/0
+hotpotqa | 50/50 | 74.02540 | 74.02540 | +0.00000 | [+0.00000, +0.00000] | 0/50/0
+2wiki | 50/50 | 82.60586 | 82.60586 | +0.00000 | [+0.00000, +0.00000] | 0/50/0
+musique | 49/50 | 43.69776 | 44.51409 | +0.81633 | [+0.00000, +2.44898] | 1/48/0
+
+全150分母：
+g01：{"planned": 150, "scorable": 149, "missing": 1, "F1_available": 0.6693123058894871, "EM_available": 0.5369127516778524, "F1_full": null, "F1_full_bounds": [0.6648502238502239, 0.6715168905168905], "statuses": {"success": 149, "incomplete": 1}}
+p02：{"planned": 150, "scorable": 149, "missing": 1, "F1_available": 0.6719968696478763, "EM_available": 0.5369127516778524, "F1_full": null, "F1_full_bounds": [0.6675168905168904, 0.6741835571835572], "statuses": {"success": 149, "unstarted": 1}}
+总体差值保守范围：[-0.004, 0.009333333333333332]；(sum已配对差值 ± 未配对数)/150，未把缺答当成0。
+缺失：["musique:3hop2__607269_467331_162182"]
+本次执行例外：Exactly one unchanged-payload retry of the previous Mu HTTP400, outside the original auto-retry list; retain original failure.
+Mu输入内容审核拒绝data_inspection_failed已由新诊断确认：True
+输入/缓存审计：{"checks": {"parent_exact_first_failed_payload_retried": 2, "parent_successful_node_prefix_unchanged": 2, "continuation_logical_calls_payload_verified": 912, "successful_full_payload_receipts_reused": 758, "candidate_physical_requests_exact_final_only": 150, "candidate_nodes_and_actual_final_payload_verified": 149}, "first_recovery_payloads": [{"id": "musique:3hop2__607269_467331_162182", "payload_sha256": "9e587ec0a7ec811365a418effd7a3fae42c97bb4aed1d6da46653c64a4c102eb", "old_request_id": "d6d870714d46799e404ed8381918b4cdb515b4c526d429d250b45049279813ee", "new_request_id": "bd24cacf635766d6434e4f7a3738b4b2b358f7d2ad51f64fe0f3209b952d7a8d", "old_status": "failed", "new_status": "failed", "old_error_code": null, "actual_payload_equal": true}, {"id": "hotpotqa:5ab3b2c4554299233954ff8a", "payload_sha256": "c2bc75bb5815987360dcfb47a89d52343aaf97fcd7f2cb67976e854104a0d9c2", "old_request_id": "9015280a4bd49643651b9154682eda6514a602bfa8261593e8d862463d6649c0", "new_request_id": "3bb3e152af84502fbd2915a34120d2e20a5e952b1ca2c43800b6b8c1dfb01ed7", "old_status": "unknown", "new_status": "success", "old_error_code": null, "actual_payload_equal": true}], "issues": [], "failed_parent_never_relabelled_as_algorithm_failure_by_report": true, "success_cache_is_complete_payload_only": true}
+源与150原记录保护：{"frozen_method_source_pins_verified": 20, "original_parent_r000_cases_unchanged": 150, "continuation_source_sha256": "463ea5651af5048a2810f54367b685cb70ac071924a331f71967213e31e48860", "runtime_sha256": "f7e90ae0c3be822cdb8424f60122a105d98f94a95fec136ff171b894a55e8add", "reference_sha256": "5fb6a9f4a4105262a0a1b1be2e62a6d8cb4fd3998510c169e004e7e3880beb2a", "native_metrics_and_aliases_hashes_match": true}
+与原SCORES逐项比对：{"SCORES.progress.json": {"sha256": "406d4310de13e603da8b6e0a84284d6f19e2a94acb9bcd3f600c51e3964094ca", "numeric_fields_checked": 76, "native_scores_and_bootstrap_exact": true}}
+物理调用及费用：{"request_statuses": {"success": 1048, "unknown": 2, "failed": 2}, "attempt_statuses": {"success": 1048, "unknown": 2, "failed": 2}, "cost": {"original_parent_r000": {"known_cny": 1.1450160000000007, "reserved_cny": 0.0023168, "submissions": 898, "statuses": {"returned_usage": 896, "http_failed_not_returned_usage": 1, "reserved": 1}, "occupied_cny": 1.1473328000000007}, "confirmation_all": {"known_cny": 1.4663335999999993, "reserved_cny": 0.0098792, "submissions": 1052, "statuses": {"returned_usage": 1048, "http_failed_not_returned_usage": 2, "reserved": 2}, "occupied_cny": 1.4762127999999994}, "continuation": {"known_cny": 0.3213176000000001, "reserved_cny": 0.0075623999999999995, "submissions": 154, "statuses": {"http_failed_not_returned_usage": 1, "returned_usage": 152, "reserved": 1}, "occupied_cny": 0.3288800000000001}}, "cumulative": {"known_cny": 186.5695208, "reserved_cny": 35.4103168, "occupied_cny": 221.9798376, "cap_cny": 300}, "cost_scope": "Returned-usage price estimates and retained unknown reservations, not verified billing; original parent and continuation separated."}
+费用为按返回用量估算及未知请求预留，未核对账单；本报告零API/检索，不更改候选、模型、prompt、样本或算法。
+置信区间：各数据集内5000次配对bootstrap，seed20261020；缺失造成的全150不确定范围与149同题CI分别报告。
+这是一次固定候选的确认结果，不用其答案或分数继续选择/调整该候选。
+
+唯一升分题事实审查：
+149题平均F1微增，但唯一增益来自错误条约名与标准答案共享Treaty的词面得分；新增EM=0，未证明事实修复或稳定提升。
+{
+  "scope": "Post-execution, non-blind interpretation of the fixed confirmation result only; no tuning or reselection.",
+  "changed_cases": [
+    {
+      "id": "musique:3hop1__131783_131926_13165",
+      "query": "What treaty ceded territory to the US extending west to the body of water by the location of the Minikahda Club?",
+      "reference_answer": "Treaty of Paris",
+      "parent_prediction": "Cannot be determined",
+      "candidate_prediction": "Adams–Onís Treaty",
+      "parent_f1": 0.0,
+      "candidate_f1": 0.4,
+      "new_EM": 0,
+      "classification": "incorrect_candidate_lexical_credit_without_factual_repair",
+      "unchanged_ordinary_answer": "Lake Calhoun is near the location of the Minikahda Club.",
+      "unchanged_goal_answer": "The Adams–Onís Treaty of 1819 ceded territory to the US extending west to the Pacific Ocean, but no retrieved passage links it—or any treaty—to Lake Calhoun or establishes that any treaty’s western boundary reached Lake Calhoun.",
+      "evidence": [
+        {
+          "stage": "Original-query Top10 raw passage visible to both final readers",
+          "rank": 6,
+          "source": "Republic of Cuba (1902–1959)",
+          "doc_id": "ce457c794b261e1237fd5ff46a959471c67bf9228f894580383923b4b04852b6",
+          "observation": "Mentions the Treaty of Paris of1898 and Spanish cessions involving Puerto Rico, the Philippines and Guam. This is not evidence completing the Lake Calhoun boundary relation in the original query."
+        },
+        {
+          "stage": "Original-query Top10 raw passage visible to both final readers",
+          "rank": 10,
+          "source": "Adams–Onís Treaty",
+          "doc_id": "14c9376ea58505cec693a40b76e80840fd32c512cd4219432f37664a8c216a54",
+          "observation": "Supports the1819 treaty's boundary reaching the Pacific Ocean. It does not connect that boundary to Lake Calhoun."
+        }
+      ],
+      "interpretation": "The candidate selects the Adams–Onís name already present in the unchanged goal while omitting that goal's explicit unresolved bridge. Its nonzero native F1 comes from lexical overlap on Treaty with Treaty of Paris; the requested treaty was not recovered. This is not a factual repair, and neither answer newly achieves EM. The observation is consistent with accepting a partial goal candidate, but a single output is not a guarantee of a deterministic causal mechanism.",
+      "factual_repair_demonstrated": false,
+      "runtime_algorithm_modified": false
+    }
+  ],
+  "overall_interpretation": "Mean native F1 is slightly positive on149 pairs, but its only gain is lexical credit for an incorrect treaty candidate. There are zero newly exact answers. The interval includes zero, and the full150 missing-answer bounds permit either sign; stable superiority or factual improvement has not been established."
+}

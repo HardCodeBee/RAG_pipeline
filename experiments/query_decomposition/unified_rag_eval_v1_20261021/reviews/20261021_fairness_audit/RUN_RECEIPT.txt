@@ -1,0 +1,179 @@
+{
+  "output": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\reviews\\20261021_fairness_audit",
+  "matrix": {
+    "hotpotqa": {
+      "b00_rag_top10_v1": {
+        "candidate_slots_max": 10
+      },
+      "b01_rag_top10_cot3": {
+        "candidate_slots_max": 10
+      },
+      "b02_selfask_dense": {
+        "candidate_slots_max": 30
+      },
+      "b03_react_dense": {
+        "candidate_slots_max": 50
+      },
+      "b04_ircot_bge": {
+        "candidate_slots_max": 48,
+        "retained_document_pool_max": 15
+      },
+      "b05_iter_retgen_bge": {
+        "candidate_slots_max": 50,
+        "active_override": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        }
+      },
+      "b06_decomp_bge": {
+        "candidate_slots_max": null,
+        "reason": "No explicit shared original-query retrieval counter; outer and inner task loops each max_steps8. Task steps are not retrieval operations.",
+        "native_k": 4
+      },
+      "b07_hybrid_rerank": {
+        "candidate_slots_max": 40,
+        "two_retrieval_backends": true,
+        "final_k": 10
+      },
+      "b08_qd_rerank": {
+        "candidate_slots_max": 60,
+        "original_query_included": true,
+        "final_k": 10
+      }
+    },
+    "2wiki": {
+      "b00_rag_top10_v1": {
+        "candidate_slots_max": 10
+      },
+      "b01_rag_top10_cot3": {
+        "candidate_slots_max": 10
+      },
+      "b02_selfask_dense": {
+        "candidate_slots_max": 50
+      },
+      "b03_react_dense": {
+        "candidate_slots_max": 50
+      },
+      "b04_ircot_bge": {
+        "candidate_slots_max": 48,
+        "retained_document_pool_max": 15
+      },
+      "b05_iter_retgen_bge": {
+        "candidate_slots_max": 50,
+        "active_override": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        }
+      },
+      "b06_decomp_bge": {
+        "candidate_slots_max": null,
+        "reason": "No explicit shared original-query retrieval counter; outer and inner task loops each max_steps8. Task steps are not retrieval operations.",
+        "native_k": 6
+      },
+      "b07_hybrid_rerank": {
+        "candidate_slots_max": 100,
+        "two_retrieval_backends": true,
+        "final_k": 10
+      },
+      "b08_qd_rerank": {
+        "candidate_slots_max": 40,
+        "original_query_included": true,
+        "final_k": 10
+      }
+    },
+    "musique": {
+      "b00_rag_top10_v1": {
+        "candidate_slots_max": 10
+      },
+      "b01_rag_top10_cot3": {
+        "candidate_slots_max": 10
+      },
+      "b02_selfask_dense": {
+        "candidate_slots_max": 30
+      },
+      "b03_react_dense": {
+        "candidate_slots_max": 50
+      },
+      "b04_ircot_bge": {
+        "candidate_slots_max": 64,
+        "retained_document_pool_max": 15
+      },
+      "b05_iter_retgen_bge": {
+        "candidate_slots_max": 50,
+        "active_override": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        }
+      },
+      "b06_decomp_bge": {
+        "candidate_slots_max": null,
+        "reason": "No explicit shared original-query retrieval counter; outer and inner task loops each max_steps8. Task steps are not retrieval operations.",
+        "native_k": 6
+      },
+      "b07_hybrid_rerank": {
+        "candidate_slots_max": 40,
+        "two_retrieval_backends": true,
+        "final_k": 10
+      },
+      "b08_qd_rerank": {
+        "candidate_slots_max": 40,
+        "original_query_included": true,
+        "final_k": 10
+      }
+    }
+  },
+  "P02_potential": {
+    "hotpotqa": {
+      "supporting_question_count_distribution": {
+        "0": 74,
+        "1": 198,
+        "2": 207,
+        "3": 15,
+        "4": 5,
+        "5": 1
+      },
+      "potential_candidate_slots_formula": "10*(2*m+1), m=supporting questions, goal already included; changed rewrites only",
+      "potential_slots_max_in_frozen_cohort": 110,
+      "cases_with_potential_slots_above50": 21,
+      "interpretation": "Potential upper bounds from already frozen decomposition lengths, not observed fresh retrieval counts and not a quality-tuning signal"
+    },
+    "2wiki": {
+      "supporting_question_count_distribution": {
+        "0": 13,
+        "1": 215,
+        "2": 158,
+        "3": 1,
+        "4": 113
+      },
+      "potential_candidate_slots_formula": "10*(2*m+1), m=supporting questions, goal already included; changed rewrites only",
+      "potential_slots_max_in_frozen_cohort": 90,
+      "cases_with_potential_slots_above50": 114,
+      "interpretation": "Potential upper bounds from already frozen decomposition lengths, not observed fresh retrieval counts and not a quality-tuning signal"
+    },
+    "musique": {
+      "supporting_question_count_distribution": {
+        "0": 8,
+        "1": 212,
+        "2": 182,
+        "3": 79,
+        "4": 17,
+        "5": 2
+      },
+      "potential_candidate_slots_formula": "10*(2*m+1), m=supporting questions, goal already included; changed rewrites only",
+      "potential_slots_max_in_frozen_cohort": 110,
+      "cases_with_potential_slots_above50": 98,
+      "interpretation": "Potential upper bounds from already frozen decomposition lengths, not observed fresh retrieval counts and not a quality-tuning signal"
+    }
+  },
+  "training_overlap_counts": {
+    "hotpotqa": 3,
+    "2wiki": 2,
+    "musique": 2
+  },
+  "algorithm_failures": 341,
+  "new_API_requests": 0,
+  "protocol_changes_adopted": false
+}

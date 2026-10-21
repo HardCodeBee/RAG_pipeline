@@ -1,0 +1,40 @@
+{
+  "reviewed_indices": [
+    62,
+    90
+  ],
+  "exceptions": {
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Removes the erroneous Taylor question but still never identifies the actor of the described mother before that actors city."
+    },
+    "68": {
+      "verdict": "fail",
+      "dimensions": [
+        "S"
+      ],
+      "reason": "What president was under whom did... is not a well-formed standalone question."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C"
+      ],
+      "reason": "The second item asks what operator astronauts first learned Russian, conflating the agency with the language/mission and not identifying the operator."
+    },
+    "89": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still reverses who holds the self-determination belief, changes invention location into national agency and lacks the correct delegation destination."
+    }
+  },
+  "reviewer": "All changed62..90 inspected;69 repairs explicit spouse identity. Others inherit baseline where exact arrays match."
+}

@@ -1,0 +1,189 @@
+{
+  "created_utc": "2026-10-21T00:08:50.218525+00:00",
+  "cohort_n": 36,
+  "dataset": "2wiki",
+  "cutoff_utc": "2026-10-20T23:40:53.039296+00:00",
+  "P02": {
+    "F1": 0.800925925925926,
+    "EM": 0.75,
+    "n": 36
+  },
+  "baselines": {
+    "original_campaign_v1/b00_rag_top10_v1": {
+      "planned": 36,
+      "scorable": 36,
+      "missing": [],
+      "F1": 0.5212962962962963,
+      "EM": 0.4722222222222222,
+      "statuses": {
+        "success": 36
+      },
+      "P02_minus_baseline": {
+        "common_scorable": 36,
+        "delta_F1": 0.2796296296296296,
+        "paired_stratified_95CI": [
+          0.12402777777777779,
+          0.435208333333333
+        ],
+        "up": 13,
+        "equal": 22,
+        "down": 1,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 0,
+            "delta_F1": null
+          },
+          "2wiki": {
+            "n": 36,
+            "delta_F1": 0.2796296296296296
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "preselected_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      }
+    },
+    "original_campaign_v1/b03_react_dense": {
+      "planned": 36,
+      "scorable": 36,
+      "missing": [],
+      "F1": 0.7351851851851853,
+      "EM": 0.6944444444444444,
+      "statuses": {
+        "success": 35,
+        "algorithm_failure": 1
+      },
+      "P02_minus_baseline": {
+        "common_scorable": 36,
+        "delta_F1": 0.06574074074074072,
+        "paired_stratified_95CI": [
+          -0.044444444444444446,
+          0.18518518518518517
+        ],
+        "up": 4,
+        "equal": 30,
+        "down": 2,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 0,
+            "delta_F1": null
+          },
+          "2wiki": {
+            "n": 36,
+            "delta_F1": 0.06574074074074072
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "preselected_config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      }
+    },
+    "integrity_repair_v2_main/b00_rag_top10_v1": {
+      "planned": 36,
+      "scorable": 36,
+      "missing": [],
+      "F1": 0.5212962962962963,
+      "EM": 0.4722222222222222,
+      "statuses": {
+        "success": 36
+      },
+      "P02_minus_baseline": {
+        "common_scorable": 36,
+        "delta_F1": 0.2796296296296296,
+        "paired_stratified_95CI": [
+          0.12402777777777779,
+          0.435208333333333
+        ],
+        "up": 13,
+        "equal": 22,
+        "down": 1,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 0,
+            "delta_F1": null
+          },
+          "2wiki": {
+            "n": 36,
+            "delta_F1": 0.2796296296296296
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "preselected_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      }
+    },
+    "integrity_repair_v2_main/b03_react_dense": {
+      "planned": 36,
+      "scorable": 36,
+      "missing": [],
+      "F1": 0.7351851851851853,
+      "EM": 0.6944444444444444,
+      "statuses": {
+        "success": 35,
+        "algorithm_failure": 1
+      },
+      "P02_minus_baseline": {
+        "common_scorable": 36,
+        "delta_F1": 0.06574074074074072,
+        "paired_stratified_95CI": [
+          -0.044444444444444446,
+          0.18518518518518517
+        ],
+        "up": 4,
+        "equal": 30,
+        "down": 2,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 0,
+            "delta_F1": null
+          },
+          "2wiki": {
+            "n": 36,
+            "delta_F1": 0.06574074074074072
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "preselected_config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      }
+    }
+  },
+  "new_API_calls": 0,
+  "new_API_cost_CNY": 0,
+  "scoring": "Native2Wiki v1.1 Answer F1, official aliases/demonyms; raw final predictions unchanged; algorithm failures included as zero",
+  "scope": "Fixed partial36, not full1500 or a new independent test cohort"
+}

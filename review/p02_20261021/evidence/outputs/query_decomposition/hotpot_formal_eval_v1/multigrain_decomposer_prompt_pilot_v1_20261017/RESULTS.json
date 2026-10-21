@@ -1,0 +1,203 @@
+{
+  "utc": "2026-10-17T06:26:20.849797+00:00",
+  "review_context": "Current Codex, one shared nonblind context; literal query/output review, not independent human gold.",
+  "rubric": "PILOT_REVIEW_RULES.txt; shared content assessment does not reward v2 merely for relaxing original-question exclusion.",
+  "uncertain_cases": "RX 350 bridge utility in both arms; Robert Suettinger local-vs-decomposable reading in v2.",
+  "strict_case_notes": "v1 trade/join and dropped 1st Marquis qualifier are treated as strict-contract failures; this is not proof of downstream factual errors.",
+  "groups": {
+    "overall": {
+      "v1": {
+        "planned": 36,
+        "pass": 21,
+        "fail": 13,
+        "uncertain": 1,
+        "unavailable": 1,
+        "pass_rate_full_denominator": 0.5833333333333334,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 6,
+          "self_containment": 6,
+          "supporting_information_coverage": 3,
+          "distinct_usefulness": 3
+        }
+      },
+      "v2": {
+        "planned": 36,
+        "fail": 10,
+        "pass": 24,
+        "uncertain": 2,
+        "pass_rate_full_denominator": 0.6666666666666666,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 1,
+          "self_containment": 6,
+          "supporting_information_coverage": 1,
+          "distinct_usefulness": 4
+        }
+      },
+      "common": {
+        "n": 35,
+        "v1_pass": 21,
+        "v2_pass": 23,
+        "gained_pass": [
+          "5ab8cd3d5542991b5579f009",
+          "5abad3445542996cc5e49ea0",
+          "3hop1__573244_339990_15538",
+          "1a25fd560bb011ebab90acde48001122",
+          "4hop1__408432_32392_823060_610794"
+        ],
+        "lost_pass": [
+          "5ae1f079554299234fd04343",
+          "5abf0bf95542997719eab63a",
+          "3hop1__540585_568433_51423"
+        ]
+      }
+    },
+    "hotpotqa": {
+      "v1": {
+        "planned": 12,
+        "pass": 7,
+        "fail": 4,
+        "unavailable": 1,
+        "pass_rate_full_denominator": 0.5833333333333334,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 2,
+          "self_containment": 1,
+          "supporting_information_coverage": 1,
+          "distinct_usefulness": 2
+        }
+      },
+      "v2": {
+        "planned": 12,
+        "fail": 3,
+        "uncertain": 1,
+        "pass": 8,
+        "pass_rate_full_denominator": 0.6666666666666666,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 0,
+          "self_containment": 1,
+          "supporting_information_coverage": 0,
+          "distinct_usefulness": 2
+        }
+      },
+      "common": {
+        "n": 11,
+        "v1_pass": 7,
+        "v2_pass": 7,
+        "gained_pass": [
+          "5ab8cd3d5542991b5579f009",
+          "5abad3445542996cc5e49ea0"
+        ],
+        "lost_pass": [
+          "5ae1f079554299234fd04343",
+          "5abf0bf95542997719eab63a"
+        ]
+      }
+    },
+    "2wiki": {
+      "v1": {
+        "planned": 12,
+        "pass": 9,
+        "fail": 3,
+        "pass_rate_full_denominator": 0.75,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 2,
+          "self_containment": 0,
+          "supporting_information_coverage": 0,
+          "distinct_usefulness": 1
+        }
+      },
+      "v2": {
+        "planned": 12,
+        "pass": 10,
+        "fail": 2,
+        "pass_rate_full_denominator": 0.8333333333333334,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 0,
+          "self_containment": 0,
+          "supporting_information_coverage": 0,
+          "distinct_usefulness": 2
+        }
+      },
+      "common": {
+        "n": 12,
+        "v1_pass": 9,
+        "v2_pass": 10,
+        "gained_pass": [
+          "1a25fd560bb011ebab90acde48001122"
+        ],
+        "lost_pass": []
+      }
+    },
+    "musique": {
+      "v1": {
+        "planned": 12,
+        "pass": 5,
+        "fail": 6,
+        "uncertain": 1,
+        "pass_rate_full_denominator": 0.4166666666666667,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 2,
+          "self_containment": 5,
+          "supporting_information_coverage": 2,
+          "distinct_usefulness": 0
+        }
+      },
+      "v2": {
+        "planned": 12,
+        "pass": 6,
+        "fail": 5,
+        "uncertain": 1,
+        "pass_rate_full_denominator": 0.5,
+        "failed_checks": {
+          "faithfulness_and_unknowns": 1,
+          "self_containment": 5,
+          "supporting_information_coverage": 1,
+          "distinct_usefulness": 0
+        }
+      },
+      "common": {
+        "n": 12,
+        "v1_pass": 5,
+        "v2_pass": 6,
+        "gained_pass": [
+          "3hop1__573244_339990_15538",
+          "4hop1__408432_32392_823060_610794"
+        ],
+        "lost_pass": [
+          "3hop1__540585_568433_51423"
+        ]
+      }
+    }
+  },
+  "mechanical": {
+    "utc": "2026-10-17T06:26:20.843089+00:00",
+    "metrics": {
+      "v1": {
+        "planned": 36,
+        "returned": 36,
+        "complete_success": 35,
+        "valid_array": 35,
+        "reference_outputs": 0,
+        "empty_outputs": 0,
+        "exact_original_outputs": 1,
+        "output_tokens": 1217,
+        "input_tokens": 21075
+      },
+      "v2": {
+        "planned": 36,
+        "returned": 36,
+        "complete_success": 36,
+        "valid_array": 36,
+        "reference_outputs": 0,
+        "empty_outputs": 1,
+        "exact_original_outputs": 4,
+        "output_tokens": 1271,
+        "input_tokens": 23219
+      }
+    },
+    "pilot_usage_list_price_cny": 0.0404112,
+    "unknown_reserved_cny": 0.0046472,
+    "actual_bill_verified": false,
+    "semantic_review": "not inferred from mechanical checks"
+  },
+  "claims": "Descriptive prompt diagnostic only; no 4B, downstream F1, independent-test or significant-superiority claim."
+}

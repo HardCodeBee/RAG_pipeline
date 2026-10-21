@@ -1,0 +1,33 @@
+{
+  "full3500_review_completed": false,
+  "confirmed_findings": [
+    {
+      "index": 717,
+      "status": "confirmed_minor_semantic_issue",
+      "query": "Who won more Grand Slam singles and doubles titles in their tennis career, Jim Pugh or Iva Majoli?",
+      "current_target": [
+        "How many Grand Slam singles and doubles titles combined did Jim Pugh win in his tennis career?",
+        "How many Grand Slam singles and doubles titles combined did Iva Majoli win in her tennis career?"
+      ],
+      "issue": "Gendered his/her were added although original only says their; v12 forbids adding gender.",
+      "proposed_target": [
+        "How many Grand Slam singles and doubles titles combined did Jim Pugh win during Jim Pugh's tennis career?",
+        "How many Grand Slam singles and doubles titles combined did Iva Majoli win during Iva Majoli's tennis career?"
+      ]
+    },
+    {
+      "index": 612,
+      "status": "confirmed_modifier_omission",
+      "query": "Stephen Farrell reported on the most destructive hurricane of what season, when it hit the northeastern United States?",
+      "current_target": [
+        "Which hurricane did Stephen Farrell report on when it hit the northeastern United States?"
+      ],
+      "issue": "The intermediate hurricane question omitted the identifying most-destructive-of-the-season condition.",
+      "proposed_target": [
+        "Which hurricane that hit the northeastern United States did Stephen Farrell report on as the most destructive of its season?"
+      ]
+    }
+  ],
+  "original_master_modified": false,
+  "note": "These preliminary findings are not a final whole-data error count. Preserve v001, complete second semantic review and export a new3500 revision before training."
+}

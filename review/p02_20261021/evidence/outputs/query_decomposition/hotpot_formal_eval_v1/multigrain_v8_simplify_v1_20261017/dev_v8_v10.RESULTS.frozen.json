@@ -1,0 +1,128 @@
+{
+  "phase": "dev",
+  "scope": "query-only type-stratified subset, single current-Codex review; not human-gold, trained4B or RAG-F1",
+  "stats": {
+    "v8": {
+      "planned": 60,
+      "verdicts": {
+        "unavailable": 8,
+        "fail": 20,
+        "pass": 31,
+        "uncertain": 1
+      },
+      "pass_rate_full": 0.5166666666666667,
+      "failed_checks": {
+        "F": 11,
+        "S": 8,
+        "C": 5,
+        "U": 3
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "unavailable": 1,
+          "pass": 11,
+          "fail": 7,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "unavailable": 6,
+          "pass": 13,
+          "fail": 1
+        },
+        "musique": {
+          "fail": 12,
+          "pass": 7,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 823.7884615384615,
+      "mean_output_tokens": 33.73076923076923
+    },
+    "v10": {
+      "planned": 60,
+      "verdicts": {
+        "unavailable": 4,
+        "pass": 33,
+        "fail": 21,
+        "uncertain": 2
+      },
+      "pass_rate_full": 0.55,
+      "failed_checks": {
+        "F": 10,
+        "S": 12,
+        "C": 2,
+        "U": 4
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "unavailable": 2,
+          "pass": 11,
+          "fail": 6,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 17,
+          "unavailable": 1,
+          "uncertain": 1,
+          "fail": 1
+        },
+        "musique": {
+          "fail": 14,
+          "pass": 5,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 445.4642857142857,
+      "mean_output_tokens": 34.535714285714285
+    }
+  },
+  "all_common": {
+    "n": 50,
+    "passes": {
+      "v8": 30,
+      "v10": 27
+    }
+  },
+  "pairs": [
+    {
+      "before": "v8",
+      "after": "v10",
+      "n": 50,
+      "before_pass": 30,
+      "after_pass": 27,
+      "gained": [],
+      "lost": [
+        17,
+        32,
+        34
+      ]
+    }
+  ],
+  "audit": {
+    "v8": {
+      "requests": 60,
+      "statuses": {
+        "success": 52,
+        "unknown": 8
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85"
+    },
+    "v10": {
+      "requests": 60,
+      "statuses": {
+        "unknown": 4,
+        "success": 56
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "8ca50abaff0f4795aa1191eeae3ed2f2709be8578036a30fa433ee293a48596f"
+    }
+  },
+  "study_usage_list_price_cny": 0.061602399999999995,
+  "study_unknown_reserved_cny": 0.059864799999999996,
+  "global_usage_list_price_cny": 146.72704679999998,
+  "global_unknown_reserved_cny": 20.494728,
+  "actual_bill_verified": false
+}

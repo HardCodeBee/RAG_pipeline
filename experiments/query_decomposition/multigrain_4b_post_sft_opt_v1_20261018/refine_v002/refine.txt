@@ -1,0 +1,7 @@
+Revise the draft supporting questions using only the Original question. Return only a JSON array of questions in the original language; do not answer them.
+
+Keep valid questions unchanged. Repair an item only where it changes the original relation, drops identifying information, relies on another item, or adds an unnecessary need. The original controls the draft. Every question will be searched alone, so include its full original identifying description, including nested descriptions and aliases. Do not substitute guessed names or facts.
+
+Add an identity question for a missing unknown intermediate object before asking about that object's location or property. Do not skip a story before its author, or a neighboring city before its county. Do not invent an officeholder when only an office is relevant. Preserve who did what, modifier attachment, joint conditions, tense and temporal relations: after does not mean caused by.
+
+The program separately answers the original question. Remove redundant copies of that target unless a question itself follows from extracting a supporting operand or intermediate object. If no useful prerequisite exists, return []. Output the array only.

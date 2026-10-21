@@ -1,0 +1,65 @@
+{
+  "selection_uses_final_eval300": false,
+  "criterion": [
+    "highest_dev_complete_pass_count",
+    "highest_worst_dataset_pass_rate",
+    "earliest_step"
+  ],
+  "selected": {
+    "step": 165,
+    "passed": 128,
+    "denominator": 150,
+    "by_dataset_pass": {
+      "hotpotqa": 43,
+      "2wiki": 50,
+      "musique": 35
+    },
+    "worst_dataset_rate": 0.7,
+    "checkpoint_manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192",
+    "dev_review_sha256": "0970ae09087c0109fb984f01e7426ddc9dc254e3aed5b6ecfc55b38ba7ea56f4"
+  },
+  "all_candidates": [
+    {
+      "step": 110,
+      "passed": 122,
+      "denominator": 150,
+      "by_dataset_pass": {
+        "hotpotqa": 40,
+        "2wiki": 50,
+        "musique": 32
+      },
+      "worst_dataset_rate": 0.64,
+      "checkpoint_manifest_sha256": "f93ebbd2c7acf0e15fe920e452930823b1b9f0a85af4b8137ae5ce3788068c7b",
+      "dev_review_sha256": "655dd2bd8cad218ce17b2bc0facb1e0b3d5c7275c7ee051bbefbcb90d1e1d2ad"
+    },
+    {
+      "step": 165,
+      "passed": 128,
+      "denominator": 150,
+      "by_dataset_pass": {
+        "hotpotqa": 43,
+        "2wiki": 50,
+        "musique": 35
+      },
+      "worst_dataset_rate": 0.7,
+      "checkpoint_manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192",
+      "dev_review_sha256": "0970ae09087c0109fb984f01e7426ddc9dc254e3aed5b6ecfc55b38ba7ea56f4"
+    },
+    {
+      "step": 220,
+      "passed": 127,
+      "denominator": 150,
+      "by_dataset_pass": {
+        "hotpotqa": 42,
+        "2wiki": 50,
+        "musique": 35
+      },
+      "worst_dataset_rate": 0.7,
+      "checkpoint_manifest_sha256": "b5c9657c66ef97ce34838399e4d94dc7adaef2b2b186d156fd9966796480ee2d",
+      "dev_review_sha256": "69dcf5ebe29c8419181dc3dcd04b4fda50774b1019ed1fd2a70bd02dce0d2083"
+    }
+  ],
+  "returned_training": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\returned_20261017T1353Z",
+  "dev_questions_sha256": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606",
+  "review_limit": "Current Codex query-only F/S/C/U, not independent human gold."
+}

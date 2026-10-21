@@ -1,0 +1,54 @@
+B0 有针对性的逐项优化：依据、候选与执行顺序
+
+一、已完成六项独立改动的核对
+数据为同一批已暴露的开发诊断300题，HotpotQA/2Wiki/MuSiQue各100题。
+B0=67.36469%最终native Answer F1。
+A 整换C08子回答prompt：65.20588%，-2.15881个百分点，21升248平31降。
+B 只换c02改写prompt：67.55317%，+0.18848个百分点，2升294平4降。
+C 只换P1最终readout：68.09326%，+0.72856个百分点，11升288平1降。
+D 完整缺答精确过滤、E去短句整理、F子回答length回退均未触发；完整回放和输入等价，不能称为已证实无效的三项优化。
+A/B/C的95%配对区间均跨0；不把这些开发结果说成已确认的普遍优势。
+原始完整报告：outputs/query_decomposition/hotpot_formal_eval_v1/b0_six_single_changes_v1_20261020/REPORT_FINAL.md。
+
+二、从已有实际轨迹得到的针对性结论
+1. B0 ordinary子回答已经沿用S02的4个示例；goal却没有这些示例，而且全部combine=False，现有GOAL_RULE未启用。因此不再把整套C08换入所有节点。
+2. 2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6：四个出生/死亡日期均正确，goal自己算出Feltrinelli45岁、Gogarten80岁，却结论称Feltrinelli活得更久；final照抄。C08保持前四步与改写不变，只在goal得出正确结论。这支持“组合节点/最终组合职责”的定向实验。
+3. P1既有实质目标修正，也有表达收益。Kodos题中原文指出两角色不同配音人，P1纠正了辅助中的两角色并列；两节目主持题中P1取了共同主持人Vernon Kay。16→Sixteen单题贡献0.33333个百分点，占P1净增益约45.8%；仍保留该题，不改主指标或分母。
+4. P1唯一下降Vigorish定义题把完整定义压成commission or fee，词面F1下降，但未确认事实变错。其他少数增益也可能只是同一错误答案变短，不能把0.73点全部表述成事实准确率提升。
+5. C08的退步不能一律当语义错误。Peter Phillips继父题的实际材料没有Timothy Laurence，B0正确答案依赖输入外的信息，C08缺答体现证据约束。同时C08纯缺答可能丢掉已支持的母亲Anne，这支持后续保留部分事实的轻量子回答实验。
+6. B0有46条自然语言缺答候选但0个C08精确缺答匹配。其中包含部分有效事实，不扩正则直接删除。
+
+三、本轮登记的父候选与两项独立实验
+父候选：B0_P1_parent，精确复用已完成C组300题回执；不覆盖B0、S02或先前整合版。
+
+g01_goal_consistency：
+仅在原goal prompt的Answer标记前，插入已有GOAL_RULE。普通子问题、改写、所有检索表达与文档包保持不变。生成goal128，再用相同P1最终prompt答原query64。B0不足4词时的formatter仍保留。
+用途：避免组合结论与其采用的前置事实相矛盾；允许当前原文纠正前置，不把不完整列表当完整总数。
+规则原文：
+For a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.
+风险：未知数量时更容易拒答，或过度维持错误前置。必须看净F1及下降题。
+与历史s03不同：s03在旧S02的81个combine节点中加3个示例，原本就有GOAL_RULE；本实验不加示例、不作句式路由、不新增检索。
+
+f01_final_consistency：
+只在P1最终readout前增加一句：
+Check the original question's comparison or combination against the supporting facts or values; do not copy an auxiliary conclusion that contradicts those facts or values.
+用途：使最终回答按原query重新完成组合，避免机械沿用自相矛盾的goal结论。全部子答案与最终context和父版完全一致，只生成最终答案64。
+风险：可能重复核对后改变原本正确的答案；不假定与g01组合一定更好。
+
+四、评估与费用
+先按固定题目ID哈希选100题（Hotpot33/2Wiki33/MuSiQue34），不按历史成败挑题。
+两个候选各自与同题P1父版比较。全部100题可计分且平均F1严格高于父版，才扩展该候选至完整300题。
+最终只在完整300题候选与父版中选择均值更高者，精确相同则优先更少改动。报告分数据集F1、同题升平降、95%分层配对区间、缺失、逻辑调用和实际新增费用。
+100和300都属于已有开发诊断样本，扩展300不叫独立确认。选定后仍需新query确认泛化。
+qwen-plus-2025-12-01，temperature=0，thinking=false；goal128/final64，检索预算不变。无新模型训练、无远端任务、无动态循环检索。
+本轮新增费用子上限3元；累计项目总上限300元，所有旧未知费用预留保留。成功请求精确复用，只有基础设施失败进入新的独立恢复轮次；算法失败不为提分重跑。
+
+五、后续优先级（未混入本轮）
+H1普通子回答的部分事实：保留B0四个示例和原指令，仅细化“若不能完整回答，保留已支持的实体/关系，并指出具体缺失属性”。不新增状态字段，不固定输出None或Cannot，不整换C08。它会影响后续改写和检索，必须完整串联验证。
+L1辅助材料角色：使用已有node.role，把ordinary问答与goal候选整体结论分开标识，内容全保留，原Top10不删。只改呈现，不引入检索或审查模型，收益尚未验证。
+c02保留为小幅支线候选，不因组件分数较高就直接堆叠；若后续测试与P1组合，必须单独报告交互效果。
+
+六、执行准备记录
+v001仅离线准备，未提交API；独立审查发现恢复轮次可能重复成功goal，保留其代码/协议后建立v002。
+v002补充更早round成功完整payload回执复用。两种离线故障注入通过：goal成功-final失败、goal和formatter成功-final失败，恢复都只新增final调用。
+首次沙箱TLS预检DNS失败，付费请求0。保留空round，并以独立命名空间恢复；连接方式调整不改生成配置。所有代码、协议、来源和逐次决定留在本目录与对应outputs目录。

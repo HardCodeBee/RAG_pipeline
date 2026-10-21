@@ -1,0 +1,23 @@
+{
+  "job_id": "153978",
+  "submitted_utc": "2026-10-17T11:57:45.506952+00:00",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=multigrain-v12-sft3500",
+    "--chdir=/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+    "--output=/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/sft-v003-%j.out",
+    "--error=/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/sft-v003-%j.err",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/runtime/run_stage.slurm",
+    "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/code/launch.py",
+    "--config",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/config.json"
+  ],
+  "remote_package": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+  "revision": "v003_exact_v12",
+  "supersedes_job": "153977 cancelled before start",
+  "config_sha256": "dd3f62e933824c299f1e9d44e3c10c682d2dc5dd3fb8bd12b71a2361d9c37486",
+  "status": "submitted_not_yet_running",
+  "api_calls": 0
+}

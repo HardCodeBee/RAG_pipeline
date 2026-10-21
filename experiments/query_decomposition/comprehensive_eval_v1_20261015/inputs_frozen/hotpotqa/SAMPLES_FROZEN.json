@@ -1,0 +1,51 @@
+{
+  "dataset": "hotpotqa",
+  "seed": 2026101501,
+  "files_sha256": {
+    "dev.questions.jsonl": "04161964652fb3e77e35ea07e114305ad0a100edb4d4cceae59c4657fda0e0c4",
+    "dev.references.local.jsonl": "9810fddca1462b1adc17cfe3cf544c28e2d41a29a209017296632f30d5389b26",
+    "dev.positions.json": "0ed622ee552eef2d11aca0bd095dcec54bd7fa44383a3a4bd1714cd909a15666",
+    "formal.questions.jsonl": "b091e4dba07eb749106f90c96f8cea3c1b68c61b172026d29f81f564e8db4048",
+    "formal.references.local.jsonl": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+    "formal.positions.json": "2ae417a01cfd6f9e5d87e9c113452ffb8910ae818d8d841fd2dd9daa44b7ab13",
+    "ablation.questions.jsonl": "1137ac10b59486ecbf06056a32f63545183be678c2a972a36bfc9d41df6b2655",
+    "ablation.references.local.jsonl": "45a6d8239de383a0fa293ec48503daec25b6140eae3e0de9bbd2fff10a2ef19c",
+    "ablation.positions.json": "af46ddba1c0ded3fc0f31185540bc52d6710617189fb3c91d9954c03509a1f81"
+  },
+  "splits": {
+    "dev": {
+      "questions": 100,
+      "type_counts": {
+        "comparison": 19,
+        "bridge": 81
+      },
+      "groups": 100
+    },
+    "formal": {
+      "questions": 500,
+      "type_counts": {
+        "bridge": 407,
+        "comparison": 93
+      },
+      "groups": 500
+    },
+    "ablation": {
+      "questions": 200,
+      "type_counts": {
+        "bridge": 163,
+        "comparison": 37
+      },
+      "groups": 200
+    }
+  },
+  "selection_used_answers_or_model_outputs": false,
+  "dev_formal_groups_disjoint": true,
+  "ablation_subset_formal": true,
+  "sources": [
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\offline_gold_source\\validation.parquet",
+      "sha256": "c20b638ca82b21d04fe12e14ff417ad05153d4d215a65de54497fca4e972f7c6"
+    }
+  ],
+  "exposure_audit_sha256": "2224aa5e268ec882d1fd2cfb016b60cd5ecee8e6ae2a774bb4aaabf96f8d0700"
+}

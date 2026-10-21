@@ -1,0 +1,36 @@
+
+hotpotqa
+Top-10 RAG | 59.29 / 46.40 (n=500; processed=500) -> 59.29 / 46.40 (n=500; processed=500) | paired n=500 delta F1/EM +0.00/+0.00
+Top-10 + CoT | 49.12 / 39.00 (n=500; processed=500) -> 59.90 / 50.00 (n=70; processed=70) | paired n=70 delta F1/EM +4.51/+4.29
+Self-Ask | 61.85 / 49.00 (n=500; processed=500) -> -- (n=0)
+ReAct | 69.52 / 56.91 (n=499; processed=500) -> 69.51 / 56.91 (n=499; processed=500) | paired n=499 delta F1/EM -0.01/+0.00
+IRCoT | 66.22 / 54.40 (n=500; processed=500) -> -- (n=0)
+Iter-RetGen | 59.87 / 49.70 (n=499; processed=500) -> 66.73 / 53.40 (n=470; processed=500) | paired n=469 delta F1/EM +6.88/+4.05
+  Iter same-config native v2: -- (n=0) | {"common_scorable": 0}
+Decomp | 55.89 / 46.40 (n=500; processed=500) -> -- (n=0)
+Hybrid + Rerank | 64.96 / 50.60 (n=500; processed=500) -> -- (n=0)
+QD + Rerank | 64.31 / 50.30 (n=499; processed=500) -> -- (n=0)
+
+2wiki
+Top-10 RAG | 53.31 / 46.00 (n=500; processed=500) -> 53.31 / 46.00 (n=500; processed=500) | paired n=500 delta F1/EM +0.00/+0.00
+Top-10 + CoT | 33.98 / 31.26 (n=499; processed=500) -> 38.92 / 35.87 (n=499; processed=500) | paired n=499 delta F1/EM +4.94/+4.61
+Self-Ask | 52.42 / 45.89 (n=499; processed=500) -> 52.28 / 45.89 (n=499; processed=500) | paired n=499 delta F1/EM -0.13/+0.00
+ReAct | 83.38 / 76.75 (n=499; processed=500) -> 83.38 / 76.75 (n=499; processed=500) | paired n=499 delta F1/EM +0.00/+0.00
+IRCoT | 68.36 / 64.53 (n=499; processed=500) -> 75.28 / 70.94 (n=499; processed=500) | paired n=499 delta F1/EM +6.92/+6.41
+Iter-RetGen | 44.62 / 40.40 (n=500; processed=500) -> 58.30 / 54.03 (n=496; processed=500) | paired n=496 delta F1/EM +13.52/+13.51
+  Iter same-config native v2: 47.80 / 43.60 (n=500; processed=500) | {"common_scorable": 500, "old_f1": 0.4462252619932602, "new_f1": 0.4779936507936508, "delta_f1_points": 3.176838880039062, "old_em": 0.404, "new_em": 0.436, "delta_em_points": 3.1999999999999975, "up": 26, "tie": 408, "down": 66}
+Decomp | 68.14 / 63.53 (n=499; processed=500) -> 68.63 / 63.73 (n=499; processed=500) | paired n=499 delta F1/EM +0.50/+0.20
+Hybrid + Rerank | 57.75 / 50.80 (n=500; processed=500) -> 58.02 / 51.00 (n=500; processed=500) | paired n=500 delta F1/EM +0.27/+0.20
+QD + Rerank | 56.89 / 50.80 (n=500; processed=500) -> 56.99 / 51.00 (n=500; processed=500) | paired n=500 delta F1/EM +0.10/+0.20
+
+musique
+Top-10 RAG | 33.86 / 21.92 (n=219; processed=220) -> -- (n=0)
+Top-10 + CoT | 19.09 / 13.24 (n=219; processed=220) -> -- (n=0)
+Self-Ask | 35.36 / 26.58 (n=237; processed=240) -> -- (n=0)
+ReAct | 48.02 / 36.86 (n=236; processed=240) -> 43.62 / 33.06 (n=493; processed=500) | paired n=236 delta F1/EM +0.58/+0.85
+IRCoT | 29.01 / 22.88 (n=236; processed=240) -> -- (n=0)
+Iter-RetGen | 24.89 / 19.25 (n=239; processed=240) -> 38.52 / 29.39 (n=490; processed=500) | paired n=235 delta F1/EM +17.03/+14.04
+  Iter same-config native v2: -- (n=0) | {"common_scorable": 0}
+Decomp | 24.60 / 20.68 (n=237; processed=240) -> -- (n=0)
+Hybrid + Rerank | 36.51 / 25.42 (n=240; processed=240) -> -- (n=0)
+QD + Rerank | 39.65 / 28.64 (n=220; processed=220) -> -- (n=0)

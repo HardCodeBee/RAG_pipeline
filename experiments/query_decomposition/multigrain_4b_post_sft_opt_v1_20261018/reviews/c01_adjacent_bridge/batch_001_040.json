@@ -1,0 +1,24 @@
+{
+  "reviewed_indices": [
+    1,
+    40
+  ],
+  "reviewer": "Current Codex inspected all changed outputs for these40 cases; identical question strings inherit frozen baseline verdicts without regrading. Query-only F/S/C/U; not independent human gold.",
+  "exceptions": {
+    "4": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still omits the story identity and now drops the author/story restrictions from both the film-linked book and filming-state queries."
+    },
+    "35": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the killed-as-many-as-60-patients identifying condition; this matches the defect already failed at checkpoint110."
+    }
+  }
+}

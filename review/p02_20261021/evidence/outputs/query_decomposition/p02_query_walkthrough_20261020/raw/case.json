@@ -1,0 +1,775 @@
+{
+  "id": "2wiki:6c7f03240bdb11eba7f7acde48001122",
+  "qid": "6c7f03240bdb11eba7f7acde48001122",
+  "dataset": "2wiki",
+  "question": "Where was the husband of Jeanne Raunay born?",
+  "supporting_questions": [
+    "Who is Jeanne Raunay's husband?"
+  ],
+  "type": "compositional",
+  "variant": "legacy",
+  "status": "success",
+  "nodes": [
+    {
+      "step_id": 1,
+      "request": "Who is Jeanne Raunay's husband?",
+      "answer": "Jeanne Raunay's husband was André Beaunier.",
+      "role": "ordinary",
+      "prior_complete_answers": [],
+      "excluded_prior_step_ids": [],
+      "original_retrieval": {
+        "batch_queries": 1,
+        "batch_seconds": 0.878317299997434,
+        "docs": [
+          {
+            "block": "[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "f50b491a702518c68c0d8d7b36ddf7c0a3a30f9bdb3062a041cd06ca35352126",
+            "rank": 1,
+            "score": 0.727368950843811,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 36735
+          },
+          {
+            "block": "[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "1d5e0a0156b4b720e6e27acdf4cafc2fce428a7c6828d247948537c74ea7be7d",
+            "rank": 2,
+            "score": 0.727368950843811,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 270319
+          },
+          {
+            "block": "[Chunk 3 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "c56cda8738d66f1dda41a0a620a7c99af71a3008a016cbbb1afda28a4abe310d",
+            "rank": 3,
+            "score": 0.6368080377578735,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 129795
+          },
+          {
+            "block": "[Chunk 4 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "270088c576a507260d46563cb37e7ac376573e653cc84ca28f5b61168fe02545",
+            "rank": 4,
+            "score": 0.6368080377578735,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 154403
+          },
+          {
+            "block": "[Chunk 5 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "doc_id": "0a54e222d836a9cda34c0bbb02522c1da3a5800178c9d5a1740108c8bb24f3bb",
+            "rank": 5,
+            "score": 0.6351577043533325,
+            "source": "Jeanne Fallières",
+            "text": "Jeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "vector_id": 135949
+          },
+          {
+            "block": "[Chunk 6 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "doc_id": "8f8e5c776bdf0af0004c738a729a711635b3a086418c88cfd60edf2566336a87",
+            "rank": 6,
+            "score": 0.6351577043533325,
+            "source": "Jeanne Fallières",
+            "text": "Jeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "vector_id": 136526
+          },
+          {
+            "block": "[Chunk 7 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "doc_id": "31eec6c3a56240e8f17193ceb58813679da0e85768320ddbd7c8390bd88425a9",
+            "rank": 7,
+            "score": 0.6261309385299683,
+            "source": "Jeannette Vermeersch",
+            "text": "Jeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "vector_id": 300775
+          },
+          {
+            "block": "[Chunk 8 | source=Neha (actress), pages=1-1]\nNeha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.",
+            "doc_id": "95c77f073885c7ba9e385502a9490265fcce030ee4dc82aaf5d45b2dd78a5543",
+            "rank": 8,
+            "score": 0.6131033897399902,
+            "source": "Neha (actress)",
+            "text": "Neha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.",
+            "vector_id": 213849
+          },
+          {
+            "block": "[Chunk 9 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "doc_id": "d6f11fef7216d7dda5c4f4fd8c8589eee227470e73f135b6e36dfc122db281f1",
+            "rank": 9,
+            "score": 0.6124183535575867,
+            "source": "Lucie Dreyfus",
+            "text": "Lucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "vector_id": 228314
+          },
+          {
+            "block": "[Chunk 10 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "doc_id": "223a08f18f4722fdeec48131eb8b01ccb54605b405f0b318276ed396c9836a40",
+            "rank": 10,
+            "score": 0.6124182939529419,
+            "source": "Lucie Dreyfus",
+            "text": "Lucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "vector_id": 217013
+          }
+        ],
+        "encoder_truncated": false,
+        "k": 10,
+        "qid": "6c7f03240bdb11eba7f7acde48001122",
+        "query": "Who is Jeanne Raunay's husband?",
+        "query_tokens": 12
+      },
+      "rewritten_query": "Who is Jeanne Raunay's husband?",
+      "rewritten_retrieval": null,
+      "reader_packet": {
+        "batch_queries": 1,
+        "batch_seconds": 0.878317299997434,
+        "docs": [
+          {
+            "block": "[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "f50b491a702518c68c0d8d7b36ddf7c0a3a30f9bdb3062a041cd06ca35352126",
+            "rank": 1,
+            "score": 0.727368950843811,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 36735
+          },
+          {
+            "block": "[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "1d5e0a0156b4b720e6e27acdf4cafc2fce428a7c6828d247948537c74ea7be7d",
+            "rank": 2,
+            "score": 0.727368950843811,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 270319
+          },
+          {
+            "block": "[Chunk 3 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "c56cda8738d66f1dda41a0a620a7c99af71a3008a016cbbb1afda28a4abe310d",
+            "rank": 3,
+            "score": 0.6368080377578735,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 129795
+          },
+          {
+            "block": "[Chunk 4 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "270088c576a507260d46563cb37e7ac376573e653cc84ca28f5b61168fe02545",
+            "rank": 4,
+            "score": 0.6368080377578735,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 154403
+          },
+          {
+            "block": "[Chunk 5 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "doc_id": "0a54e222d836a9cda34c0bbb02522c1da3a5800178c9d5a1740108c8bb24f3bb",
+            "rank": 5,
+            "score": 0.6351577043533325,
+            "source": "Jeanne Fallières",
+            "text": "Jeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "vector_id": 135949
+          },
+          {
+            "block": "[Chunk 6 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "doc_id": "8f8e5c776bdf0af0004c738a729a711635b3a086418c88cfd60edf2566336a87",
+            "rank": 6,
+            "score": 0.6351577043533325,
+            "source": "Jeanne Fallières",
+            "text": "Jeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.",
+            "vector_id": 136526
+          },
+          {
+            "block": "[Chunk 7 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "doc_id": "31eec6c3a56240e8f17193ceb58813679da0e85768320ddbd7c8390bd88425a9",
+            "rank": 7,
+            "score": 0.6261309385299683,
+            "source": "Jeannette Vermeersch",
+            "text": "Jeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "vector_id": 300775
+          },
+          {
+            "block": "[Chunk 8 | source=Neha (actress), pages=1-1]\nNeha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.",
+            "doc_id": "95c77f073885c7ba9e385502a9490265fcce030ee4dc82aaf5d45b2dd78a5543",
+            "rank": 8,
+            "score": 0.6131033897399902,
+            "source": "Neha (actress)",
+            "text": "Neha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.",
+            "vector_id": 213849
+          },
+          {
+            "block": "[Chunk 9 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "doc_id": "d6f11fef7216d7dda5c4f4fd8c8589eee227470e73f135b6e36dfc122db281f1",
+            "rank": 9,
+            "score": 0.6124183535575867,
+            "source": "Lucie Dreyfus",
+            "text": "Lucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "vector_id": 228314
+          },
+          {
+            "block": "[Chunk 10 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "doc_id": "223a08f18f4722fdeec48131eb8b01ccb54605b405f0b318276ed396c9836a40",
+            "rank": 10,
+            "score": 0.6124182939529419,
+            "source": "Lucie Dreyfus",
+            "text": "Lucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.",
+            "vector_id": 217013
+          }
+        ],
+        "encoder_truncated": false,
+        "k": 10,
+        "qid": "6c7f03240bdb11eba7f7acde48001122",
+        "query": "Who is Jeanne Raunay's husband?",
+        "query_tokens": 12
+      },
+      "rewrite_prompt": null,
+      "raw_rewrite": null,
+      "rewrite_request_id": null,
+      "rewrite_rejection": null,
+      "child_prompt": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nWorked examples:\n\nExample 1\nOriginal question:\nWhat is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?\n\nRelevant prior question-answer pairs:\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado River.\n\nCurrent subquestion #2:\nWhat is the length of #1?\n\nRetrieved passages:\n[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.\n\nAnswer: The Colorado River is 1450 mi long.\n\nExample 2\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nHow many species does Clianthus contain?\n\nRetrieved passages:\n[Clianthus]\nThey have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.\n\nAnswer: The total species count of Clianthus cannot be determined from these passages.\n\nExample 3\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\n#1 Question: Which genus contains Callicoma serratifolia?\nAnswer: Callicoma contains Callicoma serratifolia.\n\nCurrent subquestion #2:\nHow many species does #1 contain other than Callicoma serratifolia?\n\nRetrieved passages:\n[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAnswer: Callicoma contains zero species other than Callicoma serratifolia.\n\nExample 4\nOriginal question:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nIs Leycesteria native to Australia?\n\nRetrieved passages:\n[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\nAnswer: No. Leycesteria is native to temperate Asia, rather than Australia.\n\nActual task:\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nWho is Jeanne Raunay's husband?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 3 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 4 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 5 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières (24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.\n\n[Chunk 6 | source=Jeanne Fallières, pages=1-1]\nJeanne Fallières\nJeanne Fallières( 24 May 1849 – 29 September 1939) was the spouse of French president Armand Fallières. She did not like her public duties and was given a name for being stingy and misusing her position for economic purposes.\n\n[Chunk 7 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.\n\n[Chunk 8 | source=Neha (actress), pages=1-1]\nNeha (actress)\nShabana Raza (also known as Neha and now as Neha Bajpayee) is an Indian actress and Producer. She is married to actor Manoj Bajpayee.\n\n[Chunk 9 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus-Hadamard (born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.\n\n[Chunk 10 | source=Lucie Dreyfus, pages=1-1]\nLucie Dreyfus\nLucie Dreyfus- Hadamard( born 23 August 1869 Chatou – 14 December 1945 Paris), was the wife of Alfred Dreyfus, and his main and unwavering support during the Affair that shook the couple from 1894 to 1906. She never ceased to defend the honor of her husband.\n\nAnswer:",
+      "answer_request_id": "80691cb0bbbac91ee0005ed5f8cd6e5d1b89f83a077e7c78a927572630bcba7e",
+      "initial_answer": "Jeanne Raunay's husband was André Beaunier.",
+      "sentence_format_request_id": null,
+      "is_whole_no_answer": null
+    },
+    {
+      "step_id": 2,
+      "request": "Where was the husband of Jeanne Raunay born?",
+      "answer": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux.",
+      "role": "goal",
+      "prior_complete_answers": [
+        {
+          "step_id": 1,
+          "request": "Who is Jeanne Raunay's husband?",
+          "answer": "Jeanne Raunay's husband was André Beaunier."
+        }
+      ],
+      "excluded_prior_step_ids": [],
+      "original_retrieval": {
+        "batch_queries": 1,
+        "batch_seconds": 0.848167399992235,
+        "docs": [
+          {
+            "block": "[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "f50b491a702518c68c0d8d7b36ddf7c0a3a30f9bdb3062a041cd06ca35352126",
+            "rank": 1,
+            "score": 0.7571345567703247,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 36735
+          },
+          {
+            "block": "[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "1d5e0a0156b4b720e6e27acdf4cafc2fce428a7c6828d247948537c74ea7be7d",
+            "rank": 2,
+            "score": 0.7571345567703247,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 270319
+          },
+          {
+            "block": "[Chunk 3 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+            "doc_id": "244a6dc6e6f3f3d7f682ccdfc749c41d7a15f9bb148b1c08d027c5b73889d047",
+            "rank": 3,
+            "score": 0.6394597291946411,
+            "source": "Rahel la Fermosa",
+            "text": "Rahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+            "vector_id": 7918
+          },
+          {
+            "block": "[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+            "doc_id": "fa00751e636cf5a86508fe864831c55bd2b660a17cfd9390489d966df82edfee",
+            "rank": 4,
+            "score": 0.6339260339736938,
+            "source": "Jeanne Bonaparte",
+            "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+            "vector_id": 71010
+          },
+          {
+            "block": "[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+            "doc_id": "e23f4db4d93d500a34007ee779fe64cdbc0dc6ce660a1bbc30805664404aa237",
+            "rank": 5,
+            "score": 0.6339259147644043,
+            "source": "Jeanne Bonaparte",
+            "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+            "vector_id": 249980
+          },
+          {
+            "block": "[Chunk 6 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "c56cda8738d66f1dda41a0a620a7c99af71a3008a016cbbb1afda28a4abe310d",
+            "rank": 6,
+            "score": 0.6297023892402649,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 129795
+          },
+          {
+            "block": "[Chunk 7 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "doc_id": "270088c576a507260d46563cb37e7ac376573e653cc84ca28f5b61168fe02545",
+            "rank": 7,
+            "score": 0.6297023892402649,
+            "source": "Jacqueline Roque",
+            "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+            "vector_id": 154403
+          },
+          {
+            "block": "[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.",
+            "doc_id": "c9a8affc0602fee17ff4eb58110b58ab00acc570f595cf932ad688f0fe0cd2c5",
+            "rank": 8,
+            "score": 0.6243033409118652,
+            "source": "Prince Jacques, Duke of Orléans",
+            "text": "Prince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.",
+            "vector_id": 144577
+          },
+          {
+            "block": "[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.",
+            "doc_id": "6312249ba188d69da1c570eef51ce8158dbfb2a46f142f6a4b296e9d3c36839a",
+            "rank": 9,
+            "score": 0.6243032217025757,
+            "source": "Prince Jacques, Duke of Orléans",
+            "text": "Prince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.",
+            "vector_id": 98283
+          },
+          {
+            "block": "[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "doc_id": "31eec6c3a56240e8f17193ceb58813679da0e85768320ddbd7c8390bd88425a9",
+            "rank": 10,
+            "score": 0.620661735534668,
+            "source": "Jeannette Vermeersch",
+            "text": "Jeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+            "vector_id": 300775
+          }
+        ],
+        "encoder_truncated": false,
+        "k": 10,
+        "qid": "6c7f03240bdb11eba7f7acde48001122",
+        "query": "Where was the husband of Jeanne Raunay born?",
+        "query_tokens": 13
+      },
+      "rewritten_query": "Where was André Beaunier born?",
+      "rewritten_retrieval": {
+        "batch_queries": 1,
+        "batch_seconds": 0.9237056999700144,
+        "docs": [
+          {
+            "block": "[Chunk 1 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.",
+            "doc_id": "0fde03a434fc89a9c3bf223da32a57b32585085ecdbbd29faf9f6e7c39d925ca",
+            "rank": 1,
+            "score": 0.8342483043670654,
+            "source": "André Beaunier",
+            "text": "André Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.",
+            "vector_id": 270320
+          },
+          {
+            "block": "[Chunk 2 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.",
+            "doc_id": "8f86313dae60d25f90e44d545906ee78d4914ee19cf0c40cef6087e3215413a8",
+            "rank": 2,
+            "score": 0.7499580383300781,
+            "source": "Louis-Antoine Beaunier",
+            "text": "Louis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.",
+            "vector_id": 408975
+          },
+          {
+            "block": "[Chunk 3 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.",
+            "doc_id": "960bc15d876af31f882ede999adae0ffd20e40332c799add3ed1deaa2e70259a",
+            "rank": 3,
+            "score": 0.6620010137557983,
+            "source": "Guy Beaulne",
+            "text": "Guy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.",
+            "vector_id": 203303
+          },
+          {
+            "block": "[Chunk 4 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.",
+            "doc_id": "12222bea52cd203f0594799b582cdd37d38b08190faa029885736ed8d0aa414b",
+            "rank": 4,
+            "score": 0.6587271690368652,
+            "source": "Beau Brady",
+            "text": "Beau Brady\nBeau Brady is an Australian actor from Sydney, Australia.",
+            "vector_id": 10880
+          },
+          {
+            "block": "[Chunk 5 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.",
+            "doc_id": "fb5925c610d8bc7c29bc1edc8843f3b0ee0954593f6576b4b530a818e84b1327",
+            "rank": 5,
+            "score": 0.6442841291427612,
+            "source": "Nicolas Beaudan",
+            "text": "Nicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.",
+            "vector_id": 221505
+          },
+          {
+            "block": "[Chunk 6 | source=Philippe Beaussant, pages=1-1]\nPhilippe Beaussant\nPhilippe Beaussant( 6 May 1930 – 8 May 2016) was a French musicologist and novelist, an expert on French baroque music, on which he has published widely. He was the founder of the Centre de Musique Baroque de Versailles, of which he was the artistic adviser of 1987 to 1996. He has also been a producer of musical programs for Radio France since 1974. His biography of Jean- Baptiste Lully,\" Lully ou le musicien du soleil\"( Éditions Gallimard, 1992), was the basis of the film\" Le Roi Danse\"( 2000). Beaussant won the 1993 Grand Prix du roman de l'Académie française for his novel\" Héloïse\". He was elected to seat 36 of the Académie française on 15 November 2007.",
+            "doc_id": "24ee81934a35df7cd718ebb99708eed0c83a14314e5e1695ea20948b75d32acd",
+            "rank": 6,
+            "score": 0.6417381167411804,
+            "source": "Philippe Beaussant",
+            "text": "Philippe Beaussant\nPhilippe Beaussant( 6 May 1930 – 8 May 2016) was a French musicologist and novelist, an expert on French baroque music, on which he has published widely. He was the founder of the Centre de Musique Baroque de Versailles, of which he was the artistic adviser of 1987 to 1996. He has also been a producer of musical programs for Radio France since 1974. His biography of Jean- Baptiste Lully,\" Lully ou le musicien du soleil\"( Éditions Gallimard, 1992), was the basis of the film\" Le Roi Danse\"( 2000). Beaussant won the 1993 Grand Prix du roman de l'Académie française for his novel\" Héloïse\". He was elected to seat 36 of the Académie française on 15 November 2007.",
+            "vector_id": 294693
+          },
+          {
+            "block": "[Chunk 7 | source=Xavier Beauvois, pages=1-1]\nXavier Beauvois\nXavier Beauvois( born 20 March 1967) is a French actor, film director and screenwriter.",
+            "doc_id": "4dbd16e316562e69233e78edf8f3764d00766b0fbc30bda3be615cf8c7cea9d7",
+            "rank": 7,
+            "score": 0.6407846212387085,
+            "source": "Xavier Beauvois",
+            "text": "Xavier Beauvois\nXavier Beauvois( born 20 March 1967) is a French actor, film director and screenwriter.",
+            "vector_id": 81889
+          },
+          {
+            "block": "[Chunk 8 | source=Xavier Beauvois, pages=1-1]\nXavier Beauvois\nXavier Beauvois (born 20 March 1967) is a French actor, film director and screenwriter.",
+            "doc_id": "8a406518edcd55003f4c0f01be48aea58eb29b41e961e05b1d1a65a533ff97a3",
+            "rank": 8,
+            "score": 0.6407846212387085,
+            "source": "Xavier Beauvois",
+            "text": "Xavier Beauvois\nXavier Beauvois (born 20 March 1967) is a French actor, film director and screenwriter.",
+            "vector_id": 151795
+          },
+          {
+            "block": "[Chunk 9 | source=Denis Beauvais, pages=1-1]\nDenis Beauvais\nDenis(\" Den\") Beauvais( born 1962) is a Canadian artist whose work has appeared in role- playing games. He was born and raised in Ottawa.",
+            "doc_id": "5d7c0b469341e467ba6db549dbb89905a883799c9ac07324f8f4b4e0cca6a6b6",
+            "rank": 9,
+            "score": 0.6394782066345215,
+            "source": "Denis Beauvais",
+            "text": "Denis Beauvais\nDenis(\" Den\") Beauvais( born 1962) is a Canadian artist whose work has appeared in role- playing games. He was born and raised in Ottawa.",
+            "vector_id": 274479
+          },
+          {
+            "block": "[Chunk 10 | source=André Antoine, pages=1-1]\nAndré Antoine\nAndré Antoine( 31 January 185823 October 1943) was a French actor, theatre manager, film director, author, and critic who is considered the father of modern mise en scène in France.",
+            "doc_id": "4ac951c0438fbb4e65685cf0d2d4f3ca43d5a6de80452a4b439fbd91437213d1",
+            "rank": 10,
+            "score": 0.6292489767074585,
+            "source": "André Antoine",
+            "text": "André Antoine\nAndré Antoine( 31 January 185823 October 1943) was a French actor, theatre manager, film director, author, and critic who is considered the father of modern mise en scène in France.",
+            "vector_id": 93074
+          }
+        ],
+        "encoder_truncated": false,
+        "k": 10,
+        "qid": "6c7f03240bdb11eba7f7acde48001122",
+        "query": "Where was André Beaunier born?",
+        "query_tokens": 9
+      },
+      "reader_packet": {
+        "qid": "6c7f03240bdb11eba7f7acde48001122",
+        "query": "Where was the husband of Jeanne Raunay born?",
+        "k": 10,
+        "docs": [
+          {
+            "block": "[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "f50b491a702518c68c0d8d7b36ddf7c0a3a30f9bdb3062a041cd06ca35352126",
+            "rank": 1,
+            "score": 0.7571345567703247,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 36735
+          },
+          {
+            "block": "[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.",
+            "doc_id": "0fde03a434fc89a9c3bf223da32a57b32585085ecdbbd29faf9f6e7c39d925ca",
+            "rank": 2,
+            "score": 0.8342483043670654,
+            "source": "André Beaunier",
+            "text": "André Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.",
+            "vector_id": 270320
+          },
+          {
+            "block": "[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "doc_id": "1d5e0a0156b4b720e6e27acdf4cafc2fce428a7c6828d247948537c74ea7be7d",
+            "rank": 3,
+            "score": 0.7571345567703247,
+            "source": "Jeanne Raunay",
+            "text": "Jeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+            "vector_id": 270319
+          },
+          {
+            "block": "[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.",
+            "doc_id": "8f86313dae60d25f90e44d545906ee78d4914ee19cf0c40cef6087e3215413a8",
+            "rank": 4,
+            "score": 0.7499580383300781,
+            "source": "Louis-Antoine Beaunier",
+            "text": "Louis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.",
+            "vector_id": 408975
+          },
+          {
+            "block": "[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+            "doc_id": "244a6dc6e6f3f3d7f682ccdfc749c41d7a15f9bb148b1c08d027c5b73889d047",
+            "rank": 5,
+            "score": 0.6394597291946411,
+            "source": "Rahel la Fermosa",
+            "text": "Rahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+            "vector_id": 7918
+          },
+          {
+            "block": "[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.",
+            "doc_id": "960bc15d876af31f882ede999adae0ffd20e40332c799add3ed1deaa2e70259a",
+            "rank": 6,
+            "score": 0.6620010137557983,
+            "source": "Guy Beaulne",
+            "text": "Guy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.",
+            "vector_id": 203303
+          },
+          {
+            "block": "[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+            "doc_id": "fa00751e636cf5a86508fe864831c55bd2b660a17cfd9390489d966df82edfee",
+            "rank": 7,
+            "score": 0.6339260339736938,
+            "source": "Jeanne Bonaparte",
+            "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+            "vector_id": 71010
+          },
+          {
+            "block": "[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.",
+            "doc_id": "12222bea52cd203f0594799b582cdd37d38b08190faa029885736ed8d0aa414b",
+            "rank": 8,
+            "score": 0.6587271690368652,
+            "source": "Beau Brady",
+            "text": "Beau Brady\nBeau Brady is an Australian actor from Sydney, Australia.",
+            "vector_id": 10880
+          },
+          {
+            "block": "[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+            "doc_id": "e23f4db4d93d500a34007ee779fe64cdbc0dc6ce660a1bbc30805664404aa237",
+            "rank": 9,
+            "score": 0.6339259147644043,
+            "source": "Jeanne Bonaparte",
+            "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+            "vector_id": 249980
+          },
+          {
+            "block": "[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.",
+            "doc_id": "fb5925c610d8bc7c29bc1edc8843f3b0ee0954593f6576b4b530a818e84b1327",
+            "rank": 10,
+            "score": 0.6442841291427612,
+            "source": "Nicolas Beaudan",
+            "text": "Nicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.",
+            "vector_id": 221505
+          }
+        ],
+        "merge_policy": "interleave_original_first_top10"
+      },
+      "rewrite_prompt": "Rewrite the Current question for retrieval using the Previous question-answer pairs.\nReplace a descriptive reference only with the matching entity explicitly supplied by an earlier answer. Keep the fact requested by the Current question, its relation, conditions and comparison direction unchanged. Use the meaning of the complete earlier sentence; do not paste that sentence into a noun slot.\nDo not answer the Current question or introduce a factual identity that the previous answers have not supplied. If no relevant replacement is available, return the Current question unchanged.\nReturn only one complete question, without explanation.\n\nWorked examples:\n\nExample 1\nPrevious question-answer pairs:\nQuestion: Which river does Pack Creek flow into?\nAnswer: Pack Creek flows into the Colorado River.\nCurrent question:\nWhat is the length of the river into which Pack Creek flows?\nRewritten question: What is the length of the Colorado River?\n\nExample 2\nPrevious question-answer pairs:\nQuestion: Who created the Mona Lisa?\nAnswer: Leonardo da Vinci created the Mona Lisa.\nCurrent question:\nWhere did the creator of the Mona Lisa die?\nRewritten question: Where did Leonardo da Vinci die?\n\nExample 3\nPrevious question-answer pairs:\nQuestion: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\nCurrent question:\nHow many species does Callicoma contain?\nRewritten question: How many species does Callicoma contain?\n\nActual task:\n\nPrevious question-answer pairs:\nQuestion: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent question:\nWhere was the husband of Jeanne Raunay born?\n\nRewritten question:",
+      "raw_rewrite": "Where was André Beaunier born?",
+      "rewrite_request_id": "9a7937682afd2abde46f20fae069359c3acee1467192d53fc06e476ad625f6fd",
+      "rewrite_rejection": null,
+      "child_prompt": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent subquestion #2:\nWhere was the husband of Jeanne Raunay born?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.\n\n[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.\n\n[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.\n\n[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.\n\n[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.\n\nFor a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.\n\nAnswer:",
+      "answer_request_id": "d7eb1733ff1db0f769f644e4bfab6bcaa35c3c789b559e39ab3910b2dec862b4",
+      "initial_answer": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux.",
+      "sentence_format_request_id": null,
+      "is_whole_no_answer": null,
+      "raw_B0_child_prompt": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent subquestion #2:\nWhere was the husband of Jeanne Raunay born?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.\n\n[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.\n\n[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.\n\n[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.\n\n[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.\n\nAnswer:"
+    }
+  ],
+  "history_all": [
+    {
+      "step_id": 1,
+      "request": "Who is Jeanne Raunay's husband?",
+      "answer": "Jeanne Raunay's husband was André Beaunier."
+    },
+    {
+      "step_id": 2,
+      "request": "Where was the husband of Jeanne Raunay born?",
+      "answer": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux."
+    }
+  ],
+  "history_usable": [
+    {
+      "step_id": 1,
+      "request": "Who is Jeanne Raunay's husband?",
+      "answer": "Jeanne Raunay's husband was André Beaunier."
+    },
+    {
+      "step_id": 2,
+      "request": "Where was the husband of Jeanne Raunay born?",
+      "answer": "André Beaunier, the husband of Jeanne Raunay, was born in Évreux."
+    }
+  ],
+  "helper": "Auxiliary question-answer pairs\n\nIntermediate candidate results\n\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCandidate conclusion for the Original question\n\n#2 Question: Where was the husband of Jeanne Raunay born?\nAnswer: André Beaunier, the husband of Jeanne Raunay, was born in Évreux.",
+  "helper_position": 1,
+  "original_retrieval": {
+    "batch_queries": 1,
+    "batch_seconds": 0.848167399992235,
+    "docs": [
+      {
+        "block": "[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+        "doc_id": "f50b491a702518c68c0d8d7b36ddf7c0a3a30f9bdb3062a041cd06ca35352126",
+        "rank": 1,
+        "score": 0.7571345567703247,
+        "source": "Jeanne Raunay",
+        "text": "Jeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+        "vector_id": 36735
+      },
+      {
+        "block": "[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+        "doc_id": "1d5e0a0156b4b720e6e27acdf4cafc2fce428a7c6828d247948537c74ea7be7d",
+        "rank": 2,
+        "score": 0.7571345567703247,
+        "source": "Jeanne Raunay",
+        "text": "Jeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.",
+        "vector_id": 270319
+      },
+      {
+        "block": "[Chunk 3 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+        "doc_id": "244a6dc6e6f3f3d7f682ccdfc749c41d7a15f9bb148b1c08d027c5b73889d047",
+        "rank": 3,
+        "score": 0.6394597291946411,
+        "source": "Rahel la Fermosa",
+        "text": "Rahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.",
+        "vector_id": 7918
+      },
+      {
+        "block": "[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+        "doc_id": "fa00751e636cf5a86508fe864831c55bd2b660a17cfd9390489d966df82edfee",
+        "rank": 4,
+        "score": 0.6339260339736938,
+        "source": "Jeanne Bonaparte",
+        "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.",
+        "vector_id": 71010
+      },
+      {
+        "block": "[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+        "doc_id": "e23f4db4d93d500a34007ee779fe64cdbc0dc6ce660a1bbc30805664404aa237",
+        "rank": 5,
+        "score": 0.6339259147644043,
+        "source": "Jeanne Bonaparte",
+        "text": "Jeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.",
+        "vector_id": 249980
+      },
+      {
+        "block": "[Chunk 6 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+        "doc_id": "c56cda8738d66f1dda41a0a620a7c99af71a3008a016cbbb1afda28a4abe310d",
+        "rank": 6,
+        "score": 0.6297023892402649,
+        "source": "Jacqueline Roque",
+        "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+        "vector_id": 129795
+      },
+      {
+        "block": "[Chunk 7 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+        "doc_id": "270088c576a507260d46563cb37e7ac376573e653cc84ca28f5b61168fe02545",
+        "rank": 7,
+        "score": 0.6297023892402649,
+        "source": "Jacqueline Roque",
+        "text": "Jacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.",
+        "vector_id": 154403
+      },
+      {
+        "block": "[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.",
+        "doc_id": "c9a8affc0602fee17ff4eb58110b58ab00acc570f595cf932ad688f0fe0cd2c5",
+        "rank": 8,
+        "score": 0.6243033409118652,
+        "source": "Prince Jacques, Duke of Orléans",
+        "text": "Prince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.",
+        "vector_id": 144577
+      },
+      {
+        "block": "[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.",
+        "doc_id": "6312249ba188d69da1c570eef51ce8158dbfb2a46f142f6a4b296e9d3c36839a",
+        "rank": 9,
+        "score": 0.6243032217025757,
+        "source": "Prince Jacques, Duke of Orléans",
+        "text": "Prince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.",
+        "vector_id": 98283
+      },
+      {
+        "block": "[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+        "doc_id": "31eec6c3a56240e8f17193ceb58813679da0e85768320ddbd7c8390bd88425a9",
+        "rank": 10,
+        "score": 0.620661735534668,
+        "source": "Jeannette Vermeersch",
+        "text": "Jeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+        "vector_id": 300775
+      }
+    ],
+    "encoder_truncated": false,
+    "k": 10,
+    "qid": "6c7f03240bdb11eba7f7acde48001122",
+    "query": "Where was the husband of Jeanne Raunay born?",
+    "query_tokens": 13
+  },
+  "final_context": "Auxiliary question-answer pairs\n\nIntermediate candidate results\n\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCandidate conclusion for the Original question\n\n#2 Question: Where was the husband of Jeanne Raunay born?\nAnswer: André Beaunier, the husband of Jeanne Raunay, was born in Évreux.\n\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 3 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 6 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 7 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.\n\n[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.\n\n[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.",
+  "final_prompt": "Answer the Original question using the retrieved passages and auxiliary question-answer pairs.\nUse relevant auxiliary answers as intermediate information. When a retrieved passage gives a conflicting fact about the same entity, relation and conditions, use the passage. Do not transfer a fact about another entity or a different comparison to the Original question.\nComplete the relation, comparison or combination requested by the Original question. Missing information does not establish a negative fact, zero or an empty set. If the available information does not support the final answer, return Cannot be determined.\nFor a person, place or organization, use the full identifying name stated in the matching passage. When an auxiliary answer uses a shorter name for the same entity, preserve the fuller source name, including compound surnames and disambiguating suffixes.\n\nWorked examples:\n\nExample 1\nQuestion:\nWhich river does Pack Creek flow into after passing through Spanish Valley?\n\nContext:\n[Chunk 1 | source=Spanish Valley, pages=1-1]\nSpanish Valley\nPack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.\n\nAuxiliary question-answer pairs\n\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado.\n\nFinal short answer: Colorado River\n\nExample 2\nQuestion:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nContext:\n[Chunk 1 | source=Leycesteria, pages=1-1]\nLeycesteria\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\n[Chunk 2 | source=Anigozanthos, pages=1-1]\nAnigozanthos\nAnigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.\n\nAuxiliary question-answer pairs\n\n#1 Question: Is Leycesteria native to Australia?\nAnswer: Leycesteria is native to temperate Asia, not Australia.\n\n#2 Question: Is Anigozanthos native to Australia?\nAnswer: Anigozanthos is native to Australia.\n\n#3 Question: Are both Leycesteria and Anigozanthos native to Australia?\nAnswer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.\n\nFinal short answer: No\n\nExample 3\nQuestion:\nBaraki Barak District is situated in the western part of a province whose capital is what?\n\nContext:\n[Chunk 1 | source=Baraki Barak District, pages=1-1]\nBaraki Barak District\nBaraki Barak District is situated in the western part of Logar Province, Afghanistan.\n\n[Chunk 2 | source=Logar Province, pages=1-1]\nLogar Province\nPuli Alam is the capital of the province.\n\nAuxiliary question-answer pairs\n\n#1 Question: In which province is Baraki Barak District situated?\nAnswer: Baraki Barak District is in Logar Province.\n\n#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?\nAnswer: The capital of Logar Province is Kabul.\n\nFinal short answer: Puli Alam\n\nExample 4\nQuestion:\nWhich has more species, Clianthus or Callicoma?\n\nContext:\n[Chunk 1 | source=Clianthus, pages=1-1]\nClianthus\nClianthus, commonly known as kakabeak (\"Kōwhai ngutukākā\" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.\n\n[Chunk 2 | source=Callicoma, pages=1-1]\nCallicoma\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAuxiliary question-answer pairs\n\n#1 Question: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\n\n#2 Question: How many species does Callicoma contain?\nAnswer: Callicoma contains one species.\n\n#3 Question: Which has more species, Clianthus or Callicoma?\nAnswer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.\n\nFinal short answer: Clianthus\n\nActual task:\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nContext:\nAuxiliary question-answer pairs\n\nIntermediate candidate results\n\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCandidate conclusion for the Original question\n\n#2 Question: Where was the husband of Jeanne Raunay born?\nAnswer: André Beaunier, the husband of Jeanne Raunay, was born in Évreux.\n\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 3 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 6 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 7 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.\n\n[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.\n\n[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.\n\nFinal response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "prediction": "Évreux",
+  "request_id": "6dec63b7d2bde80c3cd92b10bbbb22842706655f7ab592273c263da9ee10400a",
+  "finish_reason": "stop",
+  "arm": "p02_role_headers",
+  "raw_B0_final_prompt": "Answer the Original question using the retrieved passages and auxiliary question-answer pairs.\nUse relevant auxiliary answers as intermediate information. When a retrieved passage gives a conflicting fact about the same entity, relation and conditions, use the passage. Do not transfer a fact about another entity or a different comparison to the Original question.\nComplete the relation, comparison or combination requested by the Original question. Missing information does not establish a negative fact, zero or an empty set. If the available information does not support the final answer, return Cannot be determined.\nFor a person, place or organization, use the full identifying name stated in the matching passage. When an auxiliary answer uses a shorter name for the same entity, preserve the fuller source name, including compound surnames and disambiguating suffixes.\n\nWorked examples:\n\nExample 1\nQuestion:\nWhich river does Pack Creek flow into after passing through Spanish Valley?\n\nContext:\n[Chunk 1 | source=Spanish Valley, pages=1-1]\nSpanish Valley\nPack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.\n\nAuxiliary question-answer pairs\n\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado.\n\nFinal short answer: Colorado River\n\nExample 2\nQuestion:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nContext:\n[Chunk 1 | source=Leycesteria, pages=1-1]\nLeycesteria\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\n[Chunk 2 | source=Anigozanthos, pages=1-1]\nAnigozanthos\nAnigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.\n\nAuxiliary question-answer pairs\n\n#1 Question: Is Leycesteria native to Australia?\nAnswer: Leycesteria is native to temperate Asia, not Australia.\n\n#2 Question: Is Anigozanthos native to Australia?\nAnswer: Anigozanthos is native to Australia.\n\n#3 Question: Are both Leycesteria and Anigozanthos native to Australia?\nAnswer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.\n\nFinal short answer: No\n\nExample 3\nQuestion:\nBaraki Barak District is situated in the western part of a province whose capital is what?\n\nContext:\n[Chunk 1 | source=Baraki Barak District, pages=1-1]\nBaraki Barak District\nBaraki Barak District is situated in the western part of Logar Province, Afghanistan.\n\n[Chunk 2 | source=Logar Province, pages=1-1]\nLogar Province\nPuli Alam is the capital of the province.\n\nAuxiliary question-answer pairs\n\n#1 Question: In which province is Baraki Barak District situated?\nAnswer: Baraki Barak District is in Logar Province.\n\n#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?\nAnswer: The capital of Logar Province is Kabul.\n\nFinal short answer: Puli Alam\n\nExample 4\nQuestion:\nWhich has more species, Clianthus or Callicoma?\n\nContext:\n[Chunk 1 | source=Clianthus, pages=1-1]\nClianthus\nClianthus, commonly known as kakabeak (\"Kōwhai ngutukākā\" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.\n\n[Chunk 2 | source=Callicoma, pages=1-1]\nCallicoma\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAuxiliary question-answer pairs\n\n#1 Question: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\n\n#2 Question: How many species does Callicoma contain?\nAnswer: Callicoma contains one species.\n\n#3 Question: Which has more species, Clianthus or Callicoma?\nAnswer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.\n\nFinal short answer: Clianthus\n\nActual task:\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nContext:\nAuxiliary question-answer pairs\n\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\n#2 Question: Where was the husband of Jeanne Raunay born?\nAnswer: André Beaunier, the husband of Jeanne Raunay, was born in Évreux.\n\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 3 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 4 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 5 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 6 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque (24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 7 | source=Jacqueline Roque, pages=1-1]\nJacqueline Roque\nJacqueline Picasso or Jacqueline Roque( 24 February 1927 – 15 October 1986) was best known as the muse and second wife of Pablo Picasso. Their marriage lasted 11 years until his death, during which time he created over 400 portraits of her, more than any of Picasso's other loves.\n\n[Chunk 8 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans, \"fils de France\" (Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris (the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans-Braganza.\n\n[Chunk 9 | source=Prince Jacques, Duke of Orléans, pages=1-1]\nPrince Jacques, Duke of Orléans\nPrince Jacques of Orléans, Duke of Orléans,\" fils de France\"( Jacques Jean Jaroslaw Marie; born 25 June 1941 in Rabat, Morocco), is the son of Henri, Count of Paris( the Orléanist claimant to the French throne from 1940 until his death) and his wife, Princess Isabelle of Orléans- Braganza.\n\n[Chunk 10 | source=Jeannette Vermeersch, pages=1-1]\nJeannette Vermeersch\nJeannette Vermeersch (born Julie Marie Vermeersch; 26 November 1910 – 5 November 2001) was a French politician. She is principally known for having been the companion (1932–1947) and then the wife (1947–1964) of Maurice Thorez, general secretary of the French Communist Party (PCF), with whom she had three children, born before their union was made official.\n\nFinal response requirements:\nReturn only a concise answer to the Original question. Preserve full identifying names, necessary qualifiers and units; do not shorten a source name to match an auxiliary answer.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not list intermediate answers, restate the question, or add explanation or citations.\nFinal short answer:",
+  "goal_prompt_change": {
+    "raw_B0_goal_prompt": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent subquestion #2:\nWhere was the husband of Jeanne Raunay born?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.\n\n[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.\n\n[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.\n\n[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.\n\n[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.\n\nAnswer:",
+    "actual_goal_prompt": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWhere was the husband of Jeanne Raunay born?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Jeanne Raunay's husband?\nAnswer: Jeanne Raunay's husband was André Beaunier.\n\nCurrent subquestion #2:\nWhere was the husband of Jeanne Raunay born?\n\nRetrieved passages:\n[Chunk 1 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay( 25 November 1868 – 1942) was a French mezzo- soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 2 | source=André Beaunier, pages=1-1]\nAndré Beaunier\nAndré Beaunier (22 September 1869, Évreux – 9 December 1925, Paris) was a French novelist and literary critic.\n\n[Chunk 3 | source=Jeanne Raunay, pages=1-1]\nJeanne Raunay\nJeanne Richomme Raunay (25 November 1868 – 1942) was a French mezzo-soprano opera singer. She was also the daughter of painter Jules Richomme, and the wife of French writer André Beaunier.\n\n[Chunk 4 | source=Louis-Antoine Beaunier, pages=1-1]\nLouis-Antoine Beaunier\nLouis- Antoine Beaunier( 15 January 1779 in Melun – 20 August 1835 in Paris) was a French engineer.\n\n[Chunk 5 | source=Rahel la Fermosa, pages=1-1]\nRahel la Fermosa\nRahel( La( Ladino for\" Rachel the Beautiful\"; originally\" Rahel Esra\"; c. 1165, Toledo – 1195, Toledo) was a Jewish woman who lived in Toledo, Spain in the twelfth century. She was the paramour of King Alfonso VIII of Castile, husband of Eleanor of England, for almost seven years. Under her influence, a number of Spanish Jews were appointed to positions within the royal court. This led to discontent among the clergy and nobility. Rahel's enemies had her murdered, together with her fellow Jews in the court, in the presence of the king himself.\n\n[Chunk 6 | source=Guy Beaulne, pages=1-1]\nGuy Beaulne\nGuy Beaulne,( 23 December 1921 – 1 October 2001) was a French Canadian actor and theatre director. Born in Ottawa, Ontario, he received a Bachelor of Arts and Bachelor of Philosophy from the University of Ottawa. He also had a Normal School Teacher Diploma. In 1953, he directed the Quebec television series, La famille Plouffe. From 1970 to 1976, he was the Director of the Grand Théâtre de Québec.\n\n[Chunk 7 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte (15 September 1861 – 25 July 1910) was a great-niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore-Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve-Esclapon.\n\n[Chunk 8 | source=Beau Brady, pages=1-1]\nBeau Brady\nBeau Brady is an Australian actor from Sydney, Australia.\n\n[Chunk 9 | source=Jeanne Bonaparte, pages=1-1]\nJeanne Bonaparte\nPrincess Jeanne Bonaparte( 15 September 1861 – 25 July 1910) was a great- niece of Napoleon I of France, and the only daughter of Pierre Napoleon Bonaparte by his wife Éléonore- Justine Ruflin. She was well known in French society as an artist and sculptor, and was married to Christian de Villeneuve- Esclapon.\n\n[Chunk 10 | source=Nicolas Beaudan, pages=1-1]\nNicolas Beaudan\nNicolas Beaudan( born 13 December 1975 in Clermont- Ferrand) is a French foil fencer. His nickname is the\" black cat\". He began fencing when he was eight years old. He is licensed at the Masque de Fer de Lyon. After spending eight years at the French National Institute of Sport and Physical Education( INSEP), he left in 2004, wanting better results, despite a team gold medal at the European Fencing Championships in 2002. In 2005, he joined the French team and was selected for the 2005 World Fencing Championships which took place in Leipzig. He won an individual bronze medal and a team gold medal with his teammates Erwann Le Péchoux, Victor Sintès, and Brice Guyart, an Olympic gold medalist. In 2006, he won another team gold medal at the 2006 World Fencing Championships in Turin with Erwann Le Péchoux, Marcel Marcilloux, and Loïc Attely. In 2007, he won a third consecutive team gold medal at the 2007 World Fencing Championships in Saint Petersburg with Le Péchoux, Marcel Marcilloux, and Brice Guyart.\n\nFor a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.\n\nAnswer:"
+  },
+  "upstream_executor": "frozen legacy b0.execute",
+  "logical_calls": [
+    {
+      "qid": "6c7f03240bdb11eba7f7acde48001122",
+      "stage": "legacy/answer/1",
+      "payload_sha256": "ed3ac74aabfe7cbf99f58c59945584f63307846983772543df548dc0f612051b",
+      "request_id": "80691cb0bbbac91ee0005ed5f8cd6e5d1b89f83a077e7c78a927572630bcba7e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+      "status": "success",
+      "reused": true,
+      "usage": {
+        "completion_tokens": 13,
+        "completion_tokens_details": null,
+        "prompt_tokens": 1631,
+        "prompt_tokens_details": null,
+        "total_tokens": 1644
+      },
+      "finish_reason": "stop",
+      "http_status": null
+    },
+    {
+      "qid": "6c7f03240bdb11eba7f7acde48001122",
+      "stage": "legacy/rewrite/2",
+      "payload_sha256": "436f513a14aff42487d69b34db8a6640955b32057770e7003b5c8fe06e14cd3f",
+      "request_id": "9a7937682afd2abde46f20fae069359c3acee1467192d53fc06e476ad625f6fd",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+      "status": "success",
+      "reused": true,
+      "usage": {
+        "completion_tokens": 8,
+        "completion_tokens_details": null,
+        "prompt_tokens": 337,
+        "prompt_tokens_details": null,
+        "total_tokens": 345
+      },
+      "finish_reason": "stop",
+      "http_status": null
+    },
+    {
+      "qid": "6c7f03240bdb11eba7f7acde48001122",
+      "stage": "legacy/answer/2",
+      "payload_sha256": "88a29c46e1d4f359053bdcc72e68460e074d3a32b165e457580ed44c7f9cff8a",
+      "request_id": "d7eb1733ff1db0f769f644e4bfab6bcaa35c3c789b559e39ab3910b2dec862b4",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\parent_g01\\checkpoint.sqlite3",
+      "status": "success",
+      "reused": true,
+      "usage": {
+        "completion_tokens": 22,
+        "completion_tokens_details": null,
+        "prompt_tokens": 1415,
+        "prompt_tokens_details": null,
+        "total_tokens": 1437
+      },
+      "finish_reason": "stop",
+      "http_status": null
+    },
+    {
+      "qid": "6c7f03240bdb11eba7f7acde48001122",
+      "stage": "legacy/final",
+      "payload_sha256": "de1e12a750728916a6eaf3cc8540e8cdea0d20012de94b41f1bafba3b98fdb39",
+      "request_id": "6dec63b7d2bde80c3cd92b10bbbb22842706655f7ab592273c263da9ee10400a",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\fresh_dev90\\rounds\\r000\\methods\\2wiki\\p02_role_headers\\checkpoint.sqlite3",
+      "status": "success",
+      "reused": false,
+      "usage": {
+        "completion_tokens": 3,
+        "completion_tokens_details": null,
+        "prompt_tokens": 2299,
+        "prompt_tokens_details": null,
+        "total_tokens": 2302
+      },
+      "finish_reason": "stop",
+      "http_status": null
+    }
+  ],
+  "finished_utc": "2026-10-19T22:57:10.318934+00:00",
+  "actual_seconds": 6.752124499995261
+}

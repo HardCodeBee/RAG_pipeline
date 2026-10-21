@@ -1,0 +1,29 @@
+{
+  "model": "Original Qwen3-4B-Instruct-2507 + new ordinary LoRA checkpoint165",
+  "remote_package": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+  "checkpoint_manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "train3500_sha256": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+  "dev150_sha256": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606",
+  "dev_review_sha256": "0970ae09087c0109fb984f01e7426ddc9dc254e3aed5b6ecfc55b38ba7ea56f4",
+  "dev_score": {
+    "passed": 128,
+    "denominator": 150
+  },
+  "formal300_role": "Original4B-versus-SFT evaluation remains separate; never prompt selection.",
+  "frozen_files": {
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12\\MASTER_3500.jsonl": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606",
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev_review\\checkpoint-000165.jsonl": "0970ae09087c0109fb984f01e7426ddc9dc254e3aed5b6ecfc55b38ba7ea56f4",
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\SELECTED_CHECKPOINT.json": "cba5fe5a5ebf1d43e6cca74018b7248e0645654e008cb255b6915b02e56db0b1"
+  },
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 1024,
+    "seed": 1729
+  },
+  "review": "Frozen F/S/C/U, current Codex query-only, non-independent, not downstream RAG F1.",
+  "policy": "Do not alter control weights, labels, prompts, selection scores, or review rubric. API calls0; no new training."
+}

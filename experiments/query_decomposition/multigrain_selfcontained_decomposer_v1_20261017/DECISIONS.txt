@@ -1,0 +1,97 @@
+Date: 2026-10-17 (Australia/Sydney)
+Status: draft prompt and seven candidate training labels; not a trained model or admitted training corpus.
+
+User-approved target changes:
+- Generate self-contained supporting questions at useful complementary granularities.
+- Remove inter-question #N references.
+- A program appends the original query as the last execution node; the decomposer does not emit a goal question or goal pointer.
+- Keep the existing downstream agreement that the appended original-query node is retrieved and answered in a full sentence before the separate final short answer.
+
+Draft interface choice:
+- Model output is a JSON array of question strings. This retains a simple parseable boundary while removing steps/id/request/goal bookkeeping from the target.
+- IDs can be added by the execution program if needed for ordering or logs. They are not semantic dependencies.
+- An empty array represents a local question with no useful intermediate request, not a missing factual answer.
+- Program input remains the exact original query; the common system message is TRAINING_PROMPT_v1.txt. The assistant target is the JSON serialization of each example's target array.
+- Metadata fields in TRAINING_EXAMPLES_DRAFT.jsonl are for local provenance only and must not be included in the model's user message or assistant output.
+
+Label choices and purposes:
+- draft_01: instrument identity and a deeper first-electric-version description; both questions remain standalone.
+- draft_02: director identity and country facts on both branches; retain the year/version qualifiers and the original 'from' relation.
+- draft_03: obtain both birth dates; original query supplies the final earlier-birth comparison.
+- draft_04: expose both membership conditions without guessing the intersection answer.
+- draft_05: obtain denominator and threshold-qualified numerator directly; avoid mandatory enumeration of every house or an extra ratio goal.
+- draft_06: preserve the 'before 2000' condition on both component decisions; original query performs the conjunction.
+- draft_07: avoid a generic identity question when the original query already names the person and asks one local relation.
+
+Source and review boundaries:
+- Six original queries are copied exactly from the existing 2368-record accepted_master.jsonl. One additional query is projected from the local 2Wiki native train.json using only ID/question/type for selection.
+- These are newly authored candidate labels, not native dataset decomposition gold and not 4B model predictions.
+- The author saw the old decomposition labels while selecting examples; this is not a fresh blind annotation or an independent semantic review.
+- Formal admission, expanded-train/dev/test and family/near-duplicate isolation checks remain pending. The 2Wiki example is a draft train-source example, not a claim of completed decontamination.
+- The four prompt shots are illustrative questions with no supplied factual answers; they are not evaluation cases.
+- No API annotation, retraining, downstream evaluation, or frozen-configuration change is performed by preparing these files.
+- Before exporting a training package, recheck the actual prompt-plus-query-plus-target token lengths; the old 1024-token setting must not be assumed sufficient for this changed prompt and label style.
+
+2026-10-17 follow-up: user requested prompt refinement and an API pilot.
+- Preserve TRAINING_PROMPT_v1.txt as the paired control.
+- v2 removes the general RAG-background phrase; the instruction directly states the required decomposition behavior.
+- v2 uses the highest-mountain/region/population question as a running example across self-containment, granularity, qualifier preservation and unknown preservation. Separate short examples cover comparison, percentage and local-query behavior.
+- v2 allows an original-equivalent question if naturally produced by the decomposition rules, but neither mandates a final goal nor permits copying the original instead of decomposing. This is a deliberate change from v1's blanket prohibition, adopted from the user's comment.
+- The execution compiler only removes exact normalized duplicates and appends the original once. It does not claim to recognize all semantic paraphrases.
+- Run a paired API diagnostic on the existing 36 fresh36 cases (12 per dataset), selected without reading answers, retrieval evidence, prior reference plans or downstream scores. These remain previously exposed diagnostic cases.
+- Use the existing Qwen Plus snapshot, temperature 0, thinking off, proper system/user messages, output limit 1024, at most three concurrent calls, global 200-yuan ledger, protected stop at 195, and a one-yuan local subcap.
+- Record payloads, literal responses, usage, failures, prompt versions and manual semantic judgments separately. A current-context review is not independent blind review.
+- This test evaluates the full prompt revision as a bundle, not the causal benefit of each edited sentence. It does not measure downstream RAG F1 or trained 4B performance.
+
+Pilot accounting correction during execution:
+- Initial local-namespace SQL used a forward slash even though Windows Store namespaces use backslashes. This affected the printed local sum and local prefix check, not global per-request reservation/settlement or actual payloads.
+- Corrected both prefix queries to the unique experiment prefix without a platform-specific separator. Offline reconciliation uses the corrected code. The fixed 72-request byte-bound reservation envelope is checked separately against the one-yuan cap; no extra submissions are authorized by this fix.
+
+Pilot continuation after one network failure:
+- v1 case 5a77685e5542993569682d83 returned APIConnectionError without a complete response and remains unknown. Its reserve and full planned denominator are retained; do not replay this request.
+- Add --continue-unsubmitted to finish only cases without a stored result. This changes infrastructure continuation only, not prompts, inputs, decoding, review rules, or planned membership.
+- The 72-call conservative reservation envelope is 0.3456128 CNY, below the one-yuan pilot cap even before local SQL reconciliation.
+
+2026-10-17 next user request: diagnose v2 failures/uncertainties and continue same36 prompt optimization.
+- Add V2_FAILURE_ANALYSIS.txt with the six primary self-containment failures, four primary useless-question failures and two uncertain cases; counts are not additive across all check dimensions.
+- v3 changes only the self-containment component: full per-item descriptions even for the last item, ordinary-language references, input placeholders with clause-defined identities, and a silent item-isolation check. No new output fields, semantic postprocessing, retrieval, training or extra LLM repair pass.
+- v4 will change usefulness/input-known-facts only, after actual v3 outputs are inspected. No evaluation-specific names or reference decompositions may be put in these prompts.
+- Each arm reuses all 36 exact frozen user questions and compares against the existing frozen v2 outputs; do not submit v2 again. Same Qwen Plus snapshot, roles and decoding settings.
+- Add explicit output-root/prompt-file parameters to the small API runner instead of altering global method state. Default v1/v2 behavior and historical outputs are unchanged; follow-up arms have separate protocols, caches and review files.
+- Generalize only the budget namespace and output destination. All new payloads retain the same system/user role structure, temperature, thinking flag and max output; verify exact payload comparability offline.
+- Retain global ledger cap 200, protected stop 195, one-yuan per-follow-up subcap. Unknown requests remain reserved and are never replayed.
+
+v3 infrastructure continuation:
+- The initial batch of six attempts contains four complete responses and two APIConnectionError unknowns (73dcc04808de11ebbd9eac1f6bf848b6 and 2hop__156085_436709). Preserve both reserves and do not resend either payload.
+- Add sanitized exception-cause class names for future failures; no credentials, headers or exception message text are logged by this addition.
+- Add an explicit retain-network-failures continuation option to finish other never-submitted cases. It does not turn missing outputs into successes or semantic judgments. Authentication, rate-limit and budget errors still stop; two fully unknown consecutive batches also stop new submissions.
+- This changes only infrastructure continuation/diagnostics, not the model payload, prompt or review rubric. Historical failed entries and control results remain intact.
+
+v4 authored after inspecting the first 21 v3 case files:
+- v3 has repaired several actual ordinary-language references, including the Spanish writer, production-company/castle city, and Howard Mill state descriptions. Redundant known-father lookup remains; the Helena case also adds an unanchored/circular summit question.
+- v4 changes only rule 7. Every emitted question must supply a specific still-unknown supporting fact. Omit generic biographies, identity lookups already resolved by input parentheses/appositions, broad unanchored containing-area questions, inverse relations that merely return a given value, and generic attribute lookups with no role in resolving the requested fact/event.
+- Keep useful constrained sets for intersections and per-object facts for comparisons. Do not require every atomic bridge; different granularities remain allowed. Preserve v3 rule 1 and its final silent isolation check exactly, as well as rules 2-6/8, format, original-question policy, model and decoding.
+- No question from the 36-case set, no case-specific name, and no reference answer was added as a shot. Rules are derived from the diagnosed failure patterns; this is still tuning on exposed data, not an independent confirmation.
+- Save exact unified diffs as PROMPT_DIFF_v2_to_v3.txt and PROMPT_DIFF_v3_to_v4.txt. Freeze v4 before its requests; finish/inspect v3 independently.
+
+v3/v4 review and final diagnostic branch v5:
+- v3: 34 complete responses, two retained unknown connection failures. Literal review: 26 pass, seven fail, one uncertain, two unavailable under the unchanged shared rubric.
+- v4: all36 complete. Literal review: 28 pass, six fail, two uncertain. On the common34 with v3, both have26 passes: the larger-group case improves, while the Spanish-writer reference regresses. The original four redundant-question cases remain failures. Do not interpret two recovered network responses as prompt gains.
+- Save the authored v3 and v4 judgments before reviewing/generating the next arm, respectively. Same current-context reviewer; no claim of independent blind scoring. Old v2 judgments stay frozen.
+- v5 branches from v3, not v4. Add only three short illustrative examples: clause-defined company roles carried in each question, an explicitly named father needing no identity lookup, and an unknown district identified by a given administrative centre. No rule wording, output fields, model or decoding changes.
+- The examples contain fictional/generic names and no remembered factual answers. They are deliberately chosen from observed failure mechanisms, so this remains exposed-set prompt tuning. They do not constitute an unseen generalization test and do not justify a 4B or downstream-F1 claim.
+- Run one final same36 arm for this requested diagnostic. No open-ended iteration or automatic batch relabeling/training is started.
+
+Final same36 follow-up result:
+- New calls: v3/v4/v5 each36, total108 submissions. v3 has34 complete responses and two retained unknowns; v4 has36 complete; v5 has33 complete and three retained unknowns. No unknown request was replayed or imputed.
+- Full36 content-review passes: frozen v2=24, v3=26, v4=28, v5=27. Do not select by these counts alone because missing-response membership differs.
+- All four arms share31 complete cases. Content-review passes are v2=20, v3=24, v4=24, v5=25; self-containment failures on the same31 are5,1,2,0.
+- v2 vs v5 share33 cases:22→27 passes, five gained passes, zero lost passes. The newly passing cases are the Spanish writer, production-company/castle city, Helena county, Howard Mill state, and Israel-region description cases.
+- v3 vs v5 share31:24→25 passes, one gained pass (Helena), zero lost passes. This is a small within-set increment, not evidence of stable superiority.
+- v4's longer usefulness rule is not adopted into v5. v5 is the current development candidate, with v3 preserved as the shorter comparison. No frozen RAG method, training labels or trained checkpoint was replaced.
+- v5's33 complete outputs have no judged cross-question reference, but the Country A/B case is one of its three network-unknown cases. Its repair remains unverified. Avoid saying all36 reference problems were solved.
+- Remaining v5 problems: unanchored Kentucky county question; redundant father identity lookup; generic RX350 identity question; an unsupported paternal path for uncle; redundant larger-group questions. The Robert Suettinger local-vs-decomposable case remains uncertain.
+- The uncle case is a qualitative regression from a useless identity question to a false added relationship restriction even though both versions fail overall. Keep this in the report; do not equate a more specific chain with a more faithful one.
+- New usage at the existing recorded unit prices:0.0852060 CNY; additional unresolved reservation:0.0307448 CNY. Actual billing not verified. The reused v2 control is not counted as new cost.
+- Final artifacts: outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_followup_20261017/REPORT.txt, RESULTS.json, AUTHORED_REVIEW_ALL_ARMS.jsonl and V2_FAILURE_CASES_BEFORE_AFTER.txt.
+- API mean input tokens rose from about645 in v2 to832 in v3 and991 in v5. Before training, check full prompt+query+target lengths with the actual 4B tokenizer; no assumption that the old1024-token training limit still fits.

@@ -1,0 +1,478 @@
+终点goal单次回答：独立评分与成本核查
+2026-10-20T12:23:35.409525+00:00
+范围：同300题，三个数据集各100；F1均为0到1原始比例。
+完整结果前不选择或升级；不设未经用户指定的非劣数值阈值。
+
+{
+  "overall": {
+    "planned": 300,
+    "scorable": 300,
+    "missing": 0,
+    "statuses": {
+      "success": 297,
+      "algorithm_failure": 3
+    },
+    "F1_available": 0.6778709422761149,
+    "F1_complete": 0.6778709422761149,
+    "EM_available": 0.5766666666666667,
+    "F1_all_planned_bounds": [
+      0.6778709422761149,
+      0.677870942276115
+    ],
+    "paired_with_union20": {
+      "n": 300,
+      "candidate_F1": 0.6778709422761149,
+      "comparison_F1": 0.7031243481968344,
+      "delta": -0.025253405920719712,
+      "up": 17,
+      "tie": 253,
+      "down": 30
+    },
+    "paired_with_p02": {
+      "n": 300,
+      "candidate_F1": 0.6778709422761149,
+      "comparison_F1": 0.7072417314845074,
+      "delta": -0.02937078920839286,
+      "up": 19,
+      "tie": 251,
+      "down": 30
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 100,
+      "scorable": 100,
+      "missing": 0,
+      "statuses": {
+        "success": 100
+      },
+      "F1_available": 0.7281984126984125,
+      "F1_complete": 0.7281984126984125,
+      "EM_available": 0.59,
+      "F1_all_planned_bounds": [
+        0.7281984126984125,
+        0.7281984126984125
+      ],
+      "paired_with_union20": {
+        "n": 100,
+        "candidate_F1": 0.7281984126984125,
+        "comparison_F1": 0.7828131313131311,
+        "delta": -0.05461471861471862,
+        "up": 5,
+        "tie": 82,
+        "down": 13
+      },
+      "paired_with_p02": {
+        "n": 100,
+        "candidate_F1": 0.7281984126984125,
+        "comparison_F1": 0.7899083694083693,
+        "delta": -0.06170995670995672,
+        "up": 4,
+        "tie": 83,
+        "down": 13
+      }
+    },
+    "2wiki": {
+      "planned": 100,
+      "scorable": 100,
+      "missing": 0,
+      "statuses": {
+        "success": 98,
+        "algorithm_failure": 2
+      },
+      "F1_available": 0.9270433455433456,
+      "F1_complete": 0.9270433455433456,
+      "EM_available": 0.85,
+      "F1_all_planned_bounds": [
+        0.9270433455433456,
+        0.9270433455433453
+      ],
+      "paired_with_union20": {
+        "n": 100,
+        "candidate_F1": 0.9270433455433456,
+        "comparison_F1": 0.9228548085901026,
+        "delta": 0.004188536953242835,
+        "up": 6,
+        "tie": 88,
+        "down": 6
+      },
+      "paired_with_p02": {
+        "n": 100,
+        "candidate_F1": 0.9270433455433456,
+        "comparison_F1": 0.9334738562091504,
+        "delta": -0.006430510665804783,
+        "up": 6,
+        "tie": 87,
+        "down": 7
+      }
+    },
+    "musique": {
+      "planned": 100,
+      "scorable": 100,
+      "missing": 0,
+      "statuses": {
+        "success": 99,
+        "algorithm_failure": 1
+      },
+      "F1_available": 0.37837106858658587,
+      "F1_complete": 0.37837106858658587,
+      "EM_available": 0.29,
+      "F1_all_planned_bounds": [
+        0.37837106858658587,
+        0.37837106858658587
+      ],
+      "paired_with_union20": {
+        "n": 100,
+        "candidate_F1": 0.37837106858658587,
+        "comparison_F1": 0.4037051046872692,
+        "delta": -0.025334036100683348,
+        "up": 6,
+        "tie": 83,
+        "down": 11
+      },
+      "paired_with_p02": {
+        "n": 100,
+        "candidate_F1": 0.37837106858658587,
+        "comparison_F1": 0.3983429688360029,
+        "delta": -0.019971900249417068,
+        "up": 9,
+        "tie": 81,
+        "down": 10
+      }
+    }
+  },
+  "paired_bootstrap": {
+    "union20": {
+      "n": 300,
+      "delta": -0.025253405920719712,
+      "paired_bootstrap95": [
+        -0.05166359273113544,
+        0.00016949992098001928
+      ],
+      "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+      "dataset_counts": {
+        "musique": 100,
+        "2wiki": 100,
+        "hotpotqa": 100
+      },
+      "seed": 20261020,
+      "replicates": 10000,
+      "not_a_noninferiority_claim": true,
+      "numeric_noninferiority_margin": null,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "delta": -0.05461471861471862,
+          "paired_bootstrap95": [
+            -0.10618733766233766,
+            -0.006235497835497872
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "hotpotqa": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        },
+        "2wiki": {
+          "n": 100,
+          "delta": 0.004188536953242835,
+          "paired_bootstrap95": [
+            -0.03981965811965812,
+            0.047337192056309645
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "2wiki": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        },
+        "musique": {
+          "n": 100,
+          "delta": -0.025334036100683348,
+          "paired_bootstrap95": [
+            -0.06700889407698651,
+            0.014101269121012833
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "musique": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        }
+      }
+    },
+    "p02": {
+      "n": 300,
+      "delta": -0.02937078920839286,
+      "paired_bootstrap95": [
+        -0.05320588882524845,
+        -0.007075495428443067
+      ],
+      "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+      "dataset_counts": {
+        "musique": 100,
+        "2wiki": 100,
+        "hotpotqa": 100
+      },
+      "seed": 20261020,
+      "replicates": 10000,
+      "not_a_noninferiority_claim": true,
+      "numeric_noninferiority_margin": null,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "delta": -0.06170995670995672,
+          "paired_bootstrap95": [
+            -0.10932478354978353,
+            -0.02090465367965368
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "hotpotqa": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        },
+        "2wiki": {
+          "n": 100,
+          "delta": -0.006430510665804783,
+          "paired_bootstrap95": [
+            -0.04698664799253034,
+            0.03263249120160885
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "2wiki": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        },
+        "musique": {
+          "n": 100,
+          "delta": -0.019971900249417068,
+          "paired_bootstrap95": [
+            -0.05950693297433917,
+            0.01469334916444716
+          ],
+          "method": "Paired query bootstrap stratified by dataset preserving observed counts",
+          "dataset_counts": {
+            "musique": 100
+          },
+          "seed": 20261020,
+          "replicates": 10000,
+          "not_a_noninferiority_claim": true,
+          "numeric_noninferiority_margin": null
+        }
+      }
+    }
+  },
+  "matched_returned_flow_efficiency": {
+    "matched_full_returned_flows": 300,
+    "algorithm_failures_among_returned": 3,
+    "logical_generations": {
+      "union20": 1774,
+      "terminal_goal": 1474,
+      "saved": 300,
+      "relative_change": -0.16910935738444194
+    },
+    "prompt_tokens": {
+      "union20": 3311231,
+      "terminal_goal": 2526503,
+      "saved": 784728,
+      "relative_change": -0.23698980832204095
+    },
+    "completion_tokens": {
+      "union20": 28456,
+      "terminal_goal": 33730,
+      "saved": -5274,
+      "relative_change": 0.18533876862524598
+    },
+    "equal_rate_generation_cny": {
+      "union20": 2.705896800000001,
+      "terminal_goal": 2.088662400000001,
+      "saved": 0.6172344000000001,
+      "relative_change": -0.2281071473235786
+    },
+    "actual_paid_cost": false,
+    "by_dataset": {
+      "hotpotqa": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 0,
+        "logical_generations": {
+          "union20": 510,
+          "terminal_goal": 410,
+          "saved": 100,
+          "relative_change": -0.19607843137254902
+        },
+        "prompt_tokens": {
+          "union20": 818448,
+          "terminal_goal": 582741,
+          "saved": 235707,
+          "relative_change": -0.2879926397278752
+        },
+        "completion_tokens": {
+          "union20": 8687,
+          "terminal_goal": 10037,
+          "saved": -1350,
+          "relative_change": 0.15540462760446644
+        },
+        "equal_rate_generation_cny": {
+          "union20": 0.6721324,
+          "terminal_goal": 0.48626680000000005,
+          "saved": 0.1858655999999999,
+          "relative_change": -0.2765312310491206
+        },
+        "actual_paid_cost": false
+      },
+      "2wiki": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 2,
+        "logical_generations": {
+          "union20": 648,
+          "terminal_goal": 548,
+          "saved": 100,
+          "relative_change": -0.15432098765432098
+        },
+        "prompt_tokens": {
+          "union20": 1281520,
+          "terminal_goal": 1005133,
+          "saved": 276387,
+          "relative_change": -0.21567123415943568
+        },
+        "completion_tokens": {
+          "union20": 10342,
+          "terminal_goal": 12404,
+          "saved": -2062,
+          "relative_change": 0.1993811641848772
+        },
+        "equal_rate_generation_cny": {
+          "union20": 1.0458999999999998,
+          "terminal_goal": 0.8289143999999997,
+          "saved": 0.2169856000000001,
+          "relative_change": -0.2074630461803233
+        },
+        "actual_paid_cost": false
+      },
+      "musique": {
+        "matched_full_returned_flows": 100,
+        "algorithm_failures_among_returned": 1,
+        "logical_generations": {
+          "union20": 616,
+          "terminal_goal": 516,
+          "saved": 100,
+          "relative_change": -0.16233766233766234
+        },
+        "prompt_tokens": {
+          "union20": 1211263,
+          "terminal_goal": 938629,
+          "saved": 272634,
+          "relative_change": -0.22508241397615547
+        },
+        "completion_tokens": {
+          "union20": 9427,
+          "terminal_goal": 11289,
+          "saved": -1862,
+          "relative_change": 0.1975177681128673
+        },
+        "equal_rate_generation_cny": {
+          "union20": 0.9878644,
+          "terminal_goal": 0.7734812000000001,
+          "saved": 0.21438319999999988,
+          "relative_change": -0.21701682943529485
+        },
+        "actual_paid_cost": false
+      }
+    }
+  },
+  "recorded_selected_prefix_usage": {
+    "logical_attempts": 1474,
+    "logical_generations": 1474,
+    "prompt_tokens": 2526503,
+    "completion_tokens": 33730,
+    "unreturned_calls": 0
+  },
+  "actual_costs": {
+    "new_namespace": {
+      "new_physical_requests": 308,
+      "known_returned_usage_cny": 0.6784243999999986,
+      "unreconciled_reserved_cny": 0.06916159999999999,
+      "occupied_cny": 0.7475859999999985,
+      "unreconciled_requests": 8,
+      "statuses": {
+        "returned_usage": 300,
+        "reserved": 8
+      }
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "new_physical_requests": 104,
+        "known_returned_usage_cny": 0.1818324,
+        "unreconciled_reserved_cny": 0.030828,
+        "occupied_cny": 0.2126604,
+        "unreconciled_requests": 4,
+        "statuses": {
+          "returned_usage": 100,
+          "reserved": 4
+        }
+      },
+      "2wiki": {
+        "new_physical_requests": 103,
+        "known_returned_usage_cny": 0.24102559999999998,
+        "unreconciled_reserved_cny": 0.027911199999999997,
+        "occupied_cny": 0.2689368,
+        "unreconciled_requests": 3,
+        "statuses": {
+          "returned_usage": 100,
+          "reserved": 3
+        }
+      },
+      "musique": {
+        "new_physical_requests": 101,
+        "known_returned_usage_cny": 0.2555664000000002,
+        "unreconciled_reserved_cny": 0.010422399999999998,
+        "occupied_cny": 0.2659888000000002,
+        "unreconciled_requests": 1,
+        "statuses": {
+          "returned_usage": 100,
+          "reserved": 1
+        }
+      }
+    },
+    "global_budget": {
+      "new_physical_requests": 108781,
+      "known_returned_usage_cny": 190.2225660000012,
+      "unreconciled_reserved_cny": 36.123747999999985,
+      "occupied_cny": 226.34631400000117,
+      "unreconciled_requests": 2199,
+      "statuses": {
+        "reserved": 2199,
+        "returned_usage": 106539,
+        "http_failed_not_returned_usage": 43
+      }
+    },
+    "global_cap_cny": 300,
+    "actual_invoice_verified": false,
+    "historical_seed_costs_not_charged_again": true
+  },
+  "receipt_lineage_errors": []
+}
+
+Positive F1 gain is not required for useful simplification.
+Partial available means do not replace complete300 evaluation; infrastructure missing is not zero.
+Algorithm failures are zero; fully returned malformed outputs remain in efficiency if all usage is known.
+Logical modeled costs count cached generations at frozen equal rates; actual new costs come only from this namespace ledger.
+Bootstrap crossing zero does not prove noninferiority.
+No new decomposition, retrieval or API request is performed by this scorer.

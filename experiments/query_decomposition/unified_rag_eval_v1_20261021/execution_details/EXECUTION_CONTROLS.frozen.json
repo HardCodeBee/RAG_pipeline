@@ -1,0 +1,28 @@
+{
+  "max_attempts": 5,
+  "attempt_count_includes_initial": true,
+  "counter_key": [
+    "dataset",
+    "method",
+    "original_qid",
+    "logical_stage"
+  ],
+  "counter_persisted_across_restart": true,
+  "nested_SDK_and_scheduler_attempts_share_one_counter": true,
+  "after_exhaustion": "record error class, receipt IDs, known expense, unknown reserves and partial stage; temporarily skip without replacing question or marking irrecoverable",
+  "algorithm_failures": "retain protocol-defined zero, do not retry to improve F1",
+  "unknown_requests": "hold for receipt verification; no silent paid resubmission even below5",
+  "cost_alerts": {
+    "single_query_ratio": 3.0,
+    "rolling_mean_ratio": 1.5,
+    "rolling_window_complete_fresh_queries": 20,
+    "reference_file": "COST_REFERENCE.frozen.json",
+    "trigger": "strictly greater than the corresponding historical mean times ratio",
+    "action": "record alert and notify user in this chat; expense increase alone does not impose a hidden cap or discard results",
+    "deduplication": "one outlier alert per original query; rolling alert on entering elevated state, rearm after return to normal",
+    "unknown_usage": "report as unknown separately, never zero"
+  },
+  "no_fixed_budget_cap": true,
+  "execution_approved": false,
+  "runtime_integration": "pure policies implemented and offline checked; complete guarded paid runner integration still pending"
+}

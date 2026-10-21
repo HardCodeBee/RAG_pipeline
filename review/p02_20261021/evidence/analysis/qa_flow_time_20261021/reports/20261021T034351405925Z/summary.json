@@ -1,0 +1,3614 @@
+{
+  "snapshot_utc": "2026-10-21T03:43:51.405925+00:00",
+  "target_metric": "Original query entry to final answer completion; seconds per query.",
+  "methodology": {
+    "PARTIAL_COMPONENT_SUM": "Sum available successful-call latency, dense batch_seconds/batch_queries, sparse total_ms/1000 and rerank_seconds by query, then average final-answer queries with timing. Unobserved stages are marked missing, not asserted zero.",
+    "MEASURED_STAGES_SUM": "P02 selected successful local actual_seconds plus that query remote elapsed_seconds; a reconstruction from measured stages, not one continuous timer.",
+    "NO_FORMAL_RESULT": "No current-version formal final-answer result; no timing substitution from old version/development.",
+    "NO_TIMING": "A formal result exists but no usable timing was found.",
+    "denominator": "Final answer produced, regardless of answer correctness. Algorithm failures, infrastructure failures and unstarted queries remain separate."
+  },
+  "primary": [
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:51.670047+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 6.125229226800031,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 4.675787862799974,
+          "median_seconds": 1.788304950001475,
+          "total_seconds": 2337.893931399987
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 1.4494413640000567,
+          "median_seconds": 1.5502456849993904,
+          "total_seconds": 724.7206820000299
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:52.178509+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 17.003493342645907,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 15.524330614229097,
+          "median_seconds": 8.831089500105008,
+          "total_seconds": 7746.640976500319
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 1.479162728416812,
+          "median_seconds": 1.6391251900000499,
+          "total_seconds": 738.1022014799881
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 499,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:52.842456+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 470,
+        "algorithm_failure": 30
+      },
+      "final_answers": 470,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 18.118440241232932,
+      "timed_queries": 470,
+      "components": {
+        "llm_seconds": {
+          "n": 470,
+          "mean_seconds": 14.396428592552702,
+          "median_seconds": 9.901491849988815,
+          "total_seconds": 6766.32143849977
+        },
+        "dense_seconds": {
+          "n": 469,
+          "mean_seconds": 3.7299477076326406,
+          "median_seconds": 2.5307740092861684,
+          "total_seconds": 1749.3454748797114
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1220,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:53.689979+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 485,
+        "failed": 1,
+        "algorithm_failure": 14
+      },
+      "final_answers": 485,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 24.096165520590507,
+      "timed_queries": 485,
+      "components": {
+        "llm_seconds": {
+          "n": 485,
+          "mean_seconds": 17.913492317731492,
+          "median_seconds": 12.888403699995251,
+          "total_seconds": 8688.043774099773
+        },
+        "dense_seconds": {
+          "n": 485,
+          "mean_seconds": 6.182673202859014,
+          "median_seconds": 3.1763521983331886,
+          "total_seconds": 2998.5965033866173
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1357,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:55.341055+00:00",
+      "processed": 56,
+      "statuses": {
+        "success": 56
+      },
+      "final_answers": 56,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 44.827542608727626,
+      "timed_queries": 56,
+      "components": {
+        "llm_seconds": {
+          "n": 56,
+          "mean_seconds": 36.37058340892717,
+          "median_seconds": 30.899398300010944,
+          "total_seconds": 2036.7526708999212
+        },
+        "dense_seconds": {
+          "n": 56,
+          "mean_seconds": 8.456959199800462,
+          "median_seconds": 4.472592664998956,
+          "total_seconds": 473.58971518882583
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 332,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\hotpotqa\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:56.055770+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 470,
+        "unknown": 27,
+        "provider_content_rejected": 3
+      },
+      "final_answers": 470,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 86.32989726232837,
+      "timed_queries": 470,
+      "components": {
+        "llm_seconds": {
+          "n": 470,
+          "mean_seconds": 72.37009745169694,
+          "median_seconds": 59.817129000031855,
+          "total_seconds": 34013.94580229756
+        },
+        "dense_seconds": {
+          "n": 470,
+          "mean_seconds": 13.959799810631434,
+          "median_seconds": 10.697741958578074,
+          "total_seconds": 6561.10591099677
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2350,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k4_cot",
+        "k": 4,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:59.344671+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:00.029619+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone5",
+        "max_queries": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:01.212365+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "s04_formal",
+      "method": "s04_scope_plus_evidence",
+      "name": "S04",
+      "dataset": "hotpotqa",
+      "planned": 500,
+      "final_answers": 0,
+      "timed_queries": 0,
+      "mean_seconds": null,
+      "timing_class": "NO_FORMAL_RESULT",
+      "note": "Only development300 replay is located; not substituted for formal500."
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:02.917200+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 5.767861835999996,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 5.689868564199831,
+          "median_seconds": 1.5402347500057658,
+          "total_seconds": 2844.9342820999154
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.07799327180016553,
+          "median_seconds": 0.07221083999902475,
+          "total_seconds": 38.99663590008272
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:03.581200+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 19.14600072808722,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 19.07084887154394,
+          "median_seconds": 10.974851200007834,
+          "total_seconds": 9516.353586900426
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 0.07515185654327777,
+          "median_seconds": 0.0681961099995533,
+          "total_seconds": 37.50077641509556
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 499,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:04.803137+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 381,
+        "algorithm_failure": 118,
+        "unknown": 1
+      },
+      "final_answers": 381,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 20.622244828363527,
+      "timed_queries": 381,
+      "components": {
+        "llm_seconds": {
+          "n": 381,
+          "mean_seconds": 20.403904596325916,
+          "median_seconds": 12.683868199994322,
+          "total_seconds": 7773.887651200173
+        },
+        "dense_seconds": {
+          "n": 381,
+          "mean_seconds": 0.21834023203761369,
+          "median_seconds": 0.14150245714367232,
+          "total_seconds": 83.1876284063309
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1115,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:06.412140+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 493,
+        "algorithm_failure": 6,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 493,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 29.60989394209388,
+      "timed_queries": 493,
+      "components": {
+        "llm_seconds": {
+          "n": 493,
+          "mean_seconds": 29.35179797200618,
+          "median_seconds": 21.17128829995636,
+          "total_seconds": 14470.436400199047
+        },
+        "dense_seconds": {
+          "n": 493,
+          "mean_seconds": 0.2580959700877007,
+          "median_seconds": 0.14866616375038574,
+          "total_seconds": 127.24131325323658
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1650,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:08.679896+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "unknown": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 55.44296971821485,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 54.94531417034156,
+          "median_seconds": 48.89576079999097,
+          "total_seconds": 27417.71177100044
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 0.49765554787329064,
+          "median_seconds": 0.30651094388934624,
+          "total_seconds": 248.33011838877172
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 3319,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\2wiki\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:10.476413+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 496,
+        "provider_content_rejected": 4
+      },
+      "final_answers": 496,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 98.7523926912403,
+      "timed_queries": 496,
+      "components": {
+        "llm_seconds": {
+          "n": 496,
+          "mean_seconds": 93.37173064878915,
+          "median_seconds": 79.63230169995222,
+          "total_seconds": 46312.37840179942
+        },
+        "dense_seconds": {
+          "n": 496,
+          "mean_seconds": 5.3806620424511555,
+          "median_seconds": 5.287576667841197,
+          "total_seconds": 2668.808373055776
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2480,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:14.649766+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 442,
+        "algorithm_failure": 57,
+        "failed": 1
+      },
+      "final_answers": 442,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 72.49800232095923,
+      "timed_queries": 442,
+      "components": {
+        "llm_seconds": {
+          "n": 442,
+          "mean_seconds": 72.24528260248894,
+          "median_seconds": 66.89999634995183,
+          "total_seconds": 31932.41491030011
+        },
+        "dense_seconds": {
+          "n": 442,
+          "mean_seconds": 0.25271971847029034,
+          "median_seconds": 0.13910029894790282,
+          "total_seconds": 111.70211556386839
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 6382,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k50_rrf60",
+        "per_retriever_k": 50,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:17.791237+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 9.217721998996975,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 6.891115025197971,
+          "median_seconds": 1.7442588999983855,
+          "total_seconds": 3445.5575125989853
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.13562464500009083,
+          "median_seconds": 0.12639728500071215,
+          "total_seconds": 67.81232250004543
+        },
+        "sparse_seconds": {
+          "n": 500,
+          "mean_seconds": 0.24934708839963424,
+          "median_seconds": 0.2552244999969844,
+          "total_seconds": 124.67354419981712
+        },
+        "rerank_seconds": {
+          "n": 500,
+          "mean_seconds": 1.9416352403992787,
+          "median_seconds": 2.6736159999854863,
+          "total_seconds": 970.8176201996394
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:19.624081+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 12.003637173602474,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 11.394816274201032,
+          "median_seconds": 6.4668356999900425,
+          "total_seconds": 5697.408137100516
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.21338544440001714,
+          "median_seconds": 0.18770894647943198,
+          "total_seconds": 106.69272220000863
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 500,
+          "mean_seconds": 0.395435455001425,
+          "median_seconds": 0.0,
+          "total_seconds": 197.7177275007125
+        }
+      },
+      "llm_calls_with_timing": 1000,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "s04_formal",
+      "method": "s04_scope_plus_evidence",
+      "name": "S04",
+      "dataset": "2wiki",
+      "planned": 500,
+      "final_answers": 0,
+      "timed_queries": 0,
+      "mean_seconds": null,
+      "timing_class": "NO_FORMAL_RESULT",
+      "note": "Only development300 replay is located; not substituted for formal500."
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.084003+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.295684+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.703822+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:23.528134+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 432,
+        "algorithm_failure": 61,
+        "failed": 2,
+        "provider_content_rejected": 5
+      },
+      "final_answers": 432,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 28.89397009328159,
+      "timed_queries": 432,
+      "components": {
+        "llm_seconds": {
+          "n": 432,
+          "mean_seconds": 27.8503508842656,
+          "median_seconds": 22.417011799989268,
+          "total_seconds": 12031.351582002739
+        },
+        "dense_seconds": {
+          "n": 432,
+          "mean_seconds": 1.043619209015994,
+          "median_seconds": 0.7823047499987297,
+          "total_seconds": 450.8434982949089
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1505,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k8",
+        "k": 8,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b04_ircot_bge\\k8\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:25.315058+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\musique\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:25.977890+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 490,
+        "failed": 2,
+        "provider_content_rejected": 8
+      },
+      "final_answers": 490,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 102.27945796174716,
+      "timed_queries": 490,
+      "components": {
+        "llm_seconds": {
+          "n": 490,
+          "mean_seconds": 99.22092710204508,
+          "median_seconds": 84.85251794999931,
+          "total_seconds": 48618.25428000209
+        },
+        "dense_seconds": {
+          "n": 490,
+          "mean_seconds": 3.0585308597020804,
+          "median_seconds": 3.090666411968308,
+          "total_seconds": 1498.6801212540186
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2450,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:28.601011+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:28.989610+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "primary_v2",
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:29.399448+00:00",
+      "processed": 0,
+      "final_answers": 0,
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0
+    },
+    {
+      "version": "s04_formal",
+      "method": "s04_scope_plus_evidence",
+      "name": "S04",
+      "dataset": "musique",
+      "planned": 500,
+      "final_answers": 0,
+      "timed_queries": 0,
+      "mean_seconds": null,
+      "timing_class": "NO_FORMAL_RESULT",
+      "note": "Only development300 replay is located; not substituted for formal500."
+    },
+    {
+      "version": "primary_frozen_p02",
+      "dataset": "hotpotqa",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "name": "P02",
+      "planned": 500,
+      "processed": 216,
+      "final_answers": 194,
+      "statuses": {
+        "success": 194,
+        "incomplete": 22
+      },
+      "timing_class": "MEASURED_STAGES_SUM",
+      "mean_seconds": 116.88684605978568,
+      "timed_queries": 194,
+      "observed_local": {
+        "n": 194,
+        "mean_seconds": 114.79924388659383,
+        "median_seconds": 111.46064749994548,
+        "total_seconds": 22271.053313999204
+      },
+      "remote_decomposition": {
+        "n": 194,
+        "mean_seconds": 2.0876021731918506,
+        "median_seconds": 1.9266108854208142,
+        "total_seconds": 404.994821599219
+      },
+      "selected_success_rounds": {
+        "r000": 194
+      },
+      "queries_reusing_llm_calls": 0,
+      "caveats": [
+        "Local actual_seconds measures the selected successful attempt, including its actual queue/cache behavior.",
+        "Remote inference is separately measured; adding it does not yield a continuous end-to-end wall-clock measurement.",
+        "Inter-machine transfer, remote job queue, startup and pauses between recovery rounds are not included.",
+        "Earlier failed attempts are retained but not added to the selected-success mean."
+      ]
+    },
+    {
+      "version": "primary_frozen_p02",
+      "dataset": "2wiki",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "name": "P02",
+      "planned": 500,
+      "processed": 500,
+      "final_answers": 498,
+      "statuses": {
+        "success": 498,
+        "incomplete": 2
+      },
+      "timing_class": "MEASURED_STAGES_SUM",
+      "mean_seconds": 37.07582767455054,
+      "timed_queries": 498,
+      "observed_local": {
+        "n": 498,
+        "mean_seconds": 34.34176466626701,
+        "median_seconds": 27.844882699951995,
+        "total_seconds": 17102.198803800973
+      },
+      "remote_decomposition": {
+        "n": 498,
+        "mean_seconds": 2.7340630082835267,
+        "median_seconds": 2.1624813565285876,
+        "total_seconds": 1361.5633781251963
+      },
+      "selected_success_rounds": {
+        "r000": 471,
+        "r100": 26,
+        "r101": 1
+      },
+      "queries_reusing_llm_calls": 15,
+      "caveats": [
+        "Local actual_seconds measures the selected successful attempt, including its actual queue/cache behavior.",
+        "Remote inference is separately measured; adding it does not yield a continuous end-to-end wall-clock measurement.",
+        "Inter-machine transfer, remote job queue, startup and pauses between recovery rounds are not included.",
+        "Earlier failed attempts are retained but not added to the selected-success mean."
+      ]
+    },
+    {
+      "version": "primary_frozen_p02",
+      "dataset": "musique",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "name": "P02",
+      "planned": 500,
+      "processed": 0,
+      "final_answers": 0,
+      "statuses": {},
+      "timing_class": "NO_FORMAL_RESULT",
+      "mean_seconds": null,
+      "timed_queries": 0,
+      "observed_local": {
+        "n": 0,
+        "mean_seconds": null,
+        "median_seconds": null,
+        "total_seconds": null
+      },
+      "remote_decomposition": {
+        "n": 0,
+        "mean_seconds": null,
+        "median_seconds": null,
+        "total_seconds": null
+      },
+      "selected_success_rounds": {},
+      "queries_reusing_llm_calls": 0,
+      "caveats": [
+        "Local actual_seconds measures the selected successful attempt, including its actual queue/cache behavior.",
+        "Remote inference is separately measured; adding it does not yield a continuous end-to-end wall-clock measurement.",
+        "Inter-machine transfer, remote job queue, startup and pauses between recovery rounds are not included.",
+        "Earlier failed attempts are retained but not added to the selected-success mean."
+      ]
+    }
+  ],
+  "historical_original_separate": [
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:51.408924+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 6.125229226800031,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 4.675787862799974,
+          "median_seconds": 1.788304950001475,
+          "total_seconds": 2337.893931399987
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 1.4494413640000567,
+          "median_seconds": 1.5502456849993904,
+          "total_seconds": 724.7206820000299
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:51.909156+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 13.100741213399655,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 11.620940270599677,
+          "median_seconds": 9.20891539999866,
+          "total_seconds": 5810.470135299838
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 1.4798009427999788,
+          "median_seconds": 1.6391251900000499,
+          "total_seconds": 739.9004713999882
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:52.378122+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 467,
+        "algorithm_failure": 33
+      },
+      "final_answers": 467,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 17.913719774343477,
+      "timed_queries": 467,
+      "components": {
+        "llm_seconds": {
+          "n": 467,
+          "mean_seconds": 14.269901919700072,
+          "median_seconds": 9.87958440001239,
+          "total_seconds": 6664.044196499934
+        },
+        "dense_seconds": {
+          "n": 466,
+          "mean_seconds": 3.65163720626281,
+          "median_seconds": 2.5307740092861684,
+          "total_seconds": 1701.6629381184723
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1216,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:53.259375+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 481,
+        "failed": 1,
+        "algorithm_failure": 18
+      },
+      "final_answers": 481,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 23.68388236349049,
+      "timed_queries": 481,
+      "components": {
+        "llm_seconds": {
+          "n": 481,
+          "mean_seconds": 17.93106259085156,
+          "median_seconds": 12.88322600000538,
+          "total_seconds": 8624.841106199601
+        },
+        "dense_seconds": {
+          "n": 481,
+          "mean_seconds": 5.7528197726389285,
+          "median_seconds": 3.1763521983331886,
+          "total_seconds": 2767.1063106393203
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1346,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:54.246392+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 48.680251851199955,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 38.92736317619999,
+          "median_seconds": 34.146184949997405,
+          "total_seconds": 19463.681588099993
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 9.752888674999966,
+          "median_seconds": 5.701801700000578,
+          "total_seconds": 4876.4443374999755
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 3200,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "t2",
+        "k": 5,
+        "iterations": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b05_iter_retgen_bge\\t2\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:55.462140+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "failed": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 26.98874042409798,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 24.097595164729345,
+          "median_seconds": 21.56577919999836,
+          "total_seconds": 12024.699987199943
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 2.8911452593686344,
+          "median_seconds": 2.9168192000004636,
+          "total_seconds": 1442.6814844249468
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 998,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k4_cot",
+        "k": 4,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:57.360584+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 445,
+        "algorithm_failure": 55
+      },
+      "final_answers": 445,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 43.80182003223017,
+      "timed_queries": 445,
+      "components": {
+        "llm_seconds": {
+          "n": 445,
+          "mean_seconds": 40.47790268562019,
+          "median_seconds": 35.9577663000091,
+          "total_seconds": 18012.666695100983
+        },
+        "dense_seconds": {
+          "n": 445,
+          "mean_seconds": 3.323917346609984,
+          "median_seconds": 2.728361968333532,
+          "total_seconds": 1479.1432192414416
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 4543,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:43:59.345589+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 20.703763771600237,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 5.376680037199868,
+          "median_seconds": 2.4326729500025976,
+          "total_seconds": 2688.3400185999344
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 10.333503475200356,
+          "median_seconds": 2.4499694400001317,
+          "total_seconds": 5166.751737600181
+        },
+        "sparse_seconds": {
+          "n": 500,
+          "mean_seconds": 4.1309355277998545,
+          "median_seconds": 3.793383600015659,
+          "total_seconds": 2065.4677638999274
+        },
+        "rerank_seconds": {
+          "n": 500,
+          "mean_seconds": 0.8626447314001562,
+          "median_seconds": 0.8744688499937183,
+          "total_seconds": 431.3223657000781
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone5",
+        "max_queries": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:00.029619+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 16.14682206372744,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 9.234850420240345,
+          "median_seconds": 6.27107149999938,
+          "total_seconds": 4608.190359699933
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 6.288641684969838,
+          "median_seconds": 6.247502430768994,
+          "total_seconds": 3138.0322007999453
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 499,
+          "mean_seconds": 0.6233299585172551,
+          "median_seconds": 0.6197813000180759,
+          "total_seconds": 311.0416493001103
+        }
+      },
+      "llm_calls_with_timing": 998,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "hotpotqa",
+      "method": "m00_s02_child4_faithful",
+      "name": "S02 (historical)",
+      "config": {
+        "id": "frozen_s02_child4"
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\m00_s02_child4_faithful\\frozen_s02_child4\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:01.214364+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 29.626990792400786,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 24.978771181800983,
+          "median_seconds": 20.50311259998125,
+          "total_seconds": 12489.385590900492
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 4.648219610599801,
+          "median_seconds": 3.855056264408888,
+          "total_seconds": 2324.1098052999027
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2014,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:02.498805+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 5.767861835999996,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 5.689868564199831,
+          "median_seconds": 1.5402347500057658,
+          "total_seconds": 2844.9342820999154
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.07799327180016553,
+          "median_seconds": 0.07221083999902475,
+          "total_seconds": 38.99663590008272
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:03.206898+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 14.394426060350886,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 14.319274203807609,
+          "median_seconds": 11.910701000015251,
+          "total_seconds": 7145.317827699997
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 0.07515185654327777,
+          "median_seconds": 0.0681961099995533,
+          "total_seconds": 37.50077641509556
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 499,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:03.953501+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 379,
+        "algorithm_failure": 120,
+        "unknown": 1
+      },
+      "final_answers": 379,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 20.239444077014838,
+      "timed_queries": 379,
+      "components": {
+        "llm_seconds": {
+          "n": 379,
+          "mean_seconds": 20.030142555409235,
+          "median_seconds": 12.577577699994436,
+          "total_seconds": 7591.4240285001
+        },
+        "dense_seconds": {
+          "n": 379,
+          "mean_seconds": 0.20930152160560433,
+          "median_seconds": 0.14150245714367232,
+          "total_seconds": 79.32527668852414
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1112,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:05.419924+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 493,
+        "algorithm_failure": 6,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 493,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 29.671536543959846,
+      "timed_queries": 493,
+      "components": {
+        "llm_seconds": {
+          "n": 493,
+          "mean_seconds": 29.414328915616625,
+          "median_seconds": 21.192728399997577,
+          "total_seconds": 14501.264155398996
+        },
+        "dense_seconds": {
+          "n": 493,
+          "mean_seconds": 0.2572076283432207,
+          "median_seconds": 0.14866616375038574,
+          "total_seconds": 126.80336077320796
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1652,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:07.259862+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "unknown": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 51.352796332725696,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 50.87376698497044,
+          "median_seconds": 42.774195300007705,
+          "total_seconds": 25386.009725500247
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 0.4790293477552602,
+          "median_seconds": 0.30651094388934624,
+          "total_seconds": 239.03564452987456
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 3315,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "t2",
+        "k": 5,
+        "iterations": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b05_iter_retgen_bge\\t2\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:09.754758+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 26.69143035159842,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 26.52637597999879,
+          "median_seconds": 22.541556149997632,
+          "total_seconds": 13263.187989999395
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.16505437159963185,
+          "median_seconds": 0.1512252849992365,
+          "total_seconds": 82.52718579981587
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1000,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:12.201221+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 443,
+        "algorithm_failure": 56,
+        "failed": 1
+      },
+      "final_answers": 443,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 72.48896648613882,
+      "timed_queries": 443,
+      "components": {
+        "llm_seconds": {
+          "n": 443,
+          "mean_seconds": 72.23427874356801,
+          "median_seconds": 66.57758790015941,
+          "total_seconds": 31999.78548340063
+        },
+        "dense_seconds": {
+          "n": 443,
+          "mean_seconds": 0.25468774257081317,
+          "median_seconds": 0.13910029894790282,
+          "total_seconds": 112.8266699588703
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 6402,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k50_rrf60",
+        "per_retriever_k": 50,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:16.867966+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 9.56565127819893,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 7.378199743999459,
+          "median_seconds": 1.7542057999962708,
+          "total_seconds": 3689.0998719997297
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.13562464500009083,
+          "median_seconds": 0.12639728500071215,
+          "total_seconds": 67.81232250004543
+        },
+        "sparse_seconds": {
+          "n": 500,
+          "mean_seconds": 0.24934708839963424,
+          "median_seconds": 0.2552244999969844,
+          "total_seconds": 124.67354419981712
+        },
+        "rerank_seconds": {
+          "n": 500,
+          "mean_seconds": 1.8024798007997451,
+          "median_seconds": 1.7701802000083262,
+          "total_seconds": 901.2399003998726
+        }
+      },
+      "llm_calls_with_timing": 500,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:18.793000+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 500
+      },
+      "final_answers": 500,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 12.20542791739985,
+      "timed_queries": 500,
+      "components": {
+        "llm_seconds": {
+          "n": 500,
+          "mean_seconds": 11.440647904600658,
+          "median_seconds": 6.525221149990102,
+          "total_seconds": 5720.3239523003285
+        },
+        "dense_seconds": {
+          "n": 500,
+          "mean_seconds": 0.21338544440001714,
+          "median_seconds": 0.18770894647943198,
+          "total_seconds": 106.69272220000863
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 500,
+          "mean_seconds": 0.5513945683991769,
+          "median_seconds": 0.5418504000117537,
+          "total_seconds": 275.69728419958847
+        }
+      },
+      "llm_calls_with_timing": 1000,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "2wiki",
+      "method": "m00_s02_child4_faithful",
+      "name": "S02 (historical)",
+      "config": {
+        "id": "frozen_s02_child4"
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\m00_s02_child4_faithful\\frozen_s02_child4\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:20.412217+00:00",
+      "processed": 500,
+      "statuses": {
+        "success": 499,
+        "failed": 1
+      },
+      "final_answers": 499,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 17.70466263724803,
+      "timed_queries": 499,
+      "components": {
+        "llm_seconds": {
+          "n": 499,
+          "mean_seconds": 17.388991888577223,
+          "median_seconds": 14.421601000009105,
+          "total_seconds": 8677.106952400034
+        },
+        "dense_seconds": {
+          "n": 499,
+          "mean_seconds": 0.31567074867080813,
+          "median_seconds": 0.24165196499816374,
+          "total_seconds": 157.51970358673316
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2400,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "name": "Top-10 RAG",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:21.876972+00:00",
+      "processed": 220,
+      "statuses": {
+        "success": 219,
+        "failed": 1
+      },
+      "final_answers": 219,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 4.919938302740094,
+      "timed_queries": 219,
+      "components": {
+        "llm_seconds": {
+          "n": 219,
+          "mean_seconds": 4.883923124657124,
+          "median_seconds": 1.8407750999904238,
+          "total_seconds": 1069.5791642999102
+        },
+        "dense_seconds": {
+          "n": 219,
+          "mean_seconds": 0.03601517808296958,
+          "median_seconds": 0.03424506499868585,
+          "total_seconds": 7.887324000170342
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 219,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "name": "Top-10 + CoT",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.084003+00:00",
+      "processed": 220,
+      "statuses": {
+        "success": 219,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 219,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 13.595416683536945,
+      "timed_queries": 219,
+      "components": {
+        "llm_seconds": {
+          "n": 219,
+          "mean_seconds": 13.562707870774855,
+          "median_seconds": 12.527688600006513,
+          "total_seconds": 2970.233023699693
+        },
+        "dense_seconds": {
+          "n": 219,
+          "mean_seconds": 0.032708812762090624,
+          "median_seconds": 0.028584480000426994,
+          "total_seconds": 7.163229994897847
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 219,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "name": "Self-Ask",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.295684+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 188,
+        "algorithm_failure": 49,
+        "failed": 1,
+        "provider_content_rejected": 2
+      },
+      "final_answers": 188,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 18.43215180515151,
+      "timed_queries": 188,
+      "components": {
+        "llm_seconds": {
+          "n": 188,
+          "mean_seconds": 18.34459854734311,
+          "median_seconds": 13.76915835001273,
+          "total_seconds": 3448.7845269005047
+        },
+        "dense_seconds": {
+          "n": 188,
+          "mean_seconds": 0.08755325780839868,
+          "median_seconds": 0.0636676859055032,
+          "total_seconds": 16.46001246797894
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 548,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "name": "ReAct",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:22.703822+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 195,
+        "algorithm_failure": 41,
+        "provider_content_rejected": 3,
+        "failed": 1
+      },
+      "final_answers": 195,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 28.916093729418286,
+      "timed_queries": 195,
+      "components": {
+        "llm_seconds": {
+          "n": 195,
+          "mean_seconds": 28.802611365644946,
+          "median_seconds": 22.889296800014563,
+          "total_seconds": 5616.509216300765
+        },
+        "dense_seconds": {
+          "n": 195,
+          "mean_seconds": 0.11348236377333683,
+          "median_seconds": 0.07690182166568574,
+          "total_seconds": 22.129060935800677
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 670,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b04_ircot_bge",
+      "name": "IRCoT",
+      "config": {
+        "id": "k8",
+        "k": 8,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b04_ircot_bge\\k8\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:24.505084+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 236,
+        "failed": 3,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 236,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 54.595912461656894,
+      "timed_queries": 236,
+      "components": {
+        "llm_seconds": {
+          "n": 236,
+          "mean_seconds": 54.371094465252284,
+          "median_seconds": 52.17196115007391,
+          "total_seconds": 12831.57829379954
+        },
+        "dense_seconds": {
+          "n": 236,
+          "mean_seconds": 0.22481799640460767,
+          "median_seconds": 0.17222329316409635,
+          "total_seconds": 53.0570471514874
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 1831,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "name": "Iter-RetGen",
+      "config": {
+        "id": "t3",
+        "k": 5,
+        "iterations": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b05_iter_retgen_bge\\t3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:25.315058+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 239,
+        "provider_content_rejected": 1
+      },
+      "final_answers": 239,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 46.539316959333206,
+      "timed_queries": 239,
+      "components": {
+        "llm_seconds": {
+          "n": 239,
+          "mean_seconds": 46.414231326362845,
+          "median_seconds": 42.140288199996576,
+          "total_seconds": 11093.00128700072
+        },
+        "dense_seconds": {
+          "n": 239,
+          "mean_seconds": 0.12508563297036226,
+          "median_seconds": 0.1110055299999658,
+          "total_seconds": 29.895466279916576
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 717,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "name": "Decomp",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:27.448509+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 170,
+        "algorithm_failure": 67,
+        "failed": 3
+      },
+      "final_answers": 170,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 56.26393793301656,
+      "timed_queries": 170,
+      "components": {
+        "llm_seconds": {
+          "n": 170,
+          "mean_seconds": 56.165089528823124,
+          "median_seconds": 50.654278500092914,
+          "total_seconds": 9548.06521989993
+        },
+        "dense_seconds": {
+          "n": 170,
+          "mean_seconds": 0.09884840419343745,
+          "median_seconds": 0.0774492750002537,
+          "total_seconds": 16.80422871288435
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        }
+      },
+      "llm_calls_with_timing": 2072,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b07_hybrid_rerank",
+      "name": "Hybrid + Rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:28.601011+00:00",
+      "processed": 240,
+      "statuses": {
+        "success": 240
+      },
+      "final_answers": 240,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 5.929817014998844,
+      "timed_queries": 240,
+      "components": {
+        "llm_seconds": {
+          "n": 240,
+          "mean_seconds": 4.9165020879164025,
+          "median_seconds": 1.6960446999873966,
+          "total_seconds": 1179.9605010999367
+        },
+        "dense_seconds": {
+          "n": 240,
+          "mean_seconds": 0.07536785041617501,
+          "median_seconds": 0.06435364999924786,
+          "total_seconds": 18.088284099882017
+        },
+        "sparse_seconds": {
+          "n": 240,
+          "mean_seconds": 0.09122476624822108,
+          "median_seconds": 0.0739249000325799,
+          "total_seconds": 21.89394389957306
+        },
+        "rerank_seconds": {
+          "n": 240,
+          "mean_seconds": 0.8467223104180448,
+          "median_seconds": 0.8336656000174116,
+          "total_seconds": 203.21335450033075
+        }
+      },
+      "llm_calls_with_timing": 240,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    },
+    {
+      "version": "original_campaign",
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "name": "QD + Rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "planned": 500,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "snapshot_utc": "2026-10-21T03:44:28.990703+00:00",
+      "processed": 220,
+      "statuses": {
+        "success": 220
+      },
+      "final_answers": 220,
+      "timing_class": "PARTIAL_COMPONENT_SUM",
+      "mean_seconds": 12.151988912730832,
+      "timed_queries": 220,
+      "components": {
+        "llm_seconds": {
+          "n": 220,
+          "mean_seconds": 11.410850366366503,
+          "median_seconds": 8.660625799995614,
+          "total_seconds": 2510.3870806006307
+        },
+        "dense_seconds": {
+          "n": 220,
+          "mean_seconds": 0.08827598090945023,
+          "median_seconds": 0.08700208913522316,
+          "total_seconds": 19.420715800079066
+        },
+        "sparse_seconds": {
+          "n": 0,
+          "mean_seconds": null,
+          "median_seconds": null,
+          "total_seconds": null
+        },
+        "rerank_seconds": {
+          "n": 220,
+          "mean_seconds": 0.6528625654548788,
+          "median_seconds": 0.6423656999832019,
+          "total_seconds": 143.62976440007333
+        }
+      },
+      "llm_calls_with_timing": 440,
+      "llm_calls_without_timing": 0,
+      "missing_parts": [
+        "per-query entry and final-return boundary",
+        "API pool/rate-slot waiting",
+        "retry backoff and failed earlier attempts",
+        "prompt construction and local orchestration",
+        "unlogged repeated retrieval-cache lookups; document fetch/merge not uniformly timed"
+      ],
+      "caveats": [
+        "Stored historical response latencies remain historical measurements, not live replay latency.",
+        "Dense batch time is divided by batch_queries; this is amortized work, not the full wait of each query.",
+        "Different record types are summed as available; missing components are explicitly unmeasured, not claimed zero.",
+        "Only final-answer-producing queries are averaged; algorithm/infrastructure failures are counted separately."
+      ]
+    }
+  ],
+  "historical_block_runtime_separate": [
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "seconds": 1201.1942581000621,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 2.402388516200124,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "seconds": 1862.7001560999197,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 3.7254003121998394,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "seconds": 4015.193744999997,
+      "new_terminal_records": 483,
+      "blocks": 26,
+      "amortized_evaluation_seconds": 8.313030527950303,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "seconds": 5764.694478900026,
+      "new_terminal_records": 499,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 11.552493945691435,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "seconds": 10824.054250599933,
+      "new_terminal_records": 500,
+      "blocks": 26,
+      "amortized_evaluation_seconds": 21.648108501199864,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "seconds": 3436.4597178999975,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 6.872919435799995,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "seconds": 13895.740047300002,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 27.791480094600004,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "seconds": 2573.1568522000453,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 5.14631370440009,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "seconds": 2616.9832157999044,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 5.233966431599809,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "2wiki",
+      "method": "m00_s02_child4_faithful",
+      "seconds": 4624.071951700054,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 9.24814390340011,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "seconds": 904.1471161999798,
+      "new_terminal_records": 500,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 1.8082942323999596,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "seconds": 1246.4933102000505,
+      "new_terminal_records": 500,
+      "blocks": 15,
+      "amortized_evaluation_seconds": 2.4929866204001008,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "seconds": 2483.267176900059,
+      "new_terminal_records": 500,
+      "blocks": 15,
+      "amortized_evaluation_seconds": 4.966534353800118,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "seconds": 3424.6984553000657,
+      "new_terminal_records": 500,
+      "blocks": 15,
+      "amortized_evaluation_seconds": 6.849396910600132,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "seconds": 6729.197724299971,
+      "new_terminal_records": 496,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 13.56693089576607,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "seconds": 2883.8466244999727,
+      "new_terminal_records": 500,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 5.7676932489999455,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "seconds": 5597.388808199932,
+      "new_terminal_records": 500,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 11.194777616399865,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "seconds": 2441.467822800012,
+      "new_terminal_records": 500,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 4.882935645600024,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "seconds": 3014.7390129000705,
+      "new_terminal_records": 500,
+      "blocks": 16,
+      "amortized_evaluation_seconds": 6.029478025800141,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "m00_s02_child4_faithful",
+      "seconds": 8338.898769500054,
+      "new_terminal_records": 500,
+      "blocks": 25,
+      "amortized_evaluation_seconds": 16.677797539000107,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "seconds": 401.30179020005744,
+      "new_terminal_records": 220,
+      "blocks": 11,
+      "amortized_evaluation_seconds": 1.8240990463638975,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "seconds": 591.3423201999394,
+      "new_terminal_records": 220,
+      "blocks": 11,
+      "amortized_evaluation_seconds": 2.687919637272452,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "seconds": 1582.3405812999408,
+      "new_terminal_records": 240,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 6.59308575541642,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "seconds": 2647.5346442999435,
+      "new_terminal_records": 240,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 11.031394351249764,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b04_ircot_bge",
+      "seconds": 4820.77602969986,
+      "new_terminal_records": 240,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 20.086566790416086,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "seconds": 2659.597966400004,
+      "new_terminal_records": 240,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 11.08165819333335,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "seconds": 5292.534004999994,
+      "new_terminal_records": 237,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 22.331367109704615,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b07_hybrid_rerank",
+      "seconds": 705.9374573999376,
+      "new_terminal_records": 240,
+      "blocks": 12,
+      "amortized_evaluation_seconds": 2.9414060724997397,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "seconds": 1002.2800651999714,
+      "new_terminal_records": 220,
+      "blocks": 11,
+      "amortized_evaluation_seconds": 4.555818478181688,
+      "scope": "Original campaign block runtime; includes parallel execution, exports and offline scoring. Not query response latency."
+    }
+  ],
+  "new_api_calls": 0,
+  "new_retrievals": 0,
+  "frozen_sources_modified": false,
+  "limitations": [
+    "None of the partial or staged reconstructions is a fully comparable controlled end-to-end latency benchmark.",
+    "Original and repaired version results are kept separate; native Iter T2/T3 is not substituted for matched50 T5.",
+    "Live databases are individually read under consistent read-only snapshots; cross-method snapshot times can differ.",
+    "Timing from caches retains its actual measured provenance; replay is not presented as fresh inference."
+  ]
+}

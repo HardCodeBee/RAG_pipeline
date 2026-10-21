@@ -1,0 +1,74 @@
+{
+  "method": "p02_multigrain_timing_cachefix_v1",
+  "package": "src/p02_multigrain_timing_cachefix_v1",
+  "method_manifest_sha256": "f049e16188d7b79fdf15710fce4304fe3fa076761966ea663fbf289c6f73dabb",
+  "planned": 1500,
+  "dataset_counts": {
+    "hotpotqa": 500,
+    "2wiki": 500,
+    "musique": 500
+  },
+  "strata": {
+    "hotpotqa": {
+      "questions": 500,
+      "type_counts": {
+        "bridge": 407,
+        "comparison": 93
+      },
+      "groups": 500
+    },
+    "2wiki": {
+      "questions": 500,
+      "type_counts": {
+        "compositional": 212,
+        "inference": 63,
+        "comparison": 113,
+        "bridge_comparison": 112
+      },
+      "groups": 500
+    },
+    "musique": {
+      "questions": 500,
+      "type_counts": {
+        "2-hop": 259,
+        "3-hop": 157,
+        "4-hop": 84
+      },
+      "groups": 500
+    }
+  },
+  "input_pins": {
+    "questions1500.frozen.jsonl": "f3435f965cda17fb45297d094bd32d68252537e11a21d48e2ac244b11a6c3a3e",
+    "references1500.local.frozen.jsonl": "08bbd3ba2fa20c44fd11be89894b13f3ce8192719159e05c9191a9e9926abf33",
+    "EXPOSURE_AUDIT.frozen.json": "83f8088441cb082af001422e7b5d4d1fde2d8fe4da5b04811b1280d120ef7beb",
+    "REMOTE_INPUTS.frozen.json": "e831fe1a4a42233ad9d0e6679e8f079ffdf1cb80a871d7c8c1f2dad0ea987af5"
+  },
+  "source_pins": {
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/hotpotqa/formal.questions.jsonl": "b091e4dba07eb749106f90c96f8cea3c1b68c61b172026d29f81f564e8db4048",
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/hotpotqa/formal.references.local.jsonl": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/2wiki/formal.questions.jsonl": "3392fab398a5a86b6cf095cbbdcde22cb5942b2b009f667071fc49ef1b6bc642",
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/2wiki/formal.references.local.jsonl": "e89690b5c5d7e050a3fa9145a02ac4faa243e0b454f63568c963ea7c76bb220f",
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/musique/formal.questions.jsonl": "d75032eb5e99b3ff87b7ec03a9dc0e18c7a424cd7c7b7325b38045bad0ff3fd3",
+    "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/musique/formal.references.local.jsonl": "fdbf1a16acc96fe837a98c26908429c16b107c393046015348195c57bde4c815"
+  },
+  "remote_archive_sha256": "1382d8592de7d9a96619467b16155663518d125811dffe46a909a8c25e54675d",
+  "primary_metrics": "Native final Answer F1/EM per dataset, clean cohort and all fixed1500; API missingness separate from algorithm failures.",
+  "method_settings_unchanged": [
+    "R02/v12",
+    "dual interleave Top10",
+    "legacy complete child answers",
+    "goal preanswer",
+    "p02 role headers",
+    "final4shot/P1",
+    "max_tokens256/128/64",
+    "BGE512 exact original index arithmetic"
+  ],
+  "do_not_apply_baseline_v2_changes_to_frozen_p02": true,
+  "authorization": "User explicitly requested formal evaluation of p02_multigrain_timing_cachefix_v1; resumes this method only after earlier our-method pause. Other method/control/ablation pauses remain.",
+  "budget": {
+    "global_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_soft_cap_cny": 20
+  },
+  "new_API_calls_in_preparation": 0
+}

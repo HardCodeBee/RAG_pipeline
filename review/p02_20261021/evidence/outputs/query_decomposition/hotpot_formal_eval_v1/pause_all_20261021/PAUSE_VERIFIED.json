@@ -1,0 +1,80 @@
+{
+  "utc": "2026-10-21T04:38:47.895599+00:00",
+  "status": "all_evaluations_paused_by_user",
+  "local_evaluation_processes": 0,
+  "local_workers_supervisors_and_monitors_stopped": true,
+  "locks_held": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\resume_v2_sqlite_20261021\\supervisor.lock": false,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\resume_v2_sqlite_20261021\\worker.lock": false,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\main_eval_guard_20261021\\guard.lock": false,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\main_eval_guard_20261021\\p02_guard.lock": false,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\controller.lock": false
+  },
+  "durable_stop_markers_present": true,
+  "api_submission_count_unchanged": true,
+  "ledger_first_sample_utc": "2026-10-21T04:35:03.377990+00:00",
+  "ledger_second_sample_utc": "2026-10-21T04:36:03.497632+00:00",
+  "submissions": 120094,
+  "budget": {
+    "known_cny": 219.4958576,
+    "unknown_reserved_cny": 54.4043504,
+    "occupied_cny": 273.900208,
+    "cap_cny": 300
+  },
+  "baselines": {
+    "processed": 10589,
+    "scorable": 10533,
+    "planned": 13500
+  },
+  "p02": {
+    "processed": 821,
+    "scorable": 781,
+    "planned": 1500,
+    "by_dataset": {
+      "hotpotqa": {
+        "success": 283,
+        "incomplete": 38
+      },
+      "2wiki": {
+        "success": 498,
+        "incomplete": 2
+      },
+      "musique": {}
+    }
+  },
+  "results_and_checkpoints_preserved": true,
+  "unknown_liabilities_released": false,
+  "resume_requires_explicit_user_instruction": true,
+  "remote": {
+    "live_verified_this_pause": true,
+    "connection_result": "Authenticated successfully; session closed; credentials not persisted",
+    "last_verified_expansion_pause": "outputs/query_decomposition/robustness_models_retrievers_v1_20261017/PAUSE_REPAIR_CONFIRMED_20261017.json",
+    "last_expansion_pause_verified_utc": "2026-10-17T12:14:38.262617+00:00",
+    "p02_decomposition_complete_receipt": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_formal1500_v1_20261021/REMOTE_COMPLETE.json",
+    "local_remote_guardians_running": false,
+    "new_remote_jobs_submitted": 0,
+    "queue_empty": true,
+    "matching_login_processes": [],
+    "persistent_markers_verified": {
+      "/home/projects/u7830488/robustness_models_retrievers_v1_20261017/ops/USER_PAUSE_REQUESTED.json": true,
+      "/home/projects/u7830488/p02_formal1500_v1_20261021/STOP_REQUESTED": true
+    },
+    "supervisor_pause_guards_present": {
+      "/home/projects/u7830488/robustness_models_retrievers_v1_20261017/ops/continue_experiment.py": {
+        "pause_marker_referenced": true,
+        "submit_and_step_guards": true
+      }
+    },
+    "p02_accounting": "158008 COMPLETED 0:0",
+    "queue_recheck": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "approval_review": {
+    "auto_submit_guard_probe": "rejected_not_executed",
+    "reason": "Could submit new evaluation jobs contrary to user pause",
+    "safer_verification": "Read-only queue checks and pause marker/source inspection only; no supervisor or job submitted"
+  }
+}

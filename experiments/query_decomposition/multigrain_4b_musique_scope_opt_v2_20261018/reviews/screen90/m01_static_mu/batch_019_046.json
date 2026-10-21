@@ -1,0 +1,31 @@
+{
+  "reviewed_indices": [
+    19,
+    46
+  ],
+  "exceptions": {
+    "19": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still attaches support for the country to considering Tito too independent instead of Zhous attempt to convince the person."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Still asks a film to portray a character; wrong semantic agent."
+    },
+    "39": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still skips identity of the neighboring county before its state."
+    }
+  },
+  "reviewer": "Changed outputs19..46 inspected; case24 now explicitly asks county of birth and repairs the missing intermediate. Case45 may omit an original-equivalent terminal question under the unchanged policy."
+}

@@ -1,0 +1,30 @@
+{
+  "reviewed_indices": [
+    1,
+    18
+  ],
+  "exceptions": {
+    "4": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Removes the birthplace identity, leaving that unknown object embedded in the bordering-city question."
+    },
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still omits the towns southwestern-island identifying condition in the first item."
+    },
+    "15": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Adds the unsupported type town to the performers birthplace; original says a town is the capital of that birthplace, not that the birthplace is a town."
+    }
+  },
+  "reviewer": "Current Codex inspected all changed outputs; identical arrays inherit locked baseline. Case9 now preserves both original directional modifiers without resolving source ambiguity."
+}

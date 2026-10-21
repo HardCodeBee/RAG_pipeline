@@ -1,0 +1,478 @@
+{
+  "recorded_utc": "2026-10-18T06:47:07.930956+00:00",
+  "dev60": {
+    "checkpoint-000114": {
+      "n": 60,
+      "passed": 42,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 10
+        }
+      },
+      "mu_FS": [
+        3,
+        11,
+        32,
+        35,
+        40,
+        43,
+        46
+      ],
+      "verdicts": {
+        "fail": 16,
+        "pass": 42,
+        "uncertain": 2
+      }
+    },
+    "checkpoint-000171": {
+      "n": 60,
+      "passed": 46,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 14
+        }
+      },
+      "mu_FS": [
+        11,
+        32,
+        46
+      ],
+      "verdicts": {
+        "fail": 12,
+        "pass": 46,
+        "uncertain": 2
+      }
+    },
+    "checkpoint-000228": {
+      "n": 60,
+      "passed": 48,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 12
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 20,
+          "passes": 16
+        }
+      },
+      "mu_FS": [
+        11,
+        32
+      ],
+      "verdicts": {
+        "fail": 11,
+        "pass": 48,
+        "uncertain": 1
+      }
+    }
+  },
+  "paired_dev60_vs_T02": {
+    "checkpoint-000114": {
+      "fixes": [
+        25,
+        60
+      ],
+      "regressions": [
+        3,
+        29,
+        31,
+        35,
+        40,
+        46,
+        52
+      ],
+      "net_passes": -5,
+      "delta_pp": -8.333333333333332,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -16.666666666666668,
+        0.0
+      ],
+      "mcnemar_exact_two_sided_p": 0.1796875,
+      "uncertainty_limit": "Conditional on same-Codex judgments, one training seed, related Mu primitives. Not independent human gold or population proof."
+    },
+    "checkpoint-000171": {
+      "fixes": [
+        25,
+        30,
+        60
+      ],
+      "regressions": [
+        3,
+        8,
+        19,
+        46
+      ],
+      "net_passes": -1,
+      "delta_pp": -1.6666666666666667,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -10.0,
+        6.666666666666667
+      ],
+      "mcnemar_exact_two_sided_p": 1.0,
+      "uncertainty_limit": "Conditional on same-Codex judgments, one training seed, related Mu primitives. Not independent human gold or population proof."
+    },
+    "checkpoint-000228": {
+      "fixes": [
+        25,
+        30,
+        43,
+        60
+      ],
+      "regressions": [
+        3,
+        8,
+        19
+      ],
+      "net_passes": 1,
+      "delta_pp": 1.6666666666666667,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -6.666666666666667,
+        10.0
+      ],
+      "mcnemar_exact_two_sided_p": 1.0,
+      "uncertainty_limit": "Conditional on same-Codex judgments, one training seed, related Mu primitives. Not independent human gold or population proof."
+    }
+  },
+  "nominee": {
+    "recorded_utc": "2026-10-18T06:36:09.517508+00:00",
+    "selected": "checkpoint-000228",
+    "gates": {
+      "checkpoint-000114": {
+        "total_strictly_above_T02": false,
+        "mu_not_lower": false,
+        "HotWiki_net_loss_at_most1": true,
+        "mu_FS_not_increased": false
+      },
+      "checkpoint-000171": {
+        "total_strictly_above_T02": false,
+        "mu_not_lower": false,
+        "HotWiki_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      },
+      "checkpoint-000228": {
+        "total_strictly_above_T02": true,
+        "mu_not_lower": true,
+        "HotWiki_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      }
+    },
+    "dev_summary": {
+      "checkpoint-000114": {
+        "n": 60,
+        "passed": 42,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 12
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 20
+          },
+          "musique": {
+            "n": 20,
+            "passes": 10
+          }
+        },
+        "mu_FS": [
+          3,
+          11,
+          32,
+          35,
+          40,
+          43,
+          46
+        ],
+        "verdicts": {
+          "fail": 16,
+          "pass": 42,
+          "uncertain": 2
+        }
+      },
+      "checkpoint-000171": {
+        "n": 60,
+        "passed": 46,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 12
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 20
+          },
+          "musique": {
+            "n": 20,
+            "passes": 14
+          }
+        },
+        "mu_FS": [
+          11,
+          32,
+          46
+        ],
+        "verdicts": {
+          "fail": 12,
+          "pass": 46,
+          "uncertain": 2
+        }
+      },
+      "checkpoint-000228": {
+        "n": 60,
+        "passed": 48,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 12
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 20
+          },
+          "musique": {
+            "n": 20,
+            "passes": 16
+          }
+        },
+        "mu_FS": [
+          11,
+          32
+        ],
+        "verdicts": {
+          "fail": 11,
+          "pass": 48,
+          "uncertain": 1
+        }
+      }
+    },
+    "plan_sha256": "f12fc396853d930708360bdb06272c8897e54b813cee95e7bcaeb99a98eea74f",
+    "policy_sha256": "02e9fae9bcb5c10866c0ee2f412b22d9dc49200283e279c2cfcc7a20de21ba2a",
+    "confirmation_used_for_selection": false,
+    "baseline": "frozen T02",
+    "pilot_R02_passes": 51,
+    "api_calls": 0,
+    "old_models_retained": true,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/results/train/checkpoints/checkpoint-000228",
+    "checkpoint_manifest_sha256": "208846d93844bf5e59deb4d1ec2828ea140a02b30b76b24a18a6e3d2074b35e5",
+    "strictly_above_pilot_R02": false
+  },
+  "actual_training": {
+    "updates": 228,
+    "exposures": 7264,
+    "unique_per_epoch": 3632,
+    "tail_examples_each_epoch": 16,
+    "target_tokens": 186302,
+    "update_seconds": 4319.569554784335,
+    "validation_losses": [
+      {
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.17147452484598086,
+          "target_tokens": 4038
+        },
+        "gap": 0.0038936852164102864,
+        "step": 57,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.16758083962957057,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.15758944520250068,
+          "target_tokens": 4038
+        },
+        "gap": 0.030285525134963243,
+        "step": 114,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.12730392006753743,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.1665531211315916,
+          "target_tokens": 4038
+        },
+        "gap": 0.06238797927927629,
+        "step": 171,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.1041651418523153,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.15906220958696232,
+          "target_tokens": 4038
+        },
+        "gap": 0.06273929818664516,
+        "step": 228,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.09632291140031717,
+          "target_tokens": 4462
+        }
+      }
+    ],
+    "base_unchanged": true,
+    "fresh_LoRA": true
+  },
+  "dev_integrity": {
+    "checkpoint-000114": {
+      "n": 60,
+      "same_native_input_ids": true,
+      "invalid": 0,
+      "truncated": 0,
+      "errors": 0
+    },
+    "checkpoint-000171": {
+      "n": 60,
+      "same_native_input_ids": true,
+      "invalid": 0,
+      "truncated": 0,
+      "errors": 0
+    },
+    "checkpoint-000228": {
+      "n": 60,
+      "same_native_input_ids": true,
+      "invalid": 0,
+      "truncated": 0,
+      "errors": 0
+    }
+  },
+  "api_calls": 0,
+  "review_limit": "Same-Codex F/S/C/U; uncertain is nonpass, not independent human gold.",
+  "scope": "Decomposition pass, not downstream RAG Answer F1; Mu is custom primitive-excluded native-train held-out, not official test.",
+  "confirm120": {
+    "n": 120,
+    "passed": 100,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 32
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39
+      },
+      "musique": {
+        "n": 40,
+        "passes": 29
+      }
+    },
+    "mu_FS": [
+      6,
+      24,
+      27,
+      28,
+      41,
+      45,
+      55,
+      62,
+      76
+    ],
+    "verdicts": {
+      "pass": 100,
+      "fail": 18,
+      "uncertain": 2
+    }
+  },
+  "paired_confirm120_vs_T02": {
+    "fixes": [
+      14,
+      37,
+      38,
+      60,
+      65,
+      69,
+      87,
+      95,
+      99,
+      104
+    ],
+    "regressions": [
+      6,
+      10,
+      27,
+      28,
+      55,
+      102,
+      108,
+      113
+    ],
+    "net_passes": 2,
+    "delta_pp": 1.6666666666666667,
+    "paired_stratified_bootstrap95_delta_pp": [
+      -5.0,
+      8.333333333333334
+    ],
+    "mcnemar_exact_two_sided_p": 0.8145294189453125,
+    "uncertainty_limit": "Conditional on same-Codex judgments, one training seed, related Mu primitives. Not independent human gold or population proof."
+  },
+  "paired_confirm120_vs_pilot_R02": {
+    "fixes": [
+      31,
+      37,
+      38,
+      48,
+      69,
+      87,
+      99
+    ],
+    "regressions": [
+      6,
+      10,
+      24,
+      27,
+      33,
+      51,
+      55,
+      102,
+      108,
+      113
+    ],
+    "net_passes": -3,
+    "delta_pp": -2.5,
+    "paired_stratified_bootstrap95_delta_pp": [
+      -9.166666666666666,
+      4.166666666666667
+    ],
+    "mcnemar_exact_two_sided_p": 0.629058837890625,
+    "uncertainty_limit": "Conditional on same-Codex judgments, one training seed, related Mu primitives. Not independent human gold or population proof."
+  },
+  "confirmation_gate": {
+    "total_strictly_higher": true,
+    "mu_not_lower": true,
+    "mu_FS_not_increased": false
+  }
+}

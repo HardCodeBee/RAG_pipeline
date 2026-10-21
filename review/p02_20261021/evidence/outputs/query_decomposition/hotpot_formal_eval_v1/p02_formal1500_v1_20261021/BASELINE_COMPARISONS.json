@@ -1,0 +1,3409 @@
+{
+  "utc": "2026-10-21T04:33:43.294802+00:00",
+  "planned": 1500,
+  "per_dataset": 500,
+  "P02": {
+    "planned": 1500,
+    "scorable": 779,
+    "missing": 721,
+    "successful_answers": 779,
+    "algorithm_failures": 0,
+    "F1": 0.7663099663357886,
+    "EM": 0.6572528883183568,
+    "F1_all_planned_bounds": [
+      0.39797030918371956,
+      0.878636975850386
+    ],
+    "statuses": {
+      "not_completed": 681,
+      "success": 779,
+      "incomplete": 40
+    }
+  },
+  "comparisons": {
+    "original_campaign_v1/b00_rag_top10_v1": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1219,
+        "missing": 281,
+        "successful_answers": 1219,
+        "algorithm_failures": 0,
+        "F1": 0.5226777352893548,
+        "EM": 0.41837571780147664,
+        "F1_all_planned_bounds": [
+          0.42476277287848235,
+          0.6120961062118155
+        ],
+        "statuses": {
+          "success": 1219,
+          "failed": 1,
+          "not_completed": 280
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5929125626807863,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5929125626807863,
+            0.5929125626807863
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5330801368566073,
+          "EM": 0.46,
+          "F1_all_planned_bounds": [
+            0.5330801368566073,
+            0.5330801368566072
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 219,
+          "missing": 281,
+          "successful_answers": 219,
+          "algorithm_failures": 0,
+          "F1": 0.33857447282660535,
+          "EM": 0.2191780821917808,
+          "F1_all_planned_bounds": [
+            0.14829561909805314,
+            0.710295619098053
+          ],
+          "statuses": {
+            "success": 219,
+            "failed": 1,
+            "not_completed": 280
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.22085131987850118,
+        "paired_stratified_95CI": [
+          0.18924350599403209,
+          0.25111153939121933
+        ],
+        "up": 261,
+        "equal": 473,
+        "down": 45,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.1083517747254323
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.2843299788905742
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "original_campaign_v1/b01_rag_top10_cot3": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1218,
+        "missing": 282,
+        "successful_answers": 1218,
+        "algorithm_failures": 0,
+        "F1": 0.37518793003633516,
+        "EM": 0.31198686371100165,
+        "F1_all_planned_bounds": [
+          0.30465259918950416,
+          0.49265259918950416
+        ],
+        "statuses": {
+          "success": 1218,
+          "provider_content_rejected": 2,
+          "not_completed": 280
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.49122564390935636,
+          "EM": 0.39,
+          "F1_all_planned_bounds": [
+            0.49122564390935636,
+            0.49122564390935625
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.33979148338545295,
+          "EM": 0.312625250501002,
+          "F1_all_planned_bounds": [
+            0.33911190041868206,
+            0.3411119004186821
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 219,
+          "missing": 281,
+          "successful_answers": 219,
+          "algorithm_failures": 0,
+          "F1": 0.19091382018372965,
+          "EM": 0.1324200913242009,
+          "F1_all_planned_bounds": [
+            0.08362025324047359,
+            0.6456202532404737
+          ],
+          "statuses": {
+            "success": 219,
+            "provider_content_rejected": 1,
+            "not_completed": 280
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.38449619421800707,
+        "paired_stratified_95CI": [
+          0.35011870351267943,
+          0.4183971024249777
+        ],
+        "up": 368,
+        "equal": 357,
+        "down": 53,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.219019793876085
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.4780552857594158
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        }
+      }
+    },
+    "original_campaign_v1/b02_selfask_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1236,
+        "missing": 264,
+        "successful_answers": 1034,
+        "algorithm_failures": 202,
+        "F1": 0.5296430852122456,
+        "EM": 0.4344660194174757,
+        "F1_all_planned_bounds": [
+          0.43642590221489036,
+          0.6124259022148902
+        ],
+        "statuses": {
+          "success": 1034,
+          "algorithm_failure": 202,
+          "unknown": 1,
+          "failed": 1,
+          "provider_content_rejected": 2,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 467,
+          "algorithm_failures": 33,
+          "F1": 0.6185284182243627,
+          "EM": 0.49,
+          "F1_all_planned_bounds": [
+            0.6185284182243627,
+            0.6185284182243627
+          ],
+          "statuses": {
+            "success": 467,
+            "algorithm_failure": 33
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 379,
+          "algorithm_failures": 120,
+          "F1": 0.5241771531992843,
+          "EM": 0.4589178356713427,
+          "F1_all_planned_bounds": [
+            0.5231287988928857,
+            0.5251287988928857
+          ],
+          "statuses": {
+            "success": 379,
+            "algorithm_failure": 120,
+            "unknown": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 237,
+          "missing": 263,
+          "successful_answers": 188,
+          "algorithm_failures": 49,
+          "F1": 0.35362972474139903,
+          "EM": 0.26582278481012656,
+          "F1_all_planned_bounds": [
+            0.16762048952742314,
+            0.6936204895274232
+          ],
+          "statuses": {
+            "success": 188,
+            "algorithm_failure": 49,
+            "failed": 1,
+            "provider_content_rejected": 2,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.21883329220789435,
+        "paired_stratified_95CI": [
+          0.1858576340998531,
+          0.25229129037844594
+        ],
+        "up": 250,
+        "equal": 470,
+        "down": 58,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.09138897817927029
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.29088933293635194
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        }
+      }
+    },
+    "original_campaign_v1/b03_react_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1234,
+        "missing": 266,
+        "successful_answers": 1169,
+        "algorithm_failures": 65,
+        "F1": 0.7101352711264953,
+        "EM": 0.6110210696920584,
+        "F1_all_planned_bounds": [
+          0.5842046163800635,
+          0.7615379497133969
+        ],
+        "statuses": {
+          "success": 1169,
+          "algorithm_failure": 65,
+          "failed": 2,
+          "provider_content_rejected": 4,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 481,
+          "algorithm_failures": 18,
+          "F1": 0.6952044857206847,
+          "EM": 0.5691382765531062,
+          "F1_all_planned_bounds": [
+            0.6938140767492433,
+            0.6958140767492432
+          ],
+          "statuses": {
+            "success": 481,
+            "algorithm_failure": 18,
+            "failed": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 493,
+          "algorithm_failures": 6,
+          "F1": 0.8338135053153327,
+          "EM": 0.7675350701402806,
+          "F1_all_planned_bounds": [
+            0.832145878304702,
+            0.8341458783047019
+          ],
+          "statuses": {
+            "success": 493,
+            "algorithm_failure": 6,
+            "provider_content_rejected": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 236,
+          "missing": 264,
+          "successful_answers": 195,
+          "algorithm_failures": 41,
+          "F1": 0.4801989281488287,
+          "EM": 0.3686440677966102,
+          "F1_all_planned_bounds": [
+            0.22665389408624714,
+            0.7546538940862472
+          ],
+          "statuses": {
+            "success": 195,
+            "algorithm_failure": 41,
+            "provider_content_rejected": 3,
+            "failed": 1,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 777,
+        "delta_F1": -0.008174102555436324,
+        "paired_stratified_95CI": [
+          -0.03325259343279938,
+          0.01668394141138502
+        ],
+        "up": 88,
+        "equal": 596,
+        "down": 93,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.009233084110597188
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": -0.017980968282779147
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        }
+      }
+    },
+    "original_campaign_v1/b04_ircot_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1235,
+        "missing": 265,
+        "successful_answers": 1235,
+        "algorithm_failures": 0,
+        "F1": 0.5997467793061063,
+        "EM": 0.5246963562753036,
+        "F1_all_planned_bounds": [
+          0.49379151496202756,
+          0.6704581816286942
+        ],
+        "statuses": {
+          "success": 1235,
+          "unknown": 1,
+          "failed": 3,
+          "provider_content_rejected": 1,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.6622122143400025,
+          "EM": 0.544,
+          "F1_all_planned_bounds": [
+            0.6622122143400025,
+            0.6622122143400024
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.6836208483657986,
+          "EM": 0.6452905811623246,
+          "F1_all_planned_bounds": [
+            0.6822536066690671,
+            0.6842536066690671
+          ],
+          "statuses": {
+            "success": 499,
+            "unknown": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 236,
+          "missing": 264,
+          "successful_answers": 236,
+          "algorithm_failures": 0,
+          "F1": 0.290060855671641,
+          "EM": 0.2288135593220339,
+          "F1_all_planned_bounds": [
+            0.13690872387701455,
+            0.6649087238770146
+          ],
+          "statuses": {
+            "success": 236,
+            "failed": 3,
+            "provider_content_rejected": 1,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.09832766243566839,
+        "paired_stratified_95CI": [
+          0.0677531442292315,
+          0.1289707685968133
+        ],
+        "up": 157,
+        "equal": 521,
+        "down": 100,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.04083751167148608
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.13083215411521612
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b04_ircot_bge\\k8\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "2wiki": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "musique": {
+          "id": "k8",
+          "k": 8,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        }
+      }
+    },
+    "original_campaign_v1/b05_iter_retgen_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1238,
+        "missing": 262,
+        "successful_answers": 1238,
+        "algorithm_failures": 0,
+        "F1": 0.46957292135857936,
+        "EM": 0.40064620355411956,
+        "F1_all_planned_bounds": [
+          0.3875541844279475,
+          0.5622208510946142
+        ],
+        "statuses": {
+          "success": 1238,
+          "failed": 1,
+          "provider_content_rejected": 1,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.598671551938454,
+          "EM": 0.4969939879759519,
+          "F1_all_planned_bounds": [
+            0.5974742088345771,
+            0.599474208834577
+          ],
+          "statuses": {
+            "success": 499,
+            "failed": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.44622526199326024,
+          "EM": 0.404,
+          "F1_all_planned_bounds": [
+            0.44622526199326024,
+            0.4462252619932601
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 239,
+          "missing": 261,
+          "successful_answers": 239,
+          "algorithm_failures": 0,
+          "F1": 0.24887674153976036,
+          "EM": 0.19246861924686193,
+          "F1_all_planned_bounds": [
+            0.11896308245600545,
+            0.6409630824560054
+          ],
+          "statuses": {
+            "success": 239,
+            "provider_content_rejected": 1,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.2707057301419914,
+        "paired_stratified_95CI": [
+          0.2363755929611517,
+          0.30492980177562773
+        ],
+        "up": 284,
+        "equal": 414,
+        "down": 80,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.09494746832603462
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.36952563638389474
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b05_iter_retgen_bge\\t2\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b05_iter_retgen_bge\\t2\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b05_iter_retgen_bge\\t3\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "t2",
+          "k": 5,
+          "iterations": 2
+        },
+        "2wiki": {
+          "id": "t2",
+          "k": 5,
+          "iterations": 2
+        },
+        "musique": {
+          "id": "t3",
+          "k": 5,
+          "iterations": 3
+        }
+      }
+    },
+    "original_campaign_v1/b06_decomp_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1236,
+        "missing": 264,
+        "successful_answers": 1058,
+        "algorithm_failures": 178,
+        "F1": 0.5483585555593244,
+        "EM": 0.48381877022653724,
+        "F1_all_planned_bounds": [
+          0.4518474497808833,
+          0.6278474497808832
+        ],
+        "statuses": {
+          "success": 1058,
+          "algorithm_failure": 178,
+          "failed": 4,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 445,
+          "algorithm_failures": 55,
+          "F1": 0.5589167152197306,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5589167152197306,
+            0.5589167152197306
+          ],
+          "statuses": {
+            "success": 445,
+            "algorithm_failure": 55
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 443,
+          "algorithm_failures": 56,
+          "F1": 0.6813774784635819,
+          "EM": 0.6352705410821643,
+          "F1_all_planned_bounds": [
+            0.6800147235066547,
+            0.6820147235066547
+          ],
+          "statuses": {
+            "success": 443,
+            "algorithm_failure": 56,
+            "failed": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 237,
+          "missing": 263,
+          "successful_answers": 170,
+          "algorithm_failures": 67,
+          "F1": 0.24601457935921026,
+          "EM": 0.20675105485232068,
+          "F1_all_planned_bounds": [
+            0.11661091061626566,
+            0.6426109106162657
+          ],
+          "statuses": {
+            "algorithm_failure": 67,
+            "success": 170,
+            "failed": 3,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.13660241097685707,
+        "paired_stratified_95CI": [
+          0.10597083777843509,
+          0.16621149183388143
+        ],
+        "up": 182,
+        "equal": 530,
+        "down": 66,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.139315443336343
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.1350684832243107
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k4_cot",
+          "k": 4,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "2wiki": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "musique": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        }
+      }
+    },
+    "original_campaign_v1/b07_hybrid_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1240,
+        "missing": 260,
+        "successful_answers": 1240,
+        "algorithm_failures": 0,
+        "F1": 0.5654404947017986,
+        "EM": 0.45806451612903226,
+        "F1_all_planned_bounds": [
+          0.4674308089534868,
+          0.6407641422868201
+        ],
+        "statuses": {
+          "success": 1240,
+          "not_completed": 260
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.649587517779778,
+          "EM": 0.506,
+          "F1_all_planned_bounds": [
+            0.649587517779778,
+            0.649587517779778
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5774780646597983,
+          "EM": 0.508,
+          "F1_all_planned_bounds": [
+            0.5774780646597983,
+            0.5774780646597983
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 240,
+          "missing": 260,
+          "successful_answers": 240,
+          "algorithm_failures": 0,
+          "F1": 0.36505592587684293,
+          "EM": 0.25416666666666665,
+          "F1_all_planned_bounds": [
+            0.17522684442088463,
+            0.6952268444208847
+          ],
+          "statuses": {
+            "success": 240,
+            "not_completed": 260
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.17333556201238942,
+        "paired_stratified_95CI": [
+          0.1409093735052888,
+          0.20510041630732131
+        ],
+        "up": 234,
+        "equal": 480,
+        "down": 65,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.05562646698128428
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.23975374615644673
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "k50_rrf60",
+          "per_retriever_k": 50,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "original_campaign_v1/b08_qd_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1219,
+        "missing": 281,
+        "successful_answers": 1219,
+        "algorithm_failures": 0,
+        "F1": 0.5681833264964647,
+        "EM": 0.46595570139458575,
+        "F1_all_planned_bounds": [
+          0.4617436499994603,
+          0.6490769833327937
+        ],
+        "statuses": {
+          "success": 1219,
+          "provider_content_rejected": 1,
+          "not_completed": 280
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.6431262761596029,
+          "EM": 0.503006012024048,
+          "F1_all_planned_bounds": [
+            0.6418400236072836,
+            0.6438400236072837
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5689137418137415,
+          "EM": 0.508,
+          "F1_all_planned_bounds": [
+            0.5689137418137415,
+            0.5689137418137415
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 220,
+          "missing": 280,
+          "successful_answers": 220,
+          "algorithm_failures": 0,
+          "F1": 0.3965390558576275,
+          "EM": 0.2863636363636364,
+          "F1_all_planned_bounds": [
+            0.1744771845773561,
+            0.7344771845773562
+          ],
+          "statuses": {
+            "success": 220,
+            "not_completed": 280
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.18098291284442175,
+        "paired_stratified_95CI": [
+          0.15022081302192108,
+          0.21230294700232186
+        ],
+        "up": 230,
+        "equal": 500,
+        "down": 49,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.06158776546927317
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.24835246387337104
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\campaign_api_v1\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "standalone5",
+          "max_queries": 5
+        },
+        "2wiki": {
+          "id": "standalone3",
+          "max_queries": 3
+        },
+        "musique": {
+          "id": "standalone3",
+          "max_queries": 3
+        }
+      }
+    },
+    "integrity_repair_v2_main/b00_rag_top10_v1": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1498,
+        "missing": 2,
+        "successful_answers": 1498,
+        "algorithm_failures": 0,
+        "F1": 0.4788057712346751,
+        "EM": 0.3711615487316422,
+        "F1_all_planned_bounds": [
+          0.4781673635396955,
+          0.4795006968730289
+        ],
+        "statuses": {
+          "success": 1498,
+          "failed": 2
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5929125626807863,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5929125626807863,
+            0.5929125626807863
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5330801368566073,
+          "EM": 0.46,
+          "F1_all_planned_bounds": [
+            0.5330801368566073,
+            0.5330801368566072
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 498,
+          "missing": 2,
+          "successful_answers": 498,
+          "algorithm_failures": 0,
+          "F1": 0.3097483846201741,
+          "EM": 0.18875502008032127,
+          "F1_all_planned_bounds": [
+            0.3085093910816934,
+            0.31250939108169334
+          ],
+          "statuses": {
+            "success": 498,
+            "failed": 2
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.22085131987850118,
+        "paired_stratified_95CI": [
+          0.18924350599403209,
+          0.25111153939121933
+        ],
+        "up": 261,
+        "equal": 473,
+        "down": 45,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.1083517747254323
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.2843299788905742
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "integrity_repair_v2_main/b01_rag_top10_cot3": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1087,
+        "missing": 413,
+        "successful_answers": 1087,
+        "algorithm_failures": 0,
+        "F1": 0.46088894483202686,
+        "EM": 0.3873045078196872,
+        "F1_all_planned_bounds": [
+          0.33399085535494216,
+          0.6093241886882754
+        ],
+        "statuses": {
+          "success": 1087,
+          "provider_content_rejected": 2,
+          "not_completed": 411
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.554171095846707,
+          "EM": 0.43887775551102204,
+          "F1_all_planned_bounds": [
+            0.5530627536550136,
+            0.5550627536550137
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.3891990329866082,
+          "EM": 0.3587174348697395,
+          "F1_all_planned_bounds": [
+            0.388420634920635,
+            0.39042063492063495
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 89,
+          "missing": 411,
+          "successful_answers": 89,
+          "algorithm_failures": 0,
+          "F1": 0.3398268398268398,
+          "EM": 0.25842696629213485,
+          "F1_all_planned_bounds": [
+            0.06048917748917749,
+            0.8824891774891775
+          ],
+          "statuses": {
+            "success": 89,
+            "not_completed": 411
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 777,
+        "delta_F1": 0.330603862483033,
+        "paired_stratified_95CI": [
+          0.2962010090733193,
+          0.362945288822666
+        ],
+        "up": 329,
+        "equal": 413,
+        "down": 35,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.15697543104937273
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.4284226970935457
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        }
+      }
+    },
+    "integrity_repair_v2_main/b02_selfask_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 851,
+        "algorithm_failures": 148,
+        "F1": 0.5716780644008028,
+        "EM": 0.4744744744744745,
+        "F1_all_planned_bounds": [
+          0.3807375908909347,
+          0.7147375908909347
+        ],
+        "statuses": {
+          "success": 851,
+          "algorithm_failure": 148,
+          "unknown": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 470,
+          "algorithm_failures": 30,
+          "F1": 0.6204173071132515,
+          "EM": 0.49,
+          "F1_all_planned_bounds": [
+            0.6204173071132515,
+            0.6204173071132514
+          ],
+          "statuses": {
+            "success": 470,
+            "algorithm_failure": 30
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 381,
+          "algorithm_failures": 118,
+          "F1": 0.5228411478552628,
+          "EM": 0.4589178356713427,
+          "F1_all_planned_bounds": [
+            0.5217954655595524,
+            0.5237954655595523
+          ],
+          "statuses": {
+            "success": 381,
+            "algorithm_failure": 118,
+            "unknown": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.2191189248842726,
+        "paired_stratified_95CI": [
+          0.18606411568991646,
+          0.2525767410027589
+        ],
+        "up": 251,
+        "equal": 468,
+        "down": 59,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.08980732535206587
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.2922307145594237
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        }
+      }
+    },
+    "integrity_repair_v2_main/b03_react_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1491,
+        "missing": 9,
+        "successful_answers": 1410,
+        "algorithm_failures": 81,
+        "F1": 0.6559310864657679,
+        "EM": 0.556673373574782,
+        "F1_all_planned_bounds": [
+          0.6519954999469733,
+          0.6579954999469732
+        ],
+        "statuses": {
+          "success": 1410,
+          "algorithm_failure": 81,
+          "failed": 3,
+          "provider_content_rejected": 6
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 485,
+          "algorithm_failures": 14,
+          "F1": 0.6951376854534835,
+          "EM": 0.5691382765531062,
+          "F1_all_planned_bounds": [
+            0.6937474100825766,
+            0.6957474100825766
+          ],
+          "statuses": {
+            "success": 485,
+            "algorithm_failure": 14,
+            "failed": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 493,
+          "algorithm_failures": 6,
+          "F1": 0.8338135053153327,
+          "EM": 0.7675350701402806,
+          "F1_all_planned_bounds": [
+            0.832145878304702,
+            0.8341458783047019
+          ],
+          "statuses": {
+            "success": 493,
+            "algorithm_failure": 6,
+            "provider_content_rejected": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 493,
+          "missing": 7,
+          "successful_answers": 432,
+          "algorithm_failures": 61,
+          "F1": 0.4362000116162714,
+          "EM": 0.3306288032454361,
+          "F1_all_planned_bounds": [
+            0.4300932114536436,
+            0.44409321145364355
+          ],
+          "statuses": {
+            "success": 432,
+            "algorithm_failure": 61,
+            "provider_content_rejected": 5,
+            "failed": 2
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 777,
+        "delta_F1": -0.008131202512536281,
+        "paired_stratified_95CI": [
+          -0.033222553797496585,
+          0.016652742103869914
+        ],
+        "up": 88,
+        "equal": 595,
+        "down": 94,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.009352131729644804
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": -0.017980968282779147
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        }
+      }
+    },
+    "integrity_repair_v2_main/b04_ircot_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 999,
+        "algorithm_failures": 0,
+        "F1": 0.7265468663301479,
+        "EM": 0.6406406406406406,
+        "F1_all_planned_bounds": [
+          0.48388021297587847,
+          0.8178802129758784
+        ],
+        "statuses": {
+          "success": 999,
+          "unknown": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.7003273633143604,
+          "EM": 0.572,
+          "F1_all_planned_bounds": [
+            0.7003273633143604,
+            0.7003273633143604
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.7528189134401558,
+          "EM": 0.7094188376753507,
+          "F1_all_planned_bounds": [
+            0.7513132756132755,
+            0.7533132756132754
+          ],
+          "statuses": {
+            "success": 499,
+            "unknown": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.0393591374569722,
+        "paired_stratified_95CI": [
+          0.011418820665196804,
+          0.06635193404526808
+        ],
+        "up": 120,
+        "equal": 569,
+        "down": 89,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": -0.0030546304898487757
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.06333955756372611
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "2wiki": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "musique": {
+          "id": "k8",
+          "k": 8,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        }
+      }
+    },
+    "integrity_repair_v2_main/b05_iter_retgen_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 500,
+        "missing": 1000,
+        "successful_answers": 500,
+        "algorithm_failures": 0,
+        "F1": 0.47799365079365086,
+        "EM": 0.436,
+        "F1_all_planned_bounds": [
+          0.15933121693121696,
+          0.8259978835978836
+        ],
+        "statuses": {
+          "not_completed": 1000,
+          "success": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.47799365079365086,
+          "EM": 0.436,
+          "F1_all_planned_bounds": [
+            0.47799365079365086,
+            0.47799365079365086
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 498,
+        "delta_F1": 0.3376296636927395,
+        "paired_stratified_95CI": [
+          0.29092658857010384,
+          0.3841950104715874
+        ],
+        "up": 214,
+        "equal": 252,
+        "down": 32,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 0,
+            "delta_F1": null
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.3376296636927395
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b05_iter_retgen_bge\\t2\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "t2",
+          "k": 5,
+          "iterations": 2
+        },
+        "2wiki": {
+          "id": "t2",
+          "k": 5,
+          "iterations": 2
+        },
+        "musique": {
+          "id": "t3",
+          "k": 5,
+          "iterations": 3
+        }
+      }
+    },
+    "integrity_repair_v2_main/b06_decomp_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 887,
+        "algorithm_failures": 112,
+        "F1": 0.6235992110992112,
+        "EM": 0.5505505505505506,
+        "F1_all_planned_bounds": [
+          0.4153170745920747,
+          0.7493170745920745
+        ],
+        "statuses": {
+          "success": 887,
+          "algorithm_failure": 112,
+          "failed": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 445,
+          "algorithm_failures": 55,
+          "F1": 0.5609920274170275,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5609920274170275,
+            0.5609920274170275
+          ],
+          "statuses": {
+            "success": 445,
+            "algorithm_failure": 55
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 442,
+          "algorithm_failures": 57,
+          "F1": 0.6863318600793551,
+          "EM": 0.6372745490981964,
+          "F1_all_planned_bounds": [
+            0.6849591963591964,
+            0.6869591963591966
+          ],
+          "statuses": {
+            "success": 442,
+            "algorithm_failure": 57,
+            "failed": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.13362216520329043,
+        "paired_stratified_95CI": [
+          0.10355929150439439,
+          0.16381802881874608
+        ],
+        "up": 180,
+        "equal": 534,
+        "down": 64,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.13986208111013684
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.13009416445917807
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k4_cot",
+          "k": 4,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "2wiki": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "musique": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        }
+      }
+    },
+    "integrity_repair_v2_main/b07_hybrid_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1000,
+        "missing": 500,
+        "successful_answers": 1000,
+        "algorithm_failures": 0,
+        "F1": 0.6148712527582494,
+        "EM": 0.508,
+        "F1_all_planned_bounds": [
+          0.4099141685054996,
+          0.7432475018388328
+        ],
+        "statuses": {
+          "success": 1000,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.649587517779778,
+          "EM": 0.506,
+          "F1_all_planned_bounds": [
+            0.649587517779778,
+            0.649587517779778
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5801549877367215,
+          "EM": 0.51,
+          "F1_all_planned_bounds": [
+            0.5801549877367215,
+            0.5801549877367215
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.17161738288727835,
+        "paired_stratified_95CI": [
+          0.13922535993868437,
+          0.20343526409180757
+        ],
+        "up": 232,
+        "equal": 481,
+        "down": 66,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.05562646698128428
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.23706607238443564
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "k50_rrf60",
+          "per_retriever_k": 50,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "integrity_repair_v2_main/b08_qd_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 999,
+        "algorithm_failures": 0,
+        "F1": 0.6064833660765893,
+        "EM": 0.5065065065065065,
+        "F1_all_planned_bounds": [
+          0.4039179218070084,
+          0.7379179218070085
+        ],
+        "statuses": {
+          "success": 999,
+          "provider_content_rejected": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.6431262761596029,
+          "EM": 0.503006012024048,
+          "F1_all_planned_bounds": [
+            0.6418400236072836,
+            0.6438400236072837
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5699137418137417,
+          "EM": 0.51,
+          "F1_all_planned_bounds": [
+            0.5699137418137417,
+            0.5699137418137415
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.18034106432067334,
+        "paired_stratified_95CI": [
+          0.15003934329133753,
+          0.21115473871000598
+        ],
+        "up": 229,
+        "equal": 502,
+        "down": 48,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.06158776546927317
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.247348447809114
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "standalone5",
+          "max_queries": 5
+        },
+        "2wiki": {
+          "id": "standalone3",
+          "max_queries": 3
+        },
+        "musique": {
+          "id": "standalone3",
+          "max_queries": 3
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b00_rag_top10_v1": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1498,
+        "missing": 2,
+        "successful_answers": 1498,
+        "algorithm_failures": 0,
+        "F1": 0.4788057712346751,
+        "EM": 0.3711615487316422,
+        "F1_all_planned_bounds": [
+          0.4781673635396955,
+          0.4795006968730289
+        ],
+        "statuses": {
+          "success": 1498,
+          "failed": 2
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5929125626807863,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5929125626807863,
+            0.5929125626807863
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5330801368566073,
+          "EM": 0.46,
+          "F1_all_planned_bounds": [
+            0.5330801368566073,
+            0.5330801368566072
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 498,
+          "missing": 2,
+          "successful_answers": 498,
+          "algorithm_failures": 0,
+          "F1": 0.3097483846201741,
+          "EM": 0.18875502008032127,
+          "F1_all_planned_bounds": [
+            0.3085093910816934,
+            0.31250939108169334
+          ],
+          "statuses": {
+            "success": 498,
+            "failed": 2
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.22085131987850118,
+        "paired_stratified_95CI": [
+          0.18924350599403209,
+          0.25111153939121933
+        ],
+        "up": 261,
+        "equal": 473,
+        "down": 45,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.1083517747254323
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.2843299788905742
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b01_rag_top10_cot3": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1088,
+        "missing": 412,
+        "successful_answers": 1088,
+        "algorithm_failures": 0,
+        "F1": 0.46046533366949743,
+        "EM": 0.3869485294117647,
+        "F1_all_planned_bounds": [
+          0.33399085535494216,
+          0.6086575220216088
+        ],
+        "statuses": {
+          "success": 1088,
+          "provider_content_rejected": 1,
+          "not_completed": 411
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.554171095846707,
+          "EM": 0.43887775551102204,
+          "F1_all_planned_bounds": [
+            0.5530627536550136,
+            0.5550627536550137
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.388420634920635,
+          "EM": 0.358,
+          "F1_all_planned_bounds": [
+            0.388420634920635,
+            0.38842063492063494
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 89,
+          "missing": 411,
+          "successful_answers": 89,
+          "algorithm_failures": 0,
+          "F1": 0.3398268398268398,
+          "EM": 0.25842696629213485,
+          "F1_all_planned_bounds": [
+            0.06048917748917749,
+            0.8824891774891775
+          ],
+          "statuses": {
+            "success": 89,
+            "not_completed": 411
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.330178921785754,
+        "paired_stratified_95CI": [
+          0.29611173275209285,
+          0.36451773051731634
+        ],
+        "up": 329,
+        "equal": 414,
+        "down": 35,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.15697543104937273
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.42756241055319727
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b01_rag_top10_cot3\\391186b00bdb11eba7f7acde48001122\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "2wiki": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        },
+        "musique": {
+          "id": "fixed",
+          "k": 10,
+          "reader": "cot3",
+          "output_tokens": 512
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b02_selfask_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1000,
+        "missing": 500,
+        "successful_answers": 852,
+        "algorithm_failures": 148,
+        "F1": 0.572106386336402,
+        "EM": 0.475,
+        "F1_all_planned_bounds": [
+          0.3814042575576013,
+          0.7147375908909347
+        ],
+        "statuses": {
+          "success": 852,
+          "algorithm_failure": 148,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 470,
+          "algorithm_failures": 30,
+          "F1": 0.6204173071132515,
+          "EM": 0.49,
+          "F1_all_planned_bounds": [
+            0.6204173071132515,
+            0.6204173071132514
+          ],
+          "statuses": {
+            "success": 470,
+            "algorithm_failure": 30
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 382,
+          "algorithm_failures": 118,
+          "F1": 0.5237954655595524,
+          "EM": 0.46,
+          "F1_all_planned_bounds": [
+            0.5237954655595524,
+            0.5237954655595523
+          ],
+          "statuses": {
+            "success": 382,
+            "algorithm_failure": 118
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.21883764256734797,
+        "paired_stratified_95CI": [
+          0.1867646829786846,
+          0.2520239795470703
+        ],
+        "up": 251,
+        "equal": 469,
+        "down": 59,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.08980732535206587
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.29164390589564976
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b02_selfask_dense\\75e5c06d087811ebbd67ac1f6bf848b6\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s3",
+          "k": 10,
+          "max_search": 3
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b03_react_dense": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1491,
+        "missing": 9,
+        "successful_answers": 1410,
+        "algorithm_failures": 81,
+        "F1": 0.6559310864657679,
+        "EM": 0.556673373574782,
+        "F1_all_planned_bounds": [
+          0.6519954999469733,
+          0.6579954999469732
+        ],
+        "statuses": {
+          "success": 1410,
+          "algorithm_failure": 81,
+          "failed": 3,
+          "provider_content_rejected": 6
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 485,
+          "algorithm_failures": 14,
+          "F1": 0.6951376854534835,
+          "EM": 0.5691382765531062,
+          "F1_all_planned_bounds": [
+            0.6937474100825766,
+            0.6957474100825766
+          ],
+          "statuses": {
+            "success": 485,
+            "algorithm_failure": 14,
+            "failed": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 493,
+          "algorithm_failures": 6,
+          "F1": 0.8338135053153327,
+          "EM": 0.7675350701402806,
+          "F1_all_planned_bounds": [
+            0.832145878304702,
+            0.8341458783047019
+          ],
+          "statuses": {
+            "success": 493,
+            "algorithm_failure": 6,
+            "provider_content_rejected": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 493,
+          "missing": 7,
+          "successful_answers": 432,
+          "algorithm_failures": 61,
+          "F1": 0.4362000116162714,
+          "EM": 0.3306288032454361,
+          "F1_all_planned_bounds": [
+            0.4300932114536436,
+            0.44409321145364355
+          ],
+          "statuses": {
+            "success": 432,
+            "algorithm_failure": 61,
+            "provider_content_rejected": 5,
+            "failed": 2
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 777,
+        "delta_F1": -0.008131202512536281,
+        "paired_stratified_95CI": [
+          -0.033222553797496585,
+          0.016652742103869914
+        ],
+        "up": 88,
+        "equal": 595,
+        "down": 94,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 280,
+            "delta_F1": 0.009352131729644804
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": -0.017980968282779147
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b03_react_dense\\e9d3600a087111ebbd64ac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "2wiki": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        },
+        "musique": {
+          "id": "k10_s5",
+          "k": 10,
+          "max_search": 5
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b04_ircot_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1000,
+        "missing": 500,
+        "successful_answers": 1000,
+        "algorithm_failures": 0,
+        "F1": 0.7268203194638176,
+        "EM": 0.641,
+        "F1_all_planned_bounds": [
+          0.4845468796425451,
+          0.8178802129758784
+        ],
+        "statuses": {
+          "success": 1000,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.7003273633143604,
+          "EM": 0.572,
+          "F1_all_planned_bounds": [
+            0.7003273633143604,
+            0.7003273633143604
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.7533132756132755,
+          "EM": 0.71,
+          "F1_all_planned_bounds": [
+            0.7533132756132755,
+            0.7533132756132754
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.03930861224842666,
+        "paired_stratified_95CI": [
+          0.012057242150471048,
+          0.06666296428015692
+        ],
+        "up": 120,
+        "equal": 570,
+        "down": 89,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": -0.0030546304898487757
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.06321236969713229
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b04_ircot_bge\\ebf11d8e089c11ebbd78ac1f6bf848b6\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "2wiki": {
+          "id": "k6",
+          "k": 6,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        },
+        "musique": {
+          "id": "k8",
+          "k": 8,
+          "max_reason_sentences": 8,
+          "max_document_pool": 15,
+          "reader": "cot",
+          "distractors_M": 2
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b05_iter_retgen_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1458,
+        "missing": 42,
+        "successful_answers": 1458,
+        "algorithm_failures": 0,
+        "F1": 0.5435922543151773,
+        "EM": 0.4554183813443073,
+        "F1_all_planned_bounds": [
+          0.5283716711943524,
+          0.5563716711943525
+        ],
+        "statuses": {
+          "success": 1458,
+          "unknown": 27,
+          "provider_content_rejected": 13,
+          "failed": 2
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 470,
+          "missing": 30,
+          "successful_answers": 470,
+          "algorithm_failures": 0,
+          "F1": 0.6672680280037447,
+          "EM": 0.5340425531914894,
+          "F1_all_planned_bounds": [
+            0.6272319463235201,
+            0.6872319463235201
+          ],
+          "statuses": {
+            "success": 470,
+            "unknown": 27,
+            "provider_content_rejected": 3
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 498,
+          "missing": 2,
+          "successful_answers": 498,
+          "algorithm_failures": 0,
+          "F1": 0.58267355134825,
+          "EM": 0.5401606425702812,
+          "F1_all_planned_bounds": [
+            0.580342857142857,
+            0.5843428571428572
+          ],
+          "statuses": {
+            "success": 498,
+            "provider_content_rejected": 2
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 490,
+          "missing": 10,
+          "successful_answers": 490,
+          "algorithm_failures": 0,
+          "F1": 0.38524511236396,
+          "EM": 0.2938775510204082,
+          "F1_all_planned_bounds": [
+            0.37754021011668076,
+            0.3975402101166808
+          ],
+          "statuses": {
+            "success": 490,
+            "failed": 2,
+            "provider_content_rejected": 8
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 759,
+        "delta_F1": 0.15456977850932452,
+        "paired_stratified_95CI": [
+          0.1200135336039481,
+          0.18852146353448232
+        ],
+        "up": 203,
+        "equal": 468,
+        "down": 88,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 263,
+            "delta_F1": 0.008948640852457057
+          },
+          "2wiki": {
+            "n": 496,
+            "delta_F1": 0.23178421238786512
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\hotpotqa\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\2wiki\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\391186b00bdb11eba7f7acde48001122\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\757e321e094d11ebbdaeac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\9d2dde74087e11ebbd6bac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\e9d3600a087111ebbd64ac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\musique\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        },
+        "2wiki": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        },
+        "musique": {
+          "id": "k10_t5",
+          "k": 10,
+          "iterations": 5
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b06_decomp_bge": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 887,
+        "algorithm_failures": 112,
+        "F1": 0.6235992110992112,
+        "EM": 0.5505505505505506,
+        "F1_all_planned_bounds": [
+          0.4153170745920747,
+          0.7493170745920745
+        ],
+        "statuses": {
+          "success": 887,
+          "algorithm_failure": 112,
+          "failed": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 445,
+          "algorithm_failures": 55,
+          "F1": 0.5609920274170275,
+          "EM": 0.464,
+          "F1_all_planned_bounds": [
+            0.5609920274170275,
+            0.5609920274170275
+          ],
+          "statuses": {
+            "success": 445,
+            "algorithm_failure": 55
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 442,
+          "algorithm_failures": 57,
+          "F1": 0.6863318600793551,
+          "EM": 0.6372745490981964,
+          "F1_all_planned_bounds": [
+            0.6849591963591964,
+            0.6869591963591966
+          ],
+          "statuses": {
+            "success": 442,
+            "algorithm_failure": 57,
+            "failed": 1
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 778,
+        "delta_F1": 0.13362216520329043,
+        "paired_stratified_95CI": [
+          0.10355929150439439,
+          0.16381802881874608
+        ],
+        "up": 180,
+        "equal": 534,
+        "down": 64,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.13986208111013684
+          },
+          "2wiki": {
+            "n": 497,
+            "delta_F1": 0.13009416445917807
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b06_decomp_bge\\e4a48f9408c111ebbd8bac1f6bf848b6\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k4_cot",
+          "k": 4,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "2wiki": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        },
+        "musique": {
+          "id": "k6_cot",
+          "k": 6,
+          "reader": "cot",
+          "max_steps": 8
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b07_hybrid_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 1000,
+        "missing": 500,
+        "successful_answers": 1000,
+        "algorithm_failures": 0,
+        "F1": 0.6148712527582494,
+        "EM": 0.508,
+        "F1_all_planned_bounds": [
+          0.4099141685054996,
+          0.7432475018388328
+        ],
+        "statuses": {
+          "success": 1000,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.649587517779778,
+          "EM": 0.506,
+          "F1_all_planned_bounds": [
+            0.649587517779778,
+            0.649587517779778
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5801549877367215,
+          "EM": 0.51,
+          "F1_all_planned_bounds": [
+            0.5801549877367215,
+            0.5801549877367215
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.17161738288727835,
+        "paired_stratified_95CI": [
+          0.13922535993868437,
+          0.20343526409180757
+        ],
+        "up": 232,
+        "equal": 481,
+        "down": 66,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.05562646698128428
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.23706607238443564
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "2wiki": {
+          "id": "k50_rrf60",
+          "per_retriever_k": 50,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        },
+        "musique": {
+          "id": "k20_rrf60",
+          "per_retriever_k": 20,
+          "rrf_constant": 60,
+          "final_k": 10,
+          "reader": "v1",
+          "output_tokens": 64
+        }
+      }
+    },
+    "primary_v2_with_missing_recovery/b08_qd_rerank": {
+      "overall": {
+        "planned": 1500,
+        "scorable": 999,
+        "missing": 501,
+        "successful_answers": 999,
+        "algorithm_failures": 0,
+        "F1": 0.6064833660765893,
+        "EM": 0.5065065065065065,
+        "F1_all_planned_bounds": [
+          0.4039179218070084,
+          0.7379179218070085
+        ],
+        "statuses": {
+          "success": 999,
+          "provider_content_rejected": 1,
+          "not_completed": 500
+        }
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 500,
+          "scorable": 499,
+          "missing": 1,
+          "successful_answers": 499,
+          "algorithm_failures": 0,
+          "F1": 0.6431262761596029,
+          "EM": 0.503006012024048,
+          "F1_all_planned_bounds": [
+            0.6418400236072836,
+            0.6438400236072837
+          ],
+          "statuses": {
+            "success": 499,
+            "provider_content_rejected": 1
+          }
+        },
+        "2wiki": {
+          "planned": 500,
+          "scorable": 500,
+          "missing": 0,
+          "successful_answers": 500,
+          "algorithm_failures": 0,
+          "F1": 0.5699137418137417,
+          "EM": 0.51,
+          "F1_all_planned_bounds": [
+            0.5699137418137417,
+            0.5699137418137415
+          ],
+          "statuses": {
+            "success": 500
+          }
+        },
+        "musique": {
+          "planned": 500,
+          "scorable": 0,
+          "missing": 500,
+          "successful_answers": 0,
+          "algorithm_failures": 0,
+          "F1": null,
+          "EM": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "statuses": {
+            "not_completed": 500
+          }
+        }
+      },
+      "paired_P02_minus_baseline": {
+        "common_scorable": 779,
+        "delta_F1": 0.18034106432067334,
+        "paired_stratified_95CI": [
+          0.15003934329133753,
+          0.21115473871000598
+        ],
+        "up": 229,
+        "equal": 502,
+        "down": 48,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 281,
+            "delta_F1": 0.06158776546927317
+          },
+          "2wiki": {
+            "n": 498,
+            "delta_F1": 0.247348447809114
+          },
+          "musique": {
+            "n": 0,
+            "delta_F1": null
+          }
+        },
+        "provisional_until_all1500_complete": true
+      },
+      "readonly_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3"
+      ],
+      "preselected_configs": {
+        "hotpotqa": {
+          "id": "standalone5",
+          "max_queries": 5
+        },
+        "2wiki": {
+          "id": "standalone3",
+          "max_queries": 3
+        },
+        "musique": {
+          "id": "standalone3",
+          "max_queries": 3
+        }
+      }
+    }
+  },
+  "costs_by_dataset": {
+    "hotpotqa": {
+      "logical_calls_selected_attempts": 1422,
+      "reused_calls_selected_attempts": 0,
+      "prompt_tokens_selected_attempts": 2014961,
+      "completion_tokens_selected_attempts": 23529,
+      "logical_retrievals_selected_attempts": 969,
+      "new_API_submissions": 1428,
+      "known_CNY": 1.6643100000000008,
+      "unreconciled_reserved_CNY": 0.20476000000000003,
+      "logical_cold_cost_CNY_selected_attempts": 1.6590268,
+      "planned": 500,
+      "coverage_successful_cases": 281,
+      "reader_full_gold_document_coverage_rate_successful_only": 0.7508896797153025
+    },
+    "2wiki": {
+      "logical_calls_selected_attempts": 2960,
+      "reused_calls_selected_attempts": 63,
+      "prompt_tokens_selected_attempts": 5212940,
+      "completion_tokens_selected_attempts": 47298,
+      "logical_retrievals_selected_attempts": 2173,
+      "new_API_submissions": 2990,
+      "known_CNY": 4.2649479999999995,
+      "unreconciled_reserved_CNY": 0.202872,
+      "logical_cold_cost_CNY_selected_attempts": 4.2649479999999995,
+      "planned": 500,
+      "coverage_successful_cases": 498,
+      "reader_full_gold_document_coverage_rate_successful_only": 0.9477911646586346
+    },
+    "musique": {
+      "logical_cold_cost_CNY_selected_attempts": 0.0,
+      "planned": 500,
+      "coverage_successful_cases": 0,
+      "reader_full_gold_document_coverage_rate_successful_only": null
+    }
+  },
+  "configuration_labels_kept_separate": true,
+  "new_API_calls": 0,
+  "caveats": [
+    "Incomplete cohorts are provisional; paired counts shown explicitly.",
+    "Original and integrity-repair baseline versions are separate; no best-answer mixing.",
+    "Method-specific readers/prompts are retained; this is not the unexecuted matched-final-prompt control.",
+    "Document coverage is over successful reader exposures, not official sentence or joint F1.",
+    "Token costs use recorded list-price estimates; actual bills unverified."
+  ]
+}

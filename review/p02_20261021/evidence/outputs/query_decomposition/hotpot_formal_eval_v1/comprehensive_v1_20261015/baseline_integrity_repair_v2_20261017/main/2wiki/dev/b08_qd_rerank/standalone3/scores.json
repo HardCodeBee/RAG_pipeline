@@ -1,0 +1,100 @@
+{
+  "dataset": "2wiki",
+  "reference_sha256": "462152f68292b7d30a2f2193c3bea97e6823f21e76c115e1af85a67e5db0cd4c",
+  "overall": {
+    "planned": 100,
+    "terminal_records": 20,
+    "available": 20,
+    "missing": 80,
+    "f1_available": 0.6727272727272726,
+    "em_available": 0.6,
+    "f1_all_planned_bounds": [
+      0.13454545454545452,
+      0.9345454545454546
+    ],
+    "statuses": {
+      "success": 20,
+      "unstarted": 80
+    }
+  },
+  "by_type": {
+    "bridge_comparison": {
+      "planned": 22,
+      "terminal_records": 4,
+      "available": 4,
+      "missing": 18,
+      "f1_available": 0.75,
+      "em_available": 0.75,
+      "f1_all_planned_bounds": [
+        0.13636363636363635,
+        0.9545454545454546
+      ],
+      "statuses": {
+        "success": 4,
+        "unstarted": 18
+      }
+    },
+    "comparison": {
+      "planned": 23,
+      "terminal_records": 4,
+      "available": 4,
+      "missing": 19,
+      "f1_available": 1.0,
+      "em_available": 1.0,
+      "f1_all_planned_bounds": [
+        0.17391304347826086,
+        1.0
+      ],
+      "statuses": {
+        "success": 4,
+        "unstarted": 19
+      }
+    },
+    "compositional": {
+      "planned": 42,
+      "terminal_records": 6,
+      "available": 6,
+      "missing": 36,
+      "f1_available": 0.3333333333333333,
+      "em_available": 0.3333333333333333,
+      "f1_all_planned_bounds": [
+        0.047619047619047616,
+        0.9047619047619048
+      ],
+      "statuses": {
+        "success": 6,
+        "unstarted": 36
+      }
+    },
+    "inference": {
+      "planned": 13,
+      "terminal_records": 6,
+      "available": 6,
+      "missing": 7,
+      "f1_available": 0.7424242424242423,
+      "em_available": 0.5,
+      "f1_all_planned_bounds": [
+        0.3426573426573426,
+        0.881118881118881
+      ],
+      "statuses": {
+        "success": 6,
+        "unstarted": 7
+      }
+    }
+  },
+  "returned_usage_cny": 0.0047384,
+  "reserved_unreconciled_cny": 0,
+  "logical_calls": 40,
+  "unsubmitted_trace_calls": 0,
+  "logical_cold_cost_cny": 0.034627599999999994,
+  "logical_cost_missing_calls": 0,
+  "logical_tokens": {
+    "prompt": 40707,
+    "completion": 1031
+  },
+  "metric": "native official Answer EM/F1; 2Wiki v1.1 entity aliases/demonyms; MuSiQue Ans answer_aliases",
+  "support_metric": "gold document coverage of passages actually shown; not official sentence-support or joint F1",
+  "hallucination_rate_evaluated": false,
+  "cost_pricing": "frozen Beijing tiered public list prices; actual bill not verified"
+}

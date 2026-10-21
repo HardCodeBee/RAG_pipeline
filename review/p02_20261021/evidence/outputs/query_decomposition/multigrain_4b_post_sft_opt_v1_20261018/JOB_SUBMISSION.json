@@ -1,0 +1,31 @@
+{
+  "job_id": "154018",
+  "submitted_utc": "2026-10-17T14:26:51.538282+00:00",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=multigrain-prompt-opt150",
+    "--time=01:00:00",
+    "--chdir=/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018",
+    "--output=/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018/prompt-opt-%j.out",
+    "--error=/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018/prompt-opt-%j.err",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/runtime/run_stage.slurm",
+    "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python",
+    "/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018/package_v001/run_prompts.py",
+    "--package",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+    "--experiment",
+    "/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018/package_v001",
+    "--output",
+    "/home/projects/u7830488/multigrain_4b_post_sft_opt_v1_20261018/results/development150"
+  ],
+  "package_sha256": "dd2049c076d6bce1031a07b3853eeb095f0ab36232b89bdc15c789865ac55e00",
+  "variants": [
+    "c01_adjacent_bridge",
+    "c02_full_description"
+  ],
+  "n_each": 150,
+  "checkpoint_step": 165,
+  "status": "submitted_not_yet_verified_running",
+  "api_calls": 0
+}

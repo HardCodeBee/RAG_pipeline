@@ -1,0 +1,12 @@
+{
+  "recorded_utc": "2026-10-18T05:03:09.271532+00:00",
+  "user_request": "持续跟踪；完整训练后，优于上一基线才进一步评估。",
+  "baseline": "T02, fixeddev60:47/60, Mu15/20. PilotR02:51/60 also reported, not silently overwritten.",
+  "change": "Existing non-lower total gate tightened to strictly higher47/60 before held-out120 submission. Other frozen safety gates and ranking unchanged.",
+  "scope": "First development decomposition pass comparison, then held-out120 decomposition evaluation. Downstream RAG F1 not inferred from decomposition scores.",
+  "full_model_outputs_viewed": 0,
+  "confirmation_scores_used_for_this_policy": false,
+  "preserve_all_models": true,
+  "notify": "Training starts, failure, completion, selection and evaluation result; avoid unchanged status spam.",
+  "hosted_automation_update_tool": "No callable matching tool found; active tracking in current chat and durable remote Slurm stages."
+}

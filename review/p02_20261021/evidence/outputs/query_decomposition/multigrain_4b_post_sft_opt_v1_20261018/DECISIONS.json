@@ -1,0 +1,60 @@
+{
+  "recorded_utc": "2026-10-17T14:31:56.562078+00:00",
+  "decisions": [
+    {
+      "id": "B00",
+      "action": "Freeze checkpoint165/v12 and original reviews; protect formal300 outputs from prompt selection."
+    },
+    {
+      "id": "D01",
+      "action": "Inspect all22 baseline failures; classify primary diagnostic cause and preserve F/S/C/U overlap, ambiguity and denominator."
+    },
+    {
+      "id": "P01",
+      "action": "Change only one nested-description example; do not append rules or change model."
+    },
+    {
+      "id": "P02",
+      "action": "Independently change only one full-description example; do not combine with P01 or add rules."
+    },
+    {
+      "id": "E01",
+      "action": "Compare each on all150 dev cases, retaining regressions and failed calls."
+    },
+    {
+      "id": "E02",
+      "action": "Pre-freeze fresh90; actual Mu quotas13/10/7 because only7 eligible primitive-disjoint four-hop cases remain; no weakening of component exclusion."
+    },
+    {
+      "id": "P03",
+      "action": "After c01 showed no complete repairs and new regressions, stage one additional revision with same frozen4B on44 diagnostic queries: all22 failures and22 fixed random controls. No feedback labels or answers enter model; expand to150 only if fixes exceed regressions."
+    },
+    {
+      "id": "D02",
+      "action": "Inspect6 heuristic source-year omissions in training labels; all concern final-target/other-operand scope, so make zero training-label changes and reject blanket keyword-retention filtering."
+    },
+    {
+      "id": "E03",
+      "action": "Finish all150 cases each: c01=125, c02=129 vsb00=128. Rejectc01; c02 is only a dev nominee, not promoted over immutable baseline before fresh confirmation."
+    },
+    {
+      "id": "E04",
+      "action": "c03 fixed revision44 repaired2 and regressed15; reject and do not expand, following the frozen gate."
+    },
+    {
+      "id": "E05",
+      "action": "Confirm dev nomineec02 once on pre-frozen fresh90 againstb00; no further prompt editing from these outputs. Job154022."
+    },
+    {
+      "id": "E06_CLOSE",
+      "action": "Complete one-time fresh90: both78/90, identical pass/nonpass; retain immutable b00. Close all prompt changes before reading sealed test300."
+    },
+    {
+      "id": "E07_TEST_REPORT",
+      "action": "After optimization close, finish original before-versus-SFT test300:157->236 passes; describe64 nonpasses without retuning on test outputs."
+    }
+  ],
+  "protocol_sha256": "c72463a190b62708a99e5422b1ca39378216d6651b4b2091c57e4532256cfe5f",
+  "api_calls": 0,
+  "last_updated_utc": "2026-10-17T15:17:17.960331+00:00"
+}

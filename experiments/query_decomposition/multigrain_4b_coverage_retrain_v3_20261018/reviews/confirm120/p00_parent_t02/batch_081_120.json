@@ -1,0 +1,52 @@
+{
+  "reviewed_indices": [
+    81,
+    120
+  ],
+  "method": "Current Codex literal query/output review, F/S/C/U, no candidate outputs read and no answers/passages consulted. Uncertainty is nonpass.",
+  "exceptions": {
+    "87": {
+      "verdict": "fail",
+      "dimensions": [
+        "C",
+        "U"
+      ],
+      "reason": "Reasks Ruggero Deodato being from Italy, already supplied, and omits whether he is a film director."
+    },
+    "95": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Role details in shared shows are added although the original requests actor identity; roles are an unrelated attribute for the exposed intersection."
+    },
+    "96": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Only asks the Barbadian singer; leaves the unnamed Zimbabwean songwriter and co-written song unexposed despite their nested descriptions."
+    },
+    "99": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Commits to Freebie and Bean as two independently searchable entities; original could be a combined title, and ambiguity must be preserved."
+    },
+    "104": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Asks the1975 album but skips the unknown band associated with Eric Stewart and Graham Gouldman."
+    },
+    "119": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+    }
+  }
+}

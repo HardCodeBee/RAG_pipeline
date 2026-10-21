@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "v6": {
+      "planned": 100,
+      "pass": 42,
+      "fail": 54,
+      "uncertain": 4,
+      "by_dataset": {
+        "2wiki": {
+          "planned": 33,
+          "pass": 19,
+          "fail": 14,
+          "uncertain": 0
+        },
+        "hotpotqa": {
+          "planned": 34,
+          "pass": 16,
+          "fail": 17,
+          "uncertain": 1
+        },
+        "musique": {
+          "planned": 33,
+          "pass": 7,
+          "fail": 23,
+          "uncertain": 3
+        }
+      },
+      "checks_overlapping": {
+        "C": 32,
+        "F": 18,
+        "S": 23,
+        "U": 15
+      },
+      "F_or_S_union": 35,
+      "minimum_dataset_pass_rate": 0.21212121212121213,
+      "mean_input_tokens": 1250.19
+    },
+    "v8": {
+      "planned": 100,
+      "pass": 62,
+      "fail": 34,
+      "uncertain": 4,
+      "by_dataset": {
+        "2wiki": {
+          "planned": 33,
+          "pass": 31,
+          "fail": 2,
+          "uncertain": 0
+        },
+        "hotpotqa": {
+          "planned": 34,
+          "pass": 15,
+          "fail": 18,
+          "uncertain": 1
+        },
+        "musique": {
+          "planned": 33,
+          "pass": 16,
+          "fail": 14,
+          "uncertain": 3
+        }
+      },
+      "checks_overlapping": {
+        "F": 15,
+        "U": 13,
+        "C": 19,
+        "S": 10
+      },
+      "F_or_S_union": 22,
+      "minimum_dataset_pass_rate": 0.4411764705882353,
+      "mean_input_tokens": 825.19
+    },
+    "v11": {
+      "planned": 100,
+      "pass": 56,
+      "fail": 40,
+      "uncertain": 4,
+      "by_dataset": {
+        "2wiki": {
+          "planned": 33,
+          "pass": 28,
+          "fail": 5,
+          "uncertain": 0
+        },
+        "hotpotqa": {
+          "planned": 34,
+          "pass": 14,
+          "fail": 19,
+          "uncertain": 1
+        },
+        "musique": {
+          "planned": 33,
+          "pass": 14,
+          "fail": 16,
+          "uncertain": 3
+        }
+      },
+      "checks_overlapping": {
+        "F": 12,
+        "C": 18,
+        "S": 22,
+        "U": 15
+      },
+      "F_or_S_union": 30,
+      "minimum_dataset_pass_rate": 0.4117647058823529,
+      "mean_input_tokens": 528.19
+    },
+    "v12": {
+      "planned": 100,
+      "pass": 65,
+      "fail": 31,
+      "uncertain": 4,
+      "by_dataset": {
+        "2wiki": {
+          "planned": 33,
+          "pass": 27,
+          "fail": 6,
+          "uncertain": 0
+        },
+        "hotpotqa": {
+          "planned": 34,
+          "pass": 21,
+          "fail": 12,
+          "uncertain": 1
+        },
+        "musique": {
+          "planned": 33,
+          "pass": 17,
+          "fail": 13,
+          "uncertain": 3
+        }
+      },
+      "checks_overlapping": {
+        "F": 12,
+        "C": 20,
+        "S": 7,
+        "U": 13
+      },
+      "F_or_S_union": 17,
+      "minimum_dataset_pass_rate": 0.5151515151515151,
+      "mean_input_tokens": 517.19
+    }
+  },
+  "selection_order": [
+    "v12",
+    "v8",
+    "v11",
+    "v6"
+  ],
+  "selected": "v12",
+  "denominator": 100,
+  "api_calls": 0,
+  "review_scope": "F/S/C/U direct current Codex nonblind review of all400 literal outputs; not independent human gold",
+  "checks": "F faithful relations/conditions/unknowns; S standalone; C useful bridge/property coverage; U distinct supporting purpose",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "raw_return_sha256": "71b60d95a447100452b143594fb7c3788ff7a75d24f527bee55c87d2e3b02c08"
+}

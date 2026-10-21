@@ -1,0 +1,14 @@
+[
+  {
+    "decision": "Full retrain requested by user; reuse old accepted rows plus frozen136 new rows.",
+    "initialization": "raw4B,new LoRA",
+    "data": "same3632 as pilot",
+    "new_parameters": "LR5e-5,uniform2epochs228updates; dev-only choice",
+    "confirmation": "No confirmation outputs viewed when plan frozen; existing pilot confirmation retained.",
+    "train_probe": {
+      "n": 150,
+      "still_in_train": 150,
+      "same_target": 150
+    }
+  }
+]

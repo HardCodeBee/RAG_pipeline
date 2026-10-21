@@ -1,0 +1,62 @@
+{
+  "baseline": {
+    "passed": 128,
+    "planned": 150
+  },
+  "candidates": [
+    {
+      "variant": "c01_adjacent_bridge",
+      "reviewed": 150,
+      "planned": 150,
+      "passed": 125,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 9,
+          "pass": 41
+        },
+        "2wiki": {
+          "pass": 50
+        },
+        "musique": {
+          "pass": 34,
+          "fail": 16
+        }
+      },
+      "fixes": [],
+      "regressions": [
+        35,
+        93,
+        109
+      ],
+      "review_sha256": "896e328bfa0196c27bb719d91d801f84cf4b4c145f4f0c85b2a1869e098d8af2"
+    },
+    {
+      "variant": "c02_full_description",
+      "reviewed": 150,
+      "planned": 150,
+      "passed": 129,
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 6,
+          "pass": 43,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 50
+        },
+        "musique": {
+          "pass": 36,
+          "fail": 14
+        }
+      },
+      "fixes": [
+        61,
+        105
+      ],
+      "regressions": [
+        35
+      ],
+      "review_sha256": "b87dcba6bdad13f1579feabc635e718680154fd439e964c558163ef76da50771"
+    }
+  ]
+}

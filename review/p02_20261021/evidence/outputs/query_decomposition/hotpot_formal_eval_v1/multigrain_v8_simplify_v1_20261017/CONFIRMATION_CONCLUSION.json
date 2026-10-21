@@ -1,0 +1,32 @@
+{
+  "utc": "2026-10-17T08:34:00.524975+00:00",
+  "development_selected_candidate": "v11",
+  "baseline_retained": "v8",
+  "default_RAG_or_training_updated": false,
+  "prompt_bytes": {
+    "v8": 3987,
+    "v11": 2412
+  },
+  "holdout_full60_passes": {
+    "v8": 41,
+    "v11": 41
+  },
+  "common_pair": {
+    "before": "v8",
+    "after": "v11",
+    "n": 58,
+    "before_pass": 41,
+    "after_pass": 40,
+    "gained": [
+      37,
+      52
+    ],
+    "lost": [
+      25,
+      55,
+      60
+    ]
+  },
+  "target90_met": false,
+  "interpretation": "Prompt substantially shorter, full planned pass counts tied; common58 loses one net pass and anaphora increases. Semantic improvement/noninferiority not established. Keep v8 as main version, v11 as frozen compact research candidate; no confirmation retuning."
+}

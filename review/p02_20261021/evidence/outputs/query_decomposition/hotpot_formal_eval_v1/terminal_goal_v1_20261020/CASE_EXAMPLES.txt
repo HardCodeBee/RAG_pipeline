@@ -1,0 +1,98 @@
+terminal_goal_v1：真实输出与输入等价性核查
+
+本报告为已返回128个case的中途快照：{'success': 123, 'incomplete': 3, 'algorithm_failure': 2}，不是完整300结果。
+全部已记录case：ordinary节点原样；goal原文包原样；prompt只有开头完整句输出约定及末尾Answer后缀两处变化；Original query、前置QA、原文、GOAL_RULE中间正文逐字相同。
+4个示例均另核对实际SQLite请求：相同模型/temperature/thinking/max128，消息与记录prompt一致。
+
+变化1：
+Return one concise factual sentence preserving the entity, relation and necessary qualifiers.
+→
+The Conclusion line must be one concise factual sentence preserving the entity, relation and necessary qualifiers.
+
+变化2：
+Answer:
+→
+Output exactly two lines with these labels:
+Conclusion: <the complete factual sentence>
+Final answer: <only the short answer to the Original question>
+In Final answer, preserve the full identifying name and required qualifiers. For a supported yes/no answer, use exactly Yes or No. If the final answer is unsupported, use Cannot be determined. Do not add any other text.
+
+真实案例：
+
+2wiki:74f39a760bde11eba7f7acde48001122
+When did Robert Bertie, 3Rd Earl Of Lindsey's father die?
+完整分解：["Who is Robert Bertie, 3Rd Earl Of Lindsey's father?"]
+ordinary回答：
+Who is Robert Bertie, 3Rd Earl Of Lindsey's father?
+Robert Bertie, 3rd Earl of Lindsey's father was Montagu Bertie, 2nd Earl of Lindsey.
+旧goal：Montagu Bertie, 2nd Earl of Lindsey, died on 25 July 1666.
+旧final：25 July 1666
+新单次goal完整返回：
+Conclusion: Montagu Bertie, 2nd Earl of Lindsey, father of Robert Bertie, 3rd Earl of Lindsey, died on 25 July 1666.
+Final answer: 25 July 1666
+新提取短答：25 July 1666
+F1：旧=1.0；新=1.0
+新状态：success / stop
+观察：同答例：ordinary父亲身份回答及goal原文完全复用；旧goal完整日期结论＋旧final日期，改为新单调用两行日期结论＋日期短答，F1仍1。
+旧来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\74f39a760bde11eba7f7acde48001122.json
+新来源：outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\cases\2wiki\terminal_goal\74f39a760bde11eba7f7acde48001122.json
+
+2wiki:4140c991086b11ebbd5fac1f6bf848b6
+Do both films Apache Woman and Dime With A Halo have the directors from the same country?
+完整分解：["Who directed the film Apache Woman?", "Who directed the film Dime With A Halo?", "What country is the director of the film Apache Woman from?", "What country is the director of the film Dime With A Halo from?"]
+ordinary回答：
+Who directed the film Apache Woman?
+Apache Woman was directed by Roger Corman.
+Who directed the film Dime With A Halo?
+Dime With A Halo was directed by Boris Sagal.
+What country is the director of the film Apache Woman from?
+Roger Corman is from the United States.
+What country is the director of the film Dime With A Halo from?
+Boris Sagal was a Ukrainian-American director.
+旧goal：Roger Corman is from the United States, and Boris Sagal was a Ukrainian-American director, so their countries of origin are not the same.
+旧final：No
+新单次goal完整返回：
+Conclusion: Roger Corman, director of Apache Woman, was from the United States, and Boris Sagal, director of Dime With A Halo, was a Ukrainian-American director, meaning both directors were from the United States.  
+Final answer: Yes
+新提取短答：Yes
+F1：旧=0；新=1.0
+新状态：success / stop
+观察：上升例：相同事实输入下，旧goal将Ukrainian-American与American判为不同并输出No；新Conclusion判为同国籍，Final answer Yes，F1由0到1。观察到判断改变，不能把它称作纯粹换格式后的等价输出。
+旧来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\4140c991086b11ebbd5fac1f6bf848b6.json
+新来源：outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\cases\2wiki\terminal_goal\4140c991086b11ebbd5fac1f6bf848b6.json
+
+2wiki:f37818400bd911eba7f7acde48001122
+Where did Elisabeth Magdalena Of Pomerania's husband die?
+完整分解：["Who was Elisabeth Magdalena Of Pomerania's husband?"]
+ordinary回答：
+Who was Elisabeth Magdalena Of Pomerania's husband?
+Elisabeth Magdalena of Pomerania's husband was Friedrich Kettler, Duke of Courland.
+旧goal：Friedrich Kettler died in Mitau (now Jelgava).
+旧final：Mitau
+新单次goal完整返回：
+Conclusion: Friedrich Kettler, Elisabeth Magdalena of Pomerania's husband, died in Mitau (now Jelgava), as indicated by his birthplace listed in the passage and the absence of any conflicting death location; the passage states he was born "25 November 1569 in Mitau (now Jelgava)" and died "17 August 1642", but does not explicitly state where he died—however, given he ruled Courland continuously until his death in 1642 and no other location is cited for his death, and Mitau/Jelg
+新提取短答：
+F1：旧=1.0；新=0.0
+新状态：algorithm_failure / length
+观察：下降例：新Conclusion展开长篇推断到128token，缺失Final answer标签；finish_reason=length，按冻结格式政策算法失败计0。原goal及final金标Mitau为1，但当前原文未明确给出死亡地点，不能说长解释建立了可靠证据。
+旧来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\f37818400bd911eba7f7acde48001122.json
+新来源：outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\cases\2wiki\terminal_goal\f37818400bd911eba7f7acde48001122.json
+
+2wiki:16a91a500bb011ebab90acde48001122
+Who is the grandchild of Stefan Zamoyski?
+完整分解：[]
+ordinary回答：
+旧goal：Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.
+旧final：Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski
+新单次goal完整返回：
+Conclusion: Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.  
+Final answer: Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy
+新提取短答：
+F1：旧=0.35294117647058826；新=0.0
+新状态：algorithm_failure / length
+观察：下降例：旧goal80输出token＋旧final49token已129，未含新标签。新两行重复长名单时128被截断；虽然出现Final answer标签，仍因length按冻结规则计0。这是输出契约与长度上限风险，非新的检索错误。
+旧来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\16a91a500bb011ebab90acde48001122.json
+新来源：outputs\query_decomposition\hotpot_formal_eval_v1\terminal_goal_v1_20261020\rounds\r000\cases\2wiki\terminal_goal\16a91a500bb011ebab90acde48001122.json
+
+案例选择为事后说明，不推断总体收益或错误率。完整prompt、diff、原文包和调用身份见同名JSON。
+未追加API、检索、重试或源代码修改。

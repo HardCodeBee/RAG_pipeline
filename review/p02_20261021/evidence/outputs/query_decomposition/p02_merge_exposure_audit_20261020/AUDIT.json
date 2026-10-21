@@ -1,0 +1,158 @@
+{
+  "summary": {
+    "scope": "Frozen development300,100/dataset; all p02 successful. No new model/retrieval requests.",
+    "related_definition": "Dataset annotated original-query supporting documents, exact corpus doc IDs; title-based sensitivity also provided. These labels are offline diagnostics only. Not exhaustive semantic usefulness or per-child relevance.",
+    "matching": "Hotpot BEIR positive qrels; 2Wiki sha256(title + newline + context joined sentence text), supporting titles; Mu sha256(title + newline + paragraph_text), is_supporting. Title sensitivity NFKC casefold whitespace.",
+    "verified_p02_nodes_equal_g01_all300": true,
+    "verified_all_original_rewritten_reader_packets_equal_B0_all300": true,
+    "all": {
+      "cases_total": 300,
+      "nodes_total": 887,
+      "rewrite_nodes": 409,
+      "rewrite_nodes_with_any_dropped_doc": 388,
+      "rewrite_nodes_with_gold_exact": 339,
+      "rewrite_nodes_with_gold_title": 350,
+      "nodes_lost_gold_exact": 19,
+      "nodes_lost_gold_title": 19,
+      "gold_exact_occurrences_retrieved": 456,
+      "gold_exact_occurrences_lost": 19,
+      "gold_exact_lost_same_title_still_in_reader": 4,
+      "gold_exact_lost_same_title_absent_from_reader": 15,
+      "gold_exact_lost_present_in_original_top10": 0,
+      "gold_exact_kept_and_also_in_original_top10": 257,
+      "gold_exact_lost_global_unread": 14,
+      "gold_exact_lost_global_title_unread": 10,
+      "lost_exact_rank_histogram": {
+        "9": 5,
+        "10": 4,
+        "6": 5,
+        "7": 4,
+        "8": 1
+      },
+      "case_counts": {
+        "rew_support_exact_any": 228,
+        "rew_support_title_any": 232,
+        "lost_exact_any": 17,
+        "lost_title_any": 16,
+        "lost_exact_no_same_title_any": 13,
+        "lost_exact_globally_unread_any": 12,
+        "lost_title_globally_unread_any": 8
+      }
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "cases_total": 100,
+        "nodes_total": 255,
+        "rewrite_nodes": 90,
+        "rewrite_nodes_with_any_dropped_doc": 85,
+        "rewrite_nodes_with_gold_exact": 75,
+        "rewrite_nodes_with_gold_title": 75,
+        "nodes_lost_gold_exact": 3,
+        "nodes_lost_gold_title": 3,
+        "gold_exact_occurrences_retrieved": 116,
+        "gold_exact_occurrences_lost": 3,
+        "gold_exact_lost_same_title_still_in_reader": 0,
+        "gold_exact_lost_same_title_absent_from_reader": 3,
+        "gold_exact_lost_present_in_original_top10": 0,
+        "gold_exact_kept_and_also_in_original_top10": 89,
+        "gold_exact_lost_global_unread": 3,
+        "gold_exact_lost_global_title_unread": 3,
+        "lost_exact_rank_histogram": {
+          "10": 1,
+          "8": 1,
+          "6": 1
+        },
+        "case_counts": {
+          "rew_support_exact_any": 60,
+          "rew_support_title_any": 60,
+          "lost_exact_any": 2,
+          "lost_title_any": 2,
+          "lost_exact_no_same_title_any": 2,
+          "lost_exact_globally_unread_any": 2,
+          "lost_title_globally_unread_any": 2
+        }
+      },
+      "2wiki": {
+        "cases_total": 100,
+        "nodes_total": 324,
+        "rewrite_nodes": 152,
+        "rewrite_nodes_with_any_dropped_doc": 137,
+        "rewrite_nodes_with_gold_exact": 142,
+        "rewrite_nodes_with_gold_title": 142,
+        "nodes_lost_gold_exact": 4,
+        "nodes_lost_gold_title": 4,
+        "gold_exact_occurrences_retrieved": 192,
+        "gold_exact_occurrences_lost": 4,
+        "gold_exact_lost_same_title_still_in_reader": 0,
+        "gold_exact_lost_same_title_absent_from_reader": 4,
+        "gold_exact_lost_present_in_original_top10": 0,
+        "gold_exact_kept_and_also_in_original_top10": 89,
+        "gold_exact_lost_global_unread": 2,
+        "gold_exact_lost_global_title_unread": 2,
+        "lost_exact_rank_histogram": {
+          "9": 1,
+          "10": 2,
+          "7": 1
+        },
+        "case_counts": {
+          "rew_support_exact_any": 85,
+          "rew_support_title_any": 85,
+          "lost_exact_any": 3,
+          "lost_title_any": 3,
+          "lost_exact_no_same_title_any": 3,
+          "lost_exact_globally_unread_any": 1,
+          "lost_title_globally_unread_any": 1
+        }
+      },
+      "musique": {
+        "cases_total": 100,
+        "nodes_total": 308,
+        "rewrite_nodes": 167,
+        "rewrite_nodes_with_any_dropped_doc": 166,
+        "rewrite_nodes_with_gold_exact": 122,
+        "rewrite_nodes_with_gold_title": 133,
+        "nodes_lost_gold_exact": 12,
+        "nodes_lost_gold_title": 12,
+        "gold_exact_occurrences_retrieved": 148,
+        "gold_exact_occurrences_lost": 12,
+        "gold_exact_lost_same_title_still_in_reader": 4,
+        "gold_exact_lost_same_title_absent_from_reader": 8,
+        "gold_exact_lost_present_in_original_top10": 0,
+        "gold_exact_kept_and_also_in_original_top10": 79,
+        "gold_exact_lost_global_unread": 9,
+        "gold_exact_lost_global_title_unread": 5,
+        "lost_exact_rank_histogram": {
+          "6": 4,
+          "10": 1,
+          "7": 3,
+          "9": 4
+        },
+        "case_counts": {
+          "rew_support_exact_any": 83,
+          "rew_support_title_any": 87,
+          "lost_exact_any": 12,
+          "lost_title_any": 11,
+          "lost_exact_no_same_title_any": 8,
+          "lost_exact_globally_unread_any": 9,
+          "lost_title_globally_unread_any": 5
+        }
+      }
+    },
+    "new_API_calls": 0,
+    "new_index_searches": 0
+  },
+  "union_input_size": {
+    "changed_nodes": 409,
+    "mean_unique_union_docs": 17.5158924205379,
+    "min_unique_union_docs": 10,
+    "max_unique_union_docs": 20,
+    "fixed_history_old_passage_text_chars": 2217352,
+    "fixed_history_union_passage_text_chars": 3862463,
+    "passage_text_char_ratio": 1.7419259549228088,
+    "scope": "Offline fixed packets only. Not tokenizer/API cost estimate, not new answers or F1."
+  },
+  "frozen_configuration_changed": false,
+  "new_API_calls": 0,
+  "new_index_searches": 0,
+  "restored_documents_final_F1_tested": false
+}

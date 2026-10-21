@@ -1,0 +1,14 @@
+{
+  "stage": "c03_one_fixed_revision_diagnostic44",
+  "n": 44,
+  "baseline": "checkpoint165/v12 literal draft; same frozen checkpoint performs one additional pass",
+  "selection": "All22 frozen dev failures plus22 fixed random baseline passes; deliberately diagnostic, not a representative accuracy estimate.",
+  "queries_sha256": "e5805394a4080e910382331263c7d52acfbd86ac50edb60e5c34aba92eaf8f81",
+  "prompt_sha256": "b0335e3e230706d45a71604b581f4c610911b4b8866f6884b422e1b5236028db",
+  "checkpoint_manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192",
+  "gate": "Only if fixes exceed regressions on the44, expand to all150 frozen dev queries before selecting for fresh90 confirmation.",
+  "no_ground_truth_or_verdict_in_model_inputs": true,
+  "formal300_excluded": true,
+  "no_retrieval_loop": true,
+  "api_calls": 0
+}

@@ -1,0 +1,62 @@
+{
+  "utc": "2026-10-20T00:47:24.593827+00:00",
+  "event": "partial_missing_retained",
+  "complete_150_pairs": false,
+  "parent": {
+    "planned": 150,
+    "scorable": 149,
+    "missing": 1,
+    "F1_available": 0.6693123058894871,
+    "EM_available": 0.5369127516778524,
+    "F1_full": null,
+    "EM_full": null,
+    "F1_full_bounds": [
+      0.6648502238502239,
+      0.6715168905168906
+    ],
+    "statuses": {
+      "success": 149,
+      "incomplete": 1
+    }
+  },
+  "candidate": {
+    "planned": 150,
+    "scorable": 149,
+    "missing": 1,
+    "F1_available": 0.6719968696478763,
+    "EM_available": 0.5369127516778524,
+    "F1_full": null,
+    "EM_full": null,
+    "F1_full_bounds": [
+      0.6675168905168904,
+      0.6741835571835572
+    ],
+    "statuses": {
+      "success": 149,
+      "unstarted": 1
+    }
+  },
+  "paired": {
+    "n_matched": 149,
+    "parent_F1": 0.6693123058894871,
+    "candidate_F1": 0.6719968696478763,
+    "delta_F1": 0.002684563758389262,
+    "up": 1,
+    "tie": 148,
+    "down": 0,
+    "bootstrap": "5000 paired resamples within dataset, seed20261020; one-time confirmation interval",
+    "paired95": [
+      0.0,
+      0.008053691275167786
+    ]
+  },
+  "budget": {
+    "global_occupied_cny": 221.9798376,
+    "global_known_cny": 186.5695208,
+    "global_reserved_cny": 35.4103168,
+    "fresh_known_cny": 1.4663336,
+    "fresh_reserved_cny": 0.0098792,
+    "fresh_submissions": 1052,
+    "cap_cny": 300
+  }
+}

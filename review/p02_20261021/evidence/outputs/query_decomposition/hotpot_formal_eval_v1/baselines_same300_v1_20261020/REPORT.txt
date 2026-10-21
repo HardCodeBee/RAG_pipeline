@@ -1,0 +1,38 @@
+Same300: B0, integrated, S02, Top10-v1 and ReAct-k10-s5
+Common scorable=300/300; 100 questions per dataset.
+Frozen old trajectories remain byte-identical. Whole-method comparison, not equal-cost or same-final-prompt ablation.
+
+method	n	F1%	HotpotQA F1%	2Wiki F1%	MuSiQue F1%
+b03_react_dense	300	68.2710	76.5758	92.4444	35.7928
+B0_legacy_multigrain_R02	300	67.3647	77.1819	89.1377	35.7745
+R02_C08_c02_r1p1_integrated_candidate	300	66.5486	75.5078	87.8214	36.3165
+s02_child4	300	66.0411	74.8011	81.9271	41.3951
+b00_rag_top10_v1	300	50.5942	66.2071	57.7783	27.7972
+
+Availability and costs:
+B0_legacy_multigrain_R02: available=300/300, states={'success': 300}, standalone returned usage CNY=2.302324, current-extension new submissions=0, current-extension marginal known CNY=0.000000, current-extension unresolved reserves CNY=0.000000
+R02_C08_c02_r1p1_integrated_candidate: available=300/300, states={'success': 299, 'success_truncated': 1}, standalone returned usage CNY=2.724204, current-extension new submissions=0, current-extension marginal known CNY=0.000000, current-extension unresolved reserves CNY=0.000000
+s02_child4: available=300/300, states={'success': 300}, standalone returned usage CNY=2.204618, current-extension new submissions=0, current-extension marginal known CNY=0.000000, current-extension unresolved reserves CNY=0.000000
+b00_rag_top10_v1: available=300/300, states={'success': 299, 'success_truncated': 1}, standalone returned usage CNY=0.371901, current-extension new submissions=282, current-extension marginal known CNY=0.352991, current-extension unresolved reserves CNY=0.000000
+b03_react_dense: available=300/300, states={'success': 277, 'algorithm_failure': 22, 'success_truncated': 1}, standalone returned usage CNY=2.649616, current-extension new submissions=997, current-extension marginal known CNY=2.649616, current-extension unresolved reserves CNY=0.004680
+
+Paired comparisons:
+B0_legacy_multigrain_R02 -> R02_C08_c02_r1p1_integrated_candidate: n=300, delta pp=-0.8161307990255361, 95% CI=[-3.544754507188718, 1.988038295281716], up/tie/down=26/248/26
+B0_legacy_multigrain_R02 -> s02_child4: n=300, delta pp=-1.323586737766304, 95% CI=[-4.826993858580933, 2.1151104423468974], up/tie/down=38/224/38
+B0_legacy_multigrain_R02 -> b00_rag_top10_v1: n=300, delta pp=-16.77047040699229, 95% CI=[-21.58105862471245, -12.087951572354152], up/tie/down=34/176/90
+B0_legacy_multigrain_R02 -> b03_react_dense: n=300, delta pp=0.9063390410758836, 95% CI=[-2.2859832589437854, 4.0944011991906715], up/tie/down=45/221/34
+R02_C08_c02_r1p1_integrated_candidate -> s02_child4: n=300, delta pp=-0.5074559387407681, 95% CI=[-3.9311326511036264, 2.934544682656522], up/tie/down=36/229/35
+R02_C08_c02_r1p1_integrated_candidate -> b00_rag_top10_v1: n=300, delta pp=-15.954339607966752, 95% CI=[-20.671579344376102, -11.287929089950667], up/tie/down=34/183/83
+R02_C08_c02_r1p1_integrated_candidate -> b03_react_dense: n=300, delta pp=1.722469840101419, 95% CI=[-1.912792944871892, 5.3351748283393015], up/tie/down=44/225/31
+s02_child4 -> b00_rag_top10_v1: n=300, delta pp=-15.446883669225981, 95% CI=[-20.10876363795998, -10.843045857400705], up/tie/down=24/199/77
+s02_child4 -> b03_react_dense: n=300, delta pp=2.229925778842187, 95% CI=[-1.5826223679571205, 6.106526801372001], up/tie/down=48/214/38
+b00_rag_top10_v1 -> b03_react_dense: n=300, delta pp=17.67680944806817, 95% CI=[13.086650896738325, 22.470290920915545], up/tie/down=87/187/26
+
+{"known_usage_cny": 176.90577439999998, "unknown_reserves_cny": 35.3933032, "occupied_cny": 212.29907759999998, "remaining_cny": 87.70092240000002, "extension_occupied_cny": 3.0072872, "cap_cny": 300, "invoice_verified": false}
+Existing300 has already been used for decomposition diagnostics; not untouched holdout.
+Shared-resource local ReAct adaptation with BGE Search and no Wiki Lookup; not original-paper reproduction.
+Frozen64/512 generation limits are retained; length failures are disclosed, not silently propagated.
+
+Final cumulative ledger snapshot: {"known_usage_cny": 177.04557559999998, "unknown_reserves_cny": 35.3915928, "occupied_cny": 212.43716839999996, "remaining_cny": 87.56283160000002, "extension_occupied_cny": 3.0072872, "cap_cny": 300, "invoice_verified": false}
+Current-extension known usage CNY=3.0026071999999995, unresolved reserves CNY=0.00468
+Incremental extension costs are isolated by method namespace. Global ledger includes all other tasks and unresolved historical requests; do not attribute its full change to this evaluation.

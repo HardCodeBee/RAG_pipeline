@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-19T22:36:15.292217+00:00",
+  "cases": 300,
+  "counts": {
+    "identical_ordinary_nodes": 300,
+    "ancestor_source_resolves_to_P1_with_B0_nodes": 300,
+    "rebuilt_parent_final_exact": 300,
+    "actual_parent_final_receipt_payload_exact": 300,
+    "original_retrieval_from_original_B0_source": 300,
+    "g02_only_replaces_goal_rule": 300,
+    "p02_only_adds_two_role_headers": 300,
+    "s03_only_adds_existing_final_check": 300,
+    "successful_cached_payload_hash_verified": 2674,
+    "all_cases_passed": 300
+  },
+  "failures": [],
+  "static_checks": {
+    "run_case_uses_deepcopy_g01_nodes": true,
+    "run_case_uses_original_base_retrieval": true,
+    "retry_reads_old_same_dataset_arm_DB": true,
+    "retry_filters_same_qid_and_success": true,
+    "cache_receipt_checks_expected_full_payload": true,
+    "new_round_preserves_unknown_reserves": true
+  },
+  "source_sha256": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef"
+  },
+  "new_API_calls": 0,
+  "new_retrieval_calls": 0,
+  "prepare_invoked": false,
+  "scope": "Existing300 real parent/prefix/receipt reconstruction plus static retry review. Does not validate live API recovery."
+}

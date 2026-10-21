@@ -1,0 +1,1917 @@
+多粒度子问题＋完整句＋双路检索：扩展至60题
+状态：全部计划执行已结束；服务缺答见分母
+
+设置：每数据集保留旧8题，新增12题；新36题按类型分层固定随机抽取，不按历史成败选题。旧24题依然是历史F1端点各半的诊断样本。
+新增参考分解在API调用前按原query编写和冻结；自包含问句、完整句向后传递、goal检索回答、另答最终原query。提示词、检索资源、两路交替去重Top10和最终原query全部Top10均沿用原试验。
+仅执行新增36题；旧24题原样复用。Hotpot固定原始子问题调用既有retrieve_many预取，两条控制问句Top10顺序一致。2Wiki批量校验发现两个近似同分文档顺序互换，在发送该数据集任何候选回答请求前停止；归档批量结果，2Wiki与Mu改回上一轮逐条检索，新命名空间内控制顺序均通过。动态改写始终在线。
+主对照为冻结s02_child4与ReAct(k10,max_search5)。Mu新12题补跑原S02；ReAct复用52条已完成成绩，仅补跑剩余8题；不重新选参数或改提示词。
+已知改写越界等问题本轮不修复。问题式参考分解假定正确，不是独立人工金标准。歧义原题保持原句，未根据标准答案改写。
+
+Answer F1（%，四组共同可评分题目）
+样本	共同题数/计划	冻结S02	ReAct	单路	双路
+新增36	35/36	66.65	62.99	43.92	63.84
+  各组实际可评分题数(S02/ReAct/单路/双路)：35/36/35/35;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对35题，共同题均值=63.84 vs 43.92；F1差19.92个百分点，上/平/降=9/26/0；探索性95%区间=[11.36, 29.46]个百分点
+  双路vsfrozen_s02：配对35题，共同题均值=63.84 vs 66.65；F1差-2.80个百分点，上/平/降=4/25/6；探索性95%区间=[-13.17, 8.09]个百分点
+  双路vsreact：配对35题，共同题均值=63.84 vs 62.99；F1差0.85个百分点，上/平/降=5/25/5；探索性95%区间=[-10.29, 11.36]个百分点
+旧24	24/24	50.00	63.89	54.92	67.36
+  各组实际可评分题数(S02/ReAct/单路/双路)：24/24/24/24;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对24题，共同题均值=67.36 vs 54.92；F1差12.44个百分点，上/平/降=4/19/1；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsfrozen_s02：配对24题，共同题均值=67.36 vs 50.00；F1差17.36个百分点，上/平/降=5/18/1；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsreact：配对24题，共同题均值=67.36 vs 63.89；F1差3.47个百分点，上/平/降=5/16/3；探索性95%区间=不对混合诊断样本作总体区间声明
+合计60	59/60	59.87	63.35	48.40	65.27
+  各组实际可评分题数(S02/ReAct/单路/双路)：59/60/59/59;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对59题，共同题均值=65.27 vs 48.40；F1差16.88个百分点，上/平/降=13/45/1；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsfrozen_s02：配对59题，共同题均值=65.27 vs 59.87；F1差5.40个百分点，上/平/降=9/43/7；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsreact：配对59题，共同题均值=65.27 vs 63.35；F1差1.92个百分点，上/平/降=10/41/8；探索性95%区间=不对混合诊断样本作总体区间声明
+新增/hotpotqa	12/12	70.12	74.29	52.36	59.17
+  各组实际可评分题数(S02/ReAct/单路/双路)：12/12/12/12;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对12题，共同题均值=59.17 vs 52.36；F1差6.81个百分点，上/平/降=2/10/0；探索性95%区间=[0.0, 17.92]个百分点
+  双路vsfrozen_s02：配对12题，共同题均值=59.17 vs 70.12；F1差-10.95个百分点，上/平/降=2/7/3；探索性95%区间=[-35.0, 14.05]个百分点
+  双路vsreact：配对12题，共同题均值=59.17 vs 74.29；F1差-15.12个百分点，上/平/降=1/8/3；探索性95%区间=[-40.12, 5.71]个百分点
+新增/2wiki	12/12	82.00	85.62	48.07	82.69
+  各组实际可评分题数(S02/ReAct/单路/双路)：12/12/12/12;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对12题，共同题均值=82.69 vs 48.07；F1差34.62个百分点，上/平/降=5/7/0；探索性95%区间=[21.03, 50.8]个百分点
+  双路vsfrozen_s02：配对12题，共同题均值=82.69 vs 82.00；F1差0.69个百分点，上/平/降=1/10/1；探索性95%区间=[-3.81, 5.88]个百分点
+  双路vsreact：配对12题，共同题均值=82.69 vs 85.62；F1差-2.93个百分点，上/平/降=1/10/1；探索性95%区间=[-11.82, 3.03]个百分点
+新增/musique	11/12	46.10	25.97	30.19	48.38
+  各组实际可评分题数(S02/ReAct/单路/双路)：11/12/11/11;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对11题，共同题均值=48.38 vs 30.19；F1差18.18个百分点，上/平/降=2/9/0；探索性95%区间=[0.0, 36.36]个百分点
+  双路vsfrozen_s02：配对11题，共同题均值=48.38 vs 46.10；F1差2.27个百分点，上/平/降=1/8/2；探索性95%区间=[-13.64, 22.73]个百分点
+  双路vsreact：配对11题，共同题均值=48.38 vs 25.97；F1差22.40个百分点，上/平/降=3/7/1；探索性95%区间=[3.9, 45.14]个百分点
+合计/hotpotqa	20/20	62.07	77.90	56.42	65.50
+  各组实际可评分题数(S02/ReAct/单路/双路)：20/20/20/20;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对20题，共同题均值=65.50 vs 56.42；F1差9.08个百分点，上/平/降=3/17/0；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsfrozen_s02：配对20题，共同题均值=65.50 vs 62.07；F1差3.43个百分点，上/平/降=4/13/3；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsreact：配对20题，共同题均值=65.50 vs 77.90；F1差-12.40个百分点，上/平/降=2/14/4；探索性95%区间=不对混合诊断样本作总体区间声明
+合计/2wiki	20/20	69.20	74.71	48.84	77.95
+  各组实际可评分题数(S02/ReAct/单路/双路)：20/20/20/20;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对20题，共同题均值=77.95 vs 48.84；F1差29.11个百分点，上/平/降=7/12/1；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsfrozen_s02：配对20题，共同题均值=77.95 vs 69.20；F1差8.75个百分点，上/平/降=3/15/2；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsreact：配对20题，共同题均值=77.95 vs 74.71；F1差3.24个百分点，上/平/降=3/15/2；探索性95%区间=不对混合诊断样本作总体区间声明
+合计/musique	19/20	47.74	36.09	39.49	51.69
+  各组实际可评分题数(S02/ReAct/单路/双路)：19/20/19/19;各自可用均值和全计划上下界保存在RESULTS.json。
+  双路vssingle：配对19题，共同题均值=51.69 vs 39.49；F1差12.20个百分点，上/平/降=3/16/0；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsfrozen_s02：配对19题，共同题均值=51.69 vs 47.74；F1差3.95个百分点，上/平/降=2/15/2；探索性95%区间=不对混合诊断样本作总体区间声明
+  双路vsreact：配对19题，共同题均值=51.69 vs 36.09；F1差15.60个百分点，上/平/降=5/12/2；探索性95%区间=不对混合诊断样本作总体区间声明
+
+主要结果解释：
+新增36题的共同可评分35题：双路63.84%，冻结S02为66.65%，ReAct为62.99%，单路43.92%。双路减S02为-2.80个百分点，减ReAct为+0.85个百分点，两个探索性区间均跨0。没有证据支持将冻结最佳版本更新为新方案。
+双路减单路为+19.92个百分点，9题上升、26题不变、0题下降，探索性95%区间[11.36,29.46]个百分点。可确认本轮参考分解下，改写加额外检索改善了独立子问题单路方案；不能把该收益等同于对S02/ReAct的优势。
+合计60题共同59题的双路均值65.27%，高于S02的59.87%和ReAct的63.35%；其中含旧24题的成败端点定向抽样，不能仅用这一混合均值声称稳定总体优势。
+一题2hop__124412_402641在S02、单路与双路遇到提供方内容审核拒绝，保留计划分母，不计为F1零。ReAct对这题为动作协议失败，按其原协议计0；四组共同比较仍排除此题。
+4hop1__151650_5274_458768_33637的双路最终响应返回了64token并因length截断。原包装器要求stop而未保存题级文件，现仅从相同payload的已返回记录离线重建，按原始文本计算F1=0，保留success_truncated状态；没有新调用、补写答案或修改提示词。恢复证据见OFFLINE_FINAL_RECOVERY.json，原包装器异常也保留。
+置信区间为新增可评分题在数据集/类型层内的一万次配对bootstrap，属于小样本、条件性的探索性区间。
+
+缺失答案保留分母，不计为0；RESULTS.json另存全计划F1上下界。主比较应优先看新增36题的同题配对结果，不能用不同可用题数的均值直接相减。
+S02使用真实4B分解；新两组使用预先编写的参考分解，差异并非仅一个执行组件。双路vs单路也是增加调用和检索预算后的比较。
+
+已有额外历史参照（仅可用题，不与完整60直接排名）
+top10_v1: F1=51.32%，可用52/60，缺失8
+
+实际痕迹核查：
+{
+  "dataset": "hotpotqa",
+  "qid": "5a7ca95b55429935c91b5287",
+  "observation": "Correct birth/death facts and even correct computed lifespans coexist with a contradictory winner in the goal answer; final follows the wrong winner.",
+  "question": "Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?",
+  "step1": "Owen Wister was born on July 14, 1860, and died on July 21, 1938.",
+  "step2": "Lucy Maud Montgomery was born on November 30, 1874, and died on April 24, 1942.",
+  "dual_goal_actual": "Lucy Maud Montgomery lived longer than Owen Wister, as she lived from November 30, 1874, to April 24, 1942 (67 years, 4 months, 25 days), while Owen Wister lived from July 14, 1860, to July 21, 1938 (78 years, 7 days).",
+  "dual_final": "Lucy Maud Montgomery",
+  "s02_final": "Owen Wister",
+  "react_final": "Owen Wister",
+  "limits": "Observed final agrees with the internally inconsistent goal conclusion; no removal-of-goal ablation has been performed to establish causal necessity. Full-sentence propagation alone did not ensure a valid comparison."
+}
+{
+  "dataset": "hotpotqa",
+  "qid": "5a89a02955429946c8d6e975",
+  "observation": "Homonymous film versions are retrieved together; the child selects the1999 title while the benchmark support identifies the2007 documentary.",
+  "retained_versions": [
+    "The Climb (2002 film)",
+    "The Climb (1999 film)",
+    "The Climb (2007 film)"
+  ],
+  "selected_child_year": "1999",
+  "other_film_year": "2004",
+  "dual_final": "The Climb",
+  "gold": "Voices of Iraq",
+  "limits": "The original query gives only the shared title. This is a benchmark entity-alignment/ambiguity issue, not evidence that1999 is fabricated or that the intended source was displaced."
+}
+
+逐题输出（完整提示词、文档、前置问答和响应见各自cases与api目录；旧24题见原pilot目录）
+
+hotpotqa / 5ab3eeb5554299233954fff4 / old24_outcome_selected_diagnostic
+原query：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+标准答案（只用于离线评分）：2011
+S02：2004；F1=0.0；状态=success
+ReAct：2011；F1=1.0；状态=success
+single_original：The year cannot be determined from the provided passages.；F1=0.0；状态=success
+  #1 Which actress plays Kaylee Frye in the series Firefly?
+  改写：Which actress plays Kaylee Frye in the series Firefly?
+  完整句：Jewel Staite plays Kaylee Frye in the series "Firefly".
+  新增/丢失标注文档：[] / []
+  #2 In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  改写：In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  完整句：The sci-fi television film in which Jewel Staite starred with Alan Dale cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  改写：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  完整句：The year of the sci-fi television film in which Jewel Staite starred with Alan Dale cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：2011；F1=1.0；状态=success
+  #1 Which actress plays Kaylee Frye in the series Firefly?
+  改写：Which actress plays Kaylee Frye in the series Firefly?
+  完整句：Jewel Staite plays Kaylee Frye in the series "Firefly".
+  新增/丢失标注文档：[] / []
+  #2 In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  改写：In which sci-fi television film did Jewel Staite also star with Alan Dale?
+  完整句：Jewel Staite starred with Alan Dale in the sci-fi television film *Doomsday Prophecy*.
+  新增/丢失标注文档：['33214212'] / []
+  #3 The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  改写：Jewel Staite starred with Alan Dale in the sci-fi television film *Doomsday Prophecy* released in what year?
+  完整句：*Doomsday Prophecy* was released in 2011.
+  新增/丢失标注文档：['33214212'] / []
+
+hotpotqa / 5a83431d5542993344745ff5 / old24_outcome_selected_diagnostic
+原query：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+标准答案（只用于离线评分）：San Jose, California
+S02：Fairfax County, Virginia；F1=0.0；状态=success
+ReAct：San Jose, California；F1=1.0；状态=success
+single_original：Fairfax, Virginia；F1=0.0；状态=success
+  #1 Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  改写：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  完整句：Mobil Oil Corp. created the keychain RFID device used for electronic payment at McDonald's and 400 other Chicago-area restaurants.
+  新增/丢失标注文档：[] / []
+  #2 The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  改写：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  完整句：Mobil Oil Corp., which created the keychain RFID device for electronic payment at McDonald's and 400 other Chicago-area restaurants, was headquartered in Fairfax, Virginia.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Fairfax County, Virginia；F1=0.0；状态=success
+  #1 Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  改写：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  完整句：Mobil Oil Corp. created the keychain RFID device used for electronic payment at McDonald's and 400 other Chicago-area restaurants.
+  新增/丢失标注文档：[] / []
+  #2 The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  改写：Mobil Oil Corp. is headquartered in what city and state?
+  完整句：Mobil Oil Corp. was headquartered in Fairfax County, Virginia.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ade5e335542992fa25da766 / old24_outcome_selected_diagnostic
+原query：What was both John Cheever and Laura Ingalls Wilder occupations?
+标准答案（只用于离线评分）：American writer
+S02：Authors；F1=0.0；状态=success
+ReAct：author；F1=0.0；状态=success
+single_original：authors；F1=0.0；状态=success
+  #1 What were John Cheever's occupations?
+  改写：What were John Cheever's occupations?
+  完整句：John Cheever was an author.
+  新增/丢失标注文档：[] / []
+  #2 What were Laura Ingalls Wilder's occupations?
+  改写：What were Laura Ingalls Wilder's occupations?
+  完整句：Laura Ingalls Wilder was an author.
+  新增/丢失标注文档：[] / []
+  #3 What was both John Cheever and Laura Ingalls Wilder occupations?
+  改写：What was both John Cheever and Laura Ingalls Wilder occupations?
+  完整句：Both John Cheever and Laura Ingalls Wilder were authors.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Authors；F1=0.0；状态=success
+  #1 What were John Cheever's occupations?
+  改写：What were John Cheever's occupations?
+  完整句：John Cheever was an author.
+  新增/丢失标注文档：[] / []
+  #2 What were Laura Ingalls Wilder's occupations?
+  改写：What were both John Cheever's and Laura Ingalls Wilder's occupations?
+  完整句：Laura Ingalls Wilder was a writer.
+  新增/丢失标注文档：[] / []
+  #3 What was both John Cheever and Laura Ingalls Wilder occupations?
+  改写：What was both John Cheever and Laura Ingalls Wilder occupations?
+  完整句：Both John Cheever and Laura Ingalls Wilder were authors.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a7933b255429907847277eb / old24_outcome_selected_diagnostic
+原query：Which composer was also a teacher, Philip Glass or Franz Schreker?
+标准答案（只用于离线评分）：Franz Schreker
+S02：Both；F1=0.0；状态=success
+ReAct：Franz Schreker；F1=1.0；状态=success
+single_original：Franz Schreker；F1=1.0；状态=success
+  #1 Was composer Philip Glass also a teacher?
+  改写：Was composer Philip Glass also a teacher?
+  完整句：The retrieved passages do not state that Philip Glass was a teacher.
+  新增/丢失标注文档：[] / []
+  #2 Was composer Franz Schreker also a teacher?
+  改写：Was composer Franz Schreker also a teacher?
+  完整句：Franz Schreker was a teacher.
+  新增/丢失标注文档：[] / []
+  #3 Which composer was also a teacher, Philip Glass or Franz Schreker?
+  改写：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  完整句：Franz Schreker was a teacher, but the retrieved passages do not state that Philip Glass was a teacher.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Franz Schreker；F1=1.0；状态=success
+  #1 Was composer Philip Glass also a teacher?
+  改写：Was composer Philip Glass also a teacher?
+  完整句：The retrieved passages do not state that Philip Glass was a teacher.
+  新增/丢失标注文档：[] / []
+  #2 Was composer Franz Schreker also a teacher?
+  改写：Was composer Franz Schreker also a teacher?
+  完整句：Franz Schreker was a teacher.
+  新增/丢失标注文档：[] / []
+  #3 Which composer was also a teacher, Philip Glass or Franz Schreker?
+  改写：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  完整句：Franz Schreker was a teacher, but the retrieved passages do not state that Philip Glass was a teacher.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a89706055429951533612f9 / old24_outcome_selected_diagnostic
+原query：Scott Sandelin grew up in a town in what Minnesota county?
+标准答案（只用于离线评分）：Saint Louis County
+S02：Saint Louis County；F1=1.0；状态=success
+ReAct：St. Louis County；F1=0.6666666666666666；状态=success
+single_original：Saint Louis County；F1=1.0；状态=success
+  #1 In what town did Scott Sandelin grow up?
+  改写：In what town did Scott Sandelin grow up?
+  完整句：Scott Sandelin grew up in Hibbing, Minnesota.
+  新增/丢失标注文档：[] / []
+  #2 Scott Sandelin grew up in a town in what Minnesota county?
+  改写：Scott Sandelin grew up in a town in what Minnesota county?
+  完整句：Scott Sandelin grew up in Hibbing, which is in Saint Louis County, Minnesota.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Saint Louis County；F1=1.0；状态=success
+  #1 In what town did Scott Sandelin grow up?
+  改写：In what town did Scott Sandelin grow up?
+  完整句：Scott Sandelin grew up in Hibbing, Minnesota.
+  新增/丢失标注文档：[] / []
+  #2 Scott Sandelin grew up in a town in what Minnesota county?
+  改写：Scott Sandelin grew up in Hibbing, Minnesota, which is in what county?
+  完整句：Scott Sandelin grew up in Hibbing, which is in Saint Louis County, Minnesota.
+  新增/丢失标注文档：['121754'] / []
+
+hotpotqa / 5a860baa554299211dda2a4c / old24_outcome_selected_diagnostic
+原query：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+标准答案（只用于离线评分）：Watford Football Club
+S02：Watford Football Club；F1=1.0；状态=success
+ReAct：Watford Football Club；F1=1.0；状态=success
+single_original：Watford Football Club；F1=1.0；状态=success
+  #1 Who is the singer of Grow Some Funk of Your Own?
+  改写：Who is the singer of Grow Some Funk of Your Own?
+  完整句：Elton John is the singer of "Grow Some Funk of Your Own".
+  新增/丢失标注文档：[] / []
+  #2 What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  改写：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  完整句：Elton John owned Watford Football Club from 1976 to 1987 and again from 1997 to 2002.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Watford Football Club；F1=1.0；状态=success
+  #1 Who is the singer of Grow Some Funk of Your Own?
+  改写：Who is the singer of Grow Some Funk of Your Own?
+  完整句：Elton John is the singer of "Grow Some Funk of Your Own".
+  新增/丢失标注文档：[] / []
+  #2 What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  改写：What football club was owned by Elton John?
+  完整句：Elton John owned Watford Football Club from 1976 to 1987 and again from 1997 to 2002.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5add7a335542992200553b37 / old24_outcome_selected_diagnostic
+原query：Which genus of plant is named after a person, Amesiella or Cucurbita?
+标准答案（只用于离线评分）：Amesiella
+S02：Amesiella；F1=1.0；状态=success
+ReAct：Amesiella；F1=1.0；状态=success
+single_original：Amesiella；F1=1.0；状态=success
+  #1 After whom, if anyone, is the plant genus Amesiella named?
+  改写：After whom, if anyone, is the plant genus Amesiella named?
+  完整句：Amesiella is named for Oakes Ames.
+  新增/丢失标注文档：[] / []
+  #2 After whom, if anyone, is the plant genus Cucurbita named?
+  改写：After whom, if anyone, is the plant genus Cucurbita named?
+  完整句：Cucurbita is named for the Latin word for gourd, not after a person.
+  新增/丢失标注文档：[] / []
+  #3 Which genus of plant is named after a person, Amesiella or Cucurbita?
+  改写：Which genus of plant is named after a person, Amesiella or Cucurbita?
+  完整句：Amesiella is named after a person, Oakes Ames, whereas Cucurbita is named for the Latin word for gourd and not after a person.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Amesiella；F1=1.0；状态=success
+  #1 After whom, if anyone, is the plant genus Amesiella named?
+  改写：After whom, if anyone, is the plant genus Amesiella named?
+  完整句：Amesiella is named for Oakes Ames.
+  新增/丢失标注文档：[] / []
+  #2 After whom, if anyone, is the plant genus Cucurbita named?
+  改写：After whom, if anyone, is the plant genus Cucurbita named?
+  完整句：Cucurbita is named for the Latin word for gourd, not after a person.
+  新增/丢失标注文档：[] / []
+  #3 Which genus of plant is named after a person, Amesiella or Cucurbita?
+  改写：Which genus of plant is named after a person, Amesiella (named for Oakes Ames) or Cucurbita (named for the Latin word for gourd)?
+  完整句：Amesiella is named after a person, while Cucurbita is not.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ab5de535542992aa134a3b6 / old24_outcome_selected_diagnostic
+原query：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+标准答案（只用于离线评分）：yes
+S02：Yes；F1=1.0；状态=success
+ReAct：Yes；F1=1.0；状态=success
+single_original：Yes；F1=1.0；状态=success
+  #1 Is Alek Keshishian Armenian-American?
+  改写：Is Alek Keshishian Armenian-American?
+  完整句：Alek Keshishian is Armenian-American.
+  新增/丢失标注文档：[] / []
+  #2 Is Kirk Kerkorian Armenian-American?
+  改写：Is Kirk Kerkorian Armenian-American?
+  完整句：Kirk Kerkorian was Armenian-American.
+  新增/丢失标注文档：[] / []
+  #3 Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  改写：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  完整句：Yes, Alek Keshishian and Kirk Kerkorian are both Armenian-American.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 Is Alek Keshishian Armenian-American?
+  改写：Is Alek Keshishian Armenian-American?
+  完整句：Alek Keshishian is Armenian-American.
+  新增/丢失标注文档：[] / []
+  #2 Is Kirk Kerkorian Armenian-American?
+  改写：Is Kirk Kerkorian Armenian-American?
+  完整句：Kirk Kerkorian was Armenian-American.
+  新增/丢失标注文档：[] / []
+  #3 Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  改写：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  完整句：Yes, Alek Keshishian and Kirk Kerkorian are both Armenian-American.
+  新增/丢失标注文档：[] / []
+
+2wiki / 54bf355508b811ebbd88ac1f6bf848b6 / old24_outcome_selected_diagnostic
+原query：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+标准答案（只用于离线评分）：Who Is The Guilty?
+S02：La Cérémonie；F1=0；状态=success
+ReAct：Who Is The Guilty?；F1=1.0；状态=success
+single_original：Cannot be determined；F1=0；状态=success
+  #1 Who directed the film La Cérémonie?
+  改写：Who directed the film La Cérémonie?
+  完整句：Claude Chabrol directed the film La Cérémonie.
+  新增/丢失标注文档：[] / []
+  #2 On what date did the director of the film La Cérémonie die?
+  改写：On what date did the director of the film La Cérémonie die?
+  完整句：The date of Claude Chabrol’s death cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who directed the film Who Is The Guilty??
+  改写：Who directed the film Who Is The Guilty??
+  完整句：Alexandre Tsutsunava directed the film Who Is the Guilty?.
+  新增/丢失标注文档：[] / []
+  #4 On what date did the director of the film Who Is The Guilty? die?
+  改写：On what date did the director of the film Who Is The Guilty? die?
+  完整句：The date of Alexandre Tsutsunava’s death cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #5 Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  改写：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  完整句：The date on which the director of La Cérémonie (Claude Chabrol) died and the date on which the director of Who Is The Guilty? (Alexandre Tsutsunava) died cannot be determined from these passages, so it cannot be determined which director died earlier.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：La Cérémonie；F1=0；状态=success
+  #1 Who directed the film La Cérémonie?
+  改写：Who directed the film La Cérémonie?
+  完整句：Claude Chabrol directed the film La Cérémonie.
+  新增/丢失标注文档：[] / []
+  #2 On what date did the director of the film La Cérémonie die?
+  改写：On what date did Claude Chabrol die?
+  完整句：Claude Chabrol, the director of La Cérémonie, died on 12 September 2010.
+  新增/丢失标注文档：['b21505822134333cf5aea804d46543bbd323c00ea7cd5ea7983ba2d8cd0c0ce2'] / []
+  #3 Who directed the film Who Is The Guilty??
+  改写：Who directed the film Who Is The Guilty??
+  完整句：Alexandre Tsutsunava directed the film Who Is the Guilty?.
+  新增/丢失标注文档：[] / []
+  #4 On what date did the director of the film Who Is The Guilty? die?
+  改写：On what date did Alexandre Tsutsunava die?
+  完整句：The death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.
+  新增/丢失标注文档：['07ecaf2afb2e71972a34c67684205c316b5c0f39409941d04dfa12bb75b89655'] / []
+  #5 Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  改写：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  完整句：The director of La Cérémonie, Claude Chabrol, died on 12 September 2010, but the death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+
+2wiki / 1a1c0bd40bdd11eba7f7acde48001122 / old24_outcome_selected_diagnostic
+原query：What nationality is John De Burgh (Died 1313)'s father?
+标准答案（只用于离线评分）：Irish
+S02：Anglo-Irish；F1=0；状态=success
+ReAct：Anglo-Irish；F1=0；状态=success
+single_original：Anglo-Irish；F1=0；状态=success
+  #1 Who is the father of John De Burgh (Died 1313)?
+  改写：Who is the father of John De Burgh (Died 1313)?
+  完整句：John De Burgh (Died 1313)'s father is Richard Óg de Burgh, 2nd Earl of Ulster.
+  新增/丢失标注文档：[] / []
+  #2 What nationality is John De Burgh (Died 1313)'s father?
+  改写：What nationality is John De Burgh (Died 1313)'s father?
+  完整句：Richard Óg de Burgh, 2nd Earl of Ulster, was Anglo-Irish.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Anglo-Irish；F1=0；状态=success
+  #1 Who is the father of John De Burgh (Died 1313)?
+  改写：Who is the father of John De Burgh (Died 1313)?
+  完整句：John De Burgh (Died 1313)'s father is Richard Óg de Burgh, 2nd Earl of Ulster.
+  新增/丢失标注文档：[] / []
+  #2 What nationality is John De Burgh (Died 1313)'s father?
+  改写：What nationality is Richard Óg de Burgh, 2nd Earl of Ulster?
+  完整句：John De Burgh (Died 1313)'s father, Richard Óg de Burgh, 2nd Earl of Ulster, was an Anglo-Irish noble.
+  新增/丢失标注文档：['f8d32fbf0d18ed14e00daf8a337145ea6e90350adc84d06e8f69caada627c6b0'] / []
+
+2wiki / 5112118e0baf11ebab90acde48001122 / old24_outcome_selected_diagnostic
+原query：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+标准答案（只用于离线评分）：Alice of Normandy
+S02：Unknown；F1=0；状态=success
+ReAct：Alice of Normandy；F1=1.0；状态=success
+single_original：Stephanie；F1=0；状态=success
+  #1 Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  改写：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  完整句：Sibylla of Burgundy, Duchess of Burgundy’s father was William I, Count of Burgundy.
+  新增/丢失标注文档：[] / []
+  #2 Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  改写：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  完整句：Sibylla of Burgundy, Duchess of Burgundy’s paternal grandmother was Stephanie.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Alice of Normandy；F1=1.0；状态=success
+  #1 Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  改写：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  完整句：Sibylla of Burgundy, Duchess of Burgundy’s father was William I, Count of Burgundy.
+  新增/丢失标注文档：[] / []
+  #2 Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  改写：Who is William I, Count of Burgundy's mother?
+  完整句：Sibylla of Burgundy, Duchess of Burgundy’s paternal grandmother was Alice of Normandy.
+  新增/丢失标注文档：['37ca96b3d847c8666d80cc903cb5eabab810c763db4c9fb1a1033020abf51a72'] / []
+
+2wiki / 54eff598089711ebbd76ac1f6bf848b6 / old24_outcome_selected_diagnostic
+原query：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+标准答案（只用于离线评分）：yes
+S02：No；F1=0；状态=success
+ReAct：No；F1=0；状态=success
+single_original：Yes；F1=1.0；状态=success
+  #1 From which country does the movie Chocolate City (Film) originate?
+  改写：From which country does the movie Chocolate City (Film) originate?
+  完整句：Chocolate City (Film) originates from the United States.
+  新增/丢失标注文档：[] / []
+  #2 From which country does the movie Dark Angel: The Ascent originate?
+  改写：From which country does the movie Dark Angel: The Ascent originate?
+  完整句：Dark Angel: The Ascent originates from Romania and the United States.
+  新增/丢失标注文档：[] / []
+  #3 Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  改写：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  完整句：Yes, Chocolate City (Film) and Dark Angel: The Ascent both originate from the United States.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 From which country does the movie Chocolate City (Film) originate?
+  改写：From which country does the movie Chocolate City (Film) originate?
+  完整句：Chocolate City (Film) originates from the United States.
+  新增/丢失标注文档：[] / []
+  #2 From which country does the movie Dark Angel: The Ascent originate?
+  改写：From which country does the movie Dark Angel: The Ascent originate?
+  完整句：Dark Angel: The Ascent originates from Romania and the United States.
+  新增/丢失标注文档：[] / []
+  #3 Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  改写：Do the movies Chocolate City (Film) and Dark Angel: The Ascent originate from the same country?
+  完整句：Yes, Chocolate City (Film) and Dark Angel: The Ascent both originate from the United States.
+  新增/丢失标注文档：[] / []
+
+2wiki / 8820c510086411ebbd5eac1f6bf848b6 / old24_outcome_selected_diagnostic
+原query：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+标准答案（只用于离线评分）：Raiders Of Red Gap
+S02：Raiders Of Red Gap；F1=1.0；状态=success
+ReAct：Sam Newfield；F1=0；状态=success
+single_original：Cannot be determined；F1=0；状态=success
+  #1 Who directed the film Raiders Of Red Gap?
+  改写：Who directed the film Raiders Of Red Gap?
+  完整句：Sam Newfield directed the film Raiders of Red Gap.
+  新增/丢失标注文档：[] / []
+  #2 On what date did the director of the film Raiders Of Red Gap die?
+  改写：On what date did the director of the film Raiders Of Red Gap die?
+  完整句：The death date of Sam Newfield, the director of Raiders of Red Gap, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who directed the film A Day Of Fury?
+  改写：Who directed the film A Day Of Fury?
+  完整句：Harmon Jones directed the film A Day of Fury.
+  新增/丢失标注文档：[] / []
+  #4 On what date did the director of the film A Day Of Fury die?
+  改写：On what date did the director of the film A Day Of Fury die?
+  完整句：The death date of Harmon Jones, the director of A Day of Fury, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #5 Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  改写：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  完整句：The death dates of Sam Newfield (director of Raiders of Red Gap) and Harmon Jones (director of A Day of Fury) cannot be determined from these passages, so it cannot be determined which director died first.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Raiders Of Red Gap；F1=1.0；状态=success
+  #1 Who directed the film Raiders Of Red Gap?
+  改写：Who directed the film Raiders Of Red Gap?
+  完整句：Sam Newfield directed the film Raiders of Red Gap.
+  新增/丢失标注文档：[] / []
+  #2 On what date did the director of the film Raiders Of Red Gap die?
+  改写：On what date did Sam Newfield die?
+  完整句：Sam Newfield, the director of Raiders of Red Gap, died on November 10, 1964.
+  新增/丢失标注文档：['cdc10b92b753caa81b77cccca0b79f13f6aa04ad078b0b247a122dd711b03b43'] / []
+  #3 Who directed the film A Day Of Fury?
+  改写：Who directed the film A Day Of Fury?
+  完整句：Harmon Jones directed the film A Day of Fury.
+  新增/丢失标注文档：[] / []
+  #4 On what date did the director of the film A Day Of Fury die?
+  改写：On what date did Harmon Jones die?
+  完整句：Harmon Jones, the director of A Day of Fury, died on July 10, 1972.
+  新增/丢失标注文档：['4347672b71bbeb59ceafb15aa1159a1bd67d8c5bf1abe9ca7dffa3f0b6692128'] / []
+  #5 Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  改写：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  完整句：Sam Newfield, the director of Raiders of Red Gap, died first on November 10, 1964, before Harmon Jones, the director of A Day of Fury, who died on July 10, 1972.
+  新增/丢失标注文档：[] / []
+
+2wiki / d4f03e3a0bdd11eba7f7acde48001122 / old24_outcome_selected_diagnostic
+原query：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+标准答案（只用于离线评分）：29 January 1816
+S02：29 January 1816；F1=1.0；状态=success
+ReAct：29 January 1816；F1=1.0；状态=success
+single_original：29 January 1816；F1=1.0；状态=success
+  #1 Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  改写：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  完整句：George Waldegrave, 5th Earl Waldegrave's mother was Elizabeth Waldegrave, Countess Waldegrave.
+  新增/丢失标注文档：[] / []
+  #2 What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  改写：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  完整句：Elizabeth Waldegrave, Countess Waldegrave, died on 29 January 1816.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：29 January 1816；F1=1.0；状态=success
+  #1 Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  改写：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  完整句：George Waldegrave, 5th Earl Waldegrave's mother was Elizabeth Waldegrave, Countess Waldegrave.
+  新增/丢失标注文档：[] / []
+  #2 What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  改写：What is the date of death of Elizabeth Waldegrave, Countess Waldegrave?
+  完整句：Elizabeth Waldegrave, Countess Waldegrave, died on 29 January 1816.
+  新增/丢失标注文档：[] / []
+
+2wiki / 32f0334c0bb011ebab90acde48001122 / old24_outcome_selected_diagnostic
+原query：Who is the maternal grandmother of André De Laval-Montmorency?
+标准答案（只用于离线评分）：Jeanne de Laval-Tinténiac
+S02：Jeanne de Laval-Tinténiac；F1=1.0；状态=success
+ReAct：Jeanne de Laval；F1=0.6666666666666666；状态=success
+single_original：Jeanne de Laval-Tinténiac；F1=1.0；状态=success
+  #1 Who is the mother of André De Laval-Montmorency?
+  改写：Who is the mother of André De Laval-Montmorency?
+  完整句：André de Laval-Montmorency’s mother is Anne de Laval.
+  新增/丢失标注文档：[] / []
+  #2 Who is the maternal grandmother of André De Laval-Montmorency?
+  改写：Who is the maternal grandmother of André De Laval-Montmorency?
+  完整句：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval-Tinténiac.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Jeanne de Laval；F1=0.6666666666666666；状态=success
+  #1 Who is the mother of André De Laval-Montmorency?
+  改写：Who is the mother of André De Laval-Montmorency?
+  完整句：André de Laval-Montmorency’s mother is Anne de Laval.
+  新增/丢失标注文档：[] / []
+  #2 Who is the maternal grandmother of André De Laval-Montmorency?
+  改写：Who is the mother of Anne de Laval?
+  完整句：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval.
+  新增/丢失标注文档：[] / []
+
+2wiki / 9564cd35089311ebbd75ac1f6bf848b6 / old24_outcome_selected_diagnostic
+原query：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+标准答案（只用于离线评分）：no
+S02：No；F1=1.0；状态=success
+ReAct：No；F1=1.0；状态=success
+single_original：No；F1=1.0；状态=success
+  #1 From which country does the movie Before The Streets originate?
+  改写：From which country does the movie Before The Streets originate?
+  完整句：Before the Streets originates from Canada.
+  新增/丢失标注文档：[] / []
+  #2 From which country does the movie Buchanan Rides Alone originate?
+  改写：From which country does the movie Buchanan Rides Alone originate?
+  完整句：Buchanan Rides Alone originates from the United States.
+  新增/丢失标注文档：[] / []
+  #3 Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  改写：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  完整句：No, Before the Streets originates from Canada and Buchanan Rides Alone originates from the United States.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：No；F1=1.0；状态=success
+  #1 From which country does the movie Before The Streets originate?
+  改写：From which country does the movie Before The Streets originate?
+  完整句：Before the Streets originates from Canada.
+  新增/丢失标注文档：[] / []
+  #2 From which country does the movie Buchanan Rides Alone originate?
+  改写：Do the movies Before The Streets and Buchanan Rides Alone originate from the same country?
+  完整句：Buchanan Rides Alone originates from the United States.
+  新增/丢失标注文档：['3e57fc6645b1419ab716cc622bbca74c68e3973528215e9cb281fc282d575d03'] / []
+  #3 Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  改写：Do the movies Before the Streets (Canada) and Buchanan Rides Alone (United States) originate from the same country?
+  完整句：No, Before the Streets originates from Canada and Buchanan Rides Alone originates from the United States.
+  新增/丢失标注文档：[] / []
+
+musique / 2hop__123148_5385 / old24_outcome_selected_diagnostic
+原query：How many people work in Susan Winchester's alma mater?
+标准答案（只用于离线评分）：11,900
+S02：The number of people who work at Susan Winchester's alma mater cannot be determined.；F1=0；状态=success
+ReAct：11900；F1=1.0；状态=success
+single_original：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.；F1=0；状态=success
+  #1 What is Susan Winchester's alma mater?
+  改写：What is Susan Winchester's alma mater?
+  完整句：Susan Winchester's alma mater is the University of Oklahoma.
+  新增/丢失标注文档：[] / []
+  #2 How many people work in Susan Winchester's alma mater?
+  改写：How many people work in Susan Winchester's alma mater?
+  完整句：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.；F1=0；状态=success
+  #1 What is Susan Winchester's alma mater?
+  改写：What is Susan Winchester's alma mater?
+  完整句：Susan Winchester's alma mater is the University of Oklahoma.
+  新增/丢失标注文档：[] / []
+  #2 How many people work in Susan Winchester's alma mater?
+  改写：How many people work in the University of Oklahoma?
+  完整句：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop1__92251_34179_23375 / old24_outcome_selected_diagnostic
+原query：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+标准答案（只用于离线评分）：1948
+S02：1939；F1=0；状态=success
+ReAct：1939；F1=0；状态=success
+single_original：1939；F1=0；状态=success
+  #1 Who was the leader of the Bolsheviks in the November Revolution?
+  改写：Who was the leader of the Bolsheviks in the November Revolution?
+  完整句：Vladimir Lenin was the leader of the Bolsheviks in the November Revolution.
+  新增/丢失标注文档：[] / []
+  #2 Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  改写：Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  完整句：Joseph Stalin succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution.
+  新增/丢失标注文档：[] / []
+  #3 What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  完整句：The Molotov–Ribbentrop Pact, engineered by Joseph Stalin, was signed in 1939.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：1939；F1=0；状态=success
+  #1 Who was the leader of the Bolsheviks in the November Revolution?
+  改写：Who was the leader of the Bolsheviks in the November Revolution?
+  完整句：Vladimir Lenin was the leader of the Bolsheviks in the November Revolution.
+  新增/丢失标注文档：[] / []
+  #2 Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by Joseph Stalin?
+  完整句：Joseph Stalin succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution.
+  新增/丢失标注文档：['ce8f070a1f8451dfd1ec9eef9a37a1290b1db9672e99cbb2daece984199eddbb'] / []
+  #3 What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by Joseph Stalin?
+  完整句：The Molotov–Ribbentrop Pact, engineered by Joseph Stalin—who succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution—was signed and published in 1939.
+  新增/丢失标注文档：['ce8f070a1f8451dfd1ec9eef9a37a1290b1db9672e99cbb2daece984199eddbb'] / []
+
+musique / 4hop3__175072_88460_30152_20999 / old24_outcome_selected_diagnostic
+原query：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+标准答案（只用于离线评分）：The dynasty regrouped and defeated the Portuguese
+S02：No evidence supports the claim.；F1=0；状态=success
+ReAct：The question contains a false premise; the Ajuran Empire had no connection to the Thailand–Laos border.；F1=0；状态=success
+single_original：The Ethiopian Empire was not expelled from the Mekong River, as it had no historical presence or territorial claim there.；F1=0；状态=success
+  #1 From which people did the Somali Muslim Ajuran Empire declare independence?
+  改写：From which people did the Somali Muslim Ajuran Empire declare independence?
+  完整句：The Somali Muslim Ajuran Empire declared independence from the Ethiopian Empire.
+  新增/丢失标注文档：[] / []
+  #2 Of which country was Setthathirath a citizen?
+  改写：Of which country was Setthathirath a citizen?
+  完整句：Setthathirath was a citizen of Laos.
+  新增/丢失标注文档：[] / []
+  #3 What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  改写：What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  完整句：The natural boundary between Thailand and Laos is the Mekong River.
+  新增/丢失标注文档：[] / []
+  #4 How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  改写：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  完整句：The Ethiopian Empire was not expelled from the Mekong River, as it had no historical presence or territorial claim there.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The Ethiopian Empire was never present on or expelled from the Mekong River.；F1=0；状态=success
+  #1 From which people did the Somali Muslim Ajuran Empire declare independence?
+  改写：From which people did the Somali Muslim Ajuran Empire declare independence?
+  完整句：The Somali Muslim Ajuran Empire declared independence from the Ethiopian Empire.
+  新增/丢失标注文档：[] / []
+  #2 Of which country was Setthathirath a citizen?
+  改写：How were the same people who the Somali Muslim Ajuran Empire declared independence from—the Ethiopian Empire—expelled from the natural boundary between Thailand and Laos?
+  完整句：Setthathirath was a citizen of Laos.
+  新增/丢失标注文档：[] / []
+  #3 What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  改写：What is the natural boundary between Thailand and Laos?
+  完整句：The natural boundary between Thailand and Laos is the Mekong River.
+  新增/丢失标注文档：[] / ['1f45fcacd3de61d20e72fc6a4343c6ad6292806fff398c0ff4b1761436478ab3']
+  #4 How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  改写：How were the Ethiopian Empire expelled from the Mekong River?
+  完整句：The Ethiopian Empire was never present on or expelled from the Mekong River, the natural boundary between Thailand and Laos.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop1__649930_15840_36002 / old24_outcome_selected_diagnostic
+原query：What were the Genesis' advantages over the platform of Colorful Dragon?
+标准答案（只用于离线评分）：built on 16-bit architectures and offered improved graphics and sound
+S02：The passages do not provide information about the Genesis's advantages over the platform of Colorful Dragon.；F1=0；状态=success
+ReAct：Colorful Dragon is a game for the NES, not a platform; thus, the comparison is invalid.；F1=0；状态=success
+single_original：Greater processing power, enhanced graphics capabilities, larger color palette, higher resolution, and support for more complex games with richer audio and visual presentation；F1=0.18181818181818182；状态=success
+  #1 On which platform was Colorful Dragon released?
+  改写：On which platform was Colorful Dragon released?
+  完整句：Colorful Dragon was released on the Nintendo Entertainment System.
+  新增/丢失标注文档：[] / []
+  #2 What were the Genesis' advantages over the platform of Colorful Dragon?
+  改写：What were the Genesis' advantages over the platform of Colorful Dragon?
+  完整句：The Sega Genesis, as a 16-bit console, had advantages over the Nintendo Entertainment System (the platform of Colorful Dragon) including greater processing power, enhanced graphics capabilities, a larger color palette, higher resolution, and support for more complex games with richer audio and visual presentation.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：16-bit architecture offering improved graphics and sound, stronger third-party support, and larger game library；F1=0.5；状态=success
+  #1 On which platform was Colorful Dragon released?
+  改写：On which platform was Colorful Dragon released?
+  完整句：Colorful Dragon was released on the Nintendo Entertainment System.
+  新增/丢失标注文档：[] / []
+  #2 What were the Genesis' advantages over the platform of Colorful Dragon?
+  改写：What were the Genesis' advantages over the Nintendo Entertainment System?
+  完整句：The Sega Genesis had advantages over the Nintendo Entertainment System—including stronger third-party support, a 16-bit architecture offering improved graphics and sound, and a larger game library—during the platform rivalry.
+  新增/丢失标注文档：['6f03dca82a75957361bcaf5c11247ab04b1f8adecbcee9ec084b5a446a9d52b0', 'da314d9a1df28f7fe214971cb557fba1ae82797847d25ffab165f9edd00f602b'] / []
+
+musique / 2hop__201704_135481 / old24_outcome_selected_diagnostic
+原query：What is the competition that the 1965 Federation Cup is part of named after?
+标准答案（只用于离线评分）：International Tennis Federation
+S02：International Tennis Federation；F1=1.0；状态=success
+ReAct：International Tennis Federation；F1=1.0；状态=success
+single_original：International Tennis Federation；F1=1.0；状态=success
+  #1 Of which competition is the 1965 Federation Cup a part?
+  改写：Of which competition is the 1965 Federation Cup a part?
+  完整句：The 1965 Federation Cup is part of the Fed Cup.
+  新增/丢失标注文档：[] / []
+  #2 What is the competition that the 1965 Federation Cup is part of named after?
+  改写：What is the competition that the 1965 Federation Cup is part of named after?
+  完整句：The Fed Cup is named after the International Tennis Federation.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：International Tennis Federation；F1=1.0；状态=success
+  #1 Of which competition is the 1965 Federation Cup a part?
+  改写：Of which competition is the 1965 Federation Cup a part?
+  完整句：The 1965 Federation Cup is part of the Fed Cup.
+  新增/丢失标注文档：[] / []
+  #2 What is the competition that the 1965 Federation Cup is part of named after?
+  改写：What is the Fed Cup named after?
+  完整句：The Fed Cup is named after the International Tennis Federation.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop2__6989_37759_74563 / old24_outcome_selected_diagnostic
+原query：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+标准答案（只用于离线评分）：1630
+S02：1630；F1=1.0；状态=success
+ReAct：1630；F1=1.0；状态=success
+single_original：1630；F1=1.0；状态=success
+  #1 Which religious order founded Harvard College?
+  改写：Which religious order founded Harvard College?
+  完整句：The Puritans founded Harvard College.
+  新增/丢失标注文档：[] / []
+  #2 Which region of the United States is served by the Rainbow Times?
+  改写：Which region of the United States is served by the Rainbow Times?
+  完整句：The Rainbow Times serves all of New England.
+  新增/丢失标注文档：[] / []
+  #3 When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  改写：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  完整句：The Puritans arrived in the Massachusetts Bay Colony, which is part of New England, in 1630.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：1630；F1=1.0；状态=success
+  #1 Which religious order founded Harvard College?
+  改写：Which religious order founded Harvard College?
+  完整句：The Puritans founded Harvard College.
+  新增/丢失标注文档：[] / []
+  #2 Which region of the United States is served by the Rainbow Times?
+  改写：Which region of the United States is served by the Rainbow Times?
+  完整句：The Rainbow Times serves all of New England.
+  新增/丢失标注文档：[] / []
+  #3 When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  改写：When did the Puritans arrive in New England?
+  完整句：The Puritans, who founded Harvard College, arrived in New England—the region served by the Rainbow Times—starting in 1630 with the Great Puritan Migration.
+  新增/丢失标注文档：['7517311b6056e35cb9237e86b3389e2bcb0df165c9762b928498a478f903572a'] / []
+
+musique / 2hop__166820_52835 / old24_outcome_selected_diagnostic
+原query：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+标准答案（只用于离线评分）：John D. Loudermilk
+S02：John D. Loudermilk；F1=1.0；状态=success
+ReAct：John D. Loudermilk；F1=1.0；状态=success
+single_original：John D. Loudermilk；F1=1.0；状态=success
+  #1 Who performed Chasing Pirates?
+  改写：Who performed Chasing Pirates?
+  完整句：Norah Jones performed "Chasing Pirates."
+  新增/丢失标注文档：[] / []
+  #2 Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  改写：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  完整句：John D. Loudermilk wrote “Turn Me On,” which was performed by Norah Jones.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：John D. Loudermilk；F1=1.0；状态=success
+  #1 Who performed Chasing Pirates?
+  改写：Who performed Chasing Pirates?
+  完整句：Norah Jones performed "Chasing Pirates."
+  新增/丢失标注文档：[] / []
+  #2 Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  改写：Who wrote "Turn Me On", which was performed by Norah Jones?
+  完整句：John D. Loudermilk wrote "Turn Me On", which was performed by Norah Jones.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop1__109185_720914_41132 / old24_outcome_selected_diagnostic
+原query：How many times did the plague occur in the place of death of the creator of La Schiavona?
+标准答案（只用于离线评分）：22
+S02：22；F1=1.0；状态=success
+ReAct：；F1=0；状态=algorithm_failure
+single_original：22；F1=1.0；状态=success
+  #1 Who created La Schiavona?
+  改写：Who created La Schiavona?
+  完整句：Titian created La Schiavona.
+  新增/丢失标注文档：[] / []
+  #2 Where did the creator of La Schiavona die?
+  改写：Where did the creator of La Schiavona die?
+  完整句：Titian died in Venice.
+  新增/丢失标注文档：[] / []
+  #3 How many times did the plague occur in the place of death of the creator of La Schiavona?
+  改写：How many times did the plague occur in the place of death of the creator of La Schiavona?
+  完整句：The plague occurred 22 times in Venice between 1361 and 1528.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：22；F1=1.0；状态=success
+  #1 Who created La Schiavona?
+  改写：Who created La Schiavona?
+  完整句：Titian created La Schiavona.
+  新增/丢失标注文档：[] / []
+  #2 Where did the creator of La Schiavona die?
+  改写：How many times did the plague occur in Venice?
+  完整句：Titian died in Venice.
+  新增/丢失标注文档：['91fb754f7a836d4ddef5adf333030c37c8a5d9a7a6dbe71a6707ba63210f15a2'] / []
+  #3 How many times did the plague occur in the place of death of the creator of La Schiavona?
+  改写：How many times did the plague occur in Venice?
+  完整句：The plague occurred 22 times in Venice between 1361 and 1528.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ae1f079554299234fd04343 / fresh36_type_stratified_random
+原query：Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+标准答案（只用于离线评分）：Oldham County, Kentucky
+S02：Oldham County；F1=0.8；状态=success
+ReAct：Oldham County；F1=0.8；状态=success
+single_original：Oldham County；F1=0.8；状态=success
+  #1 Where in Kentucky is Kentucky Route 393 (KY 393) located?
+  改写：Where in Kentucky is Kentucky Route 393 (KY 393) located?
+  完整句：Kentucky Route 393 is located in Oldham County, Kentucky.
+  新增/丢失标注文档：[] / []
+  #2 Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+  改写：Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+  完整句：Kentucky Route 393 is a state highway in Oldham County, Kentucky.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Oldham County；F1=0.8；状态=success
+  #1 Where in Kentucky is Kentucky Route 393 (KY 393) located?
+  改写：Where in Kentucky is Kentucky Route 393 (KY 393) located?
+  完整句：Kentucky Route 393 is located in Oldham County, Kentucky.
+  新增/丢失标注文档：[] / []
+  #2 Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+  改写：Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+  完整句：Kentucky Route 393 is a state highway in Oldham County, Kentucky.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ae33c4d5542992f92d82262 / fresh36_type_stratified_random
+原query：Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?
+标准答案（只用于离线评分）：William Jefferson Clinton
+S02：Bill Clinton；F1=0.4；状态=success
+ReAct：Bill Clinton；F1=0.4；状态=success
+single_original：Bill Clinton；F1=0.4；状态=success
+  #1 Under which political leader did Robert Suettinger serve as national intelligence officer?
+  改写：Under which political leader did Robert Suettinger serve as national intelligence officer?
+  完整句：Robert Suettinger served as national intelligence officer under President Bill Clinton.
+  新增/丢失标注文档：[] / []
+  #2 Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?
+  改写：Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?
+  完整句：Robert Suettinger was the national intelligence officer under Bill Clinton, who was a former Governor of Arkansas.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Bill Clinton；F1=0.4；状态=success
+  #1 Under which political leader did Robert Suettinger serve as national intelligence officer?
+  改写：Under which political leader did Robert Suettinger serve as national intelligence officer?
+  完整句：Robert Suettinger served as national intelligence officer under President Bill Clinton.
+  新增/丢失标注文档：[] / []
+  #2 Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?
+  改写：Robert Suettinger was the national intelligence officer under which former Governor of Arkansas who served as President Bill Clinton?
+  完整句：Robert Suettinger was the national intelligence officer under former Arkansas Governor Bill Clinton.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ae0c7b055429945ae95944b / fresh36_type_stratified_random
+原query：The Admiral's Men occupied which kind of theatre in the 1590s ?
+标准答案（只用于离线评分）：Elizabethan theatre
+S02：The Rose Theatre；F1=0.5；状态=success
+ReAct：public playhouse；F1=0.0；状态=success
+single_original：public theatre；F1=0.5；状态=success
+  #1 Which theatre did the Admiral's Men occupy in the 1590s?
+  改写：Which theatre did the Admiral's Men occupy in the 1590s?
+  完整句：The Admiral's Men occupied the Rose Theatre in the 1590s.
+  新增/丢失标注文档：[] / []
+  #2 The Admiral's Men occupied which kind of theatre in the 1590s ?
+  改写：The Admiral's Men occupied which kind of theatre in the 1590s ?
+  完整句：The Admiral's Men occupied a public theatre—the Rose Theatre—in the 1590s.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：public theatre；F1=0.5；状态=success
+  #1 Which theatre did the Admiral's Men occupy in the 1590s?
+  改写：Which theatre did the Admiral's Men occupy in the 1590s?
+  完整句：The Admiral's Men occupied the Rose Theatre in the 1590s.
+  新增/丢失标注文档：[] / []
+  #2 The Admiral's Men occupied which kind of theatre in the 1590s ?
+  改写：The Admiral's Men occupied which kind of theatre in the 1590s ?
+  完整句：The Admiral's Men occupied a public theatre—the Rose Theatre—in the 1590s.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5abf0bf95542997719eab63a / fresh36_type_stratified_random
+原query：José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+标准答案（只用于离线评分）：theatre director
+S02：essayist；F1=0.0；状态=success
+ReAct：theatre director；F1=1.0；状态=success
+single_original：theatre director；F1=1.0；状态=success
+  #1 Which Spanish poet and playwright was the subject of many books and articles by José Rubia Barcia?
+  改写：Which Spanish poet and playwright was the subject of many books and articles by José Rubia Barcia?
+  完整句：José Rubia Barcia published a great number of books and articles on Federico García Lorca, who was a Spanish poet, playwright, and theatre director.
+  新增/丢失标注文档：[] / []
+  #2 José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+  改写：José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+  完整句：José Rubia Barcia published a great number of books and articles on a Spanish poet, playwright, and theatre director.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：theatre director；F1=1.0；状态=success
+  #1 Which Spanish poet and playwright was the subject of many books and articles by José Rubia Barcia?
+  改写：Which Spanish poet and playwright was the subject of many books and articles by José Rubia Barcia?
+  完整句：José Rubia Barcia published a great number of books and articles on Federico García Lorca, who was a Spanish poet, playwright, and theatre director.
+  新增/丢失标注文档：[] / []
+  #2 José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+  改写：José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+  完整句：José Rubia Barcia published a great number of books and articles on a Spanish poet, playwright, and theatre director.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ab8cd3d5542991b5579f009 / fresh36_type_stratified_random
+原query：How did the name of Peter Gifford's rock band (1980-1987) come to be chosen?
+标准答案（只用于离线评分）：drawing the name out of a hat
+S02：The name "Midnight Oil" was not explained in the provided context.；F1=0.14285714285714285；状态=success
+ReAct：The name was chosen by drawing it out of a hat.；F1=0.7142857142857143；状态=success
+single_original：The origin of the name "Midnight Oil" is not provided in the retrieved passages.；F1=0.25000000000000006；状态=success
+  #1 Which rock band did Peter Gifford belong to from 1980 to 1987?
+  改写：Which rock band did Peter Gifford belong to from 1980 to 1987?
+  完整句：Peter Gifford belonged to the Australian rock band Midnight Oil from 1980 to 1987.
+  新增/丢失标注文档：[] / []
+  #2 How did the name of Peter Gifford's rock band (1980-1987) come to be chosen?
+  改写：How did the name of Peter Gifford's rock band (1980-1987) come to be chosen?
+  完整句：The origin of the name "Midnight Oil" is not provided in the retrieved passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The name "Midnight Oil" was chosen by drawing it out of a hat in late 1976 when the band Farm changed its name.；F1=0.4；状态=success
+  #1 Which rock band did Peter Gifford belong to from 1980 to 1987?
+  改写：Which rock band did Peter Gifford belong to from 1980 to 1987?
+  完整句：Peter Gifford belonged to the Australian rock band Midnight Oil from 1980 to 1987.
+  新增/丢失标注文档：[] / []
+  #2 How did the name of Peter Gifford's rock band (1980-1987) come to be chosen?
+  改写：How did the name of Midnight Oil come to be chosen?
+  完整句：The name "Midnight Oil" was chosen by drawing it out of a hat in late 1976 when the band Farm changed its name.
+  新增/丢失标注文档：['149481'] / []
+
+hotpotqa / 5abad3445542996cc5e49ea0 / fresh36_type_stratified_random
+原query：What team was Horace Grant's twin brother traded to after the 1992–93 Washington Bullets season?
+标准答案（只用于离线评分）：Portland Trail Blazers
+S02：Portland Trail Blazers；F1=1.0；状态=success
+ReAct：Portland Trail Blazers；F1=1.0；状态=success
+single_original：Portland Trail Blazers；F1=1.0；状态=success
+  #1 Who is Horace Grant's twin brother?
+  改写：Who is Horace Grant's twin brother?
+  完整句：Horace Grant's twin brother is Harvey Grant.
+  新增/丢失标注文档：[] / []
+  #2 What team was Horace Grant's twin brother traded to after the 1992–93 Washington Bullets season?
+  改写：What team was Horace Grant's twin brother traded to after the 1992–93 Washington Bullets season?
+  完整句：Harvey Grant was traded to the Portland Trail Blazers after the 1992–93 Washington Bullets season.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Portland Trail Blazers；F1=1.0；状态=success
+  #1 Who is Horace Grant's twin brother?
+  改写：Who is Horace Grant's twin brother?
+  完整句：Horace Grant's twin brother is Harvey Grant.
+  新增/丢失标注文档：[] / []
+  #2 What team was Horace Grant's twin brother traded to after the 1992–93 Washington Bullets season?
+  改写：What team was Harvey Grant traded to after the 1992–93 Washington Bullets season?
+  完整句：Harvey Grant was traded to the Portland Trail Blazers after the 1992–93 Washington Bullets season.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a8333115542993344745feb / fresh36_type_stratified_random
+原query：What summit is located in the county who's county seat is Helena?
+标准答案（只用于离线评分）：Scapegoat Mountain
+S02：Cigarette Rock and Scapegoat Mountain；F1=0.5714285714285715；状态=success
+ReAct：Scapegoat Mountain；F1=1.0；状态=success
+single_original：No summit is identified as being located in Lewis and Clark County, Montana.；F1=0.0；状态=success
+  #1 Which county has Helena as its county seat?
+  改写：Which county has Helena as its county seat?
+  完整句：Lewis and Clark County has Helena as its county seat.
+  新增/丢失标注文档：[] / []
+  #2 What summit is located in the county who's county seat is Helena?
+  改写：What summit is located in the county who's county seat is Helena?
+  完整句：No summit is identified as being located in Lewis and Clark County, Montana.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Cigarette Rock；F1=0.0；状态=success
+  #1 Which county has Helena as its county seat?
+  改写：Which county has Helena as its county seat?
+  完整句：Lewis and Clark County has Helena as its county seat.
+  新增/丢失标注文档：[] / []
+  #2 What summit is located in the county who's county seat is Helena?
+  改写：What summit is located in Lewis and Clark County?
+  完整句：Cigarette Rock is a summit in Lewis and Clark County, Montana.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a7912f655429974737f796c / fresh36_type_stratified_random
+原query：What is the birthday of the man who played Lex Luthor in Superman IV: The Quest for Peace?
+标准答案（只用于离线评分）：January 30, 1930
+S02：January 30, 1930；F1=1.0；状态=success
+ReAct：January 30, 1930；F1=1.0；状态=success
+single_original：June 30, 1932；F1=0.3333333333333333；状态=success
+  #1 Who played Lex Luthor in Superman IV: The Quest for Peace?
+  改写：Who played Lex Luthor in Superman IV: The Quest for Peace?
+  完整句：Gene Hackman played Lex Luthor in Superman IV: The Quest for Peace.
+  新增/丢失标注文档：[] / []
+  #2 What is the birthday of the man who played Lex Luthor in Superman IV: The Quest for Peace?
+  改写：What is the birthday of the man who played Lex Luthor in Superman IV: The Quest for Peace?
+  完整句：Gene Hackman was born on June 30, 1932.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：January 30, 1930；F1=1.0；状态=success
+  #1 Who played Lex Luthor in Superman IV: The Quest for Peace?
+  改写：Who played Lex Luthor in Superman IV: The Quest for Peace?
+  完整句：Gene Hackman played Lex Luthor in Superman IV: The Quest for Peace.
+  新增/丢失标注文档：[] / []
+  #2 What is the birthday of the man who played Lex Luthor in Superman IV: The Quest for Peace?
+  改写：What is the birthday of Gene Hackman?
+  完整句：Gene Hackman was born on January 30, 1930.
+  新增/丢失标注文档：['12561'] / []
+
+hotpotqa / 5a89a02955429946c8d6e975 / fresh36_type_stratified_random
+原query：Which was released first, The Climb or Voices of Iraq?
+标准答案（只用于离线评分）：Voices of Iraq
+S02：Voices of Iraq；F1=1.0；状态=success
+ReAct：The Climb；F1=0.0；状态=success
+single_original：The Climb；F1=0.0；状态=success
+  #1 When was the film The Climb released?
+  改写：When was the film The Climb released?
+  完整句：The film *The Climb* was released in 1999.
+  新增/丢失标注文档：[] / []
+  #2 When was Voices of Iraq released?
+  改写：When was Voices of Iraq released?
+  完整句：Voices of Iraq was released in 2004.
+  新增/丢失标注文档：[] / []
+  #3 Which was released first, The Climb or Voices of Iraq?
+  改写：Which was released first, The Climb or Voices of Iraq?
+  完整句：The Climb was released first, in 1999, before Voices of Iraq, which was released in 2004.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The Climb；F1=0.0；状态=success
+  #1 When was the film The Climb released?
+  改写：When was the film The Climb released?
+  完整句：The film *The Climb* was released in 1999.
+  新增/丢失标注文档：[] / []
+  #2 When was Voices of Iraq released?
+  改写：When was Voices of Iraq released?
+  完整句：Voices of Iraq was released in 2004.
+  新增/丢失标注文档：[] / []
+  #3 Which was released first, The Climb or Voices of Iraq?
+  改写：Which was released first, The Climb (1999) or Voices of Iraq (2004)?
+  完整句：The Climb was released first, in 1999, before Voices of Iraq, which was released in 2004.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5ae14def55429901ffe4ae4a / fresh36_type_stratified_random
+原query：Do both Lee Tamahori and Robert Redford work as a director?
+标准答案（只用于离线评分）：yes
+S02：Yes；F1=1.0；状态=success
+ReAct：Yes；F1=1.0；状态=success
+single_original：Yes；F1=1.0；状态=success
+  #1 Does Lee Tamahori work as a director?
+  改写：Does Lee Tamahori work as a director?
+  完整句：Yes, Lee Tamahori works as a director.
+  新增/丢失标注文档：[] / []
+  #2 Does Robert Redford work as a director?
+  改写：Does Robert Redford work as a director?
+  完整句：Yes, Robert Redford works as a director.
+  新增/丢失标注文档：[] / []
+  #3 Do both Lee Tamahori and Robert Redford work as a director?
+  改写：Do both Lee Tamahori and Robert Redford work as a director?
+  完整句：Yes, both Lee Tamahori and Robert Redford work as directors.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 Does Lee Tamahori work as a director?
+  改写：Does Lee Tamahori work as a director?
+  完整句：Yes, Lee Tamahori works as a director.
+  新增/丢失标注文档：[] / []
+  #2 Does Robert Redford work as a director?
+  改写：Does Robert Redford work as a director?
+  完整句：Yes, Robert Redford works as a director.
+  新增/丢失标注文档：[] / []
+  #3 Do both Lee Tamahori and Robert Redford work as a director?
+  改写：Do both Lee Tamahori and Robert Redford work as a director?
+  完整句：Yes, both Lee Tamahori and Robert Redford work as directors.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a77685e5542993569682d83 / fresh36_type_stratified_random
+原query：Which came first, Battle of Antietam or Battle of Guam?
+标准答案（只用于离线评分）：Battle of Antietam
+S02：Battle of Antietam；F1=1.0；状态=success
+ReAct：Battle of Antietam；F1=1.0；状态=success
+single_original：Battle of Antietam；F1=1.0；状态=success
+  #1 When did the Battle of Antietam take place?
+  改写：When did the Battle of Antietam take place?
+  完整句：The Battle of Antietam took place on September 17, 1862.
+  新增/丢失标注文档：[] / []
+  #2 When did the Battle of Guam take place?
+  改写：When did the Battle of Guam take place?
+  完整句：The Battle of Guam (1941) took place from December 8 to December 10, 1941.
+  新增/丢失标注文档：[] / []
+  #3 Which came first, Battle of Antietam or Battle of Guam?
+  改写：Which came first, Battle of Antietam or Battle of Guam?
+  完整句：The Battle of Antietam came first, taking place on September 17, 1862, before the Battle of Guam (1941), which occurred from December 8 to December 10, 1941.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Battle of Antietam；F1=1.0；状态=success
+  #1 When did the Battle of Antietam take place?
+  改写：When did the Battle of Antietam take place?
+  完整句：The Battle of Antietam took place on September 17, 1862.
+  新增/丢失标注文档：[] / []
+  #2 When did the Battle of Guam take place?
+  改写：When did the Battle of Guam take place?
+  完整句：The Battle of Guam (1941) took place from December 8 to December 10, 1941.
+  新增/丢失标注文档：[] / []
+  #3 Which came first, Battle of Antietam or Battle of Guam?
+  改写：Which came first, Battle of Antietam on September 17, 1862 or Battle of Guam (1941) from December 8 to December 10, 1941?
+  完整句：The Battle of Antietam came first, taking place on September 17, 1862, while the Battle of Guam (1941) took place from December 8 to December 10, 1941.
+  新增/丢失标注文档：[] / []
+
+hotpotqa / 5a7ca95b55429935c91b5287 / fresh36_type_stratified_random
+原query：Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?
+标准答案（只用于离线评分）：Owen Wister
+S02：Owen Wister；F1=1.0；状态=success
+ReAct：Owen Wister；F1=1.0；状态=success
+single_original：Lucy Maud Montgomery；F1=0.0；状态=success
+  #1 What were the birth and death dates of American author Owen Wister?
+  改写：What were the birth and death dates of American author Owen Wister?
+  完整句：Owen Wister was born on July 14, 1860, and died on July 21, 1938.
+  新增/丢失标注文档：[] / []
+  #2 What were the birth and death dates of Canadian author Lucy Maud Montgomery?
+  改写：What were the birth and death dates of Canadian author Lucy Maud Montgomery?
+  完整句：Lucy Maud Montgomery was born on November 30, 1874, and died on April 24, 1942.
+  新增/丢失标注文档：[] / []
+  #3 Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?
+  改写：Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?
+  完整句：Lucy Maud Montgomery lived longer than Owen Wister, as she lived from November 30, 1874, to April 24, 1942 (67 years, 4 months, 25 days), while Owen Wister lived from July 14, 1860, to July 21, 1938 (78 years, 7 days).
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Lucy Maud Montgomery；F1=0.0；状态=success
+  #1 What were the birth and death dates of American author Owen Wister?
+  改写：What were the birth and death dates of American author Owen Wister?
+  完整句：Owen Wister was born on July 14, 1860, and died on July 21, 1938.
+  新增/丢失标注文档：[] / []
+  #2 What were the birth and death dates of Canadian author Lucy Maud Montgomery?
+  改写：What were the birth and death dates of Canadian author Lucy Maud Montgomery?
+  完整句：Lucy Maud Montgomery was born on November 30, 1874, and died on April 24, 1942.
+  新增/丢失标注文档：[] / []
+  #3 Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?
+  改写：Who lived longer, Owen Wister or Lucy Maud Montgomery?
+  完整句：Lucy Maud Montgomery lived longer than Owen Wister, as she lived from November 30, 1874, to April 24, 1942 (67 years, 4 months, 25 days), while Owen Wister lived from July 14, 1860, to July 21, 1938 (78 years, 7 days).
+  新增/丢失标注文档：[] / []
+
+2wiki / c116cee408ac11ebbd83ac1f6bf848b6 / fresh36_type_stratified_random
+原query：Which film has the director born first, Mama, There'S A Man In Your Bed or New Women?
+标准答案（只用于离线评分）：New Women
+S02：New Women；F1=1.0；状态=success
+ReAct：New Women；F1=1.0；状态=success
+single_original：Cannot be determined；F1=0；状态=success
+  #1 Who directed Mama, There's a Man in Your Bed?
+  改写：Who directed Mama, There's a Man in Your Bed?
+  完整句：Mama, There's A Man in Your Bed was directed by Coline Serreau.
+  新增/丢失标注文档：[] / []
+  #2 When was the director of Mama, There's a Man in Your Bed born?
+  改写：When was the director of Mama, There's a Man in Your Bed born?
+  完整句：Coline Serreau’s birth date cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who directed New Women?
+  改写：Who directed New Women?
+  完整句：New Women was directed by Cai Chusheng.
+  新增/丢失标注文档：[] / []
+  #4 When was the director of New Women born?
+  改写：When was the director of New Women born?
+  完整句：The birth date of Cai Chusheng cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #5 Which film has the director born first, Mama, There'S A Man In Your Bed or New Women?
+  改写：Which film has the director born first, Mama, There'S A Man In Your Bed or New Women?
+  完整句：The birth dates of Coline Serreau and Cai Chusheng cannot be determined from these passages, so it cannot be determined which director was born first.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：New Women；F1=1.0；状态=success
+  #1 Who directed Mama, There's a Man in Your Bed?
+  改写：Who directed Mama, There's a Man in Your Bed?
+  完整句：Mama, There's A Man in Your Bed was directed by Coline Serreau.
+  新增/丢失标注文档：[] / []
+  #2 When was the director of Mama, There's a Man in Your Bed born?
+  改写：When was Coline Serreau born?
+  完整句：Coline Serreau was born on 29 October 1947.
+  新增/丢失标注文档：['9ad7e1852532838c5f0e0f853de59af2ef4fecbf59b69e5e3b065af1441dcb98'] / []
+  #3 Who directed New Women?
+  改写：Who directed New Women?
+  完整句：New Women was directed by Cai Chusheng.
+  新增/丢失标注文档：[] / []
+  #4 When was the director of New Women born?
+  改写：When was Cai Chusheng born?
+  完整句：Cai Chusheng was born on January 12, 1906.
+  新增/丢失标注文档：['d9917c8fba06164e2f9d7b2bf6dbe2886bd212caba41052d5c7d2ec75882c2ef'] / []
+  #5 Which film has the director born first, Mama, There'S A Man In Your Bed or New Women?
+  改写：Which film has the director born first, Mama, There'S A Man In Your Bed or New Women?
+  完整句：New Women has the director born first, as Cai Chusheng was born on January 12, 1906, while Coline Serreau was born on October 29, 1947.
+  新增/丢失标注文档：[] / []
+
+2wiki / 73dcc04808de11ebbd9eac1f6bf848b6 / fresh36_type_stratified_random
+原query：Which film has the director who died later, Farewell, My Beautiful Lady or Night 'N' Gales?
+标准答案（只用于离线评分）：Night 'N' Gales
+S02：Night 'N' Gales；F1=1.0；状态=success
+ReAct：Night 'N' Gales；F1=1.0；状态=success
+single_original：Cannot be determined；F1=0；状态=success
+  #1 Who directed Farewell, My Beautiful Lady?
+  改写：Who directed Farewell, My Beautiful Lady?
+  完整句：Farewell, My Beautiful Lady was directed by Fernando Cerchio.
+  新增/丢失标注文档：[] / []
+  #2 When did the director of Farewell, My Beautiful Lady die?
+  改写：When did the director of Farewell, My Beautiful Lady die?
+  完整句：The death date of Fernando Cerchio, the director of Farewell, My Beautiful Lady, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who directed Night 'n' Gales?
+  改写：Who directed Night 'n' Gales?
+  完整句：Night 'n' Gales was directed by Gordon Douglas.
+  新增/丢失标注文档：[] / []
+  #4 When did the director of Night 'n' Gales die?
+  改写：When did the director of Night 'n' Gales die?
+  完整句：The death date of Gordon Douglas, the director of Night 'n' Gales, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #5 Which film has the director who died later, Farewell, My Beautiful Lady or Night 'N' Gales?
+  改写：Which film has the director who died later, Farewell, My Beautiful Lady or Night 'N' Gales?
+  完整句：The death dates of Fernando Cerchio and Gordon Douglas cannot be determined from these passages, so it cannot be determined which director died later.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Night 'N' Gales；F1=1.0；状态=success
+  #1 Who directed Farewell, My Beautiful Lady?
+  改写：Who directed Farewell, My Beautiful Lady?
+  完整句：Farewell, My Beautiful Lady was directed by Fernando Cerchio.
+  新增/丢失标注文档：[] / []
+  #2 When did the director of Farewell, My Beautiful Lady die?
+  改写：When did Fernando Cerchio die?
+  完整句：Fernando Cerchio died on 19 August 1974.
+  新增/丢失标注文档：['1ea550bd19c1536cdf60e136b169a48495ce1d7df98612293c41076aea0970f1'] / []
+  #3 Who directed Night 'n' Gales?
+  改写：Who directed Night 'N' Gales?
+  完整句：Night 'n' Gales was directed by Gordon Douglas.
+  新增/丢失标注文档：[] / []
+  #4 When did the director of Night 'n' Gales die?
+  改写：When did Gordon Douglas die?
+  完整句：Gordon Douglas died on 29 September 1993.
+  新增/丢失标注文档：['7349ae7f6eb2a008766b32eccd0b458ac9cdab109299da6b30281157c5d6fa0f'] / []
+  #5 Which film has the director who died later, Farewell, My Beautiful Lady or Night 'N' Gales?
+  改写：Which film has the director who died later, Farewell, My Beautiful Lady or Night 'N' Gales?
+  完整句：Night 'N' Gales has the director who died later, as Gordon Douglas died on 29 September 1993, after Fernando Cerchio’s death on 19 August 1974.
+  新增/丢失标注文档：[] / []
+
+2wiki / ab622778089911ebbd77ac1f6bf848b6 / fresh36_type_stratified_random
+原query：Which film has the director who is older than the other, Mektoub or Sail A Crooked Ship?
+标准答案（只用于离线评分）：Sail A Crooked Ship
+S02：Sail A Crooked Ship；F1=1.0；状态=success
+ReAct：Sail A Crooked Ship；F1=1.0；状态=success
+single_original：The age comparison of the directors of Mektoub and Sail a Crooked Ship cannot be determined from these passages.；F1=0.3157894736842105；状态=success
+  #1 Who directed Mektoub?
+  改写：Who directed Mektoub?
+  完整句：Mektoub was directed by Nabil Ayouch.
+  新增/丢失标注文档：[] / []
+  #2 When was the director of Mektoub born?
+  改写：When was the director of Mektoub born?
+  完整句：Nabil Ayouch’s birth date cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who directed Sail a Crooked Ship?
+  改写：Who directed Sail a Crooked Ship?
+  完整句：Sail a Crooked Ship was directed by Irving Brecher.
+  新增/丢失标注文档：[] / []
+  #4 When was the director of Sail a Crooked Ship born?
+  改写：When was the director of Sail a Crooked Ship born?
+  完整句：Irving Brecher’s birth date cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #5 Which film has the director who is older than the other, Mektoub or Sail A Crooked Ship?
+  改写：Which film has the director who is older than the other, Mektoub or Sail A Crooked Ship?
+  完整句：The age comparison of the directors of Mektoub and Sail a Crooked Ship cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Sail A Crooked Ship；F1=1.0；状态=success
+  #1 Who directed Mektoub?
+  改写：Who directed Mektoub?
+  完整句：Mektoub was directed by Nabil Ayouch.
+  新增/丢失标注文档：[] / []
+  #2 When was the director of Mektoub born?
+  改写：When was Nabil Ayouch born?
+  完整句：Nabil Ayouch, the director of Mektoub, was born on 1 April 1969.
+  新增/丢失标注文档：['1561fdd09c06768d4af84556917a735cb92d520dcc53273d010eee2cbaa6b081'] / []
+  #3 Who directed Sail a Crooked Ship?
+  改写：Who directed Sail a Crooked Ship?
+  完整句：Sail a Crooked Ship was directed by Irving Brecher.
+  新增/丢失标注文档：[] / []
+  #4 When was the director of Sail a Crooked Ship born?
+  改写：When was Irving Brecher born?
+  完整句：Irving Brecher, the director of Sail a Crooked Ship, was born on January 17, 1914.
+  新增/丢失标注文档：['608ff1771c08f4a83f3e04ab9607785299ad7df36b84972df025351b159b74ea'] / []
+  #5 Which film has the director who is older than the other, Mektoub or Sail A Crooked Ship?
+  改写：Which film has the director who is older than the other, Mektoub or Sail a Crooked Ship?
+  完整句：Sail a Crooked Ship has the older director, as Irving Brecher was born on January 17, 1914, while Nabil Ayouch was born on April 1, 1969.
+  新增/丢失标注文档：[] / []
+
+2wiki / c51148bc0bdb11eba7f7acde48001122 / fresh36_type_stratified_random
+原query：What nationality is Gevherhan Sultan (Daughter Of Selim Ii)'s father?
+标准答案（只用于离线评分）：Ottoman Empire
+S02：Ottoman；F1=0.6666666666666666；状态=success
+ReAct：Turkish；F1=0.6666666666666666；状态=success
+single_original：Ottoman；F1=0.6666666666666666；状态=success
+  #1 Who is the father of Gevherhan Sultan (Daughter Of Selim Ii)?
+  改写：Who is the father of Gevherhan Sultan (Daughter Of Selim Ii)?
+  完整句：Gevherhan Sultan (daughter of Selim II)'s father is Sultan Selim II.
+  新增/丢失标注文档：[] / []
+  #2 What nationality is Gevherhan Sultan (Daughter Of Selim Ii)'s father?
+  改写：What nationality is Gevherhan Sultan (Daughter Of Selim Ii)'s father?
+  完整句：Gevherhan Sultan (daughter of Selim II)'s father, Sultan Selim II, was Ottoman.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Ottoman；F1=0.6666666666666666；状态=success
+  #1 Who is the father of Gevherhan Sultan (Daughter Of Selim Ii)?
+  改写：Who is the father of Gevherhan Sultan (Daughter Of Selim Ii)?
+  完整句：Gevherhan Sultan (daughter of Selim II)'s father is Sultan Selim II.
+  新增/丢失标注文档：[] / []
+  #2 What nationality is Gevherhan Sultan (Daughter Of Selim Ii)'s father?
+  改写：What nationality is Sultan Selim II?
+  完整句：Gevherhan Sultan (Daughter of Selim II)'s father, Sultan Selim II, was Ottoman.
+  新增/丢失标注文档：[] / []
+
+2wiki / b0fe569c0bdd11eba7f7acde48001122 / fresh36_type_stratified_random
+原query：Which country the performer of song The Desert Is In Your Heart is from?
+标准答案（只用于离线评分）：United Kingdom
+S02：Greece and Wales；F1=0.18181818181818182；状态=success
+ReAct：Greece；F1=0；状态=success
+single_original：Greece and Wales；F1=0.18181818181818182；状态=success
+  #1 Who performs the song The Desert Is In Your Heart?
+  改写：Who performs the song The Desert Is In Your Heart?
+  完整句：The song "The Desert Is in Your Heart" is performed by Greek singer Sofia Arvaniti and Welsh singer Bonnie Tyler.
+  新增/丢失标注文档：[] / []
+  #2 Which country the performer of song The Desert Is In Your Heart is from?
+  改写：Which country the performer of song The Desert Is In Your Heart is from?
+  完整句：The performers of "The Desert Is in Your Heart" are from Greece and Wales.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Greece and Wales；F1=0.18181818181818182；状态=success
+  #1 Who performs the song The Desert Is In Your Heart?
+  改写：Who performs the song The Desert Is In Your Heart?
+  完整句：The song "The Desert Is in Your Heart" is performed by Greek singer Sofia Arvaniti and Welsh singer Bonnie Tyler.
+  新增/丢失标注文档：[] / []
+  #2 Which country the performer of song The Desert Is In Your Heart is from?
+  改写：Which country is Sofia Arvaniti from?
+  完整句：The performers of "The Desert Is in Your Heart" are from Greece and Wales.
+  新增/丢失标注文档：[] / []
+
+2wiki / f77e7afa0bda11eba7f7acde48001122 / fresh36_type_stratified_random
+原query：Who is the spouse of the founder of university Doshisha University?
+标准答案（只用于离线评分）：Yamamoto Yaeko
+S02：Yamamoto Yaeko；F1=1.0；状态=success
+ReAct：Yamamoto Yaeko；F1=1.0；状态=success
+single_original：Sono Otake；F1=0；状态=success
+  #1 Who founded Doshisha University?
+  改写：Who founded Doshisha University?
+  完整句：Joseph Hardy Neesima founded Doshisha University.
+  新增/丢失标注文档：[] / []
+  #2 Who is the spouse of the founder of university Doshisha University?
+  改写：Who is the spouse of the founder of university Doshisha University?
+  完整句：Joseph Hardy Neesima’s spouse was Sono Otake.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Yamamoto Yaeko；F1=1.0；状态=success
+  #1 Who founded Doshisha University?
+  改写：Who founded Doshisha University?
+  完整句：Joseph Hardy Neesima founded Doshisha University.
+  新增/丢失标注文档：[] / []
+  #2 Who is the spouse of the founder of university Doshisha University?
+  改写：Who is the spouse of Joseph Hardy Neesima?
+  完整句：Joseph Hardy Neesima’s spouse was Yamamoto Yaeko.
+  新增/丢失标注文档：['7075dd6d6d4a46dab6c545aa419f2f57e6b5a3326868d32c95ffdc6626aa194f'] / []
+
+2wiki / 1a25fd560bb011ebab90acde48001122 / fresh36_type_stratified_random
+原query：Who is Sancho De La Cerda, 1St Marquis Of La Laguna's paternal grandfather?
+标准答案（只用于离线评分）：Juan de la Cerda, 2nd Duke of Medinaceli
+S02：Don Luis de la Cerda, 3rd Duke of Medinaceli；F1=0.7058823529411765；状态=success
+ReAct：Don Juan de la Cerda, 2nd Duke of Medinaceli；F1=0.9411764705882353；状态=success
+single_original：Don Fernando de la Cerda, 1st Lord of Ledesma；F1=0.47058823529411764；状态=success
+  #1 Who is the father of Sancho De La Cerda, 1St Marquis Of La Laguna?
+  改写：Who is the father of Sancho De La Cerda, 1St Marquis Of La Laguna?
+  完整句：Sancho de la Cerda, 1st Marquis of la Laguna's father is Don Juan de la Cerda, 4th Duke of Medinaceli.
+  新增/丢失标注文档：[] / []
+  #2 Who is Sancho De La Cerda, 1St Marquis Of La Laguna's paternal grandfather?
+  改写：Who is Sancho De La Cerda, 1St Marquis Of La Laguna's paternal grandfather?
+  完整句：Sancho de la Cerda, 1st Marquis of la Laguna's paternal grandfather is Don Fernando de la Cerda, 1st Lord of Ledesma.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Don Juan de la Cerda, 2nd Duke of Medinaceli；F1=0.9411764705882353；状态=success
+  #1 Who is the father of Sancho De La Cerda, 1St Marquis Of La Laguna?
+  改写：Who is the father of Sancho De La Cerda, 1St Marquis Of La Laguna?
+  完整句：Sancho de la Cerda, 1st Marquis of la Laguna's father is Don Juan de la Cerda, 4th Duke of Medinaceli.
+  新增/丢失标注文档：[] / []
+  #2 Who is Sancho De La Cerda, 1St Marquis Of La Laguna's paternal grandfather?
+  改写：Who is Don Juan de la Cerda, 4th Duke of Medinaceli's father?
+  完整句：Sancho de la Cerda, 1st Marquis of la Laguna's paternal grandfather is Don Juan de la Cerda, 2nd Duke of Medinaceli.
+  新增/丢失标注文档：['401d501dd216642a0328307b32b967b2a40269746d226fe567d7514e1105dc31'] / []
+
+2wiki / 20bf77b40bb011ebab90acde48001122 / fresh36_type_stratified_random
+原query：Who is Arati Ankalikar-Tikekar married to?
+标准答案（只用于离线评分）：Uday Tikekar
+S02：Uday Tikekar；F1=1.0；状态=success
+ReAct：Uday Tikekar；F1=1.0；状态=success
+single_original：Uday Tikekar；F1=1.0；状态=success
+  #1 What family and spouse information is reported about Arati Ankalikar-Tikekar?
+  改写：What family and spouse information is reported about Arati Ankalikar-Tikekar?
+  完整句：Arati Ankalikar-Tikekar is married to Uday Tikekar and is the mother of Swanandi Tikekar.
+  新增/丢失标注文档：[] / []
+  #2 Who is Arati Ankalikar-Tikekar married to?
+  改写：Who is Arati Ankalikar-Tikekar married to?
+  完整句：Arati Ankalikar-Tikekar is married to Uday Tikekar.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Uday Tikekar；F1=1.0；状态=success
+  #1 What family and spouse information is reported about Arati Ankalikar-Tikekar?
+  改写：What family and spouse information is reported about Arati Ankalikar-Tikekar?
+  完整句：Arati Ankalikar-Tikekar is married to Uday Tikekar and is the mother of Swanandi Tikekar.
+  新增/丢失标注文档：[] / []
+  #2 Who is Arati Ankalikar-Tikekar married to?
+  改写：Who is Arati Ankalikar-Tikekar married to?
+  完整句：Arati Ankalikar-Tikekar is married to Uday Tikekar.
+  新增/丢失标注文档：[] / []
+
+2wiki / 6a8a71280bb011ebab90acde48001122 / fresh36_type_stratified_random
+原query：Who is the uncle of John Kennedy, 2Nd Lord Kennedy?
+标准答案（只用于离线评分）：James Kennedy
+S02：Gilbert Kennedy, 1st Lord Kennedy；F1=0.28571428571428575；状态=success
+ReAct：James Kennedy, bishop of St Andrews；F1=0.6666666666666666；状态=success
+single_original：The uncle of John Kennedy, 2nd Lord Kennedy cannot be determined from these passages.；F1=0.13333333333333336；状态=success
+  #1 Who are the parents of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who are the parents of John Kennedy, 2Nd Lord Kennedy?
+  完整句：John Kennedy, 2nd Lord Kennedy’s parents were Gilbert Kennedy, 1st Lord Kennedy, and Catherine Maxwell.
+  新增/丢失标注文档：[] / []
+  #2 Who are the brothers of the parents of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who are the brothers of the parents of John Kennedy, 2Nd Lord Kennedy?
+  完整句：The brothers of Gilbert Kennedy, 1st Lord Kennedy and Catherine Maxwell cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #3 Who is the uncle of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who is the uncle of John Kennedy, 2Nd Lord Kennedy?
+  完整句：The uncle of John Kennedy, 2nd Lord Kennedy cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The uncle of John Kennedy, 2nd Lord Kennedy cannot be determined from these passages.；F1=0.13333333333333336；状态=success
+  #1 Who are the parents of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who are the parents of John Kennedy, 2Nd Lord Kennedy?
+  完整句：John Kennedy, 2nd Lord Kennedy’s parents were Gilbert Kennedy, 1st Lord Kennedy, and Catherine Maxwell.
+  新增/丢失标注文档：[] / []
+  #2 Who are the brothers of the parents of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who are the brothers of Gilbert Kennedy, 1st Lord Kennedy and Catherine Maxwell?
+  完整句：The brothers of Gilbert Kennedy, 1st Lord Kennedy and Catherine Maxwell cannot be determined from these passages.
+  新增/丢失标注文档：['128176943c79439b7431bfba0e7294568e631600fe41ddc3bb1232eeacfeb300'] / []
+  #3 Who is the uncle of John Kennedy, 2Nd Lord Kennedy?
+  改写：Who is the uncle of John Kennedy, 2nd Lord Kennedy?
+  完整句：The uncle of John Kennedy, 2nd Lord Kennedy cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+
+2wiki / ed0838b508dc11ebbd9dac1f6bf848b6 / fresh36_type_stratified_random
+原query：Did the movies Daisy Kenyon and Man Push Cart, originate from the same country?
+标准答案（只用于离线评分）：yes
+S02：Yes；F1=1.0；状态=success
+ReAct：Yes；F1=1.0；状态=success
+single_original：Yes；F1=1.0；状态=success
+  #1 From which country does Daisy Kenyon originate?
+  改写：From which country does Daisy Kenyon originate?
+  完整句：Daisy Kenyon originates from the United States.
+  新增/丢失标注文档：[] / []
+  #2 From which country does Man Push Cart originate?
+  改写：From which country does Man Push Cart originate?
+  完整句：Man Push Cart originates from the United States.
+  新增/丢失标注文档：[] / []
+  #3 Did the movies Daisy Kenyon and Man Push Cart, originate from the same country?
+  改写：Did the movies Daisy Kenyon and Man Push Cart, originate from the same country?
+  完整句：Yes, the movies Daisy Kenyon and Man Push Cart both originated from the United States.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 From which country does Daisy Kenyon originate?
+  改写：From which country does Daisy Kenyon originate?
+  完整句：Daisy Kenyon originates from the United States.
+  新增/丢失标注文档：[] / []
+  #2 From which country does Man Push Cart originate?
+  改写：Did the movies Daisy Kenyon and Man Push Cart, originate from the same country?
+  完整句：Man Push Cart originates from the United States.
+  新增/丢失标注文档：['3a0e859671f1db2f0df7dd5753464eb569c137b216da26a4d2966b8202f2407b'] / []
+  #3 Did the movies Daisy Kenyon and Man Push Cart, originate from the same country?
+  改写：Did the movies Daisy Kenyon and Man Push Cart, both originate from the United States?
+  完整句：Yes, the movies Daisy Kenyon and Man Push Cart both originated from the United States.
+  新增/丢失标注文档：[] / []
+
+2wiki / ee5cf4a008a711ebbd7fac1f6bf848b6 / fresh36_type_stratified_random
+原query：Which museum was established first, Museum Of Croatian Archaeological Monuments or Bayernhof Music Museum?
+标准答案（只用于离线评分）：Museum Of Croatian Archaeological Monuments
+S02：Museum Of Croatian Archaeological Monuments；F1=1.0；状态=success
+ReAct：Museum Of Croatian Archaeological Monuments；F1=1.0；状态=success
+single_original：Museum Of Croatian Archaeological Monuments；F1=1.0；状态=success
+  #1 When was the Museum Of Croatian Archaeological Monuments established?
+  改写：When was the Museum Of Croatian Archaeological Monuments established?
+  完整句：The Museum of Croatian Archaeological Monuments was established in 1893.
+  新增/丢失标注文档：[] / []
+  #2 When was Bayernhof Music Museum established?
+  改写：When was Bayernhof Music Museum established?
+  完整句：The Bayernhof Music Museum was established in 2004.
+  新增/丢失标注文档：[] / []
+  #3 Which museum was established first, Museum Of Croatian Archaeological Monuments or Bayernhof Music Museum?
+  改写：Which museum was established first, Museum Of Croatian Archaeological Monuments or Bayernhof Music Museum?
+  完整句：The Museum of Croatian Archaeological Monuments was established first, in 1893, before the Bayernhof Music Museum, which was established in 2004.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Museum Of Croatian Archaeological Monuments；F1=1.0；状态=success
+  #1 When was the Museum Of Croatian Archaeological Monuments established?
+  改写：When was the Museum Of Croatian Archaeological Monuments established?
+  完整句：The Museum of Croatian Archaeological Monuments was established in 1893.
+  新增/丢失标注文档：[] / []
+  #2 When was Bayernhof Music Museum established?
+  改写：When was Bayernhof Music Museum established?
+  完整句：The Bayernhof Music Museum was established in 2004.
+  新增/丢失标注文档：[] / []
+  #3 Which museum was established first, Museum Of Croatian Archaeological Monuments or Bayernhof Music Museum?
+  改写：Which museum was established first, Museum Of Croatian Archaeological Monuments (established in 1893) or Bayernhof Music Museum (established in 2004)?
+  完整句：The Museum of Croatian Archaeological Monuments was established first, in 1893, before the Bayernhof Music Museum, which was established in 2004.
+  新增/丢失标注文档：[] / []
+
+2wiki / fa7ad32b093411ebbdaeac1f6bf848b6 / fresh36_type_stratified_random
+原query：Which film came out first, What Women Love or Ramudu Kadu Krishnudu?
+标准答案（只用于离线评分）：What Women Love
+S02：What Women Love；F1=1.0；状态=success
+ReAct：What Women Love；F1=1.0；状态=success
+single_original：What Women Love；F1=1.0；状态=success
+  #1 When was What Women Love released?
+  改写：When was What Women Love released?
+  完整句：What Women Love was released in 1920.
+  新增/丢失标注文档：[] / []
+  #2 When was Ramudu Kadu Krishnudu released?
+  改写：When was Ramudu Kadu Krishnudu released?
+  完整句：Ramudu Kadu Krishnudu was released in 1983.
+  新增/丢失标注文档：[] / []
+  #3 Which film came out first, What Women Love or Ramudu Kadu Krishnudu?
+  改写：Which film came out first, What Women Love or Ramudu Kadu Krishnudu?
+  完整句：What Women Love came out first.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：What Women Love；F1=1.0；状态=success
+  #1 When was What Women Love released?
+  改写：When was What Women Love released?
+  完整句：What Women Love was released in 1920.
+  新增/丢失标注文档：[] / []
+  #2 When was Ramudu Kadu Krishnudu released?
+  改写：When was Ramudu Kadu Krishnudu released?
+  完整句：Ramudu Kadu Krishnudu was released in 1983.
+  新增/丢失标注文档：[] / []
+  #3 Which film came out first, What Women Love or Ramudu Kadu Krishnudu?
+  改写：Which film came out first, What Women Love (released in 1920) or Ramudu Kadu Krishnudu (released in 1983)?
+  完整句：What Women Love came out first.
+  新增/丢失标注文档：[] / []
+
+musique / 2hop__124412_402641 / fresh36_type_stratified_random
+原query：Who is the child of Chiang Hsiao-wen's father?
+标准答案（只用于离线评分）：Chiang Hsiao-wu
+S02：None；F1=None；状态=failed
+ReAct：；F1=0；状态=algorithm_failure
+single_original：None；F1=None；状态=provider_or_transport_missing
+dual_original_rewritten：None；F1=None；状态=provider_or_transport_missing
+
+musique / 2hop__156085_436709 / fresh36_type_stratified_random
+原query：Who is the creator of Mickey Mouse's spouse?
+标准答案（只用于离线评分）：Walt Disney
+S02：Walt Disney and Ub Iwerks；F1=0.5714285714285715；状态=success
+ReAct：Walt Disney and Ub Iwerks；F1=0.5714285714285715；状态=success
+single_original：Walt Disney and Ub Iwerks；F1=0.5714285714285715；状态=success
+  #1 Who created Mickey Mouse?
+  改写：Who created Mickey Mouse?
+  完整句：Walt Disney and Ub Iwerks created Mickey Mouse.
+  新增/丢失标注文档：[] / []
+  #2 Who is Mickey Mouse's spouse?
+  改写：Who is Mickey Mouse's spouse?
+  完整句：Mickey Mouse's spouse is Minnie Mouse.
+  新增/丢失标注文档：[] / []
+  #3 Who is the creator of Mickey Mouse's spouse?
+  改写：Who is the creator of Mickey Mouse's spouse?
+  完整句：Walt Disney and Ub Iwerks created Minnie Mouse, Mickey Mouse's spouse.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Walt Disney and Ub Iwerks；F1=0.5714285714285715；状态=success
+  #1 Who created Mickey Mouse?
+  改写：Who created Mickey Mouse?
+  完整句：Walt Disney and Ub Iwerks created Mickey Mouse.
+  新增/丢失标注文档：[] / []
+  #2 Who is Mickey Mouse's spouse?
+  改写：Who is Mickey Mouse's spouse?
+  完整句：Mickey Mouse's spouse is Minnie Mouse.
+  新增/丢失标注文档：[] / []
+  #3 Who is the creator of Mickey Mouse's spouse?
+  改写：Who is the creator of Minnie Mouse?
+  完整句：Walt Disney and Ub Iwerks created Minnie Mouse, Mickey Mouse's spouse.
+  新增/丢失标注文档：[] / []
+
+musique / 2hop__503085_110222 / fresh36_type_stratified_random
+原query：When was the painter of Femme nue couchée born?
+标准答案（只用于离线评分）：10 June 1819
+S02：10 June 1819；F1=1.0；状态=success
+ReAct：10 June 1819；F1=1.0；状态=success
+single_original：10 June 1819；F1=1.0；状态=success
+  #1 Who painted Femme nue couchée?
+  改写：Who painted Femme nue couchée?
+  完整句：Gustave Courbet painted Femme nue couchée.
+  新增/丢失标注文档：[] / []
+  #2 When was the painter of Femme nue couchée born?
+  改写：When was the painter of Femme nue couchée born?
+  完整句：Gustave Courbet, the painter of Femme nue couchée, was born on 10 June 1819.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：10 June 1819；F1=1.0；状态=success
+  #1 Who painted Femme nue couchée?
+  改写：Who painted Femme nue couchée?
+  完整句：Gustave Courbet painted Femme nue couchée.
+  新增/丢失标注文档：[] / []
+  #2 When was the painter of Femme nue couchée born?
+  改写：When was Gustave Courbet born?
+  完整句：Gustave Courbet, the painter of Femme nue couchée, was born on 10 June 1819.
+  新增/丢失标注文档：[] / []
+
+musique / 2hop__635187_861533 / fresh36_type_stratified_random
+原query：What province shares a border with the province where Lago District is located?
+标准答案（只用于离线评分）：Cabo Delgado Province
+S02：Cabo Delgado Province；F1=1.0；状态=success
+ReAct：Cabo Delgado Province；F1=1.0；状态=success
+single_original：Tanzania；F1=0；状态=success
+  #1 In which province is Lago District located?
+  改写：In which province is Lago District located?
+  完整句：Lago District is located in Niassa Province.
+  新增/丢失标注文档：[] / []
+  #2 What province shares a border with the province where Lago District is located?
+  改写：What province shares a border with the province where Lago District is located?
+  完整句：Niassa Province shares a border with Tanzania.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Cabo Delgado Province；F1=1.0；状态=success
+  #1 In which province is Lago District located?
+  改写：In which province is Lago District located?
+  完整句：Lago District is located in Niassa Province.
+  新增/丢失标注文档：[] / []
+  #2 What province shares a border with the province where Lago District is located?
+  改写：What province shares a border with Niassa Province?
+  完整句：Cabo Delgado Province shares a border with Niassa Province.
+  新增/丢失标注文档：['83748d84c9811565160e06780fb3ab34b1fe74211b2cc519ba887a5631c5fdd9'] / []
+
+musique / 3hop1__540585_568433_51423 / fresh36_type_stratified_random
+原query：What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?
+标准答案（只用于离线评分）：Casa Loma
+S02：Cinderella Castle；F1=0；状态=success
+ReAct：；F1=0；状态=algorithm_failure
+single_original：Cinderella Castle；F1=0；状态=success
+  #1 Which company produced Miss Spider's Sunny Patch Kids?
+  改写：Which company produced Miss Spider's Sunny Patch Kids?
+  完整句：Nelvana produced Miss Spider's Sunny Patch Kids.
+  新增/丢失标注文档：[] / []
+  #2 In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?
+  改写：In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?
+  完整句：The headquarters of Nelvana is located in Toronto.
+  新增/丢失标注文档：[] / []
+  #3 What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?
+  改写：What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?
+  完整句：The name of the castle in Toronto cannot be determined.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Casa Loma；F1=1.0；状态=success
+  #1 Which company produced Miss Spider's Sunny Patch Kids?
+  改写：Which company produced Miss Spider's Sunny Patch Kids?
+  完整句：Nelvana produced Miss Spider's Sunny Patch Kids.
+  新增/丢失标注文档：[] / []
+  #2 In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?
+  改写：In which city is the headquarters of Nelvana located?
+  完整句：The headquarters of Nelvana is located in Toronto.
+  新增/丢失标注文档：[] / []
+  #3 What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?
+  改写：What is the name of the castle in Toronto?
+  完整句：Casa Loma is the castle in Toronto.
+  新增/丢失标注文档：['739d2bc8e986ea113de23a0af3920028f5a3626fa8ce8c8fefce429a6baea4cc'] / []
+
+musique / 3hop1__573244_339990_15538 / fresh36_type_stratified_random
+原query：When did the state where Kashinka Hollow is located in reinstate the death penalty?
+标准答案（只用于离线评分）：1984
+S02：1978；F1=0；状态=success
+ReAct：1974；F1=0；状态=success
+single_original：Pennsylvania has never reinstated the death penalty because it has continuously authorized capital punishment since colonial times.；F1=0；状态=success
+  #1 Where is Kashinka Hollow located?
+  改写：Where is Kashinka Hollow located?
+  完整句：Kashinka Hollow is located in Columbia County, Pennsylvania.
+  新增/丢失标注文档：[] / []
+  #2 In which state is Kashinka Hollow located?
+  改写：In which state is Kashinka Hollow located?
+  完整句：Kashinka Hollow is located in Pennsylvania.
+  新增/丢失标注文档：[] / []
+  #3 When did the state where Kashinka Hollow is located in reinstate the death penalty?
+  改写：When did the state where Kashinka Hollow is located in reinstate the death penalty?
+  完整句：Pennsylvania has never reinstated the death penalty because it has continuously authorized capital punishment since colonial times.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Pennsylvania has never abolished and reinstated the death penalty.；F1=0；状态=success
+  #1 Where is Kashinka Hollow located?
+  改写：Where is Kashinka Hollow located?
+  完整句：Kashinka Hollow is located in Columbia County, Pennsylvania.
+  新增/丢失标注文档：[] / []
+  #2 In which state is Kashinka Hollow located?
+  改写：In which state is Kashinka Hollow located?
+  完整句：Kashinka Hollow is located in Pennsylvania.
+  新增/丢失标注文档：[] / []
+  #3 When did the state where Kashinka Hollow is located in reinstate the death penalty?
+  改写：When did Pennsylvania reinstate the death penalty?
+  完整句：Pennsylvania has never abolished and reinstated the death penalty; it has continuously authorized capital punishment since its founding.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop1__483634_720378_15538 / fresh36_type_stratified_random
+原query：When was the death penalty reinstated in the state that contains the county where Howard Mill is located?
+标准答案（只用于离线评分）：1984
+S02：1977；F1=0；状态=success
+ReAct：1977；F1=0；状态=success
+single_original：1978；F1=0；状态=success
+  #1 In which county is Howard Mill located?
+  改写：In which county is Howard Mill located?
+  完整句：Howard Mill is located in Lake County, California.
+  新增/丢失标注文档：[] / []
+  #2 In which state is the county containing Howard Mill located?
+  改写：In which state is the county containing Howard Mill located?
+  完整句：The county containing Howard Mill, Lake County, is located in California.
+  新增/丢失标注文档：[] / []
+  #3 When was the death penalty reinstated in the state that contains the county where Howard Mill is located?
+  改写：When was the death penalty reinstated in the state that contains the county where Howard Mill is located?
+  完整句：The death penalty was reinstated in California in 1978 after being struck down by the California Supreme Court in 1972.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：1977；F1=0；状态=success
+  #1 In which county is Howard Mill located?
+  改写：In which county is Howard Mill located?
+  完整句：Howard Mill is located in Lake County, California.
+  新增/丢失标注文档：[] / []
+  #2 In which state is the county containing Howard Mill located?
+  改写：In which state is Lake County, California located?
+  完整句：Lake County is located in California.
+  新增/丢失标注文档：['723f82542f9a3e45c97635c5201814471e07eb333053320a6aeb2bbe85709c91'] / []
+  #3 When was the death penalty reinstated in the state that contains the county where Howard Mill is located?
+  改写：When was the death penalty reinstated in California?
+  完整句：The death penalty was reinstated in California in 1977.
+  新增/丢失标注文档：[] / []
+
+musique / 3hop1__51933_40769_64047 / fresh36_type_stratified_random
+原query：When did the luxury division of the largest auto company in the world change the body style of the rx 350?
+标准答案（只用于离线评分）：Sales began worldwide in April 2012
+S02：April 2012；F1=0.5；状态=success
+ReAct：2012；F1=0.2857142857142857；状态=success
+single_original：March 2012；F1=0.25；状态=success
+  #1 Which company is the largest automobile company in the world?
+  改写：Which company is the largest automobile company in the world?
+  完整句：Toyota is the largest automobile company in the world.
+  新增/丢失标注文档：[] / []
+  #2 What is the luxury division of the largest automobile company in the world?
+  改写：What is the luxury division of the largest automobile company in the world?
+  完整句：Toyota’s luxury division is Lexus.
+  新增/丢失标注文档：[] / []
+  #3 When did the luxury division of the largest auto company in the world change the body style of the rx 350?
+  改写：When did the luxury division of the largest auto company in the world change the body style of the rx 350?
+  完整句：Lexus, the luxury division of Toyota—the largest automobile company in the world—changed the body style of the RX 350 with a facelift unveiled in March 2012 and launched worldwide in April 2012.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：March 2012；F1=0.25；状态=success
+  #1 Which company is the largest automobile company in the world?
+  改写：Which company is the largest automobile company in the world?
+  完整句：Toyota is the largest automobile company in the world.
+  新增/丢失标注文档：[] / []
+  #2 What is the luxury division of the largest automobile company in the world?
+  改写：What is the luxury division of Toyota?
+  完整句：Lexus is the luxury division of Toyota.
+  新增/丢失标注文档：[] / []
+  #3 When did the luxury division of the largest auto company in the world change the body style of the rx 350?
+  改写：When did Lexus change the body style of the RX 350?
+  完整句：Lexus changed the body style of the RX 350 with a facelift unveiled in March 2012 and launched worldwide in April 2012.
+  新增/丢失标注文档：[] / []
+
+musique / 4hop2__567956_14670_8987_8529 / fresh36_type_stratified_random
+原query：Normalization occurred in Country A that invaded Country B because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Country B?
+标准答案（只用于离线评分）：1943–1992
+S02：1943–1992；F1=1.0；状态=success
+ReAct：1939；F1=0；状态=success
+single_original：1939–1945, 1943–1992, 1992–2003；F1=0.5；状态=success
+  #1 What military branch is Air Defense Artillery part of?
+  改写：What military branch is Air Defense Artillery part of?
+  完整句：Air Defense Artillery is part of the United States Army’s artillery arm.
+  新增/丢失标注文档：[] / []
+  #2 Which country underwent the normalization mentioned in the question about an invasion caused by the military branch that includes Air Defense Artillery being unprepared?
+  改写：Which country underwent the normalization mentioned in the question about an invasion caused by the military branch that includes Air Defense Artillery being unprepared?
+  完整句：The country that underwent normalization after being invaded by Country A—where the unprepared military branch including Air Defense Artillery belongs—is not identified in the retrieved passages.
+  新增/丢失标注文档：[] / []
+  #3 Which country did the country that underwent that normalization invade?
+  改写：Which country did the country that underwent that normalization invade?
+  完整句：The country that underwent normalization after being invaded by Country A is not identified, so the country that Country A invaded cannot be determined.
+  新增/丢失标注文档：[] / []
+  #4 Normalization occurred in Country A that invaded Country B because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Country B?
+  改写：Normalization occurred in Country A that invaded Country B because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Country B?
+  完整句：The word "Slavs" was used in the national anthem of Country B during the periods 1939–1945 (Slovak Republic), 1943–1992 (Yugoslavia), and 1992–2003 (Federal Republic of Yugoslavia), but Country B cannot be determined from the retrieved passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：1943–1992 and 1992–2003；F1=0.5；状态=success
+  #1 What military branch is Air Defense Artillery part of?
+  改写：What military branch is Air Defense Artillery part of?
+  完整句：Air Defense Artillery is part of the United States Army’s artillery arm.
+  新增/丢失标注文档：[] / []
+  #2 Which country underwent the normalization mentioned in the question about an invasion caused by the military branch that includes Air Defense Artillery being unprepared?
+  改写：Which country underwent the normalization mentioned in the question about an invasion caused by the United States Army’s artillery arm being unprepared?
+  完整句：The country that underwent normalization mentioned in the question is not identifiable from the retrieved passages.
+  新增/丢失标注文档：[] / []
+  #3 Which country did the country that underwent that normalization invade?
+  改写：Which country did the country that underwent normalization invade?
+  完整句：The country that underwent normalization invaded Egypt.
+  新增/丢失标注文档：[] / []
+  #4 Normalization occurred in Country A that invaded Country B because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Country B?
+  改写：Normalization occurred in Country A that invaded Egypt because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Egypt?
+  完整句：The word "Slavs" was used in the national anthem of Yugoslavia (1943–1992) and the Federal Republic of Yugoslavia (1992–2003), later Serbia and Montenegro (2003–2006).
+  新增/丢失标注文档：[] / []
+
+musique / 4hop2__71753_648517_70784_79935 / fresh36_type_stratified_random
+原query：When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?
+标准答案（只用于离线评分）：1930
+S02：1946；F1=0；状态=success
+ReAct：1961；F1=0；状态=success
+single_original：1920；F1=0；状态=success
+  #1 In which region is Israel located?
+  改写：In which region is Israel located?
+  完整句：Israel is located in the Middle East, on the southeastern shore of the Mediterranean Sea and the northern shore of the Red Sea.
+  新增/丢失标注文档：[] / []
+  #2 Which region lies immediately north of the region in which Israel is located?
+  改写：Which region lies immediately north of the region in which Israel is located?
+  完整句：Lebanon lies immediately north of the region in which Israel is located.
+  新增/丢失标注文档：[] / []
+  #3 Where did the Battle of Qurah and Umm al Maradim take place?
+  改写：Where did the Battle of Qurah and Umm al Maradim take place?
+  完整句：The Battle of Qurah and Umm al Maradim took place on the islands of Qurah and Umm al Maradim off the coast of Kuwait in the Persian Gulf.
+  新增/丢失标注文档：[] / []
+  #4 When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?
+  改写：When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?
+  完整句：The region immediately north of Israel is Lebanon, which was created as a modern state in 1920 under the French Mandate, while the location of the Battle of Qurah and Umm al Maradim—Kuwait’s islands of Qurah and Umm al Maradim—has been part of Kuwaiti territory since Kuwait’s establishment as a British protectorate in 1899 and later as an independent state in 1961; however, the retrieved passages do not specify when either Lebanon or Kuwait (or their relevant subregions) was created.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：1920；F1=0；状态=success
+  #1 In which region is Israel located?
+  改写：In which region is Israel located?
+  完整句：Israel is located in the Middle East, on the southeastern shore of the Mediterranean Sea and the northern shore of the Red Sea.
+  新增/丢失标注文档：[] / []
+  #2 Which region lies immediately north of the region in which Israel is located?
+  改写：Which region lies immediately north of the Middle East?
+  完整句：Lebanon lies immediately north of the region in which Israel is located.
+  新增/丢失标注文档：[] / []
+  #3 Where did the Battle of Qurah and Umm al Maradim take place?
+  改写：Where did the Battle of Qurah and Umm al Maradim take place?
+  完整句：The Battle of Qurah and Umm al Maradim took place on the islands of Qurah and Umm al Maradim off the coast of Kuwait in the Persian Gulf.
+  新增/丢失标注文档：[] / []
+  #4 When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?
+  改写：When was Lebanon and the islands of Qurah and Umm al Maradim created?
+  完整句：Lebanon, the region immediately north of where Israel is located, has existed as a distinct geographic and cultural region for millennia, but as a modern sovereign state it was created in 1920 under the French Mandate; the location of the Battle of Qurah and Umm al Maradim—Kuwait’s islands in the Persian Gulf—has been part of Kuwaiti territory since at least the 18th century, with Kuwait itself emerging as a semi-autonomous sheikhdom under the Bani Utub tribe around 1752.
+  新增/丢失标注文档：[] / ['0fe55822b59283cb37a3dbdf1841899cd9739d812754f17025772eaf69f79354']
+
+musique / 4hop1__408432_32392_823060_610794 / fresh36_type_stratified_random
+原query：In which county is the city sharing a border with the capitol of the state where WYFG is located?
+标准答案（只用于离线评分）：Richland County
+S02：Richland County；F1=1.0；状态=success
+ReAct：；F1=0；状态=algorithm_failure
+single_original：Richland County；F1=1.0；状态=success
+  #1 In which state is WYFG located?
+  改写：In which state is WYFG located?
+  完整句：WYFG is located in South Carolina.
+  新增/丢失标注文档：[] / []
+  #2 What is the capital city of the state where WYFG is located?
+  改写：What is the capital city of the state where WYFG is located?
+  完整句：Columbia is the capital city of South Carolina.
+  新增/丢失标注文档：[] / []
+  #3 Which city shares a border with the capital of the state where WYFG is located?
+  改写：Which city shares a border with the capital of the state where WYFG is located?
+  完整句：The city sharing a border with Columbia, the capital of South Carolina, cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #4 In which county is the city sharing a border with the capitol of the state where WYFG is located?
+  改写：In which county is the city sharing a border with the capitol of the state where WYFG is located?
+  完整句：The county cannot be determined because the city sharing a border with Columbia, the capital of South Carolina, is not identified in the retrieved passages.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：Richland County；F1=1.0；状态=success
+  #1 In which state is WYFG located?
+  改写：In which state is WYFG located?
+  完整句：WYFG is located in South Carolina.
+  新增/丢失标注文档：[] / []
+  #2 What is the capital city of the state where WYFG is located?
+  改写：What is the capital city of South Carolina?
+  完整句：Columbia is the capital city of South Carolina.
+  新增/丢失标注文档：[] / []
+  #3 Which city shares a border with the capital of the state where WYFG is located?
+  改写：Which city shares a border with Columbia?
+  完整句：No city sharing a border with Columbia, South Carolina is identified in the retrieved passages.
+  新增/丢失标注文档：[] / []
+  #4 In which county is the city sharing a border with the capitol of the state where WYFG is located?
+  改写：In which county is the city sharing a border with Columbia, South Carolina?
+  完整句：The county cannot be determined because no city sharing a border with Columbia, South Carolina is identified in the retrieved passages.
+  新增/丢失标注文档：[] / []
+
+musique / 4hop1__151650_5274_458768_33637 / fresh36_type_stratified_random
+原query：How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?
+标准答案（只用于离线评分）：two
+S02：New York City；F1=0；状态=success
+ReAct：The number of ethnic minorities looked at differently in New York City is not specified in the provided observations.；F1=0；状态=success
+single_original：Cannot be determined；F1=0；状态=success
+  #1 Which record label released Desde El Principio?
+  改写：Which record label released Desde El Principio?
+  完整句：Desde El Principio was released by Sony Music Entertainment.
+  新增/丢失标注文档：[] / []
+  #2 Which group is the only group larger than the record label of Desde El Principio?
+  改写：Which group is the only group larger than the record label of Desde El Principio?
+  完整句：The only group larger than Sony Music Entertainment is not identified in the retrieved passages.
+  新增/丢失标注文档：[] / []
+  #3 In which city is the headquarters of the only group larger than Desde El Principio's record label located?
+  改写：In which city is the headquarters of the only group larger than Desde El Principio's record label located?
+  完整句：The location of the headquarters of the only group larger than Sony Music Entertainment cannot be determined from these passages.
+  新增/丢失标注文档：[] / []
+  #4 How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?
+  改写：How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?
+  完整句：The number of ethnic minorities looked at differently in the city where the headquarters of the only group larger than Sony Music Entertainment is located cannot be determined.
+  新增/丢失标注文档：[] / []
+dual_original_rewritten：The question cannot be answered definitively based on the provided passages. The passages do not specify how many ethnic minorities were “looked at differently” in New York City (the city where Universal Music Group’s headquarters is located, per auxiliary #3 and confirmed by general knowledge), nor do they define or quantify “looked；F1=0；状态=success_truncated
+  #1 Which record label released Desde El Principio?
+  改写：Which record label released Desde El Principio?
+  完整句：Desde El Principio was released by Sony Music Entertainment.
+  新增/丢失标注文档：[] / []
+  #2 Which group is the only group larger than the record label of Desde El Principio?
+  改写：How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Sony Music Entertainment is located?
+  完整句：Universal Music Group is the only group larger than Sony Music Entertainment.
+  新增/丢失标注文档：['0ab53ea6d24e21ee41b2be21d948f2b9189538d6725b348f6bd820132bfe27dc'] / []
+  #3 In which city is the headquarters of the only group larger than Desde El Principio's record label located?
+  改写：In which city is the headquarters of Universal Music Group located?
+  完整句：Universal Music Group’s headquarters is located in New York City.
+  新增/丢失标注文档：['0ab53ea6d24e21ee41b2be21d948f2b9189538d6725b348f6bd820132bfe27dc'] / []
+  #4 How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?
+  改写：How many ethnic minorities were looked at differently in New York City?
+  完整句：The number of ethnic minorities looked at differently in New York City cannot be determined.
+  新增/丢失标注文档：[] / []
+
+扩展部分返回用量估算费用CNY：0.531486
+扩展未结预留CNY：0.054797599999999995
+全项目返回用量估算/未结预留CNY：[140.23158279999998, 12.9805408]
+冻结检查：{'cases': True, 'runner': True, 'protocol': True, 'prompts': True, 'native_continuation': True}
+调用与异常状态：{"api\\2wiki": {"requests": {}, "attempts": {}}, "api\\2wiki_native_v2": {"requests": {"success": 101}, "attempts": {"success": 101, "unknown": 2}}, "api\\hotpotqa": {"requests": {"success": 69}, "attempts": {"success": 69, "unknown": 3}}, "api\\musique_native_v2": {"requests": {"failed": 2, "success": 102}, "attempts": {"failed": 2, "success": 102, "unknown": 1}}, "baseline400_exact_probe": {"requests": {"failed": 1}, "attempts": {"failed": 1}}, "frozen_s02_musique_new12": {"requests": {"failed": 1, "success": 51}, "attempts": {"failed": 1, "success": 51, "unknown": 2}}, "react_musique_missing8": {"requests": {"success": 25}, "attempts": {"success": 25}}}
+本报告不将词级F1错误直接解释为幻觉，不作SOTA或总体优势声明。

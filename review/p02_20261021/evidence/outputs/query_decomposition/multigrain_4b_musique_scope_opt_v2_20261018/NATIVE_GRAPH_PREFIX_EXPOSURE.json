@@ -1,0 +1,82 @@
+{
+  "train": {
+    "2hop": {
+      "n": 191,
+      "passed": null
+    },
+    "3hop1": {
+      "n": 145,
+      "passed": null
+    },
+    "3hop2": {
+      "n": 21,
+      "passed": null
+    },
+    "4hop1": {
+      "n": 86,
+      "passed": null
+    },
+    "4hop2": {
+      "n": 20,
+      "passed": null
+    },
+    "4hop3": {
+      "n": 46,
+      "passed": null
+    }
+  },
+  "dev150": {
+    "2hop": {
+      "n": 18,
+      "passed": 14
+    },
+    "3hop1": {
+      "n": 14,
+      "passed": 11
+    },
+    "3hop2": {
+      "n": 3,
+      "passed": 2
+    },
+    "4hop1": {
+      "n": 13,
+      "passed": 8
+    },
+    "4hop3": {
+      "n": 2,
+      "passed": 0
+    }
+  },
+  "formal300": {
+    "2hop": {
+      "n": 35,
+      "passed": 26
+    },
+    "3hop1": {
+      "n": 28,
+      "passed": 18
+    },
+    "3hop2": {
+      "n": 7,
+      "passed": 2
+    },
+    "4hop1": {
+      "n": 15,
+      "passed": 5
+    },
+    "4hop2": {
+      "n": 7,
+      "passed": 1
+    },
+    "4hop3": {
+      "n": 8,
+      "passed": 2
+    }
+  },
+  "descriptive_reweighting": {
+    "formal_rates_reweighted_to_dev_prefix_shares": 0.5612380952380952,
+    "actual_formal_mu_rate": 0.54,
+    "composition_difference_at_observed_formal_rates_pp": 2.1238095238095167,
+    "caution": "Small per-prefix samples and differing relationship families; descriptive arithmetic, not causal attribution."
+  }
+}

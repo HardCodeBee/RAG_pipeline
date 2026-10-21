@@ -1,0 +1,1572 @@
+{
+  "recorded_utc": "2026-10-18T08:07:21.309578+00:00",
+  "operation": "Offline arithmetic on previously locked reviews; no inference or regrading.",
+  "sources": {
+    "original165": {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\reviews\\confirm120\\original165.jsonl",
+      "sha256": "7010b6423fe5a178e51e56abf3107674887e205531d12f24744b995754f83c7d"
+    },
+    "T02": {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\reviews\\confirm120\\p00_parent_t02.jsonl",
+      "sha256": "fe4fc9ab13648b9fb45e235b73c70fed50d1ee6fc5b5c647ddd9ddaab8b38451"
+    },
+    "R01_old40": {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\reviews\\confirm120\\r01_old_data.jsonl",
+      "sha256": "d4da41467e0eca9b0948519d51dda4ea272b55e882e43ffdc487567ed5a267b7"
+    },
+    "R02_expanded40": {
+      "path": "outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\reviews\\confirm120\\r02_expanded.jsonl",
+      "sha256": "5f25b4156a35a8832500f8e1a9cb167607bb676475276131444587b0fc8aa011"
+    },
+    "full3632_step228": {
+      "path": "outputs\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\reviews\\confirm120\\selected.jsonl",
+      "sha256": "d748884149ce5f596cf53a2f1e2f854ee941281826461ade7ec299e776a49d58"
+    }
+  },
+  "summaries": {
+    "original165": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 32,
+        "pass_percent": 80.0,
+        "verdicts": {
+          "fail": 7,
+          "pass": 32,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [
+            32,
+            33,
+            96,
+            108
+          ],
+          "S": [],
+          "C": [
+            37,
+            96
+          ],
+          "U": [
+            2,
+            58,
+            60,
+            96
+          ]
+        },
+        "FS_risk_indices": [
+          32,
+          33,
+          96,
+          108
+        ]
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39,
+        "pass_percent": 97.5,
+        "verdicts": {
+          "pass": 39,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [],
+          "S": [],
+          "C": [
+            119
+          ],
+          "U": []
+        },
+        "FS_risk_indices": []
+      },
+      "musique": {
+        "n": 40,
+        "passes": 25,
+        "pass_percent": 62.5,
+        "verdicts": {
+          "fail": 15,
+          "pass": 25
+        },
+        "nonpass_dimensions": {
+          "F": [
+            6,
+            24,
+            28,
+            38,
+            41,
+            45,
+            62,
+            67,
+            69,
+            76,
+            109
+          ],
+          "S": [],
+          "C": [
+            19,
+            51,
+            62
+          ],
+          "U": [
+            65,
+            99,
+            109
+          ]
+        },
+        "FS_risk_indices": [
+          6,
+          24,
+          28,
+          38,
+          41,
+          45,
+          62,
+          67,
+          69,
+          76,
+          109
+        ]
+      }
+    },
+    "T02": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 30,
+        "pass_percent": 75.0,
+        "verdicts": {
+          "fail": 9,
+          "pass": 30,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [
+            32,
+            33
+          ],
+          "S": [],
+          "C": [
+            37,
+            87,
+            96,
+            104
+          ],
+          "U": [
+            2,
+            29,
+            33,
+            60,
+            87,
+            95
+          ]
+        },
+        "FS_risk_indices": [
+          32,
+          33
+        ]
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39,
+        "pass_percent": 97.5,
+        "verdicts": {
+          "pass": 39,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [],
+          "S": [],
+          "C": [
+            119
+          ],
+          "U": []
+        },
+        "FS_risk_indices": []
+      },
+      "musique": {
+        "n": 40,
+        "passes": 29,
+        "pass_percent": 72.5,
+        "verdicts": {
+          "pass": 29,
+          "fail": 9,
+          "uncertain": 2
+        },
+        "nonpass_dimensions": {
+          "F": [
+            24,
+            38,
+            41,
+            45,
+            65,
+            69,
+            76,
+            99
+          ],
+          "S": [],
+          "C": [
+            51,
+            62
+          ],
+          "U": [
+            14
+          ]
+        },
+        "FS_risk_indices": [
+          24,
+          38,
+          41,
+          45,
+          65,
+          69,
+          76,
+          99
+        ]
+      }
+    },
+    "R01_old40": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 31,
+        "pass_percent": 77.5,
+        "verdicts": {
+          "fail": 8,
+          "pass": 31,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [
+            32,
+            33
+          ],
+          "S": [],
+          "C": [
+            37,
+            87,
+            96
+          ],
+          "U": [
+            2,
+            29,
+            33,
+            60,
+            87,
+            102
+          ]
+        },
+        "FS_risk_indices": [
+          32,
+          33
+        ]
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39,
+        "pass_percent": 97.5,
+        "verdicts": {
+          "pass": 39,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [],
+          "S": [],
+          "C": [
+            119
+          ],
+          "U": []
+        },
+        "FS_risk_indices": []
+      },
+      "musique": {
+        "n": 40,
+        "passes": 27,
+        "pass_percent": 67.5,
+        "verdicts": {
+          "fail": 11,
+          "pass": 27,
+          "uncertain": 2
+        },
+        "nonpass_dimensions": {
+          "F": [
+            6,
+            24,
+            28,
+            38,
+            41,
+            45,
+            62,
+            67,
+            69,
+            76,
+            99
+          ],
+          "S": [],
+          "C": [
+            51,
+            62
+          ],
+          "U": [
+            38,
+            65,
+            67
+          ]
+        },
+        "FS_risk_indices": [
+          6,
+          24,
+          28,
+          38,
+          41,
+          45,
+          62,
+          67,
+          69,
+          76,
+          99
+        ]
+      }
+    },
+    "R02_expanded40": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 32,
+        "pass_percent": 80.0,
+        "verdicts": {
+          "fail": 5,
+          "pass": 32,
+          "uncertain": 3
+        },
+        "nonpass_dimensions": {
+          "F": [
+            31,
+            32
+          ],
+          "S": [],
+          "C": [
+            37,
+            87,
+            96
+          ],
+          "U": [
+            2,
+            29,
+            48,
+            87
+          ]
+        },
+        "FS_risk_indices": [
+          31,
+          32
+        ]
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39,
+        "pass_percent": 97.5,
+        "verdicts": {
+          "pass": 39,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [],
+          "S": [],
+          "C": [
+            119
+          ],
+          "U": []
+        },
+        "FS_risk_indices": []
+      },
+      "musique": {
+        "n": 40,
+        "passes": 32,
+        "pass_percent": 80.0,
+        "verdicts": {
+          "pass": 32,
+          "fail": 6,
+          "uncertain": 2
+        },
+        "nonpass_dimensions": {
+          "F": [
+            28,
+            38,
+            41,
+            45,
+            62,
+            69,
+            76,
+            99
+          ],
+          "S": [],
+          "C": [
+            62
+          ],
+          "U": [
+            38
+          ]
+        },
+        "FS_risk_indices": [
+          28,
+          38,
+          41,
+          45,
+          62,
+          69,
+          76,
+          99
+        ]
+      }
+    },
+    "full3632_step228": {
+      "hotpotqa": {
+        "n": 40,
+        "passes": 32,
+        "pass_percent": 80.0,
+        "verdicts": {
+          "fail": 8,
+          "pass": 32
+        },
+        "nonpass_dimensions": {
+          "F": [
+            29,
+            32,
+            33,
+            96,
+            102,
+            108
+          ],
+          "S": [],
+          "C": [
+            10,
+            96
+          ],
+          "U": [
+            2,
+            29,
+            96
+          ]
+        },
+        "FS_risk_indices": [
+          29,
+          32,
+          33,
+          96,
+          102,
+          108
+        ]
+      },
+      "2wiki": {
+        "n": 40,
+        "passes": 39,
+        "pass_percent": 97.5,
+        "verdicts": {
+          "pass": 39,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [],
+          "S": [],
+          "C": [
+            119
+          ],
+          "U": []
+        },
+        "FS_risk_indices": []
+      },
+      "musique": {
+        "n": 40,
+        "passes": 29,
+        "pass_percent": 72.5,
+        "verdicts": {
+          "fail": 10,
+          "pass": 29,
+          "uncertain": 1
+        },
+        "nonpass_dimensions": {
+          "F": [
+            6,
+            24,
+            27,
+            28,
+            41,
+            45,
+            55,
+            62,
+            76
+          ],
+          "S": [],
+          "C": [
+            51,
+            62
+          ],
+          "U": [
+            113
+          ]
+        },
+        "FS_risk_indices": [
+          6,
+          24,
+          27,
+          28,
+          41,
+          45,
+          55,
+          62,
+          76
+        ]
+      }
+    }
+  },
+  "comparisons": {
+    "T02_vs_original165": {
+      "hotpotqa": {
+        "fixes": [
+          58,
+          108
+        ],
+        "regressions": [
+          29,
+          87,
+          95,
+          104
+        ],
+        "net_passes": -2,
+        "delta_pp": -5.0,
+        "paired_bootstrap95_delta_pp": [
+          -17.5,
+          7.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.6875
+      },
+      "2wiki": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          0.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "musique": {
+        "fixes": [
+          6,
+          19,
+          28,
+          67,
+          109
+        ],
+        "regressions": [
+          14
+        ],
+        "net_passes": 4,
+        "delta_pp": 10.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          22.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.21875
+      }
+    },
+    "R02_expanded40_vs_T02": {
+      "hotpotqa": {
+        "fixes": [
+          33,
+          60,
+          95,
+          104
+        ],
+        "regressions": [
+          31,
+          48
+        ],
+        "net_passes": 2,
+        "delta_pp": 5.0,
+        "paired_bootstrap95_delta_pp": [
+          -7.5,
+          17.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.6875
+      },
+      "2wiki": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          0.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "musique": {
+        "fixes": [
+          14,
+          24,
+          51,
+          65
+        ],
+        "regressions": [
+          28
+        ],
+        "net_passes": 3,
+        "delta_pp": 7.5,
+        "paired_bootstrap95_delta_pp": [
+          -2.5,
+          17.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.375
+      }
+    },
+    "R02_expanded40_vs_R01_old40": {
+      "hotpotqa": {
+        "fixes": [
+          33,
+          60,
+          102
+        ],
+        "regressions": [
+          31,
+          48
+        ],
+        "net_passes": 1,
+        "delta_pp": 2.5,
+        "paired_bootstrap95_delta_pp": [
+          -7.5,
+          12.5
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "2wiki": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          0.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "musique": {
+        "fixes": [
+          6,
+          24,
+          51,
+          65,
+          67
+        ],
+        "regressions": [],
+        "net_passes": 5,
+        "delta_pp": 12.5,
+        "paired_bootstrap95_delta_pp": [
+          2.5,
+          22.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.0625
+      }
+    },
+    "full3632_step228_vs_T02": {
+      "hotpotqa": {
+        "fixes": [
+          37,
+          60,
+          87,
+          95,
+          104
+        ],
+        "regressions": [
+          10,
+          102,
+          108
+        ],
+        "net_passes": 2,
+        "delta_pp": 5.0,
+        "paired_bootstrap95_delta_pp": [
+          -7.5,
+          20.0
+        ],
+        "mcnemar_exact_two_sided_p": 0.7265625
+      },
+      "2wiki": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          0.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "musique": {
+        "fixes": [
+          14,
+          38,
+          65,
+          69,
+          99
+        ],
+        "regressions": [
+          6,
+          27,
+          28,
+          55,
+          113
+        ],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          -15.0,
+          15.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      }
+    },
+    "full3632_step228_vs_R02_expanded40": {
+      "hotpotqa": {
+        "fixes": [
+          31,
+          37,
+          48,
+          87
+        ],
+        "regressions": [
+          10,
+          33,
+          102,
+          108
+        ],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          -15.0,
+          15.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "2wiki": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0.0,
+        "paired_bootstrap95_delta_pp": [
+          0.0,
+          0.0
+        ],
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "musique": {
+        "fixes": [
+          38,
+          69,
+          99
+        ],
+        "regressions": [
+          6,
+          24,
+          27,
+          51,
+          55,
+          113
+        ],
+        "net_passes": -3,
+        "delta_pp": -7.5,
+        "paired_bootstrap95_delta_pp": [
+          -22.5,
+          7.5
+        ],
+        "mcnemar_exact_two_sided_p": 0.5078125
+      }
+    }
+  },
+  "selected_real_cases_not_random": [
+    {
+      "index": 6,
+      "id": "musique:4hop2__72459_31688_31714_41245",
+      "dataset": "musique",
+      "query": "Along with the country where most of the US's oil comes from, one major power recognized the government of the face most closely associated with Libya's new government at an early date. What is the average construction salary in this country?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country does most of the US's oil come from?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the face most closely associated with Libya's new government at an early date?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Recognition of government becomes recognition of the associated person."
+        },
+        "T02": {
+          "raw_output": "[\"What country provides most of the US's oil?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the government of the face most closely associated with Libya's new government at an early date?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country does most of the US's oil come from?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the face most closely associated with Libya's new government at an early date?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Recognition of a government is replaced with recognition of the associated person."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What country does most of the US's oil come from?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the government of the face most closely associated with Libya's new government at an early date?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country does most of the US's oil come from?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the face most closely associated with Libya's new government at an early date?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Recognition of government becomes recognition of the associated person, same defect as locked R01/original165."
+        }
+      }
+    },
+    {
+      "index": 24,
+      "id": "musique:3hop1__248015_809999_533791",
+      "dataset": "musique",
+      "query": "Who is the mother of Tsarevich Ivan Ivanovich of the country where in August 2004 a bombing occurred in the location Fili is?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country was bombed in August 2004 in the location Fili?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Identical array: inherit locked parent. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description."
+        },
+        "T02": {
+          "raw_output": "[\"What country was bombed in August 2004 in the location Fili?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country was bombed in August 2004 in the location Fili?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Identical array: inherit locked parent. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What country was Fili in when a bombing occurred in August 2004?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country was bombed in August 2004 in the location Fili?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Exact array: locked T02 verdict. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description."
+        }
+      }
+    },
+    {
+      "index": 27,
+      "id": "musique:4hop1__107210_221169_833580_61459",
+      "dataset": "musique",
+      "query": "When did Italy fight in the same war as did Albert I of the country hosting the 1920 Summer Olympics, where the country Dia Psalma is from participated in?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country hosted the 1920 Summer Olympics?\",\"What country is Dia Psalma from?\",\"What war did Albert I of the country hosting the 1920 Summer Olympics fight in?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Identical array: inherit locked parent. Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "T02": {
+          "raw_output": "[\"What country hosted the 1920 Summer Olympics?\",\"What country is Dia Psalma from?\",\"What war did Albert I of the country hosting the 1920 Summer Olympics fight in?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country is Dia Psalma from?\",\"What country hosted the 1920 Summer Olympics?\",\"What war did Albert I of the country hosting the 1920 Summer Olympics fight in?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What country is Dia Psalma from?\",\"What country hosted the 1920 Summer Olympics?\",\"What war did Albert I of the country hosting the 1920 Summer Olympics fight in?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country is Dia Psalma from?\",\"What country hosted the 1920 Summer Olympics?\",\"What war did the country hosting the 1920 Summer Olympics fight in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "War in which Albert I fought becomes war in which the Olympics-host country fought; ruler and country participation are not interchangeable."
+        }
+      }
+    },
+    {
+      "index": 28,
+      "id": "musique:3hop1__35466_72872_59284",
+      "dataset": "musique",
+      "query": "Where did the country who won the 2014 event, that the FIFA Considerations Cups is usually considered a warm-up for, finish in the 2006 World Cup?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What event is the FIFA Considerations Cups usually considered a warm-up for?\",\"What country won the event the FIFA Considerations Cups is usually considered a warm-up for?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Omits2014 from the event-winner identifier."
+        },
+        "T02": {
+          "raw_output": "[\"What event is the FIFA Considerations Cup usually considered a warm-up for?\",\"What country won the 2014 event the FIFA Considerations Cup is usually considered a warm-up for?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What event is the FIFA Considerations Cups usually considered a warm-up for?\",\"What country won the event the FIFA Considerations Cups is usually considered a warm-up for?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Drops2014 from the event winner description."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What event is the FIFA Considerations Cups usually considered a warm-up for?\",\"What country won the event the FIFA Considerations Cups is usually considered a warm-up for?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Drops2014 from the country winning the event; changes the identifying time condition."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What event is the FIFA Considerations Cups usually considered a warm-up for?\",\"What country won the event the FIFA Considerations Cups is usually considered a warm-up for?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Still omits2014 from event winner description, matching previous model judgments."
+        }
+      }
+    },
+    {
+      "index": 38,
+      "id": "musique:4hop1__709382_146811_31223_68437",
+      "dataset": "musique",
+      "query": "When was the territory on the eastern border of the state where the performer of Hello Love died added to the union?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"Who performs Hello Love?\",\"What state is the performer of Hello Love from?\",\"What territory is on the eastern border of the state of the performer of Hello Love?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Replaces state of death with state performer is from."
+        },
+        "T02": {
+          "raw_output": "[\"Who performs Hello Love?\",\"What state does the performer of Hello Love belong to?\",\"What territory on the eastern border of the state where the performer of Hello Love belongs did the performer of Hello Love die in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "State where performer died becomes state performer belongs to; last item invents death in the eastern-border territory."
+        },
+        "R01_old40": {
+          "raw_output": "[\"Who performs Hello Love?\",\"What state was the performer of Hello Love in?\",\"What territory on the eastern border of the state where the performer of Hello Love was in was added to the union?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F",
+            "U"
+          ],
+          "reason": "State of death becomes state performer was in; last item repeats the original territory admission target."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"Who performed Hello Love?\",\"What state was the performer of Hello Love in?\",\"What territory on the eastern border of the state where the performer of Hello Love was in was added to the union?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F",
+            "U"
+          ],
+          "reason": "State where performer died becomes state performer was in; added last item also repeats the original territory-admission target as completion."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"Who performs Hello Love?\",\"What state did the performer of Hello Love die in?\",\"What territory on the eastern border of the state where the performer of Hello Love died was added to the union?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold."
+        }
+      }
+    },
+    {
+      "index": 41,
+      "id": "musique:4hop3__164419_608613_89818_4107",
+      "dataset": "musique",
+      "query": "What term is used to refer to an institution like a German Fachhochschule in Eric Losfeld's birth country and the country where Dutch is spoken?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country is Eric Losfeld from?\",\"What country is Dutch spoken in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Replaces birth country with country person is from."
+        },
+        "T02": {
+          "raw_output": "[\"What country is Eric Losfeld from?\",\"What country speaks Dutch?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Birth country of Eric Losfeld becomes country he is from, a related property not guaranteed equivalent."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country is Eric Losfeld from?\",\"What country is Dutch spoken in?\",\"What term is used to refer to an institution like a German Fachhochschule in Eric Losfeld's country of birth?\",\"What term is used to refer to an institution like a German Fachhochschule in the country where Dutch is spoken?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Still substitutes country of origin for birth country in the first item; extra term operands do not repair that false substitution."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What country is Eric Losfeld from?\",\"What country is Dutch spoken in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Still substitutes country Eric Losfeld is from for his birth country."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country is Eric Losfeld from?\",\"What country is Dutch spoken in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Still replaces birth country with country person is from, exact same array as locked R02 row41."
+        }
+      }
+    },
+    {
+      "index": 45,
+      "id": "musique:4hop1__101723_221169_833580_61459",
+      "dataset": "musique",
+      "query": "What year did Italy enter the same conflict as did Albert I of the country hosting the 1920 Summer Olympics where the country Don Kulick lives in sent a team?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country hosted the 1920 Summer Olympics?\",\"What country does Don Kulick live in?\",\"What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?\",\"What conflict did the country Don Kulick lives in enter?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Country sending a team to the Olympics becomes a country entering the conflict."
+        },
+        "T02": {
+          "raw_output": "[\"What country hosted the 1920 Summer Olympics?\",\"What country does Don Kulick live in?\",\"What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?\",\"What conflict did the country Don Kulick lives in send a team to?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "A team sent to the1920 Olympics becomes a team sent to a conflict; modifier attachment and event relation change."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country hosted the 1920 Summer Olympics?\",\"What country does Don Kulick live in?\",\"What conflict did Albert I of the country hosting the 1920 Summer Olympics enter?\",\"What conflict did the country Don Kulick lives in send a team to?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Identical array: inherit locked parent. A team sent to the1920 Olympics becomes a team sent to a conflict; modifier attachment and event relation change."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"What country does Don Kulick live in?\",\"What country hosted the 1920 Summer Olympics?\",\"What conflict did Albert I of the country hosting the 1920 Summer Olympics participate in?\",\"What country sent a team to the conflict Albert I of the country hosting the 1920 Summer Olympics participated in?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Still attaches sending a team to a conflict instead of the1920 Summer Olympics."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country did Don Kulick live in?\",\"What country hosted the 1920 Summer Olympics?\",\"What country sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in?\",\"What conflict did Albert I of the country that sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in enter?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Olympics host and participant countries are exchanged; Albert I is bound to participating country instead of the host. Also changes Don Kulick lives to lived."
+        }
+      }
+    },
+    {
+      "index": 51,
+      "id": "musique:4hop1__577566_252313_26424_581618",
+      "dataset": "musique",
+      "query": "Who founded the chain of music-themed restaurants with its first establishment in the birthplace of the Bigger Than Life producer?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Identical array: inherit locked parent. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested."
+        },
+        "T02": {
+          "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested."
+        },
+        "R01_old40": {
+          "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Identical array: inherit locked parent. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\",\"What chain of music-themed restaurants had its first establishment in the birthplace of the producer of Bigger Than Life?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Exact array: locked T02 verdict. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested."
+        }
+      }
+    },
+    {
+      "index": 65,
+      "id": "musique:3hop2__89818_575266_4107",
+      "dataset": "musique",
+      "query": "What term means an institution like a German Fachhochschule in the country where Salm is located and the country where Dutch is spoken?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"What country is Salm in?\",\"What country is Dutch spoken in?\",\"What institution is a German Fachhochschule?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "U"
+          ],
+          "reason": "Adds generic identity/definition of already supplied German Fachhochschule rather than a country-specific term need."
+        },
+        "T02": {
+          "raw_output": "[\"What country is Salm in?\",\"What country is Dutch spoken in?\",\"What country contains both the country where Salm is located and the country where Dutch is spoken?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "F"
+          ],
+          "reason": "Invents a containing country that contains the two countries; original asks one institution term used in two countries, not spatial containment."
+        },
+        "R01_old40": {
+          "raw_output": "[\"What country is Salm in?\",\"What country is Dutch spoken in?\",\"What institution is a German Fachhochschule?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "U"
+          ],
+          "reason": "Removes invented country containment but adds generic definition of already given German Fachhochschule, rather than a missing country-specific term prerequisite."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"In what country is Salm located?\",\"In what country is Dutch spoken?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"What country is Salm in?\",\"What country is Dutch spoken in?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U. Same Codex, not independent gold."
+        }
+      }
+    },
+    {
+      "index": 113,
+      "id": "musique:2hop__482554_3315",
+      "dataset": "musique",
+      "query": "For how many seasons was the performer of Never Too Far a judge on American Idol?",
+      "versions": {
+        "original165": {
+          "raw_output": "[\"Who is the performer of Never Too Far?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "T02": {
+          "raw_output": "[\"Who performs Never Too Far?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R01_old40": {
+          "raw_output": "[\"Who performs Never Too Far?\",\"During which seasons was the performer of Never Too Far a judge on American Idol?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "R02_expanded40": {
+          "raw_output": "[\"Who performs Never Too Far?\",\"During which seasons was the performer of Never Too Far a judge on American Idol?\"]",
+          "verdict": "pass",
+          "failed_dimensions": [],
+          "reason": "Every question inspected against original under frozen F/S/C/U; no definite defect. No answers/passages/native target consulted."
+        },
+        "full3632_step228": {
+          "raw_output": "[\"Who is the performer of Never Too Far?\",\"For how many seasons was the performer of Never Too Far a judge on American Idol?\"]",
+          "verdict": "fail",
+          "failed_dimensions": [
+            "U"
+          ],
+          "reason": "Repeats original season-count target after identifying performer, rather than asking for the seasons to support counting."
+        }
+      }
+    },
+    {
+      "index": 119,
+      "id": "2wiki:505840b40bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "query": "Who is Agnes Dunbar Moodie Fitzgibbon's uncle?",
+      "versions": {
+        "original165": {
+          "raw_output": "[]",
+          "verdict": "uncertain",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+        },
+        "T02": {
+          "raw_output": "[]",
+          "verdict": "uncertain",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+        },
+        "R01_old40": {
+          "raw_output": "[]",
+          "verdict": "uncertain",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+        },
+        "R02_expanded40": {
+          "raw_output": "[]",
+          "verdict": "uncertain",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Identical array: inherit locked parent. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+        },
+        "full3632_step228": {
+          "raw_output": "[]",
+          "verdict": "uncertain",
+          "failed_dimensions": [
+            "C"
+          ],
+          "reason": "Exact array: locked T02 verdict. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation."
+        }
+      }
+    }
+  ],
+  "full_remaining_nonpass": [
+    {
+      "index": 2,
+      "id": "hotpotqa:5adde73f5542992200553b94",
+      "dataset": "hotpotqa",
+      "query": "What do both Spider-Man and Spider-Man in film have in comman",
+      "raw_output": "[\"What is Spider-Man?\",\"What is Spider-Man in film?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "U"
+      ],
+      "reason": "Exact array: locked T02 verdict. Both items ask generic identities of already named entities, not a specified shared property; v12 explicitly excludes generic identities.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 6,
+      "id": "musique:4hop2__72459_31688_31714_41245",
+      "dataset": "musique",
+      "query": "Along with the country where most of the US's oil comes from, one major power recognized the government of the face most closely associated with Libya's new government at an early date. What is the average construction salary in this country?",
+      "raw_output": "[\"What country does most of the US's oil come from?\",\"Who is the face most closely associated with Libya's new government?\",\"What major power recognized the face most closely associated with Libya's new government at an early date?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Recognition of government becomes recognition of the associated person, same defect as locked R01/original165.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 10,
+      "id": "hotpotqa:5aba52e655429939ce03dc94",
+      "dataset": "hotpotqa",
+      "query": "This term about a playwright who lived from 1564-1616 presented what about his works? ",
+      "raw_output": "[\"What term about the playwright who lived from 1564 to 1616 is presented?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "C"
+      ],
+      "reason": "Only asks for the term described through an unnamed playwright, omitting the playwright identified by1564-1616 prerequisite.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 24,
+      "id": "musique:3hop1__248015_809999_533791",
+      "dataset": "musique",
+      "query": "Who is the mother of Tsarevich Ivan Ivanovich of the country where in August 2004 a bombing occurred in the location Fili is?",
+      "raw_output": "[\"What country was bombed in August 2004 in the location Fili?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Exact array: locked T02 verdict. Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 27,
+      "id": "musique:4hop1__107210_221169_833580_61459",
+      "dataset": "musique",
+      "query": "When did Italy fight in the same war as did Albert I of the country hosting the 1920 Summer Olympics, where the country Dia Psalma is from participated in?",
+      "raw_output": "[\"What country is Dia Psalma from?\",\"What country hosted the 1920 Summer Olympics?\",\"What war did the country hosting the 1920 Summer Olympics fight in?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "War in which Albert I fought becomes war in which the Olympics-host country fought; ruler and country participation are not interchangeable.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 28,
+      "id": "musique:3hop1__35466_72872_59284",
+      "dataset": "musique",
+      "query": "Where did the country who won the 2014 event, that the FIFA Considerations Cups is usually considered a warm-up for, finish in the 2006 World Cup?",
+      "raw_output": "[\"What event is the FIFA Considerations Cups usually considered a warm-up for?\",\"What country won the event the FIFA Considerations Cups is usually considered a warm-up for?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Still omits2014 from event winner description, matching previous model judgments.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 29,
+      "id": "hotpotqa:5a73354f5542991f9a20c687",
+      "dataset": "hotpotqa",
+      "query": "Thomas Henry Moray Followed work down on nuclear batteries in 1912 by this English physicist?",
+      "raw_output": "[\"What English physicist followed work down on nuclear batteries in 1912?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Original English physicist did the work followed by Moray; now asks which English physicist followed that work, reversing agency, and repeats a target-type question.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 32,
+      "id": "hotpotqa:5abba8545542993f40c73b72",
+      "dataset": "hotpotqa",
+      "query": "Barnstable County Hospital was the location of the autopsy of the son of President John F. Kennedy and Jacqueline Kennedy, and the younger brother of who?",
+      "raw_output": "[\"Who was the son of President John F. Kennedy and Jacqueline Kennedy?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Exact array: locked T02 verdict. Son identification drops the Barnstable County Hospital autopsy condition; the parental pair alone need not identify that son.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 33,
+      "id": "hotpotqa:5ac056385542997d64295a08",
+      "dataset": "hotpotqa",
+      "query": "Ambrose Mendy has managed and/or advised a British professional boxer that as of July 2017 is ranked the world's seventh best super middleweight by who?",
+      "raw_output": "[\"Which British professional boxer has Ambrose Mendy managed and/or advised?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Boxer item omits the July2017 seventh-best-ranking identifying condition, consistent with original165 row33.",
+      "review_batch_sha256": "accc2fcc099f312467cbf288ecc8dde3dd98abe6314ad65d1f0ec7a26c1bf169"
+    },
+    {
+      "index": 41,
+      "id": "musique:4hop3__164419_608613_89818_4107",
+      "dataset": "musique",
+      "query": "What term is used to refer to an institution like a German Fachhochschule in Eric Losfeld's birth country and the country where Dutch is spoken?",
+      "raw_output": "[\"What country is Eric Losfeld from?\",\"What country is Dutch spoken in?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Still replaces birth country with country person is from, exact same array as locked R02 row41.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 45,
+      "id": "musique:4hop1__101723_221169_833580_61459",
+      "dataset": "musique",
+      "query": "What year did Italy enter the same conflict as did Albert I of the country hosting the 1920 Summer Olympics where the country Don Kulick lives in sent a team?",
+      "raw_output": "[\"What country did Don Kulick live in?\",\"What country hosted the 1920 Summer Olympics?\",\"What country sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in?\",\"What conflict did Albert I of the country that sent a team to the 1920 Summer Olympics hosted by the country Don Kulick lived in enter?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Olympics host and participant countries are exchanged; Albert I is bound to participating country instead of the host. Also changes Don Kulick lives to lived.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 51,
+      "id": "musique:4hop1__577566_252313_26424_581618",
+      "dataset": "musique",
+      "query": "Who founded the chain of music-themed restaurants with its first establishment in the birthplace of the Bigger Than Life producer?",
+      "raw_output": "[\"Who produced Bigger Than Life?\",\"Where was the producer of Bigger Than Life born?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "C"
+      ],
+      "reason": "Exact array: locked T02 verdict. Producer and birthplace are exposed, but restaurant chain with first establishment there is not; that chain is the entity whose founder is requested.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 55,
+      "id": "musique:3hop2__42187_9998_46960",
+      "dataset": "musique",
+      "query": "Which explorer accurately mapped the coasts of Germany's central interest and the name under which WINEP bundles the countries of northwest Africa?",
+      "raw_output": "[\"What is Germany's central interest?\",\"What countries are in northwest Africa?\",\"What name does WINEP bundle for the countries in northwest Africa?\"]",
+      "verdict": "uncertain",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "WINEP bundling countries under a name becomes WINEP bundling a name for countries. Intended grouping label may be recoverable, but explicit object/relation is ambiguous; uncertainty retained as nonpass.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 62,
+      "id": "musique:4hop2__35882_5537_91861_124556",
+      "dataset": "musique",
+      "query": "Who was the father of the person who led the first expedition to reach the continent Buddhism spread by sailing west across the ocean along eastern Russia?",
+      "raw_output": "[\"What continent did Buddhism spread to?\",\"Who led the first expedition to reach the continent Buddhism spread to by sailing west across the ocean along eastern Russia?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Same as R02: first continent question drops sailing/ocean/eastern-Russia qualifiers and unnamed ocean remains unexposed.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 76,
+      "id": "musique:3hop2__161946_56933_831253",
+      "dataset": "musique",
+      "query": "What regime followed the rule of the man who was guillotined in the French Revolution over the country that built the Statue of Liberty?",
+      "raw_output": "[\"What country built the Statue of Liberty?\",\"Who was guillotined in the French Revolution over the country that built the Statue of Liberty?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Same as R02: who was guillotined still omits that this man ruled the specified country.",
+      "review_batch_sha256": "f21ad380c6046c69b6fdbc1a2b2a2d98bf7106ad32a4238109e7a3a317447ce5"
+    },
+    {
+      "index": 96,
+      "id": "hotpotqa:5a87a7235542996e4f3088a8",
+      "dataset": "hotpotqa",
+      "query": "This Zimbabwean singer/songwriter co-wrote a song recorded by a Barbadian singer for her fourth studio album named what?",
+      "raw_output": "[\"Which Barbadian singer recorded a song co-written by a Zimbabwean singer/songwriter?\",\"What was the fourth studio album by the Barbadian singer who recorded a song co-written by a Zimbabwean singer/songwriter?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F",
+        "C",
+        "U"
+      ],
+      "reason": "Same defects as original165: singer item drops fourth-album identifying condition, songwriter/song intermediates omitted, last item repeats original album target.",
+      "review_batch_sha256": "3a419846a5388a4433764a7d2ec4ef3b903031ea5d0b6083df3da609cb979fb4"
+    },
+    {
+      "index": 102,
+      "id": "hotpotqa:5a8f05b1554299458435d517",
+      "dataset": "hotpotqa",
+      "query": "William Pery served as Captain of the Yeomen of the Guard under the lord who served in what position from 1865 to 1868?",
+      "raw_output": "[\"Under whose lord did William Pery serve as Captain of the Yeomen of the Guard?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Under which lord becomes under whose lord, adding an owner-of-lord relation not stated in the original.",
+      "review_batch_sha256": "3a419846a5388a4433764a7d2ec4ef3b903031ea5d0b6083df3da609cb979fb4"
+    },
+    {
+      "index": 108,
+      "id": "hotpotqa:5ab600fb554299488d4d9a82",
+      "dataset": "hotpotqa",
+      "query": "Under Which Stanmore born prime minister was John Gorton a serving minister? ",
+      "raw_output": "[\"Who was John Gorton a serving minister of?\",\"Who was born in Stanmore?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "F"
+      ],
+      "reason": "Both items drop the specified prime-minister type; who was born in Stanmore asks an unbounded person set rather than the prime-minister operand.",
+      "review_batch_sha256": "3a419846a5388a4433764a7d2ec4ef3b903031ea5d0b6083df3da609cb979fb4"
+    },
+    {
+      "index": 113,
+      "id": "musique:2hop__482554_3315",
+      "dataset": "musique",
+      "query": "For how many seasons was the performer of Never Too Far a judge on American Idol?",
+      "raw_output": "[\"Who is the performer of Never Too Far?\",\"For how many seasons was the performer of Never Too Far a judge on American Idol?\"]",
+      "verdict": "fail",
+      "failed_dimensions": [
+        "U"
+      ],
+      "reason": "Repeats original season-count target after identifying performer, rather than asking for the seasons to support counting.",
+      "review_batch_sha256": "3a419846a5388a4433764a7d2ec4ef3b903031ea5d0b6083df3da609cb979fb4"
+    },
+    {
+      "index": 119,
+      "id": "2wiki:505840b40bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "query": "Who is Agnes Dunbar Moodie Fitzgibbon's uncle?",
+      "raw_output": "[]",
+      "verdict": "uncertain",
+      "failed_dimensions": [
+        "C"
+      ],
+      "reason": "Exact array: locked T02 verdict. Empty list offers no family prerequisite for uncle; parental/marital ambiguity makes adequacy uncertain rather than a definite wrong relation.",
+      "review_batch_sha256": "3a419846a5388a4433764a7d2ec4ef3b903031ea5d0b6083df3da609cb979fb4"
+    }
+  ],
+  "historical16_nonrandom_diagnostic": {
+    "n": 16,
+    "parent_passes": 4,
+    "candidate_passes": 3,
+    "fixes": [
+      11,
+      13
+    ],
+    "regressions": [
+      5,
+      15,
+      16
+    ],
+    "scope": "Purposive old-problem regression diagnostic; patterns informed training, not fresh population evaluation or a checkpoint-selection gate. Same Codex review."
+  },
+  "limits": [
+    "Decomposition F/S/C/U pass, not downstream RAG F1. Uncertain counts as nonpass.",
+    "Same Codex authored labels and reviewed outputs; not independent human gold.",
+    "Mu evaluation is custom native-train held-out with training-primitive exclusion, not official test.",
+    "F/S/C/U labels overlap and include uncertain risks; not mutually exclusive root causes.",
+    "Paired query bootstrap and McNemar are descriptive, conditional on verdicts and one seed; related Mu rows may share primitives.",
+    "R02 versus R01 matches parent, updates and exposures, not target tokens; native96 and synthetic40 effects are not isolated.",
+    "Full fresh retraining differs from continuation in initialization, sampling and schedule; no single-factor causal claim."
+  ]
+}

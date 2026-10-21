@@ -1,0 +1,60 @@
+{
+  "baseline_id": "rewriter_qwen_plus_2025_12_01_c02_full_answer_v1_20261019",
+  "status": "selected_and_frozen",
+  "selected_at_utc": "2026-10-19T06:42:42.150197+00:00",
+  "decision_date_client": "2026-10-19",
+  "decision": "User selected Qwen-Plus-2025-12-01 + original c02 without Short answer as the best reference rewriter baseline.",
+  "component": "subquery rewriter",
+  "renderer_module": "experiments.query_decomposition.rewrite_api_baseline_c02_v1_20261019.prompts",
+  "prompt": {
+    "version": "original_c02",
+    "examples_count": 6,
+    "template": "experiments/query_decomposition/rewrite_api_baseline_c02_v1_20261019/PROMPT_TEMPLATE.txt",
+    "short_answer_field": false
+  },
+  "input": {
+    "current_question": "current subquestion text",
+    "history": "ordered previous question/full-answer pairs",
+    "history_keys": [
+      "request",
+      "answer"
+    ],
+    "preprocessing": "Preserve supplied question/answer wording and order; this freeze introduces no filtering or rewriting of history."
+  },
+  "generation": {
+    "model": "qwen-plus-2025-12-01",
+    "messages": "one user message containing the rendered prompt",
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "extra_body": {
+      "enable_thinking": false
+    }
+  },
+  "output": "One complete rewritten retrieval question; no explanation and no answer fields.",
+  "selection_evidence": {
+    "results_file": "outputs/query_decomposition/hotpot_formal_eval_v1/rewrite_short_answer_ablation_v1_20261017/RESULTS.json",
+    "results_sha256": "c18598fd08535fcae4c417f087189f7cbbe37444e4e021991859abebcb9aea2f",
+    "variant": "full_only",
+    "inputs_file": "outputs/query_decomposition/hotpot_formal_eval_v1/rewrite_short_answer_ablation_v1_20261017/inputs.frozen.jsonl",
+    "inputs_sha256": "1fbf928ad09737cd75a278a2ec32109dd80d5325c1d6554be97a6c4afcf5978d",
+    "inputs": 93,
+    "original_queries": 57,
+    "semantic_correct": 87,
+    "binding_opportunities": 53,
+    "effective_bindings": 50,
+    "format_valid": 93,
+    "review": "Codex literal semantic review; not independent human gold.",
+    "scope": "Development component evaluation; no downstream RAG Answer F1 measured.",
+    "short_answer_ablation": "Adding Short answer alone kept semantic correctness at 87/93 and effective binding at 50/53."
+  },
+  "source_files_sha256": {
+    "experiments/query_decomposition/rewrite_correctness_v2_20261017/prompts.py": "7dd85ead0e2611d9e4c6e7078903010fc89476bccf3262b51624af1c8d621a51",
+    "experiments/query_decomposition/rewrite_correctness_v1_20261017/prompts.py": "1625904ce6f6f823a27bb0f5411b20e1edb94110763197d5e971c15d787a77c4"
+  },
+  "frozen_files_sha256": {
+    "experiments/query_decomposition/rewrite_api_baseline_c02_v1_20261019/prompts.py": "1d2aebad2a3bc56c2b36c3d2cf14fda6ce8163f883d2d8af908dc3078f0b8752",
+    "experiments/query_decomposition/rewrite_api_baseline_c02_v1_20261019/PROMPT_TEMPLATE.txt": "526552d2fc033b031fd94bba7fb6a87906ff7729780fc4648f7a63d0a4f22666"
+  },
+  "change_policy": "Keep this baseline immutable. Put later prompt/model changes in separately named candidates and retain this reference.",
+  "execution": "Selection and local verification only; no API call, training, or RAG run performed."
+}

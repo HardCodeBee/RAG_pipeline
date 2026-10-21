@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-20T12:37:30.213595+00:00",
+  "source": "User: 我们先采用：取消开头的原query检索，延后到goal阶段取得；其他的暂时不采用",
+  "selected_arm": "timing_only",
+  "entrypoint": "experiments.query_decomposition.p02_simplification_review_20261020.selected_pipeline.execute",
+  "wrapper_sha256": "f7a613ae5ce07682161713fdab20d426ae5beab9f1f46ac63c2333e333612ef5",
+  "parent_protocol_sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+  "only_adopted_change": "Remove the initial original-query get; obtain the same Top10 at the goal original route and reuse it in final answering",
+  "retained": [
+    "Frozen p02 prompts and examples",
+    "Original-first interleaving deduplicated Top10 per node",
+    "Ordinary child complete answers",
+    "Goal pre-answer",
+    "Final overall short answer with ordinary+goal auxiliary QA and original-query Top10"
+  ],
+  "not_adopted": [
+    "union20",
+    "discount20",
+    "single_final",
+    "terminal_goal"
+  ],
+  "historical_frozen_controls_modified": false,
+  "prior_union_candidate_status": "Preserved as historical experiment only; not adopted under this newer user decision",
+  "evidence": "300-query equivalence replay: 887 nodes and 1774 model calls identical",
+  "retrieval_savings_limit": "Previous repeat original queries could hit cache; no claim of saving a physical index search",
+  "analysis_new_API_calls": 0,
+  "analysis_new_index_searches": 0
+}

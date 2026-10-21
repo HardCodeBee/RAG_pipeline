@@ -1,0 +1,120 @@
+{
+  "recorded_utc": "2026-10-18T01:11:46.732853+00:00",
+  "parent_verified": {
+    "files": [
+      {
+        "path": "BASE_MODEL_IDENTITY.json",
+        "bytes": 2235,
+        "sha256": "ea15e5679c445709518e1b5b23e6d91c38d0062d64f1ca640d522a0c81f29d6f"
+      },
+      {
+        "path": "LICENSE",
+        "bytes": 11343,
+        "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+      },
+      {
+        "path": "MODIFICATION_NOTICE.txt",
+        "bytes": 224,
+        "sha256": "398a5f938ad99469384c354864e7bc0d15550ed772b180a59638dd270c1ea1d1"
+      },
+      {
+        "path": "README.md",
+        "bytes": 5414,
+        "sha256": "c5671f4473eb490312ec2c8fe70c1494054e02cde845644e7145cccbe55b9e4b"
+      },
+      {
+        "path": "adapter_config.json",
+        "bytes": 1161,
+        "sha256": "2d6c303e02066a616a0d37ece88d5a6c59fe79ba99592085726190de27662ab9"
+      },
+      {
+        "path": "adapter_model.safetensors",
+        "bytes": 264308896,
+        "sha256": "0d8a6933502b9378b2c1f83e11a9adb345d209679464aa9ccd3c1ad68c96c2bf"
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 2630,
+        "sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422650,
+        "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 665,
+        "sha256": "7a8b69bdd59cb05edc0ba8d60844b9395faf4752097f34382c7761bb8b198206"
+      },
+      {
+        "path": "trainer_state.json",
+        "bytes": 112995,
+        "sha256": "e595657551fe30a8d2d13ac1f2c090fe24ea5dcead604624b0b8e228b1a4c943"
+      },
+      {
+        "path": "training_config.json",
+        "bytes": 2504,
+        "sha256": "4d2189c50d701bca0d26192d82c4ad301572f4d50ebacb0d6406e1e30fc3ce05"
+      },
+      {
+        "path": "training_state.pt",
+        "bytes": 529075053,
+        "sha256": "4b486e0cf0dbef82c390ed48e647af1f2453dafe1430ec693b81a1e4d20badcd"
+      }
+    ],
+    "manifest_sha256": "eb78aaaec6a8cfb853daeca9e739ca6143487d8d8f9b3bd1c4bb3494873a9192"
+  },
+  "candidate_verified": {
+    "files": [
+      {
+        "path": "BASE_MODEL_IDENTITY.json",
+        "bytes": 2235,
+        "sha256": "ea15e5679c445709518e1b5b23e6d91c38d0062d64f1ca640d522a0c81f29d6f"
+      },
+      {
+        "path": "MODIFICATION_NOTICE.txt",
+        "bytes": 202,
+        "sha256": "9112f61174457634b522ed701e0f4642d60e167d644a9a5d7ccb6cfe285e4024"
+      },
+      {
+        "path": "README.md",
+        "bytes": 5414,
+        "sha256": "c5671f4473eb490312ec2c8fe70c1494054e02cde845644e7145cccbe55b9e4b"
+      },
+      {
+        "path": "adapter_config.json",
+        "bytes": 1161,
+        "sha256": "38680fddcfb95570847e5f239b7fe5bf6f80f9592e5b3afa77844322e107843b"
+      },
+      {
+        "path": "adapter_model.safetensors",
+        "bytes": 264308896,
+        "sha256": "59bcdecb6cb040015469c0fbef1a889e15ff7109d59f8eaaebf8e0007b0825ee"
+      },
+      {
+        "path": "chat_template.jinja",
+        "bytes": 2630,
+        "sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 11422650,
+        "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 665,
+        "sha256": "7a8b69bdd59cb05edc0ba8d60844b9395faf4752097f34382c7761bb8b198206"
+      },
+      {
+        "path": "training_config.json",
+        "bytes": 24906,
+        "sha256": "bde9457514794db7388236773f77bf0674426af2fbfbf8ae1cc074e1a3981da9"
+      }
+    ],
+    "manifest_sha256": "281f96415700497ef79d2d47597c82dcddb1352932e1a0cf804d139d9328574c"
+  },
+  "sacct": "JobID|State|Elapsed|ExitCode\n154207|COMPLETED|00:12:25|0:0\n154207.batch|COMPLETED|00:12:25|0:0\n154207.extern|COMPLETED|00:12:25|0:0\n154207.0|COMPLETED|00:12:21|0:0\n154208|COMPLETED|00:04:49|0:0\n154208.batch|COMPLETED|00:04:49|0:0\n154208.extern|COMPLETED|00:04:49|0:0\n154208.0|COMPLETED|00:04:45|0:0\n154215|FAILED|00:00:18|1:0\n154215.batch|FAILED|00:00:18|1:0\n154215.extern|COMPLETED|00:00:18|0:0\n154215.0|FAILED|00:00:14|1:0\n154217|COMPLETED|00:24:43|0:0\n154217.batch|COMPLETED|00:24:43|0:0\n154217.extern|COMPLETED|00:24:43|0:0\n154217.0|COMPLETED|00:24:39|0:0\n154227|COMPLETED|00:15:49|0:0\n154227.batch|COMPLETED|00:15:49|0:0\n154227.extern|COMPLETED|00:15:49|0:0\n154227.0|COMPLETED|00:15:45|0:0\n",
+  "queue": "JOBID NAME ST TIME\n"
+}

@@ -1,0 +1,17 @@
+{
+  "stage": "One-time unseen native90 confirmation; no tuning from its outputs.",
+  "n": 90,
+  "queries_sha256": "32e6b13b5bf8086447df1f0f5380544df432e84bd07abbe1c6f2e19e24138cd0",
+  "variants": {
+    "b00_v12": {
+      "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8"
+    },
+    "c02_full_description": {
+      "prompt_sha256": "8faf600d697ee6b04b5def435c8b87d0e377358dc22396cef0027408762d6b5d"
+    }
+  },
+  "criterion": "Only nominate c02 after confirmation if its full90 pass count exceeds b00; otherwise retain b00. Report paired counts and uncertainty; point improvement is not established statistical superiority.",
+  "generation": "Same checkpoint165, native template, greedy1024, seed1729, single-query decoding.",
+  "review": "Frozen F/S/C/U current Codex query-only, no answers or standard decompositions.",
+  "api_calls": 0
+}

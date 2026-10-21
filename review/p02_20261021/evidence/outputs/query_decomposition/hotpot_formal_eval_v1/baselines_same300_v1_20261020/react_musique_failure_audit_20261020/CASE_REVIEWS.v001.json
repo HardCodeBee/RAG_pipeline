@@ -1,0 +1,1281 @@
+[
+  {
+    "n": 1,
+    "suffix": "161324_14670_8987_8529",
+    "tags": [
+      "wrong_country_branch",
+      "repetitive_thought"
+    ],
+    "finding": "第一次复合搜索后，模型把目标国家猜向波兰；末轮在讨论波兰国歌时大量重复同一行歌词，直到 512 token 截断，未输出动作。原始标签意图是南斯拉夫及 1943–1992。",
+    "limit_effect": "512 上限直接触发退出，但此前已经猜错对象并出现重复生成；扩大上限不等于纠正国家。",
+    "id": "musique:4hop2__161324_14670_8987_8529",
+    "question": "A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country occupied by the Nazi's. When was the word \"Slavs\" used in the national anthem of the unprepared country?",
+    "gold": "1943–1992",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 1,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 0,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__161324_14670_8987_8529.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop2__161324_14670_8987_8529.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Never",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop2__161324_14670_8987_8529.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "1939–1945, 1943–1992, and 1992–2003",
+        "status": "success",
+        "f1": 0.4,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop2__161324_14670_8987_8529.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161324_14670_8987_8529.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161324_14670_8987_8529.json"
+  },
+  {
+    "n": 2,
+    "suffix": "326964_734214_7713",
+    "tags": [
+      "entity_scope_shift",
+      "historical_name_ambiguity"
+    ],
+    "finding": "实际先得到 Lynn Hung 出生地南京、Yaxing 总部扬州/江苏，随后把目标改成南京作为江苏省省会的时长。末轮考虑 1953 到 2025 的约 72 年，512 token 用完仍无动作。",
+    "annotation_note": "原始 Nanjing 段落给出汉末到唐初为 Yangzhou 首府约 400 年，Yaxing 段落的 Yangzhou 却是现代总部城市；同名历史行政区和现代城市本身有歧义。不能把三篇 gold 文档命中理解成关系已经无歧义。",
+    "limit_effect": "已读齐 3 篇标注支持段落；长度/动作修复只能使轨迹继续，不能保证模型回到正确的历史关系。",
+    "id": "musique:3hop2__326964_734214_7713",
+    "question": "How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?",
+    "gold": "about 400 years",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 4,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 3,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop2__326964_734214_7713.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop2__326964_734214_7713.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "0 years",
+        "status": "success",
+        "f1": 0.4,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop2__326964_734214_7713.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Nanjing had never been the capital city of Yaxing Coach's headquarters location.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop2__326964_734214_7713.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop2__326964_734214_7713.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop2__326964_734214_7713.json"
+  },
+  {
+    "n": 3,
+    "suffix": "524186_219173_548463_72134",
+    "tags": [
+      "native_entity_join_conflict"
+    ],
+    "finding": "实际查到 Margaret Mayo 出生于 Illinois，以及 Superior Drill Company 位于 Springfield, Ohio。模型识别出两个州不一致，试图消解矛盾，末轮 512 token 截断而无动作。",
+    "annotation_note": "原始支持材料将 Springfield, Ohio 的公司所在地连接到了 Springfield, Illinois 的建都年份 1839。不是单纯“模型没把 Springfield 替换进去”，而是原始 gold 链的跨州同名实体错接。",
+    "limit_effect": "就算强制输出答案，也不能要求模型在保持原题地点约束的同时必然得到 gold 1839。",
+    "id": "musique:4hop3__524186_219173_548463_72134",
+    "question": "When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?",
+    "gold": "1839",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 3,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 3,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Springfield, Ohio, has never been the capital of Illinois.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__524186_219173_548463_72134.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop3__524186_219173_548463_72134.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Springfield, Ohio, has never been the capital of any U.S. state.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop3__524186_219173_548463_72134.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "November 16, 1907",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop3__524186_219173_548463_72134.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__524186_219173_548463_72134.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__524186_219173_548463_72134.json"
+  },
+  {
+    "n": 4,
+    "suffix": "161602_426860_88460_21074",
+    "tags": [
+      "native_query_underspecified",
+      "relation_ambiguity"
+    ],
+    "finding": "题目未说明是哪一场 tournament，且把一个 country 写成两国之间的 natural boundary。模型围绕 That Dam、老挝、泰国、河流边界猜测，两次检索后 512 token 截断。",
+    "annotation_note": "原始分解直接把未指明的 tournament 绑定到 Thailand，再把自然边界回答为 Myanmar；这些绑定不能由原题的明确实体唯一确定。",
+    "limit_effect": "缺少消歧线索，不能把失败全部归于输出长度或动作语法。",
+    "id": "musique:4hop2__161602_426860_88460_21074",
+    "question": "Who runs the school system in the country that is the natural boundary between the country that hosted the tournament and the country where That Dam is located?",
+    "gold": "the Ministry of Education",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 2,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__161602_426860_88460_21074.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop2__161602_426860_88460_21074.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "The question cannot be answered definitively based on the provided passages and auxiliary information. The country that hosted the tournament is identified as Russia (auxiliary #1), but the location of \"That Dam\" is not specified in any passage, and auxiliary #2 explicitly states the natural boundary cannot be determined. Therefore, the country",
+        "status": "success",
+        "f1": 0.04166666666666667,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop2__161602_426860_88460_21074.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "The Communist Party of China",
+        "status": "success",
+        "f1": 0.28571428571428575,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop2__161602_426860_88460_21074.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161602_426860_88460_21074.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__161602_426860_88460_21074.json"
+  },
+  {
+    "n": 5,
+    "suffix": "43565_624859_355213_203322",
+    "tags": [
+      "native_entity_join_conflict",
+      "repeated_exact_search"
+    ],
+    "finding": "模型沿 Eric Carmen → Cleveland, Ohio → Cuyahoga County 检索；出生地搜索精确重复一次。5 次搜索后申请查询 Cuyahoga 的邻县，未获执行。",
+    "annotation_note": "原始支持段落一篇写 Cleveland, Ohio 的 Eric Carmen，下一篇却是 Cleveland, North Carolina/Rowan County，最终 gold 为 Cabarrus County。原始 gold 在 Cleveland 处跨州错接。",
+    "limit_effect": "当前轨迹继续找 Ohio 邻县也不应自然得到北卡的 gold；多给一次搜索不能证明能够修复。",
+    "id": "musique:4hop1__43565_624859_355213_203322",
+    "question": "Which county shares a border with the county where the city in which the original singer of All By Myself was born is located?",
+    "gold": "Cabarrus County",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 1,
+    "gold_documents_read": 3,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "Which counties border Cuyahoga County, Ohio?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__43565_624859_355213_203322.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__43565_624859_355213_203322.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Lorain County",
+        "status": "success",
+        "f1": 0.5,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__43565_624859_355213_203322.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Shelby County",
+        "status": "success",
+        "f1": 0.5,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__43565_624859_355213_203322.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__43565_624859_355213_203322.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__43565_624859_355213_203322.json"
+  },
+  {
+    "n": 6,
+    "suffix": "702699_792411_51423",
+    "tags": [
+      "bridge_recall_gap",
+      "last_needed_lookup_blocked"
+    ],
+    "finding": "先正确找到 Maria 的表演者 Jane Siberry，随后 4 次出生地问法没取得明确出生城市。末轮根据参数知识提出 Search[castle in Toronto]，这是第 6 次搜索申请，被预算拦截。gold 为 Casa Loma。",
+    "annotation_note": "原始标注的中间支持段落为 Gavin Bradley 的简介，提到其位于 Toronto 且与 Jane Siberry 合作；它不直接证明 Jane Siberry 的出生地。",
+    "limit_effect": "本题最直接显示最后一跳候选搜索被停止，但未执行的搜索是否召回 Casa Loma 尚未验证。B0、整合版和 S02 在本题均为 F1=1。",
+    "id": "musique:3hop1__702699_792411_51423",
+    "question": "What is the name of the castle in the birth city of the performer on the album Maria?",
+    "gold": "Casa Loma",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": [
+      "search",
+      "castle in Toronto"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Casa Loma",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__702699_792411_51423.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Casa Loma",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop1__702699_792411_51423.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Casa Loma",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop1__702699_792411_51423.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "None of the provided chunks mention a castle in the birth city of the performer on the album *Maria*.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop1__702699_792411_51423.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__702699_792411_51423.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__702699_792411_51423.json"
+  },
+  {
+    "n": 7,
+    "suffix": "107309_457883_650651_7262",
+    "tags": [
+      "creator_broadcaster_confusion",
+      "wrong_entity_branch"
+    ],
+    "finding": "确认 Brunei 后，模型将 The Biggest Loser 的 creator/原节目来源与当地播出机构混淆，转向 BNC Network HD、RTB 的广播部门人物。最后还想查 RTB 领导，5 次搜索用完。",
+    "annotation_note": "gold 路线借 Brunei 版节目段落中的 NBC 连接到 NBC Radio 的 Walter Sabo。",
+    "limit_effect": "在错误的 RTB 分支继续搜索，不保证回到 NBC；属于语义对象漂移叠加预算退出。",
+    "id": "musique:4hop1__107309_457883_650651_7262",
+    "question": "The Embassy of the country where palitaw comes from is found in Bandar Seri Begawan in Country A. Who was a prominent figure at the radio division of the creator of The Biggest Loser at Country A?",
+    "gold": "Walter Sabo",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 3,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "RTB Brunei Director General Pengiran Dato Seri Setia Haji Awang Abdul Momin"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__107309_457883_650651_7262.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__107309_457883_650651_7262.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "No prominent figure is identified.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__107309_457883_650651_7262.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "No prominent figure is identified in the context.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__107309_457883_650651_7262.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__107309_457883_650651_7262.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__107309_457883_650651_7262.json"
+  },
+  {
+    "n": 8,
+    "suffix": "132957_595371_40768",
+    "tags": [
+      "repeated_exact_search",
+      "native_time_ambiguity"
+    ],
+    "finding": "Honda 的首家美国汽车组装厂问法执行了 3 次（多出 2 次精确重复），最后才申请 Nissan 的 Smyrna 工厂年份，已达搜索上限。",
+    "annotation_note": "支持段落同时说 1973 危机后的十年和 1981 自愿出口限制，gold 为 1981；模型尝试区分各厂实际开设年份。这是出口限制时间与开厂时间的语义歧义，不能假设 gold 年份是所有厂家同年开厂的直接证据。",
+    "limit_effect": "去掉重复可以释放轮次，但是否得到 gold 年份仍取决于时间关系的解释。",
+    "id": "musique:3hop2__132957_595371_40768",
+    "question": "When did the maker of the Acura Legend, the manufacturer of the Scion xB, and Nissan, open US assembly plants?",
+    "gold": "1981",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 2,
+    "gold_documents_read": 2,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": [
+      "search",
+      "When did Nissan open its Smyrna Assembly Plant?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Honda opened its first US auto assembly plant in 1982; Toyota and Nissan opened US assembly plants in 1984.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop2__132957_595371_40768.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Early 1980s",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop2__132957_595371_40768.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "1984",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop2__132957_595371_40768.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "1984",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop2__132957_595371_40768.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop2__132957_595371_40768.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop2__132957_595371_40768.json"
+  },
+  {
+    "n": 9,
+    "suffix": "132909_33564",
+    "tags": [
+      "bridge_recall_gap",
+      "repeated_exact_search",
+      "native_time_ambiguity"
+    ],
+    "finding": "第一步正确找到 Nirbhay 的 DRDO，随后同一成立时间问法执行 3 次，再做一个变体；末轮仍想查 DRDO 成立时间。实际回包没有找到明确所需段落。",
+    "annotation_note": "gold 范围来自 Hyderabad 段落对 1950s–1970s 期间多家机构在该地设立的整体描述；模型想到的 DRDO 组织成立年 1958 与“当地设立机构时期”不是完全同一字段。",
+    "limit_effect": "此处 Search 不能保证像实体百科工具那样返回 DRDO 的对应段落；重复无新证据的搜索消耗了有限轮次。",
+    "id": "musique:2hop__132909_33564",
+    "question": "During which era was the company that makes Nirbhay founded?",
+    "gold": "From the 1950s to the 1970s",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 2,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 2,
+    "last_parsed_action": [
+      "search",
+      "When was DRDO established?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "1958",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__132909_33564.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "mid-20th century era",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\2hop__132909_33564.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "1958",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\2hop__132909_33564.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Not specified in the context.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\2hop__132909_33564.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__132909_33564.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__132909_33564.json"
+  },
+  {
+    "n": 10,
+    "suffix": "847684_339990_54675",
+    "tags": [
+      "native_entity_join_conflict"
+    ],
+    "finding": "第一次读到 Lorenz Park 位于 Columbia County, New York，随后找 New York 的 Portland。末轮在 New York/Maine/Oregon 的 Portland 之间消歧，512 token 截断。",
+    "annotation_note": "原始 gold 支持链从 Columbia County, New York 接到了 Columbia County, Oregon，再接 Portland, Oregon 和 Tualatin Mountains，存在跨州同名县错接。",
+    "limit_effect": "模型保留 New York 限定本身合理；不能将“未跳到 Oregon”都当成方法推理错误。",
+    "id": "musique:3hop1__847684_339990_54675",
+    "question": "What mountains can you see from Portland, in the state containing the county where Lorenz Park is located?",
+    "gold": "Tualatin Mountains",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 2,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__847684_339990_54675.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cascade Range",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop1__847684_339990_54675.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Mount Hood, Mount St. Helens, Mount Adams, and Mount Rainier",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop1__847684_339990_54675.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Mt. Hood, Mt. St. Helens, Mt. Adams, and Mt. Rainier",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop1__847684_339990_54675.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__847684_339990_54675.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__847684_339990_54675.json"
+  },
+  {
+    "n": 11,
+    "suffix": "344155_378185_282674_759393",
+    "tags": [
+      "native_entity_join_conflict",
+      "bridge_recall_gap",
+      "repeated_exact_search"
+    ],
+    "finding": "实际 KRSU 段落写 Appleton, Minnesota。后续一直查这个带州名的城市属于哪个县，精确重复一次，5 次搜索后还想继续查。",
+    "annotation_note": "原始 gold 后继段落 John C. Petersen 写 Appleton, Wisconsin / Outagamie County，再接 Brown County/Green Bay。Appleton 从 Minnesota 被错接到 Wisconsin。",
+    "limit_effect": "本题不能拿 Green Bay 当作遵守 Minnesota 约束时也应推出的答案；无终答和原始标注矛盾是两个层次。",
+    "id": "musique:4hop1__344155_378185_282674_759393",
+    "question": "What is the seat of the county sharing a border with the county with a town to which KRSU is licensed to broadcast?",
+    "gold": "Green Bay",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 1,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "Appleton Minnesota location county"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__344155_378185_282674_759393.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__344155_378185_282674_759393.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Browns Valley",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__344155_378185_282674_759393.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Appleton",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__344155_378185_282674_759393.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__344155_378185_282674_759393.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__344155_378185_282674_759393.json"
+  },
+  {
+    "n": 12,
+    "suffix": "109422_720914_27537",
+    "tags": [
+      "bridge_recall_gap",
+      "repeated_exact_search"
+    ],
+    "finding": "找到 Titian 后，同一 Search[Where did Titian die?] 连续执行 4 次（多出 3 次精确重复）。回包含画作在 Venice 的信息，但没有直接证明作者去世地点；最后又申请加 1576 的变体，被上限停止。",
+    "annotation_note": "不能把“作品收藏/位于 Venice”当成“作者死于 Venice”。实际未读到 gold 最后一步的 Roncalli 离开 Venice 去 Rome 参加 conclave 的段落。",
+    "limit_effect": "明确存在检索重复和桥接事实缺口，不是读齐证据却拒绝完成最终答案。",
+    "id": "musique:3hop1__109422_720914_27537",
+    "question": "Why did Roncalli leave the place of death of The Punishment of Tythus' creator?",
+    "gold": "for the conclave in Rome",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 3,
+    "gold_documents_read": 2,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": [
+      "search",
+      "Where did Titian die in 1576?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Roncalli left Venice to attend the papal conclave in Rome following the death of Pope Pius XII.",
+        "status": "success",
+        "f1": 0.31578947368421056,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__109422_720914_27537.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Roncalli left Venice because he was elected Pope following the death of Pope Pius XII and departed for the papal conclave in Rome.",
+        "status": "success",
+        "f1": 0.32,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop1__109422_720914_27537.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Roncalli left Venice to attend the papal conclave in Rome following the death of Pope Pius XII.",
+        "status": "success",
+        "f1": 0.31578947368421056,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop1__109422_720914_27537.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Roncalli left Venice for the conclave in Rome following the death of Pope Pius XII.",
+        "status": "success",
+        "f1": 0.47058823529411764,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop1__109422_720914_27537.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__109422_720914_27537.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\3hop1__109422_720914_27537.json"
+  },
+  {
+    "n": 13,
+    "suffix": "94201_642284_131926_13165",
+    "tags": [
+      "bridge_recall_gap",
+      "unexecuted_search_has_generated_observation"
+    ],
+    "finding": "找到 Ralph Rapson 后，4 次死亡地点变体仍未找到所需城市。末轮猜 Minneapolis，并申请查询其附近水体；已用完 5 次搜索。",
+    "annotation_note": "末轮文本还自行生成 Observation，但这是模型生成的文字，不是工具返回。原解析器只保留 Search 之前的有效动作，不会把这些文字当作检索证据。",
+    "limit_effect": "继续执行还需水体与条约两步，不能断言把上限从 5 加到 6 就能答出 Treaty of Paris。",
+    "id": "musique:4hop1__94201_642284_131926_13165",
+    "question": "What treaty ceded territory to the US extending west to the body of water by the city where the designer of Southeast Library died?",
+    "gold": "Treaty of Paris",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "What body of water is Minneapolis located on?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Adams–Onís Treaty",
+        "status": "success",
+        "f1": 0.4,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__94201_642284_131926_13165.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__94201_642284_131926_13165.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Adams–Onís Treaty",
+        "status": "success",
+        "f1": 0.4,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__94201_642284_131926_13165.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Adams–Onís Treaty",
+        "status": "success",
+        "f1": 0.4,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__94201_642284_131926_13165.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__94201_642284_131926_13165.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__94201_642284_131926_13165.json"
+  },
+  {
+    "n": 14,
+    "suffix": "753715_51329",
+    "tags": [
+      "bridge_recall_gap",
+      "wrong_spouse_branch"
+    ],
+    "finding": "Mary Philips 的丈夫一直没得到证据支持，后续猜 William Wyler，再转 Robert Sherwood；最后申请查 Robert Sherwood 的奥斯卡，达到搜索上限。",
+    "annotation_note": "gold 链是 Mary Philips → Humphrey Bogart → The African Queen，当前轨迹未读到标注支持段落。",
+    "limit_effect": "错误对象进入检索之后会带走后续轮次；单纯放宽轮数不保证纠正丈夫实体。",
+    "id": "musique:2hop__753715_51329",
+    "question": "with what movie did Mary Philips' husband win his only oscar?",
+    "gold": "The African Queen",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 0,
+    "gold_documents_annotated": 2,
+    "last_parsed_action": [
+      "search",
+      "Mary Philips husband Robert Sherwood Oscar wins"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__753715_51329.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\2hop__753715_51329.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\2hop__753715_51329.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "None of the provided chunks mention Mary Philips or her husband.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\2hop__753715_51329.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\2hop__753715_51329.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\2hop__753715_51329.json"
+  },
+  {
+    "n": 15,
+    "suffix": "13592_49388",
+    "tags": [
+      "temporal_qualifier_scope_shift",
+      "answer_unit_shift",
+      "gold_evidence_already_read"
+    ],
+    "finding": "第一步确定 La Liga，第二次实际返回的 Top-2 La Liga 明写每队每季共 38 matchdays，但模型把 1948/1949（用于识别联赛的条件）带到后继季赛制度问题，反复查 1948–49 的球队数。末轮提出用 n×(n−1) 计算全部比赛，再申请 standings，搜索用尽。",
+    "annotation_note": "本题 gold=38，两篇标注段落均实际读到；历史赛季解释存在语言歧义，但模型的检索目标和 gold 所问当前通用赛制不同，且从单队赛程转向全部比赛总量。",
+    "limit_effect": "这是证据已经出现仍持续搜另一个目标的案例；提高搜索预算不能自动恢复正确限定范围。S02 在该题 F1=1，B0=0。",
+    "id": "musique:2hop__13592_49388",
+    "question": "How many games in a season of the league in which Barcelona won titles in 1948 and 1949?",
+    "gold": "38",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 2,
+    "gold_documents_annotated": 2,
+    "last_parsed_action": [
+      "search",
+      "La Liga 1948–49 standings"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "26",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__13592_49388.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\2hop__13592_49388.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "38",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\2hop__13592_49388.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "26",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\2hop__13592_49388.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__13592_49388.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__13592_49388.json"
+  },
+  {
+    "n": 16,
+    "suffix": "71753_158985_70784_61381",
+    "tags": [
+      "nested_relation_dropped",
+      "native_relation_ambiguity",
+      "unexecuted_search_has_generated_observation"
+    ],
+    "finding": "把“某地区以北、且满足海水淡化条件的地区”缩成 Israel 以北的国家，随后一条路径查询 Lebanon 的建立/独立年份直到轮次用完。末轮虽 512 token 截断，但 Search 已完整，直接原因仍是预算，不属于 8 个无动作案例。",
+    "annotation_note": "gold 路线用 Middle East、Persian Gulf、Saudi Arabia，原始地域关系本身也有方向/范围歧义，不能把所有地理偏差仅归于轮次。",
+    "limit_effect": "当前错误目标 Lebanon 已稳定，继续加搜索不直接解决嵌套条件丢失。",
+    "id": "musique:4hop2__71753_158985_70784_61381",
+    "question": "When was the region immediately north of the region where Israel is located and the site of the most growth in desalination for agricultural use established?",
+    "gold": "1932",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "When was the modern Republic of Lebanon established?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop2__71753_158985_70784_61381.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop2__71753_158985_70784_61381.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Lebanon",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop2__71753_158985_70784_61381.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Lebanon was established in 1920.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop2__71753_158985_70784_61381.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__71753_158985_70784_61381.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop2__71753_158985_70784_61381.json"
+  },
+  {
+    "n": 17,
+    "suffix": "690653_378185_282674_759393",
+    "tags": [
+      "bridge_recall_gap",
+      "repeated_exact_search"
+    ],
+    "finding": "与 KRSU 题不同，这题 Main Hall → Appleton, Wisconsin 的实体链正确。后续多种县名问法返回其他 Wisconsin 城镇段落，未取得 Outagamie County；精确重复一次。最后虽想到 Outagamie，仍申请搜索 Appleton 所在县，被预算停止。",
+    "annotation_note": "不能与第 11 题混为同一 Appleton 跨州错误；该题首个地点就正确匹配 Wisconsin。",
+    "limit_effect": "主要是密集检索对县级桥接事实召回不稳，再叠加重复；最终还缺邻县与县城关系。",
+    "id": "musique:4hop1__690653_378185_282674_759393",
+    "question": "What is the capital of the county, that shares a border with the other county, that includes the city where Main Hall is located?",
+    "gold": "Green Bay",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 1,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": [
+      "search",
+      "Appleton Wisconsin county"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__690653_378185_282674_759393.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__690653_378185_282674_759393.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Appleton",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__690653_378185_282674_759393.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Raleigh",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__690653_378185_282674_759393.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__690653_378185_282674_759393.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\4hop1__690653_378185_282674_759393.json"
+  },
+  {
+    "n": 18,
+    "suffix": "316459_41402_157761_13584",
+    "tags": [
+      "native_query_underspecified",
+      "native_cross_question_anaphora"
+    ],
+    "finding": "题目先说 Charles Edmund Nugent，随后说“he moved to in 1999”。模型查到 Nugent 是更早年代的人物，认为该 he 无法指代 Nugent，转而猜测其他足球人物，512 token 截断。",
+    "annotation_note": "原始分解的 1999/Barcelona 实际来自 Flavio Manzoni 的段落，但题面没有给出该人的明确先行词；原始战争/Florida 关系也有歧义。",
+    "limit_effect": "可确认题面存在跨子题指代脱落；仅修动作格式无法恢复题面未提供的人名。",
+    "id": "musique:4hop3__316459_41402_157761_13584",
+    "question": "A country gained control of Florida after the war in which Charles Edmund Nugent saw action. Besides the different areas of that country, what other differences are there between Real Madrid and the team for the city he moved to in 1999?",
+    "gold": "two cities",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 2,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop3__316459_41402_157761_13584.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop3__316459_41402_157761_13584.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Real Madrid competes in Spain’s La Liga and the UEFA Champions League, while Miami Marlins compete in Major League Baseball.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop3__316459_41402_157761_13584.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Real Madrid is based in Madrid and represents Castile, while the team for the city Charles Edmund Nugent moved to in 1999 (Miami) is the Miami Marlins, a Major League Baseball team.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop3__316459_41402_157761_13584.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__316459_41402_157761_13584.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop3__316459_41402_157761_13584.json"
+  },
+  {
+    "n": 19,
+    "suffix": "105401_17130_70784_79935",
+    "tags": [
+      "native_relation_ambiguity",
+      "geography_branch_drift"
+    ],
+    "finding": "先正确取得 Strangers No More 在 Israel，随后围绕“同时位于 Israel 和 Persian Gulf 以北”推测 Turkey/Anatolia，以及地质形成还是建国时间，512 token 截断。",
+    "annotation_note": "gold 路线转到 Saudi Arabia 并取 1930；原始 north of 与地域范围表达有歧义，不能把全部差异归为模型忘记正确答案。",
+    "limit_effect": "属于长推理协议失败叠加题意/地域关系歧义，扩大 token 不保证走向 gold。",
+    "id": "musique:4hop1__105401_17130_70784_79935",
+    "question": "When was the region that lies to the north of the region where Strangers No More took place and the Persian Gulf created?",
+    "gold": "1930",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 1,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 1,
+    "gold_documents_annotated": 4,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\4hop1__105401_17130_70784_79935.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\4hop1__105401_17130_70784_79935.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "3200–2800 BC",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\4hop1__105401_17130_70784_79935.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "The region north of where Strangers No More took place (Israel) and the Persian Gulf is the Arabian Peninsula, which was formed millions of years ago through tectonic processes; however, the Persian Gulf itself was created approximately 15,000 years ago as sea levels rose after the last Ice Age.",
+        "status": "success_truncated",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\4hop1__105401_17130_70784_79935.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop1__105401_17130_70784_79935.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\4hop1__105401_17130_70784_79935.json"
+  },
+  {
+    "n": 20,
+    "suffix": "106042_64399_53006",
+    "tags": [
+      "candidate_gold_appears_in_thought",
+      "answer_candidate_ambiguity"
+    ],
+    "finding": "一次复合检索后，512-token Thought 多次提到 Jerusalem 和 Al-Aqsa，同时考虑 Dome of the Rock，但未给出 Search 或 Finish。其他四套流程在该题均 F1=1。",
+    "limit_effect": "说明无合法动作并不代表模型完全没有想到正确候选；也不能因为 Thought 同时列出正确和其他候选，就事后按 gold 选择一项作为正式答案。",
+    "id": "musique:3hop1__106042_64399_53006",
+    "question": "What is the great mosque constructed at the site of the old temple in the city originating christianity in Rome, Egypt, Judea and the country for Vasilopita?",
+    "gold": "Al - Aqsa Mosque",
+    "immediate_exit": "invalid_action",
+    "searches_executed": 1,
+    "last_response_finish_reason": "length",
+    "exact_redundant_searches": 0,
+    "gold_documents_read": 0,
+    "gold_documents_annotated": 3,
+    "last_parsed_action": null,
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Al-Aqsa Mosque",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__106042_64399_53006.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Al-Aqsa Mosque",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\3hop1__106042_64399_53006.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Al-Aqsa Mosque",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\3hop1__106042_64399_53006.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "Al-Aqsa Mosque",
+        "status": "success",
+        "f1": 1.0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\3hop1__106042_64399_53006.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__106042_64399_53006.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r001\\cases\\musique\\b03_react_dense\\3hop1__106042_64399_53006.json"
+  },
+  {
+    "n": 21,
+    "suffix": "511454_120259",
+    "tags": [
+      "bridge_recall_gap",
+      "repeated_exact_search",
+      "candidate_gold_appears_in_thought"
+    ],
+    "finding": "5 次出生地检索（含一次精确重复）没有取得支持段落。末轮明确提出 Mercia，并写出其政治实体结束的年份 918，但仍输出 Search[When was the Kingdom of Mercia abolished?]，不是 Finish[918]。第 6 次搜索没有执行，最后答案为空，F1=0。",
+    "annotation_note": "918 在此来自模型参数知识推断，检索并未支持出生地→Mercia 的桥接；不能声称证据链已闭合。",
+    "limit_effect": "这是终止策略可能损失已有候选答案的直接线索；是否改为预算耗尽时答题就能提升，需预先固定策略后另做对照。",
+    "id": "musique:2hop__511454_120259",
+    "question": "When was Lady Godiva's birthplace abolished?",
+    "gold": "918",
+    "immediate_exit": "no_finish_within_budget",
+    "searches_executed": 5,
+    "last_response_finish_reason": "stop",
+    "exact_redundant_searches": 1,
+    "gold_documents_read": 0,
+    "gold_documents_annotated": 2,
+    "last_parsed_action": [
+      "search",
+      "When was the Kingdom of Mercia abolished?"
+    ],
+    "peer_scores_reference_only": [
+      {
+        "method": "B0_legacy_multigrain_R02",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__511454_120259.json"
+      },
+      {
+        "method": "R02_C08_c02_r1p1_integrated_candidate",
+        "prediction": "Cannot be determined",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\R02_C08_c02_r1p1_integrated_candidate\\2hop__511454_120259.json"
+      },
+      {
+        "method": "s02_child4",
+        "prediction": "Lady Godiva's birthplace cannot be determined from these passages.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\s02_child4\\2hop__511454_120259.json"
+      },
+      {
+        "method": "b00_rag_top10_v1",
+        "prediction": "The context does not mention Lady Godiva's birthplace or its abolition.",
+        "status": "success",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b00_rag_top10_v1\\2hop__511454_120259.json"
+      },
+      {
+        "method": "b03_react_dense",
+        "prediction": "",
+        "status": "algorithm_failure",
+        "f1": 0,
+        "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__511454_120259.json"
+      }
+    ],
+    "selected_result_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\baselines_same300_v1_20261020\\attempts\\r000\\cases\\musique\\b03_react_dense\\2hop__511454_120259.json"
+  }
+]

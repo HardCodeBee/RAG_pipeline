@@ -1,0 +1,763 @@
+{
+  "dev60": {
+    "p00_parent_t02": {
+      "n": 60,
+      "passed": 47,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 13
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 15
+        }
+      },
+      "verdicts": {
+        "fail": 12,
+        "pass": 47,
+        "uncertain": 1
+      },
+      "mu_FS": [
+        11,
+        32,
+        43,
+        60
+      ]
+    },
+    "r01_old_data": {
+      "n": 60,
+      "passed": 46,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 14
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 13
+        }
+      },
+      "verdicts": {
+        "fail": 11,
+        "pass": 46,
+        "uncertain": 3
+      },
+      "mu_FS": [
+        3,
+        32,
+        43,
+        60
+      ],
+      "fixes": [
+        30
+      ],
+      "regressions": [
+        3,
+        40
+      ]
+    },
+    "r02_expanded": {
+      "n": 60,
+      "passed": 51,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 15
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 19
+        },
+        "musique": {
+          "n": 20,
+          "passes": 17
+        }
+      },
+      "verdicts": {
+        "fail": 8,
+        "pass": 51,
+        "uncertain": 1
+      },
+      "mu_FS": [
+        32,
+        43
+      ],
+      "fixes": [
+        11,
+        30,
+        37,
+        60
+      ],
+      "regressions": []
+    }
+  },
+  "paired_dev60": {
+    "r01_old_data": {
+      "fixes": [
+        30
+      ],
+      "regressions": [
+        3,
+        40
+      ],
+      "net_passes": -1,
+      "delta_pp": -1.6666666666666667,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -6.666666666666667,
+        3.3333333333333335
+      ],
+      "mcnemar_exact_two_sided_p": 1.0,
+      "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+    },
+    "r02_expanded": {
+      "fixes": [
+        11,
+        30,
+        37,
+        60
+      ],
+      "regressions": [],
+      "net_passes": 4,
+      "delta_pp": 6.666666666666667,
+      "paired_stratified_bootstrap95_delta_pp": [
+        1.6666666666666667,
+        13.333333333333334
+      ],
+      "mcnemar_exact_two_sided_p": 0.125,
+      "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+    }
+  },
+  "selection40": {
+    "recorded_utc": "2026-10-18T04:27:24.523276+00:00",
+    "gates": {
+      "r01_old_data": {
+        "mu_strictly_higher": false,
+        "overall_not_lower": false,
+        "controls_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      },
+      "r02_expanded": {
+        "mu_strictly_higher": true,
+        "overall_not_lower": true,
+        "controls_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      }
+    },
+    "selected": "r02_expanded",
+    "dev_summary": {
+      "p00_parent_t02": {
+        "n": 60,
+        "passed": 47,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 13
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 15
+          }
+        },
+        "verdicts": {
+          "fail": 12,
+          "pass": 47,
+          "uncertain": 1
+        },
+        "mu_FS": [
+          11,
+          32,
+          43,
+          60
+        ]
+      },
+      "r01_old_data": {
+        "n": 60,
+        "passed": 46,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 14
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 13
+          }
+        },
+        "verdicts": {
+          "fail": 11,
+          "pass": 46,
+          "uncertain": 3
+        },
+        "mu_FS": [
+          3,
+          32,
+          43,
+          60
+        ],
+        "fixes": [
+          30
+        ],
+        "regressions": [
+          3,
+          40
+        ]
+      },
+      "r02_expanded": {
+        "n": 60,
+        "passed": 51,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 15
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 17
+          }
+        },
+        "verdicts": {
+          "fail": 8,
+          "pass": 51,
+          "uncertain": 1
+        },
+        "mu_FS": [
+          32,
+          43
+        ],
+        "fixes": [
+          11,
+          30,
+          37,
+          60
+        ],
+        "regressions": []
+      }
+    },
+    "confirmation_used_for_selection": false,
+    "plan_sha256": "b1f506ebaec574987fb2d126cbf6382cf3e86c91bb71cb13fffbe8ce79fb7423",
+    "old_baselines_retained": true,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+    "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+    "confirm_sha256": "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa"
+  },
+  "selection": {
+    "recorded_utc": "2026-10-18T04:27:24.523276+00:00",
+    "gates": {
+      "r01_old_data": {
+        "mu_strictly_higher": false,
+        "overall_not_lower": false,
+        "controls_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      },
+      "r02_expanded": {
+        "mu_strictly_higher": true,
+        "overall_not_lower": true,
+        "controls_net_loss_at_most1": true,
+        "mu_FS_not_increased": true
+      }
+    },
+    "selected": "r02_expanded",
+    "dev_summary": {
+      "p00_parent_t02": {
+        "n": 60,
+        "passed": 47,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 13
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 15
+          }
+        },
+        "verdicts": {
+          "fail": 12,
+          "pass": 47,
+          "uncertain": 1
+        },
+        "mu_FS": [
+          11,
+          32,
+          43,
+          60
+        ]
+      },
+      "r01_old_data": {
+        "n": 60,
+        "passed": 46,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 14
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 13
+          }
+        },
+        "verdicts": {
+          "fail": 11,
+          "pass": 46,
+          "uncertain": 3
+        },
+        "mu_FS": [
+          3,
+          32,
+          43,
+          60
+        ],
+        "fixes": [
+          30
+        ],
+        "regressions": [
+          3,
+          40
+        ]
+      },
+      "r02_expanded": {
+        "n": 60,
+        "passed": 51,
+        "by_dataset": {
+          "hotpotqa": {
+            "n": 20,
+            "passes": 15
+          },
+          "2wiki": {
+            "n": 20,
+            "passes": 19
+          },
+          "musique": {
+            "n": 20,
+            "passes": 17
+          }
+        },
+        "verdicts": {
+          "fail": 8,
+          "pass": 51,
+          "uncertain": 1
+        },
+        "mu_FS": [
+          32,
+          43
+        ],
+        "fixes": [
+          11,
+          30,
+          37,
+          60
+        ],
+        "regressions": []
+      }
+    },
+    "confirmation_used_for_selection": false,
+    "plan_sha256": "b1f506ebaec574987fb2d126cbf6382cf3e86c91bb71cb13fffbe8ce79fb7423",
+    "old_baselines_retained": true,
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+    "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+    "confirm_sha256": "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa"
+  },
+  "confirm120": {
+    "p00_parent_t02": {
+      "n": 120,
+      "passed": 98,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 30
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 29
+        }
+      },
+      "verdicts": {
+        "pass": 98,
+        "fail": 18,
+        "uncertain": 4
+      },
+      "mu_FS": [
+        24,
+        38,
+        41,
+        45,
+        65,
+        69,
+        76,
+        99
+      ]
+    },
+    "r01_old_data": {
+      "n": 120,
+      "passed": 97,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 31
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 27
+        }
+      },
+      "verdicts": {
+        "pass": 97,
+        "fail": 19,
+        "uncertain": 4
+      },
+      "mu_FS": [
+        6,
+        24,
+        28,
+        38,
+        41,
+        45,
+        62,
+        67,
+        69,
+        76,
+        99
+      ],
+      "fixes": [
+        14,
+        95,
+        104
+      ],
+      "regressions": [
+        6,
+        28,
+        67,
+        102
+      ]
+    },
+    "r02_expanded": {
+      "n": 120,
+      "passed": 103,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 32
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 32
+        }
+      },
+      "verdicts": {
+        "pass": 103,
+        "fail": 11,
+        "uncertain": 6
+      },
+      "mu_FS": [
+        28,
+        38,
+        41,
+        45,
+        62,
+        69,
+        76,
+        99
+      ],
+      "fixes": [
+        14,
+        24,
+        33,
+        51,
+        60,
+        65,
+        95,
+        104
+      ],
+      "regressions": [
+        28,
+        31,
+        48
+      ]
+    },
+    "original165": {
+      "n": 120,
+      "passed": 96,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 32
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 25
+        }
+      },
+      "verdicts": {
+        "pass": 96,
+        "fail": 22,
+        "uncertain": 2
+      },
+      "mu_FS": [
+        6,
+        24,
+        28,
+        38,
+        41,
+        45,
+        62,
+        67,
+        69,
+        76,
+        109
+      ],
+      "fixes": [
+        14,
+        29,
+        87,
+        95,
+        104
+      ],
+      "regressions": [
+        6,
+        19,
+        28,
+        58,
+        67,
+        108,
+        109
+      ]
+    }
+  },
+  "paired_confirm120": {
+    "r02_expanded": {
+      "fixes": [
+        14,
+        24,
+        33,
+        51,
+        60,
+        65,
+        95,
+        104
+      ],
+      "regressions": [
+        28,
+        31,
+        48
+      ],
+      "net_passes": 5,
+      "delta_pp": 4.166666666666666,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -0.8333333333333334,
+        10.0
+      ],
+      "mcnemar_exact_two_sided_p": 0.2265625,
+      "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+    },
+    "original165": {
+      "fixes": [
+        14,
+        29,
+        87,
+        95,
+        104
+      ],
+      "regressions": [
+        6,
+        19,
+        28,
+        58,
+        67,
+        108,
+        109
+      ],
+      "net_passes": -2,
+      "delta_pp": -1.6666666666666667,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -7.5,
+        4.166666666666667
+      ],
+      "mcnemar_exact_two_sided_p": 0.7744140625,
+      "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+    },
+    "r01_old_data": {
+      "fixes": [
+        14,
+        95,
+        104
+      ],
+      "regressions": [
+        6,
+        28,
+        67,
+        102
+      ],
+      "net_passes": -1,
+      "delta_pp": -0.8333333333333334,
+      "paired_stratified_bootstrap95_delta_pp": [
+        -5.0,
+        3.3333333333333335
+      ],
+      "mcnemar_exact_two_sided_p": 1.0,
+      "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+    }
+  },
+  "expanded_vs_same40_olddata": {
+    "fixes": [
+      6,
+      24,
+      33,
+      51,
+      60,
+      65,
+      67,
+      102
+    ],
+    "regressions": [
+      31,
+      48
+    ],
+    "net_passes": 6,
+    "delta_pp": 5.0,
+    "paired_stratified_bootstrap95_delta_pp": [
+      0.0,
+      10.0
+    ],
+    "mcnemar_exact_two_sided_p": 0.109375,
+    "limits": "Conditional on same-Codex judgments and one training seed. Related Mu rows may share primitives; query bootstrap is a reference, not independent population proof."
+  },
+  "confirmation_gate": {
+    "total_strictly_higher": true,
+    "mu_strictly_higher": true,
+    "mu_FS_not_increased": true
+  },
+  "confirmed_candidate": "r02_expanded",
+  "actual_training_consumption": {
+    "r01_old_data": {
+      "updates": 40,
+      "example_exposures": 1280,
+      "supervised_tokens": 33792,
+      "update_seconds": 759.6234766442794,
+      "first_loss": 0.08255548200090704,
+      "last_loss": 0.07581583533138833,
+      "parent_unchanged": true,
+      "base_unchanged": true,
+      "checkpoint_sha256": "5dd6feb4e73669c6e1c9791a9121a51c0c503d979e395ad7ac021d98b3c2d0b7"
+    },
+    "r02_expanded": {
+      "updates": 40,
+      "example_exposures": 1280,
+      "supervised_tokens": 37533,
+      "update_seconds": 760.063694430748,
+      "first_loss": 0.13474334565929752,
+      "last_loss": 0.09624733642714581,
+      "parent_unchanged": true,
+      "base_unchanged": true,
+      "checkpoint_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92"
+    }
+  },
+  "raw_generation_calls_excluding_historical": 660,
+  "api_calls": 0,
+  "integrity": {
+    "dev60/p00_parent_t02": {
+      "n": 60,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "dev60/r01_old_data": {
+      "n": 60,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "dev60/r02_expanded": {
+      "n": 60,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "confirm120/p00_parent_t02": {
+      "n": 120,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "confirm120/r02_expanded": {
+      "n": 120,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "confirm120/original165": {
+      "n": 120,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    },
+    "confirm120/r01_old_data": {
+      "n": 120,
+      "invalid_format": 0,
+      "truncated": 0,
+      "generation_errors": 0,
+      "prompt_exact": true,
+      "native_inputs_identical_to_parent": true
+    }
+  },
+  "original_frozen_files_unchanged": true,
+  "dataset_source_limit": "Mu new dev/confirmation are primitive-disjoint custom native-train held-outs, not official test scores.",
+  "training_budget_limit": "Matched update count and example exposures; target-token counts and GPU seconds differ and are reported. Native+synthetic effects not separately identified.",
+  "review_limit": "Current Codex authored labels and judged outputs; same-context self-review, no independent human gold. Full F/S/C/U pass is not downstream RAG F1."
+}

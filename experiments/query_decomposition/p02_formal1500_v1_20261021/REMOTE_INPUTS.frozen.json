@@ -1,0 +1,16 @@
+{
+  "remote_directory": "/home/projects/u7830488/p02_formal1500_v1_20261021",
+  "count": 1500,
+  "scope": "Only id/query, fixed prompt/inference code; no answers, support labels, local F1, RAG execution or training.",
+  "files": {
+    "queries1500.id_query.frozen.jsonl": "6dae32373db4fbb1a21cc4ce28bb2f25ad846777b29407f7d1555d1bc09b0b5a",
+    "remote_infer.py": "36e9642b61cab67e422aba5303a93532c60e5120abd2d3f330871b5578adde5a",
+    "v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "infer.slurm": "49103f4ed537eb72e8fd16322cb7088967da42ea14a144d54166b4e3949790d0",
+    "remote_worker.py": "bb5a600d984a279b355be94b3199e7e4425ea87cf6915b7688baa1ef89f4547c"
+  },
+  "checkpoint": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+  "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+  "model_decode": "Existing frozen R02/v12 explicit greedy compat_v002 wrapper, single query, seed1729, max1024; not a new model.",
+  "source_infer_sha256": "36e9642b61cab67e422aba5303a93532c60e5120abd2d3f330871b5578adde5a"
+}

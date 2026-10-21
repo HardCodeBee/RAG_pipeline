@@ -1,0 +1,111 @@
+{
+  "reviewed_indices": [
+    101,
+    200
+  ],
+  "reviewer": "Current Codex inspected all changed arrays after optimization close; exact same question strings inherit prior test labels. Frozen F/S/C/U, query-only, no factual answers or source passages used.",
+  "exceptions": {
+    "102": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The film identity question drops its association with the described American Disney worker, replacing it with a generic plot-centered-on-a-person condition."
+    },
+    "103": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Never identifies the performer of Anthology or the film described through that performer; retains them embedded inside the singer question."
+    },
+    "131": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Truncates the supplied title Just Got Started Lovin You by dropping You in both dependent descriptions."
+    },
+    "136": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Does not identify the era named after Fastradas spouse or the language sharing the Carnival-area name before its later-name target."
+    },
+    "137": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Introduces a designer/builder as the person under whose watchful eye the park was built; the original supplies supervision, not the supervisors design/build role."
+    },
+    "141": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the while-protests-were-taking-place condition identifying the Soviet Presidents visit/departure event."
+    },
+    "143": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Changes a state where Edwards won a primary to a state that won it, confuses university and state objects, and omits both championship-count operands."
+    },
+    "147": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Drops tallest from mountain identification and adds the original height target rather than an additional supporting operand."
+    },
+    "148": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Splits the same military branch jointly identified by destroyer classes and USS Sable into two separately restricted branch questions; frozen joint-binding criterion."
+    },
+    "161": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Returns no prerequisite for the unnamed country containing Minudasht County before its region/part target."
+    },
+    "171": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Changes the Muramasa founder from maker of the blade into the person who bestowed it; maker and giver are different relations."
+    },
+    "177": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Splits the joint1948-and1949 league identification and adds malformed season-identity requests for years already supplied, rather than a useful new prerequisite."
+    },
+    "188": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "The northern-region identity drops the desalination-growth-site condition; only the Israel-region condition remains in that question."
+    },
+    "189": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Identifies the continent and ocean but not the unnamed canal crossing described by those endpoints before asking who advocated it."
+    }
+  }
+}

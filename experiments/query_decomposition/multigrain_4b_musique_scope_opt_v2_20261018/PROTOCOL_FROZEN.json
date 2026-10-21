@@ -1,0 +1,38 @@
+{
+  "baseline": "checkpoint165/v12, same native template,greedy,seed1729,max_new_tokens1024",
+  "variants": {
+    "b00_v12": {
+      "mode": "fixed",
+      "prompt_sha256": "0248f14ddfe0df1ad7f8282c7bc56f6b9dd171589ee1319a75386322b21263e4",
+      "purpose": "Unchanged trained baseline."
+    },
+    "m01_static_mu": {
+      "mode": "fixed",
+      "prompt_sha256": "bab66e09583fad938952dbf41a4a4b7211a773043695bd9438cbf0c0b0f84392",
+      "purpose": "Replace only the first two generic demonstrations with verified training62 joint-constraint island and47 institutional-role chain; no additional rules."
+    },
+    "m02_adaptive_mu": {
+      "mode": "adaptive_examples",
+      "purpose": "Same instruction and last three examples as m01; select first two from72 reviewed Mu training examples by fixed BM25 word+bigram similarity. No dataset metadata used for selection."
+    }
+  },
+  "bank_sha256": "bd7c716bd1690f20e73ad06a0542efc3378d99f00714e4fe7efffbe088fc71f1",
+  "n_screen": 90,
+  "n_confirmation": 120,
+  "screen": {
+    "roster_sha256": "320c6f0b3b1575e04ad2378d3fe7c4bfbb1e1b25e1877f56abf246a27b3a8e51",
+    "macro": "Unweighted mean of three dataset pass rates; raw90 is Mu-enriched, not comparable to old balanced samples.",
+    "candidate_gate": "MuSiQue passes strictly exceed baseline, macro pass rate exceeds baseline, and combined Hotpot+2Wiki regress by at most1 net pass.",
+    "selection": "Eligible candidate with highest Mu pass count, then macro pass rate, then lower mean input tokens; otherwise retain baseline and do not run confirmation."
+  },
+  "confirmation": {
+    "roster_sha256": "58c8cb7eb6162d8cc572db029a4628b66aa4813e8e4a5cc32a0fc45f6f270a82",
+    "gate": "One selected candidate vs baseline once on120 balanced queries. Require higher total pass count AND higher Mu pass count; otherwise no promotion. Report dataset regressions and uncertainty."
+  },
+  "review": "Unchanged F/S/C/U, current Codex nonindependent query/output review; lock baseline judgments before reading candidate outputs. Identical arrays inherit judgments. All failures/uncertainty remain in denominator.",
+  "no_runtime_semantic_gate_or_answer_feedback": true,
+  "api_calls": 0,
+  "new_training": false,
+  "record_every_payload": "Full actual prompt, selected example IDs, scores, raw output, native tokens, runtime, checkpoint identity.",
+  "test_uses": "Old formal300 and prior confirmation90 are diagnostic history only; neither selects these candidates. New confirmation outputs cannot drive further edits in this iteration."
+}

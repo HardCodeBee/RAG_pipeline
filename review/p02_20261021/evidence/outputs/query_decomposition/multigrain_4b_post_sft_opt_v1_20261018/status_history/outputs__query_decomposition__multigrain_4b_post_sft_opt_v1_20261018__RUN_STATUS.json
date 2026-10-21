@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-10-17T14:52:06.214638+00:00",
+  "job_id": "154022",
+  "queue": "JOBID NAME STATE TIME TIME_LIMIT NODELIST(REASON)\n154022 multigrain-confirm90 RUNNING 1:20 30:00 weirdo\n",
+  "confirmation": {
+    "b00_v12": {
+      "completed": 7
+    },
+    "c02_full_description": {
+      "completed": 0
+    }
+  },
+  "log_out": "{\"variant\": \"b00_v12\", \"index\": 6, \"error\": null}\n{\"variant\": \"b00_v12\", \"index\": 7, \"error\": null}",
+  "log_err": "Loading weights: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 398/398 [00:00<00:00, 2153.74it/s, Materializing param=model.norm.weight]\nThe following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details."
+}

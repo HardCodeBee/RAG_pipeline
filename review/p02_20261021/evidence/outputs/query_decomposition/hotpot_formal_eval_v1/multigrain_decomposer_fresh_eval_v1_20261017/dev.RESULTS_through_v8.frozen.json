@@ -1,0 +1,798 @@
+{
+  "phase": "dev",
+  "scope": "query-only type-stratified subset, single current-Codex review; not human-gold, trained4B or RAG-F1",
+  "stats": {
+    "v2": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 30,
+        "fail": 25,
+        "unavailable": 4,
+        "uncertain": 1
+      },
+      "pass_rate_full": 0.5,
+      "failed_checks": {
+        "F": 3,
+        "S": 17,
+        "C": 2,
+        "U": 5
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 9,
+          "fail": 10,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "unavailable": 2,
+          "pass": 16,
+          "fail": 2
+        },
+        "musique": {
+          "fail": 13,
+          "pass": 5,
+          "unavailable": 2
+        }
+      },
+      "mean_input_tokens": 645.875,
+      "mean_output_tokens": 36.285714285714285
+    },
+    "v3": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 32,
+        "fail": 21,
+        "uncertain": 3,
+        "unavailable": 4
+      },
+      "pass_rate_full": 0.5333333333333333,
+      "failed_checks": {
+        "F": 1,
+        "S": 12,
+        "C": 3,
+        "U": 6
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 10,
+          "fail": 7,
+          "uncertain": 2,
+          "unavailable": 1
+        },
+        "2wiki": {
+          "fail": 5,
+          "pass": 14,
+          "unavailable": 1
+        },
+        "musique": {
+          "fail": 9,
+          "pass": 8,
+          "unavailable": 2,
+          "uncertain": 1
+        }
+      },
+      "mean_input_tokens": 832.6428571428571,
+      "mean_output_tokens": 39.875
+    },
+    "v4": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 37,
+        "fail": 18,
+        "unavailable": 1,
+        "uncertain": 4
+      },
+      "pass_rate_full": 0.6166666666666667,
+      "failed_checks": {
+        "F": 3,
+        "S": 8,
+        "C": 3,
+        "U": 5
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 10,
+          "fail": 8,
+          "uncertain": 2
+        },
+        "2wiki": {
+          "fail": 4,
+          "pass": 16
+        },
+        "musique": {
+          "pass": 11,
+          "fail": 6,
+          "unavailable": 1,
+          "uncertain": 2
+        }
+      },
+      "mean_input_tokens": 990.8474576271186,
+      "mean_output_tokens": 41.28813559322034
+    },
+    "v5": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 37,
+        "fail": 16,
+        "uncertain": 2,
+        "unavailable": 5
+      },
+      "pass_rate_full": 0.6166666666666667,
+      "failed_checks": {
+        "F": 3,
+        "S": 9,
+        "C": 2,
+        "U": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 10,
+          "fail": 8,
+          "uncertain": 2
+        },
+        "2wiki": {
+          "pass": 16,
+          "unavailable": 2,
+          "fail": 2
+        },
+        "musique": {
+          "pass": 11,
+          "fail": 6,
+          "unavailable": 3
+        }
+      },
+      "mean_input_tokens": 992.7272727272727,
+      "mean_output_tokens": 38.58181818181818
+    },
+    "v6": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 42,
+        "fail": 12,
+        "uncertain": 4,
+        "unavailable": 2
+      },
+      "pass_rate_full": 0.7,
+      "failed_checks": {
+        "F": 1,
+        "S": 5,
+        "C": 1,
+        "U": 5
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 14,
+          "fail": 5,
+          "uncertain": 1
+        },
+        "2wiki": {
+          "pass": 17,
+          "uncertain": 1,
+          "fail": 2
+        },
+        "musique": {
+          "pass": 11,
+          "fail": 5,
+          "uncertain": 2,
+          "unavailable": 2
+        }
+      },
+      "mean_input_tokens": 1249.7586206896551,
+      "mean_output_tokens": 39.89655172413793
+    },
+    "v7": {
+      "planned": 60,
+      "verdicts": {
+        "pass": 40,
+        "fail": 19,
+        "unavailable": 1
+      },
+      "pass_rate_full": 0.6666666666666666,
+      "failed_checks": {
+        "F": 7,
+        "S": 12,
+        "C": 1,
+        "U": 3
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "pass": 12,
+          "fail": 8
+        },
+        "2wiki": {
+          "pass": 18,
+          "fail": 2
+        },
+        "musique": {
+          "fail": 9,
+          "pass": 10,
+          "unavailable": 1
+        }
+      },
+      "mean_input_tokens": 829.8474576271186,
+      "mean_output_tokens": 38.983050847457626
+    },
+    "v8": {
+      "planned": 60,
+      "verdicts": {
+        "fail": 13,
+        "pass": 43,
+        "uncertain": 2,
+        "unavailable": 2
+      },
+      "pass_rate_full": 0.7166666666666667,
+      "failed_checks": {
+        "F": 3,
+        "S": 9,
+        "C": 2,
+        "U": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "fail": 5,
+          "pass": 15
+        },
+        "2wiki": {
+          "pass": 17,
+          "fail": 1,
+          "unavailable": 2
+        },
+        "musique": {
+          "fail": 7,
+          "pass": 11,
+          "uncertain": 2
+        }
+      },
+      "mean_input_tokens": 824.8448275862069,
+      "mean_output_tokens": 36.39655172413793
+    }
+  },
+  "all_common": {
+    "n": 44,
+    "passes": {
+      "v2": 23,
+      "v3": 27,
+      "v4": 28,
+      "v5": 29,
+      "v6": 32,
+      "v7": 28,
+      "v8": 33
+    }
+  },
+  "pairs": [
+    {
+      "before": "v2",
+      "after": "v3",
+      "n": 52,
+      "before_pass": 28,
+      "after_pass": 31,
+      "gained": [
+        13,
+        30,
+        52,
+        54,
+        55
+      ],
+      "lost": [
+        18,
+        53
+      ]
+    },
+    {
+      "before": "v2",
+      "after": "v4",
+      "n": 55,
+      "before_pass": 29,
+      "after_pass": 36,
+      "gained": [
+        2,
+        13,
+        17,
+        30,
+        33,
+        42,
+        47,
+        52,
+        54,
+        55
+      ],
+      "lost": [
+        53,
+        58,
+        59
+      ]
+    },
+    {
+      "before": "v2",
+      "after": "v5",
+      "n": 53,
+      "before_pass": 27,
+      "after_pass": 35,
+      "gained": [
+        2,
+        13,
+        17,
+        30,
+        42,
+        47,
+        52,
+        54,
+        55
+      ],
+      "lost": [
+        59
+      ]
+    },
+    {
+      "before": "v2",
+      "after": "v6",
+      "n": 54,
+      "before_pass": 30,
+      "after_pass": 40,
+      "gained": [
+        2,
+        3,
+        9,
+        13,
+        17,
+        28,
+        30,
+        41,
+        42,
+        47,
+        52,
+        55
+      ],
+      "lost": [
+        48,
+        59
+      ]
+    },
+    {
+      "before": "v2",
+      "after": "v7",
+      "n": 55,
+      "before_pass": 30,
+      "after_pass": 38,
+      "gained": [
+        3,
+        20,
+        28,
+        30,
+        42,
+        45,
+        46,
+        47,
+        52,
+        54
+      ],
+      "lost": [
+        48,
+        57
+      ]
+    },
+    {
+      "before": "v2",
+      "after": "v8",
+      "n": 54,
+      "before_pass": 28,
+      "after_pass": 41,
+      "gained": [
+        3,
+        4,
+        6,
+        13,
+        20,
+        28,
+        30,
+        41,
+        42,
+        45,
+        46,
+        47,
+        52,
+        54,
+        55
+      ],
+      "lost": [
+        1,
+        58
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v4",
+      "n": 55,
+      "before_pass": 31,
+      "after_pass": 34,
+      "gained": [
+        2,
+        17,
+        18,
+        33,
+        42
+      ],
+      "lost": [
+        58,
+        59
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v5",
+      "n": 52,
+      "before_pass": 31,
+      "after_pass": 35,
+      "gained": [
+        2,
+        7,
+        17,
+        42,
+        53
+      ],
+      "lost": [
+        59
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v6",
+      "n": 54,
+      "before_pass": 31,
+      "after_pass": 39,
+      "gained": [
+        2,
+        3,
+        7,
+        9,
+        17,
+        18,
+        28,
+        41,
+        42,
+        53
+      ],
+      "lost": [
+        48,
+        59
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v7",
+      "n": 55,
+      "before_pass": 32,
+      "after_pass": 37,
+      "gained": [
+        3,
+        7,
+        18,
+        20,
+        28,
+        42,
+        45,
+        46,
+        53
+      ],
+      "lost": [
+        13,
+        48,
+        55,
+        57
+      ]
+    },
+    {
+      "before": "v3",
+      "after": "v8",
+      "n": 54,
+      "before_pass": 31,
+      "after_pass": 40,
+      "gained": [
+        3,
+        4,
+        6,
+        7,
+        18,
+        20,
+        28,
+        41,
+        42,
+        45,
+        46
+      ],
+      "lost": [
+        1,
+        58
+      ]
+    },
+    {
+      "before": "v4",
+      "after": "v5",
+      "n": 54,
+      "before_pass": 34,
+      "after_pass": 36,
+      "gained": [
+        7,
+        53,
+        58
+      ],
+      "lost": [
+        33
+      ]
+    },
+    {
+      "before": "v4",
+      "after": "v6",
+      "n": 57,
+      "before_pass": 36,
+      "after_pass": 41,
+      "gained": [
+        3,
+        7,
+        9,
+        28,
+        41,
+        53,
+        58
+      ],
+      "lost": [
+        33,
+        48
+      ]
+    },
+    {
+      "before": "v4",
+      "after": "v7",
+      "n": 58,
+      "before_pass": 36,
+      "after_pass": 39,
+      "gained": [
+        3,
+        7,
+        20,
+        28,
+        45,
+        46,
+        53,
+        58,
+        59
+      ],
+      "lost": [
+        2,
+        13,
+        17,
+        48,
+        55,
+        57
+      ]
+    },
+    {
+      "before": "v4",
+      "after": "v8",
+      "n": 57,
+      "before_pass": 36,
+      "after_pass": 42,
+      "gained": [
+        3,
+        4,
+        6,
+        7,
+        20,
+        28,
+        41,
+        45,
+        46,
+        59
+      ],
+      "lost": [
+        1,
+        2,
+        17,
+        33
+      ]
+    },
+    {
+      "before": "v5",
+      "after": "v6",
+      "n": 53,
+      "before_pass": 36,
+      "after_pass": 39,
+      "gained": [
+        3,
+        9,
+        28,
+        41
+      ],
+      "lost": [
+        48
+      ]
+    },
+    {
+      "before": "v5",
+      "after": "v7",
+      "n": 54,
+      "before_pass": 37,
+      "after_pass": 37,
+      "gained": [
+        3,
+        20,
+        28,
+        45,
+        46,
+        59
+      ],
+      "lost": [
+        2,
+        13,
+        17,
+        48,
+        55,
+        57
+      ]
+    },
+    {
+      "before": "v5",
+      "after": "v8",
+      "n": 53,
+      "before_pass": 35,
+      "after_pass": 40,
+      "gained": [
+        3,
+        4,
+        6,
+        20,
+        28,
+        41,
+        45,
+        46,
+        59
+      ],
+      "lost": [
+        1,
+        2,
+        17,
+        58
+      ]
+    },
+    {
+      "before": "v6",
+      "after": "v7",
+      "n": 57,
+      "before_pass": 42,
+      "after_pass": 38,
+      "gained": [
+        20,
+        46,
+        59
+      ],
+      "lost": [
+        2,
+        9,
+        13,
+        17,
+        41,
+        55,
+        57
+      ]
+    },
+    {
+      "before": "v6",
+      "after": "v8",
+      "n": 56,
+      "before_pass": 40,
+      "after_pass": 41,
+      "gained": [
+        4,
+        6,
+        20,
+        46,
+        48,
+        59
+      ],
+      "lost": [
+        1,
+        2,
+        9,
+        17,
+        58
+      ]
+    },
+    {
+      "before": "v7",
+      "after": "v8",
+      "n": 57,
+      "before_pass": 38,
+      "after_pass": 43,
+      "gained": [
+        4,
+        6,
+        13,
+        41,
+        48,
+        55,
+        57
+      ],
+      "lost": [
+        1,
+        58
+      ]
+    }
+  ],
+  "audit": {
+    "v2": {
+      "requests": 60,
+      "statuses": {
+        "success": 56,
+        "unknown": 4
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "fb406934ef2b66c687fdcf534a1af107a6cbcf65a0d62f96593e3d92c5e2fcde"
+    },
+    "v3": {
+      "requests": 60,
+      "statuses": {
+        "success": 56,
+        "unknown": 4
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "847d2f4cceacfb4105960a4200fd617cc2fab23638f3752058c13c7e07d63b48"
+    },
+    "v4": {
+      "requests": 60,
+      "statuses": {
+        "success": 59,
+        "unknown": 1
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "b17a916bf2a81973b5e588cc03346226c9c26aa1ed9ff25c2db62fbb0e3cae1c"
+    },
+    "v5": {
+      "requests": 60,
+      "statuses": {
+        "success": 55,
+        "unknown": 5
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "e7f8206d8d8c3baae382589b5fc5652a0f5fbaca71bf82fcd68458def49d4c7d"
+    },
+    "v6": {
+      "requests": 60,
+      "statuses": {
+        "success": 58,
+        "unknown": 2
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "c2eed6cc60579847cd6e3d684a72f49c346ff9c700c456f992894914733a8786"
+    },
+    "v7": {
+      "requests": 60,
+      "statuses": {
+        "success": 59,
+        "unknown": 1
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "4bc2aed49e06439f5eb95038be12bc44d2d6fbf918f29eb1e35eba5b045b29df"
+    },
+    "v8": {
+      "requests": 60,
+      "statuses": {
+        "success": 58,
+        "unknown": 2
+      },
+      "payload_roles_model_prompt_and_allowed_inputs": true,
+      "input_mode": "single_pass_original_query_only",
+      "prompt_sha256": "41cc2b5dd799de78c010401fb69d88e706b016192b51c202f5831b69a47f3e85"
+    }
+  },
+  "study_usage_list_price_cny": 0.323356,
+  "study_unknown_reserved_cny": 0.112272,
+  "global_usage_list_price_cny": 143.7410744,
+  "global_unknown_reserved_cny": 16.5391752,
+  "actual_bill_verified": false
+}

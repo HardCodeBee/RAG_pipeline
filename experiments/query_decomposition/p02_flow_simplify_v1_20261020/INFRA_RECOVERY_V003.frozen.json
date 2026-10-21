@@ -1,0 +1,49 @@
+{
+  "revision": "infra_recovery_v003",
+  "authorization": "User explicitly asked to continue filling300, preserve methods and never rerun successful cases",
+  "parent_protocol_sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+  "cache_v002_protocol_sha256": "a744fb978d235175b2037019ea46687f690f19b370ce73e863938ed899fecd60",
+  "source_pins": {
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\recovery_v003.py": "fd7a083312b2e90b79da05dd270ee987b390702a96fdece415355792cae77c81",
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\runner_v002.py": "d175cb0232b9fcb27d8537ec0cc9d74f5d465bb2297dc0fd55d362c9964a53ad",
+    "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\cache_catalog_v002.py": "7e3a7cf81a4e13cb6c12cb1fd6bf1ae35b2976ad76a589e7533b2d04e89264f2"
+  },
+  "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "old_max_rounds": 2,
+  "new_max_rounds": 5,
+  "allowed_new_round_ids": [
+    2,
+    3,
+    4
+  ],
+  "maximum_additional_rounds": 3,
+  "method_changes": 0,
+  "generation_payload_changes": 0,
+  "retrieval_resource_changes": 0,
+  "cache_policy": "Preserve every existing selected entry; fill only absent full payload hashes from first-success frozen B0 call order.",
+  "dataset_order": [
+    "2wiki",
+    "musique",
+    "hotpotqa"
+  ],
+  "dispatch_isolation": "One unchanged v1.run invocation per dataset per round, sequential; each resets ERRORS and repeats TLSpreflight",
+  "reason": "The old circuit resets per dispatch, not per dataset. Earlier dataset unknowns can defer later datasets without any request submission.",
+  "snapshot": "Freeze ordered missing method-cases and source hashes before each round; dispatch must match this exact mask",
+  "eligible": "Only incomplete retryable_infrastructure cases or genuinely unstarted method-cases; terminal successes/algorithm failures excluded",
+  "owner_policy": "Never reopen an existing method owner, request namespace or execution phase",
+  "gates": [
+    "Old CONTINUATION_COMPLETE.json exists",
+    "Old watcher WAITING_FOR_RECOVERY.json and final waiting status exist",
+    "Old AUTHORIZED_FINISH_ACTIVE.lock absent",
+    "No fresh selection/generation already started"
+  ],
+  "stop_policy": "After two consecutive dataset attempts with eligible missing cases and zero new scorable cases, finish the current isolated round and stop further rounds for inspection",
+  "historical_streak": "A zero-gain r001 attempt may count as the first observation, only when actual r001 case files exist",
+  "budgets": {
+    "global_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "shared_project_subcap_cny": 25,
+    "unknown_reservations_refunded": false
+  },
+  "fresh_dispatch": false
+}

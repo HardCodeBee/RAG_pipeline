@@ -1,0 +1,170 @@
+{
+  "scope": "Post-hoc description AFTER closing optimization. Not used for checkpoint/prompt selection.",
+  "n": 300,
+  "passed": 236,
+  "failed": 62,
+  "uncertain": 2,
+  "primary_categories_manual_exclusive": {
+    "coverage": {
+      "count": 15,
+      "by_dataset": {
+        "musique": 14,
+        "hotpotqa": 1
+      },
+      "indices": [
+        3,
+        18,
+        28,
+        66,
+        71,
+        84,
+        86,
+        103,
+        136,
+        161,
+        189,
+        207,
+        225,
+        231,
+        274
+      ]
+    },
+    "identification_or_binding": {
+      "count": 22,
+      "by_dataset": {
+        "musique": 14,
+        "hotpotqa": 6,
+        "2wiki": 2
+      },
+      "indices": [
+        38,
+        45,
+        75,
+        87,
+        102,
+        131,
+        141,
+        147,
+        148,
+        177,
+        188,
+        219,
+        220,
+        238,
+        244,
+        251,
+        252,
+        256,
+        262,
+        278,
+        280,
+        284
+      ]
+    },
+    "relation_or_attachment": {
+      "count": 19,
+      "by_dataset": {
+        "musique": 14,
+        "hotpotqa": 5
+      },
+      "indices": [
+        17,
+        23,
+        30,
+        42,
+        50,
+        64,
+        67,
+        80,
+        137,
+        143,
+        170,
+        171,
+        204,
+        206,
+        216,
+        232,
+        234,
+        235,
+        271
+      ]
+    },
+    "unnecessary_need": {
+      "count": 6,
+      "by_dataset": {
+        "musique": 3,
+        "hotpotqa": 3
+      },
+      "indices": [
+        19,
+        55,
+        239,
+        249,
+        250,
+        257
+      ]
+    },
+    "source_ambiguity": {
+      "count": 2,
+      "by_dataset": {
+        "musique": 1,
+        "hotpotqa": 1
+      },
+      "indices": [
+        77,
+        240
+      ]
+    }
+  },
+  "overlapping_frozen_flags": {
+    "C": 26,
+    "F": 44,
+    "U": 11,
+    "S": 3
+  },
+  "type_results": {
+    "hotpotqa": {
+      "bridge": {
+        "passed": 58,
+        "n": 70
+      },
+      "comparison": {
+        "passed": 26,
+        "n": 30
+      }
+    },
+    "2wiki": {
+      "bridge_comparison": {
+        "passed": 25,
+        "n": 25
+      },
+      "comparison": {
+        "passed": 24,
+        "n": 25
+      },
+      "compositional": {
+        "passed": 25,
+        "n": 25
+      },
+      "inference": {
+        "passed": 24,
+        "n": 25
+      }
+    },
+    "musique": {
+      "2-hop": {
+        "passed": 26,
+        "n": 35
+      },
+      "3-hop": {
+        "passed": 20,
+        "n": 35
+      },
+      "4-hop": {
+        "passed": 8,
+        "n": 30
+      }
+    }
+  },
+  "caution": "Coverage/usefulness criteria are not all false facts or demonstrated downstream RAG failures; original rubric and judgments unchanged."
+}

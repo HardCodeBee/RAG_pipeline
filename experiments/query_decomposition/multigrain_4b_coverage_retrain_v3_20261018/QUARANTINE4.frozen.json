@@ -1,0 +1,78 @@
+[
+  {
+    "audit_index": 3,
+    "train_index": 1546,
+    "id": "error_corrected:musique:2hop__215214_2702:candidate0",
+    "query": "The shift away from what genre of music that Setä Tamu performs is Kanye credited for?",
+    "target": [
+      "What genre of music does Setä Tamu perform?",
+      "What genre of music is Kanye credited with shifting away from?"
+    ],
+    "hop": "2-hop",
+    "cohort": "random20_per_hop",
+    "verdict": "uncertain",
+    "failed_dimensions": [
+      "U"
+    ],
+    "reason": "The second Kanye-genre question may be an original-target paraphrase rather than a distinct prerequisite; keep uncertainty separate from definite fact distortion.",
+    "reviewer": "Current Codex query/target-only, same reviewer as prior training; not independent human gold."
+  },
+  {
+    "audit_index": 25,
+    "train_index": 3566,
+    "id": "musique:3hop2__131346_360318_807056",
+    "query": "Which country contains Walnut Corner in the county having Whitewater in the US state housing Fayetteville Public Library?",
+    "target": [
+      "What US state houses Fayetteville Public Library?",
+      "What county contains Whitewater in the US state housing Fayetteville Public Library?",
+      "Where is Walnut Corner in the county containing Whitewater in the US state housing Fayetteville Public Library?"
+    ],
+    "hop": "3-hop",
+    "cohort": "random20_per_hop",
+    "verdict": "uncertain",
+    "failed_dimensions": [
+      "U"
+    ],
+    "reason": "The final generic Where question for named Walnut Corner may duplicate the country target rather than expose a distinct intermediate; retain original label unchanged.",
+    "reviewer": "Current Codex query/target-only, same reviewer as prior training; not independent human gold."
+  },
+  {
+    "audit_index": 33,
+    "train_index": 3678,
+    "id": "musique:3hop2__130734_327333_834843",
+    "query": "Midway (near Pleasant Plains) in the county having Georgetown in the state having KAGH-FM is in which country?",
+    "target": [
+      "What state is KAGH-FM in?",
+      "What county contains Georgetown in the state containing KAGH-FM?",
+      "Where is Midway near Pleasant Plains in the county containing Georgetown in the state containing KAGH-FM?"
+    ],
+    "hop": "3-hop",
+    "cohort": "random20_per_hop",
+    "verdict": "uncertain",
+    "failed_dimensions": [
+      "U"
+    ],
+    "reason": "The final generic Where question for named Midway may duplicate the country target; unclear added supporting role.",
+    "reviewer": "Current Codex query/target-only, same reviewer as prior training; not independent human gold."
+  },
+  {
+    "audit_index": 73,
+    "train_index": 3947,
+    "id": "musique:4hop1__159330_7258_65293_48285",
+    "query": "KCOM Stadium has had concerts by a couple of artists who were contemporaries of a band named after an American city. How far from Wrigley Field is the lake that the city gets its drinking water from?",
+    "target": [
+      "What artists performed concerts at KCOM Stadium?",
+      "What band named after an American city were artists who performed concerts at KCOM Stadium contemporaries of?",
+      "What American city was the band contemporaneous with artists who performed concerts at KCOM Stadium named after?",
+      "What lake provides drinking water for the American city the band contemporaneous with artists who performed concerts at KCOM Stadium was named after?"
+    ],
+    "hop": "4-hop",
+    "cohort": "targeted_long_nested20",
+    "verdict": "uncertain",
+    "failed_dimensions": [
+      "F"
+    ],
+    "reason": "The first concert-artists question drops contemporaneity with a band named after an American city. It might retrieve a broad candidate set, but full joint identification is not preserved.",
+    "reviewer": "Current Codex query/target-only, same reviewer as prior training; not independent human gold."
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "utc": "2026-10-17T08:27:07.428620+00:00",
+  "version": "v11",
+  "prompt_sha256": "221d4ac357cc289cd2b228d24cb198e59376e7e57dc07bf4d533fb6b9abc5283",
+  "candidates": [
+    {
+      "version": "v10",
+      "eligible": false,
+      "pass_count": 33,
+      "bytes": 2065,
+      "pair": {
+        "before": "v8",
+        "after": "v10",
+        "n": 50,
+        "before_pass": 30,
+        "after_pass": 27,
+        "gained": [],
+        "lost": [
+          17,
+          32,
+          34
+        ]
+      }
+    },
+    {
+      "version": "v11",
+      "eligible": true,
+      "pass_count": 41,
+      "bytes": 2412,
+      "pair": {
+        "before": "v8",
+        "after": "v11",
+        "n": 48,
+        "before_pass": 30,
+        "after_pass": 33,
+        "gained": [
+          3,
+          43,
+          46,
+          57
+        ],
+        "lost": [
+          14
+        ]
+      }
+    },
+    {
+      "version": "v12",
+      "eligible": true,
+      "pass_count": 38,
+      "bytes": 2379,
+      "pair": {
+        "before": "v8",
+        "after": "v12",
+        "n": 51,
+        "before_pass": 31,
+        "after_pass": 33,
+        "gained": [
+          7,
+          36,
+          43,
+          46,
+          57
+        ],
+        "lost": [
+          32,
+          40,
+          58
+        ]
+      }
+    }
+  ],
+  "development_result_sha256": "9c14d024755d1f72ba9b324cee05fbb9c40dceeba3ff64e48c638a3dccfa378a",
+  "authored_review_sha256": "061e05462536dcbd33c4941a627e97991f156d9631a1a868a6b68ac59f6204e4",
+  "selection_sha256": "36bf9570ad966caecc37127e3fa85190981554ea4b1408f9212bcd5969b43124",
+  "selection_amendment_sha256": "48f1cddd40fd61ca2f31527e87a249b17600eaf1fa84d1917e35a2be13fa13d5",
+  "holdout_questions_sha256": "633a666917864880a1d3b919f547ef11bde91c0ba44123f99755d538f911e7d7",
+  "holdout_text_or_output_inspected": false,
+  "holdout_tuning_allowed": false,
+  "rule": "shorter and not lower than v8 on full60 or pairwise common pass count; maximize full pass count, tie shorter prompt",
+  "status": "candidate frozen for fresh confirmation; not an established 90% or downstream-RAG result"
+}

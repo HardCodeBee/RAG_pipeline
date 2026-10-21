@@ -1,0 +1,42 @@
+{
+  "planned": 17,
+  "common_valid": 16,
+  "missing": 1,
+  "not_an_unseen_generalization_claim": true,
+  "same_cohort_old_dual_f1": 0.5467836257309943,
+  "same_cohort_combined_f1": 0.6457419590643275,
+  "fresh_common11_old_and_new_f1": 0.7044125465178097,
+  "gains_confined_to_known_diagnostic_cases": true,
+  "cases": [
+    {
+      "qid": "bc7073a80baf11ebab90acde48001122",
+      "positive": "Known father Inthasom now enters optional retrieval: Who are the brothers of King Inthasom? Source states brother Kingkitsarat. Final Kingkitsarat changes nativeF1 0to1.",
+      "remaining_errors": [
+        "Source says Inthasom was a younger brother of Kingkitsarat; generated complete sentences reverse the age qualifier, calling Kingkitsarat Inthasom younger brother. This extra fact is wrong despite finalF1=1.",
+        "Second child marked none while retaining a useful brother fact. State tags are not verified evidence labels.",
+        "Goal rewrite becomes Who is Kingkitsarat?, dropping the uncle relation; original route remains, but strict rewrite faithfulness is not solved."
+      ]
+    },
+    {
+      "qid": "2hop__805610_392181",
+      "positive": "Same correct child QA, final prompt v2 abstains; support revision states award for Close Harmony. NativeF1 increases0to0.5833333333333334.",
+      "remaining_errors": [
+        "Final copies a full factual sentence instead of short award phrase, so EM remains0.",
+        "Single-route support revision changes an incorrect nominated-feature answer to Nothing; nativeF1 falls0.5to0. Thus prompt change is not uniformly helpful."
+      ]
+    },
+    {
+      "qid": "32f0334c0bb011ebab90acde48001122",
+      "remaining": "Short Jeanne de Laval versus complete Jeanne de Laval-Tinteniac remains. ReAct also short aliasF1 2/3. No wrong-person conclusion established."
+    },
+    {
+      "qid": "3hop1__136083_87694_64412",
+      "remaining": "Treaty signing versus entry-into-force dates remain different; both dates occur in passages. Keep native scores; do not equate every score loss with hallucination."
+    },
+    {
+      "qid": "4hop2__71753_623626_70784_61381",
+      "execution": "Known HTTP400 on a child request, reason unavailable. Retained as planned missing case; no invented output or replacement query."
+    }
+  ],
+  "conclusion": "Combined candidate repairs2 known cases without changing11 fresh-case F1. Not broad superiority: same16 ReActF1 0.7255140692640693, ours0.6457419590643275;2 remaining paired losses versus matched single. Candidate kept separately from original60 replication."
+}

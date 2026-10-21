@@ -1,0 +1,60 @@
+{
+  "qid": "4hop1__151650_5274_458768_33637",
+  "dataset": "musique",
+  "new_api_requests": 0,
+  "new_retrieval": false,
+  "reason": "strict stop guard discarded an actually returned64-token final response; retain its raw text for native F1 instead of calling it API missingness",
+  "scoring_policy": "score the actual returned text without completion or replacement; retain length flag, consistent with S02 raw-final scoring",
+  "exact_requests_replayed": [
+    {
+      "request_id": "5262c5812948a2fedb41ae288fba3efd51426e82ebfeb7c476c316d8080b3e2a",
+      "stage": "dual_original_rewritten/answer/1",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "b4832b6e98e06f5cfde3821b299084ec7dfe009e004ccc8b123fd967b4363f22",
+      "stage": "dual_original_rewritten/rewrite/2",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "d1f919281daabaf3adb4efcc0a59696d431e33acc9a555de3f2e3c4a3ca91a30",
+      "stage": "dual_original_rewritten/answer/2",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "7cf33678ab20e07803118fbcc808b56df3f2a0cc0f243552e7769e127133f942",
+      "stage": "dual_original_rewritten/rewrite/3",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "4d94857b375110a4d222bcdbfc6905b28220f2a815b9c95d403660161b3dfe0d",
+      "stage": "dual_original_rewritten/answer/3",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "ae9cb357981339c1b76076cff30ff733c3ef6ce5b983ab31c1a4ef39bd2d2a3e",
+      "stage": "dual_original_rewritten/rewrite/4",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "77034b20fe5f543738f35fbd24a1a52652cb3c6ede56316c798995b873a73e58",
+      "stage": "dual_original_rewritten/answer/4",
+      "finish_reason": "stop",
+      "exact_payload_verified": true
+    },
+    {
+      "request_id": "725c8b3996af6759b1cb8a69fbe3883e851f6dcc1499826c2898c00e7d5caa75",
+      "stage": "dual_original_rewritten/final",
+      "finish_reason": "length",
+      "exact_payload_verified": true
+    }
+  ],
+  "final_request_id": "725c8b3996af6759b1cb8a69fbe3883e851f6dcc1499826c2898c00e7d5caa75",
+  "original_failure_record_preserved": true
+}

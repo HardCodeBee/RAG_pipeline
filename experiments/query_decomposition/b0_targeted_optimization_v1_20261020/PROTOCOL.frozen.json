@@ -1,0 +1,56 @@
+{
+  "utc": "2026-10-19T21:50:28.949515+00:00",
+  "parent": "B0 + P1 readout (completed independent C arm)",
+  "arms": [
+    "g01_goal_consistency",
+    "f01_final_consistency"
+  ],
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "g01_added_rule": "For a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.",
+  "f01_added_rule": "Check the original question's comparison or combination against the supporting facts or values; do not copy an auxiliary conclusion that contradicts those facts or values.\n",
+  "single_factor": {
+    "g01_goal_consistency": "Only insert existing GOAL_RULE before the goal Answer marker; retain P1 final readout.",
+    "f01_final_consistency": "Only prepend FINAL_CHECK to P1 final readout; all B0 nodes retained."
+  },
+  "pilot_n": 100,
+  "maximum_n_per_arm": 300,
+  "pilot_sample": "33 HotpotQA/33 2Wiki/34 MuSiQue; deterministic query-ID hash, not outcome selection",
+  "gate": "Expand an arm from pilot100 to full300 only if all100 scorable and paired mean native F1 strictly exceeds the P1 parent. No claim of independent confirmation.",
+  "selection": "Among complete300 arms and parent choose higher mean native F1, prefer fewer edits on exact tie; preserve B0 and S02 unchanged. Describe result as development selection, not significance or generalization.",
+  "sample_role": "Exposed existing diagnostic300; pilot is not fresh holdout.",
+  "fixed": [
+    "R02 decomposition",
+    "all ordinary child prompts/answers",
+    "all rewrite outputs",
+    "all query strings and retrieved packets",
+    "original-first interleaving/dedup Top10",
+    "full original-query Top10",
+    "all auxiliary QA included",
+    "model and generation limits (goal128/final64)",
+    "no external factual knowledge added by program"
+  ],
+  "upstream_replay_scope": "Full frozen B0 prefix including actual retrieval and ordinary QA; no changed output is used to retrieve because only last goal/final are varied.",
+  "cache": "Exact full payload only; same-case completed P1 control receipts first. First successful receipt, no score-based selection.",
+  "retries": "At most one new immutable recovery round for infrastructure failures; preserve unknown liabilities and successful prefixes. Algorithm failure is retained, not retried.",
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 3
+  },
+  "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "source_manifest_sha256": "64b13f8cf27e5b0f39bfdba1530645a9a5246de339a464b1b6dd1406f871f2eb",
+  "pilot_sha256": "db08006d2462205bd59c9e7d9109af0c4541d2f60a7a170e974b51ac6e8c970d",
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_targeted_optimization_v1_20261020\\experiment.py": "f064c150b117c22a4a22dbfefe57a0c20ce5f0c54c76398e5ce8e1491e16af7d",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\PROTOCOL.frozen.json": "5b48f6eab47c596d1ba69054b7a377122d9ccee1ebc8f5e03d4f283b54e0a184",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\FINAL_RESULTS.frozen.json": "334f4f198043e8cf24ef18434419851fe7de38d09af2eb7b7fca0edf98a7d4fe",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\FINAL_AUDIT.frozen.json": "e9d23fa99f556bc5fa7a62977bfba96dd99b8e7391b95ea11d1c42370bfa6047",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a"
+  }
+}

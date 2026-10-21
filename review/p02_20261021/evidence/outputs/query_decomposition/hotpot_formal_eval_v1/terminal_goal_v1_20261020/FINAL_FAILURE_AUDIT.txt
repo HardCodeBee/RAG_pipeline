@@ -1,0 +1,99 @@
+terminal_goal最终失败审查：保留当前冻结版本，不采用本轮两行简化配置
+
+全部300：ordinary与goal检索包原样保留。3个length为2Wiki2题、Mu1题；Hotpot没有length。Hotpot损失完全发生在正常stop返回中。
+hotpotqa: 旧F1=78.28131313%，新F1=72.81984127%，差值-5.46147186pp；{'tie': 82, 'down': 13, 'up': 5}；length=0。
+length案例贡献0.00000000pp，非length案例净贡献-5.46147186pp。
+musique: 旧F1=40.37051047%，新F1=37.83710686%，差值-2.53340361pp；{'tie': 83, 'down': 11, 'up': 6}；length=1。
+length案例贡献-0.40000000pp，非length案例净贡献-2.13340361pp。
+
+最清楚的问题是同一次调用中Conclusion正确，但Final answer指向人物或学校而非原query所求日期；也出现Mu配偶关系改变。
+
+四个代表实例：
+
+hotpotqa:5ae3fcfc5542995dadf2428c
+When was the  American singer-songwriter born who recorded “Spirit In The Sky”?
+完整分解：["Who is the American singer-songwriter who recorded Spirit In The Sky?"]
+旧goal：Norman Greenbaum was born on November 20, 1942.
+旧final：November 20, 1942
+新原始返回：
+Conclusion: Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.  
+Final answer: Norman Greenbaum
+新短答：Norman Greenbaum
+F1：1.0→0.0
+观察：旧goal和新Conclusion均为November20,1942；新短答却为Norman Greenbaum。日期原文在同一输入排名1，未丢失检索证据。
+事实/F1边界：发生了所求答案类型错误（日期→人物）。短答人名本身是真实对象，不能将所有局部词均称为事实幻觉。
+实际原文：
+rank=1 source=Norman Greenbaum
+Norman Greenbaum
+Norman Joel Greenbaum (born November 20, 1942) is an American singer-songwriter. He is best known for writing and performing the 1969 song "Spirit in the Sky".
+
+hotpotqa:5a83a2a15542993344746063
+In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?
+完整分解：["Which high school forced Manchester High School to change its name in 1922?"]
+旧goal：Manchester West High School’s first graduating class was in June 1925.
+旧final：June 1925
+新原始返回：
+Conclusion: Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.
+Final answer: Manchester West High School
+新短答：Manchester West High School
+F1：1.0→0.0
+观察：旧goal及新Conclusion均明确June1925；新短答为Manchester West High School，未回答when。原文第一篇Manchester High School West明确首届毕业June1925。
+事实/F1边界：实体/日期槽位偏移，goal事实段正确不保证同调用短答字段指向所求属性。
+实际原文：
+rank=1 source=Manchester High School West
+Manchester High School West
+Manchester High School West, known as West High or West, is a public high school located in Manchester, New Hampshire. According to the "Blue Book: Manchester High School West Hand Book " (1940), the school was officially opened in September 1923 as a grade school and high school, hosting the seventh and eighth grades. In 1924, with an upsurge in enrollment to 136 pupils, the school became a dedicated high school. The first graduating class was in June 1925.
+
+musique:3hop1__228_237521_291682
+Who is the wife of the man who produced the documentary of the pop star who influenced Beyonce?
+完整分解：["Which pop star influenced Beyonce?", "What documentary was produced by the pop star who influenced Beyonce?", "Who produced the documentary of the pop star who influenced Beyonce?"]
+旧goal：Liza Minnelli is the wife of David Gest.
+旧final：Liza Minnelli
+新原始返回：
+Conclusion: Sharon Osbourne is the wife of David Gest, who produced the documentary of the pop star who influenced Beyoncé.  
+Final answer: Sharon Osbourne
+新短答：Sharon Osbourne
+F1：1.0→0
+观察：旧Liza Minnelli变为新Sharon Osbourne。相同原文排名2 Liza and David明确Liza Minnelli和then-husband David Gest；排名16 Sharon Osbourne写其夫为Ozzy Osbourne。新Conclusion把Sharon嫁给David Gest，原文关系不支持。
+事实/F1边界：这是有原文依据可确认的配偶关系歪曲，F1由1到0同时有语义损伤。不能仅凭可见输出确认内部注意力为何选错人物。
+实际原文：
+rank=2 source=Liza and David
+Liza and David
+Liza and David was a reality television series slated to air on VH1 in 2002, featuring Liza Minnelli and her then-husband, David Gest.
+rank=11 source=Michael Jackson: The Life of an Icon
+Michael Jackson: The Life of an Icon
+Michael Jackson: The Life of an Icon is a documentary film about pop singer Michael Jackson produced by his friend, David Gest. The film features footage of the beginning of The Jackson 5, Jackson's solo career and the child molestation accusations made against him. It also has interviews with Jackson's mother, Katherine, and siblings, Tito and Rebbie Jackson, as well as other artists—who were inspired by him and had met him before his death—including Whitney Houston, Smokey Robinson and Dionne Warwick. The film was released on DVD and Blu-ray on November 2, 2011.
+rank=16 source=Sharon Osbourne
+Sharon Osbourne
+Sharon Rachel Osbourne (' Levy"'; born 9 October 1952) is an English media personality, businesswoman, television host, talent competition judge, music manager, live promoter, and author. She is the wife of heavy metal singer-songwriter Ozzy Osbourne and first came into public prominence after appearing on "The Osbournes", a reality television show that followed her family's daily life. Osbourne later became a talent show judge on television shows such as the British and original version of "The X Factor", from 2004 to 2007, returning in 2013, and again from 2016 to 2017. She also was a judge on "America's Got Talent" from 2007 until 2012.
+
+musique:3hop1__68802_89752_49923
+How many counties are there in the largest state in the region where the film The Family Stone was set?
+完整分解：["Where was the film The Family Stone set?", "What region contains the setting of the film The Family Stone?", "What is the largest state in the region containing the setting of the film The Family Stone?"]
+旧goal：Maine has 16 counties.
+旧final：16
+新原始返回：
+Conclusion: Maine, the largest state in New England where the film The Family Stone was set, has sixteen counties.
+Final answer: sixteen
+新短答：sixteen
+F1：0→1.0
+观察：旧goal Maine has16counties、短答16；新Conclusion/短答为sixteen。原生MuSiQue分数0→1，但数学数量相同。
+事实/F1边界：这是词面规范化敏感造成的F1提升，不能称新流程纠正了县数量事实。与Hotpot Two→2造成1→0正好相反。
+实际原文：
+rank=16 source=Maine
+Maine
+State of Maine État de Maine (French) Flag Seal Nickname (s): ``The Pine Tree State ''`` Vacationland'' Motto (s): ``Dirigo ''(Latin for`` I lead'', ``I guide '', or`` I direct'') State song (s): ``State of Maine Song ''Official language None Spoken languages English: 92% French: 5% Other: ≤ 3% Demonym Mainer Capital Augusta Largest city Portland Largest metro Greater Portland Area Ranked 39th Total 35,385 sq mi (91,646 km) Width 210 miles (338 km) Length 320 miles (515 km)% water 13.5 Latitude 42 ° 58 ′ N to 47 ° 28 ′ N Longitude 66 ° 57 ′ W to 71 ° 5 ′ W Population Ranked 42nd Total 1,335,907 (2017 est.) Density 43.0 / sq mi (16.6 / km) Ranked 38th Median household income $50,756 (40th) Elevation Highest point Mount Katahdin 5,270 ft (1606.4 m) Mean 600 ft (180 m) Lowest point Atlantic Ocean Sea level Before statehood District of Maine (Massachusetts) Admission to Union March 15, 1820 (23rd) Governor Paul LePage (R) President of the Senate Michael Thibodeau (R) Legislature Maine Legislature Upper house Senate Lower house House of Representatives U.S. Senators Susan Collins (R) Angus King (I) U.S. House delegation Chellie Pingree (D) Bruce Poliquin (R) (list) Time zone Eastern: UTC − 5 / − 4 ISO 3166 US - ME Abbreviations ME, Me. Website www.maine.gov
+
+其他已核查的观察（不强行归因）：
+hotpotqa:5ae0a48155429945ae9593df 新Conclusion含bookmaker收费定义，Finalanswer却Vigorish，所求定义变术语，F1 .6→0。
+hotpotqa:5a8c7595554299585d9e36b6 新Conclusion列Chief of Protocol等政府职务，Finalanswer却Shirley Temple，职务变人物，F1 .3333→0。
+hotpotqa:5addbf645542997dc7907014 新Conclusion与旧一致，区分Melanie Sykes主持前两季、Vernon Kay主持第三季及另一节目；Finalanswer列两人，未保留共同主持人的交集，F1 1→.5714。
+hotpotqa:5ab8c3c65542991b5579effd Two→2，F1 1→0；相同数学数量。
+hotpotqa:5a77c09555429967ab105262 学名Antilocapra americana改输出Pronghorn，F1 .8→0；原文明确二者为同物种，不能等同物种事实错误。
+hotpotqa:5a84ad3a5542992a431d1a8b Back to December→Cannot be determined，F1 1→0；此前已核查当前原文只有作品清单，缺少对该作品道歉属性的直接支持，不能把这项一律称事实性退步。
+musique:2hop__13592_49388 38→Cannot be determined，F1 1→0。新结论把1948/1949当作所求赛季并称历史球队数量不明；原query用该年份描述Barcelona夺冠所属联赛。属于可观察的时间范围解释变化，未在本报告进一步评判真实历史赛季。
+musique:3hop1__102461_24918_24991 新短答从旗帜降下变为苏联解体，原生F1 .2857→.6667；金标对象仍为Soviet flag，分数上升不保证回答了所求对象。
+hotpotqa:5ac298805542990b17b15429 Yes→Austral Líneas Aéreas，F1 0→1，回答类型由布尔转为所需公司实体；这是观察到的正确目标恢复。
+
+所有35道Hotpot/Mu升降query、完整分解、新旧回答和分数，以及2个日期例子的完整新旧prompt均在同名JSON。
+不采用当前配置；这只是对已冻结实验结果的判断。没有新API、检索、重试或源文件改动。

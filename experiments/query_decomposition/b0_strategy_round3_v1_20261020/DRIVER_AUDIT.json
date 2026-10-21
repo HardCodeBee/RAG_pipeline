@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "blocking_findings": [],
+  "private_binding": {
+    "predecessor_module_unchanged": true,
+    "run_case_run_phase_budget_globals_private": true,
+    "HERE_OUT_ARMS_bound_to_round3": true,
+    "chosen_summarize_log_budget_bound_to_round3": true,
+    "final_renderer_bound_to_round3": true
+  },
+  "frozen_sources_verified": 18,
+  "frozen_input_files_verified": 2,
+  "parent_base_control_case_hashes_verified": 600,
+  "inputs": {
+    "old_diagnostic_queries": 300,
+    "answer_reference_fields_in_runtime": false,
+    "fresh90_or_sealed150_read": false
+  },
+  "execution": {
+    "ordinary_rewrite_goal_generation_calls": 0,
+    "only_final_max_tokens": 64,
+    "model_payload_exact": {
+      "model": "qwen-plus-2025-12-01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "synthetic offline payload probe"
+        }
+      ],
+      "temperature": 0.0,
+      "max_tokens": 64,
+      "extra_body": {
+        "enable_thinking": false
+      }
+    },
+    "three_workers_per_phase": true,
+    "attempt_namespaces_immutable": true,
+    "infrastructure_recovery_rounds": 1,
+    "successful_cases_not_rerun": true,
+    "exact_payload_receipts_only": true,
+    "unknown_reservations_retained": true
+  },
+  "budgets": {
+    "global_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "local_subcap_cny": 5,
+    "namespace": "b0_strategy_round3_v1_20261020",
+    "snapshot": {
+      "global_known_cny": 182.058192,
+      "global_reserved_cny": 35.3911192,
+      "global_occupied_cny": 217.44931119999998,
+      "new_known_cny": 0.1565076,
+      "new_reserved_cny": 0.008720799999999999,
+      "new_submissions": 73,
+      "cap_cny": 300
+    }
+  },
+  "scoring": {
+    "reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "reference_matches_original_six_protocol": true,
+    "same_native_metric_entrypoint": true,
+    "references_read_by_generation_renderer": false,
+    "only_complete300_strict_gain_selected": true,
+    "tie_and_partial_candidate_keep_p02": true
+  },
+  "scope_notes": [
+    "E03 adds source information; any gain must not be described as mere formatting.",
+    "An unterminated namespace requires inspection; no silent resume.",
+    "No generation/provider submission/retrieval/remote operation occurred in this audit."
+  ],
+  "audit_source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round3_v1_20261020\\experiment.py": "25fab429d161bd3944ea7824643ac46328e2b9c2aaf4b15dc48c2e386a1fc3f0",
+    "experiments\\query_decomposition\\b0_strategy_round3_v1_20261020\\strategy.py": "505ea5188c6acd07251da541f11310f69b454c121f30d61d9ed4e2fc82b03847",
+    "experiments\\query_decomposition\\b0_strategy_round3_v1_20261020\\PROTOCOL.frozen.json": "4a7f4c56fc0ebf3a9cd8f50c0d176b72824dcc304399ad3d84429d016b238dc8",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\scoring.py": "eacf840b36ac458a53810733e4101e4d20773080ef18a2f33a427573f00f7e83"
+  },
+  "new_api_calls": 0,
+  "new_retrieval_calls": 0,
+  "new_remote_calls": 0
+}

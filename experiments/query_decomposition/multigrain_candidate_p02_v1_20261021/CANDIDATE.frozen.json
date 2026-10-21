@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "candidate_id": "p02_multigrain_timing_cachefix_v1",
+  "status": "frozen_candidate",
+  "created_utc": "2026-10-20T13:39:29.548111+00:00",
+  "client_date": "2026-10-21",
+  "authorization": "User requested preserving the simplification series and confirming/freezing the current multigrain method as another candidate alongside s04.",
+  "candidate_slot": 2,
+  "candidate_slots_are_not_quality_rankings": true,
+  "coexisting_candidate": {
+    "user_alias": "s04",
+    "resolved_id": "s04_scope_plus_evidence",
+    "protocol": "experiments/query_decomposition/b0_strategy_round4_v1_20261020/PROTOCOL.frozen.json",
+    "historical_selection": "outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round4_v1_20261020/SELECTION.frozen.json",
+    "identity_note": "The recent local S04 complete-flow candidate; not the old s04_balanced_demos variant. Original experiment and selection records are retained unchanged."
+  },
+  "entrypoint": "experiments.query_decomposition.multigrain_candidate_p02_v1_20261021.pipeline.execute",
+  "execution_runner": "experiments.query_decomposition.p02_merge_cachefix_v1_20261021.run",
+  "selected_runner_arguments": {
+    "sample": "300",
+    "arms": [
+      "timing_only"
+    ]
+  },
+  "method": {
+    "parent": "p02_role_headers",
+    "arm": "timing_only",
+    "decomposer": "R02 expanded3632 full retrain, v12; exact provenance in DECOMPOSER_AUDIT.json",
+    "remote_checkpoint": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+    "remote_weight_bytes_reverified_this_freeze": false,
+    "decomposition_interface": "Ordered self-contained supporting_questions; no cross-question #N references; append original query verbatim as final goal.",
+    "root_retrieval": "No initial original-query retrieval; get it in goal original route, reuse the same packet for final.",
+    "rewrite": "legacy multigrain_prompt_v2, all earlier complete QA; rewrite only when history exists",
+    "reader_merge": {
+      "routes": "current original Top10 + rewritten Top10 when query differs",
+      "order": "rank interleave, original first",
+      "deduplication": "doc_id",
+      "keep": 10
+    },
+    "child_reader_inputs": [
+      "original query scope",
+      "current question",
+      "all prior complete QA",
+      "current merged Top10"
+    ],
+    "child_prompt": "legacy S02 child instructions, ordinary4shot/goal0shot; full sentence, no C08 selection",
+    "short_answer_formatter": "Retained: <4 whitespace words triggers legacy complete-sentence call",
+    "history": "Full factual-sentence QA, no mechanical #N binding, no sentinel-only deletion/filtering added",
+    "goal_preanswer": true,
+    "goal_routing": "Every goal retrieved and answered; no retrieve/combine/skip routing",
+    "goal_rule": "Existing g01 consistency instruction",
+    "auxiliary": "p02 role headers; ordinary QA followed by goal candidate conclusion",
+    "final_overall_answer": true,
+    "final_reader_inputs": [
+      "original query",
+      "all ordinary+goal QA with role headers",
+      "goal original-route original-query Top10"
+    ],
+    "final_context_order": "helper before original-query raw Top10",
+    "final_prompt": "multigrain v3 instructions, four final examples, P1 readout",
+    "excluded_candidates": [
+      "union20",
+      "discount20",
+      "single_final",
+      "terminal_goal",
+      "C08+c02 integration",
+      "S04 scope/evidence edits"
+    ]
+  },
+  "generation": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "max_tokens": {
+      "rewrite": 256,
+      "child_or_goal": 128,
+      "sentence_format": 128,
+      "final": 64
+    }
+  },
+  "cache": {
+    "provider": "experiments.query_decomposition.p02_merge_cachefix_v1_20261021.cache.catalog",
+    "key": "full API payload hash AND complete payload equality",
+    "priority": "Canonical frozen p02 first, deterministic historical exact successes next, current exact successes last",
+    "success_reuse": "Never repay an identical successful input; per-payload concurrency lock",
+    "retrieval_key": "qid, exact query, k, full frozen resource identity",
+    "unknown_requests": "Retain liability; do not silently replay unknown requests or erase reserves"
+  },
+  "evaluation": {
+    "scope": "Previously exposed development300, 100 per dataset; not a new independent test",
+    "runtime": "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/runtime300.frozen.jsonl",
+    "complete_cases": 300,
+    "native_final_Answer_F1": {
+      "n": 300,
+      "F1": 0.7072417314845074,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7899083694083693
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9334738562091504
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.3983429688360029
+        }
+      }
+    },
+    "logical_generation_usage": {
+      "overall": {
+        "logical_attempts": 1774,
+        "logical_generations": 1774,
+        "prompt_tokens": 2837258,
+        "completion_tokens": 28223,
+        "equal_rate_generation_cny": 2.3262523999999996
+      },
+      "hotpotqa": {
+        "logical_attempts": 510,
+        "logical_generations": 510,
+        "prompt_tokens": 739189,
+        "completion_tokens": 8610,
+        "equal_rate_generation_cny": 0.6085712
+      },
+      "2wiki": {
+        "logical_attempts": 648,
+        "logical_generations": 648,
+        "prompt_tokens": 1089218,
+        "completion_tokens": 10290,
+        "equal_rate_generation_cny": 0.8919544
+      },
+      "musique": {
+        "logical_attempts": 616,
+        "logical_generations": 616,
+        "prompt_tokens": 1008851,
+        "completion_tokens": 9323,
+        "equal_rate_generation_cny": 0.8257268
+      }
+    },
+    "cost_scope": "Historical model/token-based cold estimate; no claim this is newly spent or total historical spend. Decomposition/retrieval compute is not priced in this API estimate.",
+    "cache_fixed_control": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/RESULTS300.frozen.json"
+  },
+  "preservation": {
+    "index": "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/SIMPLIFICATION_ARCHIVE.json",
+    "policy": "Retain all original protocols, prompts, cases, request SQLite databases, failed/unknown attempts, scoring and costs in place. No deletion, renaming or replacement.",
+    "ablation_limit": "single_final and terminal_goal are bundled variants; old union results keep their historical cache caveat; repaired union20 is the controlled retention comparison."
+  },
+  "file_pins": {
+    "experiments/query_decomposition/b0_six_single_changes_v1_20261020/receipts.py": "77061a24b408874c52f8ee6ac70bcb1ee9c47579155a4c5e6258684c53f1e06a",
+    "experiments/query_decomposition/b0_strategy_round2_v1_20261020/experiment.py": "d68b0d41faae81e932e04c712d6172262e79f1f46d5958cb85f674f7fd5d1988",
+    "experiments/query_decomposition/b0_strategy_round2_v1_20261020/fresh_runner.py": "5013148b8f1c2d4b3561139039b7dc7f262d1c760768b34a0a2c0fc2f2ab955e",
+    "experiments/query_decomposition/b0_strategy_round2_v1_20261020/strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef",
+    "experiments/query_decomposition/b0_strategy_round4_v1_20261020/PROTOCOL.frozen.json": "f5c9feaaf6765f8db818fd599d9f41043a4b5aed2fedbb7ac7b8bbd31b40e7a2",
+    "experiments/query_decomposition/b0_strategy_round4_v1_20261020/SOURCES.frozen.jsonl": "f92033e785f4255a7ab97605f4b1f9d6e68e395a4b3d7a298d06f8bac0000abc",
+    "experiments/query_decomposition/b0_strategy_round4_v1_20261020/strategy.py": "5a013a53a233692b0f80e0ffebf22c512c45be704ee31a503b07e1cbede5567b",
+    "experiments/query_decomposition/b0_targeted_optimization_v2_20261020/experiment.py": "8d2aac4da822e406d4c1efae33fb143997e04a580d9e15cd9773261af8a56eab",
+    "experiments/query_decomposition/b0_targeted_optimization_v2_20261020/PROTOCOL.frozen.json": "008216868349425387cf4f14043ca00a03092560710e10e1fc0bfef4f2da39d1",
+    "experiments/query_decomposition/complete_pipeline_comparison_v1_20261020/r02_provenance300.frozen.jsonl": "94b945bcdbe23bd3a31c7db27d4a33ec4a21083f6e225fcc3930b259783980ad",
+    "experiments/query_decomposition/component_chain_c08_c02_v1_20261019/pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments/query_decomposition/component_chain_opt_v2_20261019/policy.py": "ba20e6117d5878a0d3cc4cf8f4403ee2368fd82da571cb0e33d04e52e6f9cefe",
+    "experiments/query_decomposition/component_chain_opt_v2_20261019/run.py": "f8db900b087f4c37523aa93bb426e83757acf592b1f24edfbe2b20624386fd35",
+    "experiments/query_decomposition/decomposition_error_expand60_v1_20261019/PLAN_FROZEN.json": "ddc50d1e858e5d9ecad1ce7d64f677543296ca580b499813c50d81a735bff9da",
+    "experiments/query_decomposition/hotpot_formal_eval_v1/common/runtime.py": "eb8bfe320bde5f8d75f4fe77392918a0f9284cc8e1e030e11ed3e2c6fcb4be15",
+    "experiments/query_decomposition/hotpot_formal_eval_v1/methods/s02_child4_faithful/examples.json": "d858014b0fd20d6982f0bf03b944c1b22ffce24aab46b971ac83671f4240de77",
+    "experiments/query_decomposition/hotpot_formal_eval_v1/methods/s02_child4_faithful/prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments/query_decomposition/hotpot_formal_eval_v1/parallel_api.py": "4cde6eb39d7881e766fed7743a39cd87c242120122379e4a15554479933515e3",
+    "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/NOMINEE_FROZEN.json": "ed5e8911b2beefe21500216b22ec220091b99b6a23618b833ad81510e5b6a414",
+    "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/score_model.py": "1fc86bdc1f17348483f02cce155f0c61398b3a805cb3311f6e75eb0655e35876",
+    "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "experiments/query_decomposition/multigrain_4b_sft3500_v1_20261017/remote_v003/runtime/model_runtime.py": "ad7c9ef8cb677a5bc7d80e077b0ddc2513fa545be0cfe48e1c4a7e76acc4eff9",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/DECOMPOSER_AUDIT.json": "152fef8ce60fef31757544af6240dadf04a24d183e25d9d370226600aeb3ee56",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/FLOW.txt": "05d826f507a03d3999b222a3cb1ba10089c68f408a7cb683a4941e092143c257",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/freeze.py": "f830c056a52606c5b8dacb11f67b78674b2c2852f9be0095104db65a3a604ab0",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/pipeline.py": "e82d234caaa035e9bb2d137aa6d9dd2fe49f25fda2460e61f8365b7a7ce615d2",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/PROMPTS.frozen.json": "323c873cc050fa16a4ae77e1ff26c218b935ff8febdd460d540a5ab52e541d39",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/RETRIEVAL_RESOURCES.frozen.json": "9c1c70d297190cede5567648a8fa67e0a8414065ae4e81d9f1a193217345dde5",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/SIMPLIFICATION_ARCHIVE.json": "d147dadb75a1a6b234fad5964d82fbc4e2e19d9347d829f22187c2cb4afb75ee",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/SIMPLIFICATION_ARCHIVE.txt": "2deb30c3365cb31aaad1d0b9099cef0c20bc38fbde6f756ac42afaef060d975c",
+    "experiments/query_decomposition/multigrain_candidate_p02_v1_20261021/verify.py": "3272446a4681cb5fdd151579ada7bb8ed45261dfa645595737645aa2f77b74d4",
+    "experiments/query_decomposition/multigrain_prompt_v2_20261017/prompts.py": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+    "experiments/query_decomposition/multigrain_prompt_v3_20261017/final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments/query_decomposition/multigrain_prompt_v3_20261017/prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/offline_audit.py": "84f4890f17dbc498bbe090280c44fdfd599c3461afc209c5079ad9778ed24677",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/pipeline.py": "8ffd74da8b0db0029c17c09ca56bb58fb650bab480955dc36d701531647f95e2",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/PLAN.proposed.txt": "0a674887ba22ae6174c6b3990633d8c4b13fb9858ed57e1085fe697b0973551e",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/PROTOCOL.frozen.json": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/retrieval_adapter.py": "40f94578571de7fedca5935381b3b93fb29534e8994ab2c432270a7d9a9841e2",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/run.py": "2a6b89abf37c6f7ea1da1ed8e5a813fb146c8b25bc7ef8df6c5f92973afd8b07",
+    "experiments/query_decomposition/p02_flow_simplify_v1_20261020/score.py": "0d86a5d34e8f7e5a46f03ff984bd6bf9cdd11bfc85cd894e46c53cc725e15744",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/adapter.py": "cc86c35437e866532f66ee53e1d9e6100170056435bd877f2be4d9809d0caa6b",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/BASELINE_SOURCES.frozen.json": "9ce0071c2e4c37bb64854bd490c75d85f6c558b92d348e1985f34caa55f2e303",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/cache.py": "f50768cf3ceae6feba8314c866109074f50200af64987664eca6fe0cda857082",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/CACHE_EXECUTOR_SELECTED.user_20261021.frozen.json": "96f8b42af8ae924e1dabebcebc1afa0bd85a52f19abb1acc26a7f43696ac72ad",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/execute_all.py": "2380e849c33f73fca0087680ff0523bcc24b543f84bdc5336ff7c15a1214c04d",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/HISTORICAL_SUCCESS_INDEX.frozen.json": "99125dfaae6aa2d8dd51f43ebe8335ac15eb7d60963e8ed5b0fc6d44cc68ac43",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/offline_audit.py": "2bb4406a5aa60e2acb5ddece0991b5d8362b215d130638b152f271d1dba8e24f",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/preflight.py": "c32170d372bb722421bcbb4d5441cf4a32986a766382db7faad46a9915ae9fb7",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/PROTOCOL.frozen.json": "04e95b9b924c1553e5337ab72ce73594e15e8eac719f3069f82b37511e4a76ed",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/run.py": "666c3189536abbcb2d7b5c3ae096521df5c2738c5fa25e9fd7c28b283b16c325",
+    "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/runtime300.frozen.jsonl": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "experiments/query_decomposition/p02_simplification_review_20261020/ADOPTION.user_20261020.frozen.json": "674b63ac6388ba55c8b50f810afef4dc4d94bf53d393ca442243a471513990de",
+    "experiments/query_decomposition/p02_simplification_review_20261020/selected_pipeline.py": "f7a613ae5ce07682161713fdab20d426ae5beab9f1f46ac63c2333e333612ef5",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round4_v1_20261020/FINAL_RESULTS.frozen.json": "4d7dfbe19ebaca812709b2f08e940c9a95c05cf5ee18358e547745cf924e57c9",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/b0_strategy_round4_v1_20261020/SELECTION.frozen.json": "9d418bd298d52d8a6e8db2cdae910c1d28a6f99a4cecc1e089483f4730c8567a",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/b0_targeted_optimization_v2_20261020/FINAL_AUDIT.frozen.json": "64d40a6ee62aaef65e2645883dce7cce0b96906f3e69cb95ac8a54f15a803c62",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/b0_targeted_optimization_v2_20261020/FINAL_RESULTS.frozen.json": "0df873874c08aa795491400a367df0011e6383c58cfb7a816117356e65ac52d5",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/JOB_SUBMISSION.json": "c9db7c4e822f9349cdbad19f76e334935ad1b44cdfd72a944707b23097465fe3",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/RAW_IDENTITY.json": "c64b2709f9d84266b99cdfd01864e13119b393603b4747c9166783ac57a14b38",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/reports/FINAL_VERIFICATION.json": "a1987106fab79e590f154d99ad1edc38583045efe2b7b17655ea1553fda18d34",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/reports/PAIRED_DETAILS.jsonl": "aac8fe3134e40740462c1b476d90b3cc384bb97caf2ba80d37570710170ad3b1",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/RESULTS300.frozen.json": "d7952a4d461cdda1237b0856e8e1259772be7f915e7c29f878e944fdec6abbfc",
+    "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/adapter_config.json": "2f920f7d15316747f0f87c28c5a6474d5d25c639c8cc9aa7198808054ed64c98",
+    "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/BASE_MODEL_IDENTITY.json": "ea15e5679c445709518e1b5b23e6d91c38d0062d64f1ca640d522a0c81f29d6f",
+    "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/manifest.json": "37348cc6a950eb6c548c958aa0fae35a164769b74928763bd9ddc3f56126e185",
+    "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/tokenizer_config.json": "7a8b69bdd59cb05edc0ba8d60844b9395faf4752097f34382c7761bb8b198206"
+  },
+  "new_API_calls": 0,
+  "new_index_searches": 0,
+  "new_remote_calls": 0,
+  "new_training_jobs": 0,
+  "global_default_switched": false
+}

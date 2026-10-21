@@ -1,0 +1,10 @@
+{
+ "reviewer":"Current Codex authored all five labels from frozen query-only inputs, then checked each item against the source query; same reviewer, not independent gold.",
+ "labels":{
+ "2581":{"target":["What country is A Little Help from?","What country is The Nest (1988 Film) from?"],"reason":"Separate the two country operands; retain the second film's year disambiguator."},
+ "2836":{"target":[],"reason":"Stepchild is an unspecified local kinship relation; no unambiguous narrower parent/spouse path is supplied, so retain the local original question for separate execution."},
+ "4198":{"target":["Who directed The Man From Morocco?","What city was the director of The Man From Morocco born in?","What name was Russia called when Russia was the first Allied nation in the city where the director of The Man From Morocco was born?"],"reason":"Expose director, city and the historical name; Russia is already supplied, so do not ask which nation it was or supply the historical name from world knowledge."},
+ "4140":{"target":["Where was Peter Anton born?","Who wrote America-Lite: How Imperial Academia Dismantled Our Culture?","What school did the author of America-Lite: How Imperial Academia Dismantled Our Culture attend?"],"reason":"Expose the independent birthplace branch and author-to-school branch, retaining attended explicitly present in the input."},
+ "4215":{"target":["Where was Kevin Colley born?","Who wrote America-Lite: How Imperial Academia Dismantled Our Culture?","What is the university of the author of America-Lite: How Imperial Academia Dismantled Our Culture?"],"reason":"Retain the input's ambiguous university-of relation without inventing attendance or employment."}
+ }
+}

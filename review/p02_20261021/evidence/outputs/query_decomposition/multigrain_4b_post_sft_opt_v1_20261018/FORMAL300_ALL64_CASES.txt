@@ -1,0 +1,399 @@
+正式300题：64道未通过题逐题记录（62失败＋2不确定）
+用途：本轮优化结束后分析测试集，不再据此调整本轮提示词或选择checkpoint。
+下列主类是诊断性人工归类，互斥；原始F/S/C/U标签可重叠，保留不变。
+缺少中间问题或存在冗余不等于事实必错；本报告没有运行下游RAG。
+
+中间对象或分支覆盖不足：15/64；分数据集{'musique': 14, 'hotpotqa': 1}
+
+3. [musique] musique:3hop1__5544_34179_23375
+原query：What year saw the publication of the version of the Molotov–Ribbentrop Pact established by the man who succeeded the leader of the group which created the Soviet state?
+完整实际分解：["What group created the Soviet state?","Who led the group that created the Soviet state?","Who succeeded the leader of the group that created the Soviet state?"]
+判定：fail；原始标记：['C']
+审阅理由：Does not identify the version of the Pact established by the described successor before the publication-year target.
+
+18. [musique] musique:4hop3__373866_5189_38229_86687
+原query：A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?
+完整实际分解：["What group of nations was the People's Socialist Republic of Albania a member of?","What country controlled the group of nations the People's Socialist Republic of Albania was a member of?"]
+判定：fail；原始标记：['C']
+审阅理由：Does not identify the organization Eisenhower would not discuss before the target agreement inside that organization.
+
+28. [musique] musique:4hop3__373573_132409_223216_35031
+原query：The band Pathology formed in a city whose urban area ranks where by size among the urban areas of the state where the Still Swingin' song's band formed?
+完整实际分解：["What band performs Still Swingin'?","What city did the band performing Still Swingin' form in?","What state did the band performing Still Swingin' form in?"]
+判定：fail；原始标记：['C']
+审阅理由：Never identifies the city where Pathology formed, whose urban-area rank is the actual target.
+
+66. [musique] musique:4hop1__571599_49925_13759_736921
+原query：Where is the district that the person who wanted to reform and address Medardo Joseph Mazombwe's religion preached a sermon on Marian devotion before his death located?
+完整实际分解：["Who wanted to reform and address Medardo Joseph Mazombwe's religion?","Where did the person who wanted to reform and address Medardo Joseph Mazombwe's religion preach a sermon on Marian devotion before his death?"]
+判定：fail；原始标记：['C']
+审阅理由：Does not identify Medardo Joseph Mazombwes religion before the reformer and sermon-location requests.
+
+71. [musique] musique:3hop2__222979_132536_40768
+原query：When did Nissan, the HPD ARX-03 maker and the Scion owner open US assembly plants?
+完整实际分解：["When did Nissan open US assembly plants?"]
+判定：fail；原始标记：['C']
+审阅理由：Identical question strings: preserve original frozen verdict. Only Nissan's date is asked; HPD ARX-03 maker and Scion owner branches are omitted.
+
+84. [musique] musique:2hop__582045_161450
+原query：Where is the province of Gonbad-e Qabus County located?
+完整实际分解：[]
+判定：fail；原始标记：['C']
+审阅理由：Returns no prerequisite for the unidentified province containing Gonbad-e Qabus County.
+
+86. [musique] musique:3hop2__60649_90098_10557
+原query：What was the language from which the last name Sylvester originated during the era of the Frankish king who formed the Holy Roman Empire later known as?
+完整实际分解：["Who was the Frankish king who formed the Holy Roman Empire?","What era was the Frankish king who formed the Holy Roman Empire in?"]
+判定：fail；原始标记：['C']
+审阅理由：Asks king and era but omits the unnamed language of Sylvesters origin before asking its later name.
+
+103. [musique] musique:3hop2__368986_89048_66294
+原query：Who played who sang is she really going out with him in the performer of Anthology movie?
+完整实际分解：["Who sang is she really going out with him in the performer of Anthology movie?"]
+判定：fail；原始标记：['C']
+审阅理由：Never identifies the performer of Anthology or the film described through that performer; retains them embedded inside the singer question.
+
+136. [musique] musique:4hop3__275416_24325_156850_10557
+原query：Despite being located in East Belgium, the Carnival of the birth place of Guido Maus harks purely to an area. What was the language having the same name as this area of the era with Fastrada's spouse's name later known as?
+完整实际分解：["Where was Guido Maus born?","What area does the Carnival of the birthplace of Guido Maus hark to?","Who was Fastrada's spouse?"]
+判定：fail；原始标记：['C']
+审阅理由：Does not identify the era named after Fastradas spouse or the language sharing the Carnival-area name before its later-name target.
+
+161. [musique] musique:2hop__307218_161450
+原query：In what part of the country is Minudasht County?
+完整实际分解：[]
+判定：fail；原始标记：['C']
+审阅理由：Returns no prerequisite for the unnamed country containing Minudasht County before its region/part target.
+
+189. [musique] musique:4hop3__710473_354093_254885_76356
+原query：Who pushed for a canal crossing across the continent El Valle is located linking the Pacific Ocean and the ocean Sampit River leads to?
+完整实际分解：["What continent is El Valle in?","What ocean does the Sampit River lead to?"]
+判定：fail；原始标记：['C']
+审阅理由：Identifies the continent and ocean but not the unnamed canal crossing described by those endpoints before asking who advocated it.
+
+207. [musique] musique:4hop1__161765_53706_795904_580996
+原query：What city shares a border with the city where the person who went to the state where Englebart died during the gold rush works?
+完整实际分解：["What state did Englebart die in?","What city did the person who went to the state where Englebart died during the gold rush work in?"]
+判定：fail；原始标记：['C']
+审阅理由：Never identifies the person who went to Englebarts death state during the gold rush before asking their work city.
+
+225. [musique] musique:2hop__20256_71302
+原query：In The Godfather, who does the actor producing the Freddie Mercury film play?
+完整实际分解：["Who produced the Freddie Mercury film?","Which actor produced the Freddie Mercury film?"]
+判定：fail；原始标记：['C', 'U']
+审阅理由：Does not identify the unnamed Freddie Mercury film and repeats producer identity with and without the actor qualifier.
+
+231. [musique] musique:2hop__22431_16335
+原query：Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?
+完整实际分解：[]
+判定：fail；原始标记：['C']
+审阅理由：Returns no prerequisite for the unidentified largest foreigner group in2010, which is the other population being discussed.
+
+274. [hotpotqa] hotpotqa:5a89ec7b5542992e4fca8483
+原query：A Car-Tune Portrait was released on June 26, 1937, the cartoon gives an imaginative take on which second in a set of works by composer Franz Liszt?
+完整实际分解：[]
+判定：fail；原始标记：['C']
+审阅理由：Returns no identity prerequisite for the unnamed set of Liszt works whose second work is the target.
+
+对象限定丢失、错绑或拆散：22/64；分数据集{'musique': 14, 'hotpotqa': 6, '2wiki': 2}
+
+38. [musique] musique:4hop2__71753_729371_70784_61381
+原query：When was the region immediately north of the region home to Israel and the location of Operation Earnest Will established?
+完整实际分解：["What region is home to Israel?","What region was the location of Operation Earnest Will?","What region is immediately north of the region home to Israel?"]
+判定：fail；原始标记：['F']
+审阅理由：The north-of-region identity query drops the Operation Earnest Will location condition, without another corresponding north-of-that-location operand.
+
+45. [hotpotqa] hotpotqa:5ab55455554299488d4d993b
+原query： Mount Stimson is the second highest peak in national park that encompasses how many acres?
+完整实际分解：["What national park contains Mount Stimson?"]
+判定：fail；原始标记：['F']
+审阅理由：Park identity drops the input second-highest-peak condition for Mount Stimson, matching a frozen baseline defect.
+
+75. [musique] musique:4hop3__129456_29339_508306_70744
+原query：Between the state university in the state without North Point Mall and where Edwards won the primary and the university in Fort Hill's town which has the more national championships?
+完整实际分解：["What state has no North Point Mall?","What state did Edwards win the primary in?","What town contains Fort Hill?","What state university is in the state without North Point Mall?","What university is in the town containing Fort Hill?","How many national championships did the state university in the state without North Point Mall have?","How many national championships did the university in the town containing Fort Hill have?"]
+判定：fail；原始标记：['F']
+审阅理由：The university and championship-count questions drop the Edwards-primary condition identifying the first state, even though a separate state question mentions it.
+
+87. [musique] musique:4hop2__71753_73205_70784_79935
+原query：When was the region that lies to the north of where Israel is located and the body of water between East Africa and the Arabian peninsula created?
+完整实际分解：["Where is Israel located?","What region lies to the north of where Israel is located?","What body of water lies between East Africa and the Arabian peninsula?"]
+判定：fail；原始标记：['F']
+审阅理由：The northern-region query omits the body-of-water condition identifying the original region; only the Israel condition remains.
+
+102. [hotpotqa] hotpotqa:5a82360055429903bc27ba46
+原query：This American is best known for his work on such Disney animated films as "Beauty and the Beast" and a 1996 American animated musical drama film whose plot centers on who?
+完整实际分解：["Who is the American best known for his work on Disney animated films Beauty and the Beast and a 1996 American animated musical drama film?","What 1996 American animated musical drama film has a plot centered on a person?"]
+判定：fail；原始标记：['F']
+审阅理由：The film identity question drops its association with the described American Disney worker, replacing it with a generic plot-centered-on-a-person condition.
+
+131. [musique] musique:3hop1__226638_538202_84283
+原query：Who is the owner of the record label that Just Got Started Lovin' You's performer belong to?
+完整实际分解：["Who performs Just Got Started Lovin'?","What record label does the performer of Just Got Started Lovin' belong to?"]
+判定：fail；原始标记：['F']
+审阅理由：Truncates the supplied title Just Got Started Lovin You by dropping You in both dependent descriptions.
+
+141. [musique] musique:3hop1__102461_24918_24991
+原query：What went down after the Soviet President visiting the the birth country of Andrey Dashkov while the protests were taking place departed from the Kremlin?
+完整实际分解：["What country was Andrey Dashkov born in?","What Soviet President visited the birth country of Andrey Dashkov?","When did the Soviet President who visited the birth country of Andrey Dashkov depart from the Kremlin?"]
+判定：fail；原始标记：['F']
+审阅理由：Drops the while-protests-were-taking-place condition identifying the Soviet Presidents visit/departure event.
+
+147. [hotpotqa] hotpotqa:5ab4e48655429942dd415f9c
+原query：What is the height of the tallest mountain from which the Glen River flows?
+完整实际分解：["What mountain does the Glen River flow from?","What is the height of the mountain from which the Glen River flows?"]
+判定：fail；原始标记：['F', 'U']
+审阅理由：Drops tallest from mountain identification and adds the original height target rather than an additional supporting operand.
+
+148. [musique] musique:3hop1__699454_831637_91775
+原query：What does seal stand for in the U.S. military branch that operates a list of destroyer classes, as well as the USS Sable?
+完整实际分解：["What U.S. military branch operates a list of destroyer classes?","What U.S. military branch operates the USS Sable?"]
+判定：fail；原始标记：['F']
+审阅理由：Splits the same military branch jointly identified by destroyer classes and USS Sable into two separately restricted branch questions; frozen joint-binding criterion.
+
+177. [musique] musique:2hop__13592_49388
+原query：How many games in a season of the league in which Barcelona won titles in 1948 and 1949?
+完整实际分解：["What league did Barcelona win titles in during 1948?","What league did Barcelona win titles in during 1949?","What season was the league Barcelona won titles in during 1948?","What season was the league Barcelona won titles in during 1949?"]
+判定：fail；原始标记：['F', 'U']
+审阅理由：Splits the joint1948-and1949 league identification and adds malformed season-identity requests for years already supplied, rather than a useful new prerequisite.
+
+188. [musique] musique:4hop2__71753_158985_70784_61381
+原query：When was the region immediately north of the region where Israel is located and the site of the most growth in desalination for agricultural use established?
+完整实际分解：["What region is Israel located in?","What region is immediately north of the region where Israel is located?","What site saw the most growth in desalination for agricultural use?"]
+判定：fail；原始标记：['F']
+审阅理由：The northern-region identity drops the desalination-growth-site condition; only the Israel-region condition remains in that question.
+
+219. [musique] musique:4hop1__40316_497223_15840_36002
+原query：What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?
+完整实际分解：["What football league are the Los Angeles Rams representative of?","What game is named after the football league the Los Angeles Rams are representative of?","What game system has a 3-letter abbreviation?"]
+判定：fail；原始标记：['F']
+审阅理由：The console identity retains only three-letter abbreviation, dropping the game named after the Rams league that identifies the intended system.
+
+220. [musique] musique:4hop2__797545_14670_8987_8974
+原query：A country's military branch, which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country whose ccTLD was ".cs". The unprepared country was the only communist country to have an embassy where?
+完整实际分解：["What country has the ccTLD .cs?","What military branch in the US contains the Air Defense Artillery?","What country was unprepared for the invasion of the country with the ccTLD .cs?"]
+判定：fail；原始标记：['F']
+审阅理由：The unprepared-country query drops the military-branch-equivalent-to-US-branch condition identifying that country.
+
+238. [musique] musique:3hop1__691197_15840_36002
+原query：What were the Genesis's advantages over the console whose three letter abbreviation stood for the full console name and also featured the game Yoshi?
+完整实际分解：["What console had a three-letter abbreviation that stood for its full name?","What console featured the game Yoshi?"]
+判定：fail；原始标记：['F']
+审阅理由：Splits the console jointly identified by abbreviation and Yoshi into separately restricted identity questions; frozen joint-object-description criterion.
+
+244. [musique] musique:4hop1__443274_17130_70784_61381
+原query：When was the region that lies to the north of the country where Sar-El is located and the Persian Gulf established?
+完整实际分解：["What country is Sar-El in?","What region lies to the north of the country containing Sar-El?"]
+判定：fail；原始标记：['F']
+审阅理由：Drops the Persian Gulf condition from the identity of the northern region.
+
+251. [hotpotqa] hotpotqa:5abed9435542994516f45457
+原query：Which of the following stars Jeff Bridges as a computer programmer: Tron or The Million Dollar Duck?
+完整实际分解：["In which film does Jeff Bridges play a computer programmer?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Drops both given film alternatives and does not ask the computer-programmer condition for each supplied option; the broad film query changes scope.
+
+252. [2wiki] 2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6
+原query：Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?
+完整实际分解：["What country is Mavrolithari, Evros located in?","What country is Ampelakia, Evros located in?"]
+判定：fail；原始标记：['F']
+审阅理由：Moves the Evros disambiguator from Ampelakia to Mavrolithari as well, adding an unsupported location restriction to the first village.
+
+256. [musique] musique:4hop1__105401_17130_70784_79935
+原query：When was the region that lies to the north of the region where Strangers No More took place and the Persian Gulf created?
+完整实际分解：["Where did Strangers No More take place?","What region lies to the north of the region where Strangers No More took place?"]
+判定：fail；原始标记：['F']
+审阅理由：Drops the Persian Gulf condition from the northern-region identification.
+
+262. [musique] musique:3hop1__106042_64399_53006
+原query：What is the great mosque constructed at the site of the old temple in the city originating christianity in Rome, Egypt, Judea and the country for Vasilopita?
+完整实际分解：["What city originated Christianity in Rome, Egypt, Judea?","What country is Vasilopita from?","What old temple was in the city that originated Christianity in Rome, Egypt, Judea?"]
+判定：fail；原始标记：['F']
+审阅理由：City and temple identification omit the country-for-Vasilopita condition present in the original city description.
+
+278. [hotpotqa] hotpotqa:5a7b59115542995eb53be923
+原query： What team does the oldest son play for, from the family whose middle son plays for the Chicago Bulls and the mother and father and third son all played basketball.
+完整实际分解：["Who is the middle son of the family whose mother, father, and third son all played basketball?","Who is the oldest son of the family whose mother, father, and third son all played basketball?"]
+判定：fail；原始标记：['F']
+审阅理由：Both family-member identities omit the middle sons Chicago Bulls affiliation, a key condition identifying the family.
+
+280. [2wiki] 2wiki:7888c2760baf11ebab90acde48001122
+原query：Who is Robert, Archduke Of Austria-Este's maternal grandmother?
+完整实际分解：["Who is Archduke Of Austria-Este's mother?"]
+判定：fail；原始标记：['F']
+审阅理由：Drops Robert from the supplied full identity Robert, Archduke Of Austria-Este, leaving only a nonunique title.
+
+284. [hotpotqa] hotpotqa:5ac1d4ad5542994d76dccef7
+原query：Which of the seven Disney characters who had been given a series of their own, starring in cartoons who opened with their own logo  is a fictional character who first appeared in Disney's "Pinocchio"?
+完整实际分解：["Which seven Disney characters had been given a series of their own starring in cartoons?","Which cartoons starring the seven Disney characters who had been given a series of their own opened with their own logo?","Which Disney characters first appeared in Disney's Pinocchio?"]
+判定：fail；原始标记：['F']
+审阅理由：The seven-character set identity drops cartoons opening with their own logos, attaching seven to a less restricted character group.
+
+关系、角色、属性或修饰归属改变：19/64；分数据集{'musique': 14, 'hotpotqa': 5}
+
+17. [musique] musique:4hop2__161324_14670_8987_8529
+原query：A country's military branch, the equivalent of which in the US contains the Air Defense Artillery, was unprepared for the invasion of the country occupied by the Nazi's. When was the word "Slavs" used in the national anthem of the unprepared country?
+完整实际分解：["What country's military branch is equivalent to the US Air Defense Artillery?","What country was occupied by the Nazis?","What country's military branch is equivalent to the US Air Defense Artillery and was unprepared for the invasion of the country occupied by the Nazis?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Equates the foreign branch to US Air Defense Artillery itself instead of the US branch containing Air Defense Artillery, and omits that containing-branch identity.
+
+23. [musique] musique:3hop1__228_237521_291682
+原query：Who is the wife of the man who produced the documentary of the pop star who influenced Beyonce?
+完整实际分解：["Who influenced Beyonce?","What pop star was influenced by Beyonce?","Who produced the documentary of the pop star who influenced Beyonce?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Reverses influenced Beyonce into influenced by Beyonce in one item, and skips the unknown documentary identity before its producer.
+
+30. [hotpotqa] hotpotqa:5ab484415542990594ba9c44
+原query：Which facility was founded in Missouri, Discovery Zone or Valentino's?
+完整实际分解：["When was Discovery Zone founded?","When was Valentino's founded?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Replaces the Missouri founding-location condition with founding dates, omitting the actual compared property.
+
+42. [musique] musique:4hop1__860115_798482_131926_13165
+原query：What treaty ceded territory to the US extending west to the river by the city sharing a border with Elizabeth Berg's birthplace?
+完整实际分解：["Where was Elizabeth Berg born?","What city shares a border with Elizabeth Berg's birthplace?","What river is in the city sharing a border with Elizabeth Berg's birthplace?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes the river by the bordering city into a river in that city; these spatial relations are not equivalent.
+
+50. [musique] musique:2hop__46065_417697
+原query：Mohamed Atta's car made by the car manufacturer owning the naming rights to titans stadium is a type of what?
+完整实际分解：["What car manufacturer owns the naming rights to titans stadium?","What car was Mohamed Atta driving?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes Attas car into a car he was driving and omits the described manufacturer restriction from that car query.
+
+64. [musique] musique:4hop1__107309_457883_650651_7262
+原query：The Embassy of the country where palitaw comes from is found in Bandar Seri Begawan in Country A. Who was a prominent figure at the radio division of the creator of The Biggest Loser at Country A?
+完整实际分解：["What country is palitaw from?","Who created The Biggest Loser at Country A?"]
+判定：fail；原始标记：['F', 'S', 'C']
+审阅理由：Retains unbound Country A labels, fails to identify the embassy host country, and attaches Country A to creator identification without resolving its original description.
+
+67. [musique] musique:3hop1__604797_443779_52195
+原query：who is the president of newly declared independent country which is the country of the country of Alabio –Timor Leste Commission of Truth and Friendship?
+完整实际分解：["What country is Alabio–Timor Leste Commission of Truth and Friendship in?","What country is the country of the country containing Alabio–Timor Leste Commission of Truth and Friendship?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Drops the newly-declared-independent identification condition and produces nested generic country-of-country requests; intended country binding is not preserved.
+
+80. [musique] musique:4hop1__320457_508773_85832_745702
+原query：Who is the son of the Italian navigator who explored the eastern coast of the continent Ulises Solís' birthplace is located in for England?
+完整实际分解：["What continent is Ulises Solís from?","What Italian navigator explored the eastern coast of the continent Ulises Solís is from for England?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Changes the continent containing Ulises Solis birthplace to the continent he is from, and skips identifying the explicit birthplace object.
+
+137. [hotpotqa] hotpotqa:5ae6828f5542996d980e7bb9
+原query：Salisbury Woodland Gardens links a zoo with a park designed and built under the watchful eye of who?
+完整实际分解：["Which zoo is linked by Salisbury Woodland Gardens?","Which park was designed and built under the watchful eye of the designer and builder of the park linked by Salisbury Woodland Gardens?"]
+判定：fail；原始标记：['F', 'U']
+审阅理由：Introduces a designer/builder as the person under whose watchful eye the park was built; the original supplies supervision, not the supervisors design/build role.
+
+143. [musique] musique:4hop3__129318_29339_508306_70744
+原query：University of the state having Fort Hill or university of the state whose primary was won by Edwards besides the state having James B. Simmons House has more national championships?
+完整实际分解：["What state has Fort Hill?","What state has James B. Simmons House?","What state won the primary by Edwards?","What university in the state with Fort Hill is the state with James B. Simmons House?","What university in the state that won the primary by Edwards is the state with James B. Simmons House?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Changes a state where Edwards won a primary to a state that won it, confuses university and state objects, and omits both championship-count operands.
+
+170. [hotpotqa] hotpotqa:5a70f9335542994082a3e46a
+原query：Which magazine is published more in a year, Essence or Alt for Damerne?
+完整实际分解：["How many copies of Essence are published in a year?","How many copies of Alt for Damerne are published in a year?"]
+判定：fail；原始标记：['F']
+审阅理由：Identical question strings: preserve original frozen verdict. Publication frequency becomes the number of copies published, a different quantity.
+
+171. [hotpotqa] hotpotqa:5a7ccb3655429909bec7680b
+原query：Who bestowed Kaganoi Shigemochi with a blade made by the person that founded the Muramasa school?
+完整实际分解：["Who founded the Muramasa school?","What blade was bestowed upon Kaganoi Shigemochi by the person who founded the Muramasa school?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes the Muramasa founder from maker of the blade into the person who bestowed it; maker and giver are different relations.
+
+204. [musique] musique:2hop__423874_128023
+原query：In which league was Ilsinho's team?
+完整实际分解：["What team does Ilsinho play for?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes the historical team in which-league-was into the team Ilsinho presently plays for; that membership/time scope is not supplied.
+
+206. [hotpotqa] hotpotqa:5abce85755429959677d6b3e
+原query：Le Rêve was created by the director behind what Cirque du Soleil production from 1998 onward?
+完整实际分解：["Who directed Le Rêve?"]
+判定：fail；原始标记：['F']
+审阅理由：Replaces creator of Le Reve with director of Le Reve; a director who created a production is not necessarily specified as its director.
+
+216. [musique] musique:2hop__80_59409
+原query：Who was the artist who did a duet with Beyonce in the single "Deja Vu" talking about in the song "Cry"?
+完整实际分解：["What song is about crying?","What single by Beyonce is about crying?"]
+判定：fail；原始标记：['F', 'C']
+审阅理由：Replaces the artist who duetted with Beyonce in Deja Vu and the subject of Cry with generic crying-song questions; the artist prerequisite is missing.
+
+232. [musique] musique:2hop__17508_17335
+原query：When did the person all of the diadochi painted themselves to look like die?
+完整实际分解：["Who were the diadochi?","Who painted each of the diadochi to look like themselves?"]
+判定：fail；原始标记：['F', 'C', 'U']
+审阅理由：Changes diadochi painting themselves to resemble another person into someone painting the diadochi to resemble themselves; adds generic group identity and omits the intended person.
+
+234. [musique] musique:4hop1__88342_49853_128008_92225
+原query：When is opening day of the season of the league that the team that has the most titles from the competition they gave out MVP awards after?
+完整实际分解：["What competition gave MVP awards?","What team has the most titles from the competition that gave MVP awards?","What league does the team with the most titles from the competition that gave MVP awards play in?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes competition after which MVP awards were given into competition that gave MVP awards, altering temporal/agent relation.
+
+235. [musique] musique:3hop1__857_846_7810
+原query：What was where the Yongle emperor greeted who the edict addressed GDP per person in 2013?
+完整实际分解：["Who was the GDP per person in 2013?","What edict addressed GDP per person in 2013?"]
+判定：fail；原始标记：['F', 'S', 'C']
+审阅理由：Turns GDP per person into a Who entity and an edict addressee; neither the addressed person nor greeting place is identified.
+
+271. [musique] musique:4hop2__71753_261673_70784_61381
+原query：When was the region that lies to the north of where Israel is located and where Shamal is located established?
+完整实际分解：["Where is Israel located?","Where is Shamal located?","What region lies to the north of Israel's location and contains Shamal?"]
+判定：fail；原始标记：['F']
+审阅理由：Changes region north of Shamal location into a region containing Shamal; north-of and contains are not equivalent.
+
+重复目标或加入无明确用途的需求：6/64；分数据集{'musique': 3, 'hotpotqa': 3}
+
+19. [musique] musique:3hop2__326964_734214_7713
+原query：How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+完整实际分解：["Where was Lynn Hung born?","Where are Yaxing Coach's headquarters located?","What city is the capital of the city where Yaxing Coach's headquarters are located?"]
+判定：fail；原始标记：['F', 'U']
+审阅理由：Adds an unsupported city type for Yaxing headquarters location and asks a redundant capital identity already specified as Lynns birthplace.
+
+55. [musique] musique:3hop1__438364_443779_52195
+原query：Who is the president of the newly declared independent country that is part of the Commission of Truth and Friendship with the country where Kotamadya is located?
+完整实际分解：["What country is Kotamadya in?","What country is the Commission of Truth and Friendship with the country containing Kotamadya?","What newly declared independent country is part of the Commission of Truth and Friendship with the country containing Kotamadya?"]
+判定：fail；原始标记：['U']
+审阅理由：Repeats the commission-partner country identification with and without the independent-country qualifier instead of exposing a distinct intermediate.
+
+239. [musique] musique:3hop2__326964_265410_7713
+原query：How long had Anhua Gao's birthplace been the capitol city of Yaxing Coach's headquarters location?
+完整实际分解：["Where was Anhua Gao born?","Where are Yaxing Coach's headquarters located?","What city is the capital of Yaxing Coach's headquarters location?"]
+判定：fail；原始标记：['U']
+审阅理由：Reasks which city is the headquarters locations capital although the input already specifies it as Anhua Gaos birthplace; no new prerequisite.
+
+249. [hotpotqa] hotpotqa:5a7a59d15542996c55b2dd67
+原query：What other female rappers appeared Brittany Nicole Carpentero in the official remix to My Chick Bad?
+完整实际分解：["What is the official remix to My Chick Bad?"]
+判定：fail；原始标记：['U']
+审阅理由：Asks a generic identity of the already named official My Chick Bad remix instead of exposing a new supporting object or operand.
+
+250. [hotpotqa] hotpotqa:5ab6be2f55429954757d335c
+原query：Zakk Wylde and Damon Albarn are both what?
+完整实际分解：["What is Zakk Wylde known for?","What is Damon Albarn known for?"]
+判定：fail；原始标记：['U']
+审阅理由：Generic known-for profiles supply unspecified attributes despite no comparison criterion in the original; the frozen protocol avoids generic identities/unrelated attributes.
+
+257. [hotpotqa] hotpotqa:5ae0ce4e554299603e41845f
+原query：In which poetic form is Mad Girl's Love Song written and appears in the novel The Bell Jar by Sylvia Plath?
+完整实际分解：["In which poetic form is Mad Girl's Love Song written?","In which poetic form does Mad Girl's Love Song appear in the novel The Bell Jar by Sylvia Plath?"]
+判定：fail；原始标记：['U']
+审阅理由：Both questions reask the local poetic-form target for the already named poem, rather than identifying a missing intermediate or comparison operand.
+
+原题歧义导致无法确定忠实性：2/64；分数据集{'musique': 1, 'hotpotqa': 1}
+
+77. [musique] musique:4hop1__39871_314549_131976_56103
+原query：When do hurricanes occur in the ocean that borders the state where Williamsburg, Main Street Station and another share a track?
+完整实际分解：["What state does Williamsburg, Main Street Station belong to?","What other place shares a track with Williamsburg, Main Street Station?","What ocean borders the state where Williamsburg, Main Street Station and the other place sharing a track are in?"]
+判定：uncertain；原始标记：['F', 'S']
+审阅理由：The state question may conflate Williamsburg and Main Street Station into one place; the standalone track/other-place binding is uncertain in this malformed source.
+
+240. [hotpotqa] hotpotqa:5ae528ed5542993aec5ec16e
+原query：What is the name of the film directed by Alex Cox  adapted from a 1606 play starring Diana Quick as the Dutchess?
+完整实际分解：["What 1606 play starred Diana Quick as the Dutchess?"]
+判定：uncertain；原始标记：['F']
+审阅理由：The source starring modifier can attach to film or adapted play; output commits it to the1606 play, so relation faithfulness is uncertain.
+

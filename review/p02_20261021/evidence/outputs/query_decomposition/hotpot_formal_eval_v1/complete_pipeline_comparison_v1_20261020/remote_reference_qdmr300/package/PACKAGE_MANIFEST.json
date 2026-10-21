@@ -1,0 +1,24 @@
+{
+  "adapter_manifest_sha256": "d1fc1a4d99a46673b964a94b9b4694567a9484796c7cc217e05a06d04f78c736",
+  "contains_bart_decompositions": false,
+  "contains_credentials": false,
+  "contains_reference_answers": false,
+  "contains_weights": false,
+  "expected_model_manifest": "713ce5c2098ff807091c5868e44258d303844f213454de0be0dfcc478d15650b",
+  "inputs": 300,
+  "queries": 300,
+  "scope": "accepted_complete_methods_eval300_reference_qdmr_only",
+  "task": "complete_eval300_missing_reference_qdmr",
+  "run_name": "complete_pipeline_eval300_reference_qdmr_20261020",
+  "base_manifest_sha256": "271c937fb07875d2dd9b1b9d21ec7a199f6d78f22c9c77027d35e642c42f39ea",
+  "local_source": "experiments/query_decomposition/hotpot_formal_eval_v1/inputs_frozen/dev.questions.jsonl",
+  "local_source_sha256": "a2383907e595d533fb266f52f44e44e1f23c02d5fbf35a71c8d920663e77ccea",
+  "model_manifest_role": "expected_model_manifest is the combined base-plus-adapter identity",
+  "status": "prepared_not_executed",
+  "files": {
+    "predict200.proposed.json": "d0818a7aa25200889c7a8fce7fcf19d6d73c1de2b3b68f12a91f812490225446",
+    "prepare_remote.py": "900ec087eb02d8fd2fd62e074dd9486bbd7fef71aee437f60277bbd53104b154",
+    "queries200.query_only.jsonl": "a2383907e595d533fb266f52f44e44e1f23c02d5fbf35a71c8d920663e77ccea",
+    "TASK_FOR_REMOTE_CODEX.txt": "f7e4c2b3b834d3a660895cc2b3b67adb4a2e02d392701cb87c5cd938cbccd299"
+  }
+}

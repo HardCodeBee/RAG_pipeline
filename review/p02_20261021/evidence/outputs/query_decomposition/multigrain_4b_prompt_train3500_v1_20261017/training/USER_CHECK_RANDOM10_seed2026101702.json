@@ -1,0 +1,181 @@
+{
+  "seed": 2026101702,
+  "method": "Uniform random sample without replacement from all3500 master rows; one draw; literal labels, no rewriting.",
+  "master_sha256": "1028d1059d9a48dc4a66a0ee5a4601e975472cad9960068ef404711a93c8dda7",
+  "verified_master_and_sft_records": 3500,
+  "samples": [
+    {
+      "sample_number": 1,
+      "master_line": 2977,
+      "index": 3155,
+      "id": "2wiki:498f66f408bd11ebbd8aac1f6bf848b6",
+      "source": {
+        "dataset": "2wiki",
+        "id": "498f66f408bd11ebbd8aac1f6bf848b6",
+        "original_split": "train",
+        "type": "bridge_comparison"
+      },
+      "cohort": "new_train_pool",
+      "query": "Do both films: I'Ma Be Me (2009) and Preethi Prema Pranaya have the directors from the same country?",
+      "target": [
+        "Who directed the film I'Ma Be Me (2009)?",
+        "Who directed the film Preethi Prema Pranaya?",
+        "What country is the director of the film I'Ma Be Me (2009) from?",
+        "What country is the director of the film Preethi Prema Pranaya from?"
+      ]
+    },
+    {
+      "sample_number": 2,
+      "master_line": 389,
+      "index": 397,
+      "id": "break:DROP_train_nfl_781_a87484a9-4906-4e0f-9e72-410b6da82579",
+      "source": {
+        "dataset": "BREAK-high/DROP",
+        "id": "DROP_train_nfl_781_a87484a9-4906-4e0f-9e72-410b6da82579",
+        "original_split": "train"
+      },
+      "cohort": "old2368",
+      "query": "How many yards difference is there between the shortest and longest TD pass?",
+      "target": [
+        "How many yards was the shortest TD pass?",
+        "How many yards was the longest TD pass?"
+      ]
+    },
+    {
+      "sample_number": 3,
+      "master_line": 1448,
+      "index": 1481,
+      "id": "error_corrected:break:HOTPOT_train_5add11e95542994ed6169c5e:candidate0",
+      "source": {
+        "dataset": "BREAK-high/HOTPOT",
+        "id": "HOTPOT_train_5add11e95542994ed6169c5e",
+        "original_split": "train"
+      },
+      "cohort": "old2368",
+      "query": "Woree is the suburb of the what most populous city in Queensland?",
+      "target": [
+        "Of which city in Queensland is Woree a suburb?"
+      ]
+    },
+    {
+      "sample_number": 4,
+      "master_line": 513,
+      "index": 523,
+      "id": "break:HOTPOT_train_5a778b905542992a6e59ded3",
+      "source": {
+        "dataset": "BREAK-high/HOTPOT",
+        "id": "HOTPOT_train_5a778b905542992a6e59ded3",
+        "original_split": "train"
+      },
+      "cohort": "old2368",
+      "query": "Dr. Kenneth Steiglitz was born in what Hudson County township?",
+      "target": []
+    },
+    {
+      "sample_number": 5,
+      "master_line": 3318,
+      "index": 3646,
+      "id": "musique:3hop1__262773_671680_35371",
+      "source": {
+        "dataset": "musique",
+        "id": "3hop1__262773_671680_35371",
+        "original_split": "train",
+        "type": "3-hop"
+      },
+      "cohort": "new_train_pool",
+      "query": "How long did the Great Irish Famine cause population decline in the country where the Burning Times performer is a citizen?",
+      "target": [
+        "Who performs Burning Times?",
+        "What country is the performer of Burning Times a citizen of?"
+      ]
+    },
+    {
+      "sample_number": 6,
+      "master_line": 404,
+      "index": 412,
+      "id": "break:DROP_train_nfl_903_1408820e-b0fa-4320-8b5b-7966b5949b98",
+      "source": {
+        "dataset": "BREAK-high/DROP",
+        "id": "DROP_train_nfl_903_1408820e-b0fa-4320-8b5b-7966b5949b98",
+        "original_split": "train"
+      },
+      "cohort": "old2368",
+      "query": "How many more touchdown passing yards did Warner have compared with Campbell?",
+      "target": [
+        "How many touchdown passing yards did Warner have?",
+        "How many touchdown passing yards did Campbell have?"
+      ]
+    },
+    {
+      "sample_number": 7,
+      "master_line": 3313,
+      "index": 3641,
+      "id": "musique:3hop2__88594_25582_21116",
+      "source": {
+        "dataset": "musique",
+        "id": "3hop2__88594_25582_21116",
+        "original_split": "train",
+        "type": "3-hop"
+      },
+      "cohort": "new_train_pool",
+      "query": "How many of the people that students were once called live in the country with the most World Cups in soccer?",
+      "target": [
+        "What were students once called?",
+        "What country has the most World Cups in soccer?"
+      ]
+    },
+    {
+      "sample_number": 8,
+      "master_line": 778,
+      "index": 794,
+      "id": "break:HOTPOT_train_5ab29858554299194fa93421",
+      "source": {
+        "dataset": "BREAK-high/HOTPOT",
+        "id": "HOTPOT_train_5ab29858554299194fa93421",
+        "original_split": "train"
+      },
+      "cohort": "old2368",
+      "query": "The actor that played Dr. Frank-N-Furter in \"The Rocky Horror Picture Show\" also voices a character in a 2014 Malaysian 3D animated film produced by what 2 studios?",
+      "target": [
+        "Who played Dr. Frank-N-Furter in The Rocky Horror Picture Show?",
+        "In which 2014 Malaysian 3D animated film did the person who played Dr. Frank-N-Furter in The Rocky Horror Picture Show voice a character?"
+      ]
+    },
+    {
+      "sample_number": 9,
+      "master_line": 3203,
+      "index": 3429,
+      "id": "musique:2hop__107246_135710",
+      "source": {
+        "dataset": "musique",
+        "id": "2hop__107246_135710",
+        "original_split": "train",
+        "type": "2-hop"
+      },
+      "cohort": "new_train_pool",
+      "query": "The country for Himmelbla was named for whom?",
+      "target": [
+        "What country is Himmelbla from?"
+      ]
+    },
+    {
+      "sample_number": 10,
+      "master_line": 3396,
+      "index": 3926,
+      "id": "musique:4hop1__122303_539917_832557_5583",
+      "source": {
+        "dataset": "musique",
+        "id": "4hop1__122303_539917_832557_5583",
+        "original_split": "train",
+        "type": "4-hop"
+      },
+      "cohort": "new_train_pool",
+      "query": "What was the benefit of the Treaty of Brest-Litovsk to the country who has a Chinese Embassy in their city which also contains the alma mater of Sergei Vronsky?",
+      "target": [
+        "What is Sergei Vronsky's alma mater?",
+        "What city contains Sergei Vronsky's alma mater?",
+        "What country has a Chinese Embassy in the city containing Sergei Vronsky's alma mater?"
+      ]
+    }
+  ]
+}

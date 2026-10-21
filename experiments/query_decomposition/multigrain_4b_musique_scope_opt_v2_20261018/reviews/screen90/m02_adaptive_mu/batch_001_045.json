@@ -1,0 +1,73 @@
+{
+  "reviewed_indices": [
+    1,
+    45
+  ],
+  "exceptions": {
+    "5": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops identity of the occupant whose religion is sought."
+    },
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Town identity still omits the southwestern-island condition."
+    },
+    "15": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Assumes the performers birthplace is a town, not supplied by original town-as-capital target."
+    },
+    "22": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Chiefly known as editor changes into chief editor, adding a seniority role not supplied by the original."
+    },
+    "23": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still lacks the who-lives-there operands for the territory intersection."
+    },
+    "27": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still lacks the people living there before Spanish arrival."
+    },
+    "28": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Adds unsupported city type to the contestants unspecified birthplace."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "C",
+        "U"
+      ],
+      "reason": "Repairs film-as-actor but substitutes the actor who portrayed the character for identifying that character, whose portrayals must be counted."
+    },
+    "39": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still omits the bordering county identity."
+    }
+  },
+  "reviewer": "All changed1..45 adaptive outputs inspected.9 preserves both directions,24 asks the missing birth county,26 removes the generic Harry Potter inventory and retains the useful supplied-film cast request."
+}

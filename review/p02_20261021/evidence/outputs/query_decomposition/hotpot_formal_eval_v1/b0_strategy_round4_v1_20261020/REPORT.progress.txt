@@ -1,0 +1,712 @@
+B0第四轮：scope约定×已有goal新原文的2×2开发比较
+
+本脚本只读旧300实际轨迹/参考答案与独立验证状态计数、费用；0API/检索。
+p02与e03为冻结已完成对照。r04只替换一句scope约定；s04在该替换上加既有e03策略，明确为交互。
+保留全部QA及原Top10；不修改原生F1。旧300为开发样本，不是独立验证。
+快照：2026-10-19T23:24:46.109871+00:00
+
+scope关闭：无新文=p02，有新文=e03；scope开启：无新文=r04，有新文=s04。
+版本	可计分/300	同题F1	同题p02	差值百分点	升/平/降	缺失
+p02	300/300	70.72417%	70.72417%	0.00000%	0/300/0	0
+状态：{"success": 300}
+  hotpotqa：100/100，F1=78.99084%，同题父=78.99084%，差值=0.00000%。
+  2wiki：100/100，F1=93.34739%，同题父=93.34739%，差值=0.00000%。
+  musique：100/100，F1=39.83430%，同题父=39.83430%，差值=0.00000%。
+  novel_document_214：214/214，F1=69.39068%，差值=0.00000%。
+  no_novel_document_86：86/86，F1=74.04239%，差值=0.00000%。
+e03	300/300	69.55408%	70.72417%	-1.17009%	6/287/7	0
+状态：{"success": 300}
+  hotpotqa：100/100，F1=76.30195%，同题父=78.99084%，差值=-2.68889%。
+  2wiki：100/100，F1=93.34739%，同题父=93.34739%，差值=0.00000%。
+  musique：100/100，F1=39.01291%，同题父=39.83430%，差值=-0.82139%。
+  novel_document_214：214/214，F1=67.75037%，差值=-1.64032%。
+  no_novel_document_86：86/86，F1=74.04239%，差值=0.00000%。
+r04_scope_contract	300/300	70.43386%	70.72417%	-0.29031%	3/295/2	0
+状态：{"success": 300}
+  hotpotqa：100/100，F1=79.08175%，同题父=78.99084%，差值=0.09091%。
+  2wiki：100/100，F1=93.34739%，同题父=93.34739%，差值=0.00000%。
+  musique：100/100，F1=38.87245%，同题父=39.83430%，差值=-0.96184%。
+  novel_document_214：214/214，F1=68.94122%，差值=-0.44946%。
+  no_novel_document_86：86/86，F1=74.14810%，差值=0.10571%。
+s04_scope_plus_evidence	300/300	70.19636%	70.72417%	-0.52782%	5/292/3	0
+状态：{"success": 300}
+  hotpotqa：100/100，F1=77.61508%，同题父=78.99084%，差值=-1.37576%。
+  2wiki：100/100，F1=93.34739%，同题父=93.34739%，差值=0.00000%。
+  musique：100/100，F1=39.62660%，同题父=39.83430%，差值=-0.20769%。
+  novel_document_214：214/214，F1=68.60827%，差值=-0.78241%。
+  no_novel_document_86：86/86，F1=74.14810%，差值=0.10571%。
+
+同题因子比较：
+evidence_without_scope = e03-p02：n=300/300，均差=-1.17009%，升平降=6/287/7。
+  hotpotqa：n=100/100，均差=-2.68889%。
+  2wiki：n=100/100，均差=0.00000%。
+  musique：n=100/100，均差=-0.82139%。
+scope_without_evidence = r04_scope_contract-p02：n=300/300，均差=-0.29031%，升平降=3/295/2。
+  hotpotqa：n=100/100，均差=0.09091%。
+  2wiki：n=100/100，均差=0.00000%。
+  musique：n=100/100，均差=-0.96184%。
+scope_with_evidence = s04_scope_plus_evidence-e03：n=300/300，均差=0.64228%，升平降=5/293/2。
+  hotpotqa：n=100/100，均差=1.31313%。
+  2wiki：n=100/100，均差=0.00000%。
+  musique：n=100/100，均差=0.61369%。
+evidence_with_scope = s04_scope_plus_evidence-r04_scope_contract：n=300/300，均差=-0.23751%，升平降=5/291/4。
+  hotpotqa：n=100/100，均差=-1.46667%。
+  2wiki：n=100/100，均差=0.00000%。
+  musique：n=100/100，均差=0.75415%。
+配对交互：{"planned": 300, "same_case_n": 300, "definition": "(s04-r04)-(e03-p02)", "mean": 0.009325860948667965, "positive": 5, "zero": 292, "negative": 3, "by_dataset": {"hotpotqa": {"n": 100, "mean": 0.012222222222222223}, "2wiki": {"n": 100, "mean": 0.0}, "musique": {"n": 100, "mean": 0.01575536062378167}}}
+正交互也可能来自同一个数字/词面失分在组合中不再重复，或来自输出压缩；不能单独解释为事实推理协同。
+
+缓存核查：86道无novel-doc题，s04应与r04完全同prompt/答案并复用同一物理request；无基础设施重试时新提交应为300+214=514，不是600。
+{"r04_scope_contract/nodes_equal_p02": 300, "r04_scope_contract/context_equal_factor_control": 300, "r04_scope_contract/only_scope_sentence_replaced": 300, "s04_scope_plus_evidence/nodes_equal_p02": 300, "s04_scope_plus_evidence/context_equal_factor_control": 300, "s04_scope_plus_evidence/only_scope_sentence_replaced": 300, "no_extra_both_scorable": 86, "no_extra_s04_prompt_equals_r04": 86, "no_extra_s04_prediction_equals_r04": 86, "no_extra_s04_reused_receipt": 86, "no_extra_same_physical_request": 86}
+
+费用按namespace分别列示：
+实际尝试状态（含被成功恢复的旧失败，不改可计分分母）：{"success": 600, "incomplete": 1}
+保留失败尝试：[{"arm": "r04_scope_contract", "id": "musique:3hop1__458916_651917_47686", "status": "incomplete", "error_type": "RecordedFailure", "retryable_infrastructure": true, "failed_request_id": null, "request_status": "unknown", "http_status": null}]
+理想514次提交；当前实计515次；两臂完整后较理想额外提交=1。
+若最终515次且有1次基础设施恢复，应明确为514+1 retry，不能误称86题缓存失效；未知请求预留仍保留。
+old_round3：已知¥1.146929，未核销预留¥0.000000，提交514次。
+new_round4：已知¥1.149394，未核销预留¥0.009006，提交515次。
+round2_fresh90：已知¥0.891928，未核销预留¥0.009033，提交606次。
+round2_confirmation：已知¥0.347618，未核销预留¥0.011809，提交260次。
+global：已知¥185.103888，未核销预留¥35.442685，提交106118次。
+  r04_scope_contract：已知¥0.650522，预留¥0.009006，提交301次。
+  s04_scope_plus_evidence：已知¥0.498872，预留¥0.000000，提交214次。
+新增调用估算非完整方法冷启动成本；未核对实际账单，不释放未知请求预留。
+
+本轮开发选择：Retain frozen p02; neither r04 nor s04 exceeds its complete300 native mean F1.
+
+独立验证仅状态：{"case_file_counts_only": {"fresh_dev90": {"2wiki/p02_role_headers": 30, "2wiki/parent_g01": 30, "hotpotqa/p02_role_headers": 30, "hotpotqa/parent_g01": 30, "musique/p02_role_headers": 31, "musique/parent_g01": 30}, "fresh_confirm150": {"2wiki/parent_g01": 39}}, "counts_are_written_files_not_unique_successes": true, "answers_scores_not_read": true, "confirmation_contents_not_read": true, "selection_boundary": "Independent frozen p02 validation is not used to select these candidates."}
+
+实际变化：候选已固定后再审，不按个别AfterHours等例子更改候选；词面命中不等于关系成立。
+
+1. r04_scope_contract | musique:4hop3__373866_5189_38229_86687
+Query: A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?
+标准（只用于离线分析）：May 1990
+p02：1990
+e03：12 September 1990
+候选：12 September 1990
+F1=0.500000，相对p02=-0.500000，相对e03=+0.000000
+未改goal：The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.
+审阅：已有错误具体日期重新进入最终，F1下降
+观察：p02的1990改为12September1990，与冻结goal的两加四条约日相同，没有恢复May1990同意统一的事件时间。r04不加原文，不能称新日期得到新证据验证；父年份仅匹配别名不代表月份正确。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\4hop3__373866_5189_38229_86687.json
+
+2. r04_scope_contract | musique:3hop2__326964_734214_7713
+Query: How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?
+标准（只用于离线分析）：about 400 years
+p02：Cannot be determined
+e03：Cannot be determined
+候选：Zero years
+F1=0.400000，相对p02=+0.400000，相对e03=+0.400000
+未改goal：Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.
+审阅：缺答变错误零值，词面F1提高
+观察：Cannotbedetermined改Zeroyears，复制未改变goal从未为扬州首府的错误零值；标准about400years仅因years重合得0.4。原final材料没有400年，不把F1提升视为时长修复。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\3hop2__326964_734214_7713.json
+
+3. r04_scope_contract | musique:4hop3__524186_219173_548463_72134
+Query: When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?
+标准（只用于离线分析）：1839
+p02：Never
+e03：Springfield, Ohio, has never been the capital of Illinois.
+候选：Springfield, Ohio, has never been the capital of Illinois.
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Springfield, Ohio, has never been the capital of Illinois.
+审阅：同一否定扩成整句，原题同名城市错接未消除
+观察：Never扩为SpringfieldOhio从未为Illinois首府，未回答标准1839；原支持把公司所在Ohio与Illinois州首府同名Springfield连接，不能仅据标准将这一否定判为新事实错。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\4hop3__524186_219173_548463_72134.json
+
+4. r04_scope_contract | 2wiki:c62ca325089b11ebbd78ac1f6bf848b6
+Query: Which film has the director born first, Bay Of Angels or Main Street To Broadway?
+标准（只用于离线分析）：Main Street To Broadway
+p02：Main Street To Broadway
+e03：Main Street To Broadway
+候选：Main Street to Broadway
+F1=1.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：The director of Main Street to Broadway, Tay Garnett, was born on June 13, 1894, before Jacques Demy, the director of Bay of Angels, who was born on June 5, 1931.
+审阅：同一电影名称大小写变化，F1持平
+观察：MainStreetToBroadway改MainStreettoBroadway，电影与比较赢家相同，没有新事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\2wiki\r04_scope_contract\c62ca325089b11ebbd78ac1f6bf848b6.json
+
+5. r04_scope_contract | hotpotqa:5ab7f0b9554299366779405d
+Query: What type of vegetation does Tabernaemontana and Crinum have in common?
+标准（只用于离线分析）：plants
+p02：None
+e03：No vegetation type in common
+候选：No vegetation type in common
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.
+审阅：同一错误共同类型否定扩成短语，F1持平0
+观察：None改Novegetationtypeincommon，仍按woody/herbaceous生长形态否定共同类型，原Top10已写两个类群均为plants。新scope约定没有使最终采用共同上位类别，不把解释扩展视为事实改进。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\hotpotqa\r04_scope_contract\5ab7f0b9554299366779405d.json
+
+6. r04_scope_contract | hotpotqa:5abd455c55429924427fcf5a
+Query: What does Age of Chance and Vector share in common? 
+标准（只用于离线分析）：was a rock band
+p02：Nothing
+e03：Nothing
+候选：Cannot be determined
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Age of Chance and Vector share no commonality based on the retrieved passages, as “Age of Chance” is not mentioned in any passage and “Vector” refers only to mathematical, statistical, or gaming concepts (e.g., probability vector, random vector, board game, magazine), with no indication of a shared property or relation.
+审阅：无目标实体材料时绝对否定转为缺答，F1持平0
+观察：Nothing改Cannotbedetermined。原Top10是Probabilityvector、Multivariaterandomvariable等数学/统计/游戏歧义文，完全未出现AgeofChance；不能因缺失乐队文断言二者无共同点。新答案更保守但未解决检索对象或恢复rockband。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\hotpotqa\r04_scope_contract\5abd455c55429924427fcf5a.json
+
+7. r04_scope_contract | hotpotqa:5abec66b5542997ec76fd360
+Query: What do Josef Veltjens and Hermann Goering have in common?
+标准（只用于离线分析）：A veteran World War I fighter pilot ace
+p02：Both were German World War I fighter aces and recipients of the Pour le Mérite
+e03：Both were German World War I fighter aces and recipients of the Pour le Mérite
+候选：Both were German World War I fighter aces and recipients of the Pour le Mérite.
+F1=0.380952，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+审阅：同一共同职业/奖项句增加句号，F1持平
+观察：最终只增加末尾句号，人物共同职业和PourleMérite奖项均未变，本次没有新事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\hotpotqa\r04_scope_contract\5abec66b5542997ec76fd360.json
+
+8. r04_scope_contract | musique:3hop1__857_846_7770
+Query: Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?
+标准（只用于离线分析）：past the west side and then north side
+p02：The Yangtze River flows past the west side and then the north side of Nanjing.
+e03：past the west side and then the north side of Nanjing
+候选：past the west side and then the north side of Nanjing
+F1=0.875000，相对p02=+0.138158，相对e03=+0.000000
+未改goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+审阅：已有方位关系去掉复述主语，词面F1提高
+观察：删除TheYangtzeRiverflows等词，仍经南京西侧再北侧，方位与goal和原文相同。r04无新增证据，不能称又找到了新的城市/方位事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\3hop1__857_846_7770.json
+
+9. r04_scope_contract | hotpotqa:5a72a9ac5542991f9a20c55f
+Query: Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+标准（只用于离线分析）：the fourth hour of the TODAY Show
+p02：The fourth hour of NBC's "Today Show"
+e03：The fourth hour of NBC's "Today Show"
+候选：The fourth hour of the TODAY Show
+F1=1.000000，相对p02=+0.090909，相对e03=+0.090909
+未改goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+审阅：同一节目删除网络称谓/引号，词面F1提高
+观察：NBCsTodayShow第四小时改theTODAYShow第四小时，节目身份不变。删除受支持但多余称谓匹配标准，不是scope关系或新事实修复。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\hotpotqa\r04_scope_contract\5a72a9ac5542991f9a20c55f.json
+
+10. r04_scope_contract | musique:3hop1__68802_89752_49923
+Query: How many counties are there in the largest state in the region where the film The Family Stone was set?
+标准（只用于离线分析）：sixteen
+p02：Sixteen
+e03：16
+候选：16
+F1=0.000000，相对p02=-1.000000，相对e03=+0.000000
+未改goal：Maine has sixteen counties.
+审阅：同一数量改成数字，纯计分下降
+观察：Sixteen改16，均为16个县，未改变实体或数值；原生Mu计分未归一化数字词，F1从1降0。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\3hop1__68802_89752_49923.json
+
+11. r04_scope_contract | musique:4hop2__71753_261673_70784_61381
+Query: When was the region that lies to the north of where Israel is located and where Shamal is located established?
+标准（只用于离线分析）：1932
+p02：1943
+e03：Lebanon
+候选：Lebanon
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.
+审阅：所问时间退成地区名，目标答案类型偏移
+观察：p02答1943已错于标准1932，r04却答Lebanon而不是时间；冻结goal已给错地区/年份，r04未修复上游条件，最终还遗漏原题When所求类型。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\musique\r04_scope_contract\4hop2__71753_261673_70784_61381.json
+
+12. r04_scope_contract | hotpotqa:5a893f305542993b751ca91e
+Query: The Whitehead Light is located in what town with a population of 2,591 during the 2010 census?
+标准（只用于离线分析）：St.George
+p02：St. George, Maine
+e03：St. George, Maine
+候选：St. George
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：The Whitehead Light is located in the town of St. George, Maine, which had a population of 2,591 during the 2010 census.
+审阅：同一城镇删除州名，F1持平
+观察：St.GeorgeMaine缩为St.George，地点未变；标准St.George与候选St. George的空格/标点使原生计分未命中，不能当新地理事实变化。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_r04_scope_contract_r001\cases\hotpotqa\r04_scope_contract\5a893f305542993b751ca91e.json
+
+13. s04_scope_plus_evidence | musique:4hop3__373866_5189_38229_86687
+Query: A group of nations of which the People's Socialist Republic of Albania was a member was controlled by one country. When did that country agree to a unified Germany inside of the organization Eisenhower would not discuss during the campaign?
+标准（只用于离线分析）：May 1990
+p02：1990
+e03：12 September 1990
+候选：1990
+F1=1.000000，相对p02=+0.000000，相对e03=+0.500000
+未改goal：The Soviet Union agreed to a unified Germany within NATO in 1990, as confirmed by the Two Plus Four Treaty signed on 12 September 1990.
+审阅：具体错误日期压回年份，命中计分别名但未恢复月份
+观察：相同e03新增的1930年代德国苏联段不含1990信息；s04相对e03从12September1990缩为1990，恢复p02与native别名，F1+.5。没有输出主标准May1990，不能称修复了同意统一与条约签署的事件时间对应。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\4hop3__373866_5189_38229_86687.json
+实际新增原文：rank=8; source=Germany–Soviet Union relations, 1918–1941; doc_id=434900bbb5b0f8dc2b493a2c5d41469072d7eef5ed5d1e1732f104cad071288f
+Germany–Soviet Union relations, 1918–1941
+Cooperation ended in 1933, as Adolf Hitler came to power and created Nazi Germany. The countries' economic relationship dwindled at the beginning of the Nazi era, but some diplomatic initiatives continued through the 1930s, culminating with the Molotov -- Ribbentrop Pact of 1939 and various trade agreements. Few questions concerning the origins of the Second World War are more controversial and ideologically loaded than the issue of the policies of the Soviet Union under Joseph Stalin towards Nazi Germany between the Nazi seizure of power and the German invasion of the USSR on June 22, 1941.
+
+14. s04_scope_plus_evidence | musique:4hop3__524186_219173_548463_72134
+Query: When did the city where Superior Drill Company is located become capitol of the state where the screenwriter of The Poor Boob was born?
+标准（只用于离线分析）：1839
+p02：Never
+e03：Springfield, Ohio, has never been the capital of Illinois.
+候选：Springfield, Ohio, has never been the capital of Illinois.
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Springfield, Ohio, has never been the capital of Illinois.
+审阅：同一否定扩为整句，原始同名城市问题未解决
+观察：与e03完全同句SpringfieldOhio从未为Illinois首府；新增Ohio市介绍只确认位置，不给标准1839。p02的Never同义，scope替换未解决原始Ohio/Illinois同名错接。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\4hop3__524186_219173_548463_72134.json
+实际新增原文：rank=2; source=Springfield, Ohio; doc_id=f01e9368d53e9dab4b4136316139e8be2b8ea7cdd169c9eecb50d2e8278046c2
+Springfield, Ohio
+Springfield is a city in the U.S. state of Ohio and the county seat of Clark County. The municipality is located in southwestern Ohio and is situated on the Mad River, Buck Creek and Beaver Creek, approximately 45 miles (72 km) west of Columbus and 25 miles (40 km) northeast of Dayton. Springfield is home to Wittenberg University, a liberal arts college.
+
+15. s04_scope_plus_evidence | 2wiki:c62ca325089b11ebbd78ac1f6bf848b6
+Query: Which film has the director born first, Bay Of Angels or Main Street To Broadway?
+标准（只用于离线分析）：Main Street To Broadway
+p02：Main Street To Broadway
+e03：Main Street To Broadway
+候选：Main Street to Broadway
+F1=1.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：The director of Main Street to Broadway, Tay Garnett, was born on June 13, 1894, before Jacques Demy, the director of Bay of Angels, who was born on June 5, 1931.
+审阅：无新增文档精确复用r04，只有电影名大小写变化
+观察：该题无novel文档，s04相同prompt与r04结果复用；MainStreetToBroadway改MainStreettoBroadway，电影和赢家不变。不是叠加证据的收益。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\2wiki\s04_scope_plus_evidence\c62ca325089b11ebbd78ac1f6bf848b6.json
+
+16. s04_scope_plus_evidence | musique:4hop2__71753_729371_70784_61381
+Query: When was the region immediately north of the region home to Israel and the location of Operation Earnest Will established?
+标准（只用于离线分析）：1932
+p02：1920
+e03：1109
+候选：1109
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Lebanon, the region immediately north of Israel and distinct from the Persian Gulf where Operation Earnest Will occurred, was established as a modern state under the French Mandate following the dissolution of the Ottoman Empire after World War I, with its borders formalized in 1920.
+审阅：继续采用新增文的错误对象日期，F1持平0
+观察：e03和s04均1109，与新增CountyofTripoli年份对应。问题原所求地区成立时间未恢复；scope替换没有阻止把十字军时期Tripoli领地成立年用于错目标。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\4hop2__71753_729371_70784_61381.json
+实际新增原文：rank=2; source=County of Tripoli; doc_id=aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7
+County of Tripoli
+The County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims.
+
+17. s04_scope_plus_evidence | musique:3hop1__671542_651917_47686
+Query: Where do greyhound buses leave from in the city where the performer of Darlings was born?
+标准（只用于离线分析）：Toronto Coach Terminal
+p02：Toronto Coach Terminal
+e03：Toronto Coach Terminal at 610 Bay Street
+候选：Toronto Coach Terminal
+F1=1.000000，相对p02=+0.000000，相对e03=+0.400000
+未改goal：Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto.
+审阅：删除额外地址恢复p02，scope交互收益主要为表达
+观察：s04从e03的TorontoCoachTerminalat610BayStreet缩为车站名，恢复p02。新增车站原文支持地址和车站，但两者原goal已知；相对e03+.4为输出收束，不是新的位置事实发现。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\3hop1__671542_651917_47686.json
+实际新增原文：rank=2; source=Toronto Coach Terminal; doc_id=e7864b3f56e01946d9cc0e918de81e856af53687bb96d3d58e60d8401c2f2377
+Toronto Coach Terminal
+The Toronto Coach Terminal is the central bus station for inter-city services in Toronto, Ontario, Canada. It is located at 610 Bay Street, in the city's Downtown. The terminal is owned by Toronto Coach Terminal Inc., a wholly owned subsidiary of the Toronto Transit Commission (TTC). The TTC managed the station directly until July 8, 2012, when it was leased out in its entirety to bus lines Coach Canada and Greyhound Canada for $1.2 million annually. Opened in 1931 as the Gray Coach Terminal, the Art Deco style terminal was home base for Gray Coach, an interurban bus service then owned by the TTC. It replaced an earlier open air terminal, Gray Line Terminal.
+
+18. s04_scope_plus_evidence | hotpotqa:5ab7f0b9554299366779405d
+Query: What type of vegetation does Tabernaemontana and Crinum have in common?
+标准（只用于离线分析）：plants
+p02：None
+e03：No vegetation type in common
+候选：No vegetation type in common
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana consists of shrubs and small trees (woody plants), while Crinum consists of herbaceous perennial plants (non-woody, bulb-derived), and no retrieved passage indicates overlap in growth form.
+审阅：共同类型仍被缩为生长形态否定，未发生scope修复
+观察：p02None、e03和s04Novegetationtypeincommon。旧原Top10已写两类均plants，新增Shrubswamp讲湿地生态系统，不提供两类植物的共同目标关系；scope替换未纠正只比woody/herbaceous的范围。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5ab7f0b9554299366779405d.json
+实际新增原文：rank=2; source=Shrub swamp; doc_id=21735863
+Shrub swamp
+Shrub swamps — also called scrub swamps or buttonbush swamps — are a type of freshwater wetland ecosystem occurring in areas too wet to become swamps (“true” or freshwater swamp forest), but too dry or too shallow to become marshes. They are often considered transitional (“mid-successional”) between wet meadows or fens and conifer or hardwood swamps.
+
+19. s04_scope_plus_evidence | hotpotqa:5abd455c55429924427fcf5a
+Query: What does Age of Chance and Vector share in common? 
+标准（只用于离线分析）：was a rock band
+p02：Nothing
+e03：Nothing
+候选：Cannot be determined
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Age of Chance and Vector share no commonality based on the retrieved passages, as “Age of Chance” is not mentioned in any passage and “Vector” refers only to mathematical, statistical, or gaming concepts (e.g., probability vector, random vector, board game, magazine), with no indication of a shared property or relation.
+审阅：无新文档精确复用r04的证据不足表达
+观察：s04与r04同Cannotbedetermined，p02/e03为Nothing。原Top10错检数学等Vector且无AgeofChance；缺答比绝对否定校准更合理，但未找到rockband。该题无novel文档，不归为加证据的交互收益。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5abd455c55429924427fcf5a.json
+
+20. s04_scope_plus_evidence | musique:2hop__289517_139339
+Query: What was the cast member in After Hours nominated for?
+标准（只用于离线分析）：Academy Award for Best Live Action Short Film
+p02：No award nomination
+e03：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+候选：No award nomination
+F1=0.181818，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Griffin Dunne was not nominated for any award for his role in *After Hours*.
+审阅：收到目标新事实仍保持错误电影限定，F1持平
+观察：实际S04 final_context已追加Griffin Dunne 1995年因Duke of Groove获奥斯卡最佳真人短片提名的原文，但最终仍No award nomination，沿用goal新增的for his role in After Hours限制；原题未要求奖项必须来自After Hours。与p02/e03同分，不能称新scope句加原文已经消除了误限定。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\2hop__289517_139339.json
+实际新增原文：rank=2; source=Griffin Dunne; doc_id=9c07e829d3774c70541fd9056f804c03691b92e35393c33e41c7ddbbcc27d86b
+Griffin Dunne
+In 1995, Griffin Dunne was nominated for an Academy Award for Best Live Action Short Film for "Duke of Groove", which he directed and co-wrote. He shared the nomination with producer Thom Colwell. Along with his producing partner, actress/producer Amy Robinson, he has produced several films including "Baby It's You", "After Hours", "Running on Empty" and "Game 6" through their company, Double Play Productions.
+
+21. s04_scope_plus_evidence | hotpotqa:5a77c09555429967ab105262
+Query: What is the species of animal which the town of Antelope, Kansas was named after?
+标准（只用于离线分析）：Antilocapra americana
+p02：pronghorn (*Antilocapra americana*)
+e03：pronghorn
+候选：pronghorn
+F1=0.000000，相对p02=-0.800000，相对e03=+0.000000
+未改goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+审阅：同一物种改用俗名，词面F1下降
+观察：父pronghorn (Antilocapra americana)改pronghorn，原Top3 Pronghorn明确二者为同一物种；goal也保留学名。新增Waterbuck讲另一种非洲羚羊，不提供命名对象新事实。F1由0.8降0主要是学名被省略，不是改答水羚。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5a77c09555429967ab105262.json
+实际新增原文：rank=10; source=Waterbuck; doc_id=1148408
+Waterbuck
+The waterbuck ("Kobus ellipsiprymnus") is a large antelope found widely in sub-Saharan Africa. It is placed in the genus "Kobus" of the family Bovidae. It was first described by Irish naturalist William Ogilby in 1833. The thirteen subspecies are grouped under two varieties: the common or ellipsen waterbuck and the defassa waterbuck. The head-and-body length is typically between 177 - and the average height is between 120 and . A sexually dimorphic antelope, males are taller as well as heavier than females. Males reach approximately 127 cm at the shoulder, while females reach 119 cm . Males typically weigh 198 - and females 161 - . The coat colour varies from brown to grey. The long, spiral horns, present only on males, curve backward, then forward and are 55 - long.
+
+22. s04_scope_plus_evidence | musique:3hop1__109422_720914_27537
+Query: Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+标准（只用于离线分析）：for the conclave in Rome
+p02：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+e03：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII.
+候选：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+F1=0.296296，相对p02=+0.000000，相对e03=-0.148148
+未改goal：Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.
+审阅：正确原因附带过多背景，较e03词面F1下降
+观察：S04恢复与p02完全相同的长句，e03删去papabile及当选教宗等背景而分数更高；原Top10已明确Roncalli离威尼斯去罗马参加conclave，新增Numerian文无关。此处相对e03回落来自冗长表达，未见原因事实改变。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\3hop1__109422_720914_27537.json
+实际新增原文：rank=6; source=Numerian; doc_id=96a9c02362c0fc768813c7b4b1077a8bf6f9935d75bb3b1ac97824b4a70ea2fd
+Numerian
+Aper officially broke the news of Numerian's death in Nicomedia (İzmit) in November 284, though Gibbon represents the occurrence of this event at Heraclea, in Thrace, and the discovery, which the prefect attempted to conceal, as due to the forwardness of the soldiery, who forced open the Imperial tent to investigate for themselves the situation of their invisible monarch. Numerian's generals and tribunes called a council for the succession, which met at Chalcedon across the Bosphorus, where they chose as emperor Diocletian, commander of the cavalry arm of the imperial bodyguard, despite Aper's attempts to garner support. The army of the east unanimously saluted their new Augustus. Diocletian accepted the purple imperial vestments and raised his sword to the light of the sun, swearing an oath denying responsibility for Numerian's death. He asserted that Aper had killed Numerian and concealed the deed. In full view of the army, Diocletian then turned and killed Aper, who had been hauled bound before the assembly.
+
+23. s04_scope_plus_evidence | musique:2hop__135651_669373
+Query: Which university employed the person that Mach bands are named after?
+标准（只用于离线分析）：Charles University
+p02：Cannot be determined
+e03：University of Prague
+候选：University of Vienna
+F1=0.400000，相对p02=+0.400000，相对e03=+0.000000
+未改goal：Ernst Mach was employed by the University of Vienna and later by the University of Prague, but no retrieved passage states which university employed him.
+审阅：模糊雇佣候选换成另一大学，词面收益未对应标准目标
+观察：S04 Vienna，e03 Prague，父Cannot be determined；新增Vinko Dvorak文写Charles University in Prague及随后成为Mach助理，却没有直接说明Mach在Vienna任职。goal本身列Vienna/Prague并同时声明无依据。S04的University与标准Charles University重合得0.4，不应报告为恢复了Charles University或新增原文证实Vienna。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\2hop__135651_669373.json
+实际新增原文：rank=4; source=Vinko Dvořák; doc_id=3db2218038d31ade375be05c1711c0c7d0bc2a5dfd8c371498a4d2684d376bf9
+Vinko Dvořák
+He studied mathematics and physics at the Charles University in Prague, and after graduating he became an assistant to professor Ernst Mach. After obtaining his doctorate in Prague in 1873/1874 he came to Zagreb (at the time also part of Austria-Hungary) and founded the Physics Cabinet at the Faculty of Philosophy in 1875.
+
+24. s04_scope_plus_evidence | hotpotqa:5abec66b5542997ec76fd360
+Query: What do Josef Veltjens and Hermann Goering have in common?
+标准（只用于离线分析）：A veteran World War I fighter pilot ace
+p02：Both were German World War I fighter aces and recipients of the Pour le Mérite
+e03：Both were German World War I fighter aces and recipients of the Pour le Mérite
+候选：Both were German World War I fighter aces and recipients of the Pour le Mérite.
+F1=0.380952，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.
+审阅：同一共同职业/奖项句增加句号，F1持平
+观察：本题无新增doc，S04完整复用R04。相对p02只加末尾句号，保持同一German WWI fighter aces/Pour le Merite共同事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5abec66b5542997ec76fd360.json
+
+25. s04_scope_plus_evidence | hotpotqa:5ae2dd2055429928c423950d
+Query: What is the county seat of the county where East Lempster, New Hampshire is located?
+标准（只用于离线分析）：Newport
+p02：Newport
+e03：Cannot be determined
+候选：Newport
+F1=1.000000，相对p02=+0.000000，相对e03=+1.000000
+未改goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, cannot be determined from the retrieved passages.
+审阅：较e03恢复正确县城答案，但新增段落未提供县城依据
+观察：S04 Newport与父相同，e03缺答。实际原Top10只给East Lempster属于Sullivan County，新增Sullivan County是六个同名县的消歧列表，没有Newport；goal也缺答。只能确认最终答案恢复，不能把恢复归因于新增县城事实或严格材料内推理。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5ae2dd2055429928c423950d.json
+实际新增原文：rank=2; source=Sullivan County; doc_id=52938
+Sullivan County
+Sullivan County is the name of six counties in the United States of America:
+
+26. s04_scope_plus_evidence | musique:3hop1__857_846_7770
+Query: Where does the Yangtze River flow in the city where the Yongle emperor greeted the person to whom the edict was addressed?
+标准（只用于离线分析）：past the west side and then north side
+p02：The Yangtze River flows past the west side and then the north side of Nanjing.
+e03：past the west side and then the north side of Nanjing
+候选：The Yangtze River flows past the west side and then the north side of Nanjing.
+F1=0.736842，相对p02=+0.000000，相对e03=-0.138158
+未改goal：The Yangtze River flows past the west side and then the north side of Nanjing.
+审阅：同一方位关系加重复主语，较e03词面F1下降
+观察：S04与p02完全相同全句，e03只输出past west side then north side of Nanjing；新增Nanjing明确同一方位，未改变城市/方向。相对e03降0.138主要为短答案表达变长。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\3hop1__857_846_7770.json
+实际新增原文：rank=2; source=Nanjing; doc_id=f0a72bc21d138357eb88db8fae9c0b58c0d18729cae54383fd1a681b39ee905f
+Nanjing
+Nanjing, with a total land area of 6,598 square kilometres (2,548 sq mi), is situated in the heartland of drainage area of lower reaches of Yangtze River, and in Yangtze River Delta, one of the largest economic zones of China. The Yangtze River flows past the west side and then north side of Nanjing City, while the Ningzheng Ridge surrounds the north, east and south side of the city. The city is 300 kilometres (190 mi) west-northwest of Shanghai, 1,200 kilometres (750 mi) south-southeast of Beijing, and 1,400 kilometres (870 mi) east-northeast of Chongqing. The downstream Yangtze River flows from Jiujiang, Jiangxi, through Anhui and Jiangsu to East Sea, north to drainage basin of downstream Yangtze is Huai River basin and south to it is Zhe River basin, and they are connected by the Grand Canal east to Nanjing. The area around Nanjing is called Hsiajiang (下江, Downstream River) region, with Jianghuai (江淮) stressing northern part and Jiangzhe (江浙) stressing southern part. The region is also known as Dongnan (東南, South East, the Southeast) and Jiangnan (江南, River South, south of Yangtze).
+
+27. s04_scope_plus_evidence | musique:2hop__25396_212301
+Query: Who is the child of the person who issued the Tamworth manifesto?
+标准（只用于离线分析）：Arthur Peel
+p02：William Peel, Sidney Peel, and William Yates Peel
+e03：William Peel
+候选：William Peel
+F1=0.500000，相对p02=+0.192308，相对e03=+0.000000
+未改goal：Robert Peel had multiple children, including William Peel, Sidney Peel, and William Yates Peel.
+审阅：有原文支持的非标准子女，压缩名单得到词面收益
+观察：S04/e03 William Peel，p02列William/Sidney/William Yates Peel；新增William Peel文明确其为Robert Peel第三子，因此对子女关系有实际支持。但标准Arthur Peel未恢复，0.3077到0.5的上升仅姓氏重合增加，不能等同正确识别标准人物。原问child单数亦未限定何子，保留答案非唯一的边界。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\2hop__25396_212301.json
+实际新增原文：rank=2; source=William Peel (Royal Navy officer); doc_id=e0799a9a211ae239730fec0704245a05cacdf119b98f1b1ebb95995c81f2ab65
+William Peel (Royal Navy officer)
+Captain Sir William Peel VC KCB (2 November 1824 – 27 April 1858) was a British naval officer and recipient of the Victoria Cross, the highest and most prestigious award for gallantry in the face of the enemy that can be awarded to British and Commonwealth forces. He was the third son of the Prime Minister Sir Robert Peel. Like his father, he was educated at Harrow School.
+
+28. s04_scope_plus_evidence | hotpotqa:5abee4ff5542993fe9a41d7d
+Query: Jim Atchison was the President of the theme park that had headquarters in what city?
+标准（只用于离线分析）：Orlando
+p02：Orlando, Florida
+e03：Orlando
+候选：Orlando
+F1=1.000000，相对p02=+0.333333，相对e03=+0.000000
+未改goal：SeaWorld Parks & Entertainment, the theme park company where Jim Atchison was President, had its headquarters in Orlando, Florida.
+审阅：同一总部城市去掉州名，词面F1上升
+观察：S04/e03 Orlando与父Orlando Florida指同一城市，goal已含总部完整句；新增SeaWorld只是列Orlando等经营地点，不能独立证明总部关系，未取得新总部事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5abee4ff5542993fe9a41d7d.json
+实际新增原文：rank=3; source=SeaWorld; doc_id=418732
+SeaWorld
+SeaWorld is a United States chain of marine mammal parks, oceanariums, animal theme parks, and rehabilitation centers owned by SeaWorld Entertainment (one park will be owned and operated by Miral under a license). The parks feature killer whale, sea lion, and dolphin shows and zoological displays featuring various other marine animals. There are operations located within the United States in Orlando, Florida; San Diego, California; San Antonio, Texas; later outside the United States such as Abu Dhabi, United Arab Emirates; and previously Aurora, Ohio. On March 5, 2007, SeaWorld Orlando announced addition of the Aquatica water park to its adventure park family, which already includes SeaWorld and Discovery Cove.
+
+29. s04_scope_plus_evidence | hotpotqa:5abce85755429959677d6b3e
+Query: Le Rêve was created by the director behind what Cirque du Soleil production from 1998 onward?
+标准（只用于离线分析）：O
+p02：O
+e03：O
+候选："O"
+F1=1.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Le Rêve was created by the director behind the Cirque du Soleil production "O" from 1998 onward.
+审阅：同一作品标题增加引号，F1持平
+观察：S04的"O"与p02/e03 O相同，新增L Altrofilm讲另一导演公司，与Franco Dragone/Cirque du Soleil作品关系无关。没有新增目标事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5abce85755429959677d6b3e.json
+实际新增原文：rank=3; source=L'Altrofilm; doc_id=43067405
+L'Altrofilm
+L'Altrofilm is an Italian entertainment company known for distributing independent and foreign films. Founded in 1998 by the director and producer Louis Nero. L'Altrofilm is a leading independent film motion picture distribution and production company in Italy.
+
+30. s04_scope_plus_evidence | musique:4hop1__161765_53706_795904_580996
+Query: What city shares a border with the city where the person who went to the state where Englebart died during the gold rush works?
+标准（只用于离线分析）：Rio Linda
+p02：Citrus Heights, Rancho Cordova, and Folsom
+e03：Citrus Heights, Rancho Cordova, and Folsom
+候选：Citrus Heights
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Sacramento shares borders with several cities including Citrus Heights, Rancho Cordova, and Folsom.
+审阅：错误边界城市列表缩成一个候选，仍未恢复标准城市
+观察：S04从Citrus Heights/Rancho Cordova/Folsom三名压成Citrus Heights，继续复制冻结goal候选；新增Sacramento段落只含首府、人口、区位，没有这些城市的接壤关系或Rio Linda。未解决目标事实缺失，也不能把简短答复当作验证了边界关系。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\4hop1__161765_53706_795904_580996.json
+实际新增原文：rank=2; source=Sacramento, California; doc_id=bc796c14261ef548d21eb034d6072ef27530d0df7e98c20ab0df391ccd0eee31
+Sacramento, California
+Sacramento (/ ˌsækrəˈmɛntoʊ / SAK - rə - MEN - toh, locally also / ˌsækrəˈmɛnoʊ / SAK - rə - MEN - oh; Spanish: (sakɾaˈmento)) is the capital city of the U.S. state of California and the seat of Sacramento County. It is at the confluence of the Sacramento River and the American River in the northern portion of California's expansive Central Valley, known as the Sacramento Valley. Its estimated 2016 population of 493,025 makes it the sixth - largest city in California, the fastest - growing big city in the state, and the 35th largest city in the United States. Sacramento is the cultural and economic core of the Sacramento metropolitan area, which includes seven counties with a 2010 population of 2,414,783. Its metropolitan area is the fourth largest in California after the Greater Los Angeles area, the San Francisco Bay Area, and the San Diego metropolitan area, and is the 27th largest in the United States. In 2002, the Civil Rights Project at Harvard University conducted for Time magazine named Sacramento ``America's Most Diverse City ''.
+
+31. s04_scope_plus_evidence | hotpotqa:5a72a9ac5542991f9a20c55f
+Query: Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+标准（只用于离线分析）：the fourth hour of the TODAY Show
+p02：The fourth hour of NBC's "Today Show"
+e03：The fourth hour of NBC's "Today Show"
+候选：The fourth hour of the TODAY Show
+F1=1.000000，相对p02=+0.090909，相对e03=+0.090909
+未改goal：The fourth hour of NBC's "Today Show" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.
+审阅：同一节目去掉网络名称，词面F1上升
+观察：本题无novel-doc，S04精确复用R04同一请求。第四小时TODAY Show目标未变，仅去除NBC及标点，未修复新的节目交集或取得新事实。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5a72a9ac5542991f9a20c55f.json
+
+32. s04_scope_plus_evidence | hotpotqa:5ab6be2f55429954757d335c
+Query: Zakk Wylde and Damon Albarn are both what?
+标准（只用于离线分析）：singer, songwriter, and multi-instrumentalist
+p02：musicians, singers, songwriters, and multi-instrumentalists
+e03：musicians
+候选：musicians, singers, songwriters, and multi-instrumentalists
+F1=0.222222，相对p02=+0.000000，相对e03=+0.222222
+未改goal：Zakk Wylde and Damon Albarn are both musicians, singers, songwriters, and multi-instrumentalists.
+审阅：保留较完整共同职业，较e03避免过度压缩
+观察：S04与p02相同，恢复singers/songwriters/multi-instrumentalists等双方原文和QA已支持的共同职业；e03只答musicians。新增Zedd属于另一音乐人，没有新目标事实。相对e03提高0.222，但与标准仍有复数形态及musicians额外词差异，不是新增证据带来的职业发现。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5ab6be2f55429954757d335c.json
+实际新增原文：rank=5; source=Zedd; doc_id=32971765
+Zedd
+Anton Zaslavski (Russian: Антон Заславский ; born 2 September 1989), better known by his stage name Zedd ( ), is a Russian-German musician, DJ, songwriter and record producer. He primarily produces and performs electro house music, but has diversified his genre and musical style, drawing influences from progressive house, dubstep, and classical music. Zedd grew up and began his career in Kaiserslautern, Germany.
+
+33. s04_scope_plus_evidence | musique:3hop1__68802_89752_49923
+Query: How many counties are there in the largest state in the region where the film The Family Stone was set?
+标准（只用于离线分析）：sixteen
+p02：Sixteen
+e03：16
+候选：16
+F1=0.000000，相对p02=-1.000000，相对e03=+0.000000
+未改goal：Maine has sixteen counties.
+审阅：同一正确数值转为阿拉伯数字，词面F1下降
+观察：S04和e03/R04同为16；p02 Sixteen，均表示十六。新增List of counties in Maine原文直接写sixteen，goal亦正确，不能把F1 1到0解释为县数事实错误。数字损失在R04和e03各出现，组合不重复扣两次会产生正数值interaction，不代表语义协同。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\3hop1__68802_89752_49923.json
+实际新增原文：rank=2; source=List of counties in Maine; doc_id=af59bf06331c0c7c48360dd48cc083c172912a8e5197742b3b6f04d0ea3cf918
+List of counties in Maine
+This is a list of the sixteen counties in the U.S. state of Maine. Before statehood, Maine was officially part of the state of Massachusetts and was called the District of Maine. Maine was granted statehood on March 15, 1820 as part of the Missouri Compromise. Nine of the sixteen counties had their borders defined while Maine was still part of Massachusetts, and hence are older than the state itself. Even after 1820, the exact location of the northern border of Maine was disputed with Britain, until the question was settled and the northern counties signed their final official form, the Webster - Ashburton Treaty, signed in 1842. Almost all of Aroostook County was disputed land until the treaty was signed.
+
+34. s04_scope_plus_evidence | musique:4hop2__71753_261673_70784_61381
+Query: When was the region that lies to the north of where Israel is located and where Shamal is located established?
+标准（只用于离线分析）：1932
+p02：1943
+e03：Lebanon
+候选：Lebanon
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：Lebanon, the region lying to the north of Israel, was established as a modern sovereign state in 1943, with full independence from France achieved in 1944 and internationally recognized in 1945.
+审阅：建立时间被替换成地名，答案类型仍偏离
+观察：S04/R04/e03 Lebanon，父1943也非标准1932。When问时间，新scope明确target仍未约束输出类型；上游将Shamal解析为风并把目标错定Lebanon，新增Tripoli 1109年历史文未修复对象。此题F1都0，但有可见答案类型风险。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\4hop2__71753_261673_70784_61381.json
+实际新增原文：rank=2; source=County of Tripoli; doc_id=aa8eaff537de9daf633614d22accdb8a6cef8e08d355bb073aeefaebecef70e7
+County of Tripoli
+The County of Tripoli (1109–1289) was the last of the Crusader states. It was founded in the Levant in the modern-day region of Tripoli, northern Lebanon and parts of western Syria which supported an indigenous population of Christians, Druze and Muslims.
+
+35. s04_scope_plus_evidence | musique:3hop1__635099_131926_89261
+Query: Where does the body of water by the city where Write This Down was formed empty into the Gulf of Mexico?
+标准（只用于离线分析）：the Mississippi River Delta
+p02：Mississippi River
+e03：Mississippi River Delta
+候选：Mississippi River Delta
+F1=1.000000，相对p02=+0.200000，相对e03=+0.000000
+未改goal：The Mississippi River, which is near Minneapolis, Minnesota—where Write This Down was formed—empties into the Gulf of Mexico.
+审阅：新增原文提供出海口目标，真实关系修复
+观察：S04/e03 Mississippi River Delta，p02/R04只答Mississippi River；goal答河流近Minneapolis且流入墨西哥湾，未给Delta。原最终Top10没有Delta，新增rank2 Mississippi River明确flows ... to the Mississippi River Delta in the Gulf of Mexico，因此是实际新目标事实入读并被使用，不是仅省词或scope句单独收益。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\musique\s04_scope_plus_evidence\3hop1__635099_131926_89261.json
+实际新增原文：rank=2; source=Mississippi River; doc_id=725940b6b339fc7c7aa7ba21084b66d1806988dd091df46c1e66ffa4f49f2c08
+Mississippi River
+The Mississippi River is the chief river of the second - largest drainage system on the North American continent, second only to the Hudson Bay drainage system. The stream is entirely within the United States (although its drainage basin reaches into Canada), its source is Lake Itasca in northern Minnesota and it flows generally south for 2,320 miles (3,730 km) to the Mississippi River Delta in the Gulf of Mexico. With its many tributaries, the Mississippi's watershed drains all or parts of 31 U.S. states and two Canadian provinces between the Rocky and Appalachian Mountains. The Mississippi ranks as the fourth - longest and fifteenth - largest river in the world by discharge. The river either borders or passes through the states of Minnesota, Wisconsin, Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi, and Louisiana.
+
+36. s04_scope_plus_evidence | hotpotqa:5ac298805542990b17b15429
+Query: This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+标准（只用于离线分析）：Austral Líneas Aéreas
+p02：Austral Líneas Aéreas
+e03：Yes
+候选：Yes
+F1=0.000000，相对p02=-1.000000，相对e03=+0.000000
+未改goal：Austral Líneas Aéreas, the sister company of Líneas Aéreas Privadas Argentinas, is most commonly known by its shortened name Austral.
+审阅：公司名改是非回答，目标类型退步；原题措辞与事实需保留歧义
+观察：S04/e03 Yes，p02/R04公司名称。新增Austral仅解释southern，无公司关系。原query语法形似确认句而标准要求名称，F1从1到0反映本基准目标未满足；同时冻结QA把Austral错说成LAPA姐妹公司，原文为Aerolineas Argentinas姐妹公司，不能将父名称命中直接等同完整关系正确。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5ac298805542990b17b15429.json
+实际新增原文：rank=3; source=Austral; doc_id=2706147
+Austral
+Austral means southern, often in reference to the Southern Hemisphere.
+
+37. s04_scope_plus_evidence | hotpotqa:5a893f305542993b751ca91e
+Query: The Whitehead Light is located in what town with a population of 2,591 during the 2010 census?
+标准（只用于离线分析）：St.George
+p02：St. George, Maine
+e03：St. George, Maine
+候选：St. George
+F1=0.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：The Whitehead Light is located in the town of St. George, Maine, which had a population of 2,591 during the 2010 census.
+审阅：同一城镇省略州名，原生分词差异仍为0
+观察：本题无novel-doc，S04精确复用R04。St. George Maine改St. George，仍与goal/原文同一城镇；标准St.George的无空格写法与原生词级F1不匹配，持平0不代表地点识别失败。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5a893f305542993b751ca91e.json
+
+38. s04_scope_plus_evidence | hotpotqa:5ac5101455429924173fb592
+Query: What is the name of the number-one single featuring the winner of Celebrity Apprentice 3?
+标准（只用于离线分析）：Every Rose Has Its Thorn
+p02：Every Rose Has Its Thorn
+e03："Every Rose Has Its Thorn"
+候选：Every Rose Has Its Thorn
+F1=1.000000，相对p02=+0.000000，相对e03=+0.000000
+未改goal：The number-one single featuring Bret Michaels, the winner of Celebrity Apprentice 3, is "Every Rose Has Its Thorn".
+审阅：同一歌曲标题去掉引号，F1持平
+观察：S04与p02同为Every Rose Has Its Thorn，e03仅多引号；新增Bret Michaels简介确实确认其乐队该冠军单曲，但父goal与最终早已同答，未产生本题F1或目标变化。
+文件：outputs\query_decomposition\hotpot_formal_eval_v1\b0_strategy_round4_v1_20261020\rounds\full300_s04_scope_plus_evidence_r001\cases\hotpotqa\s04_scope_plus_evidence\5ac5101455429924173fb592.json
+实际新增原文：rank=2; source=Bret Michaels; doc_id=1055912
+Bret Michaels
+Bret Michael Sychak (born March 15, 1963), professionally known as Bret Michaels, is an American singer-songwriter and musician. He gained fame as the lead singer of the glam metal band Poison who have sold over 50 million records worldwide and 15 million records in the United States alone. The band has also charted ten singles to the Top 40 of the "Billboard" Hot 100, including six Top 10 singles and a number-one single, "Every Rose Has Its Thorn".
+
+未修复/新失败的目的性代表例：
+以下只解释固定候选的实际输出，不据这些例子改规则，不外推总体失败比例。
+
+hotpotqa:5ac3dfb15542995c82c4ac71 | What did both Karel Bossart and Sergei Korolev design?
+p02: intercontinental ballistic missiles
+e03: intercontinental ballistic missiles
+r04_scope_contract: intercontinental ballistic missiles
+s04_scope_plus_evidence: intercontinental ballistic missiles
+审阅：common_category_granularity_uncertain
+r04仍答intercontinental ballistic missiles，和父goal同一共同类别；原文分别给Atlas ICBM与R-7 Booster Rocket，没有改成别的目标或新条件。
+共同rocket类有原文基础；R-7到ICBM的具体类属只在goal结论明确，native0不能单独证实事实错误。
+native F1仍0，但gold rocket与输出intercontinental ballistic missiles存在上/下位类粒度和词面差异；此例不作已确认事实错。R-7是否ICBM不在所给原文明确，保留来源未验证。
+high_for_unchanged_output_and_context; factual_failure_uncertain
+
+musique:4hop3__373573_132409_223216_35031 | The band Pathology formed in a city whose urban area ranks where by size among the urban areas of the state where the Still Swingin' song's band formed?
+p02: third
+e03: third
+r04_scope_contract: third
+s04_scope_plus_evidence: third
+审阅：unchanged_candidate_rank_without_direct_final_source
+r04仍third，目标仍是SanDiego urban area在California的排名；未观察到新条件，但候选#4/goal的third继续决定最终。
+父Top10只有Pathology来自SanDiego与StillSwingin由PapaRoach表演，未给SanDiego urban rank或PapaRoach成立州的直接原文；排名只在QA里。
+native F1仍0；gold third-largest与输出third的序数相同，主要是原生词面/完整序数词差异，不能称排名顺序算错。原文支持不足单独保留。
+high_for_source_absence_in_final_context; rank_correctness_uncertain
+
+musique:2hop__289517_139339 | What was the cast member in After Hours nominated for?
+p02: No award nomination
+e03: Griffin Dunne was not nominated for any award for his role in *After Hours*.
+r04_scope_contract: No award nomination
+s04_scope_plus_evidence: No award nomination
+审阅：bridge_film_transferred_to_nomination_condition
+Original question只用in After Hours定位cast member；goal却增加for his role in After Hours限制提名范围。替换scope一句后r04仍No award nomination，未去除新增条件。
+旧Top10确认GriffinDunne主演1985电影，另有BruceHunter在同名电视节目获得CanadianComedyAwards提名；未给Griffin全部生涯奖项。不能将不同演员的原文混绑。
+r04仍无提名（当时缺Griffin奖项原文）；s04收到同一Griffin的Academy提名原文后仍无提名。两种证据可用状态区分。
+high_for_added_condition_and_unsupported_negative; intended_cast_member_ambiguity_retained
+
+musique:4hop3__129456_29339_508306_70744 | Between the state university in the state without North Point Mall and where Edwards won the primary and the university in Fort Hill's town which has the more national championships?
+p02: University of Kansas
+e03: University of Kansas
+r04_scope_contract: University of Kansas
+s04_scope_plus_evidence: University of Kansas
+审阅：dropped_conjunctive_state_condition_and_wrong_comparison_operand
+父QA #2已有Edwards赢primary的州SouthCarolina；#4只保留withoutNorthPointMall即notGeorgia而选Kansas，丢掉and whereEdwards won primary条件。r04仍UniversityofKansas，没有修复比较对象。
+旧Top10 Kansas原文明示Kansas州，和QA中SouthCarolina条件不符；候选冠军数13vs5也不在旧Top10直接支持。
+native部分F1不能当事实部分正确：UniversityofKansas与goldUniversityofSouthCarolina共享Universityof等词，但比较实体已错。
+high_for_dropped_condition_and_state_mismatch; championship_counts_unverified
+
+hotpotqa:5abd455c55429924427fcf5a | What does Age of Chance and Vector share in common? 
+p02: Nothing
+e03: Nothing
+r04_scope_contract: Cannot be determined
+s04_scope_plus_evidence: Cannot be determined
+审阅：retrieval_identity_failure_with_better_abstention_not_score_recovery
+没有可用AgeofChance身份或属性，Vector全为数学/游戏/杂志同名。r04从Nothing改Cannot be determined，未恢复共同属性但将无证据从否定改为不确定。
+缺实体材料，属于上游检索身份失败；scope句本身不能补出共同职业或类别。
+native F1仍0，但答案从无共同点改为无法判断有合理证据边界改善，不是同等事实失败。
+high_for_missing_entity_and_abstention_calibration; intended_Vector_entity_unverified
+
+hotpotqa:5ab7f0b9554299366779405d | What type of vegetation does Tabernaemontana and Crinum have in common?
+p02: None
+e03: No vegetation type in common
+r04_scope_contract: No vegetation type in common
+s04_scope_plus_evidence: No vegetation type in common
+审阅：shared_superclass_replaced_by_growth_form_intersection
+原问type of vegetation共同性未要求同一growth form；goal将其缩窄到woody shrubs/trees与herbaceous nonwoody比较，拒绝共有上位植物类别。r04仍No vegetation type in common。
+旧Top10 Chunk2称Crinum perennial plants，Chunk3称Tabernaemontana genus of flowering plants；两边plants直接可用。s04新ShrubSwamp段与目标共同属性无直接关系。
+gold plants与两个源段一致，r04没有修复共同上位类别；从None扩写negative不是事实改善。
+high_for_existing_shared_plants_class_and_narrowed_goal_comparison
+
+musique:2hop__13592_49388 | How many games in a season of the league in which Barcelona won titles in 1948 and 1949?
+p02: 22
+e03: 22
+r04_scope_contract: 22
+s04_scope_plus_evidence: 22
+审阅：identification_years_transferred_to_target_season
+1948/1949本用于识别league，goal把它们当目标赛季条件而答历史22；r04仍22，未恢复一般season场数。
+r04父Top10无38规则原文，只有冠军历史；r04不能叫忽略38。e03/s04的实际finalContext均追加38规则且仍22。
+scope单句替换没有改变历史赛季收窄；r04的22现实历史事实未外查，诊断仅针对附加条件。
+high_for_years_scope_transfer_and_absent_38_in_r04
+
+musique:2hop__80_59409 | Who was the artist who did a duet with Beyonce in the single "Deja Vu" talking about in the song "Cry"?
+p02: Jay-Z
+e03: Jay-Z
+r04_scope_contract: Jay-Z
+s04_scope_plus_evidence: Jay-Z
+审阅：final_relation_replaced_by_bridge_artist_identity
+原问要在Cry歌曲中所谈对象；duetwithBeyonce用于找artist。goal/最终改为直接答artist是谁Jay-Z，漏掉talking about关系。r04仍Jay-Z。
+旧Top10只给DejaVu featuring JayZ及其他Beyonce合作，没有Cry的被谈对象。新scope句可阻止答错目标，但不能提供缺失歌曲信息。
+保持有支持的中间身份并不等于完成原问；信息缺失时应不确定，不能拿桥接答案替代最终目标。
+high_for_relation_omission_and_missing_Cry_evidence
+
+hotpotqa:5ab6be2f55429954757d335c | Zakk Wylde and Damon Albarn are both what?
+p02: musicians, singers, songwriters, and multi-instrumentalists
+e03: musicians
+r04_scope_contract: musicians, singers, songwriters, and multi-instrumentalists
+s04_scope_plus_evidence: musicians, singers, songwriters, and multi-instrumentalists
+审阅：supported_common_professions_with_verbose_native_score
+r04继续输出musicians,singers,songwriters,andmulti-instrumentalists，确实回答两人的共同职业，没有把Zakk特有American/actor带给Damon。
+旧Top10 Zakk与Damon两段均直接支持singer/songwriter/multi-instrumentalist，另有Damon musician描述。四项交集有来源支持。
+native F1=2/9低分主要是gold单数职业与输出复数、加musicians等词面/列举差异；职业交集有旧原文支持，不作实质事实错误。
+high_for_direct_support_of_shared_professions; metric_specificity_requires_gold
+
+musique:3hop1__635099_131926_89261 | Where does the body of water by the city where Write This Down was formed empty into the Gulf of Mexico?
+p02: Mississippi River
+e03: Mississippi River Delta
+r04_scope_contract: Mississippi River
+s04_scope_plus_evidence: Mississippi River Delta
+审阅：outlet_location_relation_incomplete_bridge_river_repeated
+原问要Mississippi流入Gulf的地点/河口。goal只把Mississippi empties intoGulf陈述复述，r04最终给MississippiRiver，遗漏where所问地点；仍把桥接河名当最终地点。
+旧Top10无Mississippi河口地点，只有其他河的MatagordaBay等原文，不能迁移至目标河；r04不能靠scope句补新地理事实。e03已是MississippiRiverDelta，作为证据打开但scope关闭对照，待s04实际检验。
+r04 F1=.8是River与RiverDelta词面大量重合，仍未完整给出口位置；不能据.8说目标关系已基本完成。
+high_for_missing_outlet_relation; acceptable_answer_granularity_follows_offline_reference

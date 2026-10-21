@@ -1,0 +1,69 @@
+{
+  "model_path": "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/models/qwen3_4b_instruct_2507",
+  "expected_base_parameters": 4022468096,
+  "expected_adapter_parameters": 66060288,
+  "template_policy": "qwen3_instruct_native_nonthinking",
+  "lora": {
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "bias": "none",
+    "use_rslora": false,
+    "use_dora": false,
+    "modules_to_save": null
+  },
+  "seed": 1729,
+  "allow_tf32": false,
+  "attn_implementation": "sdpa",
+  "base_identity_file": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/BASE_MODEL_IDENTITY.json",
+  "runtime_device": "cuda",
+  "adapter_path": null,
+  "data_dir": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018",
+  "output_root": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/results",
+  "prompt_file": "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/v12.txt",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "data_sha256": {
+    "DATA3632.frozen.jsonl": "096fd1ae6a998e6db3c0bff8d03653f6ba84163455563e7017dd249c756eb27f",
+    "dev150.master.jsonl": "111ce2836a4ac1cc4fd0ca553a58c78377d6198ea2c5eaceffb7a233de3eb733",
+    "train_probe150.master.jsonl": "08d4a25fa358f32d2cd7a0752945b277af1348f9a67fe09bfdbc974c67da24f5",
+    "dev60.questions.frozen.jsonl": "149af5001cb8edc1971a08774a441a9e555c5825a3cfd0c79e6e52cf5024952d",
+    "confirm120.questions.frozen.jsonl": "54750a1f6bd57f50b94ad5ab1ac82a12761284b9f21ad58a8bb33deebe29f3aa"
+  },
+  "train_records": 3632,
+  "dev_records": 150,
+  "micro_batch": 1,
+  "max_length": 1024,
+  "epochs_max": 2,
+  "warmup_steps": 10,
+  "scheduler_horizon": 228,
+  "gradient_checkpointing": true,
+  "max_new_tokens": 1024,
+  "num_beams": 1,
+  "optimizer": {
+    "lr": 5e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "clip": 1.0
+  },
+  "scheduler": "linear_warmup10_fixed228",
+  "tail_policy": "16_actual_each_epoch_no_drop_no_replay",
+  "checkpoint_selection": [
+    "dev60_complete_pass",
+    "worst_dataset_pass",
+    "earliest_step"
+  ],
+  "prompt_payload_policy": "exact_frozen_v12_bytes_no_strip"
+}

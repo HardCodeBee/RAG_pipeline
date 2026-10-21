@@ -1,0 +1,333 @@
+{
+  "frozen_utc": "2026-10-19T20:13:44.599134+00:00",
+  "task": "Six independent one-factor interventions on frozen B0",
+  "authorization": "User in this side conversation explicitly requested testing each of these six edits on B0.",
+  "arms": {
+    "A_child_prompt_C08": "child_prompt",
+    "B_rewrite_prompt_c02": "rewrite_prompt",
+    "C_final_readout_P1": "final_readout",
+    "D_drop_whole_abstentions": "filter_missing",
+    "E_remove_sentence_formatter": "remove_formatter",
+    "F_child_length_fallback": "length_fallback"
+  },
+  "baseline": "B0_legacy_multigrain_R02",
+  "planned_queries": 300,
+  "datasets": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "baseline_sources_sha256": "dc4b5ec3b788506f945b37451145a48df755ad3555470e9971b5e297a3cd1481",
+  "references_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "resources": {
+    "hotpotqa": {
+      "schema_version": 1,
+      "workspace_root": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline",
+      "corpus": {
+        "dataset": "hotpotqa",
+        "document_unit": "one BEIR title+text corpus record = one presegmented local chunk",
+        "documents": 5233329,
+        "manifest": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/manifest.json",
+        "manifest_sha256": "f56f958547cc15dbc1243f39185d85047244db3658cb65cc74636d2915fd9cb5",
+        "queries": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/queries/queries.jsonl",
+        "qrels": {
+          "train": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/qrels/train.tsv"
+        },
+        "chunks": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunks.jsonl",
+        "offsets": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy",
+        "chunks_sha256": "c1b3c7a721f8e9b31615ae1ab8e5a5ce1a0a2d12d6c7c6f0923fa879b85b7dd6"
+      },
+      "identical_id_policy": "request_max_k_plus_1_filter_doc_id_equal_original_query_id_then_keep_max_k",
+      "bm25": {
+        "directory": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b",
+        "manifest_sha256": "4ed27e0c29af9d1a90986ecd3c1618a0d270e07880fc4af7d48b93157cf38dda",
+        "sparse_index_id": "sqlite_bm25_04df51906ff9598b",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      },
+      "dense": {
+        "bge": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b",
+          "build_id": "build_65e9037e4c1eed7b",
+          "manifest_sha256": "ef2dcd84730799b24399ea19ce4ff10ffd27556729fb78a9430948cc240399a1",
+          "embeddings_manifest_sha256": "127376a5563ff08513ca7f55f8dc870c451c6d1c2a184791f4b78133ddaa3ec8",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        },
+        "contriever": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_0ae2963a3d8dbbd8",
+          "build_id": "build_0ae2963a3d8dbbd8",
+          "manifest_sha256": "9d570d2797b78fd821d9193fa0f3aeaaa8e90727c5291d174175c6b736af2811",
+          "embeddings_manifest_sha256": "f07a3f335a695c694eb9cc6b49c767c8d1aeeafd9803fe8ce94377236c2dd019",
+          "query_model": "facebook/contriever",
+          "query_revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--contriever/snapshots/2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_space_text",
+            "document_prefix": "",
+            "encoder_family": "contriever",
+            "max_sequence_length": 512,
+            "model_name": "facebook/contriever",
+            "normalized": false,
+            "pooling": "masked_mean",
+            "revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+            "similarity": "inner_product"
+          }
+        },
+        "dpr": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_e2d1b1d727a8ee45",
+          "build_id": "build_e2d1b1d727a8ee45",
+          "manifest_sha256": "352480f0663de2d1c7d4bf39187e5adcf21fd372265d42b5248d2737f6db8aff",
+          "embeddings_manifest_sha256": "5975ca2979bacd666b9099a52053d34b8d4ead6f501a1cf9b257f58d26f27211",
+          "query_model": "facebook/dpr-question_encoder-multiset-base",
+          "query_revision": "5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--dpr-question_encoder-multiset-base/snapshots/5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_text_pair",
+            "document_prefix": "",
+            "encoder_family": "dpr",
+            "max_sequence_length": 256,
+            "model_name": "facebook/dpr-ctx_encoder-multiset-base",
+            "normalized": false,
+            "pooling": "pooler_output",
+            "revision": "fdb3d46584386d2f20aa00724ae31cebc348d16b",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    },
+    "2wiki": {
+      "corpus": {
+        "dataset": "2wiki",
+        "documents": 430225,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "edb00254897d87e5d966281207d9a20291660ec4d35f561f5fa92436ddeeecbc",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a1d7e50b8a46405735e4076c06ff0109b38ada19f879752be866026c3f1fdfb1",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+          "build_id": "comprehensive_2wiki_global_bge_v1",
+          "manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "embeddings_manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\bm25",
+        "manifest_sha256": "57303882724c3f34ae721c4b8f6c1755f9668cf2a217824eecac4a6b30feb9ad",
+        "sparse_index_id": "sqlite_bm25_b8da8dcd3002b1a2",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    },
+    "musique": {
+      "corpus": {
+        "dataset": "musique",
+        "documents": 139416,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "83c1cc3588ad629866ade7cc8293d0af57c93f7c36471ddb9f54126703e747f9",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a3fcaa2bcffc26746dc4f7ffaae09185b21681b81a93de3152eba904d82c7690",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+          "build_id": "comprehensive_musique_global_bge_v1",
+          "manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "embeddings_manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\bm25",
+        "manifest_sha256": "7db4e8f8ee8904240dd4687151491158a84488eafdae76c4584b82bb4ec4d21e",
+        "sparse_index_id": "sqlite_bm25_d55b72c167fc2357",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "preserved": [
+    "same actual R02/v12 arrays",
+    "original-first dual retrieval and dedupTop10",
+    "original query appended as goal and answered before separate final",
+    "B0 formatter unless factor E",
+    "all originalTop10 plus QA helper at front",
+    "B0 v3 final unless factor C",
+    "rewrite256 child128 formatter128 final64",
+    "no new training or remote job"
+  ],
+  "factor_A_boundary": "C08 instructions/examples/layout, with ALL B0 previous QA preserved. Strip renderer-embedded runtime history filtering to avoid mixing factor D.",
+  "factor_D_boundary": "Use the frozen C08 exact whole-response predicate on B0 outputs, at rewrite/child/final interfaces; keep partial facts and supported No/0/None.",
+  "factor_F_boundary": "Only known child-answer length termination. Preserve B0 completed QA without C08 filtering and use unchanged B0 final prompt; do not include P1.",
+  "offline_baseline_trigger_audit": {
+    "nodes": 887,
+    "triggered_queries": {
+      "D_drop_whole_abstentions": 0,
+      "E_remove_sentence_formatter": 0,
+      "F_child_length_fallback": 0
+    }
+  },
+  "evaluation": "Final native Answer F1 primary. Compare each independent arm with B0 on the SAME common questions; full300 whenever available. Dataset breakdown, paired bootstrap95, gains/ties/losses, final abstentions and cost.",
+  "sample_role": "Previously used frozen300 development/diagnostic cohort; not a fresh holdout and not selected on failures.",
+  "cache": "Baseline own exact-payload successful receipts first, then exact successful cache. Never change existing successes or choose by F1. Inactive factors require complete byte-identical offline replay before reuse.",
+  "execution": {
+    "max_workers": 3,
+    "max_rounds": 4,
+    "retry_eligibility": "Provider connection/timeout or transient HTTP/dispatch only; no retries of scorable answers or known algorithmic truncation.",
+    "retry_identity": "New immutable round namespace and financial liability; old unknown rows/reserves retained. Reuse successful prefix payloads."
+  },
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "dispatch_ceiling_cny": 299.9,
+    "experiment_subcap_cny": 15,
+    "scope": "Existing cumulative project ceiling retained as a conservative limit; not an extra300 allowance."
+  },
+  "source_pins": {
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\PROTOCOL.frozen.json": "a8331bda18b0f7f182d4a52b8f94705c09587d7aaf4d99320beb17a4aa0975fd",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\validate.py": "36fafd0059b2b8a6634e1461604599d52bfe65d34572cf4d168352bab8487c63",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\analyze_interfaces.py": "e9dd5f90c8f488028963bfc7e844725016dce96d27c3eaa68f3fb3bad1c892d0",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\audit.py": "871f026be01a6d62c28cb2d09eb134aa5059404ac5ec765bd7cd03201e39137f",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\final_report.py": "aaea50b9198a722ba66b0c8a2a478de81acadc9c7bb4fd62c81fe4526b05be97",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\fresh.py": "9aea9d0864525516aee0c3e98471048db025d7aa9c6fe9713b23c98cbe1398bb",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\goal_control.py": "dbcb550a4665e9e5e0f2bd5d96308d583e0d02e01072b5fae71624d5e3deae04",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\policy.py": "ba20e6117d5878a0d3cc4cf8f4403ee2368fd82da571cb0e33d04e52e6f9cefe",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\prepare.py": "4bf737d3dff54fe013c2d5661e49fa83218efac5dab8252228a8ba38f68547c1",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\prepare_fresh.py": "c3563ee852b143124a6f189c8368a2f0ef743cecdad4dfa42b4f3e2930143505",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\PROTOCOL.frozen.json": "b26fe98388d8d217f9770aa8878b0c24da31f9f81836bb3c097f88f51e314f32",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\readout_control.py": "381028383777484c9fda8387558a28f5f68f2a720b11a250b508bfa612572488",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\report.py": "842eaeb87382ed40672871da3cf333341dc0787ce6e29b31c180d562603cb405",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\run.py": "f8db900b087f4c37523aa93bb426e83757acf592b1f24edfbe2b20624386fd35",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\score.py": "c23b74263e0a6e768d44428b1820b8a106a77cb6195510ec64f18dc884b5de03",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\score_fresh.py": "d5652dc3ca0ae166037aad64e9f9b7a4fabc53f2743840ad86b813edf0d72a77",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\score_goal.py": "1fa52ce5a00e52a7f5cca9c0556c31a6809a5dbcbbee9918a4a2b6af6dd3c353",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\score_readout.py": "3c622e2735adea499e24d8faee7a3003c7196251e8a6237cfd9bbaaa045d0075",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\SELECTED.frozen.json": "c0d3efbcac6b5eda1e1f5ab4c1b79b738ccfc4d26cb631143eda998c3019c5a6",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\validate.py": "74bed3b44b984eb85db3c9c93c4dac75b81cc6d0820cccb187a401b92cbdb9ba",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\examples.json": "d858014b0fd20d6982f0bf03b944c1b22ffce24aab46b971ac83671f4240de77",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\goal_plan.py": "3216fc56ea1ea9982a22f86e710d8201076271cb2626c70dc955ef85ca1d19c5",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\mechanics.py": "b079049c856d71cf7f4dde6d795b87416f972e6e2eea17a96ff4409ee8dfe85c",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\method.py": "ecabae79b41c70c1545cfc0c51972faf15c62fea5eae0d69a62e075114fcaf2c",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\analyze.py": "1b23cadf8c4dba44ae8a17e653e695352341b81e8f3ce2355682569bb606e6c8",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\candidate_labels.py": "26d13379cc06db2b97713e88ad2904fc394850fc5abdad21a6a3424ed65b9538",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\comparison_criterion.py": "880278a89b690551d4f31b15242766817120c4b25506409a080774d01ece79ce",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\freeze_baseline.py": "1a2c29bce703bfaff1462bc9b670464c92a391596eda504dfcd0235f0416ac36",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\grounded_helper.py": "b8c024f67afc1500b810abf4092322076a2a2295e45f2adb1bf10d83b7c687bf",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\orchestrate.py": "a8e1e019e5cb88cc94de16505ad6ae11663e9408b79b008fd3a0712d60ab768c",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\prompts.py": "cdd4354119ced7c60f86dc5aca5be525d0201a9f9a172009c4af99de9ed8b1f8",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\question_last.py": "ad45c2770c5df8f7f13bf085dc984284b0eae0afa40734d58983ba147330f7df",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\round2_controller.py": "4968329fba605c5ab071c4db64606727d661df1216f8cd75c369fc76268609b1",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\run.py": "8050fdbdac469b7d3f8c8f860226daa6d4a6f03f59f8b04e001fb19e87dbcce0",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\transport_c06.py": "474727d675f4cb4aee84fdf252bac0fac11885525f81ca10e9839dad2dcff7f6",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\transport_c07.py": "a0781f6fee131d66a3f789b13fd168da89923799443aebecf7e4c6b8029eb0a3",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\transport_run.py": "8bb8a08fe252502cfb9d4caa716c302493faca1c357ada6b665f538ac44b6637",
+    "experiments\\query_decomposition\\contextual_auxiliary_rag_v1\\verify.py": "c814b42c5bc6069a04e8a06d728b9004ff61966afab2d71893c2b599a7a9467c",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prepare.py": "46ade5c6f1aaf12d4b76f6189a460e99bcd5d90372fb4f7844e37e72c38b9334",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\report.py": "7e0742827b414263464517a49a18c5ba38d6c20150cde19555457eaabab785a0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\run.py": "3aaede2bc3bd40dac5c5ab91f3ee6796e6d240bea7af5c8501c188d76fea8096",
+    "experiments\\query_decomposition\\rewrite_api_baseline_c02_v1_20261019\\prompts.py": "1d2aebad2a3bc56c2b36c3d2cf14fda6ce8163f883d2d8af908dc3078f0b8752",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round1.py": "e5a3dedf10ca9150a4b4a9e7abb722a32e90a7715a6a67199d12aeea7b3b3788",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round10.py": "d351fd66b440a1acbb1a08ad2bd2d3ad187b03c9a379d9821a587c0662b13bf7",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round2.py": "c0a8ad4ac984f4fb0e3e180774fbe338fac2c1efec6e9695b27efe118a210cb4",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round3.py": "ae5cb3f6925eb42ca65df6da46b854dbd2a151af005731e7c7ffe1e55e180cd8",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round4.py": "703ae3a5dcf91b9ba091b74c5f998db3d746942cb7ed4f6c091382046182c22b",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round5.py": "927dc919f33882e6856d18d136a25b1e3ddaa6e66770bd79ecef4d923bed889c",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round6.py": "bed01870babf97daaa7a95638041b408bee8e128252886524888799690c1ef79",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round7.py": "ddbb9f429b727b22841244a4996c430e89f0f5be39a6b610c2b9d58e1c2b6e6a",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\annotate_round8.py": "b1b3f60597151be91464678840cb53a5f35038ad707dfe4d78ec3d17889513bc",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\anurutha_factor_audit.py": "b720e219f5d4f27abe38d21833d13cac76a965a0e15de9bf64371e794b19bf95",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\audit_quotes.py": "9a50b99ddc3eca9d42fc8563a5233b15feeb43ffba00a923fac355ea1c1ec068",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\audit_round10.py": "eeecdba5317e10e8a4813a2342e2f5e0c41e1eebb5a352074d3e7d1e3446492d",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\baseline_prompts.frozen.py": "fbaca89e88585f175d387b079e8106aa29380a56e628966c2abd6dc48723bafb",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidates.py": "3bb7ed106bf852a45ef337b410b7574376c8cc809b1220d80732d7b0ef60a424",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c03.py": "9d4b7e1e087b07380ed18d10ccb0182253d2758513492d197cd62ae3845e26f9",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c04.py": "229485498783a5c2a9dce72fccb507ff5d742e39a645e720c14f3c8b2eac4890",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c05.py": "095ab93cddf19dce749a267588161d540edb091e8dfc79f82b12f45124a1aed1",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c06.py": "de422c6dfe47d48edbb1ef1c8dc7a45b84cf3e7b69d3e7cfa1823444e8116750",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c07.py": "c749a278dc7015914192bb8c1331fb386ff5c8ba87b23e6b714e89ee4d13cc96",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\candidate_c08.py": "40dec31c5918ad580ef0363ada094dc8a7f4981376e25b7f1cd0dc3100d44f3e",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\check_c08_contract.py": "7fceb9b800906b123d8f7f68c6ccfc7914b415930aa675636a56c3a780e3d431",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\freeze_selected.py": "da6b641b0b43d46c714115b05e79b133686317bbe3ac0d3c89cba936fdc5da02",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\grade_round10.py": "c8035734782cc08eb3dc014e9058dfbdaf6e4d1e2717f0c84d8b4eda876dd740",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\prepare.py": "d94c9936086a0657a177669aff9a03f84dd3de4a6236bdf4f328c47be9dd94f3",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\prepare_round10.py": "90429027cc914296e397b7af0955038f4be490f3e2c08e314ef527af527d6dc2",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\prompts.py": "96ffd91bf3a5a772c9b47c409a97ca3a6e1206a4d9b5fa0f6481e9b487f1d105",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\review.py": "d5fd53fada759416157994678aba22ebc7f16d62040add0a76ca3c941d27e835",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\review_anurutha_factors.py": "042c46e639cd5ca07c3d10e37d8452117d853ccf67e14db6c5334ee0d6d3024c",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\run.py": "a65c5ee10d53b3b4e87563b7f1e052dd053ab8d5d7113268b25da5cf70ffc053",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\run.round1_round2.frozen.py": "f464d94b39b7f29f21d45b08560151bddb08b2fcd49f9a626314b6993fce3d92",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\run.round3.frozen.py": "20b6f282293f35ba4e7797ded18fd0f398b830c4a29a36d27d04f7d7c18916f6",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\stability_audit.py": "d55794669b483db4e2dd807aa65d49c177b7a339078f0245810618a996d8be92",
+    "experiments\\query_decomposition\\child_answer_accuracy_v1_20261017\\summarize.py": "b8ba77e2ef8793cabd6c88a6ce38f1038e029400b90b05e0a818b7a43c683f95",
+    "experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\EVAL300_PROTOCOL.frozen.json": "48d3719f319c65640876c683183dd21b62c23faa47e503155ecdaa2a8f54c65b",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\pipeline.py": "1b16795249029e201453a67a31cffe5a77ab25024e8b2ef17c9694bccb57ac5e",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\prepare.py": "9c616a692f252d51814433edf3884cdfa5f60ec695aa60945d829e52412d5df4",
+    "experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\result_sources300.py": "f2d3c691dccd32c5bbeb1294ff02a2e1fb09bf790ed95ac470c595856014c062"
+  },
+  "parent_mutations": false
+}

@@ -1,0 +1,163 @@
+{
+  "utc": "2026-10-17T08:34:00.512466+00:00",
+  "v8_unchanged": true,
+  "request_attempts": 360,
+  "request_states": {
+    "success": 338,
+    "unknown": 22
+  },
+  "one_attempt_per_request": true,
+  "unknown_requests_replayed": false,
+  "query_only_payloads_passed": true,
+  "frozen_split_no_overlap": true,
+  "holdout_tuning": false,
+  "trained_model_or_frozen_RAG_changed": false,
+  "review_type": "same-context Codex authored review, nonblind, not independent human gold",
+  "candidate": "v11",
+  "target_met_holdout": false,
+  "study_estimated_cny": 0.1891716,
+  "study_unknown_reserved_cny": 0.10369919999999999,
+  "global_estimated_cny": 147.6172416,
+  "global_unknown_reserved_cny": 20.2583352,
+  "actual_bill_verified": false,
+  "observations": {
+    "dev": {
+      "v8": {
+        "failures": 20,
+        "failed_checks_overlapping": {
+          "F": 10,
+          "S": 8,
+          "C": 5,
+          "U": 3
+        },
+        "mean_questions_returned": 2.326923076923077,
+        "prompt_utf8_bytes": 3987
+      },
+      "v10": {
+        "failures": 20,
+        "failed_checks_overlapping": {
+          "F": 9,
+          "S": 12,
+          "C": 2,
+          "U": 4
+        },
+        "mean_questions_returned": 2.5535714285714284,
+        "prompt_utf8_bytes": 2065,
+        "common_with_v8": {
+          "n": 50,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 10,
+              "S": 8,
+              "C": 4,
+              "U": 3
+            },
+            "v10": {
+              "F": 9,
+              "S": 12,
+              "C": 2,
+              "U": 4
+            }
+          }
+        }
+      },
+      "v11": {
+        "failures": 14,
+        "failed_checks_overlapping": {
+          "F": 5,
+          "S": 5,
+          "C": 2,
+          "U": 3
+        },
+        "mean_questions_returned": 2.4285714285714284,
+        "prompt_utf8_bytes": 2412,
+        "common_with_v8": {
+          "n": 48,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 7,
+              "S": 6,
+              "C": 4,
+              "U": 3
+            },
+            "v11": {
+              "F": 5,
+              "S": 5,
+              "C": 2,
+              "U": 3
+            }
+          }
+        }
+      },
+      "v12": {
+        "failures": 15,
+        "failed_checks_overlapping": {
+          "F": 5,
+          "S": 4,
+          "C": 2,
+          "U": 6
+        },
+        "mean_questions_returned": 2.642857142857143,
+        "prompt_utf8_bytes": 2379,
+        "common_with_v8": {
+          "n": 51,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 9,
+              "S": 8,
+              "C": 5,
+              "U": 3
+            },
+            "v12": {
+              "F": 5,
+              "S": 4,
+              "C": 2,
+              "U": 6
+            }
+          }
+        }
+      }
+    },
+    "holdout": {
+      "v8": {
+        "failures": 17,
+        "failed_checks_overlapping": {
+          "F": 9,
+          "S": 3,
+          "C": 7,
+          "U": 2
+        },
+        "mean_questions_returned": 2.3220338983050848,
+        "prompt_utf8_bytes": 3987
+      },
+      "v11": {
+        "failures": 17,
+        "failed_checks_overlapping": {
+          "F": 6,
+          "S": 11,
+          "C": 5,
+          "U": 2
+        },
+        "mean_questions_returned": 2.4237288135593222,
+        "prompt_utf8_bytes": 2412,
+        "common_with_v8": {
+          "n": 58,
+          "failed_checks_overlapping": {
+            "v8": {
+              "F": 8,
+              "S": 3,
+              "C": 7,
+              "U": 2
+            },
+            "v11": {
+              "F": 6,
+              "S": 11,
+              "C": 5,
+              "U": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

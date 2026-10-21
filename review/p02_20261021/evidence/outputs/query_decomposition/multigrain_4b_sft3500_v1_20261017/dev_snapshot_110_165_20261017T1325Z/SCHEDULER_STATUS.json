@@ -1,0 +1,126 @@
+{
+  "checked_utc": "2026-10-17T13:25:28.696756+00:00",
+  "job_id": "153978",
+  "revision": "v003_exact_v12",
+  "queue": "JOBID NAME STATE TIME TIME_LIMIT NODELIST(REASON)\n153979 rewrite-sft-role-short-v1 PENDING 0:00 1:00:00 (Resources)\n153984 rewrite-role-short-score PENDING 0:00 10:00 (Dependency)\n153978 multigrain-v12-sft3500 RUNNING 1:12:49 4:00:00 weirdo\n",
+  "accounting": "153978|RUNNING|01:12:49|0:0\n153978.batch|RUNNING|01:12:49|0:0\n153978.extern|RUNNING|01:12:49|0:0\n153978.0|RUNNING|01:12:45|0:0\n",
+  "smoke_verified": true,
+  "train_metrics_present": true,
+  "api_calls": 0,
+  "train_LATEST_CHECKPOINT.json": {
+    "checkpoint": "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/results/train/checkpoints/checkpoint-000165",
+    "global_step": 165
+  },
+  "train_metrics.jsonl": {
+    "rows": 169,
+    "first": {
+      "actual_examples": 32,
+      "consumed_examples": 32,
+      "epoch": 1,
+      "gradient_norm": 7.011782646179199,
+      "learning_rate": 1e-05,
+      "loss": 1.6541752388995872,
+      "seconds": 20.012023402843624,
+      "step": 1
+    },
+    "last": [
+      {
+        "actual_examples": 32,
+        "consumed_examples": 5324,
+        "epoch": 2,
+        "gradient_norm": 0.40391412377357483,
+        "learning_rate": 5.125e-05,
+        "loss": 0.08628213030836747,
+        "seconds": 19.066753641003743,
+        "step": 167
+      },
+      {
+        "actual_examples": 32,
+        "consumed_examples": 5356,
+        "epoch": 2,
+        "gradient_norm": 0.40052926540374756,
+        "learning_rate": 5.0937500000000005e-05,
+        "loss": 0.0775911214760384,
+        "seconds": 19.09299025288783,
+        "step": 168
+      },
+      {
+        "actual_examples": 32,
+        "consumed_examples": 5388,
+        "epoch": 2,
+        "gradient_norm": 0.8011439442634583,
+        "learning_rate": 5.0625e-05,
+        "loss": 0.14750670599873886,
+        "seconds": 19.09286627289839,
+        "step": 169
+      }
+    ]
+  },
+  "train_validation.jsonl": {
+    "rows": 3,
+    "all": [
+      {
+        "bad_checks": 0,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.16345772261238564,
+          "target_tokens": 4038
+        },
+        "gap": 0.01757861737542618,
+        "step": 55,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.14587910523695946,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "bad_checks": 0,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.15832024649575285,
+          "target_tokens": 4038
+        },
+        "gap": 0.05647391261536755,
+        "step": 110,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.1018463338803853,
+          "target_tokens": 4462
+        }
+      },
+      {
+        "bad_checks": 1,
+        "dev": {
+          "examples": 150,
+          "target_token_loss": 0.18288240893709173,
+          "target_tokens": 4038
+        },
+        "gap": 0.10453954372338709,
+        "step": 165,
+        "train_probe": {
+          "examples": 150,
+          "target_token_loss": 0.07834286521370465,
+          "target_tokens": 4462
+        }
+      }
+    ]
+  },
+  "dev_predictions": [
+    {
+      "checkpoint": "checkpoint-000110",
+      "cases": 150
+    },
+    {
+      "checkpoint": "checkpoint-000165",
+      "cases": 150
+    }
+  ],
+  "checkpoints": [
+    "checkpoint-000055",
+    "checkpoint-000110",
+    "checkpoint-000165"
+  ],
+  "log_out": "{\"step\": 162, \"epoch\": 2, \"examples\": 32, \"loss\": 0.08806534489345051}\n{\"step\": 163, \"epoch\": 2, \"examples\": 32, \"loss\": 0.07606656488934371}\n{\"step\": 164, \"epoch\": 2, \"examples\": 32, \"loss\": 0.07330271714751936}\n{\"step\": 165, \"epoch\": 2, \"examples\": 32, \"loss\": 0.0580952303519161}\n{\"step\": 166, \"epoch\": 2, \"examples\": 32, \"loss\": 0.09350917369582243}\n{\"step\": 167, \"epoch\": 2, \"examples\": 32, \"loss\": 0.08628213030836747}\n{\"step\": 168, \"epoch\": 2, \"examples\": 32, \"loss\": 0.0775911214760384}\n{\"step\": 169, \"epoch\": 2, \"examples\": 32, \"loss\": 0.14750670599873886}",
+  "log_err": "Loading weights:  99%|█████████▉| 396/398 [00:00<00:00, 2065.98it/s, Materializing param=model.layers.35.self_attn.q_proj.weight]\nLoading weights:  99%|█████████▉| 396/398 [00:00<00:00, 2065.98it/s, Materializing param=model.layers.35.self_attn.q_proj.weight]\nLoading weights: 100%|█████████▉| 397/398 [00:00<00:00, 2065.98it/s, Materializing param=model.layers.35.self_attn.v_proj.weight]\nLoading weights: 100%|█████████▉| 397/398 [00:00<00:00, 2065.98it/s, Materializing param=model.layers.35.self_attn.v_proj.weight]\nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2065.98it/s, Materializing param=model.norm.weight]                      \nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2065.98it/s, Materializing param=model.norm.weight]\nLoading weights: 100%|██████████| 398/398 [00:00<00:00, 2083.22it/s, Materializing param=model.norm.weight]\nThe following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details."
+}

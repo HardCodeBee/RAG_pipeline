@@ -1,0 +1,317 @@
+原v2失败及不确定的12题：真实query、完整输出与逐版本审阅
+
+所有判断均为同一非盲Codex上下文初审；没有读取标准答案、支持文档或下游F1。
+保留网络缺失，不补写模型分解；按同一四项语义口径对照。
+
+1. hotpotqa | 5ae1f079554299234fd04343
+原始query：
+Which county located in the commonwealth of Kentucky is Kentucky Route 393 (KY 393) a state highway in
+
+v2：fail
+原始模型输出：
+["Which county is located in the commonwealth of Kentucky?", "In which county is Kentucky Route 393 (KY 393) a state highway?"]
+逐题判断：新增Which county is located in the commonwealth of Kentucky?没有限定到目标公路，也未明确询问完整候选集合；它没有独立的必要支持用途。
+
+v3：fail
+原始模型输出：
+["Which county is located in the commonwealth of Kentucky?", "In which county is Kentucky Route 393 (KY 393) a state highway?"]
+逐题判断：仍新增未限定到目标公路的Which county is located in Kentucky?，没有独立支持用途。
+
+v4：fail
+原始模型输出：
+["Which county is located in the commonwealth of Kentucky?", "In which county is Kentucky Route 393 (KY 393) a state highway?"]
+逐题判断：仍新增未限定到目标公路的Which county is located in Kentucky?，没有独立支持用途。
+
+v5：fail
+原始模型输出：
+["Which county is located in the commonwealth of Kentucky?", "In which county is Kentucky Route 393 (KY 393) a state highway?"]
+逐题判断：仍新增未限定到目标公路的Which county is located in Kentucky?，没有独立支持用途。
+
+============================================================
+
+2. hotpotqa | 5ae33c4d5542992f92d82262
+原始query：
+Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?
+
+v2：uncertain
+原始模型输出：
+["Who was the former Governor of Arkansas under whom Robert Suettinger served as national intelligence officer?"]
+逐题判断：只有原题的语法改述，没有较简短的任职对象或职位支持问题。原题可被视作带限定的局部人物关系，也可展开任职对象与曾任州长的条件，覆盖判为不确定。
+
+v3：uncertain
+原始模型输出：
+["Who was the former Governor of Arkansas under whom Robert Suettinger served as national intelligence officer?"]
+逐题判断：仍只有原题改述，保留v2关于局部限定关系与有用中间分解边界的不确定判定。
+
+v4：uncertain
+原始模型输出：
+["Who was the former Governor of Arkansas under whom Robert Suettinger served as national intelligence officer?"]
+逐题判断：仍只有原题改述，保留v2关于局部限定关系与有用中间分解边界的不确定判定。
+
+v5：uncertain
+原始模型输出：
+["Who was the former Governor of Arkansas under whom Robert Suettinger served as national intelligence officer?"]
+逐题判断：仍只有原题改述，保留v2关于局部限定关系与有用中间分解边界的不确定判定。
+
+============================================================
+
+3. hotpotqa | 5abf0bf95542997719eab63a
+原始query：
+José Rubia Barcia  published a great number of books and articles on a Spanish poet, playwright, and what?
+
+v2：fail
+原始模型输出：
+["Who is the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?", "What other professional or creative role, besides poet and playwright, is associated with that Spanish figure?"]
+逐题判断：第二题只写that Spanish figure，没有姓名或与José Rubia Barcia的关系，无法独立识别对象。
+
+v3：pass
+原始模型输出：
+["Who is the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?", "What other professional or creative role, besides poet and playwright, is associated with the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?"]
+逐题判断：第二题完整重复José Rubia Barcia研究的西班牙诗人和剧作家描述，修复that Spanish figure。
+
+v4：fail
+原始模型输出：
+["Who is the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?", "What other profession or role, besides poet and playwright, is associated with that Spanish poet and playwright?"]
+逐题判断：第二题再次只写that Spanish poet and playwright，未保留José Rubia Barcia及其出版作品关系，不能独立识别对象。
+
+v5：pass
+原始模型输出：
+["Who is the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?", "What other profession or role, besides poet and playwright, is associated with the Spanish poet and playwright that José Rubia Barcia published a great number of books and articles on?"]
+逐题判断：第二题保留完整José Rubia Barcia及其研究对象描述，不再只用that Spanish figure。
+
+============================================================
+
+4. 2wiki | c51148bc0bdb11eba7f7acde48001122
+原始query：
+What nationality is Gevherhan Sultan (Daughter Of Selim Ii)'s father?
+
+v2：fail
+原始模型输出：
+["Who is Gevherhan Sultan's father?", "What is the nationality of Gevherhan Sultan's father?"]
+逐题判断：原题括号已给父亲身份，仍重复询问父亲。两题还省略原始标题消歧，记录为风险，不把Selim II当作外部事实。
+
+v3：fail
+原始模型输出：
+["Who is Gevherhan Sultan's father?", "What nationality is the father of Gevherhan Sultan (Daughter Of Selim II)?"]
+逐题判断：第二题保留父亲关系的完整消歧，但第一题仍重复查询括号已给出的父亲身份。
+
+v4：fail
+原始模型输出：
+["Who is Gevherhan Sultan's father?", "What nationality is the father of Gevherhan Sultan (Daughter Of Selim II)?"]
+逐题判断：第二题保留父亲关系的完整消歧，但第一题仍重复查询括号已给出的父亲身份。
+
+v5：fail
+原始模型输出：
+["Who is Gevherhan Sultan's father?", "What nationality is the father of Gevherhan Sultan, who is the daughter of Selim II?"]
+逐题判断：第二题保留父亲关系的完整消歧，但第一题仍重复查询括号已给出的父亲身份。
+
+============================================================
+
+5. musique | 3hop1__540585_568433_51423
+原始query：
+What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?
+
+v2：fail
+原始模型输出：
+["What is the production company of Miss Spider's Sunny Patch Kids?", "In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?", "What is the name of the castle in that city?"]
+逐题判断：最后一题用that city指代前题所得城市，没有在该题内给出完整定位描述。
+
+v3：pass
+原始模型输出：
+["What is the production company of Miss Spider's Sunny Patch Kids?", "In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?", "What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?"]
+逐题判断：最后一题完整保留制作公司、总部和城市链，修复that city。
+
+v4：pass
+原始模型输出：
+["What is the production company of Miss Spider's Sunny Patch Kids?", "In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?", "What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?"]
+逐题判断：最后一题完整保留制作公司、总部和城市链，修复that city。
+
+v5：pass
+原始模型输出：
+["Which production company produced Miss Spider's Sunny Patch Kids?", "In which city is the headquarters of the production company of Miss Spider's Sunny Patch Kids located?", "What is the name of the castle in the city where the headquarters of the production company of Miss Spider's Sunny Patch Kids is located?"]
+逐题判断：制作公司、总部城市及该城市城堡三层均保留完整作品描述。
+
+============================================================
+
+6. hotpotqa | 5a8333115542993344745feb
+原始query：
+What summit is located in the county who's county seat is Helena?
+
+v2：fail
+原始模型输出：
+["What is the county seat of the county that contains Helena?", "Which county has Helena as its county seat?", "What summit is located in the county that has Helena as its county seat?"]
+逐题判断：新增询问包含Helena的县之县治，方向与所需县身份不同，且原题已给Helena是县治；后两题已有所需信息，第一题冗余。
+
+v3：fail
+原始模型输出：
+["What is the county seat of the county containing the summit?", "Which county has Helena as its county seat?", "What summit is located in the county whose county seat is Helena?"]
+逐题判断：新增county containing the summit没有识别summit的描述，且询问县治没有提供未知县身份；其余两题虽正确，首题仍无用且未锚定。
+
+v4：fail
+原始模型输出：
+["What is the county seat of the county containing the summit?", "Which county has Helena as its county seat?", "What summit is located in the county whose county seat is Helena?"]
+逐题判断：新增county containing the summit没有识别summit的描述，且询问县治没有提供未知县身份；其余两题虽正确，首题仍无用且未锚定。
+
+v5：pass
+原始模型输出：
+["Which county has Helena as its county seat?", "What summit is located in the county whose county seat is Helena?"]
+逐题判断：仅询问以Helena为县治的未知县，再用完整县描述询问山峰；移除已给县治的重复查询与未锚定summit。
+
+============================================================
+
+7. musique | 3hop1__483634_720378_15538
+原始query：
+When was the death penalty reinstated in the state that contains the county where Howard Mill is located?
+
+v2：fail
+原始模型输出：
+["Where is Howard Mill located?", "Which county contains Howard Mill?", "Which state contains the county where Howard Mill is located?", "When was the death penalty reinstated in that state?"]
+逐题判断：最后一题仍用that state依赖前题，运行示例没有消除此问题。
+
+v3：pass
+原始模型输出：
+["What is the location of Howard Mill?", "Which county contains Howard Mill?", "Which state contains the county where Howard Mill is located?", "When was the death penalty reinstated in the state that contains the county where Howard Mill is located?"]
+逐题判断：最后一题保留Howard Mill到县到州的完整描述，修复that state。
+
+v4：pass
+原始模型输出：
+["What is the location of Howard Mill?", "Which county contains Howard Mill?", "Which state contains the county where Howard Mill is located?", "When was the death penalty reinstated in the state that contains the county where Howard Mill is located?"]
+逐题判断：最后一题保留Howard Mill到县到州的完整描述，修复that state。
+
+v5：pass
+原始模型输出：
+["Which county contains Howard Mill?", "Which state contains the county where Howard Mill is located?", "When was the death penalty reinstated in the state that contains the county where Howard Mill is located?"]
+逐题判断：县、州及恢复死刑时间三题均保留完整Howard Mill描述；还移除了较泛化的Where问题，但不把这一缩短单独算作通过增益。
+
+============================================================
+
+8. musique | 3hop1__51933_40769_64047
+原始query：
+When did the luxury division of the largest auto company in the world change the body style of the rx 350?
+
+v2：uncertain
+原始模型输出：
+["What is the largest auto company in the world?", "Which company owns the luxury division that makes the RX 350?", "What is the body style of the RX 350?", "When did the RX 350 change its body style?"]
+逐题判断：豪华部门身份仍未明确展开，新增车身样式问题是否帮助确定改款日期不确定；RX 350已在原题给出，不能要求所有桥接必须逐边展开。
+
+v3：fail
+原始模型输出：
+["What is the largest auto company in the world?", "What is the luxury division of the largest auto company in the world?", "What is the rx 350?", "When did the luxury division of the largest auto company in the world change the body style of the rx 350?"]
+逐题判断：公司和豪华部门身份已明确请求，但What is the rx 350?是对已命名目标的泛化身份问题，没有明确的改款日期支持用途；不确定性转为这一具体冗余失败，不靠强制逐边拆分评分。
+
+v4：uncertain
+原始模型输出：
+["What is the largest auto company in the world?", "Which auto company has a luxury division that produces the RX 350?", "What is the body style of the RX 350?", "When did the luxury division of the largest auto company in the world change the body style of the RX 350?"]
+逐题判断：恢复为询问汽车公司而非豪华部门身份，并询问泛化车身样式。与冻结v2同类：RX 350已经明确，可直接补查日期，必要桥接及静态样式用途不确定，不强制逐边拆分。
+
+v5：fail
+原始模型输出：
+["What is the largest auto company in the world?", "Which luxury division belongs to the largest auto company in the world?", "Which vehicle is the rx 350?", "When did the luxury division of the largest auto company in the world change the body style of the rx 350?"]
+逐题判断：公司及豪华部门身份已请求，但Which vehicle is the rx 350?仍是对已命名目标的泛化识别问题，未说明额外信息如何帮助改款日期；与v3泛化What is RX350采用同一用途口径。
+
+============================================================
+
+9. 2wiki | 6a8a71280bb011ebab90acde48001122
+原始query：
+Who is the uncle of John Kennedy, 2Nd Lord Kennedy?
+
+v2：fail
+原始模型输出：
+["Who is John Kennedy, 2nd Lord Kennedy?", "Who is the uncle of John Kennedy, 2nd Lord Kennedy?"]
+逐题判断：Who is John Kennedy...是对已指定人物的泛化身份问题，没有独立必要用途；后题只是原题。
+
+v3：fail
+原始模型输出：
+["Who is John Kennedy, 2nd Lord Kennedy?", "Who is the uncle of John Kennedy, 2nd Lord Kennedy?"]
+逐题判断：仍询问已命名人物的泛化身份，随后只重复uncle原题。
+
+v4：fail
+原始模型输出：
+["Who is John Kennedy, 2nd Lord Kennedy?", "Who is the uncle of John Kennedy, 2nd Lord Kennedy?"]
+逐题判断：仍询问已命名人物的泛化身份，随后只重复uncle原题。
+
+v5：fail
+原始模型输出：
+["Who is the father of John Kennedy, 2nd Lord Kennedy?", "Who is the brother of the father of John Kennedy, 2nd Lord Kennedy?"]
+逐题判断：把未限定父系/母系的uncle展开成父亲的兄弟，加入原题未给的父系路径。这是从无用身份题转成关系语义错误，不能因问题更具体而当作修复。
+
+============================================================
+
+10. musique | 4hop2__567956_14670_8987_8529
+原始query：
+Normalization occurred in Country A that invaded Country B because the military branch that Air Defense Artillery is part of was unprepared. when was the word "Slavs" used in the national anthem of Country B?
+
+v2：fail
+原始模型输出：
+["Which country is Country A?", "Which country is Country B?", "What is the national anthem of Country B?", "When was the word 'Slavs' used in the national anthem of Country B?"]
+逐题判断：Which country is Country A/B?没有任何关系限定，其他问题也只用未绑定的Country B；缺少可独立执行的国家定位问题。
+
+v3：fail
+原始模型输出：
+["Which country is Country A?", "Which country is Country B?", "Which military branch is Air Defense Artillery part of?", "When was the word \"Slavs\" used in the national anthem of Country B?"]
+逐题判断：Country A/B仍裸用，没有附带原题关系定义，无法在单题中识别国家；增加军种问题不能补足国家绑定。
+
+v4：fail
+原始模型输出：
+["Which country is Country A?", "Which country is Country B?", "Which military branch is Air Defense Artillery part of?", "When was the word \"Slavs\" used in the national anthem of Country B?"]
+逐题判断：Country A/B仍裸用，没有附带原题关系定义，无法在单题中识别国家；增加军种问题不能补足国家绑定。
+
+v5：unavailable
+原始模型输出：
+[无完整模型回答；状态不明请求保留，未重发]
+逐题判断：APIConnectionError，未收到完整输出；不能判断新增角色变量示例是否修复Country A/B，保留分母与预留。
+
+============================================================
+
+11. musique | 4hop2__71753_648517_70784_79935
+原始query：
+When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?
+
+v2：fail
+原始模型输出：
+["What region is immediately north of the region where Israel is located?", "Where is the Battle of Qurah and Umm al Maradim located?", "When was the region identified in answer to the first question created?", "When was the location identified in answer to the second question created?"]
+逐题判断：使用identified in answer to the first/second question，明确依赖其他问题；原题后半句歧义保留，未靠背景事实解决。
+
+v3：pass
+原始模型输出：
+["What is the region immediately north of the region where Israel is located?", "What is the location of the Battle of Qurah and Umm al Maradim?", "When was the region immediately north of the region where Israel is located created?", "When was the location of the Battle of Qurah and Umm al Maradim created?"]
+逐题判断：地区和战役地点以及创建时间问题均保留完整描述，不再引用first/second answer。原题两地关系歧义仍保留，未用外部事实强行统一。
+
+v4：pass
+原始模型输出：
+["What is the region where Israel is located?", "What region is immediately north of the region where Israel is located?", "Where is the Battle of Qurah and Umm al Maradim located?", "What region contains the location of the Battle of Qurah and Umm al Maradim?", "When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?"]
+逐题判断：请求Israel所在区域、其北方区域、战役地点及所在区域，最后保留原题创建时间需求。没有跨题指代，没有用外部事实消解原题两地点关系的歧义。
+
+v5：pass
+原始模型输出：
+["Which region is immediately north of the region where Israel is located?", "Where is the Battle of Qurah and Umm al Maradim located?", "When was the region immediately north of the region where Israel is located and the location of the Battle of Qurah and Umm al Maradim created?"]
+逐题判断：区域及战役地点均独立描述，末题保留原题创建时间需求和原始关系歧义，没有跨题指代。
+
+============================================================
+
+12. musique | 4hop1__151650_5274_458768_33637
+原始query：
+How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?
+
+v2：fail
+原始模型输出：
+["What is the name of the record label of Desde El Principio?", "Which group is larger than that record label?", "Where is the headquarters of that larger group located?", "How many ethnic minorities were looked at differently in that city?"]
+逐题判断：that record label、that larger group、that city均需前题；only这一限定也在较大集团问题中丢失。
+
+v3：fail
+原始模型输出：
+["What is the name of the record label that is larger than Desde El Principio's record label?", "What is the only group larger than Desde El Principio's record label?", "Where is the headquarters of the only group larger than Desde El Principio's record label located?", "How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?"]
+逐题判断：后面三题不再用that指代且保留only，但首题把所求较大group限定成另一家record label，加入未给的实体类型限制并造成无用分支。
+
+v4：pass
+原始模型输出：
+["What is the name of the only group larger than Desde El Principio's record label?", "What is the name of the record label of Desde El Principio?", "Where is the headquarters of the only group larger than Desde El Principio's record label located?", "How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?"]
+逐题判断：请求较大group与唱片公司身份以及完整总部城市描述，不再把group限定为record label，并保留only。先中等粒度再浅层的排序记录为执行效率风险，不当作语义失败。
+
+v5：fail
+原始模型输出：
+["What is the name of the record label of Desde El Principio?", "Which group is larger than Desde El Principio's record label?", "What is the only group larger than Desde El Principio's record label?", "Where is the headquarters of the only group larger than Desde El Principio's record label located?", "In which city is the headquarters of the only group larger than Desde El Principio's record label located?", "How many ethnic minorities were looked at differently in the city where the headquarters of the only group larger than Desde El Principio's record label is located?"]
+逐题判断：所有问题均自包含且保留only，但Which group is larger...和What is the only group larger...是重复支持需求，另外总部所在地与总部城市也有重叠。没有将更长更细自动当作更好。
+
+============================================================
+

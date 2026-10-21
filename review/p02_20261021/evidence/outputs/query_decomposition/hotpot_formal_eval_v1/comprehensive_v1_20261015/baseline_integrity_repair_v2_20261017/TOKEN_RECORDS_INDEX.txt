@@ -1,0 +1,17 @@
+逐题Token记录定位与含义
+
+主评估：main/<dataset>/<dev或formal>/<method>/<原配置id>/per_query_tokens.jsonl
+等最大25篇次检索预算对照：matched25/2wiki/<dev或formal>/<method>/<配置id>/per_query_tokens.jsonl
+
+每行对应一道原问题。question为原题，qid用于连接原结果。generation_calls列出各个子阶段和最终阶段的真实服务usage、结束原因、原调用上限和响应来源；new_submission_attempts列出本次新请求（含重试），未知usage不作0处理。
+logical_total_tokens包含复用和本次调用的逻辑用量；new_returned_total_tokens只计算本次实际新尝试中已返回usage的用量。两者不能相加。
+dense_queries列出各检索表达的完整BGE token数及全部分段；rerank_pairs列出各候选文档对的完整token数及处理分段。它们使用不同模型的tokenizer，不能和LLM的provider usage混加为同一种token。
+
+TOKEN_AUDIT.json是每组完整性检查，passed必须为true。CONFIG_FROZEN.json保留执行配置与输入/源码版本；CHANGELOG.txt解释各项改动；METHOD_CHANGES.diff和TRANSPORT_CHANGES.diff保留差异；changes.jsonl记录决策、检查和运行事件。
+
+已产生的记录（其余随评估继续产生）：
+main\2wiki\dev\b00_rag_top10_v1\fixed\per_query_tokens.jsonl
+main\2wiki\dev\b01_rag_top10_cot3\fixed\per_query_tokens.jsonl
+main\2wiki\dev\b02_selfask_dense\k10_s5\per_query_tokens.jsonl
+main\2wiki\dev\b03_react_dense\k10_s5\per_query_tokens.jsonl
+main\2wiki\dev\b04_ircot_bge\k6\per_query_tokens.jsonl

@@ -1,0 +1,31 @@
+--- v11
++++ v12
+@@ -1,17 +1,18 @@
+-Extract useful prerequisite questions from the input. Output only a JSON array of questions in the input's language, without answers. The original question will be retrieved and answered separately.
++Return only a JSON array of useful supporting questions in the input's language. Do not answer them. The program separately retrieves and answers the original question.
+ 
+-Build each question directly from the ORIGINAL input, not from another generated question:
+-1. Identify descriptions of unknown intermediate objects. Work from inner to outer descriptions, keeping useful bridge levels. In comparisons, intersections or other combinations, also expose the exact facts needed for each operand. A named object needs no generic identity lookup; facts explicitly supplied need no lookup.
+-2. Turn each needed description or fact into a question. Reuse the input's relation words and keep their direction, modifiers, time, negation and scope. Do not substitute a related property, infer a person's gender, or guess an intermediate answer. Preserve ambiguity rather than resolving it from memory.
+-3. Make the question understandable with BOTH the original input and all other items hidden. Copy the object's full identifying description into this item, recursively including its unknown objects. Expand input pronouns and labels to their input-grounded descriptions. Do not replace descriptions with assumed answers.
++Extract questions rather than write a solution chain. Use these two operations:
++- For nested descriptions, ask for each unknown intermediate object, from the inside out. Keep useful shallow and deeper levels even when a shallower object is still described inside a deeper question.
++- For a comparison, intersection, Boolean combination or calculation, ask for the exact property or condition needed for each operand.
+ 
+-The list supports the original task; it need not finish it. Do not append a final question just to finish. An original-equivalent question may remain if naturally produced. Omit duplicates and unrelated questions. Return [] only if no useful intermediate object or operand fact needs resolving.
++Construct EVERY item directly from the original wording: copy the object's entire identifying description, including its nested relations and disambiguators, then change only what is needed to ask the question. Each item will be searched alone with the original and other items hidden. Expand pronouns or labels to their input descriptions, never to assumed answers. Preserve relation direction, modifier attachment, time, negation, exclusions and ambiguity; do not add types, gender, conditions or related-property substitutes.
+ 
+-Input: What is the population of the city where the brother of the author of Book R was born?
+-Output: ["Who wrote Book R?", "Who is the brother of the author of Book R?", "In which city was the brother of the author of Book R born?"]
++Ask for prerequisites, not for the original target just to complete the list. An original-equivalent question is allowed only if it naturally arises from a supporting operation above; otherwise omit it. Do not query already supplied facts, generic identities, unrelated attributes or duplicate needs. If neither operation exposes a useful prerequisite, return [].
+ 
+-Input: Which film has the director born first, Film A or Film B?
+-Output: ["Who directed Film A?", "Who directed Film B?", "When was the director of Film A born?", "When was the director of Film B born?"]
++Input: What is the population of the capital of the country where the author of Book R was born?
++Output: ["Who wrote Book R?", "Where was the author of Book R born?", "Which country contains the birthplace of the author of Book R?", "What is the capital of the country where the author of Book R was born?"]
++
++Input: Who owns the company where the composer of Song S works?
++Output: ["Who composed Song S?", "Which company does the composer of Song S work for?"]
+ 
+ Input: Are Arin and Bo both American singers?
+ Output: ["Is Arin an American singer?", "Is Bo an American singer?"]

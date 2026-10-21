@@ -1,0 +1,135 @@
+{
+  "13": {
+    "query": "Elisabeth Christine of Brunswick-Wolfenbüttel's spouse had the same title as Henry's ally and belonged to a certain family. Who is the father of Matilda from that same family?",
+    "id": "musique:4hop2__209582_13954_836568_124496",
+    "baseline": [
+      "Who was Elisabeth Christine of Brunswick-Wolfenbüttel's spouse?",
+      "Who was Henry's ally?",
+      "What family did Henry's ally belong to?"
+    ],
+    "candidate": [
+      "Who was Elisabeth Christine of Brunswick-Wolfenbüttel's spouse?",
+      "Who was Henry's ally?",
+      "What family did Henry's ally belong to?"
+    ],
+    "candidate_verdict": "fail",
+    "reason": "Identical question array: inherit locked baseline. Same title does not imply same family: asks Henrys allys family instead of Elisabeth Christines spouses family, leaving the intended family unresolved."
+  },
+  "19": {
+    "query": "What is the birthplace of the first president of the school where Yoshio Fukuyama studied or worked?",
+    "id": "musique:3hop1__123388_41483_600324",
+    "baseline": [
+      "What school did Yoshio Fukuyama study or work at?",
+      "Who was the first president of the school where Yoshio Fukuyama studied or worked?"
+    ],
+    "candidate": [
+      "Where did Yoshio Fukuyama study or work?",
+      "Who was the first president of the place where Yoshio Fukuyama studied or worked?"
+    ],
+    "candidate_verdict": "fail",
+    "reason": "Replaces the specified school with an unspecified study/work place, which could be another location or organization for the president relation."
+  },
+  "55": {
+    "query": "What is the sea that the river that is the mouth of the Chandalar empties into, named after?",
+    "id": "musique:3hop1__735542_216091_135373",
+    "baseline": [
+      "What river has the Chandalar as its mouth?",
+      "What sea does the river whose mouth is the Chandalar empty into?"
+    ],
+    "candidate": [
+      "What river empties into the sea whose mouth is the Chandalar?",
+      "What sea does the river whose mouth is the Chandalar empty into?"
+    ],
+    "candidate_verdict": "fail",
+    "reason": "Now gives the sea a Chandalar mouth in the first item; second still reverses the intended river/mouth relation."
+  },
+  "57": {
+    "query": "Which plant has more species, Hydrangea or Abrus?",
+    "id": "hotpotqa:5adc6c4c5542994650320ce0",
+    "baseline": [
+      "How many species are in the plant genus Hydrangea?",
+      "How many species are in the plant genus Abrus?"
+    ],
+    "candidate": [
+      "How many species are in Hydrangea?",
+      "How many species are in Abrus?"
+    ],
+    "candidate_verdict": "pass",
+    "reason": "Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted."
+  },
+  "88": {
+    "query": "What is the mouth of the watercourse of the river in which Brown recovered the duckbill skull?",
+    "id": "musique:2hop__161339_436196",
+    "baseline": [
+      "What river did Brown recover a duckbill skull from?",
+      "What watercourse is in the river from which Brown recovered a duckbill skull?"
+    ],
+    "candidate": [
+      "In which river did Brown recover the duckbill skull?",
+      "What is the watercourse of the river in which Brown recovered the duckbill skull?"
+    ],
+    "candidate_verdict": "pass",
+    "reason": "Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted."
+  },
+  "90": {
+    "query": "Which show that premiered in May 2011 is hosted by someone with the birth name Richard Kirschner?",
+    "id": "hotpotqa:5a712af15542994082a3e614",
+    "baseline": [
+      "What shows premiered in May 2011?",
+      "Who hosts each show that premiered in May 2011?"
+    ],
+    "candidate": [
+      "Who has the birth name Richard Kirschner?",
+      "What shows premiered in May 2011?"
+    ],
+    "candidate_verdict": "pass",
+    "reason": "Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted."
+  },
+  "92": {
+    "query": "What city has had an NFL football team with the same name as a Los Angeles NFL team?",
+    "id": "hotpotqa:5ab7fd6b5542990e739ec7b5",
+    "baseline": [
+      "What is the name of the Los Angeles NFL team?",
+      "What cities have had NFL football teams with the same name as the Los Angeles NFL team?"
+    ],
+    "candidate": [
+      "What is the name of an NFL football team in Los Angeles?"
+    ],
+    "candidate_verdict": "pass",
+    "reason": "Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted."
+  },
+  "99": {
+    "query": "Convoys SG-6/LN-6 was used the same conflict that an author titled his book after. When did the region where a school named after that author is located become a province of Canada?",
+    "id": "musique:4hop1__727827_308728_804360_76814",
+    "baseline": [
+      "What conflict did the author of the book titled after the conflict in which the convoy SG-6/LN-6 was used write about?",
+      "Who wrote the book titled after the conflict in which the convoy SG-6/LN-6 was used?",
+      "What school is named after the author of the book titled after the conflict in which the convoy SG-6/LN-6 was used?",
+      "What region is the school named after the author of the book titled after the conflict in which the convoy SG-6/LN-6 was used located in?"
+    ],
+    "candidate": [
+      "What conflict was the author who titled a book after the conflict in which Convoys SG-6/LN-6 were used?",
+      "Who was the author who titled a book after the conflict in which Convoys SG-6/LN-6 were used?",
+      "What school is named after the author who titled a book after the conflict in which Convoys SG-6/LN-6 were used?",
+      "What region is the school named after the author who titled a book after the conflict in which Convoys SG-6/LN-6 were used located in?"
+    ],
+    "candidate_verdict": "fail",
+    "reason": "What conflict was the author... conflates conflict and author; the intended convoy-conflict request is not independently formed."
+  },
+  "117": {
+    "query": "What was the per km2 population density in 2013 of the birthplace of Francis Birtles?",
+    "id": "musique:2hop__724841_13913",
+    "baseline": [
+      "Where was Francis Birtles born?",
+      "What was the population of the birthplace of Francis Birtles in 2013?",
+      "What is the area of the birthplace of Francis Birtles in square kilometers?"
+    ],
+    "candidate": [
+      "Where was Francis Birtles born?",
+      "What was the population in 2013 of the birthplace of Francis Birtles?",
+      "What was the area in square kilometers of the birthplace of Francis Birtles in 2013?"
+    ],
+    "candidate_verdict": "pass",
+    "reason": "Inspected every original/query pair under unchanged F/S/C/U; no definite defect. No factual answers or native decomposition labels consulted."
+  }
+}

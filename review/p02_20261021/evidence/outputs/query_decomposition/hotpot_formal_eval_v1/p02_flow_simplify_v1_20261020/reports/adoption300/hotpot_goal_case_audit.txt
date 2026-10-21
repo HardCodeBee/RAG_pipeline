@@ -1,0 +1,277 @@
+Hotpot100 goal预答删除审查：discount20 versus single_final
+
+discount20 F1=79.4085858586%；single_final F1=74.4785714286%；差值-4.9300144300个百分点。
+3升、85平、12降；EM66%→62%。
+正贡献+1.2619047619pp；负贡献-6.1919191919pp。
+100/100普通子问答prompt/回答/改写/阅读文档完全相同；100/100 goal阅读包=single最终阅读包；无exact-original supporting过滤。
+原Top10无丢失；62题新增446篇文档曝光，最终均值10→14.46篇。
+
+三个证据已足够、值得重点关注的下降：Momaday寿命下界、Vigorish定义、Tania Miller指挥者。
+另外两个最大F1下降：Back to December、Newport，均须明确原文证据缺口；学名与俗名的F1差异单独列出。
+
+hotpotqa:5ab64cfa55429953192ad2b7
+Who lived longer Ellen Glasgow or N. Scott Momaday ?
+完整分解：["When was Ellen Glasgow born?", "When did Ellen Glasgow die?", "When was N. Scott Momaday born?", "When did N. Scott Momaday die?"]
+p02最终：N. Scott Momaday
+discount goal：N. Scott Momaday lived longer than Ellen Glasgow, as Glasgow lived from April 22, 1873, to November 21, 1945 (72 years, 7 months), while Momaday was born on February 27, 1934, and is still alive (no death date provided in the passages).
+discount最终：N. Scott Momaday
+single最终：Cannot be determined
+F1：discount=1.0；single=0.0
+观察：相同普通问答给出Glasgow生卒1873-1945、Momaday出生1934且死亡日期未知。goal判Momaday更长；single拒答。原文另写Momaday在2007年获National Medal of Arts，即使按2007年1月1日作为最早下界，仍已至少72岁10个月，高于Glasgow72岁7个月，足以支持比较。
+证据边界：goal把没有死亡日期解释为still alive不严谨，结论可由原文2007年获奖另行支持。未记录模型内部推理，不能认定它实际用了该下界。
+普通前置问答：
+When was Ellen Glasgow born?
+Ellen Glasgow was born on April 22, 1873.
+When did Ellen Glasgow die?
+Ellen Glasgow died on November 21, 1945.
+When was N. Scott Momaday born?
+N. Scott Momaday was born on February 27, 1934.
+When did N. Scott Momaday die?
+N. Scott Momaday’s death date cannot be determined from these passages.
+对应实际原文：
+rank=1 source=Ellen Glasgow doc_id=287961
+Ellen Glasgow
+Ellen Anderson Gholson Glasgow (April 22, 1873 – November 21, 1945) was an American novelist who portrayed the changing world of the contemporary South.
+rank=2 source=N. Scott Momaday doc_id=5076410
+N. Scott Momaday
+Navarre Scott Momaday (born February 27, 1934) — known as N. Scott Momaday — is a Kiowa novelist, short story writer, essayist, and poet. His novel "House Made of Dawn" was awarded the Pulitzer Prize for Fiction in 1969, and is considered the first major work of the Native American Renaissance. His follow-up work "The Way to Rainy Mountain" blended folklore with memoir. Momaday received the National Medal of Arts in 2007 for his work's celebration and preservation of indigenous oral and art tradition. He holds twenty honorary degrees from colleges and universities, and is a fellow of the American Academy of Arts and Sciences.
+
+hotpotqa:5ae0a48155429945ae9593df
+The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+完整分解：["Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"]
+p02最终：the fee or commission charged by a bookmaker on a bet
+discount goal：Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.
+discount最终：the amount charged by a bookmaker for taking a bet
+single最终：vigorish
+F1：discount=0.7272727272727273；single=0.0
+观察：当前前置回答为Vigorish；原文第一篇直接定义为bookmaker收取的费用。discount goal及最终回答该定义，single却输出术语vigorish，没有回答which portion of a bet。
+证据边界：目标/答案类型偏移可直接观察；不能证明模型仅复制前置答案，虽然最终与其相同。
+普通前置问答：
+Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?
+The pseudonymous partner to "Willis the Guard" was Vigorish.
+对应实际原文：
+rank=1 source=Vigorish doc_id=772136
+Vigorish
+Vigorish, or simply the vig, also known as juice, under-juice, the cut or the take, is the amount charged by a bookmaker, or "bookie", for taking a bet from a gambler. In the United States, it also means the interest on a shark's loan. The term originates from the Russian word for "winnings", выигрыш "vyigrysh".
+rank=3 source=Buckner &amp; Garcia doc_id=1017443
+Buckner &amp; Garcia
+Buckner & Garcia, was an American musical duo consisting of Jerry Buckner and Gary Garcia from Akron, Ohio. Their first recording was made in 1972, when they performed a novelty song called "Gotta Hear the Beat", which they recorded as Animal Jack. Later, in 1980, they wrote a novelty Christmas song titled "Merry Christmas in the NFL", imagining sports journalist Howard Cosell as Santa Claus. Performed under the pseudonym Willis the Guard & Vigorish, the song reached No. 82 on the Billboard charts despite limited airplay after Cosell found the song offensive. In 1981, the duo wrote a sentimental country theme to back the poem "Footprints in the Sand", performed by Edgel Groves. The duo also wrote the lyrics for extra verses of an extended version of the "WKRP in Cincinnati" theme song in 1982.
+
+hotpotqa:5abd14c455429924427fceec
+Who will conduct the firing cannons in Victoria as part of a musical piece written to celebrate the defeat of Napoleon in Russia?
+完整分解：["What musical piece was written to celebrate the defeat of Napoleon in Russia?"]
+p02最终：Victoria Symphony, led by Music Director Tania Miller
+discount goal：The Victoria Symphony, led by Music Director Tania Miller, conducts the firing of cannons in Victoria as part of the 1812 Overture.
+discount最终：Victoria Symphony, led by Music Director Tania Miller
+single最终：Victoria Symphony
+F1：discount=0.4；single=0.0
+观察：前置问题确定1812 Overture；Symphony Splash原文明确音乐会由Music Director Tania Miller带领。discount goal和最终包含乐团及Tania Miller；single仅答Victoria Symphony，缺失金标要求的指挥者姓名。
+证据边界：可观察到组织/人物答案对象偏移，但discount最终本身也冗余，仅F1=0.4；不能把discount视为完全正确的简短答案。
+普通前置问答：
+What musical piece was written to celebrate the defeat of Napoleon in Russia?
+The musical piece written to celebrate the defeat of Napoleon in Russia is the 1812 Overture.
+对应实际原文：
+rank=1 source=1812 Overture doc_id=284357
+1812 Overture
+The Year 1812, festival overture in E♭ major, Op. 49, popularly known as the 1812 Overture, is an overture written in 1880 by Russian composer Pyotr Ilyich Tchaikovsky to commemorate Russia's defence of its motherland against Napoleon's invading Grande Armée in 1812.
+rank=2 source=Symphony Splash doc_id=12113647
+Symphony Splash
+Victoria Symphony Splash is an annual event held in Victoria, British Columbia on the Sunday before BC Day. The event is produced by the Victoria Symphony and consists of the Victoria Symphony playing, live on a barge, in the middle of Victoria's Inner Harbour. Also included in the event is a very large fireworks display, as well as live cannon fire, during the 1812 Overture. The concert is led by Victoria Symphony Music Director Tania Miller. The 2016 event on July 31 will be the 27th Victoria Symphony Splash.
+
+hotpotqa:5a84ad3a5542992a431d1a8b
+What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+完整分解：[]
+p02最终："Back to December"
+discount goal：Yoann Lemoine directed the music video for Taylor Swift's "Back to December", which features an apology and plea for forgiveness.
+discount最终："Back to December"
+single最终：Cannot be determined
+F1：discount=1.0；single=0.0
+观察：Yoann Lemoine原文列出Back to December等作品，却未说明哪首带道歉和请求原谅。goal生成完整正确金标关联，single拒答。其他forgiveness/apologies命中文档描述无关作品。
+证据边界：不能说goal由当前原文严格完成推理，也不能把single拒答自动标为事实性损伤；可能涉及未呈现的参数知识，来源未被记录证明。
+普通前置问答：
+对应实际原文：
+rank=1 source=Yoann Lemoine doc_id=31575525
+Yoann Lemoine
+Yoann Lemoine (born 16 March 1983) is a French music video director, graphic designer and singer-songwriter. His most notable works include his music video direction for Katy Perry's "Teenage Dream", Taylor Swift's single "Back to December", Lana Del Rey's "Born to Die" and Mystery Jets' "Dreaming of Another World".
+rank=2 source=Pardonne-moi (Mylène Farmer song) doc_id=14786224
+Pardonne-moi (Mylène Farmer song)
+"Pardonne-moi" (English: "Forgive Me") is a 2001 song recorded by French singer-songwriter Mylène Farmer, with lyrics written by herself and music composed by Laurent Boutonnat. It was the third and last single from "Les Mots", and was released on 21 October 2002. The song is about the unhappy love of a woman who is asking for forgiveness from the Oriental princes whom she loves. The black and white accompanying music video was directed by Boutonnat in Morocco and shows Farmer dressed as a nun, with images of a knight galloping on horseback and a snake. Like the single "À quoi je sers..." released thirteen years earlier, "Pardonne-moi" is generally deemed a synthesis of Farmer's work and thus marked the end of an artistic period in her career. The song received positive reviews from critics and became a top ten hit in France and in the Waloon Belgium, although its sales were rather disappointing.
+rank=3 source=Fuck Apologies doc_id=51201438
+Fuck Apologies
+"Fuck Apologies.", also titled "No Apologies." for the radio edit, is a song by American singer JoJo, featuring Wiz Khalifa from her third studio album, "Mad Love" (2016). It was released on July 28, 2016, by Atlantic Records as the album's lead single and impacted American contemporary hit radio on August 16, 2016. The song was written by JoJo and Khalifa with Taylor Parks, Oscar Holter, Matt Friedman, and Whiskey Water and was produced by Holter and Friedman.
+
+hotpotqa:5ae2dd2055429928c423950d
+What is the county seat of the county where East Lempster, New Hampshire is located?
+完整分解：["What county is East Lempster, New Hampshire in?"]
+p02最终：Newport
+discount goal：The county seat of Sullivan County, New Hampshire, where East Lempster is located, is Newport.
+discount最终：Newport
+single最终：New London
+F1：discount=1.0；single=0.0
+观察：前置答案及原文确定Sullivan County,New Hampshire，但改写漏掉New Hampshire并召回多个其他州Sullivan County。全部合并20篇无Newport，也无New London；goal给金标Newport，single给错误New London。
+证据边界：最终F1确实退步，single答案在材料中也无支持。但旧goal成功不是本批原文支持的最后一跳证据链，不能称删除goal丢失了一段已验证的正确证据。
+普通前置问答：
+What county is East Lempster, New Hampshire in?
+East Lempster, New Hampshire is in Sullivan County.
+对应实际原文：
+rank=1 source=East Lempster, New Hampshire doc_id=31548706
+East Lempster, New Hampshire
+East Lempster is an unincorporated community in the town of Lempster in Sullivan County, New Hampshire, United States.
+rank=2 source=Sullivan County doc_id=52938
+Sullivan County
+Sullivan County is the name of six counties in the United States of America:
+rank=4 source=Sullivan County, Indiana doc_id=96066
+Sullivan County, Indiana
+Sullivan County is a county located in the U.S. state of Indiana, and determined by the U.S. Census Bureau to include the mean center of U.S. population in 1940. As of 2010, the population was 21,475. The county seat is Sullivan.
+rank=10 source=Sullivan County, Pennsylvania doc_id=91928
+Sullivan County, Pennsylvania
+Sullivan County is a county located in the U.S. state of Pennsylvania. As of the 2010 census, the population was 6,428, making it the second-least populous county in Pennsylvania. Its county seat is Laporte. The county was created on March 15, 1847, from part of Lycoming County and named for Charles C. Sullivan, leader of the Pennsylvania Senate at that time.
+rank=12 source=Sullivan County, New York doc_id=56945
+Sullivan County, New York
+Sullivan County is a county in the U.S. state of New York. As of the 2010 census, the population was 77,547. The county seat is Monticello. The county's name honors Major General John Sullivan, who was a hero in the American Revolutionary War.
+rank=16 source=Sullivan County, Missouri doc_id=94515
+Sullivan County, Missouri
+Sullivan County is a county located in the northern portion of the U.S. state of Missouri. As of the 2010 census, the population was 6,714. Its county seat is Milan. The county was organized February 14, 1845 and named for Major General John Sullivan of the American Revolutionary War.
+
+hotpotqa:5a77c09555429967ab105262
+What is the species of animal which the town of Antelope, Kansas was named after?
+完整分解：["What species of animal was the town of Antelope, Kansas named after?"]
+p02最终：pronghorn (*Antilocapra americana*)
+discount goal：The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.
+discount最终：pronghorn (*Antilocapra americana*)
+single最终：Pronghorn
+F1：discount=0.8；single=0.0
+观察：同一Pronghorn原文明确pronghorn的学名Antilocapra americana。discount输出pronghorn加学名得0.8，single只答Pronghorn得0；两者指同一种动物，不能视为物种身份发生错误。
+证据边界：主要是标准答案需要学名而输出选择俗名；原文Antelope,Kansas只写antelope，前置识别pronghorn本身不是直接命名证明，不能夸大其完整证据链。
+普通前置问答：
+What species of animal was the town of Antelope, Kansas named after?
+The town of Antelope, Kansas was named after the pronghorn, which is colloquially called the American antelope.
+对应实际原文：
+rank=1 source=Antelope, Kansas doc_id=27970526
+Antelope, Kansas
+Antelope is an unincorporated community in Marion County, Kansas, United States. Antelope got its name from antelope grazing near where the first school was being built.
+rank=2 source=Pronghorn doc_id=18952649
+Pronghorn
+The pronghorn ( ) ("Antilocapra americana") is a species of artiodactyl mammal indigenous to interior western and central North America. Though not an antelope, it is often known colloquially in North America as the American antelope, prong buck, pronghorn antelope, or simply antelope because it closely resembles the true antelopes of the Old World and fills a similar ecological niche due to parallel evolution.
+
+hotpotqa:5a8d0c74554299585d9e37a1
+Which river flows next to the German town where the music project "I Drink My Coffee Alone" by Alex Gazin originates from?
+完整分解：["What German town does the music project I Drink My Coffee Alone by Alex Gazin originate from?"]
+p02最终：Moselle River
+discount goal：The Moselle River flows next to Trier, the German town where the music project "I Drink My Coffee Alone" by Alex Gazin originates.
+discount最终：Moselle River
+single最终：Moselle
+F1：discount=0.6666666666666666；single=1.0
+观察：Moselle River改为Moselle，F1从2/3到1，河流实体未改变。
+证据边界：表述匹配收益，未观察新增事实纠错。
+普通前置问答：
+What German town does the music project I Drink My Coffee Alone by Alex Gazin originate from?
+The music project "I Drink My Coffee Alone" by Alex Gazin originates from Trier, Germany.
+对应实际原文：
+rank=1 source=I Drink My Coffee Alone doc_id=55130701
+I Drink My Coffee Alone
+I Drink My Coffee Alone is a one-man deathcore/electronic project from Trier, Germany, formed by Alex Gazin in 2011, significantly noted for his dominating growls and use of electronic instrumentation. Gazin has previously released one EP and two full-length albums.
+rank=2 source=Trier doc_id=30317
+Trier
+Trier (] ; Luxembourgish: "Tréier" ] ), formerly known in English as Treves (French: "Trèves" , ] ) and Triers (see also names in other languages), is a city in Germany on the banks of the Moselle. Trier lies in a valley between low vine-covered hills of red sandstone in the west of the state of Rhineland-Palatinate, near the border with Luxembourg and within the important Moselle wine region.
+rank=12 source=Moselle doc_id=143868
+Moselle
+The Moselle (French: "la Moselle" , ] ; German: "Mosel" ; Luxembourgish: "Musel" ) is a river flowing through France, Luxembourg, and Germany. It is a left tributary of the Rhine, which it joins at Koblenz. A small part of Belgium is also drained by the Moselle through the Sauer and the Our.
+
+hotpotqa:5ae0006755429925eb1afbd3
+Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?
+完整分解：[]
+p02最终：700 block of Higuera Street in downtown San Luis Obispo
+discount goal：Bubblegum Alley is located in the 700 block of Higuera Street in downtown San Luis Obispo, California.
+discount最终：700 block of Higuera Street in downtown San Luis Obispo
+single最终：San Luis Obispo
+F1：discount=0.4285714285714285；single=0.8571428571428571
+观察：700 block of Higuera Street in downtown San Luis Obispo缩为San Luis Obispo，F1从3/7到6/7；同一地址中的城市信息变得更贴近金标。
+证据边界：地点粒度/表述收益，未改变原先正确的定位事实；输出仍少California，EM仍0。
+普通前置问答：
+对应实际原文：
+rank=1 source=Bubblegum Alley doc_id=11094660
+Bubblegum Alley
+Bubblegum Alley is a tourist attraction in downtown San Luis Obispo, California, known for its accumulation of used bubble gum on the walls of an alley. It is a 15 ft high and 70 ft long alley lined with chewed gum left by passers-by. It covers a stretch of 20 meters in the 700 block of Higuera Street in downtown San Luis Obispo.
+
+hotpotqa:5ab5cedf554299488d4d9a34
+Cudjoe Kazoola Lewis was brought illegally to the United States on board a ship that was how many feet long?
+完整分解：["On what ship was Cudjoe Kazoola Lewis brought illegally to the United States?"]
+p02最终：86 feet
+discount goal：The Clotilde, the ship on which Cudjoe Kazoola Lewis was brought illegally to the United States, was 86 feet long.
+discount最终：86 feet
+single最终：86 ft
+F1：discount=0.5；single=1.0
+观察：86 feet改为86 ft，F1从0.5到1，长度数值和单位含义相同。
+证据边界：单位词面匹配，非事实性提升。
+普通前置问答：
+On what ship was Cudjoe Kazoola Lewis brought illegally to the United States?
+Cudjoe Kazoola Lewis was brought illegally to the United States on board the ship Clotilde.
+对应实际原文：
+rank=1 source=Cudjoe Lewis doc_id=12810885
+Cudjoe Lewis
+Cudjoe Kazoola Lewis (c. 1840 – 1935), or Cudjo Lewis, was the last known survivor of the Atlantic slave trade between Africa and the United States. Together with 115 other captives, he was brought illegally to the United States on board the ship "Clotilde" in 1860. They were landed in the backwaters near Mobile, Alabama and hidden from authorities. The ship was scuttled to evade discovery.
+rank=2 source=Clotilde (slave ship) doc_id=15318631
+Clotilde (slave ship)
+The schooner Clotilde (or Clotilda) was the last known U.S. slave ship to bring captives from Africa to the United States, arriving at Mobile Bay in autumn 1859 (some sources give the date as July 9, 1860), with 110-160 slaves. The ship was a two-masted schooner, 86 ft long with a beam of 23 ft . The vessel was burned and scuttled at Mobile Bay, soon after. The sponsors had arranged to buy slaves in Whydah, Dahomey on May 15, 1859.
+
+全部15道变化（其他85持平）：
+hotpotqa:5a84ad3a5542992a431d1a8b What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?
+discount="Back to December" | single=Cannot be determined
+delta=-1.0; gold_F1_loss_but_missing_discriminating_premise
+hotpotqa:5ae2dd2055429928c423950d What is the county seat of the county where East Lempster, New Hampshire is located?
+discount=Newport | single=New London
+delta=-1.0; unsupported_final_hop_and_different_final_guess
+hotpotqa:5ab64cfa55429953192ad2b7 Who lived longer Ellen Glasgow or N. Scott Momaday ?
+discount=N. Scott Momaday | single=Cannot be determined
+delta=-1.0; comparison_lower_bound_not_used
+hotpotqa:5a77c09555429967ab105262 What is the species of animal which the town of Antelope, Kansas was named after?
+discount=pronghorn (*Antilocapra americana*) | single=Pronghorn
+delta=-0.8; scientific_name_vs_common_name_lexical_mismatch
+hotpotqa:5ae0a48155429945ae9593df The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+discount=the amount charged by a bookmaker for taking a bet | single=vigorish
+delta=-0.7272727272727273; local_entity_substituted_for_requested_definition
+hotpotqa:5abd14c455429924427fceec Who will conduct the firing cannons in Victoria as part of a musical piece written to celebrate the defeat of Napoleon in Russia?
+discount=Victoria Symphony, led by Music Director Tania Miller | single=Victoria Symphony
+delta=-0.4; organization_instead_of_requested_conductor
+hotpotqa:5abee4ff5542993fe9a41d7d Jim Atchison was the President of the theme park that had headquarters in what city?
+discount=Orlando | single=Orlando, Florida
+delta=-0.33333333333333337; city_state_extra_qualifier
+hotpotqa:5a72a9ac5542991f9a20c55f Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?
+discount=The fourth hour of NBC's "Today Show" | single=Today Show's fourth hour
+delta=-0.24242424242424254; show_name_lexical_order_and_article
+hotpotqa:5ab6be2f55429954757d335c Zakk Wylde and Damon Albarn are both what?
+discount=musicians, singers, songwriters, and multi-instrumentalists | single=musicians
+delta=-0.22222222222222224; overbroad_occupation_and_lexical_plural
+hotpotqa:5ae4c01e55429913cc2044f3 Which Captain launched the attack which led to more casualties than any other incident in the war fought between the settlers of the nascent colony of New Netherland and the native Lenape population?
+discount=Captain John Underhill | single=John Underhill
+delta=-0.19999999999999996; requested_rank_honorific_omitted
+hotpotqa:5adf9ee75542992d7e9f93c0 How many households does the network that Di-Gata Defenders plays on in South Africa reach?
+discount=1.5 million households | single=1.5 million
+delta=-0.19999999999999996; measurement_noun_omitted
+hotpotqa:5a84d2ea5542992a431d1aa8 What career titles do Ed Wood and Fernand Rivers share?
+discount=actor, film producer, director | single=actor, director, film producer, screenwriter
+delta=-0.06666666666666654; occupation_synonym_and_extra_title
+hotpotqa:5a8d0c74554299585d9e37a1 Which river flows next to the German town where the music project "I Drink My Coffee Alone" by Alex Gazin originates from?
+discount=Moselle River | single=Moselle
+delta=0.33333333333333337; remove_generic_river_suffix
+hotpotqa:5ae0006755429925eb1afbd3 Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?
+discount=700 block of Higuera Street in downtown San Luis Obispo | single=San Luis Obispo
+delta=0.4285714285714286; answer_location_granularity
+hotpotqa:5ab5cedf554299488d4d9a34 Cudjoe Kazoola Lewis was brought illegally to the United States on board a ship that was how many feet long?
+discount=86 feet | single=86 ft
+delta=0.5; unit_abbreviation_match
+
+解释边界与采用判断：
+100题完全配对，所有普通子回答和原始/改写检索相同，差异局限于是否预答goal及最后一层读什么材料、收到什么候选结论。
+single并未丢原始Top10；62题多读446篇原文。不能将下降归因于普通检索失效或文档被挤掉。
+两条最直接的、材料已支持的目标偏移是Vigorish定义题答术语、Tania Miller人物题答乐团；Momaday比较题还可以用2007年奖项建立寿命下界，却拒答。
+Back to December和Newport两个1到0虽贡献2pp下降，但旧goal的最后限定或县治在当前原文不完整/完全缺失，不能把它们当成有证据的正确推理被删除的证明。
+Antilocapra americana到Pronghorn导致0.8到0，仍是同一物种，说明词面金标F1和事实正确率不等价。
+3道上升均为河流后缀、地址粒度、单位缩写；没有观察到从错误事实变为正确事实的提升。
+single的唯一length最终回答是持平题，未造成这12题下降；仍按冻结口径保留计分。
+如果用户标准是简化但没有明显退步，Hotpot同题-4.93pp且存在多个有依据的回答对象/组合退步，不能称该标准已经满足。这不是必须F1上升的门槛，也不自动决定采用；应让完整300和预先固定的新RAG60一起支持选择。
+未隔离删除goal句与最终增加原文/排序变化的独立作用，不推测模型内部注意机制，不把观察关联写成因果结论。
+
+全部100题的来源SHA及9个案例的完整原文包和prompt见同名JSON。
+零API、零真实检索、零pin源码改动。

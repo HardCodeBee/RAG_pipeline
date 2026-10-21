@@ -1,0 +1,85 @@
+{
+  "utc": "2026-10-20T09:57:47.692492+00:00",
+  "status": "waiting_for_recovery_inspection",
+  "reason": "Development300 still has missing results after the frozen continuation/r001; no extra retries and no fresh selection/dispatch",
+  "completed_commands_this_controller": [],
+  "development300": {
+    "union20": {
+      "planned": 300,
+      "scorable": 291,
+      "missing": 9,
+      "statuses": {
+        "success": 291,
+        "incomplete": 9
+      },
+      "F1_complete": null,
+      "F1_available": 0.7099792822189589,
+      "F1_all_planned_bounds": [
+        0.6886799037523901,
+        0.7186799037523902
+      ]
+    },
+    "discount20": {
+      "planned": 300,
+      "scorable": 294,
+      "missing": 6,
+      "statuses": {
+        "success": 294,
+        "incomplete": 6
+      },
+      "F1_complete": null,
+      "F1_available": 0.6975348026526279,
+      "F1_all_planned_bounds": [
+        0.6835841065995754,
+        0.7035841065995753
+      ]
+    },
+    "single_final": {
+      "planned": 300,
+      "scorable": 285,
+      "missing": 15,
+      "statuses": {
+        "success": 281,
+        "incomplete": 15,
+        "success_truncated": 4
+      },
+      "F1_complete": null,
+      "F1_available": 0.6843102706260601,
+      "F1_all_planned_bounds": [
+        0.6500947570947571,
+        0.700094757094757
+      ]
+    }
+  },
+  "all900_development_scorable": false,
+  "fresh60": null,
+  "all120_fresh_scorable": false,
+  "fresh_all_generation_success": false,
+  "budget": {
+    "global_known_cny": 189.4206352,
+    "global_reserved_cny": 36.0311488,
+    "global_occupied_cny": 225.45178399999998,
+    "global_cap_cny": 300,
+    "experiment_known_cny": 2.8511143999999997,
+    "experiment_reserved_cny": 0.6208319999999999,
+    "experiment_submissions": 1351,
+    "local_subcap_cny": 25,
+    "fresh_known_cny": 0,
+    "fresh_reserved_cny": 0,
+    "fresh_submissions": 0,
+    "actual_bill_verified": false
+  },
+  "selection": null,
+  "limits": {
+    "global_cap_cny": 300,
+    "shared_project_subcap_cny": 25,
+    "max_method_rounds": 2,
+    "additional_recovery_rounds_created": 0
+  },
+  "limitations": [
+    "Fresh60 are new downstream RAG queries but previously exposed decomposer development queries, not an untouched holdout.",
+    "MuSiQue20 are primitive-isolated native train heldout queries, not official dev or test.",
+    "Algorithm failures are scored zero; infrastructure missing retain their planned denominator and bounds.",
+    "Returned-usage price estimates and unresolved reservations are not a verified invoice."
+  ]
+}

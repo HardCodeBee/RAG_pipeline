@@ -1,0 +1,75 @@
+{
+  "reviewed_indices": [
+    14,
+    61
+  ],
+  "exceptions": {
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops the southwestern-side condition from the island query as well as the town query."
+    },
+    "15": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Adds unsupported town type to the performers birthplace."
+    },
+    "19": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still attaches country support to considering Tito too independent, rather than Zhous attempt to convince that person."
+    },
+    "22": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Chiefly known as editor becomes chief editor, an unsupported job seniority."
+    },
+    "23": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still lacks the inhabitants of each territory for the original intersection."
+    },
+    "27": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Moves South Tucson from the percentage population into the Spanish-arrival/location clause, and still never identifies the pre-Spanish people."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "C",
+        "U"
+      ],
+      "reason": "Asks an actor who portrayed the main character instead of identifying the character whose portrayals must be counted."
+    },
+    "54": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Parses the name Six Organs of Admittance as anatomical organs and asks organs in Om."
+    },
+    "55": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still lacks identity of the person occupying the specified place."
+    }
+  },
+  "reviewer": "All changed14..61 outputs inspected.24 repairs county identity; previously failed cases keep severity changes."
+}

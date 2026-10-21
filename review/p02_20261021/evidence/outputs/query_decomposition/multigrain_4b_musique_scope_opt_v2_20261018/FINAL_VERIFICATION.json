@@ -1,0 +1,105 @@
+{
+  "recorded_utc": "2026-10-18T01:13:15.981950+00:00",
+  "old_frozen_files_unchanged": {
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\v12.txt": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12\\MASTER_3500.jsonl": true,
+    "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev_review\\checkpoint-000165.jsonl": true,
+    "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\SELECTED_CHECKPOINT.json": true
+  },
+  "calls": 812,
+  "api_calls": 0,
+  "payloads": {
+    "screen90/b00_v12": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true
+    },
+    "screen90/m01_static_mu": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": false
+    },
+    "screen90/m02_adaptive_mu": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": false
+    },
+    "screen90/m03_scope_contrast": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": false
+    },
+    "screen90/t01_original_mix": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true,
+      "paired_native_input_tokens_identical": true
+    },
+    "screen90/t02_mu50": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true,
+      "paired_native_input_tokens_identical": true
+    },
+    "confirm120/b00_v12": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true
+    },
+    "confirm120/t02_mu50": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true,
+      "paired_native_input_tokens_identical": true
+    },
+    "rare16/b00_v12": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true
+    },
+    "rare16/t02_mu50": {
+      "generation_error": 0,
+      "truncated": 0,
+      "explicit_references": 0,
+      "format_invalid": 0,
+      "all_model_payload_prompts_match_frozen_v12": true,
+      "paired_native_input_tokens_identical": true
+    }
+  },
+  "duplicate_groups": {
+    "screen90": [],
+    "confirm120": [],
+    "rare16": [
+      [
+        3,
+        5
+      ]
+    ]
+  },
+  "screen_confirm_text_disjoint": true,
+  "screen_confirm_mu_primitives_disjoint": true,
+  "rare_mu_primitives_disjoint_from_main": true,
+  "all_phases_text_and_mu_primitives_disjoint_from_old_exclusion_sources": true,
+  "n_new_unique_training_queries": 0,
+  "extension180_accepted_labels": 0,
+  "extension60_accepted_labels": 0
+}

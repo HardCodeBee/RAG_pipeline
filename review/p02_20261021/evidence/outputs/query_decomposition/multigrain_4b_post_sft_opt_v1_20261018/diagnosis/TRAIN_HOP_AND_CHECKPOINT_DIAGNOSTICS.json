@@ -1,0 +1,25 @@
+{
+  "train_musique_hops": {
+    "2": 191,
+    "3": 166,
+    "4": 152
+  },
+  "checkpoint_dev_scores": {
+    "110": {
+      "hotpotqa": 40,
+      "2wiki": 50,
+      "musique": 32
+    },
+    "165": {
+      "hotpotqa": 43,
+      "2wiki": 50,
+      "musique": 35
+    },
+    "220": {
+      "hotpotqa": 42,
+      "2wiki": 50,
+      "musique": 35
+    }
+  },
+  "interpretation": "All three2Wiki checkpoints evaluate the same50 queries, not150 independent successes. Mu four-hop has152 training cases; insufficient quantity is not established as the sole cause."
+}

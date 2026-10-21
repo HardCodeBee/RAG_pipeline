@@ -1,0 +1,11 @@
+{
+ "review":"Frozen stratified300 query/label audit; same Codex, nonblind, not an independent accuracy estimate. Sample predates these changes.",
+ "revisions":{
+ "1473":{"target":["Which American actor featured in Knat Scatt Private Eye, a two-act, 1930s-style film noir musical, is known for playing Michael Scott on an American version of a series?"],"reason":"Sample25 F: restore American-version modifier identifying the Michael Scott performance; no presumed show name added."},
+ "1202":{"target":["When was George Washington president?","What wars were fought during George Washington's presidency?","What was the maximum force size in each war fought during George Washington's presidency?"],"reason":"Sample195 C: old goal-only empty support omitted the unknown war and force-size screening evidence."},
+ "3900":{"target":["What soccer team does Jörg van Nieuwenhuijzen play for?","What country with two common names hosts the soccer team Jörg van Nieuwenhuijzen plays for?"],"reason":"Sample220 U: remove final cycling-race question that merely repeated the original target."},
+ "2385":{"target":["What is the largest auto company in the world?","What is the luxury division of the largest auto company in the world?"],"reason":"Sample208 uncertain U: remove alternate same-identity lookup to avoid unnecessary duplication."},
+ "3201":{"target":["Who is the director of the film A Caixa?","Who is the director of the film \"Kab? Kyoon? Aur Kahan?\"?","What is the nationality of the director of the film A Caixa?","What is the nationality of the director of the film \"Kab? Kyoon? Aur Kahan?\"?"],"reason":"Sample267 mechanical style: quote interrogative title; retain all title punctuation without adjacent unquoted question marks."},
+ "2144":{"target":["How many housing units are there?","How many housing units were occupied by renters?"],"reason":"Global grammar lint: remove redundant 'are there' nominalization without changing the requested counts."}
+ }
+}

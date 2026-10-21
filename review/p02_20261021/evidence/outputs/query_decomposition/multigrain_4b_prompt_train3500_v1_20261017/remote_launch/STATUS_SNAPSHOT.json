@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-17T09:17:05.493065+00:00",
+  "job_id": "153945",
+  "queries": 100,
+  "expected_outputs": 400,
+  "api_calls": 0,
+  "checks": {
+    "queue": {
+      "exit_code": 0,
+      "stdout": "153945|PENDING|(Resources)|2026-10-18T19:57:25\n",
+      "stderr": ""
+    },
+    "estimate": {
+      "exit_code": 0,
+      "stdout": "153945|PENDING|(Resources)|2026-10-18T19:57:25\n",
+      "stderr": ""
+    },
+    "active_user_jobs": {
+      "exit_code": 0,
+      "stdout": "153945|base4b-prompt100|PENDING|(Resources)\n153941|rag-robust-v1|RUNNING|weirdo\n",
+      "stderr": ""
+    },
+    "details": {
+      "exit_code": 0,
+      "stdout": "JobId=153945 JobName=base4b-prompt100 UserId=u7830488(7830488) GroupId=allusers(1100) MCS_label=N/A Priority=818 Nice=0 Account=db4ai QOS=db4ai JobState=PENDING Reason=Resources Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A SubmitTime=2026-10-17T20:15:54 EligibleTime=2026-10-17T20:15:54 AccrueTime=2026-10-17T20:15:54 StartTime=2026-10-18T19:57:25 EndTime=2026-10-18T23:57:25 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-17T20:16:50 Scheduler=Main Partition=db4ai AllocNode:Sid=127.0.1.1:3776442 ReqNodeList=(null) ExcNodeList=(null) NodeList=(null) SchedNodeList=weirdo NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:* TRES=cpu=4,mem=32G,node=1,billing=4,gres/gpu=1,gres/gpu:a6000=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/runtime/run_stage.slurm /home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python /home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/code/run_remote.py --config /home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/results/runtime_config.json WorkDir=/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package StdErr=/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/results/slurm-153945.err StdIn=/dev/null StdOut=/home/projects/u7830488/multigrain_4b_prompt100_v1_20261017/package/results/slurm-153945.out Power= TresPerNode=gres:gpu:a6000:1 \n",
+      "stderr": ""
+    }
+  }
+}

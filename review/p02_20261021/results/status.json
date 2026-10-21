@@ -1,0 +1,46 @@
+{
+  "snapshot_utc": "2026-10-21T07:28:11.895682+00:00",
+  "new_inference": false,
+  "current_plan_revision": 6,
+  "execution_approved": false,
+  "development300": {
+    "scope": "historical, repeatedly exposed development cohort; not formal500 or fresh inference",
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "F1": 0.7899083694083693,
+        "EM": 0.66
+      },
+      "2wiki": {
+        "n": 100,
+        "F1": 0.9334738562091504,
+        "EM": 0.87
+      },
+      "musique": {
+        "n": 100,
+        "F1": 0.3983429688360029,
+        "EM": 0.31
+      }
+    }
+  },
+  "formal1500": {
+    "protocol": "historical P02 before shared-layer integration",
+    "official_scores_publishable": false,
+    "by_dataset": {
+      "hotpotqa": {
+        "not_completed": 179,
+        "success": 283,
+        "incomplete": 38
+      },
+      "2wiki": {
+        "success": 498,
+        "incomplete": 2
+      },
+      "musique": {
+        "not_completed": 500
+      }
+    }
+  },
+  "shared_layer_new_results": 0,
+  "cost_note": "Historical rates and ledger snapshots only; no cloud billing verification or new inference."
+}

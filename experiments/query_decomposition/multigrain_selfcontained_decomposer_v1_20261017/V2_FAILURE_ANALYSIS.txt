@@ -1,0 +1,29 @@
+2026-10-17: v2 failure/uncertainty investigation before follow-up API calls.
+Source: outputs/query_decomposition/hotpot_formal_eval_v1/multigrain_decomposer_prompt_pilot_v1_20261017/AUTHORED_SEMANTIC_REVIEW.jsonl
+All original outputs and judgments remain unchanged. Review is current-context Codex diagnosis, not independent human gold. No answers, passages, reference plans or downstream scores are used.
+
+Six failures primarily involve cross-question dependencies:
+- 5abf0bf95542997719eab63a: "that Spanish figure" loses the link to the author, poet/playwright description and relevant published works.
+- 3hop1__540585_568433_51423: "that city" loses the production-company/headquarters/city chain.
+- 3hop1__483634_720378_15538: "that state" loses Howard Mill/county/state identity.
+- 4hop2__567956_14670_8987_8529: Country A/B are input placeholders whose definitions were left in the original clause. Merely repeating their labels is not self-containment; necessary country-identification information is missing too.
+- 4hop2__71753_648517_70784_79935: "identified in answer to the first/second question" is a verbal reference despite containing no #N.
+- 4hop1__151650_5274_458768_33637: "that record label / that larger group / that city" hides the growing description. The "only" qualifier is also dropped.
+
+Four failures primarily involve questions without a distinct supporting purpose:
+- 5ae1f079554299234fd04343: "Which county is located in Kentucky?" has no target-road relation; broad unanchored geography does not resolve the actual unknown.
+- c51148bc0bdb11eba7f7acde48001122: the parenthetical already identifies the father, so looking up the father's identity is redundant. Using a name explicitly given in the input is allowed; using remembered names is not.
+- 5a8333115542993344745feb: asking the county seat returns information already given (Helena), rather than identifying the county that has that seat.
+- 6a8a71280bb011ebab90acde48001122: generic biography/identity of an already named person does not answer the uncle relation. Do not force a paternal or maternal route the query does not specify.
+
+Two uncertain cases:
+- 5ae33c4d5542992f92d82262: a qualified local relation versus a useful shorter leader-identity request. Do not insert a known political figure or assume simultaneous governorship. A clearly useful input-grounded supporting question may resolve the uncertainty; copying the original alone does not establish improved decomposition.
+- 3hop1__51933_40769_64047: RX 350 is already named; it may support direct retrieval, while company/division identities may also help. Do not force all atomic steps, and do not add body-style facts merely because the original asks a change date. Keep uncertainty unless the actual new questions have clear supporting purposes.
+
+Prompt experiment decisions:
+- v3 changes only the self-containment component of v2: item-isolation test, full descriptions including the last item, ordinary-language references, and clause-defined input placeholders. Keep all other rules unchanged.
+- v4 is reserved for a separate usefulness/input-known-facts change after v3 outputs have been inspected. It must not add sample-specific names, reference answers or hardcoded evaluation-case decompositions to the prompt.
+- Reuse the exact same 36 original queries and the frozen v2 responses. Each new arm makes 36 new decomposition calls only; no rerun of v2 and no downstream RAG.
+- Same model, system/user message layout, temperature=0, thinking off, max_tokens=1024, bounded concurrency and global 200-yuan ledger. Keep unknown submissions and all planned denominators.
+- Keep the shared four-check semantic rubric and the original-question policy. More specific instructions do not retroactively make the old rubric stricter or change frozen v2 labels.
+- This is targeted tuning on inspected cases. A gain here is a diagnostic gain, not an independent-test, 4B-training or downstream-F1 result.

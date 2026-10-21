@@ -1,0 +1,49 @@
+{
+  "utc": "2026-10-19T23:30:00.854475+00:00",
+  "parent300_F1": 0.7072417314845075,
+  "arms": {
+    "e05_example_role_headers": {
+      "scorable": 300,
+      "statuses": {
+        "success": 300
+      },
+      "F1": 0.698544866897808,
+      "same_parent_F1": 0.7072417314845075,
+      "delta_parent": -0.008696864586699467,
+      "paired95_descriptive": [
+        -0.021318308602016032,
+        0.0012834224598930483
+      ],
+      "up": 4,
+      "tie": 291,
+      "down": 5,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "F1": 0.7761507936507935,
+          "delta_parent": -0.013757575757575755
+        },
+        "2wiki": {
+          "n": 100,
+          "F1": 0.9332777777777779,
+          "delta_parent": -0.00019607843137254888
+        },
+        "musique": {
+          "n": 100,
+          "F1": 0.38620602926485276,
+          "delta_parent": -0.012136939571150095
+        }
+      }
+    }
+  },
+  "budget": {
+    "global_known_cny": 185.6421388,
+    "global_reserved_cny": 35.4169208,
+    "global_occupied_cny": 221.0590596,
+    "new_known_cny": 0.65859,
+    "new_reserved_cny": 0,
+    "new_submissions": 300,
+    "cap_cny": 300
+  },
+  "sample_role": "Exposed diagnostic300, full300 one fixed arm; no outcome-based pilot gate."
+}

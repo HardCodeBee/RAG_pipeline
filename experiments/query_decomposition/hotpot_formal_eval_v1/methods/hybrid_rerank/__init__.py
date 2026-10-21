@@ -1,0 +1,1 @@
+"""Independent hybrid retrieval baseline."""

@@ -1,0 +1,37 @@
+{
+  "phase": "prompt-only development trials; never new training",
+  "baseline": "b00_v12 reused literal dev150 outputs, checkpoint165",
+  "variants": {
+    "c01_adjacent_bridge": {
+      "changed": "Replace only the first example; retain all instructions and four other examples.",
+      "purpose": "Explicitly expose the neighboring-city intermediate; preserve standalone nested descriptions.",
+      "diagnostic_targets": [
+        40,
+        119
+      ],
+      "prompt_sha256": "53b963b59de988f855b7855bfc3fd2a5eba6f4784ac8318b6b9f93d147230e31"
+    },
+    "c02_full_description": {
+      "changed": "Replace only the composer-company example with a fully qualified past-singer band example.",
+      "purpose": "Retain identifying genre/nationality/year and past-tense relation; no extra rules.",
+      "diagnostic_targets": [
+        50,
+        61,
+        72,
+        102,
+        104,
+        126
+      ],
+      "prompt_sha256": "8faf600d697ee6b04b5def435c8b87d0e377358dc22396cef0027408762d6b5d"
+    }
+  },
+  "queries_sha256": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606",
+  "n": 150,
+  "model_weights_unchanged": true,
+  "selection": "Review all150 for each candidate including regressions; choose only a higher full-denominator pass count, then worst-dataset rate, then shorter prompt. Otherwise retain b00.",
+  "confirmation": "If a development candidate improves, reserve a new disjoint query-only sample before generating; compare frozen b00 and chosen candidate once. Do not claim generalization from dev150.",
+  "excluded_from_selection": "The original frozen final300 test and all its outputs.",
+  "no_case_specific_runtime_routing": true,
+  "api_calls": 0,
+  "created_utc": "2026-10-17T14:25:44.430406+00:00"
+}

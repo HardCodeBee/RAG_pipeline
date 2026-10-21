@@ -1,0 +1,15 @@
+{
+  "reviewed_indices": [1,60],
+  "exceptions": {
+    "3": {"verdict":"fail","dimensions":["F","U"],"reason":"Added mountain-range query drops the state containing Pawnee National Grassland, which disambiguates Garfield Park, and reasks the original range target rather than a separate prerequisite."},
+    "11": {"verdict":"uncertain","dimensions":["U"],"reason":"Repairs signer-versus-president-at-the-time. The remaining feature query may unnecessarily reidentify supplied Ten Thousand Smokes, but could also seek its category given the source's 'one of' wording; retain utility uncertainty, not a factual distortion."},
+    "20": {"verdict":"fail","dimensions":["C","U"],"reason":"Still does not expose the continent containing Nyamuragira; adds an almost literal repeat of the full original nation target."},
+    "32": {"verdict":"fail","dimensions":["F"],"reason":"Repairs the historical-subject bridge, then incorrectly attaches In WW2 to seizing Libya; the original time modifier applies to surrender to the Allies."},
+    "39": {"verdict":"fail","dimensions":["F"],"reason":"Still omits1945 from the game's identifying description."},
+    "40": {"verdict":"uncertain","dimensions":["U"],"reason":"The added generic Where query for named Logan may duplicate the final country target rather than expose a prerequisite. This follows the previous locked Walnut Corner/Midway training audit uncertainty; do not call it a definite factual distortion."},
+    "43": {"verdict":"fail","dimensions":["F"],"reason":"Substitutes an unconstrained country in the continent where government phonology is popular, and makes the show about countries instead of the original continent subject."},
+    "50": {"verdict":"fail","dimensions":["F"],"reason":"Still asks for the commander's WWII battles without retaining that Noss served as gunner during those battles."},
+    "60": {"verdict":"fail","dimensions":["F","C"],"reason":"Asks for the country containing the atoll, a related-property substitute for the needed ocean and the country in that ocean's middle."}
+  },
+  "reviewer":"All changed arrays inspected against original and locked parent. Identical arrays inherit. Row30 empty is valid for a local original with no useful unknown prerequisite;34 and46 are faithful recoverable rephrases. Same non-independent Codex rubric; uncertainty full denominator."
+}

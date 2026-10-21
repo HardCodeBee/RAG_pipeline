@@ -1,0 +1,143 @@
+{
+  "utc": "2026-10-20T13:11:18.786000+00:00",
+  "task": "p02_merge_cachefix_v1_20261021",
+  "planned_queries": 300,
+  "planned_method_cases": 600,
+  "arms": {
+    "timing_only": {
+      "planned": 300,
+      "statuses": {
+        "complete_from_exact_cache": 300
+      },
+      "needs_api_queries": 0,
+      "needs_api_ids": [],
+      "first_miss_stage_counts": {},
+      "needs_full_retrieval_queries": 0,
+      "proven_unique_new_api_calls_min": 0,
+      "remaining_api_calls_structural_max": 0,
+      "bounds_note": "The lower bound counts unique first-miss payloads only. The maximum assumes all remaining stages miss cache and every future short answer needs formatting. Actual later outputs/cache hits can reduce it.",
+      "by_dataset": {
+        "hotpotqa": {
+          "complete_from_exact_cache": 100
+        },
+        "2wiki": {
+          "complete_from_exact_cache": 100
+        },
+        "musique": {
+          "complete_from_exact_cache": 100
+        }
+      }
+    },
+    "union20": {
+      "planned": 300,
+      "statuses": {
+        "complete_from_exact_cache": 290,
+        "needs_api": 10
+      },
+      "needs_api_queries": 10,
+      "needs_api_ids": [
+        "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+        "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+        "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+        "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+        "hotpotqa:5adcfbf45542990d50227d86",
+        "hotpotqa:5ab7f0b9554299366779405d",
+        "hotpotqa:5ab50e0a5542990594ba9cf0",
+        "hotpotqa:5a71474b5542994082a3e74f",
+        "hotpotqa:5a7a59d15542996c55b2dd67",
+        "hotpotqa:5ac298805542990b17b15429"
+      ],
+      "first_miss_stage_counts": {
+        "legacy/answer/3": 5,
+        "legacy/answer/2": 5
+      },
+      "needs_full_retrieval_queries": 0,
+      "proven_unique_new_api_calls_min": 10,
+      "remaining_api_calls_structural_max": 36,
+      "bounds_note": "The lower bound counts unique first-miss payloads only. The maximum assumes all remaining stages miss cache and every future short answer needs formatting. Actual later outputs/cache hits can reduce it.",
+      "by_dataset": {
+        "hotpotqa": {
+          "complete_from_exact_cache": 94,
+          "needs_api": 6
+        },
+        "2wiki": {
+          "complete_from_exact_cache": 96,
+          "needs_api": 4
+        },
+        "musique": {
+          "complete_from_exact_cache": 100
+        }
+      }
+    }
+  },
+  "dataset_retrieval_seed": {
+    "2wiki": {
+      "method_cases": 200,
+      "statuses": {
+        "complete_from_exact_cache": 196,
+        "needs_api": 4
+      },
+      "retrieval_cache_entries": 486,
+      "seed_summary": {
+        "inserted": 486,
+        "existing": 1054,
+        "foreign_resource_rows_ignored": 0,
+        "duplicate_document_differences": 0
+      },
+      "backend_started": false
+    },
+    "musique": {
+      "method_cases": 200,
+      "statuses": {
+        "complete_from_exact_cache": 200
+      },
+      "retrieval_cache_entries": 494,
+      "seed_summary": {
+        "inserted": 494,
+        "existing": 1133,
+        "foreign_resource_rows_ignored": 0,
+        "duplicate_document_differences": 0
+      },
+      "backend_started": false
+    },
+    "hotpotqa": {
+      "method_cases": 200,
+      "statuses": {
+        "complete_from_exact_cache": 194,
+        "needs_api": 6
+      },
+      "retrieval_cache_entries": 355,
+      "seed_summary": {
+        "inserted": 355,
+        "existing": 860,
+        "foreign_resource_rows_ignored": 0,
+        "duplicate_document_differences": 0
+      },
+      "backend_started": false
+    }
+  },
+  "canonical_timing_predictions_exact": true,
+  "baseline_compared": 300,
+  "source_sha256": "c32170d372bb722421bcbb4d5441cf4a32986a766382db7faad46a9915ae9fb7",
+  "adapter_sha256": "cc86c35437e866532f66ee53e1d9e6100170056435bd877f2be4d9809d0caa6b",
+  "cache_sha256": "f50768cf3ceae6feba8314c866109074f50200af64987664eca6fe0cda857082",
+  "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "no_upstream_answer_substitution_after_miss": true,
+  "materialized_method_cases": 600,
+  "materialized_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds\\r000\\cases",
+  "no_new_api_calls": true,
+  "no_full_index_searches": true,
+  "no_encoder_or_faiss_loaded": true,
+  "reference_answers_read": false,
+  "budget_before_any_dispatch": {
+    "global_known_cny": 190.88059719999998,
+    "global_reserved_cny": 42.480331199999995,
+    "global_occupied_cny": 233.36092839999998,
+    "experiment_known_cny": 0,
+    "experiment_reserved_cny": 0,
+    "experiment_submissions": 0,
+    "global_cap_cny": 300,
+    "actual_bill_verified": false
+  },
+  "details_file": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\PREFLIGHT.details.jsonl"
+}

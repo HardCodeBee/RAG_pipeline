@@ -1,0 +1,853 @@
+{
+  "snapshot_utc": "2026-10-19T22:03:32.619309+00:00",
+  "phase": "g01 completed300; f01 running and audited separately",
+  "scope": "Full g01 successful300, all600 goal/final actual request payloads and raw returned answers; no new API calls.",
+  "counts": {
+    "successful_cases": 300,
+    "ordinary_nodes": 587,
+    "all_nodes": 887,
+    "qid_query_identity_cases": 300,
+    "ordinary_nodes_exact_cases": 300,
+    "all_nonoutput_fields_exact_cases": 300,
+    "only_goal_rule_insertion_cases": 300,
+    "context_reconstruction_cases": 300,
+    "only_final_context_updated_cases": 300,
+    "formatter_original_trigger_cases": 300,
+    "formatter_triggered": 0,
+    "actual_payloads": 600,
+    "logical_receipts_reused": 182,
+    "actual_goal_payload": 300,
+    "actual_goal_response_preserved": 300,
+    "actual_generation_settings": 600,
+    "actual_final_payload": 300,
+    "actual_final_response_preserved": 300,
+    "frozen_source_pins_checked": 8,
+    "frozen_case_hashes_checked": 600
+  },
+  "problems": [],
+  "results_snapshot": {
+    "scorable": 300,
+    "statuses": {
+      "success": 300
+    },
+    "F1": 0.6937193899056644,
+    "same_parent_F1": 0.6809325664588823,
+    "delta_parent": 0.012786823446782168,
+    "paired95": [
+      0.0019428619497117946,
+      0.025893769197110266
+    ],
+    "up": 8,
+    "tie": 285,
+    "down": 7,
+    "pilot_scorable": 100,
+    "pilot_delta": 0.014246309246309246,
+    "expand": true,
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 100,
+        "F1": 0.7771507936507934,
+        "delta_parent": -0.0011825396825396837
+      },
+      "2wiki": {
+        "n": 100,
+        "F1": 0.9182777777777776,
+        "delta_parent": 0.024593406593406596
+      },
+      "musique": {
+        "n": 100,
+        "F1": 0.3857295982884218,
+        "delta_parent": 0.01494960342947959
+      }
+    }
+  },
+  "interpretation": {
+    "up8": "2 common-country comparison repairs;1 river-to-downstream-object repair with river/bay terminology caveat;1 province-location attribute completion;3 same-entity alias/location wording compression;1 wrongZero years token-overlap gain",
+    "down7": "1 target object loss (Delta to river);1 stronger uncertainty with indirect evidence (Mach);other5 are supported synonyms/background/extra properties, with possible cross-study scope mixture in Ashkenazi.",
+    "counts_boundary": "These are non-blind mechanistic reviews, not exclusive causal labels or an estimate of population hallucination rate. Supported-fact additions and token-match changes can coexist. No new numerical-age-comparison repair was observed among the15 changed scores.",
+    "gold_boundary": "Gold used only after generation for offline interpretation; never used by candidate runtime."
+  },
+  "reviews": [
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "query": "How long had Lynn Hung's birthplace been the capitol city of Yaxing Coach's headquarters location?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\3hop2__326964_734214_7713.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop2__326964_734214_7713.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop2__326964_734214_7713.json",
+      "scoring": {
+        "id": "musique:3hop2__326964_734214_7713",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Zero years",
+        "f1": 0.4,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 0.4,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "about 400 years",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Where was Lynn Hung born?",
+          "answer": "Lynn Hung was born in Nanjing, China."
+        },
+        {
+          "step_id": 2,
+          "request": "Where were Yaxing Coach's headquarters located?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        },
+        {
+          "step_id": 3,
+          "request": "What city was the headquarters of Yaxing Coach located in?",
+          "answer": "Yaxing Coach's headquarters were located in Yangzhou, Jiangsu, China."
+        }
+      ],
+      "old_goal_answer": "Nanjing has been the capital city of Jiangsu province since the founding of the People's Republic of China, but it was never the capital city of Yangzhou—the location of Yaxing Coach's headquarters—so the premise is invalid.",
+      "new_goal_answer": "Lynn Hung's birthplace, Nanjing, had been the capital city of Jiangsu province—the same province where Yaxing Coach's headquarters in Yangzhou is located—but Nanjing has never been the capital city of Yangzhou, so the duration is zero years.",
+      "P1_parent_prediction": "Cannot be determined",
+      "new_prediction": "Zero years",
+      "classification": "F1上升但事实风险增加；不是正确的数值组合修复",
+      "mechanism": "旧goal已把现代城市Yangzhou与历史行政区关系混淆，父最终缺答；新goal将“never”变成zero years，最终Zero years。标准about 400 years，仅years重合即得0.4。当前goal读到的是南京作为江苏省会等段落，没有400年或never的直接依据，不能把缺证转换为零。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China, and had been the world's largest city aggregately for hundreds of years, enjoyed peace and prosperity and beared wars and disasters. Nanjing served as the capital of Eastern Wu, one of the three major states in the Three Kingdoms period (211-280); the Eastern Jin and each of the Southern Dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317-589; the Southern Tang, one of the Ten Kingdoms (937-76); the Ming dynasty when, for the first time, all of China was ruled from the city (1368-1421); and the Republic of China (1927–37, 1945–49) prior to its flight to Taiwan during the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1851–64) and the Japanese puppet regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War, and suffered appalling atrocities in both conflicts, including the Nanjing Massacre. It has been serving as the capital city of Jiangsu province after the China was established, and is still the nominal capital of Republic of China that accommodates many of its important heritage sites, including the Presidential Palace and Sun Yat-sen Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Art Museum."
+        },
+        {
+          "rank": 4,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing ( listen; Chinese: 南京, \"Southern Capital\") is the city situated in the heartland of lower Yangtze River region in China, which has long been a major centre of culture, education, research, politics, economy, transport networks and tourism. It is the capital city of Jiangsu province of People's Republic of China and the second largest city in East China, with a total population of 8,216,100, and legally the capital of Republic of China which lost the mainland during the civil war. The city whose name means \"Southern Capital\" has a prominent place in Chinese history and culture, having served as the capitals of various Chinese dynasties, kingdoms and republican governments dating from the 3rd century AD to 1949. Prior to the advent of pinyin romanization, Nanjing's city name was spelled as Nanking or Nankin. Nanjing has a number of other names, and some historical names are now used as names of districts of the city, and among them there is the name Jiangning (江寧), whose former character Jiang (江, River) is the former part of the name Jiangsu and latter character Ning (寧, simplified form 宁, Peace) is the short name of Nanjing. When being the capital of a state, for instance, ROC, Jing (京) is adopted as the abbreviation of Nanjing. Although as a city located in southern part of China becoming Chinese national capital as early as in Jin dynasty, the name Nanjing was designated to the city in Ming dynasty, about a thousand years later. Nanjing is particularly known as Jinling (金陵, literally meaning Gold Mountain) and the old name has been used since the Warring States Period in Zhou Dynasty."
+        },
+        {
+          "rank": 6,
+          "source": "Nanjing",
+          "text": "Nanjing\nNanjing first became a state capital in 229 AD, when the state of Eastern Wu founded by Sun Quan during the Three Kingdoms period relocated its capital to Jianye (建業), the city extended on the basis of Jinling Yi in 211 AD. Although conquered by the Western Jin dynasty in 280, Nanjing and its neighbouring areas had been well cultivated and developed into one of the commercial, cultural and political centers of China during the rule of East Wu. This city would soon play a vital role in the following centuries."
+        },
+        {
+          "rank": 8,
+          "source": "Nanjing",
+          "text": "Nanjing\nIt is believed that Nanjing was the largest city in the world from 1358 to 1425 with a population of 487,000 in 1400. Nanjing remained the capital of the Ming Empire until 1421, when the third emperor of the Ming dynasty, the Yongle Emperor, relocated the capital to Beijing."
+        },
+        {
+          "rank": 10,
+          "source": "Nanjing",
+          "text": "Nanjing\nIn 1927, the Kuomintang (KMT; Nationalist Party) under Generalissimo Chiang Kai-shek again established Nanjing as the capital of the Republic of China, and this became internationally recognized once KMT forces took Beijing in 1928. The following decade is known as the Nanking decade."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__742831_156034",
+      "query": "Of which river is the river Kichi Sipi Bridge crosses a tributary?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__742831_156034.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__742831_156034.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__742831_156034.json",
+      "scoring": {
+        "id": "musique:2hop__742831_156034",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Hudson Bay",
+        "f1": 1.0,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 1.0,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Hudson's Bay",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What river is Kichi Sipi Bridge across?",
+          "answer": "The Kichi Sipi Bridge is across the Nelson River."
+        }
+      ],
+      "old_goal_answer": "The Kichi Sipi Bridge crosses a tributary of the Hudson Bay watershed, specifically the Nelson River, which drains into Hudson Bay.",
+      "new_goal_answer": "The Kichi Sipi Bridge crosses the Nelson River, which is a tributary of Hudson Bay.",
+      "P1_parent_prediction": "Nelson River",
+      "new_prediction": "Hudson Bay",
+      "classification": "关系链最终所求对象纠正；伴有原题river/bay用词问题",
+      "mechanism": "前置已知桥跨Nelson River不变；旧goal把桥所跨河与该河下游水体混在一句，最终停在Nelson；新goal更明确Nelson流向Hudson Bay，最终答Hudson Bay。Top2明确river ends in Hudson Bay。题目把所求称river而标准为bay，新goal的tributary of Hudson Bay也不宜当严谨水文定义。",
+      "semantic_improvement_supported": "主要对象/关系更符合检索原文及标准，但题目术语存在歧义",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Kichi Sipi Bridge",
+          "text": "Kichi Sipi Bridge\nThe Kichi Sipi Bridge spans a deep channel of the Nelson River south of Cross Lake, providing the only all-weather road link between eastern Manitoba and the rest of Canada and North America. Its origins are unusual and its technology innovative. At 850 feet, it is the second longest road bridge in Manitoba."
+        },
+        {
+          "rank": 2,
+          "source": "Nelson River",
+          "text": "Nelson River\nThe Nelson River is a river of north-central North America, in the Canadian province of Manitoba. The river drains Lake Winnipeg and runs before it ends in Hudson Bay. Its full length (including the Saskatchewan River and Bow River) is , it has mean discharge of , and has a drainage basin of , of which is in the United States."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__789565_416401",
+      "query": "Who is the child of Empress Dowager Huang's child?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__789565_416401.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__789565_416401.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__789565_416401.json",
+      "scoring": {
+        "id": "musique:2hop__789565_416401",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Wang Jipeng (also known as Wang Chang)",
+        "f1": 0.4444444444444445,
+        "parent_f1": 0.3076923076923077,
+        "B0_f1": 0.3076923076923077,
+        "delta_parent": 0.13675213675213677,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "Wang Jipeng",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who was Empress Dowager Huang's child?",
+          "answer": "Empress Dowager Huang's child was Wang Yanjun (also known as Wang Lin, Emperor Huizong)."
+        }
+      ],
+      "old_goal_answer": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min) was the child of Empress Dowager Huang's child, Wang Yanjun.",
+      "new_goal_answer": "Wang Jipeng (also known as Wang Chang) was the child of Empress Dowager Huang's child, Wang Yanjun.",
+      "P1_parent_prediction": "Wang Jipeng (also known as Wang Chang, Emperor Kangzong of Min)",
+      "new_prediction": "Wang Jipeng (also known as Wang Chang)",
+      "classification": "同一正确实体的别名压缩",
+      "mechanism": "旧新goal均为Wang Jipeng，仅删Emperor Kangzong of Min称号，最终仍带Wang Chang别名；不是新检索或新关系发现。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        6
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Empress Dowager Huang",
+          "text": "Empress Dowager Huang\nEmpress Dowager Huang (黃太后, personal name unknown), referred to semi-formally as Empress Dowager Longqi (龍啟太后) after her son Wang Yanjun's \"Longqi\" era name, was an empress dowager of the Chinese Five Dynasties and Ten Kingdoms period state Min. She was the primary concubine of Wang Shenzhi (Prince Zhongyi), who was commonly regarded as the founder of the Min state, and the mother of Wang Yanjun (also known as Wang Lin, Emperor Huizong), the first Min ruler to claim the title of emperor."
+        },
+        {
+          "rank": 6,
+          "source": "Wang Jipeng",
+          "text": "Wang Jipeng\nWang Jipeng (王繼鵬) (d. August 29, 939), used the name Wang Chang (王昶) from 935 to 939, formally Emperor Kangzong of Min (閩康宗), was an emperor of the Chinese Five Dynasties and Ten Kingdoms Period state Min. He inherited the throne after his father Wang Yanjun (Emperor Huizong, later also known as Wang Lin) was assassinated, possibly at his instigation. He himself was in turn killed in a coup headed by his uncle Wang Yanxi (Emperor Jingzong, later also known as Wang Xi), who succeeded him."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__582045_161450",
+      "query": "Where is the province of Gonbad-e Qabus County located?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__582045_161450.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__582045_161450.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__582045_161450.json",
+      "scoring": {
+        "id": "musique:2hop__582045_161450",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Golestan Province in northern Iran, south of the Caspian Sea",
+        "f1": 0.5882352941176471,
+        "parent_f1": 0.16666666666666666,
+        "B0_f1": 0.16666666666666666,
+        "delta_parent": 0.42156862745098045,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "in the north-east of the country south of the Caspian Sea",
+      "prior_QA": [],
+      "old_goal_answer": "Gonbad-e Qabus County is located in Golestan Province in Iran.",
+      "new_goal_answer": "Gonbad-e Qabus County is located in Golestan Province in northern Iran, south of the Caspian Sea.",
+      "P1_parent_prediction": "Golestan Province in Iran",
+      "new_prediction": "Golestan Province in northern Iran, south of the Caspian Sea",
+      "classification": "补足原题所求的地理位置属性",
+      "mechanism": "旧goal只说县位于Golestan Province in Iran，未充分回答省位于哪里；新goal补northern Iran,south of Caspian Sea，更贴合Top4的north-east of country south of Caspian Sea。属于部分属性补足而非新检索；northern未达到原文north-east同等精度。",
+      "semantic_improvement_supported": true,
+      "evidence_ranks": [
+        4
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 4,
+          "source": "Golestan Province",
+          "text": "Golestan Province\nGolestān Province (Persian: استان گلستان‎, Ostān-e Golestān) is one of the 31 provinces of Iran, located in the north-east of the country south of the Caspian Sea. Its capital is Gorgan."
+        }
+      ]
+    },
+    {
+      "id": "musique:3hop1__109422_720914_27537",
+      "query": "Why did Roncalli leave the place of death of The Punishment of Tythus' creator?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\3hop1__109422_720914_27537.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__109422_720914_27537.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop1__109422_720914_27537.json",
+      "scoring": {
+        "id": "musique:3hop1__109422_720914_27537",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+        "f1": 0.29629629629629634,
+        "parent_f1": 0.31578947368421056,
+        "B0_f1": 0.31578947368421056,
+        "delta_parent": -0.01949317738791423,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "for the conclave in Rome",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who created The Punishment of Tythus?",
+          "answer": "Titian created The Punishment of Tythus."
+        },
+        {
+          "step_id": 2,
+          "request": "Where did the creator of The Punishment of Tythus die?",
+          "answer": "The place of death of Titian, the creator of The Punishment of Tythus, cannot be determined from these passages."
+        }
+      ],
+      "old_goal_answer": "Roncalli left Venice to attend the papal conclave in Rome following the death of Pope Pius XII.",
+      "new_goal_answer": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+      "P1_parent_prediction": "Roncalli left Venice to attend the papal conclave in Rome following the death of Pope Pius XII.",
+      "new_prediction": "Roncalli left Venice for the papal conclave in Rome following the death of Pope Pius XII, as he was a papabile candidate and subsequently elected pope.",
+      "classification": "原文支持的背景扩展导致F1下降",
+      "mechanism": "旧新均保留for conclave in Rome；新加papabile及随后当选等背景，Top1支持，但偏离仅问离开原因的简短目标，F1轻降。普通前置Titian去世地仍是未知，goal依赖当前Pope原文取得Venice事实。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        3,
+        5
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Pope John XXIII",
+          "text": "Pope John XXIII\nFollowing the death of Pope Pius XII on 9 October 1958, Roncalli watched the live funeral on his last full day in Venice on 11 October. His journal was specifically concerned with the funeral and the abused state of the late pontiff's corpse. Roncalli left Venice for the conclave in Rome well aware that he was papabile,[b] and after eleven ballots, was elected to succeed the late Pius XII, so it came as no surprise to him, though he had arrived at the Vatican with a return train ticket to Venice.[citation needed]"
+        },
+        {
+          "rank": 3,
+          "source": "Pope John XXIII",
+          "text": "Pope John XXIII\nIn February 1939, he received news from his sisters that his mother was dying. On 10 February 1939, Pope Pius XI died. Roncalli was unable to see his mother for the end as the death of a pontiff meant that he would have to stay at his post until the election of a new pontiff. Unfortunately, she died on 20 February 1939, during the nine days of mourning for the late Pius XI. He was sent a letter by Cardinal Eugenio Pacelli, and Roncalli later recalled that it was probably the last letter Pacelli sent until his election as Pope Pius XII on 2 March 1939. Roncalli expressed happiness that Pacelli was elected, and, on radio, listened to the coronation of the new pontiff."
+        },
+        {
+          "rank": 5,
+          "source": "Pope John XXIII",
+          "text": "Pope John XXIII\nOn 12 January 1953, he was appointed Patriarch of Venice and, accordingly, raised to the rank of Cardinal-Priest of Santa Prisca by Pope Pius XII. Roncalli left France for Venice on 23 February 1953 stopping briefly in Milan and then to Rome. On 15 March 1953, he took possession of his new diocese in Venice. As a sign of his esteem, the President of France, Vincent Auriol, claimed the ancient privilege possessed by French monarchs and bestowed the red biretta on Roncalli at a ceremony in the Élysée Palace. It was around this time that he, with the aid of Monsignor Bruno Heim, formed his coat of arms with a lion of Saint Mark on a white ground. Auriol also awarded Roncalli three months later with the award of Commander of the Legion of Honour."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__135651_669373",
+      "query": "Which university employed the person that Mach bands are named after?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__135651_669373.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__135651_669373.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__135651_669373.json",
+      "scoring": {
+        "id": "musique:2hop__135651_669373",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Cannot be determined",
+        "f1": 0,
+        "parent_f1": 0.22222222222222224,
+        "B0_f1": 0.22222222222222224,
+        "delta_parent": -0.22222222222222224,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Charles University",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who are Mach bands named after?",
+          "answer": "Mach bands are named after the physicist Ernst Mach."
+        }
+      ],
+      "old_goal_answer": "Ernst Mach was employed by the University of Vienna and later by the University of Prague.",
+      "new_goal_answer": "Ernst Mach was employed by the University of Vienna and later by the University of Prague, but no retrieved passage states which university employed him.",
+      "P1_parent_prediction": "University of Vienna and University of Prague",
+      "new_prediction": "Cannot be determined",
+      "classification": "不确定性/证据约束改变最终作答；不能等同事实退化",
+      "mechanism": "旧goal用Vienna和Prague参数性概括（非标准Charles University）；新goal保留该概括又加未有retrieved passage说明雇主，最终缺答。Top4 Vinko Dvorak称在Charles University Prague毕业后成为Ernst Mach助手，可提供间接桥接，但没有直接Ernst Mach employment句。不能把旧部分词面得分解释为旧答案更完整或新缺答必然正确。",
+      "semantic_improvement_supported": "不确定，存在间接证据和参数性陈述混合",
+      "evidence_ranks": [
+        1,
+        4
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Mach bands",
+          "text": "Mach bands\nMach bands is an optical illusion named after the physicist Ernst Mach. It exaggerates the contrast between edges of the slightly differing shades of gray, as soon as they contact one another, by triggering edge-detection in the human visual system."
+        },
+        {
+          "rank": 4,
+          "source": "Vinko Dvořák",
+          "text": "Vinko Dvořák\nHe studied mathematics and physics at the Charles University in Prague, and after graduating he became an assistant to professor Ernst Mach. After obtaining his doctorate in Prague in 1873/1874 he came to Zagreb (at the time also part of Austria-Hungary) and founded the Physics Cabinet at the Faculty of Philosophy in 1875."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5abec66b5542997ec76fd360",
+      "query": "What do Josef Veltjens and Hermann Goering have in common?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\hotpotqa\\g01_goal_consistency\\5abec66b5542997ec76fd360.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5abec66b5542997ec76fd360.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5abec66b5542997ec76fd360.json",
+      "scoring": {
+        "id": "hotpotqa:5abec66b5542997ec76fd360",
+        "dataset": "hotpotqa",
+        "arm": "g01_goal_consistency",
+        "prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+        "f1": 0.38095238095238093,
+        "parent_f1": 0.4,
+        "B0_f1": 0.32,
+        "delta_parent": -0.01904761904761909,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "A veteran World War I fighter pilot ace",
+      "prior_QA": [],
+      "old_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces who received the Pour le Mérite.",
+      "new_goal_answer": "Both Josef Veltjens and Hermann Göring were German World War I fighter aces and recipients of the Pour le Mérite.",
+      "P1_parent_prediction": "Both were German World War I fighter aces who received the Pour le Mérite.",
+      "new_prediction": "Both were German World War I fighter aces and recipients of the Pour le Mérite.",
+      "classification": "事实相同的同义表达变化导致F1下降",
+      "mechanism": "who received the Pour le Mérite改为and recipients of the Pour le Mérite；两段原文均支持共同职业和奖项，没有观察到事实退化。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Josef Veltjens",
+          "text": "Josef Veltjens\nJosef \"Seppl\" Veltjens (2 June 1894 – 6 October 1943) was a German World War I fighter ace credited with 35 victories. In later years, he served as an international arms dealer, as well as a personal emissary from Hermann Göring to Benito Mussolini. He was awarded Pour le Mérite, the Royal House Order of Hohenzollern, and the Iron Cross."
+        },
+        {
+          "rank": 2,
+          "source": "Hermann Göring",
+          "text": "Hermann Göring\nHermann Wilhelm Göring (or Goering; ] ; 12 January 1893 – 15 October 1946) was a German political and military leader as well as one of the most powerful figures in the Nazi Party (NSDAP) that ruled Germany from 1933 to 1945. A veteran World War I fighter pilot ace, he was a recipient of the \"Pour le Mérite\". He was the last commander of \"Jagdgeschwader\" 1, the fighter wing once led by Manfred von Richthofen."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:fcd3ff500baf11ebab90acde48001122",
+      "query": "Who is Teriimaevarua Iii's paternal grandmother?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\2wiki\\g01_goal_consistency\\fcd3ff500baf11ebab90acde48001122.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\fcd3ff500baf11ebab90acde48001122.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\fcd3ff500baf11ebab90acde48001122.json",
+      "scoring": {
+        "id": "2wiki:fcd3ff500baf11ebab90acde48001122",
+        "dataset": "2wiki",
+        "arm": "g01_goal_consistency",
+        "prediction": "Queen Pōmare IV",
+        "f1": 0.8,
+        "parent_f1": 0.5714285714285715,
+        "B0_f1": 0.5714285714285715,
+        "delta_parent": 0.22857142857142854,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Pōmare IV",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is Teriimaevarua Iii's father?",
+          "answer": "Teriimaevarua III's father is Prince Tamatoa-a-tu (Tamatoa V), King of Raiātea and Tahaa."
+        },
+        {
+          "step_id": 2,
+          "request": "Who is the mother of Teriimaevarua Iii's father?",
+          "answer": "Teriimaevarua III's father, Tamatoa V, was a son of Queen Pōmare IV of Tahiti, so his mother is Queen Pōmare IV."
+        }
+      ],
+      "old_goal_answer": "Teriimaevarua III's paternal grandmother is Queen Pōmare IV of Tahiti.",
+      "new_goal_answer": "Teriimaevarua III's paternal grandmother is Queen Pōmare IV.",
+      "P1_parent_prediction": "Queen Pōmare IV of Tahiti",
+      "new_prediction": "Queen Pōmare IV",
+      "classification": "正确同一实体的限定压缩",
+      "mechanism": "Queen Pomare IV of Tahiti缩为Queen Pomare IV；父亲Tamatoa V与其母亲关系在原文Top10支持，未出现新事实。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        2,
+        3,
+        10
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Pōmare IV",
+          "text": "Pōmare IV\nPōmare IV (28 February 1813 – 17 September 1877), more properly ʻAimata Pōmare IV Vahine-o-Punuateraʻitua (otherwise known as ʻAimata – \"eye-eater\", after an old custom of the ruler to eat the eye of the defeated foe), was the Queen of Tahiti between 1827 and 1877. She was the fourth monarch of the Kingdom of Tahiti."
+        },
+        {
+          "rank": 3,
+          "source": "Teriimaevarua III",
+          "text": "Teriimaevarua III\nAri'i-Otare Terii-maeva-rua III Pomare (28 May 1871 – 19 November 1932) was the last Queen of the Tahitian island of Bora Bora from 1873 to 1895. The second daughter of Prince Tamatoa-a-tu (Tamatoa V), King of Raiātea and Tahaa and Princess Moe-a-Mai, Arii-Otare became the Queen of Bora Bora on the death of her aunt Princess Teari'i-maeva-rua I Pomare, Queen of Bora Bora. She married Prince Teri'i Hinoi-a-tua Pomare, chief of Hitia'a in Bora Bora on 9 January 1884 and was divorced in 1887. Ari'i-'Otare produced no children of her own, so adopted her two younger step daughters; Princess Rehu-rehu Tuheiava and Princess Itia Tuheiava. Bora Bora was annexed by the French on 19 March 1888, but royal power remained in effect until her abdication on 21 September 1895. She remained the head of the royal house of Bora Bora until her death."
+        },
+        {
+          "rank": 10,
+          "source": "Tamatoa V",
+          "text": "Tamatoa V\nTamatoa V, born Tamatoa-a-tu Pōmare, (23 September 1842, Moorea – 30 September 1881, Pape'ete), King of Raiatea and Taha'a, was a son of Queen Pōmare IV of Tahiti."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+      "query": "Where was the place of burial of the director of film Broadway Bad?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\2wiki\\g01_goal_consistency\\cdb8b7540bd911eba7f7acde48001122.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\cdb8b7540bd911eba7f7acde48001122.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\cdb8b7540bd911eba7f7acde48001122.json",
+      "scoring": {
+        "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+        "dataset": "2wiki",
+        "arm": "g01_goal_consistency",
+        "prediction": "Westwood Village Memorial Park Cemetery",
+        "f1": 1.0,
+        "parent_f1": 0.7692307692307693,
+        "B0_f1": 0.7692307692307693,
+        "delta_parent": 0.23076923076923073,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "Westwood Village Memorial Park Cemetery",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "Who is the director of the film Broadway Bad?",
+          "answer": "The director of the film *Broadway Bad* was Sidney Lanfield."
+        }
+      ],
+      "old_goal_answer": "Sidney Lanfield is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "new_goal_answer": "Sidney Lanfield, the director of the film *Broadway Bad*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "P1_parent_prediction": "Westwood Village Memorial Park Cemetery in Los Angeles",
+      "new_prediction": "Westwood Village Memorial Park Cemetery",
+      "classification": "同一正确墓地的最终地名压缩",
+      "mechanism": "新goal反而补director Broadway Bad身份，墓地与Los Angeles事实未变；最终P1删Los Angeles，F1提升属于答案范围/表达收束。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        2,
+        4
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Sidney Lanfield",
+          "text": "Sidney Lanfield\nSidney Lanfield (April 20, 1898 – June 20, 1972) was an American film director known for directing romances and light comedy films and later television programs. The one-time jazz musician and vaudevillian star started his first directing job for the Fox Film Corporation in 1930; he went on to direct a number of films for 20th Century Fox. In 1941, he directed the Fred Astaire film \" You'll Never Get Rich\" for Columbia Pictures, then moved to Paramount Pictures. There Lanfield worked on a number of film comedies. He is probably best remembered for directing actor Bob Hope in a number of films including \"My Favorite Blonde\" (1942), \"Let's Face It\" (1943), \"Where There's Life\" (1947), and \"The Lemon Drop Kid\" (1951). Lanfield's most profitable film, however, was the first teaming of Basil Rathbone and Nigel Bruce as Holmes and Watson in 1939's \"The Hound of the Baskervilles\". In the early 1950s the reputedly strict taskmaster-director moved to television where his vaudeville and comic background in films were put to use in television comedies including \"Where's Raymond?McHale's Navy\" and \"The Addams Family\". Lanfield was married to film actress Shirley Mason from 1927 until his death in 1972. He is interred in the Westwood Village Memorial Park Cemetery in Los Angeles. Lanfield was also known as Sidney Landfield."
+        },
+        {
+          "rank": 4,
+          "source": "Sidney Lanfield",
+          "text": "Sidney Lanfield\nSidney Lanfield( April 20, 1898 – June 20, 1972) was an American film director known for directing romances and light comedy films and later television programs. The one- time jazz musician and vaudevillian star started his first directing job for the Fox Film Corporation in 1930; he went on to direct a number of films for 20th Century Fox. In 1941, he directed the Fred Astaire film\" You'll Never Get Rich\" for Columbia Pictures, then moved to Paramount Pictures. There Lanfield worked on a number of film comedies. He is probably best remembered for directing actor Bob Hope in a number of films including\" My Favorite Blonde\"( 1942),\" Let's Face It\"( 1943),\" Where There's Life\"( 1947), and\" The Lemon Drop Kid\"( 1951). Lanfield's most profitable film, however, was the first teaming of Basil Rathbone and Nigel Bruce as Holmes and Watson in 1939's\" The Hound of the Baskervilles\". In the early 1950s the reputedly strict taskmaster- director moved to television where his vaudeville and comic background in films were put to use in television comedies including\" Where's Raymond? McHale's Navy\" and\" The Addams Family\". Lanfield was married to film actress Shirley Mason from 1927 until his death in 1972. He is interred in the Westwood Village Memorial Park Cemetery in Los Angeles. Lanfield was also known as Sidney Landfield."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ae0006755429925eb1afbd3",
+      "query": "Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\hotpotqa\\g01_goal_consistency\\5ae0006755429925eb1afbd3.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ae0006755429925eb1afbd3.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5ae0006755429925eb1afbd3.json",
+      "scoring": {
+        "id": "hotpotqa:5ae0006755429925eb1afbd3",
+        "dataset": "hotpotqa",
+        "arm": "g01_goal_consistency",
+        "prediction": "700 block of Higuera Street in downtown San Luis Obispo",
+        "f1": 0.4285714285714285,
+        "parent_f1": 0.5,
+        "B0_f1": 0.4285714285714285,
+        "delta_parent": -0.07142857142857151,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "San Luis Obispo, California",
+      "prior_QA": [],
+      "old_goal_answer": "Bubblegum Alley is located in downtown San Luis Obispo, California, specifically in the 700 block of Higuera Street.",
+      "new_goal_answer": "Bubblegum Alley is located in the 700 block of Higuera Street in downtown San Luis Obispo, California.",
+      "P1_parent_prediction": "downtown San Luis Obispo, California, specifically in the 700 block of Higuera Street",
+      "new_prediction": "700 block of Higuera Street in downtown San Luis Obispo",
+      "classification": "位置表达与最终短化导致F1下降",
+      "mechanism": "旧新goal均保留San Luis Obispo, California与Higuera Street；新最终输出街道+城市而省掉California，仍与原文位置一致，但未贴合标准所求城市州表达。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Bubblegum Alley",
+          "text": "Bubblegum Alley\nBubblegum Alley is a tourist attraction in downtown San Luis Obispo, California, known for its accumulation of used bubble gum on the walls of an alley. It is a 15 ft high and 70 ft long alley lined with chewed gum left by passers-by. It covers a stretch of 20 meters in the 700 block of Higuera Street in downtown San Luis Obispo."
+        },
+        {
+          "rank": 2,
+          "source": "Gum Wall",
+          "text": "Gum Wall\nThe Market Theater Gum Wall is a brick wall covered in used chewing gum, in an alleyway in downtown Seattle. It is located in Post Alley under Pike Place Market. Similar to Bubblegum Alley in San Luis Obispo, California, the Market Theater Gum Wall is a local landmark. Parts of the wall can be covered several inches thick, 15 feet high for 50 feet."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__22431_16335",
+      "query": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to what two factors?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\2hop__22431_16335.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\2hop__22431_16335.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\2hop__22431_16335.json",
+      "scoring": {
+        "id": "musique:2hop__22431_16335",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+        "f1": 0.12121212121212122,
+        "parent_f1": 0.14285714285714288,
+        "B0_f1": 0.14285714285714288,
+        "delta_parent": -0.02164502164502166,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "inter-marriage and conversions in the time of the Roman Empire",
+      "prior_QA": [],
+      "old_goal_answer": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "new_goal_answer": "Ashkenazi Jews and the largest single groups of foreigners in 2010 may be genetically similar due to shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+      "P1_parent_prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly in Southern Europe.",
+      "new_prediction": "Shared Southern European ancestry and historical admixture between Middle Eastern Jewish ancestors and indigenous European populations, particularly through maternal lineages and Roman-era intermarriage or conversion.",
+      "classification": "补入受支持原因但句子冗长；F1下降不能等同事实变差",
+      "mechanism": "新goal/最终补入Roman-era intermarriage or conversion，goal Top4确实写inter-marriage and conversions in the time of the Roman Empire；但主体答案仍是shared Southern European ancestry和historical admixture的概括，未直接只答两个原因，新增词拉低原生F1。还混入Top2的maternal lineages表述，跨研究合并，需保留范围风险。",
+      "semantic_improvement_supported": "部分原因更贴合原文，未完全纠正原题两因素表达",
+      "evidence_ranks": [
+        2,
+        4
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nIn an ethnic sense, an Ashkenazi Jew is one whose ancestry can be traced to the Jews who settled in Central Europe. For roughly a thousand years, the Ashkenazim were a reproductively isolated population in Europe, despite living in many countries, with little inflow or outflow from migration, conversion, or intermarriage with other groups, including other Jews. Human geneticists have argued that genetic variations have been identified that show high frequencies among Ashkenazi Jews, but not in the general European population, be they for patrilineal markers (Y-chromosome haplotypes) and for matrilineal markers (mitotypes). However, a 2013 study of Ashkenazi mitochondrial DNA, from the University of Huddersfield in England, suggests that at least 80 percent of the Ashkenazi maternal lineages derive from the assimilation of mtDNAs indigenous to Europe, probably as a consequence of conversion. Since the middle of the 20th century, many Ashkenazi Jews have intermarried, both with members of other Jewish communities and with people of other nations and faiths."
+        },
+        {
+          "rank": 4,
+          "source": "Ashkenazi Jews",
+          "text": "Ashkenazi Jews\nA 2010 study on Jewish ancestry by Atzmon-Ostrer et al. stated \"Two major groups were identified by principal component, phylogenetic, and identity by descent (IBD) analysis: Middle Eastern Jews and European/Syrian Jews. The IBD segment sharing and the proximity of European Jews to each other and to southern European populations suggested similar origins for European Jewry and refuted large-scale genetic contributions of Central and Eastern European and Slavic populations to the formation of Ashkenazi Jewry\", as both groups – the Middle Eastern Jews and European/Syrian Jews – shared common ancestors in the Middle East about 2500 years ago. The study examines genetic markers spread across the entire genome and shows that the Jewish groups (Ashkenazi and non Ashkenazi) share large swaths of DNA, indicating close relationships and that each of the Jewish groups in the study (Iranian, Iraqi, Syrian, Italian, Turkish, Greek and Ashkenazi) has its own genetic signature but is more closely related to the other Jewish groups than to their fellow non-Jewish countrymen. Atzmon's team found that the SNP markers in genetic segments of 3 million DNA letters or longer were 10 times more likely to be identical among Jews than non-Jews. Results of the analysis also tally with biblical accounts of the fate of the Jews. The study also found that with respect to non-Jewish European groups, the population most closely related to Ashkenazi Jews are modern-day Italians. The study speculated that the genetic-similarity between Ashkenazi Jews and Italians may be due to inter-marriage and conversions in the time of the Roman Empire. It was also found that any two Ashkenazi Jewish participants in the study shared about as much DNA as fourth or fifth cousins."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ab6be2f55429954757d335c",
+      "query": "Zakk Wylde and Damon Albarn are both what?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\hotpotqa\\g01_goal_consistency\\5ab6be2f55429954757d335c.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\hotpotqa\\B0_legacy_multigrain_R02\\5ab6be2f55429954757d335c.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\C_final_readout_P1\\5ab6be2f55429954757d335c.json",
+      "scoring": {
+        "id": "hotpotqa:5ab6be2f55429954757d335c",
+        "dataset": "hotpotqa",
+        "arm": "g01_goal_consistency",
+        "prediction": "musicians, singers, songwriters, and multi-instrumentalists",
+        "f1": 0.22222222222222224,
+        "parent_f1": 0.25,
+        "B0_f1": 0.25,
+        "delta_parent": -0.027777777777777762,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "singer, songwriter, and multi-instrumentalist",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What is Zakk Wylde?",
+          "answer": "Zakk Wylde is an American musician, singer, songwriter, multi-instrumentalist, and occasional actor."
+        },
+        {
+          "step_id": 2,
+          "request": "What is Damon Albarn?",
+          "answer": "Damon Albarn is an English singer, songwriter, and multi-instrumentalist."
+        }
+      ],
+      "old_goal_answer": "Zakk Wylde and Damon Albarn are both musicians, singers, and songwriters.",
+      "new_goal_answer": "Zakk Wylde and Damon Albarn are both musicians, singers, songwriters, and multi-instrumentalists.",
+      "P1_parent_prediction": "musicians, singers, and songwriters",
+      "new_prediction": "musicians, singers, songwriters, and multi-instrumentalists",
+      "classification": "补充受支持的共同职业但F1下降",
+      "mechanism": "双方原文及前置均支持multi-instrumentalist；新goal加multi-instrumentalists，语义更完整，原生F1却因单复数/额外词和标准短语匹配下降。不能按F1下降称共同职业事实变坏。",
+      "semantic_improvement_supported": "受支持共同属性更完整，但仍含泛称musicians",
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Zakk Wylde",
+          "text": "Zakk Wylde\nZakk Wylde (born Jeffrey Phillip Wielandt on January 14, 1967) is an American musician, singer, songwriter, multi-instrumentalist and occasional actor who is best known as the guitarist for Ozzy Osbourne, and founder of the heavy metal band Black Label Society. His signature bulls-eye design appears on many of his guitars and is widely recognized. He was the lead guitarist and vocalist in Pride & Glory, who released one self-titled album in 1994 before disbanding. As a solo artist he released \"Book of Shadows\" and \"Book of Shadows II\"."
+        },
+        {
+          "rank": 2,
+          "source": "Damon Albarn",
+          "text": "Damon Albarn\nDamon Albarn, OBE ( ; born 23 March 1968) is an English singer, songwriter, and multi-instrumentalist. He is the lead singer of the British rock band Blur and co-founder, vocalist, instrumentalist, and principal songwriter of the virtual band Gorillaz. Albarn is also part of two supergroups, one usually known as The Good, the Bad & the Queen, although it is stated that they are officially unnamed, and another named Rocket Juice & the Moon."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "query": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\2wiki\\g01_goal_consistency\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "scoring": {
+        "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+        "dataset": "2wiki",
+        "arm": "g01_goal_consistency",
+        "prediction": "Yes",
+        "f1": 1.0,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 1.0,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "yes",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What country is Mavrolithari, Evros located in?",
+          "answer": "Mavrolithari, Evros is not located in Greece; the passage states Mavrolithari is in northern Phocis, Greece, not Evros."
+        },
+        {
+          "step_id": 2,
+          "request": "What country is Ampelakia, Evros located in?",
+          "answer": "Ampelakia, Evros is located in Greece."
+        }
+      ],
+      "old_goal_answer": "No, Mavrolithari and Ampelakia, Evros are not located in the same country, because Mavrolithari is in northern Phocis, Greece—not Evros—while Ampelakia, Evros is in Greece.",
+      "new_goal_answer": "Mavrolithari is located in Phocis, Greece, not Evros, while Ampelakia, Evros is located in Greece; therefore, both villages are in the same country—Greece—but Mavrolithari is not in Evros.",
+      "P1_parent_prediction": "No",
+      "new_prediction": "Yes",
+      "classification": "国家比较与前置关系纠正",
+      "mechanism": "旧前置把Mavrolithari不在Evros误说成不在Greece，同时句中又写Phocis Greece；旧goal沿用行政区差异而答No。新goal使用原文Top1/2明确两村均在Greece，修正为Yes。",
+      "semantic_improvement_supported": true,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Ampelakia, Evros",
+          "text": "Ampelakia, Evros\nAmpelakia( Greek: Αμπελάκια meaning vineyards) is a village in the municipality of Orestiada in the northern part of the Evros regional unit in Greece. Its population was 470 in 2011. Ampelakia is located about 12 km west of central Orestiada. The nearest larger village is Neochori to its northeast."
+        },
+        {
+          "rank": 2,
+          "source": "Mavrolithari",
+          "text": "Mavrolithari\nMavrolithari  is a village on Mount Oeta in northern Phocis, Greece, at an altitude of 1.140 meters. Since the 2011 local government reform it is part of the municipality of Delphi, and the municipal unit of Kallieis. Population was 491 in the 2011 census."
+        }
+      ]
+    },
+    {
+      "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+      "query": "Are Dent Du Géant and Monte Matto both located in the same country?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\cases\\2wiki\\g01_goal_consistency\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\2wiki\\B0_legacy_multigrain_R02\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\2wiki\\C_final_readout_P1\\0910eaa909b711ebbdb0ac1f6bf848b6.json",
+      "scoring": {
+        "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+        "dataset": "2wiki",
+        "arm": "g01_goal_consistency",
+        "prediction": "Yes",
+        "f1": 1.0,
+        "parent_f1": 0,
+        "B0_f1": 0,
+        "delta_parent": 1.0,
+        "pilot": true
+      },
+      "gold_for_analysis_only": "yes",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "What country is Dent Du Géant located in?",
+          "answer": "Dent du Géant is located in both France and Italy."
+        },
+        {
+          "step_id": 2,
+          "request": "What country is Monte Matto located in?",
+          "answer": "Monte Matto is located in Italy."
+        }
+      ],
+      "old_goal_answer": "Dent Du Géant and Monte Matto are not both located in the same country, as Dent Du Géant is located in both France and Italy while Monte Matto is located solely in Italy.",
+      "new_goal_answer": "Dent Du Géant is located in both France and Italy, and Monte Matto is located in Italy, so they are both located in at least one same country—Italy.",
+      "P1_parent_prediction": "No",
+      "new_prediction": "Yes",
+      "classification": "集合交集/共同国家判断纠正",
+      "mechanism": "辅助先验未变：Dent du Géant位于France和Italy，Monte Matto位于Italy。旧goal要求两地国家集合完全一致所以No；新goal按存在共同国家Italy判断Yes，符合原文和标准。不是数值运算修复。",
+      "semantic_improvement_supported": true,
+      "evidence_ranks": [
+        1,
+        2
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 1,
+          "source": "Monte Matto",
+          "text": "Monte Matto\nMonte Matto is a 3,097- meter- high( 10,161 ft) mountain in Piedmont, in the province of Cuneo, Italy. It is part of the Maritime Alps, dividing the Meris valley from the Gesso della Valletta valley. The mountain peak, consisting of a ridge of four aligned summits, can be seen from most of the plains near Cuneo. The ridge is composed of two different rock formations, one made up of granitoid gneiss, the other of mixed gneiss and different kinds of migmatite. The four peaks are( from east to west) cima Est( 3,088 m), cima Centrale( 3,097 m), cima Bobba( 3,079 m) and cima Verani( 3,020 m). The mountain is clearly visible from the plains around Cuneo as a triangular shape with a peculiar tiny\" tooth\"( which corresponds to cima Centrale, i.e. the central summit). It is part of the natural park\" Parco Naturale delle Alpi Marittime\". The fauna includes marmot, chamois and, at higher altitudes, the alpine ibex."
+        },
+        {
+          "rank": 2,
+          "source": "Dent du Géant",
+          "text": "Dent du Géant\nThe Dent du Géant( It.: Dente del Gigante,\" giant's tooth\")( 4,013 m) is a mountain in the Mont Blanc massif in France and Italy. The Dent du Géant remained unclimbed during the golden age of alpinism, and was a much- coveted peak in the 1870s, repelling many parties who attempted it mostly from the Rochefort ridge. In 1880 the strong team of Albert F. Mummery and Alexander Burgener tried to force a passage via the south- west face but were repelled by a band of slabs, causing Mummery to exclaim,' Absolutely inaccessible by fair means!' The mountain has two summits, apart and separated by a small col( an' extremely awkward notch' according to W. W. Graham): This ascent marked the end of the so- called silver age of alpinism. On 28 July 1935 the Austrian climbers Herbert Burggasser and Rudi Leitz first ascended the vertical- to- overhanging 160 m-high south face. It was the first climb in the Western Alps systematically aided by the pitons and artificial techniques that were already in use by climbers in the Eastern Alps. During a heat wave in the summer of 2019, a glaciological rarity in the form of a previously unseen lake emerged at the foot of the Dent du Géant, the Aiguilles Marbrées and the Col de Rochefort at an altitude of about 3400 meters, that was considered as evidence for the effects of global warming on the glaciers in the Alps. The following facilities serve the mountain:"
+        }
+      ]
+    },
+    {
+      "id": "musique:3hop1__635099_131926_89261",
+      "query": "Where does the body of water by the city where Write This Down was formed empty into the Gulf of Mexico?",
+      "case_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\cases\\musique\\g01_goal_consistency\\3hop1__635099_131926_89261.json",
+      "B0_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\cases\\musique\\B0_legacy_multigrain_R02\\3hop1__635099_131926_89261.json",
+      "P1_parent_source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_six_single_changes_v1_20261020\\rounds\\r001\\cases\\musique\\C_final_readout_P1\\3hop1__635099_131926_89261.json",
+      "scoring": {
+        "id": "musique:3hop1__635099_131926_89261",
+        "dataset": "musique",
+        "arm": "g01_goal_consistency",
+        "prediction": "Mississippi River",
+        "f1": 0.8,
+        "parent_f1": 1.0,
+        "B0_f1": 1.0,
+        "delta_parent": -0.19999999999999996,
+        "pilot": false
+      },
+      "gold_for_analysis_only": "the Mississippi River Delta",
+      "prior_QA": [
+        {
+          "step_id": 1,
+          "request": "In what city was Write This Down formed?",
+          "answer": "Write This Down was formed in Minneapolis, Minnesota."
+        },
+        {
+          "step_id": 2,
+          "request": "What body of water is near the city where Write This Down was formed?",
+          "answer": "The Mississippi River is near Minneapolis, Minnesota, where Write This Down was formed."
+        }
+      ],
+      "old_goal_answer": "The Mississippi River, which is near Minneapolis, Minnesota—where Write This Down was formed—empties into the Gulf of Mexico at the Mississippi River Delta.",
+      "new_goal_answer": "The Mississippi River, which is near Minneapolis, Minnesota—where Write This Down was formed—empties into the Gulf of Mexico.",
+      "P1_parent_prediction": "Mississippi River Delta",
+      "new_prediction": "Mississippi River",
+      "classification": "原题答案对象丢失的实质退步",
+      "mechanism": "旧goal/最终完整保留Mississippi River Delta；新goal只保留Mississippi River empties Gulf，删去delta，最终误答河名。Top2/4都明确Delta，属于从所求入海位置退回前置河名，并非检索失败。",
+      "semantic_improvement_supported": false,
+      "evidence_ranks": [
+        2,
+        4,
+        6
+      ],
+      "actual_goal_reader_evidence": [
+        {
+          "rank": 2,
+          "source": "Mississippi River",
+          "text": "Mississippi River\nThe Mississippi River is the chief river of the second - largest drainage system on the North American continent, second only to the Hudson Bay drainage system. The stream is entirely within the United States (although its drainage basin reaches into Canada), its source is Lake Itasca in northern Minnesota and it flows generally south for 2,320 miles (3,730 km) to the Mississippi River Delta in the Gulf of Mexico. With its many tributaries, the Mississippi's watershed drains all or parts of 31 U.S. states and two Canadian provinces between the Rocky and Appalachian Mountains. The Mississippi ranks as the fourth - longest and fifteenth - largest river in the world by discharge. The river either borders or passes through the states of Minnesota, Wisconsin, Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi, and Louisiana."
+        },
+        {
+          "rank": 4,
+          "source": "Mississippi River",
+          "text": "Mississippi River\nThe Mississippi River is the chief river of the second - largest drainage system on the North American continent, second only to the Hudson Bay drainage system. Flowing entirely in the United States (although its drainage basin reaches into Canada), it rises in northern Minnesota and meanders slowly southwards for 2,320 miles (3,730 km) to the Mississippi River Delta at the Gulf of Mexico. With its many tributaries, the Mississippi's watershed drains all or parts of 31 U.S. states and 2 Canadian provinces between the Rocky and Appalachian Mountains. The Mississippi ranks as the fourth - longest and fifteenth - largest river in the world by discharge. The river either borders or passes through the states of Minnesota, Wisconsin, Iowa, Illinois, Missouri, Kentucky, Tennessee, Arkansas, Mississippi, and Louisiana."
+        },
+        {
+          "rank": 6,
+          "source": "Mississippi River",
+          "text": "Mississippi River\nThe Mississippi River has the world's fourth - largest drainage basin (``watershed ''or`` catchment''). The basin covers more than 1,245,000 square miles (3,220,000 km), including all or parts of 31 U.S. states and two Canadian provinces. The drainage basin empties into the Gulf of Mexico, part of the Atlantic Ocean. The total catchment of the Mississippi River covers nearly 40% of the landmass of the continental United States. The highest point within the watershed is also the highest point of the Rocky Mountains, Mount Elbert at 14,440 feet (4,400 m)."
+        }
+      ]
+    }
+  ]
+}

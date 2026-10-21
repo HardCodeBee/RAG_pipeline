@@ -1,0 +1,72 @@
+{
+  "protocol": {
+    "scope": "round1:12 fresh method-diagnostic questions plus the previous paired-regression question; development comparison, not independent confirmation",
+    "conditions": {
+      "c00_old_prompts": {
+        "rewrite": "old",
+        "final": "old"
+      },
+      "c01_final_only": {
+        "rewrite": "old",
+        "final": "new",
+        "source": "exact c00 context; final prompt only differs"
+      },
+      "c02_rewrite_only": {
+        "rewrite": "new",
+        "final": "old"
+      },
+      "c03_both": {
+        "rewrite": "new",
+        "final": "new",
+        "source": "exact c02 context; final prompt only differs"
+      },
+      "c04_single": {
+        "rewrite": "none",
+        "final": "new",
+        "source": "same full-sentence process and final prompt as c03, no rewrite retrieval"
+      }
+    },
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "rewrite_tokens": 256,
+    "child_tokens": 128,
+    "final_tokens": 64,
+    "rewrite_receives_original_query": false,
+    "rewriter_verifies_prior_answers": false,
+    "rewrite_examples": 3,
+    "final_examples": 4,
+    "child_prompt": "unchanged frozen S02 with4 ordinary examples; no change to child answer generation instructions",
+    "retrieval": "same BGE resources; Top10 each route; original-first rank interleave, doc-id dedup, keep10",
+    "original_top10": "exact frozen original packets retained in every final context",
+    "goal": "execute and answer all fixed self-contained nodes including original-query goal",
+    "full_sentence_propagation": true,
+    "historical_reuse": "only successful exact full API payloads; original response receipts/provenance retained; no new charge claimed for a replay",
+    "network_policy": "inherited bounded in-process retries; unknown attempt reservations retained",
+    "global_cap_cny": 200,
+    "protected_global_cutoff_cny": 195,
+    "new_experiment_subcap_cny": 5,
+    "cases_sha256": "51b9ce7a29a32b991e68e1ecf41cadd9826c28ae3633d2e74ca3bc4fc3b36e2a",
+    "passing_gate": "all13 complete; candidate dual mean F1 above matched c04 single; zero per-question F1 losses, including mandatory previous-regression case",
+    "next_round": "12 new questions not used in earlier rounds, plus accumulated previous-regression questions; select and freeze before any next-round generation",
+    "old_results_sha256": "71d3508c1c462e48b9da578575a46d7626d8999c4d3c7c4cda1259d4bd61158e",
+    "prompt_source_sha256": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+    "final_examples_sha256": "b97e53900f3d1b87a064d5a5a65a337c02d6c1ae39753bfd2753e0435f72db87",
+    "child_prompt_source_sha256": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "child_examples_sha256": "d858014b0fd20d6982f0bf03b944c1b22ffce24aab46b971ac83671f4240de77"
+  },
+  "checks": {
+    "cases": true,
+    "prompts": true,
+    "examples": true,
+    "child_prompts": true,
+    "child_examples": true
+  },
+  "runner_sha256": "c5256529f9f9592277780c5366cfcc8c0d7fa0676ccffa93f6bdfe5197c05123",
+  "old_outputs_modified": false,
+  "gold_in_generation": false,
+  "sample": {
+    "fresh": 12,
+    "regression": 1
+  }
+}

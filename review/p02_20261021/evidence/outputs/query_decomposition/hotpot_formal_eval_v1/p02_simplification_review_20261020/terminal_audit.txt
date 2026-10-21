@@ -1,0 +1,135 @@
+terminal_goal相对union20：30道下降题人工复核
+仅采用timing_only；不采用其他候选。本报告没有新调用或配置更改。
+
+可确认6/30（20%）为Conclusion含正确目标/足够关系但Final选错对象或组合；其中5题结论足以解原题，1题包含有据职位但结论范围偏宽。
+这是逐题人工判断，不是按金标字符串出现率计算的语义正确率。
+
+类别	题数	Hotpot/2Wiki/Mu	对总体300的负F1贡献pp（描述性，非独立因果份额）
+conclusion_relation_or_required_scope_changed	3	0/0/3	-0.862745
+truncated_output_contract_failure	3	0/2/1	-0.584314
+surface_equivalence_or_extra_detail	13	7/3/3	-1.439646
+preexisting_target_issue_or_partial_token_credit	2	0/0/2	-0.072511
+confirmed_target_or_logic_readout_error	6	5/1/0	-1.453968
+evidence_bounded_abstention	1	1/0/0	-0.333333
+mixed_comparison_scope_and_verbosity	2	0/0/2	-0.114824
+
+六道确定的字段/组合错误：
+
+hotpotqa:5ae0a48155429945ae9593df
+The pseudonymous partner to "Willis the Guard" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?
+完整分解：["Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"]
+Conclusion: Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.
+Final answer: Vigorish
+旧最终回答：the fee or commission charged by a bookmaker
+F1: 0.6 -> 0.0
+问bookmaker收费定义；Conclusion已表达完整收费定义，Final却回到被定义术语Vigorish。
+
+hotpotqa:5a8c7595554299585d9e36b6
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+完整分解：["Who portrayed Corliss Archer in the film Kiss and Tell?"]
+Conclusion: Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.
+Final answer: Shirley Temple
+旧最终回答：United States ambassador to Ghana and to Czechoslovakia and Chief of Protocol of the United States
+F1: 0.33333333333333337 -> 0.0
+问政府职位；Conclusion列出Chief of Protocol等有据职位，Final却输出人物Shirley Temple。Conclusion范围偏宽，故只判已含正确目标，不判唯一完整答案已确定。
+
+hotpotqa:5addbf645542997dc7907014
+Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?
+完整分解：["Who hosted the ITV show Celebrities Under Pressure?", "Who hosted the ITV show All Star Family Fortunes?"]
+Conclusion: Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.
+Final answer: Melanie Sykes and Vernon Kay
+旧最终回答：Vernon Kay
+F1: 1.0 -> 0.5714285714285715
+Conclusion区分Melanie主持前两季，Vernon主持第三季及另一个节目；原题问共同主持人，可推出Vernon，Final却并列两人。
+
+hotpotqa:5a83a2a15542993344746063
+In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?
+完整分解：["Which high school forced Manchester High School to change its name in 1922?"]
+Conclusion: Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.
+Final answer: Manchester West High School
+旧最终回答：June 1925
+F1: 1.0 -> 0.0
+原题问首届毕业日期；Conclusion正确给June1925，Final却答学校。
+
+2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6
+Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?
+完整分解：["What country is Mavrolithari, Evros located in?", "What country is Ampelakia, Evros located in?"]
+Conclusion: Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is located in the Evros regional unit, Greece; thus both villages are in Greece, but only Ampelakia is in Evros.
+Final answer: No
+旧最终回答：Yes
+F1: 1.0 -> 0
+原题问同国家；Conclusion已明示两村均在Greece，Final却No，把不同地区Evros/Phocis的区分混入国家判断。
+
+hotpotqa:5ae3fcfc5542995dadf2428c
+When was the  American singer-songwriter born who recorded “Spirit In The Sky”?
+完整分解：["Who is the American singer-songwriter who recorded Spirit In The Sky?"]
+Conclusion: Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.
+Final answer: Norman Greenbaum
+旧最终回答：November 20, 1942
+F1: 1.0 -> 0.0
+原题问出生日期；Conclusion明确November20,1942，Final却答Norman Greenbaum。
+
+三个数据集整体：
+{
+  "hotpotqa": {
+    "n": 100,
+    "old_union20_F1": 0.7828131313131311,
+    "terminal_F1": 0.7281984126984125,
+    "delta_F1_pp": -5.461471861471862,
+    "up": 5,
+    "tie": 82,
+    "down": 13,
+    "statuses": {
+      "success": 100
+    }
+  },
+  "2wiki": {
+    "n": 100,
+    "old_union20_F1": 0.9228548085901026,
+    "terminal_F1": 0.9270433455433456,
+    "delta_F1_pp": 0.4188536953242835,
+    "up": 6,
+    "tie": 88,
+    "down": 6,
+    "statuses": {
+      "success": 98,
+      "algorithm_failure": 2
+    }
+  },
+  "musique": {
+    "n": 100,
+    "old_union20_F1": 0.4037051046872692,
+    "terminal_F1": 0.37837106858658587,
+    "delta_F1_pp": -2.533403610068335,
+    "up": 6,
+    "tie": 83,
+    "down": 11,
+    "statuses": {
+      "success": 99,
+      "algorithm_failure": 1
+    }
+  }
+}
+
+输入/提示词变化：
+{
+  "old_goal": "Current subquestion task + original query + prior complete QA + full union10..20 documents + GOAL_RULE; zero few-shot; output one full factual sentence, max128.",
+  "old_final": "Independent original-question task + four worked examples + ordinary/goal role headers + original-query Top10 + P1 short-answer readout; max64.",
+  "new_terminal_goal": "Same goal materials/GOAL_RULE and zero few-shot, but factual-sentence instruction changed and two-line output contract appended; Conclusion and Final answer share max128; no subsequent final call.",
+  "old_P1_readout_exact": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "new_two_line_contract_exact": "Output exactly two lines with these labels:\nConclusion: <the complete factual sentence>\nFinal answer: <only the short answer to the Original question>\nIn Final answer, preserve the full identifying name and required qualifiers. For a supported yes/no answer, use exactly Yes or No. If the final answer is unsupported, use Cannot be determined. Do not add any other text.",
+  "joint_treatment": "Delete independent final call AND change goal prompt/output contract, input presentation and total output budget. Not a pure call-deletion ablation.",
+  "API_nondeterminism_caution": "New goal prompt necessarily generates a new response. Even temperature0 does not imply deterministic equality; observable conclusion changes cannot be assigned uniquely to lost final correction."
+}
+
+为什么没有新增原文仍可能帮助：
+For all300, original-query Top10 shown to old final is already inside the goal union; no new retrieved passage is added by this stage.
+Old final receives a newly generated goal sentence as an explicit candidate conclusion, alongside original question and raw passages, and performs another answer-selection/composition task.
+Four worked examples and P1 explicitly restrict answer type, full identifying name and extraneous details; several old outputs select the requested date/office/intersection from a complete sentence.
+The six confirmed cases show target/logic failure despite useful facts in Conclusion; they support a readout-stage explanation, not proof that repeating a call alone or any one prompt line is necessary.
+No new call was made to test whether adding old final to each new Conclusion would repair it.
+
+边界：13题词面/等价/额外信息不等同事实错误；3题截断单列；两题Genesis同时有比较对象范围外推和扩写，不能强分成纯格式或纯事实错误。
+新goal事实改变不能直接归因于删除final；这是prompt输出合同和调用架构共同变化，未做各因素独立随机试验。
+
+全部30题、逐题理由、原始输出、源文件和证据见terminal_audit.json。

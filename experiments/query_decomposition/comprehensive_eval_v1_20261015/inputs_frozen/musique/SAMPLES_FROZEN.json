@@ -1,0 +1,54 @@
+{
+  "dataset": "musique",
+  "seed": 2026101501,
+  "files_sha256": {
+    "dev.questions.jsonl": "6ee85d599a800fb45ab7c7fc880cee4268dd90ba37c4eb72b5554e28361d9d32",
+    "dev.references.local.jsonl": "1513347e4c54c010ee09a6d439bb00385484c2fdcdeca61ae3dcb43fa9d5b520",
+    "dev.positions.json": "3247e4334e4e0569aa990e94e8b61017d9175f62ccbc7b05c43c30df90e9b3ad",
+    "formal.questions.jsonl": "d75032eb5e99b3ff87b7ec03a9dc0e18c7a424cd7c7b7325b38045bad0ff3fd3",
+    "formal.references.local.jsonl": "fdbf1a16acc96fe837a98c26908429c16b107c393046015348195c57bde4c815",
+    "formal.positions.json": "5503dfddbb87cdb3a730d815c19d74a5fbff8b37846afd3b90ed0df9cb4c0808",
+    "ablation.questions.jsonl": "bdde265fedc806d54df380c8bf0d24209f9439351b92eb19ee50bb9feb8a9e14",
+    "ablation.references.local.jsonl": "2a1313d7a5a4a06f9ba2a638c3ea52f2ae724d38c650d66e12ff7e268f4af0b8",
+    "ablation.positions.json": "a95143f8b4e4464ee4f00bf3a50e38b507913fe30c31b29110c29c869e05ede5"
+  },
+  "splits": {
+    "dev": {
+      "questions": 100,
+      "type_counts": {
+        "3-hop": 31,
+        "2-hop": 52,
+        "4-hop": 17
+      },
+      "groups": 100
+    },
+    "formal": {
+      "questions": 500,
+      "type_counts": {
+        "2-hop": 259,
+        "3-hop": 157,
+        "4-hop": 84
+      },
+      "groups": 500
+    },
+    "ablation": {
+      "questions": 200,
+      "type_counts": {
+        "2-hop": 103,
+        "4-hop": 34,
+        "3-hop": 63
+      },
+      "groups": 200
+    }
+  },
+  "selection_used_answers_or_model_outputs": false,
+  "dev_formal_groups_disjoint": true,
+  "ablation_subset_formal": true,
+  "sources": [
+    {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\native\\musique_ans_v1.0_dev.jsonl",
+      "sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b"
+    }
+  ],
+  "exposure_audit_sha256": "3e8b7df28731b0cc48c80e1de56fa8a101ce830ee194f7e5e2bae37a2da81930"
+}

@@ -1,0 +1,186 @@
+{
+  "reviewer": "Current Codex, same nonblind context; every available literal original-query/v5-output pair inspected. Three unknown API responses not scored. No answers or passages used. Applicable prior notes retained only after inspecting this arm.",
+  "rubric": "Frozen PILOT_REVIEW_RULES.txt. P=all checks pass; FSCU identifies failed checks; ? prefix identifies uncertainty; X=unavailable response. This is an explicit manual encoding, not automatic semantic scoring.",
+  "cases": [
+    {
+      "qid": "5ae1f079554299234fd04343",
+      "code": "U",
+      "reason": "仍新增未限定到目标公路的Which county is located in Kentucky?，没有独立支持用途。"
+    },
+    {
+      "qid": "c116cee408ac11ebbd83ac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影的导演身份和出生时间分别保留完整片名及对应关系。"
+    },
+    {
+      "qid": "2hop__124412_402641",
+      "code": "P",
+      "reason": "父亲身份及父亲之子的完整描述均可独立理解，允许自然产生原题。"
+    },
+    {
+      "qid": "5ae33c4d5542992f92d82262",
+      "code": "?C",
+      "reason": "仍只有原题改述，保留v2关于局部限定关系与有用中间分解边界的不确定判定。"
+    },
+    {
+      "qid": "73dcc04808de11ebbd9eac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影导演的去世时间分别查询，中等粒度可用于比较。"
+    },
+    {
+      "qid": "2hop__156085_436709",
+      "code": "P",
+      "reason": "Mickey Mouse配偶身份与配偶的创作者均独立完整，保留关系方向。"
+    },
+    {
+      "qid": "5ae0c7b055429945ae95944b",
+      "code": "P",
+      "reason": "保留团体、1590年代和剧场类型；按共同内容口径不强制实体身份展开，原题等价表达单列。"
+    },
+    {
+      "qid": "ab622778089911ebbd77ac1f6bf848b6",
+      "code": "P",
+      "reason": "分别取得导演身份及年龄以支持older比较；年龄时间口径风险另记，不引入人物生卒背景知识强行判错。"
+    },
+    {
+      "qid": "2hop__503085_110222",
+      "code": "P",
+      "reason": "画家身份和出生日期均保留作品名；末题自然等价原题。"
+    },
+    {
+      "qid": "5abf0bf95542997719eab63a",
+      "code": "P",
+      "reason": "第二题保留完整José Rubia Barcia及其研究对象描述，不再只用that Spanish figure。"
+    },
+    {
+      "qid": "c51148bc0bdb11eba7f7acde48001122",
+      "code": "U",
+      "reason": "第二题保留父亲关系的完整消歧，但第一题仍重复查询括号已给出的父亲身份。"
+    },
+    {
+      "qid": "2hop__635187_861533",
+      "code": "P",
+      "reason": "所在省及邻省问题均保留Lago District定位描述。"
+    },
+    {
+      "qid": "5ab8cd3d5542991b5579f009",
+      "code": "P",
+      "reason": "查询指定时期乐队名称和命名来源；保留v2对active from措辞风险的记录，不额外判事实错误。"
+    },
+    {
+      "qid": "b0fe569c0bdd11eba7f7acde48001122",
+      "code": "P",
+      "reason": "歌曲表演者和来源国两题均独立保留歌曲名。"
+    },
+    {
+      "qid": "3hop1__540585_568433_51423",
+      "code": "P",
+      "reason": "制作公司、总部城市及该城市城堡三层均保留完整作品描述。"
+    },
+    {
+      "qid": "5abad3445542996cc5e49ea0",
+      "code": "P",
+      "reason": "保留兄弟身份、交易关系与1992-93赛季限定。"
+    },
+    {
+      "qid": "f77e7afa0bda11eba7f7acde48001122",
+      "code": "P",
+      "reason": "大学创办者及其配偶问题均保留完整大学名和关系。"
+    },
+    {
+      "qid": "3hop1__573244_339990_15538",
+      "code": "X",
+      "reason": "APIConnectionError，未收到完整输出；保留原题及预算预留，不重发。"
+    },
+    {
+      "qid": "5a8333115542993344745feb",
+      "code": "P",
+      "reason": "仅询问以Helena为县治的未知县，再用完整县描述询问山峰；移除已给县治的重复查询与未锚定summit。"
+    },
+    {
+      "qid": "1a25fd560bb011ebab90acde48001122",
+      "code": "P",
+      "reason": "父亲与祖父问题均保留完整姓名及爵位，未猜测实际父辈人名。"
+    },
+    {
+      "qid": "3hop1__483634_720378_15538",
+      "code": "P",
+      "reason": "县、州及恢复死刑时间三题均保留完整Howard Mill描述；还移除了较泛化的Where问题，但不把这一缩短单独算作通过增益。"
+    },
+    {
+      "qid": "5a7912f655429974737f796c",
+      "code": "P",
+      "reason": "演员身份及生日问题保留Lex Luthor与电影全名。"
+    },
+    {
+      "qid": "20bf77b40bb011ebab90acde48001122",
+      "code": "P",
+      "reason": "直接配偶关系返回空数组，程序追加原题。"
+    },
+    {
+      "qid": "3hop1__51933_40769_64047",
+      "code": "U",
+      "reason": "公司及豪华部门身份已请求，但Which vehicle is the rx 350?仍是对已命名目标的泛化识别问题，未说明额外信息如何帮助改款日期；与v3泛化What is RX350采用同一用途口径。"
+    },
+    {
+      "qid": "5a89a02955429946c8d6e975",
+      "code": "P",
+      "reason": "两部电影分别查询发行时间，未猜测电影版本。"
+    },
+    {
+      "qid": "6a8a71280bb011ebab90acde48001122",
+      "code": "F",
+      "reason": "把未限定父系/母系的uncle展开成父亲的兄弟，加入原题未给的父系路径。这是从无用身份题转成关系语义错误，不能因问题更具体而当作修复。"
+    },
+    {
+      "qid": "4hop2__567956_14670_8987_8529",
+      "code": "X",
+      "reason": "APIConnectionError，未收到完整输出；不能判断新增角色变量示例是否修复Country A/B，保留分母与预留。"
+    },
+    {
+      "qid": "5ae14def55429901ffe4ae4a",
+      "code": "P",
+      "reason": "两人的导演身份判断分开请求，原题保留合取要求。"
+    },
+    {
+      "qid": "ed0838b508dc11ebbd9dac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影各自询问来源国家，属性明确。"
+    },
+    {
+      "qid": "4hop2__71753_648517_70784_79935",
+      "code": "P",
+      "reason": "区域及战役地点均独立描述，末题保留原题创建时间需求和原始关系歧义，没有跨题指代。"
+    },
+    {
+      "qid": "5a77685e5542993569682d83",
+      "code": "P",
+      "reason": "两场战役分别查询发生时间，供原题比较先后。"
+    },
+    {
+      "qid": "ee5cf4a008a711ebbd7fac1f6bf848b6",
+      "code": "X",
+      "reason": "APIConnectionError，未收到完整输出；保留分母与预留，不重发。"
+    },
+    {
+      "qid": "4hop1__408432_32392_823060_610794",
+      "code": "P",
+      "reason": "所在地、州首府、邻接城市和县四个层次均保留完整描述。"
+    },
+    {
+      "qid": "5a7ca95b55429935c91b5287",
+      "code": "P",
+      "reason": "两位作家的出生及去世时间分别请求，保留人名国籍职业对应。"
+    },
+    {
+      "qid": "fa7ad32b093411ebbdaeac1f6bf848b6",
+      "code": "P",
+      "reason": "两部电影分别请求发行时间。"
+    },
+    {
+      "qid": "4hop1__151650_5274_458768_33637",
+      "code": "U",
+      "reason": "所有问题均自包含且保留only，但Which group is larger...和What is the only group larger...是重复支持需求，另外总部所在地与总部城市也有重叠。没有将更长更细自动当作更好。"
+    }
+  ]
+}

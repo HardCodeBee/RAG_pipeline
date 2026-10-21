@@ -1,0 +1,31 @@
+{
+  "reviewed_indices": [
+    31,
+    80
+  ],
+  "reviewer": "Current Codex inspected all changed outputs; identical question strings inherit baseline. New74 marked uncertain rather than treating diagnostic context as a demonstrated prerequisite.",
+  "exceptions": {
+    "35": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Drops killed-as-many-as-60-patients identification condition; same frozen defect as checkpoint110 and c01."
+    },
+    "48": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still omits the short-story identity; asks a book the film was filmed in rather than the book the film was based on."
+    },
+    "74": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Listing all episodes of season21 may provide context, but a useful missing prerequisite is unclear when the original supplies the episode title and asks its series-wide ordinal; source wording is malformed."
+    }
+  }
+}

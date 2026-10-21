@@ -1,0 +1,718 @@
+{
+  "scope": "round1:12 fresh method-diagnostic questions plus the previous paired-regression question; development comparison, not independent confirmation",
+  "complete": true,
+  "passing_gate_met": false,
+  "passing_gate": "all13 complete; candidate dual mean F1 above matched c04 single; zero per-question F1 losses, including mandatory previous-regression case",
+  "overall": {
+    "planned": 13,
+    "conditions": {
+      "c00_old_prompts": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6153846153846154,
+        "mean_final_prompt_tokens": 2589.076923076923,
+        "all_gold_docs_seen_questions": 10,
+        "changed_rewrites": 14,
+        "steps_with_displaced_gold": 1,
+        "original_top10_preserved": true
+      },
+      "c01_final_only": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6153846153846154,
+        "mean_final_prompt_tokens": 2596.076923076923,
+        "all_gold_docs_seen_questions": 10,
+        "changed_rewrites": 14,
+        "steps_with_displaced_gold": 1,
+        "original_top10_preserved": true
+      },
+      "c02_rewrite_only": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6153846153846154,
+        "mean_final_prompt_tokens": 2589.076923076923,
+        "all_gold_docs_seen_questions": 10,
+        "changed_rewrites": 13,
+        "steps_with_displaced_gold": 1,
+        "original_top10_preserved": true
+      },
+      "c03_both": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6153846153846154,
+        "mean_final_prompt_tokens": 2596.076923076923,
+        "all_gold_docs_seen_questions": 10,
+        "changed_rewrites": 13,
+        "steps_with_displaced_gold": 1,
+        "original_top10_preserved": true
+      },
+      "c04_single": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.38461538461538464,
+        "mean_final_prompt_tokens": 2592.3076923076924,
+        "all_gold_docs_seen_questions": 6,
+        "changed_rewrites": 0,
+        "steps_with_displaced_gold": 0,
+        "original_top10_preserved": true
+      }
+    },
+    "new_dual_minus_single": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.23076923076923078,
+      "gains": 4,
+      "ties": 8,
+      "losses": 1,
+      "loss_qids": [
+        "32f0334c0bb011ebab90acde48001122"
+      ]
+    },
+    "old_rewrite_new_final_minus_single": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.23076923076923078,
+      "gains": 4,
+      "ties": 8,
+      "losses": 1,
+      "loss_qids": [
+        "32f0334c0bb011ebab90acde48001122"
+      ]
+    },
+    "final_effect_with_old_rewrite": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.0,
+      "gains": 0,
+      "ties": 13,
+      "losses": 0,
+      "loss_qids": []
+    },
+    "final_effect_with_new_rewrite": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.0,
+      "gains": 0,
+      "ties": 13,
+      "losses": 0,
+      "loss_qids": []
+    },
+    "rewrite_effect_with_old_final": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.0,
+      "gains": 0,
+      "ties": 13,
+      "losses": 0,
+      "loss_qids": []
+    },
+    "rewrite_effect_with_new_final": {
+      "pairs": 13,
+      "planned": 13,
+      "mean_difference": 0.0,
+      "gains": 0,
+      "ties": 13,
+      "losses": 0,
+      "loss_qids": []
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "conditions": {
+        "c00_old_prompts": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.611111111111111,
+          "mean_final_prompt_tokens": 2551.75,
+          "all_gold_docs_seen_questions": 9,
+          "changed_rewrites": 13,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c01_final_only": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.611111111111111,
+          "mean_final_prompt_tokens": 2558.75,
+          "all_gold_docs_seen_questions": 9,
+          "changed_rewrites": 13,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c02_rewrite_only": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.611111111111111,
+          "mean_final_prompt_tokens": 2551.75,
+          "all_gold_docs_seen_questions": 9,
+          "changed_rewrites": 12,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c03_both": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.611111111111111,
+          "mean_final_prompt_tokens": 2558.75,
+          "all_gold_docs_seen_questions": 9,
+          "changed_rewrites": 12,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c04_single": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.3333333333333333,
+          "mean_final_prompt_tokens": 2554.3333333333335,
+          "all_gold_docs_seen_questions": 5,
+          "changed_rewrites": 0,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        }
+      },
+      "new_dual_minus_single": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.2777777777777778,
+        "gains": 4,
+        "ties": 8,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "old_rewrite_new_final_minus_single": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.2777777777777778,
+        "gains": 4,
+        "ties": 8,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_old_rewrite": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 12,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_new_rewrite": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 12,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_old_final": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 12,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_new_final": {
+        "pairs": 12,
+        "planned": 12,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 12,
+        "losses": 0,
+        "loss_qids": []
+      }
+    },
+    "regression": {
+      "planned": 1,
+      "conditions": {
+        "c00_old_prompts": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_final_prompt_tokens": 3037.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c01_final_only": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_final_prompt_tokens": 3044.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c02_rewrite_only": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_final_prompt_tokens": 3037.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c03_both": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_final_prompt_tokens": 3044.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c04_single": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "mean_final_prompt_tokens": 3048.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 0,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        }
+      },
+      "new_dual_minus_single": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": -0.33333333333333337,
+        "gains": 0,
+        "ties": 0,
+        "losses": 1,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122"
+        ]
+      },
+      "old_rewrite_new_final_minus_single": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": -0.33333333333333337,
+        "gains": 0,
+        "ties": 0,
+        "losses": 1,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122"
+        ]
+      },
+      "final_effect_with_old_rewrite": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_new_rewrite": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_old_final": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_new_final": {
+        "pairs": 1,
+        "planned": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      }
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 4,
+      "conditions": {
+        "c00_old_prompts": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_final_prompt_tokens": 2273.5,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c01_final_only": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_final_prompt_tokens": 2280.5,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c02_rewrite_only": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_final_prompt_tokens": 2273.5,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c03_both": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_final_prompt_tokens": 2280.5,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 1,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c04_single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_final_prompt_tokens": 2280.5,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 0,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        }
+      },
+      "new_dual_minus_single": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "old_rewrite_new_final_minus_single": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_old_rewrite": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_new_rewrite": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_old_final": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_new_final": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      }
+    },
+    "2wiki": {
+      "planned": 5,
+      "conditions": {
+        "c00_old_prompts": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_final_prompt_tokens": 2755.0,
+          "all_gold_docs_seen_questions": 4,
+          "changed_rewrites": 6,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c01_final_only": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_final_prompt_tokens": 2762.0,
+          "all_gold_docs_seen_questions": 4,
+          "changed_rewrites": 6,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c02_rewrite_only": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_final_prompt_tokens": 2755.0,
+          "all_gold_docs_seen_questions": 4,
+          "changed_rewrites": 5,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c03_both": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_final_prompt_tokens": 2762.0,
+          "all_gold_docs_seen_questions": 4,
+          "changed_rewrites": 5,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        },
+        "c04_single": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.4,
+          "mean_final_prompt_tokens": 2758.0,
+          "all_gold_docs_seen_questions": 2,
+          "changed_rewrites": 0,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        }
+      },
+      "new_dual_minus_single": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.3333333333333333,
+        "gains": 2,
+        "ties": 2,
+        "losses": 1,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122"
+        ]
+      },
+      "old_rewrite_new_final_minus_single": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.3333333333333333,
+        "gains": 2,
+        "ties": 2,
+        "losses": 1,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122"
+        ]
+      },
+      "final_effect_with_old_rewrite": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 5,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_new_rewrite": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 5,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_old_final": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 5,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_new_final": {
+        "pairs": 5,
+        "planned": 5,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 5,
+        "losses": 0,
+        "loss_qids": []
+      }
+    },
+    "musique": {
+      "planned": 4,
+      "conditions": {
+        "c00_old_prompts": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5833333333333333,
+          "mean_final_prompt_tokens": 2697.25,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 7,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c01_final_only": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5833333333333333,
+          "mean_final_prompt_tokens": 2704.25,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 7,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c02_rewrite_only": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5833333333333333,
+          "mean_final_prompt_tokens": 2697.25,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 7,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c03_both": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5833333333333333,
+          "mean_final_prompt_tokens": 2704.25,
+          "all_gold_docs_seen_questions": 3,
+          "changed_rewrites": 7,
+          "steps_with_displaced_gold": 1,
+          "original_top10_preserved": true
+        },
+        "c04_single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.25,
+          "mean_final_prompt_tokens": 2697.0,
+          "all_gold_docs_seen_questions": 1,
+          "changed_rewrites": 0,
+          "steps_with_displaced_gold": 0,
+          "original_top10_preserved": true
+        }
+      },
+      "new_dual_minus_single": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.3333333333333333,
+        "gains": 2,
+        "ties": 2,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "old_rewrite_new_final_minus_single": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.3333333333333333,
+        "gains": 2,
+        "ties": 2,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_old_rewrite": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "final_effect_with_new_rewrite": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_old_final": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      },
+      "rewrite_effect_with_new_final": {
+        "pairs": 4,
+        "planned": 4,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 4,
+        "losses": 0,
+        "loss_qids": []
+      }
+    }
+  },
+  "new_api_usage_list_price_cny": 0.1515152,
+  "unresolved_reservations_cny": 0.0192408,
+  "global_api_usage_list_price_cny": 129.115474,
+  "global_reservations_cny": 11.1527792,
+  "api": {
+    "hotpotqa": {
+      "request_statuses_including_imported_receipts": {
+        "success": 31
+      },
+      "new_attempt_statuses": {
+        "success": 29,
+        "unknown": 2
+      },
+      "imported_exact_success_receipts": 2
+    },
+    "2wiki": {
+      "request_statuses_including_imported_receipts": {
+        "success": 56
+      },
+      "new_attempt_statuses": {
+        "success": 50,
+        "unknown": 1
+      },
+      "imported_exact_success_receipts": 6
+    },
+    "musique": {
+      "request_statuses_including_imported_receipts": {
+        "success": 47
+      },
+      "new_attempt_statuses": {
+        "success": 44
+      },
+      "imported_exact_success_receipts": 3
+    }
+  },
+  "frozen_hash_checks": {
+    "cases": true,
+    "prompts": true,
+    "examples": true,
+    "old_results": true,
+    "child_prompts": true
+  }
+}

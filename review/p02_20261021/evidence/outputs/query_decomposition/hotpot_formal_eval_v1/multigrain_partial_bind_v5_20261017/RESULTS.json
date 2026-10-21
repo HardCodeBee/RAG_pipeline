@@ -1,0 +1,1388 @@
+{
+  "complete": false,
+  "passing_gate_met": false,
+  "scope": "12 fresh query IDs + all preceding dual-vs-single losses + separately reported ReAct-gap cases; manual query-only plans, diagnostic development",
+  "overall": {
+    "planned": 17,
+    "conditions": {
+      "reuse_new": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.6092836257309941,
+        "f1_all_planned_bounds": [
+          0.5734434124527004,
+          0.6322669418644651
+        ],
+        "mean_em_available": 0.5,
+        "mean_logical_calls": 5.8125,
+        "mean_standalone_list_price_cny": 0.0087421,
+        "reread_nodes": 11
+      },
+      "reuse_previous": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.5467836257309943,
+        "f1_all_planned_bounds": [
+          0.5146198830409358,
+          0.5734434124527004
+        ],
+        "mean_em_available": 0.4375,
+        "mean_logical_calls": 5.8125,
+        "mean_standalone_list_price_cny": 0.008617099999999999,
+        "reread_nodes": 11
+      },
+      "reuse_single": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.3758680555555555,
+        "f1_all_planned_bounds": [
+          0.3537581699346405,
+          0.41258169934640526
+        ],
+        "mean_em_available": 0.25,
+        "mean_logical_calls": 4.6875,
+        "mean_standalone_list_price_cny": 0.0091823,
+        "reread_nodes": 18
+      },
+      "support_new": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.6457419590643275,
+        "f1_all_planned_bounds": [
+          0.6077571379428965,
+          0.6665806673546613
+        ],
+        "mean_em_available": 0.5,
+        "mean_logical_calls": 5.8125,
+        "mean_standalone_list_price_cny": 0.0087379,
+        "reread_nodes": 11
+      },
+      "support_previous": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.5832419590643276,
+        "f1_all_planned_bounds": [
+          0.5489336085311319,
+          0.6077571379428965
+        ],
+        "mean_em_available": 0.4375,
+        "mean_logical_calls": 5.8125,
+        "mean_standalone_list_price_cny": 0.0086129,
+        "reread_nodes": 11
+      },
+      "support_single": {
+        "available": 16,
+        "missing": 1,
+        "mean_f1_available": 0.3446180555555555,
+        "f1_all_planned_bounds": [
+          0.32434640522875813,
+          0.3831699346405229
+        ],
+        "mean_em_available": 0.25,
+        "mean_logical_calls": 4.6875,
+        "mean_standalone_list_price_cny": 0.009174475,
+        "reread_nodes": 18
+      }
+    },
+    "pairs": {
+      "new_minus_single": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.2334155701754386,
+        "gains": 6,
+        "ties": 7,
+        "losses": 3,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122",
+          "2hop__805610_392181",
+          "3hop1__136083_87694_64412"
+        ],
+        "all_planned_difference_bounds": [
+          0.16086171310629516,
+          0.27850877192982454
+        ]
+      },
+      "previous_minus_single": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.1709155701754386,
+        "gains": 5,
+        "ties": 8,
+        "losses": 3,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122",
+          "2hop__805610_392181",
+          "3hop1__136083_87694_64412"
+        ],
+        "all_planned_difference_bounds": [
+          0.10203818369453044,
+          0.21968524251805985
+        ]
+      },
+      "new_minus_previous": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.0625,
+        "gains": 1,
+        "ties": 15,
+        "losses": 0,
+        "loss_qids": [],
+        "all_planned_difference_bounds": [
+          0.0,
+          0.11764705882352941
+        ]
+      },
+      "support_new_minus_single": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.3011239035087719,
+        "gains": 7,
+        "ties": 7,
+        "losses": 2,
+        "loss_qids": [
+          "32f0334c0bb011ebab90acde48001122",
+          "3hop1__136083_87694_64412"
+        ],
+        "all_planned_difference_bounds": [
+          0.22458720330237353,
+          0.34223426212590297
+        ]
+      },
+      "support_new_minus_previous": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.0625,
+        "gains": 1,
+        "ties": 15,
+        "losses": 0,
+        "loss_qids": [],
+        "all_planned_difference_bounds": [
+          0.0,
+          0.11764705882352941
+        ]
+      },
+      "final_change_new": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.036458333333333336,
+        "gains": 1,
+        "ties": 15,
+        "losses": 0,
+        "loss_qids": [],
+        "all_planned_difference_bounds": [
+          -0.024509803921568624,
+          0.09313725490196079
+        ]
+      },
+      "final_change_previous": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": 0.036458333333333336,
+        "gains": 1,
+        "ties": 15,
+        "losses": 0,
+        "loss_qids": [],
+        "all_planned_difference_bounds": [
+          -0.024509803921568624,
+          0.09313725490196079
+        ]
+      },
+      "final_change_single": {
+        "pairs": 16,
+        "planned": 17,
+        "mean_difference": -0.03125,
+        "gains": 0,
+        "ties": 15,
+        "losses": 1,
+        "loss_qids": [
+          "2hop__805610_392181"
+        ],
+        "all_planned_difference_bounds": [
+          -0.08823529411764706,
+          0.029411764705882353
+        ]
+      }
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "conditions": {
+        "reuse_new": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.7044125465178097,
+          "f1_all_planned_bounds": [
+            0.6457115009746589,
+            0.7290448343079922
+          ],
+          "mean_em_available": 0.6363636363636364,
+          "mean_logical_calls": 5.818181818181818,
+          "mean_standalone_list_price_cny": 0.0085496,
+          "reread_nodes": 6
+        },
+        "reuse_previous": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.7044125465178097,
+          "f1_all_planned_bounds": [
+            0.6457115009746589,
+            0.7290448343079922
+          ],
+          "mean_em_available": 0.6363636363636364,
+          "mean_logical_calls": 5.818181818181818,
+          "mean_standalone_list_price_cny": 0.00841530909090909,
+          "reread_nodes": 6
+        },
+        "reuse_single": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.36489898989898983,
+          "f1_all_planned_bounds": [
+            0.3344907407407407,
+            0.4178240740740741
+          ],
+          "mean_em_available": 0.2727272727272727,
+          "mean_logical_calls": 4.636363636363637,
+          "mean_standalone_list_price_cny": 0.009048,
+          "reread_nodes": 11
+        },
+        "support_new": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.7044125465178097,
+          "f1_all_planned_bounds": [
+            0.6457115009746589,
+            0.7290448343079922
+          ],
+          "mean_em_available": 0.6363636363636364,
+          "mean_logical_calls": 5.818181818181818,
+          "mean_standalone_list_price_cny": 0.008542399999999999,
+          "reread_nodes": 6
+        },
+        "support_previous": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.7044125465178097,
+          "f1_all_planned_bounds": [
+            0.6457115009746589,
+            0.7290448343079922
+          ],
+          "mean_em_available": 0.6363636363636364,
+          "mean_logical_calls": 5.818181818181818,
+          "mean_standalone_list_price_cny": 0.008408109090909091,
+          "reread_nodes": 6
+        },
+        "support_single": {
+          "available": 11,
+          "missing": 1,
+          "mean_f1_available": 0.36489898989898983,
+          "f1_all_planned_bounds": [
+            0.3344907407407407,
+            0.4178240740740741
+          ],
+          "mean_em_available": 0.2727272727272727,
+          "mean_logical_calls": 4.636363636363637,
+          "mean_standalone_list_price_cny": 0.0090408,
+          "reread_nodes": 11
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.33951355661881977,
+          "gains": 5,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.2278874269005848,
+            0.3945540935672514
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.33951355661881977,
+          "gains": 5,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.2278874269005848,
+            0.3945540935672514
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 11,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.08333333333333333,
+            0.08333333333333333
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.33951355661881977,
+          "gains": 5,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.2278874269005848,
+            0.3945540935672514
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 11,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.08333333333333333,
+            0.08333333333333333
+          ]
+        },
+        "final_change_new": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 11,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.08333333333333333,
+            0.08333333333333333
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 11,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.08333333333333333,
+            0.08333333333333333
+          ]
+        },
+        "final_change_single": {
+          "pairs": 11,
+          "planned": 12,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 11,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.08333333333333333,
+            0.08333333333333333
+          ]
+        }
+      }
+    },
+    "regression": {
+      "planned": 3,
+      "conditions": {
+        "reuse_new": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.3333333333333333,
+          "f1_all_planned_bounds": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.666666666666667,
+          "mean_standalone_list_price_cny": 0.007089599999999999,
+          "reread_nodes": 0
+        },
+        "reuse_previous": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.3333333333333333,
+          "f1_all_planned_bounds": [
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.666666666666667,
+          "mean_standalone_list_price_cny": 0.006961600000000001,
+          "reread_nodes": 0
+        },
+        "reuse_single": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "f1_all_planned_bounds": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "mean_em_available": 0.3333333333333333,
+          "mean_logical_calls": 4.0,
+          "mean_standalone_list_price_cny": 0.008007866666666667,
+          "reread_nodes": 2
+        },
+        "support_new": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.5277777777777778,
+          "f1_all_planned_bounds": [
+            0.5277777777777778,
+            0.5277777777777777
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.666666666666667,
+          "mean_standalone_list_price_cny": 0.0070984,
+          "reread_nodes": 0
+        },
+        "support_previous": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.5277777777777778,
+          "f1_all_planned_bounds": [
+            0.5277777777777778,
+            0.5277777777777777
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.666666666666667,
+          "mean_standalone_list_price_cny": 0.006970399999999999,
+          "reread_nodes": 0
+        },
+        "support_single": {
+          "available": 3,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "f1_all_planned_bounds": [
+            0.5,
+            0.5
+          ],
+          "mean_em_available": 0.3333333333333333,
+          "mean_logical_calls": 4.0,
+          "mean_standalone_list_price_cny": 0.007997333333333334,
+          "reread_nodes": 2
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": -0.3333333333333333,
+          "gains": 0,
+          "ties": 0,
+          "losses": 3,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122",
+            "2hop__805610_392181",
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            -0.3333333333333333,
+            -0.3333333333333333
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": -0.3333333333333333,
+          "gains": 0,
+          "ties": 0,
+          "losses": 3,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122",
+            "2hop__805610_392181",
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            -0.3333333333333333,
+            -0.3333333333333333
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 3,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": 0.027777777777777773,
+          "gains": 1,
+          "ties": 0,
+          "losses": 2,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122",
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            0.027777777777777773,
+            0.027777777777777773
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 3,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_new": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": 0.19444444444444445,
+          "gains": 1,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.19444444444444445,
+            0.19444444444444445
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": 0.19444444444444445,
+          "gains": 1,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.19444444444444445,
+            0.19444444444444445
+          ]
+        },
+        "final_change_single": {
+          "pairs": 3,
+          "planned": 3,
+          "mean_difference": -0.16666666666666666,
+          "gains": 0,
+          "ties": 2,
+          "losses": 1,
+          "loss_qids": [
+            "2hop__805610_392181"
+          ],
+          "all_planned_difference_bounds": [
+            -0.16666666666666666,
+            -0.16666666666666666
+          ]
+        }
+      }
+    },
+    "competitor_gap": {
+      "planned": 2,
+      "conditions": {
+        "reuse_new": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "f1_all_planned_bounds": [
+            0.5,
+            0.5
+          ],
+          "mean_em_available": 0.5,
+          "mean_logical_calls": 7.5,
+          "mean_standalone_list_price_cny": 0.0122796,
+          "reread_nodes": 5
+        },
+        "reuse_previous": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.0,
+          "f1_all_planned_bounds": [
+            0.0,
+            0.0
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 7.5,
+          "mean_standalone_list_price_cny": 0.0122102,
+          "reread_nodes": 5
+        },
+        "reuse_single": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.0,
+          "f1_all_planned_bounds": [
+            0.0,
+            0.0
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.0116826,
+          "reread_nodes": 5
+        },
+        "support_new": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "f1_all_planned_bounds": [
+            0.5,
+            0.5
+          ],
+          "mean_em_available": 0.5,
+          "mean_logical_calls": 7.5,
+          "mean_standalone_list_price_cny": 0.0122724,
+          "reread_nodes": 5
+        },
+        "support_previous": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.0,
+          "f1_all_planned_bounds": [
+            0.0,
+            0.0
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 7.5,
+          "mean_standalone_list_price_cny": 0.012202999999999999,
+          "reread_nodes": 5
+        },
+        "support_single": {
+          "available": 2,
+          "missing": 0,
+          "mean_f1_available": 0.0,
+          "f1_all_planned_bounds": [
+            0.0,
+            0.0
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.011675399999999999,
+          "reread_nodes": 5
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.5,
+          "gains": 1,
+          "ties": 1,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.5,
+          "gains": 1,
+          "ties": 1,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.5,
+          "gains": 1,
+          "ties": 1,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.5,
+          "gains": 1,
+          "ties": 1,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "final_change_new": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_single": {
+          "pairs": 2,
+          "planned": 2,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 2,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 5,
+      "conditions": {
+        "reuse_new": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.5052631578947369,
+          "f1_all_planned_bounds": [
+            0.5052631578947369,
+            0.5052631578947369
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.00859144,
+          "reread_nodes": 6
+        },
+        "reuse_previous": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.5052631578947369,
+          "f1_all_planned_bounds": [
+            0.5052631578947369,
+            0.5052631578947369
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.00850264,
+          "reread_nodes": 6
+        },
+        "reuse_single": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.425,
+          "f1_all_planned_bounds": [
+            0.425,
+            0.425
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 4.6,
+          "mean_standalone_list_price_cny": 0.008046719999999999,
+          "reread_nodes": 6
+        },
+        "support_new": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.5052631578947369,
+          "f1_all_planned_bounds": [
+            0.5052631578947369,
+            0.5052631578947369
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.008584239999999998,
+          "reread_nodes": 6
+        },
+        "support_previous": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.5052631578947369,
+          "f1_all_planned_bounds": [
+            0.5052631578947369,
+            0.5052631578947369
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 6.0,
+          "mean_standalone_list_price_cny": 0.00849544,
+          "reread_nodes": 6
+        },
+        "support_single": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.425,
+          "f1_all_planned_bounds": [
+            0.425,
+            0.425
+          ],
+          "mean_em_available": 0.4,
+          "mean_logical_calls": 4.6,
+          "mean_standalone_list_price_cny": 0.00803952,
+          "reread_nodes": 6
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.08026315789473684,
+          "gains": 1,
+          "ties": 4,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.08026315789473684,
+            0.08026315789473684
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.08026315789473684,
+          "gains": 1,
+          "ties": 4,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.08026315789473684,
+            0.08026315789473684
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.08026315789473684,
+          "gains": 1,
+          "ties": 4,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.08026315789473684,
+            0.08026315789473684
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_new": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_single": {
+          "pairs": 5,
+          "planned": 5,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "2wiki": {
+      "planned": 6,
+      "conditions": {
+        "reuse_new": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.9444444444444445,
+          "f1_all_planned_bounds": [
+            0.9444444444444445,
+            0.9444444444444446
+          ],
+          "mean_em_available": 0.8333333333333334,
+          "mean_logical_calls": 6.166666666666667,
+          "mean_standalone_list_price_cny": 0.009786666666666667,
+          "reread_nodes": 3
+        },
+        "reuse_previous": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.7777777777777778,
+          "f1_all_planned_bounds": [
+            0.7777777777777778,
+            0.777777777777778
+          ],
+          "mean_em_available": 0.6666666666666666,
+          "mean_logical_calls": 6.166666666666667,
+          "mean_standalone_list_price_cny": 0.009639333333333333,
+          "reread_nodes": 3
+        },
+        "reuse_single": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.4444444444444444,
+          "f1_all_planned_bounds": [
+            0.4444444444444444,
+            0.44444444444444436
+          ],
+          "mean_em_available": 0.3333333333333333,
+          "mean_logical_calls": 5.0,
+          "mean_standalone_list_price_cny": 0.010808066666666666,
+          "reread_nodes": 7
+        },
+        "support_new": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.9444444444444445,
+          "f1_all_planned_bounds": [
+            0.9444444444444445,
+            0.9444444444444446
+          ],
+          "mean_em_available": 0.8333333333333334,
+          "mean_logical_calls": 6.166666666666667,
+          "mean_standalone_list_price_cny": 0.009779466666666665,
+          "reread_nodes": 3
+        },
+        "support_previous": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.7777777777777778,
+          "f1_all_planned_bounds": [
+            0.7777777777777778,
+            0.777777777777778
+          ],
+          "mean_em_available": 0.6666666666666666,
+          "mean_logical_calls": 6.166666666666667,
+          "mean_standalone_list_price_cny": 0.009632133333333332,
+          "reread_nodes": 3
+        },
+        "support_single": {
+          "available": 6,
+          "missing": 0,
+          "mean_f1_available": 0.4444444444444444,
+          "f1_all_planned_bounds": [
+            0.4444444444444444,
+            0.44444444444444436
+          ],
+          "mean_em_available": 0.3333333333333333,
+          "mean_logical_calls": 5.0,
+          "mean_standalone_list_price_cny": 0.010800866666666666,
+          "reread_nodes": 7
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.5,
+          "gains": 4,
+          "ties": 1,
+          "losses": 1,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122"
+          ],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.3333333333333333,
+          "gains": 3,
+          "ties": 2,
+          "losses": 1,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122"
+          ],
+          "all_planned_difference_bounds": [
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.16666666666666666,
+          "gains": 1,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.16666666666666666,
+            0.16666666666666666
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.5,
+          "gains": 4,
+          "ties": 1,
+          "losses": 1,
+          "loss_qids": [
+            "32f0334c0bb011ebab90acde48001122"
+          ],
+          "all_planned_difference_bounds": [
+            0.5,
+            0.5
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.16666666666666666,
+          "gains": 1,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.16666666666666666,
+            0.16666666666666666
+          ]
+        },
+        "final_change_new": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        },
+        "final_change_single": {
+          "pairs": 6,
+          "planned": 6,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 6,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "musique": {
+      "planned": 6,
+      "conditions": {
+        "reuse_new": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.3111111111111111,
+          "f1_all_planned_bounds": [
+            0.25925925925925924,
+            0.4259259259259259
+          ],
+          "mean_em_available": 0.2,
+          "mean_logical_calls": 5.2,
+          "mean_standalone_list_price_cny": 0.00763928,
+          "reread_nodes": 2
+        },
+        "reuse_previous": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.3111111111111111,
+          "f1_all_planned_bounds": [
+            0.25925925925925924,
+            0.4259259259259259
+          ],
+          "mean_em_available": 0.2,
+          "mean_logical_calls": 5.2,
+          "mean_standalone_list_price_cny": 0.00750488,
+          "reread_nodes": 2
+        },
+        "reuse_single": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.24444444444444446,
+          "f1_all_planned_bounds": [
+            0.20370370370370372,
+            0.3703703703703704
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.4,
+          "mean_standalone_list_price_cny": 0.00836696,
+          "reread_nodes": 5
+        },
+        "support_new": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.42777777777777787,
+          "f1_all_planned_bounds": [
+            0.35648148148148157,
+            0.5231481481481483
+          ],
+          "mean_em_available": 0.2,
+          "mean_logical_calls": 5.2,
+          "mean_standalone_list_price_cny": 0.00764168,
+          "reread_nodes": 2
+        },
+        "support_previous": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.42777777777777787,
+          "f1_all_planned_bounds": [
+            0.35648148148148157,
+            0.5231481481481483
+          ],
+          "mean_em_available": 0.2,
+          "mean_logical_calls": 5.2,
+          "mean_standalone_list_price_cny": 0.00750728,
+          "reread_nodes": 2
+        },
+        "support_single": {
+          "available": 5,
+          "missing": 1,
+          "mean_f1_available": 0.14444444444444443,
+          "f1_all_planned_bounds": [
+            0.12037037037037036,
+            0.28703703703703703
+          ],
+          "mean_em_available": 0.0,
+          "mean_logical_calls": 4.4,
+          "mean_standalone_list_price_cny": 0.00835776,
+          "reread_nodes": 5
+        }
+      },
+      "pairs": {
+        "new_minus_single": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.06666666666666667,
+          "gains": 1,
+          "ties": 2,
+          "losses": 2,
+          "loss_qids": [
+            "2hop__805610_392181",
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            -0.11111111111111112,
+            0.2222222222222222
+          ]
+        },
+        "previous_minus_single": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.06666666666666667,
+          "gains": 1,
+          "ties": 2,
+          "losses": 2,
+          "loss_qids": [
+            "2hop__805610_392181",
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            -0.11111111111111112,
+            0.2222222222222222
+          ]
+        },
+        "new_minus_previous": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.16666666666666666,
+            0.16666666666666666
+          ]
+        },
+        "support_new_minus_single": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.2833333333333333,
+          "gains": 2,
+          "ties": 2,
+          "losses": 1,
+          "loss_qids": [
+            "3hop1__136083_87694_64412"
+          ],
+          "all_planned_difference_bounds": [
+            0.06944444444444446,
+            0.40277777777777785
+          ]
+        },
+        "support_new_minus_previous": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.0,
+          "gains": 0,
+          "ties": 5,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.16666666666666666,
+            0.16666666666666666
+          ]
+        },
+        "final_change_new": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.11666666666666667,
+          "gains": 1,
+          "ties": 4,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.06944444444444443,
+            0.2638888888888889
+          ]
+        },
+        "final_change_previous": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": 0.11666666666666667,
+          "gains": 1,
+          "ties": 4,
+          "losses": 0,
+          "loss_qids": [],
+          "all_planned_difference_bounds": [
+            -0.06944444444444443,
+            0.2638888888888889
+          ]
+        },
+        "final_change_single": {
+          "pairs": 5,
+          "planned": 6,
+          "mean_difference": -0.1,
+          "gains": 0,
+          "ties": 4,
+          "losses": 1,
+          "loss_qids": [
+            "2hop__805610_392181"
+          ],
+          "all_planned_difference_bounds": [
+            -0.25,
+            0.08333333333333333
+          ]
+        }
+      }
+    }
+  },
+  "new_api_usage_list_price_cny": 0.26634399999999997,
+  "unresolved_reservations_cny": 0.0740584,
+  "global_api_usage_list_price_cny": 138.1480164,
+  "global_reservations_cny": 12.711356799999999,
+  "frozen_hash_checks": {
+    "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\cases.frozen.jsonl": true,
+    "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\prompts.py": true,
+    "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\child_examples.json": true,
+    "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\final_examples.json": true,
+    "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\prompts.py": true,
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\prompts.py": true,
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\final_examples.json": true,
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\multigrain_evidence_v4r1_20261017\\CASE_RESULTS.jsonl": true
+  }
+}

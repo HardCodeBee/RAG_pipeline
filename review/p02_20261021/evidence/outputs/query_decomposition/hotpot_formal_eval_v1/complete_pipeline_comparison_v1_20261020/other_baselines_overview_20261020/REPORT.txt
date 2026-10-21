@@ -1,0 +1,43 @@
+Historical baseline comparison: native final Answer F1
+Offline reaggregation only. No new inference. Frozen trajectories and scores unchanged.
+Per-dataset columns use shared scorable questions; columns are distinct cohorts.
+
+hotpotqa: common n=497
+m00_s02_child4_faithful	common F1=70.7551%	available=500/500	individual available F1=70.9306%	latest300 overlap=0
+b03_react_dense	common F1=69.5371%	available=499/500	individual available F1=69.5204%	latest300 overlap=0
+b04_ircot_bge	common F1=66.2185%	available=500/500	individual available F1=66.2212%	latest300 overlap=0
+b07_hybrid_rerank	common F1=64.7472%	available=500/500	individual available F1=64.9588%	latest300 overlap=0
+b08_qd_rerank	common F1=64.1690%	available=499/500	individual available F1=64.3126%	latest300 overlap=0
+b02_selfask_dense	common F1=61.8238%	available=500/500	individual available F1=61.8528%	latest300 overlap=0
+b05_iter_retgen_bge	common F1=59.9041%	available=499/500	individual available F1=59.8672%	latest300 overlap=0
+b00_rag_top10_v1	common F1=59.2467%	available=500/500	individual available F1=59.2913%	latest300 overlap=0
+b06_decomp_bge	common F1=56.0278%	available=500/500	individual available F1=55.8917%	latest300 overlap=0
+b01_rag_top10_cot3	common F1=49.2154%	available=500/500	individual available F1=49.1226%	latest300 overlap=0
+
+2wiki: common n=495
+b03_react_dense	common F1=83.4491%	available=499/500	individual available F1=83.3814%	latest300 overlap=0
+m00_s02_child4_faithful	common F1=70.8330%	available=499/500	individual available F1=70.8664%	latest300 overlap=0
+b04_ircot_bge	common F1=68.5077%	available=499/500	individual available F1=68.3621%	latest300 overlap=0
+b06_decomp_bge	common F1=68.0823%	available=499/500	individual available F1=68.1377%	latest300 overlap=0
+b07_hybrid_rerank	common F1=57.5230%	available=500/500	individual available F1=57.7478%	latest300 overlap=0
+b08_qd_rerank	common F1=56.6580%	available=500/500	individual available F1=56.8914%	latest300 overlap=0
+b00_rag_top10_v1	common F1=53.2404%	available=500/500	individual available F1=53.3080%	latest300 overlap=0
+b02_selfask_dense	common F1=52.4373%	available=499/500	individual available F1=52.4177%	latest300 overlap=0
+b05_iter_retgen_bge	common F1=44.8686%	available=500/500	individual available F1=44.6225%	latest300 overlap=0
+b01_rag_top10_cot3	common F1=33.8468%	available=499/500	individual available F1=33.9791%	latest300 overlap=0
+
+musique: common n=208
+b03_react_dense	common F1=49.1386%	available=236/500	individual available F1=48.0199%	latest300 overlap=0
+b08_qd_rerank	common F1=39.9705%	available=220/500	individual available F1=39.6539%	latest300 overlap=0
+b07_hybrid_rerank	common F1=37.4858%	available=240/500	individual available F1=36.5056%	latest300 overlap=0
+b02_selfask_dense	common F1=35.2728%	available=237/500	individual available F1=35.3630%	latest300 overlap=0
+b00_rag_top10_v1	common F1=34.2057%	available=219/500	individual available F1=33.8574%	latest300 overlap=0
+b04_ircot_bge	common F1=29.2006%	available=236/500	individual available F1=29.0061%	latest300 overlap=0
+b05_iter_retgen_bge	common F1=26.4889%	available=239/500	individual available F1=24.8877%	latest300 overlap=0
+b06_decomp_bge	common F1=22.8882%	available=237/500	individual available F1=24.6015%	latest300 overlap=0
+b01_rag_top10_cot3	common F1=19.5552%	available=219/500	individual available F1=19.0914%	latest300 overlap=0
+
+No common questions with the latest complete300; never rank B0/integrated against these historical means.
+MuSiQue campaign is incomplete; its common208 is a partial completed cohort, not full planned500.
+These are the original campaign results. Later token-integrity repair did not complete; do not label them repaired.
+Methods retain their own prompts, search budgets and controllers; these are not equal-cost or same-final-prompt ablations.

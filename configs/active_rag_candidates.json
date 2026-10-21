@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "primary": "p02_multigrain_timing_cachefix_v1",
+  "second_candidate": null,
+  "packages": [
+    {
+      "id": "p02_multigrain_timing_cachefix_v1",
+      "folder": "src/p02_multigrain_timing_cachefix_v1",
+      "verification": "outputs/p02/code_cleanup_20261021/replay_final.json",
+      "native_Answer_F1_development300": 0.7072417314845074,
+      "role": "primary_method"
+    },
+    {
+      "id": "s02_child4",
+      "folder": "src/s02",
+      "role": "historical_route_reference_only",
+      "rerun": false
+    }
+  ],
+  "historical": {
+    "id": "s02_child4",
+    "folder": "src/s02",
+    "role": "historical route reference; no new run",
+    "legacy_cli": "scripts/run_s02.py"
+  },
+  "authorization": "User explicitly selected P02 as primary, S02 as route reference, v2 baselines, shared request/long-input layer, and approval for every new decision.",
+  "selection_is_user_requested_not_automatic_F1_ranking": true,
+  "new_API_calls": 0,
+  "new_remote_calls": 0,
+  "new_index_searches": 0,
+  "reference_route": "s02_child4",
+  "archived_candidates": [
+    {
+      "id": "s04_scope_plus_evidence",
+      "folder": "src/s04",
+      "manifest_sha256": "bdba3a7ee0680cd1279f887fa1608b8d2bd17fcc13028d33a74c00a7496a3899",
+      "verification": "outputs/query_decomposition/candidate_packages_v1_20261021/s04_replay300_r001.json",
+      "native_Answer_F1_development300": 0.7019635652063412,
+      "role": "historical_candidate_outside_current_evaluation"
+    }
+  ],
+  "evaluation_plan": "experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.json",
+  "evaluation_state": "paused_pending_user_execution_approval"
+}

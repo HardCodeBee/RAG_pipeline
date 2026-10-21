@@ -1,0 +1,32 @@
+{
+  "utc": "2026-10-19T20:57:26.685966+00:00",
+  "passed": true,
+  "scope": "Complete A/B generation traces; own full payload hashes, exact intended prompts, unchanged root retrieval/runtime/history policy/final prompt. No gold inputs or additional calls.",
+  "by_arm": {
+    "A_child_prompt_C08": {
+      "cases": 300,
+      "nodes": 887,
+      "child_payloads_checked": 887,
+      "whole_abstentions": 44,
+      "formatter_calls": 0,
+      "different_rewrites": 106,
+      "different_reader_document_order": 98,
+      "different_child_answers": 593,
+      "rewrite_payloads_checked": 587,
+      "final_predictions_changed": 79
+    },
+    "B_rewrite_prompt_c02": {
+      "cases": 300,
+      "nodes": 887,
+      "child_payloads_checked": 887,
+      "whole_abstentions": 0,
+      "formatter_calls": 0,
+      "different_rewrites": 114,
+      "different_reader_document_order": 98,
+      "different_child_answers": 41,
+      "rewrite_payloads_checked": 587,
+      "final_predictions_changed": 12
+    }
+  },
+  "new_api_calls": 0
+}

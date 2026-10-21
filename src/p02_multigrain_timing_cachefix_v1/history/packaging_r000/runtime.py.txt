@@ -1,0 +1,137 @@
+"""Standalone one-shot execution, exact caches, receipts and cumulative budget."""
+from copy import deepcopy
+import hashlib
+import json
+import os
+from pathlib import Path
+import sqlite3
+import uuid
+
+from . import ROOT,METHOD
+from .cache import Cache,canonical,run_lock
+from .llm import LLM
+from .pipeline import execute,safe_case
+from .replay import payload
+
+
+def read_rows(path):
+    rows=[safe_case(json.loads(s)) for s in Path(path).read_text(encoding='utf8-sig').splitlines() if s.strip()]
+    if len(rows)!=len({v['id'] for v in rows}):raise ValueError('Duplicate query identity')
+    return rows
+
+
+def check_resources(config,rows):
+    missing=[]
+    for ds in sorted({v['dataset'] for v in rows}):
+        resources=config['resources'][ds];corpus=resources['corpus'];spec=resources['dense']['bge']
+        for path in [corpus['manifest'],corpus['chunks'],corpus['offsets'],spec['build'],spec['query_snapshot']]:
+            if not Path(path).exists():missing.append(path)
+    if missing:raise FileNotFoundError('Configure external frozen resources: '+', '.join(missing))
+
+
+class Budget:
+    def __init__(self,config,output,maximum):
+        self.path=Path(config['budget']['ledger']);self.maximum=maximum
+        if not self.path.is_file():raise FileNotFoundError('Cumulative budget ledger is required: '+str(self.path))
+        self.db=sqlite3.connect(self.path,timeout=30)
+        self.namespace='candidate_packages/'+METHOD+'/'+str(Path(output).resolve())
+        self.cap=config['budget']['cumulative_cap_cny']
+
+    def reserve(self,rid,request):
+        # UTF8 byte count bounds input tokens conservatively; retain unknowns.
+        reserve=len(request['messages'][0]['content'].encode('utf8'))*.8e-6+request['max_tokens']*2e-6
+        self.db.execute('BEGIN IMMEDIATE')
+        try:
+            total=self.db.execute('SELECT coalesce(sum(coalesce(actual,reserved)),0) FROM charges').fetchone()[0]
+            local=self.db.execute('SELECT coalesce(sum(coalesce(actual,reserved)),0) FROM charges WHERE namespace=?',(self.namespace,)).fetchone()[0]
+            if total+reserve>self.cap or local+reserve>self.maximum:raise RuntimeError('Global or per-run budget ceiling; no submission')
+            self.db.execute("INSERT INTO charges(id,namespace,reserved,actual,status) VALUES(?,?,?,NULL,'reserved')",
+                            (rid,self.namespace,reserve))
+            self.db.commit()
+        except BaseException:self.db.rollback();raise
+
+    def finish(self,rid,result):
+        usage=result.get('usage')
+        if usage and 'prompt_tokens' in usage and 'completion_tokens' in usage:
+            actual=usage['prompt_tokens']*.8e-6+usage['completion_tokens']*2e-6
+            with self.db:self.db.execute("UPDATE charges SET actual=?,status='returned_usage' WHERE id=?",(actual,rid))
+        # An unreturned usage record retains its full reservation.
+
+    def close(self):self.db.close()
+
+
+class Ask:
+    def __init__(self,cache,seed,config,budget,events):
+        self.cache=cache;self.seed=seed;self.config=config;self.budget=budget;self.events=events
+        self.client=None
+
+    def __call__(self,stage,prompt,maximum,allow_final_truncation=False):
+        request=payload(prompt,maximum)
+        rid,result=self.cache.begin_request(stage,request)
+        reused=result is not None
+        source='current_run'
+        if result is None:
+            row=self.seed.execute('SELECT request_id,payload,result FROM requests WHERE payload=?',(canonical(request),)).fetchone()
+            if row:
+                assert json.loads(row[1])==request
+                result=json.loads(row[2]);source='frozen_replay/'+row[0];reused=True
+            else:
+                self.budget.reserve(rid,request)
+                if self.client is None:
+                    settings=self.config['generation']
+                    # LLM creates its SDK client only here, after explicit --run.
+                    self.client=LLM(settings,self.cache)
+                result=self.client._request_once(request)
+                self.budget.finish(rid,result)
+                source='provider'
+            self.cache.finish_request(rid,result)
+        self.events({'event':'model_call','stage':stage,'request_id':rid,'reused':reused,
+                     'source':source,'status':result.get('status'),'usage':result.get('usage')})
+        finish=result.get('finish_reason')
+        if result.get('status')!='success' or not (finish=='stop' or allow_final_truncation and finish=='length'):
+            raise RuntimeError('Recorded incomplete/failed/unknown request; no automatic retry: '+rid)
+        return rid,result['answer'].strip(),finish
+
+    def close(self):
+        if self.client is not None:self.client.client.close()
+
+
+def run(inputs,output,*,limit=None,max_cost=None,device='cpu'):
+    if max_cost is None or max_cost<=0:raise ValueError('Paid execution requires an explicit positive --max-cost-cny')
+    config=json.loads((ROOT/'config.json').read_text(encoding='utf8'))
+    rows=read_rows(inputs)[:limit];check_resources(config,rows)
+    from .retrieval import Retriever
+    output=Path(output);output.mkdir(parents=True,exist_ok=True)
+    seed=sqlite3.connect((ROOT/'data/replay.sqlite3').resolve().as_uri()+'?mode=ro',uri=True)
+    with run_lock(output),Cache(output/'checkpoint.sqlite3') as cache:
+        cache.put('meta','identity',{'method':METHOD,'config':config,'questions':rows})
+        def event(value):
+            with (output/'trace.jsonl').open('a',encoding='utf8') as f:f.write(json.dumps(value,ensure_ascii=False)+'\n')
+        budget=Budget(config,output,max_cost);ask=Ask(cache,seed,config,budget,event);retrievers={}
+        try:
+            for case in rows:
+                if cache.get('prediction',case['id']) is not None:continue
+                resources=config['resources'][case['dataset']]
+                def retrieve(query):
+                    key=hashlib.sha256(canonical([case['qid'],query,10,resources]).encode('utf8')).hexdigest()
+                    packet=cache.get('retrieval',key)
+                    if packet is None:
+                        row=seed.execute('SELECT packet FROM retrieval WHERE dataset=? AND qid=? AND query=?',
+                            (case['dataset'],case['qid'],query)).fetchone()
+                        if row:packet=json.loads(row[0])
+                        else:
+                            if case['dataset'] not in retrievers:retrievers[case['dataset']]=Retriever(resources,device=device)
+                            packet=retrievers[case['dataset']](case['qid'],query)
+                        cache.put('retrieval',key,packet)
+                    return deepcopy(packet)
+                # Exceptions leave receipts and node prefixes intact; they are
+                # never silently converted to a scored answer or resubmitted.
+                result=execute(case,retrieve,ask,record_node=lambda n:cache.put('node',case['id']+'/'+str(n['step_id']),n))
+                cache.put('prediction',case['id'],result)
+                event({'event':'case_complete','id':case['id'],'status':result['status']})
+        finally:
+            for retriever in retrievers.values():retriever.close()
+            ask.close();budget.close();seed.close()
+            predictions=list(cache.all('prediction').values())
+            (output/'results.jsonl').write_text(''.join(json.dumps(v,ensure_ascii=False)+'\n' for v in predictions),encoding='utf8')
+    return {'method':METHOD,'planned':len(rows),'completed':len(predictions),'output':str(output)}

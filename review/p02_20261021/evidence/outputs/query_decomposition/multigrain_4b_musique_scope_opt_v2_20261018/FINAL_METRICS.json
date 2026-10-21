@@ -1,0 +1,576 @@
+{
+  "screen90": {
+    "b00_v12": {
+      "n": 90,
+      "passes": 70,
+      "verdicts": {
+        "pass": 70,
+        "fail": 18,
+        "uncertain": 2
+      },
+      "dimensions_overlapping": {
+        "F": 9,
+        "C": 12,
+        "U": 3
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 17
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 33
+        }
+      },
+      "mu_FS": [
+        3,
+        9,
+        19,
+        37,
+        66,
+        67,
+        70,
+        89
+      ],
+      "macro_rate": 0.8366666666666667
+    },
+    "m01_static_mu": {
+      "n": 90,
+      "passes": 65,
+      "verdicts": {
+        "pass": 65,
+        "fail": 24,
+        "uncertain": 1
+      },
+      "dimensions_overlapping": {
+        "F": 12,
+        "C": 18,
+        "U": 4,
+        "S": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 15
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 30
+        }
+      },
+      "mu_FS": [
+        3,
+        15,
+        19,
+        37,
+        58,
+        66,
+        67,
+        68,
+        69,
+        70,
+        89
+      ],
+      "paired": {
+        "fixes": [
+          9,
+          24
+        ],
+        "regressions": [
+          4,
+          15,
+          58,
+          59,
+          60,
+          68,
+          76
+        ],
+        "net_passes": -5,
+        "delta_pp": -5.555555555555555,
+        "mcnemar_exact_two_sided_p": 0.1796875
+      },
+      "macro_rate": 0.7833333333333333
+    },
+    "m02_adaptive_mu": {
+      "n": 90,
+      "passes": 65,
+      "verdicts": {
+        "pass": 65,
+        "fail": 25
+      },
+      "dimensions_overlapping": {
+        "F": 11,
+        "C": 16,
+        "U": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 13
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 32
+        }
+      },
+      "mu_FS": [
+        3,
+        15,
+        19,
+        28,
+        66,
+        70,
+        89
+      ],
+      "paired": {
+        "fixes": [
+          9,
+          24,
+          26,
+          69
+        ],
+        "regressions": [
+          5,
+          15,
+          22,
+          28,
+          58,
+          59,
+          60,
+          76,
+          90
+        ],
+        "net_passes": -5,
+        "delta_pp": -5.555555555555555,
+        "mcnemar_exact_two_sided_p": 0.266845703125
+      },
+      "macro_rate": 0.7633333333333333
+    },
+    "m03_scope_contrast": {
+      "n": 90,
+      "passes": 70,
+      "verdicts": {
+        "pass": 70,
+        "fail": 19,
+        "uncertain": 1
+      },
+      "dimensions_overlapping": {
+        "F": 10,
+        "C": 12,
+        "U": 3,
+        "S": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 16
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 34
+        }
+      },
+      "mu_FS": [
+        3,
+        15,
+        19,
+        27,
+        66,
+        68,
+        70,
+        89
+      ],
+      "paired": {
+        "fixes": [
+          9,
+          24,
+          69
+        ],
+        "regressions": [
+          15,
+          22,
+          68
+        ],
+        "net_passes": 0,
+        "delta_pp": 0,
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "macro_rate": 0.8266666666666667
+    },
+    "t01_original_mix": {
+      "n": 90,
+      "passes": 69,
+      "verdicts": {
+        "pass": 69,
+        "fail": 19,
+        "uncertain": 2
+      },
+      "dimensions_overlapping": {
+        "F": 12,
+        "C": 7,
+        "U": 10
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 17
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 32
+        }
+      },
+      "mu_FS": [
+        3,
+        5,
+        19,
+        27,
+        37,
+        66,
+        67,
+        68,
+        70,
+        89
+      ],
+      "paired": {
+        "fixes": [
+          9,
+          24,
+          55,
+          69,
+          72,
+          77
+        ],
+        "regressions": [
+          5,
+          12,
+          15,
+          41,
+          68,
+          83,
+          84
+        ],
+        "net_passes": -1,
+        "delta_pp": -1.1111111111111112,
+        "mcnemar_exact_two_sided_p": 1.0
+      },
+      "macro_rate": 0.83
+    },
+    "t02_mu50": {
+      "n": 90,
+      "passes": 74,
+      "verdicts": {
+        "pass": 74,
+        "fail": 13,
+        "uncertain": 3
+      },
+      "dimensions_overlapping": {
+        "F": 7,
+        "C": 7,
+        "U": 3,
+        "S": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 20,
+          "passes": 17
+        },
+        "2wiki": {
+          "n": 20,
+          "passes": 20
+        },
+        "musique": {
+          "n": 50,
+          "passes": 37
+        }
+      },
+      "mu_FS": [
+        3,
+        5,
+        19,
+        37,
+        67,
+        70,
+        89
+      ],
+      "paired": {
+        "fixes": [
+          9,
+          24,
+          66,
+          69,
+          72,
+          77
+        ],
+        "regressions": [
+          5,
+          22
+        ],
+        "net_passes": 4,
+        "delta_pp": 4.444444444444445,
+        "mcnemar_exact_two_sided_p": 0.2890625
+      },
+      "macro_rate": 0.8633333333333333
+    }
+  },
+  "confirm120": {
+    "b00_v12": {
+      "n": 120,
+      "passes": 96,
+      "verdicts": {
+        "fail": 22,
+        "pass": 96,
+        "uncertain": 2
+      },
+      "dimensions_overlapping": {
+        "C": 8,
+        "U": 8,
+        "F": 13
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 28
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 29
+        }
+      },
+      "mu_FS": [
+        13,
+        44,
+        55,
+        65,
+        79,
+        88,
+        95,
+        99,
+        117
+      ],
+      "macro_rate": 0.7999999999999999
+    },
+    "t02_mu50": {
+      "n": 120,
+      "passes": 100,
+      "verdicts": {
+        "fail": 20,
+        "pass": 100
+      },
+      "dimensions_overlapping": {
+        "C": 7,
+        "U": 7,
+        "F": 11,
+        "S": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 40,
+          "passes": 31
+        },
+        "2wiki": {
+          "n": 40,
+          "passes": 39
+        },
+        "musique": {
+          "n": 40,
+          "passes": 30
+        }
+      },
+      "mu_FS": [
+        13,
+        19,
+        44,
+        55,
+        65,
+        79,
+        95,
+        99
+      ],
+      "paired": {
+        "fixes": [
+          57,
+          88,
+          90,
+          92,
+          117
+        ],
+        "regressions": [
+          19
+        ],
+        "net_passes": 4,
+        "delta_pp": 3.3333333333333335,
+        "mcnemar_exact_two_sided_p": 0.21875,
+        "paired_stratified_bootstrap95_delta_pp": [
+          0.0,
+          7.5
+        ],
+        "bootstrap_draws": 30000
+      },
+      "macro_rate": 0.8333333333333334
+    }
+  },
+  "rare16": {
+    "b00_v12": {
+      "n": 16,
+      "passes": 12,
+      "verdicts": {
+        "pass": 12,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 16,
+          "passes": 12
+        }
+      },
+      "mu_FS": [
+        9,
+        12
+      ]
+    },
+    "t02_mu50": {
+      "n": 16,
+      "passes": 12,
+      "verdicts": {
+        "pass": 12,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 1,
+        "U": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 16,
+          "passes": 12
+        }
+      },
+      "mu_FS": [
+        9
+      ],
+      "paired": {
+        "fixes": [],
+        "regressions": [],
+        "net_passes": 0,
+        "delta_pp": 0,
+        "mcnemar_exact_two_sided_p": 1.0
+      }
+    }
+  },
+  "review_limits": "Same current Codex authored/reviewed labels; no independent human gold/double review. F/S/C/U failures are not equivalent to wrong downstream QA. CIs are conditional on these judgments; one training seed. Confirmation120 not reused for tuning.",
+  "confirmation_gate": {
+    "total_strictly_higher": true,
+    "mu_strictly_higher": true,
+    "mu_FS_not_increased": true,
+    "combined_controls_net_loss_at_most1": true
+  },
+  "rare_unique_text_results": {
+    "b00_v12": {
+      "n": 15,
+      "passes": 11,
+      "verdicts": {
+        "pass": 11,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 2
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 15,
+          "passes": 11
+        }
+      },
+      "mu_FS": [
+        9,
+        12
+      ]
+    },
+    "t02_mu50": {
+      "n": 15,
+      "passes": 11,
+      "verdicts": {
+        "pass": 11,
+        "fail": 4
+      },
+      "dimensions_overlapping": {
+        "C": 3,
+        "F": 1,
+        "U": 1
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 0,
+          "passes": 0
+        },
+        "2wiki": {
+          "n": 0,
+          "passes": 0
+        },
+        "musique": {
+          "n": 15,
+          "passes": 11
+        }
+      },
+      "mu_FS": [
+        9
+      ]
+    }
+  }
+}

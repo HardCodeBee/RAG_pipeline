@@ -1,0 +1,228 @@
+{
+  "task": "b0_strategy_round2_v1_20261020",
+  "cohort": "fresh dev90, 30 per dataset; not sealed150",
+  "runtime": "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\fresh_validation\\runtime_dev90.frozen.jsonl",
+  "runtime_sha256": "d12094d64a47c51efcc25b7458b94602e601ef4004db1adf64c89569f2e587bb",
+  "cases": 90,
+  "arms_available": [
+    "parent_g01",
+    "g02_evidence_goal",
+    "p02_role_headers",
+    "s03_g01_plus_f01"
+  ],
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "enable_thinking": false,
+  "resources": {
+    "hotpotqa": {
+      "schema_version": 1,
+      "workspace_root": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline",
+      "corpus": {
+        "dataset": "hotpotqa",
+        "document_unit": "one BEIR title+text corpus record = one presegmented local chunk",
+        "documents": 5233329,
+        "manifest": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/manifest.json",
+        "manifest_sha256": "f56f958547cc15dbc1243f39185d85047244db3658cb65cc74636d2915fd9cb5",
+        "queries": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/queries/queries.jsonl",
+        "qrels": {
+          "train": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/qrels/train.tsv"
+        },
+        "chunks": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunks.jsonl",
+        "offsets": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy",
+        "chunks_sha256": "c1b3c7a721f8e9b31615ae1ab8e5a5ce1a0a2d12d6c7c6f0923fa879b85b7dd6"
+      },
+      "identical_id_policy": "request_max_k_plus_1_filter_doc_id_equal_original_query_id_then_keep_max_k",
+      "bm25": {
+        "directory": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/_sparse_indexes/sqlite_bm25_04df51906ff9598b",
+        "manifest_sha256": "4ed27e0c29af9d1a90986ecd3c1618a0d270e07880fc4af7d48b93157cf38dda",
+        "sparse_index_id": "sqlite_bm25_04df51906ff9598b",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      },
+      "dense": {
+        "bge": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b",
+          "build_id": "build_65e9037e4c1eed7b",
+          "manifest_sha256": "ef2dcd84730799b24399ea19ce4ff10ffd27556729fb78a9430948cc240399a1",
+          "embeddings_manifest_sha256": "127376a5563ff08513ca7f55f8dc870c451c6d1c2a184791f4b78133ddaa3ec8",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        },
+        "contriever": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_0ae2963a3d8dbbd8",
+          "build_id": "build_0ae2963a3d8dbbd8",
+          "manifest_sha256": "9d570d2797b78fd821d9193fa0f3aeaaa8e90727c5291d174175c6b736af2811",
+          "embeddings_manifest_sha256": "f07a3f335a695c694eb9cc6b49c767c8d1aeeafd9803fe8ce94377236c2dd019",
+          "query_model": "facebook/contriever",
+          "query_revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--contriever/snapshots/2bd46a25019aeea091fd42d1f0fd4801675cf699",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_space_text",
+            "document_prefix": "",
+            "encoder_family": "contriever",
+            "max_sequence_length": 512,
+            "model_name": "facebook/contriever",
+            "normalized": false,
+            "pooling": "masked_mean",
+            "revision": "2bd46a25019aeea091fd42d1f0fd4801675cf699",
+            "similarity": "inner_product"
+          }
+        },
+        "dpr": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_e2d1b1d727a8ee45",
+          "build_id": "build_e2d1b1d727a8ee45",
+          "manifest_sha256": "352480f0663de2d1c7d4bf39187e5adcf21fd372265d42b5248d2737f6db8aff",
+          "embeddings_manifest_sha256": "5975ca2979bacd666b9099a52053d34b8d4ead6f501a1cf9b257f58d26f27211",
+          "query_model": "facebook/dpr-question_encoder-multiset-base",
+          "query_revision": "5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--facebook--dpr-question_encoder-multiset-base/snapshots/5325e4ee906435291d63046f535476cb3fc60d43",
+          "query_prefix": "",
+          "space": {
+            "backend": "hf_dense",
+            "dimension": 768,
+            "document_input_format": "title_text_pair",
+            "document_prefix": "",
+            "encoder_family": "dpr",
+            "max_sequence_length": 256,
+            "model_name": "facebook/dpr-ctx_encoder-multiset-base",
+            "normalized": false,
+            "pooling": "pooler_output",
+            "revision": "fdb3d46584386d2f20aa00724ae31cebc348d16b",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    },
+    "2wiki": {
+      "corpus": {
+        "dataset": "2wiki",
+        "documents": 430225,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "edb00254897d87e5d966281207d9a20291660ec4d35f561f5fa92436ddeeecbc",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a1d7e50b8a46405735e4076c06ff0109b38ada19f879752be866026c3f1fdfb1",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+          "build_id": "comprehensive_2wiki_global_bge_v1",
+          "manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "embeddings_manifest_sha256": "7c09da08779a39ef72cd8b81d6718d6e81b764f748ce5a780abf9ca9eec16683",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\bm25",
+        "manifest_sha256": "57303882724c3f34ae721c4b8f6c1755f9668cf2a217824eecac4a6b30feb9ad",
+        "sparse_index_id": "sqlite_bm25_b8da8dcd3002b1a2",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    },
+    "musique": {
+      "corpus": {
+        "dataset": "musique",
+        "documents": 139416,
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+        "manifest_sha256": "83c1cc3588ad629866ade7cc8293d0af57c93f7c36471ddb9f54126703e747f9",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunks.jsonl",
+        "chunks_sha256": "a3fcaa2bcffc26746dc4f7ffaae09185b21681b81a93de3152eba904d82c7690",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunk_offsets.npy"
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+          "build_id": "comprehensive_musique_global_bge_v1",
+          "manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "embeddings_manifest_sha256": "eadd6280e5fda2a95038bd5d8f6c04a4b2505060a3ca0fd02c10e386c02f1d3c",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_prefix": "",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          },
+          "manifest_name": "DENSE_FROZEN.json"
+        }
+      },
+      "bm25": {
+        "directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\bm25",
+        "manifest_sha256": "7db4e8f8ee8904240dd4687151491158a84488eafdae76c4584b82bb4ec4d21e",
+        "sparse_index_id": "sqlite_bm25_d55b72c167fc2357",
+        "backend": "sqlite_bm25_v1",
+        "analyzer": "english_regex_casefold_v1",
+        "k1": 1.5,
+        "b": 0.75
+      }
+    }
+  },
+  "max_workers": 3,
+  "max_rounds": 2,
+  "limits": {
+    "rewrite": 256,
+    "child_and_goal": 128,
+    "final": 64
+  },
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "global_cap_cny": 300,
+  "dispatch_ceiling_cny": 299.9,
+  "local_subcap_cny": 10,
+  "source_pins": {
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\fresh_runner.py": "5013148b8f1c2d4b3561139039b7dc7f262d1c760768b34a0a2c0fc2f2ab955e",
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": "9969c409453e8c9ced5cbe4763029a107edcd5caa8af95e427daeee64f79fcef",
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": "ed3832eb8e3cc5d3ff60fb1f8e47fe7aad6f921a3a506523a37967e1f261c65b",
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\PROTOCOL.frozen.json": "5b48f6eab47c596d1ba69054b7a377122d9ccee1ebc8f5e03d4f283b54e0a184",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": "731750f78cb90749be7caef90580185404b80988f191664b8df486db49eddcba",
+    "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\prompts.py": "ecc5aef7e1b8fa4b3075e32c16f4619e8d16100a05ef06f9acca2d1832412996",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": "742d400811352da90840eb4dcb6586b2bf2abaedb7928619c9f109de5b4986d0",
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\examples.json": "d858014b0fd20d6982f0bf03b944c1b22ffce24aab46b971ac83671f4240de77",
+    "experiments\\query_decomposition\\baselines_same300_v1_20261020\\batch_search.py": "a154f567474f51f6ecc0bfa83a4c301dfa0834a794722acdfb1b8f1d8f09ccd0",
+    "experiments\\query_decomposition\\component_chain_opt_v2_20261019\\PROTOCOL.frozen.json": "b26fe98388d8d217f9770aa8878b0c24da31f9f81836bb3c097f88f51e314f32"
+  },
+  "cache": "First successful exact full payload only; no score-based receipt selection.",
+  "recovery": "One immutable infrastructure-only recovery round; retain all unknown liabilities.",
+  "hotpot_batch": "Existing exact_packets; one encode per query and FAISS query_batch_size=1.",
+  "scoring": "Separate offline scorer; this runner does not read reference answers."
+}

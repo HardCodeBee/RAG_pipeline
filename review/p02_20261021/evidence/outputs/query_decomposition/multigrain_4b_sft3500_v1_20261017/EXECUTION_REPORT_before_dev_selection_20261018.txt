@@ -1,0 +1,141 @@
+3500条复核、v12原始4B训练：执行记录
+
+当前提交：Slurm153978，v003_exact_v12。实时核查时间与状态见SCHEDULER_STATUS.json。
+目前PENDING，等待A6000；原作业153977已在排队阶段撤回，没有进行GPU训练。
+尚未生成SMOKE_VERIFIED.json和正式训练metrics.jsonl；不能称为已开始梯度更新或训练完成。
+获得资源后将自动执行：独立进程两步冒烟测试 -> 检查通过 -> 新进程从原始4B、新LoRA、新optimizer开始正式训练。
+本轮没有调用阿里API。旧数据、prompt、训练脚本和adapter没有被覆盖。
+
+一、3500条第二轮复核及v002
+
+当前Codex逐条查看全部3500个原query/目标数组，第二轮展示不提供上一轮审阅理由。
+这是同一作者/审阅者的第二次检查，不是独立人工金标，也不是3500条语义正确的统计保证。
+36条修订、5条隔离。36条包括实际语义/覆盖/用途问题和少量规范简化，不能全部计为原标签错误。
+隔离5条后，从先冻结的未用训练候选中选择并逐条编写、复核5条替补，最终仍为3500条。
+所有原目标、新目标、隔离理由、原始ID、源数据集和审阅批次保存在reaudit/DECISIONS.progress.jsonl及实验目录second_review/中。
+5条替补的完整标签和理由见replacement_labels.reviewed.json；冻结候选见replacement_candidates.frozen.jsonl。
+
+最终来源：
+HotpotQA1043（原BREAK-high/HOTPOT1029 + 指定困难样本14）
+DROP864
+CWQ374
+MuSiQue509（原MuSiQue59 + 后续musique450）
+2Wiki710
+合计3500。
+cohort为旧2368来源保留2326、用户指定困难33、新训练来源1141。
+目标为独立问句的JSON数组，不含#N引用；399条为合法[]。
+v001、v002均保留。当前训练数据位于data_v003_exact_v12/，3500条语义标签与v002逐字节相同。
+
+真实修订例：
+1. Stephen Farrell题：恢复“该季破坏性最强且袭击美国东北部”的飓风限定。
+2. WNP题：恢复“秘密行动 -> 运行它的stay-behind行动 -> 组织”的两层关系，避免合并两个行动对象。
+3. Christopher Nixon Cox题：“son of an American politician”保留为该政治人物，不再推断其是father。
+4. 三道大陆/国家题：largest属于大陆内国家的排名，不能改成“曾赢得赛事的国家中最大者”。
+5. 不明确的“university of the author”保留原关系，不强行转换为attended。
+
+二、独立dev150与训练诊断150
+
+dev150全部来自三个数据集官方dev，不从3500条中切走。
+HotpotQA50：bridge35、comparison15。
+2Wiki50：comparison13、inference13、compositional12、bridge_comparison12。
+MuSiQue50：2-hop18、3-hop17、4-hop15。
+抽样在查看模型预测前冻结；排除已知历史问题、prompt选择100、训练3500和最终eval300。
+另外检查MuSiQue组合ID中可识别的原子问题组件，train/dev/test三者两两不共享组件。
+未声称完成语义改述或预训练去污染。
+当前Codex根据query编写并复核150条参考数组，用于dev loss。
+语义选模按F/S/C/U看原query和模型原始输出，不以与参考标签的字符串匹配选模。
+
+训练探针150从实际3500中固定抽取，HotpotQA/2Wiki/MuSiQue各50。
+仅以eval模式测loss和train-dev差距，不增加训练权重；它不是独立测试。
+
+实际原生token编码已检查3800个记录（3500+150+150）：
+训练最长654tokens，dev最长635，训练探针最长633；上限1024，无截断。
+system/user/padding标签为-100；只监督assistant数组与原生EOS。
+[]也有真实输出token及EOS参与loss。
+
+三、训练前原始4B的最终300题基线
+
+远端原始4B作业153972完成；未加载旧adapter，使用冻结v12。
+300条生成成功、格式合法300、截断0、显式引用0、生成错误0。
+当前Codex逐题F/S/C/U审阅：157通过、139失败、4不确定。
+完整分母通过率157/300 = 52.33%。
+HotpotQA51/100；2Wiki71/100；MuSiQue35/100。
+这是新的独立300题结果，不是此前prompt选择100题的65/100。
+四维标记含不确定且可重叠：F71、S28、C70、U51。
+F忠实性；S独立可解释；C有用中间对象/运算属性覆盖；U每问都有用途。
+缺少机械重复的最终目标本身不判失败；合法局部问题可以[]。
+仅重述原题、漏掉实际未知中间对象、跨题代词或改变关系/条件则按冻结规则记录。
+这不是下游RAG Answer F1，也不是独立人工评估。
+
+完整原始预测和返回验证：
+../multigrain_4b_frozen_eval300_v1_20261017/returned_20261017T113858Z/
+本次逐题审阅：baseline300/REVIEW.progress.jsonl
+汇总：baseline300/SUMMARY.json
+没有用该300题的审阅结果修改已冻结v12或v002标签。
+补充的300题输入token核查发现运行草稿strip了v12末尾换行；提交前修正为保留原文件完整文本，全部300题输入token已验证完全一致。
+
+四、实际提交的训练配置
+
+基础模型：Qwen/Qwen3-4B-Instruct-2507，原始本地权重。
+revision：cdbee75f17c01a7cc42f958dc650907174af0554。
+不是旧checkpoint-000148继续训练；新LoRA、新optimizer。
+冻结基础参数4,022,468,096，训练LoRA参数66,060,288。
+LoRA r32、alpha64、dropout0.05；Q/K/V/O与MLP gate/up/down；bias none。
+冻结base BF16；LoRA及AdamW FP32；SDPA；TF32关闭；gradient checkpointing开启。
+AdamW lr1e-4、betas0.9/0.999、eps1e-8、weight decay0.01、clip1。
+seed1729；microbatch1；常规累积32条；每轮最后12条使用实际目标token数归一化。
+每轮独立打乱3500条、各使用一次，不丢弃、不用前20条补齐最后一批，不进行困难样本额外加权。
+此前2368恰好能被32整除；此处尾批处理是3500条数据所需的新处理。
+110更新/epoch，最多3epochs、330更新、10500次样本使用。
+warmup10步，随后按固定330步总计划线性衰减；提前停止和恢复不重设计划。
+55/110/165/220/275/330保存、检查dev loss和训练探针loss。
+110/165/220/275/330保留dev150原始生成（仅对实际达到的checkpoint执行）。
+至少完成2epochs后才允许loss早停；patience2、min_delta0.001，之前的检查计数保留。
+Slurm申请单A6000、4CPU、32GB内存、4小时，并保留信号检查点支持。
+
+五、与旧训练证据的关系
+
+旧2368条、2epochs、148更新：训练loss首步约2.1328，末步约0.1201。
+后段仍缓慢下降；旧dev500完整通过282 -> 358 -> 407 -> 409 -> 424。
+旧训练未保存可用的逐checkpoint validation loss，best_validation_loss为null。
+因此不能断言旧训练完全收敛或不存在过拟合，也不能把旧84.8%等同于本次新任务、新300题成绩。
+本次保留旧lr与LoRA规模，增加独立dev与最大3epochs，用实际dev表现选择checkpoint。
+
+六、已完成的程序验证
+
+完整3500条第二次语义检查；替补5条单独编写/复核。
+训练/dev/test query及MuSiQue组件交叉检查通过。
+实际继承的原生loss encoder检查3800条，掩码、EOS和长度检查通过。
+3epochs采样计划检查：每轮3500个唯一索引、110更新、末批12，无重放或丢弃。
+CPU数值检查：12条不同目标长度的加权微批梯度与合并批次梯度相同（本次最大差0）。
+CPU AdamW/scheduler真实序列化：第55步保存恢复后的第56步与连续执行结果逐元素一致。
+选模优先级测试通过：通过数 -> 最弱数据集通过率 -> 较早更新。
+远端包SHA、逐成员摘要、配置与Python语法检查通过。
+4B GPU冒烟尚未执行；CPU检查不能替代它。
+
+七、提交、后续选模和最终评估
+
+当前作业153978；命令和配置摘要见JOB_SUBMISSION.json，旧153977记录保存在JOB_SUBMISSION_v002_superseded.json。
+当前远端目录：/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003。
+当前提交包sft3500_v003_exact_v12_remote_package.zip；EXACT_PROMPT_REVISION.json记录摘要与更正原因。
+旧v002包和远端package目录保留。旧153977在开始前先hold、再取消；V003_CORRECTION.json记录这次操作。
+旧运行目录与原始基础模型只读使用，新权重仅写入新结果目录。
+GPU冒烟两步：有限loss/梯度、只有LoRA更新、基础权重逐字节指纹不变、检查点及adapter精确重载。
+通过后由全新Python进程启动正式训练，不继承冒烟权重/optimizer。
+训练结束后，当前Codex复核每个候选checkpoint的150条dev输出。
+只按dev完整通过数最高、最弱数据集通过率最高、最早checkpoint依次选择。
+选择后才在同一冻结eval300上推理，保持基础模型、v12、原生模板、greedy和1024输出上限不变。
+最终报告完整300分母的前后通过率、逐数据集结果、改善/退步题、配对bootstrap区间及MuSiQue组件聚类敏感性。
+观察到至少270/300才称本次样本通过率达到90%；不以loss、格式合法率或dev成绩替代。
+
+八、变更与回溯入口
+
+实验代码：experiments/query_decomposition/multigrain_4b_sft3500_v1_20261017/。
+原始v001训练数据保留于前一实验目录training/。
+所有修订批次均保留具体原因；reaudit输出同时保存previous_target和target。
+提交前把格式统计对齐冻结基线：JSON字符串数组格式合法与显式引用分开记录；引用错误由S维度审阅。
+训练代码未沿用旧steps/goal运行解析器，只复用通用原生token encoder与已验证基础模型/LoRA加载代码。
+原始运行时复制来源和摘要见remote_v003/RUNTIME_PROVENANCE.json；每个提交版本的训练包分别保持冻结。
+v003仅修正实际prompt保留末尾换行并对应更新messages文件/配置路径；标签、抽样、参数和评估标准不变。重新检查3800条原生编码和loss掩码均通过。
+选模、最后300题推理、结果导出和配对比较脚本已备好；它们不会在没有实际输出时产生成功结论。
+本文件是已完成准备与真实排队状态的报告，不是训练完成报告。

@@ -1,0 +1,131 @@
+{
+  "selection": "deterministic SHA256 ranking on seed/cohort/dataset-prefixed native ID within metadata type strata",
+  "seed": "b0-strategy-round2-fresh-dev90-sealed150-20261020-v001",
+  "quotas": {
+    "dev90": {
+      "hotpotqa": {
+        "bridge": 21,
+        "comparison": 9
+      },
+      "2wiki": {
+        "compositional": 8,
+        "comparison": 7,
+        "inference": 8,
+        "bridge_comparison": 7
+      },
+      "musique": {
+        "2-hop": 11,
+        "3-hop": 10,
+        "4-hop": 9
+      }
+    },
+    "sealed150": {
+      "hotpotqa": {
+        "bridge": 35,
+        "comparison": 15
+      },
+      "2wiki": {
+        "compositional": 12,
+        "comparison": 13,
+        "inference": 12,
+        "bridge_comparison": 13
+      },
+      "musique": {
+        "2-hop": 18,
+        "3-hop": 17,
+        "4-hop": 15
+      }
+    }
+  },
+  "selection_used_gold_answers": false,
+  "selection_used_retrieval_or_model_results": false,
+  "selected_confirmation_queries_manually_read": false,
+  "normalization": "NFKC + casefold + collapse whitespace + strip terminal whitespace/?/!/Chinese punctuation/dot",
+  "known_exposure_count": {
+    "id_strings": 68697,
+    "normalized_query_strings": 35805,
+    "Mu_known_primitives": 12337,
+    "Mu_training_union_primitives": 1137,
+    "old_same_R02_cache_records_excluded": 908,
+    "old_same_R02_cache_distinct_ids_excluded": 592
+  },
+  "training_union": [
+    "experiments\\query_decomposition\\multigrain_4b_full_retrain3632_v1_20261018\\DATA3632.frozen.jsonl",
+    "outputs\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\training\\MASTER_3500.jsonl"
+  ],
+  "Mu_primitive_guarantees": {
+    "training_union_overlap": 0,
+    "dev_vs_confirmation_overlap": 0,
+    "all_historical_primitive_disjoint": false,
+    "explanation": "Previously exposed nontraining Mu primitive reuse is possible; all-known primitive exclusion leaves essentially no3/4-hop cohort. No claim of full primitive novelty."
+  },
+  "confirmation_policy": "Sealed after metadata-only selection; no adaptive candidate edits from confirmation outcomes. Root controller must freeze chosen candidate and use same controls before opening outcomes.",
+  "unseen_scope": "No exact ID or normalized text in inventoried sources; not a complete historical exposure ledger, paraphrase decontamination or pretrained-model decontamination guarantee.",
+  "cost": {
+    "new_API_calls": 0,
+    "remote_calls": 0,
+    "budget_cap_cny": 300
+  },
+  "availability": {
+    "hotpotqa": {
+      "native_rows": {
+        "comparison": 1487,
+        "bridge": 5918
+      },
+      "eligible": {
+        "comparison": 958,
+        "bridge": 3802
+      },
+      "excluded": {
+        "known_id_or_normalized_query": 2645
+      }
+    },
+    "2wiki": {
+      "native_rows": {
+        "compositional": 5236,
+        "comparison": 3040,
+        "inference": 1549,
+        "bridge_comparison": 2751
+      },
+      "eligible": {
+        "compositional": 4851,
+        "comparison": 2760,
+        "inference": 1361,
+        "bridge_comparison": 2493
+      },
+      "excluded": {
+        "known_id_or_normalized_query": 1111
+      }
+    },
+    "musique": {
+      "native_rows": {
+        "2-hop": 1252,
+        "3-hop": 760,
+        "4-hop": 405
+      },
+      "eligible": {
+        "2-hop": 827,
+        "3-hop": 408,
+        "4-hop": 183
+      },
+      "excluded": {
+        "known_id_or_normalized_query": 895,
+        "training_primitive_overlap": 104
+      }
+    }
+  },
+  "native_sources": {
+    "hotpotqa": {
+      "path": "analysis\\hotpotqa_difficulty_retrieval_20261002\\source_labels\\validation_labels.jsonl",
+      "sha256": "352f7c7428e6abc169ad4ddf17ac3dc614af77addd0049944ef9a231d059acdb"
+    },
+    "2wiki": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\2wiki\\native\\dev.json",
+      "sha256": "21b0a6ffef454f887b5a7a6115db443d3476e99fefeb05d4c5fb73be01582554"
+    },
+    "musique": {
+      "path": "data\\multihop_comprehensive_v1_20261015\\musique\\native\\musique_ans_v1.0_dev.jsonl",
+      "sha256": "15fa63794d18a94ce12411aca6e2327e65b6e83b0b1490efab3f1962e48abf3b"
+    }
+  }
+}

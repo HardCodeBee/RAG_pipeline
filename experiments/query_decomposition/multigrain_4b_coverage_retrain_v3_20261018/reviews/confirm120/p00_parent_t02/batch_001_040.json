@@ -1,0 +1,66 @@
+{
+  "reviewed_indices": [
+    1,
+    40
+  ],
+  "method": "Current Codex literal query/output review, F/S/C/U, no candidate outputs read and no answers/passages consulted. Uncertainty is nonpass.",
+  "exceptions": {
+    "2": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Both items ask generic identities of already named entities, not a specified shared property; v12 explicitly excludes generic identities."
+    },
+    "14": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "The third item repeats the original Margraviate target to complete the list, not an independently exposed prerequisite."
+    },
+    "24": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Original location containing Fili becomes the location Fili itself; omits the containment relation and changes the location description."
+    },
+    "29": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Question about what work Moray followed may only repeat the already described nuclear-battery work; useful unknown prerequisite unclear in the malformed original."
+    },
+    "32": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Son identification drops the Barnstable County Hospital autopsy condition; the parental pair alone need not identify that son."
+    },
+    "33": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Adds organization as the answer type although original says by whom; second item repeats the original target as completion rather than a prerequisite."
+    },
+    "37": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Identifies the ninth LP but does not ask which band released it, the intermediate entity whose kind the original requests."
+    },
+    "38": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "State where performer died becomes state performer belongs to; last item invents death in the eastern-border territory."
+    }
+  }
+}

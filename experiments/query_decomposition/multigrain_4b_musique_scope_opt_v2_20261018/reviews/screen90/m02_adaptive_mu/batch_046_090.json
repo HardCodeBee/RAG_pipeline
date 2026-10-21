@@ -1,0 +1,81 @@
+{
+  "reviewed_indices": [
+    46,
+    90
+  ],
+  "exceptions": {
+    "54": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "Splits the named band Six Organs of Admittance and invents Om Organs of Admittance."
+    },
+    "55": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still omits identity of the occupant whose religion is requested."
+    },
+    "58": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops the abbreviated name of the company, the intermediate expression whose expansion is requested."
+    },
+    "59": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops the forum identity before the forum-uniqueness target."
+    },
+    "60": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Empty array omits both film-set intersection operands."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Repairs actor identity and Taylor scope but now skips identity of the character waiting for Ross, keeping it embedded in mother/actor questions."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Mission question still refers to unrestricted astronauts, losing the link to the operator of the Neptune-storm detector."
+    },
+    "76": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Removes the bordering administrative entity identity before its containing location."
+    },
+    "89": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still reverses ownership of the belief and forces the delegation destination into a country; intended person/destination binding remains wrong."
+    },
+    "90": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Replaces the exact Chapel Hill, North Carolina condition with city-of-origin queries that omit the state qualifier."
+    }
+  },
+  "reviewer": "Every changed46..90 output inspected;69 now explicitly identifies spouse and repairs coverage. Identical arrays inherit baseline."
+}

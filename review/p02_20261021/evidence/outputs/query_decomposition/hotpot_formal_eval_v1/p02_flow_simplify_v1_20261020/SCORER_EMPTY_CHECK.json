@@ -1,0 +1,124 @@
+{
+  "sample_file": "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\runtime300.frozen.jsonl",
+  "sample_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+  "reference_file": "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\references300.local.frozen.jsonl",
+  "reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+  "planned": 300,
+  "dataset_counts": {
+    "musique": 100,
+    "2wiki": 100,
+    "hotpotqa": 100
+  },
+  "metric": "Native Answer F1/EM: HotpotQA; 2Wiki v1.1 entity aliases/demonyms; MuSiQue answer aliases",
+  "aggregation": "Mean over planned query cohort only when complete; available-only mean and missing bounds otherwise; datasets also reported separately.",
+  "scores_are_0_to_1": true,
+  "algorithm_failure_scored_zero": true,
+  "infrastructure_missing_not_scored_zero": true,
+  "arms": {
+    "union20": {
+      "planned": 300,
+      "scorable": 0,
+      "missing": 300,
+      "statuses": {
+        "unstarted": 300
+      },
+      "F1_available": null,
+      "EM_available": null,
+      "F1_complete": null,
+      "EM_complete": null,
+      "F1_all_planned_bounds": [
+        0.0,
+        1.0
+      ],
+      "paired_with_frozen_p02": {
+        "n": 0,
+        "F1": null,
+        "baseline_F1": null,
+        "delta": null,
+        "up": 0,
+        "tie": 0,
+        "down": 0
+      },
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 0,
+          "missing": 100,
+          "statuses": {
+            "unstarted": 100
+          },
+          "F1_available": null,
+          "EM_available": null,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "paired_with_frozen_p02": {
+            "n": 0,
+            "F1": null,
+            "baseline_F1": null,
+            "delta": null,
+            "up": 0,
+            "tie": 0,
+            "down": 0
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 0,
+          "missing": 100,
+          "statuses": {
+            "unstarted": 100
+          },
+          "F1_available": null,
+          "EM_available": null,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "paired_with_frozen_p02": {
+            "n": 0,
+            "F1": null,
+            "baseline_F1": null,
+            "delta": null,
+            "up": 0,
+            "tie": 0,
+            "down": 0
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 0,
+          "missing": 100,
+          "statuses": {
+            "unstarted": 100
+          },
+          "F1_available": null,
+          "EM_available": null,
+          "F1_complete": null,
+          "EM_complete": null,
+          "F1_all_planned_bounds": [
+            0.0,
+            1.0
+          ],
+          "paired_with_frozen_p02": {
+            "n": 0,
+            "F1": null,
+            "baseline_F1": null,
+            "delta": null,
+            "up": 0,
+            "tie": 0,
+            "down": 0
+          }
+        }
+      },
+      "logical_usage_on_selected_case_records": {},
+      "new_success_request_ids_on_selected_records": 0,
+      "cost_note": "Logical usage includes exact cache replays; actual payments and unresolved reservations are reported by the runner budget ledger."
+    }
+  }
+}

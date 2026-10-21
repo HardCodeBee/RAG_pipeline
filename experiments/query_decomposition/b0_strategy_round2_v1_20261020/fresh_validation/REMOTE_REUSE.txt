@@ -1,0 +1,38 @@
+可复用的R02远端运行资料（只完成离线定位，未SSH、提交或推理）
+
+实际冻结R02：
+/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final
+checkpoint manifest SHA256:
+728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92
+
+基础运行包：
+/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003
+
+本地冻结v12提示词：
+experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/v12.txt
+SHA256: 508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8
+
+优先复用已解决generation_config兼容问题的推理脚本：
+experiments/query_decomposition/component_chain_eval60_v1_20261019/remote_infer_compat_v002.py
+该脚本使用显式greedy generation_config、do_sample=False、num_beams=1、seed1729、max_new_tokens1024。
+其当前逐题输出要求输入包含dataset，因此不能直接接收本目录只有id/query的远端输入。
+新包装器应仅由id前缀派生dataset用于记录，不把dataset加入模型prompt；需记录并hash该单独兼容改动。
+实际输入模型仍仅query+冻结v12，不能改变解码或checkpoint。
+
+旧R02的参数和来源记录：
+experiments/query_decomposition/decomposition_error_expand60_v1_20261019/PLAN_FROZEN.json
+experiments/query_decomposition/component_chain_eval60_v1_20261019/REMOTE_SCOPE.json
+experiments/query_decomposition/component_chain_eval60_v1_20261019/DECODE_COMPAT_AMENDMENT.frozen.json
+
+可参考的SSH生命周期和连通配置位置：
+experiments/query_decomposition/complete_pipeline_comparison_v1_20261020/remote300.py
+连接host cluster1.comp.anu.edu.au，用户u7830488；临时环境变量RAG_EVAL_REMOTE_PASSWORD。
+该脚本采用已知host key检查，并在进程中消费后删除密码环境变量。
+只可复用连接/上传/轮询/取回/提交去重逻辑；该旧任务的具体ROUTE、checkpoint148、包、计数不能原样复用为R02。
+本资料不包含密码、密钥或权重。
+
+新远端输入：
+remote_inputs/dev90.id_query.frozen.jsonl（90行）
+remote_inputs/sealed150.id_query.frozen.jsonl（150行）
+两者每行严格只有id/query，无答案、支持文档、评测结果。
+确认集可预先分解，但其任何下游结果只能在候选配置冻结后开启，不能用于继续调优候选。

@@ -1,0 +1,48 @@
+{
+  "train_records": 3500,
+  "dev_records": 150,
+  "probe_records": 150,
+  "test_records": 300,
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "all_pairs_text_disjoint": true,
+  "all_pairs_musique_component_disjoint": true,
+  "native_encoding_and_target_eos_masks_checked": 3800,
+  "empty_arrays_have_real_supervised_tokens": 415,
+  "token_lengths": {
+    "train3500": {
+      "records": 3500,
+      "min": 502,
+      "median": 537,
+      "p95": 583,
+      "max": 654
+    },
+    "dev150": {
+      "records": 150,
+      "min": 507,
+      "median": 538,
+      "p95": 577,
+      "max": 635
+    },
+    "train_probe150": {
+      "records": 150,
+      "min": 511,
+      "median": 540,
+      "p95": 591,
+      "max": 633
+    }
+  },
+  "silent_truncation": 0,
+  "sample300_scope": "Frozen random artifact consistency sample after full second semantic pass; not independent semantic accuracy estimate.",
+  "reference_review": "Current Codex authored from frozen query-only inputs and checked each question/target pair for v12 fidelity, standalone interpretation, prerequisites and no assumed factual answers. Same author/reviewer, not independent human gold. References support loss evaluation; semantic correctness is not exact-match to this one possible label.",
+  "artifacts": {
+    "CONSISTENCY_SAMPLE300.frozen.jsonl": "aeca48666fc3777c9892911812e8a56204fa5444cd443e80a10d4c1680d4e84b",
+    "dev150.master.jsonl": "111ce2836a4ac1cc4fd0ca553a58c78377d6198ea2c5eaceffb7a233de3eb733",
+    "dev150.messages.jsonl": "6af23727a6f2e5af443b1fefd8c381187005d5b3b2dfedb6222fde6273d67254",
+    "MASTER_3500.jsonl": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb",
+    "train3500.messages.jsonl": "a253646542678ebe284543a1c0ebf968964187dd533e1c1523461745f824a90a",
+    "train_probe150.master.jsonl": "08d4a25fa358f32d2cd7a0752945b277af1348f9a67fe09bfdbc974c67da24f5",
+    "train_probe150.messages.jsonl": "c48cfb428bb1705df857546dc8a9b73316d68b5f2a700d686138e5c30331f8ee"
+  },
+  "api_calls": 0,
+  "training_started": false
+}

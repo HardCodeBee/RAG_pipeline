@@ -1,0 +1,653 @@
+{
+  "utc": "2026-10-19T19:21:01.083256+00:00",
+  "status": "four_method_comparison_scored",
+  "protocol_sha256": "48d3719f319c65640876c683183dd21b62c23faa47e503155ecdaa2a8f54c65b",
+  "methods": {
+    "s02_child4": {
+      "planned": 300,
+      "terminal": 300,
+      "available": 300,
+      "missing": 0,
+      "execution_outcomes": {
+        "final_answer_returned": 300
+      },
+      "decomposition_overhead_family": "reference_QDMR",
+      "statuses": {
+        "success": 300
+      },
+      "f1_available_not_common_ranking": 0.6604110737903308,
+      "all300_f1_bounds": [
+        0.6604110737903308,
+        0.6604110737903308
+      ],
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.7480108225108224
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.8192711700064639
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.41395122885370556
+        }
+      },
+      "overhead": {
+        "logical_generation_calls": 1387,
+        "logical_calls_by_stage": {
+          "short_node_1": 283,
+          "short_node_2": 111,
+          "contextual_node_1": 283,
+          "contextual_node_2": 283,
+          "contextual_node_3": 111,
+          "final": 300,
+          "short_node_3": 4,
+          "short_node_4": 4,
+          "contextual_node_4": 4,
+          "contextual_node_5": 4
+        },
+        "logical_tokens": {
+          "prompt_tokens": 2708815,
+          "completion_tokens": 18783
+        },
+        "standalone_returned_usage_cny": 2.204618,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 350,
+        "new_provider_submissions": 1051,
+        "new_request_statuses": {
+          "success": 1045,
+          "unknown": 6
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 2135724,
+          "completion_tokens": 14774
+        },
+        "new_charged_usage_estimate_cny": 1.7381271999999999,
+        "retry_method_case_attempts": 12,
+        "retry_provider_submissions": 33,
+        "retry_request_statuses": {
+          "success": 33
+        },
+        "retry_charged_usage_estimate_cny": 0.0619292,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.0526072,
+        "logical_retrieval_calls": 912,
+        "retrieval_cache_hits": 688,
+        "new_retrieval_seconds": 1259.7851022001705,
+        "physical_retrieval_calls_including_retries": 947,
+        "actual_replayed_execution_seconds_sum": 7322.111397199333,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency."
+      }
+    },
+    "B0_legacy_multigrain_R02": {
+      "planned": 300,
+      "terminal": 300,
+      "available": 300,
+      "missing": 0,
+      "execution_outcomes": {
+        "final_answer_returned": 300
+      },
+      "decomposition_overhead_family": "R02",
+      "statuses": {
+        "success": 300
+      },
+      "f1_available_not_common_ranking": 0.6736469411679938,
+      "all300_f1_bounds": [
+        0.6736469411679938,
+        0.6736469411679938
+      ],
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.7718190476190473
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.8913766788766787
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.35774509700825485
+        }
+      },
+      "overhead": {
+        "logical_generation_calls": 1774,
+        "logical_calls_by_stage": {
+          "legacy": 1774
+        },
+        "logical_tokens": {
+          "prompt_tokens": 2808722,
+          "completion_tokens": 27673
+        },
+        "standalone_returned_usage_cny": 2.3023236,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 364,
+        "new_provider_submissions": 1510,
+        "new_request_statuses": {
+          "success": 1480,
+          "unknown": 30
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 2348930,
+          "completion_tokens": 22731
+        },
+        "new_charged_usage_estimate_cny": 1.924606,
+        "retry_method_case_attempts": 43,
+        "retry_provider_submissions": 160,
+        "retry_request_statuses": {
+          "success": 160
+        },
+        "retry_charged_usage_estimate_cny": 0.2286772,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.19022,
+        "logical_retrieval_calls": 1596,
+        "retrieval_cache_hits": 1071,
+        "new_retrieval_seconds": 2939.2339486991987,
+        "physical_retrieval_calls_including_retries": 1760,
+        "actual_replayed_execution_seconds_sum": 15036.321802999824,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency."
+      }
+    },
+    "R02_C08_c02_r1p1_integrated_candidate": {
+      "planned": 300,
+      "terminal": 300,
+      "available": 300,
+      "missing": 0,
+      "execution_outcomes": {
+        "final_answer_returned": 300
+      },
+      "decomposition_overhead_family": "R02",
+      "statuses": {
+        "success": 299,
+        "success_truncated": 1
+      },
+      "f1_available_not_common_ranking": 0.6654856331777386,
+      "all300_f1_bounds": [
+        0.6654856331777386,
+        0.6654856331777387
+      ],
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.7550779220779218
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.8782142857142857
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.36316469174100746
+        }
+      },
+      "overhead": {
+        "logical_generation_calls": 1758,
+        "logical_calls_by_stage": {
+          "c08_c02": 1758
+        },
+        "logical_tokens": {
+          "prompt_tokens": 3322988,
+          "completion_tokens": 32907
+        },
+        "standalone_returned_usage_cny": 2.7242044,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 151,
+        "new_provider_submissions": 1818,
+        "new_request_statuses": {
+          "success": 1757,
+          "unknown": 61
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 3322281,
+          "completion_tokens": 32894
+        },
+        "new_charged_usage_estimate_cny": 2.7236127999999997,
+        "retry_method_case_attempts": 63,
+        "retry_provider_submissions": 255,
+        "retry_request_statuses": {
+          "success": 255
+        },
+        "retry_charged_usage_estimate_cny": 0.41060159999999996,
+        "retry_unknown_reserves_cny": 0.0,
+        "new_unresolved_reserves_cny": 0.41818639999999996,
+        "logical_retrieval_calls": 1592,
+        "retrieval_cache_hits": 1098,
+        "new_retrieval_seconds": 2773.761322700302,
+        "physical_retrieval_calls_including_retries": 1833,
+        "actual_replayed_execution_seconds_sum": 17144.069007300015,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency."
+      }
+    },
+    "c06_comparison_criterion": {
+      "planned": 300,
+      "terminal": 300,
+      "available": 300,
+      "missing": 0,
+      "execution_outcomes": {
+        "final_answer_returned": 300
+      },
+      "decomposition_overhead_family": "reference_QDMR",
+      "statuses": {
+        "success": 300
+      },
+      "f1_available_not_common_ranking": 0.6471018324441401,
+      "all300_f1_bounds": [
+        0.6471018324441401,
+        0.64710183244414
+      ],
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.7511017316017313
+        },
+        "2wiki": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.8128425985778926
+        },
+        "musique": {
+          "planned": 100,
+          "available": 100,
+          "f1_available": 0.37736116715279444
+        }
+      },
+      "overhead": {
+        "logical_generation_calls": 1387,
+        "logical_calls_by_stage": {
+          "short_node": 402,
+          "contextual_node": 685,
+          "final": 300
+        },
+        "logical_tokens": {
+          "prompt_tokens": 2255185,
+          "completion_tokens": 19133
+        },
+        "standalone_returned_usage_cny": 1.8424139999999998,
+        "standalone_unknown_calls": 0,
+        "exact_payload_reuses": 292,
+        "new_provider_submissions": 1109,
+        "new_request_statuses": {
+          "success": 1101,
+          "unknown": 8
+        },
+        "new_returned_usage_tokens": {
+          "prompt_tokens": 1825130,
+          "completion_tokens": 16797
+        },
+        "new_charged_usage_estimate_cny": 1.493698,
+        "retry_method_case_attempts": 8,
+        "retry_provider_submissions": 26,
+        "retry_request_statuses": {
+          "success": 25,
+          "unknown": 1
+        },
+        "retry_charged_usage_estimate_cny": 0.037214,
+        "retry_unknown_reserves_cny": 0.0037088,
+        "new_unresolved_reserves_cny": 0.0498712,
+        "logical_retrieval_calls": 912,
+        "retrieval_cache_hits": 713,
+        "new_retrieval_seconds": 941.5101082003093,
+        "physical_retrieval_calls_including_retries": 933,
+        "actual_replayed_execution_seconds_sum": 6853.085237000661,
+        "wall_time_scope": "Sums of observed method-case execution including cache replay and concurrency; not cold end-to-end latency."
+      }
+    }
+  },
+  "four_way_common_n": 300,
+  "ranking": [
+    {
+      "method": "B0_legacy_multigrain_R02",
+      "common_n": 300,
+      "f1": 0.6736469411679937,
+      "em": 0.57,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7718190476190473
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8913766788766787
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.35774509700825485
+        }
+      }
+    },
+    {
+      "method": "R02_C08_c02_r1p1_integrated_candidate",
+      "common_n": 300,
+      "f1": 0.6654856331777383,
+      "em": 0.5733333333333334,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7550779220779218
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8782142857142857
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.36316469174100746
+        }
+      }
+    },
+    {
+      "method": "s02_child4",
+      "common_n": 300,
+      "f1": 0.6604110737903309,
+      "em": 0.5533333333333333,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7480108225108224
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8192711700064639
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.41395122885370556
+        }
+      }
+    },
+    {
+      "method": "c06_comparison_criterion",
+      "common_n": 300,
+      "f1": 0.6471018324441399,
+      "em": 0.53,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "f1": 0.7511017316017313
+        },
+        "2wiki": {
+          "n": 100,
+          "f1": 0.8128425985778926
+        },
+        "musique": {
+          "n": 100,
+          "f1": 0.37736116715279444
+        }
+      }
+    }
+  ],
+  "pairwise_available": [
+    {
+      "a": "s02_child4",
+      "b": "B0_legacy_multigrain_R02",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 1.3235867377663044,
+      "a_f1": 0.6604110737903309,
+      "b_f1": 0.6736469411679937,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7480108225108224,
+          "b_f1": 0.7718190476190473
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8192711700064639,
+          "b_f1": 0.8913766788766787
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.41395122885370556,
+          "b_f1": 0.35774509700825485
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -2.1151104423468974,
+        4.826993858580932
+      ],
+      "up": 38,
+      "down": 38,
+      "tie": 224
+    },
+    {
+      "a": "s02_child4",
+      "b": "R02_C08_c02_r1p1_integrated_candidate",
+      "common_n": 300,
+      "delta_b_minus_a_pp": 0.5074559387407682,
+      "a_f1": 0.6604110737903309,
+      "b_f1": 0.6654856331777383,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7480108225108224,
+          "b_f1": 0.7550779220779218
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8192711700064639,
+          "b_f1": 0.8782142857142857
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.41395122885370556,
+          "b_f1": 0.36316469174100746
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -2.934544682656525,
+        3.9311326511036255
+      ],
+      "up": 35,
+      "down": 36,
+      "tie": 229
+    },
+    {
+      "a": "s02_child4",
+      "b": "c06_comparison_criterion",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -1.3309241346191139,
+      "a_f1": 0.6604110737903309,
+      "b_f1": 0.6471018324441399,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7480108225108224,
+          "b_f1": 0.7511017316017313
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8192711700064639,
+          "b_f1": 0.8128425985778926
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.41395122885370556,
+          "b_f1": 0.37736116715279444
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -3.8203553625042894,
+        1.1297218809748244
+      ],
+      "up": 14,
+      "down": 23,
+      "tie": 263
+    },
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "R02_C08_c02_r1p1_integrated_candidate",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -0.816130799025536,
+      "a_f1": 0.6736469411679937,
+      "b_f1": 0.6654856331777383,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7718190476190473,
+          "b_f1": 0.7550779220779218
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8913766788766787,
+          "b_f1": 0.8782142857142857
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.35774509700825485,
+          "b_f1": 0.36316469174100746
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -3.544754507188718,
+        1.988038295281716
+      ],
+      "up": 26,
+      "down": 26,
+      "tie": 248
+    },
+    {
+      "a": "B0_legacy_multigrain_R02",
+      "b": "c06_comparison_criterion",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -2.6545108723854183,
+      "a_f1": 0.6736469411679937,
+      "b_f1": 0.6471018324441399,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7718190476190473,
+          "b_f1": 0.7511017316017313
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8913766788766787,
+          "b_f1": 0.8128425985778926
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.35774509700825485,
+          "b_f1": 0.37736116715279444
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -6.09310260005234,
+        0.7045629886284074
+      ],
+      "up": 35,
+      "down": 41,
+      "tie": 224
+    },
+    {
+      "a": "R02_C08_c02_r1p1_integrated_candidate",
+      "b": "c06_comparison_criterion",
+      "common_n": 300,
+      "delta_b_minus_a_pp": -1.8383800733598823,
+      "a_f1": 0.6654856331777383,
+      "b_f1": 0.6471018324441399,
+      "by_dataset": {
+        "hotpotqa": {
+          "n": 100,
+          "a_f1": 0.7550779220779218,
+          "b_f1": 0.7511017316017313
+        },
+        "2wiki": {
+          "n": 100,
+          "a_f1": 0.8782142857142857,
+          "b_f1": 0.8128425985778926
+        },
+        "musique": {
+          "n": 100,
+          "a_f1": 0.36316469174100746,
+          "b_f1": 0.37736116715279444
+        }
+      },
+      "bootstrap95_delta_pp": [
+        -5.308579012340117,
+        1.6535420915731691
+      ],
+      "up": 35,
+      "down": 39,
+      "tie": 226
+    }
+  ],
+  "comparison_ready_after_recovery": true,
+  "retry_status": {
+    "utc": "2026-10-19T18:44:43.497452+00:00",
+    "phase": "completed_all_four_full300",
+    "recovery_terminal": true,
+    "supervisor_pid": 40336,
+    "scorable_method_cases": 1200,
+    "original_complete_results_unchanged": 1075,
+    "rounds_completed": 2
+  },
+  "reference_decomposition_remote_progress": {
+    "utc": "2026-10-19T15:52:35.939082+00:00",
+    "job_id": "155948",
+    "queue": "",
+    "accounting": "155948|COMPLETED|00:27:17|0:0",
+    "completed_records": 300,
+    "planned": 300,
+    "summary": {
+      "adapter_manifest_sha256": "d1fc1a4d99a46673b964a94b9b4694567a9484796c7cc217e05a06d04f78c736",
+      "base_model_manifest_sha256": "271c937fb07875d2dd9b1b9d21ec7a199f6d78f22c9c77027d35e642c42f39ea",
+      "checkpoint_sha256_or_manifest": "713ce5c2098ff807091c5868e44258d303844f213454de0be0dfcc478d15650b",
+      "completed_attempts": 300,
+      "current_job_elapsed_seconds": 1558.1692193939816,
+      "generation_failures": 0,
+      "input_hash": "a2383907e595d533fb266f52f44e44e1f23c02d5fbf35a71c8d920663e77ccea",
+      "output_tokens": 16314,
+      "parse_failures": 0,
+      "peak_allocated_bytes": 8584502272,
+      "peak_reserved_bytes": 8598323200,
+      "scope": "accepted_complete_methods_eval300_reference_qdmr_only",
+      "signal": null,
+      "status": "completed",
+      "sum_generation_seconds": 1549.1675992778037,
+      "total_inputs": 300,
+      "truncated_outputs": 0
+    },
+    "run": "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/runs/complete_pipeline_eval300_reference_qdmr_20261020"
+  },
+  "decomposition_overhead": {
+    "R02": {
+      "queries": 300,
+      "existing_inference_seconds": 803.1779485617299,
+      "input_tokens": 154909,
+      "output_tokens": 8495,
+      "new_inference_calls": 0
+    },
+    "reference_QDMR": {
+      "accepted_queries": 300,
+      "inference_seconds": 1549.1675992778037,
+      "input_tokens": 179209,
+      "output_tokens": 16314
+    },
+    "monetary_scope": "Remote GPU seconds and tokens reported separately; no API charge or invented GPU rental rate. Each method refers to its own family; physical decomposition reuse is shared."
+  },
+  "budget": {
+    "cumulative_cap_cny": 300,
+    "cumulative_returned_usage_estimate_cny": 173.6891876,
+    "cumulative_unknown_reserves_cny": 35.3777184,
+    "cumulative_occupied_cny": 209.066906,
+    "remaining_after_reserves_cny": 90.93309400000001,
+    "actual_invoice_verified": false
+  },
+  "limitations": [
+    "This pre-existing300 was previously used for decomposition evaluation and natural-error diagnostics; not untouched new holdout.",
+    "c06 is a unified-resource transfer of its full packet-building+contextualQA+criterion-final recipe, not historical600 cached-score replay.",
+    "No retuning on these300 outcomes, no hallucination judge calls, no component/ablation arms in main ranking."
+  ],
+  "hallucination_judge_called": false
+}

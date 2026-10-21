@@ -1,0 +1,679 @@
+{
+  "seed": 20261021,
+  "questions_per_dataset": 50,
+  "sampling": "integer largest-remainder proportional type/hop quotas, SHA256(seed:dataset:sample:qid) selection, independent hashed execution order; lexicographic stratum tie break",
+  "selection_uses_answers_scores_outcomes_or_times": false,
+  "metadata_fields_used": [
+    "qid",
+    "type",
+    "group_id"
+  ],
+  "datasets": {
+    "hotpotqa": {
+      "formal_count": 500,
+      "formal_strata": {
+        "bridge": 407,
+        "comparison": 93
+      },
+      "selected_strata": {
+        "bridge": 41,
+        "comparison": 9
+      },
+      "queries": [
+        {
+          "qid": "5a8df1a65542995085b3735f",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5adfa8d0554299025d62a32c",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae52cb955429908b6326540",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5abb07ec5542996cc5e49f55",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5add3b035542997545bbbcce",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae01b8855429925eb1afc14",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ac1846d55429964131be20b",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a81141855429938b61422ad",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7528e955429929fddd850e",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5a87ab905542996e4f3088c1",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a75b7475542992d0ec05feb",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a8315c055429966c78a6b2d",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5abbc2245542992ccd8e7f8a",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a77d31c55429967ab1052c0",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a848b5c5542997175ce1ef2",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a90bdea55429916514e754b",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ac41f1d5542991943173924",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5a8f54165542992414482a52",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7363465542991f29ee2dd5",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5add4dd35542992ae4cec507",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ab83bd055429919ba4e2279",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae113de55429901ffe4ad51",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7b73ad5542997c3ec9718c",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ac0223f5542992a796dec9f",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7ca95b55429935c91b5287",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5ade74285542992fa25da78c",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5a7b65ab5542997c3ec97144",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a88dc5a5542993b751ca890",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5abad3445542996cc5e49ea0",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae8167b55429952e35eaa06",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae12aa6554299422ee99617",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a77dbaf5542997042120b5b",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5ade630e55429975fa854eb7",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a8512035542992a431d1ace",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a8359c7554299123d8c20fb",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ac0c1cf5542992a796ded7c",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7f68365542994857a7672e",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5a79d8ec5542996c55b2dc7e",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5abea7c25542990832d3a068",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a797bd95542994bb9457016",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5abbbaca55429931dba144ca",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a74bdce55429929fddd84e1",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5ae78f3b554299540e5a5608",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7e1f5655429965cec5ea81",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a81d54a55429903bc27b9d4",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "5a8de02b554299068b959e13",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7cdc54554299683c1c63a5",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a7b177b55429927d897bf35",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5ae789615542997ec2727695",
+          "stratum": "bridge"
+        },
+        {
+          "qid": "5a832a625542990548d0b1b4",
+          "stratum": "bridge"
+        }
+      ],
+      "questions_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/hotpotqa/formal.questions.jsonl",
+      "questions_source_sha256": "b091e4dba07eb749106f90c96f8cea3c1b68c61b172026d29f81f564e8db4048",
+      "metadata_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/hotpotqa/formal.references.local.jsonl",
+      "metadata_source_sha256": "a87b6a6d5d0f04e7f86ec1313a70faefff384dcae74c11545279c253d722f781",
+      "projected_metadata_sha256": "432f5caf9b74dc2dab2a482c2a1932c2e87fa9ccbe17ed1020cc9ffa35356530",
+      "query_only_file": "experiments/query_decomposition/unified_rag_eval_v1_20261021/execution_details/hotpotqa.timing50.questions.frozen.jsonl",
+      "query_only_sha256": "c5bf6c47d0a6c3da784fbcedb46950fec34f2921cd884e78916211c64e76fc04"
+    },
+    "2wiki": {
+      "formal_count": 500,
+      "formal_strata": {
+        "compositional": 212,
+        "inference": 63,
+        "comparison": 113,
+        "bridge_comparison": 112
+      },
+      "selected_strata": {
+        "compositional": 21,
+        "inference": 6,
+        "comparison": 12,
+        "bridge_comparison": 11
+      },
+      "queries": [
+        {
+          "qid": "7ad8db100bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "dbc5b0a60bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "668d503a085a11ebbd5cac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "f6dce6440bae11ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "9d2dde74087e11ebbd6bac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "8d383ce808b611ebbd88ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "b3939df20bda11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "275e7286085f11ebbd5cac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "4a9c5bde0baf11ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "effa87900bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "0a5b81a20bdd11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "95950bb608a511ebbd7dac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "ddf04e3f08af11ebbd83ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "c624a31e0bdd11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "838081ac0bda11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "2b78865708b211ebbd85ac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "27e835ee0bb011ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "c9249d980bd911eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "8ab49ff80bda11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "ed0a255408d011ebbd95ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "8522d9b2092011ebbdaeac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "de2f91c808c011ebbd8aac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "7c643c21088211ebbd6dac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "15a7ed4a0bdb11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "4b00867a0bde11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "ebf11d8e089c11ebbd78ac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "88c8cfc80bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "d8a1eedf097611ebbdb0ac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "da0fc4820bdb11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "a3bacbed084911ebbd55ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "a60dbb0a08e111ebbda3ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "437bed640bdd11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "60408ca60bde11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "18e9a16e0baf11ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "f4c82ea208a411ebbd7dac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "e166d3380bdb11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "3956e2ea0bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "bca6c0f2090c11ebbdadac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "e1f5df1208a011ebbd78ac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "d68e71f80bdd11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "c251d723096011ebbdafac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "bd46e5d20baf11ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "40e240ae0bdc11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "85dd56440baf11ebab90acde48001122",
+          "stratum": "inference"
+        },
+        {
+          "qid": "73dcc04808de11ebbd9eac1f6bf848b6",
+          "stratum": "bridge_comparison"
+        },
+        {
+          "qid": "c8e196500bda11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "e45a58080bdb11eba7f7acde48001122",
+          "stratum": "compositional"
+        },
+        {
+          "qid": "339a2e4908f311ebbdaaac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "b93cca75093911ebbdaeac1f6bf848b6",
+          "stratum": "comparison"
+        },
+        {
+          "qid": "e0b50028096f11ebbdb0ac1f6bf848b6",
+          "stratum": "comparison"
+        }
+      ],
+      "questions_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/2wiki/formal.questions.jsonl",
+      "questions_source_sha256": "3392fab398a5a86b6cf095cbbdcde22cb5942b2b009f667071fc49ef1b6bc642",
+      "metadata_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/2wiki/formal.references.local.jsonl",
+      "metadata_source_sha256": "e89690b5c5d7e050a3fa9145a02ac4faa243e0b454f63568c963ea7c76bb220f",
+      "projected_metadata_sha256": "8980e3ce6f598bc93a1f3618929d0077a60d0de6ba4d3c5a8e8cb74f247686fc",
+      "query_only_file": "experiments/query_decomposition/unified_rag_eval_v1_20261021/execution_details/2wiki.timing50.questions.frozen.jsonl",
+      "query_only_sha256": "4b7441b9041ab920c53e6170ecf3ac61bb56c9399cf4deadf74a60c309287804"
+    },
+    "musique": {
+      "formal_count": 500,
+      "formal_strata": {
+        "2-hop": 259,
+        "3-hop": 157,
+        "4-hop": 84
+      },
+      "selected_strata": {
+        "2-hop": 26,
+        "3-hop": 16,
+        "4-hop": 8
+      },
+      "queries": [
+        {
+          "qid": "3hop1__446612_160545_34751",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop1__820301_720914_27537",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop1__140345_2053_52946",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__452580_70131",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop1__159467_725495_49925_267352",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "3hop1__127821_157828_162309",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop1__365934_87694_64412",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop1__857_846_7791",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop2__30956_65244_84681",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__48776_807969",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__6265_718451",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__754682_730690",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop1__131783_131926_87157",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__853227_68633",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__551235_310309",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop1__764280_834494_34053",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__40970_90367",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__223823_29905",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__13574_13498",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop2__90098_79978_10557",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__487706_40502",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__501624_181960",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop2__36852_613770_7713",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__481809_184805",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__311694_129669",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__141365_417697",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__10122_18974",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop1__151650_5274_458768_33637",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "2hop__274529_5385",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop1__664835_650651_7262",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "4hop1__726391_153080_33952_34053",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "3hop1__119402_102039_158266",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__575188_342798",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__53937_92673",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop3__387712_132409_223216_35031",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "4hop1__370129_621192_10659_42311",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "2hop__95970_456836",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop3__312119_132409_371500_35031",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "2hop__169443_83769",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "3hop2__9988_73205_70784",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "2hop__286268_97805",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop3__638064_88460_30152_20999",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "2hop__700093_455653",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__503085_110222",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__95794_55227",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__67660_67223",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "2hop__421324_97805",
+          "stratum": "2-hop"
+        },
+        {
+          "qid": "4hop1__342858_131850_33897_81096",
+          "stratum": "4-hop"
+        },
+        {
+          "qid": "3hop2__89854_36497_76291",
+          "stratum": "3-hop"
+        },
+        {
+          "qid": "3hop1__857_846_7877",
+          "stratum": "3-hop"
+        }
+      ],
+      "questions_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/musique/formal.questions.jsonl",
+      "questions_source_sha256": "d75032eb5e99b3ff87b7ec03a9dc0e18c7a424cd7c7b7325b38045bad0ff3fd3",
+      "metadata_source": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen/musique/formal.references.local.jsonl",
+      "metadata_source_sha256": "fdbf1a16acc96fe837a98c26908429c16b107c393046015348195c57bde4c815",
+      "projected_metadata_sha256": "2710ca87eb48a028d6e1995952587de4ff58329b8c4e06df765f540fec8fd1f6",
+      "query_only_file": "experiments/query_decomposition/unified_rag_eval_v1_20261021/execution_details/musique.timing50.questions.frozen.jsonl",
+      "query_only_sha256": "779f319cc013bca2e2642ef154ad3e8526ce7b810aec832978bfda7b6d4d633b"
+    }
+  }
+}

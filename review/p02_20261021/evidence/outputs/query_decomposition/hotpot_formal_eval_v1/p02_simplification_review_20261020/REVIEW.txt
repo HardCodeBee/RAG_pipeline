@@ -1,0 +1,65 @@
+本轮简化选择与回退原因复核
+
+采用配置
+用户只采用timing_only：取消开始时的原query检索，在goal原始路取得同一Top10，最终回答复用。维持p02原子回答、Top10交替合并、goal预回答和最终总体短答。union20、discount20、single_final及terminal_goal均不采用；历史冻结结果不改。
+配置记录：experiments/query_decomposition/p02_simplification_review_20261020/ADOPTION.user_20261020.frozen.json
+调用入口：experiments.query_decomposition.p02_simplification_review_20261020.selected_pipeline.execute
+
+证据范围
+同一批已曝光开发300题，每个数据集100题；本次是离线记录复核，没有新API、索引检索或训练。以下差值为百分点，不是相对百分比。
+
+全部保留双路文档：union20 versus p02
+数据集       原p02        union20     差值        上升/不变/下降
+HotpotQA     78.9908%     78.2813%    -0.7095       2/96/2
+2Wiki        93.3474%     92.2855%    -1.0619       2/95/3
+MuSiQue      39.8343%     40.3705%    +0.5362      10/85/5
+总体         70.7242%     70.3124%    -0.4117      14/276/10
+
+总体正贡献+1.6152pp，负贡献-2.0269pp；不是失败题更多，而是少数下降题损失更大。总体配对bootstrap95%差值区间[-2.2979,+1.3919]pp；这批观察不能证明全量文档普遍更差。MuSiQue方向相反。
+
+union20对各节点当前两路候选没有丢弃文档，选中原文块均确实进入prompt。887个普通/goal节点平均阅读13.47篇，409个双路节点平均17.53篇。最终总体reader仍是原query Top10加辅助问答；没有直接改成最终reader20。
+两条轨迹中187个节点回答文本、39个改写表达及31个候选集合不同；这些是轨迹文本变化，不是187项语义错误，也不能全部自动归因于扩文。
+
+重要控制局限：逐题核查发现部分完全相同的完整生成payload没有复用旧成功回执，而是重新请求并返回不同回答；包括HotpotQA的两道下降题。其首次输出变化不能归因于新增第11—20篇文档。该缓存复用不完整的问题必须作为历史实验控制局限记录；不能把全部0.4117pp净下降当成额外文档的独立因果效应，也不能据此反推所有变化都只由重复生成造成。
+完整逐题文档、回执及首次差异追踪见union_audit文件。
+
+24道分数变化题的首次完整payload审查：22题的首次回答变化之前输入确实已变（14升、8降）；另2题是在完整payload相同的重新调用中输出不同，均为Hotpot下降。不能将后两题的第一次变化归因于扩文；也不能据此断言其后所有变化均只来自API返回差异。
+
+扩文后出现的问题与真实收益：
+1.2wiki:4140c991086b11ebbd5fac1f6bf848b6，问Apache Woman与Dime With A Halo导演是否来自同国。相同前置问答、相同改写的子问题阅读10→20篇，Boris Sagal回答从from the United States变成Ukrainian-American；goal随后将其与Roger Corman的United States判成不同国家，最终Yes→No，F1 1→0。Boris本人段落原本已在rank2且已写Ukrainian-American；新增10篇并没有提供Boris的新国籍事实。因此观察到的是中间表述变化和比较口径脆弱性，不是新增文档写了错误国籍，更不是正确文档被挤走。
+2.musique:3hop1__68802_89752_49923，问The Family Stone设定地区内最大州的县数，旧最终Sixteen，新最终16；同一数学数量，原生F1 1→0。这一题对总体300的负贡献为0.3333pp，不能当作县数量事实出错。它与所有正负变化一起构成净-0.4117pp，不能将净差值机械解释成某一原因的失败占比。
+3.2wiki:6856ba560bdd11eba7f7acde48001122，问Princess Carolina Of Parma母亲死亡日期。新增rank17 Maria Amalia, Duchess of Parma直接支持18 June1804；旧Top10有另一同名Maria Amalia的1780—1798记录，旧final25December1798→新18June1804，F1 0→1。这里确有新文档帮助排除同名错误人物。
+4.musique:3hop1__346812_15840_36002，问Genesis相比可玩Drac's Night Out的平台有哪些优势。新增rank12 Super Nintendo Entertainment System含16位Genesis相对8位NES的图形/声音信息；旧短答仅第三方支持与许可，新增加16位图形音效，F1 .1111→.4348。并非所有扩文都只增干扰。
+
+删除goal预回答，只保留最终总体回答：single_final versus其直接父版本discount20
+总体70.0251%→67.6761%，-2.3489pp。
+HotpotQA79.4086%→74.4786%，-4.9300pp。
+2Wiki91.1188%→89.5172%，-1.6016pp。
+MuSiQue39.5478%→39.0327%，-0.5151pp。
+
+全部300题普通子问、实际prompt、答案、改写和两路原文一致；旧goal reader与新final reader相同；没有原query Top10丢失，216题最终增加原文，平均10→15.39篇。
+在这组对照中，可观察回退集中于最后的关系/目标/比较整合，而非普通子问答案或已有原文被删除。例如：
+1.Orfeu和Love Is On The Air的导演出生年份已取得1940和1893。旧goal明确Orfeu导演更年轻，旧final答Orfeu；single却选Love Is On The Air，F1 1→0。
+2.Willis the Guard伙伴Vigorish题问这个词指赌注哪部分。旧goal利用同一Vigorish原文生成bookmaker费用定义，旧final输出定义；single只输出vigorish，F1 .7273→0，停在桥接实体而未回答所求定义。
+3.The One That Got Away对象是Josh Groban，原题问与他一起从adult contemporary radio起步的另一位歌手。原文有Michael Bublé和Josh Groban；旧goal/final答Michael，新single答Josh，F1 1→0。
+
+同时改变了：删除goal完整候选结论；删除带GOAL_RULE的一次goal调用（新final没有继承该规则）；最终原文由Top10变为全并集且位置改变。不是仅删除一个生成调用的纯因果对照。
+部分旧答案虽命中金标，但当前原文并不包含完整关系依据，如Back to December的道歉属性、Newport县治。其F1下降不能直接称为丢失了已核实事实。别名、限定词和数字表达变化也需要与事实错误分开。
+
+保留goal，删除最终总体回答：terminal_goal versus union20
+总体70.3124%→67.7871%，-2.5253pp。
+HotpotQA78.2813%→72.8198%，-5.4615pp。
+2Wiki92.2855%→92.7043%，+0.4189pp。
+MuSiQue40.3705%→37.8371%，-2.5334pp。
+
+普通子问、goal改写及原文包全部精确复用。新goal同调用输出Conclusion与Final answer，机械读取后者；这不是保留旧goal文本不变后简单删除旧final。
+原final具备四个示例、最终任务对齐和P1短答约束；新goal没有这些示例，改成两行输出，并用原goal的128-token上限承载完整句与短答。多项变化共同发生。
+明确实例：Manchester学校首届毕业日期题，旧goal与新Conclusion均写June1925，旧final正确短答；新Final answer却输出Manchester West High School，F1 1→0。这是字段/答案对象选择错误，不是缺少该日期事实。
+三项128-token截断按预定口径计0；Hotpot没有截断，因此其-5.4615pp不能由长度解释。即使三个截断全部改为理想F1=1，最多拉回总体1pp，仍不足抵消2.5253pp损失。
+另有真实关系错误、冗余导致部分F1下降和纯词面差异；详见terminal_audit及原terminal FINAL_FAILURE_AUDIT。
+30道下降题人工审查中，6题为可确认的目标/组合读出错误（其中5题Conclusion足以解原题，1题只确认含正确职位且Final错答人物）；13题涉及等价词面或额外限定；3题截断。其余分别为结论关系/必要范围改变、证据不足拒答、旧目标问题或部分词面得分、比较范围与扩写混合。以上为描述性人工分类，不是各因素独立因果贡献，也不代表所有F1下降均为事实歪曲。
+
+机制解释及边界
+当前两步配置中，goal往往先生成已明确实体、关系及组合结果的完整结论；最终reader随后将材料对齐原题所求对象并生成短答。它们问句相同，实际输入、提示、示例、输出任务不同；后一次并非纯字符串截取。
+删goal时，最终reader需要自行补上缺失的关系/比较整合；删final时，改过的goal还必须同时稳定完成短答对象选择。上述真实案例显示这两种单次方案目前尚未可靠承担合并后的任务。
+现有结果不能证明两次调用在原理上必需，也没有证明最后一步经常修正goal的事实错误。提示词、输出契约和材料分配的独立作用仍需严格单因素对照才能分离；本次不新增付费实验，也不采用这些候选。

@@ -1,0 +1,65 @@
+{
+  "scope": "manual non-random mechanism audit; not additive population failure shares",
+  "cases": [
+    {
+      "qid": "bc7073a80baf11ebab90acde48001122",
+      "stage": "child propagation and retrieval",
+      "available": "Anurutha was the fourth son of King Inthasom.",
+      "old_answer": "Anurutha's parents cannot be determined.",
+      "new_fact": "Father retained; mother explicitly unresolved.",
+      "remaining_failure": "Exact-scope rewriter still returns parents-brothers question unchanged. No siblings relation established; final F1 remains0.",
+      "classification": "partial fact retention repaired, next retrieval binding still fails"
+    },
+    {
+      "qid": "5ab67ce2554299710c8d1ead",
+      "stage": "child interpretation",
+      "available": "Disporum ... about 20 species ... found in Asia. Boltonia ... one species in eastern Asia.",
+      "new_answer_issue": "Adds a requirement to know species restricted to Asia versus elsewhere, then refuses comparison. Original question asks species in Asia, not endemic-only species.",
+      "classification": "reader adds condition; not absent genus evidence",
+      "result": "partial-only loses F1; existing-material reread recovers baseline, no net gain"
+    },
+    {
+      "qid": "2hop__805610_392181",
+      "stage": "final reader",
+      "available": "Nigel Noble bio: won Academy Award in1982 for Close Harmony in Best Documentary Short Subject. Close Harmony paragraph: won Best Documentary (Short Subject) at54th Academy Awards.",
+      "auxiliary": "Nigel Noble won the Academy Award for Best Documentary (Short Subject) at the54th Academy Awards for Close Harmony.",
+      "final": "Cannot be determined",
+      "classification": "correct requested child fact present in helper but unused in final answer; not a child retrieval failure",
+      "contrast": "A Stitch for Time paragraph concerns its documentary-feature nomination, a different film/event from director Close Harmony award"
+    },
+    {
+      "qid": "32f0334c0bb011ebab90acde48001122",
+      "stage": "final name expression",
+      "single": "Jeanne de Laval-Tinténiac",
+      "dual": "Jeanne de Laval",
+      "classification": "native F1 name specificity loss; source full name retained, does not establish wrong-person factual error"
+    },
+    {
+      "qid": "3hop1__136083_87694_64412",
+      "stage": "event/date interpretation and native scoring",
+      "source_facts": [
+        "Lateran Treaty signed11February1929",
+        "Treaty became effective7June1929 and established independent state"
+      ],
+      "gold": "11February1929",
+      "dual": "7June1929",
+      "classification": "different event dates explicitly supported; question/event ambiguity rather than missing date evidence; keep native scores unchanged"
+    },
+    {
+      "qid": "5a8eb63455429917b4a5bdb7",
+      "stage": "missing attribute bridge and unsupported relation",
+      "old_final": "John Mayer",
+      "new_final": "Cannot be determined",
+      "classification": "new answer avoids unsupported Browning-Mayer claim, but correct candidate educational bridge remains missing and F1 unchanged0"
+    },
+    {
+      "qid": "4hop3__152056_698586_57596_54362",
+      "stage": "missing bridge and unsupported parametric selection",
+      "available": "Current goal materials include Battle of Atlanta with John Bell Hood as defending commander; this name occurrence alone does not establish who burned the city. City of rapper death is unresolved in new child response.",
+      "old_final": "Union forces under William Tecumseh Sherman",
+      "new_final": "Cannot be determined",
+      "gold": "Confederate Gen. John Bell Hood",
+      "classification": "unresolved city bridge and missing specific burning relation; do not call a retrieved gold-name occurrence sufficient evidence"
+    }
+  ]
+}

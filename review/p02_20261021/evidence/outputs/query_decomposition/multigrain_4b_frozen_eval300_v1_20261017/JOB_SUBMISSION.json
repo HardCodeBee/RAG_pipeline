@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "job_id": "153972",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=base4b-eval300",
+        "--chdir=/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package",
+        "--output=/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package/results/slurm-%j.out",
+        "--error=/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package/results/slurm-%j.err",
+        "/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package/runtime/run_stage.slurm",
+        "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python",
+        "/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package/code/run_remote.py",
+        "--config",
+        "/home/projects/u7830488/multigrain_4b_frozen_eval300_v1_20261017/package/results/runtime_config.json"
+      ],
+      "utc": "2026-10-17T11:02:32.670772+00:00"
+    }
+  ]
+}

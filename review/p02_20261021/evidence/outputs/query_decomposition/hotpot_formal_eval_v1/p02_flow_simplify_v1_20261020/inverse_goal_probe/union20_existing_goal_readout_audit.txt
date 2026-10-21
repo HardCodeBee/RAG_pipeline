@@ -1,0 +1,57 @@
+union20：保留goal、移除最后overall回答的离线诊断
+
+当前goal已经读取原query＋普通前置问答＋两路去重并集原文。最后overall只额外看到goal生成结论，并重新读原query Top10，没有新增当前题外部文档。
+300/300 final原文均为goal阅读原文子集；218题goal原文更多。最后final另有不同任务指令和fewshots，不能将其全部功能简单称作字符串提取。
+保留terminal goal与此前single_final在数据流拓扑上同为一次原题回答，新的关键比较应是goal导向prompt/GOAL_RULE以及短答案输出契约。
+
+可以精确扣除的现有末次调用逻辑用量：
+{"calls": 300, "prompt_tokens": 807528, "completion_tokens": 1630, "same_rate_logical_cold_cost_cny": 0.6492824}
+分数据集：
+{"hotpotqa": {"calls": 100, "prompt_tokens": 243307, "completion_tokens": 492, "same_rate_logical_cold_cost_cny": 0.19562960000000001}, "2wiki": {"calls": 100, "prompt_tokens": 283987, "completion_tokens": 560, "same_rate_logical_cold_cost_cny": 0.2283096}, "musique": {"calls": 100, "prompt_tokens": 280234, "completion_tokens": 578, "same_rate_logical_cold_cost_cny": 0.2253432}}
+冷启动统一单价估计约¥0.6492824；不等同当前实际账单或新短goal总费用。占旧union20完整逻辑调用约16.91%、统一单价模型费用约23.99%。
+
+原始完整goal句直接评分，仅格式诊断：
+F1=22.846329%，EM=0；旧final F1=70.312435%。
+绝不能把22.85%称作去final后短goal的新方法表现；没有执行新prompt。Yes/No严格评分、长句冗余、命名等都会影响该数字。
+
+真实案例：
+
+2wiki:dea18cf408c211ebbd8cac1f6bf848b6
+Which film whose director is younger, Orfeu or Love Is On The Air?
+goal完整回答：Orfeu’s director, Carlos Diegues (born May 19, 1940), is younger than Love Is on the Air’s director, Nick Grinde (born January 12, 1893).
+final：Orfeu
+原始goal格式敏感F1：0
+已有finalF1：1.0
+观察：goal已完成导演年龄比较，final只输出所选电影名；原始完整句nativeF1为0主要说明不能把长句直接当短答案评分。
+来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\dea18cf408c211ebbd8cac1f6bf848b6.json
+
+2wiki:0f1094ce086f11ebbd62ac1f6bf848b6
+Are Zelma Rawlston and Edmund Bertschinger of the same nationality?
+goal完整回答：Zelma Rawlston and Edmund Bertschinger are both American.
+final：Yes
+原始goal格式敏感F1：0
+已有finalF1：1.0
+观察：goal明确两者都是American，final将这一判断转换为Yes；没有新增国籍事实。
+来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r000\cases\2wiki\union20\0f1094ce086f11ebbd62ac1f6bf848b6.json
+
+hotpotqa:5abb23035542992ccd8e7f22
+Kenneth Arnold reported the first unidentified object sighting in what city and state in 1947?
+goal完整回答：Kenneth Arnold reported the first unidentified object sighting near Mount Rainier in Washington state, but the specific city is not named in the retrieved passages.
+final：Mount Rainier, Washington
+原始goal格式敏感F1：0.24000000000000002
+已有finalF1：1.0
+观察：goal已有MountRainier和Washington，却保留specific city未知。final压缩为金标地点，不能称从新原文补回未知城市，也不能据此认为MountRainier是城市。
+来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\cases\hotpotqa\union20\5abb23035542992ccd8e7f22.json
+
+hotpotqa:5ab7f0b9554299366779405d
+What type of vegetation does Tabernaemontana and Crinum have in common?
+goal完整回答：Tabernaemontana and Crinum have no vegetation type in common, as Tabernaemontana is associated with shrub and small tree vegetation while Crinum is associated with aquatic, marshy, swampy, and streamside vegetation, and no retrieved passage indicates overlap between these categories.
+final：None
+原始goal格式敏感F1：0.0
+已有finalF1：0.0
+观察：goal错误地按具体植被环境排除交集，final继续输出None，金标plants。这里没有观察到最终层修复goal。
+来源：outputs\query_decomposition\hotpot_formal_eval_v1\p02_flow_simplify_v1_20261020\rounds\r001\cases\hotpotqa\union20\5ab7f0b9554299366779405d.json
+
+未发现清晰的“goal错误、final纠正为正确新事实”实例；不能为了证明final有用而构造实例，也不能据此证明删除必定无损。
+terminal goal若改成短答案，必须跳过goal的完整句格式化，否则短答案会被旧少于4词规则重新扩成长句；普通子回答继续完整句。
+完整prompt/packet、300题来源SHA及诊断分数见同名JSON。零API、零检索、零pin源码变更。

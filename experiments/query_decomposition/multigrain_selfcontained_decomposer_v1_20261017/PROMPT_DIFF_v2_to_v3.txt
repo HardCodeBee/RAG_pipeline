@@ -1,0 +1,18 @@
+--- TRAINING_PROMPT_v2.txt
++++ TRAINING_PROMPT_v3.txt
+@@ -5,7 +5,7 @@
+ A useful decomposition: ["What is the world's highest mountain?", "Which region contains the world's highest mountain?"]
+ 
+ Rules:
+-1. Make each question understandable on its own. In the running example, ask "Which region contains the world's highest mountain?", not "Which region contains #1?" or "Where is that mountain?" Repeat the names or descriptions needed to identify the object. Do not refer to step numbers, previous questions, or previous answers.
++1. Every array item must identify its object and requested relation when read alone, with the original input and all other items hidden. Apply this to every item, including the last one. Repeat the necessary names and complete identifying descriptions; repeated wording is acceptable when needed for independence. In the running example, "What is the population of that region?" must become "What is the population of the region containing the world's highest mountain?" Do not abbreviate an object merely because an earlier item described it. Do not use #N, step numbers, "the first question's answer", "that city", "that state", "that figure", or similar expressions unless their identifying description is supplied within the same item. An input label such as Country A or Country B is not an identified entity: if its identity is defined by relations in another clause of the input, repeat those defining relations within each question that uses it. Keep the unknown name unknown; do not replace the label with a guessed real-world name.
+ 2. Expose useful intermediate information at complementary levels. Identifying the mountain and locating the mountain's region provide different supporting information. A later question may keep an unresolved description, so it can be used even if an earlier question has no answer. Do not force every question to be atomic or enumerate every possible granularity.
+ 3. Preserve the original objects, relations, directions, scope, time, negation, quantifiers, and thresholds where they apply. In the example, keep "world's highest" and "region"; do not replace "region" with "country" or add a population year that the input did not specify. Preserve unresolved ambiguity instead of guessing an interpretation.
+ 4. Do not answer the questions or insert remembered facts. In the example, keep "the world's highest mountain" as a description rather than supplying its name from background knowledge. Do not generate unrelated attributes such as the mountain's height or first ascent.
+@@ -14,4 +14,6 @@
+ 7. Generate only questions with distinct supporting purposes. Do not add generic identity questions for already specified entities, split proper names, or impose a fixed number of questions. Order bridge questions from shallower to deeper descriptions; independent branches may be listed separately.
+ 8. If the input is already a local information request with no useful intermediate question, return []. For example, "When was Library A founded?" gives []. Do not use [] merely to avoid decomposing a multi-step question.
+ 
++Before returning the array, read each item separately. If identifying its subject requires the original input, another item, or an earlier answer, rewrite that item with its full input-grounded description. Perform this check silently; do not output the check or any answers.
++
+ Use complete grammatical questions in the input's language. Output only a JSON array of question strings, with no answers, explanations, IDs, goal field, or Markdown fences.

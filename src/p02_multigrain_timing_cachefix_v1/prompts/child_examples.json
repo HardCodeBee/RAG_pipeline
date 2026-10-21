@@ -1,0 +1,70 @@
+[
+  {
+    "source_qid": "5ae28c0a554299495565daaa",
+    "original_question": "What is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?",
+    "step_id": 2,
+    "request": "What is the length of #1?",
+    "dependencies": [
+      {
+        "step_id": 1,
+        "request": "Which river does Pack Creek flow into after passing through Spanish Valley?",
+        "answer": "Pack Creek flows into the Colorado River."
+      }
+    ],
+    "context": "[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.",
+    "answer": "The Colorado River is 1450 mi long.",
+    "purpose": "Resolve the referenced entity and answer the requested property with units.",
+    "qa_origin": "human-authored teaching fixture; not actual model output",
+    "fixture_edits": [],
+    "text": "Original question:\nWhat is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?\n\nRelevant prior question-answer pairs:\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado River.\n\nCurrent subquestion #2:\nWhat is the length of #1?\n\nRetrieved passages:\n[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.\n\nAnswer: The Colorado River is 1450 mi long."
+  },
+  {
+    "source_qid": "5a8aee3d55429950cd6afc01",
+    "original_question": "Which has more species, Clianthus or Callicoma?",
+    "step_id": 1,
+    "request": "How many species does Clianthus contain?",
+    "dependencies": [],
+    "context": "[Clianthus]\nThey have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.",
+    "answer": "The total species count of Clianthus cannot be determined from these passages.",
+    "purpose": "Explicit missing count, not zero or empty list.",
+    "qa_origin": "human-authored teaching fixture; not actual model output",
+    "fixture_edits": [
+      "Authored limited-passage scenario; actual dataset paragraph also states the count."
+    ],
+    "text": "Original question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nHow many species does Clianthus contain?\n\nRetrieved passages:\n[Clianthus]\nThey have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.\n\nAnswer: The total species count of Clianthus cannot be determined from these passages."
+  },
+  {
+    "source_qid": "5a8aee3d55429950cd6afc01",
+    "original_question": "Which has more species, Clianthus or Callicoma?",
+    "step_id": 2,
+    "request": "How many species does #1 contain other than Callicoma serratifolia?",
+    "dependencies": [
+      {
+        "step_id": 1,
+        "request": "Which genus contains Callicoma serratifolia?",
+        "answer": "Callicoma contains Callicoma serratifolia."
+      }
+    ],
+    "context": "[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.",
+    "answer": "Callicoma contains zero species other than Callicoma serratifolia.",
+    "purpose": "A supported zero with explicit scope must remain useful.",
+    "qa_origin": "human-authored teaching fixture; not actual model output",
+    "fixture_edits": [
+      "Extra teaching subquestion, not a native model decomposition."
+    ],
+    "text": "Original question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\n#1 Question: Which genus contains Callicoma serratifolia?\nAnswer: Callicoma contains Callicoma serratifolia.\n\nCurrent subquestion #2:\nHow many species does #1 contain other than Callicoma serratifolia?\n\nRetrieved passages:\n[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAnswer: Callicoma contains zero species other than Callicoma serratifolia."
+  },
+  {
+    "source_qid": "5ac2cb125542996773102626",
+    "original_question": "Are both Leycesteria and Anigozanthos native to Australia?",
+    "step_id": 1,
+    "request": "Is Leycesteria native to Australia?",
+    "dependencies": [],
+    "context": "[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.",
+    "answer": "No. Leycesteria is native to temperate Asia, rather than Australia.",
+    "purpose": "Supported negative differs from missing evidence.",
+    "qa_origin": "human-authored teaching fixture; not actual model output",
+    "fixture_edits": [],
+    "text": "Original question:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nIs Leycesteria native to Australia?\n\nRetrieved passages:\n[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\nAnswer: No. Leycesteria is native to temperate Asia, rather than Australia."
+  }
+]

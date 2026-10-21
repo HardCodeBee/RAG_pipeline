@@ -1,0 +1,57 @@
+{
+  "utc": "2026-10-19T23:00:02.665371+00:00",
+  "state": "awaiting_confirmation_remote",
+  "candidate": "p02_role_headers",
+  "parent": {
+    "planned": 90,
+    "scorable": 90,
+    "missing": 0,
+    "F1_available": 0.6264326414326413,
+    "EM_available": 0.5111111111111111,
+    "F1_full": 0.6264326414326413,
+    "EM_full": 0.5111111111111111,
+    "F1_full_bounds": [
+      0.6264326414326413,
+      0.6264326414326413
+    ],
+    "statuses": {
+      "success": 90
+    }
+  },
+  "candidate_summary": {
+    "planned": 90,
+    "scorable": 90,
+    "missing": 0,
+    "F1_available": 0.6387460317460315,
+    "EM_available": 0.5222222222222223,
+    "F1_full": 0.6387460317460315,
+    "EM_full": 0.5222222222222223,
+    "F1_full_bounds": [
+      0.6387460317460315,
+      0.6387460317460315
+    ],
+    "statuses": {
+      "success": 90
+    }
+  },
+  "paired": {
+    "n_matched": 90,
+    "parent_F1": 0.6264326414326413,
+    "candidate_F1": 0.6387460317460315,
+    "delta_F1": 0.012313390313390312,
+    "up": 2,
+    "tie": 87,
+    "down": 1,
+    "paired95_descriptive": [
+      -0.001299145299145299,
+      0.037037037037037035
+    ],
+    "bootstrap": "5000 paired resamples within dataset, seed20261020; descriptive development interval"
+  },
+  "gate": {
+    "complete_90_pairs": true,
+    "passed": true,
+    "rule": "Both full90 terminal/scorable, fixed candidate mean F1 greater than parent; no CI threshold."
+  },
+  "confirmation_started": false
+}

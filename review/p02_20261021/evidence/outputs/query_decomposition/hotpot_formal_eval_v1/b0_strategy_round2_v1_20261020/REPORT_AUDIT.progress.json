@@ -1,0 +1,96 @@
+{
+  "utc": "2026-10-19T22:37:48.730792+00:00",
+  "source_pin_checks": {
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\experiment.py": true,
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\experiment.py": true,
+    "experiments\\query_decomposition\\b0_targeted_optimization_v2_20261020\\PROTOCOL.frozen.json": true,
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_RESULTS.frozen.json": true,
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\FINAL_AUDIT.frozen.json": true,
+    "experiments\\query_decomposition\\b0_six_single_changes_v1_20261020\\receipts.py": true,
+    "experiments\\query_decomposition\\component_chain_c08_c02_v1_20261019\\pipeline.py": true,
+    "experiments\\query_decomposition\\hotpot_formal_eval_v1\\methods\\s02_child4_faithful\\prompts.py": true,
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\prompts.py": true,
+    "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\final_examples.json": true,
+    "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\strategy.py": true
+  },
+  "input_checks": {
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\runtime300.frozen.jsonl": true,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\SOURCES.frozen.jsonl": true,
+    "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\pilot100.ids.frozen.jsonl": true
+  },
+  "lineage_sources": 1200,
+  "lineage_hash_failures": [],
+  "budget": {
+    "known_global_cny": 181.6970532,
+    "reserved_global_cny": 35.3890248,
+    "occupied_global_cny": 217.086078,
+    "family_known_cny": 1.551354,
+    "family_reserved_cny": 0.0066264,
+    "family_submissions": 852,
+    "by_scope": {
+      "old300_candidates": {
+        "known_cny": 1.1106468,
+        "reserved_cny": 0.0,
+        "submissions": 541
+      },
+      "fresh_dev90": {
+        "known_cny": 0.44070719999999997,
+        "reserved_cny": 0.0066264,
+        "submissions": 311
+      },
+      "other_family": {
+        "known_cny": 0.0,
+        "reserved_cny": 0.0,
+        "submissions": 0
+      }
+    },
+    "cap_cny": 300
+  },
+  "changed_cases": 76,
+  "review_counts": {
+    "同一实体的称谓扩展，词面F1下降": 1,
+    "unreviewed": 33,
+    "同一实体的别名表达变化，词面F1上升": 1,
+    "定义表达补全，F1上升但没有新的事实判断": 2,
+    "goal将未找到证据扩大为不存在，最终F1未变": 1,
+    "从标准答案改为缺答；当前缺少完整关系证据": 1,
+    "缺失桥接前提后拒答，损失可用局部答案": 1,
+    "错误确定答案转为缺答，F1下降不等于事实恶化": 1,
+    "同义改写，词面F1上升": 1,
+    "正确实体附加受支持地点，词面F1下降": 1,
+    "goal中事实错误得到修正，最终答案和F1未变": 1,
+    "同一节目名称增加受支持限定，词面F1下降": 3,
+    "与原文冲突的goal事实仍保留，最终F1持平0": 1,
+    "最终对象和条件改变，F1仍为0": 1,
+    "时间粒度缩短命中计分别名，不证明事件时间修复": 1,
+    "错误确定零值转为缺答，F1下降不等于事实恶化": 1,
+    "同一未匹配目标人物的姓名扩展，F1持平0": 2,
+    "同一名单去除连接词，词面F1上升": 1,
+    "同一地点去除街道地址，短答案匹配改善": 3,
+    "同一地点去除别名，短答案匹配改善": 1,
+    "同一实体去除多余别名，短答案匹配改善": 2,
+    "依据相同事实修正整体比较，真实组合修复": 2,
+    "同一错误否定的措辞扩展，F1下降": 1,
+    "相同地点关系扩为整句，词面F1下降": 1,
+    "相同职业列表去连接词，词面F1下降": 2,
+    "从缺证据的绝对否定转为缺答，F1持平0": 1,
+    "压缩删除原题所求关系细节，答案信息损失": 1,
+    "错误确定答案转为缺答，F1持平0": 2,
+    "最终回答对象/类型修复": 2,
+    "复制错误goal扩大角色集合，事实性回退": 1,
+    "相同错误否定改为明确整句，F1持平0": 1,
+    "同一数值改为阿拉伯数字，纯词面F1下降": 1,
+    "省略问题已限定的计数单位，词面F1下降": 1
+  },
+  "F1_change_cases": 33,
+  "reviewed_F1_change_cases": 33,
+  "report_script_sha256": "8068a48bc97d3980f449b769af4f805ed7e9d2318822dfc268332eb800f4bb9e",
+  "manual_reviews_sha256": "4ff04c064362170e0b76c4a3c6695d558f906c46dc968f235368c9169ca6ab7e",
+  "local_reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+  "summary_snapshot_utc": "2026-10-19T22:36:08.442127+00:00",
+  "offline_audit_file": "experiments\\query_decomposition\\b0_strategy_round2_v1_20261020\\OFFLINE_AUDIT.v002.json",
+  "offline_audit_sha256": "983bc40b9c586d9c75cd89e9f55b1a2df6fed7471ed36c95794bdc0e98b41e5f",
+  "paired_detail_rows": 700,
+  "new_API_calls_by_report": 0,
+  "new_retrieval_calls_by_report": 0
+}

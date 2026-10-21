@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-18T05:14:26.521532+00:00",
+  "variant": "r02_expanded",
+  "index": 48,
+  "before": {
+    "verdict": "fail",
+    "dimensions": [
+      "U"
+    ],
+    "reason": "Who created the named album and who is the poet who created it duplicate the same unknown creator need rather than expose another nested object."
+  },
+  "after": {
+    "verdict": "uncertain",
+    "dimensions": [
+      "U"
+    ],
+    "reason": "Broad creator lookup followed by poet-qualified creator lookup may duplicate one identity need; utility ambiguity matches original165 row58 and is retained as nonpass."
+  },
+  "score_change": 0,
+  "reason": "Consistency of uncertainty handling for broad/full identity pairs. No locked T02 review changed; full-SFT outputs not yet generated."
+}

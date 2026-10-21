@@ -1,0 +1,267 @@
+{
+  "round": "multigrain_prompt_v3_20261017",
+  "our_condition": "dual_final_v3",
+  "single_condition": "single_final_v3",
+  "react_config": {
+    "id": "k10_s5",
+    "k": 10,
+    "max_search": 5
+  },
+  "comparison": "same questions, frozen shared corpora/BGE retriever and qwen-plus-2025-12-01; each method keeps its own prompts/search policy",
+  "scope_limit": "ours uses manually fixed query-only reference plans in a diagnostic pilot; no claim about an automatic decomposer, equal search/token budget, official ReAct reproduction, SOTA, or broad dominance",
+  "cost_limit": "logical standalone API cost uses all per-case calls including reused successes, not newly paid experiment cost; excludes local retrieval wall time and plan authoring",
+  "overall": {
+    "planned": 13,
+    "methods": {
+      "ours": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.6205128205128205,
+        "mean_em_available": 0.5384615384615384,
+        "usage_available": 13,
+        "mean_logical_api_calls": 5.384615384615385,
+        "mean_logical_standalone_cny": 0.006906184615384614
+      },
+      "single": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.47692307692307695,
+        "mean_em_available": 0.38461538461538464,
+        "usage_available": 13,
+        "mean_logical_api_calls": 3.6923076923076925,
+        "mean_logical_standalone_cny": 0.006404276923076923
+      },
+      "react": {
+        "available": 13,
+        "missing": 0,
+        "mean_f1_available": 0.7435897435897437,
+        "mean_em_available": 0.6923076923076923,
+        "usage_available": 13,
+        "mean_logical_api_calls": 3.3846153846153846,
+        "mean_logical_standalone_cny": 0.009542892307692306
+      }
+    },
+    "paired_ours_minus_react": {
+      "pairs": 13,
+      "mean_difference": -0.12307692307692308,
+      "gains": 1,
+      "ties": 10,
+      "losses": 2,
+      "loss_qids": [
+        "1bb538ec0bda11eba7f7acde48001122",
+        "2hop__846844_47134"
+      ]
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "planned": 4,
+      "methods": {
+        "ours": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.6,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 5.0,
+          "mean_logical_standalone_cny": 0.005148
+        },
+        "single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.6,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.5,
+          "mean_logical_standalone_cny": 0.0047503
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.0,
+          "mean_logical_standalone_cny": 0.005592199999999999
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 4,
+        "mean_difference": 0.1,
+        "gains": 1,
+        "ties": 3,
+        "losses": 0,
+        "loss_qids": []
+      }
+    },
+    "2wiki": {
+      "planned": 5,
+      "methods": {
+        "ours": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.7333333333333333,
+          "mean_em_available": 0.6,
+          "usage_available": 5,
+          "mean_logical_api_calls": 5.6,
+          "mean_logical_standalone_cny": 0.00832464
+        },
+        "single": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.5599999999999999,
+          "mean_em_available": 0.4,
+          "usage_available": 5,
+          "mean_logical_api_calls": 3.8,
+          "mean_logical_standalone_cny": 0.007824959999999999
+        },
+        "react": {
+          "available": 5,
+          "missing": 0,
+          "mean_f1_available": 0.9333333333333333,
+          "mean_em_available": 0.8,
+          "usage_available": 5,
+          "mean_logical_api_calls": 3.6,
+          "mean_logical_standalone_cny": 0.012572159999999999
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 5,
+        "mean_difference": -0.2,
+        "gains": 0,
+        "ties": 4,
+        "losses": 1,
+        "loss_qids": [
+          "1bb538ec0bda11eba7f7acde48001122"
+        ]
+      }
+    },
+    "musique": {
+      "planned": 4,
+      "methods": {
+        "ours": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.5,
+          "mean_em_available": 0.5,
+          "usage_available": 4,
+          "mean_logical_api_calls": 5.5,
+          "mean_logical_standalone_cny": 0.0068912999999999995
+        },
+        "single": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.25,
+          "mean_em_available": 0.25,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.75,
+          "mean_logical_standalone_cny": 0.0062824
+        },
+        "react": {
+          "available": 4,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "mean_em_available": 0.75,
+          "usage_available": 4,
+          "mean_logical_api_calls": 3.5,
+          "mean_logical_standalone_cny": 0.009707
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 4,
+        "mean_difference": -0.25,
+        "gains": 0,
+        "ties": 3,
+        "losses": 1,
+        "loss_qids": [
+          "2hop__846844_47134"
+        ]
+      }
+    }
+  },
+  "by_evaluation_group": {
+    "fresh": {
+      "planned": 12,
+      "methods": {
+        "ours": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.6166666666666667,
+          "mean_em_available": 0.5833333333333334,
+          "usage_available": 12,
+          "mean_logical_api_calls": 5.5,
+          "mean_logical_standalone_cny": 0.006931999999999998
+        },
+        "single": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.43333333333333335,
+          "mean_em_available": 0.3333333333333333,
+          "usage_available": 12,
+          "mean_logical_api_calls": 3.75,
+          "mean_logical_standalone_cny": 0.006422400000000001
+        },
+        "react": {
+          "available": 12,
+          "missing": 0,
+          "mean_f1_available": 0.75,
+          "mean_em_available": 0.75,
+          "usage_available": 12,
+          "mean_logical_api_calls": 3.5,
+          "mean_logical_standalone_cny": 0.010031566666666667
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 12,
+        "mean_difference": -0.13333333333333333,
+        "gains": 1,
+        "ties": 9,
+        "losses": 2,
+        "loss_qids": [
+          "1bb538ec0bda11eba7f7acde48001122",
+          "2hop__846844_47134"
+        ]
+      }
+    },
+    "regression": {
+      "planned": 1,
+      "methods": {
+        "ours": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_em_available": 0.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 4.0,
+          "mean_logical_standalone_cny": 0.0065964
+        },
+        "single": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 1.0,
+          "mean_em_available": 1.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 3.0,
+          "mean_logical_standalone_cny": 0.0061868
+        },
+        "react": {
+          "available": 1,
+          "missing": 0,
+          "mean_f1_available": 0.6666666666666666,
+          "mean_em_available": 0.0,
+          "usage_available": 1,
+          "mean_logical_api_calls": 2.0,
+          "mean_logical_standalone_cny": 0.0036787999999999994
+        }
+      },
+      "paired_ours_minus_react": {
+        "pairs": 1,
+        "mean_difference": 0.0,
+        "gains": 0,
+        "ties": 1,
+        "losses": 0,
+        "loss_qids": []
+      }
+    }
+  }
+}

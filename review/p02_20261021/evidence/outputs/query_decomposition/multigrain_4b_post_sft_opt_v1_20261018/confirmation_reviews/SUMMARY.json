@@ -1,0 +1,63 @@
+{
+  "b00_v12": {
+    "reviewed": 90,
+    "planned": 90,
+    "passed": 78,
+    "verdicts": {
+      "uncertain": 2,
+      "pass": 78,
+      "fail": 10
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "uncertain": 1,
+        "pass": 26,
+        "fail": 3
+      },
+      "2wiki": {
+        "pass": 30
+      },
+      "musique": {
+        "pass": 22,
+        "fail": 7,
+        "uncertain": 1
+      }
+    }
+  },
+  "c02_full_description": {
+    "reviewed": 90,
+    "planned": 90,
+    "passed": 78,
+    "verdicts": {
+      "uncertain": 2,
+      "pass": 78,
+      "fail": 10
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "uncertain": 1,
+        "pass": 26,
+        "fail": 3
+      },
+      "2wiki": {
+        "pass": 30
+      },
+      "musique": {
+        "pass": 22,
+        "fail": 7,
+        "uncertain": 1
+      }
+    }
+  },
+  "paired": {
+    "fixes": [],
+    "regressions": [],
+    "delta": 0.0,
+    "bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  "decision": "retain_b00_no_confirmed_gain",
+  "scope": "One-time90, current Codex query-only nonindependent review. Development150 remains separate; no RAG F1 inference."
+}

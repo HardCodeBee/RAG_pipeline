@@ -1,0 +1,10 @@
+Slurm153978 completed; trainer early_stopped at update220 / 2 epochs / 7000 consumed examples.
+All dev150 outputs reviewed at updates110/165/220. Selected update165 by frozen dev criteria: 128/150=85.3333%.
+Final300 evaluation staged; submission/status recorded separately under final300/.
+Semantic review by current Codex, not independent human gold. No API calls.
+Final300 verified queue snapshot 2026-10-17T14:02:03.300434+00:00:
+JOBID NAME STATE TIME TIME_LIMIT NODELIST(REASON)
+154009 multigrain-v12-final300 PENDING 0:00 1:00:00 (Resources)
+153984 rewrite-role-short-score PENDING 0:00 10:00 (Dependency)
+153979 rewrite-sft-role-short-v1 RUNNING 13:03 1:00:00 weirdo
+Completed final300 cases: 0/300.

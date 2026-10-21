@@ -1,0 +1,69 @@
+{
+  "reviewed_indices": [
+    41,
+    90
+  ],
+  "exceptions": {
+    "41": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "After identifying the cast, adds the original father-of-cast-member target over each member rather than a new prerequisite."
+    },
+    "66": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "County identity still lacks the province qualifier; the added original-equivalent bordering-county target does not repair the other item."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Adds unsupported actress gender, drops Real Housewives context for Taylor, and swaps explicit mother identity for an actor query rather than exposing every required intermediate."
+    },
+    "68": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Makes an event involving the employer the trainer of Cuban exiles instead of an event involving training by that employer."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still asks the mission of unrestricted astronauts without the detector-operator/agency condition."
+    },
+    "83": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "U"
+      ],
+      "reason": "The added broad Who did RJ challenge query loses the incumbent restriction and duplicates the precise incumbent identity."
+    },
+    "84": {
+      "verdict": "fail",
+      "dimensions": [
+        "U"
+      ],
+      "reason": "Adds a paraphrase of the original speaker-election target after the state prerequisite rather than a new supporting need."
+    },
+    "89": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still reverses ownership of the belief and turns the attempted persuasion into actual support after a visit, without identifying the correct destination."
+    }
+  },
+  "reviewer": "All changed41..90 control-continuation outputs inspected;55 identifies the missing occupant,69 spouse,72 second intersection operand,77 migrant identity. Identical outputs inherit locked baseline."
+}

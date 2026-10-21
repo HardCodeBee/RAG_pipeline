@@ -1,0 +1,10 @@
+{
+ "reviewed_master_lines":[1,100],
+ "reviewer":"Current Codex inspected all100 literal query/target pairs without prior reasons. Same reviewer, not independent gold.",
+ "revisions":{
+ "50":{"target":["How many dollars did Final Destination gross in other territories?","How many dollars did Final Destination gross in the United States and Canada?"],"reason":"Keep US-and-Canada as the joint comparison operand; splitting a commonly jointly reported figure adds unnecessary retrieval requirements."},
+ "94":{"target":["On what date did John contract dysentery?","On what date was Henry crowned?"],"reason":"Calendar-date operands avoid ambiguity between weekday and full date in a days-difference calculation."},
+ "99":{"target":[],"reason":"Local medal-count question: asking which medals may return medal categories rather than the count; no separate prerequisite needed."}
+ },
+ "quarantine":{}
+}

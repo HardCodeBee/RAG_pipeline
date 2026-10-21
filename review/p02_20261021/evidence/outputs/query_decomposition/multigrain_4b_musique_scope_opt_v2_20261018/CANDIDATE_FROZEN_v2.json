@@ -1,0 +1,31 @@
+{
+  "candidate": "t02_mu50_end20",
+  "parent_checkpoint165_retained": true,
+  "checkpoint": "/home/projects/u7830488/multigrain_4b_musique_scope_opt_v2_20261018/results/continuation20_v005/t02_mu50/checkpoint-final",
+  "manifest_sha256": "281f96415700497ef79d2d47597c82dcddb1352932e1a0cf804d139d9328574c",
+  "prompt": "Unchanged v12",
+  "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+  "postprocessor": "none",
+  "format": "JSON array of standalone supporting questions, no cross-step references; original query executed separately.",
+  "changes": [
+    "Separate candidate3500 with8 repaired labels",
+    "20 additional updates,lr3e-5,seed1837,freshAdamW,warmup2_then_constant,batch32",
+    "Only the new640-example continuation has Mu50% share; no new independent training queries"
+  ],
+  "sampling": "320 Mu/640 new exposures versus91/640 equal-budget control;738/5260 Mu exposures in parent; candidate cumulative1058/5900.",
+  "gate": {
+    "total_strictly_higher": true,
+    "mu_strictly_higher": true,
+    "mu_FS_not_increased": true,
+    "combined_controls_net_loss_at_most1": true
+  },
+  "confirmation": {
+    "n": 120,
+    "baseline_passes": 96,
+    "candidate_passes": 100,
+    "mu_baseline": 29,
+    "mu_candidate": 30,
+    "mu_n": 40
+  },
+  "role": "Separately frozen empirical candidate. Original baseline/default artifacts unchanged. Not proof of90% or statistically established superiority."
+}

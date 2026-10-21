@@ -1,0 +1,77 @@
+{
+  "recorded_utc": "2026-10-17T11:55:04.143561+00:00",
+  "changes": [
+    {
+      "id": "D001",
+      "change": "Full second query/target-only review of3500; preserve v001, revise36, quarantine5, author/review5 reserves, export immutable v0023500.",
+      "purpose": "Fix relation/qualifier/coverage defects without pretending all textual changes are semantic errors.",
+      "evidence": "reaudit/DECISIONS.progress.jsonl",
+      "sha256": "c345f41344b80f2dbd4df7fa82d9f1c84ec58ba264859d9f935c4a743c689f29"
+    },
+    {
+      "id": "D002",
+      "change": "Freeze separate dev150 and current-Codex references; freeze train-only diagnostic150.",
+      "purpose": "Observe validation loss/semantic generalization and select checkpoint without test300.",
+      "evidence": "data_v002/VALIDATION.json",
+      "sha256": "5591b5484a5a9c7a6fdec1602021af2c40ed16c247ca03e618c7e79fad31fbfd"
+    },
+    {
+      "id": "E001",
+      "change": "Finish original4B/no-adapter/v12 independent300 generation and F/S/C/U review.",
+      "purpose": "Establish untouched same-question before/after comparison; no tuning from these cases.",
+      "evidence": "baseline300/SUMMARY.json",
+      "sha256": "b2a8cc3d956ee0a0ab9c696766583b39b43c8671de2aae4393fa22f46cbcdc57"
+    },
+    {
+      "id": "T001",
+      "change": "New adapter/optimizer on original Qwen3-4B; use approved LoRA32/64/.05, lr1e-4, fixed330 schedule, min2/max3 epochs.",
+      "purpose": "Use independent dev evidence for plateau/overfit control instead of inferring convergence from training loss.",
+      "evidence": "remote/config.json",
+      "sha256": "5d1c4f10d03c49d0a33797a5437870b157d09d30c6b9cfe9a3533877c4ea1824"
+    },
+    {
+      "id": "T002",
+      "change": "New3500 sampler uses109 batches32 plus final12; actual-target-token gradient normalization.",
+      "purpose": "Avoid replaying20 or dropping12 when3500 is not divisible by32; old2368 had no such tail.",
+      "evidence": "CPU_NUMERICAL_CHECKS.json",
+      "sha256": "6160a3f5f11637b6faa06a01abd785bb6bebc41dd815dfd6f6b42bd8811ac71e"
+    },
+    {
+      "id": "V001",
+      "change": "Before submission, align array-format statistics to frozen baseline; explicit references remain a separate diagnostic/S failure.",
+      "purpose": "Prevent changing the comparison metric by counting references as JSON format errors.",
+      "evidence": "remote/code/contract.py",
+      "sha256": "7e07cf37f07e93689624346cbc9089dbe362dd067f8d5339752cf8a4bb4c3c2d"
+    },
+    {
+      "id": "V002",
+      "change": "Check native supervision masks for3800 records, synthetic tail gradients, and real AdamW/scheduler CPU serialization at55->56.",
+      "purpose": "Verify mathematical/serialization invariants before actual4B GPU smoke.",
+      "evidence": "LOCAL_CONTRACT_CHECKS.json",
+      "sha256": "ea007c7b27c58ed7e01cd057fa26921489e5436959fae89034df749a4b061f35"
+    },
+    {
+      "id": "S001",
+      "change": "Upload verified standalone bundle and submit Slurm153977; smoke2 in separate process gates fresh formal SFT.",
+      "purpose": "Execute approved training without using old adapter or smoke weights; retain all outputs under new directory.",
+      "evidence": "JOB_SUBMISSION.json",
+      "sha256": "4af6f3e4764ccbe8088045ba893d69254bb4761520d30241d4fdd5610e5b9408"
+    },
+    {
+      "id": "E002",
+      "change": "Prepare dev-only selection, selected-checkpoint eval300 generation, small return export and paired/cluster-sensitivity comparison scripts.",
+      "purpose": "Require real dev/test outputs before selecting or claiming accuracy gains.",
+      "execution": "not yet run; awaiting GPU training and current-Codex semantic review"
+    }
+  ],
+  "latest_remote_snapshot": {
+    "checked_utc": "2026-10-17T11:54:12.571157+00:00",
+    "job_id": "153977",
+    "queue": "JOBID NAME STATE TIME TIME_LIMIT NODELIST(REASON)\n153977 multigrain-v12-sft3500 PENDING 0:00 4:00:00 (Resources)\n153976 rag-robust-v1 RUNNING 12:47 1-00:00:00 weirdo\n",
+    "accounting": "153977|PENDING|00:00:00|0:0\n",
+    "smoke_verified": false,
+    "train_metrics_present": false,
+    "api_calls": 0
+  },
+  "api_calls": 0
+}

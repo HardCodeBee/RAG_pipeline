@@ -1,0 +1,111 @@
+union20 对冻结 p02 的离线逐题审查
+范围：同一300题，每数据集100题；全部已有实际成功结果；native Answer F1。
+本审查未请求API、未检索索引、未修改冻结流程或旧结果。
+
+一、总体结果
+p02 70.724173%，union20 70.312435%，差值 -0.411738 个百分点。
+总体：14上升、276不变、10下降。
+HotpotQA：78.990837%→78.281313%，-0.709524pp；2升、96平、2降。
+2Wiki：93.347386%→92.285481%，-1.061905pp；2升、95平、3降。
+MuSiQue：39.834297%→40.370510%，+0.536214pp；10升、85平、5降。
+三个数据集的方向不同，不能概括为全量保留文档普遍有害。
+
+二、24道F1变化题首次分歧的完整payload核查
+比较了原始SQLite请求的完整payload，而非只比较query/docID。
+22题：首次不同输出出现前，唯一的prompt改动是reader原文由原10篇扩展到去重后的11–20篇；原先10篇的顺序、内容和块编号完全保留，前置问答相同、改写query相同。14升/8降。
+2题：首次分歧在完全相同payload的新调用中发生，均为Hotpot下降题。此时没有任何新增文档，不能把损失归于扩文。
+没有任何变化题只在最终回答阶段首次出现输出分歧。
+每道变化题完整分解、旧新回答、完整prompt、RID、SQLite路径及payload SHA见 union_audit.json。
+
+控制局限：初始cache_v001未读原B0完整logical_calls清单，导致某些已经有精确旧成功receipt的前缀再次提交。cache_v002已补全目录，未替换已完成结果。temperature=0仍观察到同payload不同输出。因此这些是实际运行结果，但不能把所有最终差值解释成纯扩文因果效应。下述“链路”表示观察到的输出承接；非重复随机试验所得因果估计。
+
+三、两个完全相同payload的Hotpot下降反例
+1. hotpotqa:5ac298805542990b17b15429
+原题：This sister company  of Líneas Aéreas Privadas Argentinas is most commonly known by its shortened name Austral?
+首个普通问题：What are the sister companies of Líneas Aéreas Privadas Argentinas?
+旧：The sister company of Líneas Aéreas Privadas Argentinas is Austral Líneas Aéreas.
+新：Líneas Aéreas Privadas Argentinas’s only sister company mentioned is Austral Líneas Aéreas.
+完全相同payload SHA：d7cb5ee69cd8f19f135dd5f3cac55d9ffeef976c9dc5b41cdd8013325b61aade
+旧RID：74e9b3b53f4a989a647138d5e61942725e3cad01f4b46c761ce2d1f5ba5357d1
+新RID：3925acaa0775540777668d00ff050fcefe7454744ac343e5efb357570441b82f
+后续goal的事实仍是Austral Líneas Aéreas；新goal用“Yes, ...”起句，最终把应答公司名输出成Yes。最终F1 1→0。后续goal确实扩文10→17，但首个分歧早已发生，不能单独归因新增7篇。
+
+2. hotpotqa:5a7a59d15542996c55b2dd67
+原题：What other female rappers appeared Brittany Nicole Carpentero in the official remix to My Chick Bad?
+首题旧答未从材料确定remix，新答列Diamond/Eve/Trina；输入完全相同。
+完全相同payload SHA：5b7e4d9708114e2f0596957044a4e2eb57960ef16b646379cade54fe8f38a6aa
+旧RID：3ad82dd3dded39a0c9643f8bb4bc19933ed6f310f55def8843223ec87d966b77
+新RID：95d074bc66d61f91b0bacc8e3366f78a26d9e054a8f75f699e16ea212cdd9d72
+旧goal与新goal均说明Diamond=Brittany Nicole Carpentero。最终旧Eve and Trina，新Diamond, Eve, and Trina，漏做other的对象排除，F1 1→0.857143。不是成员事实歪曲；亦不能认定扩文造成首差异。
+这两题旧source均为complete_pipeline_comparison_v1_20261020/run_v001/methods/hotpotqa/B0_legacy_multigrain_R02/checkpoint.sqlite3；新source均为p02_flow_simplify_v1_20261020/rounds/r000/methods/hotpotqa/union20/checkpoint.sqlite3；完整相对路径另存JSON。
+
+四、扩文带来实质收益的已核实例子
+1. 2wiki:6856ba560bdd11eba7f7acde48001122
+原题：What is the date of death of Princess Carolina Of Parma's mother?
+第2步首次分歧：同前置/同rewrite，仅10→20篇。
+旧rank2《Archduchess Maria Amalia of Austria (1780–1798)》是同名错人，写15 October1780–25 December1798。
+新增rank17《Maria Amalia, Duchess of Parma》明确26 February1746–18 June1804。
+旧完整答及最终答25 December1798；新完整答及最终答18 June1804。F1 0→1。
+新增材料确实提供了能区分同名人物的正确出生/死亡信息；这是实质证据补充，而非仅措辞收益。
+
+2. musique:3hop1__346812_15840_36002
+原题：What were the Genesis's advantages over the platform that plays Drac's Night Out?
+goal首次分歧：同前置/同rewrite，仅10→19篇。
+旧答案只给stronger third-party support和less strict licensing terms。
+新增rank12《Super Nintendo Entertainment System》明确Genesis等系统built on16-bit architectures，offered improved graphics and sound over8-bit NES。
+新答案补入superior16-bit graphics and sound，F1 0.111111→0.434783。
+旧rank3Genesis是16-bit、rank4NES是8-bit已在，因此新材料补的是明确比较关系；不能说所有组成事实原先都缺失。
+
+五、全部10道下降题逐题结论
+1. 2wiki:4140c991086b11ebbd5fac1f6bf848b6
+原题：Do both films Apache Woman and Dime With A Halo have the directors from the same country?
+第4步相同前置/改写，只扩文10→20，Boris Sagal国家从United States改成Ukrainian-American。本人原rank2早已明确Ukrainian-American，新10篇没有为其新增国籍事实。
+goal把Roger Corman from United States与Ukrainian-American解释为不同country；最终Yes→No，F1 1→0。观察到的是中间表达变化后国家比较错误，不是新文档含错误国籍或挤掉正确文档。
+
+2. 2wiki:b09dfa3a087811ebbd67ac1f6bf848b6
+原题：Do both films: Cradle Song (1933 Film) and Living Among Us have the directors from the same country?
+首差异第3步Mitchell Leisen from United States→American（语义未变），10→20。
+第4步Brian Metcalf United States→Asian-American；该原rank2本人段落早已写Asian-American，新增加的是其他Metcalf人物等。
+goal把American和Asian-American判为不同国家，最终Yes→No，F1 1→0。这也是比较归一化错误；首个改变本身不是错误事实。
+
+3. 2wiki:fcd3ff500baf11ebab90acde48001122
+原题：Who is Teriimaevarua Iii's paternal grandmother?
+最终Queen Pōmare IV→Queen Pōmare IV of Tahiti，F1 0.8→0.571429。原旧/新材料《Tamatoa V》支持son of Queen Pōmare IV of Tahiti。没有观察到换错祖母；限定词增加导致token F1下降。
+
+4–5. 两道Hotpot见第三部分。目标类型/other排除发生偏移，首差异受到同payload重复调用影响。
+
+6. musique:3hop1__68802_89752_49923
+原题：How many counties are there in the largest state in the region where the film The Family Stone was set?
+前三普通问题事实一致；goal同前置同rewrite，10→20后Maine has sixteen counties→Maine has16 counties；最终Sixteen→16，F1 1→0。
+原rank2《List of counties in Maine》明确sixteen counties。数值事实没有错，是官方token指标不把数字16和英文sixteen等价归一化。不能记作事实被污染。
+
+7. musique:3hop1__109422_720914_27537
+原题：Why did Roncalli leave the place of death of The Punishment of Tythus' creator?
+第2步同前置/改写10→19，Titian死亡地点未确定→Venice；后续goal的rewrite从未解析描述改为Why did Roncalli leave Venice?，确实改变下游检索，不是固定旧包。
+新goal原文rank1《Pope John XXIII》明确Roncalli left Venice for the conclave in Rome。
+旧新最终均回答赴罗马教皇选举，新改because/summoned句式，F1 0.296296→0.272727。核心原因没有观察到被颠倒；不能因F1小降断言桥接变差。
+
+8. musique:2hop__85463_66122
+原题：When did the stalemate happen in the war where UN troops approached the Yalu River?
+goal10→15；Late May1951→Mid-1951，F1 0.285714→0；参考began10 July1951。
+旧rank1《Korean War》已有until mid-1951，旧rank6另写May末Line Kansas halt开始stalemate，两种表述原先就存在。旧答也不是参考的准确日期；新答较粗，token形式又变化。不能称正确日期被新增文档挤掉，亦未证实新增文档是日期粗化的具体触发源。
+
+9. musique:4hop1__94201_642284_131926_13165
+原题：What treaty ceded territory to the US extending west to the body of water by the city where the designer of Southeast Library died?
+第3步都是未能确定body of water，但新未确定句丢掉Ralph Rapson姓名；后续rewrite使用未解析描述，检索改变。
+最终旧Adams–Onís Treaty，新Cannot be determined，F1 0.4→0；参考Treaty of Paris。旧答案本来就不是正确条约，0.4来自共享Treaty等token；不能把此项称为正确事实变错。新goal也提Adams–Onís，但明确关键地点未定。
+
+10. musique:4hop3__129318_29339_508306_70744
+原题：University of the state having Fort Hill or university of the state whose primary was won by Edwards besides the state having James B. Simmons House has more national championships?
+第3步扩文10→17，旧Edwards won South Carolina primary, not Georgia→新保留同事实且明确Georgia竞选信息未提供。
+第4步旧直接声称USC冠军更多，新混入未获支持的2017/2022 football说法，同时指出无直接完整比较。
+新goal明确University of South Carolina冠军计数未给，最终正确人名→Cannot be determined，F1 1→0。
+已有分解本身将复杂对象关系处理不清，材料缺口一直存在；旧标准答案命中不证明旧比较有充分证据，新拒答与缺完整计数一致。新子回答也有局部无根据细节，不能简单把整项称为扩文更可靠或扩文破坏正确事实。
+
+六、为什么timing_only可以单独采用
+现有OFFLINE_AUDIT.json passed=true：300题、887节点、1774次完整payload成功receipt，网络/新API/新索引查询均0。
+timing_only逐题最终prediction/final_prompt/final_context/finish_reason与p02完全相同；每个旧节点的全部已记录字段逐项相同；移除初始root检索后，每节点原始/改写检索及最终root检索均保持。
+该离线审计使用B0_SOURCES完整call清单加control/cache/p02收据，恰好已包含上述v001实跑目录漏掉的普通/改写receipt。因此timing_only的完全相同payload回放没有这个前缀缓存遗漏问题。
+这证明已冻结样本的数据流等价，不是新付费实跑或全新样本质量提升证据。无需为采用纯时序优化再声称F1提升。
+
+结论边界：当前union20小幅净负，且不同数据集方向不一致；可观察到真实补充证据收益、比较/目标处理弱点、纯token表达变化以及同payload重新调用混杂。现有数据不支持用笼统“噪音变多”解释全部损失，也不支持纯净扩文平均因果收益的结论。依用户决定只采用timing_only，其余候选不采用。

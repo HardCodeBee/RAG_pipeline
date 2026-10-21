@@ -1,0 +1,16 @@
+{
+  "reviewed_indices": [
+    1,
+    30
+  ],
+  "reviewer": "Current Codex inspected all changed questions; identical strings retain frozen baseline verdicts. Frozen query-only F/S/C/U.",
+  "exceptions": {
+    "4": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Restores the film-based-on-book relation, but still skips identifying the story featuring the author of The Hope before asking for that story author."
+    }
+  }
+}

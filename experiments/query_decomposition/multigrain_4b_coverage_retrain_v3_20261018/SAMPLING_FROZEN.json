@@ -1,0 +1,287 @@
+{
+  "seed": "20261018-coverage-retrain-v3",
+  "selection_salt": 0,
+  "quotas": {
+    "dev60": {
+      "hotpotqa": {
+        "bridge": 14,
+        "comparison": 6
+      },
+      "2wiki": {
+        "comparison": 5,
+        "inference": 5,
+        "compositional": 5,
+        "bridge_comparison": 5
+      },
+      "musique": {
+        "2hop": 7,
+        "3hop1": 5,
+        "3hop2": 2,
+        "4hop1": 3,
+        "4hop2": 1,
+        "4hop3": 2
+      }
+    },
+    "confirm120": {
+      "hotpotqa": {
+        "bridge": 28,
+        "comparison": 12
+      },
+      "2wiki": {
+        "comparison": 10,
+        "inference": 10,
+        "compositional": 10,
+        "bridge_comparison": 10
+      },
+      "musique": {
+        "2hop": 14,
+        "3hop1": 10,
+        "3hop2": 4,
+        "4hop1": 6,
+        "4hop2": 2,
+        "4hop3": 4
+      }
+    }
+  },
+  "available_before_selection": {
+    "hotpotqa/comparison": 963,
+    "hotpotqa/bridge": 3764,
+    "2wiki/compositional": 4895,
+    "2wiki/comparison": 2814,
+    "2wiki/inference": 1384,
+    "2wiki/bridge_comparison": 2530,
+    "musique/2hop": 11396,
+    "musique/3hop2": 347,
+    "musique/3hop1": 2290,
+    "musique/4hop1": 360,
+    "musique/4hop2": 70,
+    "musique/4hop3": 224
+  },
+  "remaining_candidate180_prefixes": {
+    "2hop": 29,
+    "3hop1": 40,
+    "4hop1": 25,
+    "4hop3": 22,
+    "3hop2": 6
+  },
+  "native120_prefixes": {
+    "2hop": 20,
+    "4hop3": 25,
+    "3hop1": 21,
+    "4hop1": 35,
+    "3hop2": 19
+  },
+  "native120_max_primitive_reuse": 3,
+  "native120_source": "Original train query-only, selected after reserving new evaluation. Prior180 are unaccepted candidates, not an immutable training roster.",
+  "exclusion_sources": [
+    {
+      "path": "analysis\\hotpotqa_query_taxonomy_validation_20261007\\samples.jsonl",
+      "sha256": "b75d599cec2dd64454c9a0fc084c3d61ec876a8ef4017d5890e492d0d88c29c9"
+    },
+    {
+      "path": "experiments\\query_decomposition\\api_qdmr_suitability_v1\\data\\queries.jsonl",
+      "sha256": "129bd3598e764e12a183f331e625c0d87c0e085e3e8a3d09403297d40db9f3f4"
+    },
+    {
+      "path": "experiments\\query_decomposition\\auxiliary_qa_rag_v1\\inputs_frozen\\queries600.jsonl",
+      "sha256": "b6f30cec3e2a824f865cb5271796c3089c9258322e50bea0e03f935c882c87a3"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\ablation.questions.jsonl",
+      "sha256": "0778d43e22fffb648037670ff2781d0470e373cc060389dd60c743c6588b5d40"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\dev.questions.jsonl",
+      "sha256": "a85c4371d1870a14e40934d714974fea825f0bb4348e3962909808cd102ee994"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\2wiki\\formal.questions.jsonl",
+      "sha256": "3392fab398a5a86b6cf095cbbdcde22cb5942b2b009f667071fc49ef1b6bc642"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\ablation.questions.jsonl",
+      "sha256": "1137ac10b59486ecbf06056a32f63545183be678c2a972a36bfc9d41df6b2655"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\dev.questions.jsonl",
+      "sha256": "04161964652fb3e77e35ea07e114305ad0a100edb4d4cceae59c4657fda0e0c4"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\hotpotqa\\formal.questions.jsonl",
+      "sha256": "b091e4dba07eb749106f90c96f8cea3c1b68c61b172026d29f81f564e8db4048"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\ablation.questions.jsonl",
+      "sha256": "bdde265fedc806d54df380c8bf0d24209f9439351b92eb19ee50bb9feb8a9e14"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\dev.questions.jsonl",
+      "sha256": "6ee85d599a800fb45ab7c7fc880cee4268dd90ba37c4eb72b5554e28361d9d32"
+    },
+    {
+      "path": "experiments\\query_decomposition\\comprehensive_eval_v1_20261015\\inputs_frozen\\musique\\formal.questions.jsonl",
+      "sha256": "d75032eb5e99b3ff87b7ec03a9dc0e18c7a424cd7c7b7325b38045bad0ff3fd3"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\dev.questions.jsonl",
+      "sha256": "59ef2963badc6cea5608b35445e69da0ccce73eeb81783c0d78af4f604eca262"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\compact_100_200_20261014\\inputs_frozen\\formal.questions.jsonl",
+      "sha256": "b08ae29d4c5987e0a66dd286166fb0069ced79bd6c39653c89ec43feef2aa9fb"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\dev.questions.jsonl",
+      "sha256": "2741b4ff3bd0b19092aa59dd78d3d9e17ab5baca4eb46df0dbca3899efb3ed67"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\inputs_frozen\\formal.questions.jsonl",
+      "sha256": "10ca64f975ea6417c9e768105639ac2d6b0e59f8e989d78a9d81040a7fc90bfc"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_dev_operational2.questions.jsonl",
+      "sha256": "d881e571511c72bcdb3ede7bdebbf439d673862eb84caecb17bb67942485e8f6"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\selfask_phase_known_facts_dev2.questions.jsonl",
+      "sha256": "565456695e294e2706c59f0ee0e14e7ed8539b6e57a01ca748a183021d0277d6"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical10.questions.jsonl",
+      "sha256": "0bd3207b646fc3f8ae89e1965d35e114c29dca4abd0e54ad92addaf26df44ce5"
+    },
+    {
+      "path": "experiments\\query_decomposition\\hotpot_formal_eval_v1\\preparation\\smoke_historical2.questions.jsonl",
+      "sha256": "6ff70a41b4c6fed6d425473e518673c571ad9a073584e3ca9c20f58e5440e865"
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_alignment_v1\\inputs_frozen\\questions500.jsonl",
+      "sha256": "769ca9a5c38039e4e61a712e5cd3f50b5727a7f8c30ea58a3fa14161e4e712bb"
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\dev.questions.jsonl",
+      "sha256": "9966e97126a2fecd2daed3375f5aff4fdc31498620a912051a31ebaed16ac47e"
+    },
+    {
+      "path": "experiments\\query_decomposition\\ircot_bm25_gpt35_v1\\inputs_frozen\\test.questions.jsonl",
+      "sha256": "769ca9a5c38039e4e61a712e5cd3f50b5727a7f8c30ea58a3fa14161e4e712bb"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\EXCLUDE_FROM_TRAINING.jsonl",
+      "sha256": "e8960ceb781d5b390a93eebb96928aaf9c55e83282048598013c47412d0b7a5b"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\questions100.frozen.jsonl",
+      "sha256": "1dc3a1cc9046565509b58fff587a04ab646e0fa8f025c950c4fc0abe6791c8e9"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\remote\\queries100.query_only.jsonl",
+      "sha256": "891483e29f13b30a9887243b93cbb3dbc0fdfcde1138c849e362e4030c11748a"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\dev.questions.frozen.jsonl",
+      "sha256": "0f11812bfab21faebd622560625e13096e2dde3b41bc5b6d3cb27f310f79b73d"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\hard_cases_for_4b\\CANDIDATES.jsonl",
+      "sha256": "69c339fd8e3dd696380416682277c9bc1b74ab8a179b5d3c2fbe402bbf52641b"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_decomposer_fresh_eval_v1_20261017\\holdout.questions.frozen.jsonl",
+      "sha256": "2db2f0158178b45f5e06effc8b3d16fa33f95eea6111a58e4d6406ac29a1ae8f"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_confirm60_v1_20261017\\cases.frozen.jsonl",
+      "sha256": "febf14775bc797d77b588c75a8160c731ea52627e217c861618a341e04e43594"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\cases.frozen.jsonl",
+      "sha256": "3f042a1b625768a3ed18641f0ee866449cf843576cda999de05bb98148b4ae8b"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_expand60_v1_20261017\\new36.questions.frozen.jsonl",
+      "sha256": "b23aaa294245f16b64d6acd4943296159e5a2685c5f7015bc9301ee2d20c0055"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_dual_retrieval_pilot_v1_20261017\\cases.frozen.jsonl",
+      "sha256": "a0ee113a8a600df3b23fcf35be12b983a997eeb0591ade1f717318b08d659a89"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_evidence_v4_20261017\\cases.frozen.jsonl",
+      "sha256": "3354aea359599147c21a81199820db3a5b49d5856fe751a400b898952cabc684"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_evidence_v4r1_20261017\\cases.frozen.jsonl",
+      "sha256": "5b67ff0c84b7170293100993d1cfa719888ac13d641214de31d9fe65f3382e3b"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_partial_bind_v5_20261017\\cases.frozen.jsonl",
+      "sha256": "5b19d2d0acac842d0e7c4e0bf3354de63d09c743fa10b642db622012cff4c94c"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_prompt_v2_20261017\\cases.frozen.jsonl",
+      "sha256": "51b9ce7a29a32b991e68e1ecf41cadd9826c28ae3633d2e74ca3bc4fc3b36e2a"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_prompt_v3_20261017\\cases.frozen.jsonl",
+      "sha256": "e9dd8fdbe0ed80c692386397985b45a53753ffa6823456ceed1d2030e35d4f8d"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_selfcontained_decomposer_v1_20261017\\TRAINING_EXAMPLES_DRAFT.jsonl",
+      "sha256": "f7c15ba760c71f8dfd2b5f786a4e80af867ed74cf44c86da3c1594e18539d109"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\dev.questions.frozen.jsonl",
+      "sha256": "109e56ab48104c13e0425bd352ca05b1fd6b6e09d01ecd24737ff52084d505ef"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_v8_simplify_v1_20261017\\holdout.questions.frozen.jsonl",
+      "sha256": "633a666917864880a1d3b919f547ef11bde91c0ba44123f99755d538f911e7d7"
+    },
+    {
+      "path": "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\data\\accepted_master.jsonl",
+      "sha256": "dd68d939b5c3b4b97536f2a2ebe4bdf508cd617922616b12ea1aed3074195545"
+    },
+    {
+      "path": "outputs\\query_decomposition\\demand_parser_routes_common_eval_20261010\\returned\\route2\\route2_question_decomposer\\data\\runtime_qwen_train.jsonl",
+      "sha256": "33fc7f15c1aebbbf1cf06aca7a830500d0929d610d42c39b96aa8f0ac2132895"
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_prompt_train3500_v1_20261017\\training\\MASTER_3500.jsonl",
+      "sha256": "1028d1059d9a48dc4a66a0ee5a4601e975472cad9960068ef404711a93c8dda7"
+    },
+    {
+      "path": "outputs\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\data_v003_exact_v12\\MASTER_3500.jsonl",
+      "sha256": "c9eeaf396c60a655022050012c43dc6657456059ce555dca9d49535460e15beb"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\dev150.questions.frozen.jsonl",
+      "sha256": "87d405604b499be9b7cfee87e1497387c40334eed127201945530446be5cf606"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_frozen_eval300_v1_20261017\\questions300.frozen.jsonl",
+      "sha256": "9739c44926d5ec6442ceefe401984fc83d332c1486426071874a1d2fb6c74d72"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_post_sft_opt_v1_20261018\\confirmation90.questions.frozen.jsonl",
+      "sha256": "32e6b13b5bf8086447df1f0f5380544df432e84bd07abbe1c6f2e19e24138cd0"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\screen90.questions.frozen.jsonl",
+      "sha256": "320c6f0b3b1575e04ad2378d3fe7c4bfbb1e1b25e1877f56abf246a27b3a8e51"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\confirm120.questions.frozen.jsonl",
+      "sha256": "58c8cb7eb6162d8cc572db029a4628b66aa4813e8e4a5cc32a0fc45f6f270a82"
+    },
+    {
+      "path": "experiments\\query_decomposition\\multigrain_4b_musique_scope_opt_v2_20261018\\rare_queries.frozen.jsonl",
+      "sha256": "12ae8704285634437b59a042251f074c4714f58c9bc6c915615a962b07346e13"
+    }
+  ],
+  "mu_validation_source": "Unused native train query-only; custom primitive-disjoint validation, NOT official native test score.",
+  "new_training_vs_validation_mu_primitive_disjoint": true,
+  "dev_confirm_mu_primitive_disjoint": true,
+  "no_new_model_predictions_or_answers_used_for_selection": true,
+  "native120_status": "Inputs only; no labels accepted yet. Synthetic examples will be separately marked."
+}

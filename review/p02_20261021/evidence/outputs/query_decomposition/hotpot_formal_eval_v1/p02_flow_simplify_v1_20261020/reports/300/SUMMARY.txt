@@ -1,0 +1,208 @@
+p02流程简化：300实时报告
+UTC: 2026-10-20T10:08:45.263629+00:00
+快照读取起点：2026-10-20T10:07:50.629056+00:00；执行进行中时，各项顺序读取的快照时间可能略有不同。
+最终Answer F1单位为%；部分完成成绩仅为可计分题均值，非完整分母成绩。
+运行初期可计分题可能集中在一个数据集；须看各数据集完成量，不以部分总体均值判定方法优劣。
+算法失败计0；基础设施未完成不填0，单独保留缺失及全分母边界。
+
+配置	可计分/计划	总体F1(可计分)	完整F1	HotpotQA	2Wiki	MuSiQue	相对p02同题Δ	升/平/降	相对直接父配置同题Δ	父比较n
+union20	300/300	70.3124	70.3124	78.2813	92.2855	40.3705	-0.4117	14/276/10	-0.4117	300
+  状态：{"success": 300}
+  全计划F1边界：['70.3124', '70.3124']
+  所选题记录的成功逻辑调用/输入/输出tokens：{"prompt_tokens": 3311231, "completion_tokens": 28456, "successful_logical_calls": 1774}
+  hotpotqa: 100/100; F1=78.2813; p02 Δ=-0.7095 n=100 升/平/降=2/96/2; 父配置 Δ=-0.7095 n=100 升/平/降=2/96/2
+  2wiki: 100/100; F1=92.2855; p02 Δ=-1.0619 n=100 升/平/降=2/95/3; 父配置 Δ=-1.0619 n=100 升/平/降=2/95/3
+  musique: 100/100; F1=40.3705; p02 Δ=+0.5362 n=100 升/平/降=10/85/5; 父配置 Δ=+0.5362 n=100 升/平/降=10/85/5
+discount20	300/300	70.0251	70.0251	79.4086	91.1188	39.5478	-0.6991	12/278/10	-0.2874	300
+  状态：{"success": 300}
+  全计划F1边界：['70.0251', '70.0251']
+  所选题记录的成功逻辑调用/输入/输出tokens：{"prompt_tokens": 3308282, "completion_tokens": 28680, "successful_logical_calls": 1774}
+  hotpotqa: 100/100; F1=79.4086; p02 Δ=+0.4177 n=100 升/平/降=2/97/1; 父配置 Δ=+1.1273 n=100 升/平/降=2/98/0
+  2wiki: 100/100; F1=91.1188; p02 Δ=-2.2286 n=100 升/平/降=1/95/4; 父配置 Δ=-1.1667 n=100 升/平/降=0/98/2
+  musique: 100/100; F1=39.5478; p02 Δ=-0.2865 n=100 升/平/降=9/86/5; 父配置 Δ=-0.8227 n=100 升/平/降=5/90/5
+single_final	300/300	67.6761	67.6761	74.4786	89.5172	39.0327	-3.0480	25/244/31	-2.3489	300
+  状态：{"success": 296, "success_truncated": 4}
+  全计划F1边界：['67.6761', '67.6761']
+  所选题记录的成功逻辑调用/输入/输出tokens：{"prompt_tokens": 2751306, "completion_tokens": 19837, "successful_logical_calls": 1474}
+  hotpotqa: 100/100; F1=74.4786; p02 Δ=-4.5123 n=100 升/平/降=3/85/12; 父配置 Δ=-4.9300 n=100 升/平/降=3/85/12
+  2wiki: 100/100; F1=89.5172; p02 Δ=-3.8302 n=100 升/平/降=6/86/8; 父配置 Δ=-1.6016 n=100 升/平/降=6/89/5
+  musique: 100/100; F1=39.0327; p02 Δ=-0.8016 n=100 升/平/降=16/73/11; 父配置 Δ=-0.5151 n=100 升/平/降=9/79/12
+
+本实验实际新增请求费用（预算账本返回用量估计，未核对账单；缓存不重复计费）：
+{
+  "database": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+  "experiment_namespace_prefix": "p02_flow_simplify_v1_20261020",
+  "experiment": {
+    "submissions": 1409,
+    "known_returned_usage_cny": 2.9746207999999985,
+    "unknown_reserved_cny": 0.6442695999999999,
+    "occupied_cny": 3.6188903999999984,
+    "unreconciled_requests": 62,
+    "statuses": {
+      "returned_usage": 1347,
+      "reserved": 62
+    }
+  },
+  "by_arm": {
+    "union20": {
+      "submissions": 744,
+      "known_returned_usage_cny": 1.4284244000000001,
+      "unknown_reserved_cny": 0.24303279999999997,
+      "occupied_cny": 1.6714572,
+      "unreconciled_requests": 27,
+      "statuses": {
+        "returned_usage": 717,
+        "reserved": 27
+      }
+    },
+    "discount20": {
+      "submissions": 346,
+      "known_returned_usage_cny": 0.7153827999999999,
+      "unknown_reserved_cny": 0.1664216,
+      "occupied_cny": 0.8818043999999998,
+      "unreconciled_requests": 16,
+      "statuses": {
+        "returned_usage": 330,
+        "reserved": 16
+      }
+    },
+    "single_final": {
+      "submissions": 319,
+      "known_returned_usage_cny": 0.8308136,
+      "unknown_reserved_cny": 0.23481519999999997,
+      "occupied_cny": 1.0656288,
+      "unreconciled_requests": 19,
+      "statuses": {
+        "returned_usage": 300,
+        "reserved": 19
+      }
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "submissions": 364,
+      "known_returned_usage_cny": 0.6566463999999999,
+      "unknown_reserved_cny": 0.135824,
+      "occupied_cny": 0.7924703999999998,
+      "unreconciled_requests": 16,
+      "statuses": {
+        "returned_usage": 348,
+        "reserved": 16
+      }
+    },
+    "2wiki": {
+      "submissions": 427,
+      "known_returned_usage_cny": 0.9871384000000004,
+      "unknown_reserved_cny": 0.06098399999999999,
+      "occupied_cny": 1.0481224000000005,
+      "unreconciled_requests": 5,
+      "statuses": {
+        "returned_usage": 422,
+        "reserved": 5
+      }
+    },
+    "musique": {
+      "submissions": 618,
+      "known_returned_usage_cny": 1.3308360000000006,
+      "unknown_reserved_cny": 0.44746159999999985,
+      "occupied_cny": 1.7782976000000004,
+      "unreconciled_requests": 41,
+      "statuses": {
+        "returned_usage": 577,
+        "reserved": 41
+      }
+    }
+  },
+  "global": {
+    "submissions": 108473,
+    "known_returned_usage_cny": 189.54414160000124,
+    "unknown_reserved_cny": 36.05458639999999,
+    "occupied_cny": 225.59872800000124,
+    "unreconciled_requests": 2191,
+    "statuses": {
+      "reserved": 2191,
+      "returned_usage": 106239,
+      "http_failed_not_returned_usage": 43
+    }
+  },
+  "global_cap_cny": 300,
+  "actual_bill_verified": false,
+  "meaning": "Known costs are returned-usage estimates recorded by the budget ledger; unknown liabilities remain reserved. Cache replays do not add ledger charges."
+}
+
+未核销预留包含正在请求中的费用，不等同于全部请求已异常丢失。
+正在运行及已结束方法SQLite的请求/token汇总（全任务含重试）：
+{
+  "method_stores": 27,
+  "by_arm": {
+    "union20": {
+      "new_request_rows": 744,
+      "successful_new_request_rows": 717,
+      "known_new_request_prompt_tokens": 1751678,
+      "known_new_request_completion_tokens": 13541,
+      "recorded_logical_call_events": 2075,
+      "recorded_reused_call_events": 1331,
+      "request_statuses": {
+        "success": 717,
+        "unknown": 27
+      }
+    },
+    "discount20": {
+      "new_request_rows": 346,
+      "successful_new_request_rows": 330,
+      "known_new_request_prompt_tokens": 876636,
+      "known_new_request_completion_tokens": 7037,
+      "recorded_logical_call_events": 2058,
+      "recorded_reused_call_events": 1712,
+      "request_statuses": {
+        "success": 330,
+        "unknown": 16
+      }
+    },
+    "single_final": {
+      "new_request_rows": 319,
+      "successful_new_request_rows": 300,
+      "known_new_request_prompt_tokens": 1034242,
+      "known_new_request_completion_tokens": 1710,
+      "recorded_logical_call_events": 2101,
+      "recorded_reused_call_events": 1782,
+      "request_statuses": {
+        "success": 300,
+        "unknown": 19
+      }
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "new_request_rows": 364,
+      "successful_new_request_rows": 348,
+      "known_new_request_prompt_tokens": 806858,
+      "known_new_request_completion_tokens": 5580,
+      "recorded_logical_call_events": 1965,
+      "recorded_reused_call_events": 1601
+    },
+    "2wiki": {
+      "new_request_rows": 427,
+      "successful_new_request_rows": 422,
+      "known_new_request_prompt_tokens": 1216993,
+      "known_new_request_completion_tokens": 6772,
+      "recorded_logical_call_events": 1871,
+      "recorded_reused_call_events": 1444
+    },
+    "musique": {
+      "new_request_rows": 618,
+      "successful_new_request_rows": 577,
+      "known_new_request_prompt_tokens": 1638705,
+      "known_new_request_completion_tokens": 9936,
+      "recorded_logical_call_events": 2398,
+      "recorded_reused_call_events": 1780
+    }
+  },
+  "scope": "All task method stores, including currently running cases and both immutable retry rounds; these are experiment-wide totals rather than a pilot-only payment allocation."
+}
+
+实际材料曝光及回执链路核查：
+{"case_records_checked": 900, "full_successful_trajectories_verified": 900, "actual_reader_blocks_verified": 41806, "saved_logical_call_payloads_checked": 5022, "records_with_errors": 0}
+成功记录按真实前置答案、真实检索包及全payload回执完整重执行；未完成记录只核查已保存节点，不假称完整通过。
+有错误的记录数：0
+本报告未新增API调用或索引检索。

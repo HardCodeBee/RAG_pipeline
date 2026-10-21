@@ -1,0 +1,95 @@
+{
+  "reviewed_indices": [
+    47,
+    90
+  ],
+  "exceptions": {
+    "54": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C",
+        "U"
+      ],
+      "reason": "Breaks the name Six Organs of Admittance into generic organs associated with Om and Six; worsening an already-failed generic-identity baseline."
+    },
+    "55": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Still never identifies the person occupying the place during the war."
+    },
+    "58": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Inserts stand into the company gave the most description and drops the abbreviated-name identity."
+    },
+    "59": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Drops the forum identity, leaving only the poet identity before asking what is unique about the forum."
+    },
+    "60": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Empty array omits both film-set operands needed for the director/star intersection."
+    },
+    "67": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Reverses character waiting for Ross to Ross waiting for character; actor identity also remains embedded."
+    },
+    "68": {
+      "verdict": "fail",
+      "dimensions": [
+        "S"
+      ],
+      "reason": "What president was under whom did... is a broken standalone question with unintegrated original wh clause."
+    },
+    "69": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "S",
+        "C",
+        "U"
+      ],
+      "reason": "Adds unrestricted Who died and asks a place to be the spouse, confusing entity types and failing the required spouse identity."
+    },
+    "70": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Changes the detector into its operator as the one detecting storms and drops the agency link from astronauts; the instrument identity is missing."
+    },
+    "76": {
+      "verdict": "fail",
+      "dimensions": [
+        "C"
+      ],
+      "reason": "Removes identity of the adjacent administrative territorial entity before the final containing-location request."
+    },
+    "89": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Still reverses who holds the self-determination belief and forces the unspecified delegation destination into a country; prerequisite person/destination binding is wrong."
+    }
+  },
+  "reviewer": "All changed47..90 outputs inspected; identical arrays inherit locked judgments. Greater severity on previously-failed cases54/67/69/70/89 is recorded."
+}

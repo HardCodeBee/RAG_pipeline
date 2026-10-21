@@ -1,0 +1,1993 @@
+{
+  "utc": "2026-10-20T13:36:59.271905+00:00",
+  "status": "local_recorded_provenance_verified",
+  "selected_decomposer": "Qwen/Qwen3-4B-Instruct-2507 plus r02_expanded LoRA, v12; not the original unadapted4B",
+  "remote_base_model_directory": "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/models/qwen3_4b_instruct_2507",
+  "remote_checkpoint_directory": "/home/projects/u7830488/multigrain_4b_coverage_retrain_v3_20261018/results/v001/training40/r02_expanded/checkpoint-final",
+  "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+  "checkpoint_manifest_hash_definition": "SHA256 of canonical compact sorted-key JSON of manifest.files, not SHA256 of the manifest.json file bytes",
+  "local_manifest_json_file_sha256": "37348cc6a950eb6c548c958aa0fae35a164769b74928763bd9ddc3f56126e185",
+  "recorded_adapter_weight_sha256": "d05d7365e06f246fbfc1c14218c212fa3b03c1819bc4933fcc8d6c4a055b06d3",
+  "adapter": {
+    "peft_type": "LORA",
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "gate_proj",
+      "q_proj",
+      "o_proj",
+      "k_proj",
+      "up_proj",
+      "down_proj",
+      "v_proj"
+    ]
+  },
+  "generation_identity": {
+    "api_calls": 0,
+    "checkpoint_manifest_sha256": "728fb4761116debf44ca4c7078a09283939beeb590b35e4a8647e6131a9fce92",
+    "do_sample": false,
+    "max_new_tokens": 1024,
+    "num_beams": 1,
+    "prompt_sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "query_sha256": "9739c44926d5ec6442ceefe401984fc83d332c1486426071874a1d2fb6c74d72",
+    "seed": 1729
+  },
+  "output_contract": {
+    "format": "JSON array of independently readable supporting question strings",
+    "explicit_prior_answer_references": false,
+    "program_appends_original_query_as_goal": true,
+    "raw_arrays_rewritten": false,
+    "empty_array_allowed": true
+  },
+  "prompt": {
+    "path": "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/v12.txt",
+    "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\v12.txt",
+    "sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8"
+  },
+  "raw_identity": {
+    "path": "outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/RAW_IDENTITY.json",
+    "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\RAW_IDENTITY.json",
+    "sha256": "c64b2709f9d84266b99cdfd01864e13119b393603b4747c9166783ac57a14b38"
+  },
+  "provenance300": {
+    "path": "experiments/query_decomposition/complete_pipeline_comparison_v1_20261020/r02_provenance300.frozen.jsonl",
+    "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\r02_provenance300.frozen.jsonl",
+    "sha256": "94b945bcdbe23bd3a31c7db27d4a33ec4a21083f6e225fcc3930b259783980ad"
+  },
+  "current_runtime300": {
+    "path": "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/runtime300.frozen.jsonl",
+    "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\runtime300.frozen.jsonl",
+    "sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f"
+  },
+  "raw_records_directory": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw",
+  "raw_record_bindings": [
+    {
+      "id": "musique:2hop__122651_141338",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\001.json",
+      "sha256": "d5c91b56c6292dab45f7747de064f26af98a35c46ec6c31e1cb8d7d85b88f4aa",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__389069_132457_51423",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\002.json",
+      "sha256": "fe01ba51879cb5e855aef8b34d62acfa0d355873b29667bafe3678ebf9f0d694",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__5544_34179_23375",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\003.json",
+      "sha256": "75571ecbf59e81ff8bb6ea22c9719eaf7b61d55f90c358986b1a4d3fd2249a17",
+      "passed": true
+    },
+    {
+      "id": "2wiki:6d2f94300bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\004.json",
+      "sha256": "8d4fe082b76cf51d83a9e0f5d8bba28b8d4cabd0063cdc61848602fd353f85de",
+      "passed": true
+    },
+    {
+      "id": "2wiki:0f1094ce086f11ebbd62ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\005.json",
+      "sha256": "946db65f1027127b137d476350dd336c63cdc6a40826a1ccbdb9df9fe4b0751a",
+      "passed": true
+    },
+    {
+      "id": "2wiki:3c9020cd097811ebbdb0ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\006.json",
+      "sha256": "12ec83b8f4472f9d2274708839ca1efbe3b2d8812943c6db5c17790ca292f3dd",
+      "passed": true
+    },
+    {
+      "id": "2wiki:74f39a760bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\007.json",
+      "sha256": "61be4589841a730f5112083f06a3ef4790309a53edcf82ba88d13638e4033007",
+      "passed": true
+    },
+    {
+      "id": "2wiki:24a007b40bdc11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\008.json",
+      "sha256": "9d01819fd81e9a946b650d1e94c1f4e71fe7e9eef54b2b57761bbe7c80ba82e7",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7d1c525542995ed0d165f2",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\009.json",
+      "sha256": "60f921c9b52ab5100c43fdb2a1bd9a55cb77b04ceb95de65f09959751ba7ccc3",
+      "passed": true
+    },
+    {
+      "id": "2wiki:00f34c7e088311ebbd6dac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\010.json",
+      "sha256": "43aad8d85976ac2cc761ab9a5c553b52644a5ea77e2f61a2dc8e13f541fa8589",
+      "passed": true
+    },
+    {
+      "id": "2wiki:ef8a103a0bd911eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\011.json",
+      "sha256": "345f73c2225206cf261c086743ee1b327a32fda8c183125cc5927836060b67c3",
+      "passed": true
+    },
+    {
+      "id": "2wiki:f3c57d120baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\012.json",
+      "sha256": "26db085781eff222663afc688b58255e075068092ad1ba417be0c3422b0b2a6d",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__483807_508773_85832_745702",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\013.json",
+      "sha256": "cfc9b63d83651d1f78c47fffa4ef7bc64413585bfb109b3225c53a6241334c14",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__124807_135019",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\014.json",
+      "sha256": "4a5678d5b1ce995d1dc76eb97b914540ef3df47fd6b5565cf7f3cc95af611a02",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adcfbf45542990d50227d86",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\015.json",
+      "sha256": "5d37c34355552249311b28275e30ac95577d08a8ff184a01e369895eadf5de81",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a754fc35542996c70cfaedc",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\016.json",
+      "sha256": "1f1fcbab5a3dd98948fdc7ce893f780d257f1c921a67e2114d871e9cf7d404a9",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__161324_14670_8987_8529",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\017.json",
+      "sha256": "714800f0004114a0fc06aac42533bf2b979d53cc259b50a43abf784d9ca8b918",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__373866_5189_38229_86687",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\018.json",
+      "sha256": "c5e80ab3fc3b289ac01edde254501920b5fae1019074c3af349b5337662b9793",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__326964_734214_7713",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\019.json",
+      "sha256": "517b702f02de5b81e0fafb7fb9aea9a8024bc1f034e4edcf7890d9bbbdb5ec24",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__351045_47134",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\020.json",
+      "sha256": "401f7a68bfffe67fd9df2e1084f77199139f975a52c3a8af21214a0bd01698fe",
+      "passed": true
+    },
+    {
+      "id": "2wiki:ae2d8fc308be11ebbd8aac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\021.json",
+      "sha256": "0b192b2b629965300d8bdd10a6190d852c819ec2f27f3318eb755ae66fb5075b",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__524186_219173_548463_72134",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\022.json",
+      "sha256": "fada77d4cedcd22ba8c348248fff67d19dd13269089c35db5d270973c2c09543",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__228_237521_291682",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\023.json",
+      "sha256": "f34dea929fcbd05b61b37cdef4e8739b703e7f793eab1f1ee83f2dfc7a561dad",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__562154_69048",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\024.json",
+      "sha256": "3e5bbdfbad3aac299e6f367636c87bbb48eac21fe33057eadd877efccdb637b9",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__161602_426860_88460_21074",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\025.json",
+      "sha256": "370e95769fa74f4e106ebe1754bb9855d0483e517a4bce897760f0b2be39b4b4",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a87868c5542996e4f308828",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\026.json",
+      "sha256": "74ac49015730f8ce331647a35f6c44d02c2148ef2bfbb0c117aaa04149979788",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a77cb5e55429967ab1052a7",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\027.json",
+      "sha256": "02240964692dddd5f5d4adcbf0578b087af5f5e467d5a71e75065080f92328a2",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__373573_132409_223216_35031",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\028.json",
+      "sha256": "ade402337e491abe4eb4bd11eba5651fa380b6409bd4c8cd8a33024f240afc81",
+      "passed": true
+    },
+    {
+      "id": "2wiki:441127d6088711ebbd6dac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\029.json",
+      "sha256": "250de780a6bdfa4398155fff6f650c3a5b3bed49b9b8991b65bb576f073e21c6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab484415542990594ba9c44",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\030.json",
+      "sha256": "b4922a0b0efc6bde7dd537c7b026e180a189ccf02faa370fedd7be0eba5ef928",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7571835542992db9473669",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\031.json",
+      "sha256": "b9178bd004b901c9ce6e32e1b3c11e30e0f7a2e34f54a236ba02e46e8dc43f46",
+      "passed": true
+    },
+    {
+      "id": "2wiki:16a91a500bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\032.json",
+      "sha256": "bed55d0e835d8c83d3c6ad9ec015cd7b0b4a10c15943d3484e8c2c719ff6924d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:318b7d480bda11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\033.json",
+      "sha256": "af3c9c2a94e755bd1e22239a52871bfe660c20b52e726a29a82d5c8e9fb55cde",
+      "passed": true
+    },
+    {
+      "id": "2wiki:9dc413af090311ebbdadac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\034.json",
+      "sha256": "a0d5ac0b9078420166a349433c8afde9e39714f921dccca4f14a8c6ef2667d47",
+      "passed": true
+    },
+    {
+      "id": "2wiki:27018f000baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\035.json",
+      "sha256": "a4cfc81fa5dc1f5cdea9a3411ab6091787e217b94bac1450372351575f109068",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ac3dfb15542995c82c4ac71",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\036.json",
+      "sha256": "325137cdd8a290ccace3f9f6346683fe5ae68107d3cc552583de07490c7c91c9",
+      "passed": true
+    },
+    {
+      "id": "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\037.json",
+      "sha256": "8509a51e945a50b0f8dc6cef4cef9611340b7b6f2cbb116ebc7f33eb5f17ded5",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__71753_729371_70784_61381",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\038.json",
+      "sha256": "e5b292ebbe2ee10e43f0d681ab50bc1213b53d61ea15ba944b011fb06b64178c",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__742831_156034",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\039.json",
+      "sha256": "c50097d8d3ac30caf9960e479a9773884dbe1674aaca548ecf3db1bbe1b96d17",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__126188_396277",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\040.json",
+      "sha256": "51c7b7aadcb66295eb9216b7bd37af8a8525f6218be89e5f23effa3a5d552881",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7dbf4e5542990b8f503a68",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\041.json",
+      "sha256": "675c535058037744c174bfb64f7aa57010f983ea7b6ed265e5c28ac3c45786ce",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__860115_798482_131926_13165",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\042.json",
+      "sha256": "d276fbda8f2835a41a35d3924a54981e5b9aaa94a45523e346653c25e467a54b",
+      "passed": true
+    },
+    {
+      "id": "2wiki:83f013aa0bda11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\043.json",
+      "sha256": "a8379f458639cad11cfd164aa0712592a34c95a3bb4bd337bfbef8b1e49baf43",
+      "passed": true
+    },
+    {
+      "id": "2wiki:dc8d75280baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\044.json",
+      "sha256": "c8b78c61fe2ad7ffda35a58825685a47310ae4df44a3ccfac0e59f7d43f339f4",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab55455554299488d4d993b",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\045.json",
+      "sha256": "e7ef357aa4e231f5472efe394ebfaa147a648a5d57f257f5ed67daee75953cdc",
+      "passed": true
+    },
+    {
+      "id": "2wiki:6c0c4c1a0bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\046.json",
+      "sha256": "38d26d2e1b7e3fca36ec918ebd8d9b22ebfe0bc083cf2290e89d0ac1df06f3a9",
+      "passed": true
+    },
+    {
+      "id": "2wiki:5f39895808c711ebbd91ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\047.json",
+      "sha256": "4ac5f939c68dfd2dfc534e7ef2408f3a3cd2afd7d7dad2566b62acb2723168c5",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abd14c455429924427fceec",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\048.json",
+      "sha256": "55fc7dfc55ce06f91294c7f96710ea032bcf4be0ce93c3a807e83986915f1fdc",
+      "passed": true
+    },
+    {
+      "id": "2wiki:4140c991086b11ebbd5fac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\049.json",
+      "sha256": "b77e1c4a85522efc08a088c6c7b500238fe0465e1c98adaea302fca71347545a",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__46065_417697",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\050.json",
+      "sha256": "529d347c74f077f54c90d61d2c6c4936fb4a03f913f2c496154cb3ee0117fd4a",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__43565_624859_355213_203322",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\051.json",
+      "sha256": "dc115f3c9a61a3247782d30753feeb5a0fd5b7abdea0f37798b74acd8e2d992a",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7fd95d5542992e7d278dc5",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\052.json",
+      "sha256": "8e276da4387c68d2142a0b1bfe44b4132e4d126466bc1288765c9f217070aec7",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a73235c5542994cef4bc475",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\053.json",
+      "sha256": "24b01e5c371ef7b35ed6c2230610e7636a8b14cb0dc3f49155811209d3e8ab6d",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__671542_651917_47686",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\054.json",
+      "sha256": "8422d0225d62e80831dbc7fea376b4c69ac39236df2293c30b559886ac686048",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__438364_443779_52195",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\055.json",
+      "sha256": "c605a598969d11a1ba2da96a9bd54cf4a962fa12323b6a5695cdb51d27385958",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adc6a3b55429947ff173953",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\056.json",
+      "sha256": "1ff0d48d1cec08ef425c52e1fac73b0cda494d10a71f2e9f168442e08aa4a3dd",
+      "passed": true
+    },
+    {
+      "id": "2wiki:dea18cf408c211ebbd8cac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\057.json",
+      "sha256": "0d9c3323cdbcc59d8a41f2fc9b8457c69a5263c0cded1edc1794f8ce1006f229",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5addcfd65542997dc790703e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\058.json",
+      "sha256": "d4a04e1c9609deea14d2db6f705b279e86424c2185f0a84c128e59169570eca6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8dde01554299653c1aa159",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\059.json",
+      "sha256": "52be0372dd19455f64c4a4e9c34d181e40468852bc0e4e9e5742ce4a8b15a6ad",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__702699_792411_51423",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\060.json",
+      "sha256": "c2ec9a961d69b93d6b823ad5d19bcb472900e8aa0b2ed99e33ae114a34966506",
+      "passed": true
+    },
+    {
+      "id": "2wiki:15b9210e0baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\061.json",
+      "sha256": "d16f64595a2d63edf1d5375e58675dbaa78d9997e7724ccd49fb076ed2390d9f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7f9cb55542995d8a8ddec1",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\062.json",
+      "sha256": "34e2d57ef2f2423fc0a5fb3f3f3bcb10bb505414ed00c05a470ae930a86c9cae",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__841091_339990_54675",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\063.json",
+      "sha256": "ffe4885232d9454aba41c9247be2da3aa234476f9df932be91a5124e2e5ae25a",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__107309_457883_650651_7262",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\064.json",
+      "sha256": "2054e5c874e768573ec4484ecc2ee78d0d4cee28fdf8d53fc63ab7d4accdfd99",
+      "passed": true
+    },
+    {
+      "id": "2wiki:e3d274ec0bae11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\065.json",
+      "sha256": "cae3b54533b94c22422343c6882d32fa5933b6a9d449b4655ca11ab15d9ddcb1",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__571599_49925_13759_736921",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\066.json",
+      "sha256": "ac04e09b7e287531fe015e7cf278ac8a719a74af44fdf78a71f04c3b7d5738cb",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__604797_443779_52195",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\067.json",
+      "sha256": "b79440111a00fd416bd4b3ff2ad5300a17d00a3ed33717f633989fb12b04bc90",
+      "passed": true
+    },
+    {
+      "id": "2wiki:bd058dbd08fd11ebbdadac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\068.json",
+      "sha256": "1353d929799428181786768650450d990ed8a8a2fa8ba515b1ba5e7b2c6ec1d6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adf95745542995534e8c7f8",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\069.json",
+      "sha256": "79f6524aa7f6a456e8951f74a4b6bc9bccf80d9a4e7459e41a3334095fb930a4",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__41158_35124",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\070.json",
+      "sha256": "7bc5c43739c79390e44740fa9f4a541e889d9fdf5720bf49e07ec296e008c2ef",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__222979_132536_40768",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\071.json",
+      "sha256": "bfb7c52a93c801bd80431378be54e4e0668efe2a367adcf545efb1e88de3313c",
+      "passed": true
+    },
+    {
+      "id": "2wiki:6856ba560bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\072.json",
+      "sha256": "3a77aba642de5854abcc06130a5a365f3441ae0eec24fe74bc15870303672d6d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:42954d320bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\073.json",
+      "sha256": "aee626ad777a22fe15155e39344e52da9ec2715cf3f558c33e63e8b15c778f1d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:f37818400bd911eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\074.json",
+      "sha256": "3429d56c9cb7238570caf918a6f219357a53e2588e9d749e42cd80d1d75d3358",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__129456_29339_508306_70744",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\075.json",
+      "sha256": "9a7843471861190e660ef1917a996080cfd59284c3349a9c2dd0a7b09d3f1c07",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adbe27c55429947ff173854",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\076.json",
+      "sha256": "bd291863d837095b8ba9703f13089e0cf93c9d991092826974f55351f0e3d2b6",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__39871_314549_131976_56103",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\077.json",
+      "sha256": "21a846e35fc8a4cba9bc42c2fbdd63bd4e239448d7a7ef215cc4a08afc9a5dfd",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__789565_416401",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\078.json",
+      "sha256": "14fcbb18a162e2fa6560e1defb2ed71a488cadbd20bc19e7bbf147833eee9878",
+      "passed": true
+    },
+    {
+      "id": "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\079.json",
+      "sha256": "94e75531e9aaf1be8b36316f02123aa46bd3bc15c866fceb3d90749a5df189b2",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__320457_508773_85832_745702",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\080.json",
+      "sha256": "d2c60a89c36a6ffe9812d59d458181429aff8fa5635d95e3fd0cc7b07af551a4",
+      "passed": true
+    },
+    {
+      "id": "2wiki:aaadd9f80baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\081.json",
+      "sha256": "71d999a1c201b0f45adcccd7fe77b96932791ddda6e57f2ec6a606761dde905d",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab7f0b9554299366779405d",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\082.json",
+      "sha256": "45becf4c2bde16023e7bcc897b1aac4785605a2caa5293b35bf579af0e53ddeb",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adc020a5542994650320c4c",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\083.json",
+      "sha256": "7b0005b8ac543f6c53083e048bd24c95a0a699ca581a9d1dfceb15124499e147",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__582045_161450",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\084.json",
+      "sha256": "270da07208291ae1c08aaed89059a11a7013182e2a868902cbe04ec8eecb9f85",
+      "passed": true
+    },
+    {
+      "id": "2wiki:74b134420bd911eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\085.json",
+      "sha256": "e3dd0b515b79135add8565fdef91baded72b45b810eb969d7a0ace41440db9b6",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__60649_90098_10557",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\086.json",
+      "sha256": "00acac455e7bec34e96c768a4f326a783875b08bba1f41e07139f7b88aed2ab6",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__71753_73205_70784_79935",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\087.json",
+      "sha256": "c02245aba19edfc6147f41d98fa1a5f644e3f6e81728b58869f6edbc91e6dada",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abd455c55429924427fcf5a",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\088.json",
+      "sha256": "170e1c37888e2afea972b0e4f84e59283b7b5d39321bf2cdcc409160808e956f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a87bd4e5542994846c1cde0",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\089.json",
+      "sha256": "f9a779f63c4e0e74c952644369d7b62f784f8296f1df4ba54772d93bbacd3138",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae731c4554299572ea54781",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\090.json",
+      "sha256": "57da1538c5bb7a5359824fc9f687c11b35e995fcc932da3be9f84000005800e8",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__156702_51769",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\091.json",
+      "sha256": "7fb99b68a840de166b859c71d727d68e6e3e7d316b6b8e925f7a96c7b5221a29",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5aba9e545542994dbf019986",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\092.json",
+      "sha256": "5fa74e644fa5637ae899f481cf4f8badd83242aaccf8e06420eeb4293ea555f2",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__855821_223623_162182",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\093.json",
+      "sha256": "76d52cfca2d0fe61ec9f3bcf6e38e451eac56bf0875b77fee977b83307b8c727",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae0a48155429945ae9593df",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\094.json",
+      "sha256": "bc5edc648925b58712524bb7535aa2b29a0f9b24f1608839c6e6bd20c88f4914",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab6b6fd5542995eadef006b",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\095.json",
+      "sha256": "197fe65082aef85a0ed99de5dca66f142053588f97f56d46fed4e2ee05c116b3",
+      "passed": true
+    },
+    {
+      "id": "2wiki:079947de0baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\096.json",
+      "sha256": "9e27d0059be603b3f54340109e90283e0f78aab60b6f9d8f143722173b44247c",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__412633_15781",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\097.json",
+      "sha256": "0220393c4379e27c14cbd8c99b785edec7cd4822ad0e5b91d1db82444c14c67f",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__56806_7298",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\098.json",
+      "sha256": "a780ba9b211113e8f9e995b016444b620f0eede5e9500656e64dba4ba3126dac",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__404541_629431_64412",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\099.json",
+      "sha256": "3b74515166e48f5edc2de4cd298ebf3e63069fb712006124291802af16666376",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8c7595554299585d9e36b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\100.json",
+      "sha256": "53319a3d0954798712260dcd766ce1e4495581f80b67ec2652efa2fde9cf7614",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a812cd555429926c1cdacfc",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\101.json",
+      "sha256": "d101d20f45c64686af354741ac86e687c441406df4648887ddabf385b459747d",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a82360055429903bc27ba46",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\102.json",
+      "sha256": "e648b7958075692c295ddace77ae636fbe00c7e461aa254c6aa3d3707bdea8d1",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__368986_89048_66294",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\103.json",
+      "sha256": "5d6d5a5ebf85e320729df3322ccf12b86e0c2e20a5386c63a1a308ba1648f4a7",
+      "passed": true
+    },
+    {
+      "id": "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\104.json",
+      "sha256": "c866e6ae6cdc88fae9e24e8e1aa3150921b101f1daa3ba2675b19f5293cb1ca8",
+      "passed": true
+    },
+    {
+      "id": "2wiki:b8e0d8400baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\105.json",
+      "sha256": "2fb6d08993256698e0342dd4aa4be232398d2294950dd856617d1ab2ec8d888e",
+      "passed": true
+    },
+    {
+      "id": "2wiki:61b28c2609a411ebbdb0ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\106.json",
+      "sha256": "7808268eab8d385a20a79c6cbd971c146063914d1c5e4be4ba1803d802cd98c3",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__85993_512508",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\107.json",
+      "sha256": "f9f01a8b7cb08363b756855b34240dc792177191d0e200b479cf84f0686a6427",
+      "passed": true
+    },
+    {
+      "id": "2wiki:923b15ba0bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\108.json",
+      "sha256": "6b19e466c042a91da873eee746fc7f42c254c3ec26042cb6175ae845e8370b77",
+      "passed": true
+    },
+    {
+      "id": "2wiki:1e9c0bbb08a311ebbd7bac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\109.json",
+      "sha256": "72ea00d3d427d5793d2e1356147634ed96fe8ff668d6f331e1501c1958064690",
+      "passed": true
+    },
+    {
+      "id": "2wiki:0b0f34d6084a11ebbd55ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\110.json",
+      "sha256": "c3453f5a406b5c7caeec30b9bf0c58b996f7140fb33502b8b77df4308dab631a",
+      "passed": true
+    },
+    {
+      "id": "2wiki:07b1cc3c0baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\111.json",
+      "sha256": "8345284b5e340a57621958cc92f37c98a7e01e3cf965c910e9cc64777b41e757",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a84ad3a5542992a431d1a8b",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\112.json",
+      "sha256": "baeb396976a3adb77bfe4b58b4d61c284969a836befbe9aaf0d2358cd3f4ad31",
+      "passed": true
+    },
+    {
+      "id": "2wiki:0d118fb00bdb11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\113.json",
+      "sha256": "2c5aff5bffec22955e2354077c1453ddbaecbc9bd44a2ca2ba28dbcdcf31bbf6",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__132957_595371_40768",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\114.json",
+      "sha256": "65c3ac9230026ba92ed135837d323059e36eb8ccf4b1291eb9f149dd48f1f30d",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae618535542995703ce8af7",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\115.json",
+      "sha256": "a4861f8aa1cd73f1a1c927044d96773daaad3a30e4da65b482154b3859a706b7",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae40a2955429970de88d8a3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\116.json",
+      "sha256": "e309e3be9a3ff2378dc33b29d6051188936dc6ed853632877588966869ef4519",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__857_846_7752",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\117.json",
+      "sha256": "d446e8bede99a8245c86de279b14a3b2b4f5955f68ea14d551ebf8f25ce3d952",
+      "passed": true
+    },
+    {
+      "id": "2wiki:010bdf4408df11ebbd9fac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\118.json",
+      "sha256": "3c9aad4833b6731e70ed617aaeef2fc4525dd649eb1f8a56d47505478567b178",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__289517_139339",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\119.json",
+      "sha256": "938698c52be3ea0d01ee3e428671c1a6bfb814a61ea9e877803675c3b0faf552",
+      "passed": true
+    },
+    {
+      "id": "2wiki:233a579c0bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\120.json",
+      "sha256": "22f52ffabe4115d7f9f83837911e234c8f42b48eaaf01ec5163d52422be918bd",
+      "passed": true
+    },
+    {
+      "id": "2wiki:ab74ab8709c111ebbdb0ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\121.json",
+      "sha256": "3686ec5ef8d01f84b7f8a1acabc0e994075ca0223f7bbc2ed282c03afea39dbd",
+      "passed": true
+    },
+    {
+      "id": "2wiki:c231feaa0bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\122.json",
+      "sha256": "06fe260254dbe3811fdfa6ef473b10f8092c42fe6d586e55cb2993826dde3a93",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adf88995542993344016cd4",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\123.json",
+      "sha256": "b3524d0a5c6f86c04f656dc0e91abba41c8cbb88a29a3ed841c53f3596684b6a",
+      "passed": true
+    },
+    {
+      "id": "2wiki:cd80e22a08d711ebbd9aac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\124.json",
+      "sha256": "bbfe76018bc60d7a54145845fc6a542092d5937e657979bd4065777f724ffa53",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__132909_33564",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\125.json",
+      "sha256": "3b1bd112f8f0526179b172bbec52f82fb3afbc81efb9ace74b1a3ead5b123ab4",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__847684_339990_54675",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\126.json",
+      "sha256": "85dca37794c07b2112f4f6a9953f7119f345845359fef28528a5ccf3b50b6b7e",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab2fccb5542991669774176",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\127.json",
+      "sha256": "9c6836b6440d29d8382b82a34fe038f7d07d5b13197dc7ccfd8dcf63cd9e62a5",
+      "passed": true
+    },
+    {
+      "id": "2wiki:77fd1ca20bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\128.json",
+      "sha256": "0e4881f8cb51f7921ed9dcded29147e5889e911e14d6ca735942c6d5b88ffede",
+      "passed": true
+    },
+    {
+      "id": "2wiki:480e8626089911ebbd77ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\129.json",
+      "sha256": "ff780fc557dd56739dc3a9dd0acc4e71dc36679bbf0a165d7f928c12b5e30192",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abe3f3455429976d4830aa8",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\130.json",
+      "sha256": "bcdde1f0e71c90b8ee2d8bdb4512360b30407387e25ded5bc8b3cf4fe6bc1caa",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__226638_538202_84283",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\131.json",
+      "sha256": "d3a36ea24267dbab8b086e0d3239e291755ebe42ad6a6154f984d5c6baa92f95",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a794f8155429970f5fffe95",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\132.json",
+      "sha256": "9df4e3e3baa9061735375008b7b2306c2f144c1d8bf6465fb7ce5524862f1a16",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a77c09555429967ab105262",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\133.json",
+      "sha256": "d98926ae7aa8f4d7ec8e9465015a5f00162f8872f637279d215c9d0e2ecd3895",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae39e9c5542990afbd1e195",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\134.json",
+      "sha256": "758ab5dc2859af3cae3cbc7669bae2251b0b8f424400f8c7e72a0c1f6699bb55",
+      "passed": true
+    },
+    {
+      "id": "2wiki:43208df60bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\135.json",
+      "sha256": "15a1e135c15bffe724b403ada0dbc2dfb0bbe045771503a432a9cb12eff99826",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__275416_24325_156850_10557",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\136.json",
+      "sha256": "1280c3bd4c314e4c8cbc5984ed179635915f313422af0c5b0d4c35f9296694ff",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae6828f5542996d980e7bb9",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\137.json",
+      "sha256": "74e34569fdcdb6967c50cf2b3cadb3d5f236cdde43cd94f7db88415082adcdd6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab8883455429916710eb084",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\138.json",
+      "sha256": "668f228d5f75c0c76873ce5f09200e5bf31408cd9411ad7229785da35294c20a",
+      "passed": true
+    },
+    {
+      "id": "2wiki:4228d7300bdb11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\139.json",
+      "sha256": "e1d24ebe46d72d20fab42b61f87cf5df6ea237322c4b198c12bcd410725a48eb",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__344155_378185_282674_759393",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\140.json",
+      "sha256": "594e2b1188f7615c1c54da73163f88aab8ed26570ce895953296afdc9d9e2641",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__102461_24918_24991",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\141.json",
+      "sha256": "c96df2940da75c5dc578aa677a94c53c0cb61c24e741fbbf26bd2890fd0cadfd",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__109422_720914_27537",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\142.json",
+      "sha256": "6a3a5ffce72c3cb3c114f08cced8c646bf070bfb3d89d3d7954582b2a16df089",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__129318_29339_508306_70744",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\143.json",
+      "sha256": "6724260c0ff04c7734fe4131f2b4e0bc5c97dcb9fbfc2f0ded627fcc41185741",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__135651_669373",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\144.json",
+      "sha256": "addcbb1220a65d6cbba278cc89925896432d091b85147157056269b4a3841c67",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__94201_642284_131926_13165",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\145.json",
+      "sha256": "cf0f69d9c6bb308d0fd2b9957ddc46dc3e57d07a92d5a082948256aa7b237fab",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__80834_21969",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\146.json",
+      "sha256": "c040e1075596ed30c774d4204fdc2a9105dac2309e09613928672275089117e8",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab4e48655429942dd415f9c",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\147.json",
+      "sha256": "376bf174cc79c52601ca9e750a59d6e30cf42c2b8f0d6296a05302481eafae9b",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__699454_831637_91775",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\148.json",
+      "sha256": "b9e1e3af46e66ca1f50a4445eccc229c51c272bfa06548de508b5d59fa895796",
+      "passed": true
+    },
+    {
+      "id": "2wiki:40b3f66a08cb11ebbd92ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\149.json",
+      "sha256": "3e959dbe7933221da19f20273c406c50d73a9df6450e37f530ef2721867e287e",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__104095_40501",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\150.json",
+      "sha256": "be07680756b9af78afa0dd4bb50d5907c773ff30b1f218b6b133facf44cbb46b",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab8633c55429919ba4e22d6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\151.json",
+      "sha256": "d103509a6c6ad1a2baea37f7f0cbe09bf213a898b00bc038daab2578187624ca",
+      "passed": true
+    },
+    {
+      "id": "2wiki:78bc5f540bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\152.json",
+      "sha256": "3ca12f0e5b2dc6823b8bdc5a954adb6b7de7aab8e153363da996a51fc43bac8c",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abb23035542992ccd8e7f22",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\153.json",
+      "sha256": "36e5e75e693d45d36c952b9871dc9ebc39259e6f6d43fb4e2a958820dec148d4",
+      "passed": true
+    },
+    {
+      "id": "2wiki:279379df092411ebbdaeac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\154.json",
+      "sha256": "e7f793326237c613215472c9d3727e9c43c7236210adf18ad06fd618c226159a",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__42747_83837",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\155.json",
+      "sha256": "e75b745e257b627cc1654f4708b5ec9f1b7ee71e992a51e1dfff81b401b41014",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae0f2bf5542997b2ef7d09e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\156.json",
+      "sha256": "6c395fe3d48fb9b401e1b22084b28b9b4ada7e62ebd0f1f40dd3a50cb63243c1",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adc8c545542994734353734",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\157.json",
+      "sha256": "17dbfbe39f8105b35c98ec003ba2cb00e0ff01f74ec72e1bc8297e9fd5af4033",
+      "passed": true
+    },
+    {
+      "id": "2wiki:f35cb30a0bae11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\158.json",
+      "sha256": "a8bf382e8ae04e6ca9d20b9b4bd1e7b56b75dc2e4ca9556d7c5395cd5baec598",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7daad55542995f4f4022b7",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\159.json",
+      "sha256": "a06ade091191a8c56b9ab2855341a40e9661bccef77e2524cdeca13cf5f7b77b",
+      "passed": true
+    },
+    {
+      "id": "2wiki:de6783560bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\160.json",
+      "sha256": "184e62ee82b6bfbf106e3565f2f9518605e4420c17f19237f3e76a8ae603d16d",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__307218_161450",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\161.json",
+      "sha256": "9e271577061d0d4db765ebf62867443443754b7918e52ff7eed6ecdf9c85159d",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__458916_651917_47686",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\162.json",
+      "sha256": "bf669fe554158192d8c0a446491ec3515ff5103ec6f7db5a894d62d6763d0cd3",
+      "passed": true
+    },
+    {
+      "id": "2wiki:e7cd2f5a0bdc11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\163.json",
+      "sha256": "13ea5bdfcc24ceb252c7325412c5fda8b20743b5a7960708e7e6473a35998592",
+      "passed": true
+    },
+    {
+      "id": "2wiki:595209340bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\164.json",
+      "sha256": "fbbfd7feceb4d5544229fc364bcfcd55b679d3b770b0fd2916920ebf2f596fb0",
+      "passed": true
+    },
+    {
+      "id": "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\165.json",
+      "sha256": "2097c29221e605130cb41bfa1d1be6747c3b16718112867f46e8ff87b22c6b41",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__609313_20273",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\166.json",
+      "sha256": "2663f013da31a4cc5a4f486f9f5cfc3cac99957ceb431ee59fff1a6bb1085810",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abde4ed5542991f66106097",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\167.json",
+      "sha256": "ab83ecbba5ca0245c50f1f504de6b67a0c23c02b007d5677b191c0779a399b04",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__798544_514761_594810",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\168.json",
+      "sha256": "c5f52b2d8b73296d91429ee85f8bca6d5cb78fa69e7e5098f909665c5cc1b31e",
+      "passed": true
+    },
+    {
+      "id": "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\169.json",
+      "sha256": "efd0e9dbbf030c65af5200627f227415386dbb65e5ff7840c40cbae2904e7ce9",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a70f9335542994082a3e46a",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\170.json",
+      "sha256": "6ca05424975cf0bc3d452b5d0c1db9a75044247d45727584f8c57ae08da4c638",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7ccb3655429909bec7680b",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\171.json",
+      "sha256": "71c584ddd4e28a9241d1b3cd15ef164cb27d6a43c104c232a29530fe63cf0405",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abec66b5542997ec76fd360",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\172.json",
+      "sha256": "335541f1d6b5b0b4c94f9537913004d2c9f8530b58efe478680b111f7ef6306d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:6f115d280bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\173.json",
+      "sha256": "3deb6db7bd09cc461dfe2322e649f7ab6bb740e86570b20825c50d1b17396dc7",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5addbf645542997dc7907014",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\174.json",
+      "sha256": "22bb63c298e1a6804e7b2bc957da1f568b400d006d6297542beef7ef5e775c58",
+      "passed": true
+    },
+    {
+      "id": "2wiki:93acf0b9088511ebbd6dac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\175.json",
+      "sha256": "64d07064af09c47f25d8e9a4d952237d56426112aa74a14882f962e64b94f053",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__753715_51329",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\176.json",
+      "sha256": "5f09154ec31b489dcc4090ae986b2ffca205f83f23061d49ee9a305aea243073",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__13592_49388",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\177.json",
+      "sha256": "5b31eca92861e904ce51bd7e3e537ef1393ef7d777eab4a01e2aeefd82b9f970",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae2dd2055429928c423950d",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\178.json",
+      "sha256": "5f0605c2b1b8daeacbdfd2513418b23ebe479153fa236a900459d00529e03bac",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae4c01e55429913cc2044f3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\179.json",
+      "sha256": "195dda9681209da67c4c99c2068d82cc5bc78fb94fb9ee31f0a6fcd62ad91f97",
+      "passed": true
+    },
+    {
+      "id": "2wiki:8bc6a73a0bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\180.json",
+      "sha256": "abd4a7514d61608d755bdfb1ac1b83c40a85248b314451687d73cacb764b016c",
+      "passed": true
+    },
+    {
+      "id": "2wiki:2d2fdefe085311ebbd59ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\181.json",
+      "sha256": "b4ed4da6717154984247a317dc30c031cd9fe8bdd8b38d1b77106c14b0724876",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae400ab5542995dadf242be",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\182.json",
+      "sha256": "ea2c2e965aaa61c0a99d296da6bb6a52ccef1fe8add94a5216d77fea311d591e",
+      "passed": true
+    },
+    {
+      "id": "2wiki:9d6c6c5c087e11ebbd6bac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\183.json",
+      "sha256": "2a55e94b50c9f8c3a0b6f396de7f4df873d44c1c1b27baac59a9ea7abbe7c510",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab5cedf554299488d4d9a34",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\184.json",
+      "sha256": "e6f2ab0da44cc69f58e0d3c3bf3258f475c98d67ce481ea0ae2f34e5c37601d0",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a829fab55429954d2e2eb83",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\185.json",
+      "sha256": "69da743ca3a5ee09cf1508d64bb706408b04a8e7170bf5200d4c47166ed46b15",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__857_846_7770",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\186.json",
+      "sha256": "7f77f6430d5f12024a057742c3e8996a3b07f6dc1381338b8d8be6553fd83af0",
+      "passed": true
+    },
+    {
+      "id": "2wiki:fcd3ff500baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\187.json",
+      "sha256": "e4f04b00d29acc8e1bcbc3d41707c97fef168caea55dac7e5152a21076a00906",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__71753_158985_70784_61381",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\188.json",
+      "sha256": "e3ffa797c2c094f029eb79141dd4a872d6925ca820d245a140b5552f534ac920",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__710473_354093_254885_76356",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\189.json",
+      "sha256": "f99bd84e9efd978a97af1452cfcd3f4feee9c7c3afd774aba79dba2e501960a3",
+      "passed": true
+    },
+    {
+      "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\190.json",
+      "sha256": "c6e1110e1279e6694152b48b6a7858ca28b0579fd73ce810040ea978181386b5",
+      "passed": true
+    },
+    {
+      "id": "2wiki:8115d246087b11ebbd68ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\191.json",
+      "sha256": "0b656b2d8b044299e376c3f840c96d2437a7aad77046f405ae9632016fe835f0",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adc8b5a5542994d58a2f648",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\192.json",
+      "sha256": "b471614f2d5861af0aea62568ac8bd6af626655835593bee1d161668bd063ca9",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__690653_378185_282674_759393",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\193.json",
+      "sha256": "28f438f3d5356e66f9aee859e271e1f17e9e9c3a7f441d453eacade570ff2086",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab50e0a5542990594ba9cf0",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\194.json",
+      "sha256": "5756f0f320310a9d890dd44836a2dc9e2f6ef98c81b72244a922190cf3d057db",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__25396_212301",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\195.json",
+      "sha256": "c47afb65ba58ed396076ee7ce08968e30e30a657df672a837a1777a75c1639ac",
+      "passed": true
+    },
+    {
+      "id": "2wiki:4759b57e0bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\196.json",
+      "sha256": "abe082f5646a58b85e3004af9ea3383069af619aef41dba4ec70b3a17cc797d9",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abee4ff5542993fe9a41d7d",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\197.json",
+      "sha256": "738a40469a72eb6b10c25e32af9bcde5210d8aa6e63922ec72524268cc78cf8f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7e14505542995ed0d16685",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\198.json",
+      "sha256": "3822ba750f824d38c02225cabcc4756d66819964dfd683e646c7c0aa6ea7ea7d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:c96e87340baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\199.json",
+      "sha256": "9e7c6c9f8fd453ae7fe2b57cbbd5c91e33ff620424f5301cf9225bb89011663b",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a90bb4e55429916514e7536",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\200.json",
+      "sha256": "ef8f652eb5f623d28733d34b488e4b04f7ab9936bbda01a8c67fe2b9225a0267",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__88707_91850_685675",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\201.json",
+      "sha256": "bb218d34c2918b281e402a0307f070dc0ed1d22424ea987782d17e4583576df7",
+      "passed": true
+    },
+    {
+      "id": "2wiki:d94d1d720bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\202.json",
+      "sha256": "ed5dd4c2ff7a1ecb9e33ab871583fa73a363cb770afb3cdaf62eb3e93350740d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:604119f2088011ebbd6cac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\203.json",
+      "sha256": "233335fb030da04fd10680f38a62ba6968bc0e5fea5a098280457ce2c0b6ec10",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__423874_128023",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\204.json",
+      "sha256": "45f3d728b652e10e4b68b474a418e6f5fc2aa4846721444fae855402d9fe9ade",
+      "passed": true
+    },
+    {
+      "id": "2wiki:664ed504085e11ebbd5cac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\205.json",
+      "sha256": "88de9d9449cbab94783f92341d7de89ba03ddb953bc87a205c6a934389e36038",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abce85755429959677d6b3e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\206.json",
+      "sha256": "81f9e9e09272b69015f1bea65f5860205f875d0163483fc1fd07b0a676dbeb36",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__161765_53706_795904_580996",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\207.json",
+      "sha256": "82cc86480406ef1ef1b6fc425c805151f1351f33e80d1cf0028af051ba986b46",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a82119155429926c1cdae28",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\208.json",
+      "sha256": "ac3cd0530e5d70fec4a76eec05c3750cc517e1daee233733dc84ccf60a74d082",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8ffd705542995651fb5096",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\209.json",
+      "sha256": "426878fe26460ed87104673c66e8dbe4343f59fc9c08613aa17405854bc30714",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__587540_514761_594810",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\210.json",
+      "sha256": "23563681237ae1150cef0ff09271d38a61babd4573bee8c649f3520043f52ef6",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop3__316459_41402_157761_13584",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\211.json",
+      "sha256": "08665122350c7a9aacd9dde7bc41011436d528f203d2ecc7c56b9817c0bc8073",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abd85375542993062266cba",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\212.json",
+      "sha256": "e4160dc95e32e3f1234f85dbf1ff6682a9afd1160145e585d6866624ca049541",
+      "passed": true
+    },
+    {
+      "id": "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\213.json",
+      "sha256": "76afc8baaccc5f8cca3adf99f7295ab9331ac9c81501f9d84d54c49de8e80c1a",
+      "passed": true
+    },
+    {
+      "id": "2wiki:751bb456084c11ebbd56ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\214.json",
+      "sha256": "0c879897bd61dcbfa118a584660f58609a48ef94fcce716b23d4a9861a3e850a",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a84d2ea5542992a431d1aa8",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\215.json",
+      "sha256": "8389094b178d80c6622c73eeb62c72351675e82248c6507a1b71b62c956fff72",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__80_59409",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\216.json",
+      "sha256": "d0eafdfa405b5884841be4b244d04de1b13b20d32012c7cd1ce9998bd274faca",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7339445e086811ebbd5eac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\217.json",
+      "sha256": "150649f8e757d2e4d50fed300f8649834398a79018b4a5ff9523b28c2c5772f6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae0006755429925eb1afbd3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\218.json",
+      "sha256": "ff1c8ce4e0fdb921fbe45bdcab6d26186fedb25d560e0f5076770001ac24563a",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__40316_497223_15840_36002",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\219.json",
+      "sha256": "234a219907b51549a71923af678e43ebc16b89f61db85e11efba437bfa5c4a5f",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__797545_14670_8987_8974",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\220.json",
+      "sha256": "2f2549492e2efe7cc4761b2011bbad1a32d58746a5c049f859037028847d68d1",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae604ec5542996de7b71af9",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\221.json",
+      "sha256": "30b1b1c3abca2227a50d7475c9155af8d1cefb9f31988623ab770ea41d09175e",
+      "passed": true
+    },
+    {
+      "id": "2wiki:654dbe680bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\222.json",
+      "sha256": "1e14ffc0d2fa6be71d5558f49e1f4dc87c44cfe7e75d280e3c10cc143960dcfd",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a83a2a15542993344746063",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\223.json",
+      "sha256": "0b4b67879a470f42d154d98e0c516de8ebccf99ce3d3d02f8024d31af2724a40",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__491195_265959",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\224.json",
+      "sha256": "d72d0c0f0632f3584bece4374dd0fc1f2dfb2c2589f84769f3d054d7708b528b",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__20256_71302",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\225.json",
+      "sha256": "8c2423901e48548446c2c1ee1ea1eb5d09281157e632316d1fe996564a8b6969",
+      "passed": true
+    },
+    {
+      "id": "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\226.json",
+      "sha256": "8f2ff5379cce7a45051b776c792316309b430f8c88669f63cf6fc3ef2137ca6d",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__324448_831637_91775",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\227.json",
+      "sha256": "12346b2014824a4ddff07c55a004a31b6b4aa0072b9684fd3df3444ea3566a0c",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\228.json",
+      "sha256": "0c369d92d7768ee1d9e2bbd9aee82be027fa13ebb2814c8c1692999c1d1fa3ba",
+      "passed": true
+    },
+    {
+      "id": "2wiki:68a60785087511ebbd67ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\229.json",
+      "sha256": "bd497c3e6c2a09bd34f86caa46086306247bf906ce9644ebe59509e9e69a8cea",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abf2e605542993fe9a41de4",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\230.json",
+      "sha256": "a183909ff47bc2af53f0c7c0104bf94f73af41a3b9cb5f4c9d706c159b98dbd1",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__22431_16335",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\231.json",
+      "sha256": "3780812e0be169133c767ada3690443d23f2fea35b63e73c540da673df3c2cb8",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__17508_17335",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\232.json",
+      "sha256": "603bef9db3f61fb4bfb5f3d5c061e367b72a9535a3ab0767b9606e642e29e920",
+      "passed": true
+    },
+    {
+      "id": "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\233.json",
+      "sha256": "4e7f5492161b6fa4e38b8a10a524963d3443038dd10ea02c1e24e13c95449435",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__88342_49853_128008_92225",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\234.json",
+      "sha256": "5d88cbfd9031d19c4941b60ff66fbd45045cbace817e15200b88083e5457bc19",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__857_846_7810",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\235.json",
+      "sha256": "710a4f118b99048590ffb206af206f6107e23661022ac90c4cb725a69a85aef6",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a71474b5542994082a3e74f",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\236.json",
+      "sha256": "0ce06ef36b3ccfbcf4303d0094cd2dd2b31f96fe85ccb5405cd97a7fa77e67ac",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7607b6554299109176e619",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\237.json",
+      "sha256": "f769d5b98d91debf911dd8169d3c620ae087bd1870a3a0b56d9b5dea45de4f1c",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__691197_15840_36002",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\238.json",
+      "sha256": "3c3a09860e14478702a1586cda53437b34a8352f41cd856d1dad0c78e7fb602b",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop2__326964_265410_7713",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\239.json",
+      "sha256": "ea6716c561c1519a4f9a8fb5185e6f4ef4471baa8739022e0d9fa02c948f681f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae528ed5542993aec5ec16e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\240.json",
+      "sha256": "78fccb91d8d796a9afc8329e04c4e74fb523ad8150d3e9dc71cd0e185f7dbf46",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab9cfb455429970cfb8ebae",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\241.json",
+      "sha256": "fe86cf1f41cf92dac0398ce5aadfee0587d8bbe858767a7e985672c744e67eaf",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab64cfa55429953192ad2b7",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\242.json",
+      "sha256": "dacc5f1b435ad0cde2e1dbca27734ad7980c3de42c96c17831604794f99527c7",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7e73e6560bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\243.json",
+      "sha256": "58da84f5b16c3d860d06f4f06c086d61f2649b95eeddc3175dfb84c2bf7821a9",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__443274_17130_70784_61381",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\244.json",
+      "sha256": "62270c0df1d47b53ef1f6d03d1e56e83653e7600fcd3e8677ff0e223a1278efa",
+      "passed": true
+    },
+    {
+      "id": "2wiki:ce612a020bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\245.json",
+      "sha256": "1833fc43e5c393dd68aa0748d1d8ea5c34deb0699ffd523ba37a569116f47af1",
+      "passed": true
+    },
+    {
+      "id": "2wiki:6e1db6b808c911ebbd92ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\246.json",
+      "sha256": "29f7d2158ddb55a80764c9509f394314340633283e0a0701a2b53d894f61fb91",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8d0c74554299585d9e37a1",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\247.json",
+      "sha256": "3ae7859a51b7f8456b00b475ba1fa953215a42863260438233e485a005ea5f6c",
+      "passed": true
+    },
+    {
+      "id": "2wiki:085ace840bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\248.json",
+      "sha256": "461aa66f7a8a549d0e5560a6a97d52063326c4e7a06530c9b1a01c5d87cc74f5",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7a59d15542996c55b2dd67",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\249.json",
+      "sha256": "6d50f1cec58f955649ca6dc6d3dc6ba0c855c2eb03152c1b8ce7eedceb9fbbb1",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab6be2f55429954757d335c",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\250.json",
+      "sha256": "ac59fa0ce872a4ce1bdd22063ef56563450bbc6c8a5b6ef7f016b0c74235c78a",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5abed9435542994516f45457",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\251.json",
+      "sha256": "4b6b48ccfdb83f6ab3165473ac7bbe1557186ef6c4575343134954f9b711b63c",
+      "passed": true
+    },
+    {
+      "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\252.json",
+      "sha256": "8cea4ab23a29dde30fec6bfdac5735e7fccc903f5f88aab20e7d675c39598608",
+      "passed": true
+    },
+    {
+      "id": "2wiki:3cddcc46086511ebbd5eac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\253.json",
+      "sha256": "63af0e043deabcfbc2e1d4c7b1a8ec8fbb5383ddb3ca1f2626d9187a30ce423e",
+      "passed": true
+    },
+    {
+      "id": "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\254.json",
+      "sha256": "e83c43d45993ded005ff218760e275cac148584fb24fe97ff6c58a010f331b3d",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__516535_834494_34109",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\255.json",
+      "sha256": "e3b9fffa921d3273b5fdbc1ffadd9b00feb5a3e29af6489e333cce4e8cfad4d1",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop1__105401_17130_70784_79935",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\256.json",
+      "sha256": "3b81407b348f6a8697d668ce2d6b3b4ca544b69ab69d33b226ad5b581c8f52fd",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae0ce4e554299603e41845f",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\257.json",
+      "sha256": "fd433e3385ab0c97bbbf17ad5f121db10df301b57acdb1f81cf941b40cee651a",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__557411_652060",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\258.json",
+      "sha256": "749635372c431d89135c48736920e8d2731a76075cb64f0226c26cb2afc8f9cf",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ab8c3c65542991b5579effd",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\259.json",
+      "sha256": "6548b16c9267d409839e0b3fd3e904c758889eecf63b287d837e398c45f8d6de",
+      "passed": true
+    },
+    {
+      "id": "2wiki:9d3c3b060bdd11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\260.json",
+      "sha256": "15c56edfb27e9328d63495ef5b94f80b7269bd789bbb7ad962dcc7387c4cb08a",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8b5b1c5542995d1e6f1387",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\261.json",
+      "sha256": "a94f8eff9a69a999c6c443ed9d24547a06cecbed2d5c5edf51141142f90a8b3d",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__106042_64399_53006",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\262.json",
+      "sha256": "ef0dbedc289a1226392f552faf66ded077b8e4bd7ba61e186c392af9dadbf82f",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__68802_89752_49923",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\263.json",
+      "sha256": "9c6526dbf3e389b48c802fe9b498ea55290474a6af6ac9458c957d58a80f956e",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__839126_472799",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\264.json",
+      "sha256": "10095f85ba50e090ee77e8d58e5b89e651c2510dd42283413895a142508b9b0e",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a73266d5542994cef4bc47d",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\265.json",
+      "sha256": "7d40b5e2625b62977b8893823c7a46bad99048e8b96111517d8adec7f3dd8fa7",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__346812_15840_36002",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\266.json",
+      "sha256": "5b607bdb6d255bbfc8ef956325691e6885dd20c7a103cc930225a7a2fb45810f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adce22c5542990d50227d51",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\267.json",
+      "sha256": "bce3c663d8b15f16d2532ac29bf70fe73fcfcce6718c532f2474bb1f744655ab",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae3f1bb5542995ad6573cbe",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\268.json",
+      "sha256": "c378b694b26ad5950e51f94c957fd68b2da27111479203806bef2f59356e741f",
+      "passed": true
+    },
+    {
+      "id": "2wiki:4f81c5260bdc11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\269.json",
+      "sha256": "503b938e3e5c3b2aa9e66cf95ece01453768966331ee0fed3e52f8b5616366f1",
+      "passed": true
+    },
+    {
+      "id": "2wiki:d27c4969084d11ebbd56ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\270.json",
+      "sha256": "ac854b3c9aa8596d50e5baba99115befd511b68aae049adff92b533db750e69d",
+      "passed": true
+    },
+    {
+      "id": "musique:4hop2__71753_261673_70784_61381",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\271.json",
+      "sha256": "8657811c86dacfe3e4ad56f6c2a18cb8f9da18ee5dfba82a7342c6a567cf4bb5",
+      "passed": true
+    },
+    {
+      "id": "2wiki:86e8f2bd089b11ebbd78ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\272.json",
+      "sha256": "a200f39486b5776fd4513be0e0c0f2493a08b79f4a24a46f5b99035ef6573420",
+      "passed": true
+    },
+    {
+      "id": "musique:3hop1__635099_131926_89261",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\273.json",
+      "sha256": "1c4c355d1f513da51e463f4034324ad0fa8af7aa92e039259356c85351b52480",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a89ec7b5542992e4fca8483",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\274.json",
+      "sha256": "e14872dd5cf0e3a15165872b60536b1d62908f1c3b13a9a5f8178985b7bc08be",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__85463_66122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\275.json",
+      "sha256": "4cf7b2df8122a6dc12cffee35659fc08a93bba7488c328f8f69ea954b9926790",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adbc8e25542996e68525230",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\276.json",
+      "sha256": "cb8016291148cd6b0037701e9d8aad4f37ba788fba038f2352262e208dc67ec4",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a8b91d25542995d1e6f13fc",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\277.json",
+      "sha256": "9b2fe99092030bcab3fb36c9ceb389eb2d9a92abe9ec070a4a34ab08327078d1",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7b59115542995eb53be923",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\278.json",
+      "sha256": "25e2f6a88d9e9b16e8e913aa5f7c9edacf7c2670007c3a1f9703259c3eb5ae95",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ae3fcfc5542995dadf2428c",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\279.json",
+      "sha256": "470e8efbc6c6862c2b029c3ef2c230a68e4623d5b406574522abc3f2dc2ce7d2",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7888c2760baf11ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\280.json",
+      "sha256": "d3bc4ebbba2c6de857ed1ab86ce3dc997f24d99be91aa0ac259fc7fa9c1a1f8d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:2b42746808cf11ebbd94ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\281.json",
+      "sha256": "bf1a518043a0ae7483eea369a53ebb7ce326dc4bdb18900d06ddd6715127d03f",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5add433b5542997545bbbd02",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\282.json",
+      "sha256": "effb7a486ed7e09b853004c27731f3d7f9701e965e1eaec7ac33171cd45653e7",
+      "passed": true
+    },
+    {
+      "id": "2wiki:8f2b2975088a11ebbd6fac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\283.json",
+      "sha256": "4f3d84705548df95f504cc6ec529d4140f8c946d8dab10ccf86f3953281af363",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ac1d4ad5542994d76dccef7",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\284.json",
+      "sha256": "00fec934b421afed4ad414f33e51df488910ad862976fe361094ff641b33672d",
+      "passed": true
+    },
+    {
+      "id": "2wiki:d9c801f4088b11ebbd6fac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\285.json",
+      "sha256": "2f0d6bc71a33377be15736271007fa60b26a743e1f108b12c3ac01c28701fc6b",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ac298805542990b17b15429",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\286.json",
+      "sha256": "fad8161b379e76ebb55361a066de36081aaf766f58fc94c39c5c965a22d1fae8",
+      "passed": true
+    },
+    {
+      "id": "2wiki:5d6e0f860bb011ebab90acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\287.json",
+      "sha256": "2ad2776e33af8b9cbe0740aa7d074a859e7fa386816054561b4e28ac60c53baf",
+      "passed": true
+    },
+    {
+      "id": "2wiki:f31011fc0bdc11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\288.json",
+      "sha256": "5bca73c1334654e36530f5704d851d97c6e6ed5da88deb0d373220076635cdce",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7fbdef41091011ebbdadac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\289.json",
+      "sha256": "1853264183e747e75947b51bb517d3f30830594d0b17e0787f1c1853fee4f061",
+      "passed": true
+    },
+    {
+      "id": "musique:2hop__511454_120259",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\290.json",
+      "sha256": "c3910d98dc8abe1580313ebf9c32e08bbff5a387f544c92ffd878052dd7734e3",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a893f305542993b751ca91e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\291.json",
+      "sha256": "71462dda22d73d8e8394ace3f3ddaa0193efbc90ce6e695940320f5ea4fe5498",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5adf9ee75542992d7e9f93c0",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\292.json",
+      "sha256": "dcee67076e76bd261d9646a5325a505b7c5f76f64b2bb3cd904a0dd58f9881b8",
+      "passed": true
+    },
+    {
+      "id": "2wiki:07630b680bde11eba7f7acde48001122",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\293.json",
+      "sha256": "2033e6c235277bf7bd5804034fa10e524755e9ccdffb0512656424b2cf9d8674",
+      "passed": true
+    },
+    {
+      "id": "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\294.json",
+      "sha256": "844882cd9ff6a530e866452684ef59f4e0045b601ff90ffda8d9505634cc1a1c",
+      "passed": true
+    },
+    {
+      "id": "2wiki:e3d870e2085511ebbd59ac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\295.json",
+      "sha256": "400f9f235f230aa6d0b5c5d9530e7e16dc4dee584d8ca136abe0a9ca4f4d6c4a",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5addb7b65542997545bbbdba",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\296.json",
+      "sha256": "b294506e80dc09b8a1a6e54cb7ffcb4d286f8cf265a6a8e88288cac3e02aac51",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5ac5101455429924173fb592",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\297.json",
+      "sha256": "698c12580075847cd68bee51c7c7ca0e0645a941ba9d8d9890b69537e098ec49",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\298.json",
+      "sha256": "80844edb588fb6bbf6acab2c743a80450f916d3615fe084bc611993c69559347",
+      "passed": true
+    },
+    {
+      "id": "2wiki:7b4cc520091d11ebbdaeac1f6bf848b6",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\299.json",
+      "sha256": "cac44ec30f28425a5c82e02baf180d6416a5d7e730afe9817e530c96eb22f348",
+      "passed": true
+    },
+    {
+      "id": "hotpotqa:5a7aa2a255429941d65f270e",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\raw\\300.json",
+      "sha256": "c0fc04e457f903565e0c1ee77d6712d8ba9038162485be9371560f2719cd1863",
+      "passed": true
+    }
+  ],
+  "checked_raw_records": 300,
+  "all300_raw_id_query_array_prompt_and_sha_exact": true,
+  "local_checkpoint_return_manifest": {
+    "path": "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/manifest.json",
+    "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\checkpoint-final\\manifest.json",
+    "sha256": "37348cc6a950eb6c548c958aa0fae35a164769b74928763bd9ddc3f56126e185"
+  },
+  "locally_available_manifest_files_verified": [
+    {
+      "path": "BASE_MODEL_IDENTITY.json",
+      "sha256": "ea15e5679c445709518e1b5b23e6d91c38d0062d64f1ca640d522a0c81f29d6f"
+    },
+    {
+      "path": "MODIFICATION_NOTICE.txt",
+      "sha256": "06abc9fd4dac35c820a9e366c501d035f8085cf902aaf5b8853479acd5ac867a"
+    },
+    {
+      "path": "adapter_config.json",
+      "sha256": "2f920f7d15316747f0f87c28c5a6474d5d25c639c8cc9aa7198808054ed64c98"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "sha256": "7a8b69bdd59cb05edc0ba8d60844b9395faf4752097f34382c7761bb8b198206"
+    },
+    {
+      "path": "training_config.json",
+      "sha256": "d27f83093714962295da28348230af5c0b455b969253a8f943b988be4cbb266f"
+    }
+  ],
+  "manifest_files_not_available_locally": [
+    {
+      "path": "README.md",
+      "bytes": 5414,
+      "recorded_sha256": "c5671f4473eb490312ec2c8fe70c1494054e02cde845644e7145cccbe55b9e4b"
+    },
+    {
+      "path": "adapter_model.safetensors",
+      "bytes": 264308896,
+      "recorded_sha256": "d05d7365e06f246fbfc1c14218c212fa3b03c1819bc4933fcc8d6c4a055b06d3"
+    },
+    {
+      "path": "chat_template.jinja",
+      "bytes": 2630,
+      "recorded_sha256": "64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 11422650,
+      "recorded_sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    }
+  ],
+  "remote_weights_freshly_verified_this_turn": false,
+  "remote_connected_this_turn": false,
+  "local_weight_bytes_verified": false,
+  "verification_scope": "Current local manifest/identity/config/prompt/raw-output bytes were hashed; remote adapter and base weight bytes were not read or rehashed. The local checkpoint copy omits adapter_model.safetensors and base model weight shards, so live remote weight-byte equivalence is not established here.",
+  "decode_limit": "The300 RAW_IDENTITY records do_sample=False, num_beams=1, max_new_tokens=1024, seed1729. It lacks the later effective-generation/default-override compatibility fields; those stronger claims are not inferred.",
+  "minimal_freeze_pins": [
+    {
+      "path": "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/v12.txt",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\v12.txt",
+      "sha256": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8"
+    },
+    {
+      "path": "outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/RAW_IDENTITY.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\RAW_IDENTITY.json",
+      "sha256": "c64b2709f9d84266b99cdfd01864e13119b393603b4747c9166783ac57a14b38"
+    },
+    {
+      "path": "experiments/query_decomposition/complete_pipeline_comparison_v1_20261020/r02_provenance300.frozen.jsonl",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\complete_pipeline_comparison_v1_20261020\\r02_provenance300.frozen.jsonl",
+      "sha256": "94b945bcdbe23bd3a31c7db27d4a33ec4a21083f6e225fcc3930b259783980ad"
+    },
+    {
+      "path": "experiments/query_decomposition/p02_merge_cachefix_v1_20261021/runtime300.frozen.jsonl",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\runtime300.frozen.jsonl",
+      "sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f"
+    },
+    {
+      "path": "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/NOMINEE_FROZEN.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\NOMINEE_FROZEN.json",
+      "sha256": "ed5e8911b2beefe21500216b22ec220091b99b6a23618b833ad81510e5b6a414"
+    },
+    {
+      "path": "experiments/query_decomposition/decomposition_error_expand60_v1_20261019/PLAN_FROZEN.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\decomposition_error_expand60_v1_20261019\\PLAN_FROZEN.json",
+      "sha256": "ddc50d1e858e5d9ecad1ce7d64f677543296ca580b499813c50d81a735bff9da"
+    },
+    {
+      "path": "outputs/query_decomposition/hotpot_formal_eval_v1/decomposition_error_expand60_v1_20261019/JOB_SUBMISSION.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\JOB_SUBMISSION.json",
+      "sha256": "c9db7c4e822f9349cdbad19f76e334935ad1b44cdfd72a944707b23097465fe3"
+    },
+    {
+      "path": "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/manifest.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\checkpoint-final\\manifest.json",
+      "sha256": "37348cc6a950eb6c548c958aa0fae35a164769b74928763bd9ddc3f56126e185"
+    },
+    {
+      "path": "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/BASE_MODEL_IDENTITY.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\checkpoint-final\\BASE_MODEL_IDENTITY.json",
+      "sha256": "ea15e5679c445709518e1b5b23e6d91c38d0062d64f1ca640d522a0c81f29d6f"
+    },
+    {
+      "path": "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/adapter_config.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\checkpoint-final\\adapter_config.json",
+      "sha256": "2f920f7d15316747f0f87c28c5a6474d5d25c639c8cc9aa7198808054ed64c98"
+    },
+    {
+      "path": "outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/returned/snapshot_013/results/v001/training40/r02_expanded/checkpoint-final/tokenizer_config.json",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\returned\\snapshot_013\\results\\v001\\training40\\r02_expanded\\checkpoint-final\\tokenizer_config.json",
+      "sha256": "7a8b69bdd59cb05edc0ba8d60844b9395faf4752097f34382c7761bb8b198206"
+    },
+    {
+      "path": "experiments/query_decomposition/multigrain_4b_sft3500_v1_20261017/remote_v003/runtime/model_runtime.py",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_sft3500_v1_20261017\\remote_v003\\runtime\\model_runtime.py",
+      "sha256": "ad7c9ef8cb677a5bc7d80e077b0ddc2513fa545be0cfe48e1c4a7e76acc4eff9"
+    },
+    {
+      "path": "experiments/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/score_model.py",
+      "absolute_path": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\experiments\\query_decomposition\\multigrain_4b_coverage_retrain_v3_20261018\\score_model.py",
+      "sha256": "1fc86bdc1f17348483f02cce155f0c61398b3a805cb3311f6e75eb0655e35876"
+    }
+  ],
+  "new_api_calls": 0,
+  "new_model_inference": 0,
+  "new_retrieval_calls": 0,
+  "existing_files_modified": false
+}

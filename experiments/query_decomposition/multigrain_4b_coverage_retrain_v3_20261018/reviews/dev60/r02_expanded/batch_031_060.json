@@ -1,0 +1,10 @@
+{
+  "reviewed_indices": [31,60],
+  "exceptions": {
+    "32": {"verdict":"fail","dimensions":["F"],"reason":"Restores Lom-country and Ottoman-history-subject intermediates, but attaches WW2 to seizing Libya rather than to surrender. Same modifier-attachment defect as old-data40."},
+    "39": {"verdict":"fail","dimensions":["F"],"reason":"Still omits1945 from the identifying description of the football game."},
+    "43": {"verdict":"fail","dimensions":["F"],"reason":"Repairs popular versus has and country-to-continent direction, but the show query omits the Dutch reform church's country constraint. Partial repair, not full pass."},
+    "50": {"verdict":"fail","dimensions":["F"],"reason":"Still substitutes battles involving Noss's commander for battles during which Noss was his gunner."}
+  },
+  "reviewer":"Every changed array inspected. Row35 Who can name an institutional actor; no explicit human-only type imposed, consistent with corrected r01. Row37 empty is valid for fully named local film-chart query. Row40 retains the state-bound county and avoids the generic final Where added by r01. Row60 now explicitly retrieves the ocean containing the atoll where the berth is available, instead of the atoll's country; this repairs the related-property substitute. Other changes are faithful paraphrases; identical arrays inherit locked parent. Same Codex, non-independent F/S/C/U."
+}

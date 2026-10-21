@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-17T09:59:19.360226+00:00",
+  "passed": true,
+  "source_sha256": "ad0fe979d90d1667eb7961651808154514a8078940fb0484aba725c1e3ae3095",
+  "checks": {
+    "frozen_v2_unchanged": true,
+    "origin_patch_validated": true,
+    "all_three_react_configs_k10_s5": true,
+    "actual_controllers_equal_search_allowance": {
+      "iter_retgen_bge": {
+        "retrieval_calls": 5,
+        "maximum_document_slots": 50,
+        "generation_calls": 5
+      },
+      "react_dense": {
+        "retrieval_calls": 5,
+        "maximum_document_slots": 50,
+        "generation_calls": 6
+      }
+    }
+  },
+  "api_calls": 0,
+  "f1_used_for_selection": false
+}

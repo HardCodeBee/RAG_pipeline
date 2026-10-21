@@ -1,0 +1,1204 @@
+不同粒度独立子问题＋完整句传递＋可选双路检索：诊断实验
+状态：24题两组全部完成
+
+一、固定设计
+三数据集各8题：历史S02 F1=0与F1=1各4题，共24题。按历史结果和问题类型有目的地选取，非随机总体评估；历史S02在这24题的50%由抽样规则决定。
+MuSiQue原先没有S02成绩，因此先用原冻结S02在正式样本顺序前24题运行筛选：9题F1=1、7题F1=0、8题为部分分；从两个端点各取4题。该筛选没有使用新方法。
+人工编写并在新方法调用前冻结的query-only自包含子问题，无强制#N绑定。假定分解正确是本实验条件，不能将该参考方案称为独立人工金标准。没有把事实答案或支持文档标注加入生成输入。
+末节点等于原query，也检索并生成完整句回答；随后另一次调用回答最终原query。所有历史问答完整句作为可选上下文向后传递；前置缺答不阻断原始检索路线。
+单路组：每个自包含子问题仅检索原问句Top10。双路组：结合前置完整问答调用同一API生成可选改写，保留原问句检索，同时检索改写问句Top10。两路按名次交替、原始路先、doc_id去重，截取10篇。改写不变时不重复检索。
+子问题回答的是原始子问题，输入两路合并后的10篇；完整句不再抽成裸实体。少于4词时仅追加一次完整句格式化调用，实际次数单独记录。这一词数规则只是格式启发式。
+最终输入保留历史原query的全部Top10，按原冻结位置插入问答辅助块，故不删除第10篇。子问题新取得的证据通过生成问答传递，未直接追加其原文至最终输入。
+检索器、语料、生成模型qwen-plus-2025-12-01、S02子问题4-shot与最终prompt均冻结；temperature=0。双路组仅增加基于各自完整历史的改写与相应检索；两组历史独立，相同完整API payload可复用缓存。
+本实验不训练模型，不作ReAct式行动循环，不恢复训练标签修订，不修改历史成绩。
+
+二、最终Answer F1（%）
+数据集	题数	历史S02	历史Top10-v1	历史ReAct	新单路	新双路
+全部	24	50.00	55.83	63.89	54.92	67.36
+hotpotqa	8	50.00	66.67	83.33	62.50	75.00
+2wiki	8	50.00	58.33	58.33	50.00	70.83
+musique	8	50.00	42.49	50.00	52.27	56.25
+主要配对结果：双路减单路 12.44 个F1百分点；4题上升、19题持平、1题下降。
+三题由F1=0升至1：Firefly影片年份、Sibylla祖母、Raiders Of Red Gap导演死亡时间比较；另有Genesis比较由0.1818升至0.5。
+唯一下降题：Jeanne de Laval-Tinténiac缩短成Jeanne de Laval，F1由1降至0.6667；完整姓名证据仍保留，不能说是相关文档被挤出或事实性错误已被证实。
+本结果没有单独验证完整句优于短答案，也没有单独隔离取消强制引用的收益；两组均已采用这两项设计。原先成功的12题中双路保留11题F1=1，另1题为姓名缩短的部分分。
+尚未专门构造并核查‘第一跳实体名称没有任何证据，但更粗问题可直接回答’这一语料条件，因此本轮不能声称已验证这一特定机制。
+
+三、配对与覆盖诊断
+范围	配对题数	双路减单路F1百分点	上升/持平/下降	全部标注文档曾被reader看到(单路/双路)
+全部	24	12.44	4/19/1	10/18
+hotpotqa	8	12.50	1/7/0	4/6
+2wiki	8	20.83	2/5/1	4/8
+musique	8	3.98	1/7/0	2/4
+success	12	5.56	1/10/1	8/11
+failure	12	19.32	3/9/0	2/7
+历史F1=0的12题：单路平均F1=18.18%，双路=37.50%。
+最终prompt平均token：单路2763.46，双路2763.75。
+双路发生实际改写30次，15个步骤向reader新增了标注相关文档，1个步骤排除了原始路的一篇标注相关文档。
+完整句格式化追加调用：单路0次，双路0次。因单行问句格式不合格被拒绝的改写：0次。格式合法不等于语义保持。
+覆盖含义：标注的相关文档曾出现在任一子问题reader或原query最终reader中，不等于文档已经足以回答，更不等于完整事实已经传入最终prompt。
+双路最多仍只读10篇，故可能排除原始路线部分尾部文档；这一风险与最终保留原query全部Top10是两个不同环节。
+历史S02/Top10/ReAct是描述性参照，尤其S02对比还混合了分解、goal执行与信息传递变化；双路减单路才是本轮匹配的主要比较。双路增加改写调用和检索次数，未作等计算预算比较。
+
+四、逐题核查观察（仅陈述实际痕迹，不把相关性当成因果贡献）
+{
+  "dataset": "hotpotqa",
+  "qid": "5a83431d5542993344745ff5",
+  "observation": "Intermediate relation error survives full-sentence propagation and steers the rewritten search to the wrong company.",
+  "evidence": "Speedpass states introduced in1997 by Mobil Oil Corp.; originally developed by Verifone. Actual step1 instead states Mobil created the device.",
+  "actual_rewrite": "Mobil Oil Corp. is headquartered in what city and state?",
+  "single_final": "Fairfax, Virginia",
+  "dual_final": "Fairfax County, Virginia",
+  "gold": "San Jose, California",
+  "original_correction_evidence_preserved": true,
+  "limits": "Both variants fail; this does not establish that the extra retrieval caused a regression. Correct developer identity was present; full headquarters evidence coverage must be distinguished."
+}
+{
+  "dataset": "hotpotqa",
+  "qid": "5ab3eeb5554299233954fff4",
+  "observation": "The optional explicit-entity rewrite supplied the previously missing film document, followed by a correct year.",
+  "prior_sentence": "Jewel Staite plays Kaylee Frye in the series \"Firefly\".",
+  "actual_rewrite": "In which sci-fi television film did Jewel Staite also star with Alan Dale?",
+  "new_source": "Doomsday Prophecy",
+  "actual_new_passage": "Doomsday Prophecy is a 2011 sci-fi disaster television film by Jason Bourque starring Jewel Staite, Alan Dale and A.J. Buckley.",
+  "single_final": "The year cannot be determined from the provided passages.",
+  "dual_final": "2011",
+  "single_f1": 0,
+  "dual_f1": 1,
+  "limits": "The matched comparison supports a gain for this particular trace. Historical ReAct also answers correctly; this is not a unique-capability claim."
+}
+{
+  "dataset": "hotpotqa",
+  "qid": "5ade5e335542992fa25da766",
+  "observation": "Rewrite expands a current independent question to include the other person; final synonym wording remains a zero native F1.",
+  "current_question": "What were Laura Ingalls Wilder's occupations?",
+  "actual_rewrite": "What were both John Cheever's and Laura Ingalls Wilder's occupations?",
+  "single_final": "authors",
+  "dual_final": "Authors",
+  "gold": "American writer",
+  "single_f1": 0,
+  "dual_f1": 0,
+  "limits": "Both final outputs are semantically related occupation descriptions; no observed factual hallucination follows merely from F1=0. The scope expansion is observed, not established as a cause of failure."
+}
+{
+  "dataset": "hotpotqa",
+  "qid": "5a7933b255429907847277eb",
+  "observation": "A missing fact in the first independent question does not prevent answering the second branch and final selection.",
+  "first_answer": "The retrieved passages do not state that Philip Glass was a teacher.",
+  "second_answer": "Franz Schreker was a teacher.",
+  "both_finals": "Franz Schreker",
+  "limits": "No extra changed retrieval was used here. This example illustrates non-blocking execution and does not by itself isolate a gain from dual retrieval."
+}
+{
+  "dataset": "2wiki",
+  "qid": "5112118e0baf11ebab90acde48001122",
+  "observation": "The explicit father-to-mother rewrite retrieves the missing paternal-grandmother link instead of confusing mother with grandmother.",
+  "prior_sentence": "Sibylla of Burgundy, Duchess of Burgundy’s father was William I, Count of Burgundy.",
+  "actual_rewrite": "Who is William I, Count of Burgundy's mother?",
+  "single_final": "Stephanie",
+  "dual_final": "Alice of Normandy",
+  "single_f1": 0,
+  "dual_f1": 1,
+  "single_actual_evidence": "She was a daughter of William I, Count of Burgundy and Stephanie.",
+  "dual_added_actual_evidence": "He was a son of Renaud I and Alice of Normandy, daughter of Richard II, Duke of Normandy.",
+  "new_source": "William I, Count of Burgundy",
+  "limits": "This is one matched case with an observed new bridge document; not proof that all kinship rewrites are safe."
+}
+{
+  "dataset": "2wiki",
+  "qid": "54bf355508b811ebbd88ac1f6bf848b6",
+  "observation": "A successful rewrite and retained director document do not ensure extraction or a supported final comparison.",
+  "current_question": "On what date did the director of the film Who Is The Guilty? die?",
+  "actual_rewrite": "On what date did Alexandre Tsutsunava die?",
+  "retained_source": "Alexandre Tsutsunava",
+  "actual_source_text": "Alexandre Tsutsunava( born – 25 October 1955) was a Georgian theatre and film director.",
+  "actual_child_answer": "The death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.",
+  "other_director_full_answer": "Claude Chabrol, the director of La Cérémonie, died on 12 September 2010.",
+  "single_final": "Cannot be determined",
+  "dual_final": "La Cérémonie",
+  "gold": "Who Is The Guilty?",
+  "single_f1": 0,
+  "dual_f1": 0,
+  "limits": "Both have zero F1, so this is not a paired F1 regression. The death-date fragment was actually in the child reader packet but failed to enter the auxiliary result. The final nevertheless selected a film despite its goal sentence explicitly retaining the missing other death date."
+}
+{
+  "dataset": "2wiki",
+  "qid": "32f0334c0bb011ebab90acde48001122",
+  "observation": "A matched F1 decline comes from returning a shortened supported name, despite retaining the full-name evidence.",
+  "current_question": "Who is the maternal grandmother of André De Laval-Montmorency?",
+  "actual_rewrite": "Who is the mother of Anne de Laval?",
+  "single_child_answer": "André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval-Tinténiac.",
+  "dual_child_answer": "André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval.",
+  "single_final": "Jeanne de Laval-Tinténiac",
+  "dual_final": "Jeanne de Laval",
+  "single_f1": 1,
+  "dual_f1": 0.6666666666666666,
+  "gold": "Jeanne de Laval-Tinténiac",
+  "source_facts": "André biography directly calls maternal grandmother Jeanne de Laval; Anne biography calls her mother Jeanne de Laval-Tinténiac. Both documents survive in dual step2 reader.",
+  "limits": "No factually different person is established in this trace. It is a native token-F1/answer-specificity decline, not evidence that the full-name source was displaced or that an observed wrong entity caused it."
+}
+{
+  "dataset": "musique",
+  "qid": "3hop1__649930_15840_36002",
+  "observation": "An explicit platform rewrite supplies architecture/graphics/sound evidence, but the full answer also imports a comparison about another platform.",
+  "prior_sentence": "Colorful Dragon was released on the Nintendo Entertainment System.",
+  "actual_rewrite": "What were the Genesis' advantages over the Nintendo Entertainment System?",
+  "new_source": "Super Nintendo Entertainment System",
+  "actual_relevant_evidence": "Both systems were built on 16-bit architectures and offered improved graphics and sound over the 8-bit NES.",
+  "single_final": "Greater processing power, enhanced graphics capabilities, larger color palette, higher resolution, and support for more complex games with richer audio and visual presentation",
+  "dual_final": "16-bit architecture offering improved graphics and sound, stronger third-party support, and larger game library",
+  "single_f1": 0.18181818181818182,
+  "dual_f1": 0.5,
+  "scope_issue": "The larger-library excerpt compares Genesis against SNES in the 16-bit market; the current question compares Genesis against NES. Full-sentence propagation did not prevent that comparison scope from entering the answer.",
+  "limits": "There is a matched gain but no complete answer recovery. Extra clauses affect F1 and must not be described as a fully correct answer."
+}
+{
+  "observation": "Offline exact-trace review flags target-changing rewrites in 5 of 30 changed expressions (16.7%). Three of those also insert an entity not supplied by prior QA.",
+  "examples": [
+    {
+      "dataset": "hotpotqa",
+      "qid": "5ade5e335542992fa25da766",
+      "step_id": 2,
+      "issue": "Expands one-person occupations into both-person occupations."
+    },
+    {
+      "dataset": "2wiki",
+      "qid": "9564cd35089311ebbd75ac1f6bf848b6",
+      "step_id": 2,
+      "issue": "Changes one-film country lookup into original two-film comparison."
+    },
+    {
+      "dataset": "musique",
+      "qid": "3hop1__109185_720914_41132",
+      "step_id": 2,
+      "issue": "Changes death-place lookup into plague count and inserts Venice before that place is supplied in prior QA."
+    },
+    {
+      "dataset": "musique",
+      "qid": "3hop1__92251_34179_23375",
+      "step_id": 2,
+      "issue": "Changes successor lookup into pact publication year and inserts Joseph Stalin before that successor is supplied in prior QA."
+    },
+    {
+      "dataset": "musique",
+      "qid": "4hop3__175072_88460_30152_20999",
+      "step_id": 2,
+      "issue": "Changes citizenship lookup into expulsion question and inserts Laos before that country is supplied in prior QA."
+    }
+  ],
+  "limits": "This is a purposive small pilot and a qualitative Codex review. These are not proven causes of paired F1 losses: all five affected cases retain equal final F1 between arms. A true inserted identity can still violate the requirement to use only prior QA as its rewrite credential."
+}
+{
+  "dataset": "musique",
+  "qid": "4hop3__175072_88460_30152_20999",
+  "observation": "Rank-interleaving with a fixed ten-document cap drops one annotated original-route document.",
+  "step_id": 3,
+  "actual_rewrite": "What is the natural boundary between Thailand and Laos?",
+  "displaced_source": "Geography of Myanmar",
+  "displaced_doc_id": "1f45fcacd3de61d20e72fc6a4343c6ad6292806fff398c0ff4b1761436478ab3",
+  "single_f1": 0,
+  "dual_f1": 0,
+  "limits": "The original route was executed but not all its ten documents survived merging. The dropped paragraph is an annotated support document, not by itself proof of the answer. Both final answers are wrong; no paired F1 loss is attributable from this observation alone."
+}
+逐条查看30条发生变化的改写，5条改变了当前子问题所求；完整逐条记录见REWRITE_SCOPE_AUDIT.json。这是本次Codex定性审阅，不是独立人工评审。
+
+五、全部24题完整分解与实际执行
+
+1. hotpotqa / 5ab3eeb5554299233954fff4 / 历史failure
+原query：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+标准答案（仅用于离线打分）：2011
+参考分解：
+  #1 Which actress plays Kaylee Frye in the series Firefly?
+  #2 In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  #3 The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  goal = 3
+历史top10_v1：2005；F1=0.0
+历史react：2011；F1=1.0
+历史frozen_s02：2004；F1=0.0
+single_original：The year cannot be determined from the provided passages.；F1=0.0；状态=success
+  #1 原问句：Which actress plays Kaylee Frye in the series Firefly?
+  检索改写：Which actress plays Kaylee Frye in the series Firefly?
+  传递的完整回答：Jewel Staite plays Kaylee Frye in the series "Firefly".
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  检索改写：In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  传递的完整回答：The sci-fi television film in which Jewel Staite starred with Alan Dale cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  检索改写：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  传递的完整回答：The year of the sci-fi television film in which Jewel Staite starred with Alan Dale cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：2011；F1=1.0；状态=success
+  #1 原问句：Which actress plays Kaylee Frye in the series Firefly?
+  检索改写：Which actress plays Kaylee Frye in the series Firefly?
+  传递的完整回答：Jewel Staite plays Kaylee Frye in the series "Firefly".
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：In which sci-fi television film did the actress who plays Kaylee Frye in Firefly also star with Alan Dale?
+  检索改写：In which sci-fi television film did Jewel Staite also star with Alan Dale?
+  传递的完整回答：Jewel Staite starred with Alan Dale in the sci-fi television film *Doomsday Prophecy*.
+  新增且实际呈现的标注相关文档：['33214212']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：The actress that plays Kaylee Frye in the series "Firefly" also stars with Alan Dale in a sci-fi tv film released in what year?
+  检索改写：Jewel Staite starred with Alan Dale in the sci-fi television film *Doomsday Prophecy* released in what year?
+  传递的完整回答：*Doomsday Prophecy* was released in 2011.
+  新增且实际呈现的标注相关文档：['33214212']
+  被挤出的原路标注相关文档：[]
+
+2. hotpotqa / 5a83431d5542993344745ff5 / 历史failure
+原query：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+标准答案（仅用于离线打分）：San Jose, California
+参考分解：
+  #1 Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  #2 The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  goal = 2
+历史top10_v1：San Bernardino, California；F1=0.6666666666666666
+历史react：San Jose, California；F1=1.0
+历史frozen_s02：Fairfax County, Virginia；F1=0.0
+single_original：Fairfax, Virginia；F1=0.0；状态=success
+  #1 原问句：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  检索改写：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  传递的完整回答：Mobil Oil Corp. created the keychain RFID device used for electronic payment at McDonald's and 400 other Chicago-area restaurants.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  检索改写：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  传递的完整回答：Mobil Oil Corp., which created the keychain RFID device for electronic payment at McDonald's and 400 other Chicago-area restaurants, was headquartered in Fairfax, Virginia.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Fairfax County, Virginia；F1=0.0；状态=success
+  #1 原问句：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  检索改写：Which company created the keychain RFDI device used for electronic payment at McDonald's and 400 other Chicago-area restaurants?
+  传递的完整回答：Mobil Oil Corp. created the keychain RFID device used for electronic payment at McDonald's and 400 other Chicago-area restaurants.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?
+  检索改写：Mobil Oil Corp. is headquartered in what city and state?
+  传递的完整回答：Mobil Oil Corp. was headquartered in Fairfax County, Virginia.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+3. hotpotqa / 5ade5e335542992fa25da766 / 历史failure
+原query：What was both John Cheever and Laura Ingalls Wilder occupations?
+标准答案（仅用于离线打分）：American writer
+参考分解：
+  #1 What were John Cheever's occupations?
+  #2 What were Laura Ingalls Wilder's occupations?
+  #3 What was both John Cheever and Laura Ingalls Wilder occupations?
+  goal = 3
+历史top10_v1：Writers；F1=0.0
+历史react：author；F1=0.0
+历史frozen_s02：Authors；F1=0.0
+single_original：authors；F1=0.0；状态=success
+  #1 原问句：What were John Cheever's occupations?
+  检索改写：What were John Cheever's occupations?
+  传递的完整回答：John Cheever was an author.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What were Laura Ingalls Wilder's occupations?
+  检索改写：What were Laura Ingalls Wilder's occupations?
+  传递的完整回答：Laura Ingalls Wilder was an author.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What was both John Cheever and Laura Ingalls Wilder occupations?
+  检索改写：What was both John Cheever and Laura Ingalls Wilder occupations?
+  传递的完整回答：Both John Cheever and Laura Ingalls Wilder were authors.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Authors；F1=0.0；状态=success
+  #1 原问句：What were John Cheever's occupations?
+  检索改写：What were John Cheever's occupations?
+  传递的完整回答：John Cheever was an author.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What were Laura Ingalls Wilder's occupations?
+  检索改写：What were both John Cheever's and Laura Ingalls Wilder's occupations?
+  传递的完整回答：Laura Ingalls Wilder was a writer.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What was both John Cheever and Laura Ingalls Wilder occupations?
+  检索改写：What was both John Cheever and Laura Ingalls Wilder occupations?
+  传递的完整回答：Both John Cheever and Laura Ingalls Wilder were authors.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+4. hotpotqa / 5a7933b255429907847277eb / 历史failure
+原query：Which composer was also a teacher, Philip Glass or Franz Schreker?
+标准答案（仅用于离线打分）：Franz Schreker
+参考分解：
+  #1 Was composer Philip Glass also a teacher?
+  #2 Was composer Franz Schreker also a teacher?
+  #3 Which composer was also a teacher, Philip Glass or Franz Schreker?
+  goal = 3
+历史top10_v1：Franz Schreker；F1=1.0
+历史react：Franz Schreker；F1=1.0
+历史frozen_s02：Both；F1=0.0
+single_original：Franz Schreker；F1=1.0；状态=success
+  #1 原问句：Was composer Philip Glass also a teacher?
+  检索改写：Was composer Philip Glass also a teacher?
+  传递的完整回答：The retrieved passages do not state that Philip Glass was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Was composer Franz Schreker also a teacher?
+  检索改写：Was composer Franz Schreker also a teacher?
+  传递的完整回答：Franz Schreker was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  检索改写：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  传递的完整回答：Franz Schreker was a teacher, but the retrieved passages do not state that Philip Glass was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Franz Schreker；F1=1.0；状态=success
+  #1 原问句：Was composer Philip Glass also a teacher?
+  检索改写：Was composer Philip Glass also a teacher?
+  传递的完整回答：The retrieved passages do not state that Philip Glass was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Was composer Franz Schreker also a teacher?
+  检索改写：Was composer Franz Schreker also a teacher?
+  传递的完整回答：Franz Schreker was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  检索改写：Which composer was also a teacher, Philip Glass or Franz Schreker?
+  传递的完整回答：Franz Schreker was a teacher, but the retrieved passages do not state that Philip Glass was a teacher.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+5. hotpotqa / 5a89706055429951533612f9 / 历史success
+原query：Scott Sandelin grew up in a town in what Minnesota county?
+标准答案（仅用于离线打分）：Saint Louis County
+参考分解：
+  #1 In what town did Scott Sandelin grow up?
+  #2 Scott Sandelin grew up in a town in what Minnesota county?
+  goal = 2
+历史top10_v1：St. Louis County；F1=0.6666666666666666
+历史react：St. Louis County；F1=0.6666666666666666
+历史frozen_s02：Saint Louis County；F1=1.0
+single_original：Saint Louis County；F1=1.0；状态=success
+  #1 原问句：In what town did Scott Sandelin grow up?
+  检索改写：In what town did Scott Sandelin grow up?
+  传递的完整回答：Scott Sandelin grew up in Hibbing, Minnesota.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Scott Sandelin grew up in a town in what Minnesota county?
+  检索改写：Scott Sandelin grew up in a town in what Minnesota county?
+  传递的完整回答：Scott Sandelin grew up in Hibbing, which is in Saint Louis County, Minnesota.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Saint Louis County；F1=1.0；状态=success
+  #1 原问句：In what town did Scott Sandelin grow up?
+  检索改写：In what town did Scott Sandelin grow up?
+  传递的完整回答：Scott Sandelin grew up in Hibbing, Minnesota.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Scott Sandelin grew up in a town in what Minnesota county?
+  检索改写：Scott Sandelin grew up in Hibbing, Minnesota, which is in what county?
+  传递的完整回答：Scott Sandelin grew up in Hibbing, which is in Saint Louis County, Minnesota.
+  新增且实际呈现的标注相关文档：['121754']
+  被挤出的原路标注相关文档：[]
+
+6. hotpotqa / 5a860baa554299211dda2a4c / 历史success
+原query：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+标准答案（仅用于离线打分）：Watford Football Club
+参考分解：
+  #1 Who is the singer of Grow Some Funk of Your Own?
+  #2 What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  goal = 2
+历史top10_v1：Watford Football Club；F1=1.0
+历史react：Watford Football Club；F1=1.0
+历史frozen_s02：Watford Football Club；F1=1.0
+single_original：Watford Football Club；F1=1.0；状态=success
+  #1 原问句：Who is the singer of Grow Some Funk of Your Own?
+  检索改写：Who is the singer of Grow Some Funk of Your Own?
+  传递的完整回答：Elton John is the singer of "Grow Some Funk of Your Own".
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  检索改写：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  传递的完整回答：Elton John owned Watford Football Club from 1976 to 1987 and again from 1997 to 2002.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Watford Football Club；F1=1.0；状态=success
+  #1 原问句：Who is the singer of Grow Some Funk of Your Own?
+  检索改写：Who is the singer of Grow Some Funk of Your Own?
+  传递的完整回答：Elton John is the singer of "Grow Some Funk of Your Own".
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What football club was owned by the singer of "Grow Some Funk of Your Own"?
+  检索改写：What football club was owned by Elton John?
+  传递的完整回答：Elton John owned Watford Football Club from 1976 to 1987 and again from 1997 to 2002.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+7. hotpotqa / 5add7a335542992200553b37 / 历史success
+原query：Which genus of plant is named after a person, Amesiella or Cucurbita?
+标准答案（仅用于离线打分）：Amesiella
+参考分解：
+  #1 After whom, if anyone, is the plant genus Amesiella named?
+  #2 After whom, if anyone, is the plant genus Cucurbita named?
+  #3 Which genus of plant is named after a person, Amesiella or Cucurbita?
+  goal = 3
+历史top10_v1：Amesiella；F1=1.0
+历史react：Amesiella；F1=1.0
+历史frozen_s02：Amesiella；F1=1.0
+single_original：Amesiella；F1=1.0；状态=success
+  #1 原问句：After whom, if anyone, is the plant genus Amesiella named?
+  检索改写：After whom, if anyone, is the plant genus Amesiella named?
+  传递的完整回答：Amesiella is named for Oakes Ames.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：After whom, if anyone, is the plant genus Cucurbita named?
+  检索改写：After whom, if anyone, is the plant genus Cucurbita named?
+  传递的完整回答：Cucurbita is named for the Latin word for gourd, not after a person.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Which genus of plant is named after a person, Amesiella or Cucurbita?
+  检索改写：Which genus of plant is named after a person, Amesiella or Cucurbita?
+  传递的完整回答：Amesiella is named after a person, Oakes Ames, whereas Cucurbita is named for the Latin word for gourd and not after a person.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Amesiella；F1=1.0；状态=success
+  #1 原问句：After whom, if anyone, is the plant genus Amesiella named?
+  检索改写：After whom, if anyone, is the plant genus Amesiella named?
+  传递的完整回答：Amesiella is named for Oakes Ames.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：After whom, if anyone, is the plant genus Cucurbita named?
+  检索改写：After whom, if anyone, is the plant genus Cucurbita named?
+  传递的完整回答：Cucurbita is named for the Latin word for gourd, not after a person.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Which genus of plant is named after a person, Amesiella or Cucurbita?
+  检索改写：Which genus of plant is named after a person, Amesiella (named for Oakes Ames) or Cucurbita (named for the Latin word for gourd)?
+  传递的完整回答：Amesiella is named after a person, while Cucurbita is not.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+8. hotpotqa / 5ab5de535542992aa134a3b6 / 历史success
+原query：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+标准答案（仅用于离线打分）：yes
+参考分解：
+  #1 Is Alek Keshishian Armenian-American?
+  #2 Is Kirk Kerkorian Armenian-American?
+  #3 Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  goal = 3
+历史top10_v1：Yes；F1=1.0
+历史react：Yes；F1=1.0
+历史frozen_s02：Yes；F1=1.0
+single_original：Yes；F1=1.0；状态=success
+  #1 原问句：Is Alek Keshishian Armenian-American?
+  检索改写：Is Alek Keshishian Armenian-American?
+  传递的完整回答：Alek Keshishian is Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Is Kirk Kerkorian Armenian-American?
+  检索改写：Is Kirk Kerkorian Armenian-American?
+  传递的完整回答：Kirk Kerkorian was Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  检索改写：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  传递的完整回答：Yes, Alek Keshishian and Kirk Kerkorian are both Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 原问句：Is Alek Keshishian Armenian-American?
+  检索改写：Is Alek Keshishian Armenian-American?
+  传递的完整回答：Alek Keshishian is Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Is Kirk Kerkorian Armenian-American?
+  检索改写：Is Kirk Kerkorian Armenian-American?
+  传递的完整回答：Kirk Kerkorian was Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  检索改写：Are Alek Keshishian and Kirk Kerkorian both Armenian-American?
+  传递的完整回答：Yes, Alek Keshishian and Kirk Kerkorian are both Armenian-American.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+9. 2wiki / 54bf355508b811ebbd88ac1f6bf848b6 / 历史failure
+原query：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+标准答案（仅用于离线打分）：Who Is The Guilty?
+参考分解：
+  #1 Who directed the film La Cérémonie?
+  #2 On what date did the director of the film La Cérémonie die?
+  #3 Who directed the film Who Is The Guilty??
+  #4 On what date did the director of the film Who Is The Guilty? die?
+  #5 Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  goal = 5
+历史top10_v1：Who Is The Guilty?；F1=1.0
+历史react：Who Is The Guilty?；F1=1.0
+历史frozen_s02：La Cérémonie；F1=0
+single_original：Cannot be determined；F1=0；状态=success
+  #1 原问句：Who directed the film La Cérémonie?
+  检索改写：Who directed the film La Cérémonie?
+  传递的完整回答：Claude Chabrol directed the film La Cérémonie.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：On what date did the director of the film La Cérémonie die?
+  检索改写：On what date did the director of the film La Cérémonie die?
+  传递的完整回答：The date of Claude Chabrol’s death cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Who directed the film Who Is The Guilty??
+  检索改写：Who directed the film Who Is The Guilty??
+  传递的完整回答：Alexandre Tsutsunava directed the film Who Is the Guilty?.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #4 原问句：On what date did the director of the film Who Is The Guilty? die?
+  检索改写：On what date did the director of the film Who Is The Guilty? die?
+  传递的完整回答：The date of Alexandre Tsutsunava’s death cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #5 原问句：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  检索改写：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  传递的完整回答：The date on which the director of La Cérémonie (Claude Chabrol) died and the date on which the director of Who Is The Guilty? (Alexandre Tsutsunava) died cannot be determined from these passages, so it cannot be determined which director died earlier.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：La Cérémonie；F1=0；状态=success
+  #1 原问句：Who directed the film La Cérémonie?
+  检索改写：Who directed the film La Cérémonie?
+  传递的完整回答：Claude Chabrol directed the film La Cérémonie.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：On what date did the director of the film La Cérémonie die?
+  检索改写：On what date did Claude Chabrol die?
+  传递的完整回答：Claude Chabrol, the director of La Cérémonie, died on 12 September 2010.
+  新增且实际呈现的标注相关文档：['b21505822134333cf5aea804d46543bbd323c00ea7cd5ea7983ba2d8cd0c0ce2']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Who directed the film Who Is The Guilty??
+  检索改写：Who directed the film Who Is The Guilty??
+  传递的完整回答：Alexandre Tsutsunava directed the film Who Is the Guilty?.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #4 原问句：On what date did the director of the film Who Is The Guilty? die?
+  检索改写：On what date did Alexandre Tsutsunava die?
+  传递的完整回答：The death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：['07ecaf2afb2e71972a34c67684205c316b5c0f39409941d04dfa12bb75b89655']
+  被挤出的原路标注相关文档：[]
+  #5 原问句：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  检索改写：Which film has the director died earlier, La Cérémonie or Who Is The Guilty??
+  传递的完整回答：The director of La Cérémonie, Claude Chabrol, died on 12 September 2010, but the death date of Alexandre Tsutsunava, the director of Who Is the Guilty?, cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+10. 2wiki / 1a1c0bd40bdd11eba7f7acde48001122 / 历史failure
+原query：What nationality is John De Burgh (Died 1313)'s father?
+标准答案（仅用于离线打分）：Irish
+参考分解：
+  #1 Who is the father of John De Burgh (Died 1313)?
+  #2 What nationality is John De Burgh (Died 1313)'s father?
+  goal = 2
+历史top10_v1：Anglo-Irish；F1=0
+历史react：Anglo-Irish；F1=0
+历史frozen_s02：Anglo-Irish；F1=0
+single_original：Anglo-Irish；F1=0；状态=success
+  #1 原问句：Who is the father of John De Burgh (Died 1313)?
+  检索改写：Who is the father of John De Burgh (Died 1313)?
+  传递的完整回答：John De Burgh (Died 1313)'s father is Richard Óg de Burgh, 2nd Earl of Ulster.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What nationality is John De Burgh (Died 1313)'s father?
+  检索改写：What nationality is John De Burgh (Died 1313)'s father?
+  传递的完整回答：Richard Óg de Burgh, 2nd Earl of Ulster, was Anglo-Irish.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Anglo-Irish；F1=0；状态=success
+  #1 原问句：Who is the father of John De Burgh (Died 1313)?
+  检索改写：Who is the father of John De Burgh (Died 1313)?
+  传递的完整回答：John De Burgh (Died 1313)'s father is Richard Óg de Burgh, 2nd Earl of Ulster.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What nationality is John De Burgh (Died 1313)'s father?
+  检索改写：What nationality is Richard Óg de Burgh, 2nd Earl of Ulster?
+  传递的完整回答：John De Burgh (Died 1313)'s father, Richard Óg de Burgh, 2nd Earl of Ulster, was an Anglo-Irish noble.
+  新增且实际呈现的标注相关文档：['f8d32fbf0d18ed14e00daf8a337145ea6e90350adc84d06e8f69caada627c6b0']
+  被挤出的原路标注相关文档：[]
+
+11. 2wiki / 5112118e0baf11ebab90acde48001122 / 历史failure
+原query：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+标准答案（仅用于离线打分）：Alice of Normandy
+参考分解：
+  #1 Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  #2 Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  goal = 2
+历史top10_v1：Unknown；F1=0
+历史react：Alice of Normandy；F1=1.0
+历史frozen_s02：Unknown；F1=0
+single_original：Stephanie；F1=0；状态=success
+  #1 原问句：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  检索改写：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  传递的完整回答：Sibylla of Burgundy, Duchess of Burgundy’s father was William I, Count of Burgundy.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  检索改写：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  传递的完整回答：Sibylla of Burgundy, Duchess of Burgundy’s paternal grandmother was Stephanie.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Alice of Normandy；F1=1.0；状态=success
+  #1 原问句：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  检索改写：Who is the father of Sibylla Of Burgundy, Duchess Of Burgundy?
+  传递的完整回答：Sibylla of Burgundy, Duchess of Burgundy’s father was William I, Count of Burgundy.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who is Sibylla Of Burgundy, Duchess Of Burgundy's paternal grandmother?
+  检索改写：Who is William I, Count of Burgundy's mother?
+  传递的完整回答：Sibylla of Burgundy, Duchess of Burgundy’s paternal grandmother was Alice of Normandy.
+  新增且实际呈现的标注相关文档：['37ca96b3d847c8666d80cc903cb5eabab810c763db4c9fb1a1033020abf51a72']
+  被挤出的原路标注相关文档：[]
+
+12. 2wiki / 54eff598089711ebbd76ac1f6bf848b6 / 历史failure
+原query：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+标准答案（仅用于离线打分）：yes
+参考分解：
+  #1 From which country does the movie Chocolate City (Film) originate?
+  #2 From which country does the movie Dark Angel: The Ascent originate?
+  #3 Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  goal = 3
+历史top10_v1：No；F1=0
+历史react：No；F1=0
+历史frozen_s02：No；F1=0
+single_original：Yes；F1=1.0；状态=success
+  #1 原问句：From which country does the movie Chocolate City (Film) originate?
+  检索改写：From which country does the movie Chocolate City (Film) originate?
+  传递的完整回答：Chocolate City (Film) originates from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：From which country does the movie Dark Angel: The Ascent originate?
+  检索改写：From which country does the movie Dark Angel: The Ascent originate?
+  传递的完整回答：Dark Angel: The Ascent originates from Romania and the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  检索改写：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  传递的完整回答：Yes, Chocolate City (Film) and Dark Angel: The Ascent both originate from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Yes；F1=1.0；状态=success
+  #1 原问句：From which country does the movie Chocolate City (Film) originate?
+  检索改写：From which country does the movie Chocolate City (Film) originate?
+  传递的完整回答：Chocolate City (Film) originates from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：From which country does the movie Dark Angel: The Ascent originate?
+  检索改写：From which country does the movie Dark Angel: The Ascent originate?
+  传递的完整回答：Dark Angel: The Ascent originates from Romania and the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Do the movies Chocolate City (Film) and Dark Angel: The Ascent, originate from the same country?
+  检索改写：Do the movies Chocolate City (Film) and Dark Angel: The Ascent originate from the same country?
+  传递的完整回答：Yes, Chocolate City (Film) and Dark Angel: The Ascent both originate from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+13. 2wiki / 8820c510086411ebbd5eac1f6bf848b6 / 历史success
+原query：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+标准答案（仅用于离线打分）：Raiders Of Red Gap
+参考分解：
+  #1 Who directed the film Raiders Of Red Gap?
+  #2 On what date did the director of the film Raiders Of Red Gap die?
+  #3 Who directed the film A Day Of Fury?
+  #4 On what date did the director of the film A Day Of Fury die?
+  #5 Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  goal = 5
+历史top10_v1：Raiders Of Red Gap；F1=1.0
+历史react：Sam Newfield；F1=0
+历史frozen_s02：Raiders Of Red Gap；F1=1.0
+single_original：Cannot be determined；F1=0；状态=success
+  #1 原问句：Who directed the film Raiders Of Red Gap?
+  检索改写：Who directed the film Raiders Of Red Gap?
+  传递的完整回答：Sam Newfield directed the film Raiders of Red Gap.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：On what date did the director of the film Raiders Of Red Gap die?
+  检索改写：On what date did the director of the film Raiders Of Red Gap die?
+  传递的完整回答：The death date of Sam Newfield, the director of Raiders of Red Gap, cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Who directed the film A Day Of Fury?
+  检索改写：Who directed the film A Day Of Fury?
+  传递的完整回答：Harmon Jones directed the film A Day of Fury.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #4 原问句：On what date did the director of the film A Day Of Fury die?
+  检索改写：On what date did the director of the film A Day Of Fury die?
+  传递的完整回答：The death date of Harmon Jones, the director of A Day of Fury, cannot be determined from these passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #5 原问句：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  检索改写：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  传递的完整回答：The death dates of Sam Newfield (director of Raiders of Red Gap) and Harmon Jones (director of A Day of Fury) cannot be determined from these passages, so it cannot be determined which director died first.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Raiders Of Red Gap；F1=1.0；状态=success
+  #1 原问句：Who directed the film Raiders Of Red Gap?
+  检索改写：Who directed the film Raiders Of Red Gap?
+  传递的完整回答：Sam Newfield directed the film Raiders of Red Gap.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：On what date did the director of the film Raiders Of Red Gap die?
+  检索改写：On what date did Sam Newfield die?
+  传递的完整回答：Sam Newfield, the director of Raiders of Red Gap, died on November 10, 1964.
+  新增且实际呈现的标注相关文档：['cdc10b92b753caa81b77cccca0b79f13f6aa04ad078b0b247a122dd711b03b43']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Who directed the film A Day Of Fury?
+  检索改写：Who directed the film A Day Of Fury?
+  传递的完整回答：Harmon Jones directed the film A Day of Fury.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #4 原问句：On what date did the director of the film A Day Of Fury die?
+  检索改写：On what date did Harmon Jones die?
+  传递的完整回答：Harmon Jones, the director of A Day of Fury, died on July 10, 1972.
+  新增且实际呈现的标注相关文档：['4347672b71bbeb59ceafb15aa1159a1bd67d8c5bf1abe9ca7dffa3f0b6692128']
+  被挤出的原路标注相关文档：[]
+  #5 原问句：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  检索改写：Which film has the director died first, Raiders Of Red Gap or A Day Of Fury?
+  传递的完整回答：Sam Newfield, the director of Raiders of Red Gap, died first on November 10, 1964, before Harmon Jones, the director of A Day of Fury, who died on July 10, 1972.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+14. 2wiki / d4f03e3a0bdd11eba7f7acde48001122 / 历史success
+原query：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+标准答案（仅用于离线打分）：29 January 1816
+参考分解：
+  #1 Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  #2 What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  goal = 2
+历史top10_v1：29 January 1816；F1=1.0
+历史react：29 January 1816；F1=1.0
+历史frozen_s02：29 January 1816；F1=1.0
+single_original：29 January 1816；F1=1.0；状态=success
+  #1 原问句：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  检索改写：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  传递的完整回答：George Waldegrave, 5th Earl Waldegrave's mother was Elizabeth Waldegrave, Countess Waldegrave.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  检索改写：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  传递的完整回答：Elizabeth Waldegrave, Countess Waldegrave, died on 29 January 1816.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：29 January 1816；F1=1.0；状态=success
+  #1 原问句：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  检索改写：Who is the mother of George Waldegrave, 5Th Earl Waldegrave?
+  传递的完整回答：George Waldegrave, 5th Earl Waldegrave's mother was Elizabeth Waldegrave, Countess Waldegrave.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What is the date of death of George Waldegrave, 5Th Earl Waldegrave's mother?
+  检索改写：What is the date of death of Elizabeth Waldegrave, Countess Waldegrave?
+  传递的完整回答：Elizabeth Waldegrave, Countess Waldegrave, died on 29 January 1816.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+15. 2wiki / 32f0334c0bb011ebab90acde48001122 / 历史success
+原query：Who is the maternal grandmother of André De Laval-Montmorency?
+标准答案（仅用于离线打分）：Jeanne de Laval-Tinténiac
+参考分解：
+  #1 Who is the mother of André De Laval-Montmorency?
+  #2 Who is the maternal grandmother of André De Laval-Montmorency?
+  goal = 2
+历史top10_v1：Jeanne de Laval；F1=0.6666666666666666
+历史react：Jeanne de Laval；F1=0.6666666666666666
+历史frozen_s02：Jeanne de Laval-Tinténiac；F1=1.0
+single_original：Jeanne de Laval-Tinténiac；F1=1.0；状态=success
+  #1 原问句：Who is the mother of André De Laval-Montmorency?
+  检索改写：Who is the mother of André De Laval-Montmorency?
+  传递的完整回答：André de Laval-Montmorency’s mother is Anne de Laval.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who is the maternal grandmother of André De Laval-Montmorency?
+  检索改写：Who is the maternal grandmother of André De Laval-Montmorency?
+  传递的完整回答：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval-Tinténiac.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：Jeanne de Laval；F1=0.6666666666666666；状态=success
+  #1 原问句：Who is the mother of André De Laval-Montmorency?
+  检索改写：Who is the mother of André De Laval-Montmorency?
+  传递的完整回答：André de Laval-Montmorency’s mother is Anne de Laval.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who is the maternal grandmother of André De Laval-Montmorency?
+  检索改写：Who is the mother of Anne de Laval?
+  传递的完整回答：André de Laval-Montmorency’s maternal grandmother is Jeanne de Laval.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+16. 2wiki / 9564cd35089311ebbd75ac1f6bf848b6 / 历史success
+原query：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+标准答案（仅用于离线打分）：no
+参考分解：
+  #1 From which country does the movie Before The Streets originate?
+  #2 From which country does the movie Buchanan Rides Alone originate?
+  #3 Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  goal = 3
+历史top10_v1：No；F1=1.0
+历史react：No；F1=1.0
+历史frozen_s02：No；F1=1.0
+single_original：No；F1=1.0；状态=success
+  #1 原问句：From which country does the movie Before The Streets originate?
+  检索改写：From which country does the movie Before The Streets originate?
+  传递的完整回答：Before the Streets originates from Canada.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：From which country does the movie Buchanan Rides Alone originate?
+  检索改写：From which country does the movie Buchanan Rides Alone originate?
+  传递的完整回答：Buchanan Rides Alone originates from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  检索改写：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  传递的完整回答：No, Before the Streets originates from Canada and Buchanan Rides Alone originates from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：No；F1=1.0；状态=success
+  #1 原问句：From which country does the movie Before The Streets originate?
+  检索改写：From which country does the movie Before The Streets originate?
+  传递的完整回答：Before the Streets originates from Canada.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：From which country does the movie Buchanan Rides Alone originate?
+  检索改写：Do the movies Before The Streets and Buchanan Rides Alone originate from the same country?
+  传递的完整回答：Buchanan Rides Alone originates from the United States.
+  新增且实际呈现的标注相关文档：['3e57fc6645b1419ab716cc622bbca74c68e3973528215e9cb281fc282d575d03']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：Do the movies Before The Streets and Buchanan Rides Alone, originate from the same country?
+  检索改写：Do the movies Before the Streets (Canada) and Buchanan Rides Alone (United States) originate from the same country?
+  传递的完整回答：No, Before the Streets originates from Canada and Buchanan Rides Alone originates from the United States.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+17. musique / 2hop__123148_5385 / 历史failure
+原query：How many people work in Susan Winchester's alma mater?
+标准答案（仅用于离线打分）：11,900
+参考分解：
+  #1 What is Susan Winchester's alma mater?
+  #2 How many people work in Susan Winchester's alma mater?
+  goal = 2
+历史top10_v1：Unknown；F1=0
+历史react：11900；F1=1.0
+历史frozen_s02：The number of people who work at Susan Winchester's alma mater cannot be determined.；F1=0
+single_original：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.；F1=0；状态=success
+  #1 原问句：What is Susan Winchester's alma mater?
+  检索改写：What is Susan Winchester's alma mater?
+  传递的完整回答：Susan Winchester's alma mater is the University of Oklahoma.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：How many people work in Susan Winchester's alma mater?
+  检索改写：How many people work in Susan Winchester's alma mater?
+  传递的完整回答：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.；F1=0；状态=success
+  #1 原问句：What is Susan Winchester's alma mater?
+  检索改写：What is Susan Winchester's alma mater?
+  传递的完整回答：Susan Winchester's alma mater is the University of Oklahoma.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：How many people work in Susan Winchester's alma mater?
+  检索改写：How many people work in the University of Oklahoma?
+  传递的完整回答：The number of people who work at the University of Oklahoma cannot be determined from the retrieved passages.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+18. musique / 3hop1__92251_34179_23375 / 历史failure
+原query：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+标准答案（仅用于离线打分）：1948
+参考分解：
+  #1 Who was the leader of the Bolsheviks in the November Revolution?
+  #2 Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  #3 What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  goal = 3
+历史top10_v1：1939；F1=0
+历史react：1939；F1=0
+历史frozen_s02：1939；F1=0
+single_original：1939；F1=0；状态=success
+  #1 原问句：Who was the leader of the Bolsheviks in the November Revolution?
+  检索改写：Who was the leader of the Bolsheviks in the November Revolution?
+  传递的完整回答：Vladimir Lenin was the leader of the Bolsheviks in the November Revolution.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  检索改写：Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  传递的完整回答：Joseph Stalin succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  检索改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  传递的完整回答：The Molotov–Ribbentrop Pact, engineered by Joseph Stalin, was signed in 1939.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：1939；F1=0；状态=success
+  #1 原问句：Who was the leader of the Bolsheviks in the November Revolution?
+  检索改写：Who was the leader of the Bolsheviks in the November Revolution?
+  传递的完整回答：Vladimir Lenin was the leader of the Bolsheviks in the November Revolution.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Which politician succeeded the leader of the Bolsheviks in the November Revolution?
+  检索改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by Joseph Stalin?
+  传递的完整回答：Joseph Stalin succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution.
+  新增且实际呈现的标注相关文档：['ce8f070a1f8451dfd1ec9eef9a37a1290b1db9672e99cbb2daece984199eddbb']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by the politician who succeeded the leader of the Bolsheviks in the November Revolution?
+  检索改写：What year saw the publication of the version of the Molotov–Ribbentrop Pact, engineered by Joseph Stalin?
+  传递的完整回答：The Molotov–Ribbentrop Pact, engineered by Joseph Stalin—who succeeded Vladimir Lenin as leader of the Bolsheviks after the November Revolution—was signed and published in 1939.
+  新增且实际呈现的标注相关文档：['ce8f070a1f8451dfd1ec9eef9a37a1290b1db9672e99cbb2daece984199eddbb']
+  被挤出的原路标注相关文档：[]
+
+19. musique / 4hop3__175072_88460_30152_20999 / 历史failure
+原query：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+标准答案（仅用于离线打分）：The dynasty regrouped and defeated the Portuguese
+参考分解：
+  #1 From which people did the Somali Muslim Ajuran Empire declare independence?
+  #2 Of which country was Setthathirath a citizen?
+  #3 What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  #4 How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  goal = 4
+历史top10_v1：They were not expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of.；F1=0.1
+历史react：The question contains a false premise; the Ajuran Empire had no connection to the Thailand–Laos border.；F1=0
+历史frozen_s02：No evidence supports the claim.；F1=0
+single_original：The Ethiopian Empire was not expelled from the Mekong River, as it had no historical presence or territorial claim there.；F1=0；状态=success
+  #1 原问句：From which people did the Somali Muslim Ajuran Empire declare independence?
+  检索改写：From which people did the Somali Muslim Ajuran Empire declare independence?
+  传递的完整回答：The Somali Muslim Ajuran Empire declared independence from the Ethiopian Empire.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Of which country was Setthathirath a citizen?
+  检索改写：Of which country was Setthathirath a citizen?
+  传递的完整回答：Setthathirath was a citizen of Laos.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  检索改写：What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  传递的完整回答：The natural boundary between Thailand and Laos is the Mekong River.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #4 原问句：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  检索改写：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  传递的完整回答：The Ethiopian Empire was not expelled from the Mekong River, as it had no historical presence or territorial claim there.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：The Ethiopian Empire was never present on or expelled from the Mekong River.；F1=0；状态=success
+  #1 原问句：From which people did the Somali Muslim Ajuran Empire declare independence?
+  检索改写：From which people did the Somali Muslim Ajuran Empire declare independence?
+  传递的完整回答：The Somali Muslim Ajuran Empire declared independence from the Ethiopian Empire.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Of which country was Setthathirath a citizen?
+  检索改写：How were the same people who the Somali Muslim Ajuran Empire declared independence from—the Ethiopian Empire—expelled from the natural boundary between Thailand and Laos?
+  传递的完整回答：Setthathirath was a citizen of Laos.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：What is the natural boundary between Thailand and the country of which Setthathirath was a citizen?
+  检索改写：What is the natural boundary between Thailand and Laos?
+  传递的完整回答：The natural boundary between Thailand and Laos is the Mekong River.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：['1f45fcacd3de61d20e72fc6a4343c6ad6292806fff398c0ff4b1761436478ab3']
+  #4 原问句：How were the same people who the Somali Muslim Ajuran Empire declared independence from expelled from the natural boundary between Thailand and the country Setthathirath is a citizen of?
+  检索改写：How were the Ethiopian Empire expelled from the Mekong River?
+  传递的完整回答：The Ethiopian Empire was never present on or expelled from the Mekong River, the natural boundary between Thailand and Laos.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+20. musique / 3hop1__649930_15840_36002 / 历史failure
+原query：What were the Genesis' advantages over the platform of Colorful Dragon?
+标准答案（仅用于离线打分）：built on 16-bit architectures and offered improved graphics and sound
+参考分解：
+  #1 On which platform was Colorful Dragon released?
+  #2 What were the Genesis' advantages over the platform of Colorful Dragon?
+  goal = 2
+历史top10_v1：The Genesis was a 16-bit console, while Colorful Dragon was released on the 8-bit NES.；F1=0.1818181818181818
+历史react：Colorful Dragon is a game for the NES, not a platform; thus, the comparison is invalid.；F1=0
+历史frozen_s02：The passages do not provide information about the Genesis's advantages over the platform of Colorful Dragon.；F1=0
+single_original：Greater processing power, enhanced graphics capabilities, larger color palette, higher resolution, and support for more complex games with richer audio and visual presentation；F1=0.18181818181818182；状态=success
+  #1 原问句：On which platform was Colorful Dragon released?
+  检索改写：On which platform was Colorful Dragon released?
+  传递的完整回答：Colorful Dragon was released on the Nintendo Entertainment System.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What were the Genesis' advantages over the platform of Colorful Dragon?
+  检索改写：What were the Genesis' advantages over the platform of Colorful Dragon?
+  传递的完整回答：The Sega Genesis, as a 16-bit console, had advantages over the Nintendo Entertainment System (the platform of Colorful Dragon) including greater processing power, enhanced graphics capabilities, a larger color palette, higher resolution, and support for more complex games with richer audio and visual presentation.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：16-bit architecture offering improved graphics and sound, stronger third-party support, and larger game library；F1=0.5；状态=success
+  #1 原问句：On which platform was Colorful Dragon released?
+  检索改写：On which platform was Colorful Dragon released?
+  传递的完整回答：Colorful Dragon was released on the Nintendo Entertainment System.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What were the Genesis' advantages over the platform of Colorful Dragon?
+  检索改写：What were the Genesis' advantages over the Nintendo Entertainment System?
+  传递的完整回答：The Sega Genesis had advantages over the Nintendo Entertainment System—including stronger third-party support, a 16-bit architecture offering improved graphics and sound, and a larger game library—during the platform rivalry.
+  新增且实际呈现的标注相关文档：['6f03dca82a75957361bcaf5c11247ab04b1f8adecbcee9ec084b5a446a9d52b0', 'da314d9a1df28f7fe214971cb557fba1ae82797847d25ffab165f9edd00f602b']
+  被挤出的原路标注相关文档：[]
+
+21. musique / 2hop__201704_135481 / 历史success
+原query：What is the competition that the 1965 Federation Cup is part of named after?
+标准答案（仅用于离线打分）：International Tennis Federation
+参考分解：
+  #1 Of which competition is the 1965 Federation Cup a part?
+  #2 What is the competition that the 1965 Federation Cup is part of named after?
+  goal = 2
+历史top10_v1：International Tennis Federation；F1=1.0
+历史react：International Tennis Federation；F1=1.0
+历史frozen_s02：International Tennis Federation；F1=1.0
+single_original：International Tennis Federation；F1=1.0；状态=success
+  #1 原问句：Of which competition is the 1965 Federation Cup a part?
+  检索改写：Of which competition is the 1965 Federation Cup a part?
+  传递的完整回答：The 1965 Federation Cup is part of the Fed Cup.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What is the competition that the 1965 Federation Cup is part of named after?
+  检索改写：What is the competition that the 1965 Federation Cup is part of named after?
+  传递的完整回答：The Fed Cup is named after the International Tennis Federation.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：International Tennis Federation；F1=1.0；状态=success
+  #1 原问句：Of which competition is the 1965 Federation Cup a part?
+  检索改写：Of which competition is the 1965 Federation Cup a part?
+  传递的完整回答：The 1965 Federation Cup is part of the Fed Cup.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：What is the competition that the 1965 Federation Cup is part of named after?
+  检索改写：What is the Fed Cup named after?
+  传递的完整回答：The Fed Cup is named after the International Tennis Federation.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+22. musique / 3hop2__6989_37759_74563 / 历史success
+原query：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+标准答案（仅用于离线打分）：1630
+参考分解：
+  #1 Which religious order founded Harvard College?
+  #2 Which region of the United States is served by the Rainbow Times?
+  #3 When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  goal = 3
+历史top10_v1：The religious order that founded Harvard College was the Congregationalists, who arrived in the Massachusetts Bay Colony in 1630.；F1=0.11764705882352941
+历史react：1630；F1=1.0
+历史frozen_s02：1630；F1=1.0
+single_original：1630；F1=1.0；状态=success
+  #1 原问句：Which religious order founded Harvard College?
+  检索改写：Which religious order founded Harvard College?
+  传递的完整回答：The Puritans founded Harvard College.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Which region of the United States is served by the Rainbow Times?
+  检索改写：Which region of the United States is served by the Rainbow Times?
+  传递的完整回答：The Rainbow Times serves all of New England.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  检索改写：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  传递的完整回答：The Puritans arrived in the Massachusetts Bay Colony, which is part of New England, in 1630.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：1630；F1=1.0；状态=success
+  #1 原问句：Which religious order founded Harvard College?
+  检索改写：Which religious order founded Harvard College?
+  传递的完整回答：The Puritans founded Harvard College.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Which region of the United States is served by the Rainbow Times?
+  检索改写：Which region of the United States is served by the Rainbow Times?
+  传递的完整回答：The Rainbow Times serves all of New England.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：When did the religious order that founded Harvard College, arrive in the region of the U.S. served by the Rainbow Times?
+  检索改写：When did the Puritans arrive in New England?
+  传递的完整回答：The Puritans, who founded Harvard College, arrived in New England—the region served by the Rainbow Times—starting in 1630 with the Great Puritan Migration.
+  新增且实际呈现的标注相关文档：['7517311b6056e35cb9237e86b3389e2bcb0df165c9762b928498a478f903572a']
+  被挤出的原路标注相关文档：[]
+
+23. musique / 2hop__166820_52835 / 历史success
+原query：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+标准答案（仅用于离线打分）：John D. Loudermilk
+参考分解：
+  #1 Who performed Chasing Pirates?
+  #2 Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  goal = 2
+历史top10_v1：John D. Loudermilk；F1=1.0
+历史react：John D. Loudermilk；F1=1.0
+历史frozen_s02：John D. Loudermilk；F1=1.0
+single_original：John D. Loudermilk；F1=1.0；状态=success
+  #1 原问句：Who performed Chasing Pirates?
+  检索改写：Who performed Chasing Pirates?
+  传递的完整回答：Norah Jones performed "Chasing Pirates."
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  检索改写：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  传递的完整回答：John D. Loudermilk wrote “Turn Me On,” which was performed by Norah Jones.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：John D. Loudermilk；F1=1.0；状态=success
+  #1 原问句：Who performed Chasing Pirates?
+  检索改写：Who performed Chasing Pirates?
+  传递的完整回答：Norah Jones performed "Chasing Pirates."
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Who wrote turn me on, which was performed by the person who also performed Chasing Pirates?
+  检索改写：Who wrote "Turn Me On", which was performed by Norah Jones?
+  传递的完整回答：John D. Loudermilk wrote "Turn Me On", which was performed by Norah Jones.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+24. musique / 3hop1__109185_720914_41132 / 历史success
+原query：How many times did the plague occur in the place of death of the creator of La Schiavona?
+标准答案（仅用于离线打分）：22
+参考分解：
+  #1 Who created La Schiavona?
+  #2 Where did the creator of La Schiavona die?
+  #3 How many times did the plague occur in the place of death of the creator of La Schiavona?
+  goal = 3
+历史top10_v1：22；F1=1.0
+历史react：；F1=0
+历史frozen_s02：22；F1=1.0
+single_original：22；F1=1.0；状态=success
+  #1 原问句：Who created La Schiavona?
+  检索改写：Who created La Schiavona?
+  传递的完整回答：Titian created La Schiavona.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Where did the creator of La Schiavona die?
+  检索改写：Where did the creator of La Schiavona die?
+  传递的完整回答：Titian died in Venice.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #3 原问句：How many times did the plague occur in the place of death of the creator of La Schiavona?
+  检索改写：How many times did the plague occur in the place of death of the creator of La Schiavona?
+  传递的完整回答：The plague occurred 22 times in Venice between 1361 and 1528.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+dual_original_rewritten：22；F1=1.0；状态=success
+  #1 原问句：Who created La Schiavona?
+  检索改写：Who created La Schiavona?
+  传递的完整回答：Titian created La Schiavona.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+  #2 原问句：Where did the creator of La Schiavona die?
+  检索改写：How many times did the plague occur in Venice?
+  传递的完整回答：Titian died in Venice.
+  新增且实际呈现的标注相关文档：['91fb754f7a836d4ddef5adf333030c37c8a5d9a7a6dbe71a6707ba63210f15a2']
+  被挤出的原路标注相关文档：[]
+  #3 原问句：How many times did the plague occur in the place of death of the creator of La Schiavona?
+  检索改写：How many times did the plague occur in Venice?
+  传递的完整回答：The plague occurred 22 times in Venice between 1361 and 1528.
+  新增且实际呈现的标注相关文档：[]
+  被挤出的原路标注相关文档：[]
+
+六、用量、可回溯记录与局限
+本轮返回用量按既有单价记账（含Mu筛选）CNY：0.4444476
+未结预留CNY：0.09421999999999998；包括已留档的提交前DNS失败及其他无返回用量的连接异常，不能称作已确认消费。不是已核对账单。
+网络恢复沿用共享Transport已有策略：新请求在同一进程内的可重试网络异常最多重试两次，保留未知尝试的费用预留，采用第一个完整响应；重启后未知请求不会自动重发。本轮未修改这一既有策略，最终逻辑请求成功不代表所有网络尝试成功。
+主试验API状态与用量：{"hotpotqa": {"unique_request_statuses": {"success": 54}, "attempt_statuses": {"success": 54, "unknown": 1}, "returned_prompt_tokens": 81778, "returned_completion_tokens": 784, "sum_returned_request_latency_seconds_not_wall_time": 309.50167709973175}, "2wiki": {"unique_request_statuses": {"success": 68}, "attempt_statuses": {"success": 68, "unknown": 1}, "returned_prompt_tokens": 129219, "returned_completion_tokens": 1173, "sum_returned_request_latency_seconds_not_wall_time": 294.5061236997717}, "musique": {"unique_request_statuses": {"success": 59}, "attempt_statuses": {"success": 59, "unknown": 1}, "returned_prompt_tokens": 113480, "returned_completion_tokens": 944, "sum_returned_request_latency_seconds_not_wall_time": 158.53878920001443}}
+冻结哈希检查：{"protocol": true, "cases": true, "runner": true, "child_and_final_prompts": true}
+详细记录：本目录RESULTS.json、CASE_RESULTS.jsonl、cases/、api/、EXECUTION_FROZEN.json；实验目录cases.frozen.jsonl、protocol.json、DECISIONS.txt。每次请求的完整prompt、输出、用量和异常保存在独立SQLite。
+24题是小规模机制诊断；不能据此推断总体提升、统计显著性、自动分解器质量或SOTA。F1是官方词级指标，职业同义表达等情况需要与事实性分开看。没有把本轮F1=0自动计为幻觉。

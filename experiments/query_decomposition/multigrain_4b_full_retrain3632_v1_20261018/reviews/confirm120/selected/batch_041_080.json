@@ -1,0 +1,52 @@
+{
+  "reviewed_indices": [
+    41,
+    80
+  ],
+  "method": "Every changed array read against original under same locked F/S/C/U. Exact T02 arrays inherit. Same Codex, not independent human gold; uncertain nonpass. No retrieved facts/answers or candidate-dependent criterion changes.",
+  "exceptions": {
+    "41": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Still replaces birth country with country person is from, exact same array as locked R02 row41."
+    },
+    "45": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Olympics host and participant countries are exchanged; Albert I is bound to participating country instead of the host. Also changes Don Kulick lives to lived."
+    },
+    "55": {
+      "verdict": "uncertain",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "WINEP bundling countries under a name becomes WINEP bundling a name for countries. Intended grouping label may be recoverable, but explicit object/relation is ambiguous; uncertainty retained as nonpass."
+    },
+    "62": {
+      "verdict": "fail",
+      "dimensions": [
+        "F",
+        "C"
+      ],
+      "reason": "Same as R02: first continent question drops sailing/ocean/eastern-Russia qualifiers and unnamed ocean remains unexposed."
+    },
+    "76": {
+      "verdict": "fail",
+      "dimensions": [
+        "F"
+      ],
+      "reason": "Same as R02: who was guillotined still omits that this man ruled the specified country."
+    }
+  },
+  "acceptance_notes": {
+    "60": "Asks which coach also played an ASU role, not the original role target.",
+    "65": "No invented country-contains-two-countries relation.",
+    "66": "One complete population-constrained group identity is a useful candidate operand for the Ida condition; no original qualifier lost.",
+    "69": "Retains explicit in relation binding nation to Peterson authority on a subject.",
+    "79": "Described Grand Lodge identity accepted consistently with earlier R01."
+  }
+}

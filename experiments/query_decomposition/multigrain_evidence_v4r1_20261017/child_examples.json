@@ -1,0 +1,46 @@
+[
+  {
+    "source_qid": "5ae28c0a554299495565daaa",
+    "request": "What is the length of the river into which Pack Creek flows?",
+    "dependencies": [
+      {
+        "step_id": 1,
+        "request": "Which river does Pack Creek flow into after passing through Spanish Valley?",
+        "answer": "Pack Creek flows into the Colorado River."
+      }
+    ],
+    "context": "[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.",
+    "answer": "[complete] The Colorado River is 1450 mi long.",
+    "origin": "authored teaching output, not model output"
+  },
+  {
+    "source_qid": "5a89706055429951533612f9",
+    "request": "In what town and Minnesota county did Scott Sandelin grow up?",
+    "dependencies": [],
+    "context": "[Scott Sandelin]\nScott Sandelin\nScott Alan Sandelin (born August 8, 1964) is an American former professional ice hockey player. He is currently the head coach of the Minnesota-Duluth Bulldogs men's ice hockey team. In 2011, he became the first coach in Bulldog history to lead them to a national title. It was a 3–2 overtime game against the University of Michigan at the Xcel Energy Center in Saint Paul, Minnesota. He grew up in Hibbing, Minnesota where he went on to be drafted in the second round by the Montreal Canadiens (40th overall) and play collegiate hockey for the North Dakota Fighting Sioux.",
+    "answer": "[partial] Scott Sandelin grew up in Hibbing, Minnesota; the county cannot be determined from this passage.",
+    "origin": "real source paragraph, authored teaching question and partial answer; not full runtime retrieval"
+  },
+  {
+    "source_qid": "5a8aee3d55429950cd6afc01",
+    "request": "How many species does Callicoma contain other than Callicoma serratifolia?",
+    "dependencies": [
+      {
+        "step_id": 1,
+        "request": "Which genus contains Callicoma serratifolia?",
+        "answer": "Callicoma contains Callicoma serratifolia."
+      }
+    ],
+    "context": "[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.",
+    "answer": "[complete] Callicoma contains zero species other than Callicoma serratifolia.",
+    "origin": "authored teaching output, not model output"
+  },
+  {
+    "source_qid": "5ac2cb125542996773102626",
+    "request": "Is Leycesteria native to Australia?",
+    "dependencies": [],
+    "context": "[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.",
+    "answer": "[complete] No. Leycesteria is native to temperate Asia, rather than Australia.",
+    "origin": "authored teaching output, not model output"
+  }
+]

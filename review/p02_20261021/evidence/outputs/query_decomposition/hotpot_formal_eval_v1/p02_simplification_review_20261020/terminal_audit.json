@@ -1,0 +1,1730 @@
+{
+  "created_utc": "2026-10-20T12:43:14.228878+00:00",
+  "scope": "Complete300 terminal_goal vs frozen union20; manual semantic review of all30 native-F1 declines; no new generation",
+  "user_decision": "Only timing_only adopted; union20, discount20, single_final and terminal_goal not adopted.",
+  "primary_classification_is_manual_and_descriptive": true,
+  "classification_not_isolated_causal_attribution": true,
+  "automatic_gold_substring_semantic_accuracy_used": false,
+  "strict_readout_errors": {
+    "confirmed_cases": 6,
+    "denominator_down_cases": 30,
+    "percentage": 20.0,
+    "conclusion_sufficient_for_unique_original_answer": 5,
+    "correct_target_present_among_supported_broader_facts_but_final_wrong_type": 1,
+    "by_dataset": {
+      "hotpotqa": 5,
+      "2wiki": 1
+    },
+    "negative_F1_contribution_pp_to_all300": -1.4539682539682541,
+    "examples": [
+      {
+        "id": "hotpotqa:5ae0a48155429945ae9593df",
+        "dataset": "hotpotqa",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "问bookmaker收费定义；Conclusion已表达完整收费定义，Final却回到被定义术语Vigorish。",
+        "manual_tags": {
+          "conclusion_sufficient": true,
+          "subtype": "definition_to_term",
+          "evidence_terms": [
+            "bookmaker"
+          ]
+        },
+        "question": "The pseudonymous partner to \"Willis the Guard\" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?",
+        "complete_model_decomposition": [
+          "Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"
+        ],
+        "goal_appended_by_program": "The pseudonymous partner to \"Willis the Guard\" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?",
+        "gold_offline_only": "amount charged by a bookmaker",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Vigorish refers to the fee or commission charged by a bookmaker on a bet, not a portion of the bet itself.",
+        "old_final": "the fee or commission charged by a bookmaker",
+        "new_Conclusion": "Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.",
+        "new_Final_answer": "Vigorish",
+        "new_raw_output": "Conclusion: Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.\nFinal answer: Vigorish",
+        "old_F1": 0.6,
+        "new_F1": 0.0,
+        "delta_F1": -0.6,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "hotpotqa:5ae0a48155429945ae9593df",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ae0a48155429945ae9593df.json",
+          "sha256": "dd35cd7ced54348caf622644d355a3e131d3afe1c1a761b58d596970ab5c0038"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ae0a48155429945ae9593df.json",
+        "source_new_sha256": "617b1bfde57be512fb2f9de69cd460c26a7807a1d1b64f9ab711703d1b89358f",
+        "evidence": [
+          {
+            "rank": 2,
+            "source": "Vigorish",
+            "doc_id": "772136",
+            "text": "Vigorish\nVigorish, or simply the vig, also known as juice, under-juice, the cut or the take, is the amount charged by a bookmaker, or \"bookie\", for taking a bet from a gambler. In the United States, it also means the interest on a shark's loan. The term originates from the Russian word for \"winnings\", выигрыш \"vyigrysh\"."
+          }
+        ]
+      },
+      {
+        "id": "hotpotqa:5a8c7595554299585d9e36b6",
+        "dataset": "hotpotqa",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "问政府职位；Conclusion列出Chief of Protocol等有据职位，Final却输出人物Shirley Temple。Conclusion范围偏宽，故只判已含正确目标，不判唯一完整答案已确定。",
+        "manual_tags": {
+          "conclusion_sufficient": false,
+          "subtype": "office_to_person",
+          "evidence_terms": [
+            "Chief of Protocol"
+          ]
+        },
+        "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+        "complete_model_decomposition": [
+          "Who portrayed Corliss Archer in the film Kiss and Tell?"
+        ],
+        "goal_appended_by_program": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+        "gold_offline_only": "Chief of Protocol",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and as Chief of Protocol of the United States.",
+        "old_final": "United States ambassador to Ghana and to Czechoslovakia and Chief of Protocol of the United States",
+        "new_Conclusion": "Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.",
+        "new_Final_answer": "Shirley Temple",
+        "new_raw_output": "Conclusion: Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nFinal answer: Shirley Temple",
+        "old_F1": 0.33333333333333337,
+        "new_F1": 0.0,
+        "delta_F1": -0.33333333333333337,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "hotpotqa:5a8c7595554299585d9e36b6",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5a8c7595554299585d9e36b6.json",
+          "sha256": "06f4a4224d4f8e46028508934b1b1423cfb3a691f313da4a4a42fa62f6ded0d3"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a8c7595554299585d9e36b6.json",
+        "source_new_sha256": "5e2925784df434d31a0c2a280fc2ee9fa77507c3fa760850bca0bb5f3e5923f4",
+        "evidence": [
+          {
+            "rank": 4,
+            "source": "Shirley Temple",
+            "doc_id": "804602",
+            "text": "Shirley Temple\nShirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States."
+          }
+        ]
+      },
+      {
+        "id": "hotpotqa:5addbf645542997dc7907014",
+        "dataset": "hotpotqa",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "Conclusion区分Melanie主持前两季，Vernon主持第三季及另一个节目；原题问共同主持人，可推出Vernon，Final却并列两人。",
+        "manual_tags": {
+          "conclusion_sufficient": true,
+          "subtype": "intersection_to_union",
+          "evidence_terms": [
+            "Celebrities Under Pressure",
+            "All Star Family Fortunes"
+          ]
+        },
+        "question": "Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?",
+        "complete_model_decomposition": [
+          "Who hosted the ITV show Celebrities Under Pressure?",
+          "Who hosted the ITV show All Star Family Fortunes?"
+        ],
+        "goal_appended_by_program": "Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?",
+        "gold_offline_only": "Vernon Kay",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.",
+        "old_final": "Vernon Kay",
+        "new_Conclusion": "Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.",
+        "new_Final_answer": "Melanie Sykes and Vernon Kay",
+        "new_raw_output": "Conclusion: Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.\nFinal answer: Melanie Sykes and Vernon Kay",
+        "old_F1": 1.0,
+        "new_F1": 0.5714285714285715,
+        "delta_F1": -0.4285714285714285,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "hotpotqa:5addbf645542997dc7907014",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5addbf645542997dc7907014.json",
+          "sha256": "bf51b66c01bd263fa2b716677e31368ed7e4f6bf20a36859aee72f9ca22c66b6"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5addbf645542997dc7907014.json",
+        "source_new_sha256": "e7f1a3d45cab05f45e7fb86d78aeac50beedc1892bdf1123adf91c0a59012ea3",
+        "evidence": [
+          {
+            "rank": 1,
+            "source": "Celebrities Under Pressure",
+            "doc_id": "4709304",
+            "text": "Celebrities Under Pressure\nCelebrities Under Pressure is a British game show that aired on ITV from 13 September 2003 to 7 August 2004. It was first hosted by Melanie Sykes for series 1 & 2 and then hosted by Vernon Kay for series 3."
+          },
+          {
+            "rank": 2,
+            "source": "All Star Family Fortunes",
+            "doc_id": "7686649",
+            "text": "All Star Family Fortunes\nAll Star Family Fortunes is a British television game show broadcast on ITV and presented by Vernon Kay which began airing on 28 October 2006 and ended in 2015 after its twelfth series. It is a celebrity revival of the original \"Family Fortunes\" that aired from 6 January 1980 until 30 December 2004, based on the American game show \"Family Feud\"."
+          },
+          {
+            "rank": 3,
+            "source": "The Moment of Truth (UK game show)",
+            "doc_id": "13723327",
+            "text": "The Moment of Truth (UK game show)\nThe Moment of Truth is a British game show that aired on ITV from 5 September 1998 to 29 September 2001 and was hosted by Cilla Black. A similar show, \"Celebrities Under Pressure\" followed two years after \"The Moment of Truth\" ended. The format was strikingly similar, except that celebrities partook in challenges on behalf of the family, rather than a family member."
+          },
+          {
+            "rank": 4,
+            "source": "Vernon Kay",
+            "doc_id": "19356604",
+            "text": "Vernon Kay\nVernon Charles Kay (born 28 April 1974) is an English television presenter, radio DJ and former model best known for his television roles with ITV, presenting shows such as \"All Star Family Fortunes\" (2006–2015), \"Beat the Star\" (2008–2009) and \"Splash!\" (2013–2014)."
+          },
+          {
+            "rank": 5,
+            "source": "Family Fortunes",
+            "doc_id": "179638",
+            "text": "Family Fortunes\nFamily Fortunes is a British television game show based on the American game show \"Family Feud\". The programme ran on ITV from 6 January 1980 to 30 December 2004, before being revived by the same channel in 2006 under the title of All Star Family Fortunes."
+          }
+        ]
+      },
+      {
+        "id": "hotpotqa:5a83a2a15542993344746063",
+        "dataset": "hotpotqa",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "原题问首届毕业日期；Conclusion正确给June1925，Final却答学校。",
+        "manual_tags": {
+          "conclusion_sufficient": true,
+          "subtype": "date_to_school",
+          "evidence_terms": [
+            "June 1925"
+          ]
+        },
+        "question": "In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?",
+        "complete_model_decomposition": [
+          "Which high school forced Manchester High School to change its name in 1922?"
+        ],
+        "goal_appended_by_program": "In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?",
+        "gold_offline_only": "June 1925",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Manchester West High School’s first graduating class was in June 1925.",
+        "old_final": "June 1925",
+        "new_Conclusion": "Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.",
+        "new_Final_answer": "Manchester West High School",
+        "new_raw_output": "Conclusion: Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.\nFinal answer: Manchester West High School",
+        "old_F1": 1.0,
+        "new_F1": 0.0,
+        "delta_F1": -1.0,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "hotpotqa:5a83a2a15542993344746063",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5a83a2a15542993344746063.json",
+          "sha256": "17e6cd9984175d011f4a571aab1d8ed78401b1b3768f6d9e80cc34023b006756"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a83a2a15542993344746063.json",
+        "source_new_sha256": "7852014f614625362fff3227fbf9020e0b68813ece3d81d8672bc4b893cfafb3",
+        "evidence": [
+          {
+            "rank": 1,
+            "source": "Manchester High School West",
+            "doc_id": "1372669",
+            "text": "Manchester High School West\nManchester High School West, known as West High or West, is a public high school located in Manchester, New Hampshire. According to the \"Blue Book: Manchester High School West Hand Book \" (1940), the school was officially opened in September 1923 as a grade school and high school, hosting the seventh and eighth grades. In 1924, with an upsurge in enrollment to 136 pupils, the school became a dedicated high school. The first graduating class was in June 1925."
+          }
+        ]
+      },
+      {
+        "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+        "dataset": "2wiki",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "原题问同国家；Conclusion已明示两村均在Greece，Final却No，把不同地区Evros/Phocis的区分混入国家判断。",
+        "manual_tags": {
+          "conclusion_sufficient": true,
+          "subtype": "country_boolean_contradiction",
+          "evidence_terms": [
+            "Greece"
+          ]
+        },
+        "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+        "complete_model_decomposition": [
+          "What country is Mavrolithari, Evros located in?",
+          "What country is Ampelakia, Evros located in?"
+        ],
+        "goal_appended_by_program": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+        "gold_offline_only": "yes",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia, Evros is located in Greece; therefore, both villages are in the same country, Greece.",
+        "old_final": "Yes",
+        "new_Conclusion": "Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is located in the Evros regional unit, Greece; thus both villages are in Greece, but only Ampelakia is in Evros.",
+        "new_Final_answer": "No",
+        "new_raw_output": "Conclusion: Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is located in the Evros regional unit, Greece; thus both villages are in Greece, but only Ampelakia is in Evros.  \nFinal answer: No",
+        "old_F1": 1.0,
+        "new_F1": 0,
+        "delta_F1": -1.0,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+          "sha256": "d5bba4de9af22eebb25de29817b319a4fc73afd2b0d8a266bf9a3f6db03ebef3"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+        "source_new_sha256": "599eec83196ff0b9b0663fea901d90f8bf74d2028a9b76ab3dca2b664d2996d0",
+        "evidence": [
+          {
+            "rank": 1,
+            "source": "Ampelakia, Evros",
+            "doc_id": "48237979d7c9a724250c5e2ebbf00cf9aa7fed05b58e72ff76ee3650e3da148d",
+            "text": "Ampelakia, Evros\nAmpelakia( Greek: Αμπελάκια meaning vineyards) is a village in the municipality of Orestiada in the northern part of the Evros regional unit in Greece. Its population was 470 in 2011. Ampelakia is located about 12 km west of central Orestiada. The nearest larger village is Neochori to its northeast."
+          },
+          {
+            "rank": 2,
+            "source": "Mavrolithari",
+            "doc_id": "30fdcd6f1cba077aeef744d3fee21a338587dc11d8be285e81f77b04e8b087d8",
+            "text": "Mavrolithari\nMavrolithari  is a village on Mount Oeta in northern Phocis, Greece, at an altitude of 1.140 meters. Since the 2011 local government reform it is part of the municipality of Delphi, and the municipal unit of Kallieis. Population was 491 in the 2011 census."
+          },
+          {
+            "rank": 3,
+            "source": "Marasia",
+            "doc_id": "dcd798eb178636f0c624f1a188ff25c6cf51ab303d256d08fe65e6d49a89b4ca",
+            "text": "Marasia\nMarasia( Greek: Μαράσια, Turkish:\" Maraş\", Bulgarian:\" Maраш\") is a village in the northern part of the Evros regional unit in Greece. Marasia is part of the municipal unit of Trigono. In 2011 its population was 140. It is situated between the rivers Evros and Ardas, close to their confluence. The Evros forms the border with Turkey here, and the Turkish city Edirne is 7 km to its east. Marasia is bypassed by the Greek National Road 51/ E85( Alexandroupoli- Orestiada- Ormenio- Svilengrad)."
+          },
+          {
+            "rank": 4,
+            "source": "Langadikia, Thessaloniki",
+            "doc_id": "5423e642b75a8b3e05be9a09c7fde08207eb87180c9acf94a0e1eec2696b2523",
+            "text": "Langadikia, Thessaloniki\nLangadikia( Greek:) is a village located in the regional unit of Thessaloniki, in Greece, north- east of Mount Chortiatis. It has facilities such as\" Langadikia High School\"( Gymnasium- Lyceum) and\" Agronomy Department\" that are used by many surrounding villages, as it is located on a cross-road between Lake Koroneia and Lake Volvi. The village has about 800 permanent inhabitants. It is part of the municipal unit of Koroneia, which contains also the villages Agios Vasileios, Gerakarou, Vasiloudi, and Ardameri."
+          },
+          {
+            "rank": 5,
+            "source": "Amorio, Evros",
+            "doc_id": "7f4032a5c6a15aa121276b22e5ce02a3e64ec8e2fc724886aee887c4751fa15f",
+            "text": "Amorio, Evros\nAmorio is a village in the municipal unit of Orfeas, northeastern Evros, Greece. It is situated at 2 km from the right bank of the river Evros, that forms the border with Turkey here. Amorio is 6 km northeast of Lavara, 7 km southwest of Didymoteicho and 21 km west of Uzunköprü( Turkey). The Greek National Road 51/ E85( Alexandroupoli- Orestiada- Svilengrad) and the railway from Alexandroupoli to Didymoteicho pass through the village."
+          },
+          {
+            "rank": 6,
+            "source": "Mavrata",
+            "doc_id": "3462b1753e68a98744ad075bc71f07433bf0a43e0fda82657ba8ad9b5566d85f",
+            "text": "Mavrata\nMavrata is a village in the municipal unit of Eleios- Pronnoi, in the southeastern part of the island of Cephalonia, Greece. In 2011 its population was 139. It is situated on a hill above the Ionian Sea coast, at about 180 m elevation. It is 1 km south of Chionata, 3 km southwest of Pastra and 10 km southwest of Poros. It was devastated by the 1953 Ionian earthquake."
+          },
+          {
+            "rank": 7,
+            "source": "Alpochori, Achaea",
+            "doc_id": "1b45ca3061a96d40be9084cf81ee93d9ae7a23b20b2e3f15fc2a902b86fff9a5",
+            "text": "Alpochori, Achaea\nAlpochori( Greek: Αλποχώρι, also Αλεποχώρι\" Alepochori\") is a village and a community in southern Achaea, Greece. Alpochori is located on the northern slope of Mount Erymanthos, about 35 km south of Patras. In 2011 Alpochori had a population of 99 for the village and 236 for the community, which includes the village Agios Dimitrios."
+          },
+          {
+            "rank": 8,
+            "source": "Koniskos",
+            "doc_id": "01275e665f8b21525fd967f5470bc29a414afd6a9c2f6beb7d651c984fa0290a",
+            "text": "Koniskos\nKoniskos( Greek: Κονισκός) is a village in the southwestern Trikala regional unit, Greece. It was the seat of the municipality of Tymfaia. In 2011 Koniskos had a population of 196 for the village and 294 for the community( including the village Kalochori). It is located in the Antichasia mountains, 25 km north of the city of Trikala, and 17 km northeast of Kalambaka."
+          },
+          {
+            "rank": 9,
+            "source": "Plati, Evros",
+            "doc_id": "d052b9e37843675f1acb0dae840692d7eec5cf90d4aadbb27e37a17598d45bc8",
+            "text": "Plati, Evros\nPlati is a village in the northern part of the Evros regional unit in Greece. It is part of the municipal unit Trigono. In 2011 its population was 655. Plati is located on the left bank of the river Ardas, between the villages Elaia to the west and Arzos to the east."
+          },
+          {
+            "rank": 10,
+            "source": "Ammovouno",
+            "doc_id": "fd5a1b4917ed5c0284b6ea00b391d9771725a205932e12248a1a992e58236ad3",
+            "text": "Ammovouno\nAmmovouno( Greek: Αμμόβουνο) is a village in the Evros regional unit of northeast Greece. Ammovouno is in the municipal unit of Orestiada. Ammovouno's 2011 population was 113 for the village. It is located on the right bank of the river Ardas"
+          },
+          {
+            "rank": 11,
+            "source": "Mount Othrys",
+            "doc_id": "c8eb6018f5759e3b00ce6fde1d50b913f22b770a2bea27e0b71a34b0221c1b9a",
+            "text": "Mount Othrys\nMount Othrys( –\" oros Othrys\", also Όθρη –\" Othri\") is a mountain in central Greece, in the northeastern part of Phthiotis and southern part of Magnesia. Its highest summit,\" Gerakovouni\", situated on the border of Phthiotis and Magnesia, is 1,726 m above sea level. The population density in the mountains is low: there are a few small villages, including Anavra in the northwest, Kokkotoi in the northeast, Palaiokerasia in the south and Neraida in the southwest. The length from west to east is about 35 km and the width from north to south is about 25 km. The Pagasetic Gulf lies to the northeast, and the Malian Gulf lies to the south. The summit Gerakovouni lies 19 km south of Almyros, 27 km northeast of Lamia and 44 km southwest of Volos. The upper ranges of the mountain are rocky, and there are forests in the lower ranges. The entire area is also a parkland. The main source of rock is ophiolite."
+          },
+          {
+            "rank": 12,
+            "source": "Malesiada",
+            "doc_id": "00486f15e918b235a2f3ed2ef659bf32e32aeaa55c07ec5b6cdaa97ea9d0b503",
+            "text": "Malesiada\nMalesiada is a village and a community in Aetolia- Acarnania, Greece. The village belongs to the municipal unit of Inachos. Through the village passes the provincial road which leads from Agrinio and Amfilochia to Empesos and further to Arta and Evrytania( through the Tatarna Bridge over the artificial lake of Kremasta). The municipal district Malesiada consists of the villages Nea Malesiada, Ano Kampos and Maraneli."
+          }
+        ]
+      },
+      {
+        "id": "hotpotqa:5ae3fcfc5542995dadf2428c",
+        "dataset": "hotpotqa",
+        "category": "confirmed_target_or_logic_readout_error",
+        "manual_reason": "原题问出生日期；Conclusion明确November20,1942，Final却答Norman Greenbaum。",
+        "manual_tags": {
+          "conclusion_sufficient": true,
+          "subtype": "date_to_person",
+          "evidence_terms": [
+            "November 20, 1942"
+          ]
+        },
+        "question": "When was the  American singer-songwriter born who recorded “Spirit In The Sky”?",
+        "complete_model_decomposition": [
+          "Who is the American singer-songwriter who recorded Spirit In The Sky?"
+        ],
+        "goal_appended_by_program": "When was the  American singer-songwriter born who recorded “Spirit In The Sky”?",
+        "gold_offline_only": "November 20, 1942",
+        "gold_aliases_offline_only": [],
+        "old_goal": "Norman Greenbaum was born on November 20, 1942.",
+        "old_final": "November 20, 1942",
+        "new_Conclusion": "Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.",
+        "new_Final_answer": "Norman Greenbaum",
+        "new_raw_output": "Conclusion: Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.  \nFinal answer: Norman Greenbaum",
+        "old_F1": 1.0,
+        "new_F1": 0.0,
+        "delta_F1": -1.0,
+        "finish_reason": "stop",
+        "source_old": {
+          "id": "hotpotqa:5ae3fcfc5542995dadf2428c",
+          "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ae3fcfc5542995dadf2428c.json",
+          "sha256": "1ffa42c26d6dfd7c993494b5462fb45c8efeee0bc585d3d5d9cb9bf334c77481"
+        },
+        "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ae3fcfc5542995dadf2428c.json",
+        "source_new_sha256": "35431a0e2060f805af93b50687ac21c56ba8e3999a5e9977e1ce66f1e80a2237",
+        "evidence": [
+          {
+            "rank": 1,
+            "source": "Norman Greenbaum",
+            "doc_id": "872488",
+            "text": "Norman Greenbaum\nNorman Joel Greenbaum (born November 20, 1942) is an American singer-songwriter. He is best known for writing and performing the 1969 song \"Spirit in the Sky\"."
+          }
+        ]
+      }
+    ]
+  },
+  "categories": {
+    "conclusion_relation_or_required_scope_changed": {
+      "count": 3,
+      "share_of_30_down": 0.1,
+      "by_dataset": {
+        "musique": 3
+      },
+      "negative_F1_contribution_pp_to_all300": -0.8627450980392158,
+      "ids": [
+        "musique:3hop1__228_237521_291682",
+        "musique:2hop__582045_161450",
+        "musique:2hop__13592_49388"
+      ]
+    },
+    "truncated_output_contract_failure": {
+      "count": 3,
+      "share_of_30_down": 0.1,
+      "by_dataset": {
+        "2wiki": 2,
+        "musique": 1
+      },
+      "negative_F1_contribution_pp_to_all300": -0.5843137254901961,
+      "ids": [
+        "2wiki:16a91a500bb011ebab90acde48001122",
+        "2wiki:f37818400bd911eba7f7acde48001122",
+        "musique:3hop1__691197_15840_36002"
+      ]
+    },
+    "surface_equivalence_or_extra_detail": {
+      "count": 13,
+      "share_of_30_down": 0.43333333333333335,
+      "by_dataset": {
+        "hotpotqa": 7,
+        "2wiki": 3,
+        "musique": 3
+      },
+      "negative_F1_contribution_pp_to_all300": -1.4396455396455394,
+      "ids": [
+        "hotpotqa:5ab55455554299488d4d993b",
+        "2wiki:42954d320bb011ebab90acde48001122",
+        "2wiki:0d118fb00bdb11eba7f7acde48001122",
+        "hotpotqa:5a77c09555429967ab105262",
+        "musique:3hop1__109422_720914_27537",
+        "hotpotqa:5abb23035542992ccd8e7f22",
+        "musique:2hop__42747_83837",
+        "musique:3hop1__458916_651917_47686",
+        "2wiki:cdb8b7540bd911eba7f7acde48001122",
+        "hotpotqa:5abee4ff5542993fe9a41d7d",
+        "hotpotqa:5a72a9ac5542991f9a20c55f",
+        "hotpotqa:5a71474b5542994082a3e74f",
+        "hotpotqa:5ab8c3c65542991b5579effd"
+      ]
+    },
+    "preexisting_target_issue_or_partial_token_credit": {
+      "count": 2,
+      "share_of_30_down": 0.06666666666666667,
+      "by_dataset": {
+        "musique": 2
+      },
+      "negative_F1_contribution_pp_to_all300": -0.07251082251082253,
+      "ids": [
+        "musique:2hop__156702_51769",
+        "musique:2hop__289517_139339"
+      ]
+    },
+    "confirmed_target_or_logic_readout_error": {
+      "count": 6,
+      "share_of_30_down": 0.2,
+      "by_dataset": {
+        "hotpotqa": 5,
+        "2wiki": 1
+      },
+      "negative_F1_contribution_pp_to_all300": -1.4539682539682541,
+      "ids": [
+        "hotpotqa:5ae0a48155429945ae9593df",
+        "hotpotqa:5a8c7595554299585d9e36b6",
+        "hotpotqa:5addbf645542997dc7907014",
+        "hotpotqa:5a83a2a15542993344746063",
+        "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+        "hotpotqa:5ae3fcfc5542995dadf2428c"
+      ]
+    },
+    "evidence_bounded_abstention": {
+      "count": 1,
+      "share_of_30_down": 0.03333333333333333,
+      "by_dataset": {
+        "hotpotqa": 1
+      },
+      "negative_F1_contribution_pp_to_all300": -0.33333333333333337,
+      "ids": [
+        "hotpotqa:5a84ad3a5542992a431d1a8b"
+      ]
+    },
+    "mixed_comparison_scope_and_verbosity": {
+      "count": 2,
+      "share_of_30_down": 0.06666666666666667,
+      "by_dataset": {
+        "musique": 2
+      },
+      "negative_F1_contribution_pp_to_all300": -0.1148235406106471,
+      "ids": [
+        "musique:4hop1__40316_497223_15840_36002",
+        "musique:3hop1__346812_15840_36002"
+      ]
+    }
+  },
+  "all30_annotations": [
+    {
+      "id": "musique:3hop1__228_237521_291682",
+      "dataset": "musique",
+      "category": "conclusion_relation_or_required_scope_changed",
+      "manual_reason": "Conclusion把SharonOsbourne写成DavidGest妻子；同输入LizaandDavid文档支持LizaMinnelli，Sharon文档支持其夫OzzyOsbourne，配偶关系发生明确错误。",
+      "manual_tags": {
+        "subtype": "false_spouse_relation"
+      },
+      "question": "Who is the wife of the man who produced the documentary of the pop star who influenced Beyonce?",
+      "complete_model_decomposition": [
+        "Which pop star influenced Beyonce?",
+        "What documentary was produced by the pop star who influenced Beyonce?",
+        "Who produced the documentary of the pop star who influenced Beyonce?"
+      ],
+      "goal_appended_by_program": "Who is the wife of the man who produced the documentary of the pop star who influenced Beyonce?",
+      "gold_offline_only": "Liza Minnelli",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Liza Minnelli is the wife of David Gest.",
+      "old_final": "Liza Minnelli",
+      "new_Conclusion": "Sharon Osbourne is the wife of David Gest, who produced the documentary of the pop star who influenced Beyoncé.",
+      "new_Final_answer": "Sharon Osbourne",
+      "new_raw_output": "Conclusion: Sharon Osbourne is the wife of David Gest, who produced the documentary of the pop star who influenced Beyoncé.  \nFinal answer: Sharon Osbourne",
+      "old_F1": 1.0,
+      "new_F1": 0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:3hop1__228_237521_291682",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\3hop1__228_237521_291682.json",
+        "sha256": "324a434b67638a41e4a9391dbca05fd32b5f518bb6d156838f53936c3e489c1a"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\3hop1__228_237521_291682.json",
+      "source_new_sha256": "2ee462b91c41961b2a23614752c9c5330d26652e3d5a626693470d7e4ab3e947",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:16a91a500bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "category": "truncated_output_contract_failure",
+      "manual_reason": "多个人名的完整Conclusion耗尽128输出预算，Final未完成；不从结论里另行抽金标。",
+      "manual_tags": {},
+      "question": "Who is the grandchild of Stefan Zamoyski?",
+      "complete_model_decomposition": [],
+      "goal_appended_by_program": "Who is the grandchild of Stefan Zamoyski?",
+      "gold_offline_only": "Stefan Adam Zamoyski",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.",
+      "old_final": "Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, Władysław Ignacy Zamoyski",
+      "new_Conclusion": "Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.",
+      "new_Final_answer": "",
+      "new_raw_output": "Conclusion: Stefan Zamoyski’s grandchildren include Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy Zamoyski, as they are the children of his son Władysław Zdzisław Zamoyski.  \nFinal answer: Stefan Adam Zamoyski, Elżbieta Zamoyska, Andrzej Zygmunt Zamoyski, Zdzisław Franciszek Zamoyski, and Władysław Ignacy",
+      "old_F1": 0.35294117647058826,
+      "new_F1": 0.0,
+      "delta_F1": -0.35294117647058826,
+      "finish_reason": "length",
+      "source_old": {
+        "id": "2wiki:16a91a500bb011ebab90acde48001122",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\16a91a500bb011ebab90acde48001122.json",
+        "sha256": "18f7b07c2aa8b89121661ac45b4d8e4b60b9a6f9d244e3976992b54ab584dd55"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\16a91a500bb011ebab90acde48001122.json",
+      "source_new_sha256": "bb4755d23d33c22afd3ce5886ea051568effa4a04de7b9edf2a8a794602829ec",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5ab55455554299488d4d993b",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "Final仍包含over1millionacres，但多了公园名及关系从句；不能把这次F1下降直接称面积事实错误。",
+      "manual_tags": {},
+      "question": " Mount Stimson is the second highest peak in national park that encompasses how many acres?",
+      "complete_model_decomposition": [
+        "In what national park is Mount Stimson the second highest peak?"
+      ],
+      "goal_appended_by_program": " Mount Stimson is the second highest peak in national park that encompasses how many acres?",
+      "gold_offline_only": "over 1 million",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Glacier National Park encompasses over 1 million acres.",
+      "old_final": "1 million acres",
+      "new_Conclusion": "Mount Stimson is the second highest peak in Glacier National Park, which encompasses over 1 million acres.",
+      "new_Final_answer": "Glacier National Park, which encompasses over 1 million acres",
+      "new_raw_output": "Conclusion: Mount Stimson is the second highest peak in Glacier National Park, which encompasses over 1 million acres.\nFinal answer: Glacier National Park, which encompasses over 1 million acres",
+      "old_F1": 0.6666666666666666,
+      "new_F1": 0.5,
+      "delta_F1": -0.16666666666666663,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5ab55455554299488d4d993b",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab55455554299488d4d993b.json",
+        "sha256": "d2c4a388a14ab815194d563c34d5b891cec8b310b8ebbd6c779d5fcecdba0016"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ab55455554299488d4d993b.json",
+      "source_new_sha256": "ddda5dbdfeeff68eb1ad863cc149e8fbb429f4d3e4eb463844f4d611352d4344",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:42954d320bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一人名增加Princess称谓，F1下降；本分类不额外证明该称谓在全部语境中的用法。",
+      "manual_tags": {},
+      "question": "Who is Princess Adelgunde Of Bavaria's mother-in-law?",
+      "complete_model_decomposition": [
+        "Who is Princess Adelgunde Of Bavaria's spouse?",
+        "Who is the mother of Princess Adelgunde Of Bavaria's spouse?"
+      ],
+      "goal_appended_by_program": "Who is Princess Adelgunde Of Bavaria's mother-in-law?",
+      "gold_offline_only": "Maria Beatrice of Savoy",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Princess Adelgunde of Bavaria’s mother-in-law was Maria Beatrice of Savoy, Duchess of Modena.",
+      "old_final": "Maria Beatrice of Savoy",
+      "new_Conclusion": "Princess Adelgunde of Bavaria’s mother-in-law was Maria Beatrice of Savoy, who was the mother of her spouse Francis V, Duke of Modena.",
+      "new_Final_answer": "Princess Maria Beatrice of Savoy",
+      "new_raw_output": "Conclusion: Princess Adelgunde of Bavaria’s mother-in-law was Maria Beatrice of Savoy, who was the mother of her spouse Francis V, Duke of Modena.  \nFinal answer: Princess Maria Beatrice of Savoy",
+      "old_F1": 1.0,
+      "new_F1": 0.888888888888889,
+      "delta_F1": -0.11111111111111105,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "2wiki:42954d320bb011ebab90acde48001122",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\42954d320bb011ebab90acde48001122.json",
+        "sha256": "fe4cfa9cf095ddaf10967795c46f9c1bf790c6a5624a6437fddebae82f5b5270"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\42954d320bb011ebab90acde48001122.json",
+      "source_new_sha256": "51fee4de3c819ac6f789ffae437f67fec3159bce64e4c887d0893f31ba56c3b7",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:f37818400bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "category": "truncated_output_contract_failure",
+      "manual_reason": "Conclusion长篇从出生地推测死亡地点又承认原文未给死亡地，最终length；即使含金标Mitau也不判结论已正确证实。",
+      "manual_tags": {},
+      "question": "Where did Elisabeth Magdalena Of Pomerania's husband die?",
+      "complete_model_decomposition": [
+        "Who was Elisabeth Magdalena Of Pomerania's husband?"
+      ],
+      "goal_appended_by_program": "Where did Elisabeth Magdalena Of Pomerania's husband die?",
+      "gold_offline_only": "Mitau",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Friedrich Kettler died in Mitau (now Jelgava).",
+      "old_final": "Mitau",
+      "new_Conclusion": "Friedrich Kettler, Elisabeth Magdalena of Pomerania's husband, died in Mitau (now Jelgava), as indicated by his birthplace listed in the passage and the absence of any conflicting death location; the passage states he was born \"25 November 1569 in Mitau (now Jelgava)\" and died \"17 August 1642\", but does not explicitly state where he died—however, given he ruled Courland continuously until his death in 1642 and no other location is cited for his death, and Mitau/Jelg",
+      "new_Final_answer": "",
+      "new_raw_output": "Conclusion: Friedrich Kettler, Elisabeth Magdalena of Pomerania's husband, died in Mitau (now Jelgava), as indicated by his birthplace listed in the passage and the absence of any conflicting death location; the passage states he was born \"25 November 1569 in Mitau (now Jelgava)\" and died \"17 August 1642\", but does not explicitly state where he died—however, given he ruled Courland continuously until his death in 1642 and no other location is cited for his death, and Mitau/Jelg",
+      "old_F1": 1.0,
+      "new_F1": 0.0,
+      "delta_F1": -1.0,
+      "finish_reason": "length",
+      "source_old": {
+        "id": "2wiki:f37818400bd911eba7f7acde48001122",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\f37818400bd911eba7f7acde48001122.json",
+        "sha256": "8b715d9c661a4d00945f55c184e95d9e7b3bf004a355215652fb81a577c579c1"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\f37818400bd911eba7f7acde48001122.json",
+      "source_new_sha256": "a6b846c04f89625207aa77126feacefc18a563db3a5cdc7e92b05328c2783a2e",
+      "evidence": []
+    },
+    {
+      "id": "musique:2hop__582045_161450",
+      "dataset": "musique",
+      "category": "conclusion_relation_or_required_scope_changed",
+      "manual_reason": "所问省份相对地理位置；Conclusion仅给county→province→Iran，丢失north/southofCaspianSea等必要位置关系。局部事实可真，但不足回答原题。",
+      "manual_tags": {
+        "subtype": "required_location_relation_lost"
+      },
+      "question": "Where is the province of Gonbad-e Qabus County located?",
+      "complete_model_decomposition": [],
+      "goal_appended_by_program": "Where is the province of Gonbad-e Qabus County located?",
+      "gold_offline_only": "in the north-east of the country south of the Caspian Sea",
+      "gold_aliases_offline_only": [
+        "Caspian Sea"
+      ],
+      "old_goal": "Gonbad-e Qabus County is located in Golestan Province in northern Iran, south of the Caspian Sea.",
+      "old_final": "Golestan Province in northern Iran, south of the Caspian Sea",
+      "new_Conclusion": "Gonbad-e Qabus County is located in Golestan Province in Iran.",
+      "new_Final_answer": "Golestan Province, Iran",
+      "new_raw_output": "Conclusion: Gonbad-e Qabus County is located in Golestan Province in Iran.  \nFinal answer: Golestan Province, Iran",
+      "old_F1": 0.5882352941176471,
+      "new_F1": 0,
+      "delta_F1": -0.5882352941176471,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:2hop__582045_161450",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\musique\\union20\\2hop__582045_161450.json",
+        "sha256": "15876e4e86c8227e231ff3ecedca1628a42237377dd7ed366f56f565616f5447"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\2hop__582045_161450.json",
+      "source_new_sha256": "0dba1e0f2fa7bf32cacb4a46b0a3a13684aa113df702cd0ed3111709be37b347",
+      "evidence": []
+    },
+    {
+      "id": "musique:2hop__156702_51769",
+      "dataset": "musique",
+      "category": "preexisting_target_issue_or_partial_token_credit",
+      "manual_reason": "旧Final已选10.75median而非金标9.4average；新Final加median使F1小降。不能将原本偏离金标的答案变成新引入的数值错误。",
+      "manual_tags": {},
+      "question": "What is the life expectancy of the type of retriever named after the body of water the Patuxent River turns into?",
+      "complete_model_decomposition": [
+        "What body of water does the Patuxent River turn into?",
+        "What type of retriever is named after the body of water the Patuxent River turns into?"
+      ],
+      "goal_appended_by_program": "What is the life expectancy of the type of retriever named after the body of water the Patuxent River turns into?",
+      "gold_offline_only": "average lifespan at 9.4 years",
+      "gold_aliases_offline_only": [],
+      "old_goal": "The Chesapeake Bay Retriever has a median lifespan of 10.75 years and an average lifespan of 9.4 to 9.85 years.",
+      "old_final": "10.75 years",
+      "new_Conclusion": "The Chesapeake Bay Retriever has a median lifespan of 10.75 years and an average lifespan of 9.4 to 9.85 years, with 1 in 4 living to 13 years or more and 1 in 5 not living past 5 years.",
+      "new_Final_answer": "10.75 years (median)",
+      "new_raw_output": "Conclusion: The Chesapeake Bay Retriever has a median lifespan of 10.75 years and an average lifespan of 9.4 to 9.85 years, with 1 in 4 living to 13 years or more and 1 in 5 not living past 5 years.  \nFinal answer: 10.75 years (median)",
+      "old_F1": 0.28571428571428575,
+      "new_F1": 0.25,
+      "delta_F1": -0.035714285714285754,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:2hop__156702_51769",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\2hop__156702_51769.json",
+        "sha256": "6d5303c46aea88eb9fb37d40c382fbc59a352903fd1fed165942b0ad064b423f"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\2hop__156702_51769.json",
+      "source_new_sha256": "b61141ec9165a3757a4acd68bb5a9d71de5a4b3667a3a082c55c344c4c5a582a",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5ae0a48155429945ae9593df",
+      "dataset": "hotpotqa",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "问bookmaker收费定义；Conclusion已表达完整收费定义，Final却回到被定义术语Vigorish。",
+      "manual_tags": {
+        "conclusion_sufficient": true,
+        "subtype": "definition_to_term",
+        "evidence_terms": [
+          "bookmaker"
+        ]
+      },
+      "question": "The pseudonymous partner to \"Willis the Guard\" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?",
+      "complete_model_decomposition": [
+        "Who was the pseudonymous partner to Willis the Guard in the American musical duo of Jerry Buckner and Gary Garcia?"
+      ],
+      "goal_appended_by_program": "The pseudonymous partner to \"Willis the Guard\" in the American musical duo of Jerry Buckner and Gary Garcia is noun which refers to which portion of a bet?",
+      "gold_offline_only": "amount charged by a bookmaker",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Vigorish refers to the fee or commission charged by a bookmaker on a bet, not a portion of the bet itself.",
+      "old_final": "the fee or commission charged by a bookmaker",
+      "new_Conclusion": "Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.",
+      "new_Final_answer": "Vigorish",
+      "new_raw_output": "Conclusion: Vigorish refers to the amount charged by a bookmaker for taking a bet, also known as the vig, juice, cut, or take.\nFinal answer: Vigorish",
+      "old_F1": 0.6,
+      "new_F1": 0.0,
+      "delta_F1": -0.6,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5ae0a48155429945ae9593df",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ae0a48155429945ae9593df.json",
+        "sha256": "dd35cd7ced54348caf622644d355a3e131d3afe1c1a761b58d596970ab5c0038"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ae0a48155429945ae9593df.json",
+      "source_new_sha256": "617b1bfde57be512fb2f9de69cd460c26a7807a1d1b64f9ab711703d1b89358f",
+      "evidence": [
+        {
+          "rank": 2,
+          "source": "Vigorish",
+          "doc_id": "772136",
+          "text": "Vigorish\nVigorish, or simply the vig, also known as juice, under-juice, the cut or the take, is the amount charged by a bookmaker, or \"bookie\", for taking a bet from a gambler. In the United States, it also means the interest on a shark's loan. The term originates from the Russian word for \"winnings\", выигрыш \"vyigrysh\"."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a8c7595554299585d9e36b6",
+      "dataset": "hotpotqa",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "问政府职位；Conclusion列出Chief of Protocol等有据职位，Final却输出人物Shirley Temple。Conclusion范围偏宽，故只判已含正确目标，不判唯一完整答案已确定。",
+      "manual_tags": {
+        "conclusion_sufficient": false,
+        "subtype": "office_to_person",
+        "evidence_terms": [
+          "Chief of Protocol"
+        ]
+      },
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "complete_model_decomposition": [
+        "Who portrayed Corliss Archer in the film Kiss and Tell?"
+      ],
+      "goal_appended_by_program": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_offline_only": "Chief of Protocol",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and as Chief of Protocol of the United States.",
+      "old_final": "United States ambassador to Ghana and to Czechoslovakia and Chief of Protocol of the United States",
+      "new_Conclusion": "Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.",
+      "new_Final_answer": "Shirley Temple",
+      "new_raw_output": "Conclusion: Shirley Temple served as United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States.\nFinal answer: Shirley Temple",
+      "old_F1": 0.33333333333333337,
+      "new_F1": 0.0,
+      "delta_F1": -0.33333333333333337,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a8c7595554299585d9e36b6",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5a8c7595554299585d9e36b6.json",
+        "sha256": "06f4a4224d4f8e46028508934b1b1423cfb3a691f313da4a4a42fa62f6ded0d3"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a8c7595554299585d9e36b6.json",
+      "source_new_sha256": "5e2925784df434d31a0c2a280fc2ee9fa77507c3fa760850bca0bb5f3e5923f4",
+      "evidence": [
+        {
+          "rank": 4,
+          "source": "Shirley Temple",
+          "doc_id": "804602",
+          "text": "Shirley Temple\nShirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a84ad3a5542992a431d1a8b",
+      "dataset": "hotpotqa",
+      "category": "evidence_bounded_abstention",
+      "manual_reason": "新Conclusion指出材料未说明哪支作品含道歉；旧输出命中金标，但当前输入主要为作品列表，缺少该属性直接支持。记录F1下降，不认定拒答本身是虚假事实。",
+      "manual_tags": {},
+      "question": "What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?",
+      "complete_model_decomposition": [],
+      "goal_appended_by_program": "What notable work from French music video director Yoann Lemoine features an apology and plea for forgiveness?",
+      "gold_offline_only": "Back to December",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Yoann Lemoine directed the music video for Taylor Swift's \"Back to December\", which features an apology and plea for forgiveness.",
+      "old_final": "\"Back to December\"",
+      "new_Conclusion": "None of the retrieved passages state that Yoann Lemoine directed a music video featuring an apology and plea for forgiveness.",
+      "new_Final_answer": "Cannot be determined",
+      "new_raw_output": "Conclusion: None of the retrieved passages state that Yoann Lemoine directed a music video featuring an apology and plea for forgiveness.  \nFinal answer: Cannot be determined",
+      "old_F1": 1.0,
+      "new_F1": 0.0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a84ad3a5542992a431d1a8b",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5a84ad3a5542992a431d1a8b.json",
+        "sha256": "c8c435bf2c37540d3a3ab7ebadfb13794e768e11de30ce463d348496974064f3"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a84ad3a5542992a431d1a8b.json",
+      "source_new_sha256": "1021d5ee1662e9811adf42288dfc37c64163e8854073b79bfd1f9654e2eb15c3",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:0d118fb00bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一墓地增加inLosAngeles；Conclusion和原文均支持地点。",
+      "manual_tags": {},
+      "question": "Where was the place of burial of the director of film Station West?",
+      "complete_model_decomposition": [
+        "Who is the director of the film Station West?"
+      ],
+      "goal_appended_by_program": "Where was the place of burial of the director of film Station West?",
+      "gold_offline_only": "Westwood Village Memorial Park Cemetery",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Sidney Lanfield, the director of the film *Station West*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "old_final": "Westwood Village Memorial Park Cemetery",
+      "new_Conclusion": "Sidney Lanfield, the director of the film *Station West*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "new_Final_answer": "Westwood Village Memorial Park Cemetery in Los Angeles",
+      "new_raw_output": "Conclusion: Sidney Lanfield, the director of the film *Station West*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.  \nFinal answer: Westwood Village Memorial Park Cemetery in Los Angeles",
+      "old_F1": 1.0,
+      "new_F1": 0.7692307692307693,
+      "delta_F1": -0.23076923076923073,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "2wiki:0d118fb00bdb11eba7f7acde48001122",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\0d118fb00bdb11eba7f7acde48001122.json",
+        "sha256": "91e46c50b9ad00a7dc7e695f4bb0f0f14082e478f71e7312bbf84a7cfd36d845"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\0d118fb00bdb11eba7f7acde48001122.json",
+      "source_new_sha256": "671a7b010aabfa41b124bb775e92a381c4abf2855d8b0f5ded00cf3721d950e9",
+      "evidence": []
+    },
+    {
+      "id": "musique:2hop__289517_139339",
+      "dataset": "musique",
+      "category": "preexisting_target_issue_or_partial_token_credit",
+      "manual_reason": "旧goal/新Conclusion都把问题限缩为因AfterHours角色获奖；旧FinalNoawardnomination仅靠award等词得局部分，新拒答0。没有由正确获奖事实变错的证据。",
+      "manual_tags": {},
+      "question": "What was the cast member in After Hours nominated for?",
+      "complete_model_decomposition": [
+        "Who was the cast member in After Hours?"
+      ],
+      "goal_appended_by_program": "What was the cast member in After Hours nominated for?",
+      "gold_offline_only": "Academy Award for Best Live Action Short Film",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Griffin Dunne was not nominated for any award for his role in *After Hours*.",
+      "old_final": "No award nomination",
+      "new_Conclusion": "Griffin Dunne was not nominated for any award for his role in *After Hours*.",
+      "new_Final_answer": "Cannot be determined",
+      "new_raw_output": "Conclusion: Griffin Dunne was not nominated for any award for his role in *After Hours*.  \nFinal answer: Cannot be determined",
+      "old_F1": 0.18181818181818182,
+      "new_F1": 0,
+      "delta_F1": -0.18181818181818182,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:2hop__289517_139339",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\musique\\union20\\2hop__289517_139339.json",
+        "sha256": "3374dca74ec7af58fd4bd24690a64b974bac8927e106e1b5f6daedf603686520"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\2hop__289517_139339.json",
+      "source_new_sha256": "9afc1197d596d7cc386b50930806b2b3b6cad8f3426dec3864078ead248171d2",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5a77c09555429967ab105262",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "原文明示pronghorn与Antilocapraamericana为同一物种；Final改用常用名，原生F1别名未覆盖。",
+      "manual_tags": {},
+      "question": "What is the species of animal which the town of Antelope, Kansas was named after?",
+      "complete_model_decomposition": [
+        "What species of animal was the town of Antelope, Kansas named after?"
+      ],
+      "goal_appended_by_program": "What is the species of animal which the town of Antelope, Kansas was named after?",
+      "gold_offline_only": "Antilocapra americana",
+      "gold_aliases_offline_only": [],
+      "old_goal": "The town of Antelope, Kansas was named after the pronghorn (*Antilocapra americana*), which is colloquially called the American antelope.",
+      "old_final": "pronghorn (*Antilocapra americana*)",
+      "new_Conclusion": "The town of Antelope, Kansas was named after the pronghorn (Antilocapra americana), which is not a true antelope but is colloquially called the American antelope and was historically observed grazing near the site of the first school.",
+      "new_Final_answer": "pronghorn",
+      "new_raw_output": "Conclusion: The town of Antelope, Kansas was named after the pronghorn (Antilocapra americana), which is not a true antelope but is colloquially called the American antelope and was historically observed grazing near the site of the first school.  \nFinal answer: pronghorn",
+      "old_F1": 0.8,
+      "new_F1": 0.0,
+      "delta_F1": -0.8,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a77c09555429967ab105262",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5a77c09555429967ab105262.json",
+        "sha256": "fed5cdc0a9344037862f4ba3ed4bae3947045f031e0a73a1aaa1bbd0fba38c09"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a77c09555429967ab105262.json",
+      "source_new_sha256": "6b148fa0aa9d706b6289e255a57ef70f5a5d265573189e8e67c686f842f03f70",
+      "evidence": []
+    },
+    {
+      "id": "musique:3hop1__109422_720914_27537",
+      "dataset": "musique",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "Final保留赴罗马conclave的理由但增加当选教皇结果句；材料也记载该结果。按新增词降低精度解释，不从词面分判定整句因果叙述完全无歧义。",
+      "manual_tags": {},
+      "question": "Why did Roncalli leave the place of death of The Punishment of Tythus' creator?",
+      "complete_model_decomposition": [
+        "Who created The Punishment of Tythus?",
+        "Where did the creator of The Punishment of Tythus die?"
+      ],
+      "goal_appended_by_program": "Why did Roncalli leave the place of death of The Punishment of Tythus' creator?",
+      "gold_offline_only": "for the conclave in Rome",
+      "gold_aliases_offline_only": [
+        "Rome",
+        "Roma"
+      ],
+      "old_goal": "Roncalli left Venice because he was summoned to the papal conclave in Rome following the death of Pope Pius XII.",
+      "old_final": "Roncalli left Venice because he was summoned to the papal conclave in Rome following the death of Pope Pius XII.",
+      "new_Conclusion": "Roncalli left Venice—the place where Titian, creator of The Punishment of Tythus, died—because he was summoned to the papal conclave in Rome following the death of Pope Pius XII on 9 October 1958, and was elected pope on 28 October 1958.",
+      "new_Final_answer": "Roncalli left Venice because he was summoned to the papal conclave in Rome after the death of Pope Pius XII and was elected pope.",
+      "new_raw_output": "Conclusion: Roncalli left Venice—the place where Titian, creator of The Punishment of Tythus, died—because he was summoned to the papal conclave in Rome following the death of Pope Pius XII on 9 October 1958, and was elected pope on 28 October 1958.\nFinal answer: Roncalli left Venice because he was summoned to the papal conclave in Rome after the death of Pope Pius XII and was elected pope.",
+      "old_F1": 0.27272727272727276,
+      "new_F1": 0.23076923076923075,
+      "delta_F1": -0.04195804195804201,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:3hop1__109422_720914_27537",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\3hop1__109422_720914_27537.json",
+        "sha256": "852153dba48b67eb121411da3c45a02976cd08c6fa434b7f53b453d742fcd905"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\3hop1__109422_720914_27537.json",
+      "source_new_sha256": "3a6c62d92efb3c68bfe83017dfff12469fc1c667d849299e119e96239c18a285",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5abb23035542992ccd8e7f22",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "nearMountRainier,Washington相对MountRainier,Washington仅增加位置介词，原文/旧goal本来就是near。",
+      "manual_tags": {},
+      "question": "Kenneth Arnold reported the first unidentified object sighting in what city and state in 1947?",
+      "complete_model_decomposition": [
+        "In what city and state did Kenneth Arnold report the first unidentified object sighting in 1947?"
+      ],
+      "goal_appended_by_program": "Kenneth Arnold reported the first unidentified object sighting in what city and state in 1947?",
+      "gold_offline_only": "Mount Rainier, Washington",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Kenneth Arnold reported the first unidentified object sighting near Mount Rainier in Washington state, but the specific city is not named in the retrieved passages.",
+      "old_final": "Mount Rainier, Washington",
+      "new_Conclusion": "Kenneth Arnold reported the first unidentified object sighting near Mount Rainier in Washington state, and no retrieved passage specifies a city—only the mountain and state.",
+      "new_Final_answer": "near Mount Rainier, Washington",
+      "new_raw_output": "Conclusion: Kenneth Arnold reported the first unidentified object sighting near Mount Rainier in Washington state, and no retrieved passage specifies a city—only the mountain and state.\nFinal answer: near Mount Rainier, Washington",
+      "old_F1": 1.0,
+      "new_F1": 0.8571428571428571,
+      "delta_F1": -0.1428571428571429,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5abb23035542992ccd8e7f22",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5abb23035542992ccd8e7f22.json",
+        "sha256": "b66efbb286d058938af7f929b748b66a1e0da0991086a80bdd051f9dfca89b48"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5abb23035542992ccd8e7f22.json",
+      "source_new_sha256": "1ffe1c7fb72437efa82a93c6547736ba0c12e2649eae349c7961c04adf1254f8",
+      "evidence": []
+    },
+    {
+      "id": "musique:2hop__42747_83837",
+      "dataset": "musique",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一KarenFairchild增加ofLittleBigTown，身份未变但词面精度下降。",
+      "manual_tags": {},
+      "question": "Who sings Home Alone Tonight with the singer of Light It Up?",
+      "complete_model_decomposition": [
+        "Who sings Light It Up?"
+      ],
+      "goal_appended_by_program": "Who sings Home Alone Tonight with the singer of Light It Up?",
+      "gold_offline_only": "Karen Fairchild",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Karen Fairchild sings \"Home Alone Tonight\" with Luke Bryan, the singer of \"Light It Up\".",
+      "old_final": "Karen Fairchild",
+      "new_Conclusion": "Luke Bryan sings \"Home Alone Tonight\" as a duet with Karen Fairchild of Little Big Town.",
+      "new_Final_answer": "Karen Fairchild of Little Big Town",
+      "new_raw_output": "Conclusion: Luke Bryan sings \"Home Alone Tonight\" as a duet with Karen Fairchild of Little Big Town.  \nFinal answer: Karen Fairchild of Little Big Town",
+      "old_F1": 1.0,
+      "new_F1": 0.5,
+      "delta_F1": -0.5,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:2hop__42747_83837",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\2hop__42747_83837.json",
+        "sha256": "2036192381c9cfedb14e576625a5169fc21b35c954adbcd4431e0748dc229976"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\2hop__42747_83837.json",
+      "source_new_sha256": "e6c09f761d374ff2d9ded792adda2ef708c35a0aa05d5a7c05b297898fe9dcf4",
+      "evidence": []
+    },
+    {
+      "id": "musique:3hop1__458916_651917_47686",
+      "dataset": "musique",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一TorontoCoachTerminal增加610BayStreet地址，未变更出发车站。",
+      "manual_tags": {},
+      "question": "Where do greyhound buses leave from in the birthplace of Spirit If...'s performer?",
+      "complete_model_decomposition": [
+        "Who performs Spirit If'?",
+        "Where was the performer of Spirit If' born?"
+      ],
+      "goal_appended_by_program": "Where do greyhound buses leave from in the birthplace of Spirit If...'s performer?",
+      "gold_offline_only": "Toronto Coach Terminal",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada.",
+      "old_final": "Toronto Coach Terminal",
+      "new_Conclusion": "Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada, the birthplace of Spirit If...'s performer Kevin Drew.",
+      "new_Final_answer": "Toronto Coach Terminal at 610 Bay Street",
+      "new_raw_output": "Conclusion: Greyhound buses leave from the Toronto Coach Terminal at 610 Bay Street in Toronto, Canada, the birthplace of Spirit If...'s performer Kevin Drew.  \nFinal answer: Toronto Coach Terminal at 610 Bay Street",
+      "old_F1": 1.0,
+      "new_F1": 0.6,
+      "delta_F1": -0.4,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:3hop1__458916_651917_47686",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\3hop1__458916_651917_47686.json",
+        "sha256": "3646970aae0e0bc65d826bf50d90287304610ec3b3eb40e7004fe8b92157f888"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\3hop1__458916_651917_47686.json",
+      "source_new_sha256": "ea18572f714059374bf12e948e78df641580fae05f3eb3f5ae6e79dd77cb8d7b",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5addbf645542997dc7907014",
+      "dataset": "hotpotqa",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "Conclusion区分Melanie主持前两季，Vernon主持第三季及另一个节目；原题问共同主持人，可推出Vernon，Final却并列两人。",
+      "manual_tags": {
+        "conclusion_sufficient": true,
+        "subtype": "intersection_to_union",
+        "evidence_terms": [
+          "Celebrities Under Pressure",
+          "All Star Family Fortunes"
+        ]
+      },
+      "question": "Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?",
+      "complete_model_decomposition": [
+        "Who hosted the ITV show Celebrities Under Pressure?",
+        "Who hosted the ITV show All Star Family Fortunes?"
+      ],
+      "goal_appended_by_program": "Who hosted the ITV show Celebrities Under Pressure and All Star Family Fortunes?",
+      "gold_offline_only": "Vernon Kay",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.",
+      "old_final": "Vernon Kay",
+      "new_Conclusion": "Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.",
+      "new_Final_answer": "Melanie Sykes and Vernon Kay",
+      "new_raw_output": "Conclusion: Melanie Sykes hosted the first two series of Celebrities Under Pressure, Vernon Kay hosted the third series of Celebrities Under Pressure and all twelve series of All Star Family Fortunes.\nFinal answer: Melanie Sykes and Vernon Kay",
+      "old_F1": 1.0,
+      "new_F1": 0.5714285714285715,
+      "delta_F1": -0.4285714285714285,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5addbf645542997dc7907014",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5addbf645542997dc7907014.json",
+        "sha256": "bf51b66c01bd263fa2b716677e31368ed7e4f6bf20a36859aee72f9ca22c66b6"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5addbf645542997dc7907014.json",
+      "source_new_sha256": "e7f1a3d45cab05f45e7fb86d78aeac50beedc1892bdf1123adf91c0a59012ea3",
+      "evidence": [
+        {
+          "rank": 1,
+          "source": "Celebrities Under Pressure",
+          "doc_id": "4709304",
+          "text": "Celebrities Under Pressure\nCelebrities Under Pressure is a British game show that aired on ITV from 13 September 2003 to 7 August 2004. It was first hosted by Melanie Sykes for series 1 & 2 and then hosted by Vernon Kay for series 3."
+        },
+        {
+          "rank": 2,
+          "source": "All Star Family Fortunes",
+          "doc_id": "7686649",
+          "text": "All Star Family Fortunes\nAll Star Family Fortunes is a British television game show broadcast on ITV and presented by Vernon Kay which began airing on 28 October 2006 and ended in 2015 after its twelfth series. It is a celebrity revival of the original \"Family Fortunes\" that aired from 6 January 1980 until 30 December 2004, based on the American game show \"Family Feud\"."
+        },
+        {
+          "rank": 3,
+          "source": "The Moment of Truth (UK game show)",
+          "doc_id": "13723327",
+          "text": "The Moment of Truth (UK game show)\nThe Moment of Truth is a British game show that aired on ITV from 5 September 1998 to 29 September 2001 and was hosted by Cilla Black. A similar show, \"Celebrities Under Pressure\" followed two years after \"The Moment of Truth\" ended. The format was strikingly similar, except that celebrities partook in challenges on behalf of the family, rather than a family member."
+        },
+        {
+          "rank": 4,
+          "source": "Vernon Kay",
+          "doc_id": "19356604",
+          "text": "Vernon Kay\nVernon Charles Kay (born 28 April 1974) is an English television presenter, radio DJ and former model best known for his television roles with ITV, presenting shows such as \"All Star Family Fortunes\" (2006–2015), \"Beat the Star\" (2008–2009) and \"Splash!\" (2013–2014)."
+        },
+        {
+          "rank": 5,
+          "source": "Family Fortunes",
+          "doc_id": "179638",
+          "text": "Family Fortunes\nFamily Fortunes is a British television game show based on the American game show \"Family Feud\". The programme ran on ITV from 6 January 1980 to 30 December 2004, before being revived by the same channel in 2006 under the title of All Star Family Fortunes."
+        }
+      ]
+    },
+    {
+      "id": "musique:2hop__13592_49388",
+      "dataset": "musique",
+      "category": "conclusion_relation_or_required_scope_changed",
+      "manual_reason": "原题以1948/1949夺冠描述识别league；新Conclusion改为要求该历史赛季的比赛数并反复保留38/称不可知，时间限定附着变化，不能因含38就判结论正确。",
+      "manual_tags": {
+        "subtype": "time_modifier_attachment_changed"
+      },
+      "question": "How many games in a season of the league in which Barcelona won titles in 1948 and 1949?",
+      "complete_model_decomposition": [
+        "What league did Barcelona win titles in during 1948?",
+        "What league did Barcelona win titles in during 1949?",
+        "What league did Barcelona win titles in during 1948 and 1949?"
+      ],
+      "goal_appended_by_program": "How many games in a season of the league in which Barcelona won titles in 1948 and 1949?",
+      "gold_offline_only": "38",
+      "gold_aliases_offline_only": [],
+      "old_goal": "La Liga had 38 games per season in 1948 and 1949.",
+      "old_final": "38",
+      "new_Conclusion": "La Liga had 38 games per season in the 1948–49 and 1949–50 seasons, as the double round-robin format with 20 teams (established from 1997–98 onward) is not applicable to the 1940s; however, the retrieved passages do not specify the number of teams or games in La Liga during 1948 and 1949.",
+      "new_Final_answer": "Cannot be determined",
+      "new_raw_output": "Conclusion: La Liga had 38 games per season in the 1948–49 and 1949–50 seasons, as the double round-robin format with 20 teams (established from 1997–98 onward) is not applicable to the 1940s; however, the retrieved passages do not specify the number of teams or games in La Liga during 1948 and 1949.\nFinal answer: Cannot be determined",
+      "old_F1": 1.0,
+      "new_F1": 0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:2hop__13592_49388",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\2hop__13592_49388.json",
+        "sha256": "f3a789bc1f1417520e3a68e66d1536bcefdc3ad90a23a907072985a05ba09332"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\2hop__13592_49388.json",
+      "source_new_sha256": "3b378e12e7635b75b5b3766771b10112d4e7a3950cb9828032c12d7c949b3777",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一墓地增加inLosAngeles。",
+      "manual_tags": {},
+      "question": "Where was the place of burial of the director of film Broadway Bad?",
+      "complete_model_decomposition": [
+        "Who is the director of the film Broadway Bad?"
+      ],
+      "goal_appended_by_program": "Where was the place of burial of the director of film Broadway Bad?",
+      "gold_offline_only": "Westwood Village Memorial Park Cemetery",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Sidney Lanfield, the director of the film *Broadway Bad*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "old_final": "Westwood Village Memorial Park Cemetery",
+      "new_Conclusion": "Sidney Lanfield, the director of the film *Broadway Bad*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.",
+      "new_Final_answer": "Westwood Village Memorial Park Cemetery in Los Angeles",
+      "new_raw_output": "Conclusion: Sidney Lanfield, the director of the film *Broadway Bad*, is interred in the Westwood Village Memorial Park Cemetery in Los Angeles.  \nFinal answer: Westwood Village Memorial Park Cemetery in Los Angeles",
+      "old_F1": 1.0,
+      "new_F1": 0.7692307692307693,
+      "delta_F1": -0.23076923076923073,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "2wiki:cdb8b7540bd911eba7f7acde48001122",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\cdb8b7540bd911eba7f7acde48001122.json",
+        "sha256": "6a902bb26e4bae7c82ed3f36382cf06b6b8a44a55d3c45e4501b3a6a61a4a9b3"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\cdb8b7540bd911eba7f7acde48001122.json",
+      "source_new_sha256": "68f5f8a4f824cb4471791dbff857f890cd1ebd22e129fc7163c25bdc53cf40ab",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5abee4ff5542993fe9a41d7d",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "Orlando增加Florida州名，仍是所问城市；不认定事实歪曲。",
+      "manual_tags": {},
+      "question": "Jim Atchison was the President of the theme park that had headquarters in what city?",
+      "complete_model_decomposition": [
+        "Which theme park was Jim Atchison President of?"
+      ],
+      "goal_appended_by_program": "Jim Atchison was the President of the theme park that had headquarters in what city?",
+      "gold_offline_only": "Orlando",
+      "gold_aliases_offline_only": [],
+      "old_goal": "SeaWorld Parks & Entertainment, the theme park company Jim Atchison was President of, is headquartered in Orlando, Florida.",
+      "old_final": "Orlando",
+      "new_Conclusion": "SeaWorld Parks & Entertainment, the theme park company of which Jim Atchison was President, is headquartered in Orlando, Florida.",
+      "new_Final_answer": "Orlando, Florida",
+      "new_raw_output": "Conclusion: SeaWorld Parks & Entertainment, the theme park company of which Jim Atchison was President, is headquartered in Orlando, Florida.  \nFinal answer: Orlando, Florida",
+      "old_F1": 1.0,
+      "new_F1": 0.6666666666666666,
+      "delta_F1": -0.33333333333333337,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5abee4ff5542993fe9a41d7d",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5abee4ff5542993fe9a41d7d.json",
+        "sha256": "fee89472e55535b16a90610be38a86685571b373d949094c72d056bf3cb3aba3"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5abee4ff5542993fe9a41d7d.json",
+      "source_new_sha256": "9987c96c48a43db00877499afe99bc4ca53763d41a2d33a50c47761a7459e467",
+      "evidence": []
+    },
+    {
+      "id": "musique:4hop1__40316_497223_15840_36002",
+      "dataset": "musique",
+      "category": "mixed_comparison_scope_and_verbosity",
+      "manual_reason": "两版都保留16bit/graphics/sound正确核心，同时混入市场/授权优势；Final扩写使匹配下降。部分宣传优势出自Genesis-vsSNES段落，不能把所有新增内容都称受支持的NES比较；旧版也已有混杂，不能隔离为新引入的纯事实错误。",
+      "manual_tags": {},
+      "question": "What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?",
+      "complete_model_decomposition": [
+        "What football league are the Los Angeles Rams representative of?",
+        "What game is named after the football league the Los Angeles Rams are representative of?",
+        "What game system has a 3-letter abbreviation and features the game named after the football league the Los Angeles Rams are representative of?"
+      ],
+      "goal_appended_by_program": "What were the Genesis's advantages over the game system with a 3 letter abbreviation, featuring a game named after the football league that the Los Angeles Rams are representative of?",
+      "gold_offline_only": "built on 16-bit architectures and offered improved graphics and sound",
+      "gold_aliases_offline_only": [
+        "16-bit",
+        "16-bit architecture"
+      ],
+      "old_goal": "The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound, stronger third-party support, a larger game library, a lower price point, and marketing positioning toward older gamers with more mature titles.",
+      "old_final": "16-bit architecture offering improved graphics and sound, stronger third-party support, a larger game library, a lower price point, and marketing positioning toward older gamers with more mature titles",
+      "new_Conclusion": "The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound, stronger third-party support due to less strict licensing terms, and positioning as a “cool” console with more mature titles aimed at older gamers.",
+      "new_Final_answer": "The Sega Genesis had a 16-bit architecture offering improved graphics and sound, stronger third-party support due to less strict licensing terms, and positioning as a “cool” console with more mature titles aimed at older gamers.",
+      "new_raw_output": "Conclusion: The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound, stronger third-party support due to less strict licensing terms, and positioning as a “cool” console with more mature titles aimed at older gamers.  \nFinal answer: The Sega Genesis had a 16-bit architecture offering improved graphics and sound, stronger third-party support due to less strict licensing terms, and positioning as a “cool” console with more mature titles aimed at older gamers.",
+      "old_F1": 0.33333333333333337,
+      "new_F1": 0.2857142857142857,
+      "delta_F1": -0.04761904761904767,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:4hop1__40316_497223_15840_36002",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\4hop1__40316_497223_15840_36002.json",
+        "sha256": "c46d8ca5c04297488f4143bc2e4362b7108be156106d438352103183330d34a6"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\4hop1__40316_497223_15840_36002.json",
+      "source_new_sha256": "2d4475ddce24421618a7c4015a9084b3e9c047b15e30477185676fbf0a03c9f8",
+      "evidence": [
+        {
+          "rank": 12,
+          "source": "Super Nintendo Entertainment System",
+          "doc_id": "da314d9a1df28f7fe214971cb557fba1ae82797847d25ffab165f9edd00f602b",
+          "text": "Super Nintendo Entertainment System\nTo compete with the popular Family Computer in Japan, NEC Home Electronics launched the PC Engine in 1987, and Sega Enterprises followed suit with the Mega Drive in 1988. The two platforms were later launched in North America in 1989 as the TurboGrafx-16 and the Genesis respectively. Both systems were built on 16-bit architectures and offered improved graphics and sound over the 8-bit NES. However, it took several years for Sega's system to become successful. Nintendo executives were in no rush to design a new system, but they reconsidered when they began to see their dominance in the market slipping."
+        },
+        {
+          "rank": 14,
+          "source": "Super Nintendo Entertainment System",
+          "doc_id": "6ae295934d806722a0ac2b099ad692eb99b07e54f1ce5a1daa79e4f9fb7200bd",
+          "text": "Super Nintendo Entertainment System\nThe rivalry between Nintendo and Sega resulted in what has been described as one of the most notable console wars in video game history, in which Sega positioned the Genesis as the \"cool\" console, with more mature titles aimed at older gamers, and edgy advertisements that occasionally attacked the competition. Nintendo however, scored an early public relations advantage by securing the first console conversion of Capcom's arcade classic Street Fighter II for SNES, which took over a year to make the transition to Genesis. Despite the Genesis's head start, much larger library of games, and lower price point, the Genesis only represented an estimated 60% of the American 16-bit console market in June 1992, and neither console could maintain a definitive lead for several years. Donkey Kong Country is said to have helped establish the SNES's market prominence in the latter years of the 16-bit generation, and for a time, maintain against the PlayStation and Saturn. According to Nintendo, the company had sold more than 20 million SNES units in the U.S. According to a 2014 Wedbush Securities report based on NPD sales data, the SNES ultimately outsold the Genesis in the U.S. market."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a83a2a15542993344746063",
+      "dataset": "hotpotqa",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "原题问首届毕业日期；Conclusion正确给June1925，Final却答学校。",
+      "manual_tags": {
+        "conclusion_sufficient": true,
+        "subtype": "date_to_school",
+        "evidence_terms": [
+          "June 1925"
+        ]
+      },
+      "question": "In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?",
+      "complete_model_decomposition": [
+        "Which high school forced Manchester High School to change its name in 1922?"
+      ],
+      "goal_appended_by_program": "In regards to the high school that forced Manchester High School to change its name in 1922, when was its first graduating class?",
+      "gold_offline_only": "June 1925",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Manchester West High School’s first graduating class was in June 1925.",
+      "old_final": "June 1925",
+      "new_Conclusion": "Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.",
+      "new_Final_answer": "Manchester West High School",
+      "new_raw_output": "Conclusion: Manchester West High School, which forced Manchester High School to change its name in 1922, had its first graduating class in June 1925.\nFinal answer: Manchester West High School",
+      "old_F1": 1.0,
+      "new_F1": 0.0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a83a2a15542993344746063",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5a83a2a15542993344746063.json",
+        "sha256": "17e6cd9984175d011f4a571aab1d8ed78401b1b3768f6d9e80cc34023b006756"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a83a2a15542993344746063.json",
+      "source_new_sha256": "7852014f614625362fff3227fbf9020e0b68813ece3d81d8672bc4b893cfafb3",
+      "evidence": [
+        {
+          "rank": 1,
+          "source": "Manchester High School West",
+          "doc_id": "1372669",
+          "text": "Manchester High School West\nManchester High School West, known as West High or West, is a public high school located in Manchester, New Hampshire. According to the \"Blue Book: Manchester High School West Hand Book \" (1940), the school was officially opened in September 1923 as a grade school and high school, hosting the seventh and eighth grades. In 1924, with an upsurge in enrollment to 136 pupils, the school became a dedicated high school. The first graduating class was in June 1925."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一TODAYShow第四小时增加onNBC等表述，节目与时段未变。",
+      "manual_tags": {},
+      "question": "Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?",
+      "complete_model_decomposition": [
+        "What shows did Hoda Kotb co-host?",
+        "What shows were produced by Brian Balthazar?"
+      ],
+      "goal_appended_by_program": "Which show co-hosted by Hoda Kotb was produced by Brian Balthazar?",
+      "gold_offline_only": "the fourth hour of the TODAY Show",
+      "gold_aliases_offline_only": [],
+      "old_goal": "The fourth hour of NBC's \"Today Show\" co-hosted by Hoda Kotb and Kathie Lee Gifford was produced by Brian Balthazar.",
+      "old_final": "The fourth hour of NBC's \"Today Show\"",
+      "new_Conclusion": "The fourth hour of the TODAY Show on NBC, co-hosted by Hoda Kotb and Kathie Lee Gifford, was produced by Brian Balthazar.",
+      "new_Final_answer": "the fourth hour of the TODAY Show on NBC",
+      "new_raw_output": "Conclusion: The fourth hour of the TODAY Show on NBC, co-hosted by Hoda Kotb and Kathie Lee Gifford, was produced by Brian Balthazar.  \nFinal answer: the fourth hour of the TODAY Show on NBC",
+      "old_F1": 0.9090909090909091,
+      "new_F1": 0.8333333333333333,
+      "delta_F1": -0.0757575757575758,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a72a9ac5542991f9a20c55f",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5a72a9ac5542991f9a20c55f.json",
+        "sha256": "a6023904ff44f5b5d5ad4d06702e9c22a171e80d908e50d8c0effac476fa1825"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a72a9ac5542991f9a20c55f.json",
+      "source_new_sha256": "2df2bd7094c56097da0e770467a2dcd5dca91c32407ea15655c39d273a231417",
+      "evidence": []
+    },
+    {
+      "id": "hotpotqa:5a71474b5542994082a3e74f",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "同一补选增加日期并改写名称词序，事件身份未改变。",
+      "manual_tags": {},
+      "question": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was when Caroline Johnson became a Member of Parliament?",
+      "complete_model_decomposition": [
+        "What triggered Caroline Johnson's becoming a Member of Parliament?"
+      ],
+      "goal_appended_by_program": "What was triggered by the resignation of Conservative MP Stephen Phillips on 4 November 2016 and was when Caroline Johnson became a Member of Parliament?",
+      "gold_offline_only": "The Sleaford and North Hykeham by-election",
+      "gold_aliases_offline_only": [],
+      "old_goal": "The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the 8 December 2016 by-election in Sleaford and North Hykeham, when Caroline Johnson became a Member of Parliament.",
+      "old_final": "Sleaford and North Hykeham by-election",
+      "new_Conclusion": "The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the 8 December 2016 by-election in Sleaford and North Hykeham, which was when Caroline Johnson became a Member of Parliament.",
+      "new_Final_answer": "The 8 December 2016 by-election in Sleaford and North Hykeham",
+      "new_raw_output": "Conclusion: The resignation of Conservative MP Stephen Phillips on 4 November 2016 triggered the 8 December 2016 by-election in Sleaford and North Hykeham, which was when Caroline Johnson became a Member of Parliament.\nFinal answer: The 8 December 2016 by-election in Sleaford and North Hykeham",
+      "old_F1": 1.0,
+      "new_F1": 0.7142857142857143,
+      "delta_F1": -0.2857142857142857,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5a71474b5542994082a3e74f",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\union20\\5a71474b5542994082a3e74f.json",
+        "sha256": "88c77c6fb1ca73a8a0a39e416b38d0e3b6ab0e0eef2b4418ebd4ef2a0c652375"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5a71474b5542994082a3e74f.json",
+      "source_new_sha256": "4ebeeb5d79993a39d71583743923c2f474c0f4f92f90a6def729eb1a13d72155",
+      "evidence": []
+    },
+    {
+      "id": "musique:3hop1__691197_15840_36002",
+      "dataset": "musique",
+      "category": "truncated_output_contract_failure",
+      "manual_reason": "多项Genesis优势的Conclusion耗尽128预算，Final未完成；正确核心片段不能替代规定的Final输出。",
+      "manual_tags": {},
+      "question": "What were the Genesis's advantages over the console whose three letter abbreviation stood for the full console name and also featured the game Yoshi?",
+      "complete_model_decomposition": [
+        "What console had a three-letter abbreviation that stood for its full name?",
+        "What console featured the game Yoshi?"
+      ],
+      "goal_appended_by_program": "What were the Genesis's advantages over the console whose three letter abbreviation stood for the full console name and also featured the game Yoshi?",
+      "gold_offline_only": "built on 16-bit architectures and offered improved graphics and sound",
+      "gold_aliases_offline_only": [
+        "16-bit",
+        "16-bit architecture"
+      ],
+      "old_goal": "The Sega Genesis had advantages over the Nintendo Entertainment System (NES)—the console whose three-letter abbreviation stood for its full name and which featured the game *Yoshi*—including a 16-bit architecture with improved graphics and sound, stronger third-party support due to less strict licensing terms, and a marketing focus on mature titles and older gamers.",
+      "old_final": "16-bit architecture with improved graphics and sound, stronger third-party support due to less strict licensing terms, and a marketing focus on mature titles and older gamers",
+      "new_Conclusion": "The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound over the NES’s 8-bit architecture, a larger library of games, a lower price point, stronger third-party support due to less strict licensing terms, and marketing positioning targeting older gamers with more mature titles and edgy advertisements.",
+      "new_Final_answer": "",
+      "new_raw_output": "Conclusion: The Sega Genesis had advantages over the Nintendo Entertainment System (NES), including a 16-bit architecture offering improved graphics and sound over the NES’s 8-bit architecture, a larger library of games, a lower price point, stronger third-party support due to less strict licensing terms, and marketing positioning targeting older gamers with more mature titles and edgy advertisements.\nFinal answer: The Sega Genesis had a 16-bit architecture offering improved graphics and sound, a larger library of games, a lower price point, stronger third-party support due to less strict licensing terms, and marketing targeting older gamers with more mature titles and edgy advertisements.",
+      "old_F1": 0.4,
+      "new_F1": 0.0,
+      "delta_F1": -0.4,
+      "finish_reason": "length",
+      "source_old": {
+        "id": "musique:3hop1__691197_15840_36002",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\3hop1__691197_15840_36002.json",
+        "sha256": "715a5668a97539e2329d1273d69631defcf8a4e94c2272bbcdd6f1215ae19d15"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\3hop1__691197_15840_36002.json",
+      "source_new_sha256": "86f4a4ced9bebc9387cf2df69064cbb84fd2b8ac4dc2611fc50646493ab1ef18",
+      "evidence": []
+    },
+    {
+      "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "原题问同国家；Conclusion已明示两村均在Greece，Final却No，把不同地区Evros/Phocis的区分混入国家判断。",
+      "manual_tags": {
+        "conclusion_sufficient": true,
+        "subtype": "country_boolean_contradiction",
+        "evidence_terms": [
+          "Greece"
+        ]
+      },
+      "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+      "complete_model_decomposition": [
+        "What country is Mavrolithari, Evros located in?",
+        "What country is Ampelakia, Evros located in?"
+      ],
+      "goal_appended_by_program": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+      "gold_offline_only": "yes",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia, Evros is located in Greece; therefore, both villages are in the same country, Greece.",
+      "old_final": "Yes",
+      "new_Conclusion": "Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is located in the Evros regional unit, Greece; thus both villages are in Greece, but only Ampelakia is in Evros.",
+      "new_Final_answer": "No",
+      "new_raw_output": "Conclusion: Mavrolithari is located in northern Phocis, Greece, not in the Evros regional unit, while Ampelakia is located in the Evros regional unit, Greece; thus both villages are in Greece, but only Ampelakia is in Evros.  \nFinal answer: No",
+      "old_F1": 1.0,
+      "new_F1": 0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "2wiki:8ba63ce8098f11ebbdb0ac1f6bf848b6",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\cases\\2wiki\\union20\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+        "sha256": "d5bba4de9af22eebb25de29817b319a4fc73afd2b0d8a266bf9a3f6db03ebef3"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\2wiki\\terminal_goal\\8ba63ce8098f11ebbdb0ac1f6bf848b6.json",
+      "source_new_sha256": "599eec83196ff0b9b0663fea901d90f8bf74d2028a9b76ab3dca2b664d2996d0",
+      "evidence": [
+        {
+          "rank": 1,
+          "source": "Ampelakia, Evros",
+          "doc_id": "48237979d7c9a724250c5e2ebbf00cf9aa7fed05b58e72ff76ee3650e3da148d",
+          "text": "Ampelakia, Evros\nAmpelakia( Greek: Αμπελάκια meaning vineyards) is a village in the municipality of Orestiada in the northern part of the Evros regional unit in Greece. Its population was 470 in 2011. Ampelakia is located about 12 km west of central Orestiada. The nearest larger village is Neochori to its northeast."
+        },
+        {
+          "rank": 2,
+          "source": "Mavrolithari",
+          "doc_id": "30fdcd6f1cba077aeef744d3fee21a338587dc11d8be285e81f77b04e8b087d8",
+          "text": "Mavrolithari\nMavrolithari  is a village on Mount Oeta in northern Phocis, Greece, at an altitude of 1.140 meters. Since the 2011 local government reform it is part of the municipality of Delphi, and the municipal unit of Kallieis. Population was 491 in the 2011 census."
+        },
+        {
+          "rank": 3,
+          "source": "Marasia",
+          "doc_id": "dcd798eb178636f0c624f1a188ff25c6cf51ab303d256d08fe65e6d49a89b4ca",
+          "text": "Marasia\nMarasia( Greek: Μαράσια, Turkish:\" Maraş\", Bulgarian:\" Maраш\") is a village in the northern part of the Evros regional unit in Greece. Marasia is part of the municipal unit of Trigono. In 2011 its population was 140. It is situated between the rivers Evros and Ardas, close to their confluence. The Evros forms the border with Turkey here, and the Turkish city Edirne is 7 km to its east. Marasia is bypassed by the Greek National Road 51/ E85( Alexandroupoli- Orestiada- Ormenio- Svilengrad)."
+        },
+        {
+          "rank": 4,
+          "source": "Langadikia, Thessaloniki",
+          "doc_id": "5423e642b75a8b3e05be9a09c7fde08207eb87180c9acf94a0e1eec2696b2523",
+          "text": "Langadikia, Thessaloniki\nLangadikia( Greek:) is a village located in the regional unit of Thessaloniki, in Greece, north- east of Mount Chortiatis. It has facilities such as\" Langadikia High School\"( Gymnasium- Lyceum) and\" Agronomy Department\" that are used by many surrounding villages, as it is located on a cross-road between Lake Koroneia and Lake Volvi. The village has about 800 permanent inhabitants. It is part of the municipal unit of Koroneia, which contains also the villages Agios Vasileios, Gerakarou, Vasiloudi, and Ardameri."
+        },
+        {
+          "rank": 5,
+          "source": "Amorio, Evros",
+          "doc_id": "7f4032a5c6a15aa121276b22e5ce02a3e64ec8e2fc724886aee887c4751fa15f",
+          "text": "Amorio, Evros\nAmorio is a village in the municipal unit of Orfeas, northeastern Evros, Greece. It is situated at 2 km from the right bank of the river Evros, that forms the border with Turkey here. Amorio is 6 km northeast of Lavara, 7 km southwest of Didymoteicho and 21 km west of Uzunköprü( Turkey). The Greek National Road 51/ E85( Alexandroupoli- Orestiada- Svilengrad) and the railway from Alexandroupoli to Didymoteicho pass through the village."
+        },
+        {
+          "rank": 6,
+          "source": "Mavrata",
+          "doc_id": "3462b1753e68a98744ad075bc71f07433bf0a43e0fda82657ba8ad9b5566d85f",
+          "text": "Mavrata\nMavrata is a village in the municipal unit of Eleios- Pronnoi, in the southeastern part of the island of Cephalonia, Greece. In 2011 its population was 139. It is situated on a hill above the Ionian Sea coast, at about 180 m elevation. It is 1 km south of Chionata, 3 km southwest of Pastra and 10 km southwest of Poros. It was devastated by the 1953 Ionian earthquake."
+        },
+        {
+          "rank": 7,
+          "source": "Alpochori, Achaea",
+          "doc_id": "1b45ca3061a96d40be9084cf81ee93d9ae7a23b20b2e3f15fc2a902b86fff9a5",
+          "text": "Alpochori, Achaea\nAlpochori( Greek: Αλποχώρι, also Αλεποχώρι\" Alepochori\") is a village and a community in southern Achaea, Greece. Alpochori is located on the northern slope of Mount Erymanthos, about 35 km south of Patras. In 2011 Alpochori had a population of 99 for the village and 236 for the community, which includes the village Agios Dimitrios."
+        },
+        {
+          "rank": 8,
+          "source": "Koniskos",
+          "doc_id": "01275e665f8b21525fd967f5470bc29a414afd6a9c2f6beb7d651c984fa0290a",
+          "text": "Koniskos\nKoniskos( Greek: Κονισκός) is a village in the southwestern Trikala regional unit, Greece. It was the seat of the municipality of Tymfaia. In 2011 Koniskos had a population of 196 for the village and 294 for the community( including the village Kalochori). It is located in the Antichasia mountains, 25 km north of the city of Trikala, and 17 km northeast of Kalambaka."
+        },
+        {
+          "rank": 9,
+          "source": "Plati, Evros",
+          "doc_id": "d052b9e37843675f1acb0dae840692d7eec5cf90d4aadbb27e37a17598d45bc8",
+          "text": "Plati, Evros\nPlati is a village in the northern part of the Evros regional unit in Greece. It is part of the municipal unit Trigono. In 2011 its population was 655. Plati is located on the left bank of the river Ardas, between the villages Elaia to the west and Arzos to the east."
+        },
+        {
+          "rank": 10,
+          "source": "Ammovouno",
+          "doc_id": "fd5a1b4917ed5c0284b6ea00b391d9771725a205932e12248a1a992e58236ad3",
+          "text": "Ammovouno\nAmmovouno( Greek: Αμμόβουνο) is a village in the Evros regional unit of northeast Greece. Ammovouno is in the municipal unit of Orestiada. Ammovouno's 2011 population was 113 for the village. It is located on the right bank of the river Ardas"
+        },
+        {
+          "rank": 11,
+          "source": "Mount Othrys",
+          "doc_id": "c8eb6018f5759e3b00ce6fde1d50b913f22b770a2bea27e0b71a34b0221c1b9a",
+          "text": "Mount Othrys\nMount Othrys( –\" oros Othrys\", also Όθρη –\" Othri\") is a mountain in central Greece, in the northeastern part of Phthiotis and southern part of Magnesia. Its highest summit,\" Gerakovouni\", situated on the border of Phthiotis and Magnesia, is 1,726 m above sea level. The population density in the mountains is low: there are a few small villages, including Anavra in the northwest, Kokkotoi in the northeast, Palaiokerasia in the south and Neraida in the southwest. The length from west to east is about 35 km and the width from north to south is about 25 km. The Pagasetic Gulf lies to the northeast, and the Malian Gulf lies to the south. The summit Gerakovouni lies 19 km south of Almyros, 27 km northeast of Lamia and 44 km southwest of Volos. The upper ranges of the mountain are rocky, and there are forests in the lower ranges. The entire area is also a parkland. The main source of rock is ophiolite."
+        },
+        {
+          "rank": 12,
+          "source": "Malesiada",
+          "doc_id": "00486f15e918b235a2f3ed2ef659bf32e32aeaa55c07ec5b6cdaa97ea9d0b503",
+          "text": "Malesiada\nMalesiada is a village and a community in Aetolia- Acarnania, Greece. The village belongs to the municipal unit of Inachos. Through the village passes the provincial road which leads from Agrinio and Amfilochia to Empesos and further to Arta and Evrytania( through the Tatarna Bridge over the artificial lake of Kremasta). The municipal district Malesiada consists of the villages Nea Malesiada, Ano Kampos and Maraneli."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ab8c3c65542991b5579effd",
+      "dataset": "hotpotqa",
+      "category": "surface_equivalence_or_extra_detail",
+      "manual_reason": "Two改为2；数量相同，原生F1不做英文数词与数字等价规范化。",
+      "manual_tags": {},
+      "question": "How many albums did the company who released Tift Merritt's debut album release for Tif Merritt?",
+      "complete_model_decomposition": [
+        "What was Tift Merritt's debut album?",
+        "What company released Tift Merritt's debut album?"
+      ],
+      "goal_appended_by_program": "How many albums did the company who released Tift Merritt's debut album release for Tif Merritt?",
+      "gold_offline_only": "two",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Lost Highway Records released two albums for Tift Merritt.",
+      "old_final": "Two",
+      "new_Conclusion": "Lost Highway Records released two albums for Tift Merritt: *Bramble Rose* (2002) and *Tambourine* (2004).",
+      "new_Final_answer": "2",
+      "new_raw_output": "Conclusion: Lost Highway Records released two albums for Tift Merritt: *Bramble Rose* (2002) and *Tambourine* (2004).\nFinal answer: 2",
+      "old_F1": 1.0,
+      "new_F1": 0.0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5ab8c3c65542991b5579effd",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ab8c3c65542991b5579effd.json",
+        "sha256": "e6f74f18b39a04aa0e8caf7fdf9141b3342e6b44df8788daa632a254da50e976"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ab8c3c65542991b5579effd.json",
+      "source_new_sha256": "0453f4cd8db9141811483b83a7d7064e7a5fed057117210eec07a535b75c5bb7",
+      "evidence": []
+    },
+    {
+      "id": "musique:3hop1__346812_15840_36002",
+      "dataset": "musique",
+      "category": "mixed_comparison_scope_and_verbosity",
+      "manual_reason": "新Conclusion/Final增加largerlibrary/lowerprice，原文相关比较对象是SNES，而原题为NES；正确16bit核心仍在，F1变化同时混有扩写和比较关系外推，不能归为纯措辞或纯新检索失败。",
+      "manual_tags": {},
+      "question": "What were the Genesis's advantages over the platform that plays Drac's Night Out?",
+      "complete_model_decomposition": [
+        "What platform plays Drac's Night Out?"
+      ],
+      "goal_appended_by_program": "What were the Genesis's advantages over the platform that plays Drac's Night Out?",
+      "gold_offline_only": "built on 16-bit architectures and offered improved graphics and sound",
+      "gold_aliases_offline_only": [
+        "16-bit",
+        "16-bit architecture"
+      ],
+      "old_goal": "The Sega Genesis had advantages over the Nintendo Entertainment System—including stronger third-party support, less strict licensing terms, and superior 16-bit graphics and sound—since Drac's Night Out was developed for the 8-bit NES.",
+      "old_final": "Stronger third-party support, less strict licensing terms, and superior 16-bit graphics and sound",
+      "new_Conclusion": "The Sega Genesis had advantages over the Nintendo Entertainment System—including superior 16-bit architecture (offering improved graphics and sound), less strict licensing terms for third-party developers, stronger third-party support, a larger game library, a lower price point, and marketing positioning toward older gamers—while the NES was an 8-bit system with more restrictive licensing and heavier reliance on first-party games.",
+      "new_Final_answer": "The Sega Genesis had superior 16-bit architecture, less restrictive licensing, stronger third-party support, a larger game library, a lower price point, and mature marketing compared to the 8-bit Nintendo Entertainment System.",
+      "new_raw_output": "Conclusion: The Sega Genesis had advantages over the Nintendo Entertainment System—including superior 16-bit architecture (offering improved graphics and sound), less strict licensing terms for third-party developers, stronger third-party support, a larger game library, a lower price point, and marketing positioning toward older gamers—while the NES was an 8-bit system with more restrictive licensing and heavier reliance on first-party games.\nFinal answer: The Sega Genesis had superior 16-bit architecture, less restrictive licensing, stronger third-party support, a larger game library, a lower price point, and mature marketing compared to the 8-bit Nintendo Entertainment System.",
+      "old_F1": 0.4347826086956522,
+      "new_F1": 0.13793103448275862,
+      "delta_F1": -0.2968515742128936,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "musique:3hop1__346812_15840_36002",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\musique\\union20\\3hop1__346812_15840_36002.json",
+        "sha256": "347accddf220ac36da4e31439aa82882feaeb5bba0264e7d87816cc082ea096c"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\musique\\terminal_goal\\3hop1__346812_15840_36002.json",
+      "source_new_sha256": "51aeee107fb5ad2a351a175ba06dc4b0705d87e801602d3c0bc8072f5a99d729",
+      "evidence": [
+        {
+          "rank": 12,
+          "source": "Super Nintendo Entertainment System",
+          "doc_id": "da314d9a1df28f7fe214971cb557fba1ae82797847d25ffab165f9edd00f602b",
+          "text": "Super Nintendo Entertainment System\nTo compete with the popular Family Computer in Japan, NEC Home Electronics launched the PC Engine in 1987, and Sega Enterprises followed suit with the Mega Drive in 1988. The two platforms were later launched in North America in 1989 as the TurboGrafx-16 and the Genesis respectively. Both systems were built on 16-bit architectures and offered improved graphics and sound over the 8-bit NES. However, it took several years for Sega's system to become successful. Nintendo executives were in no rush to design a new system, but they reconsidered when they began to see their dominance in the market slipping."
+        },
+        {
+          "rank": 14,
+          "source": "Super Nintendo Entertainment System",
+          "doc_id": "6ae295934d806722a0ac2b099ad692eb99b07e54f1ce5a1daa79e4f9fb7200bd",
+          "text": "Super Nintendo Entertainment System\nThe rivalry between Nintendo and Sega resulted in what has been described as one of the most notable console wars in video game history, in which Sega positioned the Genesis as the \"cool\" console, with more mature titles aimed at older gamers, and edgy advertisements that occasionally attacked the competition. Nintendo however, scored an early public relations advantage by securing the first console conversion of Capcom's arcade classic Street Fighter II for SNES, which took over a year to make the transition to Genesis. Despite the Genesis's head start, much larger library of games, and lower price point, the Genesis only represented an estimated 60% of the American 16-bit console market in June 1992, and neither console could maintain a definitive lead for several years. Donkey Kong Country is said to have helped establish the SNES's market prominence in the latter years of the 16-bit generation, and for a time, maintain against the PlayStation and Saturn. According to Nintendo, the company had sold more than 20 million SNES units in the U.S. According to a 2014 Wedbush Securities report based on NPD sales data, the SNES ultimately outsold the Genesis in the U.S. market."
+        }
+      ]
+    },
+    {
+      "id": "hotpotqa:5ae3fcfc5542995dadf2428c",
+      "dataset": "hotpotqa",
+      "category": "confirmed_target_or_logic_readout_error",
+      "manual_reason": "原题问出生日期；Conclusion明确November20,1942，Final却答Norman Greenbaum。",
+      "manual_tags": {
+        "conclusion_sufficient": true,
+        "subtype": "date_to_person",
+        "evidence_terms": [
+          "November 20, 1942"
+        ]
+      },
+      "question": "When was the  American singer-songwriter born who recorded “Spirit In The Sky”?",
+      "complete_model_decomposition": [
+        "Who is the American singer-songwriter who recorded Spirit In The Sky?"
+      ],
+      "goal_appended_by_program": "When was the  American singer-songwriter born who recorded “Spirit In The Sky”?",
+      "gold_offline_only": "November 20, 1942",
+      "gold_aliases_offline_only": [],
+      "old_goal": "Norman Greenbaum was born on November 20, 1942.",
+      "old_final": "November 20, 1942",
+      "new_Conclusion": "Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.",
+      "new_Final_answer": "Norman Greenbaum",
+      "new_raw_output": "Conclusion: Norman Greenbaum, the American singer-songwriter who recorded “Spirit In The Sky”, was born on November 20, 1942.  \nFinal answer: Norman Greenbaum",
+      "old_F1": 1.0,
+      "new_F1": 0.0,
+      "delta_F1": -1.0,
+      "finish_reason": "stop",
+      "source_old": {
+        "id": "hotpotqa:5ae3fcfc5542995dadf2428c",
+        "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\cases\\hotpotqa\\union20\\5ae3fcfc5542995dadf2428c.json",
+        "sha256": "1ffa42c26d6dfd7c993494b5462fb45c8efeee0bc585d3d5d9cb9bf334c77481"
+      },
+      "source_new": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\cases\\hotpotqa\\terminal_goal\\5ae3fcfc5542995dadf2428c.json",
+      "source_new_sha256": "35431a0e2060f805af93b50687ac21c56ba8e3999a5e9977e1ce66f1e80a2237",
+      "evidence": [
+        {
+          "rank": 1,
+          "source": "Norman Greenbaum",
+          "doc_id": "872488",
+          "text": "Norman Greenbaum\nNorman Joel Greenbaum (born November 20, 1942) is an American singer-songwriter. He is best known for writing and performing the 1969 song \"Spirit in the Sky\"."
+        }
+      ]
+    }
+  ],
+  "three_dataset_summary": {
+    "hotpotqa": {
+      "n": 100,
+      "old_union20_F1": 0.7828131313131311,
+      "terminal_F1": 0.7281984126984125,
+      "delta_F1_pp": -5.461471861471862,
+      "up": 5,
+      "tie": 82,
+      "down": 13,
+      "statuses": {
+        "success": 100
+      }
+    },
+    "2wiki": {
+      "n": 100,
+      "old_union20_F1": 0.9228548085901026,
+      "terminal_F1": 0.9270433455433456,
+      "delta_F1_pp": 0.4188536953242835,
+      "up": 6,
+      "tie": 88,
+      "down": 6,
+      "statuses": {
+        "success": 98,
+        "algorithm_failure": 2
+      }
+    },
+    "musique": {
+      "n": 100,
+      "old_union20_F1": 0.4037051046872692,
+      "terminal_F1": 0.37837106858658587,
+      "delta_F1_pp": -2.533403610068335,
+      "up": 6,
+      "tie": 83,
+      "down": 11,
+      "statuses": {
+        "success": 99,
+        "algorithm_failure": 1
+      }
+    }
+  },
+  "input_checks_all300": {
+    "same_goal_packets": 300,
+    "same_ordinary_nodes": 300,
+    "old_final_root_docs_already_in_goal_union": 300,
+    "old_final_P1_present": 300,
+    "old_final_has_four_worked_examples": 300,
+    "old_and_new_goal_have_zero_worked_examples": 300
+  },
+  "prompt_changes": {
+    "old_goal": "Current subquestion task + original query + prior complete QA + full union10..20 documents + GOAL_RULE; zero few-shot; output one full factual sentence, max128.",
+    "old_final": "Independent original-question task + four worked examples + ordinary/goal role headers + original-query Top10 + P1 short-answer readout; max64.",
+    "new_terminal_goal": "Same goal materials/GOAL_RULE and zero few-shot, but factual-sentence instruction changed and two-line output contract appended; Conclusion and Final answer share max128; no subsequent final call.",
+    "old_P1_readout_exact": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+    "new_two_line_contract_exact": "Output exactly two lines with these labels:\nConclusion: <the complete factual sentence>\nFinal answer: <only the short answer to the Original question>\nIn Final answer, preserve the full identifying name and required qualifiers. For a supported yes/no answer, use exactly Yes or No. If the final answer is unsupported, use Cannot be determined. Do not add any other text.",
+    "joint_treatment": "Delete independent final call AND change goal prompt/output contract, input presentation and total output budget. Not a pure call-deletion ablation.",
+    "API_nondeterminism_caution": "New goal prompt necessarily generates a new response. Even temperature0 does not imply deterministic equality; observable conclusion changes cannot be assigned uniquely to lost final correction."
+  },
+  "why_a_no_new_document_final_step_can_help": [
+    "For all300, original-query Top10 shown to old final is already inside the goal union; no new retrieved passage is added by this stage.",
+    "Old final receives a newly generated goal sentence as an explicit candidate conclusion, alongside original question and raw passages, and performs another answer-selection/composition task.",
+    "Four worked examples and P1 explicitly restrict answer type, full identifying name and extraneous details; several old outputs select the requested date/office/intersection from a complete sentence.",
+    "The six confirmed cases show target/logic failure despite useful facts in Conclusion; they support a readout-stage explanation, not proof that repeating a call alone or any one prompt line is necessary.",
+    "No new call was made to test whether adding old final to each new Conclusion would repair it."
+  ],
+  "important_non_substring_counterexamples": [
+    {
+      "id": "musique:2hop__13592_49388",
+      "reason": "Contains38 but shifts time modifier and declares missing historical-season evidence; excluded from correct-Conclusion count."
+    },
+    {
+      "id": "2wiki:f37818400bd911eba7f7acde48001122",
+      "reason": "ContainsMitau but explicitly infers death place from birth place and lacks direct support, then truncates; excluded."
+    },
+    {
+      "id": "hotpotqa:5ab8c3c65542991b5579effd",
+      "reason": "two and2 have identical numerical meaning; F1decline not a count factual error."
+    },
+    {
+      "id": "hotpotqa:5a77c09555429967ab105262",
+      "reason": "Pronghorn andAntilocapraamericana denote the same species per input; alias/F1 issue not a demonstrated species-fact error."
+    }
+  ],
+  "original_failure_audit_source": {
+    "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\FINAL_FAILURE_AUDIT.json",
+    "sha256": "ff941240328b6c02f058ec825fff86eb0bf0ab5becf708a31b3e928d58999f93"
+  },
+  "new_API_calls": 0,
+  "new_index_queries": 0,
+  "frozen_source_edits": 0
+}

@@ -1,0 +1,26 @@
+{
+  "job_id": "154422",
+  "args": [
+    "sbatch",
+    "--parsable",
+    "--hold",
+    "--dependency=afterok:154361",
+    "--job-name=full3632-confirm",
+    "--time=00:20:00",
+    "--chdir=/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018",
+    "--output=/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/eval-%j.out",
+    "--error=/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/eval-%j.err",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003/runtime/run_stage.slurm",
+    "/home/projects/u7830488/demand_parser_route2_training_v1/20261009T191901Z/route2_question_decomposer/environment/venv/bin/python",
+    "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018/confirm.py",
+    "--base-package",
+    "/home/projects/u7830488/multigrain_4b_sft3500_v1_20261017/package_v003",
+    "--experiment",
+    "/home/projects/u7830488/multigrain_4b_full_retrain3632_v1_20261018"
+  ],
+  "held": true,
+  "submitted_utc": "2026-10-18T05:47:12.904421+00:00",
+  "release_gate": "Only after228updates complete and immutable dev-only nominee strictly beats T02 under all fixed safety gates. Otherwise cancel this own held job without inference.",
+  "api_calls": 0,
+  "training_code_data_or_schedule_changed": false
+}

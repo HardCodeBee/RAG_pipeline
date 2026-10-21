@@ -1,0 +1,25 @@
+--- b00_v12
++++ m01_static_mu
+@@ -8,18 +8,16 @@
+ 
+ Ask for prerequisites, not for the original target just to complete the list. An original-equivalent question is allowed only if it naturally arises from a supporting operation above; otherwise omit it. Do not query already supplied facts, generic identities, unrelated attributes or duplicate needs. If neither operation exposes a useful prerequisite, return [].
+ 
+-Input: What is the population of the capital of the country where the author of Book R was born?
+-Output: ["Who wrote Book R?", "Where was the author of Book R born?", "Which country contains the birthplace of the author of Book R?", "What is the capital of the country where the author of Book R was born?"]
++Input: What is the body of water adjacent to the island fought over by Denmark and the country where cases in favor of the Jehovah's Witnesses have been heard outside of the U.S.?
++Output: ["What country outside the U.S. has heard cases in favor of Jehovah's Witnesses?", "What island was fought over by Denmark and the country outside the U.S. that heard cases in favor of Jehovah's Witnesses?"]
+ 
+-Input: Who owns the company where the composer of Song S works?
+-Output: ["Who composed Song S?", "Which company does the composer of Song S work for?"]
++Input: How long are terms in the body that elects a speaker for the body presiding over impeachment trials of the president of Matthias W. Day's country of citizenship?
++Output: ["What is Matthias W. Day's country of citizenship?", "What body presides over impeachment trials of the president of Matthias W. Day's country of citizenship?", "What body elects a speaker for the body presiding over impeachment trials of the president of Matthias W. Day's country of citizenship?"]
+ 
+ Input: Are Arin and Bo both American singers?
+ Output: ["Is Arin an American singer?", "Is Bo an American singer?"]
+-
+ Input: Mira is the child of a politician born in 1960. Which organization does the politician chair?
+ Output: ["Which politician born in 1960 is Mira's parent?"]
+-
+ Input: What is the name for an adventure in Game R, a game designed by Darin?
+ Output: []
+ 

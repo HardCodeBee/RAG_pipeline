@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-20T09:19:51.884015+00:00",
+  "source": "User: 我们不追求F1的提升 只要不明显回退就作为可采取的简化",
+  "adoption_objective": "Simplify the workflow while avoiding material downstream regression; a positive F1 delta is not required.",
+  "frozen_generation_protocol_changed": false,
+  "all_candidates_continue_as_planned": true,
+  "report": [
+    "paired final native F1 on identical queries",
+    "overall and per-dataset deltas",
+    "uncertainty and missing denominators",
+    "logical generation calls and input/output tokens",
+    "actual paid cost versus cached logical usage"
+  ],
+  "no_automatic_equivalence_claim_from_non_significance": true,
+  "confirmation_selection_rule_role": "The old highest-F1 rule selects one candidate for the fixed fresh60 comparison only; it is not an adoption gate and does not discard other viable simplifications.",
+  "numeric_regression_margin_user_specified": null,
+  "promotion": "No version has been promoted from partial results; judge completed comparisons for practical simplicity and performance retention."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "break:DROP_train_history_2398_019cec1b-4ceb-4cc4-9a87-ec2643848ffc",
+  "query": "What team did Cecil Fielder play for when he had the most home runs in the American League?",
+  "before": [
+    "When did Cecil Fielder have the most home runs in the American League?",
+    "What team did Cecil Fielder play for when he had the most home runs in the American League?"
+  ],
+  "proposed_after": [
+    "When did Cecil Fielder have the most home runs in the American League?"
+  ],
+  "status": "Post-launch audit candidate only; NOT applied to frozen data or any model.",
+  "reason": "The second question repeats the original team target after the time prerequisite; retain as a future utility review rather than silently changing the running comparison.",
+  "consumed_counts": {
+    "r01_old_data": 0,
+    "r02_expanded": 0
+  },
+  "data_sha256_unchanged": true
+}

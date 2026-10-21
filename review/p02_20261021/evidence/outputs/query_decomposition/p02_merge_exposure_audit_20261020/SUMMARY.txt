@@ -1,0 +1,33 @@
+p02改写检索候选未进入LLM：300题离线核查
+
+范围：已曝光的开发300题，HotpotQA/2Wiki/MuSiQue各100题。只分析历史输入和输出，不修改冻结配置；无新API、索引检索、训练。
+相关口径：数据集标注的原query支持段落，按精确doc_id匹配。不是穷尽语义相关标注，也不是逐子问题的理想充分性标注。
+
+发生率：17/300题(5.67%)，改写路召回的至少一个标注支持段落未进入当前子问题reader。
+按数据集：Hotpot 2/100；2Wiki 3/100；MuSiQue12/100。
+409个双路节点中339个改写路命中支持；其中19/339节点(5.60%)有支持段落被裁。
+改写路共456次标注支持文档出现，丢19次(4.17%)；均处于rank6-10，均不在该节点原始路Top10。
+考虑其他节点与最终原query Top10后，12/300题(4.00%)仍没有曝光相应精确段落：Hotpot2、2Wiki1、MuSiQue9。
+按标题宽松统计只有8题连同标题都没有，但同标题不证明包含同一事实，不能把另外4题认定为已恢复。
+题目比例不等于F1损失率；恢复被丢文档后的最终F1尚未实验。
+
+机制：原始路与改写路分别Top10，按名次原始优先交替，doc_id去重后保留10。两路无重叠时只留原始1-5和改写1-5，后五个改写结果被裁。
+单纯交换交替先后，在两路无重叠时仍各留5篇，不能保住改写rank6-10。
+
+实例：musique:4hop1__40316_497223_15840_36002。
+改写问句：What were the Genesis's advantages over the Nintendo Entertainment System (NES)?
+改写rank6《Super Nintendo Entertainment System》包含Both systems were built on 16-bit architectures and offered improved graphics and sound over the 8-bit NES.
+该段落被裁，当前reader和原query Top10也未见16-bit/improved graphics关系。实际子回答及最终答案给出Stronger third-party support and less strict licensing terms。不能据此直接认定加入该段必能修复答案，需固定输入做单因素生成对照。
+
+另一个核查注意：Nanjing案中对字符串400的搜索会误命中1400；那不是400 years的关系事实。原文中数字或同标题出现都不等于等价支持事实已经曝光。
+
+改善候选（均未替换冻结版本）：
+1. 最直接的诊断对照：两路按doc_id去重的并集全部输入子回答LLM，最多20篇，不改变检索、分解或最终辅助方案。保证当前已召回候选不再因10篇裁剪丢失；不保证模型正确利用。固定409节点输入中，平均17.52篇，原文字符总量约+74.19%；不是API账单增幅估计。
+2. 若需维持10篇，单独验证正文等价去重；仅合并真正重复内容，不按相同标题一律去重。它不能保证救回全部相关段落。
+3. 后续可单独测以已解析的改写问句对两路并集重排。历史M1用未解析原问，完整49轨迹支持宏召回75.85%降到73.47%，未升级、未测最终F1；不能预设重排必有收益。
+
+验证顺序：保持p02冻结；先比较原10篇/并集最多20篇，记录支持保留、恢复段落、最终F1、tokens。若收益不足或开销过高，再单独比较10篇预算内方案。所有方案不得使用gold支持ID在线筛文档。
+
+输入端区别：上述发生率针对子问题回答LLM。最终LLM仍直接读取原query Top10+完整辅助问答；改写新增原文通过子答案传递，不因没有直接附加到最终prompt就被算作本审计丢失。
+
+详情：agent_support/summary.json、node_details.json、case_details.json；TOPOLOGY.json含对887节点实际prompt材料的核查，UNION_INPUT_SIZE.json仅为固定历史输入字符规模估计。
