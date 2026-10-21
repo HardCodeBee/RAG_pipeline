@@ -1,0 +1,233 @@
+{
+  "checked_utc": "2026-10-21T10:26:43.596138+00:00",
+  "external_model_judging": false,
+  "checks": [
+    {
+      "review_index": 273,
+      "claim": "Elisabeth of Mansfeld-Hinterort father was Christoph",
+      "correct": false,
+      "verified_fact": "Her father was John/Johann of Mansfeld-Hinterort, not Christoph.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Elisabeth_of_Mansfeld-Hinterort",
+        "https://morganlefay.ca/CD/Windsor%20tree/INDIs16/II8040.html"
+      ],
+      "source_type": "corroborating secondary biographies/genealogy"
+    },
+    {
+      "review_index": 274,
+      "claim": "De Dannan fiddler Frankie Gavin is Irish",
+      "correct": true,
+      "verified_fact": "The De Dannan musician is from Corrandulla, Galway; the local gold instead supplies the unrelated British boxer.",
+      "sources": [
+        "https://www.itma.ie/people/frankie-gavin-3/",
+        "https://frankiegavin-dedannan.irish/index.php/frankie-gavin-and-de-dannan/"
+      ],
+      "source_type": "Irish Traditional Music Archive and performer official biography",
+      "inference": "national descriptor consistent with musician identity; gold British boxer is a different individual"
+    },
+    {
+      "review_index": 348,
+      "claim": "MotherOfGeorge and ThePledge have no shared country of origin",
+      "correct": false,
+      "verified_fact": "Festival catalog identifies MotherOfGeorgeUSA; Nigerian coproduction label does not remove sharedUS.",
+      "sources": [
+        "https://www.sansebastianfestival.com/2013/sections_and_films/new_directors/7/610058/in"
+      ],
+      "source_type": "primary festival film catalog",
+      "local_conflict": "native prose Nigerian versus dataset countryUS"
+    },
+    {
+      "review_index": 393,
+      "claim": "DestinationDewsbury director JackSpring died of Parkinsons in2015",
+      "correct": false,
+      "verified_fact": "The director authored an article and gave interviews in2019; local death2015 belongs to baseball pitcher1933-born JackRussellSpring.",
+      "sources": [
+        "https://www.comedy.co.uk/film/destination_dewsbury/special/how_to_make_a_movie_aged_19/",
+        "https://www.yorkshireeveningpost.co.uk/news/why-film-director-jack-spring-chose-yorkshire-to-shoot-his-debut-feature-destination-dewsbury-153341"
+      ],
+      "source_type": "director firsthand article and contemporaneous interview",
+      "inference": "Different identity; cannot transfer deceased pitchers cause of death to interviewed filmmaker"
+    },
+    {
+      "review_index": 417,
+      "claim": "OnMySkin2018 directorCremonini bornafterClaudeMiller1942",
+      "correct": true,
+      "verified_fact": "Primary RomeFilmFest2013 biography gives AlessioCremonini bornRome1973; unqualified title has both2003Jalongo and2018Cremonini films",
+      "sources": [
+        "https://www.romacinemafest.it/wp-content/uploads/2016/09/Catalogo-Festa-del-Cinema-2013-Catalogue-Rome-Film-Fest-2013-ita-eng.pdf"
+      ],
+      "source_type": "primary festival filmmaker biography",
+      "local_gap": "Reader establishes2018director but lacks birthday"
+    },
+    {
+      "review_index": 456,
+      "claim": "FriedrichWilhelm died27Feb1831",
+      "correct": false,
+      "verified_fact": "17Feb1831; local sonKarl biography gives erroneous27Feb while fatherbiography and gold17Feb",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Friedrich_Wilhelm%2C_Duke_of_Schleswig-Holstein-Sonderburg-Gl%C3%BCcksburg",
+        "https://de.wikipedia.org/wiki/Friedrich_Wilhelm_%28Schleswig-Holstein-Sonderburg-Gl%C3%BCcksburg%29",
+        "https://database.factgrid.de/wiki/Item%3AQ510035"
+      ],
+      "source_type": "corroborating historical biographies and FactGrid",
+      "local_conflict": "27Feb vs17Feb in native documents"
+    },
+    {
+      "review_index": 463,
+      "claim": "EAVidaContinua directorPauloFigueiredo is Brazilian",
+      "correct": true,
+      "verified_fact": "Director/actor bornSaoPaulo1940; gold joined Angolanfootballer born1972 of same name",
+      "sources": [
+        "https://www.museudatv.com.br/biografia/paulo-figueiredo/",
+        "https://www.filmeb.com.br/quem-e-quem/ator-diretor-roteirista/paulo-figueiredo"
+      ],
+      "source_type": "BrazilianRadioTVMuseum biography and filmindustry filmmaker profile",
+      "local_conflict": "native country triple Angolan comes from footballer notfilm director"
+    },
+    {
+      "review_index": 572,
+      "claim": "JamesRooseveltBayley diedBaltimore",
+      "correct": false,
+      "verified_fact": "ReturnedtoNewarkAug1877 and died3Oct1877 inepiscopalresidence oldroom",
+      "sources": [
+        "https://blogs.shu.edu/st-patricks/home/renovation/",
+        "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/bayley-james-roosevelt"
+      ],
+      "source_type": "primary SetonHall church residence history and corroborating biographical encyclopedia",
+      "local_gap": "Native prose lists bishopcities not death; goldNewark differs goalBaltimore"
+    },
+    {
+      "review_index": 593,
+      "claim": "JoeJackson musician received noGrammyAwards",
+      "correct": false,
+      "verified_fact": "WonBestPopInstrumentalAlbum forSymphonyNo1 at2001GrammyAwards, before frozen dataset era",
+      "sources": [
+        "https://www.grammy.com/artists/joe-jackson/10992/"
+      ],
+      "source_type": "primary Grammy historical award record",
+      "local_gap": "Native shortened biography mentions nominations but not wins"
+    },
+    {
+      "review_index": 619,
+      "claim": "Morrissey credited director of FleshForFrankenstein",
+      "correct": true,
+      "verified_fact": "Primary Criterion film record credits PaulMorrissey; AndyWarhol marketing does not establish codirection",
+      "sources": [
+        "https://www.criterion.com/films/562",
+        "https://www.criterionchannel.com/flesh-for-frankenstein"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 665,
+      "claim": "HaroldFrench died1970",
+      "correct": false,
+      "verified_fact": "IBDB gives19October1997, GermanBiography corroborates1997; goal1937Hochbaum conclusion still true",
+      "sources": [
+        "https://www.ibdb.com/broadway-cast-staff/harold-french-14828",
+        "https://www.deutsche-biographie.de/1019196246.html"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 674,
+      "claim": "MadeInUSA directorKenFriedman is Swinburne/Tongji professor",
+      "correct": false,
+      "verified_fact": "NYUTisch filmmaker KennethAFriedman profile differs Fluxusdesigner same name, local source combines homonyms",
+      "sources": [
+        "https://tisch.nyu.edu/about/directory/grad-film/101907044.html"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 680,
+      "claim": "HenryWilliamDeSaussure diedCharleston",
+      "correct": true,
+      "verified_fact": "SouthCarolinaEncyclopedia historian distinguishes diedwhilevisitingCharleston and buriedColumbia; citytimeline givesColumbia, retain source conflict",
+      "sources": [
+        "https://www.scencyclopedia.org/sce/entries/desaussure-henry-william/",
+        "https://charleston-sc.gov/DocumentCenter/View/28559/No-9-Henry-William-DeSaussure-1763-1839?bidId="
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 54,
+      "claim": "TedTurner founded CartoonNetwork",
+      "correct": true,
+      "verified_fact": "Contemporary Turner1992 launch and cofounder history support alternative to singlefounderBettyCohen gold",
+      "sources": [
+        "https://www.upi.com/Archives/1992/02/18/Turner-to-launch-24-hour-cartoon-network/7793698389200/",
+        "https://en.wikipedia.org/wiki/The_Cartoon_Network%2C_Inc.",
+        "https://en.wikipedia.org/wiki/Betty_Cohen"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 64,
+      "claim": "BankOfCommunications is a financial holding company",
+      "correct": false,
+      "verified_fact": "Official parent profile calls commercialbank and distinguishes subsidiary holding company",
+      "sources": [
+        "https://www.bankcomm.com/BankCommSite/shtml/London/en/3065/list.shtml",
+        "https://www.bankcomm.com/BankCommSite/shtml/jygj/en/16641/16651/list.shtml"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 106,
+      "claim": "SBS was state-run in2010",
+      "correct": false,
+      "verified_fact": "Official SBS history describes privatebroadcasting from1991 and Taeyoungcontrollingowner1990",
+      "sources": [
+        "https://about.sbs.co.kr/history",
+        "https://about.sbs.co.kr/history_graph"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 133,
+      "claim": "JohnArledge appearedinFlowingGold1940 directedbyRalphMurphy",
+      "correct": false,
+      "verified_fact": "AFI record credits AlfredEGreen and JohnGarfield, not the claimed actor/director pair",
+      "sources": [
+        "https://catalog.afi.com/Film/5028-FLOWING-GOLD",
+        "https://www.imdb.com/title/tt0032481/fullcredits/"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 136,
+      "claim": "StreetKings writtenanddirectedbyDavidAyer",
+      "correct": false,
+      "verified_fact": "AFI credits Ayer director, EllroyWimmerMoss writers, not Ayer writer",
+      "sources": [
+        "https://catalog.afi.com/Catalog/moviedetails/64772",
+        "https://watch.afi.com/movie/street-kings"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 143,
+      "claim": "BigJohnStudd appearedinBigRed1962",
+      "correct": false,
+      "verified_fact": "Fullcast lists do not credit him, unlike localDoubleAgent1987; wrong actor-film association",
+      "sources": [
+        "https://www.tvguide.com/movies/big-red/cast/2030055188/",
+        "https://www.themoviedb.org/movie/61871-big-red/cast"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    },
+    {
+      "review_index": 177,
+      "claim": "SouthSydney electorate coveredAlexandria",
+      "correct": true,
+      "verified_fact": "Digitized1903 Commonwealth electoralroll index explicitly Alexandria pollingplace, valid alternative currentchild unconstrained by1906",
+      "sources": [
+        "https://www.ihr.com.au/secure/html/nswer03_southsydney.html",
+        "https://www.ihr.com.au/secure/html/recent.html"
+      ],
+      "scope": "targeted only after local unresolved/conflict; no model judge"
+    }
+  ],
+  "scope": "retrieved/native local sources first; only unresolved/conflicting statements checked on web"
+}

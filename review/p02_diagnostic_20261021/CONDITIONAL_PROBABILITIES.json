@@ -1,0 +1,1766 @@
+{
+  "status": "computed_from_locked_offline_annotations_and_existing_endpoints",
+  "utc": "2026-10-21T11:28:43.506168+00:00",
+  "final_correctness": "nativeF1==1 OR nativeEM==1",
+  "bootstrap": {
+    "unit": "original query cluster",
+    "replicates": 2000,
+    "seed": 20261021,
+    "confidence": 0.95,
+    "interval": "percentile; NaN draws with empty conditioning groups excluded and counted; singleton/all-success strata may have degenerate bootstrap intervals"
+  },
+  "association_not_causal": true,
+  "summary": {
+    "2wiki": {
+      "complete_eligible_queries": 485,
+      "final_correct": 358,
+      "mean_native_F1": 0.8225034550383247,
+      "mean_native_EM": 0.7360824742268042,
+      "decomposition_correct": 476,
+      "decomposition_utility_only_failure": 6,
+      "ordinary_nodes": 980,
+      "goal_nodes": 485,
+      "rewrite_events": 980,
+      "rewrite_event_errors": 51,
+      "rewrite_error_queries": 49,
+      "effective_changed": 692,
+      "effective_unchanged": 288,
+      "raw_rewrite_rejected": 0,
+      "by_role": {
+        "ordinary": {
+          "answer_correct": 970,
+          "answer_incorrect": 10,
+          "answer_pending": 0,
+          "correct_reasonable_abstentions": 15,
+          "incorrect_subtypes": {
+            "unreasonable_abstention": 2,
+            "mixed_correct_and_incorrect_facts": 1,
+            "correct_entity_value_wrong_relation_statement": 1,
+            "wrong_film_identity": 1,
+            "wrong_person_same_name": 1,
+            "mixed_correct_child_wrong_grandchild": 1,
+            "mixed_correct_dates_false_extra_director_date": 1,
+            "correct_father_value_malformed_false_parent_relation": 1,
+            "family_generation_confusion_gold_join_error": 1
+          }
+        },
+        "goal": {
+          "answer_correct": 457,
+          "answer_incorrect": 23,
+          "answer_pending": 5,
+          "correct_reasonable_abstentions": 23,
+          "incorrect_subtypes": {
+            "mixed_correct_and_incorrect_facts": 1,
+            "reasonable_target_abstention_but_false_evidence_statement": 1,
+            "set_overlap_comparison_error": 5,
+            "incorrect_fact": 1,
+            "incorrect_family_generation": 1,
+            "gold_homonym_identity_error": 2,
+            "family_generation_confusion": 2,
+            "source_conflict_wrong_death_date": 1,
+            "propagated_wrong_film_identity": 1,
+            "propagated_wrong_father": 1,
+            "historical_country_normalization_error": 1,
+            "nonresponsive_nomination_instead_received_award": 1,
+            "reversed_age_comparison": 1,
+            "wrong_death_city_from_work_city": 1,
+            "correct_city_plus_false_second_birthplace": 1,
+            "false_denial_of_received_award": 1,
+            "family_generation_confusion_gold_join_error": 1
+          }
+        }
+      }
+    },
+    "hotpotqa": {
+      "complete_eligible_queries": 238,
+      "final_correct": 135,
+      "mean_native_F1": 0.7088522462720828,
+      "mean_native_EM": 0.5630252100840336,
+      "decomposition_correct": 210,
+      "decomposition_utility_only_failure": 19,
+      "ordinary_nodes": 381,
+      "goal_nodes": 238,
+      "rewrite_events": 381,
+      "rewrite_event_errors": 37,
+      "rewrite_error_queries": 34,
+      "effective_changed": 225,
+      "effective_unchanged": 156,
+      "raw_rewrite_rejected": 2,
+      "by_role": {
+        "ordinary": {
+          "answer_correct": 352,
+          "answer_incorrect": 29,
+          "answer_pending": 0,
+          "correct_reasonable_abstentions": 32,
+          "incorrect_subtypes": {
+            "developer_vs_introducer_confusion": 1,
+            "mixed_true_membership_false_subunit_relation": 1,
+            "mixed_correct_pitcher_false_shortstop_as_pitcher": 1,
+            "nonresponsive_wrong_referent": 1,
+            "nonresponsive_general_background": 2,
+            "nonresponsive_count_instead_entities": 1,
+            "mixed_true_date_wrong_organization_type": 1,
+            "mixed_true_locations_wrong_organization_types": 1,
+            "available_definition_ignored": 1,
+            "nonresponsive_wrong_constraint_taxon": 1,
+            "nonresponsive_arbitrary_attribute": 1,
+            "wrong_named_campus": 1,
+            "correct_employer_value_wrong_present_tense": 1,
+            "wrong_predecessor_team": 1,
+            "wrong_city_homonym_join": 1,
+            "nonresponsive_true_fact_about_wrong_county": 1,
+            "nonresponsive_count_instead_work_identities": 1,
+            "correct_uncle_value_false_successful_deposition": 1,
+            "false_no_author_claim": 1,
+            "nonresponsive_count_instead_occasions": 1,
+            "actor_name_confusion_wrong_film": 1,
+            "correct_director_wrong_writer_credit": 1,
+            "false_term_sense_exclusivity": 1,
+            "nonresponsive_town_failing_population_constraint": 1,
+            "nonresponsive_added_filter_and_false_absence": 1,
+            "wrong_media_type_in_movie_list": 1,
+            "false_abstention_available_partial_answer": 1,
+            "nonresponsive_joint_roles_split_persons": 1
+          }
+        },
+        "goal": {
+          "answer_correct": 214,
+          "answer_incorrect": 22,
+          "answer_pending": 2,
+          "correct_reasonable_abstentions": 18,
+          "incorrect_subtypes": {
+            "reversed_lifespan_comparison": 1,
+            "propagated_wrong_company_identity": 1,
+            "propagated_false_subunit_relation": 1,
+            "propagated_false_role_filter": 1,
+            "propagated_wrong_referent": 1,
+            "false_global_absence_from_wrong_branch": 1,
+            "nonresponsive_term_instead_referent": 1,
+            "propagated_wrong_campus_state": 1,
+            "correct_magazine_focus_with_wrong_present_tense": 1,
+            "correct_channel_wrong_added_ownership": 1,
+            "propagated_wrong_county": 1,
+            "wrong_director_and_wrong_actor_film": 1,
+            "nonresponsive_false_inconsistency_claim": 1,
+            "nonresponsive_joint_roles_wrong_battle_branch": 1,
+            "wrong_actor_film_appearance": 1,
+            "wrong_musician_same_surname": 1,
+            "propagated_false_pseudonym_denial": 1,
+            "correct_token_wrong_name_field_full_statement": 1,
+            "false_abstention_explicit_film_evidence_available": 1,
+            "false_joint_role_absence": 1,
+            "wrong_parent_child_relationship": 1,
+            "correct_boolean_false_extra_entity_claim": 1
+          }
+        }
+      }
+    }
+  },
+  "tables": [
+    {
+      "dataset": "2wiki",
+      "table": "D_to_Y",
+      "unit": "original query",
+      "condition_field": "decomposition_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 476,
+          "successes": 356,
+          "probability": 0.7478991596638656,
+          "cluster_bootstrap_95_ci": [
+            0.709116158581367,
+            0.7870563674321504
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 9,
+          "successes": 2,
+          "probability": 0.2222222222222222,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.5
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5256769374416433,
+        "cluster_bootstrap_95_ci": [
+          0.22137837837837837,
+          0.7658317037076187
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "D_semantic_to_Y",
+      "unit": "original query",
+      "condition_field": "decomposition_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 479,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 479,
+      "groups": {
+        "correct": {
+          "n": 476,
+          "successes": 356,
+          "probability": 0.7478991596638656,
+          "cluster_bootstrap_95_ci": [
+            0.7073684210526315,
+            0.7848214523650898
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 3,
+          "successes": 1,
+          "probability": 0.3333333333333333,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 1890
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.41456582633053224,
+        "cluster_bootstrap_95_ci": [
+          -0.259958071278826,
+          0.7751036045997346
+        ],
+        "nonempty_bootstrap_replicates": 1890
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 968,
+          "successes": 924,
+          "probability": 0.9545454545454546,
+          "cluster_bootstrap_95_ci": [
+            0.9402340767309576,
+            0.9669515921058133
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 12,
+          "successes": 5,
+          "probability": 0.4166666666666667,
+          "cluster_bootstrap_95_ci": [
+            0.09090909090909091,
+            0.8333333333333334
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5378787878787878,
+        "cluster_bootstrap_95_ci": [
+          0.12370648587097972,
+          0.8615205189547295
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R_fidelity",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_fidelity_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 968,
+          "successes": 924,
+          "probability": 0.9545454545454546,
+          "cluster_bootstrap_95_ci": [
+            0.9402340767309576,
+            0.9669515921058133
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 12,
+          "successes": 8,
+          "probability": 0.6666666666666666,
+          "cluster_bootstrap_95_ci": [
+            0.4,
+            0.9166666666666666
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.28787878787878796,
+        "cluster_bootstrap_95_ci": [
+          0.03516325206488354,
+          0.5506493907530432
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R_target",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_target_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 968,
+          "successes": 924,
+          "probability": 0.9545454545454546,
+          "cluster_bootstrap_95_ci": [
+            0.9402340767309576,
+            0.9669515921058133
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 12,
+          "successes": 5,
+          "probability": 0.4166666666666667,
+          "cluster_bootstrap_95_ci": [
+            0.09090909090909091,
+            0.8333333333333334
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5378787878787878,
+        "cluster_bootstrap_95_ci": [
+          0.12370648587097972,
+          0.8615205189547295
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R_ordinary",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 495,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 270,
+      "groups": {
+        "correct": {
+          "n": 492,
+          "successes": 491,
+          "probability": 0.9979674796747967,
+          "cluster_bootstrap_95_ci": [
+            0.9936705515561859,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 3,
+          "successes": 1,
+          "probability": 0.3333333333333333,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 1909
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.6646341463414633,
+        "cluster_bootstrap_95_ci": [
+          -0.002653671439250167,
+          1.0
+        ],
+        "nonempty_bootstrap_replicates": 1909
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R_goal",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 476,
+          "successes": 433,
+          "probability": 0.9096638655462185,
+          "cluster_bootstrap_95_ci": [
+            0.8823529411764706,
+            0.9346025982678214
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 9,
+          "successes": 4,
+          "probability": 0.4444444444444444,
+          "cluster_bootstrap_95_ci": [
+            0.125,
+            0.8
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.46521942110177406,
+        "cluster_bootstrap_95_ci": [
+          0.09583333333333333,
+          0.7869771572150872
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_bound_to_R",
+      "unit": "stage node or rewrite event",
+      "condition_field": "explicitly_bound_prior_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 572,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 398,
+      "groups": {
+        "correct": {
+          "n": 566,
+          "successes": 522,
+          "probability": 0.9222614840989399,
+          "cluster_bootstrap_95_ci": [
+            0.9007213927219211,
+            0.9427094979874777
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 6,
+          "successes": 0,
+          "probability": 0.0,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "nonempty_bootstrap_replicates": 1991
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.9222614840989399,
+        "cluster_bootstrap_95_ci": [
+          0.900715732273362,
+          0.9427083333333334
+        ],
+        "nonempty_bootstrap_replicates": 1991
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_history_to_R_with_prefix",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 968,
+          "successes": 924,
+          "probability": 0.9545454545454546,
+          "cluster_bootstrap_95_ci": [
+            0.9402340767309576,
+            0.9669515921058133
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 12,
+          "successes": 5,
+          "probability": 0.4166666666666667,
+          "cluster_bootstrap_95_ci": [
+            0.09090909090909091,
+            0.8333333333333334
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5378787878787878,
+        "cluster_bootstrap_95_ci": [
+          0.12370648587097972,
+          0.8615205189547295
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_to_Y_query",
+      "unit": "original query",
+      "condition_field": "ordinary_answers_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 476,
+          "successes": 356,
+          "probability": 0.7478991596638656,
+          "cluster_bootstrap_95_ci": [
+            0.708937735203558,
+            0.7870641687726624
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 9,
+          "successes": 2,
+          "probability": 0.2222222222222222,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.5
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5256769374416433,
+        "cluster_bootstrap_95_ci": [
+          0.22972972972972971,
+          0.7621052631578947
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_to_Y_query_excluding_reasonable_abstentions",
+      "unit": "original query",
+      "condition_field": "ordinary_answers_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 472,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 472,
+      "groups": {
+        "correct": {
+          "n": 463,
+          "successes": 350,
+          "probability": 0.755939524838013,
+          "cluster_bootstrap_95_ci": [
+            0.7164502164502164,
+            0.7939262472885033
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 9,
+          "successes": 2,
+          "probability": 0.2222222222222222,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.5454545454545454
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.5337173026157908,
+        "cluster_bootstrap_95_ci": [
+          0.21231184443873075,
+          0.7746848318343766
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "A_to_Y_node",
+      "unit": "stage node or rewrite event",
+      "condition_field": "answer_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 970,
+          "successes": 811,
+          "probability": 0.8360824742268042,
+          "cluster_bootstrap_95_ci": [
+            0.8024773866030902,
+            0.8668682906628905
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 10,
+          "successes": 2,
+          "probability": 0.2,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.5
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.6360824742268041,
+        "cluster_bootstrap_95_ci": [
+          0.3356026036418845,
+          0.8463984519258445
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "GoalA_to_Y",
+      "unit": "original query",
+      "condition_field": "goal_answer_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 480,
+      "excluded_missing_rows": 5,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 457,
+          "successes": 355,
+          "probability": 0.7768052516411379,
+          "cluster_bootstrap_95_ci": [
+            0.7378791862062432,
+            0.8153170478170478
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 23,
+          "successes": 2,
+          "probability": 0.08695652173913043,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.2222222222222222
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.6898487299020075,
+        "cluster_bootstrap_95_ci": [
+          0.5487026350408785,
+          0.7926639613324326
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 436,
+          "successes": 320,
+          "probability": 0.7339449541284404,
+          "cluster_bootstrap_95_ci": [
+            0.6917808219178082,
+            0.7757496525227114
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 49,
+          "successes": 38,
+          "probability": 0.7755102040816326,
+          "cluster_bootstrap_95_ci": [
+            0.6590909090909091,
+            0.8868448637316559
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": -0.04156524995319222,
+        "cluster_bootstrap_95_ci": [
+          -0.1634298595516395,
+          0.08170934046238322
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_fidelity_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_faithful",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 437,
+          "successes": 320,
+          "probability": 0.7322654462242563,
+          "cluster_bootstrap_95_ci": [
+            0.6904694109990237,
+            0.7744874715261959
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 48,
+          "successes": 38,
+          "probability": 0.7916666666666666,
+          "cluster_bootstrap_95_ci": [
+            0.6744186046511628,
+            0.9038461538461539
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": -0.05940122044241036,
+        "cluster_bootstrap_95_ci": [
+          -0.17733194927368776,
+          0.061867021500639156
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_target_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_valid_targets",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 436,
+          "successes": 320,
+          "probability": 0.7339449541284404,
+          "cluster_bootstrap_95_ci": [
+            0.6917808219178082,
+            0.7757496525227114
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 49,
+          "successes": 38,
+          "probability": 0.7755102040816326,
+          "cluster_bootstrap_95_ci": [
+            0.6590909090909091,
+            0.8868448637316559
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": -0.04156524995319222,
+        "cluster_bootstrap_95_ci": [
+          -0.1634298595516395,
+          0.08170934046238322
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_to_Y_event",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 980,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 929,
+          "successes": 774,
+          "probability": 0.8331539289558665,
+          "cluster_bootstrap_95_ci": [
+            0.7989023063151613,
+            0.8645356469039932
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 51,
+          "successes": 39,
+          "probability": 0.7647058823529411,
+          "cluster_bootstrap_95_ci": [
+            0.640609375,
+            0.8837209302325582
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.06844804660292536,
+        "cluster_bootstrap_95_ci": [
+          -0.04956921253433403,
+          0.19710751840420998
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_to_Y_changed_event",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 692,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 452,
+      "groups": {
+        "correct": {
+          "n": 641,
+          "successes": 510,
+          "probability": 0.7956318252730109,
+          "cluster_bootstrap_95_ci": [
+            0.7564505789909016,
+            0.8322691147580021
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 51,
+          "successes": 39,
+          "probability": 0.7647058823529411,
+          "cluster_bootstrap_95_ci": [
+            0.6363636363636364,
+            0.8846590909090907
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.030925942920069782,
+        "cluster_bootstrap_95_ci": [
+          -0.08581469456469457,
+          0.1611420257477522
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_to_Y_event_ordinary",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 495,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 270,
+      "groups": {
+        "correct": {
+          "n": 492,
+          "successes": 454,
+          "probability": 0.9227642276422764,
+          "cluster_bootstrap_95_ci": [
+            0.8891113392653434,
+            0.9527739901485782
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 3,
+          "successes": 1,
+          "probability": 0.3333333333333333,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 1922
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.589430894308943,
+        "cluster_bootstrap_95_ci": [
+          -0.08828829568788504,
+          0.9459907766990291
+        ],
+        "nonempty_bootstrap_replicates": 1922
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "table": "R_to_Y_event_goal",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 485,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 485,
+      "groups": {
+        "correct": {
+          "n": 437,
+          "successes": 320,
+          "probability": 0.7322654462242563,
+          "cluster_bootstrap_95_ci": [
+            0.6903669724770642,
+            0.7742718933344303
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 48,
+          "successes": 38,
+          "probability": 0.7916666666666666,
+          "cluster_bootstrap_95_ci": [
+            0.6744186046511628,
+            0.9038461538461539
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": -0.05940122044241036,
+        "cluster_bootstrap_95_ci": [
+          -0.17734534273445263,
+          0.06350923868612525
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "D_to_Y",
+      "unit": "original query",
+      "condition_field": "decomposition_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 210,
+          "successes": 124,
+          "probability": 0.5904761904761905,
+          "cluster_bootstrap_95_ci": [
+            0.5258155912217491,
+            0.6575342465753424
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 28,
+          "successes": 11,
+          "probability": 0.39285714285714285,
+          "cluster_bootstrap_95_ci": [
+            0.22727272727272727,
+            0.5833841463414632
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.19761904761904764,
+        "cluster_bootstrap_95_ci": [
+          0.001119635320339502,
+          0.38046423008455704
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "D_semantic_to_Y",
+      "unit": "original query",
+      "condition_field": "decomposition_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 219,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 219,
+      "groups": {
+        "correct": {
+          "n": 210,
+          "successes": 124,
+          "probability": 0.5904761904761905,
+          "cluster_bootstrap_95_ci": [
+            0.5240327380952381,
+            0.6555434039644563
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 9,
+          "successes": 4,
+          "probability": 0.4444444444444444,
+          "cluster_bootstrap_95_ci": [
+            0.1111111111111111,
+            0.8
+          ],
+          "nonempty_bootstrap_replicates": 1999
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.14603174603174607,
+        "cluster_bootstrap_95_ci": [
+          -0.20684941835415774,
+          0.4965273486292811
+        ],
+        "nonempty_bootstrap_replicates": 1999
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 381,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 344,
+          "successes": 323,
+          "probability": 0.938953488372093,
+          "cluster_bootstrap_95_ci": [
+            0.9111716957962295,
+            0.9626490147783251
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 21,
+          "probability": 0.5675675675675675,
+          "cluster_bootstrap_95_ci": [
+            0.3547912713472486,
+            0.7567567567567568
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.3713859208045255,
+        "cluster_bootstrap_95_ci": [
+          0.18232681314524826,
+          0.5852916425525881
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R_fidelity",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_fidelity_correct",
+      "eligible_rows": 381,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 344,
+          "successes": 324,
+          "probability": 0.9418604651162791,
+          "cluster_bootstrap_95_ci": [
+            0.9156524402695527,
+            0.9651162790697675
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 30,
+          "probability": 0.8108108108108109,
+          "cluster_bootstrap_95_ci": [
+            0.673731884057971,
+            0.9268728222996514
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.13104965430546822,
+        "cluster_bootstrap_95_ci": [
+          0.010480034163142984,
+          0.2730129613421723
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R_target",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_target_correct",
+      "eligible_rows": 381,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 344,
+          "successes": 323,
+          "probability": 0.938953488372093,
+          "cluster_bootstrap_95_ci": [
+            0.9111716957962295,
+            0.9626490147783251
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 21,
+          "probability": 0.5675675675675675,
+          "cluster_bootstrap_95_ci": [
+            0.3547912713472486,
+            0.7567567567567568
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.3713859208045255,
+        "cluster_bootstrap_95_ci": [
+          0.18232681314524826,
+          0.5852916425525881
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R_ordinary",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 143,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 131,
+      "groups": {
+        "correct": {
+          "n": 132,
+          "successes": 129,
+          "probability": 0.9772727272727273,
+          "cluster_bootstrap_95_ci": [
+            0.9481481481481482,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 11,
+          "successes": 9,
+          "probability": 0.8181818181818182,
+          "cluster_bootstrap_95_ci": [
+            0.4436507936507937,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 1999
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.15909090909090906,
+        "cluster_bootstrap_95_ci": [
+          -0.043165467625899234,
+          0.5354209799861972
+        ],
+        "nonempty_bootstrap_replicates": 1999
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R_goal",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 212,
+          "successes": 194,
+          "probability": 0.9150943396226415,
+          "cluster_bootstrap_95_ci": [
+            0.8755616359447005,
+            0.9514621734440223
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 26,
+          "successes": 12,
+          "probability": 0.46153846153846156,
+          "cluster_bootstrap_95_ci": [
+            0.2692307692307692,
+            0.6666666666666666
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.45355587808417996,
+        "cluster_bootstrap_95_ci": [
+          0.2481226819571796,
+          0.653694239762407
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_bound_to_R",
+      "unit": "stage node or rewrite event",
+      "condition_field": "explicitly_bound_prior_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 196,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 156,
+      "groups": {
+        "correct": {
+          "n": 179,
+          "successes": 160,
+          "probability": 0.8938547486033519,
+          "cluster_bootstrap_95_ci": [
+            0.8437456354748604,
+            0.9385474860335196
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 17,
+          "successes": 3,
+          "probability": 0.17647058823529413,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            0.409280303030302
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.7173841603680577,
+        "cluster_bootstrap_95_ci": [
+          0.4831668331668331,
+          0.9028745467730238
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_history_to_R_with_prefix",
+      "unit": "stage node or rewrite event",
+      "condition_field": "prior_ordinary_answers_all_correct",
+      "success_field": "rewrite_correct",
+      "eligible_rows": 394,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 249,
+      "groups": {
+        "correct": {
+          "n": 357,
+          "successes": 334,
+          "probability": 0.9355742296918768,
+          "cluster_bootstrap_95_ci": [
+            0.9090846308387744,
+            0.9584596373592144
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 21,
+          "probability": 0.5675675675675675,
+          "cluster_bootstrap_95_ci": [
+            0.35,
+            0.764754901960784
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.3680066621243092,
+        "cluster_bootstrap_95_ci": [
+          0.16976937233019665,
+          0.5857782267437723
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_to_Y_query",
+      "unit": "original query",
+      "condition_field": "ordinary_answers_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 212,
+          "successes": 127,
+          "probability": 0.5990566037735849,
+          "cluster_bootstrap_95_ci": [
+            0.5310931086872718,
+            0.6651173313690414
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 26,
+          "successes": 8,
+          "probability": 0.3076923076923077,
+          "cluster_bootstrap_95_ci": [
+            0.14285714285714285,
+            0.5
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.29136429608127723,
+        "cluster_bootstrap_95_ci": [
+          0.0737242633069801,
+          0.4741081276774404
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_to_Y_query_excluding_reasonable_abstentions",
+      "unit": "original query",
+      "condition_field": "ordinary_answers_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 208,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 208,
+      "groups": {
+        "correct": {
+          "n": 183,
+          "successes": 116,
+          "probability": 0.6338797814207651,
+          "cluster_bootstrap_95_ci": [
+            0.5668404634581106,
+            0.7010885182408796
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 25,
+          "successes": 8,
+          "probability": 0.32,
+          "cluster_bootstrap_95_ci": [
+            0.14814814814814814,
+            0.52
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.31387978142076506,
+        "cluster_bootstrap_95_ci": [
+          0.11108058608058613,
+          0.5093523802777944
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "A_to_Y_node",
+      "unit": "stage node or rewrite event",
+      "condition_field": "answer_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 381,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 352,
+          "successes": 206,
+          "probability": 0.5852272727272727,
+          "cluster_bootstrap_95_ci": [
+            0.5188273116962646,
+            0.6539617148605332
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 29,
+          "successes": 9,
+          "probability": 0.3103448275862069,
+          "cluster_bootstrap_95_ci": [
+            0.1315503432494279,
+            0.5238721804511275
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.2748824451410658,
+        "cluster_bootstrap_95_ci": [
+          0.055063372660203676,
+          0.46220329622393996
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "GoalA_to_Y",
+      "unit": "original query",
+      "condition_field": "goal_answer_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 236,
+      "excluded_missing_rows": 2,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 214,
+          "successes": 127,
+          "probability": 0.5934579439252337,
+          "cluster_bootstrap_95_ci": [
+            0.5280373831775701,
+            0.6588785046728972
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 22,
+          "successes": 6,
+          "probability": 0.2727272727272727,
+          "cluster_bootstrap_95_ci": [
+            0.09523809523809523,
+            0.47368421052631576
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.32073067119796095,
+        "cluster_bootstrap_95_ci": [
+          0.10667587330534237,
+          0.5116317210826556
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 204,
+          "successes": 120,
+          "probability": 0.5882352941176471,
+          "cluster_bootstrap_95_ci": [
+            0.5223771386967601,
+            0.6568662972435351
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 34,
+          "successes": 15,
+          "probability": 0.4411764705882353,
+          "cluster_bootstrap_95_ci": [
+            0.2727272727272727,
+            0.6111559139784944
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.1470588235294118,
+        "cluster_bootstrap_95_ci": [
+          -0.034317638521301104,
+          0.32138580931263844
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_fidelity_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_faithful",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 211,
+          "successes": 122,
+          "probability": 0.5781990521327014,
+          "cluster_bootstrap_95_ci": [
+            0.5121921762695888,
+            0.6448598130841121
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 27,
+          "successes": 13,
+          "probability": 0.48148148148148145,
+          "cluster_bootstrap_95_ci": [
+            0.2857142857142857,
+            0.6666666666666666
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.09671757065121994,
+        "cluster_bootstrap_95_ci": [
+          -0.10165238194380191,
+          0.30551944758426797
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_target_to_Y_query",
+      "unit": "original query",
+      "condition_field": "rewrites_all_valid_targets",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 204,
+          "successes": 120,
+          "probability": 0.5882352941176471,
+          "cluster_bootstrap_95_ci": [
+            0.5223771386967601,
+            0.6568662972435351
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 34,
+          "successes": 15,
+          "probability": 0.4411764705882353,
+          "cluster_bootstrap_95_ci": [
+            0.2727272727272727,
+            0.6111559139784944
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.1470588235294118,
+        "cluster_bootstrap_95_ci": [
+          -0.034317638521301104,
+          0.32138580931263844
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_to_Y_event",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 381,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 344,
+          "successes": 200,
+          "probability": 0.5813953488372093,
+          "cluster_bootstrap_95_ci": [
+            0.5136595512852261,
+            0.6504304526175526
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 15,
+          "probability": 0.40540540540540543,
+          "cluster_bootstrap_95_ci": [
+            0.25,
+            0.5862576064908719
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.1759899434318039,
+        "cluster_bootstrap_95_ci": [
+          -0.008021444213807316,
+          0.34066082121471336
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_to_Y_changed_event",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 225,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 181,
+      "groups": {
+        "correct": {
+          "n": 188,
+          "successes": 102,
+          "probability": 0.5425531914893617,
+          "cluster_bootstrap_95_ci": [
+            0.4554856090196404,
+            0.6263466702470459
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 37,
+          "successes": 15,
+          "probability": 0.40540540540540543,
+          "cluster_bootstrap_95_ci": [
+            0.23684210526315788,
+            0.5853868797308661
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.13714778608395622,
+        "cluster_bootstrap_95_ci": [
+          -0.053535816995485166,
+          0.32551891874313904
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_to_Y_event_ordinary",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 143,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 131,
+      "groups": {
+        "correct": {
+          "n": 138,
+          "successes": 79,
+          "probability": 0.572463768115942,
+          "cluster_bootstrap_95_ci": [
+            0.4785636645962733,
+            0.6618705035971223
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 5,
+          "successes": 1,
+          "probability": 0.2,
+          "cluster_bootstrap_95_ci": [
+            0.0,
+            1.0
+          ],
+          "nonempty_bootstrap_replicates": 1965
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.372463768115942,
+        "cluster_bootstrap_95_ci": [
+          -0.38652258377853327,
+          0.6363636363636364
+        ],
+        "nonempty_bootstrap_replicates": 1965
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "table": "R_to_Y_event_goal",
+      "unit": "stage node or rewrite event",
+      "condition_field": "rewrite_correct",
+      "success_field": "final_correct",
+      "eligible_rows": 238,
+      "excluded_missing_rows": 0,
+      "original_query_clusters": 238,
+      "groups": {
+        "correct": {
+          "n": 206,
+          "successes": 121,
+          "probability": 0.587378640776699,
+          "cluster_bootstrap_95_ci": [
+            0.5217391304347826,
+            0.6568662972435351
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        },
+        "incorrect": {
+          "n": 32,
+          "successes": 14,
+          "probability": 0.4375,
+          "cluster_bootstrap_95_ci": [
+            0.2692307692307692,
+            0.6136800699300697
+          ],
+          "nonempty_bootstrap_replicates": 2000
+        }
+      },
+      "correct_minus_incorrect": {
+        "probability_difference": 0.149878640776699,
+        "cluster_bootstrap_95_ci": [
+          -0.03646906291790333,
+          0.32449649536438635
+        ],
+        "nonempty_bootstrap_replicates": 2000
+      }
+    }
+  ],
+  "annotation_files": {
+    "stage": "3c409a312e14cfb2137eeb886a126a4844cc61dcda2b3bf7cf1405d925d7c686",
+    "decomposition": "d7f82d20d608b6e4cb7f47d61f08afdde86d077aa1e625d11031ab2be8b46130",
+    "endpoints": "d9eb68ac0ab89d816351e853cf8274c2bd930111bd3f9d22c55261d7a46cfb77"
+  }
+}

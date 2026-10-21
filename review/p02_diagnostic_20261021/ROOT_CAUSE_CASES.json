@@ -1,0 +1,665 @@
+{
+  "scope": "selected explicit evidence-based case findings, nonexclusive; not exhaustive attribution of all final failures",
+  "case_count": 36,
+  "cases": [
+    {
+      "review_index": 7,
+      "id": "hotpotqa:5ab3eeb5554299233954fff4",
+      "dataset": "hotpotqa",
+      "question": "The actress that plays Kaylee Frye in the series \"Firefly\" also stars with Alan Dale in a sci-fi tv film released in what year?",
+      "tags": [
+        "改写检索已命中但合并丢失",
+        "最终缺少有效证据"
+      ],
+      "finding": "第2步改写检索的Doomsday Prophecy排第10；原查询优先交错后保留的10条读入证据没有它。子回答和goal均合理弃答，最终也弃答。此例已经找到证据进入候选集后被裁掉的具体位置。",
+      "prediction": "Cannot be determined",
+      "reference": "2011",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5ab3eeb5554299233954fff4.json",
+      "source_sha256": "61211ef9ef052eff23b9abf666a91015bbfa69eb587e51f8ab95c5b6e1692972",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 46,
+      "id": "hotpotqa:5a7553a95542996c70cfaedf",
+      "dataset": "hotpotqa",
+      "question": "What psychosis shares a name with an enemy fought by the protagonists in an animated show by Hasbro?",
+      "tags": [
+        "部分正确列表缺关键对象"
+      ],
+      "finding": "子回答列出的Hasbro作品与敌人均真实，但敌人列表只保留Decepticons／Inhumanoids，没有目标Wendigo。按用户口径这些子回答正确；信息覆盖不足仍会使下游无法完成桥接。",
+      "prediction": "Cannot be determined",
+      "reference": "Wendigo",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a7553a95542996c70cfaedf.json",
+      "source_sha256": "daeab738680d49b070e131d21b7599b89074bfb4495d159b27eefa1bbf120787",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 27,
+      "id": "hotpotqa:5a83431d5542993344745ff5",
+      "dataset": "hotpotqa",
+      "question": "The company that created a keychain RFDI device created to allow electronic payment at McDonald's and 400 other Chicago area restaurants is headquartered in what city and state?",
+      "tags": [
+        "创建者与引入者混淆",
+        "错误对象传播"
+      ],
+      "finding": "Speedpass的developer Verifone被答成introducer Mobil；改写绑定Mobil，goal和最终输出都落到Mobil的总部。事实角色的混淆比实体名称相似更早发生。",
+      "prediction": "Fairfax County, Virginia",
+      "reference": "San Jose, California",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a83431d5542993344745ff5.json",
+      "source_sha256": "999be67a3839c0bb645d08f926c47307cf72642a805bb8d01fc3fa2f4d547ff6",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 107,
+      "id": "hotpotqa:5a7a616355429941d65f25f7",
+      "dataset": "hotpotqa",
+      "question": "The team that would become the Little Giants was located in the county seat of which Ohio county?",
+      "tags": [
+        "球队身份错误",
+        "同名城市错误绑定"
+      ],
+      "finding": "前序把应查的Youngstown队带成Newark Little Giants，随后又把New Jersey的队映射到Ohio的Newark/Licking。最终选Licking County。Newark确为Licking县治不等于它回答了当前关系问题。",
+      "prediction": "Licking County",
+      "reference": "Mahoning County",
+      "native_F1": 0.5,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a7a616355429941d65f25f7.json",
+      "source_sha256": "8dad533a39bb97ce4ad885d6ad3d18e7ba82bb3b495384b6c9302db92773276c",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 133,
+      "id": "hotpotqa:5ab3ede755429976abd1bcf4",
+      "dataset": "hotpotqa",
+      "question": "Who directed the 1940 film in which John Arledge appeared?",
+      "tags": [
+        "演员同名混淆",
+        "导演事实错误"
+      ],
+      "finding": "把John Arledge与John Garfield混用，选错Flowing Gold，又给错其导演Ralph Murphy；最终沿用错误导演。AFI记录用于核对冲突。",
+      "prediction": "Ralph Murphy",
+      "reference": "John Ford",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5ab3ede755429976abd1bcf4.json",
+      "source_sha256": "bb75645e47ebadc0d375999d47568cd187446d7cd12f3f2b5f2bf3e4235ba0fd",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 21,
+      "id": "hotpotqa:5a7ca95b55429935c91b5287",
+      "dataset": "hotpotqa",
+      "question": "Who lived longer, American author Owen Wister or Canadian author Lucy Maud Montgomery?",
+      "tags": [
+        "goal比较错误",
+        "最终沿用错误结论"
+      ],
+      "finding": "四个普通子回答的生卒日期正确，goal却把67岁说成比78岁长寿；最终选择Lucy Maud Montgomery。最终输入同时包含正确日期和错误goal结论。",
+      "prediction": "Lucy Maud Montgomery",
+      "reference": "Owen Wister",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a7ca95b55429935c91b5287.json",
+      "source_sha256": "47e505f396d293f7842dd55fc94f4071839ff58b705adcb53fc129ba9660f519",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 362,
+      "id": "2wiki:92378530089511ebbd75ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Do director of film Mustang (Film) and director of film Erotissimo share the same nationality?",
+      "tags": [
+        "共同国籍集合判断错误"
+      ],
+      "finding": "普通答案正确给出Turkish-French与French，goal和最终却答No。共同国籍应看交集，不能要求两组国籍完全一样。",
+      "prediction": "No",
+      "reference": "yes",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\92378530089511ebbd75ac1f6bf848b6.json",
+      "source_sha256": "d291039fcddac9fbe1b6fb8a759432cbea9162d3a389662448dbf9af6173c8c5",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 376,
+      "id": "2wiki:ddf04e3f08af11ebbd83ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Do both directors of films Anne Of The Indies and One Hour Of Love share the same nationality?",
+      "tags": [
+        "共同国籍集合判断错误"
+      ],
+      "finding": "French与French-American被goal判断为无共同国籍，最终答No。与362属同一可重复检查的比较错误。",
+      "prediction": "No",
+      "reference": "yes",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\ddf04e3f08af11ebbd83ac1f6bf848b6.json",
+      "source_sha256": "7551fb99048ce5171477894628e833d6116a479be584153744fd3cfef51c4c75",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 566,
+      "id": "2wiki:f64d2f04086111ebbd5dac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Which film whose director is younger, Hell To Pay (2014 Film) or Darwin'S Nightmare?",
+      "tags": [
+        "goal年龄方向错误"
+      ],
+      "finding": "普通出生日期1965与1966正确，goal却把1965年出生者称作更年轻，最终选择错误电影。",
+      "prediction": "Hell To Pay (2014 Film)",
+      "reference": "Darwin'S Nightmare",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\f64d2f04086111ebbd5dac1f6bf848b6.json",
+      "source_sha256": "cf23197a327b5682809c20b5db1f06b48c96fc6c74a6111536fcc12e3b06aba3",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 403,
+      "id": "2wiki:e53937d00bae11ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is Robert Petre, 8Th Baron Petre's paternal grandmother?",
+      "tags": [
+        "goal覆盖正确中间关系"
+      ],
+      "finding": "普通子回答已给祖母Mary Clifton，goal改成母亲Catherine Walmesley，最终也选母亲。只可说轨迹与错误结论继续传播一致，不能据此证明删除goal必定修好。",
+      "prediction": "Catherine Walmesley",
+      "reference": "Mary Clifton",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\e53937d00bae11ebab90acde48001122.json",
+      "source_sha256": "b0cc8149d0893b26916c3258d4853b95ed129af19db678e31ab88beed0702b64",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 236,
+      "id": "hotpotqa:5a87ab905542996e4f3088c1",
+      "dataset": "hotpotqa",
+      "question": "The arena where the Lewiston Maineiacs played their home games can seat how many people?",
+      "tags": [
+        "最终抽取属性错误"
+      ],
+      "finding": "goal明确同时给4000总容量、3677坐席，最终问题问seat，输出却选4000。正确坐席数在实际最终输入中可见，是明确的末端属性选择错误。",
+      "prediction": "4,000",
+      "reference": "3,677 seated",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a87ab905542996e4f3088c1.json",
+      "source_sha256": "2c4e79fc40fa5ca2e1d02a2d8db192ba617f9d949942b96e0fcf89901d1cd612",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 296,
+      "id": "2wiki:74fbb72909b911ebbdb0ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Are Pichaqani (Quillacollo-Tapacarí) and Pukintika located in the same country?",
+      "tags": [
+        "最终选择错误的比较极性"
+      ],
+      "finding": "goal说明一地在Bolivia、另一地跨Bolivia/Chile且共享Bolivia；最终仍取No。存在交集的信息已在最终输入中，不应仅追责检索缺证据。",
+      "prediction": "No",
+      "reference": "yes",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\74fbb72909b911ebbdb0ac1f6bf848b6.json",
+      "source_sha256": "12a725028aa7a649aee5e05a7ee112aea25cbdaddfc8bdf4a459020fe2a77789",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 533,
+      "id": "2wiki:6faa79ee0bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "What is the award that the performer of song The Hardest Part Is The Night received?",
+      "tags": [
+        "提名代替获奖",
+        "过度增加按歌曲获奖的限制"
+      ],
+      "finding": "goal只报告真实Grammy提名，并额外要求奖必须对应所提歌曲，最终弃答。该回答未提供所问的已获奖项，按最新用户规则判答非所问。",
+      "prediction": "Cannot be determined",
+      "reference": "Rock and Roll Hall of Fame",
+      "native_F1": 0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\6faa79ee0bda11eba7f7acde48001122.json",
+      "source_sha256": "0012d6ea991f2b7435ffb4757e7a5bafdebffb191268d52051b4a0e1cb3cfc2f",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 593,
+      "id": "2wiki:0f1ac1a00bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "What is the award that the performer of song Sunday Papers earned?",
+      "tags": [
+        "把未见获奖误推为从未获奖"
+      ],
+      "finding": "goal从五次提名扩成没有Grammy Awards，最终也输出No Grammy Awards；官方Grammy记录有2001获奖。此处不是合理证据不足弃答。",
+      "prediction": "No Grammy Awards",
+      "reference": "Grammy",
+      "native_F1": 0.5,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\0f1ac1a00bdb11eba7f7acde48001122.json",
+      "source_sha256": "8d302a2ea633f0f11aa1809246d6b219a66d361b3075f004d9babd19324336c0",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 350,
+      "id": "2wiki:0704c1220baf11ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is the paternal grandfather of Peter Grubb Jr.?",
+      "tags": [
+        "错误被后续抑制"
+      ],
+      "finding": "goal错把父亲Peter Grubb当祖父；最终仍选普通子回答中正确的John Grubb。此例说明goal出错并不必然决定最终输出。",
+      "prediction": "John Grubb",
+      "reference": "John Grubb",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\0704c1220baf11ebab90acde48001122.json",
+      "source_sha256": "8b70a800971e71c9635985807eec34f5d9b23596ed56734a7343445c77155d4d",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 534,
+      "id": "2wiki:3bb9c0740bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is Sibyl Hathaway's child-in-law?",
+      "tags": [
+        "部分错误事实被修正"
+      ],
+      "finding": "普通回答把孙辈Michael列作子辈，后续仍找到Francis之妻Mary Lawson，最终正确；改写同时存在错误代际候选和generic Who is问题。",
+      "prediction": "Mary Lawson",
+      "reference": "Mary Lawson",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\3bb9c0740bb011ebab90acde48001122.json",
+      "source_sha256": "d57c3a9ab1b044ed7b7a5f9c19ec5afbb1267930e5b2ff0ec8d6d9f6cc771add",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 56,
+      "id": "hotpotqa:5a7cbf93554299452d57b9f5",
+      "dataset": "hotpotqa",
+      "question": "Which constituent college of the University of Oxford endows four professorial fellowships for sciences including chemistry and pure mathematics?",
+      "tags": [
+        "上游答非所问但最终恢复"
+      ],
+      "finding": "普通第一回答只给38所学院与6个厅的数量，属答非所问；第二步和goal恢复Magdalen College，最终正确。",
+      "prediction": "Magdalen College",
+      "reference": "Magdalen College",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a7cbf93554299452d57b9f5.json",
+      "source_sha256": "7f7a68aba2657579e1c9eb2dc722710ea4fc047f1841b44a8ae27259b76dbaf4",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 687,
+      "id": "2wiki:8531b4a0089a11ebbd77ac1f6bf848b6",
+      "dataset": "2wiki",
+      "question": "Which film whose director is younger, Sujon Sokhi or Two Thousand Maniacs!?",
+      "tags": [
+        "分解语义错误被后续修复"
+      ],
+      "finding": "分解把两个片名当导演名，普通回答纠正为真实导演并给出生日期，最终正确。这是现有轨迹中的修复实例，不代表所有错误分解都可修复。",
+      "prediction": "Sujon Sokhi",
+      "reference": "Sujon Sokhi",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\8531b4a0089a11ebbd77ac1f6bf848b6.json",
+      "source_sha256": "aea2fcbdaab271ffe7ab1703020a030030d45ad43a763b941bf3bf4551bf1049",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 171,
+      "id": "hotpotqa:5ab7a1f65542991d3222378f",
+      "dataset": "hotpotqa",
+      "question": "What is the middle name of the actress who played Lucy Baker in the TV series Lassie ?",
+      "tags": [
+        "完整goal句子错误但短答案正确"
+      ],
+      "finding": "goal错把Pamelyn Wanda Ferdin整个姓名称作middle name，最终抽取Wanda正确。需保留完整句子正确性与短答案既有评分两个口径。",
+      "prediction": "Wanda",
+      "reference": "Wanda",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5ab7a1f65542991d3222378f.json",
+      "source_sha256": "0a237e1a7a6c4492235af14a37a66b379c3b5158a9bfe2fdbbcd937101599322",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 97,
+      "id": "hotpotqa:5a81b43d5542995ce29dcc39",
+      "dataset": "hotpotqa",
+      "question": "John Stoltenberg is the managing editor of the magazine that focuses on what?",
+      "tags": [
+        "原问题带过时现在时",
+        "最终属性答案正确"
+      ],
+      "finding": "源材料明确Stoltenberg为former managing editor；完整句子重复现在时错误，但最终所问aging issues正确。没有用2026资料追溯改判。",
+      "prediction": "aging issues",
+      "reference": "aging issues",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a81b43d5542995ce29dcc39.json",
+      "source_sha256": "cc987e57c1e329bf5b152f151711a6d12a2cf6003205eae6c21f5e030124b582",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 106,
+      "id": "hotpotqa:5a78d01d55429974737f78b3",
+      "dataset": "hotpotqa",
+      "question": "The singer known as the \"Ballad Prince\" was on a romantic comedy that aired on what state-run channel from August 11 to September 30, 2010?",
+      "tags": [
+        "原问题带错误预设",
+        "最终属性答案正确"
+      ],
+      "finding": "goal重复SBS为state-run错误预设，最终短答案SBS仍与参考一致。官方SBS历史资料用于核对所有权。",
+      "prediction": "SBS",
+      "reference": "SBS",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a78d01d55429974737f78b3.json",
+      "source_sha256": "e96c1897c42acf4299d88bab00e7700e1b76633179e177eddf199244dd8e5c7e",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 15,
+      "id": "hotpotqa:5a77d3f555429967ab1052c5",
+      "dataset": "hotpotqa",
+      "question": "Who starred in Smurfs: The Lost Village and was also in The Office?",
+      "tags": [
+        "有效替代答案未被单一参考覆盖"
+      ],
+      "finding": "Rainn Wilson符合Smurfs与The Office两个条件，已有单一参考为Ellie Kemper，最终F1/EM均0。该既有失败不等于轨迹事实错误。",
+      "prediction": "Rainn Wilson",
+      "reference": "Ellie Kemper",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a77d3f555429967ab1052c5.json",
+      "source_sha256": "6d3e181d5ee61934e189df0d818e71d733310d0308e8158a91b75dfa9974cedc",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 123,
+      "id": "hotpotqa:5a8333115542993344745feb",
+      "dataset": "hotpotqa",
+      "question": "What summit is located in the county who's county seat is Helena?",
+      "tags": [
+        "有效替代答案未被单一参考覆盖"
+      ],
+      "finding": "Cigarette Rock符合当前Lewis and Clark County summit问题，单一参考为Scapegoat Mountain。保留已有0分，并单记替代答案。",
+      "prediction": "Cigarette Rock",
+      "reference": "Scapegoat Mountain",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a8333115542993344745feb.json",
+      "source_sha256": "ffabc12341852fbecb316aa9587db6895dba0d36934a0d0e7ebaf243c5090bd3",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 193,
+      "id": "hotpotqa:5a89a02955429946c8d6e975",
+      "dataset": "hotpotqa",
+      "question": "Which was released first, The Climb or Voices of Iraq?",
+      "tags": [
+        "题目未限定作品版本"
+      ],
+      "finding": "The Climb实际采用2002电影，参考采用2007纪录片；相对2004 Voices of Iraq的先后关系随版本变化。前序事实正确仍可能得到既有0分。",
+      "prediction": "The Climb",
+      "reference": "Voices of Iraq",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a89a02955429946c8d6e975.json",
+      "source_sha256": "869de5c2ec3bc2e01e355eb2c3657378d509ebd2f7628dafda16df4503688eab",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 150,
+      "id": "hotpotqa:5ab281ec554299449642c8d1",
+      "dataset": "hotpotqa",
+      "question": "Red Bend Catholic College contributes 800 students of the 7,560 population of what central west region of south Wales, Australia town?",
+      "tags": [
+        "最终已纠正实体",
+        "参考答案含额外描述"
+      ],
+      "finding": "最终Forbes已修正Cowra，但参考为带州与区域描述的长串，已有F1仅0.1818。不能把这部分损失都归因于改写错误。",
+      "prediction": "Forbes",
+      "reference": "Forbes in the Central West region of New South Wales, Australia",
+      "native_F1": 0.18181818181818182,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5ab281ec554299449642c8d1.json",
+      "source_sha256": "6d94d9ca8399881f827541c7cb87971668ba82805a795e43f047b0045c68e717",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 152,
+      "id": "hotpotqa:5a8315c055429966c78a6b2d",
+      "dataset": "hotpotqa",
+      "question": "Which player played for Nova Southeastern Sharks, MIlwaukee Brewers and Houston Astros?",
+      "tags": [
+        "姓名别名匹配敏感"
+      ],
+      "finding": "最终Mike Fiers与参考Michael Bruce Fiers指向同一球员，已有F1为0.4；普通第三回答另有答非所问错误，不能混成一个原因。",
+      "prediction": "Mike Fiers",
+      "reference": "Michael Bruce Fiers",
+      "native_F1": 0.4,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a8315c055429966c78a6b2d.json",
+      "source_sha256": "0013fbc12675308f25943c2ef331a54214923e931938f9a46314a3ba3eb43ec0",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 246,
+      "id": "2wiki:1df3448c0bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "Where did the director of film Sällskapsresan 2 – Snowroller graduate from?",
+      "tags": [
+        "答案含真实的更具体机构描述"
+      ],
+      "finding": "最终Konstfack department of graphic design对比参考Konstfack，已有F1=0.5；此例展示严格token匹配对附加粒度的惩罚。",
+      "prediction": "Konstfack department of graphic design",
+      "reference": "Konstfack",
+      "native_F1": 0.5,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\1df3448c0bda11eba7f7acde48001122.json",
+      "source_sha256": "bea6a1b901056013135e70df5bd778d81751d5172b3187591b9ebe83a96ba1ac",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 258,
+      "id": "2wiki:437bed640bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "Where was the place of death of Sibylla Of Burgundy, Duchess Of Burgundy's father?",
+      "tags": [
+        "地点附加历史区划"
+      ],
+      "finding": "最终包含Besancon及历史区划，参考只有Besancon，已有F1=0.25。保留评分，另记输出范围差异。",
+      "prediction": "Besançon, Prince-Archbishopric of Besançon, Holy Roman Empire",
+      "reference": "Besançon",
+      "native_F1": 0.25,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\437bed640bdd11eba7f7acde48001122.json",
+      "source_sha256": "db837fbfcb0928406c88be72fd4e152a538a88d57aa0a9e4ec96f71eb77234f0",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 189,
+      "id": "hotpotqa:5a7100435542994082a3e4a3",
+      "dataset": "hotpotqa",
+      "question": "Are Finding Kraftland and Shikashika both frozen drinks?",
+      "tags": [
+        "goal忽略现有证据",
+        "原题与参考回答类型不匹配"
+      ],
+      "finding": "goal读入第3条FindingKraftland纪录片却仍说无法判断；最终No可由真实材料支持，但既有参考是Shikashika is a shaved ice drink这一描述句。两种问题同时存在。",
+      "prediction": "No",
+      "reference": "Shikashika is a shaved ice drink",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a7100435542994082a3e4a3.json",
+      "source_sha256": "50caaaec652ac77213be0a8155ca1698c93c1d6e6a85e5fed3c47ba0b570f737",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 201,
+      "id": "hotpotqa:5a8efb5a55429918e830d172",
+      "dataset": "hotpotqa",
+      "question": "What country is the member of Gujarat Legislative Assembly and parliament representing?",
+      "tags": [
+        "原题与参考目标不匹配"
+      ],
+      "finding": "题目问country，最终India，既有参考却为Jamnagar；另有前序把两个职位拆到两个人的问题。不能用参考不匹配掩盖前序缺陷，也不能把全部0分归因于前序。",
+      "prediction": "India",
+      "reference": "Jamnagar",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a8efb5a55429918e830d172.json",
+      "source_sha256": "ab0e2eb6e508da7b9795c23e970bba3425a89e408b2f89c2b9866101301bc256",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 225,
+      "id": "hotpotqa:5a81d92f554299676cceb0f9",
+      "dataset": "hotpotqa",
+      "question": "Where are the 17th Street Canal and the Beaver and Erie Canal located?",
+      "tags": [
+        "参考只覆盖原题两个对象之一"
+      ],
+      "finding": "原题问两条运河的位置，最终分别给Louisiana和Pennsylvania，参考只给Pennsylvania；已有F1=1/3。实际改写另有把答案预填进问题的错误，需分别记录。",
+      "prediction": "New Orleans, Louisiana and Pennsylvania",
+      "reference": "Pennsylvania",
+      "native_F1": 0.33333333333333337,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a81d92f554299676cceb0f9.json",
+      "source_sha256": "75e4ffe0ae5cea1c6ac154dc04f41318f2b429adb0d6415a3869edd3b6d91007",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 237,
+      "id": "hotpotqa:5a90ab995542990a98493683",
+      "dataset": "hotpotqa",
+      "question": "Which genus expands to the Pacific Ocean islands, Osteomeles or Medinilla?",
+      "tags": [
+        "参考仅覆盖一个有效选项"
+      ],
+      "finding": "检索中的Osteomeles anthyllidifolia明确生长在多个Pacific islands，Medinilla也到westernPacific，最终Both有材料支持；单一参考只收Medinilla。",
+      "prediction": "Both",
+      "reference": "Medinilla",
+      "native_F1": 0.0,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a90ab995542990a98493683.json",
+      "source_sha256": "49a102dcaba3cc55492a1bc6e03501fcf3667983d8c0dae4a335e612c7e7a537",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 238,
+      "id": "hotpotqa:5a85eed75542996432c5713b",
+      "dataset": "hotpotqa",
+      "question": "Where did the descendants of the group of black Indians associated with the Seminole people settle?",
+      "tags": [
+        "答案地域范围与参考不同"
+      ],
+      "finding": "最终Oklahoma/Texas/northernMexico由实际AfroSeminoleCreole片段支持；参考收Coahuila,Mexico。该0.2857分需与完整事实正确性分开。",
+      "prediction": "Oklahoma, Texas, and northern Mexico",
+      "reference": "Coahuila, Mexico",
+      "native_F1": 0.28571428571428575,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\hotpotqa\\p02_multigrain_timing_cachefix_v1\\5a85eed75542996432c5713b.json",
+      "source_sha256": "82c758a0192e1382d0ef60c4beae7d79dd6121095069b176cbb27530da849718",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 393,
+      "id": "2wiki:acb9940c0bdd11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "What is the cause of death of director of film Destination: Dewsbury?",
+      "tags": [
+        "参考同名实体串接错误",
+        "既有评分正确但事实错误"
+      ],
+      "finding": "DestinationDewsbury导演Jack Spring与1933年出生的棒球手Jack Russell Spring混淆。最终Parkinsons disease虽拿满分，完整事实错误；导演2019亲述资料排除2015已去世。",
+      "prediction": "Parkinson's disease",
+      "reference": "Parkinson's disease",
+      "native_F1": 1.0,
+      "native_EM": 1.0,
+      "existing_Y": true,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\acb9940c0bdd11eba7f7acde48001122.json",
+      "source_sha256": "9b17301192b899ac098b61456afc5bd5783359bb46cccaf684a720234174a829",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 674,
+      "id": "2wiki:439a6dec0bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "question": "Where does the director of film Made In U.S.A. (1987 Film) work at?",
+      "tags": [
+        "参考同名职业串接错误"
+      ],
+      "finding": "MadeInUSA电影导演与Fluxus设计学者Ken Friedman混淆，goal和最终给后者Swinburne/Tongji任职。NYUTisch官方导演履历用于核对。",
+      "prediction": "Swinburne University of Technology and Tongji University",
+      "reference": "Swinburne",
+      "native_F1": 0.7272727272727273,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\439a6dec0bde11eba7f7acde48001122.json",
+      "source_sha256": "5f6ffce62491d6eded4bed7a81a7bf16478782eb3de1793f75eaa4cdfe0a6619",
+      "final_visibility_verified": true
+    },
+    {
+      "review_index": 668,
+      "id": "2wiki:4b6b7f4e0bb011ebab90acde48001122",
+      "dataset": "2wiki",
+      "question": "Who is the paternal grandmother of David Barry, 1St Earl Of Barrymore?",
+      "tags": [
+        "原参考代际连接错误"
+      ],
+      "finding": "本地人物资料区分Hon David与其父5thViscount，原gold把两代合并。子回答另有完整句子亲属修饰错误；不得以gold实体重叠当作事实正确的充分证据。",
+      "prediction": "Lady Ellen MacCarthy Reagh",
+      "reference": "Ellen MacCarthy",
+      "native_F1": 0.6666666666666666,
+      "native_EM": 0.0,
+      "existing_Y": false,
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\rounds\\r000\\cases\\2wiki\\p02_multigrain_timing_cachefix_v1\\4b6b7f4e0bb011ebab90acde48001122.json",
+      "source_sha256": "12d1df992adf62398eb601f6a85b6efede0666b4a3c2cd5a978054b32b56398e",
+      "final_visibility_verified": true
+    }
+  ]
+}

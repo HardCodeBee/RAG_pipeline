@@ -1,0 +1,139 @@
+{
+  "id": "p02_error_propagation_existing_formal_20261021",
+  "status": "completed_offline_review_with_pending_fact_workitems",
+  "date": "2026-10-21",
+  "timezone": "Australia/Sydney",
+  "main_plan_revision": 6,
+  "scope_confirmed": {
+    "method": "p02_multigrain_timing_cachefix_v1",
+    "protocol": "historical formal, before shared layer",
+    "datasets": [
+      "2wiki",
+      "hotpotqa"
+    ],
+    "require_complete500": false,
+    "existing_trajectories_only": true,
+    "relations": [
+      "decomposition_to_final",
+      "prior_child_answer_to_later_rewrite",
+      "child_answer_to_final",
+      "rewrite_to_final"
+    ]
+  },
+  "approval": {
+    "inventory": true,
+    "new_semantic_annotation": true,
+    "conditional_probability_computation": true,
+    "external_judge_model": false,
+    "new_RAG_inference": false,
+    "main_campaign_resume": false,
+    "targeted_web_fact_verification": true
+  },
+  "inventory": "outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/20261021T085731Z/INVENTORY.json",
+  "label_reuse_candidates": "outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/20261021T085731Z/PRIOR_LABEL_CANDIDATES.json",
+  "sources": "outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/20261021T085731Z/SOURCES.json",
+  "read_only_verification": "outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/20261021T085731Z/READ_ONLY_VERIFICATION.json",
+  "proposal_document": "experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261021_error_propagation/PROPOSAL.md",
+  "proposal_sha256": "18d2c1e1c07ffc320e0827a60bce6cd5f534006b8f541b44f3f0329a8f3a5958",
+  "method_tool_reference": {
+    "local_skill": "scientific-critical-thinking",
+    "skill_version": "1.5",
+    "paper": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+    "authors": [
+      "Timothy Kassis",
+      "Vinayak Agarwal",
+      "Yuhuan He",
+      "Darshil Patel",
+      "Aubrey M. Brueckner"
+    ],
+    "year": 2026,
+    "url": "https://arxiv.org/abs/2609.00065",
+    "doi": "10.48550/arXiv.2609.00065",
+    "verified_record_revision_date": "2026-09-02",
+    "verified_on": "2026-10-21",
+    "role": "analysis workflow source, not empirical P02 evidence"
+  },
+  "protocol_revision": 2,
+  "approved_protocol": {
+    "final_correctness": "existing official F1 == 1 OR EM == 1",
+    "stage_labels": [
+      "correct",
+      "incorrect"
+    ],
+    "decomposition_empty_helpers": "exclude from every diagnostic population",
+    "ordinary_answer_population": "role ordinary, exclude goal pre-answer",
+    "rewrite_population": "recorded rewrite calls, including goal separately; distinguish proposal and effective query",
+    "rewrite_axes": [
+      "semantic fidelity to current question and supplied history",
+      "effective factual referent/target validity"
+    ],
+    "answer_to_rewrite_unit": "one later rewrite, grouped by supplied prior-answer history; actual binding sources traced separately; never pair current answer with earlier same-step rewrite",
+    "final_outcome_tables": [
+      "original-query aggregate groups",
+      "literal node/event conditional proportions as supplements"
+    ],
+    "uncertainty": {
+      "method": "original-query cluster bootstrap",
+      "replicates": 2000,
+      "seed": 20261021,
+      "coverage": 0.95
+    },
+    "review": "offline stage review hidden final outputs/scores; recheck incorrect and fixed-seed 10 percent correct",
+    "old_labels": "strict matching plus scope/evidence/axis compatibility verification, candidates only",
+    "missing": "record absent data as missing, never as a semantic label; unresolved factual decisions go to user",
+    "decomposition_rubric": "experiments/query_decomposition/multigrain_4b_frozen_eval300_v1_20261017/PROTOCOL.txt: F/S/C/U",
+    "child_correctness": "current child question factual correctness; correct regardless of retrieved support; reasonable abstention when evidence truly insufficient is correct",
+    "goal_preanswer": "review separately from ordinary child answers",
+    "final_evidence": "inspect actual final-visible context, separately from child factual correctness",
+    "root_cause": "evidence-based nonexclusive failure locations and propagation/containment, not counterfactual causal effects",
+    "partial_list_answers": "factually correct listed items count correct; completeness not required; subtype retained",
+    "web_scope": "retrieved material/native dataset first; web only if local materials cannot determine correctness",
+    "user_addenda": [
+      {
+        "id": "P02_DIAG_UNRESOLVED_FACT_WORK_ITEMS_APPROVED",
+        "authority": "User: temporarily keep unresolved facts pending; continue remaining annotation and statistics",
+        "rule": "No forced true/false label on unresolved claims; exclude only affected labels/tables with explicit counts, not unrelated query outcomes"
+      },
+      {
+        "id": "P02_DIAG_COMPLETE_STATEMENT_REQUIRED",
+        "authority": "User: complete answer is required; if complete statement is wrong, count incorrect",
+        "rule": "Correct entity value does not rescue a false relation or other false statement in the answer; retain value-correct subtype separately"
+      },
+      {
+        "id": "P02_DIAG_LOCAL_EVIDENCE_FIRST_WEB_FALLBACK",
+        "authority": "User: only use web when retrieval corpus cannot decide answer correctness; otherwise judge using retrieved material or dataset",
+        "rule": "Use recorded retrieved material and native frozen dataset first; web only for unresolved or conflicting facts. Do not replace historical material time context with current2026 status by default"
+      },
+      {
+        "id": "P02_DIAG_NONRESPONSIVE_TRUE_BACKGROUND_INCORRECT",
+        "utc": "2026-10-21T10:42:45.750763+00:00",
+        "authority": "User replied 按这个区分 to truthful-background/count/nomination vs requested entity/received award distinction",
+        "rule": "Truthful but nonresponsive background, object counts instead of objects, and nominations instead of received awards are incorrect and separately coded; answers supplying requested information at coarser precision or incomplete true lists remain correct",
+        "main_evaluation_remains_paused": true,
+        "new_RAG_or_external_judge": false
+      },
+      {
+        "id": "P02_DIAG_REWRITE_FINAL_OUTCOME_AND_ERROR_LOCATION",
+        "authority": "User: 对于子问题改写，我们只关注最终答案，记录改写错在哪",
+        "rule": "Emphasize effective rewrite versus existing final output, with concrete error locations; retain approved four-relation tables as descriptive diagnostics. Actual implementation sends original current subquestion to child reader; rewrites only supplement retrieval."
+      }
+    ],
+    "full_statement_correctness": "Every asserted factual relation must be correct; correct answer value alone does not rescue false statement",
+    "fact_pending": "User approved pending workflow, no truth label; exclude only affected table denominators and disclose",
+    "nonresponsive_answers": "Truthful but nonresponsive background, object counts instead of objects, and nominations instead of received awards are incorrect and separately coded; answers supplying requested information at coarser precision or incomplete true lists remain correct"
+  },
+  "approval_authority": [
+    "User: F1 or EM exactly 1 counts correct; binary labels; exclude no-child queries",
+    "User: factual child answers count correct regardless of retrieved support",
+    "User: include goal preanswers and final evidence diagnosis, separate ordinary and goal",
+    "User: start offline diagnosis; main campaign remains paused, no external judge or RAG rerun"
+  ],
+  "report": "outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/offline_review_v2/REPORT.md",
+  "report_sha256": "12b8bd06a60718246a3539e2c03ce114efb39fe0eb23e7f230742509e45cfcc1",
+  "completed_review_queries": {
+    "2wiki": 485,
+    "hotpotqa": 238
+  },
+  "pending_goal_factual_workitems": 7,
+  "main_evaluation_resumed": false
+}
