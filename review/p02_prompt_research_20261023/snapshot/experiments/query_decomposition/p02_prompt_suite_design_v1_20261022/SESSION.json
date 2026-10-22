@@ -1,0 +1,42 @@
+{
+  "request": "开始设计 对于初代设计成果反复打磨检查 至少一小时",
+  "start_utc": "2026-10-22T11:34:13+00:00",
+  "earliest_completion_utc": "2026-10-22T12:34:13+00:00",
+  "status": "design_complete_not_model_validated",
+  "scope": "Isolated prompt suite design, synthetic demonstrations, offline interface checks and repeated local critique",
+  "excluded": "No API/SSH/GPU execution, production edits, main evaluation resume, or publication",
+  "source_core_sha256": {
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\pipeline.py": "b78e693df0645e4ad165141a17d57a7ca546349313c27ae5bd69e23ae0963b3a",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\child_prompts.py": "f31f860488afc626f6f24d47eca826fa726036c1311d6762af7d552df54230e1",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\rewrite_prompts.py": "d516dfd66a9b966810e227e481fe71f892c3d7807ebc32225dee69a44de0aeaa",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "src\\p02_multigrain_timing_cachefix_v1\\prompts\\decomposition_v12.txt": "508709f217ee58ca53d60ecce6001d5e5b0e6d51a858dd4b95b2d6d311864ee8",
+    "src\\p02_multigrain_timing_cachefix_v1\\prompts\\child_examples.json": "cd733331d36b1eda4123cb5ca4916c951f78010d62d9e4d9d1c58eac3d9abb21",
+    "src\\p02_multigrain_timing_cachefix_v1\\prompts\\final_examples.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\PLAN.json": "8b62628baee29c5741ab447025db5529df952c9586729c89dd81ed319500b536",
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb"
+  },
+  "revision_strategy": "Preserve r01/r02/r03 as actual snapshots with concrete review notes; no performance claim from offline checks",
+  "completed_utc": "2026-10-22T12:34:36.011632+00:00",
+  "elapsed_seconds": 3623.01,
+  "elapsed_minutes": 60.38,
+  "latest_candidate": "r03",
+  "prompt_revisions": [
+    "r01",
+    "r02",
+    "r03"
+  ],
+  "review_rounds": 5,
+  "model_executions": 0,
+  "local_gpu_jobs": 0,
+  "remote_gpu_jobs": 0,
+  "production_files_changed": false,
+  "validation": {
+    "structural_checks_passed": 194,
+    "structural_checks_failed": 0,
+    "authored_examples": 24,
+    "authored_challenges": 40,
+    "semantic_model_results": "not run"
+  },
+  "duration_definition": "Wall-clock design/review session; not CPU time or measured model latency"
+}

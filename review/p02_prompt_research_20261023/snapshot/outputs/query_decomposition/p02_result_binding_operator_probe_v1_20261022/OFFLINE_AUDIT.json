@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "terminal": 346,
+  "successful_logical_stage_receipts_verified": 616,
+  "maximum_actual_attempts_per_payload": 1,
+  "returned_usage_ledger_reconciled_CNY": 1.2994076000000006,
+  "unknown_or_retired_connection_receipts": [],
+  "paired_stratified_bootstrap": {
+    "G0_to_GF": {
+      "dataset_equal_F1_delta": -0.02858705593225717,
+      "percentile95": [
+        -0.07893533844514238,
+        0.017142873466402878
+      ],
+      "replicates": 10000,
+      "seed": 20261022
+    },
+    "G0_to_GO": {
+      "dataset_equal_F1_delta": -0.06412612542585676,
+      "percentile95": [
+        -0.11502109374729565,
+        -0.019171877505210832
+      ],
+      "replicates": 10000,
+      "seed": 20261022
+    },
+    "GF_to_GO": {
+      "dataset_equal_F1_delta": -0.03553906949359958,
+      "percentile95": [
+        -0.08105228902642696,
+        0.004585670696218363
+      ],
+      "replicates": 10000,
+      "seed": 20261022
+    }
+  },
+  "ordinary_present_sensitivity": {
+    "G0": {
+      "n": 84,
+      "f1": 0.7965253470422643,
+      "em": 0.6904761904761905
+    },
+    "GF": {
+      "n": 84,
+      "f1": 0.7725684718331776,
+      "em": 0.6666666666666666
+    },
+    "GO": {
+      "n": 84,
+      "f1": 0.7323948452796973,
+      "em": 0.6190476190476191
+    }
+  },
+  "goal_format_statistics": {
+    "G0": {
+      "n": 90,
+      "mean_whitespace_words": 20.044444444444444,
+      "maximum_whitespace_words": 44,
+      "multiple_paragraphs": 0
+    },
+    "GF": {
+      "n": 90,
+      "mean_whitespace_words": 54.522222222222226,
+      "maximum_whitespace_words": 119,
+      "multiple_paragraphs": 0
+    },
+    "GO": {
+      "n": 90,
+      "mean_whitespace_words": 64.88888888888889,
+      "maximum_whitespace_words": 159,
+      "multiple_paragraphs": 0
+    }
+  },
+  "main_holds_unchanged": true
+}

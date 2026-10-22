@@ -1,0 +1,38 @@
+{
+  "id": "P02_GOAL_FEWSHOT_FIXED90_COMPLETED_20261022",
+  "utc": "2026-10-22T07:20:54.384064+00:00",
+  "experiment": "p02_goal_fewshot_fixed90_v1_20261022",
+  "terminal_conditions": 270,
+  "same_three_arm_scorable": 86,
+  "status_counts": {
+    "success": 262,
+    "external_unknown_held": 6,
+    "algorithm_failure": 1,
+    "technical_held": 1
+  },
+  "dataset_equal_mean": {
+    "native_historical_P02": {
+      "F1": 0.761927451919712,
+      "EM": 0.6641025641025641
+    },
+    "G2": {
+      "F1": 0.6874861739567621,
+      "EM": 0.5846153846153846
+    },
+    "I": {
+      "F1": 0.7014065085616811,
+      "EM": 0.594017094017094
+    },
+    "F": {
+      "F1": 0.6889643229332209,
+      "EM": 0.5811965811965812
+    }
+  },
+  "fresh_estimated_expense_CNY": 1.140178,
+  "main_evaluation_resumed": false,
+  "method_promoted": false,
+  "published": false,
+  "report": "outputs\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\REPORT.md",
+  "report_sha256": "69aaa33a73a069eb1806eef5f0296bce467cc0a13174895de4b2ac29881891c4",
+  "offline_audit_passed": true
+}

@@ -1,0 +1,41 @@
+Answer the Original question by combining the Previous question-answer
+pairs with the Retrieved passages.
+
+Write a concise, evidence-based synthesis showing the essential steps
+that connect the available information to the requested answer.
+
+Rules:
+1. Keep the Original question as the target. Preserve its requested
+   relation, attribute, comparison direction, time and other conditions.
+   Do not add a condition that the question does not require.
+
+2. Read each previous answer together with its question. Preserve the
+   full entity-relation-entity or entity-attribute-value statement.
+   When using one result in a later step, name the entity being passed
+   forward and the relation or attribute being followed. Treat # labels
+   as identifiers of previous QA pairs, not as factual evidence themselves.
+
+3. Use previous answers as intermediate claims. A fact need not appear
+   again in the current passages to remain usable. Correct a previous
+   claim when the passages directly contradict it about the same entity,
+   relation or attribute, and scope. State the relevant correction briefly.
+   Do not merge people or objects merely because their names are similar.
+
+4. Add decisive facts from the passages even when previous answers omitted
+   them or could not answer. Use any supported path that answers the
+   Original question; not every previous subquestion must be solved.
+
+5. Make the necessary operation explicit: follow each relation separately,
+   compare the requested attribute using compatible units, or apply the
+   required set operation. Do not skip a relation or substitute a nearby
+   attribute. Do not assume a partial list is exhaustive.
+
+6. Report an information gap only when a fact necessary for answering the
+   Original question remains unavailable. Missing evidence is not evidence
+   that something is false.
+
+Output one short paragraph containing the decisive facts, their essential
+combination, and the candidate answer or precise unresolved gap. Refer
+briefly to the relevant QA or passage identifiers. End with
+"Candidate answer: ...", or "Unresolved: ...".
+Avoid unrelated background and repeated facts.

@@ -1,0 +1,259 @@
+{
+  "planned_conditions": 240,
+  "terminal_conditions": 240,
+  "statuses": {
+    "success": 240
+  },
+  "receipt_statuses": {
+    "success": 405
+  },
+  "same_four_arm_n": 60,
+  "common_ids": [
+    "hotpotqa:5ac3dfb15542995c82c4ac71",
+    "hotpotqa:5a7d1c525542995ed0d165f2",
+    "2wiki:83f013aa0bda11eba7f7acde48001122",
+    "2wiki:010bdf4408df11ebbd9fac1f6bf848b6",
+    "2wiki:4f81c5260bdc11eba7f7acde48001122",
+    "musique:3hop1__458916_651917_47686",
+    "hotpotqa:5abed9435542994516f45457",
+    "musique:3hop1__516535_834494_34109",
+    "musique:2hop__753715_51329",
+    "musique:3hop1__346812_15840_36002",
+    "2wiki:e7cd2f5a0bdc11eba7f7acde48001122",
+    "musique:3hop2__326964_734214_7713",
+    "musique:4hop2__71753_261673_70784_61381",
+    "hotpotqa:5a77c09555429967ab105262",
+    "hotpotqa:5a7e14505542995ed0d16685",
+    "hotpotqa:5ab8633c55429919ba4e22d6",
+    "hotpotqa:5ae39e9c5542990afbd1e195",
+    "2wiki:ce612a020bdd11eba7f7acde48001122",
+    "musique:4hop1__39871_314549_131976_56103",
+    "hotpotqa:5adc020a5542994650320c4c",
+    "2wiki:74b134420bd911eba7f7acde48001122",
+    "hotpotqa:5a7aa2a255429941d65f270e",
+    "2wiki:b8e0d8400baf11ebab90acde48001122",
+    "hotpotqa:5adc8c545542994734353734",
+    "musique:3hop1__324448_831637_91775",
+    "hotpotqa:5a7607b6554299109176e619",
+    "hotpotqa:5ae604ec5542996de7b71af9",
+    "2wiki:93acf0b9088511ebbd6dac1f6bf848b6",
+    "2wiki:3c9020cd097811ebbdb0ac1f6bf848b6",
+    "musique:3hop1__857_846_7810",
+    "2wiki:5f39895808c711ebbd91ac1f6bf848b6",
+    "2wiki:7a465cb4095111ebbdaeac1f6bf848b6",
+    "2wiki:99cf9bb2085a11ebbd5cac1f6bf848b6",
+    "musique:2hop__85993_512508",
+    "musique:3hop1__671542_651917_47686",
+    "musique:4hop2__161324_14670_8987_8529",
+    "hotpotqa:5a72a9ac5542991f9a20c55f",
+    "hotpotqa:5abb23035542992ccd8e7f22",
+    "hotpotqa:5a7b59115542995eb53be923",
+    "musique:4hop1__88342_49853_128008_92225",
+    "hotpotqa:5adf88995542993344016cd4",
+    "2wiki:1e9c0bbb08a311ebbd7bac1f6bf848b6",
+    "hotpotqa:5a8c7595554299585d9e36b6",
+    "hotpotqa:5a83a2a15542993344746063",
+    "musique:2hop__132909_33564",
+    "musique:2hop__85463_66122",
+    "2wiki:cbdd888308b511ebbd88ac1f6bf848b6",
+    "musique:4hop1__94201_642284_131926_13165",
+    "musique:2hop__25396_212301",
+    "hotpotqa:5a7ccb3655429909bec7680b",
+    "hotpotqa:5a8ffd705542995651fb5096",
+    "musique:2hop__839126_472799",
+    "2wiki:dc8d75280baf11ebab90acde48001122",
+    "musique:4hop2__71753_158985_70784_61381",
+    "2wiki:5d6e0f860bb011ebab90acde48001122",
+    "musique:2hop__80_59409",
+    "2wiki:aaadd9f80baf11ebab90acde48001122",
+    "2wiki:15b9210e0baf11ebab90acde48001122",
+    "2wiki:dea18cf408c211ebbd8cac1f6bf848b6",
+    "2wiki:4b11ef0808cf11ebbd95ac1f6bf848b6"
+  ],
+  "table": [
+    {
+      "dataset": "all",
+      "n": 60,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.6798564398564398,
+          "em": 0.55
+        },
+        "G0": {
+          "f1": 0.6747049247049247,
+          "em": 0.5666666666666667
+        },
+        "T": {
+          "f1": 0.6697049247049247,
+          "em": 0.5666666666666667
+        },
+        "GF": {
+          "f1": 0.6826190476190476,
+          "em": 0.6
+        },
+        "GF_SPLIT": {
+          "f1": 0.685,
+          "em": 0.6166666666666667
+        }
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "n": 20,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.7454545454545455,
+          "em": 0.55
+        },
+        "G0": {
+          "f1": 0.71,
+          "em": 0.6
+        },
+        "T": {
+          "f1": 0.6933333333333334,
+          "em": 0.55
+        },
+        "GF": {
+          "f1": 0.7361904761904762,
+          "em": 0.6
+        },
+        "GF_SPLIT": {
+          "f1": 0.7433333333333333,
+          "em": 0.65
+        }
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "n": 20,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.9638888888888889,
+          "em": 0.85
+        },
+        "G0": {
+          "f1": 0.9638888888888889,
+          "em": 0.85
+        },
+        "T": {
+          "f1": 0.9888888888888889,
+          "em": 0.9
+        },
+        "GF": {
+          "f1": 0.9944444444444445,
+          "em": 0.95
+        },
+        "GF_SPLIT": {
+          "f1": 0.9944444444444445,
+          "em": 0.95
+        }
+      }
+    },
+    {
+      "dataset": "musique",
+      "n": 20,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.33022588522588525,
+          "em": 0.25
+        },
+        "G0": {
+          "f1": 0.3502258852258852,
+          "em": 0.25
+        },
+        "T": {
+          "f1": 0.3268925518925519,
+          "em": 0.25
+        },
+        "GF": {
+          "f1": 0.31722222222222224,
+          "em": 0.25
+        },
+        "GF_SPLIT": {
+          "f1": 0.31722222222222224,
+          "em": 0.25
+        }
+      }
+    }
+  ],
+  "paired": {
+    "G0->T": {
+      "n": 60,
+      "improved": 2,
+      "harmed": 3,
+      "tied": 55,
+      "F1_delta": -0.005000000000000004,
+      "paired_dataset_stratified_bootstrap95": [
+        -0.03333333333333334,
+        0.023888888888888887
+      ],
+      "bootstrap_samples": 10000,
+      "bootstrap_seed": 20261022,
+      "exploratory_unadjusted": true
+    },
+    "GF->GF_SPLIT": {
+      "n": 60,
+      "improved": 1,
+      "harmed": 0,
+      "tied": 59,
+      "F1_delta": 0.0023809523809523816,
+      "paired_dataset_stratified_bootstrap95": [
+        0.0,
+        0.007142857142857145
+      ],
+      "bootstrap_samples": 10000,
+      "bootstrap_seed": 20261022,
+      "exploratory_unadjusted": true
+    },
+    "G0->GF": {
+      "n": 60,
+      "improved": 5,
+      "harmed": 6,
+      "tied": 49,
+      "F1_delta": 0.00791412291412291,
+      "paired_dataset_stratified_bootstrap95": [
+        -0.03267195767195768,
+        0.05746845746845747
+      ],
+      "bootstrap_samples": 10000,
+      "bootstrap_seed": 20261022,
+      "exploratory_unadjusted": true
+    }
+  },
+  "costs": {
+    "G0": {
+      "n": 60,
+      "prompt_tokens": 4513.683333333333,
+      "completion_tokens": 35.5,
+      "goal_final_CNY": 0.0036819466666666665,
+      "goal_words_mean": 19.533333333333335
+    },
+    "T": {
+      "n": 60,
+      "prompt_tokens": 4922.95,
+      "completion_tokens": 34.68333333333333,
+      "goal_final_CNY": 0.004007726666666667,
+      "goal_words_mean": 19.4
+    },
+    "GF": {
+      "n": 60,
+      "prompt_tokens": 5388.533333333334,
+      "completion_tokens": 84.45,
+      "goal_final_CNY": 0.004479726666666666,
+      "goal_words_mean": 55.03333333333333
+    },
+    "GF_SPLIT": {
+      "n": 60,
+      "prompt_tokens": 5407.566666666667,
+      "completion_tokens": 84.56666666666666,
+      "goal_final_CNY": 0.004495186666666666,
+      "goal_words_mean": 55.03333333333333
+    }
+  },
+  "split_effective_changed": 60,
+  "new_returned_usage_CNY": 0.8297532000000005,
+  "unresolved_reserved_CNY": 0,
+  "main_evaluation_paused": true,
+  "candidate_promoted": false,
+  "scope": "New disjoint prompt-development cohort; frozen-prefix goal-final intervention, historically evaluated runtime300, not complete-RAG/test result"
+}

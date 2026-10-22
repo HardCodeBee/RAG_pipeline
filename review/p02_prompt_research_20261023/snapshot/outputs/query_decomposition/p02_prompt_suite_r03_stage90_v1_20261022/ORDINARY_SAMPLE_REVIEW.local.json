@@ -1,0 +1,95 @@
+{
+  "scope": "18 nodes selected by fixed hash before ordinary inference. Local reader/history and complete emitted statements are reviewed; no external model grading, no root-gold child scoring, no population accuracy estimate.",
+  "cases": {
+    "musique:4hop3__275416_24325_156850_10557/ordinary/3": {
+      "observation": "Both Answers identically state Fastrada's spouse was Charlemagne. Doc1 directly supplies the marriage. The earlier, unrelated Guido Maus/Malmedy history is not mistakenly used as the spouse by either arm.",
+      "category": "same_supported_answer",
+      "evidence": "Fastrada doc1; prior Steps1-2"
+    },
+    "hotpotqa:5ab7f0b9554299366779405d/ordinary/1": {
+      "observation": "Both retain shrubs and small trees as the local vegetation types. O1 additionally includes evergreen/opposite leaves and fragrant white flowers, all present in doc1. This is factual detail expansion, not a change to the requested vegetation types or a tested downstream gain.",
+      "category": "same_supported_fact_more_details",
+      "evidence": "Tabernaemontana doc1"
+    },
+    "hotpotqa:5aba9e545542994dbf019986/ordinary/1": {
+      "observation": "Both identify A Bug's Life as the co-directed film and avoid adding the separately directed films. O1 adds the supported1998 year. The material does not establish an exhaustive career filmography; neither answer explicitly claims exhaustiveness.",
+      "category": "same_supported_fact_more_details",
+      "evidence": "Andrew Stanton doc1, with explicit as co-director parenthesis"
+    },
+    "hotpotqa:5ae0f2bf5542997b2ef7d09e/ordinary/2": {
+      "observation": "Both correctly state that the Spring1945 offensive ended in formal German surrender in Italy on May2,1945. O1 removes the initial Yes but retains the affirmative complete sentence. The previous Guam negative is not wrongly propagated by either arm.",
+      "category": "same_supported_answer",
+      "evidence": "Spring1945 offensive doc1; Surrender of Caserta doc2; previous Guam QA"
+    },
+    "musique:3hop2__326964_265410_7713/ordinary/1": {
+      "observation": "Answers are identical: Anhua Gao was born in Nanjing,Jiangsu,China. Doc1 directly supports the location. O1 Support adds the birth year from that same passage but the downstream local answer does not change.",
+      "category": "same_supported_answer",
+      "evidence": "Anhua Gao doc1"
+    },
+    "hotpotqa:5a7fd95d5542992e7d278dc5/ordinary/2": {
+      "observation": "Despite the tautological current question, both arms use the previous Pablo Escobar/Narcos identification and answer Golden Globe nomination. O1 adds lead role and Netflix series but does not repair a previously wrong nomination.",
+      "category": "same_supported_fact_more_binding_text",
+      "evidence": "prior role identification; Wagner Moura reader passage linking Narcos to Golden Globe nomination"
+    },
+    "2wiki:6c0c4c1a0bb011ebab90acde48001122/ordinary/1": {
+      "observation": "Both identify the2nd Marquess as the3rd Marquess's father. Docs1-2 supply the father/son relation and docs3-4 give the2nd Marquess's name. O1 changes was to is and adds Support; generation and identity remain unchanged.",
+      "category": "same_supported_answer",
+      "evidence": "Henry Beresford3rd Marquess docs1-2; John Beresford4th Marquess docs3-4"
+    },
+    "musique:4hop1__43565_624859_355213_203322/ordinary/1": {
+      "observation": "Both identify Eric Carmen as the original singer of All By Myself. Doc1 supports the artist and1975 release. O1 changes word order and capitalization without a new local result.",
+      "category": "same_supported_answer",
+      "evidence": "All by Myself doc1"
+    },
+    "2wiki:604119f2088011ebbd6cac1f6bf848b6/ordinary/4": {
+      "observation": "Answers are identical and retain the correct film-director binding and January28,1945 birth date for Berit Nesheim. The competing previous Kenneth MacKenna birth date is not incorrectly reused by either arm. Added Support states facts already conveyed by the answer.",
+      "category": "same_supported_answer",
+      "evidence": "The Other Side of Sunday doc1; Berit Nesheim doc2; prior Steps1-3"
+    },
+    "hotpotqa:5adce22c5542990d50227d51/ordinary/1": {
+      "observation": "Both Answers identically name Leroy Sane as Souleyman Sane's son, directly stated in doc1. The team reference in O1 Support reflects the frozen passage's time and is not checked against today's team roster.",
+      "category": "same_supported_answer",
+      "evidence": "Souleyman Sane doc1"
+    },
+    "musique:2hop__351045_47134/ordinary/1": {
+      "observation": "Both identify the College of Oceanic & Atmospheric Sciences at Oregon State University as operator, correctly distinguishing operator from National Science Foundation ownership in doc1. O1 changes sentence form but adds no necessary local result.",
+      "category": "same_supported_answer",
+      "evidence": "RV Wecoma doc1"
+    },
+    "musique:2hop__42747_83837/ordinary/1": {
+      "observation": "Both identify Luke Bryan as singer of Light It Up, supported by doc1. O1 removes the song-title quotation marks and adds accurate Support; the answer entity is unchanged.",
+      "category": "same_supported_answer",
+      "evidence": "Light It Up (Luke Bryan song) doc1"
+    },
+    "2wiki:c62ca325089b11ebbd78ac1f6bf848b6/ordinary/1": {
+      "observation": "Both answers name Jacques Demy, directly supported by Bay of Angels doc1. O1 changes voice and adds Support, without correcting the director or adding a needed fact.",
+      "category": "same_supported_answer",
+      "evidence": "Bay of Angels doc1"
+    },
+    "2wiki:f35cb30a0bae11ebab90acde48001122/ordinary/2": {
+      "observation": "Answers are identical: Hongzhi Emperor's father is Chenghua Emperor. Doc2 directly supplies that relation, and prior Step1 plus docs1/3 bind Hongzhi to Zhengde's father. O1 explains the same valid two-link binding already achieved by O0.",
+      "category": "same_supported_answer",
+      "evidence": "Hongzhi Emperor doc2; Zhengde Emperor docs1/3; prior Step1"
+    },
+    "musique:3hop1__635099_131926_89261/ordinary/2": {
+      "observation": "Both answer Mississippi River, supported by Minneapolis lying on both banks in doc2 and the band's city in doc1/history. O1 adds a primary-or-defining-water-body rationale that the question did not require; the final local fact itself remains supported and unchanged. This is not a demonstrated answer improvement.",
+      "category": "same_supported_answer",
+      "evidence": "Write This Down doc1; Minneapolis doc2"
+    },
+    "2wiki:2f54952f087811ebbd67ac1f6bf848b6/ordinary/4": {
+      "observation": "Both give Richard Thorpe's death as May1,1991, supported by docs2/4. O1 adds the identifying film Grief Street and explicitly distinguishes Michael Gordon in Support, but O0 already selected the correct person/date. Whether that extra identification helps later steps is not tested by this frozen-stage comparison.",
+      "category": "same_supported_fact_more_binding_text",
+      "evidence": "prior Steps1-3; Grief Street doc1; Richard Thorpe docs2/4"
+    },
+    "2wiki:f35cb30a0bae11ebab90acde48001122/ordinary/1": {
+      "observation": "Both Answers are identical and correctly extract Hongzhi Emperor as Zhengde Emperor's father from reader docs1-2. New Support adds an accurate explanation but no new downstream fact.",
+      "category": "same_supported_answer",
+      "evidence": "Zhengde Emperor docs1-2: Hongzhi Emperor's eldest son"
+    },
+    "hotpotqa:5a7f9cb55542995d8a8ddec1/ordinary/2": {
+      "observation": "Both Answers choose2002. Reader doc1 says formed2002 and renamed2001; doc3 says formed1992 and renamed2001. O1 notices the discrepancy yet calls doc1 self-consistent and treats lack of a later authoritative correction as a reason to prefer it. Neither claim resolves the conflicting material. No factual formation year is adjudicated from these inputs; the added Support does not make the unchanged answer independently verified.",
+      "category": "same_answer_unresolved_source_conflict",
+      "evidence": "Sunrise Avenue doc1; Sunrise Avenue discography doc3; full O1 Support"
+    }
+  }
+}

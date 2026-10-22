@@ -1,0 +1,74 @@
+{
+  "source": "outputs/query_decomposition/p02_goal_fewshot_fixed90_v1_20261022/checkpoint.sqlite3",
+  "source_db_sha256": "96c67bf7b1dc7c001b64480d9b56c1f84284f262c106c62fa2fe49dd52894680",
+  "source_wal_bytes": 0,
+  "format": "JSON columns decoded; all rows preserved. Operational SQLite file omitted.",
+  "tables": [
+    {
+      "table": "data",
+      "schema": "CREATE TABLE data(\n                kind TEXT, key TEXT, value TEXT, PRIMARY KEY(kind,key))",
+      "columns": [
+        "kind",
+        "key",
+        "value"
+      ],
+      "rows": 271,
+      "path": "receipts/p02_goal_fewshot_fixed90_v1_20261022/data.jsonl.gz",
+      "uncompressed_sha256": "2304dc5802f80f8e704cbe34597a037a4b5b6c2bcf3b6f5bba3e5fe77d25d591"
+    },
+    {
+      "table": "request_stages",
+      "schema": "CREATE TABLE request_stages(\n                request_id TEXT, stage TEXT, PRIMARY KEY(request_id,stage))",
+      "columns": [
+        "request_id",
+        "stage"
+      ],
+      "rows": 526,
+      "path": "receipts/p02_goal_fewshot_fixed90_v1_20261022/request_stages.jsonl.gz",
+      "uncompressed_sha256": "f7dccd77113e7d1071eca5de2bcd129f3527421c240de3b6d15db521a473094f"
+    },
+    {
+      "table": "requests",
+      "schema": "CREATE TABLE requests(\n                id TEXT PRIMARY KEY, stage TEXT, payload TEXT, status TEXT,\n                started TEXT, completed TEXT, result TEXT)",
+      "columns": [
+        "id",
+        "stage",
+        "payload",
+        "status",
+        "started",
+        "completed",
+        "result"
+      ],
+      "rows": 526,
+      "path": "receipts/p02_goal_fewshot_fixed90_v1_20261022/requests.jsonl.gz",
+      "uncompressed_sha256": "a8587f00422077b8582e8ee1f4ba0804ebbcf6c0d2826e1afa4b3ffa18e0176a"
+    },
+    {
+      "table": "retired_request_stages",
+      "schema": "CREATE TABLE retired_request_stages(\n  request_id TEXT,\n  stage TEXT\n)",
+      "columns": [
+        "request_id",
+        "stage"
+      ],
+      "rows": 2,
+      "path": "receipts/p02_goal_fewshot_fixed90_v1_20261022/retired_request_stages.jsonl.gz",
+      "uncompressed_sha256": "81ddbf0184691f634ef04b3ffa8282b0515e3957f158cb045690290b72e8d4e4"
+    },
+    {
+      "table": "retired_requests",
+      "schema": "CREATE TABLE retired_requests(\n  id TEXT,\n  stage TEXT,\n  payload TEXT,\n  status TEXT,\n  started TEXT,\n  completed TEXT,\n  result TEXT\n)",
+      "columns": [
+        "id",
+        "stage",
+        "payload",
+        "status",
+        "started",
+        "completed",
+        "result"
+      ],
+      "rows": 2,
+      "path": "receipts/p02_goal_fewshot_fixed90_v1_20261022/retired_requests.jsonl.gz",
+      "uncompressed_sha256": "93b5d63692b485b926b0b9108634231f8580cf7498baad3ca46e133101572016"
+    }
+  ]
+}

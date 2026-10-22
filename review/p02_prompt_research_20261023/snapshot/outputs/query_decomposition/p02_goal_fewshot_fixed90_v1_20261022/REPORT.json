@@ -1,0 +1,752 @@
+{
+  "status": "partial_or_documented_holds",
+  "terminal_conditions": 270,
+  "planned_conditions": 270,
+  "by_subset_dataset_arm": {
+    "full90": {
+      "all": {
+        "G2": {
+          "planned": 90,
+          "terminal": 90,
+          "scorable": 89,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.6816452769526132,
+          "available_only_EM": 0.5730337078651685,
+          "mean_input_tokens": 4707.348314606742,
+          "mean_output_tokens": 226.07865168539325,
+          "mean_goal_final_CNY": 0.004218035955056182,
+          "mean_logical_fullflow_CNY": 0.008360211235955055,
+          "statuses": {
+            "success": 89,
+            "technical_held": 1
+          }
+        },
+        "I": {
+          "planned": 90,
+          "terminal": 90,
+          "scorable": 87,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7021404730382137,
+          "available_only_EM": 0.5977011494252874,
+          "mean_input_tokens": 4920.057471264367,
+          "mean_output_tokens": 209.19540229885058,
+          "mean_goal_final_CNY": 0.0043544367816091955,
+          "mean_logical_fullflow_CNY": 0.008519636781609196,
+          "statuses": {
+            "success": 87,
+            "external_unknown_held": 3
+          }
+        },
+        "F": {
+          "planned": 90,
+          "terminal": 90,
+          "scorable": 87,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.6913674037965846,
+          "available_only_EM": 0.5862068965517241,
+          "mean_input_tokens": 5917.720930232558,
+          "mean_output_tokens": 213.67441860465115,
+          "mean_goal_final_CNY": 0.005161525581395348,
+          "mean_logical_fullflow_CNY": 0.009272148837209305,
+          "statuses": {
+            "success": 86,
+            "external_unknown_held": 3,
+            "algorithm_failure": 1
+          }
+        }
+      },
+      "hotpotqa": {
+        "G2": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 29,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7509031198686372,
+          "available_only_EM": 0.6206896551724138,
+          "mean_input_tokens": 4070.344827586207,
+          "mean_output_tokens": 231.0344827586207,
+          "mean_goal_final_CNY": 0.0037183448275862068,
+          "mean_logical_fullflow_CNY": 0.006407172413793102,
+          "statuses": {
+            "success": 29,
+            "technical_held": 1
+          }
+        },
+        "I": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 27,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7689766668693871,
+          "available_only_EM": 0.6296296296296297,
+          "mean_input_tokens": 4238.185185185185,
+          "mean_output_tokens": 192.85185185185185,
+          "mean_goal_final_CNY": 0.003776251851851851,
+          "mean_logical_fullflow_CNY": 0.006431614814814818,
+          "statuses": {
+            "success": 27,
+            "external_unknown_held": 3
+          }
+        },
+        "F": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 27,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7250319284802044,
+          "available_only_EM": 0.5925925925925926,
+          "mean_input_tokens": 5255.666666666667,
+          "mean_output_tokens": 205.4814814814815,
+          "mean_goal_final_CNY": 0.004615496296296296,
+          "mean_logical_fullflow_CNY": 0.007270859259259259,
+          "statuses": {
+            "success": 27,
+            "external_unknown_held": 3
+          }
+        }
+      },
+      "2wiki": {
+        "G2": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.8300854700854701,
+          "EM": 0.7333333333333333,
+          "available_only_F1": 0.8300854700854701,
+          "available_only_EM": 0.7333333333333333,
+          "mean_input_tokens": 5159.3,
+          "mean_output_tokens": 219.3,
+          "mean_goal_final_CNY": 0.0045660399999999995,
+          "mean_logical_fullflow_CNY": 0.009629453333333333,
+          "statuses": {
+            "success": 30
+          }
+        },
+        "I": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.8612820512820514,
+          "EM": 0.7666666666666667,
+          "available_only_F1": 0.8612820512820514,
+          "available_only_EM": 0.7666666666666667,
+          "mean_input_tokens": 5348.833333333333,
+          "mean_output_tokens": 189.83333333333334,
+          "mean_goal_final_CNY": 0.004658733333333332,
+          "mean_logical_fullflow_CNY": 0.009722146666666666,
+          "statuses": {
+            "success": 30
+          }
+        },
+        "F": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.9001709401709402,
+          "EM": 0.8,
+          "available_only_F1": 0.9001709401709402,
+          "available_only_EM": 0.8,
+          "mean_input_tokens": 6357.966666666666,
+          "mean_output_tokens": 194.23333333333332,
+          "mean_goal_final_CNY": 0.005474839999999999,
+          "mean_logical_fullflow_CNY": 0.010538253333333334,
+          "statuses": {
+            "success": 30
+          }
+        }
+      },
+      "musique": {
+        "G2": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.46625583566760037,
+          "EM": 0.36666666666666664,
+          "available_only_F1": 0.46625583566760037,
+          "available_only_EM": 0.36666666666666664,
+          "mean_input_tokens": 4871.166666666667,
+          "mean_output_tokens": 228.06666666666666,
+          "mean_goal_final_CNY": 0.004353066666666666,
+          "mean_logical_fullflow_CNY": 0.008978906666666668,
+          "statuses": {
+            "success": 30
+          }
+        },
+        "I": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.48284632034632036,
+          "EM": 0.4,
+          "available_only_F1": 0.48284632034632036,
+          "available_only_EM": 0.4,
+          "mean_input_tokens": 5104.966666666666,
+          "mean_output_tokens": 243.26666666666668,
+          "mean_goal_final_CNY": 0.004570506666666666,
+          "mean_logical_fullflow_CNY": 0.009196346666666667,
+          "statuses": {
+            "success": 30
+          }
+        },
+        "F": {
+          "planned": 30,
+          "terminal": 30,
+          "scorable": 30,
+          "F1": 0.4522657952069717,
+          "EM": 0.36666666666666664,
+          "available_only_F1": 0.4522657952069717,
+          "available_only_EM": 0.36666666666666664,
+          "mean_input_tokens": 6078.689655172414,
+          "mean_output_tokens": 241.41379310344828,
+          "mean_goal_final_CNY": 0.005345779310344827,
+          "mean_logical_fullflow_CNY": 0.009825655172413794,
+          "statuses": {
+            "success": 29,
+            "algorithm_failure": 1
+          }
+        }
+      }
+    },
+    "ordinary84": {
+      "all": {
+        "G2": {
+          "planned": 84,
+          "terminal": 84,
+          "scorable": 83,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7125954366918221,
+          "available_only_EM": 0.6024096385542169,
+          "mean_input_tokens": 4735.481927710844,
+          "mean_output_tokens": 224.03614457831324,
+          "mean_goal_final_CNY": 0.004236457831325303,
+          "mean_logical_fullflow_CNY": 0.008678067469879518,
+          "statuses": {
+            "success": 83,
+            "technical_held": 1
+          }
+        },
+        "I": {
+          "planned": 84,
+          "terminal": 84,
+          "scorable": 81,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7383994948809761,
+          "available_only_EM": 0.6296296296296297,
+          "mean_input_tokens": 4949.7037037037035,
+          "mean_output_tokens": 207.2469135802469,
+          "mean_goal_final_CNY": 0.004374256790123456,
+          "mean_logical_fullflow_CNY": 0.00884799012345679,
+          "statuses": {
+            "success": 81,
+            "external_unknown_held": 3
+          }
+        },
+        "F": {
+          "planned": 84,
+          "terminal": 84,
+          "scorable": 81,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7268284205103375,
+          "available_only_EM": 0.6172839506172839,
+          "mean_input_tokens": 5946.2875,
+          "mean_output_tokens": 211.1375,
+          "mean_goal_final_CNY": 0.0051793049999999995,
+          "mean_logical_fullflow_CNY": 0.009598225000000002,
+          "statuses": {
+            "success": 80,
+            "external_unknown_held": 3,
+            "algorithm_failure": 1
+          }
+        }
+      },
+      "hotpotqa": {
+        "G2": {
+          "planned": 27,
+          "terminal": 27,
+          "scorable": 26,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7880952380952381,
+          "available_only_EM": 0.6538461538461539,
+          "mean_input_tokens": 4149.0,
+          "mean_output_tokens": 227.96153846153845,
+          "mean_goal_final_CNY": 0.003775123076923077,
+          "mean_logical_fullflow_CNY": 0.006774199999999999,
+          "statuses": {
+            "success": 26,
+            "technical_held": 1
+          }
+        },
+        "I": {
+          "planned": 27,
+          "terminal": 27,
+          "scorable": 24,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.8119378306878308,
+          "available_only_EM": 0.6666666666666666,
+          "mean_input_tokens": 4320.416666666667,
+          "mean_output_tokens": 188.125,
+          "mean_goal_final_CNY": 0.0038325833333333324,
+          "mean_logical_fullflow_CNY": 0.006819866666666668,
+          "statuses": {
+            "success": 24,
+            "external_unknown_held": 3
+          }
+        },
+        "F": {
+          "planned": 27,
+          "terminal": 27,
+          "scorable": 24,
+          "F1": null,
+          "EM": null,
+          "available_only_F1": 0.7625000000000001,
+          "available_only_EM": 0.625,
+          "mean_input_tokens": 5336.541666666667,
+          "mean_output_tokens": 199.41666666666666,
+          "mean_goal_final_CNY": 0.0046680666666666665,
+          "mean_logical_fullflow_CNY": 0.007655350000000001,
+          "statuses": {
+            "success": 24,
+            "external_unknown_held": 3
+          }
+        }
+      },
+      "2wiki": {
+        "G2": {
+          "planned": 29,
+          "terminal": 29,
+          "scorable": 29,
+          "F1": 0.858709106984969,
+          "EM": 0.7586206896551724,
+          "available_only_F1": 0.858709106984969,
+          "available_only_EM": 0.7586206896551724,
+          "mean_input_tokens": 5189.3448275862065,
+          "mean_output_tokens": 219.51724137931035,
+          "mean_goal_final_CNY": 0.004590510344827586,
+          "mean_logical_fullflow_CNY": 0.009828524137931035,
+          "statuses": {
+            "success": 29
+          }
+        },
+        "I": {
+          "planned": 29,
+          "terminal": 29,
+          "scorable": 29,
+          "F1": 0.8909814323607428,
+          "EM": 0.7931034482758621,
+          "available_only_F1": 0.8909814323607428,
+          "available_only_EM": 0.7931034482758621,
+          "mean_input_tokens": 5379.758620689655,
+          "mean_output_tokens": 190.93103448275863,
+          "mean_goal_final_CNY": 0.00468566896551724,
+          "mean_logical_fullflow_CNY": 0.00992368275862069,
+          "statuses": {
+            "success": 29
+          }
+        },
+        "F": {
+          "planned": 29,
+          "terminal": 29,
+          "scorable": 29,
+          "F1": 0.9312113174182141,
+          "EM": 0.8275862068965517,
+          "available_only_F1": 0.9312113174182141,
+          "available_only_EM": 0.8275862068965517,
+          "mean_input_tokens": 6386.689655172414,
+          "mean_output_tokens": 193.13793103448276,
+          "mean_goal_final_CNY": 0.005495627586206897,
+          "mean_logical_fullflow_CNY": 0.010733641379310346,
+          "statuses": {
+            "success": 29
+          }
+        }
+      },
+      "musique": {
+        "G2": {
+          "planned": 28,
+          "terminal": 28,
+          "scorable": 28,
+          "F1": 0.491156462585034,
+          "EM": 0.39285714285714285,
+          "available_only_F1": 0.491156462585034,
+          "available_only_EM": 0.39285714285714285,
+          "mean_input_tokens": 4810.0,
+          "mean_output_tokens": 225.07142857142858,
+          "mean_goal_final_CNY": 0.004298142857142856,
+          "mean_logical_fullflow_CNY": 0.0092544,
+          "statuses": {
+            "success": 28
+          }
+        },
+        "I": {
+          "planned": 28,
+          "terminal": 28,
+          "scorable": 28,
+          "F1": 0.5173353432282004,
+          "EM": 0.42857142857142855,
+          "available_only_F1": 0.5173353432282004,
+          "available_only_EM": 0.42857142857142855,
+          "mean_input_tokens": 5043.678571428572,
+          "mean_output_tokens": 240.53571428571428,
+          "mean_goal_final_CNY": 0.004516014285714285,
+          "mean_logical_fullflow_CNY": 0.00947227142857143,
+          "statuses": {
+            "success": 28
+          }
+        },
+        "F": {
+          "planned": 28,
+          "terminal": 28,
+          "scorable": 28,
+          "F1": 0.4845704948646125,
+          "EM": 0.39285714285714285,
+          "available_only_F1": 0.4845704948646125,
+          "available_only_EM": 0.39285714285714285,
+          "mean_input_tokens": 6015.259259259259,
+          "mean_output_tokens": 240.88888888888889,
+          "mean_goal_final_CNY": 0.005293985185185185,
+          "mean_logical_fullflow_CNY": 0.010105703703703704,
+          "statuses": {
+            "success": 27,
+            "algorithm_failure": 1
+          }
+        }
+      }
+    }
+  },
+  "paired_F1": {
+    "full90": {
+      "all": {
+        "G2_to_I": {
+          "paired": 86,
+          "tied": 72,
+          "harmed": 7,
+          "improved": 7,
+          "F1_delta": 0.014848073984707794,
+          "EM_delta": 0.011627906976744186
+        },
+        "G2_to_F": {
+          "paired": 86,
+          "tied": 72,
+          "harmed": 8,
+          "improved": 6,
+          "F1_delta": 0.003949736496083022,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 87,
+          "tied": 75,
+          "harmed": 7,
+          "improved": 5,
+          "F1_delta": -0.010773069241629088,
+          "EM_delta": -0.011494252873563218
+        }
+      },
+      "hotpotqa": {
+        "G2_to_I": {
+          "paired": 26,
+          "tied": 21,
+          "harmed": 3,
+          "improved": 2,
+          "F1_delta": -0.006026062060544816,
+          "EM_delta": -0.038461538461538464
+        },
+        "G2_to_F": {
+          "paired": 26,
+          "tied": 21,
+          "harmed": 4,
+          "improved": 1,
+          "F1_delta": -0.05166098269546545,
+          "EM_delta": -0.07692307692307693
+        },
+        "I_to_F": {
+          "paired": 27,
+          "tied": 24,
+          "harmed": 3,
+          "F1_delta": -0.04394473838918284,
+          "EM_delta": -0.037037037037037035
+        }
+      },
+      "2wiki": {
+        "G2_to_I": {
+          "paired": 30,
+          "tied": 28,
+          "harmed": 1,
+          "improved": 1,
+          "F1_delta": 0.0311965811965812,
+          "EM_delta": 0.03333333333333333
+        },
+        "G2_to_F": {
+          "paired": 30,
+          "tied": 26,
+          "harmed": 1,
+          "improved": 3,
+          "F1_delta": 0.07008547008547009,
+          "EM_delta": 0.06666666666666667
+        },
+        "I_to_F": {
+          "paired": 30,
+          "tied": 28,
+          "improved": 2,
+          "F1_delta": 0.03888888888888888,
+          "EM_delta": 0.03333333333333333
+        }
+      },
+      "musique": {
+        "G2_to_I": {
+          "paired": 30,
+          "harmed": 3,
+          "improved": 4,
+          "tied": 23,
+          "F1_delta": 0.01659048467871997,
+          "EM_delta": 0.03333333333333333
+        },
+        "G2_to_F": {
+          "paired": 30,
+          "harmed": 3,
+          "tied": 25,
+          "improved": 2,
+          "F1_delta": -0.0139900404606287,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 30,
+          "tied": 23,
+          "harmed": 4,
+          "improved": 3,
+          "F1_delta": -0.03058052513934868,
+          "EM_delta": -0.03333333333333333
+        }
+      }
+    },
+    "ordinary84": {
+      "all": {
+        "G2_to_I": {
+          "paired": 80,
+          "tied": 68,
+          "harmed": 5,
+          "improved": 7,
+          "F1_delta": 0.019026008713508718,
+          "EM_delta": 0.0125
+        },
+        "G2_to_F": {
+          "paired": 80,
+          "tied": 68,
+          "harmed": 6,
+          "improved": 6,
+          "F1_delta": 0.007310295913237087,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 81,
+          "tied": 69,
+          "harmed": 7,
+          "improved": 5,
+          "F1_delta": -0.011571074370638649,
+          "EM_delta": -0.012345679012345678
+        }
+      },
+      "hotpotqa": {
+        "G2_to_I": {
+          "paired": 23,
+          "tied": 19,
+          "harmed": 2,
+          "improved": 2,
+          "F1_delta": -0.006383712905452023,
+          "EM_delta": -0.043478260869565216
+        },
+        "G2_to_F": {
+          "paired": 23,
+          "tied": 19,
+          "harmed": 3,
+          "improved": 1,
+          "F1_delta": -0.05797101449275363,
+          "EM_delta": -0.08695652173913043
+        },
+        "I_to_F": {
+          "paired": 24,
+          "tied": 21,
+          "harmed": 3,
+          "F1_delta": -0.0494378306878307,
+          "EM_delta": -0.041666666666666664
+        }
+      },
+      "2wiki": {
+        "G2_to_I": {
+          "paired": 29,
+          "tied": 27,
+          "harmed": 1,
+          "improved": 1,
+          "F1_delta": 0.03227232537577365,
+          "EM_delta": 0.034482758620689655
+        },
+        "G2_to_F": {
+          "paired": 29,
+          "tied": 25,
+          "harmed": 1,
+          "improved": 3,
+          "F1_delta": 0.07250221043324492,
+          "EM_delta": 0.06896551724137931
+        },
+        "I_to_F": {
+          "paired": 29,
+          "tied": 27,
+          "improved": 2,
+          "F1_delta": 0.04022988505747126,
+          "EM_delta": 0.034482758620689655
+        }
+      },
+      "musique": {
+        "G2_to_I": {
+          "paired": 28,
+          "improved": 4,
+          "tied": 22,
+          "harmed": 2,
+          "F1_delta": 0.02617888064316636,
+          "EM_delta": 0.03571428571428571
+        },
+        "G2_to_F": {
+          "paired": 28,
+          "tied": 24,
+          "improved": 2,
+          "harmed": 2,
+          "F1_delta": -0.006585967720421506,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 28,
+          "harmed": 4,
+          "tied": 21,
+          "improved": 3,
+          "F1_delta": -0.032764848363587874,
+          "EM_delta": -0.03571428571428571
+        }
+      }
+    }
+  },
+  "same_three_arm_complete_subset": {
+    "G2": {
+      "n": 86,
+      "F1": 0.6838289161818573,
+      "EM": 0.5813953488372093
+    },
+    "I": {
+      "n": 86,
+      "F1": 0.698676990166565,
+      "EM": 0.5930232558139535
+    },
+    "F": {
+      "n": 86,
+      "F1": 0.6877786526779402,
+      "EM": 0.5813953488372093
+    }
+  },
+  "common_ids": [
+    "hotpotqa:5addcfd65542997dc790703e",
+    "hotpotqa:5ae528ed5542993aec5ec16e",
+    "hotpotqa:5ae40a2955429970de88d8a3",
+    "hotpotqa:5abec66b5542997ec76fd360",
+    "hotpotqa:5a89ec7b5542992e4fca8483",
+    "hotpotqa:5a7a59d15542996c55b2dd67",
+    "hotpotqa:5a7fd95d5542992e7d278dc5",
+    "hotpotqa:5ab50e0a5542990594ba9cf0",
+    "hotpotqa:5adce22c5542990d50227d51",
+    "hotpotqa:5a77cb5e55429967ab1052a7",
+    "hotpotqa:5a893f305542993b751ca91e",
+    "hotpotqa:5a90bb4e55429916514e7536",
+    "hotpotqa:5a7daad55542995f4f4022b7",
+    "hotpotqa:5ab8c3c65542991b5579effd",
+    "hotpotqa:5a71474b5542994082a3e74f",
+    "hotpotqa:5abce85755429959677d6b3e",
+    "hotpotqa:5a7571835542992db9473669",
+    "hotpotqa:5addb7b65542997545bbbdba",
+    "hotpotqa:5ae0f2bf5542997b2ef7d09e",
+    "hotpotqa:5a70f9335542994082a3e46a",
+    "hotpotqa:5a7f9cb55542995d8a8ddec1",
+    "hotpotqa:5a84d2ea5542992a431d1aa8",
+    "hotpotqa:5a812cd555429926c1cdacfc",
+    "hotpotqa:5ab64cfa55429953192ad2b7",
+    "hotpotqa:5ab7f0b9554299366779405d",
+    "hotpotqa:5a8b5b1c5542995d1e6f1387",
+    "2wiki:e3d870e2085511ebbd59ac1f6bf848b6",
+    "2wiki:604119f2088011ebbd6cac1f6bf848b6",
+    "2wiki:2f54952f087811ebbd67ac1f6bf848b6",
+    "2wiki:140fbeda08c611ebbd90ac1f6bf848b6",
+    "2wiki:c62ca325089b11ebbd78ac1f6bf848b6",
+    "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6",
+    "2wiki:0b0f34d6084a11ebbd55ac1f6bf848b6",
+    "2wiki:b09dfa3a087811ebbd67ac1f6bf848b6",
+    "2wiki:751bb456084c11ebbd56ac1f6bf848b6",
+    "2wiki:c4bdfbea08c911ebbd92ac1f6bf848b6",
+    "2wiki:7b4cc520091d11ebbdaeac1f6bf848b6",
+    "2wiki:68a60785087511ebbd67ac1f6bf848b6",
+    "2wiki:61b28c2609a411ebbdb0ac1f6bf848b6",
+    "2wiki:40b3f66a08cb11ebbd92ac1f6bf848b6",
+    "2wiki:0910eaa909b711ebbdb0ac1f6bf848b6",
+    "2wiki:0f1094ce086f11ebbd62ac1f6bf848b6",
+    "2wiki:318b7d480bda11eba7f7acde48001122",
+    "2wiki:cdb8b7540bd911eba7f7acde48001122",
+    "2wiki:7e73e6560bdd11eba7f7acde48001122",
+    "2wiki:0d118fb00bdb11eba7f7acde48001122",
+    "2wiki:9d3c3b060bdd11eba7f7acde48001122",
+    "2wiki:de6783560bdd11eba7f7acde48001122",
+    "2wiki:f37818400bd911eba7f7acde48001122",
+    "2wiki:923b15ba0bb011ebab90acde48001122",
+    "2wiki:f35cb30a0bae11ebab90acde48001122",
+    "2wiki:6c0c4c1a0bb011ebab90acde48001122",
+    "2wiki:fcd3ff500baf11ebab90acde48001122",
+    "2wiki:079947de0baf11ebab90acde48001122",
+    "2wiki:78bc5f540bb011ebab90acde48001122",
+    "2wiki:654dbe680bb011ebab90acde48001122",
+    "musique:2hop__22431_16335",
+    "musique:2hop__289517_139339",
+    "musique:2hop__582045_161450",
+    "musique:2hop__351045_47134",
+    "musique:2hop__789565_416401",
+    "musique:2hop__156702_51769",
+    "musique:2hop__104095_40501",
+    "musique:2hop__122651_141338",
+    "musique:2hop__562154_69048",
+    "musique:2hop__557411_652060",
+    "musique:2hop__42747_83837",
+    "musique:3hop1__857_846_7770",
+    "musique:3hop1__604797_443779_52195",
+    "musique:3hop1__88707_91850_685675",
+    "musique:3hop1__691197_15840_36002",
+    "musique:3hop1__438364_443779_52195",
+    "musique:3hop1__635099_131926_89261",
+    "musique:3hop1__702699_792411_51423",
+    "musique:3hop2__326964_265410_7713",
+    "musique:3hop1__106042_64399_53006",
+    "musique:3hop2__855821_223623_162182",
+    "musique:4hop1__571599_49925_13759_736921",
+    "musique:4hop1__443274_17130_70784_61381",
+    "musique:4hop3__524186_219173_548463_72134",
+    "musique:4hop3__373866_5189_38229_86687",
+    "musique:4hop3__316459_41402_157761_13584",
+    "musique:4hop1__43565_624859_355213_203322",
+    "musique:4hop3__129456_29339_508306_70744",
+    "musique:4hop3__275416_24325_156850_10557",
+    "musique:4hop1__105401_17130_70784_79935"
+  ],
+  "fresh_actual_CNY": 1.140178,
+  "unknown_reserved_CNY": 0.027652,
+  "external_old42_unknown_reserved_CNY": 0.0548024,
+  "receipt_statuses": {
+    "success": 525,
+    "unknown": 3
+  },
+  "not_fresh_complete_RAG": true,
+  "not_independent_confirmation": true,
+  "main_evaluation_remains_paused": true
+}

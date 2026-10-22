@@ -1,0 +1,103 @@
+The following examples use fictional facts. Learn their procedure and
+format; never use their facts to answer the actual question.
+
+Example 1
+
+Original question:
+In which country was the paternal grandfather of Elias Rowan Jr. born?
+
+Previous question-answer pairs:
+#1 Question: Who is Elias Rowan Jr.'s father?
+Answer: Elias Rowan Jr.'s father is Elias Rowan Sr.
+#2 Question: Who is the father of Elias Rowan Jr.'s father?
+Answer: Elias Rowan Sr.'s father is Martin Rowan.
+#3 Question: Where was Martin Rowan born?
+Answer: Martin Rowan was born in Alderport.
+
+Retrieved passages:
+[Chunk 1] Elias Rowan Jr. was the son of Elias Rowan Sr.
+[Chunk 2] Alderport is a town in Norland.
+
+Response:
+Elias Rowan Jr.'s father is Elias Rowan Sr. (#1, Chunk 1), and the father's
+father is Martin Rowan (#2). Therefore Martin, rather than Elias Sr., is
+the paternal grandfather. Martin was born in Alderport (#3), which is in
+Norland (Chunk 2). Following these relations gives Elias Jr. → father
+Elias Sr. → paternal grandfather Martin → birthplace Alderport → country
+Norland. Chunk 1 confirms the first link; its silence about Martin does
+not contradict #2. Candidate answer: Norland.
+
+Example 2
+
+Original question:
+What award was the lead actor in Harbor Lights nominated for?
+
+Previous question-answer pairs:
+#1 Question: Who was the lead actor in Harbor Lights?
+Answer: Mara Ellis was the lead actor in Harbor Lights.
+#2 Question: What award nomination did Mara Ellis receive?
+Answer: The available material does not identify a nomination.
+
+Retrieved passages:
+[Chunk 1] Harbor Lights starred Mara Ellis.
+[Chunk 2] Mara Ellis received a Silver Screen Award nomination for Best
+Supporting Actress for her performance in Winter Road.
+
+Response:
+The lead actor identified by Harbor Lights is Mara Ellis (#1, Chunk 1).
+Chunk 2 supplies the nomination that #2 could not establish: a Silver
+Screen Award nomination for Best Supporting Actress for Winter Road.
+The question uses Harbor Lights to identify the person; it does not
+require the nomination to be for Harbor Lights. Connecting the identified
+actor to her nomination therefore answers the original question despite
+the different nominated film. Candidate answer: Silver Screen Award
+for Best Supporting Actress.
+
+Example 3
+
+Original question:
+Which has more seats, Northfield Arena or Southmere Arena?
+
+Previous question-answer pairs:
+#1 Question: How many seats does Northfield Arena have?
+Answer: Northfield Arena has 12,000 seats.
+#2 Question: How many seats does Southmere Arena have?
+Answer: Southmere Arena has 9,500 seats.
+
+Retrieved passages:
+[Chunk 1] Northfield Arena accommodates 12,000 spectators: 8,000 seated
+and 4,000 standing.
+[Chunk 2] Southmere Arena has 9,500 seats.
+
+Response:
+The requested attribute is seats, rather than total spectator capacity.
+Chunk 1 corrects #1: Northfield has 8,000 seats; its 12,000 figure includes
+standing spectators. Southmere has 9,500 seats (#2, Chunk 2). Comparing
+the same attribute gives 9,500 > 8,000, so Southmere has 1,500 more seats.
+Northfield's larger total capacity does not reverse this comparison,
+because standing places are outside the attribute requested by the
+original question. Candidate answer: Southmere Arena.
+
+Example 4
+
+Original question:
+Did both Ada Venn and Beno Rell receive the Helios Medal?
+
+Previous question-answer pairs:
+#1 Question: Did Ada Venn receive the Helios Medal?
+Answer: Ada Venn received the Helios Medal.
+#2 Question: What honors did Beno Rell receive?
+Answer: Beno Rell received the Lumen Prize.
+
+Retrieved passages:
+[Chunk 1] Ada Venn received the Helios Medal.
+[Chunk 2] Selected honors of Beno Rell include the Lumen Prize.
+
+Response:
+Ada Venn's Helios Medal is established by #1 and Chunk 1. Beno Rell's
+Lumen Prize is established by #2 and Chunk 2, but neither establishes
+whether he received the Helios Medal. Because Chunk 2 lists selected
+honors, omission of the Helios Medal cannot establish that he did not
+receive it. Answering whether both received the medal requires resolving
+Beno's status as well as Ada's. Unresolved: whether Beno Rell received
+the Helios Medal.

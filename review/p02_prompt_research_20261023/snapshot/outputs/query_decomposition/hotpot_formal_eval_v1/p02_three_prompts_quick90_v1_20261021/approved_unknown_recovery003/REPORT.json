@@ -1,0 +1,111 @@
+{
+  "id": "p02_three_prompts_quick90_v1_20261021",
+  "utc": "2026-10-21T11:56:26.638964+00:00",
+  "status": "completed",
+  "scope": "Existing exposed development quick90; control exact replay, candidate changed-payload inference; not independent confirmation.",
+  "metrics": {
+    "hotpotqa": {
+      "planned": 30,
+      "complete": 30,
+      "missing": 0,
+      "baseline_F1": 0.8199206349206349,
+      "candidate_F1": 0.7761375661375661,
+      "baseline_EM": 0.7,
+      "candidate_EM": 0.6,
+      "improved": 3,
+      "tied": 24,
+      "harmed": 3,
+      "paired_baseline_F1": 0.8199206349206349,
+      "paired_candidate_F1": 0.7761375661375661
+    },
+    "2wiki": {
+      "planned": 30,
+      "complete": 30,
+      "missing": 0,
+      "baseline_F1": 0.9433333333333334,
+      "candidate_F1": 0.8280219780219781,
+      "baseline_EM": 0.9,
+      "candidate_EM": 0.7666666666666667,
+      "improved": 0,
+      "tied": 24,
+      "harmed": 6,
+      "paired_baseline_F1": 0.9433333333333334,
+      "paired_candidate_F1": 0.8280219780219781
+    },
+    "musique": {
+      "planned": 30,
+      "complete": 30,
+      "missing": 0,
+      "baseline_F1": 0.5374123923891727,
+      "candidate_F1": 0.5470767872366338,
+      "baseline_EM": 0.4,
+      "candidate_EM": 0.4,
+      "improved": 7,
+      "tied": 19,
+      "harmed": 4,
+      "paired_baseline_F1": 0.5374123923891727,
+      "paired_candidate_F1": 0.5470767872366338
+    },
+    "overall": {
+      "planned": 90,
+      "complete": 90,
+      "missing": 0,
+      "baseline_F1": 0.7668887868810469,
+      "candidate_F1": 0.7170787771320591,
+      "baseline_EM": 0.6666666666666666,
+      "candidate_EM": 0.5888888888888889,
+      "improved": 10,
+      "tied": 67,
+      "harmed": 13,
+      "paired_baseline_F1": 0.7668887868810469,
+      "paired_candidate_F1": 0.7170787771320591
+    }
+  },
+  "new_usage": {
+    "hotpotqa": {
+      "new_returned_input_tokens": 247704,
+      "new_returned_output_tokens": 3594,
+      "new_index_searches": 7,
+      "baseline_input_tokens_per_query": 7187.333333333333,
+      "baseline_output_tokens_per_query": 87.2,
+      "candidate_complete_flow_denominator": 30,
+      "candidate_input_tokens_per_complete_query": 8195.133333333333,
+      "candidate_output_tokens_per_complete_query": 127.7,
+      "candidate_statuses": {
+        "success": 30
+      }
+    },
+    "2wiki": {
+      "new_returned_input_tokens": 352123,
+      "new_returned_output_tokens": 3290,
+      "new_index_searches": 4,
+      "baseline_input_tokens_per_query": 11152.766666666666,
+      "baseline_output_tokens_per_query": 108.2,
+      "candidate_complete_flow_denominator": 30,
+      "candidate_input_tokens_per_complete_query": 12253.6,
+      "candidate_output_tokens_per_complete_query": 130.86666666666667,
+      "candidate_statuses": {
+        "success": 30
+      }
+    },
+    "musique": {
+      "new_returned_input_tokens": 334779,
+      "new_returned_output_tokens": 3893,
+      "new_index_searches": 7,
+      "baseline_input_tokens_per_query": 10350.0,
+      "baseline_output_tokens_per_query": 98.43333333333334,
+      "candidate_complete_flow_denominator": 29,
+      "candidate_input_tokens_per_complete_query": 11661.344827586207,
+      "candidate_output_tokens_per_complete_query": 140.0344827586207,
+      "candidate_statuses": {
+        "success": 29,
+        "algorithm_failure": 1
+      }
+    }
+  },
+  "new_estimated_CNY": 0.7692388,
+  "unknown_reserved_CNY": 0.0157168,
+  "main_evaluation_remains_paused": true,
+  "comparison": "Frozen original P02 versus all three user-supplied prompts jointly",
+  "candidate_not_activated": true
+}

@@ -1,0 +1,145 @@
+{
+  "scope": "Posthoc observations from frozen local inputs and actual outputs; labels do not alter native F1/EM. Coverage is checked against the completed changed-case export at finalization.",
+  "cases": {
+    "hotpotqa:5a90bb4e55429916514e7536": {
+      "category": "malformed_question_unresolved",
+      "observation": "The original wording omits the relation connecting actress Emma Gramatica to a town. Both C and G interpret it as a town named Emma Gramatica and reject the premise; the new final wording becomes an abstention but native scores remain0. The absolute claim no such town exists is stronger than nonappearance in the supplied packet. A full relation is not restored by the new synthesis.",
+      "evidence": "original question, ordinary Step1 and C/G/GF outputs"
+    },
+    "musique:2hop__122651_141338": {
+      "category": "candidate_rejection_overrides_supported_fact",
+      "observation": "G Facts retain Brooklyn College being part of CUNY, but Link/Candidate reject the question's loose word company because CUNY is a university system. Old final in G still extracts CUNY and scores1; new final in GF follows the abstention and scores0 despite identical goal text. This is a direct observed contrast in use of the same Facts/Link/Candidate input, not a retrieval difference.",
+      "evidence": "ordinary school identification; same G/GF synthesis; G versus GF final"
+    },
+    "musique:3hop1__857_846_7770": {
+      "category": "shorter_same_relation",
+      "observation": "C and G/GF describe the same Yangtze path past Nanjing's west then north side. G/GF remove sentence framing and increase overlap. The city and directional relation were already correct in C.",
+      "evidence": "C/G/GF goal/final texts"
+    },
+    "musique:3hop1__691197_15840_36002": {
+      "category": "wording_same_claims",
+      "observation": "All variants list the Genesis's16-bit graphics/sound and additional licensing/third-party advantages. G/GF paraphrase the same broad answer and obtain a small overlap change; both remain broader than the reference. GF differs from G only by terminal punctuation, with identical native scores.",
+      "evidence": "C/G/GF complete outputs; reference"
+    },
+    "hotpotqa:5addcfd65542997dc790703e": {
+      "category": "literal_character_scope_abstention",
+      "observation": "The packet explicitly gives Kurt Russell's ten-year Walt Disney Company contract. C resolves the awkward question to the actor, whereas G/GF insist it asks for a real contract held by fictional Snake Plissken and abstain. This is a question-interpretation tradeoff: stricter literal attachment loses the intended benchmark answer despite the decisive company fact being available.",
+      "evidence": "frozen prior Snake Plissken answer; goal reader Kurt Russell doc9; C/G/GF outputs"
+    },
+    "hotpotqa:5a84d2ea5542992a431d1aa8": {
+      "category": "shared_attribute_recovered",
+      "observation": "C omits writer from the intersection of career roles. G maps Fernand Rivers's screenwriter role to writer and includes it alongside actor, director and producer. Reader docs1-2 and both prior answers support the additional shared role. Native F1 improves0.6667 to0.8889; this is a substantive completeness gain, not only shortening an existing answer.",
+      "evidence": "goal reader docs1-2; ordinary_nodes; G Facts/Link"
+    },
+    "2wiki:cdb8b7540bd911eba7f7acde48001122": {
+      "category": "unnecessary_qualifier",
+      "observation": "As in the Station West case, all variants identify Sidney Lanfield's cemetery. G/GF append in Los Angeles and lose native overlap, despite the new final instruction to remove unnecessary location background.",
+      "evidence": "C/G/GF full outputs and corresponding Sidney Lanfield passage"
+    },
+    "musique:2hop__582045_161450": {
+      "category": "question_relation_misread",
+      "observation": "G Facts correctly state both the county's province and the province's location in northeastern Iran south of the Caspian Sea. G Link then misreads the province of the county as a claim that the county itself is a province, so Candidate/final answer the county's province instead of that province's location. The required fact survived into Facts but was lost at the relation-to-answer step.",
+      "evidence": "goal reader docs1/4; original question; G Facts versus Link and Candidate"
+    },
+    "musique:2hop__562154_69048": {
+      "category": "new_present_day_requirement",
+      "observation": "Reader doc3 says Bozimo retired in2011 and was succeeded by Abiodun Smith, the frozen reference. C final selects Bozimo even though its goal preserves the successor; G/GF instead demand proof of the incumbent as of today and abstain. Both score0. This exposes distinct consumer and time-scope issues; no current-world officeholder is being asserted by this review.",
+      "evidence": "goal reader Rosaline Bozimo doc3; C goal/final; G Link as of today"
+    },
+    "musique:3hop2__326964_265410_7713": {
+      "category": "historical_modern_entity_scope",
+      "observation": "Reader doc10 explicitly gives about400 years as Nanjing's period as capital of Yangzhou. Both variants insist on the modern Yangzhou city interpretation and reject the capital relation; G discusses the historical administrative region but still abstains. All native scores remain0. The historical-modern identity ambiguity requires a separate dataset/scope review; merely seeing the number in text does not settle the full entity link.",
+      "evidence": "ordinary_nodes modern Yangzhou headquarters; goal reader doc10; C/G/GF outputs"
+    },
+    "musique:4hop3__373866_5189_38229_86687": {
+      "category": "unsupported_chronology_then_abstention",
+      "observation": "C guesses September1990 and obtains only partial overlap with May1990. G first introduces the same treaty date, then claims1990 occurred after the Pact dissolved in1991, a self-inconsistent chronological statement; it also adds a during-the-Pact requirement absent from the question. G finally notes the date is not in the passages and abstains. Native F1 drops0.5 to0, but C was not fully correct and the new explanation is not reliable evidence for its abstention.",
+      "evidence": "original question; frozen prior nodes; G Facts/Link/Candidate; reference and finals"
+    },
+    "musique:2hop__289517_139339": {
+      "category": "goal_repairs_scope_final_loses_answer",
+      "observation": "C incorrectly restricts the nomination to acting in After Hours and answers No award nomination. G correctly treats After Hours as identifying Griffin Dunne, then uses goal reader doc2 to identify his Academy Award nomination for Duke of Groove; G reaches exact match. GF receives literally the same synthesis but abstains. Root passages do not repeat Dunne's nomination and include another actor in a TV show with the same title. The observable final-consumer regression is clear; the output alone does not identify the model's internal reason for abstention.",
+      "evidence": "goal reader docs1/2/7; root docs1/4; shared G/GF goal text; three final outputs"
+    },
+    "hotpotqa:5ae4c01e55429913cc2044f3": {
+      "category": "material_gap_abstention",
+      "observation": "C names Captain John Underhill and matches the reference; G/GF abstain. Frozen ordinary answers and both reader packets name Kieft but do not supply Underhill. The new synthesis also asserts a specific massacre identification that the packet does not fully establish. A native-score loss is clear; it is not evidence that the new reader ignored a named captain in its input.",
+      "evidence": "ordinary_nodes1-2; goal_reader_packet docs1-10; G Facts/Link/Candidate"
+    },
+    "hotpotqa:5abec66b5542997ec76fd360": {
+      "category": "wording_same_claims",
+      "observation": "Both finals give German WWI fighter aces and receipt of Pour le Merite. Replacing who received with and recipients of changes overlap without changing these principal claims. This is not an observed repair of a bridge or comparison.",
+      "evidence": "C/G/GF full goal and final texts"
+    },
+    "hotpotqa:5ab55455554299488d4d993b": {
+      "category": "qualifier_retained",
+      "observation": "G/GF retain Over in Over1 million acres; C final drops the bound even though C goal includes it. The new synthesis carries through a relevant qualifier already present in the materials and old goal, rather than discovering a new park.",
+      "evidence": "C/G goals; G cited Passage5; final strings"
+    },
+    "hotpotqa:5a893f305542993b751ca91e": {
+      "category": "identifying_clue_blocks_direct_answer",
+      "observation": "Both packets directly locate Whitehead Light in St.George. G/GF require independent confirmation of the population clue and abstain because that clue is absent. C gives the correct town entity with extra location text, yet its native score is already0 against St.George; score equality hides this loss of an available answer. The population itself is not verified here.",
+      "evidence": "goal and root docs1-2; reference St.George; G Candidate"
+    },
+    "hotpotqa:5ab8c3c65542991b5579effd": {
+      "category": "numeric_surface_form",
+      "observation": "C final Two becomes G/GF2. The passage explicitly says two albums for Lost Highway Records and both syntheses identify the same count. Native F1 falls1 to0 without a changed count.",
+      "evidence": "goal reader Tift Merritt passage; C/G/GF final"
+    },
+    "hotpotqa:5a71474b5542994082a3e74f": {
+      "category": "unnecessary_qualifier",
+      "observation": "G/GF append on8 December2016 to the same Sleaford and North Hykeham by-election. This reduces native overlap while keeping the event identity. The new final instruction to omit unnecessary background did not remove the date.",
+      "evidence": "C/G/GF goals and final strings"
+    },
+    "hotpotqa:5abce85755429959677d6b3e": {
+      "category": "unverified_scope_propagation",
+      "observation": "Old ordinary Step2 already asserts five productions since1998. Reader doc1 lists those productions without their dates. G treats absence of a temporal contradiction as support for all five satisfying the time condition and expands the singular requested production into a set. C answers O and matches the reference. G/GF also use curly quotation marks, which affect the literal token metric. The overbroad temporal claim is a separate issue from punctuation.",
+      "evidence": "ordinary_nodes Step2; goal reader doc1; G Facts no temporal qualification contradicting and Link"
+    },
+    "hotpotqa:5ab7f0b9554299366779405d": {
+      "category": "invalid_inference_score_unchanged",
+      "observation": "C final None and G/GF Shrubs all score0. G infers Crinum is shrubs from swamp habitat and the existence of shrub swamps. A genus occurring in a habitat does not inherit the dominant growth form of that habitat. The written explanation introduces an invalid link even though the native score cannot decrease further.",
+      "evidence": "G Facts and Link; cited Crinum and shrub swamp definitions"
+    },
+    "2wiki:0d118fb00bdb11eba7f7acde48001122": {
+      "category": "unnecessary_qualifier",
+      "observation": "G/GF keep Westwood Village Memorial Park Cemetery and append in Los Angeles. This is the same burial place with an extra location qualifier; native F1 drops from1 to0.7692.",
+      "evidence": "Sidney Lanfield reader passage; C/G/GF final"
+    },
+    "2wiki:f37818400bd911eba7f7acde48001122": {
+      "category": "material_gap_abstention",
+      "observation": "C answers Mitau and matches the reference. G/GF abstain. The Friedrich Kettler passage provides Mitau as birthplace and a death date, but no death location; the ordinary answer supplies only the husband's identity. The new abstention follows the missing relation in the frozen packet. It does not prove Mitau factually wrong.",
+      "evidence": "ordinary_nodes; Friedrich Kettler reader passage; G Facts"
+    },
+    "2wiki:fcd3ff500baf11ebab90acde48001122": {
+      "category": "shorter_same_entity",
+      "observation": "Both versions identify Queen PomareIV; G/GF remove of Tahiti and improve string overlap. The father-to-mother chain was already correct in C. Goal reader doc10 directly supports TamatoaV being her son; doc1 also mentions the sibling family context.",
+      "evidence": "goal reader docs1 and10; C/G/GF final"
+    },
+    "2wiki:654dbe680bb011ebab90acde48001122": {
+      "category": "invented_conflict_discards_prior_answer",
+      "observation": "Frozen Step2 supplies Hermann Georg as paternal grandfather and C repeats it. G claims the dates make that relationship impossible, assuming Jobst must be born after about1560 and that a grandfather dying1574 cannot have a grandson born1592. Neither inference follows: these dates permit an intervening son. The newly invented chronological conflict causes G/GF to abstain despite no demonstrated contradiction to the prior answer.",
+      "evidence": "ordinary_nodes Step2; goal reader docs2/4/5; G Facts and Link"
+    },
+    "musique:2hop__22431_16335": {
+      "category": "generic_summary_misses_direct_relation",
+      "observation": "All variants miss the directly stated pair inter-marriage and conversions in the time of the Roman Empire in reader doc4. G adds conversion and GF shortens the text, improving partial overlap, but still substitutes a broader ancestry narrative and guesses the unresolved group. This is not a demonstrated solution of the full bridge.",
+      "evidence": "goal/root doc4; empty ordinary_nodes; C/G/GF final"
+    },
+    "musique:2hop__557411_652060": {
+      "category": "material_gap_abstention",
+      "observation": "C supplies Peter Marc Jacobson and matches the reference. Neither frozen reader nor prior QA supplies Fran Drescher's spouse; G/GF abstain. G additionally introduces current or most recent spouse, which the question did not specify. This combines an observed material gap with an unnecessary time interpretation; it is not proof the baseline spouse is factually false.",
+      "evidence": "ordinary_nodes; goal/root docs1-10; G Link"
+    },
+    "musique:2hop__42747_83837": {
+      "category": "shorter_same_entity",
+      "observation": "C already identifies Karen Fairchild but adds of Little Big Town. G/GF remove that affiliation and reach exact match. No new duet partner or bridge was obtained.",
+      "evidence": "C/G/GF goal and final texts"
+    },
+    "musique:4hop3__524186_219173_548463_72134": {
+      "category": "same_unresolved_city_pair",
+      "observation": "C asserts Springfield,Ohio has never been Illinois's capital; G/GF output Cannot be determined while discussing the same city mismatch. All score0. Their common city identification and frozen inputs limit what this goal-only contrast can repair; do not count the changed wording as a newly fixed route.",
+      "evidence": "C/G/GF complete outputs"
+    }
+  }
+}

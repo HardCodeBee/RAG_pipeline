@@ -1,0 +1,64 @@
+{
+  "id": "p02_goal_fewshot_synthesis_v1_20261022",
+  "created_utc": "2026-10-22T04:45:45.991506+00:00",
+  "decision_id": "P02_GOAL_FEWSHOT_SYNTHESIS42_SIDE_APPROVED_20261022",
+  "user_authority": "Side-conversation user explicitly requested: 实验一下, following the displayed I/F four-shot candidate and three-way comparison.",
+  "scope": "Frozen-prefix goal/final regeneration, not fresh complete RAG or independent formal evidence",
+  "cohorts": {
+    "pilot15": "Existing stratified exposed development pilot, 5 per dataset",
+    "challenge27": "Existing targeted historical goal-error sample: 17 2Wiki, 10 HotpotQA"
+  },
+  "arms": {
+    "G2": "Exact prompt-matched complete existing goal/final receipts, no paid rerun",
+    "I": "Displayed new instructions, no demonstrations",
+    "F": "Same I instructions plus exactly the four displayed synthetic demonstrations"
+  },
+  "fixed": "Frozen actual R02/v12 decomposition, ordinary QA, goal rewrite and retrieval packet, final root/prompt/examples, model and decoding",
+  "caps": {
+    "goal": 512,
+    "final": 64
+  },
+  "formatter": false,
+  "output_note": "I/F candidate suffix and no word target differ from G2; I-vs-F isolates demonstration insertion, G2-vs-I is an instruction package contrast",
+  "cache": "Only exact complete payload with nonempty stop-ended content and valid returned usage; validate both G2 stages before starting",
+  "retry": "Existing serial shared provider gate; SDK/HTTP retries0, maximum5 durable technical attempts; unknown requests held, no automatic paid reissue; algorithm outcomes never rerolled",
+  "expense": "Existing shared cumulative ledger, all actual usage/reservations preserved; report goal+final marginal logical and fresh actual cost separately",
+  "timing": "No new full-flow timing claim; no GPU, retrieval, decomposition or judge execution",
+  "stop_after": "Exactly42 x2 new conditions; no adaptive prompt change or automatic expansion",
+  "main_evaluation_resumed": false,
+  "publication_authorized": false,
+  "sources": [
+    {
+      "cohort": "pilot15",
+      "inputs": "experiments\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\inputs15.frozen.jsonl",
+      "sha256": "e10639012d889700fca165e71b618692a54c8ec455d7b468d4c7220d5d3ceb7e",
+      "control_results": 15,
+      "source_checkpoint": "outputs\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\pilot15\\checkpoint.sqlite3"
+    },
+    {
+      "cohort": "challenge27",
+      "inputs": "experiments\\query_decomposition\\p02_goal_composition_challenge_v1_20261022\\inputs27.frozen.jsonl",
+      "sha256": "4c31c0e5dad41409c910d4d51ecfebc3cc75c22336fba93d9f99db551a0193bf",
+      "control_results": 27,
+      "source_checkpoint": "outputs\\query_decomposition\\p02_goal_composition_challenge_v1_20261022\\challenge27\\checkpoint.sqlite3"
+    }
+  ],
+  "pins": {
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\run.py": "e6a82fdbc172efb4daef498f817e7af20e3fab65459d85bdbb213564f57684b0",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\templates.py": "79313f5d6e7428274548314840c0bc8f264aeb0c9c66137a603840b863a7010a",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\inputs42.frozen.jsonl": "16d6d75ae889a0f5172fdc4acc4f39d66e046d5de2c82a75ef2aafc1a63bc8dc",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\controls42.frozen.jsonl": "c981cd6b08f035b95d90008b925f98af83ecfa4851ea5aa13647904709d205c9",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\I.frozen.txt": "f8be820c8811e6e9113124b8f461ec9ec7ba50e28b223e266a2a6843edab711b",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\F_EXAMPLES.frozen.txt": "09a7817f998316b9abecd9952da4c45a09abcccff0e17b2fd2ba7b056c3be459",
+    "experiments\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "src\\p02_multigrain_timing_cachefix_v1\\config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395"
+  },
+  "hold_pins": {
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
+  }
+}

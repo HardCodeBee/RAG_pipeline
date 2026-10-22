@@ -1,0 +1,74 @@
+{
+  "source": "outputs/query_decomposition/p02_goal_sufficiency_retention60_v1_20261022/checkpoint.sqlite3",
+  "source_db_sha256": "3fe791646f8be768bfd99bdf750fdce4fc03e617ce46be018710f9684059fcaa",
+  "source_wal_bytes": 0,
+  "format": "JSON columns decoded; all rows preserved. Operational SQLite file omitted.",
+  "tables": [
+    {
+      "table": "data",
+      "schema": "CREATE TABLE data(\n                kind TEXT, key TEXT, value TEXT, PRIMARY KEY(kind,key))",
+      "columns": [
+        "kind",
+        "key",
+        "value"
+      ],
+      "rows": 301,
+      "path": "receipts/p02_goal_sufficiency_retention60_v1_20261022/data.jsonl.gz",
+      "uncompressed_sha256": "7c9968b602c1df9fd850b95e9d5c665293c5545390141216372162d3fe479723"
+    },
+    {
+      "table": "request_stages",
+      "schema": "CREATE TABLE request_stages(\n                request_id TEXT, stage TEXT, PRIMARY KEY(request_id,stage))",
+      "columns": [
+        "request_id",
+        "stage"
+      ],
+      "rows": 540,
+      "path": "receipts/p02_goal_sufficiency_retention60_v1_20261022/request_stages.jsonl.gz",
+      "uncompressed_sha256": "e0b27fdb408598f56d9ef68ebfa79447441122829eb6c7ee5c70bafe10c546ad"
+    },
+    {
+      "table": "requests",
+      "schema": "CREATE TABLE requests(\n                id TEXT PRIMARY KEY, stage TEXT, payload TEXT, status TEXT,\n                started TEXT, completed TEXT, result TEXT)",
+      "columns": [
+        "id",
+        "stage",
+        "payload",
+        "status",
+        "started",
+        "completed",
+        "result"
+      ],
+      "rows": 492,
+      "path": "receipts/p02_goal_sufficiency_retention60_v1_20261022/requests.jsonl.gz",
+      "uncompressed_sha256": "288768b14420564204bc5eadd16a7212b152c665dccc92fa26e304336bdcfcb9"
+    },
+    {
+      "table": "retired_request_stages",
+      "schema": "CREATE TABLE retired_request_stages(\n  request_id TEXT,\n  stage TEXT\n)",
+      "columns": [
+        "request_id",
+        "stage"
+      ],
+      "rows": 0,
+      "path": "receipts/p02_goal_sufficiency_retention60_v1_20261022/retired_request_stages.jsonl.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "table": "retired_requests",
+      "schema": "CREATE TABLE retired_requests(\n  id TEXT,\n  stage TEXT,\n  payload TEXT,\n  status TEXT,\n  started TEXT,\n  completed TEXT,\n  result TEXT\n)",
+      "columns": [
+        "id",
+        "stage",
+        "payload",
+        "status",
+        "started",
+        "completed",
+        "result"
+      ],
+      "rows": 0,
+      "path": "receipts/p02_goal_sufficiency_retention60_v1_20261022/retired_requests.jsonl.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

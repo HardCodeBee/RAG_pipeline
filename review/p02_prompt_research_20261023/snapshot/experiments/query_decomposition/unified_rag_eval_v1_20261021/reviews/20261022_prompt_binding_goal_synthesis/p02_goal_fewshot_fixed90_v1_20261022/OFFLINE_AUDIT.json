@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "utc": "2026-10-22T07:20:54.274157+00:00",
+  "frozen_inputs_and_main_holds_verified": true,
+  "checkpoint_unchanged_by_audit": true,
+  "terminal_conditions": 270,
+  "status_counts": {
+    "success": 262,
+    "external_unknown_held": 6,
+    "algorithm_failure": 1,
+    "technical_held": 1
+  },
+  "receipt_integrity_counts": {
+    "success:stop": 524,
+    "unknown:None": 1,
+    "success:length": 1
+  },
+  "logical_outputs_format": {
+    "G2": {
+      "goal_outputs": 89,
+      "one_paragraph": 89,
+      "has_candidate_marker": 0,
+      "has_unresolved_marker": 0,
+      "has_either_marker": 0,
+      "length_ended": 0
+    },
+    "I": {
+      "goal_outputs": 87,
+      "one_paragraph": 87,
+      "has_candidate_marker": 75,
+      "has_unresolved_marker": 13,
+      "has_either_marker": 87,
+      "length_ended": 0
+    },
+    "F": {
+      "goal_outputs": 87,
+      "one_paragraph": 87,
+      "has_candidate_marker": 72,
+      "has_unresolved_marker": 19,
+      "has_either_marker": 87,
+      "length_ended": 1
+    }
+  },
+  "length_failure": [
+    {
+      "id": "musique:4hop3__275416_24325_156850_10557",
+      "arm": "F",
+      "finish_reason": "length",
+      "usage": {
+        "completion_tokens": 512,
+        "completion_tokens_details": null,
+        "prompt_tokens": 3600,
+        "prompt_tokens_details": null,
+        "total_tokens": 4112
+      },
+      "goal_text": "Guido Maus was born in Malmedy (#1), and the Carnival of Malmedy harks purely to the Walloon area despite its location in East Belgium (#2, Chunk 2). Fastrada’s spouse was Charlemagne (#3, Chunk 1, Chunk 9). The language sharing the name “Walloon” is Walloon itself, and it is attested as a Romance language descending from Gallo-Romance—the same linguistic lineage documented in the Oaths of Strasbourg (842) as *lingua romana*, the ancestor of Old French and later regional languages like Walloon (Chunk 4). Crucially, Walloon emerged as a distinct vernacular only centuries after Charlemagne’s era (late 8th–early 9th century); during his reign, the spoken Romance vernacular in the region was an early form of what would evolve into Walloon, but the standardized written language of administration and liturgy was Medieval Latin (Chunk 7). The question asks for “the language having the same name as this area [Walloon] of the era with Fastrada's spouse's name later known as”—i.e., the language named “Walloon” used *in Charlemagne’s era*. However, no passage or previous answer states that the language was *called* “Walloon” at that time; rather, Walloon is the modern name for the descendant of the local Gallo-Romance dialect spoken then. Chunk 4 identifies the 9th-century *lingua romana* (Gallo-Romance) as the ancestor of Old French and, by extension, Walloon—but it was not yet named “Walloon.” No source states that “Walloon” was the contemporary name of the language in the Carolingian era. Thus, while the area is Walloon and the language later bore that name, the language *of that era* did not have the name “Walloon”; it was simply the local Romance vernacular (termed *lingua romana* in 842) or Medieval Latin in formal contexts. The requested language—named “Walloon” *during* Charlemagne’s era—does not exist per the evidence. Candidate answer: No language named “Walloon” existed in Charlemagne’s era; the term “Walloon” developed later to denote the descendant of the local Gallo-Romance dialect. Unresolved: the language *having the same name as the area* (“",
+      "returned_usage_CNY": 0.0039039999999999995,
+      "score": 0
+    }
+  ],
+  "same86_paired_F1": {
+    "G2_to_I": {
+      "n": 86,
+      "improved": 7,
+      "harmed": 7,
+      "tied": 72,
+      "F1_delta": 0.014848073984707789
+    },
+    "G2_to_F": {
+      "n": 86,
+      "improved": 6,
+      "harmed": 8,
+      "tied": 72,
+      "F1_delta": 0.003949736496083019
+    },
+    "I_to_F": {
+      "n": 86,
+      "improved": 5,
+      "harmed": 7,
+      "tied": 74,
+      "F1_delta": -0.01089833748862477
+    }
+  },
+  "exploratory_paired_bootstrap": {
+    "seed": 20261022,
+    "replicates": 10000,
+    "method": "Dataset-stratified paired resampling of the same86; equal dataset weights",
+    "limitation": "Exposed development subset; no correction for prior prompt selection or provider sampling variability",
+    "results": {
+      "G2_to_I": {
+        "dataset_equal_mean_F1_delta": 0.013920334604918788,
+        "percentile_95_interval": [
+          -0.041790822842546975,
+          0.07092149469304641
+        ]
+      },
+      "G2_to_F": {
+        "dataset_equal_mean_F1_delta": 0.0014781489764586428,
+        "percentile_95_interval": [
+          -0.05397325040390456,
+          0.057238007849273895
+        ]
+      },
+      "I_to_F": {
+        "dataset_equal_mean_F1_delta": -0.012442185628460145,
+        "percentile_95_interval": [
+          -0.06032983147934129,
+          0.032487896589612264
+        ]
+      }
+    }
+  },
+  "verified_new_returned_usage_CNY": 1.1401780000000004,
+  "retained_unknown_reserved_CNY": 0.027652,
+  "retained_reservation_breakdown_CNY": {
+    "unresolved_submission": 0.006666399999999999,
+    "known_connect_timeouts_retained_conservatively": 0.0209856
+  },
+  "bounded_connect_timeout_recoveries": 2,
+  "no_new_model_requests_during_audit": true
+}

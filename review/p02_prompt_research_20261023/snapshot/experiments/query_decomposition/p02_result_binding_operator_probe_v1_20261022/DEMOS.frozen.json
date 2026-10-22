@@ -1,0 +1,56 @@
+[
+  {
+    "kind": "directed_relation",
+    "question": "Who is Mira's paternal grandfather?",
+    "history": "Q1: Who is Mira's father? A1: Mira's father is Leto.",
+    "passages": "Leto is a son of Daren. Daren's father is Osric.",
+    "facts": "Mira's father is Leto, and Leto's father is Daren.",
+    "operation": "Following father(Mira) = Leto and father(Leto) = Daren gives the father of Mira's father.",
+    "conclusion": "Mira's paternal grandfather is Daren."
+  },
+  {
+    "kind": "comparison_and_return_mapping",
+    "question": "Which film's director is younger, Silver Orchard or North Ferry?",
+    "history": "Q1: Who directed Silver Orchard? A1: Elia Voss directed Silver Orchard.\nQ2: Who directed North Ferry? A2: Bram Keir directed North Ferry.",
+    "passages": "Elia Voss was born in 1978. Bram Keir was born in 1962.",
+    "facts": "Silver Orchard's director Elia Voss was born in 1978, and North Ferry's director Bram Keir was born in 1962.",
+    "operation": "The later birth year, 1978 > 1962, makes Elia younger; the question asks for her film.",
+    "conclusion": "The answer is Silver Orchard."
+  },
+  {
+    "kind": "set_intersection",
+    "question": "Do Solen and Tavia share a citizenship?",
+    "history": "Q1: What citizenships does Solen have? A1: Solen has Albian and Boran citizenship.",
+    "passages": "Tavia has Boran citizenship.",
+    "facts": "Solen has Albian and Boran citizenship, and Tavia has Boran citizenship.",
+    "operation": "Their citizenship sets intersect at Boran; sharing one citizenship does not require identical sets.",
+    "conclusion": "Yes, they share Boran citizenship."
+  },
+  {
+    "kind": "attribute_and_correction",
+    "question": "How many seated spectators can the stadium in Orin's hometown hold?",
+    "history": "Q1: Where was Orin born? A1: Orin was born in Neral.\nQ2: What is the seated capacity of Neral Stadium? A2: Its seated capacity is 9000.",
+    "passages": "Neral Stadium accommodates 9000 spectators in total, including 6200 seats and 2800 standing places.",
+    "facts": "Orin's hometown is Neral; its stadium has 6200 seats, although total capacity is 9000, correcting the prior seated-capacity answer.",
+    "operation": "The requested attribute is seated capacity, so select seats rather than adding standing places or returning total capacity.",
+    "conclusion": "The answer is 6200 seated spectators."
+  },
+  {
+    "kind": "decisive_partial_information",
+    "question": "Are both Mavren and Ostel native to Iona?",
+    "history": "Q1: Is Mavren native to Iona? A1: Mavren is not native to Iona.\nQ2: Is Ostel native to Iona? A2: Ostel's native range cannot be determined from these passages.",
+    "passages": "Mavren is native only to the continent of Kel, not Iona. Ostel is a flowering shrub.",
+    "facts": "Mavren is not native to Iona, while Ostel's native range remains unknown.",
+    "operation": "The question requires both conditions to hold; one established false condition makes the conjunction false regardless of the unknown one.",
+    "conclusion": "No, they are not both native to Iona."
+  },
+  {
+    "kind": "insufficient_comparison",
+    "question": "Which group has more species, Vesca or Talune?",
+    "history": "Q1: How many species are in Vesca? A1: Vesca has three species.\nQ2: How many species are in Talune? A2: Talune's total species count cannot be determined.",
+    "passages": "Vesca contains exactly three species. One described Talune species is Talune alba; this account is not a complete list.",
+    "facts": "Vesca has three species; Talune has at least one known species but its total is unavailable.",
+    "operation": "The incomplete list supplies only a lower bound; Talune's unknown total could be below, equal to or above three, so this comparison is unresolved.",
+    "conclusion": "The group with more species cannot yet be determined without Talune's total or a decisive bound."
+  }
+]

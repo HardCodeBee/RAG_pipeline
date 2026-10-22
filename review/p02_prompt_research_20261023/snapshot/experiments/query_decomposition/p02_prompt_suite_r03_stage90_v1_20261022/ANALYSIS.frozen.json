@@ -1,0 +1,14 @@
+{
+  "analysis_version": 1,
+  "fixed_before_native_scores_were_computed_for_this_trial": true,
+  "primary_comparison": "C->GF",
+  "diagnostic_comparisons": ["C->G", "G->GF"],
+  "point_estimates": "Per-query native F1/EM, dataset means and equal-size pooled90 mean",
+  "paired_bootstrap": {"seed": 20261022, "replicates": 10000, "confidence": 0.95, "resampling": "Within-dataset paired query resampling; preserve dataset weights"},
+  "inference_limit": "Repeatedly exposed development cohort; intervals are descriptive, not selection-free confirmation",
+  "case_review": "Preserve all final text changes and all native F1 changes; label the review post hoc and distinguish semantic from formatting changes",
+  "ordinary_review": "Structural and usage summaries cover all176 pairs. Any manual factual review reports its explicit subset and cannot use original-query gold to grade a subquestion.",
+  "failure_policy": "Algorithm and format failures retained; technical holds explicitly missing. Do not create full90 score or interval from incomplete conditions.",
+  "costs": "Separate fresh namespace charges from logical goal-final costs and frozen-prefix bookkeeping estimates. Do not call the latter fresh full-RAG execution costs.",
+  "main_evaluation_resumed": false
+}

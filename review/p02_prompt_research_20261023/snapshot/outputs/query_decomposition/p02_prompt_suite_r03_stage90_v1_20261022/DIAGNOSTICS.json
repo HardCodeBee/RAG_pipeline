@@ -1,0 +1,315 @@
+{
+  "utc": "2026-10-22T13:58:13.525605+00:00",
+  "terminal": 622,
+  "complete": true,
+  "goal": {
+    "C": {
+      "n": 90,
+      "goal_words": {
+        "n": 90,
+        "mean": 20.133333333333333,
+        "min": 5,
+        "max": 63
+      },
+      "final_words": {
+        "n": 90,
+        "mean": 3.8333333333333335,
+        "min": 1,
+        "max": 23
+      },
+      "final_exact_abstentions": 6,
+      "over140_soft_goal_words": 0
+    },
+    "G": {
+      "n": 90,
+      "goal_words": {
+        "n": 90,
+        "mean": 114.81111111111112,
+        "min": 56,
+        "max": 242
+      },
+      "final_words": {
+        "n": 90,
+        "mean": 3.4,
+        "min": 1,
+        "max": 18
+      },
+      "final_exact_abstentions": 17,
+      "over140_soft_goal_words": 13,
+      "fields": "Facts/Link/Candidate parsed"
+    },
+    "GF": {
+      "n": 90,
+      "goal_words": {
+        "n": 90,
+        "mean": 114.81111111111112,
+        "min": 56,
+        "max": 242
+      },
+      "final_words": {
+        "n": 90,
+        "mean": 3.2666666666666666,
+        "min": 1,
+        "max": 16
+      },
+      "final_exact_abstentions": 19,
+      "over140_soft_goal_words": 13,
+      "fields": "Facts/Link/Candidate parsed"
+    }
+  },
+  "ordinary": {
+    "O0": {
+      "n": 176,
+      "answer_words": {
+        "n": 176,
+        "mean": 10.880681818181818,
+        "min": 4,
+        "max": 36
+      },
+      "formatters": 0
+    },
+    "O1": {
+      "n": 175,
+      "answer_words": {
+        "n": 175,
+        "mean": 12.485714285714286,
+        "min": 4,
+        "max": 37
+      },
+      "formatters": 0,
+      "support_over50_soft_words": 39
+    }
+  },
+  "G_GF": {
+    "pairs": 90,
+    "identical_final_text": 86,
+    "different_final_text": 4
+  },
+  "requests": {
+    "statuses": {
+      "success": 802
+    },
+    "finish_reasons": {
+      "stop": 801,
+      "length": 1
+    },
+    "retired": 0,
+    "unique_prompt_tokens": 2192516,
+    "unique_completion_tokens": 38122,
+    "unique_receipt_cost_CNY": 1.8302567999999988
+  },
+  "historical_role_headers_reference": {
+    "all": {
+      "n": 90,
+      "F1": 0.7668887868810469,
+      "EM": 0.6666666666666666
+    },
+    "hotpotqa": {
+      "n": 30,
+      "F1": 0.8199206349206349,
+      "EM": 0.7
+    },
+    "2wiki": {
+      "n": 30,
+      "F1": 0.9433333333333334,
+      "EM": 0.9
+    },
+    "musique": {
+      "n": 30,
+      "F1": 0.5374123923891726,
+      "EM": 0.4
+    }
+  },
+  "historical_note": "Historical source outputs only; different original caps; not original P02 full-flow baseline or a primary comparator.",
+  "changed_case_review": {
+    "changed": 28,
+    "reviewed": 28,
+    "missing": [],
+    "categories": {
+      "literal_character_scope_abstention": {
+        "n": 1,
+        "G_minus_C_F1_sum": -0.7499999999999999,
+        "GF_minus_C_F1_sum": -0.7499999999999999,
+        "ids": [
+          "hotpotqa:5addcfd65542997dc790703e"
+        ]
+      },
+      "material_gap_abstention": {
+        "n": 3,
+        "G_minus_C_F1_sum": -3.0,
+        "GF_minus_C_F1_sum": -3.0,
+        "ids": [
+          "hotpotqa:5ae4c01e55429913cc2044f3",
+          "2wiki:f37818400bd911eba7f7acde48001122",
+          "musique:2hop__557411_652060"
+        ]
+      },
+      "wording_same_claims": {
+        "n": 2,
+        "G_minus_C_F1_sum": -0.009432234432234399,
+        "GF_minus_C_F1_sum": -0.009432234432234399,
+        "ids": [
+          "hotpotqa:5abec66b5542997ec76fd360",
+          "musique:3hop1__691197_15840_36002"
+        ]
+      },
+      "qualifier_retained": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.19047619047619047,
+        "GF_minus_C_F1_sum": 0.19047619047619047,
+        "ids": [
+          "hotpotqa:5ab55455554299488d4d993b"
+        ]
+      },
+      "identifying_clue_blocks_direct_answer": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "hotpotqa:5a893f305542993b751ca91e"
+        ]
+      },
+      "malformed_question_unresolved": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "hotpotqa:5a90bb4e55429916514e7536"
+        ]
+      },
+      "numeric_surface_form": {
+        "n": 1,
+        "G_minus_C_F1_sum": -1.0,
+        "GF_minus_C_F1_sum": -1.0,
+        "ids": [
+          "hotpotqa:5ab8c3c65542991b5579effd"
+        ]
+      },
+      "unnecessary_qualifier": {
+        "n": 3,
+        "G_minus_C_F1_sum": -0.7472527472527472,
+        "GF_minus_C_F1_sum": -0.7472527472527472,
+        "ids": [
+          "hotpotqa:5a71474b5542994082a3e74f",
+          "2wiki:cdb8b7540bd911eba7f7acde48001122",
+          "2wiki:0d118fb00bdb11eba7f7acde48001122"
+        ]
+      },
+      "unverified_scope_propagation": {
+        "n": 1,
+        "G_minus_C_F1_sum": -1.0,
+        "GF_minus_C_F1_sum": -1.0,
+        "ids": [
+          "hotpotqa:5abce85755429959677d6b3e"
+        ]
+      },
+      "shared_attribute_recovered": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.22222222222222243,
+        "GF_minus_C_F1_sum": 0.22222222222222243,
+        "ids": [
+          "hotpotqa:5a84d2ea5542992a431d1aa8"
+        ]
+      },
+      "invalid_inference_score_unchanged": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "hotpotqa:5ab7f0b9554299366779405d"
+        ]
+      },
+      "shorter_same_entity": {
+        "n": 2,
+        "G_minus_C_F1_sum": 0.7285714285714285,
+        "GF_minus_C_F1_sum": 0.7285714285714285,
+        "ids": [
+          "2wiki:fcd3ff500baf11ebab90acde48001122",
+          "musique:2hop__42747_83837"
+        ]
+      },
+      "invented_conflict_discards_prior_answer": {
+        "n": 1,
+        "G_minus_C_F1_sum": -1.0,
+        "GF_minus_C_F1_sum": -1.0,
+        "ids": [
+          "2wiki:654dbe680bb011ebab90acde48001122"
+        ]
+      },
+      "generic_summary_misses_direct_relation": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0705128205128205,
+        "GF_minus_C_F1_sum": 0.10714285714285716,
+        "ids": [
+          "musique:2hop__22431_16335"
+        ]
+      },
+      "goal_repairs_scope_final_loses_answer": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.8181818181818181,
+        "GF_minus_C_F1_sum": -0.18181818181818182,
+        "ids": [
+          "musique:2hop__289517_139339"
+        ]
+      },
+      "question_relation_misread": {
+        "n": 1,
+        "G_minus_C_F1_sum": -0.5882352941176471,
+        "GF_minus_C_F1_sum": -0.5882352941176471,
+        "ids": [
+          "musique:2hop__582045_161450"
+        ]
+      },
+      "candidate_rejection_overrides_supported_fact": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": -1.0,
+        "ids": [
+          "musique:2hop__122651_141338"
+        ]
+      },
+      "new_present_day_requirement": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "musique:2hop__562154_69048"
+        ]
+      },
+      "shorter_same_relation": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.13815789473684226,
+        "GF_minus_C_F1_sum": 0.13815789473684226,
+        "ids": [
+          "musique:3hop1__857_846_7770"
+        ]
+      },
+      "historical_modern_entity_scope": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "musique:3hop2__326964_265410_7713"
+        ]
+      },
+      "same_unresolved_city_pair": {
+        "n": 1,
+        "G_minus_C_F1_sum": 0.0,
+        "GF_minus_C_F1_sum": 0.0,
+        "ids": [
+          "musique:4hop3__524186_219173_548463_72134"
+        ]
+      },
+      "unsupported_chronology_then_abstention": {
+        "n": 1,
+        "G_minus_C_F1_sum": -0.5,
+        "GF_minus_C_F1_sum": -0.5,
+        "ids": [
+          "musique:4hop3__373866_5189_38229_86687"
+        ]
+      }
+    },
+    "note": "Posthoc descriptive classification. F1 sums retain native scores; category attribution does not establish a single causal mechanism."
+  },
+  "main_evaluation_paused": true
+}

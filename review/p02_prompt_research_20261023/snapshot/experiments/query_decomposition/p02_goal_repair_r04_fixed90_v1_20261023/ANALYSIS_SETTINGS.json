@@ -1,0 +1,23 @@
+{
+  "scope": "Analysis settings recorded before opening aggregate candidate scores; rendering already frozen and inference underway. No sample selection from observed outcomes.",
+  "quality": [
+    "native F1",
+    "native EM"
+  ],
+  "pairs": [
+    "C->S",
+    "C->T",
+    "S->T",
+    "G_r03->S",
+    "G_r03->T"
+  ],
+  "bootstrap": {
+    "seed": 20261023,
+    "replicates": 10000,
+    "stratification": "dataset",
+    "interpretation": "descriptive exposed-sample uncertainty; no multiplicity correction or generation-replicate uncertainty"
+  },
+  "review": "all C/S/T final text changes plus all28 previous r03 observations, including unchanged scores; separate factual entailment, task interpretation, missing inputs and surface overlap",
+  "stop_after_conditions": 270,
+  "no_adaptive_reroll": true
+}

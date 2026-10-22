@@ -1,0 +1,139 @@
+{
+  "scope": "Complete posthoc local review: all29 C/S/T final-text changes plus all28 prior r03 observations, union32 cases. No score changes. Reviewed by this assistant, not independent human labels.",
+  "cases": {
+    "2wiki:f37818400bd911eba7f7acde48001122": {
+      "category": "material_gap_and_unsupported_explanation",
+      "observation": "S infers Mitau death location from birthplace and ducal seat, asserting lifelong governance and no evidence elsewhere. Neither fact entails the death location. T retains the genuine missing death-location relation. Any S native overlap recovery must not be described as supported relation repair."
+    },
+    "2wiki:0d118fb00bdb11eba7f7acde48001122": {
+      "category": "unnecessary_location_persists",
+      "observation": "Both S and T append in Los Angeles to the same cemetery named in C. The r03 verbosity-related native overlap loss persists; no cemetery identity change."
+    },
+    "2wiki:654dbe680bb011ebab90acde48001122": {
+      "category": "answer_restored_but_corroboration_overclaimed",
+      "observation": "S still discards the grandfather claim and inserts an unsupported late birth-period premise. T restores the prior Hermann Georg answer, but falsely treats the passage naming Hermann Georg as son of Georg as corroboration of his link to Jobst. Correct candidate restoration is not a fully correct proof chain."
+    },
+    "hotpotqa:5a893f305542993b751ca91e": {
+      "category": "final_extracts_entity_despite_goal_gap",
+      "observation": "S and T still treat the unprovided population as a blocker. T states directly located St. George and final extracts St. George despite goal concluding population cannot be determined. C/S/T all have nativeF1=0; score equality masks available town information and presentation differences. This is not a fixed goal interpretation."
+    },
+    "hotpotqa:5ab7f0b9554299366779405d": {
+      "category": "unsupported_habitat_chain_not_fully_repaired",
+      "observation": "S stops explicitly inferring that Crinum is a shrub but concludes no common type without establishing a complete intersection. T discusses unsupported Tabernaemontana wetland association and internally retracts it before abstaining. This is not reliable compact composition; all retain an unresolved relation."
+    },
+    "hotpotqa:5ab8c3c65542991b5579effd": {
+      "category": "numeric_surface_restored",
+      "observation": "S and T preserve the supported count two and final spells Two, unlike r03 final 2. This restores the prior native spelling, not a new counting solution."
+    },
+    "hotpotqa:5ab55455554299488d4d993b": {
+      "category": "bound_qualifier_retained",
+      "observation": "Both S and T retain over 1 million acres, as in r03; C dropped over. The bound is supported in the same packet and remains a useful qualifier."
+    },
+    "2wiki:fcd3ff500baf11ebab90acde48001122": {
+      "category": "old_qualifier_restored",
+      "observation": "S/T still use the correct mother-of-father relation but restore of Tahiti after Queen Pomare IV, unlike the shorter r03 answer. This is a surface/extra qualifier difference, not an ancestry repair."
+    },
+    "hotpotqa:5abce85755429959677d6b3e": {
+      "category": "unasked_uniqueness_and_unverified_time_persist",
+      "observation": "Both S/T retain the prior unsupported since1998 scope for five shows, then demand a single exclusive or primary production and abstain. Old final extracts O in curly quotation marks. Correct named title does not repair the goal time/uniqueness logic; curly quotes affect the native metric."
+    },
+    "hotpotqa:5abec66b5542997ec76fd360": {
+      "category": "unrequested_background_expansion",
+      "observation": "S/T preserve decorated German WWI fighter aces but also append the emissary-to-Mussolini relationship and wider Nazi-network description. This broadens an already answered commonality question; compare source support separately from token-overlap loss."
+    },
+    "hotpotqa:5ae4c01e55429913cc2044f3": {
+      "category": "genuine_captain_information_gap_persists",
+      "observation": "Both S/T retain the missing captain identity; prior/retrieved information names Kieft and soldiers but not Underhill. No new retrieval was performed. Their unnecessary exclusive sole-instigator wording is stronger than the packet establishes."
+    },
+    "musique:2hop__42747_83837": {
+      "category": "shorter_same_entity",
+      "observation": "Both S/T output Karen Fairchild without the old affiliation of Little Big Town. The duet relation was already available and correct; apparent improvement is mostly concise final expression."
+    },
+    "musique:2hop__557411_652060": {
+      "category": "missing_spouse_and_added_current_scope",
+      "observation": "Both S/T abstain on the genuine missing spouse relation; both still say current marital status, despite T explicitly prohibiting an added present-day requirement. Instruction presence did not guarantee compliance."
+    },
+    "musique:4hop3__524186_219173_548463_72134": {
+      "category": "same_unresolved_city_chain",
+      "observation": "Both retain Springfield Ohio versus Illinois mismatch and conclude no capital date. They do not resolve the frozen upstream chain. Absolute never statements are stronger than lack of support; no new supported intended date is obtained."
+    },
+    "hotpotqa:5a71474b5542994082a3e74f": {
+      "category": "same_event_surface_difference",
+      "observation": "Both preserve the same by-election and resignation chain. S final drops the date as C did; T retains 8 December2016 as r03 did. The extra date changes native overlap without changing the event identity."
+    },
+    "musique:2hop__22431_16335": {
+      "category": "unresolved_group_and_generic_genetics",
+      "observation": "Both guess that the unnamed largest foreigner group is southern Europeans, then give a broad ancestry/admixture summary rather than resolve the question. The directly stated intermarriage/conversion facts appear in the explanations but the missing entity link remains. This record has no ordinary nodes; not evidence of failed descriptive-child binding."
+    },
+    "hotpotqa:5ab64cfa55429953192ad2b7": {
+      "category": "exact_value_requirement_blocks_comparison",
+      "observation": "Both S/T insist an exact Momaday death date is necessary and abstain; C gave Momaday. Frozen goal history explicitly lacks his death date, unlike the separately regenerated r03 O0 ordinary output mentioning2024: those must not be conflated. Reader doc2 mentions a2007 award that could provide a dated lower-bound route, which neither candidate examines. C alive inference solely from absent death date is also not a sound general rule."
+    },
+    "musique:3hop2__855821_223623_162182": {
+      "category": "known_geography_then_evidence_abstention",
+      "observation": "Reader gives Lam Dong in Vietnam and John Phan born Da Nang but not Da Nang region. S preserves South Central Coast using stated standard-geography knowledge. T also names South Central Coast, then abstains because the passages lack the classification. No retrieved region fact was discarded; the knowledge-versus-packet policy differs. T additionally describes Da Nang as capital of Da Nang City, which is not established by its packet."
+    },
+    "musique:2hop__289517_139339": {
+      "category": "identifying_clue_restriction_persists_and_loses_r03_gain",
+      "observation": "S and T both see Dunne Academy Award nomination for Duke of Groove but again demand nomination for acting in After Hours. T does so despite the explicit identifying-clue rule. Both final abstain. The previous r03 G got this relation and final right, so stripping r03 to the old contract with a short rule did not preserve all its local gains. Neither theory that more examples always help nor that all examples should be removed is supported."
+    },
+    "2wiki:cdb8b7540bd911eba7f7acde48001122": {
+      "category": "unnecessary_location_persists",
+      "observation": "Both S/T identify the same Sidney Lanfield cemetery but append in Los Angeles, just as in the Station West case. Native overlap loss reflects unnecessary location framing, not a different cemetery."
+    },
+    "hotpotqa:5addcfd65542997dc790703e": {
+      "category": "actor_character_interpretation_recovered_by_T",
+      "observation": "S still insists on a fictional-character contract and abstains. T distinguishes character and actor, then correctly states the documented Kurt Russell-Walt Disney Company contract from doc9. Its final restores the same company C identified. This is a genuine recovery of usable supported information relative to S/r03, not a new discovery relative to C."
+    },
+    "musique:2hop__562154_69048": {
+      "category": "unasked_present_day_requirement_persists",
+      "observation": "Both S/T retain the passage naming Abiodun Smith as Bozimo successor but demand the present incumbent and abstain. T still adds current despite its explicit instruction. The frozen question time was not resolved; no live2026 officeholder claim is made."
+    },
+    "musique:2hop__582045_161450": {
+      "category": "goal_target_partly_recovered_final_still_wrong_level",
+      "observation": "S again ends with the county province rather than the requested province location. T ends with Golestan Province located in northeastern Iran south of the Caspian Sea, restoring the correct relation to its goal text. Yet both finals output Golestan Province, Iran. T improves the available relation without fixing final selection; this is a handoff problem, not new retrieval."
+    },
+    "musique:4hop3__373866_5189_38229_86687": {
+      "category": "unsupported_date_or_contradictory_historical_discussion",
+      "observation": "S produces12 September1990 and expands treaty dates absent from the packet; its final is not the reference May1990. T both says the USSR never agreed and discusses Soviet acquiescence, then redefines the question as a new admission/ratification and final abstains. No valid repair of the requested date is demonstrated; long explanation introduces additional unestablished claims."
+    },
+    "hotpotqa:5a84d2ea5542992a431d1aa8": {
+      "category": "writer_relation_available_with_final_wording_difference",
+      "observation": "Both explicitly connect writer and screenwriter. S final uses screenwriter and film producer; T goal concluding sentence omits writer although its preceding explanation includes it, then old final restores writer. The writing-role information remains available, but last-sentence fidelity and native word choice differ; neither prompt guarantees consistent concluding sets."
+    },
+    "musique:3hop2__326964_265410_7713": {
+      "category": "historical_modern_region_ambiguity_persists",
+      "observation": "S denies the capital relation generally. T explicitly notices the passage saying Nanjing was capital of ancient Yangzhou region for about400 years but distinguishes it from modern Yangzhou city used by the upstream headquarters relation and rejects the premise. The entity/scope mismatch remains unresolved, so mentioning400 is not by itself a validated correct chain."
+    },
+    "hotpotqa:5a90bb4e55429916514e7536": {
+      "category": "malformed_question_unresolved",
+      "observation": "Both S/T retain the missing relation between actress and town, and interpret the phrase as a town bearing her name. They overstate absence from this packet as no such town exists. Both final abstain; no intended naming-date relation is recovered."
+    },
+    "musique:2hop__122651_141338": {
+      "category": "old_final_preserves_CUNY_despite_literal_goal",
+      "observation": "S retains CUNY while correcting company wording; T explicitly concludes school is not part of a company even though it also names CUNY. Both old finals extract CUNY as C did. This prevents the r03-new-final loss, but T does not demonstrate stable resolution of broad category wording in the goal conclusion."
+    },
+    "musique:3hop1__691197_15840_36002": {
+      "category": "same_technical_claims_paraphrased",
+      "observation": "S/T generate exactly the same goal paragraph and final; both preserve16-bit versus8-bit and licensing advantages but replace explicit graphics/sound in final with general technical advantages. No new bridge solution is demonstrated; compare native surface overlap separately."
+    },
+    "musique:3hop1__857_846_7770": {
+      "category": "same_river_course_surface_difference",
+      "observation": "All C/S/T preserve the west-then-north route past Nanjing. S final shortens the sentence but adds City; T final is exactly C. No new geographic or entity-binding information is obtained."
+    },
+    "musique:3hop1__635099_131926_89261": {
+      "category": "last_sentence_loses_requested_mouth_restored_by_T",
+      "observation": "C correctly gives Mississippi River Delta. S explicitly mentions the delta in its supporting sentences but its last sentence omits the mouth and merely states Mississippi River empties into Gulf; final then answers the river instead of its mouth. T preserves the requested Delta in its last sentence and final. This is an observed relation/answer-retention repair relative to S, with no new fact relative to C."
+    },
+    "musique:2hop__156702_51769": {
+      "category": "mixed_summary_statistics_invent_a_range",
+      "observation": "Reader doc2 reports UK median10.75, UK mean9.85 and US mean9.4. S/T compress distinct statistics into a9.4-to10.75 life-expectancy range, increasing native overlap. The interval is not a directly reported range or a single estimated distribution. This is not reliable new quantitative information despite the score increase."
+    }
+  },
+  "coverage": {
+    "C_S_T_final_changes": 29,
+    "prior_r03_cases": 28,
+    "union_reviewed": 32,
+    "remaining": 0
+  }
+}

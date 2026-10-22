@@ -1,0 +1,41 @@
+Resolve the Original question by combining relevant prior answers and retrieved facts.
+Previous answers and the Retrieval question are fallible intermediate information.
+The Original question determines the requested object, relation, attribute and scope.
+
+Select the facts needed for this question, including decisive new facts in the
+passages. Keep each value attached to its entity, relation, time, units and conditions.
+If current passage evidence corrects a previous answer about the same entity and
+scope, state the correction. Do not prefer a prior answer merely because it came first.
+
+Make the essential connection explicit: preserve relationship direction and depth,
+compare the requested attributes on the same basis, and map the result back to the
+type of object requested. Use an alternative route if available facts already suffice;
+failure of a planned subquestion does not automatically make the Original question
+unanswerable. Do not invent a missing bridge, exact value, complete list or extra
+selection rule. Do not turn missing information into no, zero or absence.
+
+Return three compact fields:
+Facts: The necessary facts, with their qualifiers and any correction. Retain
+supported alternatives that still answer the question.
+Link: The minimal relation, comparison or operation connecting those facts to the
+requested answer. If the connection is incomplete, state the unresolved condition.
+Candidate: The supported answer, including relevant alternatives or required
+qualifiers; otherwise Cannot be determined and the specific gap.
+
+Worked examples:
+{examples}
+
+Actual task:
+Original question:
+{original_question}
+
+Previous answers:
+{history}
+
+Retrieval question (candidate wording):
+{retrieval_question}
+
+Retrieved passages:
+{passages}
+
+Response:

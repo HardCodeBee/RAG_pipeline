@@ -1,0 +1,78 @@
+{
+  "experiment": "p02_prompt_suite_r03_stage90_v1_20261022",
+  "suite": "ordinary",
+  "arm": "O1",
+  "case_id": "2wiki:079947de0baf11ebab90acde48001122/ordinary/1",
+  "records": [
+    {
+      "id": "a42e9a77ca3c4775b31b4097d1639ec4",
+      "stage": "ordinary|O1|2wiki:079947de0baf11ebab90acde48001122/ordinary/1/ordinary",
+      "payload": {
+        "extra_body": {
+          "enable_thinking": false
+        },
+        "max_tokens": 256,
+        "messages": [
+          {
+            "content": "Answer the Current subquestion. The Original question supplies context and scope;\ndo not replace the Current subquestion with the final task.\n\nIdentify what the current description refers to using the relevant Previous\nanswers and passages. The Retrieval question is a candidate restatement used to\nfind passages; it is not proof of the identity or a replacement for the question.\nKeep the subject, relation direction, generation, attribute and necessary conditions.\nDo not reuse a prior answer about a different entity merely because it is nearby.\n\nUse the available facts to establish the requested local fact. They need not state\nthe answer verbatim: paraphrase and valid relation composition are allowed.\nDo not claim a passage confirms a fact that it does not state or support. Correct a prior\nanswer when a passage concerns the same entity, relation and scope. Prior answers\nremain usable when passages do not repeat them; do not invent corroboration. If\nmaterial claims conflict at the same scope, do not resolve them by repetition or\nrecency alone. Distinguish a\nsupported negative or zero from a missing fact, and an incomplete list from a total.\nIf the fact cannot be established, state the specific missing fact. Preserve any\nrelevant fact that is established; do not fill the gap by guessing.\n\nReturn exactly the two fields below, in order, each label starting a new line.\nUse one paragraph per field, without a preamble, extra headings or Markdown fences.\nSupport: One or two short sentences connecting the necessary facts, normally\nwithin 50 words. A direct fact needs no invented multi-step explanation. Distinguish\nwhat a passage supplies from what a prior answer merely proposes.\nAnswer: A concise complete factual sentence naming its subject, requested relation\nand value, with any necessary qualifier or specific unresolved fact. This is the\nonly field passed to later steps: include the useful local result here, rather\nthan leaving an essential answer or condition only in Support.\n\nWorked examples:\nExample 1 (fictional):\nOriginal question:\nWhere was the father of the spouse of Liora Vale born?\n\nPrevious answers:\nStep 1\nQuestion: Who is the spouse of Liora Vale?\nAnswer: The spouse of Liora Vale is Tomas Reed.\n\nCurrent subquestion:\nWho is the father of the spouse of Liora Vale?\n\nRetrieval question (candidate wording):\nWho is the father of Tomas Reed?\n\nRetrieved passages:\nPassage 1: Orin Reed is the father of Tomas Reed. Marek Vale is the father of Liora Vale.\n\nResponse:\nSupport: The spouse is Tomas Reed. The passage names Orin Reed as Tomas Reed's father, whereas Marek Vale is Liora's father.\nAnswer: The father of Liora Vale's spouse, Tomas Reed, is Orin Reed.\n\nExample 2 (fictional):\nOriginal question:\nWhich hall, Aster Hall or Birch Hall, has more seats?\n\nPrevious answers:\nStep 1\nQuestion: How many seats does Aster Hall have?\nAnswer: Aster Hall has 6,000 seats.\n\nCurrent subquestion:\nHow many seats does Birch Hall have?\n\nRetrieval question (candidate wording):\nHow many seats does Birch Hall have?\n\nRetrieved passages:\nPassage 1: Aster Hall has a total capacity of 10,000 people and 6,000 seats. Birch Hall has a total capacity of 8,000 people and 7,000 seats.\n\nResponse:\nSupport: The current question asks for Birch Hall's seats. The passage distinguishes its 7,000 seats from its 8,000-person total capacity.\nAnswer: Birch Hall has 7,000 seats.\n\nExample 3 (fictional):\nOriginal question:\nWhich club has more national titles, Cedar Club or Elm Club?\n\nPrevious answers:\nStep 1\nQuestion: How many national titles does Cedar Club have?\nAnswer: Cedar Club won national titles in 1998 and 2005; these are selected examples, so its total is not established.\n\nCurrent subquestion:\nHow many national titles does Elm Club have?\n\nRetrieval question (candidate wording):\nHow many national titles does Elm Club have?\n\nRetrieved passages:\nPassage 1: Elm Club has won exactly three national titles. A selected list of Cedar Club national titles includes 1998 and 2005.\n\nResponse:\nSupport: The passage explicitly gives Elm Club's total as three. Cedar Club's selected list does not establish its total.\nAnswer: Elm Club has won exactly three national titles.\n\nExample 4 (fictional):\nOriginal question:\nWhen was the director of Silver Map born?\n\nPrevious answers:\nStep 1\nQuestion: Who directed Silver Map?\nAnswer: Mira Holt directed Silver Map.\n\nCurrent subquestion:\nWho directed Silver Map?\n\nRetrieval question (candidate wording):\nWho is Mira Holt?\n\nRetrieved passages:\nPassage 1: Silver Map was directed by Len Ames and produced by Mira Holt. Len Ames was born in 1960; Mira Holt was born in 1950.\n\nResponse:\nSupport: The passage names Len Ames as director and Mira Holt as producer, correcting the earlier director claim.\nAnswer: Len Ames directed Silver Map; Mira Holt produced it.\n\nExample 5 (fictional):\nOriginal question:\nWhere was the author of Quiet Harbor born?\n\nPrevious answers:\nStep 1\nQuestion: Who wrote Quiet Harbor?\nAnswer: Seren Pike wrote Quiet Harbor.\n\nCurrent subquestion:\nWhere was the author of Quiet Harbor born?\n\nRetrieval question (candidate wording):\nWhere was Seren Pike born?\n\nRetrieved passages:\nPassage 1: Seren Pike lived in Riverhaven for twenty years and died in Bayford.\n\nResponse:\nSupport: The passage gives residence and death location, neither of which establishes birthplace.\nAnswer: Seren Pike's birthplace cannot be determined from the available information.\n\nExample 6 (fictional):\nOriginal question:\nWhich novels did Seren Pike write?\n\nPrevious answers:\n(No previous answers.)\n\nCurrent subquestion:\nWhich novels did Seren Pike write?\n\nRetrieval question (candidate wording):\nWhich novels did Seren Pike write?\n\nRetrieved passages:\nPassage 1: Seren Pike wrote Quiet Harbor. This excerpt discusses only one of her novels.\n\nResponse:\nSupport: The passage supplies one responsive novel title but does not claim a complete bibliography.\nAnswer: Seren Pike wrote Quiet Harbor; the available passage does not establish her complete list of novels.\n\nActual task:\nOriginal question:\nWho is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\n\nPrevious answers:\n(No previous answers.)\n\nCurrent subquestion:\nWho is Princess Elisabeth, Duchess Of Hohenberg's spouse?\n\nRetrieval question (candidate wording):\nWho is Princess Elisabeth, Duchess Of Hohenberg's spouse?\n\nRetrieved passages:\nPassage 1: [Chunk 1 | source=Princess Elisabeth, Duchess of Hohenberg, pages=1-1]\nPrincess Elisabeth, Duchess of Hohenberg\nPrincess Elisabeth, Duchess of Hohenberg (Elisabeth Hilda Zita Marie Anna Antonia Friederike Wilhelmine Luise; 22 December 1922 – 22 November 2011) was a Luxembourgian princess. She was a daughter of Grand Duchess Charlotte and her husband, Prince Felix of Bourbon-Parma, the sister of Grand Duke Jean and the aunt of Grand Duke Henri. In 1956 she married Franz, Duke of Hohenberg.\n\nPassage 2: [Chunk 2 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg( Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\nPassage 3: [Chunk 3 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg (Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\nPassage 4: [Chunk 4 | source=Elisabeth zu Fürstenberg, pages=1-1]\nElisabeth zu Fürstenberg\nElisabeth zu Fürstenberg (1767-1822), was a Princess consort of Fürstenberg by marriage to Karl Aloys zu Fürstenberg. She was the regent of the Fürstenberg-Fürstenberg during the minority of her son, Charles Egon II, from 1804 until 1806.\n\nPassage 5: [Chunk 5 | source=Elisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn, pages=1-1]\nElisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn\nElisabeth of Hohenzollern (1 May/29 September 1403 – 31 October 1449), was a German princess member of the House of Hohenzollern and by her two marriages Duchess of Brzeg-Legnica and Cieszyn. She was the eldest daughter of Frederick I, Elector of Brandenburg by his wife Elisabeth, daughter of Frederick, Duke of Bavaria-Landshut.\n\nPassage 6: [Chunk 6 | source=Elisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn, pages=1-1]\nElisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn\nElisabeth of Hohenzollern( 1 May/ 29 September 1403 – 31 October 1449), was a German princess member of the House of Hohenzollern and by her two marriages Duchess of Brzeg- Legnica and Cieszyn. She was the eldest daughter of Frederick I, Elector of Brandenburg by his wife Elisabeth, daughter of Frederick, Duke of Bavaria- Landshut.\n\nPassage 7: [Chunk 7 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria (born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\nPassage 8: [Chunk 8 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria( born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\nPassage 9: [Chunk 9 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia( 18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse- Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great- great- grandson.\n\nPassage 10: [Chunk 10 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia (18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse-Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great-great-grandson.\n\nResponse:\n",
+            "role": "user"
+          }
+        ],
+        "model": "qwen-plus-2025-12-01",
+        "temperature": 0.0
+      },
+      "status": "success",
+      "started": "2026-10-22T13:40:55.785191+00:00",
+      "completed": "2026-10-22T13:40:59.115360+00:00",
+      "result": {
+        "answer": "Support: Passage 1 explicitly states that Princess Elisabeth, Duchess of Hohenberg “in 1956 she married Franz, Duke of Hohenberg”, identifying him as her spouse. No other passage refers to this specific Princess Elisabeth (1922–2011) or contradicts this fact.\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse is Franz, Duke of Hohenberg.",
+        "finish_reason": "stop",
+        "latency_seconds": 3.3231071999762207,
+        "raw_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "annotations": null,
+                "audio": null,
+                "content": "Support: Passage 1 explicitly states that Princess Elisabeth, Duchess of Hohenberg “in 1956 she married Franz, Duke of Hohenberg”, identifying him as her spouse. No other passage refers to this specific Princess Elisabeth (1922–2011) or contradicts this fact.\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse is Franz, Duke of Hohenberg.",
+                "function_call": null,
+                "refusal": null,
+                "role": "assistant",
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1792676456,
+          "id": "chatcmpl-0499004c-8749-9185-92ee-2585b86cecac",
+          "model": "qwen-plus-2025-12-01",
+          "moderation": null,
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": null,
+          "usage": {
+            "completion_tokens": 89,
+            "completion_tokens_details": null,
+            "prompt_tokens": 2644,
+            "prompt_tokens_details": null,
+            "total_tokens": 2733
+          }
+        },
+        "refusal": null,
+        "requested_model": "qwen-plus-2025-12-01",
+        "response_id": "chatcmpl-0499004c-8749-9185-92ee-2585b86cecac",
+        "returned_model": "qwen-plus-2025-12-01",
+        "status": "success",
+        "usage": {
+          "completion_tokens": 89,
+          "completion_tokens_details": null,
+          "prompt_tokens": 2644,
+          "prompt_tokens_details": null,
+          "total_tokens": 2733
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "manifest_files": 476,
+  "historical_pins_verified": 173,
+  "checkpoint_export_rows": 8988,
+  "terminal_condition_records": 2054,
+  "request_records": 3383,
+  "usage_totals_checked": 3376,
+  "native_scored_goal_rows": 1703,
+  "reported_metric_cells_verified": 176,
+  "paired_comparisons_checked": 32,
+  "new_API_requests": 0,
+  "source_files_modified": false,
+  "limitations": [
+    "Does not rejudge semantic correctness or rerun models.",
+    "Initial42 was blocked; historical cached reference scores are preserved, not counted as newly run evidence.",
+    "Bootstrap intervals and manual labels are preserved with source analysis code, not recalculated by this standard-library verifier."
+  ],
+  "all_dataset_results": {
+    "p02_goal_fewshot_fixed90_v1_20261022": {
+      "dataset": "all",
+      "n": 86,
+      "scores": {
+        "native_historical_P02": {
+          "F1": 0.7599223738677621,
+          "EM": 0.6627906976744186
+        },
+        "G2": {
+          "F1": 0.6838289161818573,
+          "EM": 0.5813953488372093
+        },
+        "I": {
+          "F1": 0.698676990166565,
+          "EM": 0.5930232558139535
+        },
+        "F": {
+          "F1": 0.6877786526779402,
+          "EM": 0.5813953488372093
+        }
+      }
+    },
+    "p02_result_binding_operator_probe_v1_20261022": {
+      "dataset": "all",
+      "n": 90,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.7668887868810469,
+          "em": 0.6666666666666666
+        },
+        "G0": {
+          "f1": 0.7662294462217062,
+          "em": 0.6555555555555556
+        },
+        "GF": {
+          "f1": 0.737642390289449,
+          "em": 0.6333333333333333
+        },
+        "GO": {
+          "f1": 0.7021033207958494,
+          "em": 0.5888888888888889
+        }
+      }
+    },
+    "p02_goal_target_transfer_new60_v1_20261022": {
+      "dataset": "all",
+      "n": 60,
+      "scores": {
+        "historical_native_P02": {
+          "f1": 0.6798564398564398,
+          "em": 0.55
+        },
+        "G0": {
+          "f1": 0.6747049247049247,
+          "em": 0.5666666666666667
+        },
+        "T": {
+          "f1": 0.6697049247049247,
+          "em": 0.5666666666666667
+        },
+        "GF": {
+          "f1": 0.6826190476190476,
+          "em": 0.6
+        },
+        "GF_SPLIT": {
+          "f1": 0.685,
+          "em": 0.6166666666666667
+        }
+      }
+    },
+    "p02_goal_sufficiency_retention60_v1_20261022": {
+      "dataset": "all",
+      "n": 60,
+      "scores": {
+        "G0": {
+          "f1": 0.6747049247049247,
+          "em": 0.5666666666666667
+        },
+        "A": {
+          "f1": 0.668038258038258,
+          "em": 0.5666666666666667
+        },
+        "GF": {
+          "f1": 0.6826190476190476,
+          "em": 0.6
+        },
+        "P": {
+          "f1": 0.6783333333333333,
+          "em": 0.6
+        },
+        "R": {
+          "f1": 0.6826190476190476,
+          "em": 0.6
+        }
+      }
+    },
+    "p02_prompt_suite_r03_stage90_v1_20261022": {
+      "C": {
+        "planned": 90,
+        "terminal": 90,
+        "scorable": 90,
+        "F1": 0.7612274112196712,
+        "EM": 0.6666666666666666,
+        "available_only_F1": 0.7612274112196712,
+        "mean_input_tokens": 4551.366666666667,
+        "mean_output_tokens": 36.93333333333333,
+        "mean_goal_final_CNY": 0.0037149600000000024,
+        "statuses": {
+          "success": 90
+        }
+      },
+      "G": {
+        "planned": 90,
+        "terminal": 90,
+        "scorable": 90,
+        "F1": 0.6898185456518788,
+        "EM": 0.5888888888888889,
+        "available_only_F1": 0.6898185456518788,
+        "mean_input_tokens": 6561.288888888889,
+        "mean_output_tokens": 182.36666666666667,
+        "mean_goal_final_CNY": 0.005613764444444444,
+        "statuses": {
+          "success": 90
+        }
+      },
+      "GF": {
+        "planned": 90,
+        "terminal": 90,
+        "scorable": 90,
+        "F1": 0.6680033238366571,
+        "EM": 0.5666666666666667,
+        "available_only_F1": 0.6680033238366571,
+        "mean_input_tokens": 6815.722222222223,
+        "mean_output_tokens": 182.1888888888889,
+        "mean_goal_final_CNY": 0.005816955555555556,
+        "statuses": {
+          "success": 90
+        }
+      }
+    },
+    "p02_goal_repair_r04_fixed90_v1_20261023": {
+      "C": {
+        "planned": 90,
+        "attempted": 90,
+        "statuses": {
+          "success": 90
+        },
+        "F1": 0.7612274112196712,
+        "EM": 0.6666666666666666,
+        "mean_input_tokens": 4551.366666666667,
+        "mean_output_tokens": 36.93333333333333,
+        "mean_logical_CNY": 0.0037149600000000024,
+        "mean_goal_words": 20.133333333333333
+      },
+      "G_r03": {
+        "planned": 90,
+        "attempted": 90,
+        "statuses": {
+          "success": 90
+        },
+        "F1": 0.6898185456518788,
+        "EM": 0.5888888888888889,
+        "mean_input_tokens": 6561.288888888889,
+        "mean_output_tokens": 182.36666666666667,
+        "mean_logical_CNY": 0.005613764444444444,
+        "mean_goal_words": 114.81111111111112
+      },
+      "S": {
+        "planned": 90,
+        "attempted": 90,
+        "statuses": {
+          "success": 90
+        },
+        "F1": 0.6805616825765574,
+        "EM": 0.5777777777777777,
+        "mean_input_tokens": 4685.877777777778,
+        "mean_output_tokens": 134.8,
+        "mean_logical_CNY": 0.004018302222222222,
+        "mean_goal_words": 87.92222222222222
+      },
+      "T": {
+        "planned": 90,
+        "attempted": 90,
+        "statuses": {
+          "success": 90
+        },
+        "F1": 0.6797752572313975,
+        "EM": 0.5777777777777777,
+        "mean_input_tokens": 4832.077777777778,
+        "mean_output_tokens": 144.92222222222222,
+        "mean_logical_CNY": 0.004155506666666668,
+        "mean_goal_words": 96.58888888888889
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "method": "p02_multigrain_timing_cachefix_v1",
+  "resources": {
+    "hotpotqa": {
+      "corpus": {
+        "dataset": "hotpotqa",
+        "manifest": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/data/beir/hotpotqa/manifest.json",
+        "chunks": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunks.jsonl",
+        "offsets": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b/chunk_offsets.npy",
+        "documents": 5233329
+      },
+      "dense": {
+        "bge": {
+          "build": "C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline/artifacts/build_65e9037e4c1eed7b",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    },
+    "2wiki": {
+      "corpus": {
+        "dataset": "2wiki",
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\CORPUS_FROZEN.json",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunks.jsonl",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\chunk_offsets.npy",
+        "documents": 430225
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\2wiki\\corpus\\dense",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    },
+    "musique": {
+      "corpus": {
+        "dataset": "musique",
+        "manifest": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\CORPUS_FROZEN.json",
+        "chunks": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunks.jsonl",
+        "offsets": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\chunk_offsets.npy",
+        "documents": 139416
+      },
+      "dense": {
+        "bge": {
+          "build": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\data\\multihop_comprehensive_v1_20261015\\musique\\corpus\\dense",
+          "query_model": "BAAI/bge-small-en-v1.5",
+          "query_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "query_snapshot": "C:/Users/12442/.cache/huggingface/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "space": {
+            "backend": "sentence_transformers",
+            "dimension": 384,
+            "document_prefix": "",
+            "max_sequence_length": 512,
+            "model_name": "BAAI/bge-small-en-v1.5",
+            "normalized": true,
+            "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+            "similarity": "inner_product"
+          }
+        }
+      }
+    }
+  },
+  "readout": "Final response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+  "generation": {
+    "provider": "dashscope",
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "max_retries": 0,
+    "timeout_seconds": 60,
+    "base_url": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "api_key_env": "DASHSCOPE_API_KEY"
+  },
+  "budget": {
+    "ledger": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+    "cumulative_cap_cny": 300
+  },
+  "decomposition": {
+    "mode": "query-only precomputed R02 output; remote decomposition remains separate",
+    "prompt": "prompts/decomposition_v12.txt",
+    "identity": "models/DECOMPOSER_IDENTITY.json"
+  }
+}

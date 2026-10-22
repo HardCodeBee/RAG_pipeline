@@ -1,0 +1,21 @@
+{
+  "status": "blocked_on_specific_external_submission_approval",
+  "utc": "2026-10-22T04:49:11.827791+00:00",
+  "reason": "Sandbox egress denied; automatic approval review rejected the elevated run because it requires explicit authorization for this external data submission and potential cost.",
+  "planned_cases": 42,
+  "arms": [
+    "G2 existing exact cache",
+    "I new instructions",
+    "F same instructions plus four synthetic demonstrations"
+  ],
+  "new_successful_conditions": 0,
+  "connection_attempts_without_response": 6,
+  "unknown_reserved_CNY": 0.0548024,
+  "returned_usage_actual_CNY": 0,
+  "unknown_receipts_preserved": true,
+  "automatic_unknown_reissue": false,
+  "main_evaluation_resumed": false,
+  "external_destination": "Existing frozen Qwen provider/model, unchanged from the approved source experiments",
+  "external_data": "Public dataset questions, existing retrieved passages, previous intermediate QA, and displayed synthetic few-shot examples; credential used only to authenticate the existing endpoint",
+  "approval_needed": "Explicit permission for network execution of this fixed 42-case comparison and reasonable API spending"
+}

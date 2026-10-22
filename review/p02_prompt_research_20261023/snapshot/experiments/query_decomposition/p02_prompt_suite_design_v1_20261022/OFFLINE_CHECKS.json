@@ -1,0 +1,826 @@
+{
+  "utc": "2026-10-22T12:27:45.354295+00:00",
+  "revision": "r03",
+  "model_executions": 0,
+  "meaning": "Structural and interface checks, NOT semantic/model success rates",
+  "authored_examples": 24,
+  "authored_challenges": 40,
+  "passed": 194,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "authored_output_roundtrip/rewrite/family_role",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/rewrite/seats",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/rewrite/missing_binding",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/rewrite/keep_question",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/family_role",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/seats",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/incomplete_total",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/correct_prior",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/missing_relation",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/ordinary/truthful_partial_list",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/family_role",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/seats",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/incomplete_total",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/sufficient_lower_bound",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/alternative_route",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/correct_prior",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/multiple_posts",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/goal/decisive_false",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/family_role",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/seats_bad_candidate",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/incomplete_total",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/multiple_posts_bad_candidate",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/decisive_false",
+      "passed": true
+    },
+    {
+      "name": "authored_output_roundtrip/final/map_back_to_requested_object",
+      "passed": true
+    },
+    {
+      "name": "challenge_ids_unique",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C01_parent_not_father",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C01_parent_not_father",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C01_parent_not_father",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C02_spouse_parent",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C02_spouse_parent",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C02_spouse_parent",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C03_generation",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C03_generation",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C03_generation",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C04_direction",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C04_direction",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C04_direction",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C05_birth_vs_death",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C05_birth_vs_death",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C05_birth_vs_death",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C06_producer_vs_director",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C06_producer_vs_director",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C06_producer_vs_director",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C07_residence_not_citizenship",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C07_residence_not_citizenship",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C07_residence_not_citizenship",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C08_wrong_search_county",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C08_wrong_search_county",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C08_wrong_search_county",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C09_ambiguous_binding",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C09_ambiguous_binding",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C09_ambiguous_binding",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C10_irrelevant_history",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C10_irrelevant_history",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C10_irrelevant_history",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C11_known_answer_not_identity",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C11_known_answer_not_identity",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C11_known_answer_not_identity",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C12_missing_binding",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C12_missing_binding",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C12_missing_binding",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C13_missing_not_negative",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C13_missing_not_negative",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C13_missing_not_negative",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C14_and_false",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C14_and_false",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C14_and_false",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C15_or_true",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C15_or_true",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C15_or_true",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C16_and_unknown",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C16_and_unknown",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C16_and_unknown",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C17_incomplete_count",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C17_incomplete_count",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C17_incomplete_count",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C18_lower_bound",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C18_lower_bound",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C18_lower_bound",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C19_no_items_not_zero",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C19_no_items_not_zero",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C19_no_items_not_zero",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C20_scope_mismatch",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C20_scope_mismatch",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C20_scope_mismatch",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C21_equal_values",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C21_equal_values",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C21_equal_values",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C22_coarse_route",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C22_coarse_route",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C22_coarse_route",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C23_map_back_to_film",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C23_map_back_to_film",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C23_map_back_to_film",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C24_body_beats_wrong_candidate",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C24_body_beats_wrong_candidate",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C24_body_beats_wrong_candidate",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C25_goal_only_new_fact",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C25_goal_only_new_fact",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C25_goal_only_new_fact",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C26_unrequested_ranking",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C26_unrequested_ranking",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C26_unrequested_ranking",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C27_truthful_partial_list",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C27_truthful_partial_list",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C27_truthful_partial_list",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C28_no_ordinary_steps",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C28_no_ordinary_steps",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C28_no_ordinary_steps",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C29_source_attribution",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C29_source_attribution",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C29_source_attribution",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C30_local_target_vs_root",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C30_local_target_vs_root",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C30_local_target_vs_root",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C31_goal_original_target",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C31_goal_original_target",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C31_goal_original_target",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C32_exclusion_zero",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C32_exclusion_zero",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C32_exclusion_zero",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C33_units",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C33_units",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C33_units",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C34_frozen_time",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C34_frozen_time",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C34_frozen_time",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C35_literal_hash",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C35_literal_hash",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C35_literal_hash",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C36_name_qualifier",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C36_name_qualifier",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C36_name_qualifier",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C37_new_post_not_required",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C37_new_post_not_required",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C37_new_post_not_required",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C38_inconsistent_quantities",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C38_inconsistent_quantities",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C38_inconsistent_quantities",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C39_scope_resolved_conflict",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C39_scope_resolved_conflict",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C39_scope_resolved_conflict",
+      "passed": true
+    },
+    {
+      "name": "runtime_question_preserved/C40_answer_already_available",
+      "passed": true
+    },
+    {
+      "name": "challenge_not_mutated/C40_answer_already_available",
+      "passed": true
+    },
+    {
+      "name": "runtime_gold_field_rejected/C40_answer_already_available",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/0",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/1",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/2",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/3",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/4",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/5",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/6",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/7",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/8",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/9",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/10",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/11",
+      "passed": true
+    },
+    {
+      "name": "reject_malformed/12",
+      "passed": true
+    },
+    {
+      "name": "reject_nonstop/length",
+      "passed": true
+    },
+    {
+      "name": "reject_nonstop/None",
+      "passed": true
+    },
+    {
+      "name": "reject_nonstop/content_filter",
+      "passed": true
+    },
+    {
+      "name": "reject_nonstop/tool_calls",
+      "passed": true
+    },
+    {
+      "name": "raw_response_bytes_preserved",
+      "passed": true
+    },
+    {
+      "name": "crlf_fields",
+      "passed": true
+    },
+    {
+      "name": "final_literal_title_preserved",
+      "passed": true
+    },
+    {
+      "name": "final_explanatory_text_not_silently_cleaned",
+      "passed": true
+    },
+    {
+      "name": "only_answer_propagates",
+      "passed": true
+    },
+    {
+      "name": "answer_survives_handoff",
+      "passed": true
+    },
+    {
+      "name": "history_original_not_mutated",
+      "passed": true
+    },
+    {
+      "name": "history_step_order",
+      "passed": true
+    },
+    {
+      "name": "raw_current_survives_history",
+      "passed": true
+    },
+    {
+      "name": "retrieval_distinct_from_current",
+      "passed": true
+    },
+    {
+      "name": "reject_invalid_history/172",
+      "passed": true
+    },
+    {
+      "name": "reject_invalid_history/173",
+      "passed": true
+    },
+    {
+      "name": "reject_invalid_history/174",
+      "passed": true
+    },
+    {
+      "name": "reject_invalid_history/175",
+      "passed": true
+    },
+    {
+      "name": "final_input_retains/FACT_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_retains/LINK_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_retains/CANDIDATE_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_retains/ROOT_PACKET_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_retains/PUBLIC_FACT_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_excludes/GOAL_PACKET_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "final_input_excludes/PRIVATE_SUPPORT_SENTINEL",
+      "passed": true
+    },
+    {
+      "name": "review_only_goal_reader_not_rendered",
+      "passed": true
+    },
+    {
+      "name": "perturbation_metadata_not_rendered",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\core\\pipeline.py",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\core\\child_prompts.py",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\core\\rewrite_prompts.py",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\prompts\\decomposition_v12.txt",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\prompts\\child_examples.json",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/src\\p02_multigrain_timing_cachefix_v1\\prompts\\final_examples.json",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\PLAN.json",
+      "passed": true
+    },
+    {
+      "name": "protected_file_unchanged/experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED",
+      "passed": true
+    }
+  ],
+  "protected_files": [
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\core\\pipeline.py",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\core\\child_prompts.py",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\core\\rewrite_prompts.py",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\prompts\\decomposition_v12.txt",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\prompts\\child_examples.json",
+      "unchanged": true
+    },
+    {
+      "path": "src\\p02_multigrain_timing_cachefix_v1\\prompts\\final_examples.json",
+      "unchanged": true
+    },
+    {
+      "path": "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\PLAN.json",
+      "unchanged": true
+    },
+    {
+      "path": "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED",
+      "unchanged": true
+    }
+  ]
+}

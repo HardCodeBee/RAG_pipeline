@@ -1,0 +1,743 @@
+{
+  "status": "Authored design challenge bank; zero model executions",
+  "cases": [
+    {
+      "id": "C01_parent_not_father",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who is Iven's father?",
+        "history": [],
+        "current_question": "Who is Iven's father?",
+        "retrieval_question": "Who is Iven's father?",
+        "passages": [
+          "Sorel is a parent of Iven."
+        ]
+      },
+      "expected_behavior": "State that the father is not established.",
+      "forbidden_inference": "Infer that Sorel is the father from parent alone.",
+      "reason": "Relation specificity",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C02_spouse_parent",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who is the mother of Ada's spouse?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is Ada's spouse?",
+            "answer": "Ada's spouse is Ben."
+          }
+        ],
+        "current_question": "Who is the mother of Ada's spouse?",
+        "retrieval_question": "Who is the mother of Ada's spouse?",
+        "passages": [
+          "Ada is married to Ben. Ben's mother is Cora. Ada's mother is Dana."
+        ]
+      },
+      "expected_behavior": "Cora is the mother of Ada's spouse Ben.",
+      "forbidden_inference": "Use Dana, the mother of Ada herself.",
+      "reason": "Entity binding",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C03_generation",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who is the father of the father of Evin?",
+        "history": [],
+        "current_question": "Who is the father of the father of Evin?",
+        "retrieval_question": "Who is the father of the father of Evin?",
+        "passages": [
+          "Evin's father is Fenn. Fenn's father is Garen. Garen's father is Halen."
+        ]
+      },
+      "expected_behavior": "Garen.",
+      "forbidden_inference": "Return Fenn or Halen, or state a wrong relation around Garen.",
+      "reason": "Depth and whole-statement correctness",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C04_direction",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who is the child of Iris?",
+        "history": [],
+        "current_question": "Who is the child of Iris?",
+        "retrieval_question": "Who is the child of Iris?",
+        "passages": [
+          "Iris is the child of Jora. Kalen is the child of Iris."
+        ]
+      },
+      "expected_behavior": "Kalen.",
+      "forbidden_inference": "Return Iris's parent Jora.",
+      "reason": "Directed relation",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C05_birth_vs_death",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Where was Niven born?",
+        "history": [],
+        "current_question": "Where was Niven born?",
+        "retrieval_question": "Where was Niven born?",
+        "passages": [
+          "Niven lived in Oakford and died in Pineford."
+        ]
+      },
+      "expected_behavior": "Birthplace is unresolved.",
+      "forbidden_inference": "Treat residence or death location as birthplace.",
+      "reason": "Wrong attribute inference",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C06_producer_vs_director",
+      "stage": "goal",
+      "input": {
+        "original_question": "When was the director of Moon Ledger born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who directed Moon Ledger?",
+            "answer": "Sera directed Moon Ledger."
+          }
+        ],
+        "retrieval_question": "When was Sera born?",
+        "passages": [
+          "Moon Ledger was directed by Rena and produced by Sera. Rena was born in 1971. Sera was born in 1962."
+        ]
+      },
+      "expected_behavior": "Correct the role and answer 1971.",
+      "forbidden_inference": "Choose 1962 by trusting the rewrite or earlier answer.",
+      "reason": "Fallible intermediate identity",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C07_residence_not_citizenship",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "What is Tavin's citizenship?",
+        "history": [],
+        "current_question": "What is Tavin's citizenship?",
+        "retrieval_question": "What is Tavin's citizenship?",
+        "passages": [
+          "Tavin resides in Uland and was born in Valen."
+        ]
+      },
+      "expected_behavior": "Citizenship is unresolved.",
+      "forbidden_inference": "Infer citizenship from residence or birthplace alone.",
+      "reason": "Attribute and scope",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C08_wrong_search_county",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "What is the seat of the county containing Wren?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Which county contains Wren?",
+            "answer": "Wren is in Alder County."
+          }
+        ],
+        "current_question": "What is the seat of the county containing Wren?",
+        "retrieval_question": "What is the seat of Cedar County?",
+        "passages": [
+          "Wren is in Alder County. Alder County's seat is Brook. Cedar County's seat is Dune."
+        ]
+      },
+      "expected_behavior": "Brook, preserving the original descriptive target.",
+      "forbidden_inference": "Answer Dune solely because it answers the search question.",
+      "reason": "Retrieval wording is not the task",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C09_ambiguous_binding",
+      "stage": "rewrite",
+      "input": {
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who wrote Dusk?",
+            "answer": "Two books titled Dusk were written by Lera and Mera, respectively."
+          }
+        ],
+        "current_question": "Where was the author of Dusk born?"
+      },
+      "expected_behavior": "Retain the ambiguous description.",
+      "forbidden_inference": "Choose Lera or Mera without a disambiguating condition.",
+      "reason": "No invented identity",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C10_irrelevant_history",
+      "stage": "rewrite",
+      "input": {
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many species are in genus Aven?",
+            "answer": "Aven has seven species."
+          }
+        ],
+        "current_question": "How many species are in genus Boren?"
+      },
+      "expected_behavior": "Keep the question about Boren.",
+      "forbidden_inference": "Replace Boren with Aven.",
+      "reason": "Independent current task",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C11_known_answer_not_identity",
+      "stage": "rewrite",
+      "input": {
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is Lia's spouse?",
+            "answer": "Lia's spouse is Mio."
+          },
+          {
+            "step_id": 2,
+            "question": "Who is Mio's father?",
+            "answer": "Mio's father is Nio."
+          }
+        ],
+        "current_question": "Who is the father of Lia's spouse?"
+      },
+      "expected_behavior": "Who is the father of Mio?",
+      "forbidden_inference": "Who is Nio?",
+      "reason": "Keep the requested relation even if an answer is already known",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C12_missing_binding",
+      "stage": "rewrite",
+      "input": {
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who directed Pale Road?",
+            "answer": "The director cannot be determined from these passages."
+          }
+        ],
+        "current_question": "When was the director of Pale Road born?"
+      },
+      "expected_behavior": "Retain the current question.",
+      "forbidden_inference": "Substitute Cannot be determined as a person name.",
+      "reason": "Unknown is not an entity",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C13_missing_not_negative",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Is Cedar Fox native to Vela?",
+        "history": [],
+        "current_question": "Is Cedar Fox native to Vela?",
+        "retrieval_question": "Is Cedar Fox native to Vela?",
+        "passages": [
+          "Cedar Fox has reddish fur."
+        ]
+      },
+      "expected_behavior": "Native range is unresolved.",
+      "forbidden_inference": "No, or zero native populations.",
+      "reason": "Absence of evidence",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C14_and_false",
+      "stage": "goal",
+      "input": {
+        "original_question": "Are both Arven and Birven publicly owned?",
+        "history": [],
+        "retrieval_question": "Are both Arven and Birven publicly owned?",
+        "passages": [
+          "Arven is not publicly owned. Birven's ownership is not documented."
+        ]
+      },
+      "expected_behavior": "No; Arven falsifies the conjunction.",
+      "forbidden_inference": "Require Birven's ownership before answering.",
+      "reason": "Decisive Boolean condition",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C15_or_true",
+      "stage": "goal",
+      "input": {
+        "original_question": "Is at least one of Arven and Birven publicly owned?",
+        "history": [],
+        "retrieval_question": "Is at least one of Arven and Birven publicly owned?",
+        "passages": [
+          "Arven is publicly owned. Birven's ownership is not documented."
+        ]
+      },
+      "expected_behavior": "Yes.",
+      "forbidden_inference": "Abstain because Birven is unknown.",
+      "reason": "Decisive Boolean condition",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C16_and_unknown",
+      "stage": "goal",
+      "input": {
+        "original_question": "Are both Arven and Birven publicly owned?",
+        "history": [],
+        "retrieval_question": "Are both Arven and Birven publicly owned?",
+        "passages": [
+          "Arven is publicly owned. Birven's ownership is not documented."
+        ]
+      },
+      "expected_behavior": "Cannot be determined; Birven remains unknown.",
+      "forbidden_inference": "Yes from only Arven, or No from missing information.",
+      "reason": "Three-valued conjunction",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C17_incomplete_count",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which has more national titles, Aven or Boren?",
+        "history": [],
+        "retrieval_question": "Which has more national titles, Aven or Boren?",
+        "passages": [
+          "Selected national-title years for Aven are 1991 and 1998. Boren has exactly three national titles."
+        ]
+      },
+      "expected_behavior": "The comparison is unresolved.",
+      "forbidden_inference": "Conclude Boren wins because only two Aven titles are listed.",
+      "reason": "Partial list is not a total",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C18_lower_bound",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which has more national titles, Aven or Boren?",
+        "history": [],
+        "retrieval_question": "Which has more national titles, Aven or Boren?",
+        "passages": [
+          "Selected distinct national-title years for Aven are 1991, 1998, 2001 and 2007. Boren has exactly three national titles."
+        ]
+      },
+      "expected_behavior": "Aven; its lower bound of four exceeds three.",
+      "forbidden_inference": "Abstain solely because Aven's exact total is unknown.",
+      "reason": "Sufficient bound",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C19_no_items_not_zero",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "How many species does genus Civen contain?",
+        "history": [],
+        "current_question": "How many species does genus Civen contain?",
+        "retrieval_question": "How many species does genus Civen contain?",
+        "passages": [
+          "Civen has large flowers; no species are enumerated in this excerpt."
+        ]
+      },
+      "expected_behavior": "The count is unresolved.",
+      "forbidden_inference": "Zero species.",
+      "reason": "Missing list versus empty set",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C20_scope_mismatch",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which club has more national titles, Daren or Eren?",
+        "history": [],
+        "retrieval_question": "Which club has more national titles, Daren or Eren?",
+        "passages": [
+          "Daren has thirteen titles across all competitions. Eren has five national titles."
+        ]
+      },
+      "expected_behavior": "National-title comparison is unresolved.",
+      "forbidden_inference": "Compare 13 all-titles with 5 national-titles as equivalent counts.",
+      "reason": "Comparable units and scope",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C21_equal_values",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which tower is taller, Fera or Gera?",
+        "history": [],
+        "retrieval_question": "Which tower is taller, Fera or Gera?",
+        "passages": [
+          "Fera is exactly 80 metres tall. Gera is exactly 80 metres tall."
+        ]
+      },
+      "expected_behavior": "Neither; their stated heights are equal.",
+      "forbidden_inference": "Choose a winner or claim height evidence is missing.",
+      "reason": "Equality is a supported outcome",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C22_coarse_route",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which canal is farther east, Hara or Iara?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "What is Hara's longitude?",
+            "answer": "Its exact longitude is unavailable."
+          },
+          {
+            "step_id": 2,
+            "question": "What is Iara's longitude?",
+            "answer": "Its exact longitude is unavailable."
+          }
+        ],
+        "retrieval_question": "Which canal is farther east, Hara or Iara?",
+        "passages": [
+          "Hara lies entirely in Jara. Iara lies entirely in Kara. Jara lies entirely east of Kara."
+        ]
+      },
+      "expected_behavior": "Hara; no exact longitude is needed.",
+      "forbidden_inference": "Treat failed precision subquestions as proof the root is unanswerable.",
+      "reason": "Alternative sufficient route",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C23_map_back_to_film",
+      "stage": "final",
+      "input": {
+        "original_question": "Which film has the older director, Red Window or Blue Window?",
+        "history": [],
+        "synthesis": {
+          "Facts": "Lena is older than Mina. Lena directed Red Window.",
+          "Link": "The older director is Lena.",
+          "Candidate": "Lena"
+        },
+        "passages": [
+          "Lena directed Red Window and was born in 1940. Mina directed Blue Window and was born in 1950."
+        ]
+      },
+      "expected_behavior": "Red Window.",
+      "forbidden_inference": "Return the intermediate person Lena.",
+      "reason": "Answer type and mapping",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C24_body_beats_wrong_candidate",
+      "stage": "final",
+      "input": {
+        "original_question": "Which hall has more seats, Amber or Bronze?",
+        "history": [],
+        "synthesis": {
+          "Facts": "Amber has 900 seats; Bronze has 1000 seats.",
+          "Link": "Amber has higher total capacity.",
+          "Candidate": "Amber"
+        },
+        "passages": [
+          "Amber has 900 seats and 1200 totalcapacity. Bronze has 1000 seats and 1100 totalcapacity."
+        ]
+      },
+      "expected_behavior": "Bronze.",
+      "forbidden_inference": "Use the total-capacity comparison or repeat Candidate.",
+      "reason": "Final independent attribute check",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C25_goal_only_new_fact",
+      "stage": "final",
+      "input": {
+        "original_question": "Where was the director of Paper Sun born?",
+        "history": [],
+        "synthesis": {
+          "Facts": "The goal retrieval identified Nera's birthplace as Orford.",
+          "Link": "Nera is the requested director.",
+          "Candidate": "Orford"
+        },
+        "passages": [
+          "Paper Sun is a film directed by Nera."
+        ]
+      },
+      "expected_behavior": "Orford, treating the synthesis as usable candidate information.",
+      "forbidden_inference": "Reject the fact solely because root passages do not repeat it; call it independently verified.",
+      "reason": "Do not erase goal supplemental retrieval",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C26_unrequested_ranking",
+      "stage": "final",
+      "input": {
+        "original_question": "Which public posts did Pera hold?",
+        "history": [],
+        "synthesis": {
+          "Facts": "Pera served as mayor of Quen and ambassador to Ruen.",
+          "Link": "Ambassador is more prestigious.",
+          "Candidate": "Ambassador to Ruen"
+        },
+        "passages": [
+          "Pera worked in public service."
+        ]
+      },
+      "expected_behavior": "Mayor of Quen and ambassador to Ruen.",
+      "forbidden_inference": "Invent a prestige filter.",
+      "reason": "Retain relevant alternatives",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C27_truthful_partial_list",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Which novels did Sera write?",
+        "history": [],
+        "current_question": "Which novels did Sera write?",
+        "retrieval_question": "Which novels did Sera write?",
+        "passages": [
+          "Sera wrote Night Garden. This excerpt discusses only one of her novels."
+        ]
+      },
+      "expected_behavior": "State that Sera wrote Night Garden without claiming an exhaustive list.",
+      "forbidden_inference": "Abstain despite a responsive true item, or claim it is the only novel.",
+      "reason": "Correct but partial answer",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C28_no_ordinary_steps",
+      "stage": "goal",
+      "input": {
+        "original_question": "Who designed the Lumen clock?",
+        "history": [],
+        "retrieval_question": "Who designed the Lumen clock?",
+        "passages": [
+          "Tera designed the Lumen clock."
+        ]
+      },
+      "expected_behavior": "Tera by direct evidence.",
+      "forbidden_inference": "Invent missing substeps or require nonempty history.",
+      "reason": "Valid empty decomposition route",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C29_source_attribution",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who painted Distant Shore?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who painted Distant Shore?",
+            "answer": "Ura painted Distant Shore."
+          }
+        ],
+        "current_question": "Who painted Distant Shore?",
+        "retrieval_question": "Who painted Distant Shore?",
+        "passages": [
+          "Distant Shore is displayed in the Vale museum."
+        ]
+      },
+      "expected_behavior": "Distinguish the prior Ura claim from the passage, which only gives display location.",
+      "forbidden_inference": "State that the retrieved passage names Ura as painter.",
+      "reason": "Do not fabricate corroboration",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C30_local_target_vs_root",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Who is Venn's grandfather?",
+        "history": [],
+        "current_question": "Who is the father of the father of the father of Venn?",
+        "retrieval_question": "Who is the father of the father of the father of Venn?",
+        "passages": [
+          "Venn's father is Wern. Wern's father is Xern. Xern's father is Yern."
+        ]
+      },
+      "expected_behavior": "Yern answers the actual current subquestion; keep its relation explicit.",
+      "forbidden_inference": "Silently shorten the current relation to answer the root instead.",
+      "reason": "Local execution is not decomposition repair",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C31_goal_original_target",
+      "stage": "goal",
+      "input": {
+        "original_question": "Who is Venn's grandfather?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is Venn's great-grandfather?",
+            "answer": "Venn's great-grandfather is Yern."
+          }
+        ],
+        "retrieval_question": "Who is Venn's grandfather?",
+        "passages": [
+          "Venn's father is Wern. Wern's father is Xern. Xern's father is Yern."
+        ]
+      },
+      "expected_behavior": "Xern.",
+      "forbidden_inference": "Use the last subanswer Yern as the root answer.",
+      "reason": "Goal answers original task",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C32_exclusion_zero",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "How many members of genus Zera are there other than Zera alba?",
+        "history": [],
+        "current_question": "How many members of genus Zera are there other than Zera alba?",
+        "retrieval_question": "How many members of genus Zera are there other than Zera alba?",
+        "passages": [
+          "Zera has exactly one member species, Zera alba."
+        ]
+      },
+      "expected_behavior": "Zero other species.",
+      "forbidden_inference": "Treat supported zero as uncertainty.",
+      "reason": "Supported exclusion and zero",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C33_units",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which pole is taller, Arco or Berco?",
+        "history": [],
+        "retrieval_question": "Which pole is taller, Arco or Berco?",
+        "passages": [
+          "Arco is 100 feet tall. Berco is 50 metres tall. One foot equals 0.3048 metres."
+        ]
+      },
+      "expected_behavior": "Berco; Arco is 30.48 metres.",
+      "forbidden_inference": "Compare 100 and 50 without conversion.",
+      "reason": "Units before comparison",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C34_frozen_time",
+      "stage": "ordinary",
+      "input": {
+        "original_question": "Which team did Cera play for in 2018?",
+        "history": [],
+        "current_question": "Which team did Cera play for in 2018?",
+        "retrieval_question": "Which team does Cera play for?",
+        "passages": [
+          "Cera played for Dera in 2018 and joined Era in 2020."
+        ]
+      },
+      "expected_behavior": "Dera in 2018.",
+      "forbidden_inference": "Use the later team Era.",
+      "reason": "Requested temporal scope",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C35_literal_hash",
+      "stage": "rewrite",
+      "input": {
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who wrote First Book?",
+            "answer": "Fera wrote First Book."
+          }
+        ],
+        "current_question": "Who wrote the novel titled #9?"
+      },
+      "expected_behavior": "Preserve #9 as a title component.",
+      "forbidden_inference": "Resolve #9 as a step reference without evidence.",
+      "reason": "Symbols are contextual",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C36_name_qualifier",
+      "stage": "final",
+      "input": {
+        "original_question": "Which of the two towns named Glenford is in North Province?",
+        "history": [],
+        "synthesis": {
+          "Facts": "Glenford-on-Mere is the town in North Province.",
+          "Link": "The suffix distinguishes the two towns.",
+          "Candidate": "Glenford"
+        },
+        "passages": [
+          "Glenford-on-Mere is in North Province. Glenford-on-Hill is in South Province."
+        ]
+      },
+      "expected_behavior": "Glenford-on-Mere.",
+      "forbidden_inference": "Drop the required disambiguating suffix.",
+      "reason": "Short yet identifying answer",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C37_new_post_not_required",
+      "stage": "final",
+      "input": {
+        "original_question": "What was Pera's first public post?",
+        "history": [],
+        "synthesis": {
+          "Facts": "Pera held both posts.",
+          "Link": "Both are relevant public positions.",
+          "Candidate": "Mayor of Quen and ambassador to Ruen"
+        },
+        "passages": [
+          "Pera's first public post was mayor of Quen in 1980. Pera later became ambassador to Ruen in 1990."
+        ]
+      },
+      "expected_behavior": "Mayor of Quen.",
+      "forbidden_inference": "Retain every post despite the explicit first condition.",
+      "reason": "Preservation must obey scope",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C38_inconsistent_quantities",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which basin is larger, Hena or Iena?",
+        "history": [],
+        "retrieval_question": "Which basin is larger, Hena or Iena?",
+        "passages": [
+          "Two undated sources put Hena's area at 20 or 40 square kilometres without explaining the difference. Iena's area is 30 square kilometres."
+        ]
+      },
+      "expected_behavior": "The comparison is unresolved unless the conflict can be scoped.",
+      "forbidden_inference": "Average 20 and 40 or choose a convenient source without justification.",
+      "reason": "Unresolved conflict",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C39_scope_resolved_conflict",
+      "stage": "goal",
+      "input": {
+        "original_question": "Which basin had a larger area in 2010, Hena or Iena?",
+        "history": [],
+        "retrieval_question": "Which basin had a larger area in 2010, Hena or Iena?",
+        "passages": [
+          "Hena had 20 square kilometres in 2010 and 40 in 2020. Iena had 30 square kilometres in 2010."
+        ]
+      },
+      "expected_behavior": "Iena.",
+      "forbidden_inference": "Treat different years as an irreconcilable same-scope conflict.",
+      "reason": "Resolve a seeming contradiction by scope",
+      "source": "Authored fictional scenario; not a model result"
+    },
+    {
+      "id": "C40_answer_already_available",
+      "stage": "goal",
+      "input": {
+        "original_question": "Who founded Jera College?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who founded Jera College?",
+            "answer": "Kera founded Jera College."
+          }
+        ],
+        "retrieval_question": "Who founded Jera College?",
+        "passages": []
+      },
+      "expected_behavior": "Use the available candidate answer Kera, without pretending a passage confirmed it.",
+      "forbidden_inference": "Require a redundant new fact or invent additional biography.",
+      "reason": "Prior facts remain usable",
+      "source": "Authored fictional scenario; not a model result"
+    }
+  ]
+}

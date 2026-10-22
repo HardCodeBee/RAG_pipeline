@@ -1,0 +1,77 @@
+{
+  "id": "p02_result_binding_operator_probe_v1_20261022",
+  "utc": "2026-10-22T07:55:30.243265+00:00",
+  "authority": "请你按照你的想法 独立的推进研究 不需要经过我的任何许可",
+  "prior_external_authority": "使用固定90题 直接允许 以后不要询问我",
+  "destination": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "model": "qwen-plus-2025-12-01",
+  "data": "Existing public benchmark questions, frozen retrieved passages/prior QA, synthetic demonstration facts and prompt instructions; no labels, references or ledger in payloads",
+  "scope": "Two exposed component development experiments. No main evaluation, live retrieval, decomposer changes or publication.",
+  "ordinary": {
+    "nodes": 38,
+    "unique_queries": 35,
+    "arms": [
+      "D",
+      "B"
+    ],
+    "D": "Existing E2 descriptive demonstrations",
+    "B": "Same D plus two demonstration-only result extraction/binding notes",
+    "actual_task_unchanged": true,
+    "cap": 128,
+    "formatter": false,
+    "interpretation": "Raw ordinary answer intervention only; correctness and necessary-information review, no downstream F1 claim"
+  },
+  "goal": {
+    "cases": 90,
+    "arms": [
+      "G0",
+      "GF",
+      "GO"
+    ],
+    "G0": "Historical fact-sentence prompt at common512 cap and neutral common final wrapper",
+    "GF": "Compact synthesis instruction plus six matched fact-and-conclusion demonstrations",
+    "GO": "Same GF instruction/facts/conclusions plus six essential-operation sentences",
+    "cap": 512,
+    "final_cap": 64,
+    "formatter": false,
+    "upstream": "Frozen R02/v12, ordinary QA, goal rewrite and reader, final root"
+  },
+  "cache": "Fresh interleaved controls with seed=None; exact current-run duplicates may reuse strict complete receipts; no quality rerolls",
+  "retry": "SDK/HTTP retry0; at most5 durable known technical attempts; typed proved pre-transmission failures recoverable; unknown held without replay",
+  "unknown": "Existing unknown payload digests guarded; each newly ambiguous request held, other unrelated cases may continue",
+  "cost": "Existing ledger/gate; logical input/output tokens and returned usage costs; unknown reserves retained",
+  "limitations": "Exposed and partly stress-selected data; ordinary has 8 stress plus30 existing nodes. GF-GO also changes output demonstration length; no pure reasoning or symbol-necessity claim.",
+  "stop_after": "All346 conditions or documented technical holds; no adaptive prompt changes during this experiment",
+  "main_evaluation_resumed": false,
+  "publication": false,
+  "pins": {
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\DEMOS.frozen.json": "2fb888fc872c911681d9a14db6ce196e7f036a238c278c6eab3386f8a18b43e5",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\EXTERNAL_UNKNOWN.frozen.jsonl": "b22621743b5991643e5d96cd76a19f6e2c54502245f00488f2a14d1e32fcac10",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\GOAL_INSTRUCTION.frozen.txt": "9f36060e8358c3e5b1b8d9588b651d7e76b7fc104d0612f28d68aceedafed2e1",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\HISTORY90.local.frozen.jsonl": "660be65519a8085d7f72dd5cd98c3e446c8a1d3ccbeeef49223daa1ccf046792",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\INPUTS90.frozen.jsonl": "7fcc40bd2b3a73e6ab5e872f93be9d633490c3041d77276f14fa246671f427a8",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\ORDINARY38.frozen.jsonl": "fa9a845386dd1952a1ac3ee75b9ba3a8a5015b8f4ec9d52ff867d2e09d8e7296",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\REFERENCES90.local.frozen.jsonl": "b66fab208907983c39e720e48b50f704521a62905638d3f5800320b592f7f3f9",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\TASKS.frozen.jsonl": "b684d849846700e228290761576b02ea099094e860c11b77637b4121dd8fb8f7",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\run.py": "62771b8da6ad9ae43ecd18875a54cf7fde79fbd13b44970e43ff8737e29c3fbf",
+    "experiments\\query_decomposition\\p02_result_binding_operator_probe_v1_20261022\\templates.py": "776b8c2aab94437e2a615ea87079c4f82b95d6d63a08986a488a1fd0ad7c2e3f",
+    "experiments\\query_decomposition\\p02_reference_binding_priority_probe_v1_20261022\\INPUTS.frozen.jsonl": "fa9a845386dd1952a1ac3ee75b9ba3a8a5015b8f4ec9d52ff867d2e09d8e7296",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\resume.py": "67cf36c20d445da3e935a5b4362b69889dbd4f65c43052c45a4aba333d321a3d",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\run.py": "27a8bd8eb40b9e03a884a2da1272492862bfa333a335184310d83dca94532f67",
+    "experiments\\query_decomposition\\p02_prompt_binding_probe_v1_20261022\\shared_runtime.py": "5c6c5c4914e995bce4a995ebb60ff9acb29517c5e5d77118bd2ac2413091b98e",
+    "experiments\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments\\query_decomposition\\p02_ordinary_fewshot_probe_v1_20261022\\run.py": "c986b504c502d7116120ea089b175a86946e9c70a04dd4403efbbc2bd3f8519f",
+    "src\\p02_multigrain_timing_cachefix_v1\\config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\llm.py": "58a8a09c951df0151a49b6fc710a298a45cf3d8dad163d1c92ee76ca1e3ffa97",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\cache.py": "ffb53f958c60cb7b1cb3854df904f32fea417b3b429525019d1607407bc7f237",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\pipeline.py": "b78e693df0645e4ad165141a17d57a7ca546349313c27ae5bd69e23ae0963b3a"
+  },
+  "hold_pins": {
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
+  }
+}

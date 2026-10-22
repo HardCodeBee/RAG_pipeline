@@ -1,0 +1,1209 @@
+{
+  "scope": "Exposed fixed-reader ordinary nodes, model-assisted review; not full-RAG F1",
+  "nodes": 38,
+  "source_queries": 35,
+  "adjudicated_nodes_per_arm": 37,
+  "pending_nodes_per_arm": 1,
+  "source_hashes": {
+    "initial8": {
+      "labels_sha256": "6612e9d931318642cdd121b15ff8608d086f4a4f153f0480ef9ba3cc681de7a6",
+      "joined_sha256": "2ba0c8a024f0b9e2d9b5ff65e2a18dc198d35ffe09d1039ed430fc0f7474865e"
+    },
+    "supplemental30": {
+      "labels_sha256": "53dc90c41c3b3861c32ad5f92b818b6f6329f964a65afc249ad826a8d138cc82",
+      "joined_sha256": "64e59325e4538ce86d8fba4cdd1e2165c22ff660b77232c5a66d5cc5fe0beef3"
+    }
+  },
+  "by_arm": {
+    "N128": {
+      "complete_raw_response_correctness": {
+        "incorrect": 7,
+        "correct": 30,
+        "pending": 1
+      },
+      "accepted_answer_correctness": {
+        "incorrect": 7,
+        "correct": 30,
+        "pending": 1
+      },
+      "accepted_information": {
+        "misleading": 6,
+        "no_useful_information": 4,
+        "useful_partial": 1,
+        "sufficient_for_current_question": 26,
+        "pending": 1
+      }
+    },
+    "N256": {
+      "complete_raw_response_correctness": {
+        "incorrect": 8,
+        "correct": 29,
+        "pending": 1
+      },
+      "accepted_answer_correctness": {
+        "incorrect": 8,
+        "correct": 29,
+        "pending": 1
+      },
+      "accepted_information": {
+        "misleading": 6,
+        "no_useful_information": 4,
+        "useful_partial": 2,
+        "sufficient_for_current_question": 25,
+        "pending": 1
+      }
+    },
+    "F256": {
+      "complete_raw_response_correctness": {
+        "incorrect": 7,
+        "correct": 30,
+        "pending": 1
+      },
+      "accepted_answer_correctness": {
+        "incorrect": 6,
+        "correct": 31,
+        "pending": 1
+      },
+      "accepted_information": {
+        "misleading": 3,
+        "no_useful_information": 8,
+        "sufficient_for_current_question": 25,
+        "pending": 1,
+        "useful_partial": 1
+      }
+    },
+    "R256": {
+      "complete_raw_response_correctness": {
+        "correct": 31,
+        "incorrect": 6,
+        "pending": 1
+      },
+      "accepted_answer_correctness": {
+        "correct": 32,
+        "incorrect": 5,
+        "pending": 1
+      },
+      "accepted_information": {
+        "sufficient_for_current_question": 26,
+        "no_useful_information": 8,
+        "misleading": 2,
+        "pending": 1,
+        "useful_partial": 1
+      }
+    }
+  },
+  "paired": {
+    "N128_to_N256": {
+      "complete_raw_response_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 0,
+        "harmed": 1,
+        "tied": 36
+      },
+      "accepted_answer_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 0,
+        "harmed": 1,
+        "tied": 36
+      }
+    },
+    "N256_to_F256": {
+      "complete_raw_response_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 1,
+        "harmed": 0,
+        "tied": 36
+      },
+      "accepted_answer_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 2,
+        "harmed": 0,
+        "tied": 35
+      }
+    },
+    "F256_to_R256": {
+      "complete_raw_response_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 2,
+        "harmed": 1,
+        "tied": 34
+      },
+      "accepted_answer_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 1,
+        "harmed": 0,
+        "tied": 36
+      }
+    },
+    "N128_to_F256": {
+      "complete_raw_response_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 1,
+        "harmed": 1,
+        "tied": 35
+      },
+      "accepted_answer_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 2,
+        "harmed": 1,
+        "tied": 34
+      }
+    },
+    "N128_to_R256": {
+      "complete_raw_response_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 3,
+        "harmed": 2,
+        "tied": 32
+      },
+      "accepted_answer_correctness": {
+        "eligible": 37,
+        "pending_or_missing": 1,
+        "improved": 3,
+        "harmed": 1,
+        "tied": 33
+      }
+    }
+  },
+  "separate_batches": {
+    "initial8": {
+      "batch": "initial8",
+      "cases": 8,
+      "candidates": 32,
+      "labels_sha256": "6612e9d931318642cdd121b15ff8608d086f4a4f153f0480ef9ba3cc681de7a6",
+      "review_revision": 2,
+      "revision_note": {
+        "utc": "2026-10-22T09:04:36.475873+00:00",
+        "revision": 2,
+        "parent_review_sha256": "81addf2157e18e6b4641fb2a2914069218c4878bd20dea10526f160be06e36f8",
+        "review_labels_sha256": "6612e9d931318642cdd121b15ff8608d086f4a4f153f0480ef9ba3cc681de7a6",
+        "changed_candidate_ids": [
+          "candidate-decc38cab724c5f3c4bc"
+        ],
+        "changed_axis": "complete_raw_response_correctness only",
+        "accepted_answer_labels_changed": false,
+        "original_first_lock_preserved": true,
+        "correction_identified_before_join_notification": true,
+        "aggregate_arm_counts_delivered_before_revision_write": true,
+        "reason": "Specific false attribution to the actual supplied passages, independently checked against all10 passages; correct underlying Bob pitcher fact locally corroborated. Report original and correction transparently."
+      },
+      "packet_sha256": "aa05316bdb9f52bf0261d2beda3942e49a9e2ee30e3141828a1a7edb3351d6e2",
+      "protocol_sha256": "cff50332cba9489d439e919c9c7386e5f71ff39941cdce51f3938e212b4eed05",
+      "source": "Locked informed model review on exposed ordinary nodes, not independent human gold or complete-RAG F1",
+      "by_arm": {
+        "N128": {
+          "complete_raw_response_correctness": {
+            "incorrect": 6,
+            "correct": 2
+          },
+          "accepted_answer_correctness": {
+            "incorrect": 6,
+            "correct": 2
+          },
+          "accepted_information": {
+            "misleading": 5,
+            "no_useful_information": 3
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        },
+        "N256": {
+          "complete_raw_response_correctness": {
+            "incorrect": 6,
+            "correct": 2
+          },
+          "accepted_answer_correctness": {
+            "incorrect": 6,
+            "correct": 2
+          },
+          "accepted_information": {
+            "misleading": 5,
+            "no_useful_information": 3
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        },
+        "F256": {
+          "complete_raw_response_correctness": {
+            "incorrect": 6,
+            "correct": 2
+          },
+          "accepted_answer_correctness": {
+            "incorrect": 5,
+            "correct": 3
+          },
+          "accepted_information": {
+            "misleading": 3,
+            "no_useful_information": 4,
+            "sufficient_for_current_question": 1
+          },
+          "accepted_correct_but_raw_incorrect": 1
+        },
+        "R256": {
+          "complete_raw_response_correctness": {
+            "correct": 4,
+            "incorrect": 4
+          },
+          "accepted_answer_correctness": {
+            "correct": 4,
+            "incorrect": 4
+          },
+          "accepted_information": {
+            "sufficient_for_current_question": 2,
+            "no_useful_information": 4,
+            "misleading": 2
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        }
+      },
+      "paired": {
+        "N128_to_N256": {
+          "complete_raw_response_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 0,
+            "harmed": 0,
+            "tied": 8
+          },
+          "accepted_answer_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 0,
+            "harmed": 0,
+            "tied": 8
+          },
+          "information_transitions": {
+            "no_useful_information -> no_useful_information": 3,
+            "misleading -> misleading": 5
+          }
+        },
+        "N256_to_F256": {
+          "complete_raw_response_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 0,
+            "harmed": 0,
+            "tied": 8
+          },
+          "accepted_answer_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 1,
+            "harmed": 0,
+            "tied": 7
+          },
+          "information_transitions": {
+            "no_useful_information -> no_useful_information": 3,
+            "misleading -> no_useful_information": 1,
+            "misleading -> misleading": 3,
+            "misleading -> sufficient_for_current_question": 1
+          }
+        },
+        "F256_to_R256": {
+          "complete_raw_response_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 2,
+            "harmed": 0,
+            "tied": 6
+          },
+          "accepted_answer_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 1,
+            "harmed": 0,
+            "tied": 7
+          },
+          "information_transitions": {
+            "no_useful_information -> no_useful_information": 4,
+            "misleading -> misleading": 2,
+            "misleading -> sufficient_for_current_question": 1,
+            "sufficient_for_current_question -> sufficient_for_current_question": 1
+          }
+        },
+        "N128_to_F256": {
+          "complete_raw_response_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 0,
+            "harmed": 0,
+            "tied": 8
+          },
+          "accepted_answer_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 1,
+            "harmed": 0,
+            "tied": 7
+          },
+          "information_transitions": {
+            "no_useful_information -> no_useful_information": 3,
+            "misleading -> no_useful_information": 1,
+            "misleading -> misleading": 3,
+            "misleading -> sufficient_for_current_question": 1
+          }
+        },
+        "N128_to_R256": {
+          "complete_raw_response_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 2,
+            "harmed": 0,
+            "tied": 6
+          },
+          "accepted_answer_correctness": {
+            "eligible": 8,
+            "excluded": 0,
+            "improved": 2,
+            "harmed": 0,
+            "tied": 6
+          },
+          "information_transitions": {
+            "no_useful_information -> no_useful_information": 3,
+            "misleading -> no_useful_information": 1,
+            "misleading -> misleading": 2,
+            "misleading -> sufficient_for_current_question": 2
+          }
+        }
+      },
+      "missing_or_pending_not_forced_incorrect": true,
+      "labels_changed": false,
+      "original_first_review_sensitivity": {
+        "labels_sha256": "81addf2157e18e6b4641fb2a2914069218c4878bd20dea10526f160be06e36f8",
+        "by_arm": {
+          "N128": {
+            "complete_raw_response_correctness": {
+              "incorrect": 6,
+              "correct": 2
+            },
+            "accepted_answer_correctness": {
+              "incorrect": 6,
+              "correct": 2
+            },
+            "accepted_information": {
+              "misleading": 5,
+              "no_useful_information": 3
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "N256": {
+            "complete_raw_response_correctness": {
+              "incorrect": 6,
+              "correct": 2
+            },
+            "accepted_answer_correctness": {
+              "incorrect": 6,
+              "correct": 2
+            },
+            "accepted_information": {
+              "misleading": 5,
+              "no_useful_information": 3
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "F256": {
+            "complete_raw_response_correctness": {
+              "incorrect": 5,
+              "correct": 3
+            },
+            "accepted_answer_correctness": {
+              "incorrect": 5,
+              "correct": 3
+            },
+            "accepted_information": {
+              "misleading": 3,
+              "no_useful_information": 4,
+              "sufficient_for_current_question": 1
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "R256": {
+            "complete_raw_response_correctness": {
+              "correct": 4,
+              "incorrect": 4
+            },
+            "accepted_answer_correctness": {
+              "correct": 4,
+              "incorrect": 4
+            },
+            "accepted_information": {
+              "sufficient_for_current_question": 2,
+              "no_useful_information": 4,
+              "misleading": 2
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          }
+        },
+        "paired": {
+          "N128_to_N256": {
+            "complete_raw_response_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 0,
+              "harmed": 0,
+              "tied": 8
+            },
+            "accepted_answer_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 0,
+              "harmed": 0,
+              "tied": 8
+            },
+            "information_transitions": {
+              "no_useful_information -> no_useful_information": 3,
+              "misleading -> misleading": 5
+            }
+          },
+          "N256_to_F256": {
+            "complete_raw_response_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "accepted_answer_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "information_transitions": {
+              "no_useful_information -> no_useful_information": 3,
+              "misleading -> sufficient_for_current_question": 1,
+              "misleading -> no_useful_information": 1,
+              "misleading -> misleading": 3
+            }
+          },
+          "F256_to_R256": {
+            "complete_raw_response_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "accepted_answer_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "information_transitions": {
+              "no_useful_information -> no_useful_information": 4,
+              "sufficient_for_current_question -> sufficient_for_current_question": 1,
+              "misleading -> sufficient_for_current_question": 1,
+              "misleading -> misleading": 2
+            }
+          },
+          "N128_to_F256": {
+            "complete_raw_response_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "accepted_answer_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 7
+            },
+            "information_transitions": {
+              "no_useful_information -> no_useful_information": 3,
+              "misleading -> sufficient_for_current_question": 1,
+              "misleading -> no_useful_information": 1,
+              "misleading -> misleading": 3
+            }
+          },
+          "N128_to_R256": {
+            "complete_raw_response_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 2,
+              "harmed": 0,
+              "tied": 6
+            },
+            "accepted_answer_correctness": {
+              "eligible": 8,
+              "excluded": 0,
+              "improved": 2,
+              "harmed": 0,
+              "tied": 6
+            },
+            "information_transitions": {
+              "no_useful_information -> no_useful_information": 3,
+              "misleading -> sufficient_for_current_question": 2,
+              "misleading -> no_useful_information": 1,
+              "misleading -> misleading": 2
+            }
+          }
+        }
+      }
+    },
+    "supplemental30": {
+      "batch": "supplemental30",
+      "cases": 30,
+      "candidates": 120,
+      "labels_sha256": "53dc90c41c3b3861c32ad5f92b818b6f6329f964a65afc249ad826a8d138cc82",
+      "review_revision": 2,
+      "revision_note": {
+        "revision": 2,
+        "created_at_utc": "2026-10-22T09:22:01.731955+00:00",
+        "review_labels_file": "REVIEW_LABELS.revision002.jsonl",
+        "review_labels_sha256": "53dc90c41c3b3861c32ad5f92b818b6f6329f964a65afc249ad826a8d138cc82",
+        "packet_sha256": "d701b8e4dad4e5717cf280292f8c09944a5b7bf3c3eebe40ed893edd7d89a7f1",
+        "candidates": 120,
+        "nodes": 30,
+        "method_identity_opened": false,
+        "method_join_performed": false,
+        "labels_locked_before_method_join": true,
+        "prior_labels_file": "REVIEW_LABELS.jsonl",
+        "prior_labels_sha256": "52af353a4e68a015623f91c319edc3981068e9d859c9a0b62d5d8ef7f756db5f",
+        "prior_lock_file": "FIRST_REVIEW_LOCK.json",
+        "prior_lock_sha256": "91f4b562bd63eba860f6dc27d708d72601de810848d8a570aa75de8926395052",
+        "original_first_lock_preserved_unchanged": true,
+        "revision_authority": "Root message clarifying the existing user truthful-coarse-granularity rule; no new model outputs, arm identities or quality scores accessed.",
+        "changed_records": [
+          {
+            "case_id": "case-41bea71a0ec5f409",
+            "candidate_id": "candidate-7e3c3f935642c73afc2e",
+            "before": {
+              "complete_raw_response_correctness": "incorrect",
+              "accepted_answer_correctness": "incorrect",
+              "accepted_information": "useful_partial",
+              "exact_error_or_missing_information": "Chunk1 credits producer Walt Disney personally and distributor RKO. Every accepted answer repeats the personal producer credit without identifying a production company. One Support explicitly turns the Walt Disney person into a producing company and infers corporate equality with Aladdin, an additional entity-role/relationship error. The truthful personal credit in the other responses remains insufficient for the raw company question. Accepted text names the personal producer Walt Disney, not a production company. True related credit and any RKO distribution credit do not answer the requested company."
+            },
+            "after": {
+              "complete_raw_response_correctness": "correct",
+              "accepted_answer_correctness": "correct",
+              "accepted_information": "sufficient_for_current_question",
+              "exact_error_or_missing_information": "Root clarified the existing user rule after first lock but before method join: a truthful coarse Disney production/brand answer is acceptable, so accepted produced by Walt Disney is correct and responsive at that allowed granularity; the personal-name interpretation is retained only as a stricter sensitivity analysis. Do not require the exact legal company suffix. This raw response makes no explicit unsupported corporate-identity/equivalence claim; the producer and optional RKO distribution facts are true, so the whole raw response is accepted as correct under the same coarse-granularity interpretation."
+            }
+          },
+          {
+            "case_id": "case-41bea71a0ec5f409",
+            "candidate_id": "candidate-a268c52e747d79401bcd",
+            "before": {
+              "complete_raw_response_correctness": "incorrect",
+              "accepted_answer_correctness": "incorrect",
+              "accepted_information": "useful_partial",
+              "exact_error_or_missing_information": "Chunk1 credits producer Walt Disney personally and distributor RKO. Every accepted answer repeats the personal producer credit without identifying a production company. One Support explicitly turns the Walt Disney person into a producing company and infers corporate equality with Aladdin, an additional entity-role/relationship error. The truthful personal credit in the other responses remains insufficient for the raw company question. Accepted text names the personal producer Walt Disney, not a production company. True related credit and any RKO distribution credit do not answer the requested company."
+            },
+            "after": {
+              "complete_raw_response_correctness": "correct",
+              "accepted_answer_correctness": "correct",
+              "accepted_information": "sufficient_for_current_question",
+              "exact_error_or_missing_information": "Root clarified the existing user rule after first lock but before method join: a truthful coarse Disney production/brand answer is acceptable, so accepted produced by Walt Disney is correct and responsive at that allowed granularity; the personal-name interpretation is retained only as a stricter sensitivity analysis. Do not require the exact legal company suffix. This raw response makes no explicit unsupported corporate-identity/equivalence claim; the producer and optional RKO distribution facts are true, so the whole raw response is accepted as correct under the same coarse-granularity interpretation."
+            }
+          },
+          {
+            "case_id": "case-41bea71a0ec5f409",
+            "candidate_id": "candidate-c2627b487f7b386444ee",
+            "before": {
+              "complete_raw_response_correctness": "incorrect",
+              "accepted_answer_correctness": "incorrect",
+              "accepted_information": "useful_partial",
+              "exact_error_or_missing_information": "Chunk1 credits producer Walt Disney personally and distributor RKO. Every accepted answer repeats the personal producer credit without identifying a production company. One Support explicitly turns the Walt Disney person into a producing company and infers corporate equality with Aladdin, an additional entity-role/relationship error. The truthful personal credit in the other responses remains insufficient for the raw company question. Accepted text names the personal producer Walt Disney, not a production company. True related credit and any RKO distribution credit do not answer the requested company."
+            },
+            "after": {
+              "complete_raw_response_correctness": "correct",
+              "accepted_answer_correctness": "correct",
+              "accepted_information": "sufficient_for_current_question",
+              "exact_error_or_missing_information": "Root clarified the existing user rule after first lock but before method join: a truthful coarse Disney production/brand answer is acceptable, so accepted produced by Walt Disney is correct and responsive at that allowed granularity; the personal-name interpretation is retained only as a stricter sensitivity analysis. Do not require the exact legal company suffix. This raw response makes no explicit unsupported corporate-identity/equivalence claim; the producer and optional RKO distribution facts are true, so the whole raw response is accepted as correct under the same coarse-granularity interpretation."
+            }
+          },
+          {
+            "case_id": "case-41bea71a0ec5f409",
+            "candidate_id": "candidate-766e0a7441979c9a672b",
+            "before": {
+              "complete_raw_response_correctness": "incorrect",
+              "accepted_answer_correctness": "incorrect",
+              "accepted_information": "useful_partial",
+              "exact_error_or_missing_information": "Chunk1 credits producer Walt Disney personally and distributor RKO. Every accepted answer repeats the personal producer credit without identifying a production company. One Support explicitly turns the Walt Disney person into a producing company and infers corporate equality with Aladdin, an additional entity-role/relationship error. The truthful personal credit in the other responses remains insufficient for the raw company question. Accepted text names the personal producer Walt Disney, not a production company. True related credit and any RKO distribution credit do not answer the requested company. The raw Support also explicitly misclassifies Walt Disney as the producing company and equates corporate production roles; this is an additional whole-response role error even though the accepted sentence alone just repeats the person credit."
+            },
+            "after": {
+              "complete_raw_response_correctness": "incorrect",
+              "accepted_answer_correctness": "correct",
+              "accepted_information": "sufficient_for_current_question",
+              "exact_error_or_missing_information": "Root clarified the existing user rule after first lock but before method join: a truthful coarse Disney production/brand answer is acceptable, so accepted produced by Walt Disney is correct and responsive at that allowed granularity; the personal-name interpretation is retained only as a stricter sensitivity analysis. Do not require the exact legal company suffix. This candidate raw Support independently asserts that the passage identifies a producing company and establishes corporate production equivalence with Aladdin. The quoted passage gives producer Walt Disney, not an explicit corporate-identity/equivalence claim. That stronger source/entity-role attribution remains a whole-raw-response error; it does not make the separately accepted coarse answer false."
+            }
+          }
+        ],
+        "all_other_records_byte_equivalent_as_parsed_records": true,
+        "complete_raw_response_correctness_counts": {
+          "correct": 110,
+          "incorrect": 6,
+          "pending": 4
+        },
+        "accepted_answer_correctness_counts": {
+          "correct": 111,
+          "incorrect": 5,
+          "pending": 4
+        },
+        "accepted_information_counts": {
+          "useful_partial": 5,
+          "sufficient_for_current_question": 99,
+          "no_useful_information": 10,
+          "misleading": 2,
+          "pending": 4
+        },
+        "review_status_counts": {
+          "complete": 116,
+          "pending_work_item_after_material_and_targeted_fact_review": 4
+        },
+        "sensitivity": "The original first-lock strict personal-name/company treatment remains fully preserved and can be reported as sensitivity, not silently overwritten.",
+        "pending_node_ids": [
+          "case-14ac792b2ec7d1f1"
+        ],
+        "new_API_SSH_GPU_calls": 0,
+        "new_model_judge_calls": 0
+      },
+      "packet_sha256": "d701b8e4dad4e5717cf280292f8c09944a5b7bf3c3eebe40ed893edd7d89a7f1",
+      "protocol_sha256": "cff50332cba9489d439e919c9c7386e5f71ff39941cdce51f3938e212b4eed05",
+      "source": "Locked informed model review on exposed ordinary nodes, not independent human gold or complete-RAG F1",
+      "by_arm": {
+        "N128": {
+          "complete_raw_response_correctness": {
+            "correct": 28,
+            "incorrect": 1,
+            "pending": 1
+          },
+          "accepted_answer_correctness": {
+            "correct": 28,
+            "incorrect": 1,
+            "pending": 1
+          },
+          "accepted_information": {
+            "useful_partial": 1,
+            "sufficient_for_current_question": 26,
+            "misleading": 1,
+            "pending": 1,
+            "no_useful_information": 1
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        },
+        "N256": {
+          "complete_raw_response_correctness": {
+            "correct": 27,
+            "incorrect": 2,
+            "pending": 1
+          },
+          "accepted_answer_correctness": {
+            "correct": 27,
+            "incorrect": 2,
+            "pending": 1
+          },
+          "accepted_information": {
+            "useful_partial": 2,
+            "sufficient_for_current_question": 25,
+            "misleading": 1,
+            "pending": 1,
+            "no_useful_information": 1
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        },
+        "F256": {
+          "complete_raw_response_correctness": {
+            "correct": 28,
+            "pending": 1,
+            "incorrect": 1
+          },
+          "accepted_answer_correctness": {
+            "correct": 28,
+            "pending": 1,
+            "incorrect": 1
+          },
+          "accepted_information": {
+            "sufficient_for_current_question": 24,
+            "no_useful_information": 4,
+            "pending": 1,
+            "useful_partial": 1
+          },
+          "accepted_correct_but_raw_incorrect": 0
+        },
+        "R256": {
+          "complete_raw_response_correctness": {
+            "correct": 27,
+            "pending": 1,
+            "incorrect": 2
+          },
+          "accepted_answer_correctness": {
+            "correct": 28,
+            "pending": 1,
+            "incorrect": 1
+          },
+          "accepted_information": {
+            "sufficient_for_current_question": 24,
+            "no_useful_information": 4,
+            "pending": 1,
+            "useful_partial": 1
+          },
+          "accepted_correct_but_raw_incorrect": 1
+        }
+      },
+      "paired": {
+        "N128_to_N256": {
+          "complete_raw_response_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 0,
+            "harmed": 1,
+            "tied": 28
+          },
+          "accepted_answer_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 0,
+            "harmed": 1,
+            "tied": 28
+          },
+          "information_transitions": {
+            "sufficient_for_current_question -> sufficient_for_current_question": 25,
+            "misleading -> misleading": 1,
+            "no_useful_information -> no_useful_information": 1,
+            "sufficient_for_current_question -> useful_partial": 1,
+            "pending -> pending": 1,
+            "useful_partial -> useful_partial": 1
+          }
+        },
+        "N256_to_F256": {
+          "complete_raw_response_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 0,
+            "tied": 28
+          },
+          "accepted_answer_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 0,
+            "tied": 28
+          },
+          "information_transitions": {
+            "sufficient_for_current_question -> sufficient_for_current_question": 23,
+            "misleading -> no_useful_information": 1,
+            "no_useful_information -> no_useful_information": 1,
+            "sufficient_for_current_question -> no_useful_information": 2,
+            "useful_partial -> useful_partial": 1,
+            "pending -> pending": 1,
+            "useful_partial -> sufficient_for_current_question": 1
+          }
+        },
+        "F256_to_R256": {
+          "complete_raw_response_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 0,
+            "harmed": 1,
+            "tied": 28
+          },
+          "accepted_answer_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 0,
+            "harmed": 0,
+            "tied": 29
+          },
+          "information_transitions": {
+            "sufficient_for_current_question -> sufficient_for_current_question": 24,
+            "no_useful_information -> no_useful_information": 4,
+            "useful_partial -> useful_partial": 1,
+            "pending -> pending": 1
+          }
+        },
+        "N128_to_F256": {
+          "complete_raw_response_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 1,
+            "tied": 27
+          },
+          "accepted_answer_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 1,
+            "tied": 27
+          },
+          "information_transitions": {
+            "sufficient_for_current_question -> sufficient_for_current_question": 23,
+            "misleading -> no_useful_information": 1,
+            "no_useful_information -> no_useful_information": 1,
+            "sufficient_for_current_question -> no_useful_information": 2,
+            "sufficient_for_current_question -> useful_partial": 1,
+            "pending -> pending": 1,
+            "useful_partial -> sufficient_for_current_question": 1
+          }
+        },
+        "N128_to_R256": {
+          "complete_raw_response_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 2,
+            "tied": 26
+          },
+          "accepted_answer_correctness": {
+            "eligible": 29,
+            "excluded": 1,
+            "improved": 1,
+            "harmed": 1,
+            "tied": 27
+          },
+          "information_transitions": {
+            "sufficient_for_current_question -> sufficient_for_current_question": 23,
+            "misleading -> no_useful_information": 1,
+            "no_useful_information -> no_useful_information": 1,
+            "sufficient_for_current_question -> no_useful_information": 2,
+            "sufficient_for_current_question -> useful_partial": 1,
+            "pending -> pending": 1,
+            "useful_partial -> sufficient_for_current_question": 1
+          }
+        }
+      },
+      "missing_or_pending_not_forced_incorrect": true,
+      "labels_changed": false,
+      "original_first_review_sensitivity": {
+        "labels_sha256": "52af353a4e68a015623f91c319edc3981068e9d859c9a0b62d5d8ef7f756db5f",
+        "by_arm": {
+          "N128": {
+            "complete_raw_response_correctness": {
+              "correct": 27,
+              "incorrect": 2,
+              "pending": 1
+            },
+            "accepted_answer_correctness": {
+              "correct": 27,
+              "incorrect": 2,
+              "pending": 1
+            },
+            "accepted_information": {
+              "useful_partial": 2,
+              "sufficient_for_current_question": 25,
+              "misleading": 1,
+              "pending": 1,
+              "no_useful_information": 1
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "N256": {
+            "complete_raw_response_correctness": {
+              "correct": 26,
+              "incorrect": 3,
+              "pending": 1
+            },
+            "accepted_answer_correctness": {
+              "correct": 26,
+              "incorrect": 3,
+              "pending": 1
+            },
+            "accepted_information": {
+              "useful_partial": 3,
+              "sufficient_for_current_question": 24,
+              "misleading": 1,
+              "pending": 1,
+              "no_useful_information": 1
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "F256": {
+            "complete_raw_response_correctness": {
+              "correct": 27,
+              "pending": 1,
+              "incorrect": 2
+            },
+            "accepted_answer_correctness": {
+              "correct": 27,
+              "pending": 1,
+              "incorrect": 2
+            },
+            "accepted_information": {
+              "sufficient_for_current_question": 23,
+              "no_useful_information": 4,
+              "pending": 1,
+              "useful_partial": 2
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          },
+          "R256": {
+            "complete_raw_response_correctness": {
+              "correct": 27,
+              "pending": 1,
+              "incorrect": 2
+            },
+            "accepted_answer_correctness": {
+              "correct": 27,
+              "pending": 1,
+              "incorrect": 2
+            },
+            "accepted_information": {
+              "sufficient_for_current_question": 23,
+              "no_useful_information": 4,
+              "pending": 1,
+              "useful_partial": 2
+            },
+            "accepted_correct_but_raw_incorrect": 0
+          }
+        },
+        "paired": {
+          "N128_to_N256": {
+            "complete_raw_response_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 0,
+              "harmed": 1,
+              "tied": 28
+            },
+            "accepted_answer_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 0,
+              "harmed": 1,
+              "tied": 28
+            },
+            "information_transitions": {
+              "sufficient_for_current_question -> sufficient_for_current_question": 24,
+              "misleading -> misleading": 1,
+              "no_useful_information -> no_useful_information": 1,
+              "sufficient_for_current_question -> useful_partial": 1,
+              "pending -> pending": 1,
+              "useful_partial -> useful_partial": 2
+            }
+          },
+          "N256_to_F256": {
+            "complete_raw_response_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 28
+            },
+            "accepted_answer_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 0,
+              "tied": 28
+            },
+            "information_transitions": {
+              "sufficient_for_current_question -> sufficient_for_current_question": 22,
+              "misleading -> no_useful_information": 1,
+              "no_useful_information -> no_useful_information": 1,
+              "sufficient_for_current_question -> no_useful_information": 2,
+              "useful_partial -> useful_partial": 2,
+              "pending -> pending": 1,
+              "useful_partial -> sufficient_for_current_question": 1
+            }
+          },
+          "F256_to_R256": {
+            "complete_raw_response_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 0,
+              "harmed": 0,
+              "tied": 29
+            },
+            "accepted_answer_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 0,
+              "harmed": 0,
+              "tied": 29
+            },
+            "information_transitions": {
+              "sufficient_for_current_question -> sufficient_for_current_question": 23,
+              "no_useful_information -> no_useful_information": 4,
+              "useful_partial -> useful_partial": 2,
+              "pending -> pending": 1
+            }
+          },
+          "N128_to_F256": {
+            "complete_raw_response_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 1,
+              "tied": 27
+            },
+            "accepted_answer_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 1,
+              "tied": 27
+            },
+            "information_transitions": {
+              "sufficient_for_current_question -> sufficient_for_current_question": 22,
+              "misleading -> no_useful_information": 1,
+              "no_useful_information -> no_useful_information": 1,
+              "sufficient_for_current_question -> no_useful_information": 2,
+              "sufficient_for_current_question -> useful_partial": 1,
+              "pending -> pending": 1,
+              "useful_partial -> sufficient_for_current_question": 1,
+              "useful_partial -> useful_partial": 1
+            }
+          },
+          "N128_to_R256": {
+            "complete_raw_response_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 1,
+              "tied": 27
+            },
+            "accepted_answer_correctness": {
+              "eligible": 29,
+              "excluded": 1,
+              "improved": 1,
+              "harmed": 1,
+              "tied": 27
+            },
+            "information_transitions": {
+              "sufficient_for_current_question -> sufficient_for_current_question": 22,
+              "misleading -> no_useful_information": 1,
+              "no_useful_information -> no_useful_information": 1,
+              "sufficient_for_current_question -> no_useful_information": 2,
+              "sufficient_for_current_question -> useful_partial": 1,
+              "pending -> pending": 1,
+              "useful_partial -> sufficient_for_current_question": 1,
+              "useful_partial -> useful_partial": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "runtime": {
+    "utc": "2026-10-22T09:08:53.684329+00:00",
+    "status": "all_attempted",
+    "planned_conditions": 152,
+    "terminal": 152,
+    "held_technical": 0,
+    "attempted": 152,
+    "not_started": 0,
+    "by_arm": {
+      "N128": {
+        "planned": 38,
+        "terminal": 38,
+        "held_technical": 0,
+        "statuses": {
+          "success": 38
+        },
+        "format_failures": 0,
+        "formatter_triggered": 0,
+        "logical_usage": {
+          "prompt_tokens": 85967,
+          "completion_tokens": 689,
+          "total_tokens": 86656
+        },
+        "common_success_n": 38,
+        "common_success_mean_usage": {
+          "prompt_tokens": 2262.2894736842104,
+          "completion_tokens": 18.13157894736842,
+          "total_tokens": 2280.4210526315787
+        },
+        "common_success_mean_component_CNY": 0.0018460947368421055
+      },
+      "N256": {
+        "planned": 38,
+        "terminal": 38,
+        "held_technical": 0,
+        "statuses": {
+          "success": 38
+        },
+        "format_failures": 0,
+        "formatter_triggered": 0,
+        "logical_usage": {
+          "prompt_tokens": 85967,
+          "completion_tokens": 671,
+          "total_tokens": 86638
+        },
+        "common_success_n": 38,
+        "common_success_mean_usage": {
+          "prompt_tokens": 2262.2894736842104,
+          "completion_tokens": 17.657894736842106,
+          "total_tokens": 2279.9473684210525
+        },
+        "common_success_mean_component_CNY": 0.001845147368421053
+      },
+      "F256": {
+        "planned": 38,
+        "terminal": 38,
+        "held_technical": 0,
+        "statuses": {
+          "success": 38
+        },
+        "format_failures": 0,
+        "formatter_triggered": 0,
+        "logical_usage": {
+          "prompt_tokens": 94137,
+          "completion_tokens": 2380,
+          "total_tokens": 96517
+        },
+        "common_success_n": 38,
+        "common_success_mean_usage": {
+          "prompt_tokens": 2477.2894736842104,
+          "completion_tokens": 62.63157894736842,
+          "total_tokens": 2539.9210526315787
+        },
+        "common_success_mean_component_CNY": 0.0021070947368421055
+      },
+      "R256": {
+        "planned": 38,
+        "terminal": 38,
+        "held_technical": 0,
+        "statuses": {
+          "success": 38
+        },
+        "format_failures": 0,
+        "formatter_triggered": 0,
+        "logical_usage": {
+          "prompt_tokens": 96265,
+          "completion_tokens": 3201,
+          "total_tokens": 99466
+        },
+        "common_success_n": 38,
+        "common_success_mean_usage": {
+          "prompt_tokens": 2533.2894736842104,
+          "completion_tokens": 84.23684210526316,
+          "total_tokens": 2617.5263157894738
+        },
+        "common_success_mean_component_CNY": 0.002195105263157894
+      }
+    },
+    "main_evaluation_remains_paused": true,
+    "scope": "OrdinaryQA component only; no final F1. Correctness requires later separate whole-response and accepted-answer review.",
+    "missing_not_zero": true,
+    "engineering_gate": {
+      "passed": true,
+      "status": "engineering_valid_continue_all38",
+      "protocol_sha256": "cff50332cba9489d439e919c9c7386e5f71ff39941cdce51f3938e212b4eed05",
+      "planned_conditions": 32,
+      "stages_checked": 32,
+      "format_failures": 0,
+      "algorithm_failures": 0,
+      "technical_holds": 0,
+      "semantic_quality_not_a_gate": true
+    },
+    "actual_new_returned_usage_CNY": 0.30375080000000004,
+    "unresolved_reserved_CNY": 0.0335616
+  },
+  "main_evaluation_resumed": false,
+  "no_provider_calls": true
+}

@@ -1,0 +1,426 @@
+{
+  "same_three_arm_cases": 86,
+  "table": [
+    {
+      "dataset": "all",
+      "n": 86,
+      "scores": {
+        "native_historical_P02": {
+          "F1": 0.7599223738677621,
+          "EM": 0.6627906976744186
+        },
+        "G2": {
+          "F1": 0.6838289161818573,
+          "EM": 0.5813953488372093
+        },
+        "I": {
+          "F1": 0.698676990166565,
+          "EM": 0.5930232558139535
+        },
+        "F": {
+          "F1": 0.6877786526779402,
+          "EM": 0.5813953488372093
+        }
+      }
+    },
+    {
+      "dataset": "hotpotqa",
+      "n": 26,
+      "scores": {
+        "native_historical_P02": {
+          "F1": 0.8050366300366301,
+          "EM": 0.6923076923076923
+        },
+        "G2": {
+          "F1": 0.7661172161172161,
+          "EM": 0.6538461538461539
+        },
+        "I": {
+          "F1": 0.7600911540566713,
+          "EM": 0.6153846153846154
+        },
+        "F": {
+          "F1": 0.7144562334217507,
+          "EM": 0.5769230769230769
+        }
+      }
+    },
+    {
+      "dataset": "2wiki",
+      "n": 30,
+      "scores": {
+        "native_historical_P02": {
+          "F1": 0.9433333333333334,
+          "EM": 0.9
+        },
+        "G2": {
+          "F1": 0.8300854700854701,
+          "EM": 0.7333333333333333
+        },
+        "I": {
+          "F1": 0.8612820512820514,
+          "EM": 0.7666666666666667
+        },
+        "F": {
+          "F1": 0.9001709401709402,
+          "EM": 0.8
+        }
+      }
+    },
+    {
+      "dataset": "musique",
+      "n": 30,
+      "scores": {
+        "native_historical_P02": {
+          "F1": 0.5374123923891727,
+          "EM": 0.4
+        },
+        "G2": {
+          "F1": 0.46625583566760037,
+          "EM": 0.36666666666666664
+        },
+        "I": {
+          "F1": 0.48284632034632036,
+          "EM": 0.4
+        },
+        "F": {
+          "F1": 0.4522657952069717,
+          "EM": 0.36666666666666664
+        }
+      }
+    }
+  ],
+  "costs_same_cases": {
+    "G2": {
+      "n": 85,
+      "mean_input_tokens": 4706.1882352941175,
+      "mean_output_tokens": 225.68235294117648,
+      "mean_goal_final_CNY": 0.0042163152941176495,
+      "mean_logical_fullflow_CNY": 0.0083348
+    },
+    "I": {
+      "n": 85,
+      "mean_input_tokens": 4908.7411764705885,
+      "mean_output_tokens": 209.21176470588236,
+      "mean_goal_final_CNY": 0.004345416470588235,
+      "mean_logical_fullflow_CNY": 0.00846390117647059
+    },
+    "F": {
+      "n": 85,
+      "mean_input_tokens": 5918.682352941177,
+      "mean_output_tokens": 214.23529411764707,
+      "mean_goal_final_CNY": 0.005163416470588234,
+      "mean_logical_fullflow_CNY": 0.009281901176470592
+    }
+  },
+  "same_three_arm_successful_cost_cases": 85,
+  "algorithm_failures_included_as_zero": [
+    {
+      "id": "musique:4hop3__275416_24325_156850_10557",
+      "dataset": "musique",
+      "arm": "F",
+      "status": "algorithm_failure"
+    }
+  ],
+  "dataset_equal_mean": {
+    "native_historical_P02": {
+      "F1": 0.761927451919712,
+      "EM": 0.6641025641025641
+    },
+    "G2": {
+      "F1": 0.6874861739567621,
+      "EM": 0.5846153846153846
+    },
+    "I": {
+      "F1": 0.7014065085616811,
+      "EM": 0.594017094017094
+    },
+    "F": {
+      "F1": 0.6889643229332209,
+      "EM": 0.5811965811965812
+    }
+  },
+  "paired_against_historical_native_P02": {
+    "G2": {
+      "n": 86,
+      "tied": 68,
+      "harmed": 13,
+      "improved": 5,
+      "mean_F1_delta": -0.07609345768590492
+    },
+    "I": {
+      "n": 86,
+      "tied": 67,
+      "harmed": 13,
+      "improved": 6,
+      "mean_F1_delta": -0.061245383701197156
+    },
+    "F": {
+      "n": 86,
+      "tied": 67,
+      "harmed": 13,
+      "improved": 6,
+      "mean_F1_delta": -0.07214372118982192
+    }
+  },
+  "fresh_actual_CNY": 1.140178,
+  "unknown_reserved_CNY": 0.027652,
+  "old42_unknown_reserved_CNY": 0.0548024,
+  "missing_conditions": [
+    {
+      "id": "hotpotqa:5ae4c01e55429913cc2044f3",
+      "dataset": "hotpotqa",
+      "arm": "I",
+      "status": "external_unknown_held"
+    },
+    {
+      "id": "hotpotqa:5ae4c01e55429913cc2044f3",
+      "dataset": "hotpotqa",
+      "arm": "F",
+      "status": "external_unknown_held"
+    },
+    {
+      "id": "hotpotqa:5aba9e545542994dbf019986",
+      "dataset": "hotpotqa",
+      "arm": "G2",
+      "status": "technical_held"
+    },
+    {
+      "id": "hotpotqa:5ab55455554299488d4d993b",
+      "dataset": "hotpotqa",
+      "arm": "I",
+      "status": "external_unknown_held"
+    },
+    {
+      "id": "hotpotqa:5ab55455554299488d4d993b",
+      "dataset": "hotpotqa",
+      "arm": "F",
+      "status": "external_unknown_held"
+    },
+    {
+      "id": "hotpotqa:5ab4e48655429942dd415f9c",
+      "dataset": "hotpotqa",
+      "arm": "I",
+      "status": "external_unknown_held"
+    },
+    {
+      "id": "hotpotqa:5ab4e48655429942dd415f9c",
+      "dataset": "hotpotqa",
+      "arm": "F",
+      "status": "external_unknown_held"
+    }
+  ],
+  "different_final_text_cases": 26,
+  "paired_F1": {
+    "full90": {
+      "all": {
+        "G2_to_I": {
+          "paired": 86,
+          "tied": 72,
+          "harmed": 7,
+          "improved": 7,
+          "F1_delta": 0.014848073984707794,
+          "EM_delta": 0.011627906976744186
+        },
+        "G2_to_F": {
+          "paired": 86,
+          "tied": 72,
+          "harmed": 8,
+          "improved": 6,
+          "F1_delta": 0.003949736496083022,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 87,
+          "tied": 75,
+          "harmed": 7,
+          "improved": 5,
+          "F1_delta": -0.010773069241629088,
+          "EM_delta": -0.011494252873563218
+        }
+      },
+      "hotpotqa": {
+        "G2_to_I": {
+          "paired": 26,
+          "tied": 21,
+          "harmed": 3,
+          "improved": 2,
+          "F1_delta": -0.006026062060544816,
+          "EM_delta": -0.038461538461538464
+        },
+        "G2_to_F": {
+          "paired": 26,
+          "tied": 21,
+          "harmed": 4,
+          "improved": 1,
+          "F1_delta": -0.05166098269546545,
+          "EM_delta": -0.07692307692307693
+        },
+        "I_to_F": {
+          "paired": 27,
+          "tied": 24,
+          "harmed": 3,
+          "F1_delta": -0.04394473838918284,
+          "EM_delta": -0.037037037037037035
+        }
+      },
+      "2wiki": {
+        "G2_to_I": {
+          "paired": 30,
+          "tied": 28,
+          "harmed": 1,
+          "improved": 1,
+          "F1_delta": 0.0311965811965812,
+          "EM_delta": 0.03333333333333333
+        },
+        "G2_to_F": {
+          "paired": 30,
+          "tied": 26,
+          "harmed": 1,
+          "improved": 3,
+          "F1_delta": 0.07008547008547009,
+          "EM_delta": 0.06666666666666667
+        },
+        "I_to_F": {
+          "paired": 30,
+          "tied": 28,
+          "improved": 2,
+          "F1_delta": 0.03888888888888888,
+          "EM_delta": 0.03333333333333333
+        }
+      },
+      "musique": {
+        "G2_to_I": {
+          "paired": 30,
+          "harmed": 3,
+          "improved": 4,
+          "tied": 23,
+          "F1_delta": 0.01659048467871997,
+          "EM_delta": 0.03333333333333333
+        },
+        "G2_to_F": {
+          "paired": 30,
+          "harmed": 3,
+          "tied": 25,
+          "improved": 2,
+          "F1_delta": -0.0139900404606287,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 30,
+          "tied": 23,
+          "harmed": 4,
+          "improved": 3,
+          "F1_delta": -0.03058052513934868,
+          "EM_delta": -0.03333333333333333
+        }
+      }
+    },
+    "ordinary84": {
+      "all": {
+        "G2_to_I": {
+          "paired": 80,
+          "tied": 68,
+          "harmed": 5,
+          "improved": 7,
+          "F1_delta": 0.019026008713508718,
+          "EM_delta": 0.0125
+        },
+        "G2_to_F": {
+          "paired": 80,
+          "tied": 68,
+          "harmed": 6,
+          "improved": 6,
+          "F1_delta": 0.007310295913237087,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 81,
+          "tied": 69,
+          "harmed": 7,
+          "improved": 5,
+          "F1_delta": -0.011571074370638649,
+          "EM_delta": -0.012345679012345678
+        }
+      },
+      "hotpotqa": {
+        "G2_to_I": {
+          "paired": 23,
+          "tied": 19,
+          "harmed": 2,
+          "improved": 2,
+          "F1_delta": -0.006383712905452023,
+          "EM_delta": -0.043478260869565216
+        },
+        "G2_to_F": {
+          "paired": 23,
+          "tied": 19,
+          "harmed": 3,
+          "improved": 1,
+          "F1_delta": -0.05797101449275363,
+          "EM_delta": -0.08695652173913043
+        },
+        "I_to_F": {
+          "paired": 24,
+          "tied": 21,
+          "harmed": 3,
+          "F1_delta": -0.0494378306878307,
+          "EM_delta": -0.041666666666666664
+        }
+      },
+      "2wiki": {
+        "G2_to_I": {
+          "paired": 29,
+          "tied": 27,
+          "harmed": 1,
+          "improved": 1,
+          "F1_delta": 0.03227232537577365,
+          "EM_delta": 0.034482758620689655
+        },
+        "G2_to_F": {
+          "paired": 29,
+          "tied": 25,
+          "harmed": 1,
+          "improved": 3,
+          "F1_delta": 0.07250221043324492,
+          "EM_delta": 0.06896551724137931
+        },
+        "I_to_F": {
+          "paired": 29,
+          "tied": 27,
+          "improved": 2,
+          "F1_delta": 0.04022988505747126,
+          "EM_delta": 0.034482758620689655
+        }
+      },
+      "musique": {
+        "G2_to_I": {
+          "paired": 28,
+          "improved": 4,
+          "tied": 22,
+          "harmed": 2,
+          "F1_delta": 0.02617888064316636,
+          "EM_delta": 0.03571428571428571
+        },
+        "G2_to_F": {
+          "paired": 28,
+          "tied": 24,
+          "improved": 2,
+          "harmed": 2,
+          "F1_delta": -0.006585967720421506,
+          "EM_delta": 0.0
+        },
+        "I_to_F": {
+          "paired": 28,
+          "harmed": 4,
+          "tied": 21,
+          "improved": 3,
+          "F1_delta": -0.032764848363587874,
+          "EM_delta": -0.03571428571428571
+        }
+      }
+    }
+  },
+  "scope": "Frozen-prefix exposed fixed90; use matched cases and disclose technical holds",
+  "native_historical_reference_protocol_differs": true
+}

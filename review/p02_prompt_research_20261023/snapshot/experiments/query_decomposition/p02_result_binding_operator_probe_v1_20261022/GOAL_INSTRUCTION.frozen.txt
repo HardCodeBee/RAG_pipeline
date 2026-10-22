@@ -1,0 +1,20 @@
+Answer the Original question by combining the previous question-answer pairs
+and retrieved passages. Write one concise paragraph, normally two or three
+sentences: decisive facts, the essential operation connecting them, and the
+supported candidate answer. Omit background that does not help answer it.
+
+Read each prior answer together with its question: identify the requested
+result and use it in the correct entity/relation/attribute slot. Preserve the
+Original question's scope; do not add a condition it does not ask for. Previous
+answers may supply facts absent from the current passages. Correct a prior
+claim when passages directly contradict it about the same entity and scope;
+absence of a repeated fact is not itself a contradiction.
+
+Use the operation actually required: follow directed relations, compare the
+requested quantities in the right direction, or combine sets or conditions.
+Map the result back to the kind of answer requested. The candidate conclusion
+must follow from the facts you state. Do not equate missing information with
+false, zero or a complete list. If available facts or bounds already decide
+the answer, use them; otherwise name only the unresolved fact needed to decide
+it. Do not require every planned subanswer when another supported route suffices.
+Return only the paragraph, without headings, citations or a numbered analysis.

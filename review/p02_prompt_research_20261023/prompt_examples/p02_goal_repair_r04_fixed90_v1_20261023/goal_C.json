@@ -1,0 +1,148 @@
+{
+  "experiment": "p02_goal_repair_r04_fixed90_v1_20261023",
+  "suite": "goal",
+  "arm": "C",
+  "case_id": "2wiki:079947de0baf11ebab90acde48001122",
+  "records": [
+    {
+      "id": "f7f3fbd24acf49479bb28f23057949c1",
+      "stage": "goal|C|2wiki:079947de0baf11ebab90acde48001122/goal",
+      "payload": {
+        "extra_body": {
+          "enable_thinking": false
+        },
+        "max_tokens": 512,
+        "messages": [
+          {
+            "content": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nOriginal question:\nWho is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\n\nRelevant prior question-answer pairs:\n#1 Question: Who is Princess Elisabeth, Duchess Of Hohenberg's spouse?\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse was Franz, Duke of Hohenberg.\n\n#2 Question: Who is the father of Princess Elisabeth, Duchess Of Hohenberg's spouse?\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse Franz, Duke of Hohenberg's father was Maximilian, Duke of Hohenberg.\n\nCurrent subquestion #3:\nWho is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\n\nRetrieved passages:\n[Chunk 1 | source=Princess Elisabeth, Duchess of Hohenberg, pages=1-1]\nPrincess Elisabeth, Duchess of Hohenberg\nPrincess Elisabeth, Duchess of Hohenberg (Elisabeth Hilda Zita Marie Anna Antonia Friederike Wilhelmine Luise; 22 December 1922 – 22 November 2011) was a Luxembourgian princess. She was a daughter of Grand Duchess Charlotte and her husband, Prince Felix of Bourbon-Parma, the sister of Grand Duke Jean and the aunt of Grand Duke Henri. In 1956 she married Franz, Duke of Hohenberg.\n\n[Chunk 2 | source=Maximilian, Duke of Hohenberg, pages=1-1]\nMaximilian, Duke of Hohenberg\nMaximilian, Duke von Hohenberg (\"Maximilian Karl Franz Michael Hubert Anton Ignatius Joseph Maria\"; 29 September 1902 – 8 January 1962), was the elder son of Archduke Franz Ferdinand of Austria-Hungary and his wife Countess Sophie Chotek von Chotkowa und Wognin, Duchess von Hohenberg. Because his parents' marriage was morganatic, he was excluded from succession to the Austro-Hungarian throne, to which his father was heir presumptive, and to inheritance of any of his father's dynastic titles, income and properties, although not from the archduke's personal estate nor from his mother's property.\n\n[Chunk 3 | source=Princess Elisabeth of Denmark, pages=1-1]\nPrincess Elisabeth of Denmark\nPrincess Elisabeth of Denmark,(\" Elisabeth Caroline- Mathilde Alexandrine Helena Olga Thyra Feodora Estrid Margrethe Désirée\"; 8 May 1935 – 19 June 2018) was the only daughter and eldest child of Hereditary Prince Knud and Hereditary Princess Caroline- Mathilde of Denmark, and a first cousin of the present Danish monarch, Queen Margrethe II.\n\n[Chunk 4 | source=Maximilian II Emanuel, Elector of Bavaria, pages=1-1]\nMaximilian II Emanuel, Elector of Bavaria\nMaximilian II (11 July 1662 – 26 February 1726), also known as Max Emanuel or Maximilian Emanuel, was a Wittelsbach ruler of Bavaria and a \"Prince-elector\" of the Holy Roman Empire. He was also the last governor of the Spanish Netherlands and duke of Luxembourg. An able soldier, his ambition led to conflicts that limited his ultimate dynastic achievements. He was born in Munich to Ferdinand Maria, Elector of Bavaria and Princess Henriette Adelaide of Savoy (d.1676). His maternal grandparents were Victor Amadeus I of Savoy and Christine Marie of France, daughter of King Henri IV.\n\n[Chunk 5 | source=Princess Elisabeth of Denmark, pages=1-1]\nPrincess Elisabeth of Denmark\nPrincess Elisabeth of Denmark, (\"Elisabeth Caroline-Mathilde Alexandrine Helena Olga Thyra Feodora Estrid Margrethe Désirée\"; 8 May 1935 – 19 June 2018) was the only daughter and eldest child of Hereditary Prince Knud and Hereditary Princess Caroline-Mathilde of Denmark, and a first cousin of the present Danish monarch, Queen Margrethe II.\n\n[Chunk 6 | source=Maximilian II Emanuel, Elector of Bavaria, pages=1-1]\nMaximilian II Emanuel, Elector of Bavaria\nMaximilian II( 11 July 1662 – 26 February 1726), also known as Max Emanuel or Maximilian Emanuel, was a Wittelsbach ruler of Bavaria and a\" Prince- elector\" of the Holy Roman Empire. He was also the last governor of the Spanish Netherlands and duke of Luxembourg. An able soldier, his ambition led to conflicts that limited his ultimate dynastic achievements. He was born in Munich to Ferdinand Maria, Elector of Bavaria and Princess Henriette Adelaide of Savoy( d.1676). His maternal grandparents were Victor Amadeus I of Savoy and Christine Marie of France, daughter of King Henri IV.\n\n[Chunk 7 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg (Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 8 | source=Prince Maximilian of Liechtenstein, pages=1-1]\nPrince Maximilian of Liechtenstein\nPrince Maximilian Nicholas Maria of Liechtenstein( born 16 May 1969) is the second son of Prince Hans- Adam II and Princess Marie.\n\n[Chunk 9 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg( Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 10 | source=Prince Maximilian of Liechtenstein, pages=1-1]\nPrince Maximilian of Liechtenstein\nPrince Maximilian Nicholas Maria of Liechtenstein (born 16 May 1969) is the second son of Prince Hans-Adam II and Princess Marie.\n\nFor a combination, make the conclusion consistent with the prior results you use. If direct passage evidence changes a prior result, state that correction in your factual sentence. Equal or unresolved quantities do not justify choosing a winner; counts from incomplete lists are not established real-world totals.\n\nAnswer:",
+            "role": "user"
+          }
+        ],
+        "model": "qwen-plus-2025-12-01",
+        "temperature": 0.0
+      },
+      "status": "success",
+      "started": "2026-10-22T15:23:54.271456+00:00",
+      "completed": "2026-10-22T15:23:54.272961+00:00",
+      "result": {
+        "answer": "Princess Elisabeth, Duchess of Hohenberg's father-in-law was Maximilian, Duke of Hohenberg.",
+        "finish_reason": "stop",
+        "latency_seconds": 1.6256197000620887,
+        "raw_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "annotations": null,
+                "audio": null,
+                "content": "Princess Elisabeth, Duchess of Hohenberg's father-in-law was Maximilian, Duke of Hohenberg.",
+                "function_call": null,
+                "refusal": null,
+                "role": "assistant",
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1792675393,
+          "id": "chatcmpl-1591223d-4aa6-9099-8114-2e97ba3436e2",
+          "model": "qwen-plus-2025-12-01",
+          "moderation": null,
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": null,
+          "usage": {
+            "completion_tokens": 24,
+            "completion_tokens_details": null,
+            "prompt_tokens": 1629,
+            "prompt_tokens_details": null,
+            "total_tokens": 1653
+          }
+        },
+        "refusal": null,
+        "requested_model": "qwen-plus-2025-12-01",
+        "response_id": "chatcmpl-1591223d-4aa6-9099-8114-2e97ba3436e2",
+        "returned_model": "qwen-plus-2025-12-01",
+        "status": "success",
+        "usage": {
+          "completion_tokens": 24,
+          "completion_tokens_details": null,
+          "prompt_tokens": 1629,
+          "prompt_tokens_details": null,
+          "total_tokens": 1653
+        }
+      }
+    },
+    {
+      "id": "ef1e9fe359d64c838f60d20143d9c1b9",
+      "stage": "goal|C|2wiki:079947de0baf11ebab90acde48001122/final",
+      "payload": {
+        "extra_body": {
+          "enable_thinking": false
+        },
+        "max_tokens": 128,
+        "messages": [
+          {
+            "content": "Answer the Original question using the retrieved passages and auxiliary question-answer pairs.\nUse relevant auxiliary answers as intermediate information. When a retrieved passage gives a conflicting fact about the same entity, relation and conditions, use the passage. Do not transfer a fact about another entity or a different comparison to the Original question.\nComplete the relation, comparison or combination requested by the Original question. Missing information does not establish a negative fact, zero or an empty set. If the available information does not support the final answer, return Cannot be determined.\nFor a person, place or organization, use the full identifying name stated in the matching passage. When an auxiliary answer uses a shorter name for the same entity, preserve the fuller source name, including compound surnames and disambiguating suffixes.\n\nWorked examples:\n\nExample 1\nQuestion:\nWhich river does Pack Creek flow into after passing through Spanish Valley?\n\nContext:\n[Chunk 1 | source=Spanish Valley, pages=1-1]\nSpanish Valley\nPack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.\n\nAuxiliary question-answer pairs\n\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado.\n\nFinal short answer: Colorado River\n\nExample 2\nQuestion:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nContext:\n[Chunk 1 | source=Leycesteria, pages=1-1]\nLeycesteria\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\n[Chunk 2 | source=Anigozanthos, pages=1-1]\nAnigozanthos\nAnigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.\n\nAuxiliary question-answer pairs\n\n#1 Question: Is Leycesteria native to Australia?\nAnswer: Leycesteria is native to temperate Asia, not Australia.\n\n#2 Question: Is Anigozanthos native to Australia?\nAnswer: Anigozanthos is native to Australia.\n\n#3 Question: Are both Leycesteria and Anigozanthos native to Australia?\nAnswer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.\n\nFinal short answer: No\n\nExample 3\nQuestion:\nBaraki Barak District is situated in the western part of a province whose capital is what?\n\nContext:\n[Chunk 1 | source=Baraki Barak District, pages=1-1]\nBaraki Barak District\nBaraki Barak District is situated in the western part of Logar Province, Afghanistan.\n\n[Chunk 2 | source=Logar Province, pages=1-1]\nLogar Province\nPuli Alam is the capital of the province.\n\nAuxiliary question-answer pairs\n\n#1 Question: In which province is Baraki Barak District situated?\nAnswer: Baraki Barak District is in Logar Province.\n\n#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?\nAnswer: The capital of Logar Province is Kabul.\n\nFinal short answer: Puli Alam\n\nExample 4\nQuestion:\nWhich has more species, Clianthus or Callicoma?\n\nContext:\n[Chunk 1 | source=Clianthus, pages=1-1]\nClianthus\nClianthus, commonly known as kakabeak (\"Kōwhai ngutukākā\" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.\n\n[Chunk 2 | source=Callicoma, pages=1-1]\nCallicoma\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAuxiliary question-answer pairs\n\n#1 Question: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\n\n#2 Question: How many species does Callicoma contain?\nAnswer: Callicoma contains one species.\n\n#3 Question: Which has more species, Clianthus or Callicoma?\nAnswer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.\n\nFinal short answer: Clianthus\n\nActual task:\n\nOriginal question:\nWho is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\n\nContext:\nAuxiliary question-answer pairs\n\nIntermediate candidate results\n\n#1 Question: Who is Princess Elisabeth, Duchess Of Hohenberg's spouse?\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse was Franz, Duke of Hohenberg.\n\n#2 Question: Who is the father of Princess Elisabeth, Duchess Of Hohenberg's spouse?\nAnswer: Princess Elisabeth, Duchess of Hohenberg's spouse Franz, Duke of Hohenberg's father was Maximilian, Duke of Hohenberg.\n\nCandidate conclusion for the Original question\n\n#3 Question: Who is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\nAnswer: Princess Elisabeth, Duchess of Hohenberg's father-in-law was Maximilian, Duke of Hohenberg.\n\n[Chunk 1 | source=Princess Elisabeth, Duchess of Hohenberg, pages=1-1]\nPrincess Elisabeth, Duchess of Hohenberg\nPrincess Elisabeth, Duchess of Hohenberg (Elisabeth Hilda Zita Marie Anna Antonia Friederike Wilhelmine Luise; 22 December 1922 – 22 November 2011) was a Luxembourgian princess. She was a daughter of Grand Duchess Charlotte and her husband, Prince Felix of Bourbon-Parma, the sister of Grand Duke Jean and the aunt of Grand Duke Henri. In 1956 she married Franz, Duke of Hohenberg.\n\n[Chunk 2 | source=Princess Elisabeth of Denmark, pages=1-1]\nPrincess Elisabeth of Denmark\nPrincess Elisabeth of Denmark,(\" Elisabeth Caroline- Mathilde Alexandrine Helena Olga Thyra Feodora Estrid Margrethe Désirée\"; 8 May 1935 – 19 June 2018) was the only daughter and eldest child of Hereditary Prince Knud and Hereditary Princess Caroline- Mathilde of Denmark, and a first cousin of the present Danish monarch, Queen Margrethe II.\n\n[Chunk 3 | source=Princess Elisabeth of Denmark, pages=1-1]\nPrincess Elisabeth of Denmark\nPrincess Elisabeth of Denmark, (\"Elisabeth Caroline-Mathilde Alexandrine Helena Olga Thyra Feodora Estrid Margrethe Désirée\"; 8 May 1935 – 19 June 2018) was the only daughter and eldest child of Hereditary Prince Knud and Hereditary Princess Caroline-Mathilde of Denmark, and a first cousin of the present Danish monarch, Queen Margrethe II.\n\n[Chunk 4 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg (Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 5 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg( Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 6 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia( 18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse- Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great- great- grandson.\n\n[Chunk 7 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia (18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse-Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great-great-grandson.\n\n[Chunk 8 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria (born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\n[Chunk 9 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria( born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\n[Chunk 10 | source=Elisabeth-Anne de Massy, pages=1-1]\nElisabeth-Anne de Massy\nBaroness Elisabeth-Anne de Massy Noghès (born 13 January 1947) is the daughter of Princess Antoinette of Monaco and Alexandre-Athenase Noghès. She is a first cousin of the reigning Prince Albert II and niece of Rainier III. She is the godmother of Princess Stéphanie of Monaco. Although Elisabeth-Anne was born out of wedlock, her parents married in 1951, thus legitimizing her, and placing her in line to the throne. Baroness Elisabeth Anne can represent the Sovereign Prince of Monaco at official events.\n\nFinal response requirements:\nReturn only the requested answer: a name, value, category or brief phrase.\nPreserve the answer's complete identifying name and any qualifier required by the Original question.\nExclude facts describing that answer, such as relatives, locations, events or years, unless they are what the question asks for.\nFor a supported yes/no answer, return exactly Yes or No.\nDo not restate the question, copy a full auxiliary sentence, or add explanation or citations.\nFinal short answer:",
+            "role": "user"
+          }
+        ],
+        "model": "qwen-plus-2025-12-01",
+        "temperature": 0.0
+      },
+      "status": "success",
+      "started": "2026-10-22T15:23:54.278967+00:00",
+      "completed": "2026-10-22T15:23:54.279965+00:00",
+      "result": {
+        "answer": "Maximilian, Duke of Hohenberg",
+        "finish_reason": "stop",
+        "latency_seconds": 1.4212422000709921,
+        "raw_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "annotations": null,
+                "audio": null,
+                "content": "Maximilian, Duke of Hohenberg",
+                "function_call": null,
+                "refusal": null,
+                "role": "assistant",
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1792675396,
+          "id": "chatcmpl-63e6259a-8b00-93b5-8fea-80df07f1e279",
+          "model": "qwen-plus-2025-12-01",
+          "moderation": null,
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": null,
+          "usage": {
+            "completion_tokens": 9,
+            "completion_tokens_details": null,
+            "prompt_tokens": 2386,
+            "prompt_tokens_details": null,
+            "total_tokens": 2395
+          }
+        },
+        "refusal": null,
+        "requested_model": "qwen-plus-2025-12-01",
+        "response_id": "chatcmpl-63e6259a-8b00-93b5-8fea-80df07f1e279",
+        "returned_model": "qwen-plus-2025-12-01",
+        "status": "success",
+        "usage": {
+          "completion_tokens": 9,
+          "completion_tokens_details": null,
+          "prompt_tokens": 2386,
+          "prompt_tokens_details": null,
+          "total_tokens": 2395
+        }
+      }
+    }
+  ]
+}

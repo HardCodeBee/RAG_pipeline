@@ -1,0 +1,57 @@
+{
+  "id": "p02_goal_fewshot_fixed90_v1_20261022",
+  "utc": "2026-10-22T05:43:20.350269+00:00",
+  "decision_id": "P02_GOAL_FEWSHOT_FIXED90_EXPLICIT_NETWORK_AUTH_20261022",
+  "cases": 90,
+  "conditions": 270,
+  "authority": "User explicitly answered the external API/data/spending authorization question: 使用固定90题 直接允许 以后不要询问我",
+  "approved_external_destination": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "approved_model": "qwen-plus-2025-12-01",
+  "approved_data": "Fixed90 public questions, existing retrieved passages and previous QA, exact displayed instructions and four fictional demonstrations; credential only authenticates the existing endpoint",
+  "future_small_experiments": "User requests no repeated permission questions within this approved small-experiment scope; no main resumption or publication authority",
+  "arms": {
+    "G2": "Old synthesis prompt; exact complete payloads reused where present, otherwise generate once",
+    "I": "Displayed revised instructions without examples",
+    "F": "Identical I plus exactly four displayed synthetic examples"
+  },
+  "fixed": "Exactly existing fixed90 order/IDs, actual frozen R02/v12, ordinary QA, goal rewrite/both routes/merged packet, final root/common512 synthesis wrapper, final protocol/model/decoding",
+  "goal_cap": 512,
+  "final_cap": 64,
+  "formatter": false,
+  "empty_decomposition": "Keep all six in full90; separately report ordinary-present84 sensitivity without replacement",
+  "cache": "Full payload exact, stop, nonempty, model identity, valid returned usage; no quality rerolls",
+  "retry": "SDK/HTTP retries0; at most5 durable actual known technical attempts; unknown from old42 or current requests held, never automatically reissued",
+  "external_unknown_guard": {
+    "conditions": 6,
+    "policy": "Retain prior raw receipts/reserves; same payload cannot be submitted by a new directory"
+  },
+  "cost": "Existing shared ledger and serialized gate; input/output tokens, logical stage/fullflow estimate and actual new receipt costs separate; unknown not zero",
+  "measurements": "Native F1/EM and paired gains/ties/losses; no new timing or LLM-call-count metric",
+  "interpretation": "Exposed development fixed90; frozen-prefix goal/final intervention, not fresh complete RAG, independent test, or pure reasoning-text effect",
+  "stop_after": "Fixed270 outcomes or documented technical holds; no adaptive candidate changes or extra sample",
+  "main_evaluation_resumed": false,
+  "publication_authorized": false,
+  "pins": {
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\run.py": "27a8bd8eb40b9e03a884a2da1272492862bfa333a335184310d83dca94532f67",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\INPUTS90.frozen.jsonl": "7fcc40bd2b3a73e6ab5e872f93be9d633490c3041d77276f14fa246671f427a8",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\HISTORY90.local.frozen.jsonl": "660be65519a8085d7f72dd5cd98c3e446c8a1d3ccbeeef49223daa1ccf046792",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\EXTERNAL_UNKNOWN.frozen.jsonl": "a4a01fdbc231c94b5e184da205ea11979047c878371cd8d46eb3019395336802",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\I.frozen.txt": "f8be820c8811e6e9113124b8f461ec9ec7ba50e28b223e266a2a6843edab711b",
+    "experiments\\query_decomposition\\p02_goal_fewshot_fixed90_v1_20261022\\F_EXAMPLES.frozen.txt": "09a7817f998316b9abecd9952da4c45a09abcccff0e17b2fd2ba7b056c3be459",
+    "experiments\\query_decomposition\\p02_goal_fewshot_synthesis_v1_20261022\\templates.py": "79313f5d6e7428274548314840c0bc8f264aeb0c9c66137a603840b863a7010a",
+    "experiments\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments\\query_decomposition\\p02_goal_synthesis_probe_v1_20261022\\run.py": "fcbb0887b45fc6638e6fb5abe53d2e5883079547f1dd9a9ee8b308c65f34984b",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_three_prompts_quick90_v1_20261021\\control90.jsonl": "aed1745290270aa3a5f87dabd65547d54ac150413648e073491bd7259c4a59cf",
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\runtime90.frozen.jsonl": "0b73900c9419d9a0a26516bd889f8efab72b9ea90b8dac96d39331c92e4cc79d",
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\references90.local.frozen.jsonl": "b66fab208907983c39e720e48b50f704521a62905638d3f5800320b592f7f3f9",
+    "src\\p02_multigrain_timing_cachefix_v1\\config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395"
+  },
+  "hold_pins": {
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
+  }
+}

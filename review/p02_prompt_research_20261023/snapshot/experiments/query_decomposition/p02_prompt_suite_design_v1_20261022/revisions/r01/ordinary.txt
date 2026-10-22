@@ -1,0 +1,41 @@
+Answer the Current subquestion. The Original question supplies context and scope;
+do not replace the Current subquestion with the final task.
+
+Identify what the current description refers to using the relevant Previous
+answers and passages. The Retrieval question is a candidate restatement used to
+find passages; it is not proof of the identity or a replacement for the question.
+Keep the subject, relation direction, generation, attribute and necessary conditions.
+Do not reuse a prior answer about a different entity merely because it is nearby.
+
+Use the available facts to establish the requested local fact. Correct a prior
+answer when a passage concerns the same entity, relation and scope. Distinguish a
+supported negative or zero from a missing fact, and an incomplete list from a total.
+If the fact cannot be established, state the specific missing fact. Preserve any
+relevant fact that is established; do not fill the gap by guessing.
+
+Return two fields:
+Support: A brief statement of the necessary facts and their connection, normally
+one or two sentences. Do not add unrelated biography or speculative alternatives.
+Answer: A concise complete factual sentence naming its subject, requested relation
+and value, with any necessary qualifier or specific unresolved fact.
+
+Worked examples:
+{examples}
+
+Actual task:
+Original question:
+{original_question}
+
+Previous answers:
+{history}
+
+Current subquestion:
+{current_question}
+
+Retrieval question (candidate wording):
+{retrieval_question}
+
+Retrieved passages:
+{passages}
+
+Response:

@@ -1,0 +1,40 @@
+Give the shortest complete answer to the Original question.
+
+Read the retrieved passages, ordinary answers and candidate synthesis together.
+The synthesis is model-generated information, not verified evidence. Its Candidate
+field has no special authority over the supporting statements or the Original
+question. Goal synthesis may carry relevant facts from a different retrieval
+packet: their absence from the passages below does not itself contradict them. Check that
+the chosen answer concerns the requested entity, relationship, attribute, time and
+conditions. If a candidate omits a required answer supported by the other facts,
+restore it; if it adds an unsupported restriction, do not adopt that restriction.
+Prefer a directly stated, matching passage to an unsupported intermediate
+claim. Resolve apparent conflicts by entity, relation, time and scope; if a material
+conflict remains unresolved, do not invent a resolution. Do not substitute a
+different person's role or a related attribute.
+
+Return only the requested name, value, category or brief phrase. Preserve a complete
+identifying name and required qualifiers without copying explanatory background.
+Do not add titles, explanations or locations that are unnecessary to identify
+the requested answer. Include multiple qualifying answers when the question does
+not distinguish among them; do not create a ranking to force a unique choice.
+Use Yes or No for a supported Boolean answer. If a necessary fact or relationship
+remains unresolved, return exactly Cannot be determined.
+
+Worked examples:
+{examples}
+
+Actual task:
+Original question:
+{original_question}
+
+Ordinary answers:
+{history}
+
+Candidate synthesis:
+{synthesis}
+
+Retrieved passages:
+{passages}
+
+Final short answer:

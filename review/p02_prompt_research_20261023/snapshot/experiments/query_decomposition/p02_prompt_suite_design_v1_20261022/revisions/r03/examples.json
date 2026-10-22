@@ -1,0 +1,532 @@
+{
+  "authorship": "Synthetic instructional fixtures authored for this design; no API/model outputs or benchmark cases. Names and facts are fictional.",
+  "stages": {
+    "rewrite": [
+      {
+        "id": "family_role",
+        "original_question": "Where was the father of the spouse of Liora Vale born?",
+        "current_question": "Who is the father of the spouse of Liora Vale?",
+        "retrieval_question": "Who is the father of Tomas Reed?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is the spouse of Liora Vale?",
+            "answer": "The spouse of Liora Vale is Tomas Reed."
+          }
+        ],
+        "passages": [
+          "Orin Reed is the father of Tomas Reed. Marek Vale is the father of Liora Vale."
+        ],
+        "output": "Who is the father of Tomas Reed?"
+      },
+      {
+        "id": "seats",
+        "original_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "current_question": "How many seats does Birch Hall have?",
+        "retrieval_question": "How many seats does Birch Hall have?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many seats does Aster Hall have?",
+            "answer": "Aster Hall has 6,000 seats."
+          }
+        ],
+        "passages": [
+          "Aster Hall has a total capacity of 10,000 people and 6,000 seats. Birch Hall has a total capacity of 8,000 people and 7,000 seats."
+        ],
+        "output": "How many seats does Birch Hall have?"
+      },
+      {
+        "id": "missing_binding",
+        "original_question": "Where was the director of Cedar Light born?",
+        "current_question": "Where was the director of Cedar Light born?",
+        "retrieval_question": "Where was the director of Cedar Light born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who directed Cedar Light?",
+            "answer": "The director of Cedar Light cannot be determined from these passages."
+          }
+        ],
+        "passages": [],
+        "output": "Where was the director of Cedar Light born?"
+      },
+      {
+        "id": "keep_question",
+        "original_question": "Who is the father of the spouse of Liora Vale?",
+        "current_question": "Who is the father of the spouse of Liora Vale?",
+        "retrieval_question": "Who is the father of the spouse of Liora Vale?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is the spouse of Liora Vale?",
+            "answer": "Liora Vale's spouse is Tomas Reed."
+          },
+          {
+            "step_id": 2,
+            "question": "Who is Tomas Reed's father?",
+            "answer": "Tomas Reed's father is Orin Reed."
+          }
+        ],
+        "passages": [],
+        "output": "Who is the father of Tomas Reed?"
+      }
+    ],
+    "ordinary": [
+      {
+        "id": "family_role",
+        "original_question": "Where was the father of the spouse of Liora Vale born?",
+        "current_question": "Who is the father of the spouse of Liora Vale?",
+        "retrieval_question": "Who is the father of Tomas Reed?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is the spouse of Liora Vale?",
+            "answer": "The spouse of Liora Vale is Tomas Reed."
+          }
+        ],
+        "passages": [
+          "Orin Reed is the father of Tomas Reed. Marek Vale is the father of Liora Vale."
+        ],
+        "output": {
+          "Support": "The spouse is Tomas Reed. The passage names Orin Reed as Tomas Reed's father, whereas Marek Vale is Liora's father.",
+          "Answer": "The father of Liora Vale's spouse, Tomas Reed, is Orin Reed."
+        }
+      },
+      {
+        "id": "seats",
+        "original_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "current_question": "How many seats does Birch Hall have?",
+        "retrieval_question": "How many seats does Birch Hall have?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many seats does Aster Hall have?",
+            "answer": "Aster Hall has 6,000 seats."
+          }
+        ],
+        "passages": [
+          "Aster Hall has a total capacity of 10,000 people and 6,000 seats. Birch Hall has a total capacity of 8,000 people and 7,000 seats."
+        ],
+        "output": {
+          "Support": "The current question asks for Birch Hall's seats. The passage distinguishes its 7,000 seats from its 8,000-person total capacity.",
+          "Answer": "Birch Hall has 7,000 seats."
+        }
+      },
+      {
+        "id": "incomplete_total",
+        "original_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "current_question": "How many national titles does Elm Club have?",
+        "retrieval_question": "How many national titles does Elm Club have?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many national titles does Cedar Club have?",
+            "answer": "Cedar Club won national titles in 1998 and 2005; these are selected examples, so its total is not established."
+          }
+        ],
+        "passages": [
+          "Elm Club has won exactly three national titles. A selected list of Cedar Club national titles includes 1998 and 2005."
+        ],
+        "output": {
+          "Support": "The passage explicitly gives Elm Club's total as three. Cedar Club's selected list does not establish its total.",
+          "Answer": "Elm Club has won exactly three national titles."
+        }
+      },
+      {
+        "id": "correct_prior",
+        "original_question": "When was the director of Silver Map born?",
+        "current_question": "Who directed Silver Map?",
+        "retrieval_question": "Who is Mira Holt?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who directed Silver Map?",
+            "answer": "Mira Holt directed Silver Map."
+          }
+        ],
+        "passages": [
+          "Silver Map was directed by Len Ames and produced by Mira Holt. Len Ames was born in 1960; Mira Holt was born in 1950."
+        ],
+        "output": {
+          "Support": "The passage names Len Ames as director and Mira Holt as producer, correcting the earlier director claim.",
+          "Answer": "Len Ames directed Silver Map; Mira Holt produced it."
+        }
+      },
+      {
+        "id": "missing_relation",
+        "original_question": "Where was the author of Quiet Harbor born?",
+        "current_question": "Where was the author of Quiet Harbor born?",
+        "retrieval_question": "Where was Seren Pike born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who wrote Quiet Harbor?",
+            "answer": "Seren Pike wrote Quiet Harbor."
+          }
+        ],
+        "passages": [
+          "Seren Pike lived in Riverhaven for twenty years and died in Bayford."
+        ],
+        "output": {
+          "Support": "The passage gives residence and death location, neither of which establishes birthplace.",
+          "Answer": "Seren Pike's birthplace cannot be determined from the available information."
+        }
+      },
+      {
+        "id": "truthful_partial_list",
+        "original_question": "Which novels did Seren Pike write?",
+        "current_question": "Which novels did Seren Pike write?",
+        "retrieval_question": "Which novels did Seren Pike write?",
+        "history": [],
+        "passages": [
+          "Seren Pike wrote Quiet Harbor. This excerpt discusses only one of her novels."
+        ],
+        "output": {
+          "Support": "The passage supplies one responsive novel title but does not claim a complete bibliography.",
+          "Answer": "Seren Pike wrote Quiet Harbor; the available passage does not establish her complete list of novels."
+        }
+      }
+    ],
+    "goal": [
+      {
+        "id": "family_role",
+        "original_question": "Where was the father of the spouse of Liora Vale born?",
+        "current_question": "Where was the father of the spouse of Liora Vale born?",
+        "retrieval_question": "Where was the father of the spouse of Liora Vale born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is the spouse of Liora Vale?",
+            "answer": "The spouse of Liora Vale is Tomas Reed."
+          },
+          {
+            "step_id": 2,
+            "question": "Who is the father of the spouse of Liora Vale?",
+            "answer": "The father of Liora Vale's spouse, Tomas Reed, is Orin Reed."
+          }
+        ],
+        "passages": [
+          "Orin Reed was born in Fenwick. Marek Vale was born in Lydon."
+        ],
+        "output": {
+          "Facts": "Liora Vale's spouse is Tomas Reed; his father is Orin Reed. Orin Reed was born in Fenwick.",
+          "Link": "Follow the spouse relation to Tomas Reed, then the father relation to Orin Reed; the requested birthplace is Orin Reed's.",
+          "Candidate": "Fenwick"
+        }
+      },
+      {
+        "id": "seats",
+        "original_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "current_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "retrieval_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many seats does Aster Hall have?",
+            "answer": "Aster Hall has 6,000 seats."
+          },
+          {
+            "step_id": 2,
+            "question": "How many seats does Birch Hall have?",
+            "answer": "Birch Hall has 7,000 seats."
+          }
+        ],
+        "passages": [
+          "Aster Hall has a total capacity of 10,000 people and 6,000 seats. Birch Hall has a total capacity of 8,000 people and 7,000 seats."
+        ],
+        "output": {
+          "Facts": "Aster Hall has 6,000 seats; Birch Hall has 7,000 seats. Their total capacities are different attributes.",
+          "Link": "7,000 seats is more than 6,000 seats, so Birch Hall has more seats.",
+          "Candidate": "Birch Hall"
+        }
+      },
+      {
+        "id": "incomplete_total",
+        "original_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "current_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "retrieval_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many national titles does Cedar Club have?",
+            "answer": "Cedar Club won national titles in 1998 and 2005; these are selected examples, so its total is not established."
+          },
+          {
+            "step_id": 2,
+            "question": "How many national titles does Elm Club have?",
+            "answer": "Elm Club has won exactly three national titles."
+          }
+        ],
+        "passages": [
+          "Elm Club has won exactly three national titles. A selected list of Cedar Club national titles includes 1998 and 2005."
+        ],
+        "output": {
+          "Facts": "Elm Club has exactly three national titles. Cedar Club has at least two, but the listed years are not an exhaustive total.",
+          "Link": "Cedar Club's total could be below, equal to or above three; the comparison is unresolved.",
+          "Candidate": "Cannot be determined; Cedar Club's national-title total is missing."
+        }
+      },
+      {
+        "id": "sufficient_lower_bound",
+        "original_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "current_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "retrieval_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many national titles does Cedar Club have?",
+            "answer": "Cedar Club won national titles in 1998, 2005, 2009 and 2012; this is a selected list."
+          },
+          {
+            "step_id": 2,
+            "question": "How many national titles does Elm Club have?",
+            "answer": "Elm Club has won exactly three national titles."
+          }
+        ],
+        "passages": [
+          "Elm Club has exactly three national titles. A selected list of Cedar Club national titles includes 1998, 2005, 2009 and 2012."
+        ],
+        "output": {
+          "Facts": "Cedar Club has at least four national titles from four distinct listed years. Elm Club has exactly three.",
+          "Link": "At least four is greater than three, so Cedar Club has more even without an exact total.",
+          "Candidate": "Cedar Club"
+        }
+      },
+      {
+        "id": "alternative_route",
+        "original_question": "Which canal lies farther east, the Eastmere Canal or the Westmere Canal?",
+        "current_question": "Which canal lies farther east, the Eastmere Canal or the Westmere Canal?",
+        "retrieval_question": "Which canal lies farther east, the Eastmere Canal or the Westmere Canal?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "What is the longitude of the Eastmere Canal?",
+            "answer": "The exact longitude of the Eastmere Canal is not available in these passages."
+          },
+          {
+            "step_id": 2,
+            "question": "What is the longitude of the Westmere Canal?",
+            "answer": "The exact longitude of the Westmere Canal is not available in these passages."
+          }
+        ],
+        "passages": [
+          "The Eastmere Canal is entirely in Auraland. The Westmere Canal is entirely in Boraland. All of Auraland lies east of Boraland."
+        ],
+        "output": {
+          "Facts": "The Eastmere Canal is in Auraland and the Westmere Canal is in Boraland. All of Auraland lies east of Boraland.",
+          "Link": "These relative locations establish the east-west order without exact longitudes.",
+          "Candidate": "Eastmere Canal"
+        }
+      },
+      {
+        "id": "correct_prior",
+        "original_question": "When was the director of Silver Map born?",
+        "current_question": "When was the director of Silver Map born?",
+        "retrieval_question": "When was Mira Holt born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who directed Silver Map?",
+            "answer": "Mira Holt directed Silver Map."
+          }
+        ],
+        "passages": [
+          "Silver Map was directed by Len Ames and produced by Mira Holt. Len Ames was born in 1960; Mira Holt was born in 1950."
+        ],
+        "output": {
+          "Facts": "The passage identifies Len Ames as Silver Map's director and gives his birth year as 1960. Mira Holt is its producer, correcting the earlier answer.",
+          "Link": "The original question requests the director's birth year, so Len Ames's date applies despite the retrieval wording naming Mira Holt.",
+          "Candidate": "1960"
+        }
+      },
+      {
+        "id": "multiple_posts",
+        "original_question": "Which public posts did Neral Voss hold?",
+        "current_question": "Which public posts did Neral Voss hold?",
+        "retrieval_question": "Which public posts did Neral Voss hold?",
+        "history": [],
+        "passages": [
+          "Neral Voss was mayor of Selwick and later ambassador to Torvale."
+        ],
+        "output": {
+          "Facts": "Neral Voss served as mayor of Selwick and ambassador to Torvale.",
+          "Link": "Both are public posts held by the named person; the question does not ask for a single highest-ranking post.",
+          "Candidate": "Mayor of Selwick and ambassador to Torvale"
+        }
+      },
+      {
+        "id": "decisive_false",
+        "original_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "current_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "retrieval_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Is Cedar Press publicly owned?",
+            "answer": "Cedar Press is privately owned."
+          },
+          {
+            "step_id": 2,
+            "question": "Is Elm Press publicly owned?",
+            "answer": "Elm Press ownership cannot be determined from the available passages."
+          }
+        ],
+        "passages": [
+          "Cedar Press is privately owned and is not publicly owned."
+        ],
+        "output": {
+          "Facts": "Cedar Press is not publicly owned. Elm Press ownership is unresolved.",
+          "Link": "The claim that both are publicly owned is false because Cedar Press does not satisfy it.",
+          "Candidate": "No"
+        }
+      }
+    ],
+    "final": [
+      {
+        "id": "family_role",
+        "original_question": "Where was the father of the spouse of Liora Vale born?",
+        "current_question": "Where was the father of the spouse of Liora Vale born?",
+        "retrieval_question": "Where was the father of the spouse of Liora Vale born?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Who is the spouse of Liora Vale?",
+            "answer": "The spouse of Liora Vale is Tomas Reed."
+          },
+          {
+            "step_id": 2,
+            "question": "Who is the father of the spouse of Liora Vale?",
+            "answer": "The father of Liora Vale's spouse, Tomas Reed, is Orin Reed."
+          }
+        ],
+        "passages": [
+          "Orin Reed was born in Fenwick. Marek Vale was born in Lydon."
+        ],
+        "output": "Fenwick",
+        "synthesis": {
+          "Facts": "Liora Vale's spouse is Tomas Reed; his father is Orin Reed. Orin Reed was born in Fenwick.",
+          "Link": "Follow the spouse relation to Tomas Reed, then the father relation to Orin Reed; the requested birthplace is Orin Reed's.",
+          "Candidate": "Fenwick"
+        }
+      },
+      {
+        "id": "seats_bad_candidate",
+        "original_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "current_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "retrieval_question": "Which hall, Aster Hall or Birch Hall, has more seats?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many seats does Aster Hall have?",
+            "answer": "Aster Hall has 6,000 seats."
+          },
+          {
+            "step_id": 2,
+            "question": "How many seats does Birch Hall have?",
+            "answer": "Birch Hall has 7,000 seats."
+          }
+        ],
+        "passages": [
+          "Aster Hall has a total capacity of 10,000 people and 6,000 seats. Birch Hall has a total capacity of 8,000 people and 7,000 seats."
+        ],
+        "output": "Birch Hall",
+        "synthesis": {
+          "Facts": "Aster Hall has 6,000 seats; Birch Hall has 7,000 seats. Their total capacities are different attributes.",
+          "Link": "Aster Hall has a larger total capacity.",
+          "Candidate": "Aster Hall"
+        },
+        "perturbation": "Deliberately wrong candidate synthesis for final-only correction demonstration; not presented as a valid goal output."
+      },
+      {
+        "id": "incomplete_total",
+        "original_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "current_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "retrieval_question": "Which club has more national titles, Cedar Club or Elm Club?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "How many national titles does Cedar Club have?",
+            "answer": "Cedar Club won national titles in 1998 and 2005; these are selected examples, so its total is not established."
+          },
+          {
+            "step_id": 2,
+            "question": "How many national titles does Elm Club have?",
+            "answer": "Elm Club has won exactly three national titles."
+          }
+        ],
+        "passages": [
+          "Elm Club has won exactly three national titles. A selected list of Cedar Club national titles includes 1998 and 2005."
+        ],
+        "output": "Cannot be determined",
+        "synthesis": {
+          "Facts": "Elm Club has exactly three national titles. Cedar Club has at least two, but the listed years are not an exhaustive total.",
+          "Link": "Cedar Club's total could be below, equal to or above three; the comparison is unresolved.",
+          "Candidate": "Cannot be determined; Cedar Club's national-title total is missing."
+        }
+      },
+      {
+        "id": "multiple_posts_bad_candidate",
+        "original_question": "Which public posts did Neral Voss hold?",
+        "current_question": "Which public posts did Neral Voss hold?",
+        "retrieval_question": "Which public posts did Neral Voss hold?",
+        "history": [],
+        "passages": [
+          "Neral Voss was a public servant from Selwick."
+        ],
+        "output": "Mayor of Selwick and ambassador to Torvale",
+        "synthesis": {
+          "Facts": "Neral Voss served as mayor of Selwick and ambassador to Torvale.",
+          "Link": "Ambassador is the most prestigious post.",
+          "Candidate": "Ambassador to Torvale"
+        },
+        "perturbation": "Final-only demonstration of an unrequested ranking restriction. Root passages do not repeat the goal-only post facts; this metadata is not rendered.",
+        "goal_reader_provenance_for_review_only": [
+          "Neral Voss was mayor of Selwick and later ambassador to Torvale."
+        ]
+      },
+      {
+        "id": "decisive_false",
+        "original_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "current_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "retrieval_question": "Are both Cedar Press and Elm Press publicly owned?",
+        "history": [
+          {
+            "step_id": 1,
+            "question": "Is Cedar Press publicly owned?",
+            "answer": "Cedar Press is privately owned."
+          },
+          {
+            "step_id": 2,
+            "question": "Is Elm Press publicly owned?",
+            "answer": "Elm Press ownership cannot be determined from the available passages."
+          }
+        ],
+        "passages": [
+          "Cedar Press is privately owned and is not publicly owned."
+        ],
+        "output": "No",
+        "synthesis": {
+          "Facts": "Cedar Press is not publicly owned. Elm Press ownership is unresolved.",
+          "Link": "The claim that both are publicly owned is false because Cedar Press does not satisfy it.",
+          "Candidate": "No"
+        }
+      },
+      {
+        "id": "map_back_to_requested_object",
+        "original_question": "Which film has the older director, Willow Dawn or Stone Dawn?",
+        "history": [],
+        "passages": [
+          "Rena Moss directed Willow Dawn and was born in 1940. Dena Lake directed Stone Dawn and was born in 1950."
+        ],
+        "synthesis": {
+          "Facts": "Rena Moss, born in 1940, directed Willow Dawn. Dena Lake, born in 1950, directed Stone Dawn.",
+          "Link": "Rena Moss was born earlier and is the older director.",
+          "Candidate": "Rena Moss"
+        },
+        "output": "Willow Dawn",
+        "perturbation": "Final-only demonstration: the intermediate person is correct but Candidate has the wrong requested answer type."
+      }
+    ]
+  }
+}

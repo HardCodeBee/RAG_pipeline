@@ -1,0 +1,24 @@
+{
+  "selection": "Exploratory cases noticed in all changed ordinary outputs; outside the fixed18-node sample. No population frequency or accuracy inferred.",
+  "cases": [
+    {
+      "id": "hotpotqa:5a84d2ea5542992a431d1aa8/ordinary/2",
+      "current_question": "What career titles does Fernand Rivers have?",
+      "original_question": "What career titles do Ed Wood and Fernand Rivers share?",
+      "finding": "O1 performs the original question's role intersection and writes a shared Ed Wood/Fernand Rivers answer. O0 stays on Fernand Rivers. The O1 sentence still contains supported local roles, so this is observed scope expansion, not automatically a factual error. Its downstream effect has not been tested.",
+      "category": "local_task_scope_expansion"
+    },
+    {
+      "id": "musique:3hop1__604797_443779_52195/ordinary/2",
+      "current_question": "What country is the country of the country containing Alabio–Timor Leste Commission of Truth and Friendship?",
+      "original_question": "who is the president of newly declared independent country which is the country of the country of Alabio –Timor Leste Commission of Truth and Friendship?",
+      "finding": "O1 introduces President Francisco Guterres from the original task, while the current subquestion asks for a country. The country Timor-Leste remains in the answer, so it is not classified solely as a wrong factual answer. This is evidence of the local/original task boundary being weakened in a malformed decomposition.",
+      "category": "local_task_scope_expansion"
+    },
+    {
+      "id": "hotpotqa:5abce85755429959677d6b3e/ordinary/2",
+      "finding": "O1 spends an extended Support paragraph discussing premiere dates, then reaches the common256-token cap before Answer finishes. Provider finish_reason is length, with usage retained. It is an algorithm failure under the frozen complete-stop protocol and is not resampled. O0 emits an unqualified list whose time scope is itself not established by its packet; engineering success is not a correctness label.",
+      "category": "support_length_competes_with_answer"
+    }
+  ]
+}

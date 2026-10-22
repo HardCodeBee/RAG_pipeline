@@ -1,0 +1,78 @@
+{
+  "experiment": "p02_prompt_suite_r03_stage90_v1_20261022",
+  "suite": "ordinary",
+  "arm": "O0",
+  "case_id": "2wiki:079947de0baf11ebab90acde48001122/ordinary/1",
+  "records": [
+    {
+      "id": "b4a753153f20455398f99cdb72758293",
+      "stage": "ordinary|O0|2wiki:079947de0baf11ebab90acde48001122/ordinary/1/ordinary",
+      "payload": {
+        "extra_body": {
+          "enable_thinking": false
+        },
+        "max_tokens": 256,
+        "messages": [
+          {
+            "content": "Answer the current subquestion using the retrieved passages and the relevant prior question-answer pairs.\nThe original question supplies scope; answer only the current subquestion.\nResolve each #N from its numbered prior question and answer. Prior answers are candidate intermediate results, not verified evidence. Correct them when a retrieved passage directly supports a different fact about the same entity and scope.\nReturn one concise factual sentence preserving the entity, relation and necessary qualifiers. If a needed fact is missing, state what cannot be determined; lack of evidence does not mean no, none, an empty set or zero. Do not add reasoning or citations.\n\nWorked examples:\n\nExample 1\nOriginal question:\nWhat is the length of the river into which Pack Creek runs after it goes through the Spanish Valley?\n\nRelevant prior question-answer pairs:\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado River.\n\nCurrent subquestion #2:\nWhat is the length of #1?\n\nRetrieved passages:\n[Colorado River]\nThe 1450 mi river drains an expansive, arid watershed that encompasses parts of seven U.S. and two Mexican states.\n\nAnswer: The Colorado River is 1450 mi long.\n\nExample 2\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nHow many species does Clianthus contain?\n\nRetrieved passages:\n[Clianthus]\nThey have striking clusters of red flowers which resemble the beak of the kākā, a New Zealand parrot.\n\nAnswer: The total species count of Clianthus cannot be determined from these passages.\n\nExample 3\nOriginal question:\nWhich has more species, Clianthus or Callicoma?\n\nRelevant prior question-answer pairs:\n#1 Question: Which genus contains Callicoma serratifolia?\nAnswer: Callicoma contains Callicoma serratifolia.\n\nCurrent subquestion #2:\nHow many species does #1 contain other than Callicoma serratifolia?\n\nRetrieved passages:\n[Callicoma]\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAnswer: Callicoma contains zero species other than Callicoma serratifolia.\n\nExample 4\nOriginal question:\nAre both Leycesteria and Anigozanthos native to Australia?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nIs Leycesteria native to Australia?\n\nRetrieved passages:\n[Leycesteria]\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\nAnswer: No. Leycesteria is native to temperate Asia, rather than Australia.\n\nActual task:\nOriginal question:\nWho is Princess Elisabeth, Duchess Of Hohenberg's father-in-law?\n\nRelevant prior question-answer pairs:\nNo prior question-answer pairs are required.\n\nCurrent subquestion #1:\nWho is Princess Elisabeth, Duchess Of Hohenberg's spouse?\n\nRetrieved passages:\n[Chunk 1 | source=Princess Elisabeth, Duchess of Hohenberg, pages=1-1]\nPrincess Elisabeth, Duchess of Hohenberg\nPrincess Elisabeth, Duchess of Hohenberg (Elisabeth Hilda Zita Marie Anna Antonia Friederike Wilhelmine Luise; 22 December 1922 – 22 November 2011) was a Luxembourgian princess. She was a daughter of Grand Duchess Charlotte and her husband, Prince Felix of Bourbon-Parma, the sister of Grand Duke Jean and the aunt of Grand Duke Henri. In 1956 she married Franz, Duke of Hohenberg.\n\n[Chunk 2 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg( Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 3 | source=Princess Elisabeth of Luxembourg (1901–1950), pages=1-1]\nPrincess Elisabeth of Luxembourg (1901–1950)\nPrincess Elisabeth of Luxembourg (Elisabeth Marie Wilhelmine; 7 March 1901 – 2 August 1950) was the daughter of William IV, Grand Duke of Luxembourg, and his wife, Infanta Marie Anne of Portugal. In 1922, she married Prince Ludwig Philipp of Thurn and Taxis.\n\n[Chunk 4 | source=Elisabeth zu Fürstenberg, pages=1-1]\nElisabeth zu Fürstenberg\nElisabeth zu Fürstenberg (1767-1822), was a Princess consort of Fürstenberg by marriage to Karl Aloys zu Fürstenberg. She was the regent of the Fürstenberg-Fürstenberg during the minority of her son, Charles Egon II, from 1804 until 1806.\n\n[Chunk 5 | source=Elisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn, pages=1-1]\nElisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn\nElisabeth of Hohenzollern (1 May/29 September 1403 – 31 October 1449), was a German princess member of the House of Hohenzollern and by her two marriages Duchess of Brzeg-Legnica and Cieszyn. She was the eldest daughter of Frederick I, Elector of Brandenburg by his wife Elisabeth, daughter of Frederick, Duke of Bavaria-Landshut.\n\n[Chunk 6 | source=Elisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn, pages=1-1]\nElisabeth of Brandenburg, Duchess of Brzeg-Legnica and Cieszyn\nElisabeth of Hohenzollern( 1 May/ 29 September 1403 – 31 October 1449), was a German princess member of the House of Hohenzollern and by her two marriages Duchess of Brzeg- Legnica and Cieszyn. She was the eldest daughter of Frederick I, Elector of Brandenburg by his wife Elisabeth, daughter of Frederick, Duke of Bavaria- Landshut.\n\n[Chunk 7 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria (born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\n[Chunk 8 | source=Princess Elisabeth, Duchess in Bavaria, pages=1-1]\nPrincess Elisabeth, Duchess in Bavaria\nPrincess Elisabeth, Duchess in Bavaria( born 31 December 1940) is the wife of Prince Max, Duke in Bavaria, heir presumptive to both the former Bavarian Royal House and the Jacobite Succession.\n\n[Chunk 9 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia( 18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse- Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great- great- grandson.\n\n[Chunk 10 | source=Princess Elisabeth of Prussia, pages=1-1]\nPrincess Elisabeth of Prussia\nPrincess Elisabeth of Prussia (18 June 1815 – 21 March 1885) was the second daughter of Prince Wilhelm of Prussia and Landgravine Marie Anna of Hesse-Homburg and a granddaughter of Frederick William II of Prussia. Prince Philip, Duke of Edinburgh is her great-great-grandson.\n\nAnswer:",
+            "role": "user"
+          }
+        ],
+        "model": "qwen-plus-2025-12-01",
+        "temperature": 0.0
+      },
+      "status": "success",
+      "started": "2026-10-22T13:41:04.475271+00:00",
+      "completed": "2026-10-22T13:41:06.018702+00:00",
+      "result": {
+        "answer": "Princess Elisabeth, Duchess of Hohenberg's spouse was Franz, Duke of Hohenberg.",
+        "finish_reason": "stop",
+        "latency_seconds": 1.5367523999884725,
+        "raw_response": {
+          "choices": [
+            {
+              "finish_reason": "stop",
+              "index": 0,
+              "logprobs": null,
+              "message": {
+                "annotations": null,
+                "audio": null,
+                "content": "Princess Elisabeth, Duchess of Hohenberg's spouse was Franz, Duke of Hohenberg.",
+                "function_call": null,
+                "refusal": null,
+                "role": "assistant",
+                "tool_calls": null
+              }
+            }
+          ],
+          "created": 1792676465,
+          "id": "chatcmpl-540b3eb6-3960-9b6f-879e-0f132e1ccb7d",
+          "model": "qwen-plus-2025-12-01",
+          "moderation": null,
+          "object": "chat.completion",
+          "service_tier": null,
+          "system_fingerprint": null,
+          "usage": {
+            "completion_tokens": 21,
+            "completion_tokens_details": null,
+            "prompt_tokens": 1851,
+            "prompt_tokens_details": null,
+            "total_tokens": 1872
+          }
+        },
+        "refusal": null,
+        "requested_model": "qwen-plus-2025-12-01",
+        "response_id": "chatcmpl-540b3eb6-3960-9b6f-879e-0f132e1ccb7d",
+        "returned_model": "qwen-plus-2025-12-01",
+        "status": "success",
+        "usage": {
+          "completion_tokens": 21,
+          "completion_tokens_details": null,
+          "prompt_tokens": 1851,
+          "prompt_tokens_details": null,
+          "total_tokens": 1872
+        }
+      }
+    }
+  ]
+}

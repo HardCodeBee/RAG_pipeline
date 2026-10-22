@@ -1,0 +1,49 @@
+{
+  "rewrite": {
+    "examples": 4,
+    "characters": 2082,
+    "whitespace_words": 321,
+    "actual_fields": [
+      "history",
+      "current_question"
+    ],
+    "not_model_token_count": true
+  },
+  "ordinary": {
+    "examples": 6,
+    "characters": 6236,
+    "whitespace_words": 957,
+    "actual_fields": [
+      "original_question",
+      "history",
+      "current_question",
+      "retrieval_question",
+      "passages"
+    ],
+    "not_model_token_count": true
+  },
+  "goal": {
+    "examples": 8,
+    "characters": 8871,
+    "whitespace_words": 1376,
+    "actual_fields": [
+      "original_question",
+      "history",
+      "retrieval_question",
+      "passages"
+    ],
+    "not_model_token_count": true
+  },
+  "final": {
+    "examples": 6,
+    "characters": 5767,
+    "whitespace_words": 884,
+    "actual_fields": [
+      "original_question",
+      "history",
+      "synthesis",
+      "passages"
+    ],
+    "not_model_token_count": true
+  }
+}

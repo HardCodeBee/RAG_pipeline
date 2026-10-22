@@ -1,0 +1,86 @@
+[
+  {
+    "source_qid": "5ae28c0a554299495565daaa",
+    "question": "Which river does Pack Creek flow into after passing through Spanish Valley?",
+    "context": "[Chunk 1 | source=Spanish Valley, pages=1-1]\nSpanish Valley\nPack Creek flows through Spanish Valley north northwestward into Moab Valley toward its confluence with the Colorado River.\n\nAuxiliary question-answer pairs\n\n#1 Question: Which river does Pack Creek flow into after passing through Spanish Valley?\nAnswer: Pack Creek flows into the Colorado.",
+    "answer": "Colorado River",
+    "qas": [
+      {
+        "step_id": 1,
+        "request": "Which river does Pack Creek flow into after passing through Spanish Valley?",
+        "answer": "Pack Creek flows into the Colorado."
+      }
+    ],
+    "fixture_origin": "same source excerpt as v2; authored short-alias QA for name-preservation teaching, not a runtime output"
+  },
+  {
+    "source_qid": "5ac2cb125542996773102626",
+    "question": "Are both Leycesteria and Anigozanthos native to Australia?",
+    "context": "[Chunk 1 | source=Leycesteria, pages=1-1]\nLeycesteria\nLeycesteria is a genus of flowering plants in the honeysuckle family Caprifoliaceae, native to temperate Asia in the Himalaya and southwestern China.\n\n[Chunk 2 | source=Anigozanthos, pages=1-1]\nAnigozanthos\nAnigozanthos is a small genus of Australian plants in the Bloodwort family Haemodoraceae.\n\nAuxiliary question-answer pairs\n\n#1 Question: Is Leycesteria native to Australia?\nAnswer: Leycesteria is native to temperate Asia, not Australia.\n\n#2 Question: Is Anigozanthos native to Australia?\nAnswer: Anigozanthos is native to Australia.\n\n#3 Question: Are both Leycesteria and Anigozanthos native to Australia?\nAnswer: Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia.",
+    "answer": "No",
+    "qas": [
+      {
+        "step_id": 1,
+        "request": "Is Leycesteria native to Australia?",
+        "answer": "Leycesteria is native to temperate Asia, not Australia."
+      },
+      {
+        "step_id": 2,
+        "request": "Is Anigozanthos native to Australia?",
+        "answer": "Anigozanthos is native to Australia."
+      },
+      {
+        "step_id": 3,
+        "request": "Are both Leycesteria and Anigozanthos native to Australia?",
+        "answer": "Leycesteria and Anigozanthos are not both native to Australia, because Leycesteria is native to temperate Asia."
+      }
+    ],
+    "fixture_origin": "authored teaching fixtures adapted from frozen S02; not runtime answers",
+    "intentional_conflict": null
+  },
+  {
+    "source_qid": "5ae12a4b55429920d52342df",
+    "question": "Baraki Barak District is situated in the western part of a province whose capital is what?",
+    "context": "[Chunk 1 | source=Baraki Barak District, pages=1-1]\nBaraki Barak District\nBaraki Barak District is situated in the western part of Logar Province, Afghanistan.\n\n[Chunk 2 | source=Logar Province, pages=1-1]\nLogar Province\nPuli Alam is the capital of the province.\n\nAuxiliary question-answer pairs\n\n#1 Question: In which province is Baraki Barak District situated?\nAnswer: Baraki Barak District is in Logar Province.\n\n#2 Question: Baraki Barak District is situated in the western part of a province whose capital is what?\nAnswer: The capital of Logar Province is Kabul.",
+    "answer": "Puli Alam",
+    "qas": [
+      {
+        "step_id": 1,
+        "request": "In which province is Baraki Barak District situated?",
+        "answer": "Baraki Barak District is in Logar Province."
+      },
+      {
+        "step_id": 2,
+        "request": "Baraki Barak District is situated in the western part of a province whose capital is what?",
+        "answer": "The capital of Logar Province is Kabul."
+      }
+    ],
+    "fixture_origin": "authored teaching fixtures adapted from frozen S02; not runtime answers",
+    "intentional_conflict": "Kabul contradicts the explicit Puli Alam passage"
+  },
+  {
+    "source_qid": "5a8aee3d55429950cd6afc01",
+    "question": "Which has more species, Clianthus or Callicoma?",
+    "context": "[Chunk 1 | source=Clianthus, pages=1-1]\nClianthus\nClianthus, commonly known as kakabeak (\"Kōwhai ngutukākā\" in Māori), is a genus of flowering plants in the legume family Fabaceae, comprising two species of shrubs native to New Zealand.\n\n[Chunk 2 | source=Callicoma, pages=1-1]\nCallicoma\nCallicoma, is a plant genus that contains just one species, Callicoma serratifolia, a tall shrub or small tree which is native to Australia.\n\nAuxiliary question-answer pairs\n\n#1 Question: How many species does Clianthus contain?\nAnswer: Clianthus contains two species.\n\n#2 Question: How many species does Callicoma contain?\nAnswer: Callicoma contains one species.\n\n#3 Question: Which has more species, Clianthus or Callicoma?\nAnswer: Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one.",
+    "answer": "Clianthus",
+    "qas": [
+      {
+        "step_id": 1,
+        "request": "How many species does Clianthus contain?",
+        "answer": "Clianthus contains two species."
+      },
+      {
+        "step_id": 2,
+        "request": "How many species does Callicoma contain?",
+        "answer": "Callicoma contains one species."
+      },
+      {
+        "step_id": 3,
+        "request": "Which has more species, Clianthus or Callicoma?",
+        "answer": "Clianthus has more species than Callicoma: Clianthus contains two species and Callicoma contains one."
+      }
+    ],
+    "fixture_origin": "authored teaching fixtures adapted from frozen S02; not runtime answers",
+    "intentional_conflict": null
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "approved": true,
+  "utc_recorded": "2026-10-22T05:44:57.282400+00:00",
+  "experiment": "p02_goal_fewshot_fixed90_v1_20261022",
+  "authorization_origin": "Current side conversation, after the explicit side-conversation boundary; not inherited main-thread authorization",
+  "question_presented": "Explicit permission requested to submit fixed questions, retrieved passages, previous QA and displayed prompts/four fictional examples to the existing Qwen API and incur reasonable costs; main evaluation paused and no unknown reissue.",
+  "user_reply_verbatim": "使用固定90题 直接允许 以后不要询问我",
+  "interpretation": "Approves this described external Qwen API data submission and reasonable charges, replaces42 with existing fixed90, and requests no repeated small-scope approval questions",
+  "side_boundary_relevance": "The side boundary allows minimal mutations explicitly requested AFTER that boundary. The user requested the experiment here and then explicitly approved its network execution here. No inherited main task is resumed.",
+  "scope": {
+    "cases": 90,
+    "datasets": {
+      "hotpotqa": 30,
+      "2wiki": 30,
+      "musique": 30
+    },
+    "arms": [
+      "G2",
+      "I",
+      "F"
+    ],
+    "pipeline_changes": "Goal/final only over frozen upstream, no new retrieval/GPU/main evaluation",
+    "destination": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "payload_contents": [
+      "Public dataset question",
+      "Existing retrieved passages",
+      "Existing intermediate subquestion-answer pairs",
+      "Exact displayed instructions and fictional demonstrations"
+    ],
+    "credential_handling": "Existing local credential authenticates only the same endpoint; never printed or included in the experiment prompt",
+    "reasonable_costs_approved": true,
+    "unknown_reissue_approved": false,
+    "publication_approved": false
+  },
+  "protocol_sha256": "d580b39c21a052fbb7d79f40ba540429109bd8116ebaee5559ec10a886e69519"
+}
