@@ -1,0 +1,1008 @@
+{
+  "utc": "2026-10-22T21:01:22.361811+00:00",
+  "status": "plan_only_no_evaluation",
+  "scope": {
+    "main_methods": [
+      "p02_multigrain_timing_cachefix_v1",
+      "b00_rag_top10_v1",
+      "b01_rag_top10_cot3",
+      "b08_qd_rerank",
+      "b02_selfask_dense",
+      "b06_decomp_bge"
+    ],
+    "main_quality_flows": 9000,
+    "qa_raw_queries": 300,
+    "qa_raw_final_conditions": 600,
+    "optional_timing_flows": 900,
+    "qa_raw_output_token_allowance": 32768,
+    "qa_raw_final_prompt": "analysis/narrative_eval_revision007_20261023/qa_raw/PROMPT.txt",
+    "qa_raw_rendering": "exact new template plus cost-only rendering consistent with proposed schema; not an execution renderer"
+  },
+  "unit_prices": {
+    "currency": "CNY",
+    "input_per_million": 0.8,
+    "output_per_million": 2,
+    "basis": "existing frozen project planning rates; no live price re-verification"
+  },
+  "totals": {
+    "old_scorable_count": 6365,
+    "whole_case_reuse_candidates": 3866,
+    "old_changed_configuration_cases": 2499,
+    "conditional_fresh_flow_equivalents": 5134,
+    "quality_proxy_cny": 30.58305380812138,
+    "quality_step_sensitivity_cny": 34.10173999964623,
+    "cold_all500_proxy_cny": 42.75580521333178,
+    "cold_all500_step_sensitivity_cny": 46.27449140485665,
+    "optional_timing50_proxy_cny": 4.27558052133318,
+    "optional_timing50_step_sensitivity_cny": 4.627449140485666,
+    "qa_raw_600_final_conditions_proxy_cny": 1.4255441268800955,
+    "qa_raw_input50pct_mean_output64_scenario_cny": 2.2061898103124804,
+    "necessary_proxy_cny": 32.008597935001475,
+    "necessary_step_sensitivity_cny": 35.527284126526325,
+    "necessary_50pct_main_plus_qa_raw_input50pct_mean_output64_scenario_cny": 53.35879980978182,
+    "no_reuse_credited_proxy_cny": 44.18134934021188,
+    "no_reuse_credited_step_sensitivity_cny": 47.700035531736745,
+    "no_reuse_50pct_main_plus_qa_raw_input50pct_mean_output64_scenario_cny": 71.61792691759746
+  },
+  "main_rows": [
+    {
+      "dataset": "hotpotqa",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_config": "native frozen P02; new shared execution layer pending",
+      "old_scorable_count": 283,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 283,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 217,
+      "historical_mean_cny": 0.005673382332155477,
+      "historical_basis": "same_dataset_historical_p02_complete_usage",
+      "historical_n": 283,
+      "quality_proxy_cny": 1.2311239660777384,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 1.2311239660777384,
+      "cold_all500_proxy_cny": 2.8366911660777383,
+      "cold_all500_step_sensitivity_cny": 2.8366911660777383,
+      "optional_timing50_proxy_cny": 0.28366911660777383,
+      "optional_timing50_step_sensitivity_cny": 0.28366911660777383
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 500,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 0,
+      "historical_mean_cny": 0.0010398616000000004,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "quality_proxy_cny": 0.0,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0,
+      "cold_all500_proxy_cny": 0.5199308000000002,
+      "cold_all500_step_sensitivity_cny": 0.5199308000000002,
+      "optional_timing50_proxy_cny": 0.05199308000000002,
+      "optional_timing50_step_sensitivity_cny": 0.05199308000000002
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "old_scorable_count": 499,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 499,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 1,
+      "historical_mean_cny": 0.0031651358717434833,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "quality_proxy_cny": 0.0031651358717434833,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0031651358717434833,
+      "cold_all500_proxy_cny": 1.5825679358717417,
+      "cold_all500_step_sensitivity_cny": 1.5825679358717417,
+      "optional_timing50_proxy_cny": 0.15825679358717418,
+      "optional_timing50_step_sensitivity_cny": 0.15825679358717418
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "old_config": {
+        "id": "standalone5",
+        "max_queries": 5
+      },
+      "old_scorable_count": 499,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 499,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 1,
+      "historical_mean_cny": 0.0013211198396793598,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "quality_proxy_cny": 0.0013211198396793598,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0013211198396793598,
+      "cold_all500_proxy_cny": 0.6605599198396799,
+      "cold_all500_step_sensitivity_cny": 0.6605599198396799,
+      "optional_timing50_proxy_cny": 0.066055991983968,
+      "optional_timing50_step_sensitivity_cny": 0.066055991983968
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "old_config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 500,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.004643483999999996,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "quality_proxy_cny": 2.321741999999998,
+      "step_limit_sensitivity_factor": 1.6666666666666667,
+      "quality_step_sensitivity_cny": 3.8695699999999973,
+      "cold_all500_proxy_cny": 2.321741999999998,
+      "cold_all500_step_sensitivity_cny": 3.8695699999999973,
+      "optional_timing50_proxy_cny": 0.23217419999999983,
+      "optional_timing50_step_sensitivity_cny": 0.3869569999999997
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "old_config": {
+        "id": "k4_cot",
+        "k": 4,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 500,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.0070958463999999995,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "quality_proxy_cny": 3.5479231999999996,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 3.5479231999999996,
+      "cold_all500_proxy_cny": 3.5479231999999996,
+      "cold_all500_step_sensitivity_cny": 3.5479231999999996,
+      "optional_timing50_proxy_cny": 0.35479232,
+      "optional_timing50_step_sensitivity_cny": 0.35479232
+    },
+    {
+      "dataset": "2wiki",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_config": "native frozen P02; new shared execution layer pending",
+      "old_scorable_count": 498,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 498,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 2,
+      "historical_mean_cny": 0.008559791164658622,
+      "historical_basis": "same_dataset_historical_p02_complete_usage",
+      "historical_n": 498,
+      "quality_proxy_cny": 0.017119582329317245,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.017119582329317245,
+      "cold_all500_proxy_cny": 4.279895582329311,
+      "cold_all500_step_sensitivity_cny": 4.279895582329311,
+      "optional_timing50_proxy_cny": 0.4279895582329311,
+      "optional_timing50_step_sensitivity_cny": 0.4279895582329311
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 500,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 0,
+      "historical_mean_cny": 0.0014627712000000008,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "quality_proxy_cny": 0.0,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0,
+      "cold_all500_proxy_cny": 0.7313856000000004,
+      "cold_all500_step_sensitivity_cny": 0.7313856000000004,
+      "optional_timing50_proxy_cny": 0.07313856000000005,
+      "optional_timing50_step_sensitivity_cny": 0.07313856000000005
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 500,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 0,
+      "historical_mean_cny": 0.0036254052104208417,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "quality_proxy_cny": 0.0,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0,
+      "cold_all500_proxy_cny": 1.812702605210421,
+      "cold_all500_step_sensitivity_cny": 1.812702605210421,
+      "optional_timing50_proxy_cny": 0.1812702605210421,
+      "optional_timing50_step_sensitivity_cny": 0.1812702605210421
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "old_config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 500,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.0018087440000000019,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "quality_proxy_cny": 0.904372000000001,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.904372000000001,
+      "cold_all500_proxy_cny": 0.904372000000001,
+      "cold_all500_step_sensitivity_cny": 0.904372000000001,
+      "optional_timing50_proxy_cny": 0.09043720000000009,
+      "optional_timing50_step_sensitivity_cny": 0.09043720000000009
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "old_config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "old_scorable_count": 500,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 500,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.007184208416833659,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "quality_proxy_cny": 3.5921042084168295,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 3.5921042084168295,
+      "cold_all500_proxy_cny": 3.5921042084168295,
+      "cold_all500_step_sensitivity_cny": 3.5921042084168295,
+      "optional_timing50_proxy_cny": 0.3592104208416829,
+      "optional_timing50_step_sensitivity_cny": 0.3592104208416829
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "old_config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "old_scorable_count": 499,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 499,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.010284530661322637,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "quality_proxy_cny": 5.142265330661319,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 5.142265330661319,
+      "cold_all500_proxy_cny": 5.142265330661319,
+      "cold_all500_step_sensitivity_cny": 5.142265330661319,
+      "optional_timing50_proxy_cny": 0.5142265330661319,
+      "optional_timing50_step_sensitivity_cny": 0.5142265330661319
+    },
+    {
+      "dataset": "musique",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_config": "native frozen P02; new shared execution layer pending",
+      "old_scorable_count": 0,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.008257268,
+      "historical_basis": "same_dataset_native_P02_dev100_logical_usage_proxy",
+      "historical_n": 100,
+      "quality_proxy_cny": 4.128634,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 4.128634,
+      "cold_all500_proxy_cny": 4.128634,
+      "cold_all500_step_sensitivity_cny": 4.128634,
+      "optional_timing50_proxy_cny": 0.4128634,
+      "optional_timing50_step_sensitivity_cny": 0.4128634
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "old_scorable_count": 498,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 498,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 2,
+      "historical_mean_cny": 0.0013125590361445787,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 498,
+      "quality_proxy_cny": 0.0026251180722891574,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.0026251180722891574,
+      "cold_all500_proxy_cny": 0.6562795180722893,
+      "cold_all500_step_sensitivity_cny": 0.6562795180722893,
+      "optional_timing50_proxy_cny": 0.06562795180722894,
+      "optional_timing50_step_sensitivity_cny": 0.06562795180722894
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "old_config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "old_scorable_count": 89,
+      "configuration_change_requires_recompute": false,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 89,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 411,
+      "historical_mean_cny": 0.0039111595505617975,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 89,
+      "quality_proxy_cny": 1.6074865752808989,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 1.6074865752808989,
+      "cold_all500_proxy_cny": 1.9555797752808988,
+      "cold_all500_step_sensitivity_cny": 1.9555797752808988,
+      "optional_timing50_proxy_cny": 0.19555797752808987,
+      "optional_timing50_step_sensitivity_cny": 0.19555797752808987
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "old_config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "old_scorable_count": 0,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.0015651759759759776,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "quality_proxy_cny": 0.7825879879879888,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 0.7825879879879888,
+      "cold_all500_proxy_cny": 0.7825879879879888,
+      "cold_all500_step_sensitivity_cny": 0.7825879879879888,
+      "optional_timing50_proxy_cny": 0.07825879879879888,
+      "optional_timing50_step_sensitivity_cny": 0.07825879879879888
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "old_config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "old_scorable_count": 0,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.005912574574574568,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "quality_proxy_cny": 2.956287287287284,
+      "step_limit_sensitivity_factor": 1.6666666666666667,
+      "quality_step_sensitivity_cny": 4.92714547881214,
+      "cold_all500_proxy_cny": 2.956287287287284,
+      "cold_all500_step_sensitivity_cny": 4.92714547881214,
+      "optional_timing50_proxy_cny": 0.2956287287287284,
+      "optional_timing50_step_sensitivity_cny": 0.49271454788121405
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "old_config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "old_scorable_count": 0,
+      "configuration_change_requires_recompute": true,
+      "old_changed_configuration_cases": 0,
+      "whole_case_reuse_candidates": 0,
+      "strict_reuse_verified": false,
+      "conditional_fresh_flow_equivalents": 500,
+      "historical_mean_cny": 0.00868859259259259,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "quality_proxy_cny": 4.344296296296295,
+      "step_limit_sensitivity_factor": 1.0,
+      "quality_step_sensitivity_cny": 4.344296296296295,
+      "cold_all500_proxy_cny": 4.344296296296295,
+      "cold_all500_step_sensitivity_cny": 4.344296296296295,
+      "optional_timing50_proxy_cny": 0.4344296296296295,
+      "optional_timing50_step_sensitivity_cny": 0.4344296296296295
+    }
+  ],
+  "baseline_inventory": [
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 470,
+        "algorithm_failure": 30
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k4_cot",
+        "k": 4,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 445,
+        "algorithm_failure": 55
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone5",
+        "max_queries": 5
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b01_rag_top10_cot3\\391186b00bdb11eba7f7acde48001122\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 382,
+        "algorithm_failure": 118
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b02_selfask_dense\\75e5c06d087811ebbd67ac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 442,
+        "algorithm_failure": 57,
+        "failed": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b06_decomp_bge\\e4a48f9408c111ebbd8bac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 498,
+      "statuses": {
+        "success": 498,
+        "failed": 2
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 89,
+      "scorable": 89,
+      "statuses": {
+        "success": 89
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    }
+  ],
+  "baseline_checkpoint_cost_mean_checks": [
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 500,
+      "mean_cny": 0.0010398616000000004,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 499,
+      "mean_cny": 0.0031651358717434863,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 500,
+      "mean_cny": 0.004643484000000001,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 500,
+      "mean_cny": 0.007095846399999997,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 499,
+      "mean_cny": 0.0013211198396793592,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 500,
+      "mean_cny": 0.0014627712000000008,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 499,
+      "mean_cny": 0.003625405210420843,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 499,
+      "mean_cny": 0.007184208416833673,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 499,
+      "mean_cny": 0.010284530661322665,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 500,
+      "mean_cny": 0.001808744000000001,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 498,
+      "mean_cny": 0.0013125590361445774,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "source_exists": true,
+      "mean_recomputed": true,
+      "n": 89,
+      "mean_cny": 0.0039111595505617975,
+      "usage_missing_in_selected_token_call_rows": 0,
+      "original_database_excludes_later_recovery_overlays_for_this_mean": true
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "source_exists": false,
+      "mean_recomputed": false,
+      "basis": "other_dataset_same_method_weighted_proxy",
+      "reference_n": 999
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "source_exists": false,
+      "mean_recomputed": false,
+      "basis": "other_dataset_same_method_weighted_proxy",
+      "reference_n": 999
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "source_exists": false,
+      "mean_recomputed": false,
+      "basis": "other_dataset_same_method_weighted_proxy",
+      "reference_n": 999
+    }
+  ],
+  "p02_formal_statuses": {
+    "hotpotqa": {
+      "success": 283,
+      "incomplete": 38
+    },
+    "2wiki": {
+      "success": 498,
+      "incomplete": 2
+    },
+    "musique": {}
+  },
+  "p02_musique_dev100_usage": {
+    "n": 100,
+    "mean_complete_flow_cny": 0.008257268,
+    "input_tokens": 1008851,
+    "output_tokens": 9323,
+    "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/rounds/r000/cases/musique/timing_only"
+  },
+  "qa_raw_proxy_summaries": [
+    {
+      "dataset": "hotpotqa",
+      "source_cases": 283,
+      "planned_queries": 100,
+      "source_role": "historical formal completion sample",
+      "historical_qa_mean_input_tokens_actual": 2432.3250883392225,
+      "qa_mean_input_tokens_estimated": 1573.9290076813515,
+      "raw_mean_input_tokens_estimated": 2597.4354405665003,
+      "raw_max_input_tokens_estimated": 6595.670295489891,
+      "mean_final_output_tokens": 4.307420494699647,
+      "raw_mean_extra_unique_documents": 10.084805653710248,
+      "qa100_final_cost_cny": 0.12677580471344807,
+      "raw100_final_cost_proxy_cny": 0.20865631934426002,
+      "pair100_proxy_cny": 0.33543212405770806,
+      "pair100_input50pct_mean_output64_scenario_cny": 0.5261637337897423
+    },
+    {
+      "dataset": "2wiki",
+      "source_cases": 498,
+      "planned_queries": 100,
+      "source_role": "historical formal completion sample",
+      "historical_qa_mean_input_tokens_actual": 2973.8694779116468,
+      "qa_mean_input_tokens_estimated": 2229.465497107418,
+      "raw_mean_input_tokens_estimated": 4552.254557562465,
+      "raw_max_input_tokens_estimated": 11288.11350929658,
+      "mean_final_output_tokens": 4.969879518072289,
+      "raw_mean_extra_unique_documents": 13.343373493975903,
+      "qa100_final_cost_cny": 0.1793512156722079,
+      "raw100_final_cost_proxy_cny": 0.3651743405086117,
+      "pair100_proxy_cny": 0.5445255561808195,
+      "pair100_input50pct_mean_output64_scenario_cny": 0.839406406560386
+    },
+    {
+      "dataset": "musique",
+      "source_cases": 100,
+      "planned_queries": 100,
+      "source_role": "same-method dev100 proxy; not formal",
+      "historical_qa_mean_input_tokens_actual": 2800.84,
+      "qa_mean_input_tokens_estimated": 2098.4466422901237,
+      "raw_mean_input_tokens_estimated": 4693.3839407294745,
+      "raw_max_input_tokens_estimated": 12315.77243085226,
+      "mean_final_output_tokens": 5.6,
+      "raw_mean_extra_unique_documents": 16.57,
+      "qa100_final_cost_cny": 0.1689957313832099,
+      "raw100_final_cost_proxy_cny": 0.37659071525835797,
+      "pair100_proxy_cny": 0.5455864466415679,
+      "pair100_input50pct_mean_output64_scenario_cny": 0.8406196699623518
+    }
+  ],
+  "ledger_snapshot": {
+    "source": "outputs/query_decomposition/hotpot_formal_eval_v1/budget.sqlite3",
+    "known_cny": 238.31393119999998,
+    "unknown_reserved_cny": 56.7634888,
+    "occupied_cny": 295.07741999999996,
+    "scope": "this shared ledger only, not all later side experiments nor verified provider invoice",
+    "historical_not_incremental": true
+  },
+  "strict_reuse_audit_completed": false,
+  "strict_reuse_verified_case_count": 0,
+  "new_api_generation_requests": 0,
+  "new_gpu_jobs": 0,
+  "limitations": [
+    "Scorable old cases are candidates only. New shared-layer complete-payload/resource/receipt equivalence remains unverified.",
+    "Changed SelfAsk and DecomP cells plus 2Wiki/MuSiQue QD are budgeted as full 500-flow equivalents; zero changed-prefix reuse credit.",
+    "Top10/CoT and Hotpot QD candidate credit is conditional; no-reuse-credit scenario is also given, not an instruction to replay valid responses.",
+    "Cost means describe old parameter choices; k reductions and adaptive stopping can alter cost nonlinearly.",
+    "SelfAsk 5/old_max_search scales the full-flow cost, not measured actual stages; neither sensitivity scenario is a bound or confidence interval.",
+    "P02 MuSiQue uses native timing_only dev100 usage; missing MuSiQue SelfAsk/DecomP/QD use labelled cross-dataset same-method references.",
+    "QA/raw estimates use all available historical native P02 records rather than only the planned stratified main500 sample. The common new template is read exactly, but old-prefix cost renders are not validated new shared-layer inputs.",
+    "Raw helper cost proxy preserves question/source grouping and all actual reader documents, de-duplicates by doc_id against root and earlier helper docs, and never truncates.",
+    "Both neutral zero-shot prompt token estimates use each historical case actual QA prompt_tokens/character ratio; this is not exact provider tokenization. Output length is provisionally the same observed short-answer mean.",
+    "The final output allowance is 32768, not 64. The 64-token mean-output sensitivity is an illustrative spend scenario, not a frozen cap or a worst-case limit.",
+    "QA/raw budgets all 600 final generations and zero incremental upstream generations; upstream full logical cost still belongs in reported method cost.",
+    "The QA/raw common neutral zero-shot interface differs from the old and main native final; both 300-result arms are budgeted as new final conditions.",
+    "The 50-percent expense/input scenario is a planning sensitivity, not a cap, upper bound, or provider-price guarantee. Five-attempt recovery is not five full-flow repeats.",
+    "Unknown liabilities remain unresolved and are not zero; no unknown request may be replayed based on this estimate.",
+    "GPU/cluster time has no verified cash rate and is excluded from CNY totals; optional timing repeats are separate from necessary budget.",
+    "No new inference, GPU job, evaluation process, sample selection or runtime configuration change is performed by this script."
+  ]
+}

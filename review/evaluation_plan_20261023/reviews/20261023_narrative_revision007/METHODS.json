@@ -1,0 +1,88 @@
+{
+  "revision": 7,
+  "status": "concrete_review_design_not_runtime_dispatch",
+  "selection_policy": "source-grounded fixed representative configurations; no formal-score selection or new parameter search",
+  "methods": [
+    {
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "comparison_role": "Complete proposed pipeline",
+      "config": {
+        "source": "frozen original P02; no prompt-research candidate promotion",
+        "execution_variant": "p02_shared_baseline_v2"
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    },
+    {
+      "method": "b00_rag_top10_v1",
+      "comparison_role": "Original-query retrieval and reading",
+      "config": {
+        "k": 10,
+        "source": "existing local reference control"
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    },
+    {
+      "method": "b01_rag_top10_cot3",
+      "comparison_role": "Conventional prompted reasoning reference, not a pure CoT ablation",
+      "config": {
+        "k": 10,
+        "demonstrations": 3,
+        "source": "existing local reference control"
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    },
+    {
+      "method": "b08_qd_rerank",
+      "comparison_role": "Decomposition for retrieval without sequential child solving",
+      "config": {
+        "k": 10,
+        "max_generated_subqueries": 5,
+        "retain_original": true,
+        "final_k": 10,
+        "source": "original paper sections4.5/5.3 and Algorithm1; applying to 2Wiki/MuSiQue is a dataset adaptation"
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    },
+    {
+      "method": "b02_selfask_dense",
+      "comparison_role": "Online follow-up question solving",
+      "config": {
+        "k": 5,
+        "max_search": 5,
+        "source": "Iter-RetGen section4.4, follow-up baseline setting"
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    },
+    {
+      "method": "b06_decomp_bge",
+      "comparison_role": "Modular decomposition and solving",
+      "config": {
+        "k": 2,
+        "max_steps": 8,
+        "reader": "cot",
+        "source": "author ODQA base configuration, outer and inner controller max_steps8; not paper-selected best",
+        "outer_max_steps": 8,
+        "inner_max_steps": 8
+      },
+      "common_resource_adaptation": true,
+      "runtime_compatibility_verified_for_revision007": false
+    }
+  ],
+  "common_generation": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "new_request_max_tokens": 32768,
+    "max_input": 997952,
+    "context": 1000000
+  },
+  "common_input_policy": "Existing complete BGE windows; existing complete reranker windows only for methods that already rerank; no new reranker in P02",
+  "source_evidence": "../20261023_preexecution_plan_budget/SOURCE_EVIDENCE.json",
+  "no_claim_of_paper_best_replication": true,
+  "no_equal_compute_claim": true
+}

@@ -1,0 +1,26 @@
+{
+  "id": "NARRATIVE_REVISION007_REVIEW_20261023",
+  "utc": "2026-10-22T21:05:04.885518+00:00",
+  "authority": "就按这个方向更新评估计划：六行主表、三组已有分析，加上P02的QA/raw对照。明确具体设计、可复用结果和新增预算，先不要执行，整理好后推送远端审核。",
+  "revision": 7,
+  "scope": "six-row main table, three reused analyses, P02 QA/raw; concrete review design and public publication only",
+  "methods": [
+    "p02_multigrain_timing_cachefix_v1",
+    "b00_rag_top10_v1",
+    "b01_rag_top10_cot3",
+    "b08_qd_rerank",
+    "b02_selfask_dense",
+    "b06_decomp_bge"
+  ],
+  "quality_conditions": 9000,
+  "qa_raw_queries": 300,
+  "qa_raw_final_conditions": 600,
+  "optional_timing_flows": 900,
+  "new_generation_requests": 0,
+  "new_GPU_jobs": 0,
+  "stop_files_cleared": 0,
+  "runtime_configs_modified": false,
+  "execution_authorized": false,
+  "history_preserved": "history\\revision006_before_narrative_20261023",
+  "public_destination": "HardCodeBee/RAG_pipeline:codex/p02-review-20261021"
+}

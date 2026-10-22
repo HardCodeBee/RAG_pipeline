@@ -1,0 +1,60 @@
+{
+  "status": "read_only_schema_checked_not_execution_ready",
+  "date_local": "2026-10-23 Australia/Sydney",
+  "new_inference_requests": 0,
+  "new_retrievals": 0,
+  "source_code": [
+    {
+      "path": "src/p02_multigrain_timing_cachefix_v1/core/pipeline.py",
+      "sha256": "b78e693df0645e4ad165141a17d57a7ca546349313c27ae5bd69e23ae0963b3a"
+    },
+    {
+      "path": "experiments/query_decomposition/unified_rag_eval_v1_20261021/p02_shared_layer.py",
+      "sha256": "90f20e2cb0c4498679e1a1a7bf48c5b2dda97fbb01f338dd9cf4b4b92c721d79"
+    }
+  ],
+  "samples": [
+    {
+      "path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_formal1500_v1_20261021/rounds/r000/cases/hotpotqa/p02_multigrain_timing_cachefix_v1/5a7100435542994082a3e4a3.json",
+      "sha256": "50caaaec652ac77213be0a8155ca1698c93c1d6e6a85e5fed3c47ba0b570f737",
+      "scope": "historical native schema example only; not C1 accepted or new result",
+      "node_count": 3,
+      "roles": [
+        "ordinary",
+        "ordinary",
+        "goal"
+      ],
+      "all_nodes_have_required_fields": true,
+      "all_reader_docs_have_required_fields": true,
+      "reader_render_is_in_actual_child_prompt": true,
+      "root_matches_goal_original_doc_order_source_text": true,
+      "same_doc_id_content_conflicts": [],
+      "receipt_contents_inspected": false
+    },
+    {
+      "path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_formal1500_v1_20261021/rounds/r000/cases/2wiki/p02_multigrain_timing_cachefix_v1/002e925e0bde11eba7f7acde48001122.json",
+      "sha256": "2fbae3039a2bbb86dd4ca60d31150785f5b31a93215b473bcbd2ca8619cf9cc7",
+      "scope": "historical native schema example only; not C1 accepted or new result",
+      "node_count": 2,
+      "roles": [
+        "ordinary",
+        "goal"
+      ],
+      "all_nodes_have_required_fields": true,
+      "all_reader_docs_have_required_fields": true,
+      "reader_render_is_in_actual_child_prompt": true,
+      "root_matches_goal_original_doc_order_source_text": true,
+      "same_doc_id_content_conflicts": [],
+      "receipt_contents_inspected": false
+    }
+  ],
+  "conclusion": "Required fields exist in inspected native traces and shared adapter reuses pipeline structure. This does not validate all cohort inputs, upstream receipts, resource identity or C1 migration.",
+  "blocking_before_execution": [
+    "explicit later execution authorization",
+    "new shared-layer main upstream or per-stage C1 migrated binding",
+    "complete upstream receipts and actual reader-payload checks for every included pair",
+    "frozen deterministic renderer and input token inventory",
+    "no conflicting duplicate doc IDs or unavailable reader text",
+    "ready guarded runner; no hold cleared by this plan"
+  ]
+}

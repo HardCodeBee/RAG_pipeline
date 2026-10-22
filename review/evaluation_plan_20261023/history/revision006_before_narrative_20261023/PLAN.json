@@ -1,0 +1,1043 @@
+{
+  "id": "unified_rag_eval_v1_20261021",
+  "revision": 6,
+  "created_utc": "2026-10-21T04:48:01.435420+00:00",
+  "status": "paused_by_user_preexecution_review",
+  "execution_approval": {
+    "approved": false,
+    "plan_revision": null,
+    "latest_user_instruction": "先确认一下评估计划是否完整 先不要执行",
+    "earlier_resume_request_superseded_by_preexecution_hold": true
+  },
+  "primary_method": {
+    "id": "p02_multigrain_timing_cachefix_v1",
+    "package": "src/p02_multigrain_timing_cachefix_v1",
+    "execution_variant": "p02_shared_baseline_v2",
+    "shared_layer": "existing baseline_integrity_repair_v2_20261017 with origin binding fix",
+    "integration_status": "offline_callbacks_implemented_not_execution_ready"
+  },
+  "reference_route": {
+    "id": "s02_child4",
+    "package": "src/s02",
+    "role": "route_reference_only",
+    "historical_or_unified_rerun": "historical full-flow scores only; no rerun"
+  },
+  "baselines": {
+    "primary": "baseline_integrity_repair_v2_20261017",
+    "historical_reference": "campaign_api_v1",
+    "methods": [
+      "b00_rag_top10_v1",
+      "b01_rag_top10_cot3",
+      "b02_selfask_dense",
+      "b03_react_dense",
+      "b04_ircot_bge",
+      "b05_iter_retgen_bge",
+      "b06_decomp_bge",
+      "b07_hybrid_rerank",
+      "b08_qd_rerank"
+    ],
+    "iter_primary_config": "paper_F1_per_dataset_k5_T4_hotpotqa_T6_2wiki_T7_musique_pending_compatibility_validation",
+    "original_iter": "Preserve old local dev-selected native results as history; do not automatically relabel as paper best",
+    "configuration_selection_policy": "official_paper_best_primary_F1_where_specified; explicit source/compatibility mapping otherwise",
+    "official_config_manifest": "reviews/20261021_official_config_selection/PAPER_CONFIG_MAP.json",
+    "configuration_freeze_status": "not_all_runtime_configs_frozen",
+    "iter_primary_config_by_dataset": {
+      "hotpotqa": {
+        "id": "paper_f1_k5_t4",
+        "k": 5,
+        "iterations": 4
+      },
+      "2wiki": {
+        "id": "paper_f1_k5_t6",
+        "k": 5,
+        "iterations": 6
+      },
+      "musique": {
+        "id": "paper_f1_k5_t7",
+        "k": 5,
+        "iterations": 7
+      }
+    },
+    "matched50": "preserved historical retrieval-matched result; no longer default primary config",
+    "new_local_F1_tuning_authorized": false,
+    "new_dense_only_reranker_baseline_added": false
+  },
+  "datasets": {
+    "hotpotqa": {
+      "formal": 500,
+      "dev": 100
+    },
+    "2wiki": {
+      "formal": 500,
+      "dev": 100
+    },
+    "musique": {
+      "formal": 500,
+      "dev": 100
+    }
+  },
+  "input_directory": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen",
+  "planned_core_method_query_results": 15000,
+  "reference_route_additional_runs": "not approved",
+  "sample_policy": "Existing frozen questions; no replacement or result-based filtering; dev/formal/history kept separate",
+  "generation": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "new_request_max_tokens": 32768,
+    "max_input": 997952,
+    "context": 1000000
+  },
+  "shared_input_policy": "Existing complete BGE windows; existing complete reranker windows only for methods that already rerank; no new reranker in P02",
+  "metrics": {
+    "required_by_user": [
+      "native Answer F1",
+      "native Answer EM",
+      "input/output tokens",
+      "estimated LLM expense",
+      "per-query local component processing seconds",
+      "per-query client TTFT"
+    ],
+    "no_LLM_call_count_metric": true,
+    "quality_denominator_policy": "Target500 on every dataset/method. Do not publish partial official scores or a scorable-count column while recovery remains possible. Only after confirmed inability to reach500 disclose actual n, reasons and missingness bounds; never label n<500 as a500 score.",
+    "local_time": "Sum measured local component input-to-complete-output processing time; exclude queue, waiting for inputs and first load. Include applicable local decomposition; audit old timing measurement scope before reuse.",
+    "API_time": "Client request-send to first nonempty content token, not first role/heartbeat frame; includes network/provider wait. Record separately from local time, never call it pure inference or total end-to-end time.",
+    "query_TTFT_summary": "Sum the TTFTs of applicable new live logical model stages per original query; missing/cached timings remain unknown, not zero. Preserve stage values and cache origin; no call count column.",
+    "summary": "Per dataset mean F1/EM, mean local processing seconds, mean summed client TTFT, mean input/output tokens, mean logical estimated CNY; applicable measurement coverage noted when incomplete.",
+    "tokens": "Per-component model-tagged input/output counts; distinguish API usage and local decomposition tokens. Reused logical usage is not new billed usage.",
+    "cost": "Logical complete-method estimate and incremental returned-usage expenditure separate; unknown reserves retained; no invented GPU CNY."
+  },
+  "extensions": {
+    "status": "deferred_until_primary_evaluation_complete_and_user_approval",
+    "groups": "P02 plus top4 by average performance",
+    "eligible_pool_proposed": "nine v2 baselines; S02 excluded as route reference unless user approves otherwise",
+    "ranking_proposed": "equal-weight mean of native Answer F1 across the three datasets, explicitly approved",
+    "ranking_formula_approved": true,
+    "missingness_and_ties": "pending approval",
+    "models_retrievers": "previous five combinations retained as historical design; final matrix to be approved after main evaluation",
+    "timing_scope": "client TTFT plus local processing time, separately reported"
+  },
+  "deferred": [
+    "same_final_prompt_control",
+    "four_mechanism_ablations",
+    "new_evidence_judge_calls",
+    "remote_resource_extensions"
+  ],
+  "archive": {
+    "strategy": "physical move plus index and original-path compatibility junctions",
+    "inventory": "ARCHIVE_INVENTORY.json",
+    "physical_moves_authorized_for_this_run": true,
+    "delete_originals": false,
+    "index": "archives/rag_evaluation_history_20261021/INDEX.json",
+    "verification": "archived_verified; 50 directory entities, 86 protected frozen sources unchanged"
+  },
+  "budget": {
+    "cumulative_cap_cny": null,
+    "submission_ceiling_cny": null,
+    "known_cny_at_pause": 219.4958576,
+    "unknown_reserved_cny_at_pause": 54.4043504,
+    "occupied_cny_at_pause": 273.900208,
+    "remaining_cny_at_pause": 26.099792,
+    "new_API_calls_authorized": false,
+    "previous_p02_subcap_cny": 20,
+    "new_unified_variant_allocation": "No fixed per-stage allocations; spending subject to usage, provenance and anomaly review",
+    "policy": "no_fixed_cap_reasonable_spending_no_anomalies",
+    "policy_decision_id": "B1",
+    "historical_limits_superseded": {
+      "cumulative_cap_cny": 300,
+      "submission_ceiling_cny": 299.9,
+      "proposed_cap320": "not_adopted"
+    },
+    "remaining_cny_at_pause_note": "Historical headroom under the previous300 cap; not a current spending limit",
+    "previous_p02_subcap_cny_note": "Historical only, not a new variant allocation",
+    "historical_charges_and_unknown_reserves_preserved": true,
+    "quality_completion_scenario_cny": 25.589710262779285,
+    "timing_selected_scenario_cny": 11.563140978887338,
+    "quality_plus_timing_reference_cny": 37.152851241666625,
+    "estimate_note": "Historical logical-usage scenario, not quote, hard cap or completion guarantee; exact reuse may save expense; retries and unobserved cells may add expense; overlapping measured/new quality flows must not be billed twice",
+    "legacy_runner_or_ledger_limits_modified": false,
+    "new_policy_implementation": "offline_policies_and_references_ready_not_wired_to_a_complete_paid_runner",
+    "cost_alert_policy": {
+      "decision_id": "A1",
+      "single_query_ratio": 3.0,
+      "rolling_mean_ratio": 1.5,
+      "rolling_window_complete_fresh_queries": 20,
+      "reference_file": "COST_REFERENCE.frozen.json",
+      "trigger": "strictly greater than the corresponding historical mean times ratio",
+      "action": "record alert and notify user in this chat; expense increase alone does not impose a hidden cap or discard results",
+      "deduplication": "one outlier alert per original query; rolling alert on entering elevated state, rearm after return to normal",
+      "unknown_usage": "report as unknown separately, never zero"
+    },
+    "cost_reference_file": "execution_details/COST_REFERENCE.frozen.json",
+    "estimate_protocol_basis": "revision005 before official configuration selection; not a current completion quote",
+    "current_official_config_cost_estimate": "pending until full config map and reuse inventory are frozen",
+    "cost_alert_reference_context": "Historical frozen references retained; include old/new config IDs when a source-driven config change affects normal query expense."
+  },
+  "approved_decisions": [
+    {
+      "id": "U001",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "只关注完整RAG流程最终答案评价；P02为主方法，S02仅为另一条路线参考"
+    },
+    {
+      "id": "U002",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "基线采用完整修复v2，原始版只作历史参考"
+    },
+    {
+      "id": "U003",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "P02接入现有基线统一请求与长输入处理层"
+    },
+    {
+      "id": "U004",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "与主方法无关的组件消融或测试实验归档；有关材料不进入主结果表"
+    },
+    {
+      "id": "U005",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "同最终提示词控制和四项机制消融搁置"
+    },
+    {
+      "id": "U006",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "逐数据集记录每个原始query的时间、tokens和LLM开销，使用简明合理指标"
+    },
+    {
+      "id": "U007",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "多模型多检索器扩展在主评完成后，选择主方法及平均表现最佳前四种方法"
+    },
+    {
+      "id": "U008",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "后续约定和修正写入同一评估方案；任何新决策必须经用户允许"
+    },
+    {
+      "id": "U009",
+      "status": "approved",
+      "authority": "latest user instruction in this chat",
+      "text": "此前全部评估暂停继续有效；本轮方案整理和离线适配不构成恢复授权"
+    },
+    {
+      "id": "U010",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "物理归档和索引同时进行，原位置允许保留目录联接"
+    },
+    {
+      "id": "U011",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "S02只保留已有完整流程成绩，暂不重跑"
+    },
+    {
+      "id": "U012",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "尽可能统一500题；确认无法达到500前不发布可计分题数；未完成不冒充正式500成绩"
+    },
+    {
+      "id": "U013",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "不记录或报告LLM调用数指标；其余质量、tokens、费用按已提出方案"
+    },
+    {
+      "id": "U014",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "采用客户端TTFT与本地组件处理时间分列；核心是query在流程中的实际处理时间"
+    },
+    {
+      "id": "U015",
+      "status": "approved",
+      "authority": "user replies to this chat clarification questions",
+      "text": "扩展前四采用三数据集原生F1等权平均原则"
+    },
+    {
+      "utc": "2026-10-21T05:24:31.890356+00:00",
+      "id": "C1",
+      "status": "approved",
+      "authority": "User selected strict reuse in the cache migration confirmation",
+      "text": "Preserve10533 v2 results; only same-question/stage/full-message complete stop+usage and intact retrieval permit781 P02 candidates;946 original baseline records need further validation; failures/length/unknown not successful caches; retain unknown liabilities; no evaluation resume."
+    },
+    {
+      "utc": "2026-10-21T05:32:44.226388+00:00",
+      "id": "T1",
+      "status": "approved",
+      "selected_option": "T2_paired50",
+      "plan_revision": 4,
+      "authority": "User explicitly selected 50 queries per dataset in the timing confirmation",
+      "text": "50 fixed stratified queries per dataset; same150 IDs across P02 and9 v2 baselines,1500 measurement flows; warm models/index, disable response and retrieval-result caches, concurrency1; local component time and first-content client TTFT separately; P02 decomposition measured separately with hardware labels; timing outputs do not replace quality results; no execution approval.",
+      "estimated_incremental_cny": 11.563140978887338
+    },
+    {
+      "utc": "2026-10-21T05:32:44.226388+00:00",
+      "id": "B1",
+      "status": "approved",
+      "plan_revision": 4,
+      "authority": "Latest user instruction: no budget consideration, provided expenditure is reasonable and without anomalies",
+      "text": "No fixed cumulative or per-stage spending cap for the current main evaluation. Supersedes old300/299.9 limits and proposed320 option/pools. Preserve historical charges and unknown liabilities, strict reuse, usage/provenance checks and no silent unknown resubmission. Estimates remain diagnostic, not spending caps. Does not resume evaluation or authorize new experimental scope.",
+      "legacy_guard_implementation": "not_changed_while_paused"
+    },
+    {
+      "utc": "2026-10-21T05:48:37.693798+00:00",
+      "id": "S1",
+      "status": "approved_by_user_delegation",
+      "plan_revision": 5,
+      "authority": "User item1: resolve timing sample and hardware details using assistant judgement",
+      "text": "Freeze seed20261021, same50 proportionally stratified IDs per dataset for all10 methods; no answer/outcome/time based selection; details in execution_details/TIMING_COHORT.frozen.json."
+    },
+    {
+      "utc": "2026-10-21T05:48:37.693798+00:00",
+      "id": "R1",
+      "status": "approved",
+      "plan_revision": 5,
+      "authority": "User item2: after5 failures record and temporarily skip",
+      "text": "Interpret as at most5 actual attempts including initial, at the failed logical stage; persist shared counter across controller/SDK/restarts; retain completed upstream stages; unknown requests require receipt checks before any resubmission; skipping does not establish irrecoverability."
+    },
+    {
+      "utc": "2026-10-21T05:48:37.693798+00:00",
+      "id": "A1",
+      "status": "approved_policy_operational_defaults_recorded",
+      "plan_revision": 5,
+      "authority": "User item3: compare with historical mean query expense and notify on a clear increase",
+      "text": "Compare same dataset/method historical query means; labelled same-method other-dataset proxy when absent. Operational alert defaults: single query>3x, recent20 complete fresh-query mean>1.5x. Notify user, no fixed budget cap; unknown usage and partial caches are not zeros."
+    },
+    {
+      "utc": "2026-10-21T05:48:37.693798+00:00",
+      "id": "G1",
+      "status": "approved",
+      "plan_revision": 5,
+      "authority": "Latest user annotation: prefer remote GPU resources",
+      "text": "Remote GPU first; A6000 target for shared retrieval encoding/reranking and P02 decomposition, common timing hardware profile; withdraw RTX4060 assignment. Reuse verified remote resources where possible; actual allocation and resource readiness remain to be verified before an explicitly approved resume."
+    },
+    {
+      "utc": "2026-10-21T06:28:40.358678+00:00",
+      "id": "M1",
+      "status": "approved",
+      "plan_revision": 6,
+      "authority": "Latest user request and annotations1-2",
+      "text": "Primary evaluation does not enforce equal retrieval/generation budgets across methods. Preserve complete method behavior and record agreed F1/EM, tokens, expense and component time/TTFT; keep resource-limit metadata."
+    },
+    {
+      "utc": "2026-10-21T06:28:40.358678+00:00",
+      "id": "M2",
+      "status": "approved_scope_only_design_pending",
+      "plan_revision": 6,
+      "authority": "Latest user request and annotation2",
+      "text": "Equal-budget complete-RAG comparison is a separate extension experiment, not a primary-evaluation prerequisite. Cohort, method pool, budget definition/values, stopping rules and execution require a concrete approved design."
+    },
+    {
+      "utc": "2026-10-21T06:28:40.358678+00:00",
+      "id": "M3",
+      "status": "approved_policy_source_mapping_pending",
+      "plan_revision": 6,
+      "authority": "Latest user request and annotation3",
+      "text": "Use official-paper best corresponding-dataset configuration for primary baselines, with published Answer-F1 as the established primary metric where available; preserve common approved resource/integrity adaptations and label them. Do not start new local F1 tuning by default or invent an official best when a paper supplies only ranges/defaults. matched50 is no longer the main Iter selection basis."
+    }
+  ],
+  "pending_decisions": [
+    {
+      "id": "P001",
+      "topic": "归档采用索引保留路径还是物理移动",
+      "status": "approved_by_user",
+      "resolution": "approved physical move, index, compatibility junctions"
+    },
+    {
+      "id": "P002",
+      "topic": "S02仅引用历史成绩还是接入统一层重跑",
+      "status": "approved_by_user",
+      "resolution": "approved historical S02 only, no rerun"
+    },
+    {
+      "id": "P003",
+      "topic": "指标汇总和三数据集F1等权平均排名原则",
+      "status": "approved_by_user",
+      "resolution": "approved F1/EM/tokens/cost and equal dataset-average F1; suppress count until irrecoverable; no LLM call count"
+    },
+    {
+      "id": "P004",
+      "topic": "计时边界、分解器纳入方式、缓存/冷运行、硬件并发与计时样本",
+      "status": "approved_details_frozen_runtime_pending",
+      "resolution": "S1/G1 freeze same50 IDs,seed and remote target hardware; R1 five-attempt recovery and A1 relative-cost notification established; actual remote resources/allocation and complete guarded runner remain pending"
+    },
+    {
+      "id": "P005",
+      "topic": "旧P02响应迁移、受长输入变化影响下游的重算范围及预算",
+      "status": "approved_cache_scope_only",
+      "resolution": "C1 rules approved; official main config changes require a fresh reuse inventory before claiming completed primary cases. No migration started."
+    },
+    {
+      "id": "P006",
+      "topic": "扩展排名候选池、缺失可比口径及并列处理",
+      "status": "awaiting_user"
+    },
+    {
+      "id": "P007",
+      "topic": "最终新协议版本、预算分配与恢复执行",
+      "status": "approved_expense_policy_execution_pending",
+      "resolution": "B1 approved no fixed cumulative/per-stage cap, subject to reasonable expense without anomalies; final execution freeze and resume remain unapproved"
+    },
+    {
+      "id": "P008",
+      "topic": "How to collect comparable fresh TTFT/local timings when quality responses are reused; fresh-timing cohort/cache/hardware/concurrency and incremental budget",
+      "status": "approved_details_frozen_runtime_pending",
+      "resolution": "S1/G1 freeze same50 IDs,seed and remote target hardware; R1 five-attempt recovery and A1 relative-cost notification established; actual remote resources/allocation and complete guarded runner remain pending"
+    },
+    {
+      "id": "P009",
+      "topic": "Official paper per-method parameter source and compatibility map, including cases with no unique published best",
+      "status": "source_mapping_prepared_runtime_freeze_pending"
+    },
+    {
+      "id": "P010",
+      "topic": "Independent equal-budget full-RAG extension sample/method pool/budget/stopping protocol",
+      "status": "scope_approved_design_pending_not_primary_prerequisite"
+    }
+  ],
+  "change_policy": "Every methodological, sample, metric, cache, budget, ranking, archive, or execution decision requires explicit user approval recorded in DECISIONS.jsonl; no timeout/default approval; no retroactive rewriting of frozen protocols",
+  "updated_utc": "2026-10-22T17:49:16.647366+00:00",
+  "current_verification": "VERIFICATION.json",
+  "latest_execution_review": {
+    "path": "reviews/20261021T051154Z/PROPOSAL.txt",
+    "status": "main_unmatched_budget_official_config_policy_approved_runtime_freeze_pending",
+    "cache_decision": "C1",
+    "timing_decision": "T1",
+    "budget_decision": "B1",
+    "rules_approval_does_not_resume_evaluation": true,
+    "cache_decision_status": "approved",
+    "timing_decision_status": "approved_T2_paired50",
+    "budget_decision_status": "approved_no_fixed_cap",
+    "execution_status": "not_approved_not_started",
+    "details_manifest": "execution_details/DETAILS_MANIFEST.frozen.json",
+    "official_config_map": "reviews/20261021_official_config_selection/PAPER_CONFIG_MAP.json"
+  },
+  "cache_migration": {
+    "decision_id": "C1",
+    "approved": true,
+    "current_v2_quality_records": 10533,
+    "p02_whole_case_candidates": 781,
+    "additional_original_baseline_records_to_validate": 946,
+    "policy": "same method,question,stage,full messages/model/settings except nonbinding historical output cap; stop+usage and intact retrieval; preserve provenance and liabilities; only affected downstream recomputed",
+    "migration_execution": "not_started",
+    "paid_execution_approved": false,
+    "reuse_inventory_protocol_basis": "revision003-005 configurations; preserve historical counts but re-audit whole-case eligibility after paper config freeze",
+    "baseline_inventory_10533_is_not_new_paper_config_completion": true,
+    "policy_still_applies": "C1 strict per-stage provenance, full-message/model match, stop+usage, intact retrieval; config-changed downstream recomputed"
+  },
+  "timing_measurement": {
+    "decision_id": "T1",
+    "selected_option": "T2_paired50",
+    "approved": true,
+    "queries_per_dataset": 50,
+    "datasets": [
+      "hotpotqa",
+      "2wiki",
+      "musique"
+    ],
+    "unique_queries": 150,
+    "methods": [
+      "p02_multigrain_timing_cachefix_v1",
+      "b00_rag_top10_v1",
+      "b01_rag_top10_cot3",
+      "b02_selfask_dense",
+      "b03_react_dense",
+      "b04_ircot_bge",
+      "b05_iter_retgen_bge",
+      "b06_decomp_bge",
+      "b07_hybrid_rerank",
+      "b08_qd_rerank"
+    ],
+    "planned_complete_measurement_flows": 1500,
+    "s02_rerun": false,
+    "cohort": "fixed stratified subset of frozen formal500, shared across all10 methods; no outcome/time based selection",
+    "ids_seed_hardware": "cohort and remote target profile frozen under delegated authority; actual remote allocation still pending",
+    "warmup": "model and index resident, first load excluded",
+    "response_cache": "disabled_for_measurement",
+    "retrieval_result_cache": "disabled_for_measurement",
+    "original_query_concurrency": 1,
+    "p02_decomposition": "separately warm-time the same cohort, label hardware; frozen quality decomposition remains unchanged",
+    "metrics": "local component input-to-complete-output seconds and client first-nonempty-content TTFT separately",
+    "timing_summary_scope": "fixed50 subset per dataset, never a complete500 mean",
+    "quality_results_replaced": false,
+    "estimated_incremental_cny": 11.563140978887338,
+    "execution": "not_started",
+    "paid_execution_approved": false,
+    "seed": 20261021,
+    "cohort_manifest": "execution_details/TIMING_COHORT.frozen.json",
+    "hardware_manifest": "execution_details/TIMING_HARDWARE.frozen.json",
+    "hardware_preference": "remote_gpu_first_no_fixed_local_RTX4060_assignment",
+    "selection_used_outcomes": false
+  },
+  "recovery_policy": {
+    "decision_id": "R1",
+    "max_attempts": 5,
+    "attempt_count_includes_initial": true,
+    "counter_key": [
+      "dataset",
+      "method",
+      "original_qid",
+      "logical_stage"
+    ],
+    "counter_persisted_across_restart": true,
+    "nested_SDK_and_scheduler_attempts_share_one_counter": true,
+    "after_exhaustion": "record error class, receipt IDs, known expense, unknown reserves and partial stage; temporarily skip without replacing question or marking irrecoverable",
+    "algorithm_failures": "retain protocol-defined zero, do not retry to improve F1",
+    "unknown_requests": "hold for receipt verification; no silent paid resubmission even below5",
+    "cost_alerts": {
+      "single_query_ratio": 3.0,
+      "rolling_mean_ratio": 1.5,
+      "rolling_window_complete_fresh_queries": 20,
+      "reference_file": "COST_REFERENCE.frozen.json",
+      "trigger": "strictly greater than the corresponding historical mean times ratio",
+      "action": "record alert and notify user in this chat; expense increase alone does not impose a hidden cap or discard results",
+      "deduplication": "one outlier alert per original query; rolling alert on entering elevated state, rearm after return to normal",
+      "unknown_usage": "report as unknown separately, never zero"
+    },
+    "no_fixed_budget_cap": true,
+    "execution_approved": false,
+    "runtime_integration": "pure policies implemented and offline checked; complete guarded paid runner integration still pending"
+  },
+  "fairness_review": {
+    "utc": "2026-10-21T06:07:41.636714+00:00",
+    "status": "review_complete_recommendations_not_adopted",
+    "report": "reviews/20261021_fairness_audit/REVIEW.txt",
+    "evidence": "reviews/20261021_fairness_audit/AUDIT.json",
+    "baseline_pool_changes_approved": false,
+    "resource_budget_changes_approved": false,
+    "new_dev_parameter_selection_approved": false,
+    "training_overlap_policy_change_approved": false,
+    "evaluation_still_paused": true,
+    "decision_update": "reviews/20261021_official_config_selection/DECISION_UPDATE.txt",
+    "main_equal_budget_requirement": "not_adopted; separate extension approved",
+    "official_config_selection_policy_approved": true,
+    "new_baseline_pool_changes_approved": false,
+    "overlap_extra_experiment": "not_planned; factual audit preserved"
+  },
+  "primary_evaluation_policy": {
+    "decision_id": "M1",
+    "equal_budget_across_methods": false,
+    "method_budget": "Use each frozen selected method config; native limits and termination still apply. No forced same rounds/top-k/total generation across methods.",
+    "P02": "Preserve frozen main method, no budget-driven truncation",
+    "resource_reporting": "Record method parameter limits and logical retrieval candidate use as provenance alongside existing tokens/expense/time; do not add an LLM-call-count metric",
+    "quality_targets_unchanged": true
+  },
+  "equal_budget_extension": {
+    "decision_id": "M2",
+    "status": "approved_scope_design_and_execution_pending",
+    "experiment_type": "complete_RAG",
+    "separate_from_primary_and_multimodel_expansions": true,
+    "primary_evaluation_prerequisite": false,
+    "method_pool": null,
+    "sample_ids_and_size": null,
+    "budget_values": null,
+    "candidate_budget_definition": "For a proposed retrieval-matched design, sum top-k over all logical searches per original query, before dedup, counting child/rewritten/nested searches and cache replay. Exact design still pending.",
+    "LLM_budget_definition": "Not automatically equalized by same per-request max_tokens; exact choice pending",
+    "execution_approved": false,
+    "historical_matched50": "May provide protocol-specific reference, not all-method equal-budget proof"
+  },
+  "data_provenance": {
+    "known_training_question_text_overlap": {
+      "hotpotqa": 3,
+      "2wiki": 2,
+      "musique": 2
+    },
+    "source": "experiments/query_decomposition/p02_formal1500_v1_20261021/EXPOSURE_AUDIT.frozen.json",
+    "requested_action": "User requested no further treatment or disclosure",
+    "accepted_operational_scope": "No extra overlap experiment, resampling, retraining or exclusion queued. Keep the frozen500 and existing audit records.",
+    "reporting_constraint": "Do not erase known provenance, assert no overlap, or imply entirely unseen evaluation questions. Relevant independence/generalization claims must accurately state their scope.",
+    "additional_experiment_approved": false
+  },
+  "standalone_diagnostics": [
+    {
+      "decision_id": "SINGLE_NARRATOR_20261021T074249Z",
+      "scope": "Exactly one query; R02/v12 frozen checkpoint and existing greedy compat_v002; no retrieval or QA, no training, no campaign resume.",
+      "receipt": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\manual_p02_decomposition_20261021\\p02_single_narrator_20261021T074249Z\\RUN.json",
+      "campaign_resume_authorized": false
+    },
+    {
+      "decision_id": "narrator_walkthrough_v001",
+      "receipt": "C:\\Users\\12442\\Desktop\\RAG_pipeine\\RAG_pipeline\\outputs\\query_decomposition\\hotpot_formal_eval_v1\\manual_p02_fullflow_20261021\\narrator_walkthrough_v001\\AUTHORIZATION.json",
+      "scope": "Only this query. No campaign supervisor, cohort, timing study or other method is resumed.",
+      "campaign_resume_authorized": false
+    },
+    {
+      "decision_id": "P02_NOFORMATTER_QUICK90_V1_20261021",
+      "scope": "Development300 subset: HotpotQA30,2Wiki30,MuSiQue30; frozen original vs no-formatter variant; exact complete-flow cache replay.",
+      "protocol": "experiments/query_decomposition/p02_noformatter_quick90_v1_20261021/PROTOCOL.frozen.json",
+      "campaign_resume_authorized": false,
+      "new_inference": false
+    },
+    {
+      "decision_id": "P02_CHILDPROMPT_SELFCONTAINED_QUICK90_V1_20261021",
+      "scope": "Existing quick90 development sample; paired complete native-P02 flows; ordinary-child prompt only.",
+      "protocol": "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\PROTOCOL.frozen.json",
+      "campaign_resume_authorized": false,
+      "new_inference": true
+    },
+    {
+      "decision_id": "P02_PROMPT_MINIMAL_ABLATION_QUICK90_V1_20261021",
+      "scope": "Two explicitly selected minimal prompt contrasts on the existing fixed quick90",
+      "protocol": "experiments\\query_decomposition\\p02_prompt_minimal_ablation_quick90_v1_20261021\\PROTOCOL.frozen.json",
+      "campaign_resume_authorized": false,
+      "new_inference": true
+    },
+    {
+      "decision_id": "P02_FROZEN_NO_REFS_QUICK90_V1_20261021",
+      "scope": "Original frozen p02_multigrain_timing_cachefix_v1; full fixed90 F1 0.7668887868810469. Not the damaged revised child prompt. Remove references in both answer roles only.",
+      "protocol": "experiments\\query_decomposition\\p02_frozen_no_refs_quick90_v1_20261021\\PROTOCOL.frozen.json",
+      "campaign_resume_authorized": false,
+      "new_inference": true
+    },
+    {
+      "decision_id": "P02_CHILDPROMPT_MINIMAL4_QUICK90_V1_20261021",
+      "scope": "Existing quick90; 30 per dataset; frozen query-only R02 decompositions; no resampling. Four reviewed ordinary-prompt changes only.",
+      "protocol": "experiments\\query_decomposition\\p02_childprompt_minimal4_quick90_v1_20261021\\PROTOCOL.frozen.json",
+      "campaign_resume_authorized": false,
+      "new_inference": true
+    }
+  ],
+  "autonomous_prompt_research": {
+    "decision_id": "P02_PROMPT_RESEARCH_AUTONOMOUS_SMALL_EVALUATIONS_APPROVED_20261022",
+    "status": "approved_small_experiments_only",
+    "proposal": "reviews/20261022_prompt_binding_goal_synthesis/PROPOSAL.md",
+    "main_evaluation_resumed": false,
+    "routine_small_experiment_confirmation_required": false,
+    "five_actual_attempt_limit": true,
+    "expense_anomaly_notifications_retained": true,
+    "historical_and_existing_other_run_protocols_preserved": true,
+    "latest_batch": {
+      "utc": "2026-10-21T18:52:24.449018+00:00",
+      "status": "balanced20_execution_ended_partial_provider_held_no_active_job",
+      "summary": "reviews/20261022_prompt_binding_goal_synthesis/FROZEN_DECOMPOSER_FINDINGS.md",
+      "live_status": "reviews/20261022_prompt_binding_goal_synthesis/ROUND2_LIVE_STATUS.json",
+      "main_evaluation_resumed": false,
+      "selected_main_prompt_changed": false,
+      "ordinary_failure8": "I16 no semantic repair;B24 each2correct6wrong, source controls reused strictly",
+      "native_development": "L90 fresh original goal128 versus exactROLE, originalformatter128 and final64 semantics,180conditions; source D and all upstream frozen",
+      "information_review": {
+        "material_reviewed": 270,
+        "declared_scope_complete": 258,
+        "pending_work_items": 12
+      },
+      "native_goal90": {
+        "complete_conditions": 180,
+        "control_F1": 0.7595651537240804,
+        "ROLE_F1": 0.7539447102604997,
+        "promoted": false
+      },
+      "ordinary_actual_target8": {
+        "control_correct": 2,
+        "candidate_correct_after_frozen_fact_supplement": 5,
+        "candidate_wrong": 3,
+        "complete_RAG_F1_not_yet_tested": false,
+        "interpretation": "Nonconcurrent selected local screening; no generic accuracy or causal claim",
+        "subsequent_full_dynamic_test": "dynamic_full8; separate fresh complete flows, not retroactive local screen reinterpretation"
+      },
+      "next_step": "Researchroundclosedandinterpreted;no furtheradaptiveexperiment/promotion/publication/mainrestart;retainbirthfactworkitemwithoutscoremissingness",
+      "experiment": "p02_live_target_balanced20_dev_v1_20261022",
+      "protocol_sha256": "804ad301b9eeda60e51a38329c9fbf5865a6ef9e5b406772bd77a360708edf36",
+      "remote_job_id": "158988",
+      "dynamic_full8": {
+        "quality_terminal": 16,
+        "held_technical_tasks": 0,
+        "arms": {
+          "D0": {
+            "planned": 8,
+            "quality_terminal": 8,
+            "held_or_unstarted": 0,
+            "F1": 0.2446428571428572,
+            "EM": 0.0,
+            "F1_fixed_denominator_bounds": [
+              0.2446428571428572,
+              0.2446428571428572
+            ],
+            "EM_fixed_denominator_bounds": [
+              0.0,
+              0.0
+            ],
+            "algorithm_failures": 0,
+            "success_truncated": 0,
+            "logical_prompt_tokens": 88204,
+            "logical_completion_tokens": 846,
+            "logical_estimated_CNY": 0.07225519999999999
+          },
+          "D1": {
+            "planned": 8,
+            "quality_terminal": 8,
+            "held_or_unstarted": 0,
+            "F1": 0.33392857142857146,
+            "EM": 0.125,
+            "F1_fixed_denominator_bounds": [
+              0.33392857142857146,
+              0.33392857142857146
+            ],
+            "EM_fixed_denominator_bounds": [
+              0.125,
+              0.125
+            ],
+            "algorithm_failures": 0,
+            "success_truncated": 0,
+            "logical_prompt_tokens": 88159,
+            "logical_completion_tokens": 829,
+            "logical_estimated_CNY": 0.07218519999999999
+          }
+        },
+        "by_dataset": {
+          "hotpotqa": {
+            "D0": {
+              "planned": 5,
+              "quality_terminal": 5,
+              "held_or_unstarted": 0,
+              "F1": 0.17142857142857143,
+              "EM": 0.0,
+              "F1_fixed_denominator_bounds": [
+                0.17142857142857143,
+                0.17142857142857143
+              ],
+              "EM_fixed_denominator_bounds": [
+                0.0,
+                0.0
+              ],
+              "algorithm_failures": 0,
+              "success_truncated": 0,
+              "logical_prompt_tokens": 42019,
+              "logical_completion_tokens": 521,
+              "logical_estimated_CNY": 0.0346572
+            },
+            "D1": {
+              "planned": 5,
+              "quality_terminal": 5,
+              "held_or_unstarted": 0,
+              "F1": 0.21428571428571433,
+              "EM": 0.0,
+              "F1_fixed_denominator_bounds": [
+                0.21428571428571433,
+                0.21428571428571433
+              ],
+              "EM_fixed_denominator_bounds": [
+                0.0,
+                0.0
+              ],
+              "algorithm_failures": 0,
+              "success_truncated": 0,
+              "logical_prompt_tokens": 41890,
+              "logical_completion_tokens": 514,
+              "logical_estimated_CNY": 0.03454
+            }
+          },
+          "2wiki": {
+            "D0": {
+              "planned": 3,
+              "quality_terminal": 3,
+              "held_or_unstarted": 0,
+              "F1": 0.3666666666666667,
+              "EM": 0.0,
+              "F1_fixed_denominator_bounds": [
+                0.3666666666666667,
+                0.3666666666666667
+              ],
+              "EM_fixed_denominator_bounds": [
+                0.0,
+                0.0
+              ],
+              "algorithm_failures": 0,
+              "success_truncated": 0,
+              "logical_prompt_tokens": 46185,
+              "logical_completion_tokens": 325,
+              "logical_estimated_CNY": 0.037598
+            },
+            "D1": {
+              "planned": 3,
+              "quality_terminal": 3,
+              "held_or_unstarted": 0,
+              "F1": 0.5333333333333333,
+              "EM": 0.3333333333333333,
+              "F1_fixed_denominator_bounds": [
+                0.5333333333333333,
+                0.5333333333333333
+              ],
+              "EM_fixed_denominator_bounds": [
+                0.3333333333333333,
+                0.3333333333333333
+              ],
+              "algorithm_failures": 0,
+              "success_truncated": 0,
+              "logical_prompt_tokens": 46269,
+              "logical_completion_tokens": 315,
+              "logical_estimated_CNY": 0.0376452
+            }
+          }
+        },
+        "paired": {
+          "complete_pairs": 8,
+          "delta_F1": 0.08928571428571427,
+          "delta_EM": 0.125,
+          "improved": 2,
+          "tied": 6,
+          "harmed": 0
+        },
+        "historical_source_reference_only": {
+          "F1": 0.24464285714285716,
+          "EM": 0.0
+        },
+        "actual_new_returned_usage_CNY": 0.1079136,
+        "unresolved_reserved_CNY": 0,
+        "semantic_changed_pairs_locked": 2,
+        "semantic_changed_final_records": 4,
+        "identical_final_pairs": 6,
+        "remote_job_status": "COMPLETED",
+        "GPU": "NVIDIA RTX A6000",
+        "promoted": false,
+        "selected_exposed_development_not_independent_confirmation": true,
+        "independent_audit_passed": true,
+        "independent_audit_sha256": "83fca7774f8b3a56b225b45ddfd71810d7005592d0cde641652160c5b31ff88e"
+      },
+      "next_experiment": null,
+      "next_protocol_sha256": null,
+      "local_session_id": 45101,
+      "read_only_monitor_session": 39898,
+      "balanced20": {
+        "status": "execution_ended_partial_quality_provider_held",
+        "planned_queries": 20,
+        "planned_conditions": 40,
+        "quality_terminal_conditions": 38,
+        "GPU": "NVIDIA RTX A6000",
+        "remote_job_id": "158988",
+        "local_session_id": 45101,
+        "read_only_monitor_session": 39898,
+        "prior723_semantic_exposure": 16,
+        "main_method_promoted": false,
+        "held_technical_tasks": 2,
+        "technical_held_not_quality_zero": true,
+        "not_started_tasks": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "quality_all40_complete": false,
+        "full20_point_estimates_available": false,
+        "remote_job_status": "COMPLETED",
+        "worker_status": "FINISHED",
+        "local_session_status": "completed_exit0",
+        "read_only_monitor_status": "completed_exit0",
+        "actual_new_usage_estimate_CNY": 0.1559644,
+        "unresolved_usage_reserved_CNY": 0.0118896,
+        "reservation_correction_reference": "outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022/ROOT_RESERVATION_NOTE_CORRECTION.json",
+        "independent_integrity_audit": "passed"
+      },
+      "active_model_sessions": [],
+      "active_GPU_jobs": [],
+      "local_session_status": "completed_exit0",
+      "read_only_monitor_status": "completed_exit0",
+      "latest_research_stage": {
+        "experiment": "p02_m4_wiki20_dynamic_dev_v1_20261022",
+        "status": "completed_audited_and_interpreted",
+        "protocol_sha256": "ab1206ff1b614c2163d6424139bf6a61d3b4afcbd4b18667462690000fa9fcbf",
+        "planned_queries": 20,
+        "planned_conditions": 40,
+        "ordinary_nodes_per_arm": 44,
+        "goal_only_allowed": true,
+        "goal_only_selected": 0,
+        "prior723_semantic_exposure": 20,
+        "passive270_exposure": 4,
+        "pins": 242,
+        "protected_main_holds": 3,
+        "historical_quality_coverage": 20,
+        "historical_reference_round_counts": {
+          "r000": 18,
+          "r100": 2
+        },
+        "execution_authorized": true,
+        "new_API_GPU_SSH_started": true,
+        "real_checkpoint_exists": true,
+        "independent_preexecution_review": "passed",
+        "main_method_promoted": false,
+        "decision_id": "P02_M4_WIKI20_COMPLETE_DYNAMIC_REMOTE_EXECUTION_20261022",
+        "session_id": 55177,
+        "read_only_observer_session_id": 58891,
+        "remote_job_id": "159041",
+        "remote_job_status": "COMPLETED",
+        "GPU": "NVIDIA RTX A6000",
+        "remote_node": "weirdo",
+        "GPU_READY_verified": true,
+        "independent_preexecution_review_sha256": "212723428659470e395819b4f01f4712ff5031e24b3f11eb11414de86864c5e5",
+        "quality_terminal_conditions": 40,
+        "outcome_statuses": {
+          "success": 40
+        },
+        "request_statuses": {
+          "success": 154
+        },
+        "actual_new_usage_estimate_CNY": 0.2159856,
+        "unresolved_usage_reserved_CNY": 0,
+        "after_fixed_batch": "Stop adaptive expansion; close and report fixed evidence; no next experiment queued",
+        "fresh_answers_native_or_key_read_for_status": false,
+        "held_technical_tasks": 0,
+        "algorithm_failures": 0,
+        "session_exit_code": 0,
+        "observer_exit_code": 0,
+        "remote_elapsed": "00:26:49",
+        "worker_status": "stopped",
+        "worker_retrieval_packets": 95,
+        "worker_error": null,
+        "independent_postexecution_audit": "passed",
+        "independent_postexecution_audit_sha256": "06946ebd28bd357d531b25aa6ab0aad668543150fb828e2ac2f47fed3e4dcab3",
+        "whole_cohort_scope_seal_prefix": "48f2ec50",
+        "initial_semantic_locks_complete": 4,
+        "maximum_request_attempts": 1,
+        "orphan_reservations": 0,
+        "expense_alerts": 0,
+        "publication_approved": false,
+        "publication_performed": false,
+        "trace_followup": "Closedpairedandremainingfailureinterpretation;birthfactunverifiedworkitempreserved,separatefromnativequalitycoverage",
+        "next_experiment": null,
+        "root_locked_native_result": {
+          "scope": "Same20 fixedsource/freshM0/freshM4;rootlockedbeforeinterpretation",
+          "old": {
+            "F1": 0.85,
+            "EM": 0.85,
+            "native_full_correct": 17
+          },
+          "M0": {
+            "F1": 0.85,
+            "EM": 0.85,
+            "native_full_correct": 17
+          },
+          "M4": {
+            "F1": 0.85,
+            "EM": 0.85,
+            "native_full_correct": 17
+          },
+          "improved": 0,
+          "tied": 20,
+          "harmed": 0,
+          "final_text_difference_pairs": 2
+        },
+        "trace_interpretation_complete": true,
+        "birth_fact_work_item_preserved": true,
+        "native_scoring_missing": 0,
+        "general_F1_superiority_verified": false,
+        "local_repairs_observed_in_prior_stage_or_selected8": true,
+        "interpretation_artifacts": {
+          "ROOT_PAIRED_INTERPRETATION.json": "43cbce8f7bc519ad68cf61a3c3c30a8fb0cd891d68c6f295de639f8f7085cea1",
+          "ROOT_REMAINING_FAILURES_READONLY.json": "9001e000cc32aefd97311b28edc88d79271dcccbacd68a67e79c5efb92d4656b",
+          "ROOT_CONTINUATION_DECISION.json": "7865bc9d25185dd49811afdab8087d4dfa1fef71c5ba30050a72078c31776c82"
+        },
+        "closure_decision_id": "P02_M4_WIKI20_COMPLETE_NO_GENERAL_GAIN_RESEARCH_ROUND_CLOSED_20261022",
+        "utc": "2026-10-21T20:46:23.605735+00:00"
+      },
+      "completed_m4_reader_stage8": {
+        "experiment": "p02_m4_reader_stage_probe8_v1_20261022",
+        "status": "complete_audited_root_gate_recorded",
+        "scope": "Research stage probe only;notcompleteRAGF1",
+        "planned_conditions": 16,
+        "resolved_conditions": 16,
+        "outcome_status": {
+          "success": 16
+        },
+        "request_status": {
+          "success": 16
+        },
+        "formatter_triggered": 0,
+        "held_technical_tasks": 0,
+        "returned_usage_estimate_CNY": 0.0251008,
+        "unknown_reserved_CNY": 0,
+        "session_id": 97632,
+        "local_session_status": "completed_exit0",
+        "active": false,
+        "GPU_used": false,
+        "protocol_sha256": "8fca8f23806619ed5ada3e689fe62dd473c029f3c97a43f0f9f0e1c47354bc16",
+        "native_component_accuracy_not_inferred": true,
+        "semantic_review": "E masked16 reviewing;labels/key/answersnotreadforstatus",
+        "main_method_promoted": false,
+        "utc": "2026-10-21T19:22:49.293925+00:00",
+        "live_status": "reviews/20261022_prompt_binding_goal_synthesis/ROUND2_LIVE_STATUS.json",
+        "independent_integrity_audit_sha256": "051fb77c8d9872a6eb9e0ebd9b5d09a09c60e86df33cc164d502049a2c934185"
+      },
+      "latest_preparation": null,
+      "completed_m4_full8_dynamic": {
+        "experiment": "p02_m4_full8_dynamic_v1_20261022",
+        "status": "complete_independently_audited",
+        "planned_queries": 8,
+        "planned_conditions": 16,
+        "ordinary_nodes_per_arm": 17,
+        "quality_terminal_conditions": 16,
+        "outcome_statuses": {
+          "success": 16
+        },
+        "request_statuses": {
+          "success": 70
+        },
+        "protocol_sha256": "2056ecaa609dd6af2ae83dc849c7d5024f56760ea4d6c6ceeb1086ed533b9b4d",
+        "decision_id": "P02_M4_FULL8_COMPLETE_DYNAMIC_REMOTE_EXECUTION_20261022",
+        "session_id": 82173,
+        "remote_job_id": "159027",
+        "remote_directory": "/home/projects/u7830488/p02_prompt_small_evals_20261022/m4full8_2056ecaa609dd6af",
+        "GPU_expected": "NVIDIA RTX A6000",
+        "GPU_READY_local_observed": true,
+        "execution_authorized": true,
+        "new_API_started": true,
+        "remote_job_receipt_observed": true,
+        "remote_scheduler_status": "await_root_readonly_observer",
+        "actual_new_usage_estimate_CNY": 0.09496439999999999,
+        "unresolved_usage_reserved_CNY": 0,
+        "main_method_promoted": false,
+        "fresh_predictions_scores_keys_opened": false,
+        "main_evaluation_resumed": false,
+        "session_exit_code": 0,
+        "observer_session_id": 50965,
+        "observer_exit_code": 0,
+        "remote_job_status": "COMPLETED",
+        "remote_elapsed": "11m47s",
+        "worker_processed_requests": 39,
+        "independent_integrity_audit": "passed",
+        "independent_integrity_audit_sha256": "8764f8a42867ef1c98751fb7fb27149560dc8d0e45b72416abc70fad40ac319e",
+        "utc": "2026-10-21T19:55:08.804204+00:00"
+      },
+      "publication_approved": false,
+      "general_F1_superiority_verified": false
+    },
+    "objective_update": "reviews/20261022_prompt_binding_goal_synthesis/OBJECTIVE_UPDATE_20261022.json",
+    "current_round": "reviews/20261022_prompt_binding_goal_synthesis/ROUND2_TRACKER.json",
+    "first_batch_summary": {
+      "utc": "2026-10-21T15:07:47.341149+00:00",
+      "status": "bounded_small_research_batch_complete_information_audit_partial",
+      "summary": "reviews/20261022_prompt_binding_goal_synthesis/RESULTS_SUMMARY.md",
+      "next_design": "reviews/20261022_prompt_binding_goal_synthesis/NEXT_STAGE_DESIGN.md",
+      "main_evaluation_resumed": false,
+      "selected_main_prompt_changed": false
+    }
+  },
+  "latest_preexecution_plan_budget_review": {
+    "id": "MAIN_EVAL_PREEXECUTION_REVIEW_BUDGET_HOLD_20261023",
+    "utc": "2026-10-22T17:49:16.647366+00:00",
+    "review": "reviews/20261023_preexecution_plan_budget/REVIEW.zh.txt",
+    "data": "reviews/20261023_preexecution_plan_budget/REVIEW.json",
+    "new_configuration_map": "candidate_only_not_adopted",
+    "conditional_quality_API_CNY": [
+      102.23207222704028,
+      117.63310576989844
+    ],
+    "conditional_timing_API_CNY": [
+      11.582750923225072,
+      13.122854277510887
+    ],
+    "conditional_total_API_CNY": [
+      113.81482315026535,
+      130.75596004740933
+    ],
+    "GPU_CNY": "not_estimated_no_verified_rate",
+    "ready_to_dispatch": false,
+    "scope": "Read-only experiment inventory, external source review, budget arithmetic and plan documentation only"
+  }
+}

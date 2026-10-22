@@ -1,0 +1,1568 @@
+{
+  "id": "p02_qa_raw_final_interface_300_revision007_20261023",
+  "status": "planned_not_executed",
+  "execution_authorized": false,
+  "seed": 20261023,
+  "questions_per_dataset": 100,
+  "planned_queries": 300,
+  "new_final_arms": [
+    "QA",
+    "Raw"
+  ],
+  "planned_new_final_results": 600,
+  "metadata_sha256": "6efe6a640799562761bb496b738b5f11ebce049ae506224a7ca3244d535a19e5",
+  "selection_fields": [
+    "qid",
+    "type",
+    "group_id"
+  ],
+  "selection": "largest-remainder proportional strata; lexicographic stratum ties; SHA256(seed:dataset:qa_raw_sample:qid) within stratum; separate qa_raw_order hash",
+  "exposure": "subset of existing formal500; not claimed to be unseen or independent of historical research",
+  "datasets": {
+    "hotpotqa": {
+      "population": 500,
+      "population_strata": {
+        "bridge": 407,
+        "comparison": 93
+      },
+      "selected_strata": {
+        "bridge": 81,
+        "comparison": 19
+      },
+      "queries": [
+        {
+          "qid": "5adbf44355429944faac23ce",
+          "type": "bridge",
+          "group_id": "fg:0077cd920f941fd38e46becb"
+        },
+        {
+          "qid": "5ae122465542997b2ef7d0f4",
+          "type": "bridge",
+          "group_id": "fg:9ce64a46081b4cdae351aeb8"
+        },
+        {
+          "qid": "5a7dc7735542990b8f503a93",
+          "type": "bridge",
+          "group_id": "fg:b905334f3b353ca39488252d"
+        },
+        {
+          "qid": "5add4dd35542992ae4cec507",
+          "type": "bridge",
+          "group_id": "fg:184e9752bb7a4a27b0cd8fcd"
+        },
+        {
+          "qid": "5a7933b255429907847277eb",
+          "type": "comparison",
+          "group_id": "fg:fcc55ae846bd32ed3b51271b"
+        },
+        {
+          "qid": "5a7bb52355429927d897c01a",
+          "type": "bridge",
+          "group_id": "fg:c9d36c401e958092fc8f6f78"
+        },
+        {
+          "qid": "5ae25d2b554299495565da46",
+          "type": "comparison",
+          "group_id": "fg:f6342c08ceca229ea0b91639"
+        },
+        {
+          "qid": "5abcfa6f5542993a06baf9c7",
+          "type": "bridge",
+          "group_id": "fg:4177eab58b678f075f9fc592"
+        },
+        {
+          "qid": "5ab7f0015542992aa3b8c88b",
+          "type": "bridge",
+          "group_id": "fg:fe03fee278732738115e48aa"
+        },
+        {
+          "qid": "5a89dfcc55429946c8d6e9f0",
+          "type": "comparison",
+          "group_id": "fg:4ab1452d16faf924ab836778"
+        },
+        {
+          "qid": "5a7b65ab5542997c3ec97144",
+          "type": "bridge",
+          "group_id": "fg:2575bacc453975eabb661d5b"
+        },
+        {
+          "qid": "5ab61140554299110f2199d7",
+          "type": "bridge",
+          "group_id": "fg:c70a8236e70ed72b68301ec4"
+        },
+        {
+          "qid": "5ac3a049554299741d48a2ba",
+          "type": "bridge",
+          "group_id": "fg:9ecad8fd04218b470c2b5edc"
+        },
+        {
+          "qid": "5a8359c7554299123d8c20fb",
+          "type": "bridge",
+          "group_id": "fg:78a48b8256054106620612ac"
+        },
+        {
+          "qid": "5adfa8d0554299025d62a32c",
+          "type": "bridge",
+          "group_id": "fg:57304bed13cc6e4ed2e3c650"
+        },
+        {
+          "qid": "5adfc97255429906c02daa41",
+          "type": "bridge",
+          "group_id": "fg:c5ca1e73c1ba82f05c78fea4"
+        },
+        {
+          "qid": "5ab926bc554299131ca42285",
+          "type": "bridge",
+          "group_id": "fg:9ce5de7f46a2818b710f8fdb"
+        },
+        {
+          "qid": "5a8df1a65542995085b3735f",
+          "type": "bridge",
+          "group_id": "fg:82e328c798b6dc41bafbed65"
+        },
+        {
+          "qid": "5a8457835542990548d0b28a",
+          "type": "bridge",
+          "group_id": "fg:d16d5ebd18bc07d0c375419a"
+        },
+        {
+          "qid": "5a85bc2d5542994c784ddb70",
+          "type": "bridge",
+          "group_id": "fg:45afd8d3dac288928e35be04"
+        },
+        {
+          "qid": "5ae163b3554299422ee99678",
+          "type": "bridge",
+          "group_id": "fg:94fb4c5e961023e0fefc6d31"
+        },
+        {
+          "qid": "5a8b448255429971feec468c",
+          "type": "bridge",
+          "group_id": "fg:308695b16484bf2069350d41"
+        },
+        {
+          "qid": "5a8d93ad554299653c1aa13d",
+          "type": "comparison",
+          "group_id": "fg:8e3911202fd1a8523faaa789"
+        },
+        {
+          "qid": "5ab7b0775542992aa3b8c83e",
+          "type": "bridge",
+          "group_id": "fg:b0dd6ede5b801585dec4fbb1"
+        },
+        {
+          "qid": "5ae4a0ca5542995ad6573dcb",
+          "type": "bridge",
+          "group_id": "fg:f4c6ffa07f169e2ecbad1c0e"
+        },
+        {
+          "qid": "5ac194db55429964131be23a",
+          "type": "bridge",
+          "group_id": "fg:353897d7464b491716f2e589"
+        },
+        {
+          "qid": "5a88d745554299206df2b378",
+          "type": "comparison",
+          "group_id": "fg:fd7eb48d5a62103c12b4f1c6"
+        },
+        {
+          "qid": "5a87b93c5542996e4f3088ec",
+          "type": "bridge",
+          "group_id": "fg:b08476b4f105914960da4314"
+        },
+        {
+          "qid": "5a7ca95b55429935c91b5287",
+          "type": "comparison",
+          "group_id": "fg:9131fd88c89c60f747e8166f"
+        },
+        {
+          "qid": "5a7e1f5655429965cec5ea81",
+          "type": "bridge",
+          "group_id": "fg:43498021c17d8678c72934e2"
+        },
+        {
+          "qid": "5a90b6985542990a984936c2",
+          "type": "bridge",
+          "group_id": "fg:b862a359e27fa6447bf20199"
+        },
+        {
+          "qid": "5ade74285542992fa25da78c",
+          "type": "comparison",
+          "group_id": "fg:090f7bee7e3397228d30e1e4"
+        },
+        {
+          "qid": "5adf860e5542993344016cbc",
+          "type": "bridge",
+          "group_id": "fg:3e8fddcd1846d5597398f6c0"
+        },
+        {
+          "qid": "5a81b43d5542995ce29dcc39",
+          "type": "bridge",
+          "group_id": "fg:8d659ae130a5fb0ed787e5d0"
+        },
+        {
+          "qid": "5a7b3d565542992d025e67b6",
+          "type": "bridge",
+          "group_id": "fg:0fb7e174e549a097892bb7fd"
+        },
+        {
+          "qid": "5a80f793554299260e20a1e1",
+          "type": "bridge",
+          "group_id": "fg:802b08fefe69d695e910cf18"
+        },
+        {
+          "qid": "5a78d01d55429974737f78b3",
+          "type": "bridge",
+          "group_id": "fg:fc23a5e72528f1772700f885"
+        },
+        {
+          "qid": "5a79305755429907847277dd",
+          "type": "bridge",
+          "group_id": "fg:44e120a4aa2a9e6e93a417fc"
+        },
+        {
+          "qid": "5a7a33205542996a35c1712f",
+          "type": "bridge",
+          "group_id": "fg:219e8de0dc832f4083d2903f"
+        },
+        {
+          "qid": "5ae2eb7f55429928c423955b",
+          "type": "bridge",
+          "group_id": "fg:cb5ea6ce1dae9d103fefd3ea"
+        },
+        {
+          "qid": "5a901d6c5542995651fb50bd",
+          "type": "comparison",
+          "group_id": "fg:6e9e7fbd6d3d87444f347c7f"
+        },
+        {
+          "qid": "5a8bd4d65542997f31a41dd8",
+          "type": "comparison",
+          "group_id": "fg:293860c8cb5ab2ae5ced47dc"
+        },
+        {
+          "qid": "5ab207f65542993be8fa98b8",
+          "type": "bridge",
+          "group_id": "fg:054d96b33f79ae9b533c9d0d"
+        },
+        {
+          "qid": "5a8888e35542997e5c09a5f6",
+          "type": "bridge",
+          "group_id": "fg:1972f059b5390c073af72a6d"
+        },
+        {
+          "qid": "5ae1ab2f554299234fd042ba",
+          "type": "bridge",
+          "group_id": "fg:277da231c83dbdcdc5e49704"
+        },
+        {
+          "qid": "5a8f15d2554299458435d551",
+          "type": "bridge",
+          "group_id": "fg:be2e2fe7ae66f5873f338ff7"
+        },
+        {
+          "qid": "5abac89d55429901930fa8b5",
+          "type": "bridge",
+          "group_id": "fg:6acc5a2a26072769d053b4d4"
+        },
+        {
+          "qid": "5ae35e8c5542990afbd1e120",
+          "type": "bridge",
+          "group_id": "fg:ba1955dd2347e621aa2a8290"
+        },
+        {
+          "qid": "5adecc7755429975fa854f9d",
+          "type": "bridge",
+          "group_id": "fg:ea5c63e4b6dd363bf1ced3b1"
+        },
+        {
+          "qid": "5ab6d09255429954757d337d",
+          "type": "bridge",
+          "group_id": "fg:c2c8d0fce87891302907e106"
+        },
+        {
+          "qid": "5a85eed75542996432c5713b",
+          "type": "bridge",
+          "group_id": "fg:e8c04082a29d99f7a32c9f4a"
+        },
+        {
+          "qid": "5ab6bae95542995eadef0086",
+          "type": "bridge",
+          "group_id": "fg:b438754f04df9d5b7ecf38cc"
+        },
+        {
+          "qid": "5a79c2955542994f819ef097",
+          "type": "bridge",
+          "group_id": "fg:a65ca3b2f1653ad4c1816d1f"
+        },
+        {
+          "qid": "5a825bb455429940e5e1a874",
+          "type": "bridge",
+          "group_id": "fg:583f673ccdc20a4ea943b5be"
+        },
+        {
+          "qid": "5ae78f3b554299540e5a5608",
+          "type": "bridge",
+          "group_id": "fg:5da1c485d36c5e998ff7f659"
+        },
+        {
+          "qid": "5ab7f6d35542993667794070",
+          "type": "bridge",
+          "group_id": "fg:6b80edc108db053547ec7088"
+        },
+        {
+          "qid": "5a7dff595542997cc2c474eb",
+          "type": "bridge",
+          "group_id": "fg:7e70b4a843da4e5b5928bf8c"
+        },
+        {
+          "qid": "5a8241a855429940e5e1a819",
+          "type": "bridge",
+          "group_id": "fg:320134f41f199c3402366366"
+        },
+        {
+          "qid": "5ab997ad554299131ca4238c",
+          "type": "bridge",
+          "group_id": "fg:54672f5c251e95dff7d71e61"
+        },
+        {
+          "qid": "5add7a335542992200553b37",
+          "type": "comparison",
+          "group_id": "fg:d72de89938c84a8ed73eda3b"
+        },
+        {
+          "qid": "5ab69c25554299110f219a39",
+          "type": "bridge",
+          "group_id": "fg:9fb811de27db7690bbc6bccd"
+        },
+        {
+          "qid": "5a84b5ac5542991dd0999da4",
+          "type": "comparison",
+          "group_id": "fg:98077b555a117dd181bbf4b3"
+        },
+        {
+          "qid": "5a7636fb55429976ec32bd79",
+          "type": "bridge",
+          "group_id": "fg:2a5bf946f0026f43edcaff5b"
+        },
+        {
+          "qid": "5a8bd49d5542997f31a41dd7",
+          "type": "bridge",
+          "group_id": "fg:479b0f36f3477d1330ff6963"
+        },
+        {
+          "qid": "5a7a68d25542996c55b2dd98",
+          "type": "bridge",
+          "group_id": "fg:aae19ec880f81ce0fff27839"
+        },
+        {
+          "qid": "5a770d785542993569682cad",
+          "type": "bridge",
+          "group_id": "fg:f5ff97cacd062d0478fa3f81"
+        },
+        {
+          "qid": "5a8ba45b554299240d9c2051",
+          "type": "bridge",
+          "group_id": "fg:6cc7650acec645ccbd0159e9"
+        },
+        {
+          "qid": "5a7e355055429934daa2fbf4",
+          "type": "bridge",
+          "group_id": "fg:8852ed84df90c16e1fa6ac1a"
+        },
+        {
+          "qid": "5abcee275542993a06baf9af",
+          "type": "bridge",
+          "group_id": "fg:8d8d8f657f321194c96f78be"
+        },
+        {
+          "qid": "5ac5632e5542993e66e823d9",
+          "type": "comparison",
+          "group_id": "fg:2efc9f2575fb9cb6d2f84067"
+        },
+        {
+          "qid": "5a8f7a135542992414482adc",
+          "type": "bridge",
+          "group_id": "fg:d54b039639be62d1ad4d296f"
+        },
+        {
+          "qid": "5ac507725542994611c8b32a",
+          "type": "bridge",
+          "group_id": "fg:023258e0b89ab484708b4270"
+        },
+        {
+          "qid": "5a7a616355429941d65f25f7",
+          "type": "bridge",
+          "group_id": "fg:39e6fc5f428fdee023f48957"
+        },
+        {
+          "qid": "5ab804065542990e739ec7e0",
+          "type": "comparison",
+          "group_id": "fg:44698651817b2cf37ce27fc5"
+        },
+        {
+          "qid": "5a80762a5542996402f6a536",
+          "type": "bridge",
+          "group_id": "fg:3e4d9e2da921745e7dffec68"
+        },
+        {
+          "qid": "5ac0dcf25542996f0d89cc2c",
+          "type": "bridge",
+          "group_id": "fg:1237a0c681223ba454325d8e"
+        },
+        {
+          "qid": "5ab7c3df5542993667794003",
+          "type": "bridge",
+          "group_id": "fg:be28232f971b3eed7360a3d0"
+        },
+        {
+          "qid": "5ab9b29c554299743d22ebae",
+          "type": "comparison",
+          "group_id": "fg:8a6d8713dae3196ddfcdb508"
+        },
+        {
+          "qid": "5ab5cdb85542997d4ad1f1e0",
+          "type": "bridge",
+          "group_id": "fg:c96c7cc92e514fa5c6094bc3"
+        },
+        {
+          "qid": "5a8efb5a55429918e830d172",
+          "type": "bridge",
+          "group_id": "fg:f3500e55b1a2b6e1263bfc4c"
+        },
+        {
+          "qid": "5adc905e5542994d58a2f662",
+          "type": "bridge",
+          "group_id": "fg:8cda80b219e4c8b434210b3c"
+        },
+        {
+          "qid": "5a85ee635542994775f606b4",
+          "type": "comparison",
+          "group_id": "fg:3156ae546e337965fbab4c76"
+        },
+        {
+          "qid": "5a8d427f5542994ba4e3dc41",
+          "type": "bridge",
+          "group_id": "fg:b777753e7e8f76262c6de14a"
+        },
+        {
+          "qid": "5a88d6df554299206df2b377",
+          "type": "bridge",
+          "group_id": "fg:af6f473d38a6921b0c10e45f"
+        },
+        {
+          "qid": "5a77d25555429949eeb29f6c",
+          "type": "bridge",
+          "group_id": "fg:e7c3695514dce56f49d76504"
+        },
+        {
+          "qid": "5a7f1e805542993067513640",
+          "type": "bridge",
+          "group_id": "fg:4f9ccfd883522bb8a19a43e2"
+        },
+        {
+          "qid": "5a822a5e55429926c1cdae43",
+          "type": "comparison",
+          "group_id": "fg:45b3838a1a65e64097b7e5cf"
+        },
+        {
+          "qid": "5a8a367a55429930ff3c0d03",
+          "type": "bridge",
+          "group_id": "fg:c5342767b72cd5f8d79446e0"
+        },
+        {
+          "qid": "5a7211e655429971e9dc923c",
+          "type": "bridge",
+          "group_id": "fg:77aa555f31f3b1f46d72ab1e"
+        },
+        {
+          "qid": "5a804e845542992bc0c4a6e9",
+          "type": "bridge",
+          "group_id": "fg:e75e06a02a911607cd713b41"
+        },
+        {
+          "qid": "5a8b69f45542997f31a41d19",
+          "type": "bridge",
+          "group_id": "fg:b2fc1a3470d9371bd98006fd"
+        },
+        {
+          "qid": "5ae0ff95554299422ee995b0",
+          "type": "bridge",
+          "group_id": "fg:01d13532bea17e727315b773"
+        },
+        {
+          "qid": "5adbfa38554299438c868d00",
+          "type": "bridge",
+          "group_id": "fg:9f2241bbee085995ff034d61"
+        },
+        {
+          "qid": "5a7a5ccf55429941d65f25d7",
+          "type": "bridge",
+          "group_id": "fg:f4c0efc72ae97ce6dafea7e2"
+        },
+        {
+          "qid": "5ae5305b5542990ba0bbb1f5",
+          "type": "bridge",
+          "group_id": "fg:3bbb207abbfabc3d1ef4a06e"
+        },
+        {
+          "qid": "5ae4f6c755429960a22e022a",
+          "type": "bridge",
+          "group_id": "fg:1b746b7d9e778423903062c5"
+        },
+        {
+          "qid": "5abdb10f55429965af743dc9",
+          "type": "comparison",
+          "group_id": "fg:c08ed2b6464a44908bed68b0"
+        },
+        {
+          "qid": "5a7f39d055429934daa2fd2a",
+          "type": "comparison",
+          "group_id": "fg:161b323cea4dbf93d9e593f1"
+        },
+        {
+          "qid": "5a77dbaf5542997042120b5b",
+          "type": "comparison",
+          "group_id": "fg:fe2ead70d22f6efbc70e31b8"
+        },
+        {
+          "qid": "5a8f54165542992414482a52",
+          "type": "bridge",
+          "group_id": "fg:52441988d88beb59c66d0076"
+        }
+      ]
+    },
+    "2wiki": {
+      "population": 500,
+      "population_strata": {
+        "bridge_comparison": 112,
+        "comparison": 113,
+        "compositional": 212,
+        "inference": 63
+      },
+      "selected_strata": {
+        "bridge_comparison": 22,
+        "comparison": 23,
+        "compositional": 42,
+        "inference": 13
+      },
+      "queries": [
+        {
+          "qid": "939f9458087c11ebbd6aac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:11764"
+        },
+        {
+          "qid": "c7df66f908ea11ebbda7ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:16149"
+        },
+        {
+          "qid": "039006b80bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:6748"
+        },
+        {
+          "qid": "c244022c0baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:9747"
+        },
+        {
+          "qid": "7aa50b6a08a711ebbd7fac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:11980"
+        },
+        {
+          "qid": "9094edb808c111ebbd8bac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:8157"
+        },
+        {
+          "qid": "20aa14f60bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4573"
+        },
+        {
+          "qid": "7b3f24c80bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:10003"
+        },
+        {
+          "qid": "1d5abddf088811ebbd6eac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:13340"
+        },
+        {
+          "qid": "3a61885c0bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4966"
+        },
+        {
+          "qid": "9946e9180bda11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4925"
+        },
+        {
+          "qid": "8031698e0bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:5071"
+        },
+        {
+          "qid": "c2d86f85094f11ebbdaeac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:7980"
+        },
+        {
+          "qid": "95b64b6a0bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4775"
+        },
+        {
+          "qid": "1a1c0bd40bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:8832"
+        },
+        {
+          "qid": "109f949808bf11ebbd8aac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7204"
+        },
+        {
+          "qid": "87ff3cc00bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:7849"
+        },
+        {
+          "qid": "b23c52da0baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:16256"
+        },
+        {
+          "qid": "ab95c9260bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:13986"
+        },
+        {
+          "qid": "4aaea1c80bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:8829"
+        },
+        {
+          "qid": "f0cba8e408cc11ebbd93ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:16811"
+        },
+        {
+          "qid": "1dd18a37086a11ebbd5fac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:4629"
+        },
+        {
+          "qid": "1a3535d20bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:7979"
+        },
+        {
+          "qid": "4b00867a0bde11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4528"
+        },
+        {
+          "qid": "e01e25380bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:16923"
+        },
+        {
+          "qid": "78f80b7108dc11ebbd9cac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:7293"
+        },
+        {
+          "qid": "0e2fe3b40bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:5402"
+        },
+        {
+          "qid": "28164e580baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:4632"
+        },
+        {
+          "qid": "d0c7b05e084a11ebbd56ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:12809"
+        },
+        {
+          "qid": "15f03853087011ebbd62ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:5710"
+        },
+        {
+          "qid": "3bb9c0740bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:6691"
+        },
+        {
+          "qid": "a64a25c6094311ebbdaeac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:16490"
+        },
+        {
+          "qid": "0b78b1e9087411ebbd67ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:10257"
+        },
+        {
+          "qid": "9711615e08cf11ebbd95ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7746"
+        },
+        {
+          "qid": "6dd659b40bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:15845"
+        },
+        {
+          "qid": "339a2e4908f311ebbdaaac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:11881"
+        },
+        {
+          "qid": "de30da2c0bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:14396"
+        },
+        {
+          "qid": "b7d447220bda11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4744"
+        },
+        {
+          "qid": "75acd1b4086411ebbd5eac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:11073"
+        },
+        {
+          "qid": "76ec405f08b811ebbd88ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:10005"
+        },
+        {
+          "qid": "9a339d60099011ebbdb0ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:10235"
+        },
+        {
+          "qid": "c1541135089111ebbd73ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7604"
+        },
+        {
+          "qid": "f50f95d60bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:13171"
+        },
+        {
+          "qid": "133841b4085d11ebbd5cac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:15426"
+        },
+        {
+          "qid": "3956e2ea0bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:12368"
+        },
+        {
+          "qid": "c8e196500bda11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:8075"
+        },
+        {
+          "qid": "572c3827088311ebbd6dac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:13091"
+        },
+        {
+          "qid": "9564cd35089311ebbd75ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:15517"
+        },
+        {
+          "qid": "1378106008b411ebbd87ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:8811"
+        },
+        {
+          "qid": "7207bf9a085f11ebbd5cac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:10602"
+        },
+        {
+          "qid": "3039f2ae0bde11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:5808"
+        },
+        {
+          "qid": "a9a4b633089c11ebbd78ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:4726"
+        },
+        {
+          "qid": "c61541df084b11ebbd56ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:6323"
+        },
+        {
+          "qid": "8a92d16c0bd911eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:8015"
+        },
+        {
+          "qid": "5826634c0bde11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:15844"
+        },
+        {
+          "qid": "dd9e17e60bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6057"
+        },
+        {
+          "qid": "1db17ce108a711ebbd7fac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7854"
+        },
+        {
+          "qid": "0704c1220baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:9393"
+        },
+        {
+          "qid": "7c643c21088211ebbd6dac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:9327"
+        },
+        {
+          "qid": "790a75c40bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6042"
+        },
+        {
+          "qid": "a6b118a00bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:15054"
+        },
+        {
+          "qid": "140b2d380bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:11998"
+        },
+        {
+          "qid": "f96dfaba0bae11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:6962"
+        },
+        {
+          "qid": "ed0838b508dc11ebbd9dac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:11618"
+        },
+        {
+          "qid": "73dcc04808de11ebbd9eac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:8176"
+        },
+        {
+          "qid": "fbae3262089411ebbd75ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:12224"
+        },
+        {
+          "qid": "74b634c40bde11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:12393"
+        },
+        {
+          "qid": "3011c56a0bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:7219"
+        },
+        {
+          "qid": "a27a3a220bd911eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:13092"
+        },
+        {
+          "qid": "74fbb72909b911ebbdb0ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:10473"
+        },
+        {
+          "qid": "533de90c0bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6762"
+        },
+        {
+          "qid": "d4f03e3a0bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6951"
+        },
+        {
+          "qid": "80fa14d408e411ebbda4ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:13367"
+        },
+        {
+          "qid": "1d8fc19c0bde11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:5243"
+        },
+        {
+          "qid": "4e39ce420bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:12600"
+        },
+        {
+          "qid": "0878d86308e511ebbda4ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:11470"
+        },
+        {
+          "qid": "0a5b81a20bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:10451"
+        },
+        {
+          "qid": "b5ccd3ba0bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:13210"
+        },
+        {
+          "qid": "512a07dc0bda11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6381"
+        },
+        {
+          "qid": "f7bec14908d611ebbd99ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:5856"
+        },
+        {
+          "qid": "27e835ee0bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:4422"
+        },
+        {
+          "qid": "63240f22089d11ebbd78ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7202"
+        },
+        {
+          "qid": "961c690c08ab11ebbd82ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:9166"
+        },
+        {
+          "qid": "5d87207a0bb011ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:6872"
+        },
+        {
+          "qid": "f98692b80bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4389"
+        },
+        {
+          "qid": "3209ff5e0baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:5581"
+        },
+        {
+          "qid": "2aa02b3a0bdc11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:5379"
+        },
+        {
+          "qid": "7259372a0bda11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:11473"
+        },
+        {
+          "qid": "e3918be5087011ebbd63ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:8177"
+        },
+        {
+          "qid": "4dea6f320bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:6514"
+        },
+        {
+          "qid": "d26308ff088c11ebbd70ac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:9870"
+        },
+        {
+          "qid": "de2f91c808c011ebbd8aac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:9107"
+        },
+        {
+          "qid": "eb7ece320bdd11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:4706"
+        },
+        {
+          "qid": "fd8d6eaa0bdb11eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:16894"
+        },
+        {
+          "qid": "92378530089511ebbd75ac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:7801"
+        },
+        {
+          "qid": "6e5f2a2e085d11ebbd5cac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:4580"
+        },
+        {
+          "qid": "50ad4787085f11ebbd5cac1f6bf848b6",
+          "type": "comparison",
+          "group_id": "2wiki:group:12893"
+        },
+        {
+          "qid": "3ac56c140baf11ebab90acde48001122",
+          "type": "inference",
+          "group_id": "2wiki:group:6168"
+        },
+        {
+          "qid": "fc4e92c0088011ebbd6dac1f6bf848b6",
+          "type": "bridge_comparison",
+          "group_id": "2wiki:group:14892"
+        },
+        {
+          "qid": "f68b59ac0bd911eba7f7acde48001122",
+          "type": "compositional",
+          "group_id": "2wiki:group:13897"
+        }
+      ]
+    },
+    "musique": {
+      "population": 500,
+      "population_strata": {
+        "2-hop": 259,
+        "3-hop": 157,
+        "4-hop": 84
+      },
+      "selected_strata": {
+        "2-hop": 52,
+        "3-hop": 31,
+        "4-hop": 17
+      },
+      "queries": [
+        {
+          "qid": "4hop3__794915_466199_695123_72134",
+          "type": "4-hop",
+          "group_id": "musique:group:6533"
+        },
+        {
+          "qid": "2hop__434218_29898",
+          "type": "2-hop",
+          "group_id": "musique:group:5452"
+        },
+        {
+          "qid": "2hop__847760_80026",
+          "type": "2-hop",
+          "group_id": "musique:group:5415"
+        },
+        {
+          "qid": "2hop__341176_711757",
+          "type": "2-hop",
+          "group_id": "musique:group:5394"
+        },
+        {
+          "qid": "2hop__250030_7298",
+          "type": "2-hop",
+          "group_id": "musique:group:5493"
+        },
+        {
+          "qid": "4hop1__767417_624859_355213_203322",
+          "type": "4-hop",
+          "group_id": "musique:group:6314"
+        },
+        {
+          "qid": "2hop__700093_455653",
+          "type": "2-hop",
+          "group_id": "musique:group:4411"
+        },
+        {
+          "qid": "3hop1__128554_39743_24526",
+          "type": "3-hop",
+          "group_id": "musique:group:6692"
+        },
+        {
+          "qid": "3hop1__617062_127905_67954",
+          "type": "3-hop",
+          "group_id": "musique:group:5708"
+        },
+        {
+          "qid": "2hop__83800_747874",
+          "type": "2-hop",
+          "group_id": "musique:group:4904"
+        },
+        {
+          "qid": "3hop1__376309_160713_77246",
+          "type": "3-hop",
+          "group_id": "musique:group:5578"
+        },
+        {
+          "qid": "4hop1__9002_698949_157828_239539",
+          "type": "4-hop",
+          "group_id": "musique:group:6286"
+        },
+        {
+          "qid": "2hop__233551_746883",
+          "type": "2-hop",
+          "group_id": "musique:group:4648"
+        },
+        {
+          "qid": "2hop__2150_78851",
+          "type": "2-hop",
+          "group_id": "musique:group:5001"
+        },
+        {
+          "qid": "3hop2__127483_76623_10557",
+          "type": "3-hop",
+          "group_id": "musique:group:6060"
+        },
+        {
+          "qid": "2hop__95773_51329",
+          "type": "2-hop",
+          "group_id": "musique:group:4685"
+        },
+        {
+          "qid": "2hop__853227_68633",
+          "type": "2-hop",
+          "group_id": "musique:group:4720"
+        },
+        {
+          "qid": "3hop2__20335_82856_9331",
+          "type": "3-hop",
+          "group_id": "musique:group:6700"
+        },
+        {
+          "qid": "2hop__166484_798067",
+          "type": "2-hop",
+          "group_id": "musique:group:4984"
+        },
+        {
+          "qid": "2hop__45296_83837",
+          "type": "2-hop",
+          "group_id": "musique:group:5261"
+        },
+        {
+          "qid": "2hop__779424_75487",
+          "type": "2-hop",
+          "group_id": "musique:group:5136"
+        },
+        {
+          "qid": "2hop__88953_64006",
+          "type": "2-hop",
+          "group_id": "musique:group:4848"
+        },
+        {
+          "qid": "4hop1__151650_5274_458768_33637",
+          "type": "4-hop",
+          "group_id": "musique:group:6417"
+        },
+        {
+          "qid": "2hop__157602_21567",
+          "type": "2-hop",
+          "group_id": "musique:group:5360"
+        },
+        {
+          "qid": "3hop1__379231_40769_64047",
+          "type": "3-hop",
+          "group_id": "musique:group:5801"
+        },
+        {
+          "qid": "4hop3__531933_836463_161616_77103",
+          "type": "4-hop",
+          "group_id": "musique:group:6539"
+        },
+        {
+          "qid": "2hop__132472_120537",
+          "type": "2-hop",
+          "group_id": "musique:group:5286"
+        },
+        {
+          "qid": "3hop2__88342_93066_90766",
+          "type": "3-hop",
+          "group_id": "musique:group:5901"
+        },
+        {
+          "qid": "3hop2__6989_37759_74563",
+          "type": "3-hop",
+          "group_id": "musique:group:6683"
+        },
+        {
+          "qid": "2hop__21103_16334",
+          "type": "2-hop",
+          "group_id": "musique:group:5121"
+        },
+        {
+          "qid": "2hop__510647_507085",
+          "type": "2-hop",
+          "group_id": "musique:group:5364"
+        },
+        {
+          "qid": "3hop1__764280_834494_34053",
+          "type": "3-hop",
+          "group_id": "musique:group:6165"
+        },
+        {
+          "qid": "2hop__481809_184805",
+          "type": "2-hop",
+          "group_id": "musique:group:5537"
+        },
+        {
+          "qid": "2hop__462179_643013",
+          "type": "2-hop",
+          "group_id": "musique:group:5099"
+        },
+        {
+          "qid": "2hop__771727_93362",
+          "type": "2-hop",
+          "group_id": "musique:group:4496"
+        },
+        {
+          "qid": "2hop__129499_85379",
+          "type": "2-hop",
+          "group_id": "musique:group:6631"
+        },
+        {
+          "qid": "2hop__450600_158262",
+          "type": "2-hop",
+          "group_id": "musique:group:4776"
+        },
+        {
+          "qid": "3hop2__326964_7721_7713",
+          "type": "3-hop",
+          "group_id": "musique:group:6001"
+        },
+        {
+          "qid": "2hop__73069_88165",
+          "type": "2-hop",
+          "group_id": "musique:group:5143"
+        },
+        {
+          "qid": "3hop1__671542_665330_51423",
+          "type": "3-hop",
+          "group_id": "musique:group:5741"
+        },
+        {
+          "qid": "3hop2__326964_320101_7713",
+          "type": "3-hop",
+          "group_id": "musique:group:6045"
+        },
+        {
+          "qid": "3hop1__593597_40769_64047",
+          "type": "3-hop",
+          "group_id": "musique:group:5787"
+        },
+        {
+          "qid": "3hop1__640171_228453_10972",
+          "type": "3-hop",
+          "group_id": "musique:group:5946"
+        },
+        {
+          "qid": "4hop1__570103_49925_13759_736921",
+          "type": "4-hop",
+          "group_id": "musique:group:6320"
+        },
+        {
+          "qid": "2hop__10122_18974",
+          "type": "2-hop",
+          "group_id": "musique:group:4615"
+        },
+        {
+          "qid": "3hop1__133264_40769_64047",
+          "type": "3-hop",
+          "group_id": "musique:group:5805"
+        },
+        {
+          "qid": "3hop1__465684_160545_62931",
+          "type": "3-hop",
+          "group_id": "musique:group:6038"
+        },
+        {
+          "qid": "3hop1__140345_2053_52946",
+          "type": "3-hop",
+          "group_id": "musique:group:5862"
+        },
+        {
+          "qid": "3hop1__603558_87694_124169",
+          "type": "3-hop",
+          "group_id": "musique:group:6120"
+        },
+        {
+          "qid": "3hop1__401538_132457_47686",
+          "type": "3-hop",
+          "group_id": "musique:group:5722"
+        },
+        {
+          "qid": "3hop1__241001_568433_51423",
+          "type": "3-hop",
+          "group_id": "musique:group:5760"
+        },
+        {
+          "qid": "2hop__697790_864352",
+          "type": "2-hop",
+          "group_id": "musique:group:4373"
+        },
+        {
+          "qid": "4hop1__342858_131850_33952_34053",
+          "type": "4-hop",
+          "group_id": "musique:group:6429"
+        },
+        {
+          "qid": "4hop2__71753_648517_70784_79935",
+          "type": "4-hop",
+          "group_id": "musique:group:6397"
+        },
+        {
+          "qid": "3hop1__540585_568433_47686",
+          "type": "3-hop",
+          "group_id": "musique:group:5740"
+        },
+        {
+          "qid": "2hop__502473_634689",
+          "type": "2-hop",
+          "group_id": "musique:group:5374"
+        },
+        {
+          "qid": "2hop__156044_57816",
+          "type": "2-hop",
+          "group_id": "musique:group:4746"
+        },
+        {
+          "qid": "3hop2__304722_781203_63959",
+          "type": "3-hop",
+          "group_id": "musique:group:5641"
+        },
+        {
+          "qid": "4hop3__638064_88460_30152_20999",
+          "type": "4-hop",
+          "group_id": "musique:group:6387"
+        },
+        {
+          "qid": "2hop__48481_319887",
+          "type": "2-hop",
+          "group_id": "musique:group:5180"
+        },
+        {
+          "qid": "4hop2__161602_474028_88460_86452",
+          "type": "4-hop",
+          "group_id": "musique:group:6389"
+        },
+        {
+          "qid": "3hop1__45612_502967_84283",
+          "type": "3-hop",
+          "group_id": "musique:group:5600"
+        },
+        {
+          "qid": "4hop1__370129_621192_10659_42311",
+          "type": "4-hop",
+          "group_id": "musique:group:6570"
+        },
+        {
+          "qid": "2hop__96411_47902",
+          "type": "2-hop",
+          "group_id": "musique:group:5012"
+        },
+        {
+          "qid": "4hop1__105401_17130_70784_61381",
+          "type": "4-hop",
+          "group_id": "musique:group:6461"
+        },
+        {
+          "qid": "2hop__499577_617190",
+          "type": "2-hop",
+          "group_id": "musique:group:4401"
+        },
+        {
+          "qid": "2hop__39954_65371",
+          "type": "2-hop",
+          "group_id": "musique:group:4697"
+        },
+        {
+          "qid": "2hop__63483_786853",
+          "type": "2-hop",
+          "group_id": "musique:group:4823"
+        },
+        {
+          "qid": "3hop1__354480_834494_34053",
+          "type": "3-hop",
+          "group_id": "musique:group:6166"
+        },
+        {
+          "qid": "2hop__574419_270105",
+          "type": "2-hop",
+          "group_id": "musique:group:4396"
+        },
+        {
+          "qid": "2hop__48033_90973",
+          "type": "2-hop",
+          "group_id": "musique:group:4603"
+        },
+        {
+          "qid": "3hop1__132798_40769_64047",
+          "type": "3-hop",
+          "group_id": "musique:group:5792"
+        },
+        {
+          "qid": "2hop__398344_439882",
+          "type": "2-hop",
+          "group_id": "musique:group:5427"
+        },
+        {
+          "qid": "2hop__227031_144857",
+          "type": "2-hop",
+          "group_id": "musique:group:4756"
+        },
+        {
+          "qid": "2hop__487706_40502",
+          "type": "2-hop",
+          "group_id": "musique:group:5459"
+        },
+        {
+          "qid": "4hop1__166471_49925_13759_736921",
+          "type": "4-hop",
+          "group_id": "musique:group:6336"
+        },
+        {
+          "qid": "3hop1__418091_15840_36014",
+          "type": "3-hop",
+          "group_id": "musique:group:5660"
+        },
+        {
+          "qid": "2hop__501624_181960",
+          "type": "2-hop",
+          "group_id": "musique:group:4832"
+        },
+        {
+          "qid": "2hop__754682_730690",
+          "type": "2-hop",
+          "group_id": "musique:group:4635"
+        },
+        {
+          "qid": "2hop__20268_42014",
+          "type": "2-hop",
+          "group_id": "musique:group:5296"
+        },
+        {
+          "qid": "2hop__81379_84616",
+          "type": "2-hop",
+          "group_id": "musique:group:4991"
+        },
+        {
+          "qid": "4hop1__58323_375563_161848_84681",
+          "type": "4-hop",
+          "group_id": "musique:group:6593"
+        },
+        {
+          "qid": "3hop1__119402_102039_158266",
+          "type": "3-hop",
+          "group_id": "musique:group:6737"
+        },
+        {
+          "qid": "4hop1__199881_378185_282674_759393",
+          "type": "4-hop",
+          "group_id": "musique:group:6277"
+        },
+        {
+          "qid": "4hop1__58323_375563_161848_61344",
+          "type": "4-hop",
+          "group_id": "musique:group:6575"
+        },
+        {
+          "qid": "2hop__132969_417697",
+          "type": "2-hop",
+          "group_id": "musique:group:4946"
+        },
+        {
+          "qid": "3hop1__857_846_7791",
+          "type": "3-hop",
+          "group_id": "musique:group:6015"
+        },
+        {
+          "qid": "3hop1__801799_547811_41132",
+          "type": "3-hop",
+          "group_id": "musique:group:5965"
+        },
+        {
+          "qid": "2hop__91626_96912",
+          "type": "2-hop",
+          "group_id": "musique:group:4862"
+        },
+        {
+          "qid": "2hop__19007_60935",
+          "type": "2-hop",
+          "group_id": "musique:group:6630"
+        },
+        {
+          "qid": "2hop__146919_29244",
+          "type": "2-hop",
+          "group_id": "musique:group:6618"
+        },
+        {
+          "qid": "2hop__40970_90367",
+          "type": "2-hop",
+          "group_id": "musique:group:6599"
+        },
+        {
+          "qid": "4hop1__567737_141375_458768_33633",
+          "type": "4-hop",
+          "group_id": "musique:group:6307"
+        },
+        {
+          "qid": "3hop2__30152_101802_20999",
+          "type": "3-hop",
+          "group_id": "musique:group:6727"
+        },
+        {
+          "qid": "3hop1__157177_625046_613900",
+          "type": "3-hop",
+          "group_id": "musique:group:5907"
+        },
+        {
+          "qid": "2hop__389778_78303",
+          "type": "2-hop",
+          "group_id": "musique:group:5156"
+        },
+        {
+          "qid": "2hop__398344_54166",
+          "type": "2-hop",
+          "group_id": "musique:group:5228"
+        },
+        {
+          "qid": "2hop__15650_77173",
+          "type": "2-hop",
+          "group_id": "musique:group:6657"
+        },
+        {
+          "qid": "2hop__170341_43945",
+          "type": "2-hop",
+          "group_id": "musique:group:4739"
+        },
+        {
+          "qid": "2hop__75207_46837",
+          "type": "2-hop",
+          "group_id": "musique:group:4668"
+        }
+      ]
+    }
+  }
+}
