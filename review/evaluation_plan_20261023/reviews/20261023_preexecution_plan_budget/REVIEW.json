@@ -1,0 +1,1112 @@
+{
+  "utc": "2026-10-22T17:46:47.032294+00:00",
+  "status": "paused_by_user_preexecution_review",
+  "latest_authority": "同时给出一下预算 先确认一下评估计划是否完整 先不要执行",
+  "planned_quality_method_queries": 15000,
+  "planned_timing_flows": 1500,
+  "existing_quality_counts": [
+    {
+      "dataset": "hotpotqa",
+      "planned": 5000,
+      "old_baseline_scorable": 4467,
+      "old_p02_scorable": 283,
+      "new_protocol_completed": "not migrated / not measured"
+    },
+    {
+      "dataset": "2wiki",
+      "planned": 5000,
+      "old_baseline_scorable": 4496,
+      "old_p02_scorable": 498,
+      "new_protocol_completed": "not migrated / not measured"
+    },
+    {
+      "dataset": "musique",
+      "planned": 5000,
+      "old_baseline_scorable": 1570,
+      "old_p02_scorable": 0,
+      "new_protocol_completed": "not migrated / not measured"
+    }
+  ],
+  "baseline_inventory": [
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 470,
+        "algorithm_failure": 30
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 485,
+        "failed": 1,
+        "algorithm_failure": 14
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "processed": 500,
+      "scorable": 470,
+      "statuses": {
+        "success": 470,
+        "unknown": 27,
+        "provider_content_rejected": 3
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\hotpotqa\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k4_cot",
+        "k": 4,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 445,
+        "algorithm_failure": 55
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b06_decomp_bge\\k4_cot\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone5",
+        "max_queries": 5
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 499,
+        "provider_content_rejected": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\hotpotqa\\formal\\b08_qd_rerank\\standalone5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b01_rag_top10_cot3\\391186b00bdb11eba7f7acde48001122\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 382,
+        "algorithm_failure": 118
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b02_selfask_dense\\k10_s5\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b02_selfask_dense\\75e5c06d087811ebbd67ac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 493,
+        "algorithm_failure": 6,
+        "provider_content_rejected": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b03_react_dense\\e9d3600a087111ebbd64ac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "config": {
+        "id": "k6",
+        "k": 6,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b04_ircot_bge\\k6\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b04_ircot_bge\\ebf11d8e089c11ebbd78ac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "processed": 500,
+      "scorable": 498,
+      "statuses": {
+        "success": 498,
+        "provider_content_rejected": 2
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\2wiki\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\391186b00bdb11eba7f7acde48001122\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\757e321e094d11ebbdaeac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\9d2dde74087e11ebbd6bac1f6bf848b6\\checkpoint.sqlite3",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b05_iter_retgen_bge\\e9d3600a087111ebbd64ac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 500,
+      "scorable": 499,
+      "statuses": {
+        "success": 442,
+        "algorithm_failure": 57,
+        "failed": 1
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "recovery_sources": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\twowiki_missing_recovery_20261021\\rounds\\r000\\methods\\b06_decomp_bge\\e4a48f9408c111ebbd8bac1f6bf848b6\\checkpoint.sqlite3"
+      ]
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "config": {
+        "id": "k50_rrf60",
+        "per_retriever_k": 50,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b07_hybrid_rerank\\k50_rrf60\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "processed": 500,
+      "scorable": 500,
+      "statuses": {
+        "success": 500
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\2wiki\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 500,
+      "scorable": 498,
+      "statuses": {
+        "success": 498,
+        "failed": 2
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b00_rag_top10_v1\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "config": {
+        "id": "fixed",
+        "k": 10,
+        "reader": "cot3",
+        "output_tokens": 512
+      },
+      "processed": 89,
+      "scorable": 89,
+      "statuses": {
+        "success": 89
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b01_rag_top10_cot3\\fixed\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "config": {
+        "id": "k10_s3",
+        "k": 10,
+        "max_search": 3
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b02_selfask_dense\\k10_s3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "config": {
+        "id": "k10_s5",
+        "k": 10,
+        "max_search": 5
+      },
+      "processed": 500,
+      "scorable": 493,
+      "statuses": {
+        "success": 432,
+        "algorithm_failure": 61,
+        "failed": 2,
+        "provider_content_rejected": 5
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b03_react_dense\\k10_s5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b04_ircot_bge",
+      "config": {
+        "id": "k8",
+        "k": 8,
+        "max_reason_sentences": 8,
+        "max_document_pool": 15,
+        "reader": "cot",
+        "distractors_M": 2
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b04_ircot_bge\\k8\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "config": {
+        "id": "k10_t5",
+        "k": 10,
+        "iterations": 5
+      },
+      "processed": 500,
+      "scorable": 490,
+      "statuses": {
+        "success": 490,
+        "failed": 2,
+        "provider_content_rejected": 8
+      },
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\matched50\\musique\\formal\\b05_iter_retgen_bge\\k10_t5\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "config": {
+        "id": "k6_cot",
+        "k": 6,
+        "reader": "cot",
+        "max_steps": 8
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b06_decomp_bge\\k6_cot\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b07_hybrid_rerank",
+      "config": {
+        "id": "k20_rrf60",
+        "per_retriever_k": 20,
+        "rrf_constant": 60,
+        "final_k": 10,
+        "reader": "v1",
+        "output_tokens": 64
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b07_hybrid_rerank\\k20_rrf60\\checkpoint.sqlite3",
+      "recovery_sources": []
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "config": {
+        "id": "standalone3",
+        "max_queries": 3
+      },
+      "processed": 0,
+      "scorable": 0,
+      "statuses": {},
+      "source": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\comprehensive_v1_20261015\\baseline_integrity_repair_v2_20261017\\main\\musique\\formal\\b08_qd_rerank\\standalone3\\checkpoint.sqlite3",
+      "recovery_sources": []
+    }
+  ],
+  "p02_by_dataset": {
+    "hotpotqa": {
+      "success": 283,
+      "incomplete": 38
+    },
+    "2wiki": {
+      "success": 498,
+      "incomplete": 2
+    },
+    "musique": {}
+  },
+  "old_primary_scorable": 11314,
+  "old_counts_are_not_new_configuration_completion": true,
+  "proposed_configuration_map": {
+    "b00_rag_top10_v1": {
+      "k": 10,
+      "source": "existing local reference control"
+    },
+    "b01_rag_top10_cot3": {
+      "k": 10,
+      "demonstrations": 3,
+      "source": "existing local reference control"
+    },
+    "b02_selfask_dense": {
+      "k": 5,
+      "max_search": 5,
+      "source": "Iter-RetGen section4.4, follow-up baseline setting"
+    },
+    "b03_react_dense": {
+      "k": 5,
+      "max_search": 5,
+      "source": "Iter-RetGen section4.4, Dense search adaptation; not original Search/Lookup environment"
+    },
+    "b04_ircot_bge": {
+      "k": 6,
+      "max_reason_sentences": 10,
+      "max_document_pool": 15,
+      "distractors_M": 2,
+      "reader": "cot",
+      "source": "author base_configs + default controller; not paper-selected best",
+      "approval": "pending explicit selection"
+    },
+    "b05_iter_retgen_bge": {
+      "k": 5,
+      "iterations": {
+        "hotpotqa": 4,
+        "2wiki": 6,
+        "musique": 7
+      },
+      "source": "highest published per-dataset F1 in original Table2, consistent with existing approved policy; not a universal iteration standard"
+    },
+    "b06_decomp_bge": {
+      "k": 2,
+      "max_steps": 8,
+      "reader": "cot",
+      "source": "author ODQA base configuration, outer and inner controller max_steps8; not paper-selected best",
+      "approval": "pending explicit selection"
+    },
+    "b07_hybrid_rerank": {
+      "per_retriever_k": {
+        "hotpotqa": 20,
+        "2wiki": 50,
+        "musique": 20
+      },
+      "rrf_constant": 60,
+      "final_k": 10,
+      "source": "existing local extra-resource reference control; no unique official best claimed"
+    },
+    "b08_qd_rerank": {
+      "k": 10,
+      "max_generated_subqueries": 5,
+      "retain_original": true,
+      "final_k": 10,
+      "source": "original paper sections4.5/5.3 and Algorithm1; applying to 2Wiki/MuSiQue is a dataset adaptation"
+    },
+    "p02_multigrain_timing_cachefix_v1": {
+      "source": "frozen original P02; no prompt-research candidate promotion",
+      "execution_variant": "p02_shared_baseline_v2"
+    }
+  },
+  "runtime_changes_adopted": false,
+  "completeness": {
+    "design": "mostly specified; parameter choices and executable integration incomplete",
+    "ready_to_dispatch": false,
+    "pending": [
+      "Confirm exact IRCoT and DecomP source mapping; defaults are not best-F1 configurations.",
+      "Freeze the complete ten-method dataset/config manifest and unchanged common Qwen/BGE generation/resource identities.",
+      "Recalculate strict same-stage whole-case/prefix reuse after config freeze.",
+      "Integrate and validate no-cap ledger, persistent five-attempt policy, unknown holds and cost alerts in the actual new runner.",
+      "Capture first nonempty content TTFT and local/GPU synchronized component time; old first-chunk fields are ineligible.",
+      "Restore authorized remote SSH identity and verify resource/precision/actual GPU allocation before remote timing.",
+      "Separate quality and timing outcomes; preserve first valid result, failures, and fixed500 denominators.",
+      "Predefine paired bootstrap confidence intervals on complete same-query cohorts; point estimates do not by themselves establish a gain."
+    ]
+  },
+  "preflight": {
+    "local_evaluation_processes_found": 0,
+    "source_v2_verification_passed": true,
+    "frozen_provider_non_generation_GET_status": 401,
+    "authenticated_provider_generation_tested": false,
+    "remote_passwordless_SSH": "authentication_failed",
+    "new_API_generation_requests": 0,
+    "new_GPU_jobs": 0,
+    "stop_files_cleared": 0
+  },
+  "budget": {
+    "currency": "CNY",
+    "public_price_source": "https://help.aliyun.com/zh/model-studio/qwen-plus",
+    "shared_ledger_known_CNY": 238.31393119999998,
+    "shared_ledger_unknown_reserved_CNY": 56.7634888,
+    "shared_ledger_occupied_CNY": 295.07741999999996,
+    "actual_provider_bill_verified": false,
+    "main_campaign_known_at_pause_CNY": 219.4958576,
+    "main_campaign_unknown_at_pause_CNY": 54.4043504,
+    "quality_historical_mean_proxy_CNY": 102.23207222704028,
+    "timing50_historical_mean_proxy_CNY": 11.582750923225072,
+    "total_historical_mean_proxy_CNY": 113.81482315026535,
+    "quality_round_count_sensitivity_CNY": 117.63310576989844,
+    "timing50_round_count_sensitivity_CNY": 13.122854277510887,
+    "total_round_count_sensitivity_CNY": 130.75596004740933,
+    "fifty_percent_spend_sensitivity_CNY": [
+      170.72223472539804,
+      196.133940071114
+    ],
+    "fixed_cumulative_or_stage_budget_cap": null,
+    "new_spending_this_review_CNY": 0,
+    "limitations": [
+      "Conditional on the proposed configuration map; not approved or frozen runtime parameters.",
+      "Changed method/dataset cells are costed as full fresh-flow equivalents without crediting same-payload prefix reuse; actual execution must still obey strict C1 reuse.",
+      "Historical means describe old configurations; new retrieval k and adaptive behavior can change prompt lengths and actual stages.",
+      "Round-count sensitivity scales full-flow means by new/old step limits, not measured mean stage counts; it is neither a statistical interval nor an upper bound.",
+      "Missing MuSiQue same-method observations use labelled cross-dataset proxies.",
+      "No 32K-token ceiling charge is treated as actual output usage; output is charged by provider-returned usage.",
+      "No GPU/cluster CNY rate is available; report requested resources and actual allocation time separately rather than inventing cash cost.",
+      "Overlapping quality and timing execution is not charged twice; separate timing repeats still have real new usage.",
+      "Unknown liabilities are retained; they are not confirmed costs or permission to replay.",
+      "Prior 37.15-CNY estimate applies to old revision005 configurations, not the current parameter proposal."
+    ]
+  },
+  "cost_projection_rows": [
+    {
+      "dataset": "hotpotqa",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_complete": 283,
+      "historical_mean_CNY": 0.005673382332155477,
+      "historical_basis": "same_dataset_historical_p02_complete_usage",
+      "historical_n": 283,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 217,
+      "quality_proxy_CNY": 1.2311239660777384,
+      "timing50_proxy_CNY": 0.28366911660777383,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 1.2311239660777384,
+      "timing50_sensitivity_CNY": 0.28366911660777383
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b00_rag_top10_v1",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0010398616000000004,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 0,
+      "quality_proxy_CNY": 0.0,
+      "timing50_proxy_CNY": 0.05199308000000002,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0,
+      "timing50_sensitivity_CNY": 0.05199308000000002
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b01_rag_top10_cot3",
+      "old_complete": 499,
+      "historical_mean_CNY": 0.0031651358717434833,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 1,
+      "quality_proxy_CNY": 0.0031651358717434833,
+      "timing50_proxy_CNY": 0.15825679358717418,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0031651358717434833,
+      "timing50_sensitivity_CNY": 0.15825679358717418
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b02_selfask_dense",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.004643483999999996,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 2.321741999999998,
+      "timing50_proxy_CNY": 0.23217419999999983,
+      "round_count_sensitivity_factor": 1.6666666666666667,
+      "quality_sensitivity_CNY": 3.8695699999999973,
+      "timing50_sensitivity_CNY": 0.3869569999999997
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b03_react_dense",
+      "old_complete": 499,
+      "historical_mean_CNY": 0.005908630861723452,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 2.954315430861726,
+      "timing50_proxy_CNY": 0.2954315430861726,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 2.954315430861726,
+      "timing50_sensitivity_CNY": 0.2954315430861726
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b04_ircot_bge",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0166278456,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 8.3139228,
+      "timing50_proxy_CNY": 0.83139228,
+      "round_count_sensitivity_factor": 1.25,
+      "quality_sensitivity_CNY": 10.3924035,
+      "timing50_sensitivity_CNY": 1.03924035
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b05_iter_retgen_bge",
+      "old_complete": 470,
+      "historical_mean_CNY": 0.015479679999999996,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 470,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 7.739839999999997,
+      "timing50_proxy_CNY": 0.7739839999999998,
+      "round_count_sensitivity_factor": 0.8,
+      "quality_sensitivity_CNY": 6.191871999999998,
+      "timing50_sensitivity_CNY": 0.6191871999999998
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b06_decomp_bge",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0070958463999999995,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 3.5479231999999996,
+      "timing50_proxy_CNY": 0.35479232,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 3.5479231999999996,
+      "timing50_sensitivity_CNY": 0.35479232
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b07_hybrid_rerank",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0010233711999999998,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 0,
+      "quality_proxy_CNY": 0.0,
+      "timing50_proxy_CNY": 0.05116855999999999,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0,
+      "timing50_sensitivity_CNY": 0.05116855999999999
+    },
+    {
+      "dataset": "hotpotqa",
+      "method": "b08_qd_rerank",
+      "old_complete": 499,
+      "historical_mean_CNY": 0.0013211198396793598,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 1,
+      "quality_proxy_CNY": 0.0013211198396793598,
+      "timing50_proxy_CNY": 0.066055991983968,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0013211198396793598,
+      "timing50_sensitivity_CNY": 0.066055991983968
+    },
+    {
+      "dataset": "2wiki",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_complete": 498,
+      "historical_mean_CNY": 0.008559791164658622,
+      "historical_basis": "same_dataset_historical_p02_complete_usage",
+      "historical_n": 498,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 2,
+      "quality_proxy_CNY": 0.017119582329317245,
+      "timing50_proxy_CNY": 0.4279895582329311,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.017119582329317245,
+      "timing50_sensitivity_CNY": 0.4279895582329311
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0014627712000000008,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 0,
+      "quality_proxy_CNY": 0.0,
+      "timing50_proxy_CNY": 0.07313856000000005,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0,
+      "timing50_sensitivity_CNY": 0.07313856000000005
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b01_rag_top10_cot3",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0036254052104208417,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 0,
+      "quality_proxy_CNY": 0.0,
+      "timing50_proxy_CNY": 0.1812702605210421,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0,
+      "timing50_sensitivity_CNY": 0.1812702605210421
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b02_selfask_dense",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.007184208416833659,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 3.5921042084168295,
+      "timing50_proxy_CNY": 0.3592104208416829,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 3.5921042084168295,
+      "timing50_sensitivity_CNY": 0.3592104208416829
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b03_react_dense",
+      "old_complete": 499,
+      "historical_mean_CNY": 0.009798885771543081,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 4.899442885771541,
+      "timing50_proxy_CNY": 0.48994428857715405,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 4.899442885771541,
+      "timing50_sensitivity_CNY": 0.48994428857715405
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b04_ircot_bge",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.02157207214428856,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 10.786036072144281,
+      "timing50_proxy_CNY": 1.078603607214428,
+      "round_count_sensitivity_factor": 1.25,
+      "quality_sensitivity_CNY": 13.482545090180352,
+      "timing50_sensitivity_CNY": 1.3482545090180351
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b05_iter_retgen_bge",
+      "old_complete": 498,
+      "historical_mean_CNY": 0.021626720161290316,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 496,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 10.813360080645158,
+      "timing50_proxy_CNY": 1.0813360080645158,
+      "round_count_sensitivity_factor": 1.2,
+      "quality_sensitivity_CNY": 12.976032096774189,
+      "timing50_sensitivity_CNY": 1.2976032096774188
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b06_decomp_bge",
+      "old_complete": 499,
+      "historical_mean_CNY": 0.010284530661322637,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 499,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 5.142265330661319,
+      "timing50_proxy_CNY": 0.5142265330661319,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 5.142265330661319,
+      "timing50_sensitivity_CNY": 0.5142265330661319
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b07_hybrid_rerank",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0018219999999999998,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 0,
+      "quality_proxy_CNY": 0.0,
+      "timing50_proxy_CNY": 0.09109999999999999,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0,
+      "timing50_sensitivity_CNY": 0.09109999999999999
+    },
+    {
+      "dataset": "2wiki",
+      "method": "b08_qd_rerank",
+      "old_complete": 500,
+      "historical_mean_CNY": 0.0018087440000000019,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 500,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 0.904372000000001,
+      "timing50_proxy_CNY": 0.09043720000000009,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.904372000000001,
+      "timing50_sensitivity_CNY": 0.09043720000000009
+    },
+    {
+      "dataset": "musique",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.007513883738796408,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 781,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 3.756941869398204,
+      "timing50_proxy_CNY": 0.3756941869398204,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 3.756941869398204,
+      "timing50_sensitivity_CNY": 0.3756941869398204
+    },
+    {
+      "dataset": "musique",
+      "method": "b00_rag_top10_v1",
+      "old_complete": 498,
+      "historical_mean_CNY": 0.0013125590361445787,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 498,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 2,
+      "quality_proxy_CNY": 0.0026251180722891574,
+      "timing50_proxy_CNY": 0.06562795180722894,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.0026251180722891574,
+      "timing50_sensitivity_CNY": 0.06562795180722894
+    },
+    {
+      "dataset": "musique",
+      "method": "b01_rag_top10_cot3",
+      "old_complete": 89,
+      "historical_mean_CNY": 0.0039111595505617975,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 89,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 411,
+      "quality_proxy_CNY": 1.6074865752808989,
+      "timing50_proxy_CNY": 0.19555797752808987,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 1.6074865752808989,
+      "timing50_sensitivity_CNY": 0.19555797752808987
+    },
+    {
+      "dataset": "musique",
+      "method": "b02_selfask_dense",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.005912574574574568,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 2.956287287287284,
+      "timing50_proxy_CNY": 0.2956287287287284,
+      "round_count_sensitivity_factor": 1.6666666666666667,
+      "quality_sensitivity_CNY": 4.92714547881214,
+      "timing50_sensitivity_CNY": 0.49271454788121405
+    },
+    {
+      "dataset": "musique",
+      "method": "b03_react_dense",
+      "old_complete": 493,
+      "historical_mean_CNY": 0.011980076267748484,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 493,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 5.990038133874242,
+      "timing50_proxy_CNY": 0.5990038133874243,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 5.990038133874242,
+      "timing50_sensitivity_CNY": 0.5990038133874243
+    },
+    {
+      "dataset": "musique",
+      "method": "b04_ircot_bge",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.019097484284284275,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 9.548742142142137,
+      "timing50_proxy_CNY": 0.9548742142142137,
+      "round_count_sensitivity_factor": 1.25,
+      "quality_sensitivity_CNY": 11.935927677677672,
+      "timing50_sensitivity_CNY": 1.1935927677677671
+    },
+    {
+      "dataset": "musique",
+      "method": "b05_iter_retgen_bge",
+      "old_complete": 490,
+      "historical_mean_CNY": 0.020527340408163272,
+      "historical_basis": "same_dataset_v2_complete_usage",
+      "historical_n": 490,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 10.263670204081636,
+      "timing50_proxy_CNY": 1.0263670204081636,
+      "round_count_sensitivity_factor": 1.4,
+      "quality_sensitivity_CNY": 14.369138285714289,
+      "timing50_sensitivity_CNY": 1.436913828571429
+    },
+    {
+      "dataset": "musique",
+      "method": "b06_decomp_bge",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.00868859259259259,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 4.344296296296295,
+      "timing50_proxy_CNY": 0.4344296296296295,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 4.344296296296295,
+      "timing50_sensitivity_CNY": 0.4344296296296295
+    },
+    {
+      "dataset": "musique",
+      "method": "b07_hybrid_rerank",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.0014226856,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 1000,
+      "prospective_config_changed": false,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 0.7113427999999999,
+      "timing50_proxy_CNY": 0.07113428,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.7113427999999999,
+      "timing50_sensitivity_CNY": 0.07113428
+    },
+    {
+      "dataset": "musique",
+      "method": "b08_qd_rerank",
+      "old_complete": 0,
+      "historical_mean_CNY": 0.0015651759759759776,
+      "historical_basis": "other_dataset_same_method_weighted_proxy",
+      "historical_n": 999,
+      "prospective_config_changed": true,
+      "full_flow_equivalents_for_budget": 500,
+      "quality_proxy_CNY": 0.7825879879879888,
+      "timing50_proxy_CNY": 0.07825879879879888,
+      "round_count_sensitivity_factor": 1.0,
+      "quality_sensitivity_CNY": 0.7825879879879888,
+      "timing50_sensitivity_CNY": 0.07825879879879888
+    }
+  ],
+  "explicitly_deferred": [
+    "same_final_prompt_control",
+    "mechanism_ablations",
+    "equal_budget_extension",
+    "new_models_retrievers_extension",
+    "S02_rerun",
+    "prompt_candidate_promotion"
+  ]
+}

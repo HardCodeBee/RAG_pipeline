@@ -1,0 +1,420 @@
+{
+  "date": "2026-10-23",
+  "timezone": "Australia/Sydney",
+  "review_kind": "targeted configuration evidence review; not an exhaustive systematic review",
+  "sources": [
+    {
+      "id": "eff_iter",
+      "url": "https://github.com/microsoft/EfficientRAG/blob/main/src/baseline/retrieve/iter-retgen.py",
+      "blob_sha": "c19fbad4d6061879b288c84cc01ee786fd0e7ef9",
+      "excerpts": [
+        {
+          "line": 184,
+          "text": "        max_iter: int = 3,"
+        },
+        {
+          "line": 185,
+          "text": "        topk: int = 10,"
+        },
+        {
+          "line": 192,
+          "text": "        self.max_iter = max_iter"
+        },
+        {
+          "line": 241,
+          "text": "        while cur_iter < self.max_iter:"
+        },
+        {
+          "line": 277,
+          "text": "    parser.add_argument(\"--max_iter\", type=int, default=3)"
+        },
+        {
+          "line": 308,
+          "text": "        model, dataset, retriever, max_iter=opts.max_iter, prompt_template=template"
+        }
+      ]
+    },
+    {
+      "id": "eff_selfask",
+      "url": "https://github.com/microsoft/EfficientRAG/blob/main/src/baseline/retrieve/selfask.py",
+      "blob_sha": "de84a2148b567f3dce4a6c1a4161eaddeb7dfd75",
+      "excerpts": [
+        {
+          "line": 248,
+          "text": "        max_iter: int = 3,"
+        },
+        {
+          "line": 249,
+          "text": "        topk: int = 10,"
+        },
+        {
+          "line": 256,
+          "text": "        self.max_iter = max_iter"
+        },
+        {
+          "line": 267,
+          "text": "        self.max_iter = 5"
+        },
+        {
+          "line": 352,
+          "text": "        while self.follow_up in get_last_line(ret_text) and cur_iter < self.max_iter:"
+        },
+        {
+          "line": 430,
+          "text": "    parser.add_argument(\"--topk\", type=int, default=10)"
+        }
+      ]
+    },
+    {
+      "id": "decomp_h",
+      "url": "https://github.com/HarshTrivedi/DecomP-ODQA/blob/main/base_configs/decomp_context_cot_qa_codex_hotpotqa.jsonnet",
+      "blob_sha": "f3555a5af7c4a0b60b19bcfbf33be0eb00b6856e",
+      "excerpts": [
+        {
+          "line": 19,
+          "text": "local bm25_retrieval_count = 2;"
+        },
+        {
+          "line": 20,
+          "text": "local distractor_count = 1;"
+        },
+        {
+          "line": 35,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 46,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 54,
+          "text": "            \"retrieval_count\": bm25_retrieval_count,"
+        }
+      ]
+    },
+    {
+      "id": "decomp_w",
+      "url": "https://github.com/HarshTrivedi/DecomP-ODQA/blob/main/base_configs/decomp_context_cot_qa_codex_2wikimultihopqa.jsonnet",
+      "blob_sha": "792fa1bf4c969f42746eb61fd9716fa5d60f24af",
+      "excerpts": [
+        {
+          "line": 19,
+          "text": "local bm25_retrieval_count = 2;"
+        },
+        {
+          "line": 20,
+          "text": "local distractor_count = 1;"
+        },
+        {
+          "line": 35,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 46,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 54,
+          "text": "            \"retrieval_count\": bm25_retrieval_count,"
+        }
+      ]
+    },
+    {
+      "id": "decomp_m",
+      "url": "https://github.com/HarshTrivedi/DecomP-ODQA/blob/main/base_configs/decomp_context_cot_qa_codex_musique.jsonnet",
+      "blob_sha": "761bca2a46b3cff357c09e35bb1da83fae8748b8",
+      "excerpts": [
+        {
+          "line": 19,
+          "text": "local bm25_retrieval_count = 2;"
+        },
+        {
+          "line": 20,
+          "text": "local distractor_count = 1;"
+        },
+        {
+          "line": 35,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 46,
+          "text": "            \"max_steps\": 8,"
+        },
+        {
+          "line": 54,
+          "text": "            \"retrieval_count\": bm25_retrieval_count,"
+        }
+      ]
+    },
+    {
+      "id": "decomp_odqa_readme",
+      "url": "https://github.com/HarshTrivedi/DecomP-ODQA/blob/main/README.md",
+      "blob_sha": "362b3a3aa6fb475d7c4ce8c3c2462d8f86a7b369",
+      "excerpts": [
+        {
+          "line": 168,
+          "text": "This script runs several things one after the other: instantiating experiment configs with HPs, running predictions for them on the dev set, picking up the best HP, making experiment config with the best HP, running it on the test set, and summarizing the results with mean and std."
+        },
+        {
+          "line": 190,
+          "text": "# Pick the best HP and save the config with that HP."
+        },
+        {
+          "line": 195,
+          "text": "# Run the experiment with best HP on test set"
+        }
+      ]
+    },
+    {
+      "id": "ircot_cfg",
+      "url": "https://github.com/StonyBrookNLP/ircot/blob/main/base_configs/ircot_qa_codex_hotpotqa.jsonnet",
+      "blob_sha": "75ec9b9ec66437a555273d6655652ecbf04a5fce",
+      "excerpts": [
+        {
+          "line": 25,
+          "text": "local bm25_retrieval_count = 6;"
+        },
+        {
+          "line": 27,
+          "text": "local distractor_count = \"2\"; # Choices: 1, 2, 3"
+        },
+        {
+          "line": 48,
+          "text": "            \"global_max_num_paras\": 15,"
+        },
+        {
+          "line": 79,
+          "text": "            \"global_max_num_paras\": 15,"
+        }
+      ]
+    },
+    {
+      "id": "ircot_w",
+      "url": "https://github.com/StonyBrookNLP/ircot/blob/main/base_configs/ircot_qa_codex_2wikimultihopqa.jsonnet",
+      "blob_sha": "f89f980c4ad05fee580c714400766364fe46f430",
+      "excerpts": [
+        {
+          "line": 25,
+          "text": "local bm25_retrieval_count = 6;"
+        },
+        {
+          "line": 27,
+          "text": "local distractor_count = \"2\"; # Choices: 1, 2, 3"
+        },
+        {
+          "line": 48,
+          "text": "            \"global_max_num_paras\": 15,"
+        },
+        {
+          "line": 79,
+          "text": "            \"global_max_num_paras\": 15,"
+        }
+      ]
+    },
+    {
+      "id": "ircot_m",
+      "url": "https://github.com/StonyBrookNLP/ircot/blob/main/base_configs/ircot_qa_codex_musique.jsonnet",
+      "blob_sha": "9ddd40bda7e49243d0c9903f799d815ff053facb",
+      "excerpts": [
+        {
+          "line": 25,
+          "text": "local bm25_retrieval_count = 6;"
+        },
+        {
+          "line": 27,
+          "text": "local distractor_count = \"2\"; # Choices: 1, 2, 3"
+        },
+        {
+          "line": 48,
+          "text": "            \"global_max_num_paras\": 15,"
+        },
+        {
+          "line": 79,
+          "text": "            \"global_max_num_paras\": 15,"
+        }
+      ]
+    },
+    {
+      "id": "ircot_core",
+      "url": "https://github.com/StonyBrookNLP/ircot/blob/main/commaqa/inference/ircot.py",
+      "blob_sha": "a7afac56aac53f9f1ae66a9a5a315e6263bcc4e1",
+      "excerpts": [
+        {
+          "line": 711,
+          "text": "class StepByStepCOTGenParticipant(ParticipantModel):"
+        },
+        {
+          "line": 727,
+          "text": "        max_num_sentences=10,"
+        },
+        {
+          "line": 778,
+          "text": "        self.max_num_sentences = max_num_sentences"
+        },
+        {
+          "line": 797,
+          "text": "        if len(state.data[f\"generated_{self.generation_type}\"]) >= self.max_num_sentences:"
+        },
+        {
+          "line": 898,
+          "text": "class StepByStepExitControllerParticipant(ParticipantModel):"
+        },
+        {
+          "line": 909,
+          "text": "        max_num_sentences=10,"
+        },
+        {
+          "line": 923,
+          "text": "        self.max_num_sentences = max_num_sentences"
+        },
+        {
+          "line": 957,
+          "text": "        if len(state.data[self.generation_key]) >= self.max_num_sentences:"
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "id": "iter_retgen",
+      "url": "https://aclanthology.org/2023.findings-emnlp.620.pdf",
+      "locations": [
+        "section 4.4",
+        "Table 2"
+      ],
+      "verified": {
+        "retrieval_k": 5,
+        "react_selfask_max_retrieval_interactions": 5,
+        "iteration_counts_by_highest_published_F1": {
+          "hotpotqa": 4,
+          "2wiki": 6,
+          "musique": 7
+        }
+      },
+      "limitation": "Published F1 maxima are not a universal fixed-iteration consensus; backend was text-davinci-003 and Contriever-MSMARCO."
+    },
+    {
+      "id": "qd_rerank",
+      "url": "https://aclanthology.org/2025.acl-srw.32.pdf",
+      "locations": [
+        "section 4.5",
+        "section 5.3",
+        "Algorithm 1"
+      ],
+      "verified": {
+        "retrieval_k": 10,
+        "max_generated_subqueries": 5,
+        "retain_original_query": true,
+        "final_rerank_k": 10
+      },
+      "limitation": "Original evaluation covered HotpotQA and MultiHop-RAG, not 2Wiki or MuSiQue; keep existing shared Qwen/BGE/reranker and decoding adaptations explicit."
+    },
+    {
+      "id": "hipporag",
+      "url": "https://papers.nips.cc/paper_files/paper/2024/file/6ddc001d07ca4f319af96a3024f6dbd1-Paper-Conference.pdf",
+      "locations": [
+        "Appendix H"
+      ],
+      "verified": {
+        "ircot_k_per_step": 10,
+        "max_reasoning_steps": {
+          "hotpotqa": 2,
+          "2wiki": 2,
+          "musique": 4
+        },
+        "reader_top_k": 5,
+        "reader_demonstrations": 1
+      },
+      "limitation": "This is a complete follow-up setup; do not take only its step limits while claiming to reproduce its full QA setup."
+    },
+    {
+      "id": "slimplm",
+      "url": "https://aclanthology.org/2024.acl-long.242.pdf",
+      "locations": [
+        "Appendix B"
+      ],
+      "verified": {
+        "iter_retgen_iterations": 3
+      },
+      "limitation": "Fixed resource-oriented baseline setting; no claim that three iterations maximize F1 on the present three datasets."
+    },
+    {
+      "id": "probtree",
+      "url": "https://aclanthology.org/2023.findings-emnlp.835.pdf",
+      "locations": [
+        "Appendix C.1",
+        "Appendix C.2"
+      ],
+      "verified": {
+        "ircot_k_grid": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "selfask_k_grid": [
+          3,
+          5,
+          7
+        ]
+      },
+      "limitation": "Performs local dev selection; it does not supply a universal fixed value."
+    },
+    {
+      "id": "qwen_price",
+      "url": "https://help.aliyun.com/zh/model-studio/qwen-plus",
+      "locations": [
+        "qwen-plus-2025-12-01, Beijing, non-thinking"
+      ],
+      "verified": {
+        "CNY_per_million_tokens": [
+          {
+            "input_up_to": 128000,
+            "input": 0.8,
+            "output": 2
+          },
+          {
+            "input_up_to": 256000,
+            "input": 2.4,
+            "output": 20
+          },
+          {
+            "input_up_to": 1000000,
+            "input": 4.8,
+            "output": 48
+          }
+        ]
+      },
+      "limitation": "Public list price, not a verified paid invoice or promotional net price."
+    }
+  ],
+  "search_queries": [
+    "\"IRCoT\" \"ReAct\" \"Self-Ask\" \"top\" \"5\" implementation details",
+    "\"ReAct\" \"Self-Ask\" \"maximum\" \"iterations\" RAG baseline",
+    "\"Decomp\" \"IRCoT\" \"retrieved\" \"5\" baselines implementation",
+    "\"Question Decomposition\" \"Rerank\" \"2025.acl-srw.32\"",
+    "\"IRCoT\" \"Decomp\" \"Implementation Details\" top",
+    "\"IRCoT\" \"top-5\" \"iterations\"",
+    "\"Decomp\" \"top-3\" retrieval",
+    "\"Question Decomposition for Retrieval-Augmented Generation\" \"sub\" \"number\"",
+    "\"IRCoT\" \"Decomp\" \"hyperparameters\"",
+    "\"IRCoT\" \"maximum\" \"8\" HippoRAG",
+    "\"DecomP\" \"retrieval\" \"k =\"",
+    "\"IRCoT\" \"Decomp\" \"retrieval\" \"Adaptive-RAG\"",
+    "\"DecomP\" \"baseline\" \"top-5\"",
+    "\"DecomP\" \"baseline\" \"top-3\"",
+    "\"DecomP\" \"retrieval\" \"maximum\"",
+    "\"Decomp\" \"IRCoT\" \"K\" \"HotpotQA\" implementation",
+    "\"Decomposed Prompting\" \"baseline\" \"retrieved\" hyperparameters -compression -convolutional",
+    "\"Iter-RetGen\" \"iterations\" \"4\" \"baselines\"",
+    "\"DecomP\" \"IRCoT\" \"implementation\" \"top\"",
+    "\"DecomP\" \"max_steps\" \"8\"",
+    "\"IRCoT\" \"10\" \"reasoning steps\"",
+    "\"IRCoT\" \"k=6\"",
+    "site.help.aliyun.com qwen-plus-2025-12-01 0.8 2 输入 输出",
+    "site.help.aliyun.com 大模型服务平台 qwen-plus 128K 256K 0.8 2 2.4 20",
+    "site.help.aliyun.com qwen-plus 2025-12-01 模型"
+  ],
+  "adopted_runtime_changes": false,
+  "new_generation_or_GPU_submissions": 0
+}
