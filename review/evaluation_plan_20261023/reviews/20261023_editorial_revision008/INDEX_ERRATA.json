@@ -1,0 +1,108 @@
+{
+  "revision": "editorial_revision008",
+  "scope": "Only four existing lines in the conclusions index; no experiment, protocol, sample or prompt changes.",
+  "source_commit": "2cbe21300ce91e3e20c4f1bce153a7ecb6cfe1b9",
+  "source": "analysis/evaluation_editorial_revision008_20261023/history/query_decomposition_conclusions_20261023.original.txt",
+  "candidate": "analysis/evaluation_editorial_revision008_20261023/query_decomposition_conclusions_20261023.txt",
+  "source_sha256": "857cd7b8cea3c8396f1bb006cec3b149f79e64bc20d980e3a12590f2982961f7",
+  "candidate_sha256": "8b8348ea30aecc5c127c3d93075b229038085802cc894dc92d86b190b8bd417e",
+  "encoding": "UTF-8 without BOM",
+  "newline": "LF",
+  "original_line_count": 231,
+  "candidate_line_count": 231,
+  "changes": [
+    {
+      "line": 117,
+      "old": "挑战27题事实句加ROLE：32.8171→41.4590，4升23平；原生goal128的90题ROLE：75.9565→75.3945，差-0.5620，区间[-2.8878,+1.4885]。挑战收益没有推广。",
+      "new": "挑战27题事实句加ROLE：32.8171→41.4590，4升23平；原生goal128的90题ROLE：75.9565→75.3945，差-0.5620，区间[-2.8878,+1.4885]。挑战收益没有推广。挑战27题的4次F1上升中，2项为已有材料支持的代际关系修复（Alexios祖父：Alexios I Komnenos→Isaac Komnenos；Robert Petre8祖母：Catherine Walmesley→Mary Clifton），另2项为词面/参考效应（Parkinson’s→Parkinson's撇号变化；Sean Lowe与参考Sean Yseult共享Sean）。后两项的同名身份/配偶关系仍待核，不能将4项全部称为事实修复。"
+    },
+    {
+      "line": 164,
+      "old": "7. 旧goal fewshot synthesis仅有旧42条未知/挂起遗留，不能作为成功完成的新对照；后续fixed90应使用三臂共同86题，不混87题两臂或90计划分母。",
+      "new": "7. 旧goal fewshot synthesis计划42个问题，复用42个G2缓存控制；新增I/F条件0成功，仅留下6个unknown请求（3个HotpotQA问题各I/F两臂），未知预留0.0548024元保留。这不是42个未知请求，不能作为成功完成的新对照；后续fixed90应使用三臂共同86题，不混87题两臂或90计划分母。"
+    },
+    {
+      "line": 174,
+      "old": "本文件记录问题，不覆盖冻结标签、原统计表或原始报告。",
+      "new": "本文件记录问题，不覆盖冻结标签、原统计表或原始报告。修订008仅按既有审计修正C18的4项提分解释及旧fewshot的42计划问题/6未知请求口径；原历史报告和标签未改，没有新增事实验证。"
+    },
+    {
+      "line": 223,
+      "old": "    旧42未完成来源：outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json",
+      "new": "    旧42个计划问题（42缓存G2、新0成功、6个unknown请求；非42个未知请求）来源：outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/ROOT_NATIVE_AND_PAIRED_AUDIT.md",
+      "lines": [
+        12,
+        16,
+        17,
+        18,
+        19,
+        21,
+        44
+      ],
+      "supports": "4 F1 gains = 2 grounded generational repairs + 2 surface/reference gains; pending identities and original evidence limits retained"
+    },
+    {
+      "path": "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/root_blind_review/SEMANTIC_JOIN.json",
+      "supports": "Existing locked labels; no new semantic judge"
+    },
+    {
+      "path": "outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/BLOCKED.json",
+      "lines": [
+        5,
+        11,
+        12,
+        13,
+        14
+      ],
+      "supports": "42 planned questions, 0 new successful conditions, 6 unanswered attempts, unresolved reserve"
+    },
+    {
+      "path": "outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json",
+      "lines": [
+        7,
+        177,
+        402,
+        403,
+        404,
+        405
+      ],
+      "supports": "15+27 cached G2 controls, 6 unknown receipts, returned usage estimate zero and unknown reserve retained"
+    },
+    {
+      "path": "outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/DETAILS.scored.local.jsonl",
+      "line_ranges": [
+        [
+          1,
+          42
+        ],
+        [
+          43,
+          48
+        ]
+      ],
+      "supports": "42 cached G2 control records and 6 new technical-held conditions"
+    }
+  ],
+  "validation": {
+    "changed_lines_only": [
+      117,
+      164,
+      174,
+      223
+    ],
+    "all_other_lines_byte_identical": true,
+    "source_bytes_unchanged": true,
+    "original_numeric_results_unchanged": true,
+    "original_reports_and_labels_modified": false,
+    "new_semantic_judging": false,
+    "new_API_requests": 0,
+    "new_GPU_jobs": 0
+  },
+  "source_git_blob_sha": "785b2c53d71a7e611942107e2c008948814b9f06",
+  "line_count_definition": "splitlines, excluding terminal newline as an extra empty line"
+}

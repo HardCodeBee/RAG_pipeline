@@ -11,7 +11,13 @@
         "execution_variant": "p02_shared_baseline_v2"
       },
       "common_resource_adaptation": true,
-      "runtime_compatibility_verified_for_revision007": false
+      "runtime_compatibility_verified_for_revision007": false,
+      "additional_frozen_component": {
+        "identity": "Qwen/Qwen3-4B-Instruct-2507 plus r02_expanded LoRA, v12",
+        "identity_source": "src/p02_multigrain_timing_cachefix_v1/models/DECOMPOSER_IDENTITY.json",
+        "status": "existing frozen trained component; unchanged",
+        "reporting": "Report training provenance and local decomposition resources separately; common Qwen-Plus reader and BGE retrieval do not mean identical complete model composition."
+      }
     },
     {
       "method": "b00_rag_top10_v1",
@@ -36,7 +42,7 @@
     },
     {
       "method": "b08_qd_rerank",
-      "comparison_role": "Decomposition for retrieval without sequential child solving",
+      "comparison_role": "Complete P02 route versus parallel query expansion and merged reranking route; no isolated attribution to sequential solving or history feedback",
       "config": {
         "k": 10,
         "max_generated_subqueries": 5,
@@ -84,5 +90,7 @@
   "common_input_policy": "Existing complete BGE windows; existing complete reranker windows only for methods that already rerank; no new reranker in P02",
   "source_evidence": "../20261023_preexecution_plan_budget/SOURCE_EVIDENCE.json",
   "no_claim_of_paper_best_replication": true,
-  "no_equal_compute_claim": true
+  "no_equal_compute_claim": true,
+  "editorial_revision": 8,
+  "common_resource_scope": "Shared hosted Qwen-Plus reader/generator and BGE retrieval resources, not identical full model composition; P02 has an additional frozen trained R02 decomposer."
 }

@@ -105,7 +105,8 @@
       "original-question root passages",
       "auxiliary material"
     ],
-    "protocol_effect": "common evidence-bounded neutral interface, distinct from native four-shot final"
+    "protocol_effect": "shared pre-frozen evidence-bounded interface, distinct from native four-shot final; prompt bytes unchanged",
+    "interpretation_boundary": "Source visibility can interact with the fixed policy of treating generated answers as candidates, preferring relevant explicit sources in conflicts and abstaining on insufficient evidence. Estimate the combined interface effect under this policy; no assumption of neutrality or of which arm benefits."
   },
   "arms": {
     "QA": {
@@ -201,7 +202,7 @@
     "planned_results_is_cash_cap": false,
     "budget": {
       "source": "../budget/BUDGET.json",
-      "basis": "exact neutral template plus old native trace length proxy; not shared-layer payload readiness",
+      "basis": "exact shared pre-frozen template plus old native trace length proxy; not shared-layer payload readiness",
       "new_600_finals_proxy_cny": 1.4255441268800955,
       "input_plus50pct_and_mean_output64_scenario_cny": 2.2061898103124804,
       "refresh_before_execution": "actual payload lengths and frozen price tiers; returned usage after execution",
@@ -212,18 +213,19 @@
   "execution_blockers": [
     "explicit later execution authorization",
     "completed guarded shared runner",
-    "all selected prefixes available and bound by shared main or C1",
+    "qualified shared-main or C1-bound prefix for every executable pair; explicit status for all fixed cohort qids; unavailable upstream follows existing missingness rules",
     "receipt and actual-reader validation",
     "deterministic renderer and source-preserving escaping frozen",
     "input/token/price-tier inventory and duplicate identity consistency",
     "existing hold policy handled only by separately authorized execution"
   ],
   "files": {
-    "PROTOCOL.md": "8519c36b8db3767bb7f55bc504a586cf44cfa07ca45251dbee8a9f93ae35939f",
+    "PROTOCOL.md": "73d3e6ee0b713fea48a1d8846bb17284f768f4efcf6f64fc2effb9e8f4dff7f3",
     "PROMPT.txt": "bdd646527a6c794a963ebb7568786729e64ffe18e2ce701e0fc0984bf3674877",
     "select_cohort.py": "105a651ede60273209c52ec2e47c3361968a5decb7198b3036237bfdfce41450",
     "SAMPLING_METADATA.qid_only.json": "6efe6a640799562761bb496b738b5f11ebce049ae506224a7ca3244d535a19e5",
     "COHORT.qid_only.json": "4bad59e58b12fd813be7a145319417e1986f21e59952372627d8e083f2f03422",
     "TRACE_FEASIBILITY.json": "f7bc7532f808657d60bbc72717903fe95c51b7b1cd4422ad0592e0f2be2a2b7e"
-  }
+  },
+  "editorial_revision": 8
 }

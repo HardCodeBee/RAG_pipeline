@@ -6,7 +6,13 @@
     "package": "src/p02_multigrain_timing_cachefix_v1",
     "execution_variant": "p02_shared_baseline_v2",
     "shared_layer": "existing baseline_integrity_repair_v2_20261017 with origin binding fix",
-    "integration_status": "offline_callbacks_implemented_not_execution_ready"
+    "integration_status": "offline_callbacks_implemented_not_execution_ready",
+    "additional_frozen_decomposer": {
+      "identity": "Qwen/Qwen3-4B-Instruct-2507 plus r02_expanded LoRA, v12",
+      "identity_source": "src/p02_multigrain_timing_cachefix_v1/models/DECOMPOSER_IDENTITY.json",
+      "status": "existing frozen trained component; unchanged",
+      "reporting": "Report training provenance and local decomposition resources separately; common Qwen-Plus reader and BGE retrieval do not mean identical complete model composition."
+    }
   },
   "reference_route": {
     "id": "s02_child4",
@@ -42,10 +48,12 @@
   "archive": {
     "strategy": "physical move plus index and original-path compatibility junctions",
     "inventory": "ARCHIVE_INVENTORY.json",
-    "physical_moves_authorized_for_this_run": true,
     "delete_originals": false,
     "index": "archives/rag_evaluation_history_20261021/INDEX.json",
-    "verification": "archived_verified; 50 directory entities, 86 protected frozen sources unchanged"
+    "verification": "archived_verified; 50 directory entities, 86 protected frozen sources unchanged",
+    "historical_physical_moves_authorized": true,
+    "authorization_scope": "Historical 2026-10-21 archival operation and preserved verification; no new physical move authorized by revision008.",
+    "new_physical_moves_authorized_revision008": false
   },
   "recovery_policy": {
     "decision_id": "R1",
@@ -88,27 +96,25 @@
     "reporting_constraint": "Do not erase known provenance, assert no overlap, or imply entirely unseen evaluation questions. Relevant independence/generalization claims must accurately state their scope.",
     "additional_experiment_approved": false
   },
-  "revision": 7,
-  "updated_utc": "2026-10-22T21:05:04.885518+00:00",
-  "status": "paused_by_user_revision007_remote_review",
+  "revision": 8,
+  "updated_utc": "2026-10-22T22:08:23.368088+00:00",
+  "status": "paused_by_user_revision008_editorial_remote_review",
   "execution_approval": {
     "approved": false,
     "plan_revision": null,
-    "latest_user_instruction": "就按这个方向更新评估计划：六行主表、三组已有分析，加上P02的QA/raw对照。明确具体设计、可复用结果和新增预算，先不要执行，整理好后推送远端审核。",
+    "latest_user_instruction": "就按这些建议修正评估计划、证据链接和旧结论索引，实验范围、样本和提示词原文保持不变。先不要执行，整理好后推送远端审核。",
     "plan_and_publication_authorized": true,
     "evaluation_execution_authorized": false
   },
   "history": {
-    "previous_revision": 6,
-    "snapshot": "history/revision006_before_narrative_20261023/",
+    "previous_revision": 7,
+    "snapshot": "history/revision007_before_editorial_20261023/",
     "older_decisions": "DECISIONS.jsonl",
     "supersedes": [
-      "ten-method required matrix",
-      "paper-best-F1 parameter selection",
-      "mandatory timing before completion",
-      "blanket deferral of P02 final-representation control"
+      "revision007 terminology, evidence links and historical index wording only; experimental design unchanged"
     ],
-    "historical_prompt_research_authorizations_do_not_override_current_no_execution_instruction": true
+    "historical_prompt_research_authorizations_do_not_override_current_no_execution_instruction": true,
+    "previous_experimental_design": "revision007; unchanged by editorial revision008"
   },
   "narrative": {
     "question": "Organize complex-question information needs through decomposition and turn them into facts usable by the final answer through staged solving.",
@@ -118,7 +124,9 @@
       "component necessity from a case study",
       "equal-compute comparison",
       "unseen or official-hidden-test evaluation"
-    ]
+    ],
+    "contribution": "Propose and evaluate the specific information-need-guided P02 framework: ordered self-contained supporting questions organize retrieval and staged solving; intermediate QA becomes factual-style auxiliary material for the final answer. Full-system comparison evaluates utility, QA/raw evaluates the final interface, and historical traces explain information paths and limits.",
+    "whole_system_contrast_boundary": "P02 versus QD+Rerank compares complete routes; differences in decomposer, reranking and execution prevent attributing the score difference to sequential solving or history feedback alone."
   },
   "baselines": {
     "primary": "baseline_integrity_repair_v2_20261017",
@@ -238,7 +246,7 @@
       "root Top10 plus ordinary and goal QA pairs",
       "same root Top10 plus actual ordinary and goal reader documents, stable dedup with question mapping"
     ],
-    "final_prompt": "same neutral zero-shot template in both arms; not native QA-oriented few-shot",
+    "final_prompt": "same pre-frozen zero-shot template in both arms, unchanged bytes; distinct from native QA-oriented few-shot",
     "native_main_final_is_a_third_new_arm": false,
     "generation": {
       "model": "qwen-plus-2025-12-01",
@@ -251,12 +259,14 @@
     },
     "primary_estimand": "three-dataset equal-weight mean F1(QA)-F1(Raw); dataset-specific estimates secondary",
     "statistics": "paired original-query bootstrap, 10000 draws, seed20261023; 95 percent interval; gains/ties/harms, EM, tokens and cost",
-    "effect_scope": "conditional representation interface including resulting context lengths; not information-equal or token-matched, not a standalone Raw pipeline",
+    "effect_scope": "combined material-interface effect under the fixed evidence policy, including selection/compression/organization/source visibility/context length/final use; neither a pure-format effect nor prompt-independent superiority",
     "unchanged_upstream_incremental_cost": 0,
     "upstream_cost_paid_in": "main evaluation; charged logically to each arm but not billed twice",
     "power_guaranteed": false,
     "noninferiority_claim": false,
-    "execution_approved": false
+    "execution_approved": false,
+    "evidence_policy_interaction": "The unchanged prompt treats generated answers as candidate information, prefers relevant explicit sources in conflicts and abstains when evidence is insufficient. Source visibility may interact with this policy; direction is not assumed.",
+    "cohort_status_clarification": "Every executable pair needs qualified upstream; every fixed cohort qid keeps an explicit state. Unavailable upstream follows existing missingness/bounds rules without deletion or replacement."
   },
   "cache_migration": {
     "decision_id": "C1",
@@ -403,7 +413,7 @@
       "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
     }
   },
-  "change_policy": "User delegated concrete design and publication of revision007; all execution remains paused. Preserve historical protocols; subsequent scope/protocol revisions must be recorded rather than silently substituted.",
+  "change_policy": "Revision008 is authorized editorial repair and public review publication only. Preserve revision007 scope, method parameters, cohorts, prompt bytes, scoring and budget numbers; no experiment execution or archival movement.",
   "approved_decisions": [
     {
       "id": "NARRATIVE_REVISION007_REVIEW_20261023",
@@ -415,6 +425,13 @@
       "specific_parameters_and_cohort": "concrete review design under delegated planning authority; no runtime mutation",
       "public_destination": "HardCodeBee/RAG_pipeline branch codex/p02-review-20261021",
       "public_destination_authority": "prior explicit public-publication permission plus latest instruction to push updated plan"
+    },
+    {
+      "id": "EDITORIAL_REVISION008_20261023",
+      "authority": "就按这些建议修正评估计划、证据链接和旧结论索引，实验范围、样本和提示词原文保持不变。先不要执行，整理好后推送远端审核。",
+      "status": "editorial_changes_and_publication_authorized_execution_held",
+      "experimental_design_revision": 7,
+      "scope_sample_prompt_bytes_unchanged": true
     }
   ],
   "pending_decisions": [
@@ -427,5 +444,22 @@
       "required_for_main": false,
       "execution_authorized": false
     }
-  ]
+  ],
+  "experimental_design_revision": 7,
+  "editorial_revision": {
+    "id": "EDITORIAL_REVISION008_20261023",
+    "base_published_commit": "2cbe21300ce91e3e20c4f1bce153a7ecb6cfe1b9",
+    "changes": [
+      "method-first contribution wording",
+      "shared frozen prompt terminology and conditional interpretation",
+      "whole-system QD comparison without component attribution",
+      "R02 resource identity",
+      "accurate evidence links and historical index errata",
+      "archive authorization explicitly historical"
+    ],
+    "scope_parameters_samples_prompt_text_statistics_and_budget_numbers_unchanged": true,
+    "new_generation_requests": 0,
+    "new_GPU_jobs": 0,
+    "review": "reviews/20261023_editorial_revision008/CHANGES.md"
+  }
 }

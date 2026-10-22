@@ -114,7 +114,7 @@ r03固定上游90题：C/G/GF=76.12/68.98/66.80；r04：C/S/T=76.12/68.06/67.98�
 
 [C18] 再添加一般性的目标、角色或保留指令，尚未取得稳定收益。
 对应实验：E17、E18、E19。
-挑战27题事实句加ROLE：32.8171→41.4590，4升23平；原生goal128的90题ROLE：75.9565→75.3945，差-0.5620，区间[-2.8878,+1.4885]。挑战收益没有推广。
+挑战27题事实句加ROLE：32.8171→41.4590，4升23平；原生goal128的90题ROLE：75.9565→75.3945，差-0.5620，区间[-2.8878,+1.4885]。挑战收益没有推广。挑战27题的4次F1上升中，2项为已有材料支持的代际关系修复（Alexios祖父：Alexios I Komnenos→Isaac Komnenos；Robert Petre8祖母：Catherine Walmesley→Mary Clifton），另2项为词面/参考效应（Parkinson’s→Parkinson's撇号变化；Sean Lowe与参考Sean Yseult共享Sean）。后两项的同名身份/配偶关系仍待核，不能将4项全部称为事实修复。
 final单句目标核对90题：76.1333→76.1535，仅+0.0202个百分点，未确认事实修复。
 60题替代路径许可/候选保留/final检查整段：相对各自父控制F1差-0.67/-0.43/0.00，分别0升1降59平、2升1降57平、60全平。
 结论：提示已表达原则与模型实际执行是两件事。需要定位具体接口和信息缺口；不能断言目标核对、保留或实体关系本身无用。
@@ -161,7 +161,7 @@ final单句目标核对90题：76.1333→76.1535，仅+0.0202个百分点，未�
 4. 尚不能宣称事实句普遍优于摘要/原文、CoT普遍有害、短输出天然更好、更多上下文必然无效。
 5. 尚不能将局部正确率、格式遵从、文档覆盖、177个上游全对非满分或单个恢复案例当作完整信息充分性或因果证明。
 6. 引用符号/实体绑定/优先级完整90题四臂仍停61/360，不据partial选优；阶段152输出完成也不等于38节点全部语义结论已完成。
-7. 旧goal fewshot synthesis仅有旧42条未知/挂起遗留，不能作为成功完成的新对照；后续fixed90应使用三臂共同86题，不混87题两臂或90计划分母。
+7. 旧goal fewshot synthesis计划42个问题，复用42个G2缓存控制；新增I/F条件0成功，仅留下6个unknown请求（3个HotpotQA问题各I/F两臂），未知预留0.0548024元保留。这不是42个未知请求，不能作为成功完成的新对照；后续fixed90应使用三臂共同86题，不混87题两臂或90计划分母。
 8. 新统一层正式结果、固定50题/数据集计时尚未完成；既有API等待、缓存耗时、GPU作业墙钟不充当纯query处理秒或正式TTFT。
 9. Formal1500有已知7条训练题面重合（H3/W2/M2），不能称全部未见。当前约定保留原题集，本文件不据此换题或重训。
 
@@ -171,7 +171,7 @@ final单句目标核对90题：76.1333→76.1535，仅+0.0202个百分点，未�
 两项已确认问题：
 （1）设计写R_T为主，实际主表用R_F∧R_T；本批1361个完整轨迹改写事件逐项一致，主表不变，定义仍需统一。
 （2）Hotpot236实际用第1步场馆名，explicit_binding_answer_step_ids漏记，语义应含[1]。上一轮仅内存修正：Hotpot绑定补充表正确前答组160/179→161/180；错误组3/17不变；其余39表和四组主表不变。簇数156→157，相应区间也需重算，不能只改比例。
-本文件记录问题，不覆盖冻结标签、原统计表或原始报告。
+本文件记录问题，不覆盖冻结标签、原统计表或原始报告。修订008仅按既有审计修正C18的4项提分解释及旧fewshot的42计划问题/6未知请求口径；原历史报告和标签未改，没有新增事实验证。
 
 八、研究层面的综合认识（由上述证据支持的解释，不是新增实验结论）
 
@@ -220,7 +220,7 @@ E24 历史C06覆盖600：outputs/query_decomposition/retrieval_coverage_audit_v1
 E25 引用因素完整90暂停：outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/STATUS.json
     阶段38：outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022/REPORT.json
 E26 goal fewshot共同86：outputs/query_decomposition/p02_goal_fewshot_fixed90_v1_20261022/REPORT.md
-    旧42未完成来源：outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json
+    旧42个计划问题（42缓存G2、新0成功、6个unknown请求；非42个未知请求）来源：outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json
 E27 训练题面重合：experiments/query_decomposition/p02_formal1500_v1_20261021/EXPOSURE_AUDIT.frozen.json
 E28 当前主评状态：experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.json
 E29 累计结果与各阶段口径：experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261022_prompt_binding_goal_synthesis/FROZEN_DECOMPOSER_FINDINGS.md

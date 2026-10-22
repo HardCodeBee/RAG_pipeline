@@ -299,10 +299,10 @@ def main():
             'P02 MuSiQue uses native timing_only dev100 usage; missing MuSiQue SelfAsk/DecomP/QD use labelled cross-dataset same-method references.',
             'QA/raw estimates use all available historical native P02 records rather than only the planned stratified main500 sample. The common new template is read exactly, but old-prefix cost renders are not validated new shared-layer inputs.',
             'Raw helper cost proxy preserves question/source grouping and all actual reader documents, de-duplicates by doc_id against root and earlier helper docs, and never truncates.',
-            'Both neutral zero-shot prompt token estimates use each historical case actual QA prompt_tokens/character ratio; this is not exact provider tokenization. Output length is provisionally the same observed short-answer mean.',
+            'Both shared pre-frozen zero-shot prompt token estimates use each historical case actual QA prompt_tokens/character ratio; this is not exact provider tokenization. Output length is provisionally the same observed short-answer mean.',
             'The final output allowance is 32768, not 64. The 64-token mean-output sensitivity is an illustrative spend scenario, not a frozen cap or a worst-case limit.',
             'QA/raw budgets all 600 final generations and zero incremental upstream generations; upstream full logical cost still belongs in reported method cost.',
-            'The QA/raw common neutral zero-shot interface differs from the old and main native final; both 300-result arms are budgeted as new final conditions.',
+            'The QA/raw common shared pre-frozen zero-shot interface differs from the old and main native final; both 300-result arms are budgeted as new final conditions.',
             'The 50-percent expense/input scenario is a planning sensitivity, not a cap, upper bound, or provider-price guarantee. Five-attempt recovery is not five full-flow repeats.',
             'Unknown liabilities remain unresolved and are not zero; no unknown request may be replayed based on this estimate.',
             'GPU/cluster time has no verified cash rate and is excluded from CNY totals; optional timing repeats are separate from necessary budget.',
@@ -334,7 +334,7 @@ def main():
                      f'{r["raw_mean_input_tokens_estimated"]:.1f} | {r["raw_max_input_tokens_estimated"]:.1f} | '
                      f'{r["pair100_proxy_cny"]:.4f} | {r["pair100_input50pct_mean_output64_scenario_cny"]:.4f} |')
     lines += ['', 'Hotpot/2Wiki使用旧原生P02正式完整轨迹，MuSiQue使用同版本dev100 timing_only控制；未使用S02。长度按各题实际QA输入token/字符校准Raw，不是精确Qwen分词。计划中的分层300题和新统一层最终prompt尚未实际执行，代理样本不冒充该300题。', '',
-        f'新增QA/raw合计{totals["qa_raw_600_final_conditions_proxy_cny"]:.4f}元；输入+50%、平均输出假设64token的敏感性情景为{totals["qa_raw_input50pct_mean_output64_scenario_cny"]:.4f}元。600个final条件不等于固定600次API提交，失败尝试与同payload缓存另记。实际允许输出上限是32768，64只是此情景的平均用量假设，既非配置上限也非最坏费用。两臂使用共同中性zero-shot提示，移除旧四例；新接口可能改变输出长度，旧stop短答案均值只是估费代理。所有上游由主表承担，新增费用不重复计入；完整方法成本仍须包含上游并排除未使用的主表原final。', '',
+        f'新增QA/raw合计{totals["qa_raw_600_final_conditions_proxy_cny"]:.4f}元；输入+50%、平均输出假设64token的敏感性情景为{totals["qa_raw_input50pct_mean_output64_scenario_cny"]:.4f}元。600个final条件不等于固定600次API提交，失败尝试与同payload缓存另记。实际允许输出上限是32768，64只是此情景的平均用量假设，既非配置上限也非最坏费用。两臂使用共同、预先冻结的zero-shot提示，移除旧四例；新接口可能改变输出长度，旧stop短答案均值只是估费代理。所有上游由主表承担，新增费用不重复计入；完整方法成本仍须包含上游并排除未使用的主表原final。', '',
         '## 预算汇总与历史负债', '',
         f'- 必要新增费用（有条件的旧整题复用）：{totals["necessary_proxy_cny"]:.4f}元；SelfAsk轮次敏感性{totals["necessary_step_sensitivity_cny"]:.4f}元。',
         f'- 主表轮次敏感性再增加50%，加上QA/raw输入+50%/平均输出64：{totals["necessary_50pct_main_plus_qa_raw_input50pct_mean_output64_scenario_cny"]:.4f}元。此项不是上界或预算硬帽。',
