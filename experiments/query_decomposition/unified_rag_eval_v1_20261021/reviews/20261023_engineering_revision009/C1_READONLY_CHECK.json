@@ -1,0 +1,44 @@
+{
+  "schema": "runtime_c1_readonly_examples_v1",
+  "utc": "2026-10-22T22:56:55.953707+00:00",
+  "passed": true,
+  "inspected_examples": 2,
+  "records": [
+    {
+      "dataset": "2wiki",
+      "method": "b00_rag_top10_v1",
+      "inspection": "same_saved_request_and_in_memory_saved_retrieval_only",
+      "source_count": 2,
+      "candidate_accepted": true,
+      "historical_unknown_blockers": 0,
+      "known_actual_attempts": 1,
+      "attempt_count_unverified": false,
+      "current_retrieval_packets": 1,
+      "rejection_reasons": []
+    },
+    {
+      "dataset": "2wiki",
+      "method": "p02_multigrain_timing_cachefix_v1",
+      "inspection": "same_saved_request_and_in_memory_saved_retrieval_only",
+      "source_count": 3,
+      "candidate_accepted": false,
+      "historical_unknown_blockers": 1,
+      "known_actual_attempts": 2,
+      "attempt_count_unverified": false,
+      "current_retrieval_packets": 0,
+      "rejection_reasons": []
+    }
+  ],
+  "historical_databases_opened_mode": "ro with query_only and explicit close",
+  "writes_to_historical_databases": 0,
+  "models_loaded": 0,
+  "retrieval_searches": 0,
+  "provider_requests": 0,
+  "candidate_migrations": 0,
+  "limitations": [
+    "Only a few saved examples were checked; this is not validation of all 3866 reuse candidates.",
+    "Saved packets were copied into an in-memory current store solely to test exact C1 comparison; no live retrieval correctness or latency was established.",
+    "Historical actual attempts are read for retry counting, never imported as newly billed expense.",
+    "Related unresolved receipts remain held; no receipt reconciliation or replay was performed."
+  ]
+}

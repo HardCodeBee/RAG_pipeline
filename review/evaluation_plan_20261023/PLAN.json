@@ -6,7 +6,7 @@
     "package": "src/p02_multigrain_timing_cachefix_v1",
     "execution_variant": "p02_shared_baseline_v2",
     "shared_layer": "existing baseline_integrity_repair_v2_20261017 with origin binding fix",
-    "integration_status": "offline_callbacks_implemented_not_execution_ready",
+    "integration_status": "new_runtime_entry_wired_offline_validation",
     "additional_frozen_decomposer": {
       "identity": "Qwen/Qwen3-4B-Instruct-2507 plus r02_expanded LoRA, v12",
       "identity_source": "src/p02_multigrain_timing_cachefix_v1/models/DECOMPOSER_IDENTITY.json",
@@ -82,7 +82,7 @@
     },
     "no_fixed_budget_cap": true,
     "execution_approved": false,
-    "runtime_integration": "pure policies implemented and offline checked; complete guarded paid runner integration still pending"
+    "runtime_integration": "runtime_transport plus runtime_ledger; actual send path, durable attempts and receipt reconciliation; offline validated"
   },
   "data_provenance": {
     "known_training_question_text_overlap": {
@@ -96,25 +96,23 @@
     "reporting_constraint": "Do not erase known provenance, assert no overlap, or imply entirely unseen evaluation questions. Relevant independence/generalization claims must accurately state their scope.",
     "additional_experiment_approved": false
   },
-  "revision": 8,
+  "revision": 9,
   "updated_utc": "2026-10-22T22:08:23.368088+00:00",
-  "status": "paused_by_user_revision008_editorial_remote_review",
+  "status": "paused_engineering_wiring_offline_review",
   "execution_approval": {
     "approved": false,
     "plan_revision": null,
-    "latest_user_instruction": "就按这些建议修正评估计划、证据链接和旧结论索引，实验范围、样本和提示词原文保持不变。先不要执行，整理好后推送远端审核。",
+    "latest_user_instruction": "就按这个范围完成主表入口、请求与账务、QA/raw 的工程接线和离线验证，实验范围、样本和提示词保持不变。先不要执行正式评估，完成后推送远端审核。",
     "plan_and_publication_authorized": true,
-    "evaluation_execution_authorized": false
+    "evaluation_execution_authorized": false,
+    "engineering_and_offline_validation_authorized": true
   },
   "history": {
-    "previous_revision": 7,
-    "snapshot": "history/revision007_before_editorial_20261023/",
-    "older_decisions": "DECISIONS.jsonl",
-    "supersedes": [
-      "revision007 terminology, evidence links and historical index wording only; experimental design unchanged"
-    ],
-    "historical_prompt_research_authorizations_do_not_override_current_no_execution_instruction": true,
-    "previous_experimental_design": "revision007; unchanged by editorial revision008"
+    "previous_revision": 8,
+    "snapshot": "https://github.com/HardCodeBee/RAG_pipeline/tree/213670849a3a084a84d1728bb9f580d1d73a66f0/review/evaluation_plan_20261023",
+    "previous_experimental_design": "revision007; unchanged",
+    "experimental_design_snapshot": "https://github.com/HardCodeBee/RAG_pipeline/tree/2cbe21300ce91e3e20c4f1bce153a7ecb6cfe1b9/review/evaluation_plan_20261023",
+    "older_decisions": "DECISIONS.jsonl"
   },
   "narrative": {
     "question": "Organize complex-question information needs through decomposition and turn them into facts usable by the final answer through staged solving.",
@@ -140,7 +138,7 @@
     ],
     "configuration_manifest": "reviews/20261023_narrative_revision007/METHODS.json",
     "configuration_selection_policy": "source-grounded fixed representative configurations; no formal-score selection or new parameter search",
-    "configuration_status": "selected_for_plan_review_not_applied_to_frozen_runners",
+    "configuration_status": "bound_by_runtime_config_and_RUNTIME_BINDING_without_editing_frozen_methods",
     "new_local_F1_tuning_authorized": false,
     "removed_from_required_matrix": [
       "b03_react_dense",
@@ -396,24 +394,27 @@
   ],
   "current_verification": {
     "ready_to_dispatch": false,
-    "adapter_status": "offline_callbacks_implemented_not_execution_ready",
-    "runtime_config_freeze_complete": false,
+    "adapter_status": "new_six_method_entry_and_qa_raw_wired_offline_validated",
+    "runtime_config_freeze_complete": true,
     "strict_reuse_validation_complete": false,
-    "QA_raw_packet_builder_runtime_validated": false,
+    "QA_raw_packet_builder_runtime_validated": true,
     "required_before_execution": [
-      "review revised protocol",
-      "validate method/config compatibility and stage-level C1 inventory without treating candidates as passed",
-      "validate QA/raw source completeness and exact common-template construction",
-      "resolve unknown requests before any replay",
-      "obtain explicit resume authorization"
+      "remote engineering review and explicit resume authorization",
+      "verify actual deployment hardware and frozen resources at deployment",
+      "validate C1 and unresolved historical requests for each stage being processed",
+      "QA/raw requires a validated prefix for that pair only; optional timing remains separate"
     ],
     "hold_files_sha256": {
       "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
       "outputs\\query_decomposition\\hotpot_formal_eval_v1\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
       "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
-    }
+    },
+    "validation_scope": "synthetic wire/recovery tests and read-only historical examples; no live model or GPU execution",
+    "all_3866_candidates_validated": false,
+    "production_qa_raw_upstreams_validated": 0,
+    "actual_target_hardware_verified": false
   },
-  "change_policy": "Revision008 is authorized editorial repair and public review publication only. Preserve revision007 scope, method parameters, cohorts, prompt bytes, scoring and budget numbers; no experiment execution or archival movement.",
+  "change_policy": "Revision009 implements approved engineering and offline validation only. Revision007 scope, methods, samples, prompts, scoring and budget remain unchanged; formal execution still requires explicit authorization.",
   "approved_decisions": [
     {
       "id": "NARRATIVE_REVISION007_REVIEW_20261023",
@@ -432,6 +433,11 @@
       "status": "editorial_changes_and_publication_authorized_execution_held",
       "experimental_design_revision": 7,
       "scope_sample_prompt_bytes_unchanged": true
+    },
+    {
+      "id": "ENGINEERING_REVISION009_20261023",
+      "authority": "就按这个范围完成主表入口、请求与账务、QA/raw 的工程接线和离线验证，实验范围、样本和提示词保持不变。先不要执行正式评估，完成后推送远端审核。",
+      "status": "engineering_offline_and_publication_authorized_execution_held"
     }
   ],
   "pending_decisions": [
@@ -461,5 +467,17 @@
     "new_generation_requests": 0,
     "new_GPU_jobs": 0,
     "review": "reviews/20261023_editorial_revision008/CHANGES.md"
+  },
+  "engineering_revision": {
+    "id": "ENGINEERING_REVISION009_20261023",
+    "experimental_design_revision": 7,
+    "reviewed_design_commit": "213670849a3a084a84d1728bb9f580d1d73a66f0",
+    "entrypoint": "experiments.query_decomposition.unified_rag_eval_v1_20261021.runtime",
+    "binding": "RUNTIME_BINDING.json",
+    "review": "reviews/20261023_engineering_revision009/README.md",
+    "new_evaluation_requests": 0,
+    "new_GPU_jobs": 0,
+    "historical_database_writes": 0,
+    "formal_execution_authorized": false
   }
 }

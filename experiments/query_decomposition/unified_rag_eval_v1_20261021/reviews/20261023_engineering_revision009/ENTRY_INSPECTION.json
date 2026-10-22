@@ -1,0 +1,23 @@
+{
+  "plan_revision": 9,
+  "experimental_design_revision": 7,
+  "methods": [
+    "p02_multigrain_timing_cachefix_v1",
+    "b00_rag_top10_v1",
+    "b01_rag_top10_cot3",
+    "b08_qd_rerank",
+    "b02_selfask_dense",
+    "b06_decomp_bge"
+  ],
+  "counts": {
+    "hotpotqa": 500,
+    "2wiki": 500,
+    "musique": 500
+  },
+  "main_outcomes": 9000,
+  "qa_raw_pairs": 300,
+  "qa_raw_finals": 600,
+  "output": "outputs/query_decomposition/hotpot_formal_eval_v1/unified_rag_revision009_20261023",
+  "execution_approved": false,
+  "inspection_only": true
+}

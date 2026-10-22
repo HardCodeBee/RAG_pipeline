@@ -1,0 +1,425 @@
+{
+  "passed": true,
+  "pytest_exit_code": 0,
+  "test_count": 96,
+  "tests": [
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_algorithm_failure_is_terminal_and_not_retried",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_all_five_frozen_baseline_controllers_through_new_transport",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_cli_execute_refuses_before_client_construction",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_frozen_mapping_has_exact_six_methods_and_both_decomp_limits",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime.py::RuntimeIntegration::test_p02_prefix_survives_unknown_native_final_and_builds_both_arms",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_changed_historical_count_evidence_is_not_silently_replaced",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_durable_notifications_single_and_rolling_deduplicated",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_empty_answer_is_not_retried_for_quality",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_five_actual_attempts_persist_across_restarts",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_four_historical_attempts_allow_only_one_new_attempt",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_historical_overlay_releases_only_verified_attempt_without_source_writes",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_interrupted_process_keeps_inflight_liability",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_malformed_response_keeps_returned_usage",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_missing_usage_and_incomplete_generation_are_held",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_no_submission_receipt_keeps_counter_before_retry",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_notification_failure_is_durable_and_not_a_budget_cap",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_oversize_full_input_is_not_truncated",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_pause_guard_and_sdk_retry_check_prevent_submission",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_payload_change_cannot_reset_stage_attempts",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_persisted_rate_slot_rechecks_stop_before_any_attempt",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_provider_content_rejection_retained_without_repeat",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_qa_raw_terminal_algorithm_failures_are_not_retried",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_real_c1_catalog_preserves_old_usage_and_zero_new_expense",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_real_historical_unknown_blocks_no_new_liability",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_receipt_reconciliation_settles_unknown_without_resubmission",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_request_only_historical_overlay_keeps_conservative_initial_count",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_returned_failure_usage_settled_without_inventing_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_same_v2_payload_and_success_cache_survive_restart",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_unknown_is_not_retried_now_or_after_restart_and_other_stage_works",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_transport.py::TransportTests::test_unrelated_ledger_is_never_modified",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_same_scope_reuses_complete_receipt_without_changing_old_bytes",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[question]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[settings]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[qid]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[stage]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[retrieval]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[resources]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[missing_usage]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[length]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[binding_cap]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_c1_rejects_changed_or_incomplete_evidence[returned_model]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_historical_unknown_blocks_only_same_logical_scope_even_if_payload_changes[unknown]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_historical_unknown_blocks_only_same_logical_scope_even_if_payload_changes[in_flight]",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_old_unknown_attempt_is_not_cleared_by_later_request_success",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_claimed_validation_does_not_replace_db_identity",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_trace_binds_precompletion_unknown_when_token_record_is_missing",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_separate_question_binding_keeps_shared_request_ownership",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_frozen_resource_file_hash_is_checked_and_p02_protocol_pins_scope",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_discovery_does_not_include_other_methods_or_development",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_method_bound_external_network_unknown_is_found_without_cross_method_import",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_historical_actual_attempt_count_and_mirrored_sources_are_deduplicated",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_missing_historical_attempt_count_blocks_fresh_but_not_complete_c1_reuse",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_overflow_metadata_requires_actual_full_window_coverage",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_historical_recovery_overlay_releases_only_exact_verified_unsubmitted_attempt",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_reuse.py::test_no_attempt_row_recovery_retains_conservative_initial_ordinal",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_all_actual_reader_material_and_root_dedup",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_c1_label_cannot_replace_durable_validation",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_c1_only_nonbinding_cap_difference",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_complete_prefix_does_not_require_native_final",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_fixed_300_manifest_keeps_missing_questions",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_formatter_receipt_is_required_and_answer_exact",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_goal_only_keeps_goal_question_and_reader",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_id_conflict_is_blocked_after_valid_replay",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_missing_goal_or_duplicate_step_blocks",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_missing_or_forged_durable_receipt_blocks",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_overflow_is_held_without_truncation",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_prefix_hash_or_question_binding_is_required",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_provider_whitespace_is_replayed_without_normalizing_raw_rewrite",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_usage_unknown_is_not_eligible",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::PrefixTests::test_wrong_reader_packet_cannot_pass_replay",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_each_arm_checks_guard_and_success_is_not_reissued",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_false_guard_and_crash_before_return_are_safe",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_guard_prevents_dispatch",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_length_is_algorithm_zero_with_known_spend",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_missing_usage_success_is_held_not_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_short_length_is_integrity_hold",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_single_arm_unknown_recovery_preserves_other_arm_without_resubmit",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_qa_raw_runtime.py::ExecutionTests::test_verified_failed_request_retries_are_bounded",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_bootstrap_is_frozen_paired_and_equal_dataset_weight",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_complete500_populates_table_and_unverified_success_stays_pending",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_paired_bounds_retain_known_other_arm_and_fixed100",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_readonly_prediction_reader_releases_windows_file_handle",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_technical_missing_is_not_zero_algorithm_failure_is_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_transport_algorithm_failure_receipt_retains_qa_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_transport_algorithm_failure_receipt_retains_qa_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_runtime_report.py::ReportTests::test_transport_algorithm_failure_receipt_retains_qa_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_p02_bridge_refuses_incomplete_final",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_p02_retrieval_reaches_existing_v2_long_input_layer",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_partial_quality_is_not_published_as500",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_pause_and_unapproved_revision_block_execution",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_real_shared_transport_uses_v2_maximum_and_rejects_length",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_ttft_ignores_role_and_usage_frames_and_retains_full_output",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_contracts.py::Contracts::test_unknown_or_replayed_time_is_never_zero",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_execution_policy.py::ExecutionPolicyTests::test_five_attempt_limit_does_not_hide_algorithm_failures",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_execution_policy.py::ExecutionPolicyTests::test_single_outlier_and_sustained_cost_increase_are_distinct",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_execution_policy.py::ExecutionPolicyTests::test_stratified_sample_is_stable_and_shared_without_reading_answers",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_execution_policy.py::ExecutionPolicyTests::test_unknown_and_integrity_failures_do_not_trigger_paid_retries",
+      "outcome": "passed"
+    },
+    {
+      "test": "test_execution_policy.py::ExecutionPolicyTests::test_unknown_cost_cannot_be_reported_as_zero_or_a_rolling_mean",
+      "outcome": "passed"
+    }
+  ],
+  "network_connection_attempts": 0,
+  "new_model_requests": 0,
+  "GPU_jobs": 0,
+  "duration_seconds": 13.13725270004943,
+  "scope": "synthetic transport/controller/QA raw, read-only reuse and frozen contract tests; not a live evaluation",
+  "subtest_count": 7
+}

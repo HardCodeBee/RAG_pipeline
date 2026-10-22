@@ -1,70 +1,86 @@
 # Current RAG evaluation agreement
 
 Read `unified_rag_eval_v1_20261021/PLAN.txt`, `PLAN.json`, and `DECISIONS.jsonl`
-before changing an evaluation in this research family. These are the current
-agreement; older frozen plans describe historical execution only.
+before changing an evaluation in this research family. Revision008 is the
+current editorial review; revision007 experimental design remains unchanged.
+Revision006 and earlier protocols remain historical
+evidence; their ten-method matrix is no longer the required scope.
 
-- Primary method: `p02_multigrain_timing_cachefix_v1`, using a separate execution
-  variant over the existing baseline-v2 request and complete-input layers.
-- `s02_child4`: historical complete-RAG route reference only. No new S02 run.
-- Baselines: integrity-repaired v2; original campaign scores are references only.
-- Revision006: main evaluation does not enforce equal per-query retrieval or
-  generation budgets across methods. Use paper best reported corresponding
-  dataset Answer-F1 configurations where available, with explicit source and
-  common-resource adaptation records. Do not silently relabel old local-dev
-  choices as official best, or start new local F1 tuning by default.
-- Iter-RetGen primary parameter selection is now paper k5 with T4/T6/T7 for
-  HotpotQA/2Wiki/MuSiQue, pending local compatibility validation. The former
-  k10/T5 matched50 is historical budget-matched reference, not main default.
-- Equal-budget complete-RAG evaluation is a separate extension whose scope is
-  approved but sample, method pool, budget values and stopping design are still
-  pending. It is not a prerequisite for main evaluation. Never infer identical
-  generation cost from identical per-request output allowance.
-- Known training-question overlap evidence remains intact. No extra overlap
-  experiment, exclusions, replacement questions or retraining is queued. Do not
-  claim no overlap or entirely unseen evaluation questions, or hide material
-  provenance when making independence/generalization claims.
-- Only complete-RAG final-answer evaluation belongs in the current primary table.
-  Same-final-prompt control and four mechanism ablations are deferred.
-- Aim for all 500 fixed questions per dataset/method. Do not publish partial
-  official scores or a scorable-count metric while recovery is still possible.
-  If 500 is confirmed unattainable, disclose actual denominator and reasons.
-- Metrics: native F1/EM, input/output tokens, estimated LLM expense, local
-  component processing time and client TTFT separately. Do not add an LLM call
-  count metric. TTFT starts when the client submits and ends at first nonempty
-  content, not the first role/heartbeat frame; it includes network/provider wait.
-- Keep all evaluations paused. Do not clear hold files, start supervisors,
-  submit API requests, schedule GPU jobs, or interpret a plan edit as approval.
-- Approved timing cohort: 50 fixed stratified queries per dataset, shared by
-  P02 and nine v2 baselines (1500 measurement flows). Warm model/index, disable
-  response and retrieval-result caches, concurrency one original query. Time
-  P02 decomposition separately and label hardware. Do not replace quality
-  results or label this timing subset as a full-500 mean. The user delegated
-  sample/hardware details: seed20261021 and 50 IDs/dataset are now frozen in
-  execution_details/TIMING_COHORT.frozen.json. Prefer remote A6000 GPUs; the
-  proposed fixed local RTX4060 assignment is withdrawn. Verify actual remote
-  devices/resources at allocation time; this is not resume authorization.
-- The user removed fixed cumulative and per-stage budget caps for this main
-  evaluation, subject to reasonable spending with no anomalies. The old 300
-  cap and proposed 320 cap are superseded. Preserve usage, provenance, all
-  historical charges and unknown liabilities; do not silently replay unknown
-  requests. This policy does not resume evaluation or modify frozen runners.
-- Failure recovery: at most five actual attempts including the initial attempt
-  at a failed logical stage per original query/method; count across restarts and
-  SDK/controller layers. Record and temporarily skip after exhaustion. Do not
-  replace questions, infer irrecoverability, or rerun algorithm failures for F1.
-  Unknown/in-flight requests need receipt verification before any paid replay.
-- Expense increases notify the user against historical same-dataset/method
-  per-query means (label same-method cross-dataset proxies when needed).
-  Operational defaults: a single query above3x or recent20 complete fresh-flow
-  mean above1.5x. No hidden budget cap; cache-only/partial runs do not dilute
-  trend means, and unknown usage is not zero. See the frozen execution details.
-- The user requires explicit approval of **every new evaluation decision**:
-  methods, samples, metrics, measurement conditions, cache/retry rules, ranking,
-  archive changes, budget and execution. Record their approval in the same plan
-  and append-only decision log before acting. Silence is not approval.
-- Physically archived directories have an index at
-  `../../archives/rag_evaluation_history_20261021/INDEX.json` and approved
-  original-path junctions. Do not delete compatibility paths or frozen evidence.
-- Preserve historical bytes and provenance. Do not relabel old P02 results as
-  shared-layer results or count reference runs as newly completed main results.
+- The user delegated concrete design and public review publication of six main
+  methods, three existing analysis groups, and a P02 QA/raw final-interface
+  comparison. This supersedes repeated confirmation for those plan details.
+  It does not authorize experiment execution. Keep every STOP_REQUESTED file.
+  Do not start a supervisor, submit generation requests/GPU jobs, resume a
+  historical small probe, or treat prior prompt-research authority as overriding
+  the latest instruction to keep evaluation paused.
+- Main method: frozen `p02_multigrain_timing_cachefix_v1`, independent execution
+  variant `p02_shared_baseline_v2`. Keep prompts, examples, ordinary/goal QA,
+  history and double-route retrieval behavior; no prompt candidate promotion.
+- Required references: Top10, Top10+CoT3, QD+Rerank, Self-Ask, DecomP.
+  Fixed source-grounded representative configurations are specified in
+  `reviews/20261023_narrative_revision007/METHODS.json`. No new F1 tuning or
+  paper-peak selection. Explicitly label common Qwen/BGE/reader adaptations.
+  ReAct, IRCoT, Iter-RetGen and Hybrid are historical references only. Preserve
+  Iter's approved k5/T4,T6,T7 source; do not schedule a run for an appendix.
+- Main scope: the unchanged formal500 per dataset, six methods, 9000 outcomes.
+  S02 remains history only. No resampling, result-based filtering, extra overlap
+  experiment, exclusion or retraining. Keep provenance; do not claim entirely
+  unseen questions, no known overlap, full official test or SOTA reproduction.
+- Three existing analysis groups reuse historical P02-family evidence with its
+  original denominators and frozen protocols, including goal512 and intervention
+  arms. They are not unified-layer main scores.
+  A partial/enriched diagnostic sample is not a population error-rate estimate.
+  Cases do not establish component necessity; incomplete probes stay incomplete.
+- New QA/raw design: fixed stratified100 per dataset, 300 queries and600 final
+  conditions. Reuse the same valid shared-layer upstream; change only final
+  auxiliary representation under a common pre-frozen zero-shot prompt. Include
+  all actual ordinary and goal reader material in Raw, preserving association
+  and deduplication. No new retrieval/reranking/summarization, no silent truncation.
+  Native final output is not the common-prompt QA arm. Historical S02 or native P02
+  traces cannot stand in for unvalidated shared-layer results. The complete
+  protocol, prompt and qid-only list are in the revision007 qa_raw directory.
+- Quality: native F1/EM with frozen alias rules; aim for all500 per method/dataset.
+  Algorithm failures retain protocol-defined zero; infrastructure/unknown cases
+  remain pending, not zero. Do not publish partial official scores while recovery
+  remains possible. If500 becomes unattainable, disclose actual n and reasons.
+- Report full-flow input/output tokens and logical LLM cost separately from new
+  expenditure. Do not add an LLM-call-count metric. Cached logical usage is not
+  newly billed usage. QA/raw incremental cost counts only its new finals, while
+  both arm-level logical costs include the shared upstream.
+- Strict C1 reuse remains: same method/question/stage, full messages/settings,
+  stop+usage and intact retrieval. Only nonbinding historical caps may differ.
+  Changed upstream invalidates downstream. Candidate counts are not validated
+  completions; migration has not run. Preserve old bytes and liabilities.
+- Timing is optional and not a main-completion gate: use the existing frozen50
+  queries per dataset for six methods,900 flows; warm models/index, no response
+  or retrieval-result caches, query concurrency1. Existing frozen files retain
+  their old method list as history; revision007 supersedes that list only.
+  Measure decomposition separately; verify actual remote hardware before any
+  approved run. Separate local component time from first-content client TTFT;
+  neither cached elapsed time nor first role/heartbeat is model TTFT.
+- No fixed cumulative/per-stage budget cap has been reinstated. The revision007
+  budget gives conditional reuse, all-fresh and retry/input-growth scenarios;
+  estimates are not guarantees. GPU price is unknown. Preserve unknown request
+  liabilities and never silently replay them. Single-query>3x or recent20 full
+  fresh-query mean>1.5x historical expense triggers notification; changed method
+  parameters must accompany interpretation of historical references.
+- Recovery: at most five actual attempts including initial, per failed logical
+  stage/query/method, shared across SDK/controllers/restarts. Exhaustion means
+  record and temporarily skip, not replace a query or prove irrecoverability.
+  Unknown requests require receipt checks before any paid replay.
+- No equal-budget, multi-model/retriever, new judge, further baseline sweep or
+  four component-necessity ablations are queued. Earlier extension intentions
+  are preserved in history. Changes beyond this delegated plan must be recorded;
+  evaluation resume still requires explicit user authorization.
+- Archive compatibility junctions and frozen evidence stay intact. The entire
+  `docs/` tree is local-only. Public review publication is limited to the agreed
+  plan/evidence summary package, excluding credentials, datasets and raw billing.
+
+- Revision008 only repairs contribution wording, conditional prompt interpretation,
+  evidence links, R02 resource attribution and historical conclusion errata.
+  All experiment scope, samples and prompt bytes remain unchanged. The common
+  prompt has a specified evidence policy; do not claim neutrality or attribute
+  whole-system differences solely to sequential solving/history. Historical
+  archival authorization does not authorize any new move in this revision.
+
+- Revision009 is explicitly authorized engineering preparation: new six-method entry, durable request/accounting, QA/raw binding and offline tests, followed by public engineering review. Keep revision007 scientific scope and all frozen sources/inputs/prompts; new code lives beside old adapters. Do not execute formal evaluation, remove STOP files, or write historical ledgers. Runtime entry is `unified_rag_eval_v1_20261021/runtime.py`; old run.main is not the new entry.

@@ -1,0 +1,140 @@
+{
+  "origin": "manual training-only source-checked local three-shot adaptation",
+  "examples": [
+    {
+      "qid": "5ae284405542996483e649da",
+      "type": "bridge",
+      "question": "Frederick Laurence Green, F. L. Green, was a British author who had 14 titles published between 1934 and 1952, and is best known for his 1945 novel, \"Odd Man Out\", and film of the same name, a British film noir set in an unnamed Northern Irish city and directed by Carol Reed, released in which year?",
+      "answer": "1947",
+      "source_documents": [
+        {
+          "block": "[Chunk 1 | source=F. L. Green, pages=1-1]\nF. L. Green\nFrederick Laurence Green (1902–1953) was a British author who had 14 titles published between 1934 and 1952. He is best known for his 1945 novel, \"Odd Man Out\", which was filmed by Carol Reed, also as \"Odd Man Out\", in 1947. The novel was also used as the basis of the 1969 Sidney Poitier movie \"The Lost Man\" (1969).",
+          "doc_id": "3264509",
+          "rank": 1,
+          "score": 0.8724052906036377,
+          "source": "F. L. Green",
+          "text": "F. L. Green\nFrederick Laurence Green (1902–1953) was a British author who had 14 titles published between 1934 and 1952. He is best known for his 1945 novel, \"Odd Man Out\", which was filmed by Carol Reed, also as \"Odd Man Out\", in 1947. The novel was also used as the basis of the 1969 Sidney Poitier movie \"The Lost Man\" (1969).",
+          "vector_id": 716443
+        },
+        {
+          "block": "[Chunk 2 | source=Odd Man Out, pages=1-1]\nOdd Man Out\nOdd Man Out is a 1947 British film noir set in an unnamed Northern Irish city and directed by Carol Reed. It is based on the novel by F. L. Green and stars James Mason and Robert Newton.",
+          "doc_id": "1192675",
+          "rank": 2,
+          "score": 0.8519803881645203,
+          "source": "Odd Man Out",
+          "text": "Odd Man Out\nOdd Man Out is a 1947 British film noir set in an unnamed Northern Irish city and directed by Carol Reed. It is based on the novel by F. L. Green and stars James Mason and Robert Newton.",
+          "vector_id": 348643
+        },
+        {
+          "block": "[Chunk 3 | source=Carol Reed, pages=1-1]\nCarol Reed\nSir Carol Reed (30 December 1906 – 25 April 1976) was an English film director best known for \"Odd Man Out\" (1947), \"The Fallen Idol\" (1948) and \"The Third Man\" (1949). For \"Oliver!\" (1968), he received the Academy Award for Best Director.",
+          "doc_id": "163063",
+          "rank": 3,
+          "score": 0.7384071350097656,
+          "source": "Carol Reed",
+          "text": "Carol Reed\nSir Carol Reed (30 December 1906 – 25 April 1976) was an English film director best known for \"Odd Man Out\" (1947), \"The Fallen Idol\" (1948) and \"The Third Man\" (1949). For \"Oliver!\" (1968), he received the Academy Award for Best Director.",
+          "vector_id": 88814
+        },
+        {
+          "block": "[Chunk 3 | source=Odd Man Out (disambiguation), pages=1-1]\nOdd Man Out (disambiguation)\nOdd Man Out is a 1947 British film directed by Carol Reed and starring James Mason.",
+          "doc_id": "18613130",
+          "rank": 3,
+          "score": 0.7424587607383728,
+          "source": "Odd Man Out (disambiguation)",
+          "text": "Odd Man Out (disambiguation)\nOdd Man Out is a 1947 British film directed by Carol Reed and starring James Mason.",
+          "vector_id": 2194492
+        }
+      ],
+      "selfask": "Question: Frederick Laurence Green, F. L. Green, was a British author who had 14 titles published between 1934 and 1952, and is best known for his 1945 novel, \"Odd Man Out\", and film of the same name, a British film noir set in an unnamed Northern Irish city and directed by Carol Reed, released in which year?\nFollow-up: What novel by F. L. Green was filmed by Carol Reed?\nRetrieved passages: [Chunk 1 | source=F. L. Green, pages=1-1]\nF. L. Green\nFrederick Laurence Green (1902–1953) was a British author who had 14 titles published between 1934 and 1952. He is best known for his 1945 novel, \"Odd Man Out\", which was filmed by Carol Reed, also as \"Odd Man Out\", in 1947. The novel was also used as the basis of the 1969 Sidney Poitier movie \"The Lost Man\" (1969).\nIntermediate answer: Odd Man Out\nFollow-up: In what year was the film Odd Man Out directed by Carol Reed released?\nRetrieved passages: [Chunk 2 | source=Odd Man Out, pages=1-1]\nOdd Man Out\nOdd Man Out is a 1947 British film noir set in an unnamed Northern Irish city and directed by Carol Reed. It is based on the novel by F. L. Green and stars James Mason and Robert Newton.\nIntermediate answer: 1947\nFinal answer: 1947"
+    },
+    {
+      "qid": "5a7b52b755429927d897bf8d",
+      "type": "bridge",
+      "question": "What music label is also associated with the same manager responsible for Jimmy Spicer?",
+      "answer": "Def Jam Recordings",
+      "source_documents": [
+        {
+          "block": "[Chunk 1 | source=Jimmy Spicer, pages=1-1]\nJimmy Spicer\nJames Bromley Spicer, better known by his stage name Jimmy Spicer, is an American hip hop recording artist who released a number of old school rap singles during the late 1970s and early 1980s. Spicer was managed by Russell Simmons' Rush Management. His single \"The Bubble Bunch\" featured Jellybean Benitez's first remix. Jimmy spicer has 3 daughters Angelina, Leticia, Janel Spicer and 1 son James Spicer.",
+          "doc_id": "5639959",
+          "rank": 1,
+          "score": 0.7401952147483826,
+          "source": "Jimmy Spicer",
+          "text": "Jimmy Spicer\nJames Bromley Spicer, better known by his stage name Jimmy Spicer, is an American hip hop recording artist who released a number of old school rap singles during the late 1970s and early 1980s. Spicer was managed by Russell Simmons' Rush Management. His single \"The Bubble Bunch\" featured Jellybean Benitez's first remix. Jimmy spicer has 3 daughters Angelina, Leticia, Janel Spicer and 1 son James Spicer.",
+          "vector_id": 1014799
+        },
+        {
+          "block": "[Chunk 2 | source=Russell Simmons, pages=1-1]\nRussell Simmons\nRussell Wendell Simmons (born October 4, 1957) is an American entrepreneur, producer and author. The chairman and CEO of Rush Communications, he cofounded the hip-hop music label Def Jam Recordings and created the clothing fashion lines Phat Farm, Argyleculture, and Tantris. Simmons had a net-worth estimate of $340 million in 2011.",
+          "doc_id": "624457",
+          "rank": 2,
+          "score": 0.8017874956130981,
+          "source": "Russell Simmons",
+          "text": "Russell Simmons\nRussell Wendell Simmons (born October 4, 1957) is an American entrepreneur, producer and author. The chairman and CEO of Rush Communications, he cofounded the hip-hop music label Def Jam Recordings and created the clothing fashion lines Phat Farm, Argyleculture, and Tantris. Simmons had a net-worth estimate of $340 million in 2011.",
+          "vector_id": 224069
+        },
+        {
+          "block": "[Chunk 1 | source=Russell Simmons Music Group, pages=1-1]\nRussell Simmons Music Group\nRussell Simmons Music Group or RSMG is a record label founded by hip-hop mogul Russell Simmons in a joint venture with Universal Music's Island Def Jam Music Group. Its president is Austin, Tony.",
+          "doc_id": "5746181",
+          "rank": 1,
+          "score": 0.8337334394454956,
+          "source": "Russell Simmons Music Group",
+          "text": "Russell Simmons Music Group\nRussell Simmons Music Group or RSMG is a record label founded by hip-hop mogul Russell Simmons in a joint venture with Universal Music's Island Def Jam Music Group. Its president is Austin, Tony.",
+          "vector_id": 1028287
+        },
+        {
+          "block": "[Chunk 3 | source=Rick Rubin, pages=1-1]\nRick Rubin\nFrederick Jay \"Rick\" Rubin (born March 10, 1963) is an American record producer and former co-president of Columbia Records. Along with Russell Simmons, Rubin is the co-founder of Def Jam Records and also established American Recordings. With the Beastie Boys, LL Cool J, Public Enemy, and Run–D.M.C., Rubin helped popularize hip hop music.",
+          "doc_id": "399397",
+          "rank": 3,
+          "score": 0.7432453036308289,
+          "source": "Rick Rubin",
+          "text": "Rick Rubin\nFrederick Jay \"Rick\" Rubin (born March 10, 1963) is an American record producer and former co-president of Columbia Records. Along with Russell Simmons, Rubin is the co-founder of Def Jam Records and also established American Recordings. With the Beastie Boys, LL Cool J, Public Enemy, and Run–D.M.C., Rubin helped popularize hip hop music.",
+          "vector_id": 161064
+        }
+      ],
+      "selfask": "Question: What music label is also associated with the same manager responsible for Jimmy Spicer?\nFollow-up: Who was Jimmy Spicer managed by?\nRetrieved passages: [Chunk 1 | source=Jimmy Spicer, pages=1-1]\nJimmy Spicer\nJames Bromley Spicer, better known by his stage name Jimmy Spicer, is an American hip hop recording artist who released a number of old school rap singles during the late 1970s and early 1980s. Spicer was managed by Russell Simmons' Rush Management. His single \"The Bubble Bunch\" featured Jellybean Benitez's first remix. Jimmy spicer has 3 daughters Angelina, Leticia, Janel Spicer and 1 son James Spicer.\nIntermediate answer: Russell Simmons\nFollow-up: What hip-hop music label did Russell Simmons cofound?\nRetrieved passages: [Chunk 2 | source=Russell Simmons, pages=1-1]\nRussell Simmons\nRussell Wendell Simmons (born October 4, 1957) is an American entrepreneur, producer and author. The chairman and CEO of Rush Communications, he cofounded the hip-hop music label Def Jam Recordings and created the clothing fashion lines Phat Farm, Argyleculture, and Tantris. Simmons had a net-worth estimate of $340 million in 2011.\nIntermediate answer: Def Jam Recordings\nFinal answer: Def Jam Recordings"
+    },
+    {
+      "qid": "5a7d066f55429909bec76901",
+      "type": "comparison",
+      "question": "Which novelist, Malcolm Lowry or Joseph Wambaugh, was born first?",
+      "answer": "Malcolm Lowry",
+      "source_documents": [
+        {
+          "block": "[Chunk 3 | source=Malcolm Lowry, pages=1-1]\nMalcolm Lowry\nClarence Malcolm Lowry ( ; 28 July 1909 – 26 June 1957) was an English poet and novelist who is best known for his 1947 novel \"Under the Volcano\", which was voted No. 11 in the Modern Library 100 Best Novels list.",
+          "doc_id": "61915",
+          "rank": 3,
+          "score": 0.6524751782417297,
+          "source": "Malcolm Lowry",
+          "text": "Malcolm Lowry\nClarence Malcolm Lowry ( ; 28 July 1909 – 26 June 1957) was an English poet and novelist who is best known for his 1947 novel \"Under the Volcano\", which was voted No. 11 in the Modern Library 100 Best Novels list.",
+          "vector_id": 28999
+        },
+        {
+          "block": "[Chunk 1 | source=Joseph Wambaugh, pages=1-1]\nJoseph Wambaugh\nJoseph Aloysius Wambaugh, Jr. (born January 22, 1937) is a bestselling American writer known for his fictional and non-fictional accounts of police work in the United States. Several of his first novels were set in Los Angeles, California, and its surroundings, and featured Los Angeles police officers as protagonists.",
+          "doc_id": "666574",
+          "rank": 1,
+          "score": 0.7240456342697144,
+          "source": "Joseph Wambaugh",
+          "text": "Joseph Wambaugh\nJoseph Aloysius Wambaugh, Jr. (born January 22, 1937) is a bestselling American writer known for his fictional and non-fictional accounts of police work in the United States. Several of his first novels were set in Los Angeles, California, and its surroundings, and featured Los Angeles police officers as protagonists.",
+          "vector_id": 235207
+        },
+        {
+          "block": "[Chunk 2 | source=Evelyn Waugh, pages=1-1]\nEvelyn Waugh\nArthur Evelyn St. John Waugh ( ; 28 October 1903 – 10 April 1966) was an English writer of novels, biographies and travel books. He was also a prolific journalist and reviewer of books. His most famous works include the early satires \"Decline and Fall\" (1928) and \"A Handful of Dust\" (1934), the novel \"Brideshead Revisited\" (1945) and the Second World War trilogy \"Sword of Honour\" (1952–61). Waugh is recognised as one of the great prose stylists of the English language in the 20th century.",
+          "doc_id": "63376",
+          "rank": 2,
+          "score": 0.6618624925613403,
+          "source": "Evelyn Waugh",
+          "text": "Evelyn Waugh\nArthur Evelyn St. John Waugh ( ; 28 October 1903 – 10 April 1966) was an English writer of novels, biographies and travel books. He was also a prolific journalist and reviewer of books. His most famous works include the early satires \"Decline and Fall\" (1928) and \"A Handful of Dust\" (1934), the novel \"Brideshead Revisited\" (1945) and the Second World War trilogy \"Sword of Honour\" (1952–61). Waugh is recognised as one of the great prose stylists of the English language in the 20th century.",
+          "vector_id": 29578
+        },
+        {
+          "block": "[Chunk 4 | source=Alec Waugh, pages=1-1]\nAlec Waugh\nAlexander Raban \"Alec\" Waugh (8 July 1898 – 3 September 1981), was a British novelist, the elder brother of the better-known Evelyn Waugh and son of Arthur Waugh, author, literary critic, and publisher. His first wife was Barbara Jacobs (daughter of the writer William Wymark Jacobs), his second wife was Joan Chirnside and his third wife was Virginia Sorenson, author of the Newbery Medal–winning \"Miracles on Maple Hill\".",
+          "doc_id": "177275",
+          "rank": 4,
+          "score": 0.6509479284286499,
+          "source": "Alec Waugh",
+          "text": "Alec Waugh\nAlexander Raban \"Alec\" Waugh (8 July 1898 – 3 September 1981), was a British novelist, the elder brother of the better-known Evelyn Waugh and son of Arthur Waugh, author, literary critic, and publisher. His first wife was Barbara Jacobs (daughter of the writer William Wymark Jacobs), his second wife was Joan Chirnside and his third wife was Virginia Sorenson, author of the Newbery Medal–winning \"Miracles on Maple Hill\".",
+          "vector_id": 94377
+        }
+      ],
+      "selfask": "Question: Which novelist, Malcolm Lowry or Joseph Wambaugh, was born first?\nFollow-up: When was Malcolm Lowry born?\nRetrieved passages: [Chunk 3 | source=Malcolm Lowry, pages=1-1]\nMalcolm Lowry\nClarence Malcolm Lowry ( ; 28 July 1909 – 26 June 1957) was an English poet and novelist who is best known for his 1947 novel \"Under the Volcano\", which was voted No. 11 in the Modern Library 100 Best Novels list.\nIntermediate answer: 28 July 1909\nFollow-up: When was Joseph Wambaugh born?\nRetrieved passages: [Chunk 1 | source=Joseph Wambaugh, pages=1-1]\nJoseph Wambaugh\nJoseph Aloysius Wambaugh, Jr. (born January 22, 1937) is a bestselling American writer known for his fictional and non-fictional accounts of police work in the United States. Several of his first novels were set in Los Angeles, California, and its surroundings, and featured Los Angeles police officers as protagonists.\nIntermediate answer: January 22, 1937\nFinal answer: Malcolm Lowry"
+    }
+  ]
+}

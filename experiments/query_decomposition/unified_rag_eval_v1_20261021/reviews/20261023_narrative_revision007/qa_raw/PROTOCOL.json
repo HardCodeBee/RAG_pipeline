@@ -1,0 +1,231 @@
+{
+  "id": "p02_qa_raw_final_interface_300_revision007_20261023",
+  "plan_revision": 7,
+  "status": "planned_not_executed",
+  "plan_update_authorized": true,
+  "execution_authorized": false,
+  "paid_inference_requests_this_preparation": 0,
+  "new_retrievals_this_preparation": 0,
+  "purpose": "Compare final QA versus actual-reader raw material interfaces conditional on the same P02 upstream trajectory; not an end-to-end Raw method or pure-format comparison",
+  "source_main_plan": "experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.json",
+  "population": {
+    "input_directory": "experiments/query_decomposition/comprehensive_eval_v1_20261015/inputs_frozen",
+    "formal_per_dataset": 500,
+    "per_dataset": 100,
+    "total_queries": 300,
+    "new_final_arms": [
+      "QA",
+      "Raw"
+    ],
+    "planned_new_final_results": 600,
+    "seed": 20261023,
+    "metadata_fields": [
+      "qid",
+      "type",
+      "group_id"
+    ],
+    "strata": {
+      "hotpotqa": {
+        "bridge": 81,
+        "comparison": 19
+      },
+      "2wiki": {
+        "bridge_comparison": 22,
+        "comparison": 23,
+        "compositional": 42,
+        "inference": 13
+      },
+      "musique": {
+        "2-hop": 52,
+        "3-hop": 31,
+        "4-hop": 17
+      }
+    },
+    "exposure": "existing formal subset; no unseen/independent-confirmation claim",
+    "exclude_based_on_answers_scores_status_or_material_difference": false,
+    "replace_missing_questions": false,
+    "power_claim": false
+  },
+  "selection": {
+    "script": "select_cohort.py",
+    "metadata": "SAMPLING_METADATA.qid_only.json",
+    "cohort": "COHORT.qid_only.json",
+    "quota": "largest remainder proportional; lexicographic type tie-break",
+    "sample_hash": "SHA256(20261023:dataset:qa_raw_sample:qid)",
+    "order_hash": "SHA256(20261023:dataset:qa_raw_order:qid)",
+    "duplicate_group_policy": "fail preparation if formal group_id duplicates"
+  },
+  "upstream": {
+    "execution_variant": "p02_shared_baseline_v2",
+    "allowed": [
+      "new shared-layer main upstream",
+      "strict C1 migrated per-stage prefix bound to shared-layer main"
+    ],
+    "required_fields": [
+      "dataset",
+      "qid",
+      "question",
+      "supporting_questions",
+      "nodes[].step_id",
+      "nodes[].role",
+      "nodes[].request",
+      "nodes[].answer",
+      "nodes[].reader_packet.docs[].doc_id",
+      "nodes[].reader_packet.docs[].source",
+      "nodes[].reader_packet.docs[].text",
+      "nodes[].child_prompt",
+      "nodes[].answer_request_id",
+      "nodes[].sentence_format_request_id",
+      "original_retrieval.docs"
+    ],
+    "need_all_dependent_receipts_and_resources": true,
+    "choose_using_final_score": false,
+    "same_prefix_for_both_arms": true,
+    "historical_native_trace_is_automatically_eligible": false,
+    "historical_main_final_role": "different-protocol reference only; no third new arm"
+  },
+  "prompt": {
+    "file": "PROMPT.txt",
+    "messages": [
+      {
+        "role": "user",
+        "content_template": "PROMPT.txt"
+      }
+    ],
+    "placeholders": [
+      "question",
+      "root_passages",
+      "auxiliary_material"
+    ],
+    "system_message": null,
+    "few_shot_examples": 0,
+    "same_prompt_for_both_arms": true,
+    "block_order": [
+      "original question",
+      "original-question root passages",
+      "auxiliary material"
+    ],
+    "protocol_effect": "shared pre-frozen evidence-bounded interface, distinct from native four-shot final; prompt bytes unchanged",
+    "interpretation_boundary": "Source visibility can interact with the fixed policy of treating generated answers as candidates, preferring relevant explicit sources in conflicts and abstaining on insufficient evidence. Estimate the combined interface effect under this policy; no assumption of neutrality or of which arm benefits."
+  },
+  "arms": {
+    "QA": {
+      "auxiliary": "all ordered ordinary and goal request/propagated-answer records",
+      "answer_field": "nodes[].answer",
+      "preserve_abstention_errors_wording_and_order": true,
+      "add_reader_fulltext": false
+    },
+    "Raw": {
+      "auxiliary": "all actual nodes[].reader_packet documents with per-node question and passage references",
+      "include_goal_reader": true,
+      "dedup_key": "frozen resource namespace plus doc_id",
+      "register_root_first": true,
+      "root_duplicates": "reference R label; do not repeat body",
+      "auxiliary_labels": "A1.. by first appearance in step_id then reader order",
+      "different_doc_id_same_text": "retain",
+      "same_doc_id_different_source_or_text": "block pair",
+      "include_unread_route_candidates": false,
+      "include_node_answers_or_history_qa": false,
+      "new_retrieval_rerank_summary_or_gold_selection": false
+    }
+  },
+  "root": {
+    "path": "original_retrieval.docs",
+    "must_equal": "last goal original_retrieval.docs ordered doc_id/source/text",
+    "labels": "R1..R10",
+    "same_in_both_arms": true,
+    "include_complete_source_and_text": true,
+    "reorder_or_truncate": false
+  },
+  "generation": {
+    "model": "qwen-plus-2025-12-01",
+    "temperature": 0,
+    "enable_thinking": false,
+    "new_max_output_tokens": 32768,
+    "max_input_tokens": 997952,
+    "context_tokens": 1000000,
+    "context_base": "decimal frozen constant",
+    "joint_context_check": "input_tokens + 32768 <= 1000000",
+    "effective_joint_input_ceiling": 967232,
+    "also_apply_existing_shared_layer_conservative_input_guard": true,
+    "change_frozen_common_or_runner": false,
+    "allow_truncation": false,
+    "overlength": "hold pair; do not truncate, lower k, replace questions or select by outcomes",
+    "normal_response": "nonempty stop plus complete usage and correct model"
+  },
+  "completion": {
+    "algorithm_failure_final": "preserve zero on native scoring, including empty stop/length at full output cap; no score-driven retry",
+    "technical_failure": "hold missing; preserve other-arm response, receipt and cost",
+    "upstream_algorithm_failure_without_complete_prefix": "both arms upstream_not_evaluable, not two final algorithm-failure zeros",
+    "no_ordinary_nodes": "keep goal-only pair",
+    "missing_goal_or_reader": "block pair, never render empty as substitute",
+    "max_wire_attempts_per_query_arm_failed_final_stage": 5,
+    "count_initial_sdk_and_restarts": true,
+    "unknown_or_inflight": "reconcile receipt before any replay",
+    "content_rejection": "hold; no evasive input change or replacement",
+    "successful_payload": "no regeneration for higher score",
+    "identical_successful_payload_cache": "strict exact reuse allowed; record shared receipt and logical attribution",
+    "arm_order": "hash-based alternating first arm per query, independent of outcome"
+  },
+  "analysis": {
+    "primary": "native Answer F1 QA minus Raw, equal mean across three datasets",
+    "secondary": [
+      "per-dataset F1 and EM",
+      "paired F1/EM differences",
+      "improved/tied/harmed",
+      "final input/output tokens",
+      "final logical API cost",
+      "common upstream logical resources"
+    ],
+    "bootstrap": {
+      "replicates": 10000,
+      "seed": 20261023,
+      "unit": "paired original query",
+      "stratify_by": "dataset",
+      "interval": "percentile 95 percent"
+    },
+    "missing": "complete-pair conditional estimates plus fixed-100/dataset worst-case bounds using missing-arm scores in [0,1] and keeping observed-arm values",
+    "no_available_pairs_in_dataset": "do not silently drop dataset from macro mean; report fixed-denominator bounds",
+    "practical_or_equivalence_margin": null,
+    "null_interpretation": "CI crossing zero does not establish equivalence or no effect",
+    "sample_size_adaptation_by_effect": false,
+    "scorer": "frozen native dataset scorers and aliases; no extra answer-cleaning patch",
+    "formal_main500_results_overwritten": false,
+    "new_formal_timing": false
+  },
+  "cost": {
+    "actual_incremental": "unique submitted new finals and failed attempts; unknown reserve separate",
+    "logical_per_arm": "same complete ordinary+goal upstream plus arm final; exclude unused main final",
+    "local_decomposer_and_retrieval": "report separate from API cost; do not invent GPU price",
+    "cached_upstream_is_free_compute": false,
+    "raw_can_skip_upstream_qa": false,
+    "planned_results_is_cash_cap": false,
+    "budget": {
+      "source": "../budget/BUDGET.json",
+      "basis": "exact shared pre-frozen template plus old native trace length proxy; not shared-layer payload readiness",
+      "new_600_finals_proxy_cny": 1.4255441268800955,
+      "input_plus50pct_and_mean_output64_scenario_cny": 2.2061898103124804,
+      "refresh_before_execution": "actual payload lengths and frozen price tiers; returned usage after execution",
+      "guaranteed_cap": false
+    },
+    "alerts": "inherit main historical 3x single-query and 1.5x rolling20 complete-fresh-flow policy; no extra hard cap"
+  },
+  "execution_blockers": [
+    "explicit later execution authorization",
+    "completed guarded shared runner",
+    "qualified shared-main or C1-bound prefix for every executable pair; explicit status for all fixed cohort qids; unavailable upstream follows existing missingness rules",
+    "receipt and actual-reader validation",
+    "deterministic renderer and source-preserving escaping frozen",
+    "input/token/price-tier inventory and duplicate identity consistency",
+    "existing hold policy handled only by separately authorized execution"
+  ],
+  "files": {
+    "PROTOCOL.md": "73d3e6ee0b713fea48a1d8846bb17284f768f4efcf6f64fc2effb9e8f4dff7f3",
+    "PROMPT.txt": "bdd646527a6c794a963ebb7568786729e64ffe18e2ce701e0fc0984bf3674877",
+    "select_cohort.py": "105a651ede60273209c52ec2e47c3361968a5decb7198b3036237bfdfce41450",
+    "SAMPLING_METADATA.qid_only.json": "6efe6a640799562761bb496b738b5f11ebce049ae506224a7ca3244d535a19e5",
+    "COHORT.qid_only.json": "4bad59e58b12fd813be7a145319417e1986f21e59952372627d8e083f2f03422",
+    "TRACE_FEASIBILITY.json": "f7bc7532f808657d60bbc72717903fe95c51b7b1cd4422ad0592e0f2be2a2b7e"
+  },
+  "editorial_revision": 8
+}
