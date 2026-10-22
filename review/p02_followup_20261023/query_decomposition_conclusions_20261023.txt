@@ -1,0 +1,231 @@
+DeQA-RAG / P02：已有实验结论与对应证据
+整理日期：2026-10-23，Australia/Sydney
+
+一、阅读范围与口径
+
+本文件汇总截至整理时已有报告、逐题记录和本对话已完成核查得到的结论，不产生新的模型输出，不恢复评估，不修改原始分数、冻结标签或方法。
+研究范围是问题分解与完整RAG，重点为当前P02及2026-10-21至23日的后续实验；历史S02和C06结果单列，不迁移为P02成绩。其它独立研究方向不在本文件中。
+核心P02：p02_multigrain_timing_cachefix_v1，R02/v12；新统一请求层变体尚无本轮正式完整成绩。当前主评和计时均暂停。
+F1、EM和通过率均用百分数；F1差值用“百分点”。各表按自己的同题分母比较，不能直接比较不同90/89/86/60/27/20/15/8题的均值。
+开发300、固定90以及部分挑战题反复用于开发；多轮实验条件数不是独立问题数。阶段探针、固定上游goal→final、完整动态RAG、历史精确回放和观察性诊断分别说明。
+“未观察到提升”只限定于所测版本、材料和样本；不等于证明所有相关方法无效。置信区间跨零不证明等效或非劣。探索性区间不校正所有开发选择和多重比较。
+事实正确、所需信息充分、证据支持、官方F1/EM是不同指标。事实型中间回答仍是候选信息，不能统称已验证事实。
+费用采用完整逻辑流程用量估计时，不等于本次新增支出；未知费用预留不是确认消费。本文件不累计跨实验费用，避免共享与复用重复计费。
+
+二、当前P02完整方法与分解器
+
+[C01] P02已完成三数据集开发300题，存在明确的数据集差异；尚无完成的新协议三集formal500主表。
+对应实验：E01，三集各100题完整流程；timing_only采用精确回放验证。
+结果：HotpotQA F1/EM 78.9908/66.00；2Wiki 93.3474/87.00；MuSiQue 39.8343/31.00；三集等权70.7242/61.3333。
+结论：这些是现有方法在固定开发样本上的完整表现，不能写成隐藏测试、正式500题或所有强基线上的优势。精确回放不增加独立验证样本。
+
+[C02] R02覆盖扩充训练取得分解质量的正向点估计，但尚未确认稳定优于父模型，也没有由此证明下游F1提升。
+对应实验：E02，同T02父检查点的40步增量，R01复用旧数据，R02替换320次Mu曝光为240次新真实与80次合成曝光；先用开发60题选R02，再看留出120题。
+结果：留出120题T02 98/120=81.67%，R02 103/120=85.83%；8题修复、3题退步；差值95%区间[-0.83,+10.00]个百分点。
+边界：评价分解F/S/C/U，由同一Codex审阅，非独立人工金标；不是RAG Answer F1。两组不是相同token预算，R02也不是新训练目标。
+
+[C03] 所测试的流程简化没有形成替换当前P02的依据，但不能由此分别证明goal和final必要。
+对应实验：E03，同开发300题。
+结果：完整P02 70.7242；single_final 67.6761；terminal_goal 67.7871；union20_cachefix 70.3601。
+解释：single_final的直接父为discount20，同时改变goal、最终文档与辅助结构；terminal_goal的直接父为旧union20，同时改变输出契约、解析并删除final，3条length计0。因此与P02的分差不能当作某一个模块的独立贡献。
+
+三、分阶段诊断：已确认的现象与统计关联
+
+[C04] 普通子回答事实正确，不等于已经取得下一步和原问题所需的信息。
+对应分析：E04，旧协议完整非空轨迹723条：2Wiki485、HotpotQA238；没有MuSiQue。
+结果：普通回答正确970/980与352/381；230个最终非满分样本中，177个的分解、普通回答、实际改写均判正确（108+69）。
+结论：正确性标签尚未充分描述需求满足；合理弃答和真实不完整列表可以判正确，却不提供必需桥接。
+边界：177/230=77.0%不是最终阅读器错误率，也不是可修复比例；“最终正确”为已有F1=1或EM=1，不等于独立事实真值。
+
+[C05] 错误前答与后续改写失效有关；忠于错误历史仍可能查错对象。
+对应分析：E04；前序普通回答→后续改写按事件统计，保持时间先后，按原query簇重采样。
+结果：前答全对/有错时，改写同时通过两轴的比例：2Wiki 924/968=95.5% 对5/12=41.7%；Hotpot323/344=93.9% 对21/37=56.8%。
+在错误历史组，语义忠实R_F仍有8/12=66.7%及30/37=81.1%，实际事实目标R_T仅41.7%及56.8%。
+结论：仅要求更严格服从前答，不保证正确绑定。上述是观察性关联，不能直接估计修复某阶段的因果收益。
+
+[C06] 改写问题主要集中于goal；改写保真与检索效用不能互相替代。
+对应分析：E04。
+结果：普通改写错误8/638=1.25%；goal错误80/723=11.07%。2Wiki有36条“关系问题→已知人物是谁”，其中29题最终仍满分。
+按query比较“全部改写正确”与“有错误”：2Wiki最终满分73.4%对77.6%，差-4.2个百分点；Hotpot58.8%对44.1%，差+14.7；两集差值区间均跨零。
+边界：不能说错误改写有益、改写无用或goal prompt造成全部差异。普通与goal任务不同；保留原路检索、原当前问题作答和最终原题证据，也可能缓冲错误。
+
+[C07] goal与终点有强关联，也有覆盖正确中间关系的案例；尚不能将goal判为多数损失来源。
+对应分析：E04。
+结果：goal正确/错误时最终满分：2Wiki355/457=77.7% 对2/23=8.7%；Hotpot127/214=59.3% 对6/22=27.3%。普通回答全对但goal错27题，其中22题最终非满分。
+限制：goal错且终点非满分共37题，仅占230个非满分的16.1%；goal与final回答同一原题，任务接近也会增强关联。不能据此推导删除goal必然改善。
+
+[C08] 已确认至少三种不同的信息失效位置：没找到、找到后未选入、可见但用错。
+对应分析：E04原始案例及E05候选到reader复核。
+案例：Hotpot46，保存轨迹未见所需Wendigo，不是已找到后压缩丢失；Hotpot7，Doomsday Prophecy/2011在改写rank10，但不在reader；Hotpot236，3,677坐席已在final输入中，输出却取4,000总容量。
+结论：应按真实信息路径解释失败；不能把三个位置都归给分解器、摘要或最终阅读器。未干预时不保证“补回该文档”就一定答对。
+
+[C09] 候选被截不等于必要证据被截；已有可核查的必要证据丢失案例，但尚无总体发生率。
+对应分析：E05，230非满分+40固定成功对照，共270题；258题完成声明范围的必要信息检查，12题待核；复现696份merge。
+结果：223/270题存在候选容量截取；当前独立证实必要candidate→reader丢失的为Hotpot7和Wiki721两例。
+边界：223不是错误数，2/270不是穷尽失效率；“147条可见信息充分”等局部标签不是147个确定可修复的最终错误。样本有失败偏重与单一审阅者限制。
+
+四、单点控制与完整流程：有效线索、负结果和未推广结果
+
+[C10] goal补充检索和goal消息确实能提供独有事实；小样本不支持直接删掉整个goal。
+对应实验：E06，共同15题，固定普通QA和材料，使用共同goal512/final64接口，非原生goal128。
+结果：G0 F1/EM85.7143/80.00；关闭goal改写补充路72.3232/66.67（1升、3降、11平）；final移除goal段67.7778/60.00（0升、4降、11平）。移除组2条length按15分母计0。
+案例：Mach出生地和Wang父子关系真实依赖补充通道；Hotpot236保存轨迹中的3,677也仅通过goal回答进入final。
+边界：移除final中的goal段不等于取消goal计算；关闭已保存补充路不等于完整动态消融。有/无整段同时改变事实与候选结论，未隔离错误结论的纯干扰。
+
+[C11] 保留必要证据可以沿完整路径产生局部收益；M4尚未取得更广样本的整体收益。
+对应实验：E07，M4仅对同source、同有序词及标点、仅排版空白不同的候选去重回填，仍取10篇。
+阶段8节点：事实正确均8/8，所需信息完整7/8→8/8。动态8题：F1 89.4643→95.7143，EM62.5→75，1升、7平；Wiki721由1517年补成7 March1517，传入goal及final。
+另固定2Wiki20题：M0/M4 F1与EM均85%，逐题0升、20平、0降。20题均有先前语义审阅暴露。
+结论：证实一条具体的信息保留路径，不证明通用提升，不晋级M4；不能把已知机制8题和新20题合并成正式提升。
+
+[C12] 改变实际回答目标，比在旁边追加说明更能影响已知失效节点；目前收益没有推广。
+对应实验：E08、E09。
+结果：已知失败8节点，通用自检或旁置实体候选各组仍2/8正确；将实际Current换为同源改写后2/8→5/8。完整动态8题F1 24.4643→33.3929，2升、6平。
+另固定20题完整对照38/40流程成功，一题双臂技术held；共同19题最终文本和分数全部持平。
+结论：任务字段绑定有局部证据；不应把检索改写自动视为可靠新任务，因为它可能继承错误。19可用配对不称完整20题，更不称独立泛化提升。
+
+[C13] reader从Top10扩到完整并集最多20篇，增加开销但未显示稳定质量收益。
+对应实验：E01、E03，缓存修复后的同300题动态完整流程，唯一算法差异为保留10或最多20文档。
+结果：F1 70.7242→70.3601，差-0.3641个百分点，95%区间[-2.2851,+1.4429]；完整逻辑生成费用增加16.29%。
+结论：该扩文方案不构成已证实改进；也不能由区间跨零证明等效或扩大文档必然有害。更早union有响应/缓存混杂，不能替代修复后比较。
+
+[C14] 同一query共享全部历史原始QA上下文，没有在本次实现中改善完整流程。
+对应实验：E10，reset/flat/chat各90计划，269成功、1个flat技术held；三臂共同89题。
+结果（逐题等权）：reset/flat/chat F1 76.43/69.90/71.59，EM67.42/58.43/60.67；总tokens相对reset增加82.3%/82.4%。flat与chat分别2升10降77平、2升7降80平。
+结论：本轮不采用共享全上下文；不能推广为所有长上下文、多轮消息或其它选择性记忆机制都无效。这里不是三数据集等权macro。
+
+[C15] 局部回答正确性改善，未预测完整流程收益；不能只凭阶段正确率晋级候选。
+对应实验：E11、E12。
+阶段38节点：37可判、1待核，N128/N256/F256/R256接受答案正确30/29/31/32；N128与R256必要信息充分均26。
+动态完整90题：N128→R256 F1 76.4657→66.9961，EM66.6667→57.7778；2升、12降、76平。F1差95%区间[-15.6525,-4.2218]个百分点；总tokens+6.84%，逻辑费用+8.56%。
+解释：合理弃答可能丢失真实桥接；Support中有信息不保证Answer传递。阶段与完整流程不是同一统计单位，不能说“提高同批局部准确率直接导致下降”。F/R同时改变格式、示例和证据政策，不能把退化全部归因CoT。
+
+[C16] 单纯提高普通回答上限，没有改善这批完整90题；额外推理的净效应也未得到确认。
+对应实验：E12，N128/N256仅上限128→256，完整90题逐题F1/EM全部相同。
+四臂共同89题三集等权F1：N128/N256/F256/R256=75.9343/75.9343/69.1862/66.3335。F→R差-2.8527个百分点，区间[-6.8767,+0.5365]。
+边界：F256有1题累计5次技术无返回而held，不能按0填入。不能据此说所有输出额度扩大或所有推理方法无效。
+
+[C17] 已测试的goal综合段落、运算示例和修正版没有形成稳定改进；局部成功与总体退步并存。
+对应实验：E13、E14、E15、E16。
+共同90题：事实句G0/GF综合/GO加运算示例F1=76.62/73.76/70.21；GO−G0=-6.41，区间[-11.50,-1.92]。普通QA增加绑定说明的37可判节点0修复、1损害，必要信息2损害。
+另外60题：G0/GF=67.47/68.26，差+0.79，区间[-3.27,+5.75]；说明综合段落的方向随样本和版本变化，不能概括为长推理必然有害。
+r03固定上游90题：C/G/GF=76.12/68.98/66.80；r04：C/S/T=76.12/68.06/67.98。均为goal→final阶段替换，不是完整新RAG。
+结论：不晋级这些具体版本；现有局部集合/目标修复不足以确立整体收益。改变输出结构、示例和约束的实验不能被命名为纯CoT效应。
+
+[C18] 再添加一般性的目标、角色或保留指令，尚未取得稳定收益。
+对应实验：E17、E18、E19。
+挑战27题事实句加ROLE：32.8171→41.4590，4升23平；原生goal128的90题ROLE：75.9565→75.3945，差-0.5620，区间[-2.8878,+1.4885]。挑战收益没有推广。
+final单句目标核对90题：76.1333→76.1535，仅+0.0202个百分点，未确认事实修复。
+60题替代路径许可/候选保留/final检查整段：相对各自父控制F1差-0.67/-0.43/0.00，分别0升1降59平、2升1降57平、60全平。
+结论：提示已表达原则与模型实际执行是两件事。需要定位具体接口和信息缺口；不能断言目标核对、保留或实体关系本身无用。
+
+[C19] 删除旧引用文字、改少样例或整体精简prompt，没有证明优于原P02，也没有证明#符号必要。
+对应实验：E20和附录实验目录。
+同固定90题原P02 F1=76.6889；ordinary自包含适配74.1003；移除旧引用规则74.2443；minimal4 74.6095；三prompt联改71.7079；compact v2完整90题76.0450（不再引用旧30题partial）。
+最小A/B以自己的父控制74.1003比较：A74.5884、B73.2432，不能把A的局部增分写成超过原P02。
+固定30节点少样例#引用/具体实体/完整描述正确27/26/27，各1待核。改动涉及不同规则、示例与阶段，不能单独归因某个字符或表面格式。
+
+[C20] 去formatter在这些历史轨迹上精确等价，不证明新输入场景下可以安全删除。
+对应实验：E21，90题、266节点严格完整输入回放。
+结果：原formatter触发0次，检索、payload、回答、final及tokens均一致；没有新推理或新计时。
+结论：只确认该批路径未走此分支。后续270题426个ordinary同样未触发，不能把这些题的损失解释为formatter造成。
+
+[C21] 官方匹配分数与事实判断确有分歧，应同时保留，而不事后更改评分。
+对应分析：E04、E12、E15、E16逐题复核。
+观察：同实体别名、附加头衔、Two/2和弯引号可降分；同名人物串接也可能恰好满分。R256两次增分仅一次是明确所问属性修复，另一次是措辞；12次降分也并非12次新增事实错误。
+结论：F1变化、事实正确性和信息完整度分别报告。案例选择常依赖终点变化，不能据其比例估全体事实错误率；不为提高分数追随已确认有问题的参考关系。
+
+五、历史S02与更早取证研究：保留成果，不转移到P02
+
+[C22] 历史S02在固定HotpotQA子集上相对Top10取得明确F1收益；相对ReAct尚未确认显著优势。
+对应实验：E22，冻结formal200子集比较，九方法共同可评分193题：S02/Top10/ReAct F1=63.092/51.028/59.178。
+单独配对：S02−Top10，共同199题+12.2031个百分点，95%区间[+7.6259,+17.0025]；S02−ReAct，共同195题+3.7879，区间[-0.7058,+8.4224]。
+边界：193总体排名与199/195配对不是同一分母。属于本地统一资源适配和冻结官方dev子集，不是隐藏test、全HotpotQA或SOTA证据。S02显式引用/两遍作答不同于当前P02。
+
+[C23] 同来源辅助QA比直接输入子检索原文更短；本实验未确立其F1优越性。
+对应实验：E23，历史S02固定上游200题，199共同可评分；163题新配对调用，36相同回退复用，1上游失败缺失。
+结果：QA/raw F1=62.8030/60.0852；差+2.7178，95%区间[-0.7269,+6.2354]；平均final输入2210.31/3391.80，减少34.83%；完整逻辑API估费减少15.08%。
+限制：共享QA导向提示，非token匹配、非等量可见信息；raw仍保留两遍上游，未优化成跳过第二遍的低成本流程。不证明P02同样节约，也不证明省去某阶段无损。
+
+[C24] 较早的子问题与goal检索补充了原问题检索遗漏的指定支持文档，但覆盖不等于求解充分或因果收益。
+对应分析：E24，C06冻结HotpotQA600题、每题2个qrels文档，共1200对；为更早系统，不是P02。
+结果：BM25原题/加入ordinary/加入goal覆盖803/1200=66.92%、888/1200=74.00%、937/1200=78.08%；BGE为1031/1200=85.92%、1053/1200=87.75%、1112/1200=92.67%。
+历史S02的199配对中，原Top10未完整覆盖而后续补齐的48题，贡献约84.7%的总F1净增量所在样本；这是收益分布，不是检索模块的因果贡献比例。
+结论：有辅助取证能补覆盖的实证依据；不证明更多轮数、所有子问题、每个goal都必要，也不证明所有qrels文档已包含充分事实。
+
+六、还不能写成已得到的结论
+
+1. 尚不能宣称P02在三集正式500题上最优、SOTA、显著优于所有强基线或已得到独立泛化提升。
+2. 尚不能宣称R02训练稳定改善下游F1，或自包含问题优于显式引用结构；后者缺同语义实际分解的直接控制。
+3. 尚不能宣称goal/final各自必要、goal主要造成损失、删除goal有益，或原题保留已消除错误传播。
+4. 尚不能宣称事实句普遍优于摘要/原文、CoT普遍有害、短输出天然更好、更多上下文必然无效。
+5. 尚不能将局部正确率、格式遵从、文档覆盖、177个上游全对非满分或单个恢复案例当作完整信息充分性或因果证明。
+6. 引用符号/实体绑定/优先级完整90题四臂仍停61/360，不据partial选优；阶段152输出完成也不等于38节点全部语义结论已完成。
+7. 旧goal fewshot synthesis仅有旧42条未知/挂起遗留，不能作为成功完成的新对照；后续fixed90应使用三臂共同86题，不混87题两臂或90计划分母。
+8. 新统一层正式结果、固定50题/数据集计时尚未完成；既有API等待、缓存耗时、GPU作业墙钟不充当纯query处理秒或正式TTFT。
+9. Formal1500有已知7条训练题面重合（H3/W2/M2），不能称全部未见。当前约定保留原题集，本文件不据此换题或重训。
+
+七、统计复现与勘误状态
+
+本对话上一轮从锁定阶段/分解标签及已有端点只读重算40张条件概率表，分母、比例和query簇bootstrap均一致；不等于重新验证全部723轨迹的语义标签。本文整理仅复核既有报告，不新增一轮模型实验。
+两项已确认问题：
+（1）设计写R_T为主，实际主表用R_F∧R_T；本批1361个完整轨迹改写事件逐项一致，主表不变，定义仍需统一。
+（2）Hotpot236实际用第1步场馆名，explicit_binding_answer_step_ids漏记，语义应含[1]。上一轮仅内存修正：Hotpot绑定补充表正确前答组160/179→161/180；错误组3/17不变；其余39表和四组主表不变。簇数156→157，相应区间也需重算，不能只改比例。
+本文件记录问题，不覆盖冻结标签、原统计表或原始报告。
+
+八、研究层面的综合认识（由上述证据支持的解释，不是新增实验结论）
+
+当前最有依据的研究叙事是：通过分解组织原问题的信息需求，再以分步检索和事实型回答准备最终求解材料。
+已有证据支持把“需求是否合理”“信息是否取得”“是否进入reader”“是否被中间答案保留”“是否被最终正确使用”分开分析。
+已有局部修复说明具体通路可改变；更广对照持平或退步说明局部改善不能自动升级为完整方法收益。
+因此可以将完整方法设计、可复现端到端表现与分阶段信息分析作为成果；“每个模块首创”“最佳方法”及未验证的自动修复效果不在现有证据范围内。
+以上不更改主评方案，不新增实验队列；待具体新设计另行冻结和批准后再执行。
+
+九、来源索引
+
+以下为相对于工作区C:/Users/12442/Desktop/RAG_pipeine/RAG_pipeline的路径。报告中每条结论所引E编号对应这里；恢复目录中的最终报告优先于旧根目录partial报告。
+
+E01 P02开发300与完整并集对照：outputs/query_decomposition/hotpot_formal_eval_v1/p02_merge_cachefix_v1_20261021/reports/REPORT.json
+E02 R02训练及留出120：outputs/query_decomposition/multigrain_4b_coverage_retrain_v3_20261018/REPORT.txt
+E03 简化定义、父控制与区间：src/p02_multigrain_timing_cachefix_v1/history/SIMPLIFICATION_ARCHIVE.json
+E04 723轨迹诊断：outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/offline_review_v2/REPORT.md
+    对应机器统计：outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/offline_review_v2/CONDITIONAL_PROBABILITIES.json
+    对应描述计数：outputs/query_decomposition/p02_error_propagation_diagnostic_20261021/offline_review_v2/DIAGNOSTIC_DESCRIPTIVE_COUNTS.json
+E05 270题候选→reader核查：experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261022_prompt_binding_goal_synthesis/evidence_selection_readonly/REPORT.md
+E06 goal15组件复核：outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/manual_review/COMPONENT_PAIRED_REVIEW.md
+E07 M4阶段8题：outputs/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022/ROOT_PAIRED_INTERPRETATION.md
+    M4动态8题：outputs/query_decomposition/p02_m4_full8_dynamic_v1_20261022/ROOT_PAIRED_INTERPRETATION.md
+    M4固定20题：outputs/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022/ROOT_PAIRED_INTERPRETATION.md
+E08 实际任务字段8节点：outputs/query_decomposition/p02_failure8_actual_target_probe_v1_20261022/ROOT_PAIRED_INTERPRETATION.md
+    任务绑定动态8题：outputs/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022/REPORT.json
+E09 实际目标绑定20题：outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022/REPORT.json
+E10 共享上下文共同89题：outputs/query_decomposition/p02_shared_context_fixed90_v1_20261022/ROOT_FINAL_RESULTS.md
+E11 普通CoT阶段38：outputs/query_decomposition/p02_local_cot_stage38_v1_20261022/ROOT_RESULTS.zh.md
+E12 普通CoT完整90：outputs/query_decomposition/p02_local_cot_fixed90_v1_20261022/ROOT_RESULTS.zh.md
+E13 结果绑定与goal运算示例：outputs/query_decomposition/p02_result_binding_operator_probe_v1_20261022/REPORT.md
+E14 另60题goal目标/传递：outputs/query_decomposition/p02_goal_target_transfer_new60_v1_20261022/REPORT.md
+E15 r03阶段90与176对子回答：outputs/query_decomposition/p02_prompt_suite_r03_stage90_v1_20261022/REPORT.zh.md
+E16 r04阶段90：outputs/query_decomposition/p02_goal_repair_r04_fixed90_v1_20261023/REPORT.zh.md
+E17 ROLE原生90及挑战：outputs/query_decomposition/p02_goal_native_role_fixed90_v1_20261022/REPORT.json
+    挑战27：outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/REPORT.json
+E18 final目标核对：outputs/query_decomposition/p02_final_target_check_fixed90_v1_20261022/ROOT_NATIVE_AND_REPEAT_AUDIT.md
+E19 60题充分性与保留：outputs/query_decomposition/p02_goal_sufficiency_retention60_v1_20261022/REPORT.md
+E20 主线30项结果汇编：analysis/p02_publication_20261023/RESULTS_MAIN.md
+    各实验最终恢复报告入口：analysis/p02_publication_20261023/inventory_agent.md
+    最小A/B：outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/STAGE_AUDIT.md
+E21 去formatter90：outputs/query_decomposition/hotpot_formal_eval_v1/p02_noformatter_quick90_v1_20261021/REPORT.md
+E22 历史S02 formal200：outputs/query_decomposition/hotpot_formal_eval_v1/s02_child4_compact_formal200_20261014/ANALYSIS_REPORT.txt
+E23 历史S02同来源QA/raw：outputs/query_decomposition/hotpot_formal_eval_v1/aux_representation_200_20261015/REPORT.txt
+E24 历史C06覆盖600：outputs/query_decomposition/retrieval_coverage_audit_v1/run_20261013/results.json
+E25 引用因素完整90暂停：outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/STATUS.json
+    阶段38：outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022/REPORT.json
+E26 goal fewshot共同86：outputs/query_decomposition/p02_goal_fewshot_fixed90_v1_20261022/REPORT.md
+    旧42未完成来源：outputs/query_decomposition/p02_goal_fewshot_synthesis_v1_20261022/REPORT.json
+E27 训练题面重合：experiments/query_decomposition/p02_formal1500_v1_20261021/EXPOSURE_AUDIT.frozen.json
+E28 当前主评状态：experiments/query_decomposition/unified_rag_eval_v1_20261021/PLAN.json
+E29 累计结果与各阶段口径：experiments/query_decomposition/unified_rag_eval_v1_20261021/reviews/20261022_prompt_binding_goal_synthesis/FROZEN_DECOMPOSER_FINDINGS.md
+
+十、整理方法与工具来源
+
+本文件以实验原报告和已核原始记录为依据；远端意见用于核查提示，不单独充当新的实验结果。未重跑训练、检索、RAG或外部评审。
+整理使用scientific-critical-thinking技能的统计单位、观察/因果、分母及证据边界核查原则。工具方法引用：Timothy Kassis, Vinayak Agarwal, Yuhuan He, Darshil Patel, Aubrey M. Brueckner (2026), Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents, https://doi.org/10.48550/arXiv.2609.00065 。2026-10-23核对当前记录；该引用仅说明整理工具来源，不作为本项目效果证据。
