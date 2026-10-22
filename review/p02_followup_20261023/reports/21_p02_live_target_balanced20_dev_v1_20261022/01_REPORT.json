@@ -1,0 +1,915 @@
+{
+  "status": "partial",
+  "utc": "2026-10-21T18:45:38.559571+00:00",
+  "scope": "Fixed actualR02-D complete dynamic downstream RAG balanced20 development; prior723exposure disclosed, not newD/timing/formal500 or untouchedconfirmation",
+  "planned_conditions": 40,
+  "quality_terminal": 38,
+  "held_technical_tasks": 2,
+  "held_task_ids": [
+    "2wiki:572c3827088311ebbd6dac1f6bf848b6/D0",
+    "2wiki:572c3827088311ebbd6dac1f6bf848b6/D1"
+  ],
+  "not_started_tasks": 0,
+  "arms": {
+    "D0": {
+      "planned": 20,
+      "quality_terminal": 19,
+      "held_or_unstarted": 1,
+      "F1": null,
+      "EM": null,
+      "F1_fixed_denominator_bounds": [
+        0.7613636363636364,
+        0.8113636363636363
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.7,
+        0.75
+      ],
+      "algorithm_failures": 0,
+      "native_full_correct_count": 14,
+      "success_truncated": 0,
+      "logical_prompt_tokens": 166562,
+      "logical_completion_tokens": 1689,
+      "logical_estimated_CNY": 0.13662760000000002
+    },
+    "D1": {
+      "planned": 20,
+      "quality_terminal": 19,
+      "held_or_unstarted": 1,
+      "F1": null,
+      "EM": null,
+      "F1_fixed_denominator_bounds": [
+        0.7613636363636364,
+        0.8113636363636363
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.7,
+        0.75
+      ],
+      "algorithm_failures": 0,
+      "native_full_correct_count": 14,
+      "success_truncated": 0,
+      "logical_prompt_tokens": 166444,
+      "logical_completion_tokens": 1670,
+      "logical_estimated_CNY": 0.1364952
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "D0": {
+        "planned": 10,
+        "quality_terminal": 10,
+        "held_or_unstarted": 0,
+        "F1": 0.8,
+        "EM": 0.8,
+        "F1_fixed_denominator_bounds": [
+          0.8,
+          0.8
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.8,
+          0.8
+        ],
+        "algorithm_failures": 0,
+        "native_full_correct_count": 8,
+        "success_truncated": 0,
+        "logical_prompt_tokens": 72448,
+        "logical_completion_tokens": 832,
+        "logical_estimated_CNY": 0.05962239999999999
+      },
+      "D1": {
+        "planned": 10,
+        "quality_terminal": 10,
+        "held_or_unstarted": 0,
+        "F1": 0.8,
+        "EM": 0.8,
+        "F1_fixed_denominator_bounds": [
+          0.8,
+          0.8
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.8,
+          0.8
+        ],
+        "algorithm_failures": 0,
+        "native_full_correct_count": 8,
+        "success_truncated": 0,
+        "logical_prompt_tokens": 72443,
+        "logical_completion_tokens": 834,
+        "logical_estimated_CNY": 0.05962239999999999
+      }
+    },
+    "2wiki": {
+      "D0": {
+        "planned": 10,
+        "quality_terminal": 9,
+        "held_or_unstarted": 1,
+        "F1": null,
+        "EM": null,
+        "F1_fixed_denominator_bounds": [
+          0.7227272727272728,
+          0.8227272727272726
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.6,
+          0.7
+        ],
+        "algorithm_failures": 0,
+        "native_full_correct_count": 6,
+        "success_truncated": 0,
+        "logical_prompt_tokens": 94114,
+        "logical_completion_tokens": 857,
+        "logical_estimated_CNY": 0.0770052
+      },
+      "D1": {
+        "planned": 10,
+        "quality_terminal": 9,
+        "held_or_unstarted": 1,
+        "F1": null,
+        "EM": null,
+        "F1_fixed_denominator_bounds": [
+          0.7227272727272728,
+          0.8227272727272726
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.6,
+          0.7
+        ],
+        "algorithm_failures": 0,
+        "native_full_correct_count": 6,
+        "success_truncated": 0,
+        "logical_prompt_tokens": 94001,
+        "logical_completion_tokens": 836,
+        "logical_estimated_CNY": 0.07687279999999999
+      }
+    }
+  },
+  "paired": {
+    "complete_pairs": 19,
+    "delta_F1": null,
+    "delta_EM": null,
+    "improved": 0,
+    "tied": 19,
+    "harmed": 0
+  },
+  "historical_source_reference_only": {
+    "scope": "Strict complete public formalr000 snapshot; not a claim about all historical runs",
+    "planned": 20,
+    "available": 15,
+    "missing": 5,
+    "F1": null,
+    "EM": null,
+    "F1_available": 0.7818181818181817,
+    "EM_available": 0.7333333333333333,
+    "missing_not_imputed": true
+  },
+  "matched_historical_subset": {
+    "scope": "Secondary same15 frozen historicalavailability subset; no scorefilter/recovery/imputation; never compare old15 as oldfull20",
+    "n": 15,
+    "missing_historical": 5,
+    "missing_historical_ids": [
+      "2wiki:572c3827088311ebbd6dac1f6bf848b6",
+      "2wiki:be0a95ca0bd911eba7f7acde48001122",
+      "hotpotqa:5a77dbaf5542997042120b5b",
+      "hotpotqa:5abcee275542993a06baf9af",
+      "hotpotqa:5adf860e5542993344016cbc"
+    ],
+    "old_native": {
+      "n": 15,
+      "F1": 0.7818181818181817,
+      "EM": 0.7333333333333333
+    },
+    "D0_native": {
+      "planned": 15,
+      "quality_terminal": 15,
+      "held_or_unstarted": 0,
+      "F1": 0.7818181818181817,
+      "EM": 0.7333333333333333,
+      "F1_fixed_denominator_bounds": [
+        0.7818181818181817,
+        0.7818181818181817
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.7333333333333333,
+        0.7333333333333333
+      ]
+    },
+    "D1_native": {
+      "planned": 15,
+      "quality_terminal": 15,
+      "held_or_unstarted": 0,
+      "F1": 0.7818181818181817,
+      "EM": 0.7333333333333333,
+      "F1_fixed_denominator_bounds": [
+        0.7818181818181817,
+        0.7818181818181817
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.7333333333333333,
+        0.7333333333333333
+      ]
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "n": 7,
+        "old_native": {
+          "n": 7,
+          "F1": 0.7142857142857143,
+          "EM": 0.7142857142857143
+        },
+        "D0_native": {
+          "planned": 7,
+          "quality_terminal": 7,
+          "held_or_unstarted": 0,
+          "F1": 0.7142857142857143,
+          "EM": 0.7142857142857143,
+          "F1_fixed_denominator_bounds": [
+            0.7142857142857143,
+            0.7142857142857143
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.7142857142857143,
+            0.7142857142857143
+          ]
+        },
+        "D1_native": {
+          "planned": 7,
+          "quality_terminal": 7,
+          "held_or_unstarted": 0,
+          "F1": 0.7142857142857143,
+          "EM": 0.7142857142857143,
+          "F1_fixed_denominator_bounds": [
+            0.7142857142857143,
+            0.7142857142857143
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.7142857142857143,
+            0.7142857142857143
+          ]
+        }
+      },
+      "2wiki": {
+        "n": 8,
+        "old_native": {
+          "n": 8,
+          "F1": 0.8409090909090909,
+          "EM": 0.75
+        },
+        "D0_native": {
+          "planned": 8,
+          "quality_terminal": 8,
+          "held_or_unstarted": 0,
+          "F1": 0.8409090909090909,
+          "EM": 0.75,
+          "F1_fixed_denominator_bounds": [
+            0.8409090909090909,
+            0.8409090909090909
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.75,
+            0.75
+          ]
+        },
+        "D1_native": {
+          "planned": 8,
+          "quality_terminal": 8,
+          "held_or_unstarted": 0,
+          "F1": 0.8409090909090909,
+          "EM": 0.75,
+          "F1_fixed_denominator_bounds": [
+            0.8409090909090909,
+            0.8409090909090909
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.75,
+            0.75
+          ]
+        }
+      }
+    }
+  },
+  "actual_new_returned_usage_CNY": 0.1559644,
+  "unresolved_reserved_CNY": 0.0118896,
+  "per_query_new_paid_attribution": [
+    {
+      "index": 0,
+      "id": "hotpotqa:5adf860e5542993344016cbc",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5adf860e5542993344016cbc/D0",
+      "actual_new_returned_usage_CNY": 0.0063572,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:21:11.427245+00:00"
+    },
+    {
+      "index": 1,
+      "id": "hotpotqa:5adf860e5542993344016cbc",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5adf860e5542993344016cbc/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:21:11.537161+00:00"
+    },
+    {
+      "index": 2,
+      "id": "hotpotqa:5a7dff595542997cc2c474eb",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a7dff595542997cc2c474eb/D1",
+      "actual_new_returned_usage_CNY": 0.0048756,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0048756,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:22:10.839339+00:00"
+    },
+    {
+      "index": 3,
+      "id": "hotpotqa:5a7dff595542997cc2c474eb",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a7dff595542997cc2c474eb/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0048756,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:22:10.920774+00:00"
+    },
+    {
+      "index": 4,
+      "id": "hotpotqa:5a7b76735542997c3ec9719f",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a7b76735542997c3ec9719f/D0",
+      "actual_new_returned_usage_CNY": 0.0058112,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0058112,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:23:58.014238+00:00"
+    },
+    {
+      "index": 5,
+      "id": "hotpotqa:5a7b76735542997c3ec9719f",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a7b76735542997c3ec9719f/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0058112,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:23:58.112348+00:00"
+    },
+    {
+      "index": 6,
+      "id": "hotpotqa:5a7d9bc65542990b8f5039cb",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a7d9bc65542990b8f5039cb/D1",
+      "actual_new_returned_usage_CNY": 0.007743999999999999,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.007743999999999999,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:25:30.151960+00:00"
+    },
+    {
+      "index": 7,
+      "id": "hotpotqa:5a7d9bc65542990b8f5039cb",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a7d9bc65542990b8f5039cb/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.007743999999999999,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:25:30.274377+00:00"
+    },
+    {
+      "index": 8,
+      "id": "hotpotqa:5ab997ad554299131ca4238c",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5ab997ad554299131ca4238c/D0",
+      "actual_new_returned_usage_CNY": 0.0051424,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0051424,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:27:23.173869+00:00"
+    },
+    {
+      "index": 9,
+      "id": "hotpotqa:5ab997ad554299131ca4238c",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5ab997ad554299131ca4238c/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0051424,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:27:23.302971+00:00"
+    },
+    {
+      "index": 10,
+      "id": "hotpotqa:5a77dbaf5542997042120b5b",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a77dbaf5542997042120b5b/D1",
+      "actual_new_returned_usage_CNY": 0.0073707999999999985,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:29:14.995374+00:00"
+    },
+    {
+      "index": 11,
+      "id": "hotpotqa:5a77dbaf5542997042120b5b",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a77dbaf5542997042120b5b/D0",
+      "actual_new_returned_usage_CNY": 0.0015871999999999998,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:29:17.080793+00:00"
+    },
+    {
+      "index": 12,
+      "id": "hotpotqa:5a85bc2d5542994c784ddb70",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a85bc2d5542994c784ddb70/D0",
+      "actual_new_returned_usage_CNY": 0.0040992,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.004133599999999999,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:29:56.637656+00:00"
+    },
+    {
+      "index": 13,
+      "id": "hotpotqa:5a85bc2d5542994c784ddb70",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a85bc2d5542994c784ddb70/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.004133599999999999,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:29:56.745115+00:00"
+    },
+    {
+      "index": 14,
+      "id": "hotpotqa:5a7528e955429929fddd850e",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a7528e955429929fddd850e/D1",
+      "actual_new_returned_usage_CNY": 0.0064352,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0064352,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:31:24.776355+00:00"
+    },
+    {
+      "index": 15,
+      "id": "hotpotqa:5a7528e955429929fddd850e",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a7528e955429929fddd850e/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0064352,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:31:24.887048+00:00"
+    },
+    {
+      "index": 16,
+      "id": "hotpotqa:5a8efb5a55429918e830d172",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5a8efb5a55429918e830d172/D0",
+      "actual_new_returned_usage_CNY": 0.004670799999999999,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.004658,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:32:25.421349+00:00"
+    },
+    {
+      "index": 17,
+      "id": "hotpotqa:5a8efb5a55429918e830d172",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5a8efb5a55429918e830d172/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.004658,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:32:25.518506+00:00"
+    },
+    {
+      "index": 18,
+      "id": "hotpotqa:5abcee275542993a06baf9af",
+      "dataset": "hotpotqa",
+      "arm": "D1",
+      "task_id": "hotpotqa:5abcee275542993a06baf9af/D1",
+      "actual_new_returned_usage_CNY": 0.007116000000000001,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:34:45.872506+00:00"
+    },
+    {
+      "index": 19,
+      "id": "hotpotqa:5abcee275542993a06baf9af",
+      "dataset": "hotpotqa",
+      "arm": "D0",
+      "task_id": "hotpotqa:5abcee275542993a06baf9af/D0",
+      "actual_new_returned_usage_CNY": 0.0052364,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.005673382332155477,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:34:56.261986+00:00"
+    },
+    {
+      "index": 20,
+      "id": "2wiki:572c3827088311ebbd6dac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:572c3827088311ebbd6dac1f6bf848b6/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0062344,
+      "status": "held_or_unstarted",
+      "historical_complete_query_CNY": 0.008519621231422499,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": null
+    },
+    {
+      "index": 21,
+      "id": "2wiki:572c3827088311ebbd6dac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:572c3827088311ebbd6dac1f6bf848b6/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "held_or_unstarted",
+      "historical_complete_query_CNY": 0.008519621231422499,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": null
+    },
+    {
+      "index": 22,
+      "id": "2wiki:be0a95ca0bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:be0a95ca0bd911eba7f7acde48001122/D1",
+      "actual_new_returned_usage_CNY": 0.005934399999999999,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.008519621231422499,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:35:57.664779+00:00"
+    },
+    {
+      "index": 23,
+      "id": "2wiki:be0a95ca0bd911eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:be0a95ca0bd911eba7f7acde48001122/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.008519621231422499,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_method_same_dataset_complete_query_mean_proxy",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:35:57.830600+00:00"
+    },
+    {
+      "index": 24,
+      "id": "2wiki:d6e9771908dd11ebbd9eac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:d6e9771908dd11ebbd9eac1f6bf848b6/D0",
+      "actual_new_returned_usage_CNY": 0.012262799999999999,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0122636,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:38:01.499750+00:00"
+    },
+    {
+      "index": 25,
+      "id": "2wiki:d6e9771908dd11ebbd9eac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:d6e9771908dd11ebbd9eac1f6bf848b6/D1",
+      "actual_new_returned_usage_CNY": 0.006896000000000001,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0122636,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:38:19.532075+00:00"
+    },
+    {
+      "index": 26,
+      "id": "2wiki:cf2f578a0bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:cf2f578a0bdb11eba7f7acde48001122/D1",
+      "actual_new_returned_usage_CNY": 0.0054208,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0054208,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:39:02.984407+00:00"
+    },
+    {
+      "index": 27,
+      "id": "2wiki:cf2f578a0bdb11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:cf2f578a0bdb11eba7f7acde48001122/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0054208,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:39:03.107242+00:00"
+    },
+    {
+      "index": 28,
+      "id": "2wiki:8ab49ff80bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:8ab49ff80bda11eba7f7acde48001122/D0",
+      "actual_new_returned_usage_CNY": 0.0054212,
+      "unresolved_reserved_CNY": 0.0056552,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0054228,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:40:13.553639+00:00"
+    },
+    {
+      "index": 29,
+      "id": "2wiki:8ab49ff80bda11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:8ab49ff80bda11eba7f7acde48001122/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0054228,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:40:13.699565+00:00"
+    },
+    {
+      "index": 30,
+      "id": "2wiki:275e7286085f11ebbd5cac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:275e7286085f11ebbd5cac1f6bf848b6/D1",
+      "actual_new_returned_usage_CNY": 0.0078684,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0078684,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:41:08.952989+00:00"
+    },
+    {
+      "index": 31,
+      "id": "2wiki:275e7286085f11ebbd5cac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:275e7286085f11ebbd5cac1f6bf848b6/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0078684,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:41:09.144985+00:00"
+    },
+    {
+      "index": 32,
+      "id": "2wiki:08227b740bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:08227b740bde11eba7f7acde48001122/D0",
+      "actual_new_returned_usage_CNY": 0.006368,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.006368,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:41:51.641561+00:00"
+    },
+    {
+      "index": 33,
+      "id": "2wiki:08227b740bde11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:08227b740bde11eba7f7acde48001122/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.006368,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:41:51.765543+00:00"
+    },
+    {
+      "index": 34,
+      "id": "2wiki:78899a480bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:78899a480bdc11eba7f7acde48001122/D1",
+      "actual_new_returned_usage_CNY": 0.006123999999999999,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.006123999999999999,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:42:52.675871+00:00"
+    },
+    {
+      "index": 35,
+      "id": "2wiki:78899a480bdc11eba7f7acde48001122",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:78899a480bdc11eba7f7acde48001122/D0",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.006123999999999999,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:42:52.863903+00:00"
+    },
+    {
+      "index": 36,
+      "id": "2wiki:5cad7ed608a111ebbd79ac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:5cad7ed608a111ebbd79ac1f6bf848b6/D0",
+      "actual_new_returned_usage_CNY": 0.008602,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.008602,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:43:44.792164+00:00"
+    },
+    {
+      "index": 37,
+      "id": "2wiki:5cad7ed608a111ebbd79ac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:5cad7ed608a111ebbd79ac1f6bf848b6/D1",
+      "actual_new_returned_usage_CNY": 0.0,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.008602,
+      "eligible_for_complete_paid_query_trend": false,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:43:44.941232+00:00"
+    },
+    {
+      "index": 38,
+      "id": "2wiki:95950bb608a511ebbd7dac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D1",
+      "task_id": "2wiki:95950bb608a511ebbd7dac1f6bf848b6/D1",
+      "actual_new_returned_usage_CNY": 0.018994,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0190036,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:45:30.642608+00:00"
+    },
+    {
+      "index": 39,
+      "id": "2wiki:95950bb608a511ebbd7dac1f6bf848b6",
+      "dataset": "2wiki",
+      "arm": "D0",
+      "task_id": "2wiki:95950bb608a511ebbd7dac1f6bf848b6/D0",
+      "actual_new_returned_usage_CNY": 0.0056267999999999995,
+      "unresolved_reserved_CNY": 0.0,
+      "status": "success",
+      "historical_complete_query_CNY": 0.0190036,
+      "eligible_for_complete_paid_query_trend": true,
+      "historical_expense_reference_kind": "same_query_complete_historical_flow",
+      "attribution": "First submitting condition; complete flow with shared prefix is a same-period variant proxy, not independent cold full-cost measurement",
+      "utc": "2026-10-21T18:45:36.684193+00:00"
+    }
+  ],
+  "unattributed_charges": {
+    "actual_new_returned_usage_CNY": 0.0,
+    "unresolved_reserved_CNY": 0.0
+  },
+  "expense_trend": {
+    "unit": "complete_paid_query",
+    "eligible": 22,
+    "threshold": 20,
+    "enough_queries_for_window": true,
+    "note": "Only completepaidqueries; no purecache/partial/unknown stagecount proxy; sharedprefix variants labelledcostproxy"
+  },
+  "request_statuses": {
+    "failed": 1,
+    "success": 115
+  },
+  "retired_request_statuses": {
+    "unknown": 1
+  },
+  "scorer_factory_calls_once_per_dataset": 2,
+  "main_evaluation_remains_paused": true
+}

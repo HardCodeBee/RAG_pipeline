@@ -1,0 +1,200 @@
+{
+  "utc": "2026-10-21T16:16:28.441773+00:00",
+  "status": "completed",
+  "scope": "Frozen-upstream full-RAG final-output development contrast",
+  "fixed_cases": 90,
+  "fixed_conditions": 180,
+  "quality_terminal": 180,
+  "held_technical_tasks": 0,
+  "held_task_ids": [],
+  "arms": {
+    "W0": {
+      "planned": 90,
+      "quality_terminal": 90,
+      "missing_or_held": 0,
+      "algorithm_failures": 0,
+      "F1": 0.7613332313254912,
+      "EM": 0.6555555555555556,
+      "F1_fixed_denominator_bounds": [
+        0.7613332313254912,
+        0.7613332313254912
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.6555555555555556,
+        0.6555555555555556
+      ],
+      "full_flow_logical_prompt_tokens": 860703,
+      "full_flow_logical_completion_tokens": 8853,
+      "full_flow_logical_estimated_CNY": 0.7062684,
+      "new_final_returned_usage_CNY": 0.19792719999999997
+    },
+    "W1": {
+      "planned": 90,
+      "quality_terminal": 90,
+      "missing_or_held": 0,
+      "algorithm_failures": 0,
+      "F1": 0.7615352515275116,
+      "EM": 0.6555555555555556,
+      "F1_fixed_denominator_bounds": [
+        0.7615352515275116,
+        0.7615352515275116
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.6555555555555556,
+        0.6555555555555556
+      ],
+      "full_flow_logical_prompt_tokens": 864033,
+      "full_flow_logical_completion_tokens": 8837,
+      "full_flow_logical_estimated_CNY": 0.7089004000000001,
+      "new_final_returned_usage_CNY": 0.20055920000000005
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "W0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.8199206349206348,
+        "EM": 0.7,
+        "F1_fixed_denominator_bounds": [
+          0.8199206349206348,
+          0.8199206349206348
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.7,
+          0.7
+        ],
+        "full_flow_logical_prompt_tokens": 215620,
+        "full_flow_logical_completion_tokens": 2623,
+        "full_flow_logical_estimated_CNY": 0.177742,
+        "new_final_returned_usage_CNY": 0.05854000000000001
+      },
+      "W1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.8199206349206348,
+        "EM": 0.7,
+        "F1_fixed_denominator_bounds": [
+          0.8199206349206348,
+          0.8199206349206348
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.7,
+          0.7
+        ],
+        "full_flow_logical_prompt_tokens": 216730,
+        "full_flow_logical_completion_tokens": 2623,
+        "full_flow_logical_estimated_CNY": 0.17862999999999998,
+        "new_final_returned_usage_CNY": 0.059427999999999995
+      }
+    },
+    "2wiki": {
+      "W0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.9433333333333334,
+        "EM": 0.9,
+        "F1_fixed_denominator_bounds": [
+          0.9433333333333334,
+          0.9433333333333334
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.9,
+          0.9
+        ],
+        "full_flow_logical_prompt_tokens": 334583,
+        "full_flow_logical_completion_tokens": 3246,
+        "full_flow_logical_estimated_CNY": 0.2741583999999999,
+        "new_final_returned_usage_CNY": 0.0708796
+      },
+      "W1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.9433333333333334,
+        "EM": 0.9,
+        "F1_fixed_denominator_bounds": [
+          0.9433333333333334,
+          0.9433333333333334
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.9,
+          0.9
+        ],
+        "full_flow_logical_prompt_tokens": 335693,
+        "full_flow_logical_completion_tokens": 3246,
+        "full_flow_logical_estimated_CNY": 0.2750464,
+        "new_final_returned_usage_CNY": 0.07176760000000001
+      }
+    },
+    "musique": {
+      "W0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.5207457257225059,
+        "EM": 0.36666666666666664,
+        "F1_fixed_denominator_bounds": [
+          0.5207457257225059,
+          0.5207457257225059
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.36666666666666664,
+          0.36666666666666664
+        ],
+        "full_flow_logical_prompt_tokens": 310500,
+        "full_flow_logical_completion_tokens": 2984,
+        "full_flow_logical_estimated_CNY": 0.254368,
+        "new_final_returned_usage_CNY": 0.0685076
+      },
+      "W1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "missing_or_held": 0,
+        "algorithm_failures": 0,
+        "F1": 0.5213517863285665,
+        "EM": 0.36666666666666664,
+        "F1_fixed_denominator_bounds": [
+          0.5213517863285665,
+          0.5213517863285665
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.36666666666666664,
+          0.36666666666666664
+        ],
+        "full_flow_logical_prompt_tokens": 311610,
+        "full_flow_logical_completion_tokens": 2968,
+        "full_flow_logical_estimated_CNY": 0.255224,
+        "new_final_returned_usage_CNY": 0.06936360000000001
+      }
+    }
+  },
+  "historical_original_P02": {
+    "F1": 0.7668887868810469,
+    "EM": 0.6666666666666666,
+    "historical_reference_only": true
+  },
+  "paired": {
+    "complete_pairs": 90,
+    "delta_F1": 0.00020202020202020207,
+    "improved": 1,
+    "tied": 89,
+    "harmed": 0,
+    "counts_scope": "Resolved pairs only until complete90; never a complete-score subset estimate"
+  },
+  "gold_only_loaded_in_report": true,
+  "scorers_initialized_once_per_dataset": 3,
+  "no_LLM_call_count_metric": true,
+  "no_complete_flow_timing_claim": true,
+  "main_evaluation_remains_paused": true,
+  "new_experiment_actual_returned_usage_CNY": 0.39848639999999996,
+  "unresolved_reserved_CNY": 0.0331792
+}

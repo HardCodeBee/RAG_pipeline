@@ -1,0 +1,60 @@
+{
+  "id": "p02_actual_child_binding_probe_v1_20261022",
+  "prepared_utc": "2026-10-21T15:37:34.992703+00:00",
+  "state": "prepared_inputs_only_control_receipts_pending",
+  "nodes": 15,
+  "arms": [
+    "R0",
+    "R1",
+    "R2"
+  ],
+  "planned_conditions": 45,
+  "groups": {
+    "direct_named_control": 9,
+    "descriptive_binding_candidate": 6
+  },
+  "sample": "All15 existing with-history ordinary nodes from frozen actual P02 source traces, same order; no manual60, no gold/native-score filtering, no replacement or changed decomposition/training",
+  "interventions": {
+    "R0": "Byte-identical original prompt; ONLY reuse these15 contemporaneous fewshot E0 receipts, never submit R0",
+    "R1": "Append fixed candidate block after actual current subquestion; candidate repeats original current question verbatim",
+    "R2": "Same block and site as R1; only candidate text becomes existing frozen rewritten_query; original current question remains authoritative"
+  },
+  "exact_block_header": "Candidate interpretation (not a replacement for the Current subquestion):\n",
+  "exact_caution": "Treat this interpretation as a candidate only. Resolve factual or role conflicts using the Original question, the Current subquestion and retrieved passages about the matching entities.",
+  "fixed": "Actual decomposition, original/current questions, history, reader/order, four worked examples and other instructions, same model/settings,128 cap, no formatter; no goal entity replacement",
+  "important_limits": "Six rewrite-different nodes are not six successful entity resolutions: FortHill only reorders its description. Nine direct controls have identical R1/R2 payloads and therefore same-run exact reuse, not independent repeated model draws.",
+  "incremental_distinct_payloads": 21,
+  "new_condition_limit": 30,
+  "control_freeze": "Root must run freeze-e0 after all15 E0 outcomes resolve with complete model/usage receipts. Missing or held E0 blocks entire launch; no fallback. Preserve terminal E0 outcomes rather than replace/reroll. Source protocol, outcome, actual payload and request ID are frozen per node; source DB read-only transaction.",
+  "costs": "R0 receipts charged by source E0 experiment; separate attributed reuse cost from new actual charges. New R1/R2 exact duplicates can share receipts. NoCapBudget preserves unknown/retired liabilities and shared gate.",
+  "recovery": "Frozen shared StrictAsk, SDK/HTTP0; max5 actual technical attempts including initial across restarts. No output rerolls; algorithm_failure and receipt_integrity reuse frozen fewshot helper. Missing/invalid usage or model mismatch stay held even when length/empty/refusal observed.",
+  "output": "Coverage, terminal outcomes, paired answer changes and tokens/cost only; no component accuracy substitutes for complete-RAG F1. Later separate blinded semantic review, then approved frozen full-pipeline validation.",
+  "new_provider_submissions_at_prepare": 0,
+  "main_evaluation_remains_paused": true,
+  "pins": {
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/run.py": "f903205d81fb4db761c7141f4355fca4362767fc088f38e172b9768454eb3197",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/templates.py": "402b99f61a3e7bea68cffc4aa4e7d8718b037b81943dc7b7b96e9011145f1399",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/__init__.py": "cfa7b7b652af7a034903037c5f70b04d21fd62c31c9e43e678da659c8702af00",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/PROTOCOL.md": "a4cd01e6093cf0a72e080cafdbf02ff44719ba83cf40ff78b673c4e256fca9df",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/INPUTS15.frozen.jsonl": "0e061e1d711415b3907b66fb8d15dd111179e66beaea8c727cf6d623cad9c8a4",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/TASK_ORDER.frozen.jsonl": "721fe2fae92104094b6f23099d070e167d0c9e495b44b6083daca4b279590272",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/PUBLIC_PAYLOAD_PROVENANCE.json": "a8a988034d9de41070c3198c978dabd789a97128d16330df5ce8c363348a106b",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022/CONTRACTS.frozen.jsonl": "298680e023ac2c3ba61dd78b3eb8edb8b075567d9442877747e9b02a262d3a69",
+    "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/run.py": "c986b504c502d7116120ea089b175a86946e9c70a04dd4403efbbc2bd3f8519f",
+    "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/PROTOCOL.frozen.json": "76f57e7c7b0121a61c1cd0a603493c42c550d6e62fd4c40cbdc2abb1a74fcf75",
+    "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/INPUTS.frozen.jsonl": "d9263d6117b04e478742e98893ff8e5b9cb4b29e9f9481ed55d0aaf727de71c0",
+    "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/PUBLIC_PAYLOAD_PROVENANCE.json": "5c707b66fd4150c16a79164a8415c50f01bd66f94d235deadbd4e2bde8f50627",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/core/cache.py": "ffb53f958c60cb7b1cb3854df904f32fea417b3b429525019d1607407bc7f237",
+    "src/p02_multigrain_timing_cachefix_v1/core/llm.py": "58a8a09c951df0151a49b6fc710a298a45cf3d8dad163d1c92ee76ca1e3ffa97",
+    "experiments/query_decomposition/p02_prompt_binding_probe_v1_20261022/shared_runtime.py": "5c6c5c4914e995bce4a995ebb60ff9acb29517c5e5d77118bd2ac2413091b98e"
+  },
+  "revision": 2,
+  "previous_unexecuted_revision": {
+    "reason": "Add direct E0 outcome-versus-receipt usage/finish equality and source input hash contract",
+    "directory": "unexecuted_revision1",
+    "new_provider_requests": 0,
+    "previous_protocol_sha256": "af6f1431e868d712fbed05e9c799b883d07daf231df456367da62c60a002455e"
+  }
+}

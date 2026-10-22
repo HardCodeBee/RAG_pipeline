@@ -1,0 +1,780 @@
+{
+  "scope": "Exposed diagnostic-selected27; original G0 fact sentence with/without ROLE, common512, fresh synchronous T0; not native128 or full concurrent factorial",
+  "status": "complete",
+  "by_arm_dataset": {
+    "T0": {
+      "2wiki": {
+        "planned": 17,
+        "resolved": 17,
+        "normal_complete": 17,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.3447415329768271,
+        "fixed_denominator_EM": 0.11764705882352941,
+        "known_outcome_F1": 0.3447415329768271,
+        "known_outcome_EM": 0.11764705882352941,
+        "complete_only_F1": 0.3447415329768271,
+        "complete_only_EM": 0.11764705882352941,
+        "goal_final_input_tokens": 87856,
+        "goal_final_output_tokens": 597,
+        "goal_final_estimated_CNY": 0.07147880000000001
+      },
+      "hotpotqa": {
+        "planned": 10,
+        "resolved": 10,
+        "normal_complete": 10,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.3,
+        "fixed_denominator_EM": 0.3,
+        "known_outcome_F1": 0.3,
+        "known_outcome_EM": 0.3,
+        "complete_only_F1": 0.3,
+        "complete_only_EM": 0.3,
+        "goal_final_input_tokens": 36999,
+        "goal_final_output_tokens": 405,
+        "goal_final_estimated_CNY": 0.0304092
+      },
+      "all": {
+        "planned": 27,
+        "resolved": 27,
+        "normal_complete": 27,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.32817059483726146,
+        "fixed_denominator_EM": 0.18518518518518517,
+        "known_outcome_F1": 0.32817059483726146,
+        "known_outcome_EM": 0.18518518518518517,
+        "complete_only_F1": 0.32817059483726146,
+        "complete_only_EM": 0.18518518518518517,
+        "goal_final_input_tokens": 124855,
+        "goal_final_output_tokens": 1002,
+        "goal_final_estimated_CNY": 0.10188800000000002
+      }
+    },
+    "T1": {
+      "2wiki": {
+        "planned": 17,
+        "resolved": 17,
+        "normal_complete": 17,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.45258467023172905,
+        "fixed_denominator_EM": 0.29411764705882354,
+        "known_outcome_F1": 0.45258467023172905,
+        "known_outcome_EM": 0.29411764705882354,
+        "complete_only_F1": 0.45258467023172905,
+        "complete_only_EM": 0.29411764705882354,
+        "goal_final_input_tokens": 88617,
+        "goal_final_output_tokens": 572,
+        "goal_final_estimated_CNY": 0.07203760000000001
+      },
+      "hotpotqa": {
+        "planned": 10,
+        "resolved": 10,
+        "normal_complete": 10,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.35,
+        "fixed_denominator_EM": 0.3,
+        "known_outcome_F1": 0.35,
+        "known_outcome_EM": 0.3,
+        "complete_only_F1": 0.35,
+        "complete_only_EM": 0.3,
+        "goal_final_input_tokens": 37441,
+        "goal_final_output_tokens": 386,
+        "goal_final_estimated_CNY": 0.030724799999999997
+      },
+      "all": {
+        "planned": 27,
+        "resolved": 27,
+        "normal_complete": 27,
+        "algorithm_terminal": 0,
+        "held_or_pending": 0,
+        "terminal_reasons": {},
+        "fixed_denominator_F1": 0.4145903479236812,
+        "fixed_denominator_EM": 0.2962962962962963,
+        "known_outcome_F1": 0.4145903479236812,
+        "known_outcome_EM": 0.2962962962962963,
+        "complete_only_F1": 0.4145903479236812,
+        "complete_only_EM": 0.2962962962962963,
+        "goal_final_input_tokens": 126058,
+        "goal_final_output_tokens": 958,
+        "goal_final_estimated_CNY": 0.1027624
+      }
+    }
+  },
+  "paired": {
+    "T0_to_T1": {
+      "paired_resolved": 27,
+      "planned": 27,
+      "f1": {
+        "improved": 4,
+        "harmed": 0,
+        "tied": 23,
+        "mean_delta": 0.08641975308641976
+      },
+      "em": {
+        "improved": 3,
+        "harmed": 0,
+        "tied": 24,
+        "mean_delta": 0.1111111111111111
+      }
+    }
+  },
+  "known_receipt_CNY": 0.179196,
+  "unresolved_receipts": [],
+  "retired_receipts_preserved": [
+    {
+      "request_id": "0086753289b544c7b8c92918ef141eb0",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 41.372515699942596,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "36852678acd04a64ade330bc0d44fadf",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 40.70957080007065,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "60b0cd1b4f2345f1b3ead995b9274470",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 11.406439500045963,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    }
+  ],
+  "charges": [
+    {
+      "id": "753e87db354849069baf26c76bada2c8",
+      "reserved_CNY": 0.007304,
+      "actual_CNY": 0.0015684,
+      "status": "returned_usage"
+    },
+    {
+      "id": "6fb185be490d443cab964f01ad2b8707",
+      "reserved_CNY": 0.010453599999999999,
+      "actual_CNY": 0.0025564,
+      "status": "returned_usage"
+    },
+    {
+      "id": "651bceb0250145dd82e311a350108953",
+      "reserved_CNY": 0.0075271999999999995,
+      "actual_CNY": 0.0016052,
+      "status": "returned_usage"
+    },
+    {
+      "id": "3c18c9ec55644b44a67d83fea6558d3f",
+      "reserved_CNY": 0.0061551999999999996,
+      "actual_CNY": 0.0012963999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "be63285687154dea94f1685ab08ec6b0",
+      "reserved_CNY": 0.008888799999999999,
+      "actual_CNY": 0.0022275999999999997,
+      "status": "returned_usage"
+    },
+    {
+      "id": "ef60620b9092484fbcd6a5dba5a9aacb",
+      "reserved_CNY": 0.005932,
+      "actual_CNY": 0.0012595999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "55eeac977dca4b31b0f104632974d4cb",
+      "reserved_CNY": 0.0081632,
+      "actual_CNY": 0.0018291999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8eaf8bdd164b4e108224486425dbb276",
+      "reserved_CNY": 0.011592,
+      "actual_CNY": 0.0028351999999999995,
+      "status": "returned_usage"
+    },
+    {
+      "id": "32c52462eb0548378e2e6daa56015d34",
+      "reserved_CNY": 0.0083864,
+      "actual_CNY": 0.0018659999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "210d6861c54b4eb4a24c7ebf525b96be",
+      "reserved_CNY": 0.006715199999999999,
+      "actual_CNY": 0.0013968,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a120a4e9d1e940eabea19d4b52b67ac9",
+      "reserved_CNY": 0.0122472,
+      "actual_CNY": 0.0030396,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8a9a4b9652b74385bfe47178ca56fb0c",
+      "reserved_CNY": 0.0064919999999999995,
+      "actual_CNY": 0.00136,
+      "status": "returned_usage"
+    },
+    {
+      "id": "024cc6eaa670472f83045e16f014785d",
+      "reserved_CNY": 0.0086416,
+      "actual_CNY": 0.0018903999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "be355d5082ac4168a633cbe6a06f17e4",
+      "reserved_CNY": 0.009246399999999998,
+      "actual_CNY": 0.0022352,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a32ccaf60c3548dca495352e8c686320",
+      "reserved_CNY": 0.0088648,
+      "actual_CNY": 0.0019271999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "c4b09bd179e2437a928c18ad45b44bcf",
+      "reserved_CNY": 0.007271199999999999,
+      "actual_CNY": 0.0018404,
+      "status": "returned_usage"
+    },
+    {
+      "id": "278ee8aaf16a42b2989191f5035d9aca",
+      "reserved_CNY": 0.010401599999999999,
+      "actual_CNY": 0.0028344,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8c7ff43b249044169e975285a52d7fb6",
+      "reserved_CNY": 0.007048,
+      "actual_CNY": 0.0018036,
+      "status": "returned_usage"
+    },
+    {
+      "id": "f0ac048fdc0f4908a68c7a6d7d19f7b9",
+      "reserved_CNY": 0.0073311999999999995,
+      "actual_CNY": 0.0016736,
+      "status": "returned_usage"
+    },
+    {
+      "id": "2f9af218899b457ab12b768488277768",
+      "reserved_CNY": 0.009319999999999998,
+      "actual_CNY": 0.0022923999999999996,
+      "status": "returned_usage"
+    },
+    {
+      "id": "9e239297b7fa4598bed3e298ca806850",
+      "reserved_CNY": 0.007554399999999999,
+      "actual_CNY": 0.0017064,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a64c5f990510481cb5a2f9966ddb4045",
+      "reserved_CNY": 0.0093168,
+      "actual_CNY": 0.0022907999999999995,
+      "status": "returned_usage"
+    },
+    {
+      "id": "ade4e8b0980745ca890f414f8f884e10",
+      "reserved_CNY": 0.0115344,
+      "actual_CNY": 0.0027463999999999995,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8283e85be20748db8d16a823ee442920",
+      "reserved_CNY": 0.0098888,
+      "actual_CNY": 0.002434,
+      "status": "returned_usage"
+    },
+    {
+      "id": "ec303db123144aec8e543c69e0955d59",
+      "reserved_CNY": 0.0113112,
+      "actual_CNY": 0.0027416000000000003,
+      "status": "returned_usage"
+    },
+    {
+      "id": "d4baef8ce4224ffe85320dfebeff6e3b",
+      "reserved_CNY": 0.009968,
+      "actual_CNY": 0.0024468,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8ff489cfc7c7410cbdab8d8c20bc0c6d",
+      "reserved_CNY": 0.006555999999999999,
+      "actual_CNY": 0.0013951999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "dc2a5ba1b9c048a1a987c8573b04ba62",
+      "reserved_CNY": 0.007944,
+      "actual_CNY": 0.0018683999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "3af75fe00e88434b88e69ffcc8a2af97",
+      "reserved_CNY": 0.006779199999999999,
+      "actual_CNY": 0.001432,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a2b5136cdc0d465e8cc1bf08adbfdae0",
+      "reserved_CNY": 0.0079432,
+      "actual_CNY": 0.0018683999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a7dca8dba248469b9f98cf9fc12e08df",
+      "reserved_CNY": 0.006966399999999999,
+      "actual_CNY": 0.001674,
+      "status": "returned_usage"
+    },
+    {
+      "id": "4f8c5e248529423eaa9ec5ce8ccf9ae1",
+      "reserved_CNY": 0.0094016,
+      "actual_CNY": 0.002378,
+      "status": "returned_usage"
+    },
+    {
+      "id": "c2b5ea5cbfea46f4a0c1c482c7d7c5bd",
+      "reserved_CNY": 0.0067431999999999995,
+      "actual_CNY": 0.0016372,
+      "status": "returned_usage"
+    },
+    {
+      "id": "0086753289b544c7b8c92918ef141eb0",
+      "reserved_CNY": 0.009403199999999999,
+      "actual_CNY": null,
+      "status": "reserved"
+    },
+    {
+      "id": "36852678acd04a64ade330bc0d44fadf",
+      "reserved_CNY": 0.009403199999999999,
+      "actual_CNY": null,
+      "status": "reserved"
+    },
+    {
+      "id": "57094151e2c6431eade043fbd8328f5e",
+      "reserved_CNY": 0.009403199999999999,
+      "actual_CNY": 0.002378,
+      "status": "returned_usage"
+    },
+    {
+      "id": "48cdf7b92ecf4b3ba95bb828e4caed6b",
+      "reserved_CNY": 0.006495999999999999,
+      "actual_CNY": 0.0016095999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "6f5a0547eb0b421fa5a1cd29806bda41",
+      "reserved_CNY": 0.0085936,
+      "actual_CNY": 0.0023168,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7b22cf2988ba40959d192d5c33ae8e87",
+      "reserved_CNY": 0.0067192,
+      "actual_CNY": 0.0016424,
+      "status": "returned_usage"
+    },
+    {
+      "id": "d34e1aa8938a4a999407f9743f5739aa",
+      "reserved_CNY": 0.0085904,
+      "actual_CNY": 0.0023132,
+      "status": "returned_usage"
+    },
+    {
+      "id": "082929d616744f95b9720514064da3e3",
+      "reserved_CNY": 0.0082984,
+      "actual_CNY": 0.0019128,
+      "status": "returned_usage"
+    },
+    {
+      "id": "32fa76540de244bab6f02db2f698e22b",
+      "reserved_CNY": 0.009623999999999999,
+      "actual_CNY": 0.0023952,
+      "status": "returned_usage"
+    },
+    {
+      "id": "55cac92296db4cca980a2edeafd2d9eb",
+      "reserved_CNY": 0.0080752,
+      "actual_CNY": 0.001866,
+      "status": "returned_usage"
+    },
+    {
+      "id": "e10a39891a574031b75e6a3217bfb3c2",
+      "reserved_CNY": 0.009608799999999999,
+      "actual_CNY": 0.0023912,
+      "status": "returned_usage"
+    },
+    {
+      "id": "648757baebca4e6688c093c4c3be9c10",
+      "reserved_CNY": 0.006030399999999999,
+      "actual_CNY": 0.0012912,
+      "status": "returned_usage"
+    },
+    {
+      "id": "5a4fa04fa6d241f2847049aeb46e8e73",
+      "reserved_CNY": 0.007972,
+      "actual_CNY": 0.0019268,
+      "status": "returned_usage"
+    },
+    {
+      "id": "b0b8529ef30a4dd0ba1e4b02a6e786ae",
+      "reserved_CNY": 0.0062536,
+      "actual_CNY": 0.001328,
+      "status": "returned_usage"
+    },
+    {
+      "id": "c9980f2ae359426ab3f67b0cfc18df3c",
+      "reserved_CNY": 0.0076592,
+      "actual_CNY": 0.0017072,
+      "status": "returned_usage"
+    },
+    {
+      "id": "8d68a1ae40324eb498ebbce17deb5710",
+      "reserved_CNY": 0.008386399999999999,
+      "actual_CNY": 0.0020044,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a2402537b3e64fb58e5ae84e83e992c7",
+      "reserved_CNY": 0.007435999999999999,
+      "actual_CNY": 0.0016363999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "dbd427b0aa694c049d574998c34d7d94",
+      "reserved_CNY": 0.008349599999999999,
+      "actual_CNY": 0.0019907999999999996,
+      "status": "returned_usage"
+    },
+    {
+      "id": "cf42d50db7cb4242b0f414d34c5a8301",
+      "reserved_CNY": 0.0069888,
+      "actual_CNY": 0.0016543999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "b4d623fbc5d241d58aa779ae001468c8",
+      "reserved_CNY": 0.012030399999999998,
+      "actual_CNY": 0.0032359999999999997,
+      "status": "returned_usage"
+    },
+    {
+      "id": "32760d1971494913b9031ed190997128",
+      "reserved_CNY": 0.007212,
+      "actual_CNY": 0.0016872,
+      "status": "returned_usage"
+    },
+    {
+      "id": "3e3f4c0dd69f4b00a35197b12ed250a4",
+      "reserved_CNY": 0.012024799999999999,
+      "actual_CNY": 0.0032283999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "f33fccb3049246f7884bc16b975b599b",
+      "reserved_CNY": 0.0105176,
+      "actual_CNY": 0.002496,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7249cedee33c45708bd5959a423868a9",
+      "reserved_CNY": 0.012251999999999999,
+      "actual_CNY": 0.0030856,
+      "status": "returned_usage"
+    },
+    {
+      "id": "9b2a734608a64be7b1bf361f409c3abb",
+      "reserved_CNY": 0.0102944,
+      "actual_CNY": 0.0024871999999999997,
+      "status": "returned_usage"
+    },
+    {
+      "id": "dda25d75f9c4433a9e8d9fb14747dcd5",
+      "reserved_CNY": 0.012284799999999998,
+      "actual_CNY": 0.0030968000000000002,
+      "status": "returned_usage"
+    },
+    {
+      "id": "0e680753bd6a405e92957cd48fff020e",
+      "reserved_CNY": 0.007881599999999999,
+      "actual_CNY": 0.0017295999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "703f86715fdb45a7b4602e234c28ac4a",
+      "reserved_CNY": 0.009837599999999998,
+      "actual_CNY": 0.0023732,
+      "status": "returned_usage"
+    },
+    {
+      "id": "55cd634634da4aad949c5b28981bce14",
+      "reserved_CNY": 0.0081048,
+      "actual_CNY": 0.0017523999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7e3494c93c434edbaec09f5b486647fd",
+      "reserved_CNY": 0.0098096,
+      "actual_CNY": 0.0023675999999999997,
+      "status": "returned_usage"
+    },
+    {
+      "id": "e752bf96613e44d1b19c996642a49037",
+      "reserved_CNY": 0.00614,
+      "actual_CNY": 0.0012504,
+      "status": "returned_usage"
+    },
+    {
+      "id": "332761cc92e141148cc641a5ea74d79e",
+      "reserved_CNY": 0.007864,
+      "actual_CNY": 0.00187,
+      "status": "returned_usage"
+    },
+    {
+      "id": "0a987e37633241b98b7a1eab831941b2",
+      "reserved_CNY": 0.0059168,
+      "actual_CNY": 0.0012216,
+      "status": "returned_usage"
+    },
+    {
+      "id": "d775697e52a24712b6414abf2f581132",
+      "reserved_CNY": 0.0078728,
+      "actual_CNY": 0.0018732,
+      "status": "returned_usage"
+    },
+    {
+      "id": "68c8a7c1a92746a086cef44b98087017",
+      "reserved_CNY": 0.005091999999999999,
+      "actual_CNY": 0.0010928,
+      "status": "returned_usage"
+    },
+    {
+      "id": "4a2a16b9048c47e9bc0d4600daa44f36",
+      "reserved_CNY": 0.0078344,
+      "actual_CNY": 0.0019072,
+      "status": "returned_usage"
+    },
+    {
+      "id": "34a44c285a9a4eaaa7a08acbed27057e",
+      "reserved_CNY": 0.0053152,
+      "actual_CNY": 0.0011296,
+      "status": "returned_usage"
+    },
+    {
+      "id": "db72f724cb43433fb6121edc52bc6dc6",
+      "reserved_CNY": 0.005932799999999999,
+      "actual_CNY": 0.0014268,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7b5ab46bf1b745c79685f58aff74773b",
+      "reserved_CNY": 0.008257599999999999,
+      "actual_CNY": 0.0020792,
+      "status": "returned_usage"
+    },
+    {
+      "id": "02ebcad2042849fb8355f347f9649376",
+      "reserved_CNY": 0.0057096,
+      "actual_CNY": 0.00139,
+      "status": "returned_usage"
+    },
+    {
+      "id": "b7961b2f91a943938254255f315cd1c9",
+      "reserved_CNY": 0.004632,
+      "actual_CNY": 0.0010915999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "c573f925fa37491db1adad18430aeb83",
+      "reserved_CNY": 0.0067632,
+      "actual_CNY": 0.0017028,
+      "status": "returned_usage"
+    },
+    {
+      "id": "72ce96315575436ea1c1fae4a4cba172",
+      "reserved_CNY": 0.0048552,
+      "actual_CNY": 0.0011283999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "6d9a2ef31a98481789685d2093977bac",
+      "reserved_CNY": 0.005984799999999999,
+      "actual_CNY": 0.0013547999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "61afff75c9c745898e7f06d55421e834",
+      "reserved_CNY": 0.007377599999999999,
+      "actual_CNY": 0.0018491999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "2b0f2029bfcb47aeb978c36d32a71c97",
+      "reserved_CNY": 0.0057615999999999995,
+      "actual_CNY": 0.0013160000000000001,
+      "status": "returned_usage"
+    },
+    {
+      "id": "e1bf29f57fb5429f9e3b49fe32ce1eeb",
+      "reserved_CNY": 0.0073744,
+      "actual_CNY": 0.0018483999999999998,
+      "status": "returned_usage"
+    },
+    {
+      "id": "48c66edbb730425099e136b558b3e104",
+      "reserved_CNY": 0.005780799999999999,
+      "actual_CNY": 0.0012079999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "fea67e2030514a7397b2452d188cb788",
+      "reserved_CNY": 0.008165599999999999,
+      "actual_CNY": 0.0019884,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7fb208378b7b44c481f050fb9f04ca5e",
+      "reserved_CNY": 0.006004,
+      "actual_CNY": 0.0012568,
+      "status": "returned_usage"
+    },
+    {
+      "id": "bb071e1754c746129728ff8241f0fc70",
+      "reserved_CNY": 0.0081856,
+      "actual_CNY": 0.0019932,
+      "status": "returned_usage"
+    },
+    {
+      "id": "7adf51648bfe4e1ab0f1ffadafc632e4",
+      "reserved_CNY": 0.0069672,
+      "actual_CNY": 0.0014796,
+      "status": "returned_usage"
+    },
+    {
+      "id": "3694eda91e954752b5fc655e04129621",
+      "reserved_CNY": 0.008839999999999999,
+      "actual_CNY": 0.00211,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a46f7d54714940b8930aa487d7bdb6b5",
+      "reserved_CNY": 0.006743999999999999,
+      "actual_CNY": 0.0014428,
+      "status": "returned_usage"
+    },
+    {
+      "id": "159c74a3429444eda78edc02fff4537f",
+      "reserved_CNY": 0.0045048,
+      "actual_CNY": 0.0010088,
+      "status": "returned_usage"
+    },
+    {
+      "id": "1316889f735748feacd37776db2ac513",
+      "reserved_CNY": 0.006527999999999999,
+      "actual_CNY": 0.0016404,
+      "status": "returned_usage"
+    },
+    {
+      "id": "bde1ef897dc0497bb6b4f75e44e73fcf",
+      "reserved_CNY": 0.0047279999999999996,
+      "actual_CNY": 0.0010456,
+      "status": "returned_usage"
+    },
+    {
+      "id": "4cc3651a44d844af8251939ae8d8c412",
+      "reserved_CNY": 0.0065271999999999995,
+      "actual_CNY": 0.0016404,
+      "status": "returned_usage"
+    },
+    {
+      "id": "63abb4f485e14e12ae6532bd52b21fbd",
+      "reserved_CNY": 0.0045888,
+      "actual_CNY": 0.0009584,
+      "status": "returned_usage"
+    },
+    {
+      "id": "ea487ab2cc60458d88d2323b03c65ee0",
+      "reserved_CNY": 0.0068872,
+      "actual_CNY": 0.0017264000000000001,
+      "status": "returned_usage"
+    },
+    {
+      "id": "60b0cd1b4f2345f1b3ead995b9274470",
+      "reserved_CNY": 0.0043656,
+      "actual_CNY": null,
+      "status": "reserved"
+    },
+    {
+      "id": "e8514bcf1532424e9b90092280ac0549",
+      "reserved_CNY": 0.0043656,
+      "actual_CNY": 0.0009455999999999999,
+      "status": "returned_usage"
+    },
+    {
+      "id": "59bb5584117a459e8b472a18e205898e",
+      "reserved_CNY": 0.006931199999999999,
+      "actual_CNY": 0.001736,
+      "status": "returned_usage"
+    },
+    {
+      "id": "3db7626ce24645a78537f679d8743f90",
+      "reserved_CNY": 0.004772,
+      "actual_CNY": 0.00099,
+      "status": "returned_usage"
+    },
+    {
+      "id": "d1fb11f7fe9241a1a7e52bb0d11e92f2",
+      "reserved_CNY": 0.007145599999999999,
+      "actual_CNY": 0.0018164,
+      "status": "returned_usage"
+    },
+    {
+      "id": "a2c9ac010a6c47f3839ff36aee99a498",
+      "reserved_CNY": 0.0049952,
+      "actual_CNY": 0.0010088,
+      "status": "returned_usage"
+    },
+    {
+      "id": "d995d81d39544c7a9a26710a73f5baa6",
+      "reserved_CNY": 0.007117599999999999,
+      "actual_CNY": 0.0018072,
+      "status": "returned_usage"
+    }
+  ],
+  "unknown_or_unresolved_reserved_CNY": 0.023171999999999998,
+  "terminal_algorithm_outcomes_count_zero_not_missing": true,
+  "no_independent_confirmation_claim": true,
+  "historical_G0_or_G2_not_imported": true,
+  "main_evaluation_remains_paused": true
+}

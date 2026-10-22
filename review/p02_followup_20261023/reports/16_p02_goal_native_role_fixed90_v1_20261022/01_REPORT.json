@@ -1,0 +1,392 @@
+{
+  "utc": "2026-10-21T17:26:36.104520+00:00",
+  "status": "completed",
+  "scope": "Frozen-upstream native-goal128 complete-RAG final quality development contrast; not fresh upstream/timing",
+  "planned_conditions": 180,
+  "quality_terminal": 180,
+  "held_technical_tasks": 0,
+  "held_task_ids": [],
+  "not_started_tasks": 0,
+  "arms": {
+    "L0": {
+      "planned": 90,
+      "quality_terminal": 90,
+      "held_or_unstarted": 0,
+      "algorithm_failures": 0,
+      "success_truncated": 0,
+      "F1": 0.7595651537240804,
+      "EM": 0.6555555555555556,
+      "F1_fixed_denominator_bounds": [
+        0.7595651537240804,
+        0.7595651537240804
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.6555555555555556,
+        0.6555555555555556
+      ],
+      "formatter_triggered": 0,
+      "full_flow_logical_prompt_tokens": 860675,
+      "full_flow_logical_completion_tokens": 8794,
+      "full_flow_logical_estimated_CNY": 0.706128
+    },
+    "L1": {
+      "planned": 90,
+      "quality_terminal": 90,
+      "held_or_unstarted": 0,
+      "algorithm_failures": 0,
+      "success_truncated": 0,
+      "F1": 0.7539447102604997,
+      "EM": 0.6666666666666666,
+      "F1_fixed_denominator_bounds": [
+        0.7539447102604997,
+        0.7539447102604997
+      ],
+      "EM_fixed_denominator_bounds": [
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "formatter_triggered": 0,
+      "full_flow_logical_prompt_tokens": 864949,
+      "full_flow_logical_completion_tokens": 8982,
+      "full_flow_logical_estimated_CNY": 0.7099232
+    }
+  },
+  "by_dataset": {
+    "hotpotqa": {
+      "L0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.8199206349206348,
+        "EM": 0.7,
+        "F1_fixed_denominator_bounds": [
+          0.8199206349206348,
+          0.8199206349206348
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.7,
+          0.7
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 215612,
+        "full_flow_logical_completion_tokens": 2609,
+        "full_flow_logical_estimated_CNY": 0.17770760000000002
+      },
+      "L1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.7949206349206348,
+        "EM": 0.6666666666666666,
+        "F1_fixed_denominator_bounds": [
+          0.7949206349206348,
+          0.7949206349206348
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.6666666666666666,
+          0.6666666666666666
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 217011,
+        "full_flow_logical_completion_tokens": 2655,
+        "full_flow_logical_estimated_CNY": 0.17891880000000002
+      }
+    },
+    "2wiki": {
+      "L0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.9357142857142857,
+        "EM": 0.9,
+        "F1_fixed_denominator_bounds": [
+          0.9357142857142857,
+          0.9357142857142857
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.9,
+          0.9
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 334526,
+        "full_flow_logical_completion_tokens": 3192,
+        "full_flow_logical_estimated_CNY": 0.2740047999999999
+      },
+      "L1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.9357142857142857,
+        "EM": 0.9,
+        "F1_fixed_denominator_bounds": [
+          0.9357142857142857,
+          0.9357142857142857
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.9,
+          0.9
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 336014,
+        "full_flow_logical_completion_tokens": 3300,
+        "full_flow_logical_estimated_CNY": 0.27541119999999997
+      }
+    },
+    "musique": {
+      "L0": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.5230605405373207,
+        "EM": 0.36666666666666664,
+        "F1_fixed_denominator_bounds": [
+          0.5230605405373207,
+          0.5230605405373207
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.36666666666666664,
+          0.36666666666666664
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 310537,
+        "full_flow_logical_completion_tokens": 2993,
+        "full_flow_logical_estimated_CNY": 0.2544156
+      },
+      "L1": {
+        "planned": 30,
+        "quality_terminal": 30,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.5311992101465786,
+        "EM": 0.43333333333333335,
+        "F1_fixed_denominator_bounds": [
+          0.5311992101465786,
+          0.5311992101465786
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.43333333333333335,
+          0.43333333333333335
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 311924,
+        "full_flow_logical_completion_tokens": 3027,
+        "full_flow_logical_estimated_CNY": 0.2555932
+      }
+    }
+  },
+  "ordinary_present_sensitivity": {
+    "planned_cases": 84,
+    "arms": {
+      "L0": {
+        "planned": 84,
+        "quality_terminal": 84,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.7893850336519508,
+        "EM": 0.6904761904761905,
+        "F1_fixed_denominator_bounds": [
+          0.7893850336519508,
+          0.7893850336519508
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.6904761904761905,
+          0.6904761904761905
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 835902,
+        "full_flow_logical_completion_tokens": 8515,
+        "full_flow_logical_estimated_CNY": 0.6857516
+      },
+      "L1": {
+        "planned": 84,
+        "quality_terminal": 84,
+        "held_or_unstarted": 0,
+        "algorithm_failures": 0,
+        "success_truncated": 0,
+        "F1": 0.7879308661263548,
+        "EM": 0.7023809523809523,
+        "F1_fixed_denominator_bounds": [
+          0.7879308661263548,
+          0.7879308661263548
+        ],
+        "EM_fixed_denominator_bounds": [
+          0.7023809523809523,
+          0.7023809523809523
+        ],
+        "formatter_triggered": 0,
+        "full_flow_logical_prompt_tokens": 839914,
+        "full_flow_logical_completion_tokens": 8712,
+        "full_flow_logical_estimated_CNY": 0.6893552000000001
+      }
+    },
+    "by_dataset": {
+      "hotpotqa": {
+        "L0": {
+          "planned": 27,
+          "quality_terminal": 27,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.8598765432098765,
+          "EM": 0.7407407407407407,
+          "F1_fixed_denominator_bounds": [
+            0.8598765432098765,
+            0.8598765432098765
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.7407407407407407,
+            0.7407407407407407
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 206033,
+          "full_flow_logical_completion_tokens": 2494,
+          "full_flow_logical_estimated_CNY": 0.16981440000000003
+        },
+        "L1": {
+          "planned": 27,
+          "quality_terminal": 27,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.8320987654320987,
+          "EM": 0.7037037037037037,
+          "F1_fixed_denominator_bounds": [
+            0.8320987654320987,
+            0.8320987654320987
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.7037037037037037,
+            0.7037037037037037
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 207299,
+          "full_flow_logical_completion_tokens": 2546,
+          "full_flow_logical_estimated_CNY": 0.17093119999999998
+        }
+      },
+      "2wiki": {
+        "L0": {
+          "planned": 29,
+          "quality_terminal": 29,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.9679802955665026,
+          "EM": 0.9310344827586207,
+          "F1_fixed_denominator_bounds": [
+            0.9679802955665026,
+            0.9679802955665026
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.9310344827586207,
+            0.9310344827586207
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 330390,
+          "full_flow_logical_completion_tokens": 3141,
+          "full_flow_logical_estimated_CNY": 0.2705939999999999
+        },
+        "L1": {
+          "planned": 29,
+          "quality_terminal": 29,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.9679802955665026,
+          "EM": 0.9310344827586207,
+          "F1_fixed_denominator_bounds": [
+            0.9679802955665026,
+            0.9679802955665026
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.9310344827586207,
+            0.9310344827586207
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 331832,
+          "full_flow_logical_completion_tokens": 3249,
+          "full_flow_logical_estimated_CNY": 0.27196359999999997
+        }
+      },
+      "musique": {
+        "L0": {
+          "planned": 28,
+          "quality_terminal": 28,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.536437413881023,
+          "EM": 0.39285714285714285,
+          "F1_fixed_denominator_bounds": [
+            0.536437413881023,
+            0.536437413881023
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.39285714285714285,
+            0.39285714285714285
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 299479,
+          "full_flow_logical_completion_tokens": 2880,
+          "full_flow_logical_estimated_CNY": 0.24534319999999998
+        },
+        "L1": {
+          "planned": 28,
+          "quality_terminal": 28,
+          "held_or_unstarted": 0,
+          "algorithm_failures": 0,
+          "success_truncated": 0,
+          "F1": 0.5588606255899489,
+          "EM": 0.4642857142857143,
+          "F1_fixed_denominator_bounds": [
+            0.5588606255899489,
+            0.5588606255899489
+          ],
+          "EM_fixed_denominator_bounds": [
+            0.4642857142857143,
+            0.4642857142857143
+          ],
+          "formatter_triggered": 0,
+          "full_flow_logical_prompt_tokens": 300783,
+          "full_flow_logical_completion_tokens": 2917,
+          "full_flow_logical_estimated_CNY": 0.24646039999999997
+        }
+      }
+    },
+    "selection": "Predeclared D-nonempty84, main90 including6goal-only is retained; no score-based selection"
+  },
+  "historical_P02_reference_only": {
+    "F1": 0.7668887868810469,
+    "EM": 0.6666666666666666
+  },
+  "paired": {
+    "complete_pairs": 90,
+    "delta_F1": -0.005620443463580722,
+    "delta_EM": 0.011111111111111112,
+    "improved": 4,
+    "tied": 83,
+    "harmed": 3
+  },
+  "actual_new_returned_usage_CNY": 0.5620716,
+  "unresolved_reserved_CNY": 0.0851,
+  "request_statuses": {
+    "success": 309
+  },
+  "retired_request_statuses": {
+    "unknown": 11
+  },
+  "scorer_factory_calls_once_per_dataset": 3,
+  "main_evaluation_remains_paused": true
+}

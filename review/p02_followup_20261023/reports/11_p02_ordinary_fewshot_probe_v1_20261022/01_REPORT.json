@@ -1,0 +1,130 @@
+{
+  "utc": "2026-10-21T15:55:46.462288+00:00",
+  "scope": "Ordinary fixed-stage component probe; no final F1/EM",
+  "planned_conditions": 90,
+  "recorded_outcomes": 90,
+  "complete": 90,
+  "terminal_algorithm_failures": 0,
+  "held_technical_tasks": 0,
+  "status": "all_conditions_terminal",
+  "sections": {
+    "with_history/E0": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 3,
+      "input_tokens": 31635,
+      "output_tokens": 247,
+      "missing_usage": 0
+    },
+    "with_history/E1": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 4,
+      "input_tokens": 31650,
+      "output_tokens": 253,
+      "missing_usage": 0
+    },
+    "with_history/E2": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 2,
+      "input_tokens": 31935,
+      "output_tokens": 245,
+      "missing_usage": 0
+    },
+    "no_history/E0": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 0,
+      "input_tokens": 34273,
+      "output_tokens": 251,
+      "missing_usage": 0
+    },
+    "no_history/E1": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 1,
+      "input_tokens": 34288,
+      "output_tokens": 230,
+      "missing_usage": 0
+    },
+    "no_history/E2": {
+      "planned": 15,
+      "terminal": 15,
+      "complete": 15,
+      "algorithm_failures": 0,
+      "historical_text_changed": 2,
+      "input_tokens": 34573,
+      "output_tokens": 250,
+      "missing_usage": 0
+    }
+  },
+  "paired_text": {
+    "with_history/E0_to_E1": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3",
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2",
+        "hotpotqa:5a8b5b1c5542995d1e6f1387/ordinary/2",
+        "musique:4hop3__373866_5189_38229_86687/ordinary/3"
+      ]
+    },
+    "with_history/E0_to_E2": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "hotpotqa:5a8b5b1c5542995d1e6f1387/ordinary/2"
+      ]
+    },
+    "with_history/E1_to_E2": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "hotpotqa:5a8b5b1c5542995d1e6f1387/ordinary/2",
+        "musique:4hop3__373866_5189_38229_86687/ordinary/3"
+      ]
+    },
+    "no_history/E0_to_E1": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "musique:3hop1__106042_64399_53006/ordinary/1"
+      ]
+    },
+    "no_history/E0_to_E2": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6/ordinary/1",
+        "hotpotqa:5a70f9335542994082a3e46a/ordinary/1"
+      ]
+    },
+    "no_history/E1_to_E2": {
+      "complete_pairs": 15,
+      "text_changed_ids": [
+        "2wiki:22d0e6f208b611ebbd88ac1f6bf848b6/ordinary/1",
+        "hotpotqa:5a70f9335542994082a3e46a/ordinary/1",
+        "musique:3hop1__106042_64399_53006/ordinary/1"
+      ]
+    }
+  },
+  "held_task_ids": [],
+  "known_returned_usage_CNY": 0.16163520000000003,
+  "historical_is_independent_reference": true,
+  "fresh_E0_not_historical_replay": true,
+  "main_evaluation_remains_paused": true,
+  "actual_returned_usage_CNY": 0.16163519999999998,
+  "unresolved_reserved_CNY": 0.0265544
+}

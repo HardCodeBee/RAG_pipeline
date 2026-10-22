@@ -1,0 +1,45 @@
+{
+  "id": "p02_three_prompts_compact_quick90_v2_20261021",
+  "utc": "2026-10-21T12:59:21.410222+00:00",
+  "authority": "User: 使用这一套再试试 (the three compact prompts supplied on 2026-10-21)",
+  "scope": "Joint evaluation of the three exact templates supplied in this side conversation; no suggested edits mixed in.",
+  "control": "Frozen original native P02; exact successful recorded-input replay. Not the earlier selfcontained/minimal prompt variants.",
+  "candidate": "Simultaneous ordinary + goal + final prompt substitution, including their supplied examples and formatting.",
+  "planned": 90,
+  "per_dataset": 30,
+  "cohort_role": "Existing exposed development quick90, not independent confirmation",
+  "fixed": "Frozen R02 decompositions; original native model, rewriter, BGE, dual-route merge, history propagation, formatter and 256/128/64 output caps.",
+  "downstream": "Candidate ordinary answers drive their own later rewrite and retrieval; do not freeze changed downstream packets.",
+  "cache": "Only identical successful full payloads; original package first, then completed previous quick90 sources in fixed order. Unknown records are blocked unless an exact successful receipt exists.",
+  "failure_policy": "Provider concurrency1, minimum start interval3sec, no keepalive; connect-only retries2, SDK POST retries0. No automatic ambiguous-request resubmission, algorithm rerun for score, sample replacement or candidate activation.",
+  "measurement": "Native final F1/EM, paired gains/ties/losses, complete-flow input/output tokens, estimated generation expense and explicit missingness. No new timing claims.",
+  "destination": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "budget": "Unchanged native P02 cumulative ledger and cap; preserve all historical liabilities. No main campaign resume.",
+  "main_evaluation_remains_paused": true,
+  "inputs": {
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\runtime90.frozen.jsonl": "0b73900c9419d9a0a26516bd889f8efab72b9ea90b8dac96d39331c92e4cc79d",
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\references90.local.frozen.jsonl": "b66fab208907983c39e720e48b50f704521a62905638d3f5800320b592f7f3f9",
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\COHORT.frozen.json": "664891ea97737eccd1cf1b76f040fe1d514b89b63f79986dc60a3b61a9f563db",
+    "experiments\\query_decomposition\\p02_noformatter_quick90_v1_20261021\\SOURCE_BINDINGS.frozen.jsonl": "6c0fdf99dbec615e50544970719f92fd6d4eec5782bd60a2eab3c6a7ba043435"
+  },
+  "pins": {
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\run.py": "98d544418d981bac532f922119b600ef66e972700b0a3c9211380cc6d134e596",
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\prompts.py": "6b915d68c7a7f8adb544c8af9458819fd9ef40d58dcfdfa57891f6827a8a7a02",
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\pipeline.py": "a6c3446a5c0311cd98e22c8afd758ad22a7704aa469e13c47329e913ac339439",
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\ordinary.frozen.txt": "e47e508354ef08abe05f5fdc5f8eaeb8007d8c1c420db8dc0b09654fe02fa1df",
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\goal.frozen.txt": "0796de90e2352e030ad9ef709d50dc121bcb45071a54cedf47c6132550127017",
+    "experiments\\query_decomposition\\p02_three_prompts_compact_quick90_v2_20261021\\final.frozen.txt": "c38da9de057e9de015fc6959f989893ec04e22c130da8457932ac5a86f61a213",
+    "src\\p02_multigrain_timing_cachefix_v1\\config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\pipeline.py": "b78e693df0645e4ad165141a17d57a7ca546349313c27ae5bd69e23ae0963b3a",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\child_prompts.py": "f31f860488afc626f6f24d47eca826fa726036c1311d6762af7d552df54230e1",
+    "src\\p02_multigrain_timing_cachefix_v1\\core\\final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\run.py": "f7db178b41ba0652616669dd011cc019622417092627e5ac4371e38c9cb3ba26",
+    "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\run_r004.py": "faa0c8787b1d4148ae7b573f831e6a04a2c990833b7985598157c805fe74b7dd",
+    "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\run_r002.py": "850d8c6ea5d50e24fe13ad640442fad464ce50ca9634eea7dd2da638c994afd8"
+  },
+  "hold_pins": {
+    "experiments\\query_decomposition\\unified_rag_eval_v1_20261021\\STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_formal1500_v1_20261021\\STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
+  }
+}

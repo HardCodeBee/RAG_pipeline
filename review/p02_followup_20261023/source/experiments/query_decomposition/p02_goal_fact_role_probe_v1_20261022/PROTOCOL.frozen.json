@@ -1,0 +1,72 @@
+{
+  "id": "p02_goal_fact_role_probe_v1_20261022",
+  "created_utc": "2026-10-21T16:01:10.171936+00:00",
+  "state": "prepared_only_not_authorized",
+  "planned": 27,
+  "conditions": 54,
+  "per_dataset": {
+    "2wiki": 17,
+    "hotpotqa": 10
+  },
+  "arms": [
+    "T0",
+    "T1"
+  ],
+  "goal_cap": 512,
+  "final_cap": 64,
+  "not_native128_reproduction": true,
+  "selection": "Exactly all original challenge27, no new score selection; frozen actual ordinary decomposition and reader routes; not manual60",
+  "T0": "Original G0 historical goal prompt byte-identical, generated afresh at common512 in independent namespace, no historical seed",
+  "T1": "Only append exact S2 ROLE sentence to original G0 main instruction prefix immediately before its unique Original question header; formal G0 has no examples; preserve all original bytes",
+  "ROLE": "Before answering, check that each named entity keeps its stated role in every relation and that the final conclusion preserves the original subject, object, relationship direction, generation and requested attribute, including the distinction between a parent and a grandparent.",
+  "insertion_marker": "\n\nOriginal question:\n",
+  "fixed": "Ordinary QA, decomposition D, goal rewrite/reader packet, final root, all original G0 instructions/input labels/goal rule, model, final packaging; no formatter/retrieval/training/judge",
+  "stage_payload_upper_bound": 108,
+  "stage_upper_bound_meaning": "54 goal plus at most54 final logical payloads before authorized technical retries; complete identical final payloads may share current-run receipts",
+  "previous_G2_reference": "Exposed S0/S2 only historical staged references, no cross-experiment response import; not synchronous full factorial or independent confirmation of format interaction",
+  "ordering": {
+    "seed": 20261022,
+    "rule": "Frozen cases, cyclic alternating T0/T1 arm start;14/13 first-position cases"
+  },
+  "cache": "No seed; same-experiment exact full-payload complete matching-model stop+usage reuse only, no success or algorithm rerolls",
+  "recovery": "Same frozen StrictAsk/NoCapBudget/gate, SDK/HTTP0; maximum5 actual technical attempts including initial across restarts; unknown/retired receipts and liabilities preserved",
+  "terminal": "Reuse frozen fewshot receipt_integrity/algorithm_failure helper: exact requested/returned model plus nonnegative integer usage required. Resolved length/empty/refusal/contentfilter remain immutable0 conditions; goal terminal skips final; missing usage/mismatch/technical unknown held and never zero",
+  "report": "All arms/datasets and planned denominator; complete-only sensitivity, paired F1/EM, tokens/cost; scorer once per dataset; only read-only DB monitoring and local reference join",
+  "cost": "Same endpoint/rates no fixed cap; known paid receipts and unknown reservations retained; no LLM-call-count metric",
+  "public_provenance": "Byte-identical original challenge27 inputs and approved publicsource proofs; no new network or remote-public verification claimed",
+  "execution_gate": "Preparation is not authorization. Root decides after W90/stage review and records decision plus authorization with this exact protocol_sha256.",
+  "new_API_requests_during_preparation": 0,
+  "main_evaluation_remains_paused": true,
+  "pins": {
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/run.py": "40fef66ef6db14dfbde04809bbad1589909dcf091c1a692957b0210c1f74b0f7",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/templates.py": "3fac11415a00c85dc3cddde9e06a8414229b53bb95dea909428d3f8c1288fece",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/PROTOCOL.md": "71bb5b8b1dd944498291c32c6d5054faddad4100b21a75efdad68f6dafbca50a",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/inputs27.frozen.jsonl": "4c31c0e5dad41409c910d4d51ecfebc3cc75c22336fba93d9f99db551a0193bf",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/references27.local.frozen.jsonl": "6c91330ec06d54d861d0cea4830e3c7005779c555591c6635230e80e6e980f82",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/SELECTION.frozen.jsonl": "ce85a1fe99454f23cfa4b4a0b825e30dc8e4e73e89a786f6fb1fc72f4d2662fc",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/PUBLIC_SOURCE_PROOF.jsonl": "fc060229b0b4b9098214e7b3d51d0222cee6e0f4dfed5720a405e66cb9a0d747",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/PUBLIC_BLOB_METADATA.json": "7fed22857f9874d6a7beb21967240fa375c3959def4a5af4559bfd9607ceff1d",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/ORDER.frozen.jsonl": "932b9dd31eeecae651607d58a2de19012f4b0d2fd57e36fbe86b9b7ce266cc7c",
+    "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022/ROLE.frozen.txt": "719e7cace9ece916da90169882f7386636d03676c3515f5bf8f7c62a89ec96db",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/run.py": "fcbb0887b45fc6638e6fb5abe53d2e5883079547f1dd9a9ee8b308c65f34984b",
+    "experiments/query_decomposition/p02_prompt_binding_probe_v1_20261022/shared_runtime.py": "5c6c5c4914e995bce4a995ebb60ff9acb29517c5e5d77118bd2ac2413091b98e",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/core/cache.py": "ffb53f958c60cb7b1cb3854df904f32fea417b3b429525019d1607407bc7f237",
+    "src/p02_multigrain_timing_cachefix_v1/core/llm.py": "58a8a09c951df0151a49b6fc710a298a45cf3d8dad163d1c92ee76ca1e3ffa97",
+    "src/p02_multigrain_timing_cachefix_v1/core/final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/PROTOCOL.frozen.json": "4967bcc76641113b8f3a202ec5d5fd68ff388e8bc18e6b871d829afd73d8453f",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/templates.py": "cc79db0d6bbb10a4702b4b80516c9557d5708590fa265dd89dedbd17ae219268",
+    "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/run.py": "c986b504c502d7116120ea089b175a86946e9c70a04dd4403efbbc2bd3f8519f"
+  },
+  "revision": 2,
+  "previous_unexecuted_prepare": {
+    "directory": "unexecuted_prepare001",
+    "previous_protocol_sha256": "da6c68073666944a0cfe04ac92a22166eee7654e4ab1c8089847b236ec0ffe04",
+    "reason": "Offline first-render contract detected formal G0 has no examples/Actual task; use its unique Original question boundary, never add examples",
+    "new_API_requests": 0,
+    "initial_dryrun_passed": false
+  }
+}

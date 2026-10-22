@@ -1,0 +1,775 @@
+{
+  "base_remote_commit": "561990bf1d6f12aac2f6d953ba63ae3f6ff4cc75",
+  "main_conversation_records": [
+    {
+      "experiment": "p02_noformatter_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "exact_replay_complete90",
+      "summary": "90 historical flows identical; formatter never triggered; no new inference.",
+      "design_path": "experiments/query_decomposition/p02_noformatter_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_noformatter_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_noformatter_quick90_v1_20261021/REPORT.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/01_p02_noformatter_quick90_v1_20261021/01_REPORT.md",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_noformatter_quick90_v1_20261021/REPORT.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_noformatter_quick90_v1_20261021.01.zip"
+      ],
+      "receipt_databases": []
+    },
+    {
+      "experiment": "p02_childprompt_selfcontained_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90",
+      "summary": "Original historical F1 76.6889 -> 74.1003; not promoted.",
+      "design_path": "experiments/query_decomposition/p02_childprompt_selfcontained_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/approved_recovery004/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/02_p02_childprompt_selfcontained_quick90_v1_20261021/01_REPORT.json",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/approved_recovery004/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_childprompt_selfcontained_quick90_v1_20261021.01.zip",
+        "archives/p02_childprompt_selfcontained_quick90_v1_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/approved_recovery004/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/approved_recovery004/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/approved_recovery004/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_selfcontained_quick90_v1_20261021/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_frozen_no_refs_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90",
+      "summary": "Original historical F1 76.6889 -> 74.2443; 2 gains/5 harms.",
+      "design_path": "experiments/query_decomposition/p02_frozen_no_refs_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/automatic_recovery003/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/03_p02_frozen_no_refs_quick90_v1_20261021/01_REPORT.json",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/automatic_recovery003/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_frozen_no_refs_quick90_v1_20261021.01.zip",
+        "archives/p02_frozen_no_refs_quick90_v1_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery001/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery001/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery001/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery002/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery002/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/approved_recovery002/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/automatic_recovery003/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/automatic_recovery003/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/automatic_recovery003/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_frozen_no_refs_quick90_v1_20261021/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_childprompt_minimal4_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90",
+      "summary": "Final continuation completed90; F1 74.6095; old root REPORT is stale incomplete.",
+      "design_path": "experiments/query_decomposition/p02_childprompt_minimal4_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_resume002_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/04_p02_childprompt_minimal4_quick90_v1_20261021/01_REPORT.json",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_resume002_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_childprompt_minimal4_quick90_v1_20261021.01.zip",
+        "archives/p02_childprompt_minimal4_quick90_v1_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_recovery001/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_recovery001/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_recovery001/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_resume002_20261022/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_resume002_20261022/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/approved_resume002_20261022/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_childprompt_minimal4_quick90_v1_20261021/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_three_prompts_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90",
+      "summary": "Joint three prompts F1 71.7079; retained algorithm failure.",
+      "design_path": "experiments/query_decomposition/p02_three_prompts_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/approved_unknown_recovery003/REPORT.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/05_p02_three_prompts_quick90_v1_20261021/01_REPORT.md",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/approved_unknown_recovery003/REPORT.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_three_prompts_quick90_v1_20261021.01.zip",
+        "archives/p02_three_prompts_quick90_v1_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/approved_unknown_recovery003/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/approved_unknown_recovery003/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/approved_unknown_recovery003/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/exact_template_recovery002/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/exact_template_recovery002/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/exact_template_recovery002/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/goal_cap512_single/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/rate_limit_recovery001/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/rate_limit_recovery001/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/rate_limit_recovery001/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_three_prompts_compact_quick90_v2_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90",
+      "summary": "Final continuation completed90; F1 76.0450; old root REPORT is stale incomplete.",
+      "design_path": "experiments/query_decomposition/p02_three_prompts_compact_quick90_v2_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/delegated_recovery003/BUNDLE_COMPARISON.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/06_p02_three_prompts_compact_quick90_v2_20261021/01_BUNDLE_COMPARISON.md",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/delegated_recovery003/BUNDLE_COMPARISON.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_three_prompts_compact_quick90_v2_20261021.01.zip",
+        "archives/p02_three_prompts_compact_quick90_v2_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/bounded_recovery002/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/bounded_recovery002/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/bounded_recovery002/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/continuation001/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/continuation001/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/continuation001/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/delegated_recovery003/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/delegated_recovery003/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_compact_quick90_v2_20261021/delegated_recovery003/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_prompt_minimal_ablation_quick90_v1_20261021",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete2x90",
+      "summary": "Parent-control A/B ablations; cannot directly credit hash symbol.",
+      "design_path": "experiments/query_decomposition/p02_prompt_minimal_ablation_quick90_v1_20261021",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/STAGE_AUDIT.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/07_p02_prompt_minimal_ablation_quick90_v1_20261021/01_STAGE_AUDIT.md",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/STAGE_AUDIT.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_prompt_minimal_ablation_quick90_v1_20261021.01.zip",
+        "archives/p02_prompt_minimal_ablation_quick90_v1_20261021.02.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/A_no_only/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/A_no_only/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/A_no_only/candidate/musique/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/B_no_resolve/candidate/2wiki/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/B_no_resolve/candidate/hotpotqa/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_minimal_ablation_quick90_v1_20261021/B_no_resolve/candidate/musique/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_prompt_binding_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90_candidate_outputs",
+      "summary": "45 historical component controls plus90 candidates; includes no-history controls; fixed reader not full RAG.",
+      "design_path": "experiments/query_decomposition/p02_prompt_binding_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/REPORT.json",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/first_node_followup/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/08_p02_prompt_binding_probe_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/REPORT.json"
+        },
+        {
+          "path": "reports/08_p02_prompt_binding_probe_v1_20261022/02_REPORT.json",
+          "source": "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/first_node_followup/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_prompt_binding_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/checkpoint.sqlite3",
+        "outputs/query_decomposition/hotpot_formal_eval_v1/p02_prompt_binding_probe_v1_20261022/first_node_followup/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_goal_synthesis_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete_pilot15_and_two_controls",
+      "summary": "Fact sentence/long facts/synthesis; separate rewrite-off and final-goal-none controls;15-query interface cohort.",
+      "design_path": "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/manual_review/PILOT_JOINT_REPORT.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/09_p02_goal_synthesis_probe_v1_20261022/01_PILOT_JOINT_REPORT.md",
+          "source": "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/manual_review/PILOT_JOINT_REPORT.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_goal_synthesis_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/final_goal_none/checkpoint.sqlite3",
+        "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/offline_readonly_monitor_contract/pilot15/checkpoint.sqlite3",
+        "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/pilot15/checkpoint.sqlite3",
+        "outputs/query_decomposition/p02_goal_synthesis_probe_v1_20261022/rewrite_off/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_goal_composition_challenge_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete81_conditions",
+      "summary": "27 exposed challenge queries x3 goal conditions; not representative full90.",
+      "design_path": "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_goal_composition_challenge_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_goal_composition_challenge_v1_20261022/challenge27/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/10_p02_goal_composition_challenge_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_goal_composition_challenge_v1_20261022/challenge27/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_goal_composition_challenge_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_goal_composition_challenge_v1_20261022/challenge27/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_ordinary_fewshot_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete90_conditions",
+      "summary": "30 ordinary nodes x3; few-shot reference/entity/descriptive variants, locked semantic review.",
+      "design_path": "experiments/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/11_p02_ordinary_fewshot_probe_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_ordinary_fewshot_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_ordinary_fewshot_probe_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_actual_child_binding_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete45_conditions",
+      "summary": "15 nodes x3 actual-current candidate bindings; fixed reader.",
+      "design_path": "experiments/query_decomposition/p02_actual_child_binding_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_actual_child_binding_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_actual_child_binding_probe_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/12_p02_actual_child_binding_probe_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_actual_child_binding_probe_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_actual_child_binding_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_actual_child_binding_probe_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_final_target_check_fixed90_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete180_conditions",
+      "summary": "90 fixed-prefix final-only pairs; fresh W0 76.1333 vs W1 76.1535; no confirmed semantic gain.",
+      "design_path": "experiments/query_decomposition/p02_final_target_check_fixed90_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_final_target_check_fixed90_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_final_target_check_fixed90_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/13_p02_final_target_check_fixed90_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_final_target_check_fixed90_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_final_target_check_fixed90_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_final_target_check_fixed90_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_goal_scope_role_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete81_conditions",
+      "summary": "27 x3 constraints on synthesis; scoped positive development differences, not overall superiority.",
+      "design_path": "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_goal_scope_role_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_goal_scope_role_probe_v1_20261022/scope27/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/14_p02_goal_scope_role_probe_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_goal_scope_role_probe_v1_20261022/scope27/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_goal_scope_role_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_goal_scope_role_probe_v1_20261022/scope27/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_goal_fact_role_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete54_conditions",
+      "summary": "27 x2 fact/role followup; fixed prefix.",
+      "design_path": "experiments/query_decomposition/p02_goal_fact_role_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/15_p02_goal_fact_role_probe_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_goal_fact_role_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_goal_fact_role_probe_v1_20261022/fact27/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_goal_native_role_fixed90_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete180_conditions",
+      "summary": "90 native-goal role checks; final scored with frozen upstream; not promoted.",
+      "design_path": "experiments/query_decomposition/p02_goal_native_role_fixed90_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_goal_native_role_fixed90_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_goal_native_role_fixed90_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/16_p02_goal_native_role_fixed90_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_goal_native_role_fixed90_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_goal_native_role_fixed90_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_goal_native_role_fixed90_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_ordinary_failure_challenge8_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_conditions",
+      "summary": "8 selected failure nodes x2; targeted instruction check.",
+      "design_path": "experiments/query_decomposition/p02_ordinary_failure_challenge8_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_ordinary_failure_challenge8_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_ordinary_failure_challenge8_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/17_p02_ordinary_failure_challenge8_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_ordinary_failure_challenge8_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_ordinary_failure_challenge8_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_ordinary_failure_challenge8_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_failure8_actual_entity_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete24_conditions",
+      "summary": "8 nodes x3 entity binding alternatives; selection-biased stage probe.",
+      "design_path": "experiments/query_decomposition/p02_failure8_actual_entity_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_failure8_actual_entity_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_failure8_actual_entity_probe_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/18_p02_failure8_actual_entity_probe_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_failure8_actual_entity_probe_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_failure8_actual_entity_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_failure8_actual_entity_probe_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_failure8_actual_target_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_conditions",
+      "summary": "8 nodes x2 explicit target binding; fixed-reader check.",
+      "design_path": "experiments/query_decomposition/p02_failure8_actual_target_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_failure8_actual_target_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_failure8_actual_target_probe_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/19_p02_failure8_actual_target_probe_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_failure8_actual_target_probe_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_failure8_actual_target_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_failure8_actual_target_probe_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_failure8_dynamic_target_fullrag_draft_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_dynamic_flows",
+      "summary": "Despite draft name,8 original queries x2 full dynamic flows actually completed.",
+      "design_path": "experiments/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022",
+      "output_path": "outputs/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/20_p02_failure8_dynamic_target_fullrag_draft_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_failure8_dynamic_target_fullrag_draft_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_failure8_dynamic_target_fullrag_draft_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_live_target_balanced20_dev_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "partial38_of40_held",
+      "summary": "20 query x2 dynamic target study;38 successful,2 provider-held; do not call complete40.",
+      "design_path": "experiments/query_decomposition/p02_live_target_balanced20_dev_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/21_p02_live_target_balanced20_dev_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_live_target_balanced20_dev_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_live_target_balanced20_dev_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_ordinary_scope_input_probe8_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_conditions",
+      "summary": "8 nodes x2 original-question input scope; no expansion.",
+      "design_path": "experiments/query_decomposition/p02_ordinary_scope_input_probe8_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_ordinary_scope_input_probe8_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_ordinary_scope_input_probe8_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/22_p02_ordinary_scope_input_probe8_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_ordinary_scope_input_probe8_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_ordinary_scope_input_probe8_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_ordinary_scope_input_probe8_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_m4_reader_stage_probe8_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_conditions",
+      "summary": "M4 reader evidence-selection stage8 x2.",
+      "design_path": "experiments/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/23_p02_m4_reader_stage_probe8_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_m4_reader_stage_probe8_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_m4_reader_stage_probe8_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_m4_full8_dynamic_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete16_dynamic_flows",
+      "summary": "M4 dynamic full8 x2; selected-failure local gains not generalized.",
+      "design_path": "experiments/query_decomposition/p02_m4_full8_dynamic_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_m4_full8_dynamic_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_m4_full8_dynamic_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/24_p02_m4_full8_dynamic_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_m4_full8_dynamic_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_m4_full8_dynamic_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_m4_full8_dynamic_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_m4_wiki20_dynamic_dev_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete40_dynamic_flows",
+      "summary": "New fixed20 2Wiki all20 paired F1 tied; both85% F1/EM; no promotion.",
+      "design_path": "experiments/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/25_p02_m4_wiki20_dynamic_dev_v1_20261022/01_ROOT_PAIRED_INTERPRETATION.md",
+          "source": "outputs/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022/ROOT_PAIRED_INTERPRETATION.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_m4_wiki20_dynamic_dev_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_m4_wiki20_dynamic_dev_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_shared_context_fixed90_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "closed269_success_1held",
+      "summary": "90 x3 dynamic reset/flat/chat; common89 F1 76.43/69.90/71.59; tokens +82.3/+82.4%.",
+      "design_path": "experiments/query_decomposition/p02_shared_context_fixed90_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_shared_context_fixed90_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_shared_context_fixed90_v1_20261022/ROOT_FINAL_RESULTS.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/26_p02_shared_context_fixed90_v1_20261022/01_ROOT_FINAL_RESULTS.md",
+          "source": "outputs/query_decomposition/p02_shared_context_fixed90_v1_20261022/ROOT_FINAL_RESULTS.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_shared_context_fixed90_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_shared_context_fixed90_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_reference_binding_priority_probe_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "execution_complete152_semantics_partial",
+      "summary": "38 nodes x4 C0/S1/B1/P1; execution all152 success; only initial/subset semantic interpretation established in central status.",
+      "design_path": "experiments/query_decomposition/p02_reference_binding_priority_probe_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022/REPORT.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/27_p02_reference_binding_priority_probe_v1_20261022/01_REPORT.json",
+          "source": "outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022/REPORT.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_reference_binding_priority_probe_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_reference_binding_priority_probe_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_reference_binding_priority_fixed90_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "paused61_of360",
+      "summary": "90 x4 full dynamic reference-factor study paused for CoT priority;299 unstarted.",
+      "design_path": "experiments/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/STATUS.json"
+      ],
+      "reports": [
+        {
+          "path": "reports/28_p02_reference_binding_priority_fixed90_v1_20261022/01_STATUS.json",
+          "source": "outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/STATUS.json"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_reference_binding_priority_fixed90_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/checkpoint.sqlite3",
+        "outputs/query_decomposition/p02_reference_binding_priority_fixed90_v1_20261022/incidents/job160987_logging_failure/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_local_cot_stage38_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "complete152_conditions_37_adjudicated_nodes",
+      "summary": "38 x4;37 truth-adjudicated/1 pending; accepted correctness30/29/31/32; sufficient info N/R both26.",
+      "design_path": "experiments/query_decomposition/p02_local_cot_stage38_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_local_cot_stage38_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_local_cot_stage38_v1_20261022/ROOT_RESULTS.zh.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/29_p02_local_cot_stage38_v1_20261022/01_ROOT_RESULTS.zh.md",
+          "source": "outputs/query_decomposition/p02_local_cot_stage38_v1_20261022/ROOT_RESULTS.zh.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_local_cot_stage38_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_local_cot_stage38_v1_20261022/checkpoint.sqlite3"
+      ]
+    },
+    {
+      "experiment": "p02_local_cot_fixed90_v1_20261022",
+      "conversation_scope": "main_conversation_research",
+      "status": "closed359_success_1held",
+      "summary": "90 x4 dynamic CoT; N128 vs R256 complete90 F1 76.4657->66.9961; common four-arm89; no promotion.",
+      "design_path": "experiments/query_decomposition/p02_local_cot_fixed90_v1_20261022",
+      "output_path": "outputs/query_decomposition/p02_local_cot_fixed90_v1_20261022",
+      "canonical_reports": [
+        "outputs/query_decomposition/p02_local_cot_fixed90_v1_20261022/ROOT_RESULTS.zh.md"
+      ],
+      "reports": [
+        {
+          "path": "reports/30_p02_local_cot_fixed90_v1_20261022/01_ROOT_RESULTS.zh.md",
+          "source": "outputs/query_decomposition/p02_local_cot_fixed90_v1_20261022/ROOT_RESULTS.zh.md"
+        }
+      ],
+      "archive_paths": [
+        "archives/p02_local_cot_fixed90_v1_20261022.01.zip"
+      ],
+      "receipt_databases": [
+        "outputs/query_decomposition/p02_local_cot_fixed90_v1_20261022/checkpoint.sqlite3"
+      ]
+    }
+  ],
+  "offline_information_flow_followup": "outputs/query_decomposition/p02_information_flow_followup_20261022/PRIMARY270_REVIEW_COMPLETION.md",
+  "already_remote_side_experiments": [
+    "p02_result_binding_operator_probe_v1_20261022",
+    "p02_goal_target_transfer_new60_v1_20261022",
+    "p02_goal_sufficiency_retention60_v1_20261022",
+    "p02_goal_fewshot_synthesis_v1_20261022",
+    "p02_goal_fewshot_fixed90_v1_20261022",
+    "p02_prompt_suite_design_v1_20261022",
+    "p02_prompt_suite_r03_stage90_v1_20261022",
+    "p02_goal_repair_r04_fixed90_v1_20261023"
+  ],
+  "already_remote_side_package": "../p02_prompt_research_20261023/README.md",
+  "all_records_are_development_or_diagnostic": true,
+  "no_method_promoted": true
+}

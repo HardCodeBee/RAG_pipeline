@@ -1,0 +1,176 @@
+{
+  "status": "complete",
+  "planned": 45,
+  "resolved": 45,
+  "sections": {
+    "all/R0": {
+      "planned": 15,
+      "resolved": 15,
+      "complete": 15,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 31635,
+      "logical_output_tokens": 247,
+      "logical_attributed_CNY": 0.025802
+    },
+    "all/R1": {
+      "planned": 15,
+      "resolved": 15,
+      "complete": 15,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 32448,
+      "logical_output_tokens": 268,
+      "logical_attributed_CNY": 0.026494399999999998
+    },
+    "all/R2": {
+      "planned": 15,
+      "resolved": 15,
+      "complete": 15,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 32434,
+      "logical_output_tokens": 270,
+      "logical_attributed_CNY": 0.0264872
+    },
+    "direct_named_control/R0": {
+      "planned": 9,
+      "resolved": 9,
+      "complete": 9,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 18263,
+      "logical_output_tokens": 141,
+      "logical_attributed_CNY": 0.0148924
+    },
+    "direct_named_control/R1": {
+      "planned": 9,
+      "resolved": 9,
+      "complete": 9,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 18739,
+      "logical_output_tokens": 154,
+      "logical_attributed_CNY": 0.015299199999999999
+    },
+    "direct_named_control/R2": {
+      "planned": 9,
+      "resolved": 9,
+      "complete": 9,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 18739,
+      "logical_output_tokens": 154,
+      "logical_attributed_CNY": 0.015299199999999999
+    },
+    "descriptive_binding_candidate/R0": {
+      "planned": 6,
+      "resolved": 6,
+      "complete": 6,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 13372,
+      "logical_output_tokens": 106,
+      "logical_attributed_CNY": 0.010909599999999998
+    },
+    "descriptive_binding_candidate/R1": {
+      "planned": 6,
+      "resolved": 6,
+      "complete": 6,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 13709,
+      "logical_output_tokens": 114,
+      "logical_attributed_CNY": 0.011195199999999999
+    },
+    "descriptive_binding_candidate/R2": {
+      "planned": 6,
+      "resolved": 6,
+      "complete": 6,
+      "algorithm_terminal": 0,
+      "logical_input_tokens": 13695,
+      "logical_output_tokens": 116,
+      "logical_attributed_CNY": 0.011188
+    }
+  },
+  "pairs": {
+    "all/R0_to_R1": {
+      "resolved_pairs": 15,
+      "text_changed_ids": [
+        "hotpotqa:5ab7f0b9554299366779405d/ordinary/2",
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3",
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "musique:4hop3__129456_29339_508306_70744/ordinary/5"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "direct_named_control/R0_to_R1": {
+      "resolved_pairs": 9,
+      "text_changed_ids": [
+        "hotpotqa:5ab7f0b9554299366779405d/ordinary/2",
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "descriptive_binding_candidate/R0_to_R1": {
+      "resolved_pairs": 6,
+      "text_changed_ids": [
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "musique:4hop3__129456_29339_508306_70744/ordinary/5"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "all/R1_to_R2": {
+      "resolved_pairs": 15,
+      "text_changed_ids": [
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2"
+      ],
+      "same_actual_receipt_pairs": 9
+    },
+    "direct_named_control/R1_to_R2": {
+      "resolved_pairs": 9,
+      "text_changed_ids": [],
+      "same_actual_receipt_pairs": 9
+    },
+    "descriptive_binding_candidate/R1_to_R2": {
+      "resolved_pairs": 6,
+      "text_changed_ids": [
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "hotpotqa:5ab4e48655429942dd415f9c/ordinary/2"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "all/R0_to_R2": {
+      "resolved_pairs": 15,
+      "text_changed_ids": [
+        "hotpotqa:5ab7f0b9554299366779405d/ordinary/2",
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "musique:4hop3__129456_29339_508306_70744/ordinary/5"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "direct_named_control/R0_to_R2": {
+      "resolved_pairs": 9,
+      "text_changed_ids": [
+        "hotpotqa:5ab7f0b9554299366779405d/ordinary/2",
+        "musique:4hop3__316459_41402_157761_13584/ordinary/3"
+      ],
+      "same_actual_receipt_pairs": 0
+    },
+    "descriptive_binding_candidate/R0_to_R2": {
+      "resolved_pairs": 6,
+      "text_changed_ids": [
+        "hotpotqa:5ab8c3c65542991b5579effd/ordinary/2",
+        "musique:3hop1__106042_64399_53006/ordinary/3",
+        "musique:4hop3__129456_29339_508306_70744/ordinary/5"
+      ],
+      "same_actual_receipt_pairs": 0
+    }
+  },
+  "actual_new_ledger_CNY": 0.0376824,
+  "unknown_reserved_CNY": 0,
+  "R0_attributed_cost_already_charged_elsewhere": 0.025802,
+  "reused_control_receipts_never_counted_in_new_actual_fees": true,
+  "held": [],
+  "retired_receipts_preserved": [],
+  "logical_conditions_are_not_independent_draws": true,
+  "component_results_not_complete_RAG_F1": true,
+  "main_evaluation_remains_paused": true
+}

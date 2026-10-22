@@ -1,0 +1,957 @@
+{
+  "archive_version": 1,
+  "created_utc": "2026-10-20T13:38:35.866834+00:00",
+  "purpose": "保留最近简化方案供未来消融；当前仅采用timing_only，其他均保留而不删除、不重新评估、不自动升级。",
+  "write_scope": "仅新增本SIMPLIFICATION_ARCHIVE.json及.txt；未改旧源或现有结果；无API/检索。",
+  "cohort": {
+    "planned": 300,
+    "per_dataset": {
+      "hotpotqa": 100,
+      "2wiki": 100,
+      "musique": 100
+    },
+    "runtime_sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+    "reference_sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+    "scope": "已曝光开发300，不是独立未见测试集"
+  },
+  "metric_policy": {
+    "metric": "Native final Answer F1, 2Wiki aliases/demonyms, MuSiQue aliases",
+    "range": "0..1",
+    "algorithm_failure": "计0且保留分母",
+    "infrastructure_missing": "不计0，保留缺失/上下界；本表各版本最终均scorable300",
+    "no_noninferiority_margin": "用户未指定数值界限；不以CI跨0证明非劣"
+  },
+  "cost_policy": {
+    "frozen_rates_cny_per_token": {
+      "input": 8e-07,
+      "output": 2e-06
+    },
+    "cold_generation_cost": "把完整逻辑流程所有生成按相同冻结费率计价，含成功缓存回放；不含检索/分解硬件成本。",
+    "actual_new_expense": "对应实验报告生成时的本namespace全部物理请求已返回用量估计+未知预留，包含重试；不重复收取历史种子费用。",
+    "billing": "官方账单未核实，未知预留不是已确认消费；全局账本有其他授权任务持续写入，不能将不同时间全局快照相加。"
+  },
+  "variants": [
+    {
+      "version": "timing_only",
+      "direct_parent": "p02_role_headers",
+      "adoption_status": "唯一已采用的方法简化",
+      "method_changes": [
+        "将原query Top10获取推迟到附加goal阶段，去掉开始时重复get；其余prompt、问答、改写、goal预答、最终回答及10篇合并均不变。"
+      ],
+      "controlled_interpretation": "干净单因素等价简化：300题887节点、1774完整模型payload/原文/输出全部精确回放一致；不等于证明少了一次物理全索引搜索。",
+      "F1": {
+        "overall": 0.7072417314845074,
+        "by_dataset": {
+          "hotpotqa": 0.7899083694083693,
+          "2wiki": 0.9334738562091504,
+          "musique": 0.3983429688360029
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1774,
+        "input_tokens": 2837258,
+        "output_tokens": 28223,
+        "cold_generation_cny": 2.3262524000000027
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 0,
+        "known_returned_usage_cny": 0,
+        "unknown_reserved_cny": 0,
+        "unknown_requests": 0,
+        "occupied_cny": 0
+      },
+      "experiment_root": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7899083694083693,
+          "usage": {
+            "logical_generation_calls": 510,
+            "input_tokens": 739189,
+            "output_tokens": 8610,
+            "cold_generation_cny": 0.6085711999999996
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 0,
+            "known_returned_usage_cny": 0,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.9334738562091504,
+          "usage": {
+            "logical_generation_calls": 648,
+            "input_tokens": 1089218,
+            "output_tokens": 10290,
+            "cold_generation_cny": 0.8919543999999995
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 0,
+            "known_returned_usage_cny": 0,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.3983429688360029,
+          "usage": {
+            "logical_generation_calls": 616,
+            "input_tokens": 1008851,
+            "output_tokens": 9323,
+            "cold_generation_cny": 0.8257267999999999
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 0,
+            "known_returned_usage_cny": 0,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0
+          }
+        }
+      },
+      "limits": [
+        "本项是精确离线复现，未新增模型推理；完整流程冷成本仍计1774次生成。"
+      ]
+    },
+    {
+      "version": "union20_legacy",
+      "direct_parent": "timing_only",
+      "adoption_status": "保留供未来消融，未采用",
+      "method_changes": [
+        "普通节点和goal reader将原始路/改写路各Top10按名次原始优先交替、ID去重，保留全部并集<=20；保留goal预答及最终回答；最终reader仍为原query Top10+辅助问答。"
+      ],
+      "controlled_interpretation": "设计上只改reader保留集合；旧执行未完整优先复用全部canonical ordinary/rewrite回执，相同输入发生重新生成，和原p02比较有响应波动混杂。",
+      "F1": {
+        "overall": 0.7031243481968344,
+        "by_dataset": {
+          "hotpotqa": 0.7828131313131311,
+          "2wiki": 0.9228548085901026,
+          "musique": 0.4037051046872692
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1774,
+        "input_tokens": 3311231,
+        "output_tokens": 28456,
+        "cold_generation_cny": 2.7058968
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 744,
+        "known_returned_usage_cny": 1.4284244000000001,
+        "unknown_reserved_cny": 0.24303279999999997,
+        "unknown_requests": 27,
+        "occupied_cny": 1.6714572
+      },
+      "experiment_root": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7828131313131311,
+          "usage": {
+            "logical_generation_calls": 510,
+            "input_tokens": 818448,
+            "output_tokens": 8687,
+            "cold_generation_cny": 0.6721324
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 193,
+            "known_returned_usage_cny": 0.2996788000000001,
+            "unknown_reserved_cny": 0.07211039999999999,
+            "unknown_requests": 9,
+            "occupied_cny": 0.37178920000000004
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.9228548085901026,
+          "usage": {
+            "logical_generation_calls": 648,
+            "input_tokens": 1281520,
+            "output_tokens": 10342,
+            "cold_generation_cny": 1.0458999999999998
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 270,
+            "known_returned_usage_cny": 0.5600004000000006,
+            "unknown_reserved_cny": 0.024503999999999998,
+            "unknown_requests": 2,
+            "occupied_cny": 0.5845044000000006
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.4037051046872692,
+          "usage": {
+            "logical_generation_calls": 616,
+            "input_tokens": 1211263,
+            "output_tokens": 9427,
+            "cold_generation_cny": 0.9878644
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 281,
+            "known_returned_usage_cny": 0.5687451999999995,
+            "unknown_reserved_cny": 0.14641839999999998,
+            "unknown_requests": 16,
+            "occupied_cny": 0.7151635999999995
+          }
+        }
+      },
+      "limits": [
+        "旧结果保留，不能用它取代修复后的union20受控对照。",
+        "缓存修复后14题节点/提示变化、11题最终prompt变化、2题最终预测变化；native F1由70.3124348%变为70.3600539%。"
+      ]
+    },
+    {
+      "version": "discount20",
+      "direct_parent": "union20_legacy",
+      "adoption_status": "保留供未来消融，未采用",
+      "method_changes": [
+        "相对旧union20保留相同完整并集<=20，仅以两路sum(1/log2(rank+1))排序；tie按最佳rank、原始rank、doc_id；不是只取前10。"
+      ],
+      "controlled_interpretation": "相对旧union20的设计单因素为文档排序；本次离线检查1481个共享完整payload的原始回答无差异。仍属于旧执行缓存世代，未在cachefix执行器重评。",
+      "F1": {
+        "overall": 0.7002507732662419,
+        "by_dataset": {
+          "hotpotqa": 0.7940858585858583,
+          "2wiki": 0.9111881419234361,
+          "musique": 0.3954783192894311
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1774,
+        "input_tokens": 3308282,
+        "output_tokens": 28680,
+        "cold_generation_cny": 2.7039855999999998
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 346,
+        "known_returned_usage_cny": 0.7153827999999999,
+        "unknown_reserved_cny": 0.1664216,
+        "unknown_requests": 16,
+        "occupied_cny": 0.8818043999999998
+      },
+      "experiment_root": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7940858585858583,
+          "usage": {
+            "logical_generation_calls": 510,
+            "input_tokens": 818201,
+            "output_tokens": 8664,
+            "cold_generation_cny": 0.6718888
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 68,
+            "known_returned_usage_cny": 0.12258759999999999,
+            "unknown_reserved_cny": 0.0355608,
+            "unknown_requests": 4,
+            "occupied_cny": 0.1581484
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.9111881419234361,
+          "usage": {
+            "logical_generation_calls": 648,
+            "input_tokens": 1281264,
+            "output_tokens": 10354,
+            "cold_generation_cny": 1.0457192
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 54,
+            "known_returned_usage_cny": 0.13538400000000006,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0.13538400000000006
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.3954783192894311,
+          "usage": {
+            "logical_generation_calls": 616,
+            "input_tokens": 1208817,
+            "output_tokens": 9662,
+            "cold_generation_cny": 0.9863776
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 224,
+            "known_returned_usage_cny": 0.45741119999999985,
+            "unknown_reserved_cny": 0.1308608,
+            "unknown_requests": 12,
+            "occupied_cny": 0.5882719999999999
+          }
+        }
+      },
+      "limits": [
+        "只能相对其直接父旧union20解释排序改动；不能换用cachefix union20作为该旧实验的直接父。",
+        "两路并集/次序变化会自然影响后继答案、改写和检索轨迹，不能用固定旧答案回放冒充新下游F1。"
+      ]
+    },
+    {
+      "version": "single_final",
+      "direct_parent": "discount20",
+      "adoption_status": "保留供未来消融，未采用",
+      "method_changes": [
+        "保留原query goal的改写/双路检索，但取消附加goal事实回答；普通子问答继续作为辅助。",
+        "最终reader从原query单路Top10改为goal双路完整discount并集<=20；辅助材料去掉goal结论段并改为仅中间问答。",
+        "代码另含仅本方案启用的原query完全相同support去重；300题实际0次触发。"
+      ],
+      "controlled_interpretation": "联合改动：删goal预答、改变最终原文集合、改变辅助段职责同时发生，不能称为只删一次goal调用的纯消融。共享1173个完整payload原始回答无差异，但不消除该结构bundle。",
+      "F1": {
+        "overall": 0.6767614237614237,
+        "by_dataset": {
+          "hotpotqa": 0.7447857142857139,
+          "2wiki": 0.8951717171717172,
+          "musique": 0.3903268398268398
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1474,
+        "input_tokens": 2751306,
+        "output_tokens": 19837,
+        "cold_generation_cny": 2.2407188000000002
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 319,
+        "known_returned_usage_cny": 0.8308136,
+        "unknown_reserved_cny": 0.23481519999999997,
+        "unknown_requests": 19,
+        "occupied_cny": 1.0656288
+      },
+      "experiment_root": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7447857142857139,
+          "usage": {
+            "logical_generation_calls": 410,
+            "input_tokens": 658412,
+            "output_tokens": 5874,
+            "cold_generation_cny": 0.5384776
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 103,
+            "known_returned_usage_cny": 0.23438000000000006,
+            "unknown_reserved_cny": 0.0281528,
+            "unknown_requests": 3,
+            "occupied_cny": 0.26253280000000007
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.8951717171717172,
+          "usage": {
+            "logical_generation_calls": 548,
+            "input_tokens": 1081211,
+            "output_tokens": 7332,
+            "cold_generation_cny": 0.8796328
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 103,
+            "known_returned_usage_cny": 0.29175399999999996,
+            "unknown_reserved_cny": 0.03648,
+            "unknown_requests": 3,
+            "occupied_cny": 0.32823399999999997
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.3903268398268398,
+          "usage": {
+            "logical_generation_calls": 516,
+            "input_tokens": 1011683,
+            "output_tokens": 6631,
+            "cold_generation_cny": 0.8226083999999999
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 113,
+            "known_returned_usage_cny": 0.30467959999999994,
+            "unknown_reserved_cny": 0.17018239999999998,
+            "unknown_requests": 13,
+            "occupied_cny": 0.4748619999999999
+          }
+        }
+      },
+      "limits": [
+        "与terminal_goal不同：single_final删除goal预答并保留原最终4-shot/P1 reader；terminal_goal保留goal但替换输出契约并删除最终reader。"
+      ]
+    },
+    {
+      "version": "union20_cachefix",
+      "direct_parent": "timing_only",
+      "adoption_status": "保留供未来消融，未采用",
+      "method_changes": [
+        "与旧union20算法完全相同：原始优先交替、ID去重、全部并集<=20。",
+        "基础设施修复：canonical p02/B0的完整payload成功回执全局最高优先级；固定3265历史成功输入索引；已有成功输入不得重新付费；改前缀后完整串行重算。"
+      ],
+      "controlled_interpretation": "干净的受控方法对照：同一新namespace实际重算timing_only与union20，唯一算法差异为reader Top10截断/完整<=20；同输入保持同响应，不读取旧整case当新结果。",
+      "F1": {
+        "overall": 0.7036005386730249,
+        "by_dataset": {
+          "hotpotqa": 0.7842417027417027,
+          "2wiki": 0.9228548085901026,
+          "musique": 0.4037051046872692
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1774,
+        "input_tokens": 3310428,
+        "output_tokens": 28484,
+        "cold_generation_cny": 2.7053104000000014
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 16,
+        "known_returned_usage_cny": 0.03549800000000001,
+        "unknown_reserved_cny": 0,
+        "unknown_requests": 0,
+        "occupied_cny": 0.03549800000000001
+      },
+      "experiment_root": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7842417027417027,
+          "usage": {
+            "logical_generation_calls": 510,
+            "input_tokens": 817701,
+            "output_tokens": 8721,
+            "cold_generation_cny": 0.6716027999999998
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 9,
+            "known_returned_usage_cny": 0.016705199999999996,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0.016705199999999996
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.9228548085901026,
+          "usage": {
+            "logical_generation_calls": 648,
+            "input_tokens": 1281464,
+            "output_tokens": 10336,
+            "cold_generation_cny": 1.0458431999999998
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 7,
+            "known_returned_usage_cny": 0.018792800000000002,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0.018792800000000002
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.4037051046872692,
+          "usage": {
+            "logical_generation_calls": 616,
+            "input_tokens": 1211263,
+            "output_tokens": 9427,
+            "cold_generation_cny": 0.9878644
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 0,
+            "known_returned_usage_cny": 0,
+            "unknown_reserved_cny": 0,
+            "unknown_requests": 0,
+            "occupied_cny": 0
+          }
+        }
+      },
+      "limits": [
+        "这是canonical缓存耦合的开发300受控对照，不是全新独立推理或未曝光测试。",
+        "不能把历史discount20/single_final/terminal_goal的父输入静默改成此版本；需另行重新串行评估。",
+        "总体差值-0.3641193个百分点，95%配对区间[-2.2851459,+1.4428676]；区间跨零不证明等价或非劣。"
+      ]
+    },
+    {
+      "version": "terminal_goal",
+      "direct_parent": "union20_legacy",
+      "adoption_status": "保留供未来消融，未采用",
+      "method_changes": [
+        "完整复用旧union20普通节点与回执、goal改写及goal reader并集。",
+        "goal一次生成两行Conclusion（完整事实句）和Final answer（原query短答），程序严格解析短答；删除legacy/final和终点goal formatter。",
+        "改变goal输出要求并要求stop且严格两行，max128不变；原最终4-shot/P1 reader不再执行。goal renderer实际0-shot。"
+      ],
+      "controlled_interpretation": "上游精确固定，但终点为联合改动：新多输出契约/严格解析/删除最终reader同时发生；不是原goal回答不变而单独删final的纯消融。",
+      "F1": {
+        "overall": 0.6778709422761149,
+        "by_dataset": {
+          "hotpotqa": 0.7281984126984125,
+          "2wiki": 0.9270433455433456,
+          "musique": 0.37837106858658587
+        }
+      },
+      "planned": 300,
+      "scorable": 300,
+      "missing": 0,
+      "dataset_counts": {
+        "hotpotqa": 100,
+        "2wiki": 100,
+        "musique": 100
+      },
+      "logical_full_flow_usage": {
+        "logical_generation_calls": 1474,
+        "input_tokens": 2526503,
+        "output_tokens": 33730,
+        "cold_generation_cny": 2.088662400000001
+      },
+      "actual_new_expense_snapshot": {
+        "physical_requests": 308,
+        "known_returned_usage_cny": 0.6784243999999986,
+        "unknown_reserved_cny": 0.06916159999999999,
+        "unknown_requests": 8,
+        "occupied_cny": 0.7475859999999985
+      },
+      "experiment_root": "experiments\\query_decomposition\\terminal_goal_v1_20261020",
+      "output_root": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020",
+      "by_dataset": {
+        "hotpotqa": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.7281984126984125,
+          "statuses": {
+            "success": 100
+          },
+          "usage": {
+            "logical_generation_calls": 410,
+            "input_tokens": 582741,
+            "output_tokens": 10037,
+            "cold_generation_cny": 0.48626680000000005
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 104,
+            "known_returned_usage_cny": 0.1818324,
+            "unknown_reserved_cny": 0.030828,
+            "unknown_requests": 4,
+            "occupied_cny": 0.2126604
+          }
+        },
+        "2wiki": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.9270433455433456,
+          "statuses": {
+            "success": 98,
+            "algorithm_failure": 2
+          },
+          "usage": {
+            "logical_generation_calls": 548,
+            "input_tokens": 1005133,
+            "output_tokens": 12404,
+            "cold_generation_cny": 0.8289143999999997
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 103,
+            "known_returned_usage_cny": 0.24102559999999998,
+            "unknown_reserved_cny": 0.027911199999999997,
+            "unknown_requests": 3,
+            "occupied_cny": 0.2689368
+          }
+        },
+        "musique": {
+          "planned": 100,
+          "scorable": 100,
+          "F1": 0.37837106858658587,
+          "statuses": {
+            "success": 99,
+            "algorithm_failure": 1
+          },
+          "usage": {
+            "logical_generation_calls": 516,
+            "input_tokens": 938629,
+            "output_tokens": 11289,
+            "cold_generation_cny": 0.7734812000000001
+          },
+          "actual_new_expense_snapshot": {
+            "physical_requests": 101,
+            "known_returned_usage_cny": 0.2555664000000002,
+            "unknown_reserved_cny": 0.010422399999999998,
+            "unknown_requests": 1,
+            "occupied_cny": 0.2659888000000002
+          }
+        }
+      },
+      "limits": [
+        "297成功+3算法length失败仍计300分母；3个截断不得静默提取其部分Final answer。",
+        "3算法失败的模型请求均已返回，用量与成本计入1474逻辑生成；8次未知请求预留不等于8题缺失。",
+        "直接父是UNION_SOURCES.frozen.json固定的旧union20 70.3124348%，不能更换为cachefix union20 70.3600539%。"
+      ]
+    }
+  ],
+  "minimal_hashed_evidence": [
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\PROTOCOL.frozen.json",
+      "sha256": "722749b11fd8335f64311ac0f0eb392b6f4d13dbcf4249252994e9357ae02960",
+      "purpose": "旧三组方法定义、模型/原文资源及source-pins闭包"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\pipeline.py",
+      "sha256": "8ffd74da8b0db0029c17c09ca56bb58fb650bab480955dc36d701531647f95e2",
+      "purpose": "timing/union/discount/single核心实际算法与prompt输入组合"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\INFRA_CACHE_V002.frozen.json",
+      "sha256": "a744fb978d235175b2037019ea46687f690f19b370ce73e863938ed899fecd60",
+      "purpose": "旧执行缓存基础设施修订记录"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\INFRA_RECOVERY_V003.frozen.json",
+      "sha256": "73cbbe66946a79d701678f54534ae56ce9b89bd68cf39db690322c2e896c1d4b",
+      "purpose": "旧缺失恢复轮次冻结规则"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\DECISIONS.jsonl",
+      "sha256": "9acd59dd5dac5dd2f2f8d13845ffc07f546b2be05b8e17ccb00072a8986806ce",
+      "purpose": "旧变动与执行选择记录"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\runtime300.frozen.jsonl",
+      "sha256": "4f715f977687f950497bef623d135591e9ecf077ab474a488f2302c2b7fdd79f",
+      "purpose": "共享300个query/R02分解；每数据集100"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\references300.local.frozen.jsonl",
+      "sha256": "54e1c719cf4ecf4cca231576922dcfd36c0486edabe81de8ce1f45b78e4ff3cc",
+      "purpose": "共享native F1离线评分参考；禁止进入执行"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020\\BASELINE_SOURCES.frozen.json",
+      "sha256": "9ce0071c2e4c37bb64854bd490c75d85f6c558b92d348e1985f34caa55f2e303",
+      "purpose": "原p02源case路径与SHA绑定"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\OFFLINE_AUDIT.json",
+      "sha256": "16c2734d2d19b394cce8679a4983b11cfd68ac689093bb1a6b1197e9d324d55e",
+      "purpose": "原300精确回放审计结论"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\OFFLINE_AUDIT.details.jsonl",
+      "sha256": "900a2959f2737a56b5711b5e5ea5d4c667d5a47aa2970549260524d06a1eb59e",
+      "purpose": "1774 canonical stage/payload/source/rid回执绑定"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\REPORT.json",
+      "sha256": "1ef4eb4445305b3321a5754292fe12d34d3803d8ceba77519532bdf46c72c0e4",
+      "purpose": "旧完整300/分DS F1、逻辑tokens与实际费用快照"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\PAIRED_DETAILS.jsonl",
+      "sha256": "77fd10a015280678a626046ff3a8e8d090aa75032f6e2dddbb1cd2dc798dfbd6",
+      "purpose": "旧逐题配对F1及usage"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\reports\\adoption300\\INDEPENDENT_VERIFICATION.json",
+      "sha256": "1a1d0e2af54ed4a5869b599cb88d8d680b85eb0eda6ec71f9ffa31002267c316",
+      "purpose": "旧三组独立最终核验"
+    },
+    {
+      "path": "experiments\\query_decomposition\\terminal_goal_v1_20261020\\PROTOCOL.frozen.json",
+      "sha256": "819b59baed70ce1d05939eb495de1aa4d31e031870e1abed78dfd7652bb329f0",
+      "purpose": "terminal_goal输出/解析/失败/预算协议"
+    },
+    {
+      "path": "experiments\\query_decomposition\\terminal_goal_v1_20261020\\candidate.py",
+      "sha256": "6dcc496b47ea7de42cd603e1e04ad5bcb8d325f56dee2a5bf9c207dc8b1e38c6",
+      "purpose": "精确两行prompt变换及机械parse"
+    },
+    {
+      "path": "experiments\\query_decomposition\\terminal_goal_v1_20261020\\run.py",
+      "sha256": "1b68159eb2a0411f4be87a03acc0380418c0304a8c77aa00657d9665779b845c",
+      "purpose": "旧prefix复用与新终点执行实现"
+    },
+    {
+      "path": "experiments\\query_decomposition\\terminal_goal_v1_20261020\\UNION_SOURCES.frozen.json",
+      "sha256": "45933fd4993c577d4ffee27fcc386f45bb4de4399e83f100ec2d527fc4780138",
+      "purpose": "300旧union父case固定路径与SHA"
+    },
+    {
+      "path": "experiments\\query_decomposition\\terminal_goal_v1_20261020\\DECISIONS.jsonl",
+      "sha256": "c29f64dca2346244f2ea269a34460e2aa4d0de7cd3d1b8352262c3890ac462da",
+      "purpose": "terminal执行与重试记录"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\reports\\REPORT.json",
+      "sha256": "75eb6e5dadaf6599521384f3ad3c4cf58eb8884bed722bf790ec0c11976f030f",
+      "purpose": "terminal完整300/分DS/F1与冷热成本"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\reports\\PAIRED_DETAILS.jsonl",
+      "sha256": "4e62c36294bfd3b1b9457888cb658fdf1686fc41c3f19981f0ce787772a062b6",
+      "purpose": "terminal逐题结果及prefix/cost核对"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\reports\\FINAL_VERIFICATION.json",
+      "sha256": "d55e5364e61094e6c3b5e702d23eb7b56289d89d854be65f5029fe3905b08767",
+      "purpose": "terminal独立评分/解析/回执最终核验"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\PROTOCOL.frozen.json",
+      "sha256": "04e95b9b924c1553e5337ab72ce73594e15e8eac719f3069f82b37511e4a76ed",
+      "purpose": "canonical缓存修复受控比较冻结协议与source闭包"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\cache.py",
+      "sha256": "f50768cf3ceae6feba8314c866109074f50200af64987664eca6fe0cda857082",
+      "purpose": "canonical-first exact全payload选择，不按答案质量选回执"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\run.py",
+      "sha256": "666c3189536abbcb2d7b5c3ae096521df5c2738c5fa25e9fd7c28b283b16c325",
+      "purpose": "已有成功输入不得重新提交、缺失only重算及预算控制"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\adapter.py",
+      "sha256": "cc86c35437e866532f66ee53e1d9e6100170056435bd877f2be4d9809d0caa6b",
+      "purpose": "原始路packet及冻结全索引检索资源校验"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\HISTORICAL_SUCCESS_INDEX.frozen.json",
+      "sha256": "99125dfaae6aa2d8dd51f43ebe8335ac15eb7d60963e8ed5b0fc6d44cc68ac43",
+      "purpose": "3265初始成功输入/rid/result绑定"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\DECISIONS.jsonl",
+      "sha256": "fb06fd123b65275d30a402eee9062810361b2b86aa2a7d433246a8bf090606db",
+      "purpose": "cachefix执行过程与选择记录"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\PREFLIGHT.json",
+      "sha256": "7efc5fc5ce4f1512f32ebc689851cdf011ab959377727f67dc815d8f825da700",
+      "purpose": "600条精确缓存物化与10题真实新输入边界"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\OFFLINE_AUDIT.json",
+      "sha256": "379d52007be3a44434fbda92c74416bc04c95998bef6929b36c710e07b479fd1",
+      "purpose": "新baseline300/1774完整payload精确复现审计"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\reports\\REPORT.json",
+      "sha256": "d7952a4d461cdda1237b0856e8e1259772be7f915e7c29f878e944fdec6abbfc",
+      "purpose": "修复后两组完整300受控F1与成本"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\reports\\PAIRED_DETAILS.jsonl",
+      "sha256": "aac8fe3134e40740462c1b476d90b3cc384bb97caf2ba80d37570710170ad3b1",
+      "purpose": "修复后逐题结果及tokens/cost"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\reports\\FINAL_VERIFICATION.json",
+      "sha256": "a1987106fab79e590f154d99ad1edc38583045efe2b7b17655ea1553fda18d34",
+      "purpose": "完整600逐轨迹/SQL/缓存/预算独立最终核验"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\reports\\CACHE_REPAIR_CASES.json",
+      "sha256": "0b54943bdba86f071a762b7817bbd02ec19e7e3f978a504a1a7f44c38442bfdd",
+      "purpose": "旧union与修复union的14轨迹/2预测差异"
+    },
+    {
+      "path": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021\\CACHE_EXECUTOR_SELECTED.user_20261021.frozen.json",
+      "sha256": "96f8b42af8ae924e1dabebcebc1afa0bd85a52f19abb1acc26a7f43696ac72ad",
+      "purpose": "当前采用timing_only与严格缓存基础设施；union仍未采用"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_simplification_review_20261020\\union_audit.json",
+      "sha256": "8343966acb6d3cebc07b209a12c4952b463df77df15eea045735a7534ed3ff13",
+      "purpose": "旧union失败/缓存混杂具体审阅"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_simplification_review_20261020\\single_final_audit.json",
+      "sha256": "58716e9978d7d43fe492b7bdb6787c3f67c9e3a145d4aaff98f23fc01da189cd",
+      "purpose": "single_final失败事实与输入差异审阅"
+    },
+    {
+      "path": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_simplification_review_20261020\\terminal_audit.json",
+      "sha256": "cf34b458de4a0ca11fcf54bba3c8d02fc4c2bd26a4c9df70fb2038b26398395e",
+      "purpose": "terminal 30下降题人工原因与因果限制审阅"
+    }
+  ],
+  "raw_storage_to_retain": [
+    {
+      "experiment_root": "experiments\\query_decomposition\\p02_flow_simplify_v1_20261020",
+      "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds/r*/cases/*/*/*.json",
+      "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+      "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\retrieval/*/checkpoint.sqlite3",
+      "retain_additional_roots": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\phases",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds"
+      ],
+      "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+    },
+    {
+      "experiment_root": "experiments\\query_decomposition\\terminal_goal_v1_20261020",
+      "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds/r*/cases/*/*/*.json",
+      "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+      "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\retrieval/*/checkpoint.sqlite3",
+      "retain_additional_roots": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\phases",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds"
+      ],
+      "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+    },
+    {
+      "experiment_root": "experiments\\query_decomposition\\p02_merge_cachefix_v1_20261021",
+      "raw_cases_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds/r*/cases/*/*/*.json",
+      "generation_receipt_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds/r*/methods/*/*/checkpoint.sqlite3",
+      "retrieval_sqlite_glob": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\retrieval/*/checkpoint.sqlite3",
+      "retain_additional_roots": [
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\phases",
+        "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_merge_cachefix_v1_20261021\\rounds"
+      ],
+      "why": "保留原始请求、响应、真实上下文、失败和重试轮次；只保留最终答案不足以复核。"
+    }
+  ],
+  "external_success_receipt_databases_to_retain": [
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\methods\\2wiki\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\methods\\hotpotqa\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\extension200_p02_role_headers_r001\\methods\\musique\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\methods\\2wiki\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\methods\\hotpotqa\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_strategy_round2_v1_20261020\\rounds\\pilot100_p02_role_headers_r001\\methods\\musique\\p02_role_headers\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\methods\\2wiki\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\methods\\hotpotqa\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\extension200_g01_goal_consistency_r001\\methods\\musique\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\methods\\2wiki\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\methods\\hotpotqa\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\b0_targeted_optimization_v2_20261020\\rounds\\pilot100_network_recovery1_g01_goal_consistency_r001\\methods\\musique\\g01_goal_consistency\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\methods\\2wiki\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\methods\\hotpotqa\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\methods\\musique\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\retry_rounds\\r001\\methods\\musique\\s02_child4\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\methods\\2wiki\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\methods\\hotpotqa\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\complete_pipeline_comparison_v1_20261020\\run_v001\\methods\\musique\\B0_legacy_multigrain_R02\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_corrected_same60_v1_20261019\\run_v001\\api\\hotpotqa\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_corrected_same60_v1_20261019\\run_v001\\api\\musique\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\run_v001\\api\\2wiki\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\run_v001\\api\\hotpotqa\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\decomposition_error_expand60_v1_20261019\\run_v001\\api\\musique\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\2wiki\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\2wiki\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\2wiki\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\hotpotqa\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\hotpotqa\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\hotpotqa\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\musique\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\musique\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r000\\methods\\musique\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\2wiki\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\2wiki\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\hotpotqa\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\hotpotqa\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\hotpotqa\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\musique\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\musique\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r001\\methods\\musique\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\hotpotqa\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\hotpotqa\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\hotpotqa\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\musique\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\musique\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r002\\methods\\musique\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r003\\methods\\hotpotqa\\discount20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r003\\methods\\hotpotqa\\single_final\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_flow_simplify_v1_20261020\\rounds\\r003\\methods\\musique\\union20\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\methods\\2wiki\\terminal_goal\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\methods\\hotpotqa\\terminal_goal\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r000\\methods\\musique\\terminal_goal\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r001\\methods\\2wiki\\terminal_goal\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r001\\methods\\hotpotqa\\terminal_goal\\checkpoint.sqlite3",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\terminal_goal_v1_20261020\\rounds\\r001\\methods\\musique\\terminal_goal\\checkpoint.sqlite3"
+  ],
+  "shared_budget_sqlite_to_retain": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\budget.sqlite3",
+  "dependency_retention": "协议source_pins引用的共享renderers/examples、原p02 cases及其source_prefix/B0 packets均需保留；不复制原始大库，也不删除任何现有文件。SQLite用冻结payload/result绑定复核，不以持续写入的全局DB二进制SHA当不可变证据。",
+  "additional_offline_parent_checks": {
+    "discount20_vs_union20_legacy": {
+      "shared_unique_complete_payloads": 1481,
+      "different_response_payloads": 0
+    },
+    "single_final_vs_discount20": {
+      "shared_unique_complete_payloads": 1173,
+      "different_response_payloads": 0
+    },
+    "single_final_exact_support_filter": {
+      "cases_triggered": 0,
+      "steps_filtered": 0
+    },
+    "method": "300个实际成功case逐call完整payload键交集，读取原source SQLite原始answer比较；不做API调用。"
+  },
+  "future_ablation_notes": [
+    "只把相同输入的成功回执用于缓存；改变prompt或历史后必须重新串行执行后续环节，不能拼接旧下游答案。",
+    "重新测试排序应以新cachefix timing/union父版本为对照，并明确这是新实验；旧discount指标不能静默换父。",
+    "如欲隔离goal预答的效果，需要固定最终reader材料及prompt角色，只删相应调用；现有single_final并未隔离全部这些因素。",
+    "如欲隔离最终reader的作用，需要保留旧goal输出或单独对照新两行契约；现有terminal_goal同时改变输出与解析，3例截断来自max128下双输出。",
+    "不将单题已选错误分析或当前开发300结果直接写成外部泛化/正式SOTA证据。"
+  ],
+  "new_API_calls": 0,
+  "new_index_searches": 0
+}

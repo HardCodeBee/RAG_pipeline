@@ -1,0 +1,95 @@
+{
+  "utc": "2026-10-21T16:31:17.643406+00:00",
+  "scope": "Selected8 ordinaryQA mechanism development challenge, not completeRAG or population accuracy",
+  "status": "all_conditions_terminal",
+  "planned_nodes": 8,
+  "planned_conditions": 16,
+  "terminal": 16,
+  "held_technical_tasks": 0,
+  "held_task_ids": [],
+  "unstarted_or_unresolved_task_ids": [],
+  "by_arm": {
+    "I0": {
+      "planned": 8,
+      "terminal": 8,
+      "normal_complete": 8,
+      "algorithm_terminal": 0,
+      "pending_or_held": 0,
+      "prompt_tokens": 20059,
+      "completion_tokens": 186,
+      "returned_usage_CNY": 0.016419200000000002
+    },
+    "I1": {
+      "planned": 8,
+      "terminal": 8,
+      "normal_complete": 8,
+      "algorithm_terminal": 0,
+      "pending_or_held": 0,
+      "prompt_tokens": 20427,
+      "completion_tokens": 189,
+      "returned_usage_CNY": 0.0167196
+    }
+  },
+  "by_group": {
+    "local_QA_failure": {
+      "I0": {
+        "planned": 6,
+        "terminal": 6,
+        "normal_complete": 6,
+        "algorithm_terminal": 0,
+        "pending_or_held": 0,
+        "prompt_tokens": 16054,
+        "completion_tokens": 136,
+        "returned_usage_CNY": 0.0131152
+      },
+      "I1": {
+        "planned": 6,
+        "terminal": 6,
+        "normal_complete": 6,
+        "algorithm_terminal": 0,
+        "pending_or_held": 0,
+        "prompt_tokens": 16330,
+        "completion_tokens": 136,
+        "returned_usage_CNY": 0.013336
+      }
+    },
+    "reasonable_abstention_boundary": {
+      "I0": {
+        "planned": 2,
+        "terminal": 2,
+        "normal_complete": 2,
+        "algorithm_terminal": 0,
+        "pending_or_held": 0,
+        "prompt_tokens": 4005,
+        "completion_tokens": 50,
+        "returned_usage_CNY": 0.003304
+      },
+      "I1": {
+        "planned": 2,
+        "terminal": 2,
+        "normal_complete": 2,
+        "algorithm_terminal": 0,
+        "pending_or_held": 0,
+        "prompt_tokens": 4097,
+        "completion_tokens": 53,
+        "returned_usage_CNY": 0.0033835999999999996
+      }
+    }
+  },
+  "complete_terminal_pairs": 8,
+  "normal_pairs": 8,
+  "changed_text_normal_pair_ids": [
+    "2wiki:a6fd9c120baf11ebab90acde48001122/ordinary/2",
+    "hotpotqa:5a893fc855429951533612f0/ordinary/2"
+  ],
+  "semantic_correctness_not_automatically_assigned": true,
+  "no_F1_or_gold_scorer": true,
+  "no_LLM_call_count_metric": true,
+  "fresh_I0_not_historical_replay": true,
+  "all_outcomes_retained": true,
+  "main_evaluation_remains_paused": true,
+  "new_experiment_actual_returned_usage_CNY": 0.0331388,
+  "unresolved_reserved_CNY": 0,
+  "reservations_without_current_or_retired_cache_record_ids": [],
+  "orphan_reservation_limit": "Preserved separately; absence of cache row does not establish submission or permit deleting a reservation"
+}

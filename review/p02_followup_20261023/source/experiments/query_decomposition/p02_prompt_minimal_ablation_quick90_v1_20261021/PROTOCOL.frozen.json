@@ -1,0 +1,30 @@
+{
+  "id": "p02_prompt_minimal_ablation_quick90_v1_20261021",
+  "utc": "2026-10-21T11:13:37.010461+00:00",
+  "authority": "User: 我们还是先采用你这里的最小对照 之后我们再修正goal提示词并尝试 开始实验对照",
+  "annotation": "1",
+  "cohort": "Same fixed quick90, 30 per dataset, no resampling",
+  "control": "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_childprompt_selfcontained_quick90_v1_20261021\\approved_recovery004",
+  "planned_per_arm": 90,
+  "A_no_only": "Delete only the first-line word only in the revised ordinary-child prompt; full downstream native flow.",
+  "B_no_resolve": "Keep revised ordinary prompts and answers. Freeze all upstream payloads/answers and goal retrieval packets. Delete only Resolve each #N from its numbered prior question and answer. from goal instructions. Regenerate goal/formatter/final only as exact payloads require.",
+  "preserved": "Legacy goal wording, repeated original query, examples, formatter, rewrite, retrieval, scoring, generation settings and token caps otherwise unchanged. Proposed goal rewrite is deferred.",
+  "cache": "Exact successful full-payload reuse from completed revised control first, original frozen package second; no cross-arm inference reuse. Fresh requests only for missing complete payloads.",
+  "failure_policy": "No SDK POST retry, unknown request replay or score-based rerun; unchanged approved HTTP connect-before-send retries2. Preserve failed receipts and reserves.",
+  "destination": "https://ws-memqyuz7m8e9oxs1.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+  "payload_and_charges": "Same question/model-generated-QA/retrieved-passage payload classes and existing Qwen endpoint, user-approved two contrasts on the fixed90; usage billed under unchanged native ledger.",
+  "metrics": "Native final Answer-F1/EM, paired changes, complete-flow input/output usage and expense. Missingness and unknown liabilities explicit. No new timing claims.",
+  "pins": {
+    "experiments\\query_decomposition\\p02_prompt_minimal_ablation_quick90_v1_20261021\\run.py": "b4e4861ecf08ab6ce60e5cd237f940d147cf24d2913b97baef5830f51d3b1914",
+    "experiments\\query_decomposition\\p02_prompt_minimal_ablation_quick90_v1_20261021\\child_prompts.py": "f385d15965acb4a2ffbba40b63e280ecb8ffaefae65fd2ad64b54a4d28aad081",
+    "experiments\\query_decomposition\\p02_prompt_minimal_ablation_quick90_v1_20261021\\pipeline.py": "f4f94a61d241de147f7206feb91e55b387d940d249d333fafbce077d3a236d18",
+    "experiments\\query_decomposition\\p02_prompt_minimal_ablation_quick90_v1_20261021\\A_ordinary_prompt.frozen.txt": "50f8cb13101f357ea9af6d4a2f4f4bf88e8552756329bd6d3ca98c1a6a843ab8",
+    "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\run_r004.py": "faa0c8787b1d4148ae7b573f831e6a04a2c990833b7985598157c805fe74b7dd",
+    "experiments\\query_decomposition\\p02_childprompt_selfcontained_quick90_v1_20261021\\run_r002.py": "850d8c6ea5d50e24fe13ad640442fad464ce50ca9634eea7dd2da638c994afd8",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_childprompt_selfcontained_quick90_v1_20261021\\approved_recovery004\\candidate\\hotpotqa\\checkpoint.sqlite3": "7f5bfc230aec69862bb73fb3c49773aa7f5954044cee8a49307033e251c62c45",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_childprompt_selfcontained_quick90_v1_20261021\\approved_recovery004\\candidate\\2wiki\\checkpoint.sqlite3": "c41e72a43e050f67367db450a5038e51400aff1ab8c416a49b4ac9905bdb8d0a",
+    "outputs\\query_decomposition\\hotpot_formal_eval_v1\\p02_childprompt_selfcontained_quick90_v1_20261021\\approved_recovery004\\candidate\\musique\\checkpoint.sqlite3": "1bcad24c580668a91f81dfb6e3acc08765887d3e5205848ce679ba68d45fa0f7"
+  },
+  "main_evaluation_remains_paused": true,
+  "not_independent_confirmation": true
+}

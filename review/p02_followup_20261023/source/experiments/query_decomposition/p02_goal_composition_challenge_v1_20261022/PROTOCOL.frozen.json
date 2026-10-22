@@ -1,0 +1,48 @@
+{
+  "id": "p02_goal_composition_challenge_v1_20261022",
+  "created_utc": "2026-10-21T14:24:31.128342+00:00",
+  "state": "prepared_only_not_started",
+  "scope": "Diagnostic-selected27-case frozen-prefix challenge; not independent confirmation or full fresh RAG",
+  "selection": "All723 diagnostic flows filtered only by ordinary_answers_all_correct and goal_answer_correct=False; includes historical final successes and failures",
+  "planned": 27,
+  "per_dataset": {
+    "hotpotqa": 10,
+    "2wiki": 17
+  },
+  "historical_final_successes_included": {
+    "2wiki": 2,
+    "hotpotqa": 3
+  },
+  "arms": [
+    "G0",
+    "G1",
+    "G2"
+  ],
+  "goal_cap": 512,
+  "final_cap": 64,
+  "protocol_matches_pilot": "same frozen templates, model, no formatter, neutral final presentation and fixed final template/examples/readout; G0 separate from historical128-cap P02",
+  "fixed_inputs": "ordinary QA, goal rewrite, dual-route reader_packet and original final root from each exact historical source",
+  "gold_boundary": "References and historical outcomes are separate local files; only inputs27.frozen.jsonl enters renderers",
+  "cache_and_recovery": "same exact payload stop+usage contract and shared StrictAsk maximum5 technical attempts across restarts; preserve unknown receipts and reservations; SDK/HTTP0; no successful or algorithm rerolls",
+  "cost": "No hard legacy budget cap; existing ledger, endpoint and rates; per-query tokens and estimated cost, known charges and unknown reservations separate",
+  "provenance": "All27 source bytes match members of already-public formal1500 archives, whose Git blobs were live-verified under ccc12b6",
+  "main_evaluation_remains_paused": true,
+  "new_API_requests_during_preparation": 0,
+  "pins": {
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/run.py": "2015024fecf27cfbdec49337feff420de1c929bd15f93d26cd4eb3d511369a24",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/SELECTION.frozen.jsonl": "ce85a1fe99454f23cfa4b4a0b825e30dc8e4e73e89a786f6fb1fc72f4d2662fc",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/inputs27.frozen.jsonl": "4c31c0e5dad41409c910d4d51ecfebc3cc75c22336fba93d9f99db551a0193bf",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/historical27.local.jsonl": "c079df49ae49126d5b1585ec1ca55cfad6e9063b868b781b0cb34181fa003771",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/references27.local.frozen.jsonl": "6c91330ec06d54d861d0cea4830e3c7005779c555591c6635230e80e6e980f82",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/PUBLIC_SOURCE_PROOF.jsonl": "fc060229b0b4b9098214e7b3d51d0222cee6e0f4dfed5720a405e66cb9a0d747",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/PUBLIC_BLOB_METADATA.json": "7fed22857f9874d6a7beb21967240fa375c3959def4a5af4559bfd9607ceff1d",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/G1.frozen.txt": "790ea62f06a698beb3bdb7753754807d8b7ad9c1a6426c4a976b2c090b284b06",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/G2.frozen.txt": "03d1c14e27b46543a21e9ce9a8647de2e053c11fee0b59efe95f2c8acc836aca",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/run.py": "fcbb0887b45fc6638e6fb5abe53d2e5883079547f1dd9a9ee8b308c65f34984b",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/core/final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395"
+  }
+}

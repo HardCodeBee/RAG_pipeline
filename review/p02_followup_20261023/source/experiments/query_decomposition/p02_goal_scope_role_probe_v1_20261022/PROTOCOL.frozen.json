@@ -1,0 +1,65 @@
+{
+  "id": "p02_goal_scope_role_probe_v1_20261022",
+  "created_utc": "2026-10-21T15:18:51.651727+00:00",
+  "state": "prepared_only_not_started",
+  "planned": 27,
+  "per_dataset": {
+    "2wiki": 17,
+    "hotpotqa": 10
+  },
+  "arms": [
+    "S0",
+    "S1",
+    "S2"
+  ],
+  "conditions": 81,
+  "goal_cap": 512,
+  "final_cap": 64,
+  "selection": "All prior challenge27, no new native-score selection; ordinary-correct/historical-goal-wrong diagnostic selection remains exposed",
+  "inference": "Frozen ordinary QA, original goal rewrite and reader passages, final root packet; no retrieval, decomposer, formatter or external judge",
+  "scope": "Exploratory targeted constraints; neither historical G2 nor reused27 is independent confirmation",
+  "synchronous_control": "S0 is byte-identical old G2 prompt, generated afresh with no cross-experiment seed/cache; current S0 compared to historical G2 only as exploratory temporal/noise sensitivity",
+  "cache": "Only exact complete stop+usage same-run payload reuse for resume/deduplication; never import historical G2 requests",
+  "ordering": {
+    "seed": 20261022,
+    "rule": "Frozen case order; cyclic arm rotation using seed-hash starting offset; each arm starts9 cases"
+  },
+  "recovery": "Shared StrictAsk, SDK/HTTP retries0; at most5 actual technical attempts including initial across restart; unknown receipts/reservations retained; only authorized no-return-evidence unknown recovery",
+  "terminal": "Known status-success length/empty/refusal is an immutable algorithm condition outcome, no reroll, F1=EM=0 in fixed planned denominator; goal terminal suppresses final; missing usage/model mismatch/technical unknown remain separate held outcomes, never silently zero",
+  "reporting": "All arms and datasets; fixed-denominator metrics only if every condition is resolved; known-outcome and complete-only sensitivity denominators, paired F1/EM and terminal counts; scorer constructed once per dataset per report",
+  "cost": "Same endpoint/model/rates and shared gate; NoCapBudget ledger preserves all charged usage and unknown reservations; no fixed cap or LLM-call metric",
+  "gold_boundary": "Separate local references only join at reporting; no historical answer or final-score field enters model messages",
+  "public_provenance": "Challenge27 public source proof byte-copied; root independently revalidated before execution approval",
+  "main_evaluation_remains_paused": true,
+  "new_API_requests_during_preparation": 0,
+  "pins": {
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/run.py": "1b163d794ed94d3f6c5a7f54247902b4150abef2606449e7431c4b6d51a7cd8e",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/templates.py": "cc79db0d6bbb10a4702b4b80516c9557d5708590fa265dd89dedbd17ae219268",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/PROTOCOL.md": "9de24834c32f0591ad54915dfd803cf8d9c036d818de85800a7dc6f44b060300",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/inputs27.frozen.jsonl": "4c31c0e5dad41409c910d4d51ecfebc3cc75c22336fba93d9f99db551a0193bf",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/references27.local.frozen.jsonl": "6c91330ec06d54d861d0cea4830e3c7005779c555591c6635230e80e6e980f82",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/SELECTION.frozen.jsonl": "ce85a1fe99454f23cfa4b4a0b825e30dc8e4e73e89a786f6fb1fc72f4d2662fc",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/PUBLIC_SOURCE_PROOF.jsonl": "fc060229b0b4b9098214e7b3d51d0222cee6e0f4dfed5720a405e66cb9a0d747",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/PUBLIC_BLOB_METADATA.json": "7fed22857f9874d6a7beb21967240fa375c3959def4a5af4559bfd9607ceff1d",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/G2.frozen.txt": "03d1c14e27b46543a21e9ce9a8647de2e053c11fee0b59efe95f2c8acc836aca",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/ORDER.frozen.jsonl": "17b38aedf65ba25707728c785a5b31a07922f1bce824b2b37fdb7c0088512c64",
+    "experiments/query_decomposition/p02_goal_scope_role_probe_v1_20261022/CONSTRAINTS.frozen.json": "5843946390f7fed53f52ac0cbf057740a30971c89a262e1b738bb61ae98aafef",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/run.py": "fcbb0887b45fc6638e6fb5abe53d2e5883079547f1dd9a9ee8b308c65f34984b",
+    "experiments/query_decomposition/p02_prompt_binding_probe_v1_20261022/shared_runtime.py": "5c6c5c4914e995bce4a995ebb60ff9acb29517c5e5d77118bd2ac2413091b98e",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/core/cache.py": "ffb53f958c60cb7b1cb3854df904f32fea417b3b429525019d1607407bc7f237",
+    "src/p02_multigrain_timing_cachefix_v1/core/llm.py": "58a8a09c951df0151a49b6fc710a298a45cf3d8dad163d1c92ee76ca1e3ffa97",
+    "src/p02_multigrain_timing_cachefix_v1/core/final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "experiments/query_decomposition/p02_goal_composition_challenge_v1_20261022/PROTOCOL.frozen.json": "4967bcc76641113b8f3a202ec5d5fd68ff388e8bc18e6b871d829afd73d8453f"
+  },
+  "revision": 2,
+  "previous_unexecuted_revision": {
+    "reason": "Root offline audit: returned algorithm outcomes need complete nonnegative integer usage before zero-count resolution; missing usage stays held",
+    "previous_protocol_sha256": "e8ed34cd7c7fdbaa18dda70107e8fda5d1ece3ae7bdf50fb2c43a494a8ed868a",
+    "new_API_requests_before_revision": 0,
+    "preserved_directory": "unexecuted_revision1"
+  }
+}

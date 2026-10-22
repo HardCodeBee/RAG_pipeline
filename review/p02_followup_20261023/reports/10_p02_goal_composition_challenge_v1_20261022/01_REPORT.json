@@ -1,0 +1,297 @@
+{
+  "scope": "All27 historical ordinary-correct/goal-wrong diagnostic cases; selected challenge, not generalization evidence",
+  "status": "complete",
+  "by_arm_dataset": {
+    "G0": {
+      "hotpotqa": {
+        "planned": 10,
+        "complete": 10,
+        "F1": 0.5,
+        "EM": 0.5,
+        "goal_final_input_tokens": 36996,
+        "goal_final_output_tokens": 403,
+        "goal_final_estimated_CNY": 0.0304028
+      },
+      "2wiki": {
+        "planned": 17,
+        "complete": 17,
+        "F1": 0.4231729055258467,
+        "EM": 0.23529411764705882,
+        "goal_final_input_tokens": 87870,
+        "goal_final_output_tokens": 607,
+        "goal_final_estimated_CNY": 0.07151
+      }
+    },
+    "G1": {
+      "hotpotqa": {
+        "planned": 10,
+        "complete": 10,
+        "F1": 0.5,
+        "EM": 0.5,
+        "goal_final_input_tokens": 38094,
+        "goal_final_output_tokens": 1933,
+        "goal_final_estimated_CNY": 0.0343412
+      },
+      "2wiki": {
+        "planned": 17,
+        "complete": 17,
+        "F1": 0.31729055258467026,
+        "EM": 0.17647058823529413,
+        "goal_final_input_tokens": 89902,
+        "goal_final_output_tokens": 3326,
+        "goal_final_estimated_CNY": 0.0785736
+      }
+    },
+    "G2": {
+      "hotpotqa": {
+        "planned": 10,
+        "complete": 10,
+        "F1": 0.4,
+        "EM": 0.4,
+        "goal_final_input_tokens": 38802,
+        "goal_final_output_tokens": 2301,
+        "goal_final_estimated_CNY": 0.0356436
+      },
+      "2wiki": {
+        "planned": 17,
+        "complete": 17,
+        "F1": 0.3467023172905526,
+        "EM": 0.23529411764705882,
+        "goal_final_input_tokens": 90991,
+        "goal_final_output_tokens": 3834,
+        "goal_final_estimated_CNY": 0.08046080000000001
+      }
+    }
+  },
+  "paired_F1": {
+    "G0_to_G1": {
+      "harmed": 3,
+      "tied": 24
+    },
+    "G0_to_G2": {
+      "harmed": 5,
+      "tied": 21,
+      "improved": 1
+    },
+    "G1_to_G2": {
+      "tied": 24,
+      "harmed": 2,
+      "improved": 1
+    }
+  },
+  "known_receipt_CNY": 0.3309320000000001,
+  "unresolved_receipts": [],
+  "retired_receipts_preserved": [
+    {
+      "request_id": "ac2775b6f9994ddd98f2a36463e19998",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 45.51179169991519,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "01a0728d9ed74189a9c2822653bf3a9f",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 21.254771699896082,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "35b0b67cf4a8477d895fc7f330e1c6ba",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.39712989993859,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "0d158a401c324a9299bae09cd1c0e58d",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.385865200078115,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "1f1ff750f09b4041893e53ccf67600b8",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 26.21489850000944,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "2c21fe3f8c0647608b9382a7acf36f77",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.413203999982215,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "1bb62bf058dc45ae8e8475b9f5c1b989",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 58.7060590001056,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "7509ecc2533d4597b99d5ad4a5a2fb80",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 13.391688599949703,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "5bb3af08fc1c48f2af7aceb23fbac304",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 56.296254500048235,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "13f273812a7b4100a22b9f4d74ba5fb5",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.36802950000856,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "bbcac806b20f41c1bb09f7ab97240fd7",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.348434299929067,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "3f7b6c8047b949faa5c81f0b1c3aa089",
+      "status": "unknown",
+      "result": {
+        "error": "Connection error.",
+        "failure_class": "APIConnectionError",
+        "http_status": null,
+        "latency_seconds": 44.62145580002107,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "613d9841bd644a2b8c3454bb37212334",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 10.388930399902165,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "b8b1674e124948b5b7f1239504547825",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 64.76742539997213,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "ca667f8f6d7541c780f9a59a60faff8e",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 12.073264900012873,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    },
+    {
+      "request_id": "ae69639b95474459856e3f122c4c1451",
+      "status": "unknown",
+      "result": {
+        "error": "Request timed out.",
+        "failure_class": "APITimeoutError",
+        "http_status": null,
+        "latency_seconds": 13.402244199998677,
+        "reconciliation": "submission outcome unknown",
+        "requested_model": "qwen-plus-2025-12-01",
+        "status": "unknown"
+      }
+    }
+  ],
+  "historical_P02_separate": true,
+  "not_pure_reasoning_causal_effect": true,
+  "main_evaluation_remains_paused": true
+}

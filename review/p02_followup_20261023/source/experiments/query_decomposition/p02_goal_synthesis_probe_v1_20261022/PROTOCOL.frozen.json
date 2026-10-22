@@ -1,0 +1,50 @@
+{
+  "id": "p02_goal_synthesis_probe_v1_20261022",
+  "created_utc": "2026-10-21T13:51:03.463563+00:00",
+  "authority": "User delegated autonomous scoped prompt-binding and goal-synthesis small experiments; root records the exact authority in shared DECISIONS.jsonl.",
+  "scope": "Frozen-prefix goal and final regeneration pilot; not a complete fresh-RAG or formal evaluation",
+  "arms": {
+    "G0": "historical one-factual-sentence goal prompt; new512 cap and no formatter",
+    "G1": "short factual summary, target80-120 words",
+    "G2": "key facts plus essential composition plus candidate conclusion/gap, target80-120 words"
+  },
+  "fixed": "Original quick90 ordinary QA, decomposition, goal rewrite, goal reader packet, original final root, model and final prompt/readout/examples",
+  "goal_max_tokens": 512,
+  "final_max_tokens": 64,
+  "formatter": false,
+  "goal_presentation": "same neutral Candidate information for the Original question",
+  "historical_P02_is_separate": "G0 is not historical P02:512 cap, no formatter and common final packaging",
+  "cache": "exact full payload+stop+usage only; no historical128 goal reuse; generated summary reused only within this pilot",
+  "retry": "SDK/HTTP retries0; up to5 durable actual attempts across restarts for technical failures, including authorized unknown reissue; retired receipts and unknown reservations preserved; successful and algorithm failures never regenerated for score",
+  "expense": "existing provider token rates and global receipts; no old300 or per-run hard ceiling; unknown liabilities preserved; input/output tokens and estimated CNY reported",
+  "measurement": "native F1/EM, paired improves/ties/harms, input/output tokens, estimated CNY; no LLM-call-count metric or new timing claim",
+  "interpretation": "Overall goal-output protocol comparison. G1/G2 content can differ; not a pure causal estimate of reasoning text alone",
+  "followups_prepared_not_default": [
+    "final_goal_none: ordinary QA and root only, no new goal generation",
+    "goal_rewrite_off: use saved goal original-route packet; preserve ordinary QA and final root"
+  ],
+  "main_evaluation_remains_paused": true,
+  "new_retrieval_or_GPU": false,
+  "pins": {
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/run.py": "fcbb0887b45fc6638e6fb5abe53d2e5883079547f1dd9a9ee8b308c65f34984b",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/templates.py": "c982dc61daac2f012a27929742d70d1eebe779e866a489d3cfad5eb24fd8a41a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/questions15.frozen.jsonl": "cc1bb2e23845e038e20df5ae67b598be9b98a459d3abf2fdabc87dbd6fd6ee0a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/inputs15.frozen.jsonl": "e10639012d889700fca165e71b618692a54c8ec455d7b468d4c7220d5d3ceb7e",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/COHORT.frozen.json": "11d0fdd39cb7ed75a06f89c2f883f40207215bf99376d5183ae4020d3b6ff787",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/GENERATION.frozen.json": "4954bf2a65cba799566405351bf93f38cc4f67d4b403fe7ef3bb6a2401b0b1d7",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/FINAL_EXAMPLES.frozen.json": "673476aba52dccb4b1419f7fe1e313a9255e6bfe04ce71e2c7c46b6709d4247a",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/G1.frozen.txt": "790ea62f06a698beb3bdb7753754807d8b7ad9c1a6426c4a976b2c090b284b06",
+    "experiments/query_decomposition/p02_goal_synthesis_probe_v1_20261022/G2.frozen.txt": "03d1c14e27b46543a21e9ce9a8647de2e053c11fee0b59efe95f2c8acc836aca",
+    "src/p02_multigrain_timing_cachefix_v1/config.json": "31039db11b828d40abd99d14126fbe3051c9f3771a927e0b21d4bb4bb4db1fd7",
+    "src/p02_multigrain_timing_cachefix_v1/core/final_prompts.py": "e2943fde2246dbbfb399e06e9d6852636ec8f58861039aaa373bbbf8fe0e8395",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/p02_three_prompts_quick90_v1_20261021/control90.jsonl": "aed1745290270aa3a5f87dabd65547d54ac150413648e073491bd7259c4a59cf"
+  },
+  "hold_pins": {
+    "experiments/query_decomposition/unified_rag_eval_v1_20261021/STOP_REQUESTED": "aa6cd88b8343002d309821f7886745cc6544d0153a67b90dccb2c1e55ddfa5bb",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3",
+    "outputs/query_decomposition/hotpot_formal_eval_v1/p02_formal1500_v1_20261021/STOP_REQUESTED": "62cad25c728710b8e28ed1f911de7d0db9a5b95198990548ea4a0b4ecd0036f3"
+  },
+  "offline_contract_revision": 2,
+  "previous_unexecuted_protocol_sha256": "fca1ab9254163318ea17a08d92d8e50ad43256046e624b3e7c3d196149360d96",
+  "contract_fixes": "Read-only monitoring, exact G0 packet-only rewrite-off, nonempty ordinary-QA pilot, StrictAsk durable technical recovery."
+}
